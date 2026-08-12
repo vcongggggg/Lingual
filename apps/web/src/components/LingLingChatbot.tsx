@@ -26,6 +26,7 @@ import {
 import { chatbotApi, srsApi } from '@/lib/api';
 import LingLingMascot from '@/components/LingLingMascot';
 import { mascotReactions } from '@linguaflow/config';
+import { peekingVariants } from '@linguaflow/ui';
 
 
 export type AvatarState = 'idle' | 'thinking' | 'speaking' | 'celebrating' | 'apologetic';
@@ -346,9 +347,10 @@ export default function LingLingChatbot() {
           >
             {/* PEEKING COW MASCOT STICKER LEANING OVER TOP EDGE */}
             <motion.div
-              initial={{ y: -10, rotate: -5, opacity: 0 }}
-              animate={{ y: [0, -4, 0], rotate: [-4, 4, -4], opacity: 1 }}
-              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              variants={peekingVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
               className="absolute -top-14 left-6 z-50 w-20 h-20 pointer-events-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
             >
               <img

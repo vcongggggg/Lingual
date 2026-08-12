@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { mascotReactions } from '@linguaflow/config';
+import { mascotStateVariants, useMotionAccessibility, transitionPresets } from '@linguaflow/ui';
 
 export type MascotState = 'idle' | 'thinking' | 'speaking' | 'celebrating' | 'apologetic';
 
@@ -25,41 +26,34 @@ export default function LingLingMascot({
   className = '',
   size = 48,
 }: LingLingMascotProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useMotionAccessibility();
   const stickerSrc = stateAssetMap[state] || mascotReactions.greet;
 
-  // Motion variants for smooth state transition & idle scale pulse
-  const containerVariants = {
-    initial: { scale: 0.8, opacity: 0.5 },
-    animate: shouldReduceMotion
-      ? { scale: 1, opacity: 1 }
-      : state === 'idle'
-      ? {
-          scale: [0.98, 1.04, 0.98],
-          opacity: 1,
-          transition: { repeat: Infinity, duration: 3, ease: 'easeInOut' },
-        }
-      : {
-          scale: [0.85, 1.12, 1],
-          opacity: 1,
-          transition: { type: 'spring', stiffness: 400, damping: 20 },
-        },
-  };
+  const currentVariant = shouldReduceMotion
+    ? { opacity: 1 }
+    : mascotStateVariants[state] || mascotStateVariants.idle;
 
   return (
-    <motion.div
-      key={state}
-      variants={containerVariants}
-      initial="initial"
-      animate="animate"
+    <div
       className={`relative inline-flex items-center justify-center select-none shrink-0 ${className}`}
       style={{ width: size, height: size }}
     >
-      <img
-        src={stickerSrc}
-        alt={`LingLing Cow Mascot - ${state}`}
-        className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] pointer-events-none"
-      />
-    </motion.div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={state}
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={currentVariant as any}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={shouldReduceMotion ? transitionPresets.micro : undefined}
+          className="w-full h-full flex items-center justify-center"
+        >
+          <img
+            src={stickerSrc}
+            alt={`LingLing Cow Mascot - ${state}`}
+            className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] pointer-events-none"
+          />
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }

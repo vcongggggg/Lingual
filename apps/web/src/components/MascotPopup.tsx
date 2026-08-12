@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
+import { springPresets, transitionPresets, useMotionAccessibility } from '@linguaflow/ui';
 
 export interface MascotPopupProps {
   isVisible: boolean;
@@ -21,6 +22,8 @@ export default function MascotPopup({
   autoDismissMs = 3500,
   onClose,
 }: MascotPopupProps) {
+  const { shouldReduceMotion } = useMotionAccessibility();
+
   useEffect(() => {
     if (!isVisible || !autoDismissMs || !onClose) return;
     const timer = setTimeout(() => {
@@ -35,10 +38,10 @@ export default function MascotPopup({
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.8, rotate: -4 }}
-          animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-          exit={{ opacity: 0, y: 20, scale: 0.9 }}
-          transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8, scale: shouldReduceMotion ? 1 : 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: shouldReduceMotion ? 0 : 4, scale: 0.95 }}
+          transition={shouldReduceMotion ? transitionPresets.micro : springPresets.mascot}
           className="fixed bottom-6 right-6 z-50 flex items-center gap-3 max-w-sm p-3.5 pr-5 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-amber-500/40 shadow-2xl text-slate-100 pointer-events-auto"
         >
           <div className="relative w-16 h-16 shrink-0 -ml-1">
