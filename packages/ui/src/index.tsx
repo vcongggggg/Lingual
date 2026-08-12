@@ -289,6 +289,7 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
   partOfSpeech = 'noun',
   onPlayAudio,
 }) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
   const [isFlipped, setIsFlipped] = useState(false);
   const resolvedImage = getWordImage(targetText, imageUrl);
 
@@ -301,12 +302,24 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
     }
   };
 
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <div className="w-full max-w-md mx-auto aspect-[4/5] perspective-1000 cursor-pointer select-none">
       <motion.div
-        onClick={() => setIsFlipped(!isFlipped)}
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        onClick={handleCardClick}
+        animate={{
+          rotateY: shouldReduceMotion ? 0 : isFlipped ? 180 : 0,
+          opacity: shouldReduceMotion ? (isFlipped ? 0.95 : 1) : 1,
+          scale: shouldReduceMotion ? 1 : [1, 1.015, 1],
+        }}
+        transition={{
+          rotateY: { duration: 0.48, ease: [0.16, 1, 0.3, 1] },
+          opacity: { duration: 0.2 },
+          scale: { duration: 0.3 },
+        }}
         style={{ transformStyle: 'preserve-3d' }}
         className="relative w-full h-full rounded-3xl"
       >

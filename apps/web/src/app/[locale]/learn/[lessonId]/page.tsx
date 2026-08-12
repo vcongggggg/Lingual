@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, Card, ProgressBar, speakText, getWordImage, AudioButton } from '@linguaflow/ui';
+import { Button, Card, ProgressBar, speakText, getWordImage, AudioButton, localShakeVariants, checkMarkPopVariants, canPlayFeedbackAudio, useMotionAccessibility } from '@linguaflow/ui';
 import { curriculumApi } from '../../../../lib/api';
+import { sfx } from '@/lib/soundEffects';
 import { ArrowLeft, CheckCircle2, XCircle, Sparkles, Trophy, Volume2, ArrowRight, BookOpen, Brain, Play } from 'lucide-react';
 import MascotPopup from '@/components/MascotPopup';
 import { MascotReactionKey } from '@linguaflow/config';
@@ -79,6 +80,14 @@ export default function LessonQuizPage() {
     const correct = answer.trim().toLowerCase() === currentEx.correctAnswer.trim().toLowerCase();
     setIsCorrect(correct);
     setIsAnswerChecked(true);
+
+    if (canPlayFeedbackAudio()) {
+      if (correct) {
+        sfx.playCorrect();
+      } else {
+        sfx.playWrong();
+      }
+    }
 
     if (correct) {
       setConsecutiveWrong(0);

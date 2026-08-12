@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, SRSFlashcard, XPBadge, StreakBadge } from '@linguaflow/ui';
+import { Button, SRSFlashcard, XPBadge, StreakBadge, canPlayFeedbackAudio } from '@linguaflow/ui';
 import { srsApi } from '../../../lib/api';
+import { sfx } from '@/lib/soundEffects';
 import { Brain, Sparkles, CheckCircle2, RotateCcw, ArrowLeft, Volume2, Award, BarChart3, Clock, GraduationCap } from 'lucide-react';
 import MascotPopup from '@/components/MascotPopup';
 import Image from 'next/image';
@@ -79,6 +80,14 @@ export default function SRSPage() {
     const xpGain = quality >= 3 ? 10 : 2;
     setTotalXPEarned((prev) => prev + xpGain);
 
+    if (canPlayFeedbackAudio()) {
+      if (quality >= 3) {
+        sfx.playCorrect();
+      } else {
+        sfx.playWrong();
+      }
+    }
+
     if (quality >= 5) {
       setPopupState({
         show: true,
@@ -92,6 +101,13 @@ export default function SRSPage() {
         key: 'confirm',
         title: 'Đã ghi nhận! 🫡',
         msg: 'Bò LingLing chào quân đội chúc mừng bạn!',
+      });
+    } else {
+      setPopupState({
+        show: true,
+        key: 'wrong_mild',
+        title: 'Lên lịch ôn lại! 📖',
+        msg: 'Bò LingLing sẽ giúp bạn ôn từ này sớm hơn nhé!',
       });
     }
 
