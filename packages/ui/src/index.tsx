@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, CheckCircle2, Flame, Zap, Award, Sparkles, RotateCw, Lightbulb, Image as ImageIcon, Bookmark, PlusCircle, Check } from 'lucide-react';
 
+export * from './motion/index';
+
 // ============================================================================
 // WEB SPEECH AUDIO SYNTHESIS HELPER
 // ============================================================================
