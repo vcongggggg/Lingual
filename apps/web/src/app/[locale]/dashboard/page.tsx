@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Button, Card, ProgressBar, XPBadge, StreakBadge } from '@linguaflow/ui';
+import { Button, Card, MotionCard, ProgressBar, XPBadge, StreakBadge, springPresets, transitionPresets, useMotionAccessibility } from '@linguaflow/ui';
 import { curriculumApi, userApi } from '../../../lib/api';
 import { BookOpen, CheckCircle2, Lock, Play, Star, Flame, Trophy, Sparkles, Brain, ArrowRight } from 'lucide-react';
 import ThemeIllustration from '@/components/ThemeIllustration';
@@ -12,10 +12,10 @@ import MascotPopup from '@/components/MascotPopup';
 import Image from 'next/image';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 
-
 export default function DashboardPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
+  const { shouldReduceMotion } = useMotionAccessibility();
 
   const [units, setUnits] = useState<any[]>([]);
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
@@ -44,7 +44,7 @@ export default function DashboardPage() {
           if (progress.totalXP) setUserXP(progress.totalXP);
         }
       } catch {
-        // Fallback: units will load from API even without progress data
+        // Fallback: units load from API
       } finally {
         setLoading(false);
       }
@@ -81,6 +81,27 @@ export default function DashboardPage() {
     }
   }, [loading, dailyProgress, dailyGoal]);
 
+  // Dashboard entrance animation variants (Level 1 Ambient & Stagger)
+  const dashboardContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.08,
+        delayChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: springPresets.smooth,
+    },
+  };
+
   if (loading && units.length === 0) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -93,11 +114,22 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <motion.div
+      variants={dashboardContainerVariants}
+      initial="hidden"
+      animate="visible"
+      className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+    >
+      {/* AMBIENT DEEP SPACE BACKGROUND ATMOSPHERE */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/6 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem] bg-purple-500/5 rounded-full blur-3xl" />
+      </div>
+
       {/* MAIN ROADMAP PATH (8 COLUMNS) */}
-      <div className="lg:col-span-8 space-y-12">
+      <motion.div variants={itemVariants} className="relative z-10 lg:col-span-8 space-y-12">
         {/* Header Title with Peeking Cow Mascot */}
-        <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 backdrop-blur-xl">
+        <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 backdrop-blur-xl shadow-xl">
           <div className="absolute -top-7 right-8 w-16 h-16 pointer-events-none hidden sm:block">
             <img
               src={mascotReactions.greet}
@@ -136,7 +168,7 @@ export default function DashboardPage() {
             };
 
             return (
-              <div key={unit.order} className="relative space-y-8">
+              <motion.div key={unit.order} variants={itemVariants} className="relative space-y-8">
                 {/* Unit Header Banner */}
                 <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-r ${cefrColors[unitCefrLevel] || cefrColors.A1} border backdrop-blur-2xl p-6 flex items-center justify-between shadow-xl`}>
                   <div className="space-y-1">
@@ -170,8 +202,9 @@ export default function DashboardPage() {
                     return (
                       <motion.div
                         key={lesson.order}
-                        whileHover={{ scale: isLocked ? 1 : 1.06 }}
-                        whileTap={{ scale: isLocked ? 1 : 0.95 }}
+                        whileHover={isLocked || shouldReduceMotion ? undefined : { scale: 1.05, y: -2 }}
+                        whileTap={isLocked || shouldReduceMotion ? undefined : { scale: 0.96 }}
+                        transition={springPresets.smooth}
                         className="relative z-10 flex flex-col items-center group"
                       >
                         <Link
@@ -180,7 +213,7 @@ export default function DashboardPage() {
                             isCompleted
                               ? 'bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 shadow-emerald-500/20 border-2 border-emerald-300'
                               : isCurrent
-                              ? 'bg-gradient-to-tr from-coral-500 via-amber-500 to-orange-400 text-slate-950 shadow-amber-500/30 border-2 border-amber-300 animate-pulse'
+                              ? 'bg-gradient-to-tr from-coral-500 via-amber-500 to-orange-400 text-slate-950 shadow-amber-500/30 border-2 border-amber-300'
                               : 'bg-slate-900 border border-slate-800 text-slate-500 cursor-not-allowed opacity-60'
                           }`}
                         >
@@ -192,8 +225,8 @@ export default function DashboardPage() {
                             <Lock className="w-6 h-6 text-slate-600" />
                           )}
 
-                          {isCurrent && (
-                            <span className="absolute -inset-2 rounded-[32px] bg-amber-400/20 animate-ping pointer-events-none" />
+                          {isCurrent && !shouldReduceMotion && (
+                            <span className="absolute -inset-2 rounded-[32px] bg-amber-400/20 animate-ping pointer-events-none" style={{ animationDuration: '3s' }} />
                           )}
                         </Link>
 
@@ -205,15 +238,16 @@ export default function DashboardPage() {
                     );
                   })}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
       {/* RIGHT SIDEBAR STATS & GOAL WIDGET (4 COLUMNS) */}
-      <div className="lg:col-span-4 space-y-6 sticky top-24">
-        <Card glow="amber" className="space-y-4 relative overflow-visible">
+      <motion.div variants={itemVariants} className="relative z-10 lg:col-span-4 space-y-6 sticky top-24">
+        {/* Daily Goal MotionCard with Selective 3D Pointer Tilt */}
+        <MotionCard glow="amber" tilt spotlight className="space-y-4 relative overflow-visible">
           {/* Peeking Mascot Sitting on Goal Card */}
           <div className="absolute -top-8 -right-2 w-14 h-14 pointer-events-none filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)]">
             <img
@@ -236,9 +270,9 @@ export default function DashboardPage() {
             <ProgressBar value={dailyProgress} max={dailyGoal} color="amber" />
           </div>
           <p className="text-xs text-slate-400">Hoàn thành 1 bài học để duy trì chuỗi Streak!</p>
-        </Card>
+        </MotionCard>
 
-        {/* Quick Stats */}
+        {/* Quick Stats Card */}
         <Card glow="teal" className="space-y-4">
           <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400">
             Thống kê nhanh
@@ -255,7 +289,8 @@ export default function DashboardPage() {
           </div>
         </Card>
 
-        <Card glow="teal" className="space-y-4 relative overflow-hidden">
+        {/* Game Center Promo MotionCard */}
+        <MotionCard glow="teal" tilt spotlight className="space-y-4 relative overflow-hidden">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400">
               Game Center
@@ -276,8 +311,8 @@ export default function DashboardPage() {
               Vào Game Center
             </Button>
           </Link>
-        </Card>
-      </div>
+        </MotionCard>
+      </motion.div>
 
       {/* Mascot Corner Reaction Popup */}
       <MascotPopup
@@ -288,7 +323,6 @@ export default function DashboardPage() {
         autoDismissMs={3500}
         onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
       />
-    </div>
+    </motion.div>
   );
 }
-
