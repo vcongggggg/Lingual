@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, CheckCircle2, Flame, Zap, Award, Sparkles, RotateCw, Lightbulb, Image as ImageIcon, Bookmark, PlusCircle, Check } from 'lucide-react';
 
+import { springPresets, transitionPresets, useMotionAccessibility } from './motion/index';
 export * from './motion/index';
 
 // ============================================================================
