@@ -29,3 +29,6 @@ LANGUAGE_LEARNING_APP_*.md
 Thumbs.db
 .vscode/
 !.vscode/extensions.json
+
+# Draft & Scratch assets
+draft/

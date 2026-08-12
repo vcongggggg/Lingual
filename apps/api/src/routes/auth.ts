@@ -33,7 +33,11 @@ export const MOCK_GAME_SESSIONS: any[] = [];
   MOCK_USERS.push(seedUser);
 })();
 
-authRouter.post('/register', async (req, res) => {
+import { authLimiter } from '../middleware/rateLimiter.js';
+
+export const FAILED_LOGIN_ATTEMPTS: Record<string, { count: number; lockedUntil?: number }> = {};
+
+authRouter.post('/register', authLimiter, async (req, res) => {
   try {
     const parseResult = RegisterSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -53,7 +57,7 @@ authRouter.post('/register', async (req, res) => {
       email,
       passwordHash,
       displayName,
-      role: 'LEARNER',
+      role: 'STUDENT',
       interfaceLocale,
       timezone,
       dailyGoalMinutes: 15,
@@ -65,7 +69,14 @@ authRouter.post('/register', async (req, res) => {
 
     MOCK_USERS.push(newUser);
 
-    const token = jwt.sign({ userId: newUser.id, role: newUser.role }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: newUser.id, role: newUser.role }, JWT_SECRET, { expiresIn: '15m' });
+
+    res.cookie('access_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 15 * 60 * 1000, // 15 phút
+    });
 
     const { passwordHash: _, ...userWithoutPassword } = newUser;
     return res.json({ user: userWithoutPassword, accessToken: token });
@@ -74,7 +85,7 @@ authRouter.post('/register', async (req, res) => {
   }
 });
 
-authRouter.post('/login', async (req, res) => {
+authRouter.post('/login', authLimiter, async (req, res) => {
   try {
     const parseResult = LoginSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -82,6 +93,16 @@ authRouter.post('/login', async (req, res) => {
     }
 
     const { email, password } = parseResult.data;
+    const attemptRecord = FAILED_LOGIN_ATTEMPTS[email] || { count: 0 };
+
+    // OWASP A07: Account Lockout Check
+    if (attemptRecord.lockedUntil && Date.now() < attemptRecord.lockedUntil) {
+      const remainingMins = Math.ceil((attemptRecord.lockedUntil - Date.now()) / 60000);
+      return res.status(423).json({
+        error: `Tài khoản đã bị tạm khóa do nhập sai mật khẩu quá 5 lần. Vui lòng thử lại sau ${remainingMins} phút (OWASP Account Lockout).`,
+      });
+    }
+
     const user = MOCK_USERS.find((u) => u.email === email);
     if (!user) {
       return res.status(401).json({ error: 'Email hoặc mật khẩu không chính xác' });
@@ -89,10 +110,29 @@ authRouter.post('/login', async (req, res) => {
 
     const validPassword = await argon2.verify(user.passwordHash, password);
     if (!validPassword) {
-      return res.status(401).json({ error: 'Email hoặc mật khẩu không chính xác' });
+      attemptRecord.count = (attemptRecord.count || 0) + 1;
+      if (attemptRecord.count >= 5) {
+        attemptRecord.lockedUntil = Date.now() + 15 * 60 * 1000; // Khóa 15 phút
+      }
+      FAILED_LOGIN_ATTEMPTS[email] = attemptRecord;
+
+      return res.status(401).json({
+        error: `Email hoặc mật khẩu không chính xác. (Lần thử ${attemptRecord.count}/5)`,
+      });
     }
 
-    const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+    // Login successful: reset failed attempt record
+    delete FAILED_LOGIN_ATTEMPTS[email];
+
+    const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '15m' });
+
+    res.cookie('access_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 15 * 60 * 1000,
+    });
+
     const { passwordHash: _, ...userWithoutPassword } = user;
     return res.json({ user: userWithoutPassword, accessToken: token });
   } catch (err: any) {
@@ -100,12 +140,20 @@ authRouter.post('/login', async (req, res) => {
   }
 });
 
+authRouter.post('/logout', (req, res) => {
+  res.clearCookie('access_token');
+  return res.json({ message: 'Đăng xuất thành công, session đã bị hủy.' });
+});
+
 authRouter.get('/me', (req, res) => {
   const authHeader = req.headers.authorization;
-  if (!authHeader) {
+  const cookieToken = req.cookies?.access_token;
+  const token = authHeader ? authHeader.split(' ')[1] : cookieToken;
+
+  if (!token) {
     return res.status(401).json({ error: 'Chưa đăng nhập' });
   }
-  const token = authHeader.split(' ')[1];
+
   try {
     const payload = jwt.verify(token, JWT_SECRET) as any;
     const user = MOCK_USERS.find((u) => u.id === payload.userId);
@@ -113,6 +161,6 @@ authRouter.get('/me', (req, res) => {
     const { passwordHash: _, ...userWithoutPassword } = user;
     return res.json({ user: userWithoutPassword });
   } catch (err) {
-    return res.status(401).json({ error: 'Token không hợp lệ' });
+    return res.status(401).json({ error: 'Token không hợp lệ hoặc đã hết hạn' });
   }
 });

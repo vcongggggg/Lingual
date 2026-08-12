@@ -1,6 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
+import { validateEnvironment } from './middleware/envValidator.js';
+import { globalApiLimiter } from './middleware/rateLimiter.js';
 import { authRouter } from './routes/auth.js';
 import { curriculumRouter } from './routes/curriculum.js';
 import { srsRouter } from './routes/srs.js';
@@ -9,12 +13,22 @@ import { userRouter } from './routes/user.js';
 import { dictionaryRouter } from './routes/dictionary.js';
 import { ieltsRouter } from './routes/ielts.js';
 import { chatbotRouter } from './routes/chatbot.js';
+import { adminRouter } from './routes/admin.js';
 
 dotenv.config();
+validateEnvironment();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// OWASP A05: Helmet Security Headers & Disable X-Powered-By
+app.use(helmet({ contentSecurityPolicy: false }));
+app.disable('x-powered-by');
+
+// Cookie Parser for HTTP-Only JWT tokens
+app.use(cookieParser());
+
+// OWASP A01: Strict CORS Whitelist
 app.use(
   cors({
     origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
@@ -22,13 +36,17 @@ app.use(
   })
 );
 
-app.use(express.json());
+// OWASP A04: Request Payload Size Limiting (Prevent Payload Flooding DoS)
+app.use(express.json({ limit: '10kb' }));
+
+// OWASP A04: Global API Rate Limiter
+app.use('/api/', globalApiLimiter);
 
 // API Health Check
 app.get('/api/v1/health', (req, res) => {
   res.json({
     status: 'ok',
-    service: 'Lingual API (v3 Production Ready)',
+    service: 'Lingual Security Hardened API (OWASP Top 10 Compliant)',
     timestamp: new Date().toISOString(),
   });
 });
@@ -41,9 +59,19 @@ app.use('/api/v1/user', userRouter);
 app.use('/api/v1/dictionary', dictionaryRouter);
 app.use('/api/v1/ielts', ieltsRouter);
 app.use('/api/v1/chatbot', chatbotRouter);
+app.use('/api/v1/admin', adminRouter);
+
+// OWASP A05: Generic Production Error Handler (Never leak stack traces)
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error('API Error:', err.message || err);
+  const status = err.status || err.statusCode || 500;
+  res.status(status).json({
+    error: process.env.NODE_ENV === 'production' ? 'Đã xảy ra lỗi hệ thống.' : err.message || 'Internal Server Error',
+  });
+});
 
 app.listen(PORT, () => {
-  console.log(`🚀 Lingual API v3 running on http://localhost:${PORT}`);
+  console.log(`🚀 Lingual Security Hardened API running on http://localhost:${PORT}`);
 });
 
 export default app;
