@@ -114,3 +114,15 @@ gamesRouter.post('/submit', (req, res) => {
     totalUserXP: user.totalXP,
   });
 });
+
+gamesRouter.get('/leaderboard', (req, res) => {
+  const mockLeaderboard = [
+    { rank: 1, displayName: 'Thắng Trí Việt', xp: 2450, accuracy: 98, streak: 15, avatar: '👑' },
+    { rank: 2, displayName: 'Học Viên Lingual', xp: 1890, accuracy: 94, streak: 10, avatar: '🥇' },
+    { rank: 3, displayName: 'Minh Anh IELTS', xp: 1650, accuracy: 91, streak: 8, avatar: '🥈' },
+    { rank: 4, displayName: 'Hoàng Long Code', xp: 1420, accuracy: 88, streak: 6, avatar: '🥉' },
+    { rank: 5, displayName: 'Khánh Linh', xp: 1200, accuracy: 85, streak: 5, avatar: '⭐' },
+  ];
+
+  return res.json({ leaderboard: mockLeaderboard });
+});

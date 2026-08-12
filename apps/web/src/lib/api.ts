@@ -111,6 +111,7 @@ export const gamesApi = {
       body: JSON.stringify(data),
     }),
   getHistory: () => apiFetch('/games/history'),
+  getLeaderboard: () => apiFetch('/games/leaderboard'),
 };
 
 // ============================================================================
