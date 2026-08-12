@@ -18,6 +18,9 @@ import {
 } from 'lucide-react';
 import { ieltsApi } from '@/lib/api';
 import ThemeIllustration from '@/components/ThemeIllustration';
+import Image from 'next/image';
+import { mascotReactions } from '@linguaflow/config';
+
 
 export default function IeltsHubPage() {
   const routeParams = useParams();
@@ -84,42 +87,55 @@ export default function IeltsHubPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-4 sm:p-8 space-y-8">
       {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-900/60 via-indigo-900/60 to-purple-900/60 border border-blue-500/20 p-6 sm:p-10 shadow-2xl backdrop-blur-xl flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="relative z-10 space-y-4 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-4 h-4 text-blue-400 animate-pulse" />
-            IELTS Academic & General Prep
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-900/60 via-indigo-900/60 to-purple-900/60 border border-blue-500/20 p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-3 max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>IELTS Exam Preparation • Focus Mode</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">
+              Trung Tâm Luyện Thi IELTS Academic
+            </h1>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Luyện 4 kỹ năng Listening, Reading, Writing & Speaking chuẩn cấu trúc đề thi thật.
+              Bò LingLing nghiêm mặt tập trung cùng bạn chinh phục Band 6.5+!
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-blue-200">
-            Phân hệ Luyện Thi IELTS Toàn Diện
-          </h1>
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-            Học tập theo lộ trình cá nhân hóa, rèn luyện 4 kỹ năng chuẩn đề thi Cambridge và nhận phản hồi chi tiết từ AI Chấm điểm 4 tiêu chí IELTS.
-          </p>
 
-          {/* Target Band Selector */}
-          <div className="pt-2 flex flex-wrap items-center gap-3">
-            <span className="text-sm text-slate-300 font-medium flex items-center gap-1.5">
-              <Target className="w-4 h-4 text-blue-400" /> Target Band mục tiêu:
-            </span>
-            {[5.5, 6.0, 6.5, 7.0, 7.5, 8.0].map((band) => (
-              <button
-                key={band}
-                onClick={() => setTargetBand(band)}
-                className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-all shadow-md ${
-                  targetBand === band
-                    ? 'bg-blue-600 text-white ring-2 ring-blue-400 scale-105'
-                    : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700'
-                }`}
-              >
-                Band {band}
-              </button>
-            ))}
+          <div className="flex items-center gap-4 shrink-0">
+            <div className="relative w-24 h-24">
+              <Image
+                src={mascotReactions.focus_mode}
+                alt="IELTS Focus Mode Mascot"
+                width={96}
+                height={96}
+                className="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+              />
+            </div>
+            <ThemeIllustration type="ielts" size={100} className="hidden sm:block" />
           </div>
         </div>
 
-        {/* IELTS Hero Graphic Illustration */}
-        <ThemeIllustration type="ielts" size={130} className="hidden md:block shrink-0 z-10" />
+        {/* Target Band Selector */}
+        <div className="pt-6 relative z-10 flex flex-wrap items-center gap-3">
+          <span className="text-sm text-slate-300 font-medium flex items-center gap-1.5">
+            <Target className="w-4 h-4 text-blue-400" /> Target Band mục tiêu:
+          </span>
+          {[5.5, 6.0, 6.5, 7.0, 7.5, 8.0].map((band) => (
+            <button
+              key={band}
+              onClick={() => setTargetBand(band)}
+              className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-all shadow-md ${
+                targetBand === band
+                  ? 'bg-blue-600 text-white ring-2 ring-blue-400 scale-105'
+                  : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700'
+              }`}
+            >
+              Band {band}
+            </button>
+          ))}
+        </div>
 
         {/* Decorative background glow */}
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />

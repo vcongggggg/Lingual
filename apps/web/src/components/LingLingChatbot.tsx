@@ -25,6 +25,8 @@ import {
 } from 'lucide-react';
 import { chatbotApi, srsApi } from '@/lib/api';
 import LingLingMascot from '@/components/LingLingMascot';
+import { mascotReactions } from '@linguaflow/config';
+
 
 export type AvatarState = 'idle' | 'thinking' | 'speaking' | 'celebrating' | 'apologetic';
 
@@ -340,10 +342,24 @@ export default function LingLingChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="mb-4 w-[92vw] sm:w-[420px] h-[540px] rounded-3xl bg-slate-950/95 border border-amber-500/30 shadow-2xl backdrop-blur-2xl flex flex-col overflow-hidden"
+            className="relative mb-4 w-[92vw] sm:w-[420px] h-[540px] rounded-3xl bg-slate-950/95 border border-amber-500/30 shadow-2xl backdrop-blur-2xl flex flex-col"
           >
+            {/* PEEKING COW MASCOT STICKER LEANING OVER TOP EDGE */}
+            <motion.div
+              initial={{ y: -10, rotate: -5, opacity: 0 }}
+              animate={{ y: [0, -4, 0], rotate: [-4, 4, -4], opacity: 1 }}
+              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              className="absolute -top-14 left-6 z-50 w-20 h-20 pointer-events-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+            >
+              <img
+                src={mascotReactions.greet}
+                alt="LingLing Peeking Cow Mascot"
+                className="w-full h-full object-contain transform -scale-x-100"
+              />
+            </motion.div>
+
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-amber-500/20 via-slate-900 to-teal-500/20 border-b border-slate-800 flex items-center justify-between">
+            <div className="p-4 bg-gradient-to-r from-amber-500/20 via-slate-900 to-teal-500/20 border-b border-slate-800 flex items-center justify-between rounded-t-3xl">
               <div className="flex items-center gap-3">
                 {renderAvatarVisual()}
                 <div>
@@ -573,25 +589,43 @@ export default function LingLingChatbot() {
         )}
       </AnimatePresence>
 
-      {/* Floating Toggle Button with Idle Pulse Dot */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="group flex items-center gap-2.5 p-3.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-teal-400 text-slate-950 font-bold shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95 relative"
-      >
-        <div className="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center shadow-inner overflow-hidden">
-          <LingLingMascot state={avatarState} size={26} />
-        </div>
-        <span className="text-xs font-extrabold pr-1 hidden sm:inline text-slate-950">Chat với LingLing</span>
-        <Sparkles className="w-4 h-4 text-slate-950 animate-pulse" />
-
-        {/* Subtle Idle Dot Pulse if idle >60s on exam page */}
-        {idleOnExam && !isOpen && (
-          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-500 border-2 border-slate-950" />
-          </span>
+      {/* Floating Toggle Button with Peeking Mascot Sitting On Top */}
+      <div className="relative inline-block">
+        {!isOpen && (
+          <motion.div
+            initial={{ y: 5, opacity: 0 }}
+            animate={{ y: [0, -3, 0], rotate: [-2, 3, -2], opacity: 1 }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
+            className="absolute -top-10 -left-3 z-30 w-14 h-14 pointer-events-none drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
+          >
+            <img
+              src={mascotReactions.idle_empty}
+              alt="Peeking Mascot Sitting on Chat Button"
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
         )}
-      </button>
+
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="group flex items-center gap-2.5 p-3.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-teal-400 text-slate-950 font-bold shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95 relative"
+        >
+          <div className="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center shadow-inner overflow-hidden">
+            <LingLingMascot state={avatarState} size={26} />
+          </div>
+          <span className="text-xs font-extrabold pr-1 hidden sm:inline text-slate-950">Chat với LingLing</span>
+          <Sparkles className="w-4 h-4 text-slate-950 animate-pulse" />
+
+          {/* Subtle Idle Dot Pulse if idle >60s on exam page */}
+          {idleOnExam && !isOpen && (
+            <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-500 border-2 border-slate-950" />
+            </span>
+          )}
+        </button>
+      </div>
     </div>
   );
 }
+

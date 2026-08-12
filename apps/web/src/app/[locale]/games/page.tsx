@@ -7,6 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Card, ProgressBar } from '@linguaflow/ui';
 import { gamesApi } from '../../../lib/api';
 import { Gamepad2, ArrowLeft, Trophy, Sparkles, Timer, RefreshCw, Zap, CheckCircle2, XCircle, Flame, Heart } from 'lucide-react';
+import Image from 'next/image';
+import { mascotReactions } from '@linguaflow/config';
+
 
 export default function GamesPage() {
   const params = useParams();
@@ -346,15 +349,26 @@ export default function GamesPage() {
   return (
     <div className="max-w-4xl mx-auto py-6 space-y-8">
       {/* Top Navigation */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between bg-slate-900/60 p-4 rounded-3xl border border-slate-800 backdrop-blur-xl">
         <Link href={`/${locale}/dashboard`}>
           <Button variant="ghost" size="sm" icon={<ArrowLeft className="w-4 h-4" />}>
             Về Lộ Trình
           </Button>
         </Link>
-        <div className="flex items-center gap-2">
-          <Gamepad2 className="w-6 h-6 text-amber-400" />
-          <h1 className="text-2xl font-display font-bold text-white">Game Center Lingual</h1>
+        <div className="flex items-center gap-3">
+          <div className="relative w-12 h-12">
+            <Image
+              src={mascotReactions.challenge}
+              alt="Mascot Game Challenge"
+              width={48}
+              height={48}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div>
+            <h1 className="text-2xl font-display font-bold text-white leading-tight">Game Center Lingual</h1>
+            <p className="text-xs text-slate-400">Bò LingLing chống hông đợi bạn quyết đấu!</p>
+          </div>
         </div>
       </div>
 
@@ -535,6 +549,15 @@ export default function GamesPage() {
               {/* ------------------------------------------------------------------ */}
               {activeGame === 'typing_race' && typingWords[typingIdx] && (
                 <div className="space-y-6 text-center">
+                  <div className="relative w-20 h-20 mx-auto">
+                    <Image
+                      src={mascotReactions.loading}
+                      alt="Mascot Running Typing Race"
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-contain animate-bounce"
+                    />
+                  </div>
                   <div className="space-y-2">
                     <span className="text-xs font-bold text-coral-400 uppercase tracking-widest">
                       Gõ từ tiếng Anh chuẩn xác:

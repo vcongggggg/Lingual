@@ -8,6 +8,10 @@ import { Button, Card, ProgressBar, XPBadge, StreakBadge } from '@linguaflow/ui'
 import { curriculumApi, userApi } from '../../../lib/api';
 import { BookOpen, CheckCircle2, Lock, Play, Star, Flame, Trophy, Sparkles, Brain, ArrowRight } from 'lucide-react';
 import ThemeIllustration from '@/components/ThemeIllustration';
+import MascotPopup from '@/components/MascotPopup';
+import Image from 'next/image';
+import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
+
 
 export default function DashboardPage() {
   const params = useParams();
@@ -49,6 +53,34 @@ export default function DashboardPage() {
     loadData();
   }, []);
 
+  const [popupState, setPopupState] = useState<{ show: boolean; key: MascotReactionKey; title?: string; msg?: string }>({
+    show: false,
+    key: 'relax_done',
+  });
+
+  useEffect(() => {
+    if (!loading) {
+      if (dailyProgress >= dailyGoal) {
+        setPopupState({
+          show: true,
+          key: 'relax_done',
+          title: 'Mục tiêu hôm nay hoàn thành! 🎉',
+          msg: 'Bò LingLing đang nằm thư giãn cùng bạn nè!',
+        });
+      } else {
+        const timer = setTimeout(() => {
+          setPopupState({
+            show: true,
+            key: 'streak_urgent',
+            title: 'Cảnh báo Streak! ⚠️',
+            msg: 'Streak sắp hết hạn! Hoàn thành 1 bài học ngay nào!',
+          });
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [loading, dailyProgress, dailyGoal]);
+
   if (loading && units.length === 0) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -64,8 +96,15 @@ export default function DashboardPage() {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       {/* MAIN ROADMAP PATH (8 COLUMNS) */}
       <div className="lg:col-span-8 space-y-12">
-        {/* Header Title */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 backdrop-blur-xl">
+        {/* Header Title with Peeking Cow Mascot */}
+        <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 backdrop-blur-xl">
+          <div className="absolute -top-7 right-8 w-16 h-16 pointer-events-none hidden sm:block">
+            <img
+              src={mascotReactions.greet}
+              alt="Peeking Dashboard Mascot"
+              className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
+            />
+          </div>
           <div>
             <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400">
               Lộ Trình Học Cá Nhân Hóa (A1 → B1)
@@ -174,7 +213,15 @@ export default function DashboardPage() {
 
       {/* RIGHT SIDEBAR STATS & GOAL WIDGET (4 COLUMNS) */}
       <div className="lg:col-span-4 space-y-6 sticky top-24">
-        <Card glow="amber" className="space-y-4">
+        <Card glow="amber" className="space-y-4 relative overflow-visible">
+          {/* Peeking Mascot Sitting on Goal Card */}
+          <div className="absolute -top-8 -right-2 w-14 h-14 pointer-events-none filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)]">
+            <img
+              src={mascotReactions.relax_done}
+              alt="Peeking Goal Mascot"
+              className="w-full h-full object-contain"
+            />
+          </div>
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400">
               Mục Tiêu Hôm Nay
@@ -231,6 +278,17 @@ export default function DashboardPage() {
           </Link>
         </Card>
       </div>
+
+      {/* Mascot Corner Reaction Popup */}
+      <MascotPopup
+        isVisible={popupState.show}
+        reactionKey={popupState.key}
+        title={popupState.title}
+        message={popupState.msg}
+        autoDismissMs={3500}
+        onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
+      />
     </div>
   );
 }
+

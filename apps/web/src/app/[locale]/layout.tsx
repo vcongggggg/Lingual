@@ -5,8 +5,11 @@ import Link from 'next/link';
 import { usePathname, useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XPBadge, StreakBadge } from '@linguaflow/ui';
-import { BookOpen, Gamepad2, Brain, Shield, Sparkles, Globe, Search, Menu, X, User, Trophy, Target } from 'lucide-react';
+import { BookOpen, Gamepad2, Brain, Shield, Sparkles, Globe, Search, Menu, X, User, Trophy, Target, LogOut } from 'lucide-react';
 import LingLingChatbot from '@/components/LingLingChatbot';
+import MascotPopup from '@/components/MascotPopup';
+import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
+
 
 export default function LocaleLayout({ children }: { children: React.ReactNode }) {
   const params = useParams();
@@ -16,6 +19,20 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   const [userXP, setUserXP] = useState(150);
   const [streakDays, setStreakDays] = useState(3);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [popupState, setPopupState] = useState<{ show: boolean; key: MascotReactionKey; title?: string; msg?: string }>({
+    show: false,
+    key: 'farewell',
+  });
+
+  const handleLogout = () => {
+    setPopupState({
+      show: true,
+      key: 'farewell',
+      title: 'Hẹn gặp lại! 👋',
+      msg: 'Bò LingLing quay lưng bước đi... Hẹn bạn buổi học tới!',
+    });
+  };
+
 
   useEffect(() => {
     const handleXPUpdate = (e: any) => {
@@ -39,9 +56,26 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
     { href: `/${locale}/games`, label: locale === 'vi' ? 'Game Center' : 'Games', icon: <Gamepad2 className="w-4 h-4" />, mobileLabel: 'Games' },
   ];
 
+  // Read authenticated user role from localStorage/state for UX menu rendering
+  const [userRole, setUserRole] = useState<string>('SUPER_ADMIN');
+
+  useEffect(() => {
+    try {
+      const savedUser = localStorage.getItem('lingual_user');
+      if (savedUser) {
+        const parsed = JSON.parse(savedUser);
+        if (parsed.role) setUserRole(parsed.role);
+      }
+    } catch {}
+  }, []);
+
+  // NOTE: Filtering menu links based on role is purely for UX convenience (preventing clutter for STUDENT role).
+  // Security enforcement is 100% guaranteed by backend RolesGuard (default-deny).
+  const isStaffRole = ['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'].includes(userRole);
+
   const secondaryLinks = [
     { href: `/${locale}/achievements`, label: locale === 'vi' ? 'Huy Hiệu & Xếp Hạng' : 'Achievements', icon: <Trophy className="w-4 h-4" /> },
-    { href: `/${locale}/admin`, label: 'CMS Admin', icon: <Shield className="w-4 h-4" /> },
+    ...(isStaffRole ? [{ href: `/${locale}/admin`, label: 'CMS Admin', icon: <Shield className="w-4 h-4" /> }] : []),
   ];
 
   const switchedLocale = locale === 'vi' ? 'en' : 'vi';
@@ -52,11 +86,21 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-coral-500 via-amber-500 to-teal-400 p-0.5 shadow-lg shadow-coral-500/20 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-amber-400" />
+          {/* Logo with Peeking Cow Mascot */}
+          <Link href={`/${locale}`} className="flex items-center gap-2.5 group relative">
+            <div className="relative">
+              {/* Peeking Mascot Sticker Sitting on Logo */}
+              <div className="absolute -top-4 -left-3.5 z-20 w-8 h-8 pointer-events-none filter drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)] transition-transform group-hover:-translate-y-1">
+                <img
+                  src={mascotReactions.greet}
+                  alt="Peeking Logo Mascot"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-coral-500 via-amber-500 to-teal-400 p-0.5 shadow-lg shadow-coral-500/20 group-hover:scale-105 transition-transform">
+                <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-amber-400" />
+                </div>
               </div>
             </div>
             <div className="flex flex-col">
@@ -205,6 +249,13 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                       <span>{link.label}</span>
                     </Link>
                   ))}
+                  <button
+                    onClick={handleLogout}
+                    className="w-full flex items-center gap-3 px-3 py-3 rounded-xl font-bold text-sm text-rose-400 hover:bg-rose-500/10 transition-all"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Đăng Xuất (Easter Egg)</span>
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -227,9 +278,7 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                 key={link.href}
                 href={link.href}
                 className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl transition-all min-w-[60px] ${
-                  isActive
-                    ? 'text-teal-400'
-                    : 'text-slate-500 hover:text-slate-300'
+                  isActive ? 'text-teal-400' : 'text-slate-500 hover:text-slate-300'
                 }`}
               >
                 <div className={`p-1.5 rounded-xl transition-all ${isActive ? 'bg-teal-500/15' : ''}`}>
@@ -250,42 +299,22 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
               </Link>
             );
           })}
-          {/* Profile tab on mobile */}
-          <Link
-            href={`/${locale}/achievements`}
-            className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl transition-all min-w-[60px] ${
-              pathname.includes('/achievements')
-                ? 'text-teal-400'
-                : 'text-slate-500 hover:text-slate-300'
-            }`}
-          >
-            <div className={`p-1.5 rounded-xl ${pathname.includes('/achievements') ? 'bg-teal-500/15' : ''}`}>
-              <Trophy className={`w-5 h-5 ${pathname.includes('/achievements') ? 'text-teal-400' : 'text-slate-500'}`} />
-            </div>
-            <span className={`text-[10px] font-bold ${pathname.includes('/achievements') ? 'text-teal-400' : 'text-slate-500'}`}>
-              {locale === 'vi' ? 'Huy Hiệu' : 'Rank'}
-            </span>
-          </Link>
         </div>
       </nav>
 
-      {/* Footer (desktop only) */}
-      <footer className="hidden md:block w-full border-t border-slate-900 bg-slate-950/60 py-6 text-center text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p>© 2026 Lingual. Gamified English Learning Platform for Vietnamese.</p>
-          <div className="flex gap-4 font-semibold text-slate-400">
-            <Link href={`/${locale}/achievements`} className="hover:text-amber-400 transition-colors">
-              Huy Hiệu & Xếp Hạng
-            </Link>
-            <Link href={`/${locale}/admin`} className="hover:text-teal-400 transition-colors">
-              CMS Admin
-            </Link>
-          </div>
-        </div>
-      </footer>
-
-      {/* Floating AI Chatbot Widget */}
+      {/* Persistent AI Chatbot Assistant */}
       <LingLingChatbot />
+
+      {/* Mascot Toast Reaction Popup */}
+      <MascotPopup
+        isVisible={popupState.show}
+        reactionKey={popupState.key}
+        title={popupState.title}
+        message={popupState.msg}
+        autoDismissMs={3500}
+        onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
+      />
     </div>
   );
 }
+

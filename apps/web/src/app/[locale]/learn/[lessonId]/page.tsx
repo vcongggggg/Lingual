@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Card, ProgressBar, speakText, getWordImage, AudioButton } from '@linguaflow/ui';
 import { curriculumApi } from '../../../../lib/api';
 import { ArrowLeft, CheckCircle2, XCircle, Sparkles, Trophy, Volume2, ArrowRight, BookOpen, Brain, Play } from 'lucide-react';
+import MascotPopup from '@/components/MascotPopup';
+import { MascotReactionKey } from '@linguaflow/config';
 
 export default function LessonQuizPage() {
   const params = useParams();
@@ -28,6 +30,12 @@ export default function LessonQuizPage() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [resultData, setResultData] = useState<any>(null);
+  const [consecutiveWrong, setConsecutiveWrong] = useState(0);
+  const [popupState, setPopupState] = useState<{ show: boolean; key: MascotReactionKey; title?: string; msg?: string }>({
+    show: false,
+    key: 'greet',
+  });
+
 
   useEffect(() => {
     const init = async () => {
@@ -71,6 +79,34 @@ export default function LessonQuizPage() {
     const correct = answer.trim().toLowerCase() === currentEx.correctAnswer.trim().toLowerCase();
     setIsCorrect(correct);
     setIsAnswerChecked(true);
+
+    if (correct) {
+      setConsecutiveWrong(0);
+      setPopupState({
+        show: true,
+        key: 'greet',
+        title: 'Chính xác rồi! 🎉',
+        msg: 'Bò LingLing tặng bạn 1 tim ủng hộ!',
+      });
+    } else {
+      const newWrongCount = consecutiveWrong + 1;
+      setConsecutiveWrong(newWrongCount);
+      if (newWrongCount >= 2) {
+        setPopupState({
+          show: true,
+          key: 'wrong_severe',
+          title: 'Tiếc quá! 😭',
+          msg: 'Cố gắng lên nhé, coi chừng mất streak đó!',
+        });
+      } else {
+        setPopupState({
+          show: true,
+          key: 'wrong_mild',
+          title: 'Chưa đúng rồi... 🥺',
+          msg: 'Xem kỹ đáp án và thử lại câu sau nhé!',
+        });
+      }
+    }
 
     // Auto play pronunciation on check
     speakText(currentEx.correctAnswer);
@@ -412,6 +448,17 @@ export default function LessonQuizPage() {
           </Link>
         </motion.div>
       )}
+
+      {/* Mascot Corner Popup Reaction */}
+      <MascotPopup
+        isVisible={popupState.show}
+        reactionKey={popupState.key}
+        title={popupState.title}
+        message={popupState.msg}
+        autoDismissMs={3500}
+        onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
+      />
     </div>
   );
 }
+

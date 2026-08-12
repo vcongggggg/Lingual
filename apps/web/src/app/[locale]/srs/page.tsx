@@ -7,6 +7,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button, SRSFlashcard, XPBadge, StreakBadge } from '@linguaflow/ui';
 import { srsApi } from '../../../lib/api';
 import { Brain, Sparkles, CheckCircle2, RotateCcw, ArrowLeft, Volume2, Award, BarChart3, Clock, GraduationCap } from 'lucide-react';
+import MascotPopup from '@/components/MascotPopup';
+import Image from 'next/image';
+import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
+
 
 export default function SRSPage() {
   const params = useParams();
@@ -65,10 +69,31 @@ export default function SRSPage() {
     }
   };
 
+  const [popupState, setPopupState] = useState<{ show: boolean; key: MascotReactionKey; title?: string; msg?: string }>({
+    show: false,
+    key: 'confirm',
+  });
+
   const handleRating = async (quality: number) => {
     const currentWord = queue[currentIndex];
     const xpGain = quality >= 3 ? 10 : 2;
     setTotalXPEarned((prev) => prev + xpGain);
+
+    if (quality >= 5) {
+      setPopupState({
+        show: true,
+        key: 'celebrate_big',
+        title: 'Xuất sắc! 🎉',
+        msg: 'Bò LingLing nháy mắt khen bạn ghi nhớ siêu đỉnh!',
+      });
+    } else if (quality >= 3) {
+      setPopupState({
+        show: true,
+        key: 'confirm',
+        title: 'Đã ghi nhận! 🫡',
+        msg: 'Bò LingLing chào quân đội chúc mừng bạn!',
+      });
+    }
 
     try {
       await srsApi.submitReview(currentWord.id, quality);
@@ -215,20 +240,26 @@ export default function SRSPage() {
           </div>
         </div>
       ) : (
-        /* FINISHED CELEBRATION CARD */
+        /* FINISHED / EMPTY SRS STATE */
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           className="w-full max-w-md rounded-3xl bg-slate-900 border border-teal-500/40 p-8 text-center space-y-6 shadow-2xl shadow-teal-500/20"
         >
-          <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center mx-auto shadow-lg shadow-teal-500/30">
-            <Award className="w-8 h-8 text-slate-950" />
+          <div className="relative w-28 h-28 mx-auto">
+            <Image
+              src={mascotReactions.idle_empty}
+              alt="Mascot Empty SRS State"
+              width={112}
+              height={112}
+              className="w-full h-full object-contain"
+            />
           </div>
-          <h2 className="text-3xl font-display font-extrabold text-white">Hoàn Thành Ôn Tập!</h2>
+          <h2 className="text-2xl font-display font-extrabold text-white">Chưa Có Từ Nào Cần Ôn!</h2>
           <p className="text-sm text-slate-300">
-            Bạn đã hoàn thành lượt ôn thẻ SRS cho hôm nay và ghi nhớ từ vựng lâu hơn.
+            Bò LingLing đang nằm cuộn tròn nghỉ ngơi. Bạn đã hoàn thành xuất sắc các từ vựng cần ôn hôm nay!
           </p>
-          <div className="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 inline-flex items-center gap-2 text-teal-300 font-extrabold text-lg">
+          <div className="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 inline-flex items-center gap-2 text-teal-300 font-extrabold text-base">
             <Sparkles className="w-5 h-5 text-amber-400" />
             <span>+{totalXPEarned} XP Đã Nhận</span>
           </div>
@@ -239,6 +270,17 @@ export default function SRSPage() {
           </Link>
         </motion.div>
       )}
+
+      {/* Mascot Reaction Popup */}
+      <MascotPopup
+        isVisible={popupState.show}
+        reactionKey={popupState.key}
+        title={popupState.title}
+        message={popupState.msg}
+        autoDismissMs={3500}
+        onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
+      />
     </div>
   );
 }
+
