@@ -93,10 +93,13 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'md',
   icon,
   className = '',
+  disabled,
   ...props
 }) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
+
   const base =
-    'inline-flex items-center justify-center font-bold rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:pointer-events-none select-none';
+    'inline-flex items-center justify-center font-bold rounded-xl transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none select-none';
 
   const variants = {
     primary:
@@ -116,11 +119,25 @@ export const Button: React.FC<ButtonProps> = ({
     lg: 'px-7 py-3.5 text-base gap-2.5',
   };
 
+  const hoverAnimation = disabled || shouldReduceMotion
+    ? undefined
+    : { scale: 1.015, y: -1, transition: springPresets.smooth };
+
+  const pressAnimation = disabled || shouldReduceMotion
+    ? undefined
+    : { scale: 0.97, transition: springPresets.snappy };
+
   return (
-    <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props}>
+    <motion.button
+      disabled={disabled}
+      whileHover={hoverAnimation}
+      whileTap={pressAnimation}
+      className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
+      {...(props as any)}
+    >
       {icon && <span>{icon}</span>}
       <span>{children}</span>
-    </button>
+    </motion.button>
   );
 };
 
@@ -154,6 +171,8 @@ export interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ children, className = '', glow = 'none', onClick }) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
+
   const glowStyles = {
     none: '',
     teal: 'shadow-lg shadow-teal-500/10 border-teal-500/30 hover:border-teal-400/50',
@@ -161,13 +180,25 @@ export const Card: React.FC<CardProps> = ({ children, className = '', glow = 'no
     amber: 'shadow-lg shadow-amber-500/10 border-amber-500/30 hover:border-amber-400/50',
   };
 
+  const isInteractive = Boolean(onClick);
+
+  const hoverAnimation = isInteractive && !shouldReduceMotion
+    ? { scale: 1.01, y: -2, transition: springPresets.smooth }
+    : undefined;
+
+  const pressAnimation = isInteractive && !shouldReduceMotion
+    ? { scale: 0.98, transition: springPresets.snappy }
+    : undefined;
+
   return (
-    <div
+    <motion.div
       onClick={onClick}
-      className={`rounded-3xl bg-slate-900/90 border border-slate-800/80 backdrop-blur-xl p-6 transition-all duration-300 ${glowStyles[glow]} ${className}`}
+      whileHover={hoverAnimation}
+      whileTap={pressAnimation}
+      className={`rounded-3xl bg-slate-900/90 border border-slate-800/80 backdrop-blur-xl p-6 transition-colors duration-300 ${glowStyles[glow]} ${isInteractive ? 'cursor-pointer' : ''} ${className}`}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
@@ -188,12 +219,20 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   label,
   color = 'teal',
 }) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
   const percentage = Math.min(100, Math.max(0, (value / max) * 100));
+  const isComplete = percentage >= 100;
 
   const colors = {
     teal: 'from-teal-400 to-emerald-400',
     coral: 'from-coral-400 to-rose-400',
     amber: 'from-amber-400 to-orange-400',
+  };
+
+  const completeGlow = {
+    teal: 'shadow-md shadow-teal-400/40',
+    coral: 'shadow-md shadow-coral-400/40',
+    amber: 'shadow-md shadow-amber-400/40',
   };
 
   return (
@@ -204,12 +243,18 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           <span className="font-mono text-teal-400">{Math.round(percentage)}%</span>
         </div>
       )}
-      <div className="w-full h-3 rounded-full bg-slate-800 border border-slate-700/50 overflow-hidden p-0.5">
+      <div className={`w-full h-3 rounded-full bg-slate-800 border border-slate-700/50 overflow-hidden p-0.5 transition-shadow duration-300 ${isComplete ? completeGlow[color] : ''}`}>
         <motion.div
           className={`h-full rounded-full bg-gradient-to-r ${colors[color]}`}
           initial={{ width: 0 }}
-          animate={{ width: `${percentage}%` }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          animate={{
+            width: `${percentage}%`,
+            scale: isComplete && !shouldReduceMotion ? [1, 1.02, 1] : 1,
+          }}
+          transition={{
+            width: transitionPresets.normal,
+            scale: isComplete ? { duration: 0.3, times: [0, 0.5, 1] } : undefined,
+          }}
         />
       </div>
     </div>
@@ -375,29 +420,47 @@ export interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
-  if (!isOpen) return null;
+  const { shouldReduceMotion } = useMotionAccessibility();
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+      {isOpen && (
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          className="w-full max-w-lg rounded-3xl bg-slate-900 border border-teal-500/30 p-6 space-y-5 shadow-2xl shadow-teal-500/20 max-h-[90vh] overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={transitionPresets.normal}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
         >
-          <div className="flex justify-between items-center border-b border-slate-800 pb-3">
-            <h3 className="text-xl font-display font-bold text-white">{title}</h3>
-            <button
-              onClick={onClose}
-              className="text-slate-400 hover:text-white text-lg font-bold p-1 rounded-lg hover:bg-slate-800 transition-colors"
-            >
-              ✕
-            </button>
-          </div>
-          <div>{children}</div>
+          <motion.div
+            initial={{ scale: shouldReduceMotion ? 1 : 0.96, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: shouldReduceMotion ? 1 : 0.98, opacity: 0 }}
+            transition={springPresets.smooth}
+            className="w-full max-w-lg rounded-3xl bg-slate-900 border border-teal-500/30 p-6 space-y-5 shadow-2xl shadow-teal-500/20 max-h-[90vh] overflow-y-auto"
+          >
+            <div className="flex justify-between items-center border-b border-slate-800 pb-3">
+              <h3 className="text-xl font-display font-bold text-white">{title}</h3>
+              <button
+                onClick={onClose}
+                className="text-slate-400 hover:text-white text-lg font-bold p-1 rounded-lg hover:bg-slate-800 transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+            <div>{children}</div>
+          </motion.div>
         </motion.div>
-      </div>
+      )}
     </AnimatePresence>
   );
 };
