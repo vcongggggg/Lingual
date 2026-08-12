@@ -19,8 +19,10 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Local-only learning notes
+# Local-only learning notes & plan specs
 KNOWLEDGE_NOTES.local.md
+*plan*.md
+LANGUAGE_LEARNING_APP_*.md
 
 # OS / editor
 .DS_Store
