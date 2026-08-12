@@ -104,6 +104,36 @@ class SoundEffectsManager {
       });
     } catch {}
   }
+
+  /**
+   * Level Up Epic Fanfare (Rich multi-tone chord burst)
+   */
+  playLevelUp() {
+    try {
+      const ctx = this.getContext();
+      if (!ctx) return;
+
+      const chord = [523.25, 659.25, 783.99, 1046.5]; // C major chord
+      chord.forEach((freq) => {
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + 0.4);
+
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.5);
+      });
+    } catch {}
+  }
 }
 
 export const sfx = new SoundEffectsManager();

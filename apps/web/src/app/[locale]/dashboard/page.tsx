@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Button, Card, MotionCard, ProgressBar, XPBadge, StreakBadge, springPresets, transitionPresets, useMotionAccessibility } from '@linguaflow/ui';
+import { Button, Card, MotionCard, ProgressBar, XPBadge, StreakBadge, springPresets, transitionPresets, useMotionAccessibility, RewardOverlay, RewardEventPayload, canPlayFeedbackAudio } from '@linguaflow/ui';
 import { curriculumApi, userApi } from '../../../lib/api';
+import { sfx } from '@/lib/soundEffects';
 import { BookOpen, CheckCircle2, Lock, Play, Star, Flame, Trophy, Sparkles, Brain, ArrowRight } from 'lucide-react';
 import ThemeIllustration from '@/components/ThemeIllustration';
 import MascotPopup from '@/components/MascotPopup';
@@ -53,6 +54,7 @@ export default function DashboardPage() {
     loadData();
   }, []);
 
+  const [activeReward, setActiveReward] = useState<RewardEventPayload | null>(null);
   const [popupState, setPopupState] = useState<{ show: boolean; key: MascotReactionKey; title?: string; msg?: string }>({
     show: false,
     key: 'relax_done',
@@ -61,11 +63,16 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!loading) {
       if (dailyProgress >= dailyGoal) {
-        setPopupState({
-          show: true,
-          key: 'relax_done',
-          title: 'Mục tiêu hôm nay hoàn thành! 🎉',
-          msg: 'Bò LingLing đang nằm thư giãn cùng bạn nè!',
+        if (canPlayFeedbackAudio()) {
+          sfx.playVictory();
+        }
+        setActiveReward({
+          type: 'daily_goal_complete',
+          intensity: 'MAJOR',
+          title: 'Mục Tiêu Hôm Nay Hoàn Thành! 🎉',
+          subtitle: 'Bò LingLing rất tự hào về sự kiên trì của bạn!',
+          xpAmount: 100,
+          icon: '🔥',
         });
       } else {
         const timer = setTimeout(() => {
@@ -323,6 +330,9 @@ export default function DashboardPage() {
         autoDismissMs={3500}
         onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
       />
+
+      {/* Cinematic Reward Overlay */}
+      <RewardOverlay event={activeReward} onDismiss={() => setActiveReward(null)} />
     </motion.div>
   );
 }

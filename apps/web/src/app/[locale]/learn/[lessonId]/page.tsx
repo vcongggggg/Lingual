@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, Card, ProgressBar, speakText, getWordImage, AudioButton, localShakeVariants, checkMarkPopVariants, canPlayFeedbackAudio, useMotionAccessibility } from '@linguaflow/ui';
+import { Button, Card, ProgressBar, speakText, getWordImage, AudioButton, localShakeVariants, checkMarkPopVariants, canPlayFeedbackAudio, useMotionAccessibility, RewardOverlay, RewardEventPayload } from '@linguaflow/ui';
 import { curriculumApi } from '../../../../lib/api';
 import { sfx } from '@/lib/soundEffects';
 import { ArrowLeft, CheckCircle2, XCircle, Sparkles, Trophy, Volume2, ArrowRight, BookOpen, Brain, Play } from 'lucide-react';
@@ -32,6 +32,7 @@ export default function LessonQuizPage() {
   const [isFinished, setIsFinished] = useState(false);
   const [resultData, setResultData] = useState<any>(null);
   const [consecutiveWrong, setConsecutiveWrong] = useState(0);
+  const [activeReward, setActiveReward] = useState<RewardEventPayload | null>(null);
   const [popupState, setPopupState] = useState<{ show: boolean; key: MascotReactionKey; title?: string; msg?: string }>({
     show: false,
     key: 'greet',
@@ -145,6 +146,19 @@ export default function LessonQuizPage() {
       } catch {}
 
       setIsFinished(true);
+
+      if (canPlayFeedbackAudio()) {
+        sfx.playVictory();
+      }
+
+      setActiveReward({
+        type: 'lesson_complete',
+        intensity: 'NORMAL',
+        title: 'Hoàn Thành Bài Học! 🎉',
+        subtitle: `Bạn đã xuất sắc vượt qua bài học ${lesson?.title || ''}`,
+        xpAmount: 50,
+        icon: '🎓',
+      });
     }
   };
 
@@ -467,6 +481,9 @@ export default function LessonQuizPage() {
         autoDismissMs={3500}
         onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
       />
+
+      {/* Cinematic Reward Overlay */}
+      <RewardOverlay event={activeReward} onDismiss={() => setActiveReward(null)} />
     </div>
   );
 }

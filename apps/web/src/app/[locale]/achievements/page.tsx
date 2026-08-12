@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { Button, Card, XPBadge } from '@linguaflow/ui';
+import { Button, Card, MotionCard, XPBadge, RewardOverlay, RewardEventPayload, canPlayFeedbackAudio } from '@linguaflow/ui';
+import { sfx } from '@/lib/soundEffects';
 import { userApi } from '../../../lib/api';
 import { Trophy, Award, Sparkles, ArrowLeft, ShieldCheck, Crown, Lock } from 'lucide-react';
 
@@ -20,6 +21,7 @@ const ACHIEVEMENTS = [
 export default function AchievementsPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
+  const [activeReward, setActiveReward] = useState<RewardEventPayload | null>(null);
 
   const [leaderboard, setLeaderboard] = useState<any[]>([
     { rank: 1, name: 'Nguyễn Văn A', totalXP: 1450, streak: 14, avatar: '🥇' },
@@ -27,6 +29,20 @@ export default function AchievementsPage() {
     { rank: 3, name: 'Học Viên LinguaFlow (Bạn)', totalXP: 150, streak: 3, avatar: '🥉' },
     { rank: 4, name: 'Lê Hoàng C', totalXP: 90, streak: 2, avatar: '👤' },
   ]);
+
+  const handleAchievementClick = (ach: (typeof ACHIEVEMENTS)[0]) => {
+    if (canPlayFeedbackAudio()) {
+      sfx.playVictory();
+    }
+    setActiveReward({
+      type: 'achievement_unlock',
+      intensity: 'MAJOR',
+      title: ach.label,
+      subtitle: ach.desc,
+      xpAmount: ach.xpBonus,
+      icon: ach.icon,
+    });
+  };
 
   return (
     <div className="max-w-4xl mx-auto py-6 space-y-10">
@@ -90,8 +106,15 @@ export default function AchievementsPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {ACHIEVEMENTS.map((ach) => (
-            <Card key={ach.code} glow="teal" className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-coral-500 flex items-center justify-center text-2xl shadow-lg shadow-amber-500/20">
+            <MotionCard
+              key={ach.code}
+              glow="teal"
+              tilt
+              spotlight
+              onClick={() => handleAchievementClick(ach)}
+              className="flex items-center gap-4 cursor-pointer"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-coral-500 flex items-center justify-center text-2xl shadow-lg shadow-amber-500/20 shrink-0">
                 {ach.icon}
               </div>
               <div className="space-y-1">
@@ -104,10 +127,13 @@ export default function AchievementsPage() {
                   </span>
                 </div>
               </div>
-            </Card>
+            </MotionCard>
           ))}
         </div>
       </div>
+
+      {/* Cinematic Reward Overlay */}
+      <RewardOverlay event={activeReward} onDismiss={() => setActiveReward(null)} />
     </div>
   );
 }
