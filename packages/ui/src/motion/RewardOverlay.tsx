@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RewardEventPayload, REWARD_INTENSITY_MAP } from './rewardTypes';
 import { useMotionAccessibility } from './reducedMotion';
-import { springPresets, transitionPresets } from './presets';
+import { springPresets } from './presets';
+import { transitionPresets } from './transitions';
 
 export interface RewardOverlayProps {
   event: RewardEventPayload | null;
