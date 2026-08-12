@@ -52,9 +52,16 @@ export default function AdminCMSPage() {
           <Shield className="w-6 h-6 text-amber-400" />
           <h1 className="text-2xl font-display font-bold text-white">Admin Content CMS</h1>
         </div>
-        <Button variant="accent" size="sm" icon={<Plus className="w-4 h-4" />} onClick={() => setShowAddWordModal(true)}>
-          Thêm Từ Vựng Mới
-        </Button>
+        <div className="flex items-center gap-2">
+          <Link href={`/${locale}/admin/audit-log`}>
+            <Button variant="outline" size="sm">
+              Xem AuditLog
+            </Button>
+          </Link>
+          <Button variant="accent" size="sm" icon={<Plus className="w-4 h-4" />} onClick={() => setShowAddWordModal(true)}>
+            Thêm Từ Vựng Mới
+          </Button>
+        </div>
       </div>
 
       <div className="space-y-6">

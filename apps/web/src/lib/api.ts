@@ -255,6 +255,21 @@ export const chatbotApi = {
   },
 };
 
+// ============================================================================
+// ADMIN MODULE API
+// ============================================================================
+export const adminApi = {
+  getDashboard: () => apiFetch('/admin/dashboard'),
+  getUsers: () => apiFetch('/admin/users'),
+  updateUserRole: (userId: string, newRole: string) =>
+    apiFetch(`/admin/users/${userId}/role`, { method: 'POST', body: JSON.stringify({ newRole }) }),
+  toggleUserStatus: (userId: string) =>
+    apiFetch(`/admin/users/${userId}/toggle-status`, { method: 'POST' }),
+  getAuditLogs: () => apiFetch('/admin/audit-logs'),
+  updateConfig: (configData: any) =>
+    apiFetch('/admin/config', { method: 'POST', body: JSON.stringify(configData) }),
+};
+
 export { API_BASE_URL };
 export default apiFetch;
 

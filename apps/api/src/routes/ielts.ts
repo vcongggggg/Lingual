@@ -263,3 +263,148 @@ ieltsRouter.post('/writing/evaluate', async (req: Request, res: Response) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 });
+
+// ============================================================================
+// IELTS EXAM CONTENT MANAGEMENT ROUTES (RBAC & Ownership Check)
+// ============================================================================
+import { Roles, rolesGuard, AuthenticatedRequest } from '../middleware/rbac.js';
+import { auditLogInterceptor } from '../middleware/auditLog.js';
+import { canModifyContent } from '../../../../packages/domain/src/index.js';
+
+export const MOCK_IELTS_QUESTIONS_STORE: any[] = [...MOCK_QUESTIONS_FALLBACK];
+
+/**
+ * POST /api/v1/ielts/questions
+ * Create IELTS question draft
+ * Access: CONTENT_EDITOR, ADMIN, SUPER_ADMIN
+ */
+ieltsRouter.post(
+  '/questions',
+  Roles('CONTENT_EDITOR', 'ADMIN', 'SUPER_ADMIN'),
+  rolesGuard(['CONTENT_EDITOR', 'ADMIN', 'SUPER_ADMIN']),
+  auditLogInterceptor('ielts_question.create_draft', 'IeltsQuestion'),
+  (req: AuthenticatedRequest, res: Response) => {
+    const { title, skill, type = 'academic', part = 'passage_1', targetBand = 6.0, content } = req.body;
+    const question = {
+      id: `ielts-q-${Date.now()}`,
+      title,
+      skill,
+      type,
+      part,
+      targetBand,
+      content: typeof content === 'string' ? content : JSON.stringify(content),
+      status: 'draft',
+      createdBy: req.user?.id || 'editor-id',
+      createdAt: new Date(),
+    };
+
+    MOCK_IELTS_QUESTIONS_STORE.push(question);
+    req.auditMeta = {
+      action: 'ielts_question.create_draft',
+      resourceType: 'IeltsQuestion',
+      resourceId: question.id,
+      afterState: question,
+    };
+
+    return res.status(201).json({ message: 'Tạo bản nháp câu hỏi IELTS thành công', question });
+  }
+);
+
+/**
+ * PUT /api/v1/ielts/questions/:questionId
+ * Edit IELTS question draft
+ * Access: CONTENT_EDITOR (own only), CONTENT_REVIEWER, ADMIN, SUPER_ADMIN
+ */
+ieltsRouter.put(
+  '/questions/:questionId',
+  Roles('CONTENT_EDITOR', 'CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'),
+  rolesGuard(['CONTENT_EDITOR', 'CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN']),
+  auditLogInterceptor('ielts_question.update', 'IeltsQuestion'),
+  (req: AuthenticatedRequest, res: Response) => {
+    const { questionId } = req.params;
+    const question = MOCK_IELTS_QUESTIONS_STORE.find((q) => q.id === questionId);
+
+    if (!question) {
+      return res.status(404).json({ error: 'Không tìm thấy câu hỏi IELTS' });
+    }
+
+    if (!canModifyContent(req.user!, question)) {
+      return res.status(403).json({
+        error: 'Truy cập bị từ chối: Ban biên tập (CONTENT_EDITOR) chỉ được phép chỉnh sửa câu hỏi do chính mình tạo',
+      });
+    }
+
+    req.auditMeta = {
+      action: 'ielts_question.update',
+      resourceType: 'IeltsQuestion',
+      resourceId: question.id,
+      beforeState: { ...question },
+      afterState: { ...question, ...req.body },
+    };
+
+    Object.assign(question, req.body);
+    return res.json({ message: 'Cập nhật câu hỏi IELTS thành công', question });
+  }
+);
+
+/**
+ * POST /api/v1/ielts/questions/:questionId/publish
+ * Publish IELTS question (draft -> review -> published)
+ * Access: CONTENT_REVIEWER, ADMIN, SUPER_ADMIN
+ */
+ieltsRouter.post(
+  '/questions/:questionId/publish',
+  Roles('CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'),
+  rolesGuard(['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN']),
+  auditLogInterceptor('ielts_question.publish', 'IeltsQuestion'),
+  (req: AuthenticatedRequest, res: Response) => {
+    const { questionId } = req.params;
+    const question = MOCK_IELTS_QUESTIONS_STORE.find((q) => q.id === questionId);
+
+    if (!question) {
+      return res.status(404).json({ error: 'Không tìm thấy câu hỏi IELTS' });
+    }
+
+    req.auditMeta = {
+      action: 'ielts_question.publish',
+      resourceType: 'IeltsQuestion',
+      resourceId: question.id,
+      beforeState: { status: question.status },
+      afterState: { status: 'published' },
+    };
+
+    question.status = 'published';
+    return res.json({ message: 'Xuất bản câu hỏi IELTS thành công', question });
+  }
+);
+
+/**
+ * DELETE /api/v1/ielts/questions/:questionId
+ * Delete published IELTS question
+ * Access: ADMIN, SUPER_ADMIN ONLY
+ */
+ieltsRouter.delete(
+  '/questions/:questionId',
+  Roles('ADMIN', 'SUPER_ADMIN'),
+  rolesGuard(['ADMIN', 'SUPER_ADMIN']),
+  auditLogInterceptor('ielts_question.delete', 'IeltsQuestion'),
+  (req: AuthenticatedRequest, res: Response) => {
+    const { questionId } = req.params;
+    const index = MOCK_IELTS_QUESTIONS_STORE.findIndex((q) => q.id === questionId);
+
+    if (index === -1) {
+      return res.status(404).json({ error: 'Không tìm thấy câu hỏi IELTS' });
+    }
+
+    const [deleted] = MOCK_IELTS_QUESTIONS_STORE.splice(index, 1);
+    req.auditMeta = {
+      action: 'ielts_question.delete',
+      resourceType: 'IeltsQuestion',
+      resourceId: questionId,
+      beforeState: deleted,
+    };
+
+    return res.json({ message: 'Xóa câu hỏi IELTS thành công', questionId });
+  }
+);
+

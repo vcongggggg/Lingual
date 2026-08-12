@@ -8,8 +8,11 @@ generator client {
 }
 
 enum Role {
-  LEARNER
+  STUDENT
+  CONTENT_EDITOR
+  CONTENT_REVIEWER
   ADMIN
+  SUPER_ADMIN
 }
 
 model User {
@@ -17,7 +20,7 @@ model User {
   email            String   @unique
   passwordHash     String
   displayName      String
-  role             Role     @default(LEARNER)
+  role             Role     @default(STUDENT)
   interfaceLocale  String   @default("vi")                  // UI locale (independent of learning language)
   timezone         String   @default("Asia/Ho_Chi_Minh")   // User timezone for streak & SRS
   dailyGoalMinutes Int      @default(15)
@@ -85,6 +88,8 @@ model Lesson {
   description String
   order       Int
   xpReward    Int            @default(20)
+  status      String         @default("published") // "draft" | "review" | "published"
+  createdBy   String?
   exercises   QuizExercise[]
   words       Vocabulary[]
   progress    UserLessonProgress[]
@@ -101,6 +106,8 @@ model QuizExercise {
   optionsJson   String   // JSON string array of options
   correctAnswer String
   explanation   String?
+  status        String   @default("published")
+  createdBy     String?
 
   @@map("quiz_exercises")
 }
@@ -117,6 +124,8 @@ model Vocabulary {
   exampleSentence    String?
   exampleTranslation String?
   category           String   @default("general")
+  status             String   @default("published")
+  createdBy          String?
 
   userStates UserWordState[]
 
@@ -230,10 +239,25 @@ model IeltsQuestion {
   audioUrl    String?  // Listening audio URL
   prompt      String?  // Writing or Speaking prompt
   content     String   // JSON string containing question set, choices, correct answers, explanation
+  status      String   @default("published") // "draft" | "review" | "published"
+  createdBy   String?
 
   createdAt   DateTime @default(now())
 
   @@map("ielts_questions")
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  actorId      String
+  action       String   // e.g. "user.role.update", "lesson.publish", "vocab.delete"
+  resourceType String
+  resourceId   String
+  beforeState  Json?
+  afterState   Json?
+  createdAt    DateTime @default(now())
+
+  @@map("audit_logs")
 }
 
 model IeltsMockAttempt {
