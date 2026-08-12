@@ -1,0 +1,299 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  LEARNER
+  ADMIN
+}
+
+model User {
+  id               String   @id @default(uuid())
+  email            String   @unique
+  passwordHash     String
+  displayName      String
+  role             Role     @default(LEARNER)
+  interfaceLocale  String   @default("vi")                  // UI locale (independent of learning language)
+  timezone         String   @default("Asia/Ho_Chi_Minh")   // User timezone for streak & SRS
+  dailyGoalMinutes Int      @default(15)
+  totalXP          Int      @default(0)
+  currentStreak    Int      @default(0)
+  streakFreezes    Int      @default(1)                     // Number of streak freezes available
+  lastActiveDate   String?                                  // Formatted YYYY-MM-DD in user's timezone
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  sessions         Session[]
+  wordStates       UserWordState[]
+  lessonProgress   UserLessonProgress[]
+  gameSessions     GameSession[]
+  userAchievements UserAchievement[]
+  attempts         AttemptSession[]
+  ieltsAttempts    IeltsMockAttempt[]
+  ieltsWritings    IeltsWritingSubmission[]
+  chatSessions     ChatSession[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("sessions")
+}
+
+model Course {
+  id                 String   @id @default(uuid())
+  sourceLanguageCode String   @default("vi")
+  targetLanguageCode String   @default("en")
+  cefrLevel          String   @default("A1")
+  title              String
+  description        String
+  units              Unit[]
+
+  @@map("courses")
+}
+
+model Unit {
+  id          String   @id @default(uuid())
+  courseId    String?
+  course      Course?  @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  title       String
+  description String
+  order       Int
+  iconName    String   @default("book")
+  lessons     Lesson[]
+
+  @@map("units")
+}
+
+model Lesson {
+  id          String         @id @default(uuid())
+  unitId      String
+  unit        Unit           @relation(fields: [unitId], references: [id], onDelete: Cascade)
+  title       String
+  description String
+  order       Int
+  xpReward    Int            @default(20)
+  exercises   QuizExercise[]
+  words       Vocabulary[]
+  progress    UserLessonProgress[]
+
+  @@map("lessons")
+}
+
+model QuizExercise {
+  id            String   @id @default(uuid())
+  lessonId      String
+  lesson        Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  type          String   // "multiple_choice", "scramble", "fill_blank", "typing"
+  prompt        String
+  optionsJson   String   // JSON string array of options
+  correctAnswer String
+  explanation   String?
+
+  @@map("quiz_exercises")
+}
+
+model Vocabulary {
+  id                 String   @id @default(uuid())
+  lessonId           String?
+  lesson             Lesson?  @relation(fields: [lessonId], references: [id], onDelete: SetNull)
+  cefrLevel          String   @default("A1")
+  targetText         String
+  translation        String
+  phonetic           String?
+  audioUrl           String?
+  exampleSentence    String?
+  exampleTranslation String?
+  category           String   @default("general")
+
+  userStates UserWordState[]
+
+  @@map("vocabularies")
+}
+
+model UserWordState {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wordId      String
+  word        Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  repetition  Int        @default(0)
+  interval    Int        @default(1)
+  efactor     Float      @default(2.5)
+  dueDate     DateTime   @default(now())
+  lastQuality Int        @default(0)
+  updatedAt   DateTime   @updatedAt
+
+  @@unique([userId, wordId])
+  @@map("user_word_states")
+}
+
+model UserLessonProgress {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId    String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  completed   Boolean  @default(false)
+  bestScore   Int      @default(0)
+  completedAt DateTime @default(now())
+
+  @@unique([userId, lessonId])
+  @@map("user_lesson_progress")
+}
+
+model AttemptSession {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceType  String   // "lesson", "game", "srs"
+  sourceId    String
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+
+  @@map("attempt_sessions")
+}
+
+model GameSession {
+  id              String   @id @default(uuid())
+  attemptId       String   @unique
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gameType        String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz"
+  score           Int
+  accuracy        Float
+  xpEarned        Int
+  durationSeconds Int
+  createdAt       DateTime @default(now())
+
+  @@map("game_sessions")
+}
+
+model Achievement {
+  id          String   @id @default(uuid())
+  code        String   @unique
+  nameKey     String   // i18n translation key
+  icon        String
+  xpBonus     Int      @default(50)
+
+  userAchievements UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  unlockedAt    DateTime    @default(now())
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+// ============================================================================
+// IELTS EXAM PREP MODULE MODELS
+// ============================================================================
+
+model IeltsTrack {
+  id           String   @id @default(uuid())
+  targetBand   Float    @default(6.5) // e.g. 5.5, 6.5, 7.5
+  type         String   @default("academic") // "academic" | "general"
+  description  String
+  createdAt    DateTime @default(now())
+
+  @@map("ielts_tracks")
+}
+
+model IeltsQuestion {
+  id          String   @id @default(uuid())
+  title       String
+  skill       String   // "listening" | "reading" | "writing" | "speaking"
+  type        String   // "academic" | "general"
+  part        String   // e.g. "section_1", "passage_1", "task_1", "task_2"
+  targetBand  Float    @default(6.0) // 5.0, 6.0, 7.0+
+  passageText String?  // Reading passage content
+  audioUrl    String?  // Listening audio URL
+  prompt      String?  // Writing or Speaking prompt
+  content     String   // JSON string containing question set, choices, correct answers, explanation
+
+  createdAt   DateTime @default(now())
+
+  @@map("ielts_questions")
+}
+
+model IeltsMockAttempt {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type         String   @default("academic")
+  startedAt    DateTime @default(now())
+  submittedAt  DateTime @default(now())
+  durationSec  Int      @default(0)
+  rawScoreJson String   // JSON of raw scores per skill {listening: 32, reading: 30}
+  bandScoreJson String  // JSON of band scores per skill {listening: 7.5, reading: 7.0, overall: 7.5}
+
+  writings     IeltsWritingSubmission[]
+
+  @@map("ielts_mock_attempts")
+}
+
+model IeltsWritingSubmission {
+  id            String           @id @default(uuid())
+  userId        String
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  attemptId     String?
+  attempt       IeltsMockAttempt? @relation(fields: [attemptId], references: [id], onDelete: SetNull)
+  taskType      String           // "task_1" | "task_2"
+  prompt        String
+  essayText     String
+  wordCount     Int
+  overallBand   Float
+  taskAchieveBand Float
+  coherenceBand   Float
+  lexicalBand     Float
+  grammarBand     Float
+  feedbackJson  String           // JSON of detailed comments per criteria + suggestions
+  createdAt     DateTime         @default(now())
+
+  @@map("ielts_writing_submissions")
+}
+
+model ChatSession {
+  id        String        @id @default(uuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+  messages  ChatMessage[]
+
+  @@map("chat_sessions")
+}
+
+model ChatMessage {
+  id           String      @id @default(uuid())
+  sessionId    String
+  session      ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role         String      // "user" | "assistant"
+  content      String
+  sourceType   String?     // "llm" | "rag" | "fallback"
+  ragRefs      String?     // JSON string of Vocabulary/IeltsQuestion/Lesson references used
+  pageContext  String?     // route at time of message
+  createdAt    DateTime    @default(now())
+
+  @@map("chat_messages")
+}
+

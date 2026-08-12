@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "path": "Lộ Trình Học",
+    "srs": "Thẻ SRS",
+    "games": "Game Center",
+    "admin": "CMS Admin"
+  },
+  "landing": {
+    "badge": "Nền tảng Học Tiếng Anh Cá Nhân Hóa Chuẩn SM-2",
+    "title": "Chinh Phục Tiếng Anh Theo Cách",
+    "subtitle": "Gamified Nhưng Nghiêm Túc",
+    "desc": "Kết hợp hoàn hảo giữa bài học tương tác, thuật toán lặp lại ngắt quãng SM-2, 4 trò chơi Game Center và phản hồi XP/Streak tức thì.",
+    "startBtn": "Bắt Đầu Học Ngay (Miễn Phí)",
+    "exploreBtn": "Khám Phá Lộ Trình Bài Học"
+  },
+  "dashboard": {
+    "title": "Hành Trình Chinh Phục Tiếng Anh",
+    "subtitle": "Lộ Trình Học Cá Nhân Hóa (A1)",
+    "dailyGoal": "Mục Tiêu Hôm Nay",
+    "srsReviewBtn": "Ôn Từ Vựng SRS"
+  },
+  "achievement": {
+    "first_lesson": "Bài Học Đầu Tiên",
+    "streak_3_days": "Chiến Binh 3 Ngày Streak",
+    "srs_master_10": "Bậc Thầy Ghi Nhớ SRS",
+    "game_champion": "Nhà Vô Địch Game Center"
+  }
+}

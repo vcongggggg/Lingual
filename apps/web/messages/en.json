@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "path": "Learning Path",
+    "srs": "SRS Cards",
+    "games": "Game Center",
+    "admin": "Admin CMS"
+  },
+  "landing": {
+    "badge": "Personalized English Platform Powered by SM-2",
+    "title": "Master English The",
+    "subtitle": "Gamified Yet Serious Way",
+    "desc": "The ultimate combination of interactive lessons, SM-2 Spaced Repetition, 4 Game Center modes, and instant XP/Streak feedback.",
+    "startBtn": "Start Learning Free",
+    "exploreBtn": "Explore Learning Path"
+  },
+  "dashboard": {
+    "title": "Your English Journey",
+    "subtitle": "Personalized Learning Path (A1)",
+    "dailyGoal": "Today's Goal",
+    "srsReviewBtn": "Review SRS Cards"
+  },
+  "achievement": {
+    "first_lesson": "First Step Learner",
+    "streak_3_days": "3-Day Streak Warrior",
+    "srs_master_10": "SRS Memory Master",
+    "game_champion": "Game Center Champion"
+  }
+}
