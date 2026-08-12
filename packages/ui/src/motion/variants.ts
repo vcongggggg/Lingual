@@ -134,11 +134,7 @@ export const peekingVariants: Variants = {
     y: 0,
     opacity: 1,
     scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 300,
-      damping: 20,
-    },
+    transition: transitionPresets.spring,
   },
   exit: {
     y: 12,
