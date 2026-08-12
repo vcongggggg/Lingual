@@ -73,10 +73,15 @@ export default function Hero3DVisual() {
   const shouldReduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  const [mounted, setMounted] = useState(false);
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const [orbitCards, setOrbitCards] = useState<OrbitCard[]>(DEFAULT_ORBIT_WORDS);
   const [selectedCard, setSelectedCard] = useState<OrbitCard | null>(null);
   const [addedSrs, setAddedSrs] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // 1. Mouse Parallax Tilt Effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -136,6 +141,10 @@ export default function Hero3DVisual() {
       setTimeout(() => setAddedSrs(false), 2000);
     } catch {}
   };
+
+  if (!mounted) {
+    return <div className="relative w-full max-w-4xl h-[420px] sm:h-[480px] mx-auto flex items-center justify-center" />;
+  }
 
   return (
     <div

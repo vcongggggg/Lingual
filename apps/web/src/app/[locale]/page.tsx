@@ -5,8 +5,13 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Card } from '@linguaflow/ui';
+import dynamic from 'next/dynamic';
 import { Sparkles, ArrowRight, Brain, Gamepad2, Flame, CheckCircle2, Zap } from 'lucide-react';
-import Hero3DVisual from '@/components/Hero3DVisual';
+
+const Hero3DVisual = dynamic(() => import('@/components/Hero3DVisual'), {
+  ssr: false,
+  loading: () => <div className="relative w-full max-w-4xl h-[420px] sm:h-[480px] mx-auto flex items-center justify-center" />,
+});
 
 export default function LandingPage() {
   const params = useParams();
