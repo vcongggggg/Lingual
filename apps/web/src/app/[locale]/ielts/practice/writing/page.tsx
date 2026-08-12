@@ -137,11 +137,11 @@ export default function IeltsWritingPracticePage() {
               <div className="p-6 rounded-3xl bg-slate-900 border border-amber-500/40 space-y-6 shadow-2xl animate-fadeIn">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                   <div>
-                    <span className="text-xs font-bold text-amber-400 uppercase">AI Evaluation Report</span>
+                    <span className="text-xs font-bold text-amber-400 uppercase">Báo Cáo Nhận Xét AI</span>
                     <h3 className="text-xl font-bold text-white">Kết Quả Đánh Giá Bài Viết</h3>
                   </div>
                   <div className="p-3 rounded-2xl bg-amber-500/20 border border-amber-500/30 text-amber-300 text-center min-w-24">
-                    <div className="text-xs uppercase font-semibold">Overall Band</div>
+                    <div className="text-xs uppercase font-semibold">Band Tổng</div>
                     <div className="text-2xl font-black">{result.overallBand}</div>
                   </div>
                 </div>
@@ -149,19 +149,19 @@ export default function IeltsWritingPracticePage() {
                 {/* 4 Criteria Scores */}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-                    <div className="text-xs text-slate-400">Task Achievement</div>
+                    <div className="text-xs text-slate-400">Trả lời đúng đề bài</div>
                     <div className="text-lg font-bold text-amber-400">{result.scores.taskAchievement}</div>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-                    <div className="text-xs text-slate-400">Coherence & Cohesion</div>
+                    <div className="text-xs text-slate-400">Mạch lạc & Kết nối</div>
                     <div className="text-lg font-bold text-amber-400">{result.scores.coherenceAndCohesion}</div>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-                    <div className="text-xs text-slate-400">Lexical Resource</div>
+                    <div className="text-xs text-slate-400">Vốn từ vựng</div>
                     <div className="text-lg font-bold text-amber-400">{result.scores.lexicalResource}</div>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-                    <div className="text-xs text-slate-400">Grammatical Range</div>
+                    <div className="text-xs text-slate-400">Độ chuẩn ngữ pháp</div>
                     <div className="text-lg font-bold text-amber-400">{result.scores.grammaticalRange}</div>
                   </div>
                 </div>
@@ -169,11 +169,11 @@ export default function IeltsWritingPracticePage() {
                 {/* Detailed Comments */}
                 <div className="space-y-3 text-xs sm:text-sm text-slate-300">
                   <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
-                    <span className="font-bold text-amber-300">Task Achievement:</span>
+                    <span className="font-bold text-amber-300">Trả lời đúng đề bài:</span>
                     <p>{result.feedback.taskAchievement}</p>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
-                    <span className="font-bold text-amber-300">Coherence & Cohesion:</span>
+                    <span className="font-bold text-amber-300">Mạch lạc & Kết nối:</span>
                     <p>{result.feedback.coherenceAndCohesion}</p>
                   </div>
                 </div>

@@ -443,7 +443,7 @@ export default function LingLingChatbot() {
                     {m.sender === 'bot' && m.ragRefs && m.ragRefs.length > 0 && (
                       <div className="mt-3 pt-2.5 border-t border-slate-800/80 space-y-2">
                         <p className="text-[10px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1">
-                          <BookOpen className="w-3 h-3" /> Thẻ tương tác từ DB Lingual:
+                          <BookOpen className="w-3 h-3" /> Từ vựng & Bài học gợi ý:
                         </p>
 
                         {m.ragRefs.map((ref, idx) => (
@@ -467,7 +467,7 @@ export default function LingLingChatbot() {
                                   </>
                                 ) : (
                                   <>
-                                    <PlusCircle className="w-3 h-3" /> + SRS
+                                    <PlusCircle className="w-3 h-3" /> + Lịch ôn tập
                                   </>
                                 )}
                               </button>
@@ -493,7 +493,7 @@ export default function LingLingChatbot() {
 
                     {m.sender === 'bot' && m.sourceType === 'llm' && (
                       <span className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-purple-500/15 text-purple-300 font-semibold border border-purple-500/30 animate-fadeIn">
-                        <Cpu className="w-2.5 h-2.5 animate-pulse text-purple-400" /> Ollama Qwen2.5
+                        <Cpu className="w-2.5 h-2.5 animate-pulse text-purple-400" /> Trí tuệ nhân tạo AI
                       </span>
                     )}
 
@@ -504,14 +504,14 @@ export default function LingLingChatbot() {
                           onMouseLeave={() => setActiveTooltipId(null)}
                           className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-teal-500/15 text-teal-300 font-semibold border border-teal-500/30 animate-fadeIn cursor-pointer"
                         >
-                          <BookOpen className="w-2.5 h-2.5 text-teal-400" /> Lingual RAG DB
+                          <BookOpen className="w-2.5 h-2.5 text-teal-400" /> Tra cứu bài học
                         </button>
 
                         {/* RAG Tooltip Hover */}
                         {activeTooltipId === m.id && m.ragRefs && (
                           <div className="absolute bottom-full left-0 mb-1.5 w-56 p-2 rounded-xl bg-slate-900 border border-teal-500/40 shadow-xl text-[10px] text-slate-200 z-30 pointer-events-none animate-fadeIn">
                             <p className="font-bold text-teal-400 border-b border-slate-800 pb-1 mb-1">
-                              Bản ghi DB thực tế đã tra:
+                              Bài học liên quan:
                             </p>
                             {m.ragRefs.map((r, i) => (
                               <div key={i} className="truncate">
@@ -525,7 +525,7 @@ export default function LingLingChatbot() {
 
                     {m.sender === 'bot' && m.sourceType === 'fallback' && (
                       <span className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 font-semibold border border-amber-500/30 animate-fadeIn">
-                        <Zap className="w-2.5 h-2.5 text-amber-400" /> Amber Fallback Mode
+                        <Zap className="w-2.5 h-2.5 text-amber-400" /> Trả lời tự động
                       </span>
                     )}
                   </div>
@@ -535,7 +535,7 @@ export default function LingLingChatbot() {
               {avatarState === 'thinking' && (
                 <div className="flex items-center gap-2 p-3 rounded-2xl bg-slate-900 border border-slate-800 text-xs text-slate-400 w-fit">
                   <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
-                  <span>LingLing đang suy nghĩ & tra cứu RAG...</span>
+                  <span>LingLing đang suy nghĩ câu trả lời...</span>
                 </div>
               )}
               <div ref={messagesEndRef} />

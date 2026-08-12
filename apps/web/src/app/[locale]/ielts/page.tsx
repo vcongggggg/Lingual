@@ -66,20 +66,20 @@ export default function IeltsHubPage() {
     },
     {
       id: 'writing',
-      title: 'Writing (AI Feedback)',
-      desc: 'Soạn bài Task 1/2 & nhận chấm điểm 4 tiêu chí band descriptor từ AI',
+      title: 'Luyện Viết IELTS (AI Nhận Xét)',
+      desc: 'Luyện viết bài Task 1/2 và nhận đánh giá chi tiết 4 tiêu chí từ AI',
       icon: FileText,
       color: 'from-amber-500/20 to-orange-500/20 border-amber-500/30 text-amber-400',
-      badge: 'AI Chấm điểm 4 tiêu chí',
+      badge: 'AI Chấm điểm chi tiết',
       link: `/${locale}/ielts/practice/writing`,
     },
     {
       id: 'mock-test',
-      title: 'Full Mock Test',
-      desc: 'Thi thử 4 kỹ năng trong áp lực thời gian thực & quy đổi Band score',
+      title: 'Thi Thử IELTS Tổng Hợp',
+      desc: 'Thi thử 4 kỹ năng trong áp lực thời gian thực & nhận Band điểm ước tính',
       icon: Clock,
       color: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30 text-emerald-400',
-      badge: 'Mô phỏng áp lực thi',
+      badge: 'Mô phỏng thi thật',
       link: `/${locale}/ielts/mock-test`,
     },
   ];
@@ -92,14 +92,14 @@ export default function IeltsHubPage() {
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>IELTS Exam Preparation • Focus Mode</span>
+              <span>Luyện Thi IELTS • Chế Độ Tập Trung</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">
-              Trung Tâm Luyện Thi IELTS Academic
+              Luyện Thi IELTS Chuyên Sâu
             </h1>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Luyện 4 kỹ năng Listening, Reading, Writing & Speaking chuẩn cấu trúc đề thi thật.
-              Bò LingLing nghiêm mặt tập trung cùng bạn chinh phục Band 6.5+!
+              Luyện 4 kỹ năng Nghe, Đọc, Viết & Nói bám sát đề thi chuẩn.
+              Cùng bò LingLing tập trung chinh phục mục tiêu Band 6.5+!
             </p>
           </div>
 

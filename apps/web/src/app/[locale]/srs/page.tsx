@@ -120,7 +120,7 @@ export default function SRSPage() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center space-y-3">
           <div className="w-10 h-10 border-2 border-teal-400 border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-sm text-slate-400 font-semibold">Đang tải thẻ ôn tập SRS...</p>
+          <p className="text-sm text-slate-400 font-semibold">Đang chuẩn bị thẻ từ vựng...</p>
         </div>
       </div>
     );
@@ -137,7 +137,7 @@ export default function SRSPage() {
         </Link>
         <div className="flex items-center gap-2">
           <Brain className="w-5 h-5 text-teal-400" />
-          <span className="font-display font-bold text-lg text-white">Ôn Tập SRS SM-2</span>
+          <span className="font-display font-bold text-lg text-white">Ôn Tập Thông Minh</span>
         </div>
         <span className="text-xs font-mono text-slate-400">
           {currentIndex + 1} / {queue.length}
@@ -205,7 +205,7 @@ export default function SRSPage() {
           {/* SM-2 QUALITY RATING BUTTONS */}
           <div className="w-full max-w-md space-y-3">
             <span className="text-xs text-center block text-slate-400 font-medium">
-              Đánh giá mức độ ghi nhớ từ này để SM-2 lên lịch ôn:
+              Đánh giá độ thuộc bài để hệ thống sắp xếp lịch ôn tập phù hợp:
             </span>
             <div className="grid grid-cols-4 gap-2">
               <button
