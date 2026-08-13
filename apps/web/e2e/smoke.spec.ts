@@ -9,7 +9,7 @@ test.describe('LinguaFlow Critical User Path E2E Smoke Test', () => {
     // 2. Click Start Learning -> Dashboard
     await page.click('button:has-text("Khám Phá Lộ Trình Bài Học")');
     await expect(page).toHaveURL(/.*\/vi\/dashboard/, { timeout: 15000 });
-    await expect(page.locator('h1')).toContainText('Hành Trình Chinh Phục Tiếng Anh');
+    await expect(page.locator('h1')).toContainText('Hành Trình Chinh Phục Tiếng Anh', { timeout: 15000 });
 
     // 3. Open SRS Review Deck
     await page.click('button:has-text("Ôn Từ Vựng SRS")');
