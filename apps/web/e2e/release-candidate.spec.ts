@@ -19,7 +19,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     await page.click('button[type="submit"]');
 
     // 2. DASHBOARD VERIFICATION
-    await page.waitForURL(/.*\/vi\/dashboard/, { timeout: 30000 });
+    await expect(page).toHaveURL(/.*\/vi\/dashboard/, { timeout: 15000 });
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Hành Trình Chinh Phục Tiếng Anh');
 
@@ -39,7 +39,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 4. LEARNING & QUIZ LESSON FLOW
     await page.goto('/vi/learn/1', { waitUntil: 'domcontentloaded' });
-    await page.waitForURL(/.*\/vi\/learn\/1/, { timeout: 15000 });
+    await expect(page).toHaveURL(/.*\/vi\/learn\/1/, { timeout: 15000 });
 
     // 5. GAME CENTER
     await page.goto('/vi/games', { waitUntil: 'domcontentloaded' });
@@ -71,8 +71,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     const demoBtn = page.locator('button:has-text("Đăng Nhập Nhanh")');
     if (await demoBtn.isVisible()) {
       await demoBtn.click();
-      await page.waitForURL(/.*\/vi\/dashboard/, { timeout: 15000 });
-      await expect(page).toHaveURL(/.*\/vi\/dashboard/);
+      await expect(page).toHaveURL(/.*\/vi\/dashboard/, { timeout: 15000 });
     }
   });
 
