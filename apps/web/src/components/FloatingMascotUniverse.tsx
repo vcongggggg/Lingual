@@ -386,7 +386,7 @@ export default function FloatingMascotUniverse() {
   return (
     <>
       {/* GLOBAL COSMIC BACKGROUND LAYER */}
-      <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden select-none">
+      <div className="fixed inset-0 pointer-events-none z-0 bg-slate-950 overflow-hidden select-none">
         {/* Glowing Cosmic Nebula Spheres */}
         <div className="absolute top-[-10%] left-[-5%] w-[45vw] h-[45vw] rounded-full bg-indigo-600/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-5%] w-[50vw] h-[50vw] rounded-full bg-purple-600/10 blur-[140px]" />

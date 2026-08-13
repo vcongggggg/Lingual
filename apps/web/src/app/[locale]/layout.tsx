@@ -86,7 +86,7 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   return (
     <AuthProvider>
       <FloatingMascotUniverse />
-      <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-body relative">
+      <div className="min-h-screen flex flex-col bg-transparent text-slate-100 font-body relative z-10">
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
