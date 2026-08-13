@@ -100,7 +100,7 @@ export const Button: React.FC<ButtonProps> = ({
   const { shouldReduceMotion } = useMotionAccessibility();
 
   const base =
-    'inline-flex items-center justify-center font-bold rounded-xl transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none select-none';
+    'relative z-30 inline-flex items-center justify-center font-bold rounded-xl transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none select-none';
 
   const variants = {
     primary:
