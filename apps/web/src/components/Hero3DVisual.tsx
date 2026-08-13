@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Sparkles, X, Volume2, PlusCircle, CheckCircle2, RotateCw, Play, Pause, Compass } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, X, Volume2, PlusCircle, CheckCircle2, RotateCw, Play, Pause, Compass, Activity } from 'lucide-react';
 import { srsApi } from '@/lib/api';
 
 interface OrbitCard {
@@ -64,7 +64,6 @@ const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
 ];
 
 export default function Hero3DVisual() {
-  const shouldReduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [mounted, setMounted] = useState(false);
@@ -79,7 +78,7 @@ export default function Hero3DVisual() {
 
   // PHYSICS REFS TO ENSURE CONTINUOUS UNINTERRUPTED 60FPS ORBIT LOOP
   const rotationAngleRef = useRef(0);
-  const rotationSpeedRef = useRef(0.6); // Base auto-rotation speed (0.6 deg per frame)
+  const rotationSpeedRef = useRef(0.8); // Base auto-rotation speed (0.8 deg per frame)
   const isDraggingRef = useRef(false);
   const isPausedRef = useRef(false);
   const selectedCardRef = useRef<OrbitCard | null>(null);
@@ -89,6 +88,7 @@ export default function Hero3DVisual() {
 
   useEffect(() => {
     setMounted(true);
+    console.log('[Hero3DVisual] Mounted, starting 3D Orbit engine...');
   }, []);
 
   // Sync state to refs for high performance animation loop
@@ -106,7 +106,7 @@ export default function Hero3DVisual() {
 
   // 1. Mouse Tilt Parallax Effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (shouldReduceMotion || !containerRef.current) return;
+    if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -135,7 +135,7 @@ export default function Hero3DVisual() {
     const deltaX = clientX - lastMouseXRef.current;
     lastMouseXRef.current = clientX;
 
-    const speedMultiplier = 0.45;
+    const speedMultiplier = 0.55;
     const addedAngle = deltaX * speedMultiplier;
     rotationAngleRef.current = (rotationAngleRef.current + addedAngle) % 360;
     setRotationAngle(rotationAngleRef.current);
@@ -149,7 +149,7 @@ export default function Hero3DVisual() {
 
     // Transfer drag swipe velocity to rotation momentum
     if (Math.abs(swipeVelocityRef.current) > 0.1) {
-      rotationSpeedRef.current = swipeVelocityRef.current * 1.2;
+      rotationSpeedRef.current = swipeVelocityRef.current * 1.3;
     }
   };
 
@@ -188,14 +188,12 @@ export default function Hero3DVisual() {
   // Mouse Wheel Scroll Speed Acceleration
   const handleWheel = (e: React.WheelEvent) => {
     const dir = e.deltaY > 0 ? -1 : 1;
-    const newSpeed = Math.max(-5, Math.min(5, rotationSpeedRef.current + dir * 0.5));
+    const newSpeed = Math.max(-6, Math.min(6, rotationSpeedRef.current + dir * 0.6));
     rotationSpeedRef.current = newSpeed;
   };
 
   // 3. UNINTERRUPTED CONTINUOUS 60FPS AUTO-ORBIT LOOP
   useEffect(() => {
-    if (shouldReduceMotion) return;
-
     let lastTime = performance.now();
 
     const loop = (currentTime: number) => {
@@ -204,7 +202,7 @@ export default function Hero3DVisual() {
 
       if (!isDraggingRef.current && !isPausedRef.current && !selectedCardRef.current) {
         let currentSpeed = rotationSpeedRef.current;
-        const targetBase = currentSpeed >= 0 ? 0.6 : -0.6;
+        const targetBase = currentSpeed >= 0 ? 0.8 : -0.8;
 
         // Inertia friction decay back to smooth base auto-orbit speed
         if (Math.abs(currentSpeed) > Math.abs(targetBase)) {
@@ -231,7 +229,7 @@ export default function Hero3DVisual() {
         cancelAnimationFrame(animFrameRef.current);
       }
     };
-  }, [shouldReduceMotion]);
+  }, []);
 
   // Audio Pronunciation
   const handlePlayAudio = (text: string) => {
@@ -293,14 +291,10 @@ export default function Hero3DVisual() {
       >
         {/* CENTRAL GLOWING 3D LOGO BADGE ⭐ */}
         <motion.div
-          animate={
-            shouldReduceMotion
-              ? {}
-              : {
-                  rotate: [0, 360],
-                  scale: [0.96, 1.04, 0.96],
-                }
-          }
+          animate={{
+            rotate: [0, 360],
+            scale: [0.96, 1.04, 0.96],
+          }}
           transition={{
             rotate: { repeat: Infinity, duration: 25, ease: 'linear' },
             scale: { repeat: Infinity, duration: 4, ease: 'easeInOut' },
@@ -354,7 +348,7 @@ export default function Hero3DVisual() {
                 opacity,
                 filter,
               }}
-              className="absolute cursor-pointer transition-transform duration-75 select-none"
+              className="absolute cursor-pointer select-none"
             >
               {/* Card Body */}
               <div className="w-32 sm:w-44 h-20 sm:h-26 rounded-2xl bg-slate-900/95 border border-teal-500/40 p-3 shadow-xl backdrop-blur-md flex flex-col justify-between hover:border-amber-400 hover:scale-108 transition-all group">
@@ -412,8 +406,10 @@ export default function Hero3DVisual() {
         <div className="h-3 w-[1px] bg-slate-800" />
 
         <div className="flex items-center gap-1.5 text-[11px] text-slate-300">
-          <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin" />
-          <span>Vuốt chuột để xoay tự do</span>
+          <Activity className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+          <span className="font-mono text-[10px] text-amber-300">
+            {rotationAngle.toFixed(0)}° ({rotationSpeedRef.current > 0 ? '+' : ''}{rotationSpeedRef.current.toFixed(1)}°/f)
+          </span>
         </div>
       </div>
 
