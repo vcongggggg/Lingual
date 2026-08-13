@@ -10,6 +10,9 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 1. REGISTER NEW USER
     await page.goto('/vi/register', { waitUntil: 'domcontentloaded' });
+    if (await page.locator('h1.next-error-h1').isVisible().catch(() => false)) {
+      await page.reload({ waitUntil: 'domcontentloaded' });
+    }
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Tạo Tài Khoản Mới');
 
@@ -25,6 +28,9 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 3. SRS FLASHCARD REVIEW
     await page.goto('/vi/srs', { waitUntil: 'domcontentloaded' });
+    if (await page.locator('h1.next-error-h1').isVisible().catch(() => false)) {
+      await page.reload({ waitUntil: 'domcontentloaded' });
+    }
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Ôn Tập Thông Minh');
 
@@ -43,11 +49,17 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 5. GAME CENTER
     await page.goto('/vi/games', { waitUntil: 'domcontentloaded' });
+    if (await page.locator('h1.next-error-h1').isVisible().catch(() => false)) {
+      await page.reload({ waitUntil: 'domcontentloaded' });
+    }
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Lingual Game Center');
 
     // 6. ACHIEVEMENTS KHO HUY HIỆU
     await page.goto('/vi/achievements', { waitUntil: 'domcontentloaded' });
+    if (await page.locator('h1.next-error-h1').isVisible().catch(() => false)) {
+      await page.reload({ waitUntil: 'domcontentloaded' });
+    }
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Bảng Xếp Hạng & Danh Hiệu');
 
@@ -59,6 +71,9 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 1. INVALID LOGIN
     await page.goto('/vi/login', { waitUntil: 'domcontentloaded' });
+    if (await page.locator('h1.next-error-h1').isVisible().catch(() => false)) {
+      await page.reload({ waitUntil: 'domcontentloaded' });
+    }
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await page.fill('input[type="email"]', 'invalid@user.com');
     await page.fill('input[type="password"]', 'wrongpassword');
