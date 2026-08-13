@@ -44,7 +44,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     // 5. GAME CENTER
     await page.goto('/vi/games', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('h1')).toContainText('Trung Tâm Trò Chơi');
+    await expect(page.locator('h1')).toContainText('Lingual Game Center');
 
     // 6. ACHIEVEMENTS KHO HUY HIỆU
     await page.goto('/vi/achievements', { waitUntil: 'domcontentloaded' });
