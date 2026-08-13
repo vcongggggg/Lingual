@@ -26,7 +26,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     // 3. SRS FLASHCARD REVIEW
     await page.goto('/vi/srs', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('h1')).toContainText('Ôn Tập Từ Vựng');
+    await expect(page.locator('h1')).toContainText('Ôn Tập Thông Minh');
 
     // Flip 3D Card
     const flipBtn = page.locator('button:has-text("Lật Mặt Sau")');

@@ -167,7 +167,7 @@ export default function SRSPage() {
         </Link>
         <div className="flex items-center gap-2">
           <Brain className="w-5 h-5 text-teal-400" />
-          <span className="font-display font-bold text-lg text-white">Ôn Tập Thông Minh</span>
+          <h1 className="font-display font-bold text-lg text-white">Ôn Tập Thông Minh</h1>
         </div>
         <span className="text-xs font-mono text-slate-400">
           {currentIndex + 1} / {queue.length}
