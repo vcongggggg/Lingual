@@ -29,8 +29,8 @@ export default function IeltsListeningPracticePage() {
             setQuestion(detailRes.question);
           }
         }
-      } catch (err) {
-        console.error(err);
+      } catch {
+        // Fallback to local default question if API is offline
       } finally {
         setLoading(false);
       }

@@ -22,22 +22,45 @@ import Image from 'next/image';
 import { mascotReactions } from '@linguaflow/config';
 
 
+const FALLBACK_ROADMAP_TRACKS = [
+  {
+    id: 'track-1',
+    targetBand: 5.5,
+    type: 'academic',
+    description: 'Chặng 1: Nền tảng IELTS Band 4.5 - 5.5 (Củng cố từ vựng lõi Academic & kỹ năng làm bài cơ bản)',
+  },
+  {
+    id: 'track-2',
+    targetBand: 6.5,
+    type: 'academic',
+    description: 'Chặng 2: Bứt phá IELTS Band 6.0 - 6.5 (Tập trung chiến thuật làm bài Reading 2 cột & Listening)',
+  },
+  {
+    id: 'track-3',
+    targetBand: 7.5,
+    type: 'academic',
+    description: 'Chặng 3: Làm chủ IELTS Band 7.0+ (Luyện đề Mock Test thời gian thực & AI Writing Task 1/2 Evaluator)',
+  },
+];
+
 export default function IeltsHubPage() {
   const routeParams = useParams();
   const locale = (routeParams?.locale as string) || 'vi';
   const [targetBand, setTargetBand] = useState<number>(6.5);
-  const [roadmapTracks, setRoadmapTracks] = useState<any[]>([]);
+  const [roadmapTracks, setRoadmapTracks] = useState<any[]>(FALLBACK_ROADMAP_TRACKS);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadData() {
       try {
         const res = await ieltsApi.getRoadmap();
-        if (res.success && res.tracks) {
+        if (res?.success && res?.tracks && res.tracks.length > 0) {
           setRoadmapTracks(res.tracks);
+        } else {
+          setRoadmapTracks(FALLBACK_ROADMAP_TRACKS);
         }
-      } catch (err) {
-        console.error('Failed to load IELTS roadmap', err);
+      } catch {
+        setRoadmapTracks(FALLBACK_ROADMAP_TRACKS);
       } finally {
         setLoading(false);
       }

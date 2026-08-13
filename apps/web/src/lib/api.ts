@@ -43,17 +43,24 @@ async function apiFetch<T = any>(endpoint: string, options: FetchOptions = {}): 
 
   const url = endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}${endpoint}`;
 
-  const res = await fetch(url, {
-    ...rest,
-    headers,
-  });
+  try {
+    const res = await fetch(url, {
+      ...rest,
+      headers,
+    });
 
-  if (!res.ok) {
-    const errorData = await res.json().catch(() => ({ error: 'Lỗi kết nối server' }));
-    throw new Error(errorData.error || `HTTP ${res.status}`);
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({ error: 'Lỗi kết nối server' }));
+      throw new Error(errorData.error || `HTTP ${res.status}`);
+    }
+
+    return await res.json();
+  } catch (err: any) {
+    if (err instanceof TypeError || (err?.message && String(err.message).includes('fetch'))) {
+      throw new Error('Không thể kết nối tới server API (http://localhost:4000). Vui lòng kiểm tra dịch vụ backend.');
+    }
+    throw err;
   }
-
-  return res.json();
 }
 
 // ============================================================================

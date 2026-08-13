@@ -16,11 +16,11 @@ export default function IeltsRoadmapPage() {
     async function fetchRoadmap() {
       try {
         const res = await ieltsApi.getRoadmap();
-        if (res.success && res.tracks) {
+        if (res?.success && res?.tracks) {
           setTracks(res.tracks);
         }
-      } catch (err) {
-        console.error(err);
+      } catch {
+        // Fallback gracefully if API is initializing
       }
     }
     fetchRoadmap();
