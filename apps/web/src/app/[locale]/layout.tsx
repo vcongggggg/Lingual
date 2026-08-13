@@ -9,6 +9,7 @@ import { BookOpen, Gamepad2, Brain, Shield, Sparkles, Globe, Search, Menu, X, Us
 import LingLingChatbot from '@/components/LingLingChatbot';
 import MascotPopup from '@/components/MascotPopup';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
+import { AuthProvider } from '../../contexts/AuthContext';
 
 
 export default function LocaleLayout({ children }: { children: React.ReactNode }) {
@@ -82,7 +83,8 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   const switchedPath = pathname.replace(`/${locale}`, `/${switchedLocale}`);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-body">
+    <AuthProvider>
+      <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-body">
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -315,6 +317,7 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
         onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
       />
     </div>
+    </AuthProvider>
   );
 }
 
