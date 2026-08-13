@@ -5,9 +5,32 @@
 
 class SoundEffectsManager {
   private ctx: AudioContext | null = null;
+  private muted: boolean = false;
+
+  constructor() {
+    if (typeof window !== 'undefined') {
+      this.muted = localStorage.getItem('linguaflow_sfx_muted') === 'true';
+    }
+  }
+
+  isMuted(): boolean {
+    return this.muted;
+  }
+
+  setMuted(muted: boolean) {
+    this.muted = muted;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('linguaflow_sfx_muted', String(muted));
+    }
+  }
+
+  toggleMuted(): boolean {
+    this.setMuted(!this.muted);
+    return this.muted;
+  }
 
   private getContext(): AudioContext | null {
-    if (typeof window === 'undefined') return null;
+    if (typeof window === 'undefined' || this.muted) return null;
     if (!this.ctx) {
       const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
       if (AudioCtx) {

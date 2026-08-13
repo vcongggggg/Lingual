@@ -128,6 +128,20 @@ export default function SRSPage() {
     }
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isFinished || !currentItem) return;
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === '1') handleRating(0);
+      else if (e.key === '2') handleRating(2);
+      else if (e.key === '3') handleRating(3);
+      else if (e.key === '4') handleRating(5);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isFinished, queue, currentIndex]);
+
   const currentItem = queue[currentIndex];
   const progressPercent = queue.length > 0 ? Math.round(((currentIndex) / queue.length) * 100) : 0;
 
@@ -226,30 +240,38 @@ export default function SRSPage() {
             <div className="grid grid-cols-4 gap-2">
               <button
                 onClick={() => handleRating(0)}
-                className="py-3 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 font-bold text-xs transition-all active:scale-95"
+                className="py-3 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 font-bold text-xs transition-all active:scale-95 relative"
+                title="Phím tắt: 1"
               >
                 Quên
+                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">1</span>
                 <span className="block text-[10px] opacity-75">1 ngày</span>
               </button>
               <button
                 onClick={() => handleRating(2)}
-                className="py-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 font-bold text-xs transition-all active:scale-95"
+                className="py-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 font-bold text-xs transition-all active:scale-95 relative"
+                title="Phím tắt: 2"
               >
                 Khó
+                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">2</span>
                 <span className="block text-[10px] opacity-75">3 ngày</span>
               </button>
               <button
                 onClick={() => handleRating(3)}
-                className="py-3 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 font-bold text-xs transition-all active:scale-95"
+                className="py-3 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 font-bold text-xs transition-all active:scale-95 relative"
+                title="Phím tắt: 3"
               >
                 Tốt
+                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">3</span>
                 <span className="block text-[10px] opacity-75">6 ngày</span>
               </button>
               <button
                 onClick={() => handleRating(5)}
-                className="py-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-bold text-xs transition-all active:scale-95"
+                className="py-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-bold text-xs transition-all active:scale-95 relative"
+                title="Phím tắt: 4"
               >
                 Dễ
+                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">4</span>
                 <span className="block text-[10px] opacity-75">12 ngày</span>
               </button>
             </div>
