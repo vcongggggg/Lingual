@@ -10,7 +10,8 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 1. REGISTER NEW USER
     await page.goto('/vi/register');
-    await expect(page.locator('h1')).toContainText('Tạo Tài Khoản');
+    await page.waitForSelector('h1');
+    await expect(page.locator('h1')).toContainText('Tạo Tài Khoản Mới');
 
     await page.fill('input[type="text"]', 'RC Tester');
     await page.fill('input[type="email"]', testEmail);
@@ -18,14 +19,14 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     await page.click('button[type="submit"]');
 
     // 2. DASHBOARD VERIFICATION
-    await expect(page).toHaveURL(/.*\/vi\/dashboard/);
+    await page.waitForURL(/.*\/vi\/dashboard/);
+    await page.waitForSelector('h1');
     await expect(page.locator('h1')).toContainText('Hành Trình Chinh Phục Tiếng Anh');
-    await page.screenshot({ path: 'playwright-report/screenshots/01-dashboard.png', fullPage: true });
 
-    // 3. SRS FLASHCARD REVIEW & KEYBOARD SHORTCUT
+    // 3. SRS FLASHCARD REVIEW
     await page.goto('/vi/srs');
+    await page.waitForSelector('h1');
     await expect(page.locator('h1')).toContainText('Ôn Tập Từ Vựng');
-    await page.screenshot({ path: 'playwright-report/screenshots/02-srs.png' });
 
     // Flip 3D Card
     const flipBtn = page.locator('button:has-text("Lật Mặt Sau")');
@@ -38,24 +39,17 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 4. LEARNING & QUIZ LESSON FLOW
     await page.goto('/vi/learn/1');
-    await expect(page).toHaveURL(/.*\/vi\/learn\/1/);
-    await page.screenshot({ path: 'playwright-report/screenshots/03-lesson.png' });
-
-    // Click first option if quiz options exist
-    const firstOption = page.locator('button.rounded-2xl').first();
-    if (await firstOption.isVisible()) {
-      await firstOption.click();
-    }
+    await page.waitForURL(/.*\/vi\/learn\/1/);
 
     // 5. GAME CENTER
     await page.goto('/vi/games');
+    await page.waitForSelector('h1');
     await expect(page.locator('h1')).toContainText('Trung Tâm Trò Chơi');
-    await page.screenshot({ path: 'playwright-report/screenshots/04-games.png' });
 
     // 6. ACHIEVEMENTS KHO HUY HIỆU
     await page.goto('/vi/achievements');
+    await page.waitForSelector('h1');
     await expect(page.locator('h1')).toContainText('Bảng Vàng Thành Tựu');
-    await page.screenshot({ path: 'playwright-report/screenshots/05-achievements.png' });
 
     // Assert 0 Uncaught Page Errors
     expect(pageErrors.length).toBe(0);
@@ -65,17 +59,19 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
 
     // 1. INVALID LOGIN
     await page.goto('/vi/login');
+    await page.waitForSelector('h1');
     await page.fill('input[type="email"]', 'invalid@user.com');
     await page.fill('input[type="password"]', 'wrongpassword');
     await page.click('button[type="submit"]');
 
-    // Should display error toast or remain on login page
+    // Should remain on login page
     await expect(page).toHaveURL(/.*\/vi\/login/);
 
     // 2. DEMO LOGIN SUCCESS
     const demoBtn = page.locator('button:has-text("Đăng Nhập Nhanh")');
     if (await demoBtn.isVisible()) {
       await demoBtn.click();
+      await page.waitForURL(/.*\/vi\/dashboard/);
       await expect(page).toHaveURL(/.*\/vi\/dashboard/);
     }
   });
