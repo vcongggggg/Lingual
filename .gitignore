@@ -32,3 +32,8 @@ Thumbs.db
 
 # Draft & Scratch assets
 draft/
+
+# Playwright Test Artifacts
+playwright-report/
+test-results/
+
