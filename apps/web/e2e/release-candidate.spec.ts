@@ -49,7 +49,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     // 6. ACHIEVEMENTS KHO HUY HIỆU
     await page.goto('/vi/achievements', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('h1')).toContainText('Bảng Vàng Thành Tựu');
+    await expect(page.locator('h1')).toContainText('Bảng Xếp Hạng & Danh Hiệu');
 
     // Assert 0 Uncaught Page Errors
     expect(pageErrors.length).toBe(0);
