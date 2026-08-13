@@ -19,7 +19,10 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     await page.fill('input[type="text"]', 'RC Tester');
     await page.fill('input[type="email"]', testEmail);
     await page.fill('input[type="password"]', 'StrongPassword123!');
-    await page.click('button[type="submit"]');
+    
+    const submitBtn = page.locator('button[type="submit"]');
+    await submitBtn.scrollIntoViewIfNeeded();
+    await submitBtn.click();
 
     // 2. DASHBOARD VERIFICATION
     await expect(page).toHaveURL(/.*\/vi\/dashboard/, { timeout: 30000 });
@@ -77,7 +80,10 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await page.fill('input[type="email"]', 'invalid@user.com');
     await page.fill('input[type="password"]', 'wrongpassword');
-    await page.click('button[type="submit"]');
+
+    const submitBtn = page.locator('button[type="submit"]');
+    await submitBtn.scrollIntoViewIfNeeded();
+    await submitBtn.click();
 
     // Should remain on login page
     await expect(page).toHaveURL(/.*\/vi\/login/);
@@ -85,6 +91,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     // 2. DEMO LOGIN SUCCESS
     const demoBtn = page.locator('button:has-text("Đăng Nhập Nhanh")');
     if (await demoBtn.isVisible()) {
+      await demoBtn.scrollIntoViewIfNeeded();
       await demoBtn.click();
       await expect(page).toHaveURL(/.*\/vi\/dashboard/, { timeout: 15000 });
     }

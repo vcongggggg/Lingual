@@ -98,8 +98,9 @@ export default function GamesPage() {
       desc: 'Lật từng cặp thẻ bài 3D để ghép từ tiếng Anh với nghĩa tiếng Việt tương ứng.',
       icon: '🧩',
       glow: 'teal' as const,
-      bgGradient: 'from-teal-900/60 via-emerald-950/80 to-slate-950',
+      bgGradient: 'from-teal-900/70 via-emerald-950/80 to-slate-950',
       badgeColor: 'bg-teal-500/20 text-teal-300 border-teal-500/40',
+      bgImage: '/images/games/bg-card-word-match.png',
     },
     {
       id: 'sentence_scramble',
@@ -107,8 +108,9 @@ export default function GamesPage() {
       desc: 'Sắp xếp các từ xáo trộn thành câu tiếng Anh hoàn chỉnh theo đúng ngữ pháp.',
       icon: '🔤',
       glow: 'amber' as const,
-      bgGradient: 'from-amber-900/60 via-orange-950/80 to-slate-950',
+      bgGradient: 'from-amber-900/70 via-orange-950/80 to-slate-950',
       badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+      bgImage: '/images/games/bg-card-sentence-builder.png',
     },
     {
       id: 'typing_race',
@@ -116,8 +118,9 @@ export default function GamesPage() {
       desc: 'Thử thách gõ nhanh và chính xác các từ tiếng Anh dưới áp lực thời gian đếm ngược.',
       icon: '⚡',
       glow: 'coral' as const,
-      bgGradient: 'from-rose-900/60 via-orange-950/80 to-slate-950',
+      bgGradient: 'from-rose-900/70 via-orange-950/80 to-slate-950',
       badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
+      bgImage: '/images/games/bg-card-typing-speed.png',
     },
     {
       id: 'fill_blitz',
@@ -125,8 +128,9 @@ export default function GamesPage() {
       desc: 'Điền từ liên hoàn trong 60 giây để tích lũy điểm thưởng Combo Super 5X.',
       icon: '🎯',
       glow: 'teal' as const,
-      bgGradient: 'from-indigo-900/60 via-purple-950/80 to-slate-950',
+      bgGradient: 'from-indigo-900/70 via-purple-950/80 to-slate-950',
       badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/40',
+      bgImage: '/images/games/bg-card-fill-blitz.png',
     },
   ];
 
@@ -481,7 +485,14 @@ export default function GamesPage() {
 
       {/* HERO BANNER SECTION */}
       {!activeGame && activeTab === 'games' && (
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-900/60 via-orange-950/70 to-slate-950 border border-amber-500/30 p-8 shadow-2xl backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-3xl border border-amber-500/30 p-8 shadow-2xl backdrop-blur-xl bg-slate-950/80">
+          {/* Background Banner Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity pointer-events-none"
+            style={{ backgroundImage: `url(/images/games/bg-hero-banner.png)` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent pointer-events-none" />
+
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-3 max-w-xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
@@ -553,9 +564,16 @@ export default function GamesPage() {
             <motion.div key={game.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Card
                 glow={game.glow}
-                className={`h-full flex flex-col justify-between p-6 bg-gradient-to-br ${game.bgGradient} border border-white/10 space-y-4`}
+                className={`relative overflow-hidden h-full flex flex-col justify-between p-6 bg-gradient-to-br ${game.bgGradient} border border-white/10 space-y-4`}
               >
-                <div className="space-y-3">
+                {/* Custom Cropped Banner Background */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay pointer-events-none transition-opacity duration-300 group-hover:opacity-40"
+                  style={{ backgroundImage: `url(${game.bgImage})` }}
+                />
+                <div className="absolute inset-0 bg-slate-950/40 pointer-events-none" />
+
+                <div className="relative z-10 space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-3xl">{game.icon}</span>
                     <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border uppercase tracking-wider ${game.badgeColor}`}>
@@ -566,15 +584,17 @@ export default function GamesPage() {
                   <p className="text-xs text-slate-300 leading-relaxed">{game.desc}</p>
                 </div>
 
-                <Button
-                  variant="accent"
-                  size="md"
-                  className="w-full font-bold"
-                  icon={<Play className="w-4 h-4 fill-current" />}
-                  onClick={() => setShowDifficultyModal(game.id)}
-                >
-                  Bắt Đầu Chơi
-                </Button>
+                <div className="relative z-10">
+                  <Button
+                    variant="accent"
+                    size="md"
+                    className="w-full font-bold"
+                    icon={<Play className="w-4 h-4 fill-current" />}
+                    onClick={() => setShowDifficultyModal(game.id)}
+                  >
+                    Bắt Đầu Chơi
+                  </Button>
+                </div>
               </Card>
             </motion.div>
           ))}
