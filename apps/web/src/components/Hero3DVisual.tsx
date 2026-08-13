@@ -78,7 +78,7 @@ export default function Hero3DVisual() {
 
   // PHYSICS REFS TO ENSURE CONTINUOUS UNINTERRUPTED 60FPS ORBIT LOOP
   const rotationAngleRef = useRef(0);
-  const rotationSpeedRef = useRef(0.8); // Base auto-rotation speed (0.8 deg per frame)
+  const rotationSpeedRef = useRef(1.2); // Base auto-rotation speed (1.2 deg per frame)
   const isDraggingRef = useRef(false);
   const isPausedRef = useRef(false);
   const selectedCardRef = useRef<OrbitCard | null>(null);
@@ -202,7 +202,7 @@ export default function Hero3DVisual() {
 
       if (!isDraggingRef.current && !isPausedRef.current && !selectedCardRef.current) {
         let currentSpeed = rotationSpeedRef.current;
-        const targetBase = currentSpeed >= 0 ? 0.8 : -0.8;
+        const targetBase = currentSpeed >= 0 ? 1.2 : -1.2;
 
         // Inertia friction decay back to smooth base auto-orbit speed
         if (Math.abs(currentSpeed) > Math.abs(targetBase)) {
@@ -289,21 +289,19 @@ export default function Hero3DVisual() {
         style={{ transformStyle: 'preserve-3d' }}
         className="relative w-full h-full flex items-center justify-center"
       >
-        {/* CENTRAL GLOWING 3D LOGO BADGE ⭐ */}
+        {/* CENTRAL STATIONARY GLOWING 3D LOGO BADGE ⭐ */}
         <motion.div
           animate={{
-            rotate: [0, 360],
-            scale: [0.96, 1.04, 0.96],
+            scale: [0.98, 1.03, 0.98],
           }}
           transition={{
-            rotate: { repeat: Infinity, duration: 25, ease: 'linear' },
-            scale: { repeat: Infinity, duration: 4, ease: 'easeInOut' },
+            scale: { repeat: Infinity, duration: 3.5, ease: 'easeInOut' },
           }}
-          className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-coral-500 via-amber-400 to-teal-400 p-1 shadow-[0_0_60px_rgba(245,158,11,0.4)] flex items-center justify-center z-10"
+          className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-coral-500 via-amber-400 to-teal-400 p-1 shadow-[0_0_60px_rgba(245,158,11,0.45)] flex items-center justify-center z-10 select-none"
         >
           <div className="w-full h-full bg-slate-950 rounded-full flex flex-col items-center justify-center p-4 border border-amber-400/40 backdrop-blur-xl">
             <Sparkles className="w-12 h-12 text-amber-400 animate-pulse mb-1" />
-            <span className="font-display font-extrabold text-xs tracking-widest text-white uppercase">
+            <span className="font-display font-extrabold text-xs sm:text-sm tracking-widest text-white uppercase">
               Lingual
             </span>
             <span className="text-[9px] text-teal-400 font-bold uppercase tracking-wider">
