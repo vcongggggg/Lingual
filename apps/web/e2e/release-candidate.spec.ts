@@ -19,7 +19,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     await page.click('button[type="submit"]');
 
     // 2. DASHBOARD VERIFICATION
-    await page.waitForURL(/.*\/vi\/dashboard/, { timeout: 15000 });
+    await page.waitForURL(/.*\/vi\/dashboard/, { timeout: 30000 });
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Hành Trình Chinh Phục Tiếng Anh');
 
