@@ -404,7 +404,13 @@ export default function FloatingMascotUniverse() {
       </div>
 
       {/* INTERACTIVE FLOATING MASCOTS LAYER (Z-20 ABOVE PAGE BODY, BELOW BUTTONS) */}
-      <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden select-none">
+      <div
+        className="fixed inset-0 pointer-events-none z-20 overflow-hidden select-none"
+        style={{
+          '--mouse-x': smoothMouseX,
+          '--mouse-y': smoothMouseY,
+        } as any}
+      >
 
         {/* FLOATING & DRAGGABLE MASCOT ENTITIES */}
         {mascots.map((m) => {
