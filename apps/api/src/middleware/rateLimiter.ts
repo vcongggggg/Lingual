@@ -7,7 +7,7 @@ import rateLimit from 'express-rate-limit';
 // 1. Auth Rate Limiter: Tối đa 5 lượt gọi /login hoặc /register mỗi 15 phút per IP
 export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 phút
-  limit: 5, // Tối đa 5 requests
+  limit: process.env.NODE_ENV === 'test' ? 1000 : 5, // Tối đa 5 requests (1000 khi chạy test)
   standardHeaders: true,
   legacyHeaders: false,
   message: {
