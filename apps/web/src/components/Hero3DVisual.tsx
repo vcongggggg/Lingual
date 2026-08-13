@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Sparkles, X, Volume2, PlusCircle, CheckCircle2, RotateCw, Play, Pause, Compass } from 'lucide-react';
 import { srsApi } from '@/lib/api';
@@ -66,7 +66,6 @@ const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
 export default function Hero3DVisual() {
   const shouldReduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const animFrameRef = useRef<number | null>(null);
 
   const [mounted, setMounted] = useState(false);
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
@@ -75,16 +74,35 @@ export default function Hero3DVisual() {
 
   // 3D ORBIT ROTATION & SWIPE PHYSICS STATE
   const [rotationAngle, setRotationAngle] = useState(0);
-  const [rotationSpeed, setRotationSpeed] = useState(0.6); // deg per frame
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [lastMouseX, setLastMouseX] = useState(0);
-  const [swipeVelocity, setSwipeVelocity] = useState(0);
+
+  // PHYSICS REFS TO ENSURE CONTINUOUS UNINTERRUPTED 60FPS ORBIT LOOP
+  const rotationAngleRef = useRef(0);
+  const rotationSpeedRef = useRef(0.6); // Base auto-rotation speed (0.6 deg per frame)
+  const isDraggingRef = useRef(false);
+  const isPausedRef = useRef(false);
+  const selectedCardRef = useRef<OrbitCard | null>(null);
+  const lastMouseXRef = useRef(0);
+  const swipeVelocityRef = useRef(0);
+  const animFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Sync state to refs for high performance animation loop
+  useEffect(() => {
+    isDraggingRef.current = isDragging;
+  }, [isDragging]);
+
+  useEffect(() => {
+    isPausedRef.current = isPaused;
+  }, [isPaused]);
+
+  useEffect(() => {
+    selectedCardRef.current = selectedCard;
+  }, [selectedCard]);
 
   // 1. Mouse Tilt Parallax Effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -99,47 +117,50 @@ export default function Hero3DVisual() {
 
   const handleMouseLeave = () => {
     setMouseOffset({ x: 0, y: 0 });
-    if (isDragging) {
-      setIsDragging(false);
+    if (isDraggingRef.current) {
+      handleDragEnd();
     }
   };
 
   // 2. Interactive Drag / Swipe Handler
   const handleDragStart = (clientX: number) => {
     setIsDragging(true);
-    setDragStartX(clientX);
-    setLastMouseX(clientX);
-    setSwipeVelocity(0);
+    isDraggingRef.current = true;
+    lastMouseXRef.current = clientX;
+    swipeVelocityRef.current = 0;
   };
 
   const handleDragMove = (clientX: number) => {
-    if (!isDragging) return;
-    const deltaX = clientX - lastMouseX;
-    setLastMouseX(clientX);
+    if (!isDraggingRef.current) return;
+    const deltaX = clientX - lastMouseXRef.current;
+    lastMouseXRef.current = clientX;
 
-    // Update angle immediately on drag & capture velocity
     const speedMultiplier = 0.45;
-    setRotationAngle((prev) => prev + deltaX * speedMultiplier);
-    setSwipeVelocity(deltaX * speedMultiplier);
+    const addedAngle = deltaX * speedMultiplier;
+    rotationAngleRef.current = (rotationAngleRef.current + addedAngle) % 360;
+    setRotationAngle(rotationAngleRef.current);
+    swipeVelocityRef.current = addedAngle;
   };
 
   const handleDragEnd = () => {
-    if (!isDragging) return;
+    if (!isDraggingRef.current) return;
     setIsDragging(false);
-    // Transfer drag velocity to rotation momentum
-    if (Math.abs(swipeVelocity) > 0.1) {
-      setRotationSpeed(swipeVelocity * 1.2);
+    isDraggingRef.current = false;
+
+    // Transfer drag swipe velocity to rotation momentum
+    if (Math.abs(swipeVelocityRef.current) > 0.1) {
+      rotationSpeedRef.current = swipeVelocityRef.current * 1.2;
     }
   };
 
-  // Mouse / Touch Handlers
+  // Mouse & Touch Events
   const onMouseDown = (e: React.MouseEvent) => {
     handleDragStart(e.clientX);
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
     handleMouseMove(e);
-    if (isDragging) {
+    if (isDraggingRef.current) {
       handleDragMove(e.clientX);
     }
   };
@@ -155,7 +176,7 @@ export default function Hero3DVisual() {
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    if (isDragging && e.touches.length > 0) {
+    if (isDraggingRef.current && e.touches.length > 0) {
       handleDragMove(e.touches[0].clientX);
     }
   };
@@ -164,47 +185,53 @@ export default function Hero3DVisual() {
     handleDragEnd();
   };
 
-  // Mouse Wheel Scroll Speed Control
+  // Mouse Wheel Scroll Speed Acceleration
   const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
     const dir = e.deltaY > 0 ? -1 : 1;
-    setRotationSpeed((prev) => Math.max(-5, Math.min(5, prev + dir * 0.4)));
+    const newSpeed = Math.max(-5, Math.min(5, rotationSpeedRef.current + dir * 0.5));
+    rotationSpeedRef.current = newSpeed;
   };
 
-  // 3. Smooth RequestAnimationFrame Orbit Loop
+  // 3. UNINTERRUPTED CONTINUOUS 60FPS AUTO-ORBIT LOOP
   useEffect(() => {
     if (shouldReduceMotion) return;
 
     let lastTime = performance.now();
 
-    const updateFrame = (currentTime: number) => {
-      const dt = Math.min((currentTime - lastTime) / 16.6, 2.5); // Normalized frame delta (~1.0 at 60fps)
+    const loop = (currentTime: number) => {
+      const dt = Math.min((currentTime - lastTime) / 16.6, 2.0);
       lastTime = currentTime;
 
-      if (!isDragging && !isPaused && !selectedCard) {
-        setRotationAngle((prevAngle) => (prevAngle + rotationSpeed * dt) % 360);
+      if (!isDraggingRef.current && !isPausedRef.current && !selectedCardRef.current) {
+        let currentSpeed = rotationSpeedRef.current;
+        const targetBase = currentSpeed >= 0 ? 0.6 : -0.6;
 
-        // Friction / Decay velocity back to smooth base speed
-        setRotationSpeed((prevSpeed) => {
-          const targetBase = prevSpeed >= 0 ? 0.6 : -0.6;
-          if (Math.abs(prevSpeed) > Math.abs(targetBase)) {
-            return prevSpeed * 0.97;
+        // Inertia friction decay back to smooth base auto-orbit speed
+        if (Math.abs(currentSpeed) > Math.abs(targetBase)) {
+          currentSpeed *= 0.96;
+          if (Math.abs(currentSpeed) < Math.abs(targetBase)) {
+            currentSpeed = targetBase;
           }
-          return targetBase;
-        });
+          rotationSpeedRef.current = currentSpeed;
+        } else if (Math.abs(currentSpeed) < 0.2) {
+          rotationSpeedRef.current = targetBase;
+        }
+
+        rotationAngleRef.current = (rotationAngleRef.current + rotationSpeedRef.current * dt) % 360;
+        setRotationAngle(rotationAngleRef.current);
       }
 
-      animFrameRef.current = requestAnimationFrame(updateFrame);
+      animFrameRef.current = requestAnimationFrame(loop);
     };
 
-    animFrameRef.current = requestAnimationFrame(updateFrame);
+    animFrameRef.current = requestAnimationFrame(loop);
 
     return () => {
       if (animFrameRef.current) {
         cancelAnimationFrame(animFrameRef.current);
       }
     };
-  }, [shouldReduceMotion, isDragging, isPaused, rotationSpeed, selectedCard]);
+  }, [shouldReduceMotion]);
 
   // Audio Pronunciation
   const handlePlayAudio = (text: string) => {
@@ -291,7 +318,7 @@ export default function Hero3DVisual() {
           </div>
         </motion.div>
 
-        {/* ORBITING 3D VOCABULARY CARDS WITH INTERACTIVE SWIPE PHYSICS */}
+        {/* ORBITING 3D VOCABULARY CARDS WITH CONTINUOUS AUTO-ORBIT & INTERACTIVE SWIPE */}
         {DEFAULT_ORBIT_WORDS.map((card) => {
           const currentAngle = (card.baseAngle + rotationAngle) % 360;
           const normalizedAngle = currentAngle < 0 ? currentAngle + 360 : currentAngle;
@@ -363,7 +390,9 @@ export default function Hero3DVisual() {
       {/* SWIPE & ROTATION CONTROL TOOLBAR (BOTTOM BAR) */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-4 py-2 rounded-full bg-slate-900/90 border border-amber-500/30 shadow-2xl backdrop-blur-md text-xs font-bold">
         <button
-          onClick={() => setRotationSpeed((prev) => -prev)}
+          onClick={() => {
+            rotationSpeedRef.current = -rotationSpeedRef.current;
+          }}
           className="p-1.5 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-colors flex items-center gap-1"
           title="Đổi chiều xoay 3D"
         >
