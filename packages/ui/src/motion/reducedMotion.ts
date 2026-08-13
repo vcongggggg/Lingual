@@ -1,21 +1,29 @@
 import { useReducedMotion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 /**
  * Lingual Motion System — Reduced Motion Helper
  * Wraps Framer Motion's useReducedMotion hook to ensure accessible motion for users with prefers-reduced-motion active.
  */
 export function useMotionAccessibility() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const shouldReduceMotion = useReducedMotion();
+  const active = mounted ? Boolean(shouldReduceMotion) : false;
 
   return {
-    shouldReduceMotion: Boolean(shouldReduceMotion),
+    shouldReduceMotion: active,
 
     /**
      * Safe transform helper: Suppresses large pixel translations and scaling when reduced motion is preferred,
      * while retaining subtle opacity transitions so UI feedback remains readable.
      */
     getSafeAnimation<T extends Record<string, any>>(normalAnimation: T, reducedFallback?: Partial<T>): T {
-      if (!shouldReduceMotion) return normalAnimation;
+      if (!active) return normalAnimation;
 
       const fallback = reducedFallback || {};
       const safe: Record<string, any> = { ...normalAnimation, ...fallback };
@@ -33,3 +41,4 @@ export function useMotionAccessibility() {
     },
   };
 }
+

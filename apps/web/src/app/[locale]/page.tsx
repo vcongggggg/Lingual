@@ -41,7 +41,7 @@ export default function LandingPage() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-teal-500/30 backdrop-blur-xl shadow-lg shadow-teal-500/10 text-xs font-extrabold text-teal-300"
         >
           <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
-          <span>Nền tảng Học Tiếng Anh Cá Nhân Hóa Chuẩn SM-2</span>
+          <span>Nền Tảng Ôn Tập Từ Vựng Thông Minh Tự Động Nhắc Nhở</span>
         </motion.div>
 
         {/* Hero Title */}
@@ -49,11 +49,11 @@ export default function LandingPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight text-white leading-tight"
+          className="text-4xl sm:text-6xl font-artistic tracking-wide text-white leading-tight"
         >
           Chinh Phục Tiếng Anh Theo Cách <br />
           <span className="bg-gradient-to-r from-coral-400 via-amber-400 to-teal-300 bg-clip-text text-transparent">
-            Gamified Nhưng Nghiêm Túc
+            Vừa Học Vừa Chơi Nghiêm Túc
           </span>
         </motion.h1>
 
@@ -64,7 +64,7 @@ export default function LandingPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-normal"
         >
-          Kết hợp hoàn hảo giữa bài học tương tác, thuật toán lặp lại ngắt quãng SM-2, 4 trò chơi Game Center thử thách và cơ chế phản hồi XP/Streak tức thì.
+          Kết hợp hoàn hảo giữa bài học tương tác sinh động, thuật toán ôn tập tự động trước khi bạn kịp quên, 4 trò chơi Game Center thử thách và cơ chế điểm số thú vị.
         </motion.p>
 
         {/* Call to Actions */}
@@ -110,9 +110,9 @@ export default function LandingPage() {
           <div className="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400">
             <Brain className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-display font-bold text-white">Ôn Từ Vựng SM-2</h3>
+          <h3 className="text-xl font-artistic text-white">Ôn Tập Từ Vựng</h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Thuật toán SuperMemo SM-2 tự động tính toán thời điểm lặp lại ngắt quãng hoàn hảo giúp nhớ từ vựng vĩnh viễn.
+            Hệ thống tự động nhắc nhở ôn luyện vào thời điểm vàng trước khi bạn quên, giúp khắc sâu từ vựng vào trí nhớ dài hạn.
           </p>
         </Card>
 
@@ -120,9 +120,9 @@ export default function LandingPage() {
           <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
             <Gamepad2 className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-display font-bold text-white">Game Center 4 Chế Độ</h3>
+          <h3 className="text-xl font-artistic text-white">Trò Chơi Học Tập</h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Word Match, Sentence Scramble, Typing Race và Fill Blitz biến bài tập ôn luyện thành trải nghiệm thi đấu hấp dẫn.
+            4 chế độ game hấp dẫn: Ghép thẻ tốc độ, Xếp câu, Đua tốc độ gõ phím và Điền từ thần tốc dưới áp lực thời gian.
           </p>
         </Card>
 
@@ -130,9 +130,9 @@ export default function LandingPage() {
           <div className="w-12 h-12 rounded-2xl bg-coral-500/10 border border-coral-500/20 flex items-center justify-center text-coral-400">
             <Flame className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-display font-bold text-white">Streak & XP Duotone</h3>
+          <h3 className="text-xl font-artistic text-white">Điểm XP & Streak</h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Tích lũy XP, bảo vệ chuỗi Streak theo múi giờ cá nhân và mở khóa các huy hiệu thành tựu danh giá.
+            Nhận điểm kinh nghiệm (XP) sau mỗi hoạt động, duy trì ngọn lửa học tập hàng ngày (Streak) và nhận huy hiệu danh giá.
           </p>
         </Card>
       </section>

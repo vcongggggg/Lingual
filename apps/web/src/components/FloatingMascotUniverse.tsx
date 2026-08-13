@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { Sparkles, Eye, EyeOff, Zap, Plus, RotateCcw } from 'lucide-react';
 import { mascotReactions } from '@linguaflow/config';
 
@@ -292,26 +292,32 @@ interface XPPop {
 export default function FloatingMascotUniverse() {
   const [enabled, setEnabled] = useState(true);
   const [mascots, setMascots] = useState<MascotItem[]>(INITIAL_MASCOTS);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeMascotId, setActiveMascotId] = useState<string | null>(null);
   const [draggingMascotId, setDraggingMascotId] = useState<string | null>(null);
   const [xpPops, setXpPops] = useState<XPPop[]>([]);
 
-  // Mouse Parallax Track
+  // Framer Motion values for lag-free, non-re-rendering mouse tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const smoothMouseX = useSpring(mouseX, { stiffness: 60, damping: 20 });
+  const smoothMouseY = useSpring(mouseY, { stiffness: 60, damping: 20 });
+
+  // Mouse Parallax Track (updates MotionValues directly, avoiding React state updates)
   useEffect(() => {
     if (!enabled) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window;
-      setMousePos({
-        x: (e.clientX / innerWidth - 0.5) * 2,
-        y: (e.clientY / innerHeight - 0.5) * 2,
-      });
+      const xVal = (e.clientX / innerWidth - 0.5) * 2;
+      const yVal = (e.clientY / innerHeight - 0.5) * 2;
+      mouseX.set(xVal);
+      mouseY.set(yVal);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [enabled]);
+  }, [enabled, mouseX, mouseY]);
 
   // Mascot Click & Drag Release XP Particle Burst
   const triggerXPBurst = (clientX: number, clientY: number, amount = '+15 XP ✨') => {
@@ -386,7 +392,13 @@ export default function FloatingMascotUniverse() {
   return (
     <>
       {/* GLOBAL COSMIC BACKGROUND LAYER */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-slate-950 overflow-hidden select-none">
+      <motion.div
+        className="fixed inset-0 pointer-events-none z-0 bg-slate-950 overflow-hidden select-none"
+        style={{
+          '--mouse-x': smoothMouseX,
+          '--mouse-y': smoothMouseY,
+        } as any}
+      >
         {/* Glowing Cosmic Nebula Spheres */}
         <div className="absolute top-[-10%] left-[-5%] w-[45vw] h-[45vw] rounded-full bg-indigo-600/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-5%] w-[50vw] h-[50vw] rounded-full bg-purple-600/10 blur-[140px]" />
@@ -399,16 +411,10 @@ export default function FloatingMascotUniverse() {
         {/* FLOATING & DRAGGABLE MASCOT ENTITIES */}
         {mascots.map((m) => {
           const depthMultiplier = m.depth === 'front' ? 28 : m.depth === 'mid' ? 16 : 7;
-          const parallaxX = mousePos.x * depthMultiplier;
-          const parallaxY = mousePos.y * depthMultiplier;
 
           const sizePx = m.size === 'lg' ? 96 : m.size === 'md' ? 64 : m.size === 'sm' ? 40 : 26;
-          const blurClass =
-            m.depth === 'far'
-              ? 'blur-[1.5px] opacity-45'
-              : m.depth === 'mid'
-              ? 'opacity-75'
-              : 'opacity-100';
+          const initialOpacity = m.depth === 'far' ? 0.45 : m.depth === 'mid' ? 0.75 : 1.0;
+          const initialBlur = m.depth === 'far' ? 1.5 : 0;
 
           const isHovered = activeMascotId === m.id;
           const isDragging = draggingMascotId === m.id;
@@ -420,6 +426,7 @@ export default function FloatingMascotUniverse() {
               style={{
                 left: `${m.x}%`,
                 top: `${m.y}%`,
+                opacity: initialOpacity,
               }}
               // Interactive Drag & Drop Physics
               drag
@@ -433,78 +440,99 @@ export default function FloatingMascotUniverse() {
                   triggerXPBurst(e.clientX, e.clientY, '+25 XP 🚀');
                 }
               }}
-              animate={{
-                x: [parallaxX, parallaxX + (m.floatDistance * (m.id.charCodeAt(0) % 2 === 0 ? 1 : -1)), parallaxX],
-                y: [parallaxY, parallaxY - m.floatDistance, parallaxY],
-                rotate: [m.rotateDeg, m.rotateDeg + 10, m.rotateDeg - 8, m.rotateDeg],
-              }}
-              transition={{
-                duration: m.floatDuration,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              whileHover={{ scale: 1.35, rotate: 0, zIndex: 40 }}
-              whileDrag={{ scale: 1.45, rotate: 15, zIndex: 50 }}
+              whileHover={{ scale: 1.35, zIndex: 40 }}
+              whileDrag={{ scale: 1.45, zIndex: 50 }}
               whileTap={{ scale: 0.95 }}
               onHoverStart={() => setActiveMascotId(m.id)}
               onHoverEnd={() => setActiveMascotId(null)}
               onClick={handleMascotClick}
             >
-              <div className="relative group">
-                {/* Dialogue Speech Bubble (On Hover or Drag) */}
-                <AnimatePresence>
-                  {(isHovered || isDragging) && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.8 }}
-                      animate={{ opacity: 1, y: -16, scale: 1 }}
-                      exit={{ opacity: 0, y: 4, scale: 0.8 }}
-                      className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-50 pointer-events-none"
-                    >
-                      <div
-                        className={`px-3 py-1.5 rounded-2xl border text-xs font-bold shadow-2xl backdrop-blur-md flex items-center gap-1.5 ${
-                          isDragging
-                            ? 'bg-amber-500/95 border-amber-300 text-slate-950 font-black scale-110 shadow-amber-500/50'
-                            : 'bg-slate-900/95 border-amber-500/50 text-amber-300'
-                        }`}
-                      >
-                        <Sparkles className={`w-3.5 h-3.5 ${isDragging ? 'text-slate-950 animate-bounce' : 'text-amber-400 animate-spin'}`} />
-                        <span>{isDragging ? m.dragDialogue : m.dialogue}</span>
-                      </div>
-                      <div
-                        className={`w-2 h-2 border-b border-r transform rotate-45 mx-auto -mt-1 ${
-                          isDragging ? 'bg-amber-500 border-amber-300' : 'bg-slate-900 border-amber-500/50'
-                        }`}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {/* Mascot Image Display */}
-                <div
-                  className={`relative transition-all duration-300 ${blurClass} group-hover:opacity-100 group-hover:blur-none`}
-                  style={{ width: sizePx, height: sizePx }}
+              {/* CSS Parallax Wrapper Container (Performs calculation at 120fps+ directly in DOM) */}
+              <div
+                style={{
+                  transform: (isHovered || isDragging)
+                    ? 'translate3d(0px, 0px, 0px)'
+                    : `translate3d(calc(var(--mouse-x) * ${depthMultiplier}px), calc(var(--mouse-y) * ${depthMultiplier}px), 0px)`,
+                  transition: 'transform 0.25s cubic-bezier(0.1, 0.8, 0.15, 1)', // Smooth lag
+                }}
+              >
+                <motion.div
+                  className="relative group"
+                  animate={
+                    (isHovered || isDragging)
+                      ? { x: 0, y: 0, rotate: 0, filter: 'blur(0px)' }
+                      : {
+                          x: [0, (m.floatDistance * (m.id.charCodeAt(0) % 2 === 0 ? 1 : -1)) * 0.5, 0],
+                          y: [0, -m.floatDistance * 0.5, 0],
+                          rotate: [m.rotateDeg, m.rotateDeg + 5, m.rotateDeg - 4, m.rotateDeg],
+                          filter: `blur(${initialBlur}px)`,
+                        }
+                  }
+                  transition={
+                    (isHovered || isDragging)
+                      ? { type: 'spring', stiffness: 200, damping: 25 }
+                      : {
+                          duration: m.floatDuration,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }
+                  }
                 >
-                  {/* Glowing Aura Ring on Drag/Hover */}
-                  <div
-                    className={`absolute inset-0 rounded-full transition-all ${
-                      isDragging
-                        ? 'bg-amber-400/40 blur-xl scale-150 animate-pulse'
-                        : 'bg-amber-400/0 group-hover:bg-amber-400/25 blur-md'
-                    }`}
-                  />
+                  {/* Dialogue Speech Bubble (On Hover or Drag) */}
+                  <AnimatePresence>
+                    {(isHovered || isDragging) && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.8 }}
+                        animate={{ opacity: 1, y: -16, scale: 1 }}
+                        exit={{ opacity: 0, y: 4, scale: 0.8 }}
+                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-50 pointer-events-none"
+                      >
+                        <div
+                          className={`px-3 py-1.5 rounded-2xl border text-xs font-bold shadow-2xl backdrop-blur-md flex items-center gap-1.5 ${
+                            isDragging
+                              ? 'bg-amber-500/95 border-amber-300 text-slate-950 font-black scale-110 shadow-amber-500/50'
+                              : 'bg-slate-900/95 border-amber-500/50 text-amber-300'
+                          }`}
+                        >
+                          <Sparkles className={`w-3.5 h-3.5 ${isDragging ? 'text-slate-950 animate-bounce' : 'text-amber-400 animate-spin'}`} />
+                          <span>{isDragging ? m.dragDialogue : m.dialogue}</span>
+                        </div>
+                        <div
+                          className={`w-2 h-2 border-b border-r transform rotate-45 mx-auto -mt-1 ${
+                            isDragging ? 'bg-amber-500 border-amber-300' : 'bg-slate-900 border-amber-500/50'
+                          }`}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                  <img
-                    src={m.src}
-                    alt="Floating Draggable Cosmic LingLing"
-                    draggable={false}
-                    className="w-full h-full object-contain filter drop-shadow-[0_4px_14px_rgba(0,0,0,0.6)] group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.7)]"
-                  />
-                </div>
+                  {/* Mascot Image Display */}
+                  <div
+                    className="relative"
+                    style={{ width: sizePx, height: sizePx }}
+                  >
+                    {/* Glowing Aura Ring on Drag/Hover */}
+                    <div
+                      className={`absolute inset-0 rounded-full transition-[background-color,transform,filter] duration-300 ${
+                        isDragging
+                          ? 'bg-amber-400/40 blur-xl scale-150 animate-pulse'
+                          : 'bg-amber-400/0 group-hover:bg-amber-400/25 blur-md'
+                      }`}
+                    />
+
+                    <img
+                      src={m.src}
+                      alt="Floating Draggable Cosmic LingLing"
+                      draggable={false}
+                      className="w-full h-full object-contain filter drop-shadow-[0_4px_14px_rgba(0,0,0,0.6)] group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.7)]"
+                    />
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
 
       {/* FLOATING XP POPUP ANIMATIONS */}
       <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">

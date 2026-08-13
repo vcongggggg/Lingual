@@ -33,6 +33,7 @@ module.exports = {
       fontFamily: {
         display: ['Outfit', 'Space Grotesk', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        artistic: ['Calistoga', 'serif'],
       },
     },
   },

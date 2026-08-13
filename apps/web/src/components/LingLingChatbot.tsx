@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
   MessageSquare,
@@ -26,7 +26,7 @@ import {
 import { chatbotApi, srsApi } from '@/lib/api';
 import LingLingMascot from '@/components/LingLingMascot';
 import { mascotReactions } from '@linguaflow/config';
-import { peekingVariants } from '@linguaflow/ui';
+import { peekingVariants, useMotionAccessibility } from '@linguaflow/ui';
 
 
 export type AvatarState = 'idle' | 'thinking' | 'speaking' | 'celebrating' | 'apologetic';
@@ -53,7 +53,7 @@ export interface ChatMessage {
 export default function LingLingChatbot() {
   const pathname = usePathname();
   const router = useRouter();
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useMotionAccessibility();
 
   // Chat Drawer State
   const [isOpen, setIsOpen] = useState(false);

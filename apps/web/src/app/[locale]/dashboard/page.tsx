@@ -148,7 +148,7 @@ export default function DashboardPage() {
             <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400">
               Lộ Trình Học Cá Nhân Hóa (A1 → B1)
             </span>
-            <h1 className="text-3xl font-display font-extrabold text-white mt-1">
+            <h1 className="text-3xl font-artistic text-white mt-1 tracking-wide">
               Hành Trình Chinh Phục Tiếng Anh
             </h1>
           </div>
@@ -188,7 +188,7 @@ export default function DashboardPage() {
                         {unitCefrLevel}
                       </span>
                     </div>
-                    <h2 className="text-2xl font-display font-bold text-white">{unit.title}</h2>
+                    <h2 className="text-2xl font-artistic text-white tracking-wide">{unit.title}</h2>
                     <p className="text-xs text-slate-400">{unit.description}</p>
                   </div>
                 </div>

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Sparkles, X, Volume2, PlusCircle, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Sparkles, X, Volume2, PlusCircle, CheckCircle2, RotateCw, Play, Pause, Compass } from 'lucide-react';
 import { srsApi } from '@/lib/api';
 
 interface OrbitCard {
@@ -12,8 +12,7 @@ interface OrbitCard {
   phonetic?: string;
   cefrLevel: string;
   exampleSentence?: string;
-  orbitAngle: number;
-  isFlipped: boolean;
+  baseAngle: number;
 }
 
 const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
@@ -24,8 +23,7 @@ const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
     phonetic: '/ɪnˈvaɪrənmənt/',
     cefrLevel: 'B1',
     exampleSentence: 'We must protect our environment.',
-    orbitAngle: 0,
-    isFlipped: false,
+    baseAngle: 0,
   },
   {
     id: 'h2',
@@ -34,8 +32,7 @@ const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
     phonetic: '/səbˈstænʃl/',
     cefrLevel: 'B2',
     exampleSentence: 'A substantial amount of investment went into solar energy.',
-    orbitAngle: 72,
-    isFlipped: false,
+    baseAngle: 72,
   },
   {
     id: 'h3',
@@ -44,8 +41,7 @@ const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
     phonetic: '/əˈtʃiːv/',
     cefrLevel: 'A2',
     exampleSentence: 'She worked hard to achieve her IELTS target band 7.5.',
-    orbitAngle: 144,
-    isFlipped: false,
+    baseAngle: 144,
   },
   {
     id: 'h4',
@@ -54,8 +50,7 @@ const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
     phonetic: '/ˌɪnəˈveɪʃn/',
     cefrLevel: 'C1',
     exampleSentence: 'Technological innovation drives modern economic growth.',
-    orbitAngle: 216,
-    isFlipped: false,
+    baseAngle: 216,
   },
   {
     id: 'h5',
@@ -64,59 +59,154 @@ const DEFAULT_ORBIT_WORDS: OrbitCard[] = [
     phonetic: '/ˌpɜːrsəˈvɪrəns/',
     cefrLevel: 'C1',
     exampleSentence: 'Perseverance is key to mastering any new language.',
-    orbitAngle: 288,
-    isFlipped: false,
+    baseAngle: 288,
   },
 ];
 
 export default function Hero3DVisual() {
   const shouldReduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const animFrameRef = useRef<number | null>(null);
 
   const [mounted, setMounted] = useState(false);
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
-  const [orbitCards, setOrbitCards] = useState<OrbitCard[]>(DEFAULT_ORBIT_WORDS);
   const [selectedCard, setSelectedCard] = useState<OrbitCard | null>(null);
   const [addedSrs, setAddedSrs] = useState(false);
+
+  // 3D ORBIT ROTATION & SWIPE PHYSICS STATE
+  const [rotationAngle, setRotationAngle] = useState(0);
+  const [rotationSpeed, setRotationSpeed] = useState(0.6); // deg per frame
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [lastMouseX, setLastMouseX] = useState(0);
+  const [swipeVelocity, setSwipeVelocity] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // 1. Mouse Parallax Tilt Effect
+  // 1. Mouse Tilt Parallax Effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (shouldReduceMotion || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 15; // Max 15 deg
-    const rotateX = -((e.clientY - centerY) / (rect.height / 2)) * 15;
+    const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 14;
+    const rotateX = -((e.clientY - centerY) / (rect.height / 2)) * 14;
     setMouseOffset({ x: rotateX, y: rotateY });
   };
 
   const handleMouseLeave = () => {
     setMouseOffset({ x: 0, y: 0 });
+    if (isDragging) {
+      setIsDragging(false);
+    }
   };
 
-  // 2. Continuous Orbit & Auto Card Flip Loop
+  // 2. Interactive Drag / Swipe Handler
+  const handleDragStart = (clientX: number) => {
+    setIsDragging(true);
+    setDragStartX(clientX);
+    setLastMouseX(clientX);
+    setSwipeVelocity(0);
+  };
+
+  const handleDragMove = (clientX: number) => {
+    if (!isDragging) return;
+    const deltaX = clientX - lastMouseX;
+    setLastMouseX(clientX);
+
+    // Update angle immediately on drag & capture velocity
+    const speedMultiplier = 0.45;
+    setRotationAngle((prev) => prev + deltaX * speedMultiplier);
+    setSwipeVelocity(deltaX * speedMultiplier);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    // Transfer drag velocity to rotation momentum
+    if (Math.abs(swipeVelocity) > 0.1) {
+      setRotationSpeed(swipeVelocity * 1.2);
+    }
+  };
+
+  // Mouse / Touch Handlers
+  const onMouseDown = (e: React.MouseEvent) => {
+    handleDragStart(e.clientX);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    handleMouseMove(e);
+    if (isDragging) {
+      handleDragMove(e.clientX);
+    }
+  };
+
+  const onMouseUp = () => {
+    handleDragEnd();
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length > 0) {
+      handleDragStart(e.touches[0].clientX);
+    }
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (isDragging && e.touches.length > 0) {
+      handleDragMove(e.touches[0].clientX);
+    }
+  };
+
+  const onTouchEnd = () => {
+    handleDragEnd();
+  };
+
+  // Mouse Wheel Scroll Speed Control
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const dir = e.deltaY > 0 ? -1 : 1;
+    setRotationSpeed((prev) => Math.max(-5, Math.min(5, prev + dir * 0.4)));
+  };
+
+  // 3. Smooth RequestAnimationFrame Orbit Loop
   useEffect(() => {
-    if (shouldReduceMotion || selectedCard) return;
+    if (shouldReduceMotion) return;
 
-    const interval = setInterval(() => {
-      setOrbitCards((prev) =>
-        prev.map((c, i) => {
-          const newAngle = (c.orbitAngle + 0.8) % 360;
-          // Auto flip card back and forth every ~180deg
-          const flipState = newAngle > 90 && newAngle < 270;
-          return { ...c, orbitAngle: newAngle, isFlipped: flipState };
-        })
-      );
-    }, 40);
+    let lastTime = performance.now();
 
-    return () => clearInterval(interval);
-  }, [shouldReduceMotion, selectedCard]);
+    const updateFrame = (currentTime: number) => {
+      const dt = Math.min((currentTime - lastTime) / 16.6, 2.5); // Normalized frame delta (~1.0 at 60fps)
+      lastTime = currentTime;
 
-  // Play Audio TTS
+      if (!isDragging && !isPaused && !selectedCard) {
+        setRotationAngle((prevAngle) => (prevAngle + rotationSpeed * dt) % 360);
+
+        // Friction / Decay velocity back to smooth base speed
+        setRotationSpeed((prevSpeed) => {
+          const targetBase = prevSpeed >= 0 ? 0.6 : -0.6;
+          if (Math.abs(prevSpeed) > Math.abs(targetBase)) {
+            return prevSpeed * 0.97;
+          }
+          return targetBase;
+        });
+      }
+
+      animFrameRef.current = requestAnimationFrame(updateFrame);
+    };
+
+    animFrameRef.current = requestAnimationFrame(updateFrame);
+
+    return () => {
+      if (animFrameRef.current) {
+        cancelAnimationFrame(animFrameRef.current);
+      }
+    };
+  }, [shouldReduceMotion, isDragging, isPaused, rotationSpeed, selectedCard]);
+
+  // Audio Pronunciation
   const handlePlayAudio = (text: string) => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -149,9 +239,17 @@ export default function Hero3DVisual() {
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-4xl h-[420px] sm:h-[480px] mx-auto flex items-center justify-center overflow-visible perspective-[1200px]"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      onWheel={handleWheel}
+      className={`relative w-full max-w-4xl h-[440px] sm:h-[500px] mx-auto flex items-center justify-center overflow-visible perspective-[1200px] select-none ${
+        isDragging ? 'cursor-grabbing' : 'cursor-grab'
+      }`}
     >
       {/* Background Radial Glow */}
       <div className="absolute inset-0 bg-gradient-to-tr from-coral-500/10 via-amber-500/10 to-teal-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -166,7 +264,7 @@ export default function Hero3DVisual() {
         style={{ transformStyle: 'preserve-3d' }}
         className="relative w-full h-full flex items-center justify-center"
       >
-        {/* CENTRAL GLOWING 3D SPARK ⭐ */}
+        {/* CENTRAL GLOWING 3D LOGO BADGE ⭐ */}
         <motion.div
           animate={
             shouldReduceMotion
@@ -188,34 +286,51 @@ export default function Hero3DVisual() {
               Lingual
             </span>
             <span className="text-[9px] text-teal-400 font-bold uppercase tracking-wider">
-              3D SRS Engine
+              Ôn Tập Thông Minh
             </span>
           </div>
         </motion.div>
 
-        {/* ORBITING 3D MINI VOCABULARY CARDS */}
-        {orbitCards.map((card) => {
-          const rad = (card.orbitAngle * Math.PI) / 180;
-          const radiusX = typeof window !== 'undefined' && window.innerWidth < 640 ? 130 : 210;
-          const radiusY = typeof window !== 'undefined' && window.innerWidth < 640 ? 80 : 120;
+        {/* ORBITING 3D VOCABULARY CARDS WITH INTERACTIVE SWIPE PHYSICS */}
+        {DEFAULT_ORBIT_WORDS.map((card) => {
+          const currentAngle = (card.baseAngle + rotationAngle) % 360;
+          const normalizedAngle = currentAngle < 0 ? currentAngle + 360 : currentAngle;
+          const rad = (normalizedAngle * Math.PI) / 180;
+
+          const radiusX = typeof window !== 'undefined' && window.innerWidth < 640 ? 135 : 220;
+          const radiusY = typeof window !== 'undefined' && window.innerWidth < 640 ? 85 : 130;
 
           const posX = Math.cos(rad) * radiusX;
           const posY = Math.sin(rad) * radiusY;
-          const scale = 0.75 + (Math.sin(rad) + 1) * 0.2; // Depth scale (0.75 to 1.15)
+
+          // 3D Depth Scale, Z-Index, and Blur/Opacity
+          const scale = 0.75 + (Math.sin(rad) + 1) * 0.2; // 0.75 to 1.15
           const zIndex = Math.round((Math.sin(rad) + 1) * 20);
+          const depthFactor = (Math.sin(rad) + 1) / 2; // 0 (back) to 1 (front)
+          const opacity = 0.35 + depthFactor * 0.65; // 0.35 to 1.0
+          const blurAmount = (1 - depthFactor) * 2.5; // up to 2.5px blur when behind
+          const filter = blurAmount > 0.3 ? `blur(${blurAmount.toFixed(1)}px)` : 'none';
+
+          // Auto Flip card face when orbiting in front vs back
+          const isFlipped = normalizedAngle > 90 && normalizedAngle < 270;
 
           return (
-            <motion.div
+            <div
               key={card.id}
-              onClick={() => setSelectedCard(card)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedCard(card);
+              }}
               style={{
                 transform: `translate3d(${posX}px, ${posY}px, ${zIndex * 2}px) scale(${scale})`,
                 zIndex,
+                opacity,
+                filter,
               }}
               className="absolute cursor-pointer transition-transform duration-75 select-none"
             >
-              {/* Mini Card Flip Body */}
-              <div className="w-32 sm:w-40 h-20 sm:h-24 rounded-2xl bg-slate-900/90 border border-teal-500/40 p-3 shadow-xl backdrop-blur-md flex flex-col justify-between hover:border-amber-400 hover:scale-105 transition-all group">
+              {/* Card Body */}
+              <div className="w-32 sm:w-44 h-20 sm:h-26 rounded-2xl bg-slate-900/95 border border-teal-500/40 p-3 shadow-xl backdrop-blur-md flex flex-col justify-between hover:border-amber-400 hover:scale-108 transition-all group">
                 <div className="flex items-center justify-between">
                   <span className="px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[9px] font-extrabold border border-teal-500/30">
                     {card.cefrLevel}
@@ -224,7 +339,7 @@ export default function Hero3DVisual() {
                 </div>
 
                 <div className="text-center">
-                  {card.isFlipped ? (
+                  {isFlipped ? (
                     <span className="font-semibold text-xs sm:text-sm text-teal-300 block truncate">
                       {card.translation}
                     </span>
@@ -240,10 +355,38 @@ export default function Hero3DVisual() {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </motion.div>
+
+      {/* SWIPE & ROTATION CONTROL TOOLBAR (BOTTOM BAR) */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-4 py-2 rounded-full bg-slate-900/90 border border-amber-500/30 shadow-2xl backdrop-blur-md text-xs font-bold">
+        <button
+          onClick={() => setRotationSpeed((prev) => -prev)}
+          className="p-1.5 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-colors flex items-center gap-1"
+          title="Đổi chiều xoay 3D"
+        >
+          <RotateCw className="w-3.5 h-3.5" />
+          <span className="text-[10px] hidden sm:inline">Đổi Chiều</span>
+        </button>
+
+        <button
+          onClick={() => setIsPaused((prev) => !prev)}
+          className="p-1.5 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors flex items-center gap-1"
+          title={isPaused ? 'Tiếp tục xoay' : 'Tạm dừng xoay'}
+        >
+          {isPaused ? <Play className="w-3.5 h-3.5 text-teal-400" /> : <Pause className="w-3.5 h-3.5 text-slate-400" />}
+          <span className="text-[10px] hidden sm:inline">{isPaused ? 'Chạy' : 'Tạm Dừng'}</span>
+        </button>
+
+        <div className="h-3 w-[1px] bg-slate-800" />
+
+        <div className="flex items-center gap-1.5 text-[11px] text-slate-300">
+          <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin" />
+          <span>Vuốt chuột để xoay tự do</span>
+        </div>
+      </div>
 
       {/* FOCUS MODAL WHEN CLICKING AN ORBITING CARD */}
       <AnimatePresence>
