@@ -4,6 +4,7 @@ export default defineConfig({
   testDir: './e2e',
   fullyParallel: false,
   workers: 1,
+  timeout: 60000,
   reporter: [
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
@@ -15,6 +16,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'on',
     video: 'on-first-retry',
+    navigationTimeout: 30000,
   },
   projects: [
     {

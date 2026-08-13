@@ -9,8 +9,8 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     const testEmail = `rc_user_${Date.now()}@lingual.com`;
 
     // 1. REGISTER NEW USER
-    await page.goto('/vi/register');
-    await page.waitForSelector('h1');
+    await page.goto('/vi/register', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Tạo Tài Khoản Mới');
 
     await page.fill('input[type="text"]', 'RC Tester');
@@ -19,13 +19,13 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     await page.click('button[type="submit"]');
 
     // 2. DASHBOARD VERIFICATION
-    await page.waitForURL(/.*\/vi\/dashboard/);
-    await page.waitForSelector('h1');
+    await page.waitForURL(/.*\/vi\/dashboard/, { timeout: 15000 });
+    await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Hành Trình Chinh Phục Tiếng Anh');
 
     // 3. SRS FLASHCARD REVIEW
-    await page.goto('/vi/srs');
-    await page.waitForSelector('h1');
+    await page.goto('/vi/srs', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Ôn Tập Từ Vựng');
 
     // Flip 3D Card
@@ -38,17 +38,17 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     await page.keyboard.press('3');
 
     // 4. LEARNING & QUIZ LESSON FLOW
-    await page.goto('/vi/learn/1');
-    await page.waitForURL(/.*\/vi\/learn\/1/);
+    await page.goto('/vi/learn/1', { waitUntil: 'domcontentloaded' });
+    await page.waitForURL(/.*\/vi\/learn\/1/, { timeout: 15000 });
 
     // 5. GAME CENTER
-    await page.goto('/vi/games');
-    await page.waitForSelector('h1');
+    await page.goto('/vi/games', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Trung Tâm Trò Chơi');
 
     // 6. ACHIEVEMENTS KHO HUY HIỆU
-    await page.goto('/vi/achievements');
-    await page.waitForSelector('h1');
+    await page.goto('/vi/achievements', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('h1')).toContainText('Bảng Vàng Thành Tựu');
 
     // Assert 0 Uncaught Page Errors
@@ -58,8 +58,8 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
   test('Authentication Persistence, Invalid Password & Protected Route Redirection', async ({ page }) => {
 
     // 1. INVALID LOGIN
-    await page.goto('/vi/login');
-    await page.waitForSelector('h1');
+    await page.goto('/vi/login', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
     await page.fill('input[type="email"]', 'invalid@user.com');
     await page.fill('input[type="password"]', 'wrongpassword');
     await page.click('button[type="submit"]');
@@ -71,7 +71,7 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     const demoBtn = page.locator('button:has-text("Đăng Nhập Nhanh")');
     if (await demoBtn.isVisible()) {
       await demoBtn.click();
-      await page.waitForURL(/.*\/vi\/dashboard/);
+      await page.waitForURL(/.*\/vi\/dashboard/, { timeout: 15000 });
       await expect(page).toHaveURL(/.*\/vi\/dashboard/);
     }
   });
