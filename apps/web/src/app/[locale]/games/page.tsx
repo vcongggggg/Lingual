@@ -485,37 +485,15 @@ export default function GamesPage() {
 
       {/* HERO BANNER SECTION */}
       {!activeGame && activeTab === 'games' && (
-        <div className="relative overflow-hidden rounded-3xl border border-amber-500/30 p-8 shadow-2xl backdrop-blur-xl bg-slate-950/80">
-          {/* Background Banner Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity pointer-events-none"
-            style={{ backgroundImage: `url(/images/games/bg-hero-banner.png)` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="space-y-3 max-w-xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Chơi Game Vui • Học Từ Nhanh</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-                Vừa Chơi Game Vừa Thuộc Bài Tiếng Anh!
-              </h2>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Thử thách trí nhớ 3D, gõ phím siêu tốc và tích lũy điểm thưởng Combo cùng Bò LingLing.
-              </p>
-            </div>
-
-            <div className="relative w-36 h-36 shrink-0">
-              <Image
-                src={mascotReactions.greet}
-                alt="Game Hero Mascot"
-                width={144}
-                height={144}
-                className="w-full h-full object-contain filter drop-shadow-[0_4px_16px_rgba(245,158,11,0.3)] animate-pulse"
-              />
-            </div>
+        <div className="relative w-full overflow-hidden rounded-3xl border border-amber-500/40 shadow-2xl transition-all duration-300 hover:shadow-amber-500/10">
+          <div className="relative w-full aspect-[1024/92] bg-slate-950">
+            <Image
+              src="/images/games/bg-hero-banner.png"
+              alt="Vừa Chơi Game Vừa Thuộc Bài Tiếng Anh"
+              fill
+              priority
+              className="object-fill rounded-3xl"
+            />
           </div>
         </div>
       )}
@@ -561,30 +539,27 @@ export default function GamesPage() {
       {!activeGame && activeTab === 'games' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {gamesList.map((game) => (
-            <motion.div key={game.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <motion.div key={game.id} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }}>
               <Card
                 glow={game.glow}
-                className={`relative overflow-hidden h-full flex flex-col justify-between p-6 bg-gradient-to-br ${game.bgGradient} border border-white/10 space-y-4`}
+                className={`h-full flex flex-col justify-between p-5 bg-slate-950/90 border border-slate-800/80 space-y-4 shadow-xl`}
               >
-                {/* Custom Cropped Banner Background */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay pointer-events-none transition-opacity duration-300 group-hover:opacity-40"
-                  style={{ backgroundImage: `url(${game.bgImage})` }}
-                />
-                <div className="absolute inset-0 bg-slate-950/40 pointer-events-none" />
-
-                <div className="relative z-10 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-3xl">{game.icon}</span>
-                    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border uppercase tracking-wider ${game.badgeColor}`}>
-                      Hot Game
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-display font-extrabold text-white">{game.title}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">{game.desc}</p>
+                {/* Visual Banner Header (Resized to 100% Fit Without Any Cropping) */}
+                <div className="relative w-full aspect-[1024/120] rounded-2xl overflow-hidden border border-white/10 shadow-md bg-slate-900">
+                  <Image
+                    src={game.bgImage}
+                    alt={game.title}
+                    fill
+                    className="object-fill rounded-2xl"
+                  />
                 </div>
 
-                <div className="relative z-10">
+                {/* Card Description & Action */}
+                <div className="space-y-3 flex-1 flex flex-col justify-between">
+                  <p className="text-xs text-slate-300 leading-relaxed px-1">
+                    {game.desc}
+                  </p>
+
                   <Button
                     variant="accent"
                     size="md"
