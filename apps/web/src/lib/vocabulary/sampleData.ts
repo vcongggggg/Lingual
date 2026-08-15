@@ -1,0 +1,247 @@
+/**
+ * Master Sample Vocabulary Dataset for LinguaFlow Smart Vocabulary Lab
+ * Covers CEFR A1, A2, B1, B2 across core everyday and academic topics.
+ */
+
+import { VocabularyWord } from '@linguaflow/domain';
+
+export const MASTER_VOCABULARY_LIST: VocabularyWord[] = [
+  // ==========================================================================
+  // LEVEL A1: BEGINNER
+  // ==========================================================================
+  {
+    id: 'vocab-hello',
+    targetText: 'Hello',
+    normalizedText: 'hello',
+    translation: 'Xin chào',
+    phoneticUs: '/həˈloʊ/',
+    phoneticUk: '/həˈləʊ/',
+    partOfSpeech: 'interjection',
+    cefrLevel: 'A1',
+    category: 'Daily Life',
+    definitionEn: 'Used as a greeting or to begin a conversation.',
+    examples: [
+      { sentence: 'Hello, how are you today?', translation: 'Xin chào, hôm nay bạn thế nào?' },
+      { sentence: 'She said hello with a bright smile.', translation: 'Cô ấy chào với một nụ cười rạng rỡ.' },
+    ],
+    synonyms: ['hi', 'greetings'],
+    imageUrl: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=500&auto=format&fit=crop&q=80',
+    source: 'curriculum',
+    tags: ['greetings', 'basics'],
+  },
+  {
+    id: 'vocab-student',
+    targetText: 'Student',
+    normalizedText: 'student',
+    translation: 'Học sinh / Sinh viên',
+    phoneticUs: '/ˈstuːdənt/',
+    phoneticUk: '/ˈstjuːdnt/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'A1',
+    category: 'Education',
+    definitionEn: 'A person who is studying at a school, college, or university.',
+    examples: [
+      { sentence: 'He is an enthusiastic university student.', translation: 'Anh ấy là một sinh viên đại học nhiệt huyết.' },
+      { sentence: 'The student asked an insightful question.', translation: 'Người học sinh đã đặt một câu hỏi sâu sắc.' },
+    ],
+    synonyms: ['learner', 'pupil'],
+    imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=80',
+    source: 'curriculum',
+    tags: ['school', 'study'],
+  },
+  {
+    id: 'vocab-coffee',
+    targetText: 'Coffee',
+    normalizedText: 'coffee',
+    translation: 'Cà phê',
+    phoneticUs: '/ˈkɔːfi/',
+    phoneticUk: '/ˈkɒfi/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'A1',
+    category: 'Food & Drink',
+    definitionEn: 'A hot drink made from roasted and ground coffee beans.',
+    examples: [
+      { sentence: 'I drink a cup of black coffee every morning.', translation: 'Tôi uống một tách cà phê đen mỗi sáng.' },
+      { sentence: 'Would you like some milk with your coffee?', translation: 'Bạn có muốn dùng thêm sữa với cà phê không?' },
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format&fit=crop&q=80',
+    source: 'curriculum',
+    tags: ['beverage', 'morning'],
+  },
+  {
+    id: 'vocab-hospital',
+    targetText: 'Hospital',
+    normalizedText: 'hospital',
+    translation: 'Bệnh viện',
+    phoneticUs: '/ˈhɑːspɪtl/',
+    phoneticUk: '/ˈhɒspɪtl/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'A1',
+    category: 'Workplace',
+    definitionEn: 'An institution providing medical treatment and nursing care for sick or injured people.',
+    examples: [
+      { sentence: 'She works as a dedicated nurse at the city hospital.', translation: 'Cô ấy làm y tá tận tâm tại bệnh viện thành phố.' },
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80',
+    source: 'curriculum',
+    tags: ['health', 'medical'],
+  },
+
+  // ==========================================================================
+  // LEVEL A2: ELEMENTARY
+  // ==========================================================================
+  {
+    id: 'vocab-travel',
+    targetText: 'Travel',
+    normalizedText: 'travel',
+    translation: 'Đi du lịch / Di chuyển',
+    phoneticUs: '/ˈtrævl/',
+    phoneticUk: '/ˈtrævl/',
+    partOfSpeech: 'verb',
+    cefrLevel: 'A2',
+    category: 'Travel & Leisure',
+    definitionEn: 'To make a journey, typically of some length.',
+    examples: [
+      { sentence: 'They love to travel around Southeast Asia.', translation: 'Họ thích đi du lịch quanh khu vực Đông Nam Á.' },
+      { sentence: 'I usually travel to work by bus.', translation: 'Tôi thường di chuyển đi làm bằng xe buýt.' },
+    ],
+    synonyms: ['journey', 'tour', 'visit'],
+    imageUrl: 'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=500&auto=format&fit=crop&q=80',
+    source: 'curriculum',
+    tags: ['vacation', 'commute', 'journey'],
+  },
+  {
+    id: 'vocab-planning',
+    targetText: 'Planning',
+    normalizedText: 'planning',
+    translation: 'Lập kế hoạch',
+    phoneticUs: '/ˈplænɪŋ/',
+    phoneticUk: '/ˈplænɪŋ/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'A2',
+    category: 'Workplace',
+    definitionEn: 'The process of making plans for something.',
+    examples: [
+      { sentence: 'Careful planning is essential for a successful trip.', translation: 'Lập kế hoạch cẩn thận là điều cốt yếu cho một chuyến đi thành công.' },
+    ],
+    synonyms: ['organizing', 'preparation'],
+    source: 'curriculum',
+    tags: ['work', 'project'],
+  },
+  {
+    id: 'vocab-weather',
+    targetText: 'Weather',
+    normalizedText: 'weather',
+    translation: 'Thời tiết',
+    phoneticUs: '/ˈweðər/',
+    phoneticUk: '/ˈweðə/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'A2',
+    category: 'Daily Life',
+    definitionEn: 'The state of the atmosphere at a particular place and time.',
+    examples: [
+      { sentence: 'The weather is sunny and pleasant today.', translation: 'Thời tiết hôm nay nắng ráo và dễ chịu.' },
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80',
+    source: 'curriculum',
+    tags: ['nature', 'forecast'],
+  },
+
+  // ==========================================================================
+  // LEVEL B1: INTERMEDIATE
+  // ==========================================================================
+  {
+    id: 'vocab-collaborate',
+    targetText: 'Collaborate',
+    normalizedText: 'collaborate',
+    translation: 'Cộng tác / Hợp tác',
+    phoneticUs: '/kəˈlæbəreɪt/',
+    phoneticUk: '/kəˈlæbəreɪt/',
+    partOfSpeech: 'verb',
+    cefrLevel: 'B1',
+    category: 'Technology',
+    definitionEn: 'To work jointly on an activity or project to produce something.',
+    examples: [
+      { sentence: 'Engineers collaborate across global teams to build innovative software.', translation: 'Các kỹ sư cộng tác qua các đội ngũ toàn cầu để xây dựng phần mềm đổi mới.' },
+    ],
+    synonyms: ['cooperate', 'partner', 'team up'],
+    source: 'listening',
+    tags: ['teamwork', 'tech', 'workplace'],
+  },
+  {
+    id: 'vocab-ecosystem',
+    targetText: 'Ecosystem',
+    normalizedText: 'ecosystem',
+    translation: 'Hệ sinh thái',
+    phoneticUs: '/ˈiːkoʊsɪstəm/',
+    phoneticUk: '/ˈiːkəʊsɪstəm/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'B1',
+    category: 'Environment',
+    definitionEn: 'A biological community of interacting organisms and their physical environment.',
+    examples: [
+      { sentence: 'Reducing plastic waste is crucial to protect the coral reef ecosystem.', translation: 'Giảm rác thải nhựa là điều cốt yếu để bảo vệ hệ sinh thái rạn san hô.' },
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&auto=format&fit=crop&q=80',
+    source: 'listening',
+    tags: ['marine', 'conservation', 'nature'],
+  },
+  {
+    id: 'vocab-transform',
+    targetText: 'Transform',
+    normalizedText: 'transform',
+    translation: 'Chuyển đổi / Biến đổi',
+    phoneticUs: '/trænsˈfɔːrm/',
+    phoneticUk: '/trænsˈfɔːm/',
+    partOfSpeech: 'verb',
+    cefrLevel: 'B1',
+    category: 'Technology',
+    definitionEn: 'To make a thorough or dramatic change in the form, appearance, or character of.',
+    examples: [
+      { sentence: 'Artificial intelligence is transforming traditional industries.', translation: 'Trí tuệ nhân tạo đang chuyển đổi các ngành công nghiệp truyền thống.' },
+    ],
+    synonyms: ['convert', 'revolutionize', 'alter'],
+    source: 'listening',
+    tags: ['ai', 'growth', 'change'],
+  },
+
+  // ==========================================================================
+  // LEVEL B2: UPPER INTERMEDIATE
+  // ==========================================================================
+  {
+    id: 'vocab-sustainable',
+    targetText: 'Sustainable',
+    normalizedText: 'sustainable',
+    translation: 'Bền vững / Thân thiện môi trường',
+    phoneticUs: '/səˈsteɪnəbl/',
+    phoneticUk: '/səˈsteɪnəbl/',
+    partOfSpeech: 'adjective',
+    cefrLevel: 'B2',
+    category: 'Environment',
+    definitionEn: 'Able to be maintained at a certain rate or level without depleting natural resources.',
+    examples: [
+      { sentence: 'We must adopt sustainable energy solutions for our cities.', translation: 'Chúng ta phải áp dụng các giải pháp năng lượng bền vững cho các thành phố.' },
+    ],
+    synonyms: ['renewable', 'eco-friendly', 'viable'],
+    source: 'dictionary',
+    tags: ['green', 'energy', 'future'],
+  },
+  {
+    id: 'vocab-articulate',
+    targetText: 'Articulate',
+    normalizedText: 'articulate',
+    translation: 'Diễn đạt lưu loát / Rõ ràng',
+    phoneticUs: '/ɑːrˈtɪkjuleɪt/',
+    phoneticUk: '/ɑːˈtɪkjuleɪt/',
+    partOfSpeech: 'verb',
+    cefrLevel: 'B2',
+    category: 'Education',
+    definitionEn: 'Express an idea or feeling fluently and coherently.',
+    examples: [
+      { sentence: 'She was able to articulate her arguments with precision during the debate.', translation: 'Cô ấy có thể diễn đạt các lập luận của mình một cách chính xác trong cuộc tranh biện.' },
+    ],
+    synonyms: ['express', 'enunciate', 'communicate'],
+    source: 'dictionary',
+    tags: ['speaking', 'ielts', 'fluency'],
+  },
+];
