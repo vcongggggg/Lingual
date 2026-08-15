@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Card, ProgressBar, speakText, getWordImage, AudioButton, localShakeVariants, checkMarkPopVariants, canPlayFeedbackAudio, useMotionAccessibility, RewardOverlay, RewardEventPayload } from '@linguaflow/ui';
 import { curriculumApi } from '../../../../lib/api';
@@ -207,8 +208,8 @@ export default function LessonQuizPage() {
             <Card glow="teal" className="p-6 space-y-6 text-center">
               {/* Illustration Image */}
               <div className="relative w-48 h-48 rounded-3xl overflow-hidden border-2 border-teal-500/20 mx-auto shadow-xl bg-slate-950">
-                <img src={img} alt={currentWord?.targetText} className="w-full h-full object-cover" />
-                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/80 border border-teal-500/30 text-[10px] font-extrabold text-teal-300 uppercase">
+                <Image src={img} alt={currentWord?.targetText || 'Vocabulary image'} fill className="object-cover" unoptimized />
+                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/80 border border-teal-500/30 text-[10px] font-extrabold text-teal-300 uppercase z-10">
                   {currentWord?.cefrLevel || 'A1'}
                 </span>
               </div>

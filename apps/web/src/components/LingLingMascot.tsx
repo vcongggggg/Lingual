@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { mascotReactions } from '@linguaflow/config';
 import { mascotStateVariants, useMotionAccessibility, transitionPresets } from '@linguaflow/ui';
@@ -47,10 +48,12 @@ export default function LingLingMascot({
           transition={shouldReduceMotion ? transitionPresets.micro : undefined}
           className="w-full h-full flex items-center justify-center"
         >
-          <img
+          <Image
             src={stickerSrc}
             alt={`LingLing Cow Mascot - ${state}`}
-            className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] pointer-events-none"
+            fill
+            unoptimized
+            className="object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] pointer-events-none"
           />
         </motion.div>
       </AnimatePresence>

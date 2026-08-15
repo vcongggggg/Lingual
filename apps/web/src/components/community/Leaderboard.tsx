@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Trophy, Medal, Flame, Crown, BookOpen, PenTool, Headphones, FileText, Sparkles } from 'lucide-react';
 import { LeaderboardEntry } from '@linguaflow/domain';
 import { Badge } from '@linguaflow/ui';
@@ -117,9 +118,9 @@ export default function LeaderboardView({
               <span className="w-6 h-6 rounded-full bg-slate-400 text-slate-950 font-extrabold text-xs flex items-center justify-center font-mono shadow">
                 2
               </span>
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full ring-2 ring-slate-400 overflow-hidden bg-slate-800">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full ring-2 ring-slate-400 overflow-hidden bg-slate-800 relative">
                 {top2.avatarUrl ? (
-                  <img src={top2.avatarUrl} alt={top2.displayName} className="w-full h-full object-cover" />
+                  <Image src={top2.avatarUrl} alt={top2.displayName} fill className="object-cover" unoptimized />
                 ) : (
                   <span className="font-bold text-base text-white">{top2.displayName.charAt(0)}</span>
                 )}
@@ -141,9 +142,9 @@ export default function LeaderboardView({
             <span className="w-7 h-7 rounded-full bg-amber-400 text-slate-950 font-extrabold text-sm flex items-center justify-center font-mono shadow-md">
               1
             </span>
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full ring-4 ring-amber-400 overflow-hidden bg-slate-800 shadow-xl">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full ring-4 ring-amber-400 overflow-hidden bg-slate-800 shadow-xl relative">
               {top1.avatarUrl ? (
-                <img src={top1.avatarUrl} alt={top1.displayName} className="w-full h-full object-cover" />
+                <Image src={top1.avatarUrl} alt={top1.displayName} fill className="object-cover" unoptimized />
               ) : (
                 <span className="font-bold text-lg text-white">{top1.displayName.charAt(0)}</span>
               )}
@@ -164,9 +165,9 @@ export default function LeaderboardView({
               <span className="w-6 h-6 rounded-full bg-amber-700 text-amber-100 font-extrabold text-xs flex items-center justify-center font-mono shadow">
                 3
               </span>
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full ring-2 ring-amber-700 overflow-hidden bg-slate-800">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full ring-2 ring-amber-700 overflow-hidden bg-slate-800 relative">
                 {top3.avatarUrl ? (
-                  <img src={top3.avatarUrl} alt={top3.displayName} className="w-full h-full object-cover" />
+                  <Image src={top3.avatarUrl} alt={top3.displayName} fill className="object-cover" unoptimized />
                 ) : (
                   <span className="font-bold text-base text-white">{top3.displayName.charAt(0)}</span>
                 )}
@@ -203,9 +204,9 @@ export default function LeaderboardView({
                   #{entry.rank}
                 </span>
 
-                <div className="w-9 h-9 rounded-full overflow-hidden bg-slate-800 shrink-0">
+                <div className="w-9 h-9 rounded-full overflow-hidden bg-slate-800 shrink-0 relative">
                   {entry.avatarUrl ? (
-                    <img src={entry.avatarUrl} alt={entry.displayName} className="w-full h-full object-cover" />
+                    <Image src={entry.avatarUrl} alt={entry.displayName} fill className="object-cover" unoptimized />
                   ) : (
                     <span className="font-bold text-xs text-white flex items-center justify-center h-full">
                       {entry.displayName.charAt(0)}

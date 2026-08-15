@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Card, Button, AudioButton, getWordImage, Modal } from '@linguaflow/ui';
 import { dictionaryApi } from '../../../lib/api';
 import { Search, Filter, Bookmark, PlusCircle, Check, BookOpen, Sparkles, Volume2, Lightbulb, ExternalLink } from 'lucide-react';
@@ -110,11 +111,15 @@ export default function DictionaryPage() {
       {/* WORD OF THE DAY FEATURED BANNER */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-950/50 via-slate-900 to-teal-950/40 border border-amber-500/30 p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
         <div className="flex items-center gap-5">
-          <img
-            src={getWordImage(wordOfTheDay.targetText, wordOfTheDay.imageUrl)}
-            alt={wordOfTheDay.targetText}
-            className="w-20 h-20 rounded-2xl object-cover border-2 border-amber-500/40 shrink-0 bg-slate-950 shadow-lg"
-          />
+          <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-amber-500/40 shrink-0 bg-slate-950 shadow-lg relative">
+            <Image
+              src={getWordImage(wordOfTheDay.targetText, wordOfTheDay.imageUrl)}
+              alt={wordOfTheDay.targetText}
+              fill
+              unoptimized
+              className="object-cover"
+            />
+          </div>
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 tracking-widest uppercase">
               <Lightbulb className="w-3 h-3 text-amber-400" />
@@ -215,11 +220,15 @@ export default function DictionaryPage() {
                 >
                   {/* Top Bar: Word Header & Actions */}
                   <div className="flex gap-4 items-start">
-                    <img
-                      src={img}
-                      alt={w.targetText}
-                      className="w-16 h-16 rounded-2xl object-cover border border-slate-700 shrink-0 bg-slate-950"
-                    />
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden border border-slate-700 shrink-0 bg-slate-950 relative">
+                      <Image
+                        src={img}
+                        alt={w.targetText}
+                        fill
+                        unoptimized
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between items-start gap-1">
                         <h3 className="text-xl font-display font-extrabold text-white truncate">
@@ -320,10 +329,12 @@ export default function DictionaryPage() {
           <div className="space-y-6 text-center">
             {/* Image */}
             <div className="relative w-48 h-48 rounded-3xl overflow-hidden border-2 border-teal-500/30 mx-auto bg-slate-950 shadow-xl">
-              <img
+              <Image
                 src={getWordImage(selectedWordModal.targetText, selectedWordModal.imageUrl)}
                 alt={selectedWordModal.targetText}
-                className="w-full h-full object-cover"
+                fill
+                unoptimized
+                className="object-cover"
               />
             </div>
 

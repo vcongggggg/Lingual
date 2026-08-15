@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -353,10 +354,12 @@ export default function LingLingChatbot() {
               exit="exit"
               className="absolute -top-14 left-6 z-50 w-20 h-20 pointer-events-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
             >
-              <img
+              <Image
                 src={mascotReactions.greet}
                 alt="LingLing Peeking Cow Mascot"
-                className="w-full h-full object-contain transform -scale-x-100"
+                fill
+                unoptimized
+                className="object-contain transform -scale-x-100"
               />
             </motion.div>
 
@@ -600,10 +603,12 @@ export default function LingLingChatbot() {
             transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
             className="absolute -top-10 -left-3 z-30 w-14 h-14 pointer-events-none drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
           >
-            <img
+            <Image
               src={mascotReactions.idle_empty}
               alt="Peeking Mascot Sitting on Chat Button"
-              className="w-full h-full object-contain"
+              fill
+              unoptimized
+              className="object-contain"
             />
           </motion.div>
         )}

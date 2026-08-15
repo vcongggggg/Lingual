@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   UserPlus,
   UserCheck,
@@ -82,9 +83,9 @@ export default function SocialProfileView({
       <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-purple-950/30 border border-purple-500/20 backdrop-blur-2xl shadow-2xl space-y-6">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
           {/* Avatar */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl ring-4 ring-purple-500/40 overflow-hidden bg-slate-800 shrink-0 shadow-xl">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl ring-4 ring-purple-500/40 overflow-hidden bg-slate-800 shrink-0 shadow-xl relative">
             {profile.avatarUrl ? (
-              <img src={profile.avatarUrl} alt={profile.displayName} className="w-full h-full object-cover" />
+              <Image src={profile.avatarUrl} alt={profile.displayName} fill className="object-cover" unoptimized />
             ) : (
               <div className="w-full h-full flex items-center justify-center font-display font-extrabold text-3xl text-white">
                 {profile.displayName.charAt(0)}

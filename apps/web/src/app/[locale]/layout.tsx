@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XPBadge, StreakBadge } from '@linguaflow/ui';
@@ -109,10 +110,12 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
             <div className="relative">
               {/* Peeking Mascot Sticker Sitting on Logo */}
               <div className="absolute -top-4 -left-3.5 z-20 w-8 h-8 pointer-events-none filter drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)] transition-transform group-hover:-translate-y-1">
-                <img
+                <Image
                   src={mascotReactions.greet}
                   alt="Peeking Logo Mascot"
-                  className="w-full h-full object-contain"
+                  fill
+                  unoptimized
+                  className="object-contain"
                 />
               </div>
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-coral-500 via-amber-500 to-teal-400 p-0.5 shadow-lg shadow-coral-500/20 group-hover:scale-105 transition-transform">

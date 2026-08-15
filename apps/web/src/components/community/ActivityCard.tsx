@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   BookOpen,
   Trophy,
@@ -57,9 +58,9 @@ export default function ActivityCard({
     <div className={`p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-md hover:border-slate-700 transition-all flex items-start gap-3.5 ${className}`}>
       {/* User Avatar */}
       <Link href={`/${locale}/community/profile/${activity.userId}`} className="shrink-0">
-        <div className="w-10 h-10 rounded-full ring-2 ring-purple-500/30 overflow-hidden bg-slate-800 flex items-center justify-center">
+        <div className="w-10 h-10 rounded-full ring-2 ring-purple-500/30 overflow-hidden bg-slate-800 flex items-center justify-center relative">
           {activity.userAvatar ? (
-            <img src={activity.userAvatar} alt={activity.userName} className="w-full h-full object-cover" />
+            <Image src={activity.userAvatar} alt={activity.userName} fill className="object-cover" unoptimized />
           ) : (
             <span className="font-bold text-xs text-white">{activity.userName.charAt(0)}</span>
           )}

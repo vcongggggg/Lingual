@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Button, Card, MotionCard, ProgressBar, XPBadge, StreakBadge, springPresets, transitionPresets, useMotionAccessibility, RewardOverlay, RewardEventPayload, canPlayFeedbackAudio } from '@linguaflow/ui';
@@ -10,7 +11,6 @@ import { sfx } from '@/lib/soundEffects';
 import { BookOpen, CheckCircle2, Lock, Play, Star, Flame, Trophy, Sparkles, Brain, ArrowRight } from 'lucide-react';
 import ThemeIllustration from '@/components/ThemeIllustration';
 import MascotPopup from '@/components/MascotPopup';
-import Image from 'next/image';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 
 export default function DashboardPage() {
@@ -138,10 +138,12 @@ export default function DashboardPage() {
         {/* Header Title with Peeking Cow Mascot */}
         <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 backdrop-blur-xl shadow-xl">
           <div className="absolute -top-7 right-8 w-16 h-16 pointer-events-none hidden sm:block">
-            <img
+            <Image
               src={mascotReactions.greet}
               alt="Peeking Dashboard Mascot"
-              className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
+              fill
+              unoptimized
+              className="object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
             />
           </div>
           <div>
@@ -257,10 +259,12 @@ export default function DashboardPage() {
         <MotionCard glow="amber" tilt spotlight className="space-y-4 relative overflow-visible">
           {/* Peeking Mascot Sitting on Goal Card */}
           <div className="absolute -top-8 -right-2 w-14 h-14 pointer-events-none filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)]">
-            <img
+            <Image
               src={mascotReactions.relax_done}
               alt="Peeking Goal Mascot"
-              className="w-full h-full object-contain"
+              fill
+              unoptimized
+              className="object-contain"
             />
           </div>
           <div className="flex items-center justify-between">

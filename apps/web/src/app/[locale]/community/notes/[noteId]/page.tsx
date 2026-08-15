@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, MessageSquare, Send, Tag, Heart, ThumbsUp, BookOpen } from 'lucide-react';
 import { SAMPLE_STUDY_NOTES } from '@/lib/community/sampleData';
 import { communityApi } from '@/lib/community/api';
@@ -90,9 +91,9 @@ export default function StudyNoteDetailPage() {
             href={`/${locale}/community/profile/${note.userId}`}
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded-full ring-2 ring-purple-500/40 overflow-hidden bg-slate-800 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-full ring-2 ring-purple-500/40 overflow-hidden bg-slate-800 flex items-center justify-center shrink-0 relative">
               {note.authorAvatar ? (
-                <img src={note.authorAvatar} alt={note.authorName} className="w-full h-full object-cover" />
+                <Image src={note.authorAvatar} alt={note.authorName} fill className="object-cover" unoptimized />
               ) : (
                 <span className="font-bold text-xs text-white">{note.authorName.charAt(0)}</span>
               )}

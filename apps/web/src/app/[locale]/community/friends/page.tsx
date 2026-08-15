@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Users, UserCheck, UserPlus, Check, X, Flame, Trophy } from 'lucide-react';
 import { communityApi } from '@/lib/community/api';
 import { SAMPLE_PROFILES } from '@/lib/community/sampleData';
@@ -91,9 +92,9 @@ export default function FriendsPage() {
                 className="p-4 rounded-2xl bg-slate-950/80 border border-slate-850 flex items-center justify-between gap-3"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden bg-slate-800 ring-2 ring-purple-500/30 shrink-0">
+                  <div className="w-10 h-10 rounded-full overflow-hidden bg-slate-800 ring-2 ring-purple-500/30 shrink-0 relative">
                     {r.requesterAvatar ? (
-                      <img src={r.requesterAvatar} alt={r.requesterName} className="w-full h-full object-cover" />
+                      <Image src={r.requesterAvatar} alt={r.requesterName} fill className="object-cover" unoptimized />
                     ) : (
                       <span className="font-bold text-xs text-white flex items-center justify-center h-full">
                         {r.requesterName.charAt(0)}
@@ -149,9 +150,9 @@ export default function FriendsPage() {
               className="p-4 rounded-2xl bg-slate-950/80 border border-slate-850 hover:border-teal-500/40 transition-all flex items-center justify-between gap-3 group"
             >
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-full overflow-hidden bg-slate-800 ring-2 ring-teal-500/30 shrink-0">
+                <div className="w-11 h-11 rounded-full overflow-hidden bg-slate-800 ring-2 ring-teal-500/30 shrink-0 relative">
                   {f.avatarUrl ? (
-                    <img src={f.avatarUrl} alt={f.displayName} className="w-full h-full object-cover" />
+                    <Image src={f.avatarUrl} alt={f.displayName} fill className="object-cover" unoptimized />
                   ) : (
                     <span className="font-bold text-sm text-white flex items-center justify-center h-full">
                       {f.displayName.charAt(0)}

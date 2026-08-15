@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Sparkles, Heart, BookOpen, MessageSquare, Tag, ThumbsUp } from 'lucide-react';
 import { StudyNote } from '@linguaflow/domain';
 import { Badge } from '@linguaflow/ui';
@@ -44,9 +45,9 @@ export default function StudyNoteCard({
           href={`/${locale}/community/profile/${note.userId}`}
           className="flex items-center gap-2.5 group"
         >
-          <div className="w-8 h-8 rounded-full ring-2 ring-purple-500/30 overflow-hidden bg-slate-800 flex items-center justify-center shrink-0">
+          <div className="w-8 h-8 rounded-full ring-2 ring-purple-500/30 overflow-hidden bg-slate-800 flex items-center justify-center shrink-0 relative">
             {note.authorAvatar ? (
-              <img src={note.authorAvatar} alt={note.authorName} className="w-full h-full object-cover" />
+              <Image src={note.authorAvatar} alt={note.authorName} fill className="object-cover" unoptimized />
             ) : (
               <span className="font-bold text-xs text-white">{note.authorName.charAt(0)}</span>
             )}

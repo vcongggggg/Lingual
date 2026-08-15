@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Eye, EyeOff, Zap, Plus, RotateCcw } from 'lucide-react';
 import { mascotReactions } from '@linguaflow/config';
@@ -569,11 +570,13 @@ export default function FloatingMascotUniverse() {
                       }`}
                     />
 
-                    <img
+                    <Image
                       src={m.src}
                       alt="Floating Draggable Cosmic LingLing"
+                      fill
+                      unoptimized
                       draggable={false}
-                      className="w-full h-full object-contain filter drop-shadow-[0_4px_14px_rgba(0,0,0,0.6)] group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.7)]"
+                      className="object-contain filter drop-shadow-[0_4px_14px_rgba(0,0,0,0.6)] group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.7)]"
                     />
                   </div>
                 </motion.div>

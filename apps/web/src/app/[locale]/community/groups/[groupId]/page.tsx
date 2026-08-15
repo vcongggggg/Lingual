@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Users, Trophy, MessageSquare, Send, Shield } from 'lucide-react';
 import { SAMPLE_STUDY_GROUPS } from '@/lib/community/sampleData';
 import { communityApi } from '@/lib/community/api';
@@ -161,9 +162,9 @@ export default function StudyGroupDetailPage() {
                 className="p-5 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-lg space-y-3"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full overflow-hidden bg-slate-800 ring-1 ring-purple-500/40">
+                  <div className="w-8 h-8 rounded-full overflow-hidden bg-slate-800 ring-1 ring-purple-500/40 relative shrink-0">
                     {post.authorAvatar ? (
-                      <img src={post.authorAvatar} alt={post.authorName} className="w-full h-full object-cover" />
+                      <Image src={post.authorAvatar} alt={post.authorName} fill className="object-cover" unoptimized />
                     ) : (
                       <span className="font-bold text-xs text-white flex items-center justify-center h-full">
                         {post.authorName.charAt(0)}
@@ -203,9 +204,9 @@ export default function StudyGroupDetailPage() {
                   className="p-3 rounded-2xl bg-slate-950/60 border border-slate-850 flex items-center justify-between gap-2"
                 >
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full overflow-hidden bg-slate-800 shrink-0">
+                    <div className="w-7 h-7 rounded-full overflow-hidden bg-slate-800 shrink-0 relative">
                       {m.userAvatar ? (
-                        <img src={m.userAvatar} alt={m.userName} className="w-full h-full object-cover" />
+                        <Image src={m.userAvatar} alt={m.userName} fill className="object-cover" unoptimized />
                       ) : (
                         <span className="font-bold text-[10px] text-white flex items-center justify-center h-full">
                           {m.userName.charAt(0)}

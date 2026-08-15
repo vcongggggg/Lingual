@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 import { springPresets, transitionPresets, useMotionAccessibility } from '@linguaflow/ui';
@@ -45,10 +46,12 @@ export default function MascotPopup({
           className="fixed bottom-6 right-6 z-50 flex items-center gap-3 max-w-sm p-3.5 pr-5 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-amber-500/40 shadow-2xl text-slate-100 pointer-events-auto"
         >
           <div className="relative w-16 h-16 shrink-0 -ml-1">
-            <img
+            <Image
               src={stickerSrc}
               alt="Mascot Reaction"
-              className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
+              fill
+              unoptimized
+              className="object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
             />
           </div>
           <div className="flex-1 min-w-0">

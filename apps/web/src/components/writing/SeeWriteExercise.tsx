@@ -100,10 +100,12 @@ export default function SeeWriteExercise({ prompt, locale }: SeeWriteExercisePro
         {/* Visual Image */}
         {prompt.imageHint ? (
           <div className="relative aspect-video sm:aspect-4/3 rounded-2xl overflow-hidden border border-slate-800 shadow-inner bg-slate-950">
-            <img
+            <Image
               src={prompt.imageHint}
               alt={prompt.title}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              unoptimized
             />
           </div>
         ) : (
