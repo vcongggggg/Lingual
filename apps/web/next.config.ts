@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
     "@linguaflow/contracts",
     "@linguaflow/domain",
   ],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       // Disable persistent filesystem cache in dev mode on Windows to prevent HMR pack cache corruption

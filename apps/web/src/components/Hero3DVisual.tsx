@@ -78,7 +78,7 @@ export default function Hero3DVisual() {
 
   // PHYSICS REFS TO ENSURE CONTINUOUS UNINTERRUPTED 60FPS ORBIT LOOP
   const rotationAngleRef = useRef(0);
-  const rotationSpeedRef = useRef(1.2); // Base auto-rotation speed (1.2 deg per frame)
+  const rotationSpeedRef = useRef(0.45); // Smooth & gentle base auto-rotation speed (0.45 deg per frame)
   const isDraggingRef = useRef(false);
   const isPausedRef = useRef(false);
   const selectedCardRef = useRef<OrbitCard | null>(null);
@@ -154,11 +154,11 @@ export default function Hero3DVisual() {
   };
 
   // Mouse & Touch Events
-  const onMouseDown = (e: React.MouseEvent) => {
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     handleDragStart(e.clientX);
   };
 
-  const onMouseMove = (e: React.MouseEvent) => {
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     handleMouseMove(e);
     if (isDraggingRef.current) {
       handleDragMove(e.clientX);
@@ -188,7 +188,7 @@ export default function Hero3DVisual() {
   // Mouse Wheel Scroll Speed Acceleration
   const handleWheel = (e: React.WheelEvent) => {
     const dir = e.deltaY > 0 ? -1 : 1;
-    const newSpeed = Math.max(-6, Math.min(6, rotationSpeedRef.current + dir * 0.6));
+    const newSpeed = Math.max(-5, Math.min(5, rotationSpeedRef.current + dir * 0.5));
     rotationSpeedRef.current = newSpeed;
   };
 
@@ -200,9 +200,12 @@ export default function Hero3DVisual() {
       const dt = Math.min((currentTime - lastTime) / 16.6, 2.0);
       lastTime = currentTime;
 
-      if (!isDraggingRef.current && !isPausedRef.current && !selectedCardRef.current) {
+      if (isDraggingRef.current) {
+        // Continuous smooth update during manual mouse dragging
+        setRotationAngle(rotationAngleRef.current);
+      } else if (!isPausedRef.current && !selectedCardRef.current) {
         let currentSpeed = rotationSpeedRef.current;
-        const targetBase = currentSpeed >= 0 ? 1.2 : -1.2;
+        const targetBase = currentSpeed >= 0 ? 0.45 : -0.45;
 
         // Inertia friction decay back to smooth base auto-orbit speed
         if (Math.abs(currentSpeed) > Math.abs(targetBase)) {
@@ -211,7 +214,7 @@ export default function Hero3DVisual() {
             currentSpeed = targetBase;
           }
           rotationSpeedRef.current = currentSpeed;
-        } else if (Math.abs(currentSpeed) < 0.2) {
+        } else if (Math.abs(currentSpeed) < 0.15) {
           rotationSpeedRef.current = targetBase;
         }
 
@@ -272,7 +275,7 @@ export default function Hero3DVisual() {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
       onWheel={handleWheel}
-      className={`relative w-full max-w-4xl h-[440px] sm:h-[500px] mx-auto flex items-center justify-center overflow-visible perspective-[1200px] select-none ${
+      className={`pointer-events-none relative w-full max-w-4xl h-[440px] sm:h-[500px] mx-auto flex items-center justify-center overflow-visible perspective-[1200px] select-none ${
         isDragging ? 'cursor-grabbing' : 'cursor-grab'
       }`}
     >
@@ -297,7 +300,7 @@ export default function Hero3DVisual() {
           transition={{
             scale: { repeat: Infinity, duration: 3.5, ease: 'easeInOut' },
           }}
-          className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-coral-500 via-amber-400 to-teal-400 p-1 shadow-[0_0_60px_rgba(245,158,11,0.45)] flex items-center justify-center z-10 select-none"
+          className="pointer-events-auto relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-coral-500 via-amber-400 to-teal-400 p-1 shadow-[0_0_60px_rgba(245,158,11,0.45)] flex items-center justify-center z-10 select-none"
         >
           <div className="w-full h-full bg-slate-950 rounded-full flex flex-col items-center justify-center p-4 border border-amber-400/40 backdrop-blur-xl">
             <Sparkles className="w-12 h-12 text-amber-400 animate-pulse mb-1" />
@@ -346,7 +349,7 @@ export default function Hero3DVisual() {
                 opacity,
                 filter,
               }}
-              className="absolute cursor-pointer select-none"
+              className="pointer-events-auto absolute cursor-pointer select-none"
             >
               {/* Card Body */}
               <div className="w-32 sm:w-44 h-20 sm:h-26 rounded-2xl bg-slate-900/95 border border-teal-500/40 p-3 shadow-xl backdrop-blur-md flex flex-col justify-between hover:border-amber-400 hover:scale-108 transition-all group">
@@ -380,7 +383,7 @@ export default function Hero3DVisual() {
       </motion.div>
 
       {/* SWIPE & ROTATION CONTROL TOOLBAR (BOTTOM BAR) */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-4 py-2 rounded-full bg-slate-900/90 border border-amber-500/30 shadow-2xl backdrop-blur-md text-xs font-bold">
+      <div className="pointer-events-auto absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-4 py-2 rounded-full bg-slate-900/90 border border-amber-500/30 shadow-2xl backdrop-blur-md text-xs font-bold">
         <button
           onClick={() => {
             rotationSpeedRef.current = -rotationSpeedRef.current;

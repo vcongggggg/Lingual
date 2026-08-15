@@ -26,7 +26,7 @@ export function clearAuthToken() {
   }
 }
 
-async function apiFetch<T = any>(endpoint: string, options: FetchOptions = {}): Promise<T> {
+export async function apiFetch<T = any>(endpoint: string, options: FetchOptions = {}): Promise<T> {
   const { skipAuth = false, headers: customHeaders, ...rest } = options;
 
   const headers: Record<string, string> = {
@@ -143,6 +143,139 @@ export const dictionaryApi = {
     apiFetch('/dictionary/add-to-srs', {
       method: 'POST',
       body: JSON.stringify({ wordId }),
+    }),
+};
+
+// ============================================================================
+// VOCABULARY API
+// ============================================================================
+
+export const vocabularyApi = {
+  search: (params: { q?: string; cefr?: string; category?: string; partOfSpeech?: string; page?: number; limit?: number }) => {
+    const queryParams = new URLSearchParams();
+    if (params.q) queryParams.set('q', params.q);
+    if (params.cefr) queryParams.set('cefr', params.cefr);
+    if (params.category) queryParams.set('category', params.category);
+    if (params.partOfSpeech) queryParams.set('partOfSpeech', params.partOfSpeech);
+    if (params.page) queryParams.set('page', params.page.toString());
+    if (params.limit) queryParams.set('limit', params.limit.toString());
+    return apiFetch(`/vocabulary/search?${queryParams.toString()}`);
+  },
+  getWord: (wordId: string) => apiFetch(`/vocabulary/word/${wordId}`),
+  getFolders: () => apiFetch('/vocabulary/folders'),
+  createFolder: (data: { name: string; description?: string; icon?: string; color?: string }) =>
+    apiFetch('/vocabulary/folders', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  updateFolder: (folderId: string, data: { name?: string; description?: string; color?: string; icon?: string }) =>
+    apiFetch(`/vocabulary/folders/${folderId}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+  deleteFolder: (folderId: string) =>
+    apiFetch(`/vocabulary/folders/${folderId}`, {
+      method: 'DELETE',
+    }),
+  addWordToFolder: (folderId: string, wordId: string) =>
+    apiFetch(`/vocabulary/folders/${folderId}/words`, {
+      method: 'POST',
+      body: JSON.stringify({ wordId }),
+    }),
+  removeWordFromFolder: (folderId: string, wordId: string) =>
+    apiFetch(`/vocabulary/folders/${folderId}/words/${wordId}`, {
+      method: 'DELETE',
+    }),
+  getSavedWords: (folderId?: string) => {
+    const query = folderId ? `?folderId=${folderId}` : '';
+    return apiFetch(`/vocabulary/saved${query}`);
+  },
+  saveWord: (data: { wordId?: string; targetText?: string; translation?: string; phonetic?: string; cefrLevel?: string }) =>
+    apiFetch('/vocabulary/save', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  getPractice: (params: { folderId?: string; limit?: number } = {}) => {
+    const queryParams = new URLSearchParams();
+    if (params.folderId) queryParams.set('folderId', params.folderId);
+    if (params.limit) queryParams.set('limit', params.limit.toString());
+    return apiFetch(`/vocabulary/practice?${queryParams.toString()}`);
+  },
+  submitPractice: (data: { questions: any[]; answers: any[] }) =>
+    apiFetch('/vocabulary/practice/submit', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+};
+
+// ============================================================================
+// WRITING API
+// ============================================================================
+
+export const writingApi = {
+  getPrompts: (params: { mode?: string; difficulty?: string; category?: string } = {}) => {
+    const queryParams = new URLSearchParams();
+    if (params.mode) queryParams.set('mode', params.mode);
+    if (params.difficulty) queryParams.set('difficulty', params.difficulty);
+    if (params.category) queryParams.set('category', params.category);
+    return apiFetch(`/writing/prompts?${queryParams.toString()}`);
+  },
+  analyze: (data: { promptId?: string; mode?: string; content: string; usedHint?: boolean; durationMs?: number }) =>
+    apiFetch('/writing/analyze', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  submitAttempt: (data: {
+    promptId?: string;
+    mode?: string;
+    content: string;
+    score: number;
+    xpAwarded: number;
+    durationMs?: number;
+  }) =>
+    apiFetch('/writing/attempts', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  getHistory: () => apiFetch('/writing/history'),
+  getStats: () => apiFetch('/writing/stats'),
+};
+
+// ============================================================================
+// READING API
+// ============================================================================
+
+export const readingApi = {
+  getArticles: (params: { level?: string; topic?: string; mode?: string } = {}) => {
+    const queryParams = new URLSearchParams();
+    if (params.level) queryParams.set('level', params.level);
+    if (params.topic) queryParams.set('topic', params.topic);
+    if (params.mode) queryParams.set('mode', params.mode);
+    return apiFetch(`/reading/articles?${queryParams.toString()}`);
+  },
+  getArticle: (id: string) => apiFetch(`/reading/articles/${id}`),
+  getQuestions: (id: string) => apiFetch(`/reading/articles/${id}/questions`),
+  submitAttempt: (data: {
+    articleId: string;
+    mode?: string;
+    answers: { questionId: string; selectedOption: string }[];
+    elapsedSeconds: number;
+  }) =>
+    apiFetch('/reading/attempts', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  getHistory: () => apiFetch('/reading/history'),
+  getStats: () => apiFetch('/reading/stats'),
+  saveProgress: (data: { articleId: string; currentParagraph: number; scrollProgress: number }) =>
+    apiFetch('/reading/progress', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  saveVocabulary: (data: { word: string; meaning?: string; cefrLevel?: string; articleId?: string }) =>
+    apiFetch('/reading/vocabulary/save', {
+      method: 'POST',
+      body: JSON.stringify(data),
     }),
 };
 
@@ -277,6 +410,12 @@ export const adminApi = {
   updateConfig: (configData: any) =>
     apiFetch('/admin/config', { method: 'POST', body: JSON.stringify(configData) }),
 };
+
+export { examsApi } from './exams/api';
+export { communityApi } from './community/api';
+export { analyticsApi } from './analytics/analyticsApi';
+export { speakingApi } from './speaking/api';
+export { tutorApi } from './tutor/tutorApi';
 
 export { API_BASE_URL };
 export default apiFetch;

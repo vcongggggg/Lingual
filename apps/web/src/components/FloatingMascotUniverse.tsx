@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Eye, EyeOff, Zap, Plus, RotateCcw } from 'lucide-react';
 import { mascotReactions } from '@linguaflow/config';
 
@@ -17,6 +17,7 @@ interface MascotItem {
   dialogue: string;
   dragDialogue: string;
   rotateDeg: number;
+  warpCount?: number;
 }
 
 const INITIAL_MASCOTS: MascotItem[] = [
@@ -128,7 +129,7 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm9',
     src: '/mascot/cow_jump_angry.png',
     size: 'lg',
-    x: 7,
+    x: 24,
     y: 28,
     depth: 'front',
     floatDuration: 6.2,
@@ -141,8 +142,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm10',
     src: '/mascot/cow_cry_soft.png',
     size: 'xs',
-    x: 12,
-    y: 82,
+    x: 35,
+    y: 48,
     depth: 'far',
     floatDuration: 13,
     floatDistance: 10,
@@ -154,8 +155,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm11',
     src: '/mascot/cow_back_view.png',
     size: 'sm',
-    x: 88,
-    y: 28,
+    x: 68,
+    y: 26,
     depth: 'far',
     floatDuration: 11.5,
     floatDistance: 16,
@@ -167,8 +168,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm12',
     src: '/mascot/raw/mascot_sticker_clean_01.png',
     size: 'md',
-    x: 85,
-    y: 42,
+    x: 75,
+    y: 48,
     depth: 'mid',
     floatDuration: 8.2,
     floatDistance: 20,
@@ -180,8 +181,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm13',
     src: '/mascot/raw/mascot_sticker_clean_03.png',
     size: 'xs',
-    x: 14,
-    y: 88,
+    x: 28,
+    y: 65,
     depth: 'far',
     floatDuration: 14,
     floatDistance: 12,
@@ -193,8 +194,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm14',
     src: '/mascot/raw/mascot_sticker_clean_05.png',
     size: 'lg',
-    x: 8,
-    y: 64,
+    x: 62,
+    y: 68,
     depth: 'front',
     floatDuration: 6.8,
     floatDistance: 25,
@@ -206,8 +207,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm15',
     src: '/mascot/raw/mascot_sticker_clean_08.png',
     size: 'sm',
-    x: 86,
-    y: 76,
+    x: 42,
+    y: 78,
     depth: 'mid',
     floatDuration: 9.5,
     floatDistance: 16,
@@ -232,8 +233,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm17',
     src: '/mascot/raw/mascot_sticker_clean_15.png',
     size: 'md',
-    x: 4,
-    y: 36,
+    x: 18,
+    y: 38,
     depth: 'mid',
     floatDuration: 8.8,
     floatDistance: 21,
@@ -245,8 +246,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm18',
     src: '/mascot/raw/mascot_sticker_clean_20.png',
     size: 'sm',
-    x: 48,
-    y: 94,
+    x: 52,
+    y: 34,
     depth: 'far',
     floatDuration: 10.5,
     floatDistance: 14,
@@ -258,8 +259,8 @@ const INITIAL_MASCOTS: MascotItem[] = [
     id: 'm19',
     src: '/mascot/raw/mascot_sticker_clean_25.png',
     size: 'lg',
-    x: 84,
-    y: 34,
+    x: 60,
+    y: 42,
     depth: 'front',
     floatDuration: 7.0,
     floatDistance: 24,
@@ -295,15 +296,9 @@ export default function FloatingMascotUniverse() {
   const [activeMascotId, setActiveMascotId] = useState<string | null>(null);
   const [draggingMascotId, setDraggingMascotId] = useState<string | null>(null);
   const [xpPops, setXpPops] = useState<XPPop[]>([]);
+  const mousePosRef = useRef({ x: 0, y: 0 });
 
-  // Framer Motion values for lag-free, non-re-rendering mouse tracking
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothMouseX = useSpring(mouseX, { stiffness: 60, damping: 20 });
-  const smoothMouseY = useSpring(mouseY, { stiffness: 60, damping: 20 });
-
-  // Mouse Parallax Track (updates MotionValues directly, avoiding React state updates)
+  // Mouse Parallax Track (Direct DOM CSS Variable update for 120fps zero-re-render performance)
   useEffect(() => {
     if (!enabled) return;
 
@@ -311,13 +306,18 @@ export default function FloatingMascotUniverse() {
       const { innerWidth, innerHeight } = window;
       const xVal = (e.clientX / innerWidth - 0.5) * 2;
       const yVal = (e.clientY / innerHeight - 0.5) * 2;
-      mouseX.set(xVal);
-      mouseY.set(yVal);
+      mousePosRef.current = { x: xVal, y: yVal };
+
+      const layer = document?.getElementById('mascot-universe-layer');
+      if (layer && layer.style) {
+        layer.style.setProperty('--mouse-x', xVal.toFixed(3));
+        layer.style.setProperty('--mouse-y', yVal.toFixed(3));
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [enabled, mouseX, mouseY]);
+  }, [enabled]);
 
   // Mascot Click & Drag Release XP Particle Burst
   const triggerXPBurst = (clientX: number, clientY: number, amount = '+15 XP ✨') => {
@@ -329,48 +329,56 @@ export default function FloatingMascotUniverse() {
     };
 
     setXpPops((prev) => [...prev, newPop]);
-
     setTimeout(() => {
       setXpPops((prev) => prev.filter((p) => p.id !== newPop.id));
-    }, 1500);
+    }, 1200);
   };
 
+  // Mascot Click Response (XP + Dialogue trigger)
   const handleMascotClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    triggerXPBurst(e.clientX, e.clientY, '+20 XP 🌟');
+    triggerXPBurst(e.clientX, e.clientY, '+15 XP ✨');
   };
 
-  // Add Dynamic Extra Mascots (+5)
+  // Add 5 Random Mascots to Universe
   const handleAddMoreMascots = () => {
-    const extraStickies = [
-      mascotReactions.greet,
-      mascotReactions.celebrate_big,
-      mascotReactions.focus_mode,
-      mascotReactions.challenge,
-      '/mascot/raw/mascot_sticker_clean_04.png',
-      '/mascot/raw/mascot_sticker_clean_07.png',
-      '/mascot/raw/mascot_sticker_clean_10.png',
+    const rawStickers = [
+      '/mascot/raw/mascot_sticker_clean_01.png',
+      '/mascot/raw/mascot_sticker_clean_03.png',
+      '/mascot/raw/mascot_sticker_clean_05.png',
+      '/mascot/raw/mascot_sticker_clean_08.png',
+      '/mascot/raw/mascot_sticker_clean_12.png',
+      '/mascot/raw/mascot_sticker_clean_15.png',
+      '/mascot/raw/mascot_sticker_clean_20.png',
+      '/mascot/raw/mascot_sticker_clean_25.png',
     ];
 
-    const newMascots: MascotItem[] = Array.from({ length: 5 }).map((_, idx) => ({
+    const dialogues = [
+      'Siêu chiến binh IELTS! 🛡️',
+      'Luyện từ vựng thông minh! ⚡',
+      'Lingual AI luôn bên bạn! 🤖',
+      'Học vui 5 phút mỗi ngày! 🎈',
+      'Chinh phục Band 8.0! 🏆',
+    ];
+
+    const newItems: MascotItem[] = Array.from({ length: 5 }).map((_, idx) => ({
       id: `extra_${Date.now()}_${idx}`,
-      src: extraStickies[Math.floor(Math.random() * extraStickies.length)],
+      src: rawStickers[Math.floor(Math.random() * rawStickers.length)],
       size: (['sm', 'md', 'lg'] as const)[Math.floor(Math.random() * 3)],
       x: Math.floor(Math.random() * 85) + 5,
       y: Math.floor(Math.random() * 85) + 5,
-      depth: (['far', 'mid', 'front'] as const)[Math.floor(Math.random() * 3)],
-      floatDuration: Math.random() * 6 + 6,
-      floatDistance: Math.floor(Math.random() * 15) + 15,
-      dialogue: 'Tớ vừa gia nhập vũ trụ nè! 🐮✨',
-      dragDialogue: 'Woah! Siêu bò trôi tự do! 🚀',
+      depth: (['front', 'mid', 'far'] as const)[Math.floor(Math.random() * 3)],
+      floatDuration: Math.floor(Math.random() * 8) + 6,
+      floatDistance: Math.floor(Math.random() * 15) + 10,
+      dialogue: dialogues[Math.floor(Math.random() * dialogues.length)],
+      dragDialogue: 'Tớ vừa tham gia vũ trụ Lingual! 🚀',
       rotateDeg: Math.floor(Math.random() * 30) - 15,
     }));
 
-    setMascots((prev) => [...prev, ...newMascots]);
+    setMascots((prev) => [...prev, ...newItems]);
   };
 
-  // Reset Mascot Positions
-  const handleResetPositions = () => {
+  // Reset Mascot Universe to Default Layout
+  const handleResetUniverse = () => {
     setMascots(INITIAL_MASCOTS);
   };
 
@@ -379,11 +387,9 @@ export default function FloatingMascotUniverse() {
       <div className="fixed bottom-4 left-4 z-40">
         <button
           onClick={() => setEnabled(true)}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-slate-400 hover:text-amber-400 hover:border-amber-500/40 text-xs font-bold shadow-lg backdrop-blur-md transition-all active:scale-95"
-          title="Bật Bò LingLing Vũ Trụ"
+          className="px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700 text-slate-300 text-xs font-bold shadow-lg hover:border-amber-400 hover:text-white transition-all flex items-center gap-1.5"
         >
-          <Eye className="w-3.5 h-3.5" />
-          <span>Vũ Trụ LingLing (OFF)</span>
+          <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Bật Vũ Trụ Mascot
         </button>
       </div>
     );
@@ -403,14 +409,8 @@ export default function FloatingMascotUniverse() {
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:28px_28px] opacity-20" />
       </div>
 
-      {/* INTERACTIVE FLOATING MASCOTS LAYER (Z-20 ABOVE PAGE BODY, BELOW BUTTONS) */}
-      <div
-        className="fixed inset-0 pointer-events-none z-20 overflow-hidden select-none"
-        style={{
-          '--mouse-x': smoothMouseX,
-          '--mouse-y': smoothMouseY,
-        } as any}
-      >
+      {/* INTERACTIVE FLOATING MASCOTS LAYER (Z-[1] BEHIND PAGE CONTENT & CARDS) */}
+      <div id="mascot-universe-layer" className="fixed inset-0 pointer-events-none z-[1] overflow-hidden select-none">
 
         {/* FLOATING & DRAGGABLE MASCOT ENTITIES */}
         {mascots.map((m) => {
@@ -425,23 +425,68 @@ export default function FloatingMascotUniverse() {
 
           return (
             <motion.div
-              key={m.id}
+              key={`${m.id}_${m.warpCount || 0}`}
               className="absolute pointer-events-auto cursor-grab active:cursor-grabbing"
               style={{
                 left: `${m.x}%`,
                 top: `${m.y}%`,
                 opacity: initialOpacity,
               }}
-              // Interactive Drag & Drop Physics
+              // Interactive Drag & Drop Physics with Stable Drop Positioning & Symmetrical Warp
               drag
-              dragSnapToOrigin={true}
-              dragElastic={0.15}
-              dragTransition={{ bounceStiffness: 200, bounceDamping: 18 }}
+              dragSnapToOrigin={false}
+              dragElastic={0.05}
               onDragStart={() => setDraggingMascotId(m.id)}
-              onDragEnd={(e: any) => {
+              onDragEnd={(_e: any, info: any) => {
                 setDraggingMascotId(null);
-                if (e?.clientX && e?.clientY) {
-                  triggerXPBurst(e.clientX, e.clientY, '+25 XP 🚀');
+                const pt = info?.point;
+                if (pt?.x !== undefined && pt?.y !== undefined) {
+                  const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1280;
+                  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+
+                  let newXPercent = (pt.x / windowWidth) * 100;
+                  let newYPercent = (pt.y / windowHeight) * 100;
+
+                  let isWrapped = false;
+
+                  // Symmetrical Screen Boundary Wrap Logic
+                  if (newXPercent > 94) {
+                    newXPercent = 5;
+                    isWrapped = true;
+                  } else if (newXPercent < 2) {
+                    newXPercent = 92;
+                    isWrapped = true;
+                  }
+
+                  if (newYPercent > 94) {
+                    newYPercent = 6;
+                    isWrapped = true;
+                  } else if (newYPercent < 2) {
+                    newYPercent = 88;
+                    isWrapped = true;
+                  }
+
+                  // Only re-position state & reset drag offset if mascot exited screen boundaries!
+                  if (isWrapped) {
+                    setMascots((prev) =>
+                      prev.map((item) =>
+                        item.id === m.id
+                          ? {
+                              ...item,
+                              x: Math.min(92, Math.max(3, Math.round(newXPercent))),
+                              y: Math.min(90, Math.max(4, Math.round(newYPercent))),
+                              warpCount: (item.warpCount || 0) + 1,
+                            }
+                          : item
+                      )
+                    );
+                  }
+
+                  triggerXPBurst(
+                    isWrapped ? (newXPercent * windowWidth) / 100 : pt.x,
+                    isWrapped ? (newYPercent * windowHeight) / 100 : pt.y,
+                    isWrapped ? 'Dịch Chuyển Không Gian! 🌀' : '+25 XP 🚀'
+                  );
                 }
               }}
               whileHover={{ scale: 1.35, zIndex: 40 }}
@@ -451,13 +496,13 @@ export default function FloatingMascotUniverse() {
               onHoverEnd={() => setActiveMascotId(null)}
               onClick={handleMascotClick}
             >
-              {/* CSS Parallax Wrapper Container (Performs calculation at 120fps+ directly in DOM) */}
+              {/* CSS Parallax Wrapper Container */}
               <div
                 style={{
                   transform: (isHovered || isDragging)
-                    ? 'translate3d(0px, 0px, 0px)'
-                    : `translate3d(calc(var(--mouse-x) * ${depthMultiplier}px), calc(var(--mouse-y) * ${depthMultiplier}px), 0px)`,
-                  transition: 'transform 0.25s cubic-bezier(0.1, 0.8, 0.15, 1)', // Smooth lag
+                    ? 'none'
+                    : `translate3d(calc(var(--mouse-x, 0) * ${depthMultiplier}px), calc(var(--mouse-y, 0) * ${depthMultiplier}px), 0px)`,
+                  transition: 'transform 0.15s ease-out',
                 }}
               >
                 <motion.div
@@ -575,7 +620,7 @@ export default function FloatingMascotUniverse() {
         </button>
 
         <button
-          onClick={handleResetPositions}
+          onClick={handleResetUniverse}
           className="p-1.5 rounded-full bg-slate-900/80 hover:bg-slate-900 border border-slate-800 text-slate-400 hover:text-white text-[11px] shadow-lg backdrop-blur-md transition-all active:scale-95"
           title="Đặt lại vị trí mặc định"
         >

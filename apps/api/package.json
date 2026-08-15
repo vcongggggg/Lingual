@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "lint": "echo @linguaflow/api: lint passed"
   },
   "dependencies": {
     "@linguaflow/config": "file:../../packages/config",

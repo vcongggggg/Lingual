@@ -405,7 +405,7 @@ export default function LingLingChatbot() {
             )}
 
             {/* Messages Body */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-3.5">
+            <div className="flex-1 p-4 overflow-y-auto space-y-3.5 custom-scrollbar">
               {messages.map((m) => (
                 <div
                   key={m.id}

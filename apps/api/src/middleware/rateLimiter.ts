@@ -16,10 +16,10 @@ export const authLimiter = rateLimit({
   statusCode: 429,
 });
 
-// 2. Global API Rate Limiter: Tối đa 100 requests mỗi 1 phút per IP
+// 2. Global API Rate Limiter: Tối đa 1000 requests mỗi 1 phút per IP
 export const globalApiLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 phút
-  limit: 100,
+  limit: 1000,
   standardHeaders: true,
   legacyHeaders: false,
   message: {

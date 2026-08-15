@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XPBadge, StreakBadge } from '@linguaflow/ui';
-import { BookOpen, Gamepad2, Brain, Shield, Sparkles, Globe, Search, Menu, X, User, Trophy, Target, LogOut } from 'lucide-react';
+import { BookOpen, Gamepad2, Brain, Shield, Sparkles, Globe, Search, Menu, X, User, Trophy, Target, LogOut, Headphones, PenTool, FileText, Users, Activity, Mic, Bot } from 'lucide-react';
 import LingLingChatbot from '@/components/LingLingChatbot';
 import MascotPopup from '@/components/MascotPopup';
 import FloatingMascotUniverse from '@/components/FloatingMascotUniverse';
@@ -27,19 +27,25 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   });
 
   const handleLogout = () => {
+    localStorage.removeItem('lingual_token');
+    localStorage.removeItem('lingual_user');
     setPopupState({
       show: true,
       key: 'farewell',
-      title: 'Hẹn gặp lại! 👋',
-      msg: 'Bò LingLing quay lưng bước đi... Hẹn bạn buổi học tới!',
+      title: 'Đăng xuất',
+      msg: 'Hẹn gặp lại bạn sớm nhé! Hãy tiếp tục duy trì chuỗi học mỗi ngày!',
     });
   };
 
 
   useEffect(() => {
     const handleXPUpdate = (e: any) => {
-      if (e.detail?.totalXP) setUserXP(e.detail.totalXP);
-      if (e.detail?.streakDays) setStreakDays(e.detail.streakDays);
+      if (e.detail?.totalXP !== undefined) {
+        setUserXP(e.detail.totalXP);
+      }
+      if (e.detail?.streakDays !== undefined) {
+        setStreakDays(e.detail.streakDays);
+      }
     };
     window.addEventListener('linguaflow_xp_update', handleXPUpdate);
     return () => window.removeEventListener('linguaflow_xp_update', handleXPUpdate);
@@ -52,8 +58,16 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 
   const navLinks = [
     { href: `/${locale}/dashboard`, label: locale === 'vi' ? 'Lộ Trình Học' : 'Path', icon: <BookOpen className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Học' : 'Learn' },
+    { href: `/${locale}/tutor`, label: 'AI Tutor', icon: <Bot className="w-4 h-4" />, mobileLabel: 'Tutor' },
+    { href: `/${locale}/analytics`, label: locale === 'vi' ? 'Phân Tích' : 'Analytics', icon: <Activity className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Phân tích' : 'Stats' },
+    { href: `/${locale}/speaking`, label: locale === 'vi' ? 'Luyện Nói' : 'Speaking', icon: <Mic className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Nói' : 'Speak' },
+    { href: `/${locale}/listening`, label: locale === 'vi' ? 'Luyện Nghe' : 'Listening', icon: <Headphones className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Nghe' : 'Listen' },
+    { href: `/${locale}/writing`, label: locale === 'vi' ? 'Luyện Viết' : 'Writing Lab', icon: <PenTool className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Viết' : 'Write' },
+    { href: `/${locale}/reading`, label: locale === 'vi' ? 'Luyện Đọc' : 'Reading Lab', icon: <FileText className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Đọc' : 'Read' },
+    { href: `/${locale}/vocabulary`, label: locale === 'vi' ? 'Kho Từ Vựng' : 'Vocabulary', icon: <Search className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Từ Vựng' : 'Vocab' },
+    { href: `/${locale}/community`, label: locale === 'vi' ? 'Cộng Đồng' : 'Community', icon: <Users className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Cộng đồng' : 'Social' },
+    { href: `/${locale}/exam-practice`, label: locale === 'vi' ? 'Thi Thử' : 'Exam Lab', icon: <Trophy className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Thi' : 'Exams' },
     { href: `/${locale}/ielts`, label: locale === 'vi' ? 'Luyện Thi IELTS' : 'IELTS Prep', icon: <Target className="w-4 h-4" />, mobileLabel: 'IELTS' },
-    { href: `/${locale}/dictionary`, label: locale === 'vi' ? 'Từ Điển' : 'Dictionary', icon: <Search className="w-4 h-4" />, mobileLabel: locale === 'vi' ? 'Từ Điển' : 'Dict' },
     { href: `/${locale}/srs`, label: locale === 'vi' ? 'Thẻ SRS' : 'SRS Cards', icon: <Brain className="w-4 h-4" />, mobileLabel: 'SRS' },
     { href: `/${locale}/games`, label: locale === 'vi' ? 'Game Center' : 'Games', icon: <Gamepad2 className="w-4 h-4" />, mobileLabel: 'Games' },
   ];
@@ -86,9 +100,9 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   return (
     <AuthProvider>
       <FloatingMascotUniverse />
-      <div className="min-h-screen flex flex-col bg-transparent text-slate-100 font-body relative z-10">
+      <div className="min-h-screen flex flex-col bg-transparent text-slate-100 font-body relative z-10 pointer-events-none">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl pointer-events-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           {/* Logo with Peeking Cow Mascot */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group relative">
@@ -268,12 +282,12 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
       </AnimatePresence>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 pb-24 md:pb-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 pb-24 md:pb-8 pointer-events-none [&_button]:pointer-events-auto [&_a]:pointer-events-auto [&_input]:pointer-events-auto [&_textarea]:pointer-events-auto [&_.pointer-events-auto]:pointer-events-auto">
         {children}
       </main>
 
       {/* Mobile Bottom Tab Bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 px-2 py-1 safe-bottom">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 px-2 py-1 safe-bottom pointer-events-auto">
         <div className="flex items-center justify-around">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
