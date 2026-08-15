@@ -40,6 +40,15 @@ model User {
   ieltsAttempts    IeltsMockAttempt[]
   ieltsWritings    IeltsWritingSubmission[]
   chatSessions     ChatSession[]
+  writingAttempts  WritingAttempt[]
+  speakingAttempts SpeakingAttempt[]
+  readingAttempts  ReadingAttempt[]
+  examAttempts     ExamAttempt[]
+  communityProfile CommunityProfile?
+  studyNotes       StudyNote[]
+  goals            LearningGoal[]
+  activityLogs     DailyActivityLog[]
+  folders          VocabularyFolder[]
 
   @@map("users")
 }
@@ -320,4 +329,257 @@ model ChatMessage {
 
   @@map("chat_messages")
 }
+
+// ============================================================================
+// LAB 13: WRITING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model WritingAttempt {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  promptId   String
+  mode       String   // "see-write" | "guided" | "free"
+  content    String
+  wordCount  Int
+  score      Int
+  xpAwarded  Int      @default(0)
+  durationMs Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("writing_attempts")
+}
+
+// ============================================================================
+// LAB 14: READING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model ReadingAttempt {
+  id                 String   @id @default(uuid())
+  userId             String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  articleId          String
+  readingTimeSeconds Int
+  wpm                Int
+  score              Int
+  accuracy           Float
+  xpAwarded          Int      @default(0)
+  answersJson        String   // JSON string of question responses
+  createdAt          DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("reading_attempts")
+}
+
+// ============================================================================
+// LAB 15: STANDARDIZED EXAM PRACTICE PERSISTENCE MODELS
+// ============================================================================
+
+model ExamAttempt {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  examId         String
+  status         String   @default("active") // "active" | "completed" | "expired"
+  startedAt      DateTime @default(now())
+  expiresAt      DateTime
+  submittedAt    DateTime?
+  elapsedSeconds Int      @default(0)
+  answersJson    String   @default("[]") // JSON string of selected answers
+  resultJson     String?  // JSON string of evaluated results
+  createdAt      DateTime @default(now())
+
+  @@index([userId, status])
+  @@map("exam_attempts")
+}
+
+// ============================================================================
+// LAB 16: COMMUNITY & SOCIAL LEARNING PERSISTENCE MODELS
+// ============================================================================
+
+model CommunityProfile {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio            String   @default("")
+  avatar         String   @default("mascot-scholar")
+  targetLanguage String   @default("en")
+  currentLevel   String   @default("B1 Intermediate")
+  visibility     String   @default("public") // "public" | "friends_only" | "private"
+  badgesJson     String   @default("[]")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("community_profiles")
+}
+
+model Friendship {
+  id          String   @id @default(uuid())
+  requesterId String
+  addresseeId String
+  status      String   @default("accepted") // "pending" | "accepted" | "blocked"
+  createdAt   DateTime @default(now())
+
+  @@unique([requesterId, addresseeId])
+  @@index([requesterId])
+  @@index([addresseeId])
+  @@map("friendships")
+}
+
+model StudyNote {
+  id         String        @id @default(uuid())
+  authorId   String
+  author     User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  title      String
+  content    String
+  tagsJson   String        @default("[]")
+  likesCount Int           @default(0)
+  isPublic   Boolean       @default(true)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  comments   NoteComment[]
+  reactions  NoteReaction[]
+
+  @@index([authorId, createdAt])
+  @@map("study_notes")
+}
+
+model NoteComment {
+  id        String    @id @default(uuid())
+  noteId    String
+  note      StudyNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  authorId  String
+  content   String
+  createdAt DateTime  @default(now())
+
+  @@index([noteId])
+  @@map("note_comments")
+}
+
+model NoteReaction {
+  id        String    @id @default(uuid())
+  noteId    String
+  note      StudyNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  userId    String
+  type      String    // "like" | "celebrate" | "insightful" | "helpful"
+  createdAt DateTime  @default(now())
+
+  @@unique([noteId, userId, type])
+  @@map("note_reactions")
+}
+
+model StudyGroup {
+  id             String        @id @default(uuid())
+  name           String
+  description    String
+  targetLanguage String        @default("en")
+  level          String        @default("Intermediate")
+  ownerId        String
+  isPrivate      Boolean       @default(false)
+  createdAt      DateTime      @default(now())
+  members        GroupMember[]
+
+  @@map("study_groups")
+}
+
+model GroupMember {
+  id       String     @id @default(uuid())
+  groupId  String
+  group    StudyGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  userId   String
+  role     String     @default("member") // "owner" | "admin" | "member"
+  joinedAt DateTime   @default(now())
+
+  @@unique([groupId, userId])
+  @@index([userId])
+  @@map("group_members")
+}
+
+// ============================================================================
+// LAB 17: LEARNING ANALYTICS & GOALS PERSISTENCE MODELS
+// ============================================================================
+
+model LearningGoal {
+  id                 String   @id @default(uuid())
+  userId             String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetDailyMinutes Int      @default(30)
+  targetWeeklyXP     Int      @default(500)
+  targetSkill        String   @default("all")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([userId])
+  @@map("learning_goals")
+}
+
+model DailyActivityLog {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date             String   // Formatted YYYY-MM-DD
+  activeMinutes    Int      @default(0)
+  xpEarned         Int      @default(0)
+  lessonsCompleted Int      @default(0)
+  reviewsCompleted Int      @default(0)
+  createdAt        DateTime @default(now())
+
+  @@unique([userId, date])
+  @@index([userId, date])
+  @@map("daily_activity_logs")
+}
+
+// ============================================================================
+// LAB 18: SPEAKING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model SpeakingAttempt {
+  id                  String   @id @default(uuid())
+  userId              String
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  promptId            String
+  mode                String   // "repetition" | "shadowing" | "picture" | "guided" | "situation" | "pronunciation" | "free"
+  transcript          String
+  durationMs          Int      @default(0)
+  score               Int
+  pronunciationScore  Int
+  fluencyScore        Int
+  xpAwarded           Int      @default(0)
+  createdAt           DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("speaking_attempts")
+}
+
+// ============================================================================
+// LAB 12: VOCABULARY FOLDERS PERSISTENCE MODELS
+// ============================================================================
+
+model VocabularyFolder {
+  id        String             @id @default(uuid())
+  userId    String
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  color     String             @default("blue")
+  icon      String             @default("folder")
+  createdAt DateTime           @default(now())
+  items     FolderVocabulary[]
+
+  @@index([userId])
+  @@map("vocabulary_folders")
+}
+
+model FolderVocabulary {
+  id       String           @id @default(uuid())
+  folderId String
+  folder   VocabularyFolder @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  wordId   String
+  addedAt  DateTime         @default(now())
+
+  @@unique([folderId, wordId])
+  @@index([folderId])
+  @@map("folder_vocabularies")
+}
+
 

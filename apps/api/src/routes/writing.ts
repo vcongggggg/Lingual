@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { MOCK_USERS } from './auth.js';
+import { writingRepository, userRepository } from '../repositories/index.js';
 import {
   evaluateWritingSubmission,
   updateStreakWithTimezone,
@@ -169,7 +170,7 @@ writingRouter.post('/analyze', (req, res) => {
  * POST /api/v1/writing/attempts
  * Hardened with Server-side Authoritative Evaluation (Anti-cheat & Trust Boundary Protection)
  */
-writingRouter.post('/attempts', (req, res) => {
+writingRouter.post('/attempts', async (req, res) => {
   const {
     promptId,
     mode = 'see-write',
@@ -210,26 +211,24 @@ writingRouter.post('/attempts', (req, res) => {
   const authoritativeXP = evaluation.xpAwarded;
 
   // Idempotency check: prevent duplicate rapid double submits from inflating XP/streak
-  const recentDuplicate = MOCK_WRITING_ATTEMPTS.find(
-    (a) =>
-      a.userId === userId &&
-      a.promptId === (promptId || 'custom') &&
-      a.content === content.trim() &&
-      Date.now() - new Date(a.createdAt).getTime() < 5000
+  const recentDuplicate = await writingRepository.findRecentDuplicate(
+    userId,
+    promptId || 'custom',
+    content
   );
 
   if (recentDuplicate) {
-    const user = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0];
+    const user = (await userRepository.findById(userId)) || (await userRepository.findById('demo-user-id-001'));
     return res.status(200).json({
       attempt: recentDuplicate,
-      currentStreak: user.currentStreak,
-      totalXP: user.totalXP,
+      currentStreak: user?.currentStreak || 0,
+      totalXP: user?.totalXP || 0,
       isDuplicate: true,
       message: 'Bài viết đã được ghi nhận trước đó.',
     });
   }
 
-  const newAttempt = {
+  const newAttempt = await writingRepository.createAttempt({
     id: `att-w-${Date.now()}`,
     userId,
     promptId: promptId || 'custom',
@@ -240,29 +239,32 @@ writingRouter.post('/attempts', (req, res) => {
     xpAwarded: authoritativeXP,
     durationMs,
     createdAt: new Date().toISOString(),
-  };
+  });
 
-  MOCK_WRITING_ATTEMPTS.push(newAttempt);
-
-  // Authoritatively update user XP & Streak
-  const user = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0];
+  // Authoritatively update user XP & Streak via UserRepository
+  const user = (await userRepository.findById(userId)) || (await userRepository.findById('demo-user-id-001'));
   const streakResult = updateStreakWithTimezone(
     {
-      currentStreak: user.currentStreak,
-      streakFreezes: user.streakFreezes,
-      lastActiveDate: user.lastActiveDate,
+      currentStreak: user?.currentStreak || 0,
+      streakFreezes: user?.streakFreezes || 1,
+      lastActiveDate: user?.lastActiveDate || null,
     },
     new Date(),
-    user.timezone
+    user?.timezone || 'Asia/Ho_Chi_Minh'
   );
 
-  user.currentStreak = streakResult.currentStreak;
-  user.totalXP += authoritativeXP;
+  const updatedUser = await userRepository.updateStreakAndXP(
+    userId,
+    streakResult.currentStreak,
+    streakResult.streakFreezes,
+    streakResult.lastActiveDate || new Date().toISOString().split('T')[0],
+    authoritativeXP
+  );
 
   return res.status(201).json({
     attempt: newAttempt,
-    currentStreak: user.currentStreak,
-    totalXP: user.totalXP,
+    currentStreak: updatedUser.currentStreak,
+    totalXP: updatedUser.totalXP,
     message: 'Lưu kết quả bài viết thành công!',
   });
 });
@@ -270,11 +272,9 @@ writingRouter.post('/attempts', (req, res) => {
 /**
  * GET /api/v1/writing/history
  */
-writingRouter.get('/history', (req, res) => {
+writingRouter.get('/history', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const history = MOCK_WRITING_ATTEMPTS.filter((a) => a.userId === userId).sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
+  const history = await writingRepository.getUserAttempts(userId);
 
   return res.json({ history, total: history.length });
 });
@@ -282,7 +282,7 @@ writingRouter.get('/history', (req, res) => {
 /**
  * GET /api/v1/writing/stats
  */
-writingRouter.get('/stats', (req, res) => {
+writingRouter.get('/stats', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
   const userAttempts = MOCK_WRITING_ATTEMPTS.filter((a) => a.userId === userId);
 

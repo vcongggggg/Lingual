@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { MOCK_USERS } from './auth.js';
 import { MASTER_EXAMS } from './examData.js';
+import { examRepository, userRepository } from '../repositories/index.js';
 import {
   createExamAttempt,
   sanitizePublicExam,
@@ -50,32 +51,18 @@ examsRouter.get('/', (req, res) => {
 
   let filtered = MASTER_EXAMS;
   if (type && type !== 'all') {
-    filtered = filtered.filter((e) => e.type === (type as string).toLowerCase());
+    filtered = filtered.filter((e) => e.type.toLowerCase() === (type as string).toLowerCase());
   }
   if (level && level !== 'all') {
-    filtered = filtered.filter((e) => e.difficulty === level);
+    filtered = filtered.filter((e) => e.difficulty.toLowerCase() === (level as string).toLowerCase());
   }
   if (section && section !== 'all') {
-    filtered = filtered.filter((e) => e.sections.some((s) => s.type === section));
+    filtered = filtered.filter((e) => e.sections.some((s) => s.type.toLowerCase() === (section as string).toLowerCase()));
   }
 
-  const list = filtered.map((e) => ({
-    id: e.id,
-    title: e.title,
-    subtitle: e.subtitle,
-    type: e.type,
-    difficulty: e.difficulty,
-    durationMinutes: e.durationMinutes,
-    totalQuestions: e.totalQuestions,
-    maxScore: e.maxScore,
-    tags: e.tags,
-    isOfficialMock: e.isOfficialMock,
-    coverImage: e.coverImage,
-    sectionCount: e.sections.length,
-    sectionTypes: Array.from(new Set(e.sections.map((s) => s.type))),
-  }));
-
-  return res.json({ exams: list, total: list.length });
+  // Return public sanitized exam cards
+  const sanitized = filtered.map(sanitizePublicExam);
+  return res.json({ exams: sanitized, total: sanitized.length });
 });
 
 /**
@@ -95,7 +82,7 @@ examsRouter.get('/:examId', (req, res) => {
  * POST /api/v1/exams/:examId/start
  * Create or initialize an exam attempt with authoritative timer
  */
-examsRouter.post('/:examId/start', (req, res) => {
+examsRouter.post('/:examId/start', async (req, res) => {
   const { userId = 'demo-user-id-001' } = req.body;
   const exam = MASTER_EXAMS.find((e) => e.id === req.params.examId);
 
@@ -105,6 +92,7 @@ examsRouter.post('/:examId/start', (req, res) => {
 
   const attempt = createExamAttempt(exam.id, userId, exam.durationMinutes);
   MOCK_EXAM_ATTEMPTS.push(attempt);
+  await examRepository.createAttempt(attempt as any);
 
   return res.status(201).json({
     attemptId: attempt.id,
@@ -118,8 +106,8 @@ examsRouter.post('/:examId/start', (req, res) => {
  * GET /api/v1/exams/attempts/:attemptId
  * Retrieve current attempt state
  */
-examsRouter.get('/attempts/:attemptId', (req, res) => {
-  const attempt = MOCK_EXAM_ATTEMPTS.find((a) => a.id === req.params.attemptId);
+examsRouter.get('/attempts/:attemptId', async (req, res) => {
+  const attempt = (await examRepository.getAttemptById(req.params.attemptId)) || MOCK_EXAM_ATTEMPTS.find((a) => a.id === req.params.attemptId);
   if (!attempt) {
     return res.status(404).json({ error: 'Không tìm thấy phiên làm bài.' });
   }
@@ -178,7 +166,7 @@ examsRouter.post('/attempts/:attemptId/answer', (req, res) => {
  * POST /api/v1/exams/attempts/:attemptId/submit
  * Authoritative Server Evaluation (Anti-cheat boundary)
  */
-examsRouter.post('/attempts/:attemptId/submit', (req, res) => {
+examsRouter.post('/attempts/:attemptId/submit', async (req, res) => {
   const { elapsedSeconds = 60, answers } = req.body;
   const attempt = MOCK_EXAM_ATTEMPTS.find((a) => a.id === req.params.attemptId);
 
@@ -240,35 +228,33 @@ examsRouter.post('/attempts/:attemptId/submit', (req, res) => {
   attempt.elapsedSeconds = safeElapsed;
   attempt.result = evaluationResult;
 
-  // Authoritatively update user XP & Streak
-  const defaultUser = {
-    id: attempt.userId,
-    timezone: 'Asia/Ho_Chi_Minh',
-    totalXP: 150,
-    currentStreak: 3,
-    streakFreezes: 1,
-    lastActiveDate: new Date().toISOString(),
-  };
+  await examRepository.completeAttempt(attempt.id, evaluationResult, safeElapsed);
 
-  const user = MOCK_USERS.find((u) => u.id === attempt.userId) || MOCK_USERS[0] || defaultUser;
+  // Authoritatively update user XP & Streak via UserRepository
+  const user = (await userRepository.findById(attempt.userId)) || (await userRepository.findById('demo-user-id-001'));
   const streakResult = updateStreakWithTimezone(
     {
-      currentStreak: user.currentStreak || 1,
-      streakFreezes: user.streakFreezes || 0,
-      lastActiveDate: user.lastActiveDate,
+      currentStreak: user?.currentStreak || 0,
+      streakFreezes: user?.streakFreezes || 1,
+      lastActiveDate: user?.lastActiveDate || null,
     },
     new Date(),
-    user.timezone || 'Asia/Ho_Chi_Minh'
+    user?.timezone || 'Asia/Ho_Chi_Minh'
   );
 
-  user.currentStreak = streakResult.currentStreak;
-  user.totalXP = (user.totalXP || 0) + evaluationResult.xpAwarded;
+  const updatedUser = await userRepository.updateStreakAndXP(
+    attempt.userId,
+    streakResult.currentStreak,
+    streakResult.streakFreezes,
+    streakResult.lastActiveDate || new Date().toISOString().split('T')[0],
+    evaluationResult.xpAwarded
+  );
 
   return res.status(200).json({
     attempt,
     result: evaluationResult,
-    currentStreak: user.currentStreak,
-    totalXP: user.totalXP,
+    currentStreak: updatedUser.currentStreak,
+    totalXP: updatedUser.totalXP,
     message: 'Nộp bài thi thành công!',
   });
 });

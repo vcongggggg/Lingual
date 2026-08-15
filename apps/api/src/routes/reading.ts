@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { MOCK_USERS } from './auth.js';
 import { MASTER_READING_ARTICLES } from '../data/reading.js';
+import { readingRepository, userRepository } from '../repositories/index.js';
 import {
   evaluateReadingAttempt,
   updateStreakWithTimezone,
@@ -106,7 +107,7 @@ readingRouter.get('/articles/:id/questions', (req, res) => {
  * POST /api/v1/reading/attempts
  * Server-side Authoritative Evaluation (Anti-cheat & Trust Boundary Protection)
  */
-readingRouter.post('/attempts', (req, res) => {
+readingRouter.post('/attempts', async (req, res) => {
   const {
     articleId,
     mode = 'standard',
@@ -176,48 +177,59 @@ readingRouter.post('/attempts', (req, res) => {
     accuracy: evaluation.accuracy,
   };
 
+  await readingRepository.createAttempt({
+    id: newAttempt.id,
+    userId,
+    articleId,
+    readingTimeSeconds: safeElapsed,
+    wpm: evaluation.wpm,
+    score: evaluation.score,
+    accuracy: evaluation.accuracy,
+    xpAwarded: evaluation.xpAwarded,
+    answers: newAttempt.answers.map((a) => ({
+      questionId: a.questionId,
+      selectedAnswer: a.selectedOption,
+      isCorrect: a.isCorrect,
+    })),
+    createdAt: newAttempt.completedAt,
+  });
+
   MOCK_READING_ATTEMPTS.push(newAttempt);
 
-  // Update user XP & Streak
-  const defaultUser = {
-    id: userId || 'demo-user-id-001',
-    email: 'demo@linguaflow.com',
-    displayName: 'Học Viên LinguaFlow',
-    role: 'LEARNER',
-    timezone: 'Asia/Ho_Chi_Minh',
-    totalXP: 150,
-    currentStreak: 3,
-    streakFreezes: 1,
-    lastActiveDate: new Date().toISOString(),
-  };
-
-  const user = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0] || defaultUser;
+  // Authoritatively update user XP & Streak via UserRepository
+  const user = (await userRepository.findById(userId)) || (await userRepository.findById('demo-user-id-001'));
   const streakResult = updateStreakWithTimezone(
     {
-      currentStreak: user.currentStreak || 1,
-      streakFreezes: user.streakFreezes || 0,
-      lastActiveDate: user.lastActiveDate,
+      currentStreak: user?.currentStreak || 0,
+      streakFreezes: user?.streakFreezes || 1,
+      lastActiveDate: user?.lastActiveDate || null,
     },
     new Date(),
-    user.timezone || 'Asia/Ho_Chi_Minh'
+    user?.timezone || 'Asia/Ho_Chi_Minh'
   );
 
-  user.currentStreak = streakResult.currentStreak;
-  user.totalXP = (user.totalXP || 0) + evaluation.xpAwarded;
+  const updatedUser = await userRepository.updateStreakAndXP(
+    userId,
+    streakResult.currentStreak,
+    streakResult.streakFreezes,
+    streakResult.lastActiveDate || new Date().toISOString().split('T')[0],
+    evaluation.xpAwarded
+  );
 
   return res.status(201).json({
     attempt: newAttempt,
+    evaluation,
     feedback: evaluation,
-    currentStreak: user.currentStreak,
-    totalXP: user.totalXP,
-    message: 'Nộp bài đọc và chấm điểm thành công!',
+    currentStreak: updatedUser.currentStreak,
+    totalXP: updatedUser.totalXP,
+    message: 'Lưu kết quả bài đọc thành công!',
   });
 });
 
 /**
  * GET /api/v1/reading/history
  */
-readingRouter.get('/history', (req, res) => {
+readingRouter.get('/history', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
   const history = MOCK_READING_ATTEMPTS.filter((a) => a.userId === userId).sort(
     (a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime()

@@ -10,6 +10,7 @@ import {
   mapSpeakingPerformanceToSRSQuality,
 } from '@linguaflow/domain';
 import { MASTER_SPEAKING_PROMPTS } from './speakingData.js';
+import { speakingRepository } from '../repositories/index.js';
 
 export const speakingRouter = Router();
 
@@ -125,7 +126,7 @@ speakingRouter.post('/analyze', (req, res) => {
 });
 
 // 4. POST /attempts (Server-authoritative scoring, XP, and streak evaluation)
-speakingRouter.post('/attempts', (req, res) => {
+speakingRouter.post('/attempts', async (req, res) => {
   const user = resolveUser(req);
   const { promptId, transcript, durationMs } = req.body;
 
@@ -217,6 +218,20 @@ speakingRouter.post('/attempts', (req, res) => {
     submittedAt: new Date().toISOString(),
   };
 
+  await speakingRepository.createAttempt({
+    id: attemptId,
+    userId: user.id,
+    promptId: prompt.id,
+    mode: prompt.mode,
+    transcript,
+    durationMs: durationSeconds * 1000,
+    score: feedback.overallScore,
+    pronunciationScore: feedback.pronunciationScore,
+    fluencyScore: feedback.fluencyScore,
+    xpAwarded: allowableXP,
+    createdAt: new Date().toISOString(),
+  });
+
   const userAttempts = attemptsStore.get(user.id) || [];
   userAttempts.unshift(attemptRecord);
   attemptsStore.set(user.id, userAttempts);
@@ -241,10 +256,11 @@ speakingRouter.post('/attempts', (req, res) => {
 });
 
 // 5. GET /history
-speakingRouter.get('/history', (req, res) => {
+speakingRouter.get('/history', async (req, res) => {
   const user = resolveUser(req);
+  const repoAttempts = await speakingRepository.getUserAttempts(user.id);
   const userAttempts = attemptsStore.get(user.id) || [];
-  res.json({ attempts: userAttempts });
+  res.json({ attempts: userAttempts.length > 0 ? userAttempts : repoAttempts });
 });
 
 // 6. GET /stats
