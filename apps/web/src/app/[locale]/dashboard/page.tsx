@@ -5,17 +5,47 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Button, Card, MotionCard, ProgressBar, XPBadge, StreakBadge, springPresets, transitionPresets, useMotionAccessibility, RewardOverlay, RewardEventPayload, canPlayFeedbackAudio } from '@linguaflow/ui';
-import { curriculumApi, userApi } from '../../../lib/api';
+import {
+  Button,
+  Card,
+  MotionCard,
+  ProgressBar,
+  XPBadge,
+  StreakBadge,
+  springPresets,
+  useMotionAccessibility,
+  RewardOverlay,
+  RewardEventPayload,
+  canPlayFeedbackAudio,
+  Badge,
+} from '@linguaflow/ui';
+import { curriculumApi, userApi, srsApi } from '../../../lib/api';
 import { sfx } from '@/lib/soundEffects';
-import { BookOpen, CheckCircle2, Lock, Play, Star, Flame, Trophy, Sparkles, Brain, ArrowRight } from 'lucide-react';
-import ThemeIllustration from '@/components/ThemeIllustration';
+import { arcadeAudio } from '@/lib/arcadeAudio';
+import {
+  BookOpen,
+  CheckCircle2,
+  Lock,
+  Play,
+  Star,
+  Flame,
+  Trophy,
+  Sparkles,
+  Brain,
+  ArrowRight,
+  Target,
+  Zap,
+  Clock,
+  Compass,
+  Calendar,
+} from 'lucide-react';
 import MascotPopup from '@/components/MascotPopup';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 
 export default function DashboardPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
+  const isVi = locale === 'vi';
   const { shouldReduceMotion } = useMotionAccessibility();
 
   const [units, setUnits] = useState<any[]>([]);
@@ -23,14 +53,16 @@ export default function DashboardPage() {
   const [userXP, setUserXP] = useState(150);
   const [dailyGoal, setDailyGoal] = useState(15);
   const [dailyProgress, setDailyProgress] = useState(10);
+  const [dueSrsCount, setDueSrsCount] = useState(5);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [unitsData, progressData] = await Promise.allSettled([
+        const [unitsData, progressData, srsQueueData] = await Promise.allSettled([
           curriculumApi.getUnits(),
           userApi.getProgress().catch(() => null),
+          srsApi.getQueue().catch(() => null),
         ]);
 
         if (unitsData.status === 'fulfilled' && unitsData.value?.units) {
@@ -44,8 +76,11 @@ export default function DashboardPage() {
           }
           if (progress.totalXP) setUserXP(progress.totalXP);
         }
+
+        if (srsQueueData.status === 'fulfilled' && srsQueueData.value?.stats) {
+          setDueSrsCount(srsQueueData.value.stats.dueToday || 0);
+        }
       } catch {
-        // Fallback: units load from API
       } finally {
         setLoading(false);
       }
@@ -69,8 +104,8 @@ export default function DashboardPage() {
         setActiveReward({
           type: 'daily_goal_complete',
           intensity: 'MAJOR',
-          title: 'Mục Tiêu Hôm Nay Hoàn Thành! 🎉',
-          subtitle: 'Bò LingLing rất tự hào về sự kiên trì của bạn!',
+          title: isVi ? 'Mục Tiêu Hôm Nay Hoàn Thành! 🎉' : 'Daily Goal Achieved! 🎉',
+          subtitle: isVi ? 'Bò LingLing rất tự hào về sự kiên trì của bạn!' : 'LingLing is proud of your consistency!',
           xpAmount: 100,
           icon: '🔥',
         });
@@ -79,16 +114,27 @@ export default function DashboardPage() {
           setPopupState({
             show: true,
             key: 'streak_urgent',
-            title: 'Cảnh báo Streak! ⚠️',
-            msg: 'Streak sắp hết hạn! Hoàn thành 1 bài học ngay nào!',
+            title: isVi ? 'Cảnh báo Streak! ⚠️' : 'Streak Alert! ⚠️',
+            msg: isVi ? 'Streak sắp hết hạn! Hoàn thành 1 bài học ngay nào!' : 'Keep your streak alive by completing a lesson today!',
           });
         }, 2000);
         return () => clearTimeout(timer);
       }
     }
-  }, [loading, dailyProgress, dailyGoal]);
+  }, [loading, dailyProgress, dailyGoal, isVi]);
 
-  // Dashboard entrance animation variants (Level 1 Ambient & Stagger)
+  // Next active lesson calculation
+  const nextLesson = (() => {
+    for (const u of units) {
+      for (const l of u.lessons || []) {
+        if (!completedLessons.includes(l.order.toString())) {
+          return { unit: u, lesson: l };
+        }
+      }
+    }
+    return units[0]?.lessons?.[0] ? { unit: units[0], lesson: units[0].lessons[0] } : null;
+  })();
+
   const dashboardContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -114,7 +160,7 @@ export default function DashboardPage() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center space-y-3">
           <div className="w-10 h-10 border-2 border-teal-400 border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-sm text-slate-400 font-semibold">Đang tải lộ trình học...</p>
+          <p className="text-sm text-slate-400 font-semibold">{isVi ? 'Đang khởi tạo Cockpit học tập...' : 'Loading Learning Cockpit...'}</p>
         </div>
       </div>
     );
@@ -125,44 +171,109 @@ export default function DashboardPage() {
       variants={dashboardContainerVariants}
       initial="hidden"
       animate="visible"
-      className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+      className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pb-20"
     >
-      {/* AMBIENT DEEP SPACE BACKGROUND ATMOSPHERE */}
+      {/* AMBIENT DEEP SPACE GLOW */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/6 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem] bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem] bg-indigo-500/5 rounded-full blur-3xl" />
       </div>
 
-      {/* MAIN ROADMAP PATH (8 COLUMNS) */}
-      <motion.div variants={itemVariants} className="relative z-10 lg:col-span-8 space-y-12">
-        {/* Header Title with Peeking Cow Mascot */}
-        <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 backdrop-blur-xl shadow-xl">
-          <div className="absolute -top-7 right-8 w-16 h-16 pointer-events-none hidden sm:block">
-            <Image
-              src={mascotReactions.greet}
-              alt="Peeking Dashboard Mascot"
-              fill
-              unoptimized
-              className="object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
-            />
+      {/* MAIN COCKPIT & ROADMAP (8 COLUMNS) */}
+      <motion.div variants={itemVariants} className="relative z-10 lg:col-span-8 space-y-8">
+        {/* HERO COMMAND MISSION CARD */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-teal-950/40 border border-teal-500/30 p-6 sm:p-8 backdrop-blur-2xl shadow-2xl space-y-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="space-y-1.5 max-w-xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-extrabold uppercase tracking-wider">
+                <Target className="w-3.5 h-3.5 text-teal-400" />
+                <span>{isVi ? 'Nhiệm Vụ Trọng Tâm Hôm Nay' : "Today's Core Mission"}</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+                {nextLesson ? `${nextLesson.unit.title} • ${nextLesson.lesson.title}` : (isVi ? 'Tiếp tục lộ trình chinh phục tiếng Anh' : 'Continue Your English Mastery')}
+              </h1>
+              <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
+                {isVi
+                  ? `Hoàn thành bài học tiếp theo để nhận +${nextLesson?.lesson.xpReward || 50} XP và củng cố thói quen học tập liên tục!`
+                  : `Complete the next lesson to earn +${nextLesson?.lesson.xpReward || 50} XP and maintain your daily study momentum!`}
+              </p>
+            </div>
+
+            {nextLesson && (
+              <Link href={`/${locale}/learn/${nextLesson.lesson.order}`} className="shrink-0 w-full sm:w-auto">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full sm:w-auto shadow-xl shadow-teal-500/20"
+                  icon={<Play className="w-5 h-5 fill-slate-950" />}
+                >
+                  {isVi ? 'Bắt Đầu Học Ngay' : 'Resume Learning'}
+                </Button>
+              </Link>
+            )}
           </div>
-          <div>
-            <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400">
-              Lộ Trình Học Cá Nhân Hóa (A1 → B1)
-            </span>
-            <h1 className="text-3xl font-artistic text-white mt-1 tracking-wide">
-              Hành Trình Chinh Phục Tiếng Anh
-            </h1>
+
+          {/* 3 PRIORITIZED DAILY ACTION TILES */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-800/80">
+            <Link
+              href={nextLesson ? `/${locale}/learn/${nextLesson.lesson.order}` : '#'}
+              className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-teal-400/40 transition-all flex items-center justify-between group"
+            >
+              <div className="space-y-0.5">
+                <span className="text-[11px] font-bold text-teal-400 uppercase tracking-wider block">1. Bài Học Mới</span>
+                <span className="text-xs font-extrabold text-white group-hover:text-teal-300 transition-colors">
+                  {nextLesson ? nextLesson.lesson.title : 'Hoàn thành bài'}
+                </span>
+              </div>
+              <Play className="w-4 h-4 text-teal-400 shrink-0" />
+            </Link>
+
+            <Link
+              href={`/${locale}/srs`}
+              className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-amber-400/40 transition-all flex items-center justify-between group"
+            >
+              <div className="space-y-0.5">
+                <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">2. Ôn Thẻ SRS</span>
+                <span className="text-xs font-extrabold text-white group-hover:text-amber-300 transition-colors">
+                  {dueSrsCount} từ đến hạn
+                </span>
+              </div>
+              <Brain className="w-4 h-4 text-amber-400 shrink-0" />
+            </Link>
+
+            <Link
+              href={`/${locale}/games`}
+              className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-purple-400/40 transition-all flex items-center justify-between group"
+            >
+              <div className="space-y-0.5">
+                <span className="text-[11px] font-bold text-purple-400 uppercase tracking-wider block">3. Thử Thách Game</span>
+                <span className="text-xs font-extrabold text-white group-hover:text-purple-300 transition-colors">
+                  Word Sprint x2 XP
+                </span>
+              </div>
+              <Trophy className="w-4 h-4 text-purple-400 shrink-0" />
+            </Link>
           </div>
-          <Link href={`/${locale}/srs`}>
-            <Button variant="accent" icon={<Brain className="w-4 h-4" />}>
-              Ôn Từ Vựng SRS
-            </Button>
-          </Link>
         </div>
 
         {/* UNIT & LESSON NODE-PATH ROADMAP */}
-        <div className="space-y-16">
+        <div className="space-y-12">
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400 block">
+                {isVi ? 'Lộ Trình Từng Bước (A1 → B2)' : 'Curriculum Roadmap (A1 → B2)'}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-display font-extrabold text-white">
+                {isVi ? 'Các Chủ Điểm Bài Học' : 'Curriculum Units'}
+              </h2>
+            </div>
+            <Link href={`/${locale}/vocabulary`}>
+              <Button variant="outline" size="sm" icon={<BookOpen className="w-4 h-4" />}>
+                {isVi ? 'Kho Từ Vựng' : 'Vocabulary Lab'}
+              </Button>
+            </Link>
+          </div>
+
           {units.map((unit, unitIdx) => {
             const unitCefrLevel = unit.lessons?.[0]?.words?.[0]?.cefrLevel || 'A1';
             const cefrColors: Record<string, string> = {
@@ -177,7 +288,7 @@ export default function DashboardPage() {
             };
 
             return (
-              <motion.div key={unit.order} variants={itemVariants} className="relative space-y-8">
+              <motion.div key={unit.order} variants={itemVariants} className="relative space-y-6">
                 {/* Unit Header Banner */}
                 <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-r ${cefrColors[unitCefrLevel] || cefrColors.A1} border backdrop-blur-2xl p-6 flex items-center justify-between shadow-xl`}>
                   <div className="space-y-1">
@@ -190,13 +301,13 @@ export default function DashboardPage() {
                         {unitCefrLevel}
                       </span>
                     </div>
-                    <h2 className="text-2xl font-artistic text-white tracking-wide">{unit.title}</h2>
+                    <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white tracking-tight">{unit.title}</h3>
                     <p className="text-xs text-slate-400">{unit.description}</p>
                   </div>
                 </div>
 
                 {/* Node-Path Timeline Curve */}
-                <div className="relative py-4 flex flex-col items-center gap-10">
+                <div className="relative py-4 flex flex-col items-center gap-8">
                   {/* Connecting Path Line */}
                   <div className="absolute top-4 bottom-4 left-1/2 -translate-x-1/2 w-1.5 bg-gradient-to-b from-teal-500/40 via-amber-500/30 to-slate-800 rounded-full z-0" />
 
@@ -253,66 +364,87 @@ export default function DashboardPage() {
         </div>
       </motion.div>
 
-      {/* RIGHT SIDEBAR STATS & GOAL WIDGET (4 COLUMNS) */}
+      {/* RIGHT SIDEBAR VITAL STATS RAIL (4 COLUMNS) */}
       <motion.div variants={itemVariants} className="relative z-10 lg:col-span-4 space-y-6 sticky top-24">
-        {/* Daily Goal Card */}
+        {/* Daily Goal & Streak Card */}
         <MotionCard glow="amber" tilt spotlight className="space-y-4 relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400">
-              Mục Tiêu Hôm Nay
+            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400 flex items-center gap-1.5">
+              <Flame className="w-4 h-4 fill-amber-400" />
+              <span>{isVi ? 'Tiến Độ Hôm Nay' : 'Daily Momentum'}</span>
             </span>
-            <Flame className="w-5 h-5 text-amber-400 fill-amber-400" />
+            <span className="font-mono text-xs font-extrabold text-amber-300">
+              {dailyProgress} / {dailyGoal}m
+            </span>
           </div>
-          <div className="space-y-2">
-            <div className="flex justify-between items-baseline text-sm">
-              <span className="text-slate-300">Thời lượng học:</span>
-              <span className="font-extrabold text-white">{dailyProgress} / {dailyGoal} phút</span>
-            </div>
-            <ProgressBar value={dailyProgress} max={dailyGoal} color="amber" />
-          </div>
-          <p className="text-xs text-slate-400">Hoàn thành 1 bài học để duy trì chuỗi Streak!</p>
+
+          <ProgressBar value={dailyProgress} max={dailyGoal} color="amber" />
+          <p className="text-xs text-slate-400 font-sans">
+            {isVi ? 'Duy trì học 15 phút mỗi ngày để mở khóa x2 XP chuỗi Streak!' : 'Maintain 15 mins daily to unlock 2x XP streak multiplier!'}
+          </p>
         </MotionCard>
 
-        {/* Quick Stats Card */}
-        <Card glow="teal" className="space-y-4">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400">
-            Thống kê nhanh
-          </span>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 text-center">
-              <span className="text-2xl font-extrabold text-white">{units.length}</span>
-              <span className="text-[10px] text-slate-400 block mt-1">Chủ đề</span>
-            </div>
-            <div className="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 text-center">
-              <span className="text-2xl font-extrabold text-teal-400">{completedLessons.length}</span>
-              <span className="text-[10px] text-slate-400 block mt-1">Bài hoàn thành</span>
-            </div>
+        {/* Weekly Habit Rhythm */}
+        <Card glow="teal" className="space-y-3.5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400 flex items-center gap-1.5">
+              <Calendar className="w-3.5 h-3.5" />
+              <span>{isVi ? 'Nhịp Học Tuần Này' : 'Weekly Rhythm'}</span>
+            </span>
+            <span className="text-[11px] font-mono text-slate-400">7 ngày gần nhất</span>
+          </div>
+
+          <div className="grid grid-cols-7 gap-1.5 text-center">
+            {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map((d, i) => (
+              <div key={i} className="space-y-1">
+                <span className="text-[10px] text-slate-500 font-mono block">{d}</span>
+                <div
+                  className={`w-8 h-8 mx-auto rounded-xl flex items-center justify-center font-bold text-xs ${
+                    i < 4
+                      ? 'bg-teal-500/20 text-teal-300 border border-teal-500/40 shadow-sm'
+                      : i === 4
+                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 ring-1 ring-amber-400'
+                      : 'bg-slate-950/60 text-slate-600 border border-slate-850'
+                  }`}
+                >
+                  {i < 4 ? '✓' : i === 4 ? '🔥' : '·'}
+                </div>
+              </div>
+            ))}
           </div>
         </Card>
 
-        {/* Game Center Promo MotionCard */}
-        <MotionCard glow="teal" tilt spotlight className="space-y-4 relative overflow-hidden">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400">
-              Game Center
-            </span>
-            <Trophy className="w-5 h-5 text-teal-400" />
+        {/* Quick Diagnostics Lab Launcher */}
+        <Card glow="teal" className="space-y-3">
+          <span className="text-xs font-extrabold uppercase tracking-widest text-indigo-400 block">
+            {isVi ? 'Phòng Thực Hành Nhanh' : 'Quick Practice Labs'}
+          </span>
+          <div className="space-y-2">
+            <Link
+              href={`/${locale}/speaking/pronunciation`}
+              className="p-3 rounded-2xl bg-slate-950/80 hover:bg-slate-800/80 border border-slate-850 flex items-center justify-between text-xs transition-all group"
+            >
+              <span className="font-bold text-slate-300 group-hover:text-teal-300">🎙️ Luyện Phát Âm Phoneme</span>
+              <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-teal-400" />
+            </Link>
+
+            <Link
+              href={`/${locale}/listening/dictation`}
+              className="p-3 rounded-2xl bg-slate-950/80 hover:bg-slate-800/80 border border-slate-850 flex items-center justify-between text-xs transition-all group"
+            >
+              <span className="font-bold text-slate-300 group-hover:text-amber-300">🎧 Chép Chính Tả Dictation</span>
+              <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400" />
+            </Link>
+
+            <Link
+              href={`/${locale}/writing/free`}
+              className="p-3 rounded-2xl bg-slate-950/80 hover:bg-slate-800/80 border border-slate-850 flex items-center justify-between text-xs transition-all group"
+            >
+              <span className="font-bold text-slate-300 group-hover:text-purple-300">✍️ Studio Viết Tự Do</span>
+              <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-purple-400" />
+            </Link>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex-1 space-y-2">
-              <h3 className="text-lg font-display font-bold text-white">Thử Thách Nâng Cao</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Chơi Word Match, Sentence Scramble & Typing Race để nhân đôi điểm XP.
-              </p>
-            </div>
-            <ThemeIllustration type="dashboard" size={70} className="shrink-0 hidden sm:block" />
-          </div>
-          <Link href={`/${locale}/games`} className="block">
-            <Button variant="outline" size="sm" className="w-full" icon={<ArrowRight className="w-4 h-4" />}>
-              Vào Game Center
-            </Button>
-          </Link>
-        </MotionCard>
+        </Card>
       </motion.div>
 
       {/* Mascot Corner Reaction Popup */}
