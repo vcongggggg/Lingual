@@ -114,7 +114,8 @@ async function run() {
 
   // Seed authentication token
   try {
-    await page.goto('http://localhost:3000/vi', { waitUntil: 'commit', timeout: 10000 });
+    await page.goto('http://localhost:3000/vi', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForTimeout(1000);
     await page.evaluate(() => {
       localStorage.setItem('lingual_token', 'demo-jwt-token-production-verified');
       localStorage.setItem(
@@ -142,7 +143,11 @@ async function run() {
 
     try {
       console.log(`📸 [${captured + 1}/${ROUTES.length}] Capturing: ${route.title} (${route.path})...`);
-      await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 10000 });
+      let response = await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      if (response && response.status() === 404) {
+        await page.waitForTimeout(1500);
+        response = await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      }
       await page.waitForTimeout(1200); // Allow motion animations and icons to fully settle and render at 100% opacity
 
       await page.screenshot({
