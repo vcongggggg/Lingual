@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { Clock, Type, Check, AlertCircle, RotateCcw } from 'lucide-react';
+import { Clock, Type, Check, AlertCircle, RotateCcw, Sparkles, BookOpen, PenTool } from 'lucide-react';
+import { ProgressBar } from '@linguaflow/ui';
 
 interface WritingEditorProps {
   value: string;
@@ -16,6 +17,7 @@ interface WritingEditorProps {
   onTimerTick?: (seconds: number) => void;
   className?: string;
   rows?: number;
+  locale?: string;
 }
 
 export default function WritingEditor({
@@ -23,15 +25,17 @@ export default function WritingEditor({
   onChange,
   placeholder = 'Bắt đầu viết câu trả lời bằng tiếng Anh...',
   minWords = 10,
-  maxWords,
+  maxWords = 250,
   targetWords = [],
   disabled = false,
   showTimer = false,
   showWordCount = true,
   onTimerTick,
   className = '',
-  rows = 5,
+  rows = 6,
+  locale = 'vi',
 }: WritingEditorProps) {
+  const isVi = locale === 'vi';
   const [seconds, setSeconds] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(true);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -56,6 +60,10 @@ export default function WritingEditor({
   const isMinMet = wordCount >= minWords;
   const isMaxExceeded = maxWords ? wordCount > maxWords : false;
 
+  // Calculate unique vocabulary richness ratio
+  const uniqueWords = new Set(words.map((w) => w.toLowerCase().replace(/[^a-z]/g, ''))).size;
+  const richnessPercent = wordCount > 0 ? Math.round((uniqueWords / wordCount) * 100) : 0;
+
   const formatTime = (secs: number) => {
     const mins = Math.floor(secs / 60);
     const remSecs = secs % 60;
@@ -70,13 +78,13 @@ export default function WritingEditor({
   }));
 
   return (
-    <div className={`space-y-3 ${className}`}>
+    <div className={`space-y-4 ${className}`}>
       {/* Editor Header Toolbar (Word count, Target keywords, Timer) */}
       <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* Target Words Pills */}
         {targetWords.length > 0 && (
           <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-slate-500 font-semibold">Từ khóa gợi ý:</span>
+            <span className="text-slate-400 font-semibold">{isVi ? 'Từ khóa mục tiêu:' : 'Keywords:'}</span>
             {targetUsage.map((item, idx) => (
               <span
                 key={idx}
@@ -102,7 +110,7 @@ export default function WritingEditor({
         )}
       </div>
 
-      {/* Main Textarea */}
+      {/* Main Textarea Creative Canvas */}
       <div className="relative">
         <textarea
           ref={textareaRef}
@@ -112,45 +120,46 @@ export default function WritingEditor({
           disabled={disabled}
           rows={rows}
           aria-label="Khu vực nhập bài viết tiếng Anh"
-          className={`w-full p-4 sm:p-5 rounded-2xl bg-slate-950/90 border text-white text-base leading-relaxed placeholder:text-slate-600 focus:outline-none transition-all shadow-inner resize-y min-h-[140px] font-sans ${
+          className={`w-full p-4 sm:p-5 rounded-2xl bg-slate-950/90 border text-white text-base leading-relaxed placeholder:text-slate-600 focus:outline-none transition-all shadow-inner resize-y min-h-[160px] font-sans ${
             isMaxExceeded
               ? 'border-rose-500/50 focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20'
               : 'border-slate-800 focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20'
           }`}
         />
+
+        {/* Floating Quick Count Badge in corner */}
+        <div className="absolute bottom-3.5 right-3.5 pointer-events-none text-[11px] font-mono font-bold bg-slate-900/90 px-2.5 py-1 rounded-lg border border-slate-800 text-slate-400">
+          {charCount} {isVi ? 'ký tự' : 'chars'}
+        </div>
       </div>
 
-      {/* Bottom Status Bar (Word counter, Characters, Guidance) */}
+      {/* Real-Time Writing Studio Metrics (Goal Meter & Vocabulary Richness) */}
       {showWordCount && (
-        <div className="flex items-center justify-between text-xs text-slate-400">
-          <div className="flex items-center gap-2">
-            <span
-              className={`font-bold font-mono transition-colors ${
-                isMaxExceeded
-                  ? 'text-rose-400'
-                  : isMinMet
-                  ? 'text-emerald-400'
-                  : 'text-amber-400'
-              }`}
-            >
-              {wordCount} từ {minWords ? `(Mục tiêu: ${minWords}${maxWords ? ` - ${maxWords}` : ''} từ)` : ''}
-            </span>
-            <span className="text-slate-600">•</span>
-            <span className="text-slate-500 font-mono">{charCount} ký tự</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 rounded-2xl bg-slate-950/80 border border-slate-850 text-xs">
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-400 font-semibold flex items-center gap-1">
+                <PenTool className="w-3.5 h-3.5 text-teal-400" />
+                <span>{isVi ? 'Tiến độ số từ' : 'Word Count Goal'}</span>
+              </span>
+              <span className={`font-mono font-bold ${isMinMet ? 'text-teal-300' : 'text-amber-400'}`}>
+                {wordCount} / {minWords} {isVi ? 'từ tối thiểu' : 'min words'}
+              </span>
+            </div>
+            <ProgressBar value={wordCount} max={minWords} color={isMinMet ? 'teal' : 'amber'} />
           </div>
 
-          <div className="flex items-center gap-1.5 text-[11px]">
-            {isMinMet && !isMaxExceeded ? (
-              <span className="text-emerald-400 font-semibold flex items-center gap-1">
-                <Check className="w-3.5 h-3.5" /> Đã đủ độ dài
+          <div className="space-y-1.5 border-t sm:border-t-0 sm:border-l border-slate-850 pt-2 sm:pt-0 sm:pl-3">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-400 font-semibold flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                <span>{isVi ? 'Độ phong phú từ vựng' : 'Lexical Diversity'}</span>
               </span>
-            ) : isMaxExceeded ? (
-              <span className="text-rose-400 font-semibold flex items-center gap-1">
-                <AlertCircle className="w-3.5 h-3.5" /> Vượt quá số từ tối đa
+              <span className="font-mono font-bold text-purple-300">
+                {richnessPercent}% ({uniqueWords} {isVi ? 'từ đơn nhất' : 'unique'})
               </span>
-            ) : (
-              <span className="text-slate-500">Viết thêm {minWords - wordCount} từ nữa</span>
-            )}
+            </div>
+            <ProgressBar value={richnessPercent} max={100} color="teal" />
           </div>
         </div>
       )}
