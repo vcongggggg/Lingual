@@ -16,6 +16,7 @@ import {
   Folder,
   X,
   Volume2,
+  Layers,
 } from 'lucide-react';
 import { VocabularyWord, VocabularyFolder } from '@linguaflow/domain';
 import { vocabularyApi, srsApi } from '@/lib/api';
@@ -23,6 +24,7 @@ import { MASTER_VOCABULARY_LIST } from '@/lib/vocabulary/sampleData';
 import { searchVocabulary } from '@/lib/vocabulary/searchVocabulary';
 import VocabularyStats from '@/components/vocabulary/VocabularyStats';
 import VocabularyList from '@/components/vocabulary/VocabularyList';
+import VocabularySwipeDeck from '@/components/vocabulary/VocabularySwipeDeck';
 import FolderList from '@/components/vocabulary/FolderList';
 import CreateFolderDialog from '@/components/vocabulary/CreateFolderDialog';
 import LingLingMascot from '@/components/LingLingMascot';
@@ -31,9 +33,10 @@ import { Button, Card, Badge } from '@linguaflow/ui';
 export default function SmartVocabularyPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
+  const isVi = locale === 'vi';
 
   // Navigation & filter states
-  const [activeTab, setActiveTab] = useState<'all' | 'saved' | 'folders'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'deck' | 'saved' | 'folders'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCefr, setSelectedCefr] = useState('all');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -122,7 +125,8 @@ export default function SmartVocabularyPage() {
   const handleDeleteFolder = async (folderId: string) => {
     try {
       await vocabularyApi.deleteFolder(folderId);
-      setFolders((prev) => prev.filter((f) => f.id !== folderId));
+      const refreshed = await vocabularyApi.getFolders();
+      if (refreshed?.folders) setFolders(refreshed.folders);
     } catch {}
   };
 
@@ -134,18 +138,20 @@ export default function SmartVocabularyPage() {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
               <BookOpen className="w-3.5 h-3.5 text-teal-400" />
-              <span>Smart Vocabulary Lab • Kho Từ Vựng Thông Minh</span>
+              <span>{isVi ? 'Smart Vocabulary Lab • Kho Từ Vựng Thông Minh' : 'Smart Vocabulary Explorer'}</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">
-              Làm Chủ Từ Vựng. <br />
+              {isVi ? 'Làm Chủ Từ Vựng.' : 'Master Vocabulary.'} <br />
               <span className="bg-gradient-to-r from-teal-400 via-emerald-400 to-amber-300 bg-clip-text text-transparent">
-                Ghi Nhớ Suốt Đời với SRS.
+                {isVi ? 'Ghi Nhớ Suốt Đời với SRS.' : 'Lifelong Recall with SM-2.'}
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Khám phá từ vựng theo cấp độ CEFR, tổ chức theo thư mục riêng và luyện tập đa phương thức kết hợp thuật toán lặp lại ngắt quãng (SM-2).
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
+              {isVi
+                ? 'Khám phá từ vựng theo cấp độ CEFR, tra cứu từ điển trực tuyến, tổ chức thư mục riêng và ôn tập 3D Swipe Deck kết hợp thuật toán lặp lại ngắt quãng (SM-2).'
+                : 'Explore CEFR-graded vocabulary, look up live definitions with authentic audio, organize custom decks, and review via 3D interactive flashcards.'}
             </p>
           </div>
 
@@ -167,43 +173,56 @@ export default function SmartVocabularyPage() {
       {/* Main Feature Tabs & Quick Action Bar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+        <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md overflow-x-auto">
           <button
             type="button"
             onClick={() => setActiveTab('all')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               activeTab === 'all'
                 ? 'bg-teal-500/20 text-teal-300 border border-teal-500/30 shadow-sm'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            Tất cả từ vựng ({words.length})
+            {isVi ? `Tất cả từ (${words.length})` : `All Words (${words.length})`}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('deck')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              activeTab === 'deck'
+                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-sm'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>{isVi ? '3D Swipe Deck' : '3D Swipe Deck'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('saved')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'saved'
                 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-sm'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
             <Bookmark className="w-3.5 h-3.5" />
-            <span>Từ đã lưu ({Object.values(savedMap).filter(Boolean).length})</span>
+            <span>{isVi ? `Đã lưu (${Object.values(savedMap).filter(Boolean).length})` : `Saved (${Object.values(savedMap).filter(Boolean).length})`}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('folders')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'folders'
                 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30 shadow-sm'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
             <Folder className="w-3.5 h-3.5" />
-            <span>Thư mục ({folders.length})</span>
+            <span>{isVi ? `Thư mục (${folders.length})` : `Folders (${folders.length})`}</span>
           </button>
         </div>
 
@@ -214,7 +233,7 @@ export default function SmartVocabularyPage() {
               variant="secondary"
               icon={<Zap className="w-4 h-4 text-amber-400" />}
             >
-              Kiểm tra nhanh
+              {isVi ? 'Kiểm tra nhanh' : 'Diagnostic Test'}
             </Button>
           </Link>
 
@@ -223,14 +242,23 @@ export default function SmartVocabularyPage() {
               variant="primary"
               icon={<Gamepad2 className="w-4 h-4" />}
             >
-              Luyện tập ngay
+              {isVi ? 'Luyện tập ngay' : 'Practice Modes'}
             </Button>
           </Link>
         </div>
       </div>
 
+      {/* 3D SWIPE DECK TAB */}
+      {activeTab === 'deck' && (
+        <VocabularySwipeDeck
+          words={filteredWords.length > 0 ? filteredWords : words}
+          locale={locale}
+          onComplete={() => setActiveTab('all')}
+        />
+      )}
+
       {/* Search and Filters Bar (Shown in 'all' and 'saved' tabs) */}
-      {activeTab !== 'folders' && (
+      {(activeTab === 'all' || activeTab === 'saved') && (
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
             {/* Search Input */}
@@ -240,7 +268,7 @@ export default function SmartVocabularyPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Tìm kiếm từ tiếng Anh, nghĩa tiếng Việt, câu ví dụ, tag..."
+                placeholder={isVi ? 'Tìm kiếm từ tiếng Anh, nghĩa tiếng Việt, câu ví dụ, tag...' : 'Search English word, definition, examples, tags...'}
                 className="w-full pl-11 pr-10 py-3 rounded-2xl bg-slate-900/90 border border-slate-800 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all shadow-inner"
               />
               {searchQuery && (
@@ -267,7 +295,7 @@ export default function SmartVocabularyPage() {
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  {level === 'all' ? 'Tất cả' : level}
+                  {level === 'all' ? (isVi ? 'Tất cả' : 'All') : level}
                 </button>
               ))}
             </div>
@@ -295,8 +323,8 @@ export default function SmartVocabularyPage() {
           locale={locale}
           onSaveToggle={handleSaveToggle}
           loading={loading}
-          emptyTitle="Chưa có từ vựng nào được lưu"
-          emptyDescription="Chạm vào biểu tượng bookmark trên bất kỳ thẻ từ vựng nào để lưu vào sổ cá nhân."
+          emptyTitle={isVi ? 'Chưa có từ vựng nào được lưu' : 'No saved vocabulary yet'}
+          emptyDescription={isVi ? 'Chạm vào biểu tượng bookmark trên bất kỳ thẻ từ vựng nào để lưu vào sổ cá nhân.' : 'Tap the bookmark icon on any vocabulary card to save it to your notebook.'}
         />
       )}
 
