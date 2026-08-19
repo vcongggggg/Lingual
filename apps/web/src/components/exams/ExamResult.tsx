@@ -71,7 +71,7 @@ export default function ExamResultView({
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/15 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
             <Trophy className="w-3.5 h-3.5" />
-            <span>Kết quả thi thử • {examTitle}</span>
+            <span>LinguaFlow Practice Score Report • {examTitle}</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
@@ -81,6 +81,10 @@ export default function ExamResultView({
               ? 'Làm bài rất tốt! 👍'
               : 'Hãy tiếp tục rèn luyện! 💪'}
           </h1>
+
+          <p className="text-xs text-slate-400 font-sans italic">
+            Báo cáo kết quả đánh giá năng lực độc lập từ LinguaFlow.
+          </p>
 
           <p className="text-sm text-slate-300">
             Quy đổi điểm thi: <strong className="text-teal-400 font-bold font-mono">{result.scaledScoreLabel || `${result.score}/${result.maxScore}`}</strong> • Thưởng:{' '}
