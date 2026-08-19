@@ -143,7 +143,7 @@ async function run() {
     try {
       console.log(`📸 [${captured + 1}/${ROUTES.length}] Capturing: ${route.title} (${route.path})...`);
       await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 10000 });
-      await page.waitForTimeout(600); // Allow motion animations and icons to settle
+      await page.waitForTimeout(1200); // Allow motion animations and icons to fully settle and render at 100% opacity
 
       await page.screenshot({
         path: screenshotPath,
