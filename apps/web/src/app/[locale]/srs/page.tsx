@@ -1,21 +1,33 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, SRSFlashcard, XPBadge, StreakBadge, canPlayFeedbackAudio } from '@linguaflow/ui';
+import { Button, XPBadge, StreakBadge, Badge, ProgressBar } from '@linguaflow/ui';
 import { srsApi } from '../../../lib/api';
-import { sfx } from '@/lib/soundEffects';
-import { Brain, Sparkles, CheckCircle2, RotateCcw, ArrowLeft, Volume2, Award, BarChart3, Clock, GraduationCap } from 'lucide-react';
+import { arcadeAudio } from '@/lib/arcadeAudio';
+import {
+  Brain,
+  Sparkles,
+  CheckCircle2,
+  RotateCcw,
+  ArrowLeft,
+  Volume2,
+  Award,
+  BarChart3,
+  Clock,
+  GraduationCap,
+  Layers,
+  ArrowRight,
+} from 'lucide-react';
 import MascotPopup from '@/components/MascotPopup';
-import Image from 'next/image';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
-
 
 export default function SRSPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
+  const isVi = locale === 'vi';
 
   const [queue, setQueue] = useState<any[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,6 +35,7 @@ export default function SRSPage() {
   const [isFinished, setIsFinished] = useState(false);
   const [totalXPEarned, setTotalXPEarned] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isFlipped, setIsFlipped] = useState(false);
   const [stats, setStats] = useState({ dueToday: 0, learning: 0, mastered: 0 });
 
   useEffect(() => {
@@ -48,10 +61,10 @@ export default function SRSPage() {
 
     const loadFallbackQueue = () => {
       const fallback = [
-        { id: '1', targetText: 'Hello', translation: 'Xin chào', phonetic: '/həˈloʊ/', imageUrl: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=500&auto=format&fit=crop&q=80', exampleSentence: 'Hello, nice to meet you!', exampleTranslation: 'Xin chào, rất vui được gặp bạn!' },
-        { id: '2', targetText: 'Good morning', translation: 'Chào buổi sáng', phonetic: '/ɡʊd ˈmɔːrnɪŋ/', imageUrl: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=500&auto=format&fit=crop&q=80', exampleSentence: 'Good morning, teacher!', exampleTranslation: 'Chào buổi sáng, thầy giáo!' },
-        { id: '3', targetText: 'Thank you', translation: 'Cảm ơn', phonetic: '/θæŋk juː/', imageUrl: 'https://images.unsplash.com/photo-1499744632587-7798360ba20f?w=500&auto=format&fit=crop&q=80', exampleSentence: 'Thank you very much!', exampleTranslation: 'Cảm ơn bạn rất nhiều!' },
-        { id: '4', targetText: 'Goodbye', translation: 'Tạm biệt', phonetic: '/ɡʊdˈbaɪ/', imageUrl: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=500&auto=format&fit=crop&q=80', exampleSentence: 'Goodbye, see you tomorrow!', exampleTranslation: 'Tạm biệt, hẹn gặp lại ngày mai!' },
+        { id: '1', targetText: 'Perseverance', translation: 'Sự kiên trì, bền bỉ', phonetic: '/ˌpɜːrsəˈvɪrəns/', cefrLevel: 'B2', exampleSentence: 'Her perseverance led to great academic success.', exampleTranslation: 'Sự kiên trì của cô ấy đã dẫn tới thành công lớn trong học tập.' },
+        { id: '2', targetText: 'Eloquent', translation: 'Hùng biện, lưu loát', phonetic: '/ˈeləkwənt/', cefrLevel: 'C1', exampleSentence: 'He made an eloquent speech at the conference.', exampleTranslation: 'Anh ấy đã có một bài phát biểu hùng biện tại hội nghị.' },
+        { id: '3', targetText: 'Resilience', translation: 'Khả năng phục hồi, kiên cường', phonetic: '/rɪˈzɪliəns/', cefrLevel: 'B2', exampleSentence: 'Courage and resilience help us overcome hardship.', exampleTranslation: 'Lòng dũng cảm và sự kiên cường giúp chúng ta vượt qua gian khó.' },
+        { id: '4', targetText: 'Ubiquitous', translation: 'Phổ biến, ở đâu cũng có', phonetic: '/juːˈbɪkwɪtəs/', cefrLevel: 'C1', exampleSentence: 'Smartphones have become ubiquitous in daily life.', exampleTranslation: 'Điện thoại thông minh đã trở nên phổ biến khắp mọi nơi trong đời sống.' },
       ];
       setQueue(fallback);
       setStats({ dueToday: fallback.length, learning: 3, mastered: 1 });
@@ -61,7 +74,7 @@ export default function SRSPage() {
   }, []);
 
   const handlePlayAudio = (text: string) => {
-    if ('speechSynthesis' in window) {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
@@ -70,255 +83,270 @@ export default function SRSPage() {
     }
   };
 
-  const [popupState, setPopupState] = useState<{ show: boolean; key: MascotReactionKey; title?: string; msg?: string }>({
-    show: false,
-    key: 'confirm',
-  });
+  const handleRating = useCallback(
+    async (quality: number) => {
+      const currentWord = queue[currentIndex];
+      if (!currentWord) return;
 
-  const handleRating = async (quality: number) => {
-    const currentWord = queue[currentIndex];
-    const xpGain = quality >= 3 ? 10 : 2;
-    setTotalXPEarned((prev) => prev + xpGain);
+      const xpGain = quality >= 3 ? 15 : 5;
+      setTotalXPEarned((prev) => prev + xpGain);
 
-    if (canPlayFeedbackAudio()) {
-      if (quality >= 3) {
-        sfx.playCorrect();
+      if (quality >= 5) {
+        arcadeAudio.playCoin();
+      } else if (quality >= 3) {
+        arcadeAudio.playLaser();
       } else {
-        sfx.playWrong();
+        arcadeAudio.playBuzzer();
       }
-    }
 
-    if (quality >= 5) {
-      setPopupState({
-        show: true,
-        key: 'celebrate_big',
-        title: 'Xuất sắc! 🎉',
-        msg: 'Bò LingLing nháy mắt khen bạn ghi nhớ siêu đỉnh!',
-      });
-    } else if (quality >= 3) {
-      setPopupState({
-        show: true,
-        key: 'confirm',
-        title: 'Đã ghi nhận! 🫡',
-        msg: 'Bò LingLing chào quân đội chúc mừng bạn!',
-      });
-    } else {
-      setPopupState({
-        show: true,
-        key: 'wrong_mild',
-        title: 'Lên lịch ôn lại! 📖',
-        msg: 'Bò LingLing sẽ giúp bạn ôn từ này sớm hơn nhé!',
-      });
-    }
+      setIsFlipped(false);
 
-    try {
-      await srsApi.submitReview(currentWord.id, quality);
-    } catch {}
+      try {
+        await srsApi.submitReview(currentWord.id, quality);
+      } catch {}
 
-    if (currentIndex + 1 < queue.length) {
-      setCurrentIndex((prev) => prev + 1);
-      setCompletedCount((prev) => prev + 1);
-    } else {
-      setIsFinished(true);
-      window.dispatchEvent(
-        new CustomEvent('linguaflow_xp_update', {
-          detail: { totalXP: 150 + totalXPEarned + xpGain },
-        })
-      );
-    }
-  };
+      if (currentIndex + 1 < queue.length) {
+        setCurrentIndex((prev) => prev + 1);
+        setCompletedCount((prev) => prev + 1);
+      } else {
+        arcadeAudio.playVictoryFanfare();
+        setIsFinished(true);
+        setCompletedCount(queue.length);
+      }
+    },
+    [queue, currentIndex]
+  );
 
+  // Global Keyboard Shortcuts (Space to flip, 1-3 to rate)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isFinished || !currentItem) return;
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
-      if (e.key === '1') handleRating(0);
-      else if (e.key === '2') handleRating(2);
-      else if (e.key === '3') handleRating(3);
-      else if (e.key === '4') handleRating(5);
+      if (isFinished || loading || queue.length === 0) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        arcadeAudio.playLaser();
+        setIsFlipped((prev) => !prev);
+      } else if (e.key === '1') {
+        e.preventDefault();
+        handleRating(1);
+      } else if (e.key === '2') {
+        e.preventDefault();
+        handleRating(3);
+      } else if (e.key === '3') {
+        e.preventDefault();
+        handleRating(5);
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isFinished, queue, currentIndex]);
+  }, [isFinished, loading, queue.length, handleRating]);
 
-  const currentItem = queue[currentIndex];
+  const currentWord = queue[currentIndex];
   const progressPercent = queue.length > 0 ? Math.round(((currentIndex) / queue.length) * 100) : 0;
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20">
+      <div className="min-h-[70vh] flex items-center justify-center">
         <div className="text-center space-y-3">
           <div className="w-10 h-10 border-2 border-teal-400 border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-sm text-slate-400 font-semibold">Đang chuẩn bị thẻ từ vựng...</p>
+          <p className="text-sm text-slate-400 font-semibold">{isVi ? 'Đang chuẩn bị thẻ ôn tập SRS...' : 'Preparing SRS Flashcard Deck...'}</p>
         </div>
       </div>
     );
   }
 
-  return (
-    <div className="flex flex-col items-center max-w-3xl mx-auto py-6 space-y-8">
-      {/* Header Bar */}
-      <div className="w-full flex items-center justify-between">
-        <Link href={`/${locale}/dashboard`}>
-          <Button variant="ghost" size="sm" icon={<ArrowLeft className="w-4 h-4" />}>
-            Về Lộ Trình
-          </Button>
-        </Link>
-        <div className="flex items-center gap-2">
-          <Brain className="w-5 h-5 text-teal-400" />
-          <h1 className="font-display font-bold text-lg text-white">Ôn Tập Thông Minh</h1>
-        </div>
-        <span className="text-xs font-mono text-slate-400">
-          {currentIndex + 1} / {queue.length}
-        </span>
-      </div>
-
-      {/* SRS Stats Dashboard */}
-      <div className="w-full grid grid-cols-3 gap-3">
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-amber-500/20 text-center">
-          <div className="flex items-center justify-center gap-1.5 mb-1">
-            <Clock className="w-4 h-4 text-amber-400" />
-            <span className="text-[10px] font-bold text-amber-400 uppercase">Hôm nay</span>
+  if (isFinished) {
+    return (
+      <main className="min-h-[80vh] flex items-center justify-center p-4">
+        <div className="max-w-md w-full p-8 rounded-3xl bg-slate-900/90 border border-teal-500/30 backdrop-blur-2xl text-center space-y-6 shadow-2xl">
+          <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-teal-400 to-emerald-400 flex items-center justify-center mx-auto text-slate-950 shadow-xl shadow-teal-500/20">
+            <Award className="w-8 h-8" />
           </div>
-          <span className="text-2xl font-extrabold text-white">{stats.dueToday}</span>
-          <span className="text-[10px] text-slate-400 block">từ cần ôn</span>
-        </div>
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-teal-500/20 text-center">
-          <div className="flex items-center justify-center gap-1.5 mb-1">
-            <BarChart3 className="w-4 h-4 text-teal-400" />
-            <span className="text-[10px] font-bold text-teal-400 uppercase">Đang học</span>
+
+          <div className="space-y-2">
+            <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-white">
+              {isVi ? 'Hoàn Thành Buổi Ôn Tập! 🎉' : 'Session Complete! 🎉'}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300">
+              {isVi ? `Bạn đã ôn tập thành công ${completedCount} thẻ từ vựng và nhận +${totalXPEarned} XP.` : `You successfully reviewed ${completedCount} flashcards and earned +${totalXPEarned} XP.`}
+            </p>
           </div>
-          <span className="text-2xl font-extrabold text-teal-300">{stats.learning}</span>
-          <span className="text-[10px] text-slate-400 block">từ vựng</span>
-        </div>
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/20 text-center">
-          <div className="flex items-center justify-center gap-1.5 mb-1">
-            <GraduationCap className="w-4 h-4 text-emerald-400" />
-            <span className="text-[10px] font-bold text-emerald-400 uppercase">Thành thạo</span>
-          </div>
-          <span className="text-2xl font-extrabold text-emerald-300">{stats.mastered}</span>
-          <span className="text-[10px] text-slate-400 block">từ vựng</span>
-        </div>
-      </div>
 
-      {/* Progress Bar */}
-      <div className="w-full">
-        <div className="flex justify-between text-xs text-slate-400 mb-1">
-          <span>Tiến trình ôn tập</span>
-          <span className="font-mono text-teal-400">{progressPercent}%</span>
-        </div>
-        <div className="w-full h-2.5 rounded-full bg-slate-800 border border-slate-700/50 overflow-hidden">
-          <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-teal-400 to-emerald-400"
-            initial={{ width: 0 }}
-            animate={{ width: `${progressPercent}%` }}
-            transition={{ duration: 0.4 }}
-          />
-        </div>
-      </div>
-
-      {!isFinished && currentItem ? (
-        <div className="w-full flex flex-col items-center space-y-8">
-          {/* 3D FLIP CARD */}
-          <SRSFlashcard
-            targetText={currentItem.targetText}
-            phonetic={currentItem.phonetic}
-            translation={currentItem.translation}
-            imageUrl={currentItem.imageUrl}
-            exampleSentence={currentItem.exampleSentence}
-            exampleTranslation={currentItem.exampleTranslation}
-            cefrLevel={currentItem.cefrLevel || 'A1'}
-            onPlayAudio={() => handlePlayAudio(currentItem.targetText)}
-          />
-
-          {/* SM-2 QUALITY RATING BUTTONS */}
-          <div className="w-full max-w-md space-y-3">
-            <span className="text-xs text-center block text-slate-400 font-medium">
-              Đánh giá độ thuộc bài để hệ thống sắp xếp lịch ôn tập phù hợp:
-            </span>
-            <div className="grid grid-cols-4 gap-2">
-              <button
-                onClick={() => handleRating(0)}
-                className="py-3 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 font-bold text-xs transition-all active:scale-95 relative"
-                title="Phím tắt: 1"
-              >
-                Quên
-                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">1</span>
-                <span className="block text-[10px] opacity-75">1 ngày</span>
-              </button>
-              <button
-                onClick={() => handleRating(2)}
-                className="py-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 font-bold text-xs transition-all active:scale-95 relative"
-                title="Phím tắt: 2"
-              >
-                Khó
-                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">2</span>
-                <span className="block text-[10px] opacity-75">3 ngày</span>
-              </button>
-              <button
-                onClick={() => handleRating(3)}
-                className="py-3 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 font-bold text-xs transition-all active:scale-95 relative"
-                title="Phím tắt: 3"
-              >
-                Tốt
-                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">3</span>
-                <span className="block text-[10px] opacity-75">6 ngày</span>
-              </button>
-              <button
-                onClick={() => handleRating(5)}
-                className="py-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-bold text-xs transition-all active:scale-95 relative"
-                title="Phím tắt: 4"
-              >
-                Dễ
-                <span className="hidden sm:inline-block ml-1 px-1 py-0.2 rounded bg-slate-900/80 border border-slate-700 text-[9px] font-mono text-slate-300">4</span>
-                <span className="block text-[10px] opacity-75">12 ngày</span>
-              </button>
+          <div className="grid grid-cols-2 gap-3 py-2">
+            <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-center">
+              <span className="text-xl font-extrabold text-teal-400">+{totalXPEarned}</span>
+              <span className="text-[10px] text-slate-400 block mt-0.5">Kinh nghiệm</span>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-center">
+              <span className="text-xl font-extrabold text-amber-400">{completedCount}</span>
+              <span className="text-[10px] text-slate-400 block mt-0.5">Thẻ đã thuộc</span>
             </div>
           </div>
-        </div>
-      ) : (
-        /* FINISHED / EMPTY SRS STATE */
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="w-full max-w-md rounded-3xl bg-slate-900 border border-teal-500/40 p-8 text-center space-y-6 shadow-2xl shadow-teal-500/20"
-        >
-          <div className="relative w-28 h-28 mx-auto">
-            <Image
-              src={mascotReactions.idle_empty}
-              alt="Mascot Empty SRS State"
-              width={112}
-              height={112}
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <h2 className="text-2xl font-display font-extrabold text-white">Chưa Có Từ Nào Cần Ôn!</h2>
-          <p className="text-sm text-slate-300">
-            Bò LingLing đang nằm cuộn tròn nghỉ ngơi. Bạn đã hoàn thành xuất sắc các từ vựng cần ôn hôm nay!
-          </p>
-          <div className="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 inline-flex items-center gap-2 text-teal-300 font-extrabold text-base">
-            <Sparkles className="w-5 h-5 text-amber-400" />
-            <span>+{totalXPEarned} XP Đã Nhận</span>
-          </div>
-          <Link href={`/${locale}/dashboard`} className="block">
-            <Button variant="accent" size="lg" className="w-full">
-              Quay Về Lộ Trình Học
-            </Button>
-          </Link>
-        </motion.div>
-      )}
 
-      {/* Mascot Reaction Popup */}
-      <MascotPopup
-        isVisible={popupState.show}
-        reactionKey={popupState.key}
-        title={popupState.title}
-        message={popupState.msg}
-        autoDismissMs={3500}
-        onClose={() => setPopupState((prev) => ({ ...prev, show: false }))}
-      />
-    </div>
+          <div className="flex flex-col gap-2.5">
+            <Button
+              variant="primary"
+              className="w-full"
+              icon={<RotateCcw className="w-4 h-4" />}
+              onClick={() => {
+                setCurrentIndex(0);
+                setIsFinished(false);
+                setIsFlipped(false);
+              }}
+            >
+              {isVi ? 'Ôn Lại Lần Nữa' : 'Review Again'}
+            </Button>
+
+            <Link href={`/${locale}/dashboard`}>
+              <Button variant="outline" className="w-full">
+                {isVi ? 'Về Dashboard' : 'Back to Dashboard'}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="min-h-[85vh] flex flex-col justify-between max-w-xl mx-auto py-6 px-4 space-y-6">
+      {/* HEADER NAVIGATION & PROGRESS */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between text-xs">
+          <Link
+            href={`/${locale}/dashboard`}
+            className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>{isVi ? 'Về Lộ Trình' : 'Dashboard'}</span>
+          </Link>
+
+          <div className="flex items-center gap-2 font-mono font-bold text-teal-300">
+            <Brain className="w-4 h-4" />
+            <span>
+              {currentIndex + 1} / {queue.length}
+            </span>
+          </div>
+        </div>
+
+        <ProgressBar value={currentIndex + 1} max={queue.length} color="teal" />
+      </div>
+
+      {/* CENTERED 3D FLASHCARD STAGE */}
+      <div
+        className="relative w-full h-[380px] perspective-1000 cursor-pointer select-none"
+        onClick={() => {
+          arcadeAudio.playLaser();
+          setIsFlipped(!isFlipped);
+        }}
+      >
+        <motion.div
+          animate={{ rotateY: isFlipped ? 180 : 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="w-full h-full transform-style-3d relative"
+        >
+          {/* FRONT SIDE */}
+          <div className="absolute inset-0 backface-hidden p-8 rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-teal-950/30 border border-teal-500/30 shadow-2xl flex flex-col justify-between items-center text-center">
+            <div className="flex items-center justify-between w-full">
+              <Badge variant="teal" className="font-mono font-extrabold uppercase">
+                {currentWord?.cefrLevel || 'B2'}
+              </Badge>
+              <span className="text-[11px] font-mono text-slate-400">SM-2 Spaced Recall</span>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+                {currentWord?.targetText}
+              </h2>
+              {currentWord?.phonetic && (
+                <p className="text-sm font-mono text-teal-300/90">{currentWord?.phonetic}</p>
+              )}
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePlayAudio(currentWord?.targetText);
+                }}
+                className="p-3 rounded-full bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 transition-colors mx-auto inline-flex items-center gap-1.5 text-xs font-bold"
+                aria-label="Phát âm từ vựng"
+              >
+                <Volume2 className="w-4 h-4" />
+                <span>{isVi ? 'Nghe phát âm' : 'Play Audio'}</span>
+              </button>
+            </div>
+
+            <div className="flex items-center gap-1.5 text-xs text-slate-400 font-sans">
+              <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
+              <span>{isVi ? 'Chạm (hoặc bấm Space) để lật xem nghĩa' : 'Tap (or press Space) to reveal definition'}</span>
+            </div>
+          </div>
+
+          {/* BACK SIDE (180deg) */}
+          <div className="absolute inset-0 backface-hidden rotate-y-180 p-8 rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-amber-950/30 border border-amber-500/40 shadow-2xl flex flex-col justify-between text-left">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                  {isVi ? 'Ý Nghĩa & Ngữ Cảnh' : 'Definition & Context'}
+                </span>
+                <span className="text-xs text-slate-400 font-mono">{currentWord?.targetText}</span>
+              </div>
+
+              <h3 className="text-2xl font-display font-extrabold text-amber-300">
+                {currentWord?.translation}
+              </h3>
+
+              {currentWord?.exampleSentence && (
+                <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs text-slate-300 leading-relaxed font-sans">
+                  <p className="font-bold text-slate-400 mb-1">{isVi ? 'Ví dụ:' : 'Example:'}</p>
+                  <p>"{currentWord?.exampleSentence}"</p>
+                  {currentWord?.exampleTranslation && (
+                    <p className="text-slate-400 text-[11px] mt-1">{currentWord?.exampleTranslation}</p>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400 pt-2 border-t border-slate-800">
+              <RotateCcw className="w-3.5 h-3.5 text-teal-400" />
+              <span>{isVi ? 'Chạm để lật lại mặt trước' : 'Tap to flip back'}</span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* RATING BUTTONS & KEYBOARD SHORTCUTS (1, 2, 3) */}
+      <div className="space-y-2">
+        <div className="grid grid-cols-3 gap-3">
+          <button
+            type="button"
+            onClick={() => handleRating(1)}
+            className="p-3.5 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-bold text-center transition-all active:scale-95 shadow-md flex flex-col items-center gap-1"
+          >
+            <span>{isVi ? '🔴 Quên rồi' : '🔴 Again'}</span>
+            <span className="font-mono text-[10px] text-rose-400/80 bg-slate-950 px-2 py-0.5 rounded border border-rose-500/20">Phím 1</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleRating(3)}
+            className="p-3.5 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold text-center transition-all active:scale-95 shadow-md flex flex-col items-center gap-1"
+          >
+            <span>{isVi ? '🟡 Tạm ổn' : '🟡 Hard'}</span>
+            <span className="font-mono text-[10px] text-amber-400/80 bg-slate-950 px-2 py-0.5 rounded border border-amber-500/20">Phím 2</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleRating(5)}
+            className="p-3.5 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 text-xs font-bold text-center transition-all active:scale-95 shadow-md flex flex-col items-center gap-1"
+          >
+            <span>{isVi ? '🟢 Đã nhớ' : '🟢 Easy'}</span>
+            <span className="font-mono text-[10px] text-teal-400/80 bg-slate-950 px-2 py-0.5 rounded border border-teal-500/20">Phím 3</span>
+          </button>
+        </div>
+      </div>
+    </main>
   );
 }
-
