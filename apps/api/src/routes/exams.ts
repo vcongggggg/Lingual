@@ -246,7 +246,7 @@ examsRouter.post('/attempts/:attemptId/submit', async (req, res) => {
     attempt.userId,
     streakResult.currentStreak,
     streakResult.streakFreezes,
-    streakResult.lastActiveDate || new Date().toISOString().split('T')[0],
+    new Date().toISOString().split('T')[0],
     evaluationResult.xpAwarded
   );
 

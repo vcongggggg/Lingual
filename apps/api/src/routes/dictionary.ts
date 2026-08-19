@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { SEED_UNITS } from '../../../../prisma/seed.js';
 import { MOCK_WORD_STATES } from './auth.js';
+import { RealDictionaryService } from '../services/realDictionaryService.js';
 
 export const dictionaryRouter = Router();
 
@@ -23,19 +24,46 @@ const MOCK_BOOKMARKS = new Set<string>();
  * GET /api/v1/dictionary/search
  * Query params: q, cefr, partOfSpeech, page, limit
  */
-dictionaryRouter.get('/search', (req, res) => {
+dictionaryRouter.get('/search', async (req, res) => {
   const { q = '', cefr = '', partOfSpeech = '', page = '1', limit = '20' } = req.query;
 
-  let filtered = ALL_VOCABULARY_WORDS;
+  let filtered = [...ALL_VOCABULARY_WORDS];
+  const queryStr = typeof q === 'string' ? q.trim() : '';
 
-  if (q && typeof q === 'string' && q.trim()) {
-    const searchTerm = q.trim().toLowerCase();
+  if (queryStr) {
+    const searchTerm = queryStr.toLowerCase();
     filtered = filtered.filter(
       (w) =>
         w.targetText.toLowerCase().includes(searchTerm) ||
         w.translation.toLowerCase().includes(searchTerm) ||
         (w.exampleSentence && w.exampleSentence.toLowerCase().includes(searchTerm))
     );
+
+    // If local matches are few and query is a valid English word, fetch from live external dictionary
+    if (filtered.length < 3 && /^[a-zA-Z\s-]+$/.test(queryStr)) {
+      try {
+        const liveDefs = await RealDictionaryService.lookupWord(queryStr);
+        if (liveDefs && liveDefs.length > 0) {
+          liveDefs.forEach((def, idx) => {
+            const externalWordId = `ext-${def.word}-${idx}`;
+            if (!filtered.some((f) => f.targetText.toLowerCase() === def.word.toLowerCase())) {
+              filtered.push({
+                id: externalWordId,
+                targetText: def.word.charAt(0).toUpperCase() + def.word.slice(1),
+                translation: def.definitionEn,
+                phonetic: def.phonetic || '',
+                partOfSpeech: def.partOfSpeech,
+                cefrLevel: 'B2',
+                exampleSentence: def.exampleSentence || `The word "${def.word}" is commonly used in modern English.`,
+                audioUrl: def.audioUrl,
+                unitTitle: 'Từ Điển Mở Rộng (Live API)',
+                lessonTitle: 'Tra Cứu Trực Tuyến',
+              } as any);
+            }
+          });
+        }
+      } catch {}
+    }
   }
 
   if (cefr && typeof cefr === 'string' && cefr !== 'all') {
@@ -68,6 +96,33 @@ dictionaryRouter.get('/search', (req, res) => {
 });
 
 /**
+ * GET /api/v1/dictionary/lookup/:word
+ * Direct Live Definition Lookup with Phonetics & Audio
+ */
+dictionaryRouter.get('/lookup/:word', async (req, res) => {
+  const { word } = req.params;
+  if (!word) {
+    return res.status(400).json({ error: 'Word is required' });
+  }
+
+  try {
+    const liveResults = await RealDictionaryService.lookupWord(word);
+    const localMatch = ALL_VOCABULARY_WORDS.find(
+      (w) => w.targetText.toLowerCase() === word.toLowerCase()
+    );
+
+    return res.json({
+      word,
+      local: localMatch || null,
+      definitions: liveResults,
+      bookmarked: localMatch ? MOCK_BOOKMARKS.has(localMatch.id) : false,
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: 'Lookup failed', message: err.message });
+  }
+});
+
+/**
  * POST /api/v1/dictionary/bookmark
  * Body: { wordId: string }
  */
@@ -96,7 +151,23 @@ dictionaryRouter.post('/add-to-srs', (req, res) => {
     return res.status(400).json({ error: 'wordId là bắt buộc' });
   }
 
-  const wordObj = ALL_VOCABULARY_WORDS.find((w) => w.id === wordId);
+  let wordObj = ALL_VOCABULARY_WORDS.find((w) => w.id === wordId);
+
+  // If dynamic ext- word
+  if (!wordObj && wordId.startsWith('ext-')) {
+    wordObj = {
+      id: wordId,
+      targetText: wordId.replace('ext-', '').split('-')[0],
+      translation: 'Từ tra cứu trực tuyến',
+      phonetic: '',
+      partOfSpeech: 'noun',
+      cefrLevel: 'B2',
+      exampleSentence: 'Tra cứu từ điển mở rộng.',
+      unitTitle: 'Từ Điển Mở Rộng',
+      lessonTitle: 'Tra Cứu',
+    } as any;
+  }
+
   if (!wordObj) {
     return res.status(404).json({ error: 'Không tìm thấy từ vựng' });
   }

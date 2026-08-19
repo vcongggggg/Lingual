@@ -257,7 +257,7 @@ writingRouter.post('/attempts', async (req, res) => {
     userId,
     streakResult.currentStreak,
     streakResult.streakFreezes,
-    streakResult.lastActiveDate || new Date().toISOString().split('T')[0],
+    new Date().toISOString().split('T')[0],
     authoritativeXP
   );
 
