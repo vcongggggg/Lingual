@@ -255,18 +255,8 @@ export default function DashboardPage() {
 
       {/* RIGHT SIDEBAR STATS & GOAL WIDGET (4 COLUMNS) */}
       <motion.div variants={itemVariants} className="relative z-10 lg:col-span-4 space-y-6 sticky top-24">
-        {/* Daily Goal MotionCard with Selective 3D Pointer Tilt */}
-        <MotionCard glow="amber" tilt spotlight className="space-y-4 relative overflow-visible">
-          {/* Peeking Mascot Sitting on Goal Card */}
-          <div className="absolute -top-8 -right-2 w-14 h-14 pointer-events-none filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)]">
-            <Image
-              src={mascotReactions.relax_done}
-              alt="Peeking Goal Mascot"
-              fill
-              unoptimized
-              className="object-contain"
-            />
-          </div>
+        {/* Daily Goal Card */}
+        <MotionCard glow="amber" tilt spotlight className="space-y-4 relative overflow-hidden">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400">
               Mục Tiêu Hôm Nay

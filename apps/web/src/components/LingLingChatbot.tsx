@@ -344,7 +344,7 @@ export default function LingLingChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative mb-4 w-[92vw] sm:w-[420px] h-[540px] rounded-3xl bg-slate-950/95 border border-amber-500/30 shadow-2xl backdrop-blur-2xl flex flex-col"
+            className="relative mb-4 w-[92vw] sm:w-[420px] max-h-[82vh] h-[520px] rounded-3xl bg-slate-950/95 border border-amber-500/30 shadow-2xl backdrop-blur-2xl flex flex-col"
           >
             {/* PEEKING COW MASCOT STICKER LEANING OVER TOP EDGE */}
             <motion.div
@@ -594,28 +594,12 @@ export default function LingLingChatbot() {
         )}
       </AnimatePresence>
 
-      {/* Floating Toggle Button with Peeking Mascot Sitting On Top */}
+      {/* Floating Toggle Button */}
       <div className="relative inline-block">
-        {!isOpen && (
-          <motion.div
-            initial={{ y: 5, opacity: 0 }}
-            animate={{ y: [0, -3, 0], rotate: [-2, 3, -2], opacity: 1 }}
-            transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
-            className="absolute -top-10 -left-3 z-30 w-14 h-14 pointer-events-none drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
-          >
-            <Image
-              src={mascotReactions.idle_empty}
-              alt="Peeking Mascot Sitting on Chat Button"
-              fill
-              unoptimized
-              className="object-contain"
-            />
-          </motion.div>
-        )}
-
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="group flex items-center gap-2.5 p-3.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-teal-400 text-slate-950 font-bold shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95 relative"
+          aria-label="Mở trợ lý AI LingLing"
+          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-teal-400 text-slate-950 font-bold shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95 relative"
         >
           <div className="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center shadow-inner overflow-hidden">
             <LingLingMascot state={avatarState} size={26} />

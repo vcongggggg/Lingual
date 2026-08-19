@@ -1,12 +1,17 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Card, ProgressBar } from '@linguaflow/ui';
 import { gamesApi } from '@/lib/api';
-import { sfx } from '@/lib/soundEffects';
+import { arcadeAudio } from '@/lib/arcadeAudio';
+import ParticleCanvas, { ParticleCanvasHandle } from '@/components/games/ParticleCanvas';
+import ComboMeter from '@/components/games/ComboMeter';
+import HeartContainer from '@/components/games/HeartContainer';
+import VictoryOverlay from '@/components/games/VictoryOverlay';
+import GameOverOverlay from '@/components/games/GameOverOverlay';
 import {
   Gamepad2,
   ArrowLeft,
@@ -25,6 +30,8 @@ import {
   Swords,
   Play,
   RotateCcw,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 import Image from 'next/image';
 import { mascotReactions } from '@linguaflow/config';
@@ -35,6 +42,12 @@ export type DifficultyLevel = 'easy' | 'medium' | 'hard';
 export default function GamesPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
+  const isVi = locale === 'vi';
+
+  const particleRef = useRef<ParticleCanvasHandle | null>(null);
+
+  // Audio State
+  const [isMuted, setIsMuted] = useState(false);
 
   // Navigation & Tab State
   const [activeTab, setActiveTab] = useState<'games' | 'leaderboard'>('games');
@@ -45,14 +58,19 @@ export default function GamesPage() {
   const [selectedDifficulty, setSelectedDifficulty] = useState<DifficultyLevel>('medium');
   const [showDifficultyModal, setShowDifficultyModal] = useState<string | null>(null);
   const [attemptId, setAttemptId] = useState<string>('');
-  const [scoreResult, setScoreResult] = useState<any>(null);
   const [timerSeconds, setTimerSeconds] = useState(60);
+
+  // Overlay states
+  const [showVictory, setShowVictory] = useState(false);
+  const [showGameOver, setShowGameOver] = useState(false);
+  const [finalXP, setFinalXP] = useState(50);
+  const [finalScore, setFinalScore] = useState(0);
 
   // Gameplay Lives & Effects State
   const [lives, setLives] = useState(3);
   const [combo, setCombo] = useState(1);
+  const [maxCombo, setMaxCombo] = useState(1);
   const [isShaking, setIsShaking] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
 
   // Mascot Reaction Toast State
   const [popupState, setPopupState] = useState<{
@@ -84,7 +102,6 @@ export default function GamesPage() {
   const [typingIdx, setTypingIdx] = useState(0);
   const [typingInput, setTypingInput] = useState('');
   const [typingScore, setTypingScore] = useState(0);
-  const [wpm, setWpm] = useState(0);
 
   // GAME 4: FILL BLITZ STATE
   const [blitzQuestions, setBlitzQuestions] = useState<any[]>([]);
@@ -94,8 +111,8 @@ export default function GamesPage() {
   const gamesList = [
     {
       id: 'word_match',
-      title: 'Lật Thẻ Ghép Từ 3D',
-      desc: 'Lật từng cặp thẻ bài 3D để ghép từ tiếng Anh với nghĩa tiếng Việt tương ứng.',
+      title: isVi ? 'Lật Thẻ Ghép Từ 3D' : '3D Word Match Cards',
+      desc: isVi ? 'Lật từng cặp thẻ bài 3D để ghép từ tiếng Anh với nghĩa tiếng Việt tương ứng.' : 'Flip 3D cards to match English words with their contextual meanings.',
       icon: '🧩',
       glow: 'teal' as const,
       bgGradient: 'from-teal-900/70 via-emerald-950/80 to-slate-950',
@@ -104,8 +121,8 @@ export default function GamesPage() {
     },
     {
       id: 'sentence_scramble',
-      title: 'Xếp Từ Thành Câu',
-      desc: 'Sắp xếp các từ xáo trộn thành câu tiếng Anh hoàn chỉnh theo đúng ngữ pháp.',
+      title: isVi ? 'Xếp Từ Thành Câu' : 'Sentence Builder Arcade',
+      desc: isVi ? 'Sắp xếp các từ xáo trộn thành câu tiếng Anh hoàn chỉnh theo đúng ngữ pháp.' : 'Unscramble mixed word tokens to construct grammatically perfect sentences.',
       icon: '🔤',
       glow: 'amber' as const,
       bgGradient: 'from-amber-900/70 via-orange-950/80 to-slate-950',
@@ -114,8 +131,8 @@ export default function GamesPage() {
     },
     {
       id: 'typing_race',
-      title: 'Đua Tốc Độ Gõ Từ',
-      desc: 'Thử thách gõ nhanh và chính xác các từ tiếng Anh dưới áp lực thời gian đếm ngược.',
+      title: isVi ? 'Đua Tốc Độ Gõ Từ' : 'Speed Typing Sprint',
+      desc: isVi ? 'Thử thách gõ nhanh và chính xác các từ tiếng Anh dưới áp lực thời gian đếm ngược.' : 'Type English vocabulary fast with 100% precision before the clock expires.',
       icon: '⚡',
       glow: 'coral' as const,
       bgGradient: 'from-rose-900/70 via-orange-950/80 to-slate-950',
@@ -124,8 +141,8 @@ export default function GamesPage() {
     },
     {
       id: 'fill_blitz',
-      title: 'Thách Thức 60 Giây',
-      desc: 'Điền từ liên hoàn trong 60 giây để tích lũy điểm thưởng Combo Super 5X.',
+      title: isVi ? 'Thách Thức 60 Giây' : '60-Second Rapid Blitz',
+      desc: isVi ? 'Điền từ liên hoàn trong 60 giây để tích lũy điểm thưởng Combo Super 5X.' : 'Rapid-fire vocabulary challenge to build massive combo multipliers.',
       icon: '🎯',
       glow: 'teal' as const,
       bgGradient: 'from-indigo-900/70 via-purple-950/80 to-slate-950',
@@ -158,9 +175,12 @@ export default function GamesPage() {
   // Timer Ticker
   useEffect(() => {
     let interval: any = null;
-    if (activeGame && timerSeconds > 0 && !scoreResult && lives > 0) {
+    if (activeGame && timerSeconds > 0 && !showVictory && !showGameOver && lives > 0) {
       interval = setInterval(() => {
         setTimerSeconds((prev) => {
+          if (prev <= 6 && prev > 1) {
+            arcadeAudio.playTick(true);
+          }
           if (prev <= 1) {
             handleFinishCurrentGame();
             return 0;
@@ -170,31 +190,25 @@ export default function GamesPage() {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [activeGame, timerSeconds, scoreResult, lives]);
+  }, [activeGame, timerSeconds, showVictory, showGameOver, lives]);
 
   // Handle Wrong Answer Penalty (Heart deduction + Screen Shake + SFX)
-  const triggerWrongAnswer = () => {
-    sfx.playWrong();
+  const triggerWrongAnswer = (x?: number, y?: number) => {
+    arcadeAudio.playBuzzer();
     setIsShaking(true);
-    setTimeout(() => setIsShaking(false), 500);
+    setTimeout(() => setIsShaking(false), 450);
 
     setCombo(1);
     setLives((prev) => {
       const next = prev - 1;
       if (next <= 0) {
-        setPopupState({
-          show: true,
-          key: 'wrong_severe',
-          title: 'Hết Mạng! 💔',
-          msg: 'Bò LingLing nhảy cẫng tức giận! Hãy thử lại nhé!',
-        });
-        setTimeout(() => handleFinishCurrentGame(), 1000);
+        setShowGameOver(true);
       } else {
         setPopupState({
           show: true,
           key: 'wrong_mild',
-          title: 'Ối! Trừ 1 Mạng! 💔',
-          msg: 'Bò LingLing nhắc bạn chú ý quan sát kỹ hơn!',
+          title: isVi ? 'Ối! Trừ 1 Mạng! 💔' : 'Lost 1 Life! 💔',
+          msg: isVi ? 'Bò LingLing nhắc bạn chú ý quan sát kỹ hơn!' : 'Careful! Keep your focus sharp!',
         });
       }
       return next;
@@ -202,23 +216,55 @@ export default function GamesPage() {
   };
 
   // Handle Correct Answer Reward (SFX + Confetti + Combo Boost)
-  const triggerCorrectAnswer = () => {
-    sfx.playCorrect();
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 1200);
+  const triggerCorrectAnswer = (x?: number, y?: number) => {
+    arcadeAudio.playCoin();
+    if (x && y) {
+      particleRef.current?.spawnComboSpark(x, y, `${combo}x COMBO!`);
+      particleRef.current?.spawnXPFloat(x, y, 25 * combo);
+    }
 
     setCombo((prev) => {
       const next = prev + 1;
-      if (next >= 5) {
+      if (next > maxCombo) setMaxCombo(next);
+      arcadeAudio.playCombo(next);
+
+      if (next >= 4) {
         setPopupState({
           show: true,
           key: 'celebrate_big',
           title: `COMBO SUPER ${next}X! 🔥`,
-          msg: 'Bò LingLing bắn tim chúc mừng bạn ghi điểm liên hoàn!',
+          msg: isVi ? 'Bò LingLing bắn tim chúc mừng bạn ghi điểm liên hoàn!' : 'Super streak! LingLing is celebrating with you!',
         });
       }
       return next;
     });
+  };
+
+  // Finish game and record attempt
+  const handleFinishCurrentGame = async () => {
+    const totalScore = matchScore || scrambleScore || typingScore || blitzScore || 100;
+    const earnedXP = Math.round(totalScore / 10) + 20;
+
+    setFinalScore(totalScore);
+    setFinalXP(earnedXP);
+
+    if (lives > 0) {
+      setShowVictory(true);
+      particleRef.current?.spawnConfetti();
+    } else {
+      setShowGameOver(true);
+    }
+
+    if (attemptId && activeGame) {
+      try {
+        await gamesApi.submitScore({
+          attemptId,
+          gameType: activeGame,
+          userAnswers: [],
+          durationSeconds: Math.max(1, 60 - timerSeconds),
+        });
+      } catch {}
+    }
   };
 
   // Initialize Game Session with Selected Difficulty
@@ -229,9 +275,11 @@ export default function GamesPage() {
 
     setActiveGame(gameType);
     setSelectedDifficulty(difficulty);
-    setScoreResult(null);
+    setShowVictory(false);
+    setShowGameOver(false);
     setLives(difficulty === 'hard' ? 2 : 3);
     setCombo(1);
+    setMaxCombo(1);
     setFirstCard(null);
     setSecondCard(null);
     setMatchedIds([]);
@@ -243,12 +291,13 @@ export default function GamesPage() {
     setTypingIdx(0);
     setTypingInput('');
     setTypingScore(0);
-    setWpm(0);
     setBlitzIdx(0);
     setBlitzScore(0);
 
     const initialTime = difficulty === 'easy' ? 90 : difficulty === 'medium' ? 60 : 45;
     setTimerSeconds(initialTime);
+
+    arcadeAudio.playLaser();
 
     try {
       const attemptRes = await gamesApi.startAttempt(gameType);
@@ -285,10 +334,10 @@ export default function GamesPage() {
       // Fallback local initializers
       if (gameType === 'word_match') {
         const fallbackPairs = [
-          { id: 'p1', targetText: 'Hello', translation: 'Xin chào' },
-          { id: 'p2', targetText: 'Book', translation: 'Quyển sách' },
-          { id: 'p3', targetText: 'Apple', translation: 'Quả táo' },
-          { id: 'p4', targetText: 'Cat', translation: 'Con mèo' },
+          { id: 'p1', targetText: 'Resilience', translation: 'Khả năng phục hồi' },
+          { id: 'p2', targetText: 'Diligent', translation: 'Chăm chỉ' },
+          { id: 'p3', targetText: 'Serendipity', translation: 'Duyên may bất ngờ' },
+          { id: 'p4', targetText: 'Ubiquitous', translation: 'Phổ biến khắp nơi' },
         ];
         const cards: any[] = [];
         fallbackPairs.forEach((p) => {
@@ -302,8 +351,9 @@ export default function GamesPage() {
   };
 
   // Card Flip Action (Word Match)
-  const handleCardClick = (card: any) => {
+  const handleCardClick = (card: any, e?: React.MouseEvent) => {
     if (isCheckingMatch || matchedIds.includes(card.pairId) || firstCard?.id === card.id) return;
+    arcadeAudio.playLaser();
 
     if (!firstCard) {
       setFirstCard(card);
@@ -313,9 +363,12 @@ export default function GamesPage() {
     setSecondCard(card);
     setIsCheckingMatch(true);
 
+    const clientX = e?.clientX || (typeof window !== 'undefined' ? window.innerWidth / 2 : 400);
+    const clientY = e?.clientY || (typeof window !== 'undefined' ? window.innerHeight / 2 : 300);
+
     if (firstCard.pairId === card.pairId) {
       // Matched!
-      triggerCorrectAnswer();
+      triggerCorrectAnswer(clientX, clientY);
       setMatchedIds((prev) => [...prev, card.pairId]);
       const diffMultiplier = selectedDifficulty === 'hard' ? 2 : selectedDifficulty === 'medium' ? 1.5 : 1;
       setMatchScore((prev) => prev + Math.round(100 * combo * diffMultiplier));
@@ -328,7 +381,7 @@ export default function GamesPage() {
       }
     } else {
       // Wrong Match!
-      triggerWrongAnswer();
+      triggerWrongAnswer(clientX, clientY);
       setTimeout(() => {
         setFirstCard(null);
         setSecondCard(null);
@@ -338,19 +391,23 @@ export default function GamesPage() {
   };
 
   // Sentence Scramble Token Click
-  const handleScrambleTokenClick = (token: string, idx: number) => {
+  const handleScrambleTokenClick = (token: string, idx: number, e?: React.MouseEvent) => {
+    arcadeAudio.playLaser();
     const currentScramble = scrambleList[scrambleIdx];
     if (!currentScramble) return;
 
     const newTokens = [...scrambleSelectedTokens, token];
     setScrambleSelectedTokens(newTokens);
 
+    const clientX = e?.clientX || 400;
+    const clientY = e?.clientY || 300;
+
     if (newTokens.length === currentScramble.tokens.length) {
       const userSentence = newTokens.join(' ').trim().toLowerCase();
       const targetSentence = currentScramble.fullSentence.trim().toLowerCase();
 
       if (userSentence === targetSentence) {
-        triggerCorrectAnswer();
+        triggerCorrectAnswer(clientX, clientY);
         const diffMultiplier = selectedDifficulty === 'hard' ? 2 : selectedDifficulty === 'medium' ? 1.5 : 1;
         setScrambleScore((prev) => prev + Math.round(150 * combo * diffMultiplier));
 
@@ -363,7 +420,7 @@ export default function GamesPage() {
           setTimeout(() => handleFinishCurrentGame(), 600);
         }
       } else {
-        triggerWrongAnswer();
+        triggerWrongAnswer(clientX, clientY);
         setTimeout(() => {
           setScrambleSelectedTokens([]);
         }, 800);
@@ -377,10 +434,9 @@ export default function GamesPage() {
     const targetWord = typingWords[typingIdx]?.targetText || typingWords[typingIdx]?.word;
 
     if (targetWord && val.trim().toLowerCase() === targetWord.trim().toLowerCase()) {
-      triggerCorrectAnswer();
+      triggerCorrectAnswer(typeof window !== 'undefined' ? window.innerWidth / 2 : 400, 300);
       const diffMultiplier = selectedDifficulty === 'hard' ? 2 : selectedDifficulty === 'medium' ? 1.5 : 1;
       setTypingScore((prev) => prev + Math.round(120 * combo * diffMultiplier));
-      setWpm((prev) => prev + 8);
       setTypingInput('');
 
       if (typingIdx + 1 < typingWords.length) {
@@ -392,16 +448,19 @@ export default function GamesPage() {
   };
 
   // Fill Blitz Answer Selection
-  const handleBlitzAnswer = (selectedOption: string) => {
+  const handleBlitzAnswer = (opt: string, e?: React.MouseEvent) => {
     const currentQ = blitzQuestions[blitzIdx];
     if (!currentQ) return;
 
-    if (selectedOption === currentQ.correct) {
-      triggerCorrectAnswer();
+    const clientX = e?.clientX || 400;
+    const clientY = e?.clientY || 300;
+
+    if (opt === currentQ.correct) {
+      triggerCorrectAnswer(clientX, clientY);
       const diffMultiplier = selectedDifficulty === 'hard' ? 2 : selectedDifficulty === 'medium' ? 1.5 : 1;
       setBlitzScore((prev) => prev + Math.round(100 * combo * diffMultiplier));
     } else {
-      triggerWrongAnswer();
+      triggerWrongAnswer(clientX, clientY);
     }
 
     if (blitzIdx + 1 < blitzQuestions.length) {
@@ -411,375 +470,393 @@ export default function GamesPage() {
     }
   };
 
-  // Finish Game & Record Score
-  const handleFinishCurrentGame = async () => {
-    sfx.playVictory();
-    const finalScoreValue = matchScore || scrambleScore || typingScore || blitzScore || 100;
-    const duration = (selectedDifficulty === 'easy' ? 90 : selectedDifficulty === 'medium' ? 60 : 45) - timerSeconds;
-
-    try {
-      const res = await gamesApi.submitScore({
-        attemptId: attemptId || `att-${Date.now()}`,
-        gameType: activeGame || 'word_match',
-        userAnswers: [{ itemId: 'g1', answer: 'correct' }],
-        durationSeconds: duration,
-      });
-
-      setScoreResult({
-        finalScore: res.finalScore || finalScoreValue,
-        xpEarned: res.xpEarned || 35,
-        newStreakDays: res.newStreakDays || 4,
-      });
-    } catch {
-      setScoreResult({
-        finalScore: finalScoreValue,
-        xpEarned: 35,
-        newStreakDays: 4,
-      });
-    }
-
-    window.dispatchEvent(
-      new CustomEvent('linguaflow_xp_update', {
-        detail: { totalXP: 250 + (scoreResult?.xpEarned || 35) },
-      })
-    );
-  };
-
   return (
-    <div className={`min-h-screen bg-slate-950 text-slate-100 p-4 sm:p-8 space-y-8 transition-transform duration-100 ${isShaking ? 'translate-x-1 -translate-y-1 rotate-1' : ''}`}>
-      {/* Visual Confetti Overlay */}
-      {showConfetti && (
-        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center overflow-hidden">
-          <div className="text-6xl animate-bounce">🎉 ✨ 🌟 🏆 🎉</div>
-        </div>
-      )}
+    <div className={`relative min-h-screen pb-24 pt-6 px-4 sm:px-6 max-w-7xl mx-auto space-y-8 font-sans ${isShaking ? 'animate-bounce' : ''}`}>
+      {/* 2D Particle Canvas for Confetti, Sparks & Floating XP */}
+      <ParticleCanvas ref={particleRef} />
 
-      {/* Header & Navigation */}
-      <div className="flex items-center justify-between">
-        <Link href={`/${locale}/dashboard`}>
-          <Button variant="ghost" size="sm" icon={<ArrowLeft className="w-4 h-4" />}>
-            Về Lộ Trình
-          </Button>
-        </Link>
-        <div className="flex items-center gap-2">
-          <Gamepad2 className="w-6 h-6 text-amber-400" />
-          <h1 className="text-2xl font-display font-extrabold text-white">Lingual Game Center</h1>
+      {/* Main Header / Top Navigation Bar */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 rounded-3xl bg-slate-900/90 border border-slate-800 backdrop-blur-2xl shadow-xl relative z-10">
+        <div className="flex items-center gap-3">
+          <Link
+            href={`/${locale}/dashboard`}
+            className="p-2.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-colors"
+            aria-label="Trở về lộ trình học"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-amber-400">
+              <Gamepad2 className="w-4 h-4" />
+              <span>{isVi ? 'LinguaFlow Arcade Hub' : 'Arcade Game Center'}</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+              {isVi ? 'Đấu Trường Luyện Game' : 'Gamified Arcade Arena'}
+            </h1>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <Button
-            variant={activeTab === 'games' ? 'accent' : 'ghost'}
-            size="sm"
-            onClick={() => setActiveTab('games')}
+
+        {/* Top Controls: Audio Toggle & Tabs */}
+        <div className="flex items-center gap-2 self-stretch sm:self-auto justify-between sm:justify-end">
+          <button
+            type="button"
+            onClick={() => {
+              const muted = arcadeAudio.toggleMute();
+              setIsMuted(muted);
+            }}
+            aria-label={isMuted ? 'Bật âm thanh game' : 'Tắt âm thanh game'}
+            className="p-2.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-slate-300 hover:text-amber-300 transition-colors"
           >
-            Trò Chơi
-          </Button>
-          <Button
-            variant={activeTab === 'leaderboard' ? 'accent' : 'ghost'}
-            size="sm"
-            onClick={() => setActiveTab('leaderboard')}
-          >
-            Bảng Xếp Hạng
-          </Button>
+            {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-teal-400" />}
+          </button>
+
+          <div className="flex items-center gap-1 p-1 rounded-2xl bg-slate-950/80 border border-slate-800">
+            <button
+              onClick={() => {
+                arcadeAudio.playLaser();
+                setActiveTab('games');
+              }}
+              className={`px-3.5 py-1.5 rounded-xl font-display font-bold text-xs transition-all ${
+                activeTab === 'games'
+                  ? 'bg-amber-500 text-slate-950 shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              {isVi ? 'Trò Chơi' : 'Arcade Games'}
+            </button>
+            <button
+              onClick={() => {
+                arcadeAudio.playLaser();
+                setActiveTab('leaderboard');
+              }}
+              className={`px-3.5 py-1.5 rounded-xl font-display font-bold text-xs transition-all ${
+                activeTab === 'leaderboard'
+                  ? 'bg-amber-500 text-slate-950 shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              {isVi ? 'Bảng Xếp Hạng' : 'Leaderboard'}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* HERO BANNER SECTION */}
-      {!activeGame && activeTab === 'games' && (
-        <div className="relative w-full overflow-hidden rounded-3xl border border-amber-500/40 shadow-2xl transition-all duration-300 hover:shadow-amber-500/10">
-          <div className="relative w-full aspect-[1024/92] bg-slate-950">
-            <Image
-              src="/images/games/bg-hero-banner.png"
-              alt="Vừa Chơi Game Vừa Thuộc Bài Tiếng Anh"
-              fill
-              priority
-              className="object-fill rounded-3xl"
-            />
-          </div>
+      {/* ARCADE GAMES LISTING GRID */}
+      {activeTab === 'games' && !activeGame && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+          {gamesList.map((g) => (
+            <motion.div
+              key={g.id}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="p-6 sm:p-7 rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 backdrop-blur-xl shadow-xl flex flex-col justify-between space-y-5 transition-all group"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-3xl p-3 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-inner">
+                    {g.icon}
+                  </span>
+                  <span className={`px-3 py-1 rounded-full text-[11px] font-bold border ${g.badgeColor}`}>
+                    {isVi ? 'Tích lũy XP x5' : 'Earn 5X XP'}
+                  </span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white group-hover:text-amber-300 transition-colors">
+                  {g.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans min-h-[40px]">
+                  {g.desc}
+                </p>
+              </div>
+
+              <Button
+                variant="accent"
+                size="md"
+                className="w-full font-bold"
+                onClick={() => {
+                  arcadeAudio.playLaser();
+                  setShowDifficultyModal(g.id);
+                }}
+                icon={<Play className="w-4 h-4 fill-slate-950" />}
+              >
+                {isVi ? 'Chơi Ngay' : 'Play Now'}
+              </Button>
+            </motion.div>
+          ))}
         </div>
       )}
 
       {/* LEADERBOARD TAB */}
       {activeTab === 'leaderboard' && (
-        <Card glow="amber" className="max-w-4xl mx-auto space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-            <div className="flex items-center gap-2">
+        <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/90 border border-slate-800 backdrop-blur-xl shadow-xl space-y-6 relative z-10 max-w-4xl mx-auto">
+          <div className="flex items-center justify-between">
+            <h2 className="font-display font-extrabold text-xl text-white flex items-center gap-2">
               <Trophy className="w-6 h-6 text-amber-400" />
-              <h2 className="text-xl font-display font-extrabold text-white">Bảng Xếp Hạng Cao Thủ Game</h2>
-            </div>
-            <span className="text-xs font-mono text-slate-400">Cập nhật theo tuần</span>
+              <span>{isVi ? 'Bảng Vinh Danh Arcade' : 'Arcade Champions'}</span>
+            </h2>
+            <span className="text-xs text-slate-400 font-mono">Tuần này</span>
           </div>
 
-          <div className="space-y-3">
-            {leaderboardData.map((user) => (
+          <div className="space-y-2.5">
+            {leaderboardData.map((player) => (
               <div
-                key={user.rank}
-                className={`p-4 rounded-2xl border flex items-center justify-between transition-all ${
-                  user.rank === 1
-                    ? 'bg-amber-500/10 border-amber-500/40 text-amber-300'
-                    : 'bg-slate-950/80 border-slate-800 text-slate-200'
-                }`}
+                key={player.rank}
+                className="flex items-center justify-between p-4 rounded-2xl bg-slate-950/80 border border-slate-850 hover:border-slate-700 transition-all"
               >
-                <div className="flex items-center gap-4">
-                  <span className="text-xl font-black font-mono w-6 text-center">{user.avatar || `#${user.rank}`}</span>
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-xl bg-slate-900 font-mono font-extrabold text-sm flex items-center justify-center text-amber-300 border border-slate-800">
+                    #{player.rank}
+                  </span>
+                  <span className="text-xl">{player.avatar}</span>
                   <div>
-                    <h4 className="font-bold text-sm text-white">{user.displayName}</h4>
-                    <p className="text-xs text-slate-400">Chuỗi ngày: {user.streak} ngày • Độ chính xác: {user.accuracy}%</p>
+                    <span className="font-display font-bold text-sm text-white block">
+                      {player.displayName}
+                    </span>
+                    <span className="text-[11px] text-slate-400 font-mono">
+                      🔥 {player.streak} ngày streak • {player.accuracy}% chính xác
+                    </span>
                   </div>
                 </div>
-                <div className="text-right">
-                  <span className="text-lg font-extrabold text-amber-400">{user.xp} XP</span>
-                </div>
+
+                <span className="font-mono font-extrabold text-sm text-teal-300">
+                  {player.xp.toLocaleString()} XP
+                </span>
               </div>
             ))}
           </div>
-        </Card>
+        </div>
       )}
 
-      {/* GAMES GRID LIST */}
-      {!activeGame && activeTab === 'games' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {gamesList.map((game) => (
-            <motion.div key={game.id} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }}>
-              <Card
-                glow={game.glow}
-                className={`h-full flex flex-col justify-between p-5 bg-slate-950/90 border border-slate-800/80 space-y-4 shadow-xl`}
+      {/* ACTIVE GAME CONTAINER */}
+      {activeGame && (
+        <div className="relative p-6 sm:p-8 rounded-3xl bg-slate-900/95 border border-amber-500/30 backdrop-blur-2xl shadow-2xl space-y-6 z-10 max-w-4xl mx-auto">
+          {/* Active Game Top Status Bar (Timer, Combo, Lives, Exit) */}
+          <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+            <button
+              onClick={() => {
+                arcadeAudio.playLaser();
+                setActiveGame(null);
+              }}
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>{isVi ? 'Thoát' : 'Quit'}</span>
+            </button>
+
+            <div className="flex items-center gap-3">
+              {/* Combo Multiplier Meter */}
+              <ComboMeter combo={combo} />
+
+              {/* Heart Lives Container */}
+              <HeartContainer lives={lives} maxLives={selectedDifficulty === 'hard' ? 2 : 3} />
+
+              {/* Countdown Timer */}
+              <div
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl border font-mono font-extrabold text-xs shadow-sm ${
+                  timerSeconds <= 10
+                    ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse'
+                    : 'bg-slate-900 text-teal-300 border-slate-800'
+                }`}
               >
-                {/* Visual Banner Header (Resized to 100% Fit Without Any Cropping) */}
-                <div className="relative w-full aspect-[1024/120] rounded-2xl overflow-hidden border border-white/10 shadow-md bg-slate-900">
-                  <Image
-                    src={game.bgImage}
-                    alt={game.title}
-                    fill
-                    className="object-fill rounded-2xl"
-                  />
-                </div>
+                <Timer className="w-3.5 h-3.5" />
+                <span>{timerSeconds}s</span>
+              </div>
+            </div>
+          </div>
 
-                {/* Card Description & Action */}
-                <div className="space-y-3 flex-1 flex flex-col justify-between">
-                  <p className="text-xs text-slate-300 leading-relaxed px-1">
-                    {game.desc}
-                  </p>
+          {/* GAME 1: 3D WORD MATCH */}
+          {activeGame === 'word_match' && (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between text-xs text-slate-400">
+                <span>{isVi ? 'Ghép cặp thẻ bài tương ứng' : 'Match identical pairs'}</span>
+                <span className="font-mono font-bold text-amber-300">
+                  {matchedIds.length} / {matchCards.length / 2} {isVi ? 'Cặp Hoàn Thành' : 'Pairs'}
+                </span>
+              </div>
 
-                  <Button
-                    variant="accent"
-                    size="md"
-                    className="w-full font-bold"
-                    icon={<Play className="w-4 h-4 fill-current" />}
-                    onClick={() => setShowDifficultyModal(game.id)}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                {matchCards.map((card) => {
+                  const isMatched = matchedIds.includes(card.pairId);
+                  const isSelected = firstCard?.id === card.id || secondCard?.id === card.id;
+
+                  return (
+                    <motion.button
+                      key={card.id}
+                      disabled={isMatched || isCheckingMatch}
+                      onClick={(e) => handleCardClick(card, e)}
+                      whileHover={!isMatched ? { scale: 1.04 } : {}}
+                      whileTap={!isMatched ? { scale: 0.96 } : {}}
+                      className={`h-28 rounded-2xl p-3 flex items-center justify-center text-center font-display font-extrabold text-sm sm:text-base border transition-all duration-300 shadow-md ${
+                        isMatched
+                          ? 'bg-teal-500/20 border-teal-500/40 text-teal-300 opacity-60'
+                          : isSelected
+                          ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-amber-500/30 scale-105'
+                          : 'bg-slate-950/80 border-slate-800 text-white hover:border-slate-700'
+                      }`}
+                    >
+                      <span>{card.text}</span>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* GAME 2: SENTENCE SCRAMBLE */}
+          {activeGame === 'sentence_scramble' && scrambleList[scrambleIdx] && (
+            <div className="space-y-6 text-center">
+              <p className="text-sm sm:text-base font-bold text-amber-300 bg-slate-950/60 p-4 rounded-2xl border border-slate-850">
+                "{scrambleList[scrambleIdx].translation}"
+              </p>
+
+              <div className="min-h-16 p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-wrap gap-2 items-center justify-center">
+                {scrambleSelectedTokens.map((token, idx) => (
+                  <span key={idx} className="px-3.5 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 font-bold text-sm">
+                    {token}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-2.5 justify-center">
+                {scrambleList[scrambleIdx].tokens.map((token: string, idx: number) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => handleScrambleTokenClick(token, idx, e)}
+                    className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 font-bold text-sm text-white transition-all active:scale-95 shadow-md"
                   >
-                    Bắt Đầu Chơi
-                  </Button>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+                    {token}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* GAME 3: TYPING RACE */}
+          {activeGame === 'typing_race' && typingWords[typingIdx] && (
+            <div className="space-y-6 text-center">
+              <div className="space-y-2">
+                <span className="text-xs font-bold text-rose-400 uppercase tracking-widest">
+                  {isVi ? 'Gõ từ tiếng Anh chuẩn xác:' : 'Type the exact target word:'}
+                </span>
+                <h2 className="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+                  {typingWords[typingIdx].word || typingWords[typingIdx].targetText}
+                </h2>
+                <p className="text-xs text-slate-400">({typingWords[typingIdx].translation})</p>
+              </div>
+
+              <input
+                type="text"
+                autoFocus
+                value={typingInput}
+                onChange={(e) => handleTypingChange(e.target.value)}
+                placeholder={isVi ? 'Gõ từ tại đây...' : 'Type word here...'}
+                className="w-full p-4 rounded-2xl bg-slate-950 border-2 border-rose-500/40 text-center font-display font-bold text-xl text-white outline-none focus:border-rose-400 shadow-inner"
+              />
+            </div>
+          )}
+
+          {/* GAME 4: FILL BLITZ */}
+          {activeGame === 'fill_blitz' && blitzQuestions[blitzIdx] && (
+            <div className="space-y-6">
+              <h3 className="text-2xl font-display font-bold text-white text-center py-2">
+                {blitzQuestions[blitzIdx].q}
+              </h3>
+
+              <div className="grid grid-cols-2 gap-3.5">
+                {blitzQuestions[blitzIdx].options.map((opt: string, idx: number) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => handleBlitzAnswer(opt, e)}
+                    className="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-amber-400 font-bold text-sm text-white transition-all active:scale-95 shadow-md"
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
       {/* DIFFICULTY SELECTION MODAL */}
       {showDifficultyModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-          <div className="w-full max-w-md rounded-3xl bg-slate-900 border border-amber-500/40 p-6 space-y-6 shadow-2xl text-center">
-            <div className="space-y-1">
-              <h3 className="text-2xl font-display font-extrabold text-white">Chọn Mức Độ Khó</h3>
-              <p className="text-xs text-slate-400">Độ khó càng cao, điểm thưởng XP càng lớn!</p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-3">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="w-full max-w-md p-6 sm:p-7 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl space-y-5"
+          >
+            <div className="flex items-center justify-between">
+              <h3 className="font-display font-extrabold text-lg text-white">
+                {isVi ? 'Chọn Cấp Độ Thử Thách' : 'Select Difficulty'}
+              </h3>
               <button
-                onClick={() => handleStartGameWithDifficulty('easy')}
-                className="p-4 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 font-bold text-sm flex flex-col items-center gap-1 transition-all active:scale-95"
+                onClick={() => setShowDifficultyModal(null)}
+                className="text-slate-400 hover:text-white text-xs font-bold"
               >
-                <span>🌱 Dễ</span>
-                <span className="text-[10px] text-slate-400">90s • x1.0 XP</span>
-              </button>
-              <button
-                onClick={() => handleStartGameWithDifficulty('medium')}
-                className="p-4 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 font-bold text-sm flex flex-col items-center gap-1 transition-all active:scale-95"
-              >
-                <span>🔥 Vừa</span>
-                <span className="text-[10px] text-slate-400">60s • x1.5 XP</span>
-              </button>
-              <button
-                onClick={() => handleStartGameWithDifficulty('hard')}
-                className="p-4 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 font-bold text-sm flex flex-col items-center gap-1 transition-all active:scale-95"
-              >
-                <span>⚡ Khó</span>
-                <span className="text-[10px] text-slate-400">45s • x2.0 XP</span>
+                ✕
               </button>
             </div>
 
-            <Button variant="ghost" size="sm" onClick={() => setShowDifficultyModal(null)}>
-              Hủy
-            </Button>
-          </div>
+            <div className="space-y-2.5">
+              {(['easy', 'medium', 'hard'] as const).map((diff) => (
+                <button
+                  key={diff}
+                  onClick={() => handleStartGameWithDifficulty(diff)}
+                  className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-850 hover:border-amber-500/50 flex items-center justify-between text-left transition-all group"
+                >
+                  <div>
+                    <span className="font-display font-bold text-sm text-white group-hover:text-amber-300 block">
+                      {diff === 'easy' ? (isVi ? 'Dễ (90s / 3 Mạng)' : 'Easy (90s / 3 Lives)') : diff === 'medium' ? (isVi ? 'Chuẩn (60s / 3 Mạng)' : 'Medium (60s / 3 Lives)') : (isVi ? 'Khó (45s / 2 Mạng / x2 XP)' : 'Hard (45s / 2 Lives / 2X XP)')}
+                    </span>
+                    <span className="text-[11px] text-slate-400">
+                      {diff === 'hard' ? (isVi ? 'Nhận nhân đôi điểm thưởng XP' : 'Earn 2X bonus XP multiplier') : (isVi ? 'Phù hợp làm quen nhịp độ' : 'Standard arcade gameplay')}
+                    </span>
+                  </div>
+                  <Play className="w-4 h-4 text-slate-500 group-hover:text-amber-400" />
+                </button>
+              ))}
+            </div>
+          </motion.div>
         </div>
       )}
 
-      {/* GAMEPLAY CONTAINER */}
-      {activeGame && (
-        <Card glow="amber" className="max-w-2xl mx-auto space-y-6 p-6 sm:p-8">
-          {/* Game Top Bar: Hearts & Timer & Combo */}
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-            {/* Hearts / Lives */}
-            <div className="flex items-center gap-1">
-              {[1, 2, 3].map((h) => (
-                <Heart
-                  key={h}
-                  className={`w-5 h-5 ${
-                    h <= lives ? 'text-rose-500 fill-rose-500 animate-pulse' : 'text-slate-700'
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Timer */}
-            <div className="flex items-center gap-1.5 font-mono text-amber-400 font-bold text-lg">
-              <Timer className="w-5 h-5 text-amber-400" />
-              <span>{timerSeconds}s</span>
-            </div>
-
-            {/* Combo Gauge */}
-            <div className="flex items-center gap-1 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-black text-amber-400">
-              <Flame className="w-4 h-4 text-amber-400 fill-amber-400" />
-              <span>Combo {combo}X</span>
-            </div>
-          </div>
-
-          {!scoreResult && lives > 0 ? (
-            <div>
-              {/* GAME 1: WORD MATCH 3D */}
-              {activeGame === 'word_match' && (
-                <div className="space-y-6">
-                  <span className="text-xs text-slate-400 text-center block font-medium">
-                    Lật 2 thẻ bài có nghĩa khớp nhau:
-                  </span>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                    {matchCards.map((card) => {
-                      const isFlipped = firstCard?.id === card.id || secondCard?.id === card.id || matchedIds.includes(card.pairId);
-                      return (
-                        <button
-                          key={card.id}
-                          onClick={() => handleCardClick(card)}
-                          className={`h-24 rounded-2xl font-bold text-xs p-2 flex items-center justify-center text-center transition-all duration-300 active:scale-95 border ${
-                            matchedIds.includes(card.pairId)
-                              ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300 opacity-60'
-                              : isFlipped
-                              ? 'bg-slate-900 border-amber-400 text-white shadow-lg shadow-amber-500/20'
-                              : 'bg-gradient-to-tr from-slate-900 to-slate-950 border-slate-800 text-transparent hover:border-slate-700'
-                          }`}
-                        >
-                          {isFlipped ? card.text : '❓'}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* GAME 2: SENTENCE SCRAMBLE */}
-              {activeGame === 'sentence_scramble' && scrambleList[scrambleIdx] && (
-                <div className="space-y-6 text-center">
-                  <p className="text-sm font-bold text-amber-300">
-                    "{scrambleList[scrambleIdx].translation}"
-                  </p>
-
-                  <div className="min-h-16 p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-wrap gap-2 items-center justify-center">
-                    {scrambleSelectedTokens.map((token, idx) => (
-                      <span key={idx} className="px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 font-bold text-sm">
-                        {token}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {scrambleList[scrambleIdx].tokens.map((token: string, idx: number) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleScrambleTokenClick(token, idx)}
-                        className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 font-bold text-sm text-white transition-all active:scale-95"
-                      >
-                        {token}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* GAME 3: TYPING RACE */}
-              {activeGame === 'typing_race' && typingWords[typingIdx] && (
-                <div className="space-y-6 text-center">
-                  <div className="space-y-2">
-                    <span className="text-xs font-bold text-coral-400 uppercase tracking-widest">
-                      Gõ từ tiếng Anh chuẩn xác:
-                    </span>
-                    <h2 className="text-4xl font-display font-extrabold text-white">
-                      {typingWords[typingIdx].word || typingWords[typingIdx].targetText}
-                    </h2>
-                    <p className="text-xs text-slate-400">({typingWords[typingIdx].translation})</p>
-                  </div>
-
-                  <input
-                    type="text"
-                    autoFocus
-                    value={typingInput}
-                    onChange={(e) => handleTypingChange(e.target.value)}
-                    placeholder="Gõ từ tại đây..."
-                    className="w-full p-4 rounded-2xl bg-slate-950 border-2 border-coral-500/40 text-center font-display font-bold text-xl text-white outline-none focus:border-coral-400 shadow-inner"
-                  />
-                </div>
-              )}
-
-              {/* GAME 4: FILL BLITZ */}
-              {activeGame === 'fill_blitz' && blitzQuestions[blitzIdx] && (
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-display font-bold text-white text-center py-2">
-                    {blitzQuestions[blitzIdx].q}
-                  </h3>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {blitzQuestions[blitzIdx].options.map((opt: string, idx: number) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleBlitzAnswer(opt)}
-                        className="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-400 font-bold text-sm text-white transition-all active:scale-95"
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ) : (
-            /* GAME VICTORY / RESULTS SCREEN */
-            <div className="text-center space-y-6 py-4">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-coral-500 to-amber-400 flex items-center justify-center mx-auto shadow-lg shadow-amber-500/30">
-                <Trophy className="w-10 h-10 text-slate-950" />
-              </div>
-              <h2 className="text-3xl font-display font-extrabold text-white">Hoàn Thành Trận Game!</h2>
-              <div className="flex justify-center gap-8 text-sm">
-                <div>
-                  <span className="block text-xs text-slate-400">Điểm Số</span>
-                  <span className="font-extrabold text-2xl text-amber-400">
-                    {scoreResult?.finalScore || matchScore || scrambleScore || typingScore || blitzScore}
-                  </span>
-                </div>
-                <div>
-                  <span className="block text-xs text-slate-400">XP Nhận Được</span>
-                  <span className="font-extrabold text-2xl text-teal-400">+{scoreResult?.xpEarned || 35} XP</span>
-                </div>
-              </div>
-
-              <Button variant="accent" size="lg" className="w-full font-bold" onClick={() => setActiveGame(null)}>
-                Quay Về Danh Sách Game
-              </Button>
-            </div>
-          )}
-        </Card>
+      {/* VICTORY MODAL OVERLAY */}
+      {showVictory && (
+        <VictoryOverlay
+          score={finalScore}
+          xpEarned={finalXP}
+          maxCombo={maxCombo}
+          accuracy={95}
+          onPlayAgain={() => {
+            setShowVictory(false);
+            if (activeGame) setShowDifficultyModal(activeGame);
+          }}
+          onExit={() => {
+            setShowVictory(false);
+            setActiveGame(null);
+          }}
+          locale={locale}
+        />
       )}
 
-      {/* Mascot Toast Notification */}
+      {/* GAME OVER MODAL OVERLAY */}
+      {showGameOver && (
+        <GameOverOverlay
+          score={finalScore}
+          onRetry={() => {
+            setShowGameOver(false);
+            if (activeGame) setShowDifficultyModal(activeGame);
+          }}
+          onExit={() => {
+            setShowGameOver(false);
+            setActiveGame(null);
+          }}
+          locale={locale}
+        />
+      )}
+
+      {/* Mascot Corner Notification */}
       <MascotPopup
         isVisible={popupState.show}
         reactionKey={popupState.key}

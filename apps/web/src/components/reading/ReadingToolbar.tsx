@@ -54,8 +54,11 @@ export default function ReadingToolbar({
           <button
             type="button"
             onClick={() => onFontSizeChange('normal')}
-            className={`px-2 py-1 rounded-lg font-bold transition-all ${
-              fontSize === 'normal' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'
+            aria-label="Cỡ chữ tiêu chuẩn"
+            className={`px-2.5 py-1 rounded-lg font-bold border transition-all ${
+              fontSize === 'normal'
+                ? 'bg-slate-800 text-white border-slate-700 shadow-sm'
+                : 'text-slate-400 hover:text-white border-transparent'
             }`}
             title="Cỡ chữ tiêu chuẩn"
           >
@@ -64,8 +67,11 @@ export default function ReadingToolbar({
           <button
             type="button"
             onClick={() => onFontSizeChange('large')}
-            className={`px-2 py-1 rounded-lg font-bold text-sm transition-all ${
-              fontSize === 'large' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'
+            aria-label="Cỡ chữ lớn"
+            className={`px-2.5 py-1 rounded-lg font-bold text-sm border transition-all ${
+              fontSize === 'large'
+                ? 'bg-slate-800 text-white border-slate-700 shadow-sm'
+                : 'text-slate-400 hover:text-white border-transparent'
             }`}
             title="Cỡ chữ lớn"
           >

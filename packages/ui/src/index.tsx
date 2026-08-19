@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, CheckCircle2, Flame, Zap, Award, Sparkles, RotateCw, Lightbulb, Image as ImageIcon, Bookmark, PlusCircle, Check } from 'lucide-react';
+import {
+  Volume2,
+  CheckCircle2,
+  Flame,
+  Zap,
+  Award,
+  Sparkles,
+  RotateCw,
+  Lightbulb,
+  Image as ImageIcon,
+  Bookmark,
+  PlusCircle,
+  Check,
+  X,
+} from 'lucide-react';
 
 import { springPresets, transitionPresets, useMotionAccessibility } from './motion/index';
 export * from './motion/index';
@@ -19,7 +33,10 @@ export function speakText(text: string, lang: string = 'en-US') {
   }
 }
 
-export const AudioButton: React.FC<{ text: string; className?: string }> = ({ text, className = '' }) => {
+export const AudioButton: React.FC<{ text: string; className?: string }> = ({
+  text,
+  className = '',
+}) => {
   return (
     <button
       type="button"
@@ -27,8 +44,9 @@ export const AudioButton: React.FC<{ text: string; className?: string }> = ({ te
         e.stopPropagation();
         speakText(text);
       }}
-      className={`p-2 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 transition-all active:scale-90 select-none ${className}`}
+      className={`p-2 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 transition-all active:scale-95 select-none ${className}`}
       title="Nghe phát âm tiếng Anh"
+      aria-label={`Nghe phát âm từ: ${text}`}
     >
       <Volume2 className="w-4 h-4" />
     </button>
@@ -100,7 +118,7 @@ export const Button: React.FC<ButtonProps> = ({
   const { shouldReduceMotion } = useMotionAccessibility();
 
   const base =
-    'relative z-30 inline-flex items-center justify-center font-bold rounded-xl transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none select-none';
+    'relative z-30 inline-flex items-center justify-center font-bold rounded-xl transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400';
 
   const variants = {
     primary:
@@ -117,16 +135,18 @@ export const Button: React.FC<ButtonProps> = ({
   const sizes = {
     sm: 'px-3 py-1.5 text-xs gap-1.5',
     md: 'px-5 py-2.5 text-sm gap-2',
-    lg: 'px-7 py-3.5 text-base gap-2.5',
+    lg: 'px-6 py-3 text-base gap-2.5',
   };
 
-  const hoverAnimation = disabled || shouldReduceMotion
-    ? undefined
-    : { scale: 1.015, y: -1, transition: springPresets.smooth };
+  const hoverAnimation =
+    disabled || shouldReduceMotion
+      ? undefined
+      : { scale: 1.015, y: -1, transition: springPresets.smooth };
 
-  const pressAnimation = disabled || shouldReduceMotion
-    ? undefined
-    : { scale: 0.97, transition: springPresets.snappy };
+  const pressAnimation =
+    disabled || shouldReduceMotion
+      ? undefined
+      : { scale: 0.97, transition: springPresets.snappy };
 
   return (
     <motion.button
@@ -144,7 +164,7 @@ export const Button: React.FC<ButtonProps> = ({
 
 export const XPBadge: React.FC<{ xp: number }> = ({ xp }) => {
   return (
-    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-extrabold shadow-sm">
+    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold shadow-sm">
       <Sparkles className="w-3.5 h-3.5 text-amber-400" />
       <span>{xp} XP</span>
     </div>
@@ -153,7 +173,7 @@ export const XPBadge: React.FC<{ xp: number }> = ({ xp }) => {
 
 export const StreakBadge: React.FC<{ streak: number }> = ({ streak }) => {
   return (
-    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-extrabold shadow-sm">
+    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold shadow-sm">
       <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
       <span>{streak} Ngày</span>
     </div>
@@ -171,11 +191,16 @@ export interface CardProps {
   onClick?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className = '', glow = 'none', onClick }) => {
+export const Card: React.FC<CardProps> = ({
+  children,
+  className = '',
+  glow = 'none',
+  onClick,
+}) => {
   const { shouldReduceMotion } = useMotionAccessibility();
 
   const glowStyles = {
-    none: '',
+    none: 'border-slate-800/80 hover:border-slate-700/80',
     teal: 'shadow-lg shadow-teal-500/10 border-teal-500/30 hover:border-teal-400/50',
     coral: 'shadow-lg shadow-coral-500/10 border-coral-500/30 hover:border-coral-400/50',
     amber: 'shadow-lg shadow-amber-500/10 border-amber-500/30 hover:border-amber-400/50',
@@ -183,20 +208,22 @@ export const Card: React.FC<CardProps> = ({ children, className = '', glow = 'no
 
   const isInteractive = Boolean(onClick);
 
-  const hoverAnimation = isInteractive && !shouldReduceMotion
-    ? { scale: 1.01, y: -2, transition: springPresets.smooth }
-    : undefined;
+  const hoverAnimation =
+    isInteractive && !shouldReduceMotion
+      ? { scale: 1.01, y: -2, transition: springPresets.smooth }
+      : undefined;
 
-  const pressAnimation = isInteractive && !shouldReduceMotion
-    ? { scale: 0.98, transition: springPresets.snappy }
-    : undefined;
+  const pressAnimation =
+    isInteractive && !shouldReduceMotion
+      ? { scale: 0.98, transition: springPresets.snappy }
+      : undefined;
 
   return (
     <motion.div
       onClick={onClick}
       whileHover={hoverAnimation}
       whileTap={pressAnimation}
-      className={`rounded-3xl bg-slate-900/90 border border-slate-800/80 backdrop-blur-xl p-6 transition-colors duration-300 ${glowStyles[glow]} ${isInteractive ? 'cursor-pointer' : ''} ${className}`}
+      className={`rounded-3xl bg-slate-900/90 border backdrop-blur-xl p-5 sm:p-6 transition-colors duration-300 ${glowStyles[glow]} ${isInteractive ? 'cursor-pointer' : ''} ${className}`}
     >
       {children}
     </motion.div>
@@ -244,7 +271,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           <span className="font-mono text-teal-400">{Math.round(percentage)}%</span>
         </div>
       )}
-      <div className={`w-full h-3 rounded-full bg-slate-800 border border-slate-700/50 overflow-hidden p-0.5 transition-shadow duration-300 ${isComplete ? completeGlow[color] : ''}`}>
+      <div
+        className={`w-full h-3 rounded-full bg-slate-800 border border-slate-700/50 overflow-hidden p-0.5 transition-shadow duration-300 ${isComplete ? completeGlow[color] : ''}`}
+      >
         <motion.div
           className={`h-full rounded-full bg-gradient-to-r ${colors[color]}`}
           initial={{ width: 0 }}
@@ -339,6 +368,7 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
               onClick={handleAudioPlay}
               className="p-2.5 rounded-2xl bg-teal-500/15 hover:bg-teal-500/30 border border-teal-500/30 text-teal-300 transition-all active:scale-90"
               title="Phát âm"
+              aria-label={`Phát âm từ ${targetText}`}
             >
               <Volume2 className="w-5 h-5" />
             </button>
@@ -346,7 +376,11 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
 
           {/* Illustration Image */}
           <div className="relative w-44 h-44 rounded-2xl overflow-hidden border border-teal-500/20 shadow-inner bg-slate-950 my-2 z-10 group">
-            <img src={resolvedImage} alt={targetText} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img
+              src={resolvedImage}
+              alt={targetText}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
 
           {/* Main Word */}
@@ -387,6 +421,7 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
               type="button"
               onClick={handleAudioPlay}
               className="p-2.5 rounded-2xl bg-amber-500/15 hover:bg-amber-500/30 border border-amber-500/30 text-amber-300 transition-all active:scale-90"
+              aria-label={`Phát âm tiếng Anh của ${targetText}`}
             >
               <Volume2 className="w-5 h-5" />
             </button>
@@ -466,9 +501,10 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
               <h3 className="text-xl font-display font-bold text-white">{title}</h3>
               <button
                 onClick={onClose}
-                className="text-slate-400 hover:text-white text-lg font-bold p-1 rounded-lg hover:bg-slate-800 transition-colors"
+                className="text-slate-400 hover:text-white p-1.5 rounded-xl hover:bg-slate-800 transition-colors"
+                aria-label="Đóng cửa sổ"
               >
-                ✕
+                <X className="w-5 h-5" />
               </button>
             </div>
             <div>{children}</div>
@@ -587,4 +623,3 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ title, description, icon
     </div>
   );
 };
-

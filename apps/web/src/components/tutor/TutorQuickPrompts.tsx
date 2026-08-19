@@ -41,13 +41,13 @@ export default function TutorQuickPrompts({
   };
 
   return (
-    <div className={`flex flex-wrap items-center gap-2 ${className}`}>
+    <div className={`flex items-center gap-2 overflow-x-auto no-scrollbar py-1 max-w-full ${className}`}>
       {prompts.map((p, idx) => (
         <button
           key={idx}
           type="button"
           onClick={() => handleClick(p.text)}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-slate-900/80 border border-slate-800 text-[11px] font-sans font-medium text-slate-300 hover:text-white hover:border-teal-500/40 hover:bg-slate-850 transition-all shadow-sm"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-slate-900/80 border border-slate-800 text-[11px] font-sans font-medium text-slate-300 hover:text-white hover:border-teal-500/40 hover:bg-slate-800/80 transition-all shadow-sm shrink-0 whitespace-nowrap"
         >
           {p.icon}
           <span>{p.text}</span>

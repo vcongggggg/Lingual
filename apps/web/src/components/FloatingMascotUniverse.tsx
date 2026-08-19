@@ -410,8 +410,8 @@ export default function FloatingMascotUniverse() {
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:28px_28px] opacity-20" />
       </div>
 
-      {/* INTERACTIVE FLOATING MASCOTS LAYER (Z-[1] BEHIND PAGE CONTENT & CARDS) */}
-      <div id="mascot-universe-layer" className="fixed inset-0 pointer-events-none z-[1] overflow-hidden select-none">
+      {/* INTERACTIVE FLOATING MASCOTS LAYER (Z-[1] BEHIND PAGE CONTENT & CARDS, CONFINED TO WIDE SCREEN MARGINS) */}
+      <div id="mascot-universe-layer" className="fixed inset-0 pointer-events-none z-[1] overflow-hidden select-none hidden xl:block">
 
         {/* FLOATING & DRAGGABLE MASCOT ENTITIES */}
         {mascots.map((m) => {

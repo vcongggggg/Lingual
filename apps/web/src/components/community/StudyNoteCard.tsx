@@ -89,7 +89,7 @@ export default function StudyNoteCard({
             <Link
               key={t}
               href={`/${locale}/community/notes?tag=${t}`}
-              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-teal-400 hover:border-teal-500/40 transition-colors"
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-950/80 border border-slate-800 text-[11px] font-sans font-medium text-teal-400 hover:border-teal-500/40 transition-colors"
             >
               <Tag className="w-2.5 h-2.5" />
               <span>#{t}</span>
