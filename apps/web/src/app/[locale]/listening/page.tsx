@@ -10,6 +10,7 @@ import ListeningProgress from '@/components/listening/ListeningProgress';
 import DictationExercise from '@/components/listening/DictationExercise';
 import ShadowingExercise from '@/components/listening/ShadowingExercise';
 import ListeningResult from '@/components/listening/ListeningResult';
+import KaraokeAudioStudio from '@/components/listening/KaraokeAudioStudio';
 import LingLingMascot from '@/components/LingLingMascot';
 import { Badge, Card, useMotionAccessibility, springPresets } from '@linguaflow/ui';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -157,6 +158,15 @@ export default function ListeningLabPage() {
             difficulty={currentExercise.difficulty}
             category={currentExercise.category}
             sessionXP={sessionXP}
+          />
+
+          {/* Studio Audio Karaoke Player */}
+          <KaraokeAudioStudio
+            text={currentExercise.transcript || currentExercise.title}
+            audioUrl={currentExercise.audioUrl}
+            translation={currentExercise.translation}
+            title={currentExercise.title}
+            locale={locale}
           />
 
           {activeMode === 'dictation' ? (
