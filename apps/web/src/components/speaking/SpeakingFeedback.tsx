@@ -8,6 +8,7 @@ import FluencyScore from './FluencyScore';
 import SpeakingCorrections from './SpeakingCorrections';
 import SpeakingPronunciationIssues from './SpeakingPronunciationIssues';
 import SpeakingVocabularySuggestions from './SpeakingVocabularySuggestions';
+import PhonemeColorVisualizer from './PhonemeColorVisualizer';
 import { ProgressBar, Badge } from '@linguaflow/ui';
 
 interface SpeakingFeedbackProps {
@@ -58,13 +59,19 @@ export default function SpeakingFeedback({
         <FluencyScore score={feedback.fluencyScore} wpm={wpm} locale={locale} />
       </div>
 
+      {/* Phoneme Color Visualizer */}
+      <PhonemeColorVisualizer
+        sentence={feedback.corrections?.[0]?.original || 'Good morning! How are you doing today?'}
+        locale={locale}
+      />
+
       {/* Grammar, Vocabulary, Coherence Mini-bars */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-850 space-y-1.5">
           <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400 font-bold flex items-center gap-1">
               <PenTool className="w-3.5 h-3.5 text-purple-400" />
-              <span>Ngữ pháp (20%)</span>
+              <span>{isVi ? 'Ngữ pháp (20%)' : 'Grammar (20%)'}</span>
             </span>
             <span className="font-mono font-bold text-white">{feedback.grammarScore}%</span>
           </div>
@@ -75,7 +82,7 @@ export default function SpeakingFeedback({
           <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400 font-bold flex items-center gap-1">
               <BookOpen className="w-3.5 h-3.5 text-teal-400" />
-              <span>Từ vựng (15%)</span>
+              <span>{isVi ? 'Từ vựng (15%)' : 'Vocabulary (15%)'}</span>
             </span>
             <span className="font-mono font-bold text-white">{feedback.vocabularyScore}%</span>
           </div>
@@ -86,7 +93,7 @@ export default function SpeakingFeedback({
           <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400 font-bold flex items-center gap-1">
               <Compass className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Mạch lạc (10%)</span>
+              <span>{isVi ? 'Mạch lạc (10%)' : 'Coherence (10%)'}</span>
             </span>
             <span className="font-mono font-bold text-white">{feedback.coherenceScore}%</span>
           </div>
@@ -98,22 +105,27 @@ export default function SpeakingFeedback({
       {feedback.advice && (
         <div className="p-4 rounded-2xl bg-gradient-to-r from-teal-950/40 via-slate-950 to-indigo-950/40 border border-teal-500/30 text-xs text-teal-200 flex items-start gap-2.5">
           <Sparkles className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-          <div className="space-y-0.5">
-            <span className="font-bold text-white block">{isVi ? 'Lời khuyên từ LingLing:' : 'LingLing Advice:'}</span>
-            <p className="leading-relaxed font-sans">{feedback.advice}</p>
-          </div>
+          <p className="leading-relaxed font-sans">{feedback.advice}</p>
         </div>
       )}
 
-      {/* Corrections, Pronunciation Focus, Vocabulary Upgrades */}
-      <SpeakingCorrections corrections={feedback.corrections} locale={locale} />
-      <SpeakingPronunciationIssues issues={feedback.pronunciationIssues} locale={locale} />
-      <SpeakingVocabularySuggestions
-        suggestions={feedback.vocabularySuggestions}
-        onSaveToSRS={onSaveToSRS}
-        savedWords={savedWords}
-        locale={locale}
-      />
+      {/* Detailed Diagnostics Lists */}
+      {feedback.corrections && feedback.corrections.length > 0 && (
+        <SpeakingCorrections corrections={feedback.corrections} locale={locale} />
+      )}
+
+      {feedback.pronunciationIssues && feedback.pronunciationIssues.length > 0 && (
+        <SpeakingPronunciationIssues issues={feedback.pronunciationIssues} locale={locale} />
+      )}
+
+      {feedback.vocabularySuggestions && feedback.vocabularySuggestions.length > 0 && (
+        <SpeakingVocabularySuggestions
+          suggestions={feedback.vocabularySuggestions}
+          onSaveToSRS={onSaveToSRS}
+          savedWords={savedWords}
+          locale={locale}
+        />
+      )}
     </div>
   );
 }
