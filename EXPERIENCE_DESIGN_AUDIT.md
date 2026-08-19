@@ -830,11 +830,29 @@ Every screen across all 15 subsystems is audited for the **5 Mandatory UI States
 
 ---
 
-## 22. Open Questions & Future Roadmap
+## 23. Flagship Upgrade Roadmap (Phase 22+)
 
-1. Should we introduce customizable ambient soundscapes (e.g., Cyber-Study Beats, Rain in London, Café Ambience) in the Writing and Reading Studios?
-2. Should we support downloadable offline PDF copies of the **LinguaFlow Practice Score Report** for student portfolio sharing?
-3. Would users benefit from a global keyboard shortcut palette (`Cmd+K` / `Ctrl+K`) for instantaneous dictionary search from any screen?
+1. **Global Quick Search & Action Command Palette (`Cmd + K` / `Ctrl + K`)**:
+   - Instantaneous modal overlay from anywhere on the platform.
+   - Fuzzy search words, IPA audio playback, definitions, and 1-tap "Save to SRS Deck" without leaving the current lesson.
+   - Quick navigation commands (`> srs`, `> speaking`, `> game`, `> unit 2`).
+
+2. **Acoustic Pitch Intonation Curve (Speaking Lab AI Enhancement)**:
+   - Dual pitch contour visualization comparing native speaker intonation (dashed green line) vs user vocal pitch trajectory (cyan glowing curve).
+   - Real-time sentence stress and pitch cadence coaching.
+
+3. **Bionic Reading Mode & 1-Click Instant Lookup (Reading Lab)**:
+   - Bionic reading font rendering (bolding the first 2-3 letters of words) for 35% faster academic article scanning.
+   - 1-click double-tap word popover with phonetics and instant SRS bookmarking.
+
+4. **Official Downloadable PDF Practice Score Report**:
+   - High-fidelity vector PDF generation for `/exam-practice/result/[attemptId]` and IELTS simulations.
+   - Includes verifiable Credential ID, 4-skill balance radar chart, CEFR level badge, and examiner recommendations.
+
+5. **Collaborative Live Study Room & Pomodoro Guild Hall (Community Hub)**:
+   - Real-time multiplayer Pomodoro timer with online peer avatars and study status.
+   - Built-in ambient focus soundscapes (Cyber Lo-Fi, Rainy London, Academic Library).
 
 ---
 *End of LinguaFlow Experience Design Audit (EXPERIENCE_DESIGN_AUDIT.md)*
+
