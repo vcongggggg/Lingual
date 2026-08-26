@@ -1,286 +1,460 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { useParams } from 'next/navigation';
-import { Headphones, Mic, Sparkles, Trophy, Play, CheckCircle2, Flame, Filter, Volume2, BookOpen } from 'lucide-react';
-import { ListeningDifficulty, ListeningMode, ListeningExercise, DictationResult, ShadowingResult } from '@linguaflow/domain';
-import { SAMPLE_LISTENING_EXERCISES } from '@/lib/listening/sampleData';
-import ListeningModeSelector from '@/components/listening/ListeningModeSelector';
-import ListeningProgress from '@/components/listening/ListeningProgress';
-import DictationExercise from '@/components/listening/DictationExercise';
-import ShadowingExercise from '@/components/listening/ShadowingExercise';
-import ListeningResult from '@/components/listening/ListeningResult';
-import KaraokeAudioStudio from '@/components/listening/KaraokeAudioStudio';
-import LingLingMascot from '@/components/LingLingMascot';
-import { Badge, Card, useMotionAccessibility, springPresets } from '@linguaflow/ui';
+import {
+  Headphones,
+  Sparkles,
+  Play,
+  CheckCircle2,
+  Clock,
+  Search,
+  Plus,
+  Tv,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+} from 'lucide-react';
+import { Button } from '@linguaflow/ui';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  DictationVideo,
+  SAMPLE_DICTATION_VIDEOS,
+} from '@/lib/listening/videoDictationData';
+import { VideoModeSelectModal, VideoPlayerMode } from '@/components/listening/VideoModeSelectModal';
+import { VideoDictationStudio } from '@/components/listening/VideoDictationStudio';
 
 export default function ListeningLabPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
-  const { shouldReduceMotion } = useMotionAccessibility();
+  const isVi = locale === 'vi';
 
-  const [activeMode, setActiveMode] = useState<ListeningMode>('dictation');
-  const [selectedDifficulty, setSelectedDifficulty] = useState<ListeningDifficulty | 'ALL'>('ALL');
-  const [activeExerciseIndex, setActiveExerciseIndex] = useState<number>(0);
-  const [isPlayingSession, setIsPlayingSession] = useState<boolean>(false);
-  const [isSessionFinished, setIsSessionFinished] = useState<boolean>(false);
+  // Search & Filter state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState<string>('ALL');
+  const [selectedTag, setSelectedTag] = useState<string>('ALL');
+  const [selectedChannel, setSelectedChannel] = useState<string>('ALL');
 
-  // Session stats tracking
-  const [sessionXP, setSessionXP] = useState<number>(0);
-  const [accuracyList, setAccuracyList] = useState<number[]>([]);
-  const [completedCount, setCompletedCount] = useState<number>(0);
+  // Video Studio Modal state
+  const [selectedVideo, setSelectedVideo] = useState<DictationVideo | null>(null);
+  const [isModeModalOpen, setIsModeModalOpen] = useState(false);
+  const [activeStudioMode, setActiveStudioMode] = useState<VideoPlayerMode | null>(null);
+  const [activeStudioVideo, setActiveStudioVideo] = useState<DictationVideo | null>(null);
 
-  // Filter exercises
-  const filteredExercises = useMemo(() => {
-    return SAMPLE_LISTENING_EXERCISES.filter((ex) => {
-      const modeMatch = ex.modes.includes(activeMode);
-      const diffMatch = selectedDifficulty === 'ALL' || ex.difficulty === selectedDifficulty;
-      return modeMatch && diffMatch;
+  // Custom YouTube URL dialog
+  const [customUrl, setCustomUrl] = useState('');
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+
+  // Tags list
+  const tags = [
+    { key: 'ALL', label: isVi ? 'Tất cả' : 'All' },
+    { key: 'YouTube', label: '# Youtube video' },
+    { key: 'TED', label: '# TED' },
+    { key: 'BBC learning english', label: '# BBC learning english' },
+    { key: 'Short Movie', label: '# Short Movie' },
+    { key: 'Music', label: '# Music' },
+    { key: 'Animals and wildlife', label: '# Animals and wildlife' },
+    { key: 'IELTS Listening', label: '# IELTS Listening' },
+  ];
+
+  // Channels list
+  const channels = [
+    { name: 'TED-Ed', logo: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=100&auto=format&fit=crop&q=60', color: 'border-rose-500' },
+    { name: 'BBC Learning English', logo: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=100&auto=format&fit=crop&q=60', color: 'border-teal-500' },
+    { name: 'Stanford University', logo: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=100&auto=format&fit=crop&q=60', color: 'border-amber-500' },
+    { name: 'Boyce Avenue', logo: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&auto=format&fit=crop&q=60', color: 'border-purple-500' },
+    { name: 'Rick Astley Official', logo: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100&auto=format&fit=crop&q=60', color: 'border-blue-500' },
+    { name: 'Universal Pictures', logo: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=100&auto=format&fit=crop&q=60', color: 'border-emerald-500' },
+  ];
+
+  // Filtered video items for search or level filter
+  const isFiltering = searchQuery.trim() !== '' || selectedLevel !== 'ALL' || selectedTag !== 'ALL' || selectedChannel !== 'ALL';
+
+  const filteredVideos = useMemo(() => {
+    return SAMPLE_DICTATION_VIDEOS.filter((v) => {
+      const matchSearch =
+        v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        v.channel.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchLevel = selectedLevel === 'ALL' || v.level === selectedLevel;
+      const matchTag = selectedTag === 'ALL' || v.category.toLowerCase() === selectedTag.toLowerCase();
+      const matchChannel = selectedChannel === 'ALL' || v.channel === selectedChannel;
+      return matchSearch && matchLevel && matchTag && matchChannel;
     });
-  }, [activeMode, selectedDifficulty]);
+  }, [searchQuery, selectedLevel, selectedTag, selectedChannel]);
 
-  const currentExercise = filteredExercises[activeExerciseIndex] || filteredExercises[0];
+  // Grouped Categories for Multi-Row Display
+  const featuredVideos = useMemo(() => SAMPLE_DICTATION_VIDEOS.filter((v) => v.isFeatured), []);
+  const tedVideos = useMemo(() => SAMPLE_DICTATION_VIDEOS.filter((v) => v.category === 'TED'), []);
+  const bbcVideos = useMemo(() => SAMPLE_DICTATION_VIDEOS.filter((v) => v.category.includes('BBC')), []);
+  const generalVideos = useMemo(
+    () => SAMPLE_DICTATION_VIDEOS.filter((v) => v.category === 'Music' || v.category === 'Short Movie' || v.category === 'Animals and wildlife'),
+    []
+  );
 
-  const handleStartExercise = (index: number) => {
-    setActiveExerciseIndex(index);
-    setIsPlayingSession(true);
-    setIsSessionFinished(false);
+  // Click on a video card
+  const handleOpenVideo = (video: DictationVideo) => {
+    setSelectedVideo(video);
+    setIsModeModalOpen(true);
   };
 
-  const handleDictationComplete = (res: DictationResult) => {
-    setAccuracyList((prev) => [...prev, res.accuracy]);
-    setSessionXP((prev) => prev + res.xpEarned);
-    if (res.completed) {
-      setCompletedCount((prev) => prev + 1);
+  // Select Mode from Modal
+  const handleSelectMode = (video: DictationVideo, mode: VideoPlayerMode) => {
+    setActiveStudioVideo(video);
+    setActiveStudioMode(mode);
+  };
+
+  // Level Badge Color Resolver
+  const getLevelBadgeClass = (level: string) => {
+    switch (level) {
+      case 'A1':
+        return 'bg-emerald-500 text-slate-950 font-black';
+      case 'A2':
+        return 'bg-teal-400 text-slate-950 font-black';
+      case 'B1':
+        return 'bg-blue-500 text-white font-black';
+      case 'B2':
+        return 'bg-purple-500 text-white font-black';
+      case 'C1':
+        return 'bg-rose-500 text-white font-black';
+      case 'C2':
+        return 'bg-amber-500 text-slate-950 font-black';
+      default:
+        return 'bg-cyan-500 text-slate-950 font-black';
     }
   };
 
-  const handleShadowingComplete = (res: ShadowingResult) => {
-    setAccuracyList((prev) => [...prev, res.similarity]);
-    setSessionXP((prev) => prev + res.xpEarned);
-    if (res.completed) {
-      setCompletedCount((prev) => prev + 1);
-    }
-  };
+  // Video Card Component
+  const renderVideoCard = (video: DictationVideo) => (
+    <div
+      key={video.id}
+      onClick={() => handleOpenVideo(video)}
+      className="group cursor-pointer rounded-3xl overflow-hidden bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 shadow-xl hover:-translate-y-1 flex flex-col justify-between shrink-0 w-72 sm:w-80"
+    >
+      {/* Thumbnail Container */}
+      <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
+        <img
+          src={video.thumbnail}
+          alt={video.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
 
-  const handleNextExercise = () => {
-    if (activeExerciseIndex < filteredExercises.length - 1) {
-      setActiveExerciseIndex((prev) => prev + 1);
-    } else {
-      setIsSessionFinished(true);
-    }
-  };
+        {/* Level Badge */}
+        <div className="absolute top-3 right-3">
+          <span className={`px-2.5 py-1 rounded-xl text-[10px] uppercase tracking-wider shadow-md ${getLevelBadgeClass(video.level)}`}>
+            {video.level}
+          </span>
+        </div>
 
-  const handleResetSession = () => {
-    setActiveExerciseIndex(0);
-    setIsSessionFinished(false);
-    setIsPlayingSession(true);
-    setSessionXP(0);
-    setAccuracyList([]);
-    setCompletedCount(0);
-  };
+        {/* Duration & Views Stats Pill */}
+        <div className="absolute bottom-3 left-3 flex items-center gap-2">
+          <span className="px-2 py-0.5 rounded-lg bg-slate-950/80 backdrop-blur-md text-[10px] font-mono text-slate-300 flex items-center gap-1 border border-slate-800">
+            <Clock className="w-3 h-3 text-amber-400" />
+            <span>{video.duration}</span>
+          </span>
+          <span className="px-2 py-0.5 rounded-lg bg-slate-950/80 backdrop-blur-md text-[10px] font-mono text-cyan-300 flex items-center gap-1 border border-cyan-500/20 font-bold">
+            <Headphones className="w-3 h-3 text-cyan-400" />
+            <span>{video.segments.length} đoạn</span>
+          </span>
+        </div>
 
-  const averageAccuracy = accuracyList.length > 0
-    ? Math.round(accuracyList.reduce((a, b) => a + b, 0) / accuracyList.length)
-    : 0;
-
-  return (
-    <main className="min-h-screen pb-20 pt-6 px-4 sm:px-6 max-w-7xl mx-auto space-y-8 pointer-events-auto">
-      {/* Header Banner with LingLing Mascot */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-teal-950/40 border border-teal-500/20 p-6 sm:p-10 shadow-2xl">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
-          <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
-              <Headphones className="w-3.5 h-3.5 text-teal-400" />
-              <span>Phòng Luyện Nghe Nói Chuyên Sâu • Listening Lab</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">
-              Luyện Tai Chuẩn Xác. <br />
-              <span className="bg-gradient-to-r from-teal-400 via-emerald-400 to-amber-300 bg-clip-text text-transparent">
-                Phản Xạ Phát Âm Bản Xứ.
-              </span>
-            </h1>
-
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Rèn luyện đôi tai bằng phương pháp <strong>Chép chính tả (Dictation)</strong> và làm chủ ngữ điệu với <strong>Nhại giọng (Shadowing)</strong>.
-            </p>
-          </div>
-
-          <div className="shrink-0 flex items-center justify-center">
-            <LingLingMascot state={isPlayingSession ? 'speaking' : 'idle'} size={120} />
+        {/* Play Hover Overlay */}
+        <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-950 flex items-center justify-center shadow-lg shadow-cyan-500/40 group-hover:scale-110 transition-transform">
+            <Play className="w-6 h-6 fill-slate-950 ml-0.5" />
           </div>
         </div>
       </div>
 
-      {/* Mode Selector Tabs */}
-      <ListeningModeSelector
-        activeMode={activeMode}
-        onSelectMode={(mode) => {
-          setActiveMode(mode);
-          setActiveExerciseIndex(0);
-          setIsPlayingSession(false);
-          setIsSessionFinished(false);
-        }}
-      />
+      {/* Video Info Content */}
+      <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
+        <h3 className="text-sm font-extrabold text-white group-hover:text-cyan-300 transition-colors line-clamp-2 leading-snug">
+          {video.title}
+        </h3>
+        <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-800/60">
+          <span className="truncate max-w-[150px] font-semibold">{video.channel}</span>
+          <span className="font-mono text-cyan-400 font-extrabold">{video.segments.length} đoạn</span>
+        </div>
+      </div>
+    </div>
+  );
 
-      {/* Main Practice Area */}
-      {isSessionFinished ? (
-        <ListeningResult
-          mode={activeMode}
-          totalExercises={filteredExercises.length}
-          completedExercises={completedCount}
-          averageAccuracy={averageAccuracy}
-          totalXPEarned={sessionXP}
-          onRetry={handleResetSession}
-          locale={locale}
-        />
-      ) : isPlayingSession && currentExercise ? (
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={() => setIsPlayingSession(false)}
-              className="text-xs font-bold text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 p-2 rounded-xl bg-slate-900/60 border border-slate-800"
-            >
-              ← Trở về danh sách bài nghe
-            </button>
+  // Horizontal Section Row Component
+  const renderHorizontalSection = (title: string, count: number, videoList: DictationVideo[]) => (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg sm:text-xl font-display font-extrabold text-white">{title}</h2>
+          <span className="px-2 py-0.5 rounded-lg bg-slate-800 text-slate-400 text-xs font-mono font-bold">
+            {count}
+          </span>
+        </div>
+        <button className="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+          Xem tất cả
+        </button>
+      </div>
 
-            <span className="text-xs font-mono text-teal-400 font-bold">
-              Chế độ: {activeMode === 'dictation' ? '🎧 Dictation' : '🎙️ Shadowing'}
-            </span>
+      {/* Horizontal Carousel */}
+      <div className="flex items-stretch gap-5 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+        {videoList.map((video) => renderVideoCard(video))}
+      </div>
+    </div>
+  );
+
+  return (
+    <main className="min-h-screen pb-20 pt-6 px-4 sm:px-6 max-w-7xl mx-auto space-y-8 pointer-events-auto text-slate-100 font-sans">
+      {/* 1. TOP HEADER & SEARCH / FILTER BAR */}
+      <div className="space-y-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Search Input Box */}
+          <div className="relative w-full md:max-w-xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Tìm kiếm video, phim, bài phát biểu TED, BBC English..."
+              className="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-900/90 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none shadow-inner"
+            />
           </div>
 
-          <ListeningProgress
-            currentIndex={activeExerciseIndex}
-            totalExercises={filteredExercises.length}
-            difficulty={currentExercise.difficulty}
-            category={currentExercise.category}
-            sessionXP={sessionXP}
-          />
+          <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+            {/* Level Filter Dropdown (A1 -> C2) */}
+            <div className="relative">
+              <select
+                value={selectedLevel}
+                onChange={(e) => setSelectedLevel(e.target.value)}
+                className="px-4 py-3 rounded-2xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-200 focus:border-cyan-400 focus:outline-none cursor-pointer shadow-sm"
+              >
+                <option value="ALL">Tất cả cấp độ</option>
+                <option value="A1">A1 (Cơ bản)</option>
+                <option value="A2">A2 (Sơ cấp)</option>
+                <option value="B1">B1 (Trung cấp)</option>
+                <option value="B2">B2 (Khá giỏi)</option>
+                <option value="C1">C1 (Nâng cao)</option>
+                <option value="C2">C2 (Thành thạo)</option>
+              </select>
+            </div>
 
-          {/* Studio Audio Karaoke Player */}
-          <KaraokeAudioStudio
-            text={currentExercise.transcript || currentExercise.title}
-            audioUrl={currentExercise.audioUrl}
-            translation={currentExercise.translation}
-            title={currentExercise.title}
-            locale={locale}
-          />
+            {/* Add Custom Video Button */}
+            <Button
+              variant="accent"
+              size="md"
+              onClick={() => setIsAddDialogOpen(true)}
+              className="shadow-lg shadow-cyan-500/20 whitespace-nowrap bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-950 font-black text-xs"
+              icon={<Plus className="w-4 h-4" />}
+            >
+              + Thêm video
+            </Button>
+          </div>
+        </div>
 
-          {activeMode === 'dictation' ? (
-            <DictationExercise
-              key={`dictation-${currentExercise.id}`}
-              exercise={currentExercise}
-              onComplete={handleDictationComplete}
-              onNext={handleNextExercise}
-              hasNext={activeExerciseIndex < filteredExercises.length - 1}
-            />
+        {/* Horizontal Hashtag Tag Pills */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+          {tags.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setSelectedTag(t.key)}
+              className={`px-4 py-1.5 rounded-full text-xs font-extrabold whitespace-nowrap transition-all ${
+                selectedTag === t.key
+                  ? 'bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20 font-black'
+                  : 'bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 2. CHANNELS CAROUSEL (KHÁM PHÁ THEO KÊNH) */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-display font-extrabold text-white flex items-center gap-2">
+            <Tv className="w-4 h-4 text-cyan-400" />
+            <span>Khám phá theo kênh</span>
+          </h2>
+          {selectedChannel !== 'ALL' && (
+            <button
+              onClick={() => setSelectedChannel('ALL')}
+              className="text-xs font-bold text-cyan-400 hover:underline"
+            >
+              Xem tất cả kênh
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none">
+          {channels.map((ch, idx) => (
+            <button
+              key={idx}
+              onClick={() => setSelectedChannel(selectedChannel === ch.name ? 'ALL' : ch.name)}
+              className={`flex flex-col items-center gap-2 p-3.5 rounded-3xl bg-slate-900/60 border transition-all shrink-0 w-28 sm:w-32 group ${
+                selectedChannel === ch.name
+                  ? 'border-cyan-400 bg-cyan-500/10 ring-2 ring-cyan-500/30'
+                  : 'border-slate-800 hover:border-slate-700'
+              }`}
+            >
+              <div className={`w-14 h-14 rounded-full overflow-hidden border-2 ${ch.color} group-hover:scale-105 transition-transform shadow-md`}>
+                <img src={ch.logo} alt={ch.name} className="w-full h-full object-cover" />
+              </div>
+              <span className="text-[11px] font-extrabold text-slate-300 group-hover:text-white truncate w-full text-center">
+                {ch.name}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. MULTI-ROW CATEGORIES / FILTERED SEARCH RESULTS */}
+      {isFiltering ? (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-display font-extrabold text-white flex items-center gap-2">
+              <Filter className="w-5 h-5 text-cyan-400" />
+              <span>Kết quả lọc & tìm kiếm</span>
+              <span className="text-xs text-slate-500 font-mono">({filteredVideos.length})</span>
+            </h2>
+            <button
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedLevel('ALL');
+                setSelectedTag('ALL');
+                setSelectedChannel('ALL');
+              }}
+              className="text-xs font-bold text-slate-400 hover:text-white"
+            >
+              Đặt lại bộ lọc
+            </button>
+          </div>
+
+          {filteredVideos.length === 0 ? (
+            <div className="p-12 rounded-3xl bg-slate-900/40 border border-slate-800 text-center space-y-2">
+              <Headphones className="w-10 h-10 text-slate-600 mx-auto mb-2" />
+              <p className="text-sm font-bold text-slate-300">Không tìm thấy video phù hợp</p>
+              <p className="text-xs text-slate-500">Hãy thử đổi cấp độ hoặc từ khóa tìm kiếm khác nhé!</p>
+            </div>
           ) : (
-            <ShadowingExercise
-              key={`shadowing-${currentExercise.id}`}
-              exercise={currentExercise}
-              onComplete={handleShadowingComplete}
-              onNext={handleNextExercise}
-              hasNext={activeExerciseIndex < filteredExercises.length - 1}
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {filteredVideos.map((video) => renderVideoCard(video))}
+            </div>
           )}
         </div>
       ) : (
-        /* Exercise Selection Grid */
-        <div className="space-y-6">
-          {/* Difficulty Filter Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-2xl border border-slate-800">
-              {(['ALL', 'A1', 'A2', 'B1'] as const).map((diff) => {
-                const isActive = selectedDifficulty === diff;
-                return (
-                  <button
-                    key={diff}
-                    type="button"
-                    onClick={() => {
-                      setSelectedDifficulty(diff);
-                      setActiveExerciseIndex(0);
-                    }}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      isActive
-                        ? 'bg-teal-500/20 text-teal-300 border border-teal-500/30 shadow-sm'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
-                    }`}
-                  >
-                    {diff === 'ALL' ? 'Tất cả cấp độ' : `Cấp độ ${diff}`}
-                  </button>
-                );
-              })}
-            </div>
+        <div className="space-y-8">
+          {/* Row 1: Bài học nổi bật */}
+          {renderHorizontalSection('Bài học nổi bật', featuredVideos.length, featuredVideos)}
 
-            <div className="text-xs text-slate-400 font-mono">
-              Hiển thị {filteredExercises.length} bài nghe chất lượng cao
-            </div>
-          </div>
+          {/* Row 2: TED & TED-Ed */}
+          {renderHorizontalSection('TED & TED-Ed', tedVideos.length, tedVideos)}
 
-          {/* Grid of Audio Lessons */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredExercises.map((exercise, idx) => {
-              const diffColor =
-                exercise.difficulty === 'A1'
-                  ? 'emerald'
-                  : exercise.difficulty === 'A2'
-                  ? 'teal'
-                  : 'amber';
+          {/* Row 3: BBC Learning English */}
+          {renderHorizontalSection('BBC Learning English', bbcVideos.length, bbcVideos)}
 
-              return (
-                <Card
-                  key={exercise.id}
-                  glow="teal"
-                  onClick={() => handleStartExercise(idx)}
-                  className="flex flex-col justify-between space-y-4 hover:border-teal-400/50 group"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <Badge variant={diffColor}>
-                        {exercise.difficulty} • {exercise.category}
-                      </Badge>
-                      <span className="text-xs font-mono text-slate-400 flex items-center gap-1">
-                        <Volume2 className="w-3.5 h-3.5 text-teal-400" />
-                        ~{exercise.durationSeconds}s
-                      </span>
-                    </div>
-
-                    <div>
-                      <h3 className="font-display font-extrabold text-lg text-white group-hover:text-teal-300 transition-colors">
-                        {exercise.title}
-                      </h3>
-                      <p className="text-xs text-slate-400 line-clamp-2 mt-1">
-                        {exercise.translation}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      {exercise.tags?.slice(0, 2).map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="px-2 py-0.5 rounded-md bg-slate-800/60 text-[10px] text-slate-400 font-mono uppercase"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <span className="inline-flex items-center gap-1 text-xs font-bold text-teal-400 group-hover:translate-x-1 transition-transform">
-                      <span>Bắt đầu</span>
-                      <Play className="w-3.5 h-3.5 fill-teal-400" />
-                    </span>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
+          {/* Row 4: YouTube & Phim ngắn */}
+          {renderHorizontalSection('YouTube video & Giải trí', generalVideos.length, generalVideos)}
         </div>
       )}
+
+      {/* 4. MODAL CHỌN CHẾ ĐỘ LUYỆN TẬP */}
+      <VideoModeSelectModal
+        video={selectedVideo}
+        isOpen={isModeModalOpen}
+        onClose={() => setIsModeModalOpen(false)}
+        onSelectMode={handleSelectMode}
+        locale={locale}
+      />
+
+      {/* 5. FULL-SCREEN 4-IN-1 VIDEO DICTATION STUDIO */}
+      {activeStudioVideo && activeStudioMode && (
+        <VideoDictationStudio
+          video={activeStudioVideo}
+          initialMode={activeStudioMode}
+          onClose={() => {
+            setActiveStudioVideo(null);
+            setActiveStudioMode(null);
+          }}
+          locale={locale}
+        />
+      )}
+
+      {/* 6. ADD CUSTOM YOUTUBE DIALOG */}
+      <AnimatePresence>
+        {isAddDialogOpen && (
+          <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsAddDialogOpen(false)}
+              className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="relative w-full max-w-md bg-slate-900 border border-cyan-500/30 rounded-3xl p-6 shadow-2xl z-10 space-y-4"
+            >
+              <h3 className="text-xl font-display font-extrabold text-white">Thêm Video YouTube Mới</h3>
+              <p className="text-xs text-slate-400">
+                Dán đường link YouTube bất kỳ để hệ thống tự động bẻ câu và tạo bài tập chép chính tả cho bạn.
+              </p>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!customUrl) return;
+                  const match = customUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+                  const ytId = match ? match[1] : 'dQw4w9WgXcQ';
+
+                  const newVideo: DictationVideo = {
+                    id: `custom-${Date.now()}`,
+                    youtubeId: ytId,
+                    title: `Bài Luyện Nghe Tùy Chỉnh (${ytId})`,
+                    channel: 'YouTube Custom Import',
+                    category: 'YouTube',
+                    level: 'B1',
+                    duration: '3:30',
+                    views: '1 view',
+                    thumbnail: `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`,
+                    segments: [
+                      {
+                        id: 1,
+                        start: 0.0,
+                        end: 6.0,
+                        text: 'Listen carefully to the audio clip and type what you hear.',
+                        vietnamese: 'Lắng nghe kỹ đoạn âm thanh và gõ lại những gì bạn nghe được.',
+                        words: ['Listen', 'carefully', 'to', 'the', 'audio', 'clip', 'and', 'type', 'what', 'you', 'hear.'],
+                      },
+                    ],
+                  };
+
+                  setSelectedVideo(newVideo);
+                  setIsModeModalOpen(true);
+                  setIsAddDialogOpen(false);
+                  setCustomUrl('');
+                }}
+                className="space-y-4"
+              >
+                <input
+                  type="url"
+                  required
+                  value={customUrl}
+                  onChange={(e) => setCustomUrl(e.target.value)}
+                  placeholder="https://www.youtube.com/watch?v=..."
+                  className="w-full px-4 py-3 rounded-2xl bg-slate-950 border border-slate-700 text-white text-sm focus:border-cyan-400 focus:outline-none"
+                />
+                <div className="flex items-center justify-end gap-2">
+                  <Button variant="outline" size="sm" type="button" onClick={() => setIsAddDialogOpen(false)}>
+                    Hủy
+                  </Button>
+                  <Button variant="accent" size="sm" type="submit" className="bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-950 font-black">
+                    Bắt đầu học
+                  </Button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
