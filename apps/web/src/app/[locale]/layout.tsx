@@ -47,6 +47,7 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const profileDropdownRef = useRef<HTMLDivElement>(null);
 
   const [popupState, setPopupState] = useState<{
     show: boolean;
@@ -90,7 +91,9 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      const isOutsideNav = dropdownRef.current && !dropdownRef.current.contains(e.target as Node);
+      const isOutsideProfile = profileDropdownRef.current && !profileDropdownRef.current.contains(e.target as Node);
+      if (isOutsideNav && isOutsideProfile) {
         setActiveDropdown(null);
       }
     };
@@ -98,14 +101,18 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
-  // Read authenticated user role
+  // Read authenticated user state
   const [userRole, setUserRole] = useState<string>('SUPER_ADMIN');
+  const [userName, setUserName] = useState<string>('Học Viên LinguaFlow');
+  const [userEmail, setUserEmail] = useState<string>('lingflow.student@example.com');
   useEffect(() => {
     try {
       const savedUser = localStorage.getItem('lingual_user');
       if (savedUser) {
         const parsed = JSON.parse(savedUser);
         if (parsed.role) setUserRole(parsed.role);
+        if (parsed.displayName || parsed.name) setUserName(parsed.displayName || parsed.name);
+        if (parsed.email) setUserEmail(parsed.email);
       }
     } catch {}
   }, []);
@@ -474,6 +481,98 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                 <span className="uppercase">{locale === 'vi' ? 'EN' : 'VI'}</span>
               </Link>
 
+              {/* Desktop User Profile Avatar & Dropdown */}
+              <div ref={profileDropdownRef} className="relative hidden md:block">
+                <button
+                  type="button"
+                  onClick={() => setActiveDropdown(activeDropdown === 'profile' ? null : 'profile')}
+                  className={`flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-2xl bg-slate-900 border transition-all shadow-sm group ${
+                    activeDropdown === 'profile'
+                      ? 'border-teal-500/50 bg-teal-500/10'
+                      : 'border-slate-800 hover:border-teal-500/40'
+                  }`}
+                  aria-label="Menu tài khoản người dùng"
+                >
+                  <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-sm shrink-0">
+                    {userName ? userName.slice(0, 2).toUpperCase() : 'LF'}
+                  </div>
+                  <span className="text-xs font-bold max-w-[90px] lg:max-w-[120px] truncate text-slate-200 group-hover:text-white">
+                    {userName}
+                  </span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform duration-200 ${
+                      activeDropdown === 'profile' ? 'rotate-180 text-teal-400' : ''
+                    }`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {activeDropdown === 'profile' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full right-0 mt-2 w-64 p-2 rounded-2xl bg-slate-900/95 border border-slate-800 shadow-2xl backdrop-blur-xl z-50 space-y-1"
+                    >
+                      <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 mb-2">
+                        <p className="text-xs font-extrabold text-white truncate">{userName}</p>
+                        <p className="text-[10px] text-slate-400 font-mono truncate">{userEmail}</p>
+                        <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-slate-800">
+                          <span className="text-[9px] px-2 py-0.5 rounded-md bg-teal-500/15 text-teal-300 font-bold border border-teal-500/30">
+                            {userRole}
+                          </span>
+                          <span className="text-[9px] text-amber-400 font-bold flex items-center gap-1">
+                            🔥 {streakDays}d • ⚡ {userXP} XP
+                          </span>
+                        </div>
+                      </div>
+
+                      <Link
+                        href={`/${locale}/profile`}
+                        onClick={() => setActiveDropdown(null)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
+                      >
+                        <User className="w-4 h-4 text-teal-400 group-hover:scale-110 transition-transform" />
+                        <span>{locale === 'vi' ? 'Hồ Sơ & Cài Đặt' : 'Profile & Settings'}</span>
+                      </Link>
+
+                      <Link
+                        href={`/${locale}/community/friends`}
+                        onClick={() => setActiveDropdown(null)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
+                      >
+                        <Users className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
+                        <span>{locale === 'vi' ? 'Bạn Bè & Cộng Đồng' : 'Friends & Social'}</span>
+                      </Link>
+
+                      <Link
+                        href={`/${locale}/analytics`}
+                        onClick={() => setActiveDropdown(null)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
+                      >
+                        <Activity className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+                        <span>{locale === 'vi' ? 'Phân Tích Năng Lực' : 'Learning Analytics'}</span>
+                      </Link>
+
+                      <div className="pt-1 border-t border-slate-800/80 mt-1">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            handleLogout();
+                          }}
+                          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all group"
+                        >
+                          <LogOut className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                          <span>{locale === 'vi' ? 'Đăng Xuất' : 'Sign Out'}</span>
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               {/* Mobile Hamburger Toggle */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -520,22 +619,33 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                     </button>
                   </div>
 
-                  {/* User Profile Summary */}
-                  <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center">
-                        <User className="w-5 h-5 text-slate-950" />
+                  {/* User Profile Summary Card (Clickable to /profile) */}
+                  <Link
+                    href={`/${locale}/profile`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-teal-500/40 space-y-3 block transition-all group"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-sm flex items-center justify-center shadow-sm">
+                          {userName ? userName.slice(0, 2).toUpperCase() : 'LF'}
+                        </div>
+                        <div>
+                          <span className="text-sm font-bold text-white group-hover:text-teal-300 block transition-colors">
+                            {userName}
+                          </span>
+                          <span className="text-xs text-slate-400 truncate block max-w-[150px]">{userEmail}</span>
+                        </div>
                       </div>
-                      <div>
-                        <span className="text-sm font-bold text-white block">Học Viên LinguaFlow</span>
-                        <span className="text-xs text-slate-400">lingflow.student@example.com</span>
-                      </div>
+                      <span className="text-[10px] text-teal-400 font-bold bg-teal-500/15 px-2 py-1 rounded-lg border border-teal-500/30">
+                        {locale === 'vi' ? 'Xem hồ sơ →' : 'Profile →'}
+                      </span>
                     </div>
                     <div className="flex gap-2 pt-1">
                       <StreakBadge streak={streakDays} />
                       <XPBadge xp={userXP} />
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Group 1: Core Navigation */}
                   <div className="space-y-1">
