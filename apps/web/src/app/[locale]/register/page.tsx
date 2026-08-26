@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Button, Card } from '@linguaflow/ui';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Sparkles, Mail, Lock, User, UserPlus, ArrowRight } from 'lucide-react';
+import { GoogleLoginButton } from '../../../components/auth/GoogleLoginButton';
 
 export default function RegisterPage() {
   const params = useParams();
@@ -58,14 +59,24 @@ export default function RegisterPage() {
         </div>
 
         {/* Register Form Card */}
-        <Card glow="teal" className="p-6 sm:p-8 space-y-6">
+        <Card glow="teal" className="p-6 sm:p-8 space-y-5">
           {error && (
             <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold text-center">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Google One-Click Register */}
+          <GoogleLoginButton mode="register" />
+
+          {/* Divider */}
+          <div className="relative border-t border-slate-800 my-2 text-center">
+            <span className="text-[10px] uppercase tracking-widest text-slate-500 font-extrabold bg-slate-900 px-3 absolute -top-2.5 left-1/2 -translate-x-1/2">
+              Hoặc đăng ký với email
+            </span>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4 pt-1">
             {/* Display Name Input */}
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-300 block">Tên hiển thị</label>

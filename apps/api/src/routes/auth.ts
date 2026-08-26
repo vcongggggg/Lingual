@@ -146,6 +146,258 @@ authRouter.post('/logout', (req, res) => {
   return res.json({ message: 'Đăng xuất thành công, session đã bị hủy.' });
 });
 
+// ============================================================================
+// GOOGLE OAUTH 2.0 ENDPOINTS
+// ============================================================================
+
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
+const GOOGLE_CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL || 'http://localhost:4000/api/auth/google/callback';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+
+// 1. Get Google OAuth URL or Configuration Status
+authRouter.get('/google/url', (req, res) => {
+  const locale = (req.query.locale as string) || 'vi';
+  if (!GOOGLE_CLIENT_ID) {
+    return res.json({
+      isConfigured: false,
+      message: 'Google OAuth chưa được cấu hình Client ID. Hệ thống kích hoạt chế độ Simulator cho dev.',
+    });
+  }
+
+  const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
+  const options = {
+    redirect_uri: GOOGLE_CALLBACK_URL,
+    client_id: GOOGLE_CLIENT_ID,
+    access_type: 'offline',
+    response_type: 'code',
+    prompt: 'consent',
+    scope: [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email',
+      'openid',
+    ].join(' '),
+    state: JSON.stringify({ locale }),
+  };
+
+  const qs = new URLSearchParams(options);
+  return res.json({
+    isConfigured: true,
+    url: `${rootUrl}?${qs.toString()}`,
+  });
+});
+
+// 2. Google OAuth Callback (Receives auth code from Google)
+authRouter.get('/google/callback', async (req, res) => {
+  const code = req.query.code as string;
+  const stateStr = req.query.state as string;
+  let locale = 'vi';
+  try {
+    if (stateStr) {
+      const parsed = JSON.parse(stateStr);
+      if (parsed.locale) locale = parsed.locale;
+    }
+  } catch {}
+
+  if (!code) {
+    return res.redirect(`${FRONTEND_URL}/${locale}/login?error=GoogleAuthFailed`);
+  }
+
+  try {
+    // Exchange authorization code for tokens
+    const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        code,
+        client_id: GOOGLE_CLIENT_ID,
+        client_secret: GOOGLE_CLIENT_SECRET,
+        redirect_uri: GOOGLE_CALLBACK_URL,
+        grant_type: 'authorization_code',
+      }),
+    });
+
+    const tokenData = (await tokenResponse.json()) as any;
+    if (!tokenResponse.ok || !tokenData.access_token) {
+      console.error('Google token exchange error:', tokenData);
+      return res.redirect(`${FRONTEND_URL}/${locale}/login?error=TokenExchangeFailed`);
+    }
+
+    // Fetch user profile from Google
+    const userinfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+      headers: { Authorization: `Bearer ${tokenData.access_token}` },
+    });
+    const googleProfile = (await userinfoRes.json()) as any;
+
+    if (!googleProfile.email) {
+      return res.redirect(`${FRONTEND_URL}/${locale}/login?error=NoEmailFromGoogle`);
+    }
+
+    // Find or create user
+    let user = MOCK_USERS.find(
+      (u) => u.email === googleProfile.email || (u.googleId && u.googleId === googleProfile.sub)
+    );
+
+    if (!user) {
+      user = {
+        id: `google-user-${Date.now()}`,
+        email: googleProfile.email,
+        googleId: googleProfile.sub,
+        avatarUrl: googleProfile.picture || null,
+        authProvider: 'google',
+        displayName: googleProfile.name || googleProfile.email.split('@')[0],
+        role: 'STUDENT',
+        interfaceLocale: locale,
+        timezone: 'Asia/Ho_Chi_Minh',
+        dailyGoalMinutes: 15,
+        totalXP: 0,
+        currentStreak: 1,
+        streakFreezes: 1,
+        lastActiveDate: getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh'),
+      };
+      MOCK_USERS.push(user);
+    } else {
+      // Update Google profile info
+      user.googleId = googleProfile.sub;
+      if (googleProfile.picture) user.avatarUrl = googleProfile.picture;
+      if (!user.displayName || user.displayName === 'Học Viên') {
+        user.displayName = googleProfile.name;
+      }
+    }
+
+    const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+
+    res.cookie('access_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    return res.redirect(
+      `${FRONTEND_URL}/${locale}/auth/callback?token=${token}&user=${encodeURIComponent(
+        JSON.stringify({
+          id: user.id,
+          email: user.email,
+          displayName: user.displayName,
+          role: user.role,
+          avatarUrl: user.avatarUrl,
+          totalXP: user.totalXP,
+          currentStreak: user.currentStreak,
+        })
+      )}`
+    );
+  } catch (err: any) {
+    console.error('Error during Google callback:', err);
+    return res.redirect(`${FRONTEND_URL}/${locale}/login?error=ServerError`);
+  }
+});
+
+// 3. Mock Google Login / Simulator (For local development & instant testing)
+authRouter.post('/google/mock-login', async (req, res) => {
+  try {
+    const { email, name, avatarUrl, googleId } = req.body;
+    if (!email) {
+      return res.status(400).json({ error: 'Email là bắt buộc' });
+    }
+
+    const normalizedEmail = email.toLowerCase();
+    let user = MOCK_USERS.find((u) => u.email === normalizedEmail);
+
+    if (!user) {
+      user = {
+        id: `google-mock-${Date.now()}`,
+        email: normalizedEmail,
+        googleId: googleId || `gid-${Date.now()}`,
+        avatarUrl:
+          avatarUrl ||
+          `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(normalizedEmail)}`,
+        authProvider: 'google',
+        displayName: name || normalizedEmail.split('@')[0],
+        role: 'STUDENT',
+        interfaceLocale: 'vi',
+        timezone: 'Asia/Ho_Chi_Minh',
+        dailyGoalMinutes: 15,
+        totalXP: 25, // Starting bonus XP
+        currentStreak: 1,
+        streakFreezes: 1,
+        lastActiveDate: getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh'),
+      };
+      MOCK_USERS.push(user);
+    } else {
+      if (avatarUrl) user.avatarUrl = avatarUrl;
+      if (name && (!user.displayName || user.displayName === 'Học Viên')) user.displayName = name;
+    }
+
+    const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+
+    res.cookie('access_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    const { passwordHash: _, ...userWithoutPassword } = user;
+    return res.json({ user: userWithoutPassword, accessToken: token });
+  } catch (err: any) {
+    return res.status(500).json({ error: 'Lỗi server khi đăng nhập bằng Google Simulator' });
+  }
+});
+
+// 4. Verify Google ID Token (From Google Identity Services / One-Tap SDK)
+authRouter.post('/google/verify-token', async (req, res) => {
+  try {
+    const { idToken } = req.body;
+    if (!idToken) {
+      return res.status(400).json({ error: 'ID Token là bắt buộc' });
+    }
+
+    // Verify token with Google
+    const googleRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`);
+    const tokenInfo = (await googleRes.json()) as any;
+
+    if (!googleRes.ok || !tokenInfo.email) {
+      return res.status(401).json({ error: 'Token Google không hợp lệ hoặc đã hết hạn' });
+    }
+
+    let user = MOCK_USERS.find((u) => u.email === tokenInfo.email);
+    if (!user) {
+      user = {
+        id: `google-user-${Date.now()}`,
+        email: tokenInfo.email,
+        googleId: tokenInfo.sub,
+        avatarUrl: tokenInfo.picture || null,
+        authProvider: 'google',
+        displayName: tokenInfo.name || tokenInfo.email.split('@')[0],
+        role: 'STUDENT',
+        interfaceLocale: 'vi',
+        timezone: 'Asia/Ho_Chi_Minh',
+        dailyGoalMinutes: 15,
+        totalXP: 0,
+        currentStreak: 1,
+        streakFreezes: 1,
+        lastActiveDate: getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh'),
+      };
+      MOCK_USERS.push(user);
+    }
+
+    const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+
+    res.cookie('access_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    const { passwordHash: _, ...userWithoutPassword } = user;
+    return res.json({ user: userWithoutPassword, accessToken: token });
+  } catch (err) {
+    return res.status(500).json({ error: 'Lỗi xác thực Google ID Token' });
+  }
+});
+
 authRouter.get('/me', (req, res) => {
   const authHeader = req.headers.authorization;
   const cookieToken = req.cookies?.access_token;

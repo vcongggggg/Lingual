@@ -18,7 +18,10 @@ enum Role {
 model User {
   id               String   @id @default(uuid())
   email            String   @unique
-  passwordHash     String
+  passwordHash     String?
+  googleId         String?  @unique
+  avatarUrl        String?
+  authProvider     String   @default("local")               // "local" | "google"
   displayName      String
   role             Role     @default(STUDENT)
   interfaceLocale  String   @default("vi")                  // UI locale (independent of learning language)

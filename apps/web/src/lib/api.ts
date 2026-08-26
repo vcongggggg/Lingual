@@ -300,6 +300,22 @@ export const userApi = {
       body: JSON.stringify(data),
       skipAuth: true,
     }),
+  getGoogleAuthUrl: (locale: string = 'vi') =>
+    apiFetch<{ isConfigured: boolean; url?: string; message?: string }>(`/auth/google/url?locale=${locale}`, {
+      skipAuth: true,
+    }),
+  mockGoogleLogin: (data: { email: string; name?: string; avatarUrl?: string; googleId?: string }) =>
+    apiFetch('/auth/google/mock-login', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      skipAuth: true,
+    }),
+  verifyGoogleToken: (idToken: string) =>
+    apiFetch('/auth/google/verify-token', {
+      method: 'POST',
+      body: JSON.stringify({ idToken }),
+      skipAuth: true,
+    }),
 };
 
 // ============================================================================

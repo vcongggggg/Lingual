@@ -14,12 +14,16 @@ export interface UserProfile {
   totalXP: number;
   currentStreak: number;
   streakFreezes: number;
+  avatarUrl?: string | null;
+  authProvider?: string;
 }
 
 interface AuthContextType {
   user: UserProfile | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  loginWithGoogle: (mockData?: { email: string; name?: string; avatarUrl?: string }) => Promise<void>;
+  setSessionUser: (user: UserProfile, token: string) => void;
   register: (data: { email: string; password: string; displayName: string }) => Promise<void>;
   logout: () => void;
   updateUserXP: (newXP: number, streak?: number) => void;
@@ -39,15 +43,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     totalXP: 150,
     currentStreak: 3,
     streakFreezes: 1,
+    avatarUrl: null,
+    authProvider: 'local',
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
+        const savedUserStr = localStorage.getItem('lingual_user');
+        if (savedUserStr) {
+          const parsed = JSON.parse(savedUserStr);
+          setUser(parsed);
+        }
         const res = await userApi.getMe();
         if (res?.user) {
           setUser(res.user);
+          localStorage.setItem('lingual_user', JSON.stringify(res.user));
         }
       } catch {
         // Keep default demo user for seamless offline/demo usage
@@ -64,7 +76,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (res?.accessToken && res?.user) {
       setAuthToken(res.accessToken);
       setUser(res.user);
+      localStorage.setItem('lingual_user', JSON.stringify(res.user));
+      localStorage.setItem('lingual_token', res.accessToken);
     }
+  };
+
+  const loginWithGoogle = async (mockData?: { email: string; name?: string; avatarUrl?: string }) => {
+    const res = await userApi.mockGoogleLogin(
+      mockData || {
+        email: 'google.student@linguaflow.io',
+        name: 'Học Viên Google',
+        avatarUrl: 'https://api.dicebear.com/7.x/bottts/svg?seed=google-student',
+      }
+    );
+    if (res?.accessToken && res?.user) {
+      setAuthToken(res.accessToken);
+      setUser(res.user);
+      localStorage.setItem('lingual_user', JSON.stringify(res.user));
+      localStorage.setItem('lingual_token', res.accessToken);
+    }
+  };
+
+  const setSessionUser = (sessionUser: UserProfile, token: string) => {
+    setAuthToken(token);
+    setUser(sessionUser);
+    localStorage.setItem('lingual_user', JSON.stringify(sessionUser));
+    localStorage.setItem('lingual_token', token);
   };
 
   const register = async (data: { email: string; password: string; displayName: string }) => {
@@ -72,28 +109,44 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (res?.accessToken && res?.user) {
       setAuthToken(res.accessToken);
       setUser(res.user);
+      localStorage.setItem('lingual_user', JSON.stringify(res.user));
+      localStorage.setItem('lingual_token', res.accessToken);
     }
   };
 
   const logout = () => {
     clearAuthToken();
+    localStorage.removeItem('lingual_user');
+    localStorage.removeItem('lingual_token');
     setUser(null);
   };
 
   const updateUserXP = (newXP: number, streak?: number) => {
-    setUser((prev) =>
-      prev
-        ? {
-            ...prev,
-            totalXP: newXP,
-            currentStreak: streak !== undefined ? streak : prev.currentStreak,
-          }
-        : null
-    );
+    setUser((prev) => {
+      if (!prev) return null;
+      const updated = {
+        ...prev,
+        totalXP: newXP,
+        currentStreak: streak !== undefined ? streak : prev.currentStreak,
+      };
+      localStorage.setItem('lingual_user', JSON.stringify(updated));
+      return updated;
+    });
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, updateUserXP }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        login,
+        loginWithGoogle,
+        setSessionUser,
+        register,
+        logout,
+        updateUserXP,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
