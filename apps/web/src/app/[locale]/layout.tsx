@@ -62,6 +62,9 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   const handleLogout = () => {
     localStorage.removeItem('lingual_token');
     localStorage.removeItem('lingual_user');
+    localStorage.removeItem('linguaflow_token');
+    setCurrentUser(null);
+    window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: null } }));
     setPopupState({
       show: true,
       key: 'farewell',
@@ -101,22 +104,41 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
-  // Read authenticated user state
-  const [userRole, setUserRole] = useState<string>('SUPER_ADMIN');
-  const [userName, setUserName] = useState<string>('Học Viên LinguaFlow');
-  const [userEmail, setUserEmail] = useState<string>('lingflow.student@example.com');
+  // Synchronize authenticated user state dynamically
+  const [currentUser, setCurrentUser] = useState<any>(null);
+
   useEffect(() => {
-    try {
-      const savedUser = localStorage.getItem('lingual_user');
-      if (savedUser) {
-        const parsed = JSON.parse(savedUser);
-        if (parsed.role) setUserRole(parsed.role);
-        if (parsed.displayName || parsed.name) setUserName(parsed.displayName || parsed.name);
-        if (parsed.email) setUserEmail(parsed.email);
+    const syncUser = () => {
+      try {
+        const token = localStorage.getItem('lingual_token') || localStorage.getItem('linguaflow_token');
+        const savedUserStr = localStorage.getItem('lingual_user');
+        if (token && savedUserStr) {
+          const parsed = JSON.parse(savedUserStr);
+          setCurrentUser(parsed);
+          if (parsed.totalXP !== undefined) setUserXP(parsed.totalXP);
+          if (parsed.currentStreak !== undefined) setStreakDays(parsed.currentStreak);
+        } else {
+          setCurrentUser(null);
+        }
+      } catch {
+        setCurrentUser(null);
       }
-    } catch {}
+    };
+
+    syncUser();
+
+    window.addEventListener('lingual_auth_change', syncUser);
+    window.addEventListener('storage', syncUser);
+    return () => {
+      window.removeEventListener('lingual_auth_change', syncUser);
+      window.removeEventListener('storage', syncUser);
+    };
   }, []);
 
+  const userName = currentUser?.displayName || currentUser?.name || 'Học Viên';
+  const userEmail = currentUser?.email || '';
+  const userRole = currentUser?.role || 'STUDENT';
+  const userAvatar = currentUser?.avatarUrl || null;
   const isStaffRole = ['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'].includes(userRole);
 
   // Grouped Navigation Architecture
@@ -467,111 +489,151 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 
             {/* User Badges & Action Controls */}
             <div className="flex items-center gap-2 sm:gap-3">
-              <StreakBadge streak={streakDays} />
-              <XPBadge xp={userXP} />
+              {currentUser ? (
+                <>
+                  <StreakBadge streak={streakDays} />
+                  <XPBadge xp={userXP} />
 
-              {/* Locale Switcher */}
-              <Link
-                href={switchedPath}
-                className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm"
-                title="Chuyển đổi ngôn ngữ giao diện (VI/EN)"
-                aria-label="Toggle language interface"
-              >
-                <Globe className="w-3.5 h-3.5 text-teal-400" />
-                <span className="uppercase">{locale === 'vi' ? 'EN' : 'VI'}</span>
-              </Link>
+                  {/* Locale Switcher */}
+                  <Link
+                    href={switchedPath}
+                    className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm"
+                    title="Chuyển đổi ngôn ngữ giao diện (VI/EN)"
+                    aria-label="Toggle language interface"
+                  >
+                    <Globe className="w-3.5 h-3.5 text-teal-400" />
+                    <span className="uppercase">{locale === 'vi' ? 'EN' : 'VI'}</span>
+                  </Link>
 
-              {/* Desktop User Profile Avatar & Dropdown */}
-              <div ref={profileDropdownRef} className="relative hidden md:block">
-                <button
-                  type="button"
-                  onClick={() => setActiveDropdown(activeDropdown === 'profile' ? null : 'profile')}
-                  className={`flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-2xl bg-slate-900 border transition-all shadow-sm group ${
-                    activeDropdown === 'profile'
-                      ? 'border-teal-500/50 bg-teal-500/10'
-                      : 'border-slate-800 hover:border-teal-500/40'
-                  }`}
-                  aria-label="Menu tài khoản người dùng"
-                >
-                  <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-sm shrink-0">
-                    {userName ? userName.slice(0, 2).toUpperCase() : 'LF'}
-                  </div>
-                  <span className="text-xs font-bold max-w-[90px] lg:max-w-[120px] truncate text-slate-200 group-hover:text-white">
-                    {userName}
-                  </span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform duration-200 ${
-                      activeDropdown === 'profile' ? 'rotate-180 text-teal-400' : ''
-                    }`}
-                  />
-                </button>
-
-                <AnimatePresence>
-                  {activeDropdown === 'profile' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute top-full right-0 mt-2 w-64 p-2 rounded-2xl bg-slate-900/95 border border-slate-800 shadow-2xl backdrop-blur-xl z-50 space-y-1"
+                  {/* Desktop User Profile Avatar & Dropdown */}
+                  <div ref={profileDropdownRef} className="relative hidden md:block">
+                    <button
+                      type="button"
+                      onClick={() => setActiveDropdown(activeDropdown === 'profile' ? null : 'profile')}
+                      className={`flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-2xl bg-slate-900 border transition-all shadow-sm group ${
+                        activeDropdown === 'profile'
+                          ? 'border-teal-500/50 bg-teal-500/10'
+                          : 'border-slate-800 hover:border-teal-500/40'
+                      }`}
+                      aria-label="Menu tài khoản người dùng"
                     >
-                      <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 mb-2">
-                        <p className="text-xs font-extrabold text-white truncate">{userName}</p>
-                        <p className="text-[10px] text-slate-400 font-mono truncate">{userEmail}</p>
-                        <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-slate-800">
-                          <span className="text-[9px] px-2 py-0.5 rounded-md bg-teal-500/15 text-teal-300 font-bold border border-teal-500/30">
-                            {userRole}
-                          </span>
-                          <span className="text-[9px] text-amber-400 font-bold flex items-center gap-1">
-                            🔥 {streakDays}d • ⚡ {userXP} XP
-                          </span>
+                      {userAvatar ? (
+                        <img
+                          src={userAvatar}
+                          alt={userName}
+                          className="w-7 h-7 rounded-xl object-cover border border-teal-500/40 shrink-0"
+                        />
+                      ) : (
+                        <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-sm shrink-0">
+                          {userName ? userName.slice(0, 2).toUpperCase() : 'LF'}
                         </div>
-                      </div>
+                      )}
+                      <span className="text-xs font-bold max-w-[90px] lg:max-w-[120px] truncate text-slate-200 group-hover:text-white">
+                        {userName}
+                      </span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform duration-200 ${
+                          activeDropdown === 'profile' ? 'rotate-180 text-teal-400' : ''
+                        }`}
+                      />
+                    </button>
 
-                      <Link
-                        href={`/${locale}/profile`}
-                        onClick={() => setActiveDropdown(null)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
-                      >
-                        <User className="w-4 h-4 text-teal-400 group-hover:scale-110 transition-transform" />
-                        <span>{locale === 'vi' ? 'Hồ Sơ & Cài Đặt' : 'Profile & Settings'}</span>
-                      </Link>
-
-                      <Link
-                        href={`/${locale}/community/friends`}
-                        onClick={() => setActiveDropdown(null)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
-                      >
-                        <Users className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
-                        <span>{locale === 'vi' ? 'Bạn Bè & Cộng Đồng' : 'Friends & Social'}</span>
-                      </Link>
-
-                      <Link
-                        href={`/${locale}/analytics`}
-                        onClick={() => setActiveDropdown(null)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
-                      >
-                        <Activity className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
-                        <span>{locale === 'vi' ? 'Phân Tích Năng Lực' : 'Learning Analytics'}</span>
-                      </Link>
-
-                      <div className="pt-1 border-t border-slate-800/80 mt-1">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setActiveDropdown(null);
-                            handleLogout();
-                          }}
-                          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all group"
+                    <AnimatePresence>
+                      {activeDropdown === 'profile' && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute top-full right-0 mt-2 w-64 p-2 rounded-2xl bg-slate-900/95 border border-slate-800 shadow-2xl backdrop-blur-xl z-50 space-y-1"
                         >
-                          <LogOut className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                          <span>{locale === 'vi' ? 'Đăng Xuất' : 'Sign Out'}</span>
-                        </button>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                          <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 mb-2">
+                            <p className="text-xs font-extrabold text-white truncate">{userName}</p>
+                            <p className="text-[10px] text-slate-400 font-mono truncate">{userEmail}</p>
+                            <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-slate-800">
+                              <span className="text-[9px] px-2 py-0.5 rounded-md bg-teal-500/15 text-teal-300 font-bold border border-teal-500/30">
+                                {userRole}
+                              </span>
+                              <span className="text-[9px] text-amber-400 font-bold flex items-center gap-1">
+                                🔥 {streakDays}d • ⚡ {userXP} XP
+                              </span>
+                            </div>
+                          </div>
+
+                          <Link
+                            href={`/${locale}/profile`}
+                            onClick={() => setActiveDropdown(null)}
+                            className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
+                          >
+                            <User className="w-4 h-4 text-teal-400 group-hover:scale-110 transition-transform" />
+                            <span>{locale === 'vi' ? 'Hồ Sơ & Cài Đặt' : 'Profile & Settings'}</span>
+                          </Link>
+
+                          <Link
+                            href={`/${locale}/community/friends`}
+                            onClick={() => setActiveDropdown(null)}
+                            className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
+                          >
+                            <Users className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
+                            <span>{locale === 'vi' ? 'Bạn Bè & Cộng Đồng' : 'Friends & Social'}</span>
+                          </Link>
+
+                          <Link
+                            href={`/${locale}/analytics`}
+                            onClick={() => setActiveDropdown(null)}
+                            className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all group"
+                          >
+                            <Activity className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+                            <span>{locale === 'vi' ? 'Phân Tích Năng Lực' : 'Learning Analytics'}</span>
+                          </Link>
+
+                          <div className="pt-1 border-t border-slate-800/80 mt-1">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setActiveDropdown(null);
+                                handleLogout();
+                              }}
+                              className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all group"
+                            >
+                              <LogOut className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                              <span>{locale === 'vi' ? 'Đăng Xuất' : 'Sign Out'}</span>
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Locale Switcher */}
+                  <Link
+                    href={switchedPath}
+                    className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm"
+                    title="Chuyển đổi ngôn ngữ giao diện (VI/EN)"
+                    aria-label="Toggle language interface"
+                  >
+                    <Globe className="w-3.5 h-3.5 text-teal-400" />
+                    <span className="uppercase">{locale === 'vi' ? 'EN' : 'VI'}</span>
+                  </Link>
+
+                  {/* Unauthenticated Login & Register Buttons */}
+                  <Link
+                    href={`/${locale}/login`}
+                    className="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-200 hover:text-white font-bold text-xs transition-all shadow-sm hidden sm:inline-block"
+                  >
+                    {locale === 'vi' ? 'Đăng Nhập' : 'Sign In'}
+                  </Link>
+
+                  <Link
+                    href={`/${locale}/register`}
+                    className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-400 hover:from-teal-400 hover:to-emerald-300 text-slate-950 font-extrabold text-xs transition-all shadow-md shadow-teal-500/10"
+                  >
+                    {locale === 'vi' ? 'Bắt Đầu' : 'Get Started'}
+                  </Link>
+                </>
+              )}
 
               {/* Mobile Hamburger Toggle */}
               <button
@@ -619,33 +681,66 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                     </button>
                   </div>
 
-                  {/* User Profile Summary Card (Clickable to /profile) */}
-                  <Link
-                    href={`/${locale}/profile`}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-teal-500/40 space-y-3 block transition-all group"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-sm flex items-center justify-center shadow-sm">
-                          {userName ? userName.slice(0, 2).toUpperCase() : 'LF'}
+                  {/* User Profile Summary Card or Guest Card */}
+                  {currentUser ? (
+                    <Link
+                      href={`/${locale}/profile`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-teal-500/40 space-y-3 block transition-all group"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          {userAvatar ? (
+                            <img
+                              src={userAvatar}
+                              alt={userName}
+                              className="w-10 h-10 rounded-2xl object-cover border border-teal-500/40"
+                            />
+                          ) : (
+                            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-sm flex items-center justify-center shadow-sm">
+                              {userName ? userName.slice(0, 2).toUpperCase() : 'LF'}
+                            </div>
+                          )}
+                          <div>
+                            <span className="text-sm font-bold text-white group-hover:text-teal-300 block transition-colors">
+                              {userName}
+                            </span>
+                            <span className="text-xs text-slate-400 truncate block max-w-[150px]">{userEmail}</span>
+                          </div>
                         </div>
-                        <div>
-                          <span className="text-sm font-bold text-white group-hover:text-teal-300 block transition-colors">
-                            {userName}
-                          </span>
-                          <span className="text-xs text-slate-400 truncate block max-w-[150px]">{userEmail}</span>
-                        </div>
+                        <span className="text-[10px] text-teal-400 font-bold bg-teal-500/15 px-2 py-1 rounded-lg border border-teal-500/30">
+                          {locale === 'vi' ? 'Xem hồ sơ →' : 'Profile →'}
+                        </span>
                       </div>
-                      <span className="text-[10px] text-teal-400 font-bold bg-teal-500/15 px-2 py-1 rounded-lg border border-teal-500/30">
-                        {locale === 'vi' ? 'Xem hồ sơ →' : 'Profile →'}
-                      </span>
+                      <div className="flex gap-2 pt-1">
+                        <StreakBadge streak={streakDays} />
+                        <XPBadge xp={userXP} />
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-3">
+                      <div className="space-y-1">
+                        <span className="text-sm font-bold text-white block">Chào mừng bạn đến LinguaFlow!</span>
+                        <p className="text-xs text-slate-400">Đăng nhập để lưu tiến độ và thi đua cùng bạn bè.</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 pt-1">
+                        <Link
+                          href={`/${locale}/login`}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-center font-bold text-xs text-white transition-all border border-slate-700"
+                        >
+                          Đăng Nhập
+                        </Link>
+                        <Link
+                          href={`/${locale}/register`}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="py-2 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-400 text-center font-extrabold text-xs text-slate-950 transition-all"
+                        >
+                          Đăng Ký
+                        </Link>
+                      </div>
                     </div>
-                    <div className="flex gap-2 pt-1">
-                      <StreakBadge streak={streakDays} />
-                      <XPBadge xp={userXP} />
-                    </div>
-                  </Link>
+                  )}
 
                   {/* Group 1: Core Navigation */}
                   <div className="space-y-1">
@@ -742,13 +837,15 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                         <span>{link.label}</span>
                       </Link>
                     ))}
-                    <button
-                      onClick={handleLogout}
-                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-sm text-rose-400 hover:bg-rose-500/10 transition-all pt-2"
-                    >
-                      <LogOut className="w-4 h-4" />
-                      <span>Đăng Xuất</span>
-                    </button>
+                    {currentUser && (
+                      <button
+                        onClick={handleLogout}
+                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-sm text-rose-400 hover:bg-rose-500/10 transition-all pt-2"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        <span>Đăng Xuất</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </motion.div>

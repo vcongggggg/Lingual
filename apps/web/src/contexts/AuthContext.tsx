@@ -32,43 +32,60 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<UserProfile | null>({
-    id: 'demo-user-id-001',
-    email: 'demo@linguaflow.com',
-    displayName: 'Học Viên LinguaFlow',
-    role: 'LEARNER',
-    interfaceLocale: 'vi',
-    timezone: 'Asia/Ho_Chi_Minh',
-    dailyGoalMinutes: 15,
-    totalXP: 150,
-    currentStreak: 3,
-    streakFreezes: 1,
-    avatarUrl: null,
-    authProvider: 'local',
+  const [user, setUser] = useState<UserProfile | null>(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const token = localStorage.getItem('lingual_token') || localStorage.getItem('linguaflow_token');
+      const savedUserStr = localStorage.getItem('lingual_user');
+      if (token && savedUserStr) {
+        return JSON.parse(savedUserStr);
+      }
+    } catch {}
+    return null;
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
+        const token = localStorage.getItem('lingual_token') || localStorage.getItem('linguaflow_token');
         const savedUserStr = localStorage.getItem('lingual_user');
-        if (savedUserStr) {
+        if (token && savedUserStr) {
           const parsed = JSON.parse(savedUserStr);
           setUser(parsed);
-        }
-        const res = await userApi.getMe();
-        if (res?.user) {
-          setUser(res.user);
-          localStorage.setItem('lingual_user', JSON.stringify(res.user));
+          const res = await userApi.getMe().catch(() => null);
+          if (res?.user) {
+            setUser(res.user);
+            localStorage.setItem('lingual_user', JSON.stringify(res.user));
+          }
+        } else {
+          setUser(null);
         }
       } catch {
-        // Keep default demo user for seamless offline/demo usage
+        setUser(null);
       } finally {
         setLoading(false);
       }
     };
 
     checkAuth();
+
+    const handleAuthChange = () => {
+      const token = localStorage.getItem('lingual_token') || localStorage.getItem('linguaflow_token');
+      const savedUserStr = localStorage.getItem('lingual_user');
+      if (token && savedUserStr) {
+        try {
+          setUser(JSON.parse(savedUserStr));
+        } catch {
+          setUser(null);
+        }
+      } else {
+        setUser(null);
+      }
+    };
+
+    window.addEventListener('lingual_auth_change', handleAuthChange);
+    return () => window.removeEventListener('lingual_auth_change', handleAuthChange);
   }, []);
 
   const login = async (email: string, password: string) => {
@@ -78,6 +95,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUser(res.user);
       localStorage.setItem('lingual_user', JSON.stringify(res.user));
       localStorage.setItem('lingual_token', res.accessToken);
+      window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: res.user } }));
     }
   };
 
@@ -94,6 +112,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUser(res.user);
       localStorage.setItem('lingual_user', JSON.stringify(res.user));
       localStorage.setItem('lingual_token', res.accessToken);
+      window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: res.user } }));
     }
   };
 
@@ -102,6 +121,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(sessionUser);
     localStorage.setItem('lingual_user', JSON.stringify(sessionUser));
     localStorage.setItem('lingual_token', token);
+    window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: sessionUser } }));
   };
 
   const register = async (data: { email: string; password: string; displayName: string }) => {
@@ -111,6 +131,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUser(res.user);
       localStorage.setItem('lingual_user', JSON.stringify(res.user));
       localStorage.setItem('lingual_token', res.accessToken);
+      window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: res.user } }));
     }
   };
 
@@ -118,7 +139,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     clearAuthToken();
     localStorage.removeItem('lingual_user');
     localStorage.removeItem('lingual_token');
+    localStorage.removeItem('linguaflow_token');
     setUser(null);
+    window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: null } }));
   };
 
   const updateUserXP = (newXP: number, streak?: number) => {
