@@ -170,19 +170,19 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
     {
       href: `/${locale}/listening`,
       label: locale === 'vi' ? 'Luyện Nghe' : 'Listening',
-      desc: 'Dictation & Shadowing',
+      desc: 'Luyện nghe & Nhại giọng theo mẫu',
       icon: <Headphones className="w-4 h-4 text-amber-400" />,
     },
     {
       href: `/${locale}/writing`,
       label: locale === 'vi' ? 'Luyện Viết' : 'Writing Lab',
-      desc: 'See & Write + Viết luận',
+      desc: 'Viết theo hình & Sửa lỗi AI',
       icon: <PenTool className="w-4 h-4 text-teal-400" />,
     },
     {
       href: `/${locale}/reading`,
       label: locale === 'vi' ? 'Luyện Đọc' : 'Reading Lab',
-      desc: 'Bài đọc CEFR & Trắc nghiệm',
+      desc: 'Đọc hiểu & Trắc nghiệm từ',
       icon: <FileText className="w-4 h-4 text-emerald-400" />,
     },
   ];
@@ -191,13 +191,13 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
     {
       href: `/${locale}/exam-practice`,
       label: locale === 'vi' ? 'Thi Thử TOEIC' : 'TOEIC Exam Lab',
-      desc: 'Đề thi chuẩn ETS & Scaled Score',
+      desc: 'Đề thi chuẩn & Chấm điểm tức thì',
       icon: <Trophy className="w-4 h-4 text-amber-400" />,
     },
     {
       href: `/${locale}/ielts`,
       label: locale === 'vi' ? 'Luyện Thi IELTS' : 'IELTS Prep Hub',
-      desc: 'Lộ trình Band 5.0 - 8.5 & Mock Test',
+      desc: 'Lộ trình Band 5.0 - 8.5 & Thi thử',
       icon: <Target className="w-4 h-4 text-coral-400" />,
     },
   ];
@@ -212,19 +212,19 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
     {
       href: `/${locale}/analytics`,
       label: locale === 'vi' ? 'Phân Tích Năng Lực' : 'Analytics',
-      desc: 'Radar biểu đồ 5 kỹ năng',
+      desc: 'Biểu đồ năng lực toàn diện',
       icon: <Activity className="w-4 h-4 text-indigo-400" />,
     },
     {
       href: `/${locale}/srs`,
-      label: locale === 'vi' ? 'Thẻ SRS SM-2' : 'SRS Cards',
-      desc: 'Ôn tập ngắt quãng thông minh',
+      label: locale === 'vi' ? 'Thẻ Nhớ Thông Minh' : 'Smart Flashcards',
+      desc: 'Ghi nhớ sâu theo chu kỳ não bộ',
       icon: <Brain className="w-4 h-4 text-purple-400" />,
     },
     {
       href: `/${locale}/games`,
       label: locale === 'vi' ? 'Game Center' : 'Arcade Games',
-      desc: '4 trò chơi phản xạ nhanh',
+      desc: 'Vừa chơi vừa nhớ từ vựng',
       icon: <Gamepad2 className="w-4 h-4 text-pink-400" />,
     },
     ...(isStaffRole
@@ -276,6 +276,17 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   const isExamActive = examLinks.some((l) => pathname.startsWith(l.href));
   const isExploreActive = exploreLinks.some((l) => pathname.startsWith(l.href));
 
+  // If this is the auth callback popup, render minimal clean container without mascot/header
+  if (pathname.includes('/auth/callback')) {
+    return (
+      <AuthProvider>
+        <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4">
+          {children}
+        </div>
+      </AuthProvider>
+    );
+  }
+
   return (
     <AuthProvider>
       <FloatingMascotUniverse />
@@ -302,12 +313,9 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col justify-center">
                 <span className="font-display font-extrabold text-xl tracking-tight text-white group-hover:text-amber-400 transition-colors">
                   Lingual
-                </span>
-                <span className="text-[10px] text-teal-400 font-bold tracking-widest uppercase hidden sm:block">
-                  Việt → English
                 </span>
               </div>
             </Link>
@@ -510,32 +518,25 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                     <button
                       type="button"
                       onClick={() => setActiveDropdown(activeDropdown === 'profile' ? null : 'profile')}
-                      className={`flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-2xl bg-slate-900 border transition-all shadow-sm group ${
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all shadow-sm group ${
                         activeDropdown === 'profile'
-                          ? 'border-teal-500/50 bg-teal-500/10'
-                          : 'border-slate-800 hover:border-teal-500/40'
+                          ? 'ring-2 ring-teal-400 bg-teal-500/20'
+                          : 'hover:ring-2 hover:ring-teal-500/40'
                       }`}
                       aria-label="Menu tài khoản người dùng"
+                      title={userName}
                     >
                       {userAvatar ? (
                         <img
                           src={userAvatar}
                           alt={userName}
-                          className="w-7 h-7 rounded-xl object-cover border border-teal-500/40 shrink-0"
+                          className="w-full h-full rounded-xl object-cover border border-teal-500/40 shadow-sm"
                         />
                       ) : (
-                        <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-sm shrink-0">
-                          {userName ? userName.slice(0, 2).toUpperCase() : 'LF'}
+                        <div className="w-full h-full rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-amber-300 text-slate-950 font-black text-sm flex items-center justify-center shadow-md">
+                          {userName ? userName.trim().charAt(0).toUpperCase() : 'U'}
                         </div>
                       )}
-                      <span className="text-xs font-bold max-w-[90px] lg:max-w-[120px] truncate text-slate-200 group-hover:text-white">
-                        {userName}
-                      </span>
-                      <ChevronDown
-                        className={`w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform duration-200 ${
-                          activeDropdown === 'profile' ? 'rotate-180 text-teal-400' : ''
-                        }`}
-                      />
                     </button>
 
                     <AnimatePresence>

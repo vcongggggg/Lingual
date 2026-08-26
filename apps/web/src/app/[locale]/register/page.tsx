@@ -66,16 +66,6 @@ export default function RegisterPage() {
             </div>
           )}
 
-          {/* Google One-Click Register */}
-          <GoogleLoginButton mode="register" />
-
-          {/* Divider */}
-          <div className="relative border-t border-slate-800 my-2 text-center">
-            <span className="text-[10px] uppercase tracking-widest text-slate-500 font-extrabold bg-slate-900 px-3 absolute -top-2.5 left-1/2 -translate-x-1/2">
-              Hoặc đăng ký với email
-            </span>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-4 pt-1">
             {/* Display Name Input */}
             <div className="space-y-1.5">
@@ -128,15 +118,25 @@ export default function RegisterPage() {
 
             <Button
               type="submit"
-              variant="primary"
+              variant="accent"
               size="lg"
               className="w-full mt-2"
               disabled={loading}
-              icon={<ArrowRight className="w-4 h-4" />}
+              icon={<UserPlus className="w-4 h-4" />}
             >
-              {loading ? 'Đang tạo tài khoản...' : 'Tạo Tài Khoản & Học Ngay'}
+              {loading ? 'Đang tạo tài khoản...' : 'Bắt Đầu Miễn Phí'}
             </Button>
           </form>
+
+          {/* Divider */}
+          <div className="relative border-t border-slate-800 my-2 text-center">
+            <span className="text-[10px] uppercase tracking-widest text-slate-500 font-extrabold bg-slate-900 px-3 absolute -top-2.5 left-1/2 -translate-x-1/2">
+              Hoặc đăng ký nhanh với
+            </span>
+          </div>
+
+          {/* Google One-Click Register */}
+          <GoogleLoginButton mode="register" />
 
           <div className="text-center text-xs text-slate-400 border-t border-slate-800 pt-4">
             Đã có tài khoản?{' '}

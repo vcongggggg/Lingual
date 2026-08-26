@@ -19,7 +19,7 @@ export const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
   const router = useRouter();
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
-  const { loginWithGoogle } = useAuth();
+  const { loginWithGoogle, setSessionUser } = useAuth();
 
   const [loading, setLoading] = useState(false);
   const [showSimulator, setShowSimulator] = useState(false);
@@ -44,16 +44,106 @@ export const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
   const handleGoogleClick = async () => {
     setLoading(true);
     try {
-      const authInfo = await userApi.getGoogleAuthUrl(locale);
-      if (authInfo?.isConfigured && authInfo.url) {
-        // Redirect to real Google OAuth
-        window.location.href = authInfo.url;
+      const authInfo = await userApi.getGoogleAuthUrl(locale).catch(() => null);
+      
+      const clientId =
+        process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
+        authInfo?.clientId ||
+        '';
+      const callbackUrl = 'http://localhost:4000/api/auth/google/callback';
+
+      const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
+      const options = {
+        redirect_uri: callbackUrl,
+        client_id: clientId,
+        access_type: 'offline',
+        response_type: 'code',
+        prompt: 'select_account',
+        scope: [
+          'https://www.googleapis.com/auth/userinfo.profile',
+          'https://www.googleapis.com/auth/userinfo.email',
+          'openid',
+        ].join(' '),
+        state: JSON.stringify({ locale }),
+      };
+
+      const qs = new URLSearchParams(options);
+      const googleAuthUrl = authInfo?.url || `${rootUrl}?${qs.toString()}`;
+
+      // Absolute screen center calculation
+      const width = 500;
+      const height = 620;
+      const left = Math.max(0, Math.round(window.screen.width / 2 - width / 2));
+      const top = Math.max(0, Math.round(window.screen.height / 2 - height / 2));
+
+      const popup = window.open(
+        googleAuthUrl,
+        'google_oauth_popup',
+        `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes`
+      );
+
+      if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        // If popup is blocked by browser, fallback to standard redirect
+        window.location.href = googleAuthUrl;
         return;
       }
-      // If not configured in local environment, open Google Account Simulator
-      setShowSimulator(true);
+
+      const clickTime = Date.now();
+
+      // Check popup close / storage synchronization in parent window
+      const checkPopupInterval = setInterval(() => {
+        const currentToken = localStorage.getItem('lingual_token');
+        const authTimestamp = localStorage.getItem('lingual_auth_timestamp');
+        const isCompleted = (authTimestamp && Number(authTimestamp) >= clickTime) || (!popup || popup.closed);
+
+        if (currentToken && isCompleted) {
+          clearInterval(checkPopupInterval);
+          if (popup && !popup.closed) {
+            try {
+              popup.close();
+            } catch {}
+          }
+          window.location.href = `/${locale}/dashboard`;
+        }
+      }, 150);
+
+      // Listen for storage events across windows
+      const handleStorageChange = (e: StorageEvent) => {
+        if (e.key === 'lingual_token' || e.key === 'lingual_auth_timestamp') {
+          clearInterval(checkPopupInterval);
+          window.removeEventListener('storage', handleStorageChange);
+          window.removeEventListener('message', handleAuthMessage);
+          if (popup && !popup.closed) {
+            try {
+              popup.close();
+            } catch {}
+          }
+          window.location.href = `/${locale}/dashboard`;
+        }
+      };
+      window.addEventListener('storage', handleStorageChange);
+
+      // Listen for postMessage from popup callback
+      const handleAuthMessage = (event: MessageEvent) => {
+        if (event.data?.type === 'GOOGLE_AUTH_SUCCESS') {
+          clearInterval(checkPopupInterval);
+          window.removeEventListener('storage', handleStorageChange);
+          window.removeEventListener('message', handleAuthMessage);
+          if (popup && !popup.closed) {
+            try {
+              popup.close();
+            } catch {}
+          }
+          if (event.data.user && event.data.token) {
+            setSessionUser(event.data.user, event.data.token);
+          }
+          window.location.href = `/${locale}/dashboard`;
+        }
+      };
+
+      window.addEventListener('message', handleAuthMessage);
     } catch {
-      // Fallback to simulator
+      // Fallback to simulator only if completely offline
       setShowSimulator(true);
     } finally {
       setLoading(false);

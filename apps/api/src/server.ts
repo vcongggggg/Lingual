@@ -61,6 +61,8 @@ app.get('/api/v1/health', (req, res) => {
 });
 
 app.use('/api/v1/auth', authRouter);
+app.use('/api/auth', authRouter);
+app.use('/auth', authRouter);
 app.use('/api/v1/curriculum', curriculumRouter);
 app.use('/api/v1/srs', srsRouter);
 app.use('/api/v1/games', gamesRouter);

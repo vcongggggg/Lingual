@@ -150,28 +150,32 @@ authRouter.post('/logout', (req, res) => {
 // GOOGLE OAUTH 2.0 ENDPOINTS
 // ============================================================================
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
-const GOOGLE_CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL || 'http://localhost:4000/api/auth/google/callback';
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+const getGoogleConfig = () => ({
+  clientId: process.env.GOOGLE_CLIENT_ID || '',
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+  callbackUrl: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:4000/api/auth/google/callback',
+  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+});
 
 // 1. Get Google OAuth URL or Configuration Status
 authRouter.get('/google/url', (req, res) => {
+  const { clientId, callbackUrl } = getGoogleConfig();
   const locale = (req.query.locale as string) || 'vi';
-  if (!GOOGLE_CLIENT_ID) {
+
+  if (!clientId) {
     return res.json({
       isConfigured: false,
-      message: 'Google OAuth chưa được cấu hình Client ID. Hệ thống kích hoạt chế độ Simulator cho dev.',
+      message: 'Google OAuth chưa được cấu hình Client ID.',
     });
   }
 
   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
   const options = {
-    redirect_uri: GOOGLE_CALLBACK_URL,
-    client_id: GOOGLE_CLIENT_ID,
+    redirect_uri: callbackUrl,
+    client_id: clientId,
     access_type: 'offline',
     response_type: 'code',
-    prompt: 'consent',
+    prompt: 'select_account',
     scope: [
       'https://www.googleapis.com/auth/userinfo.profile',
       'https://www.googleapis.com/auth/userinfo.email',
@@ -189,6 +193,7 @@ authRouter.get('/google/url', (req, res) => {
 
 // 2. Google OAuth Callback (Receives auth code from Google)
 authRouter.get('/google/callback', async (req, res) => {
+  const { clientId, clientSecret, callbackUrl, frontendUrl } = getGoogleConfig();
   const code = req.query.code as string;
   const stateStr = req.query.state as string;
   let locale = 'vi';
@@ -200,7 +205,7 @@ authRouter.get('/google/callback', async (req, res) => {
   } catch {}
 
   if (!code) {
-    return res.redirect(`${FRONTEND_URL}/${locale}/login?error=GoogleAuthFailed`);
+    return res.redirect(`${frontendUrl}/${locale}/login?error=GoogleAuthFailed`);
   }
 
   try {
@@ -210,9 +215,9 @@ authRouter.get('/google/callback', async (req, res) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         code,
-        client_id: GOOGLE_CLIENT_ID,
-        client_secret: GOOGLE_CLIENT_SECRET,
-        redirect_uri: GOOGLE_CALLBACK_URL,
+        client_id: clientId,
+        client_secret: clientSecret,
+        redirect_uri: callbackUrl,
         grant_type: 'authorization_code',
       }),
     });
@@ -220,7 +225,7 @@ authRouter.get('/google/callback', async (req, res) => {
     const tokenData = (await tokenResponse.json()) as any;
     if (!tokenResponse.ok || !tokenData.access_token) {
       console.error('Google token exchange error:', tokenData);
-      return res.redirect(`${FRONTEND_URL}/${locale}/login?error=TokenExchangeFailed`);
+      return res.redirect(`${frontendUrl}/${locale}/login?error=TokenExchangeFailed`);
     }
 
     // Fetch user profile from Google
@@ -230,7 +235,7 @@ authRouter.get('/google/callback', async (req, res) => {
     const googleProfile = (await userinfoRes.json()) as any;
 
     if (!googleProfile.email) {
-      return res.redirect(`${FRONTEND_URL}/${locale}/login?error=NoEmailFromGoogle`);
+      return res.redirect(`${frontendUrl}/${locale}/login?error=NoEmailFromGoogle`);
     }
 
     // Find or create user
@@ -274,22 +279,24 @@ authRouter.get('/google/callback', async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
+    const userPayload = {
+      id: user.id,
+      email: user.email,
+      displayName: user.displayName,
+      role: user.role,
+      avatarUrl: user.avatarUrl,
+      totalXP: user.totalXP,
+      currentStreak: user.currentStreak,
+    };
+
     return res.redirect(
-      `${FRONTEND_URL}/${locale}/auth/callback?token=${token}&user=${encodeURIComponent(
-        JSON.stringify({
-          id: user.id,
-          email: user.email,
-          displayName: user.displayName,
-          role: user.role,
-          avatarUrl: user.avatarUrl,
-          totalXP: user.totalXP,
-          currentStreak: user.currentStreak,
-        })
+      `${frontendUrl}/${locale}/auth/callback?token=${token}&user=${encodeURIComponent(
+        JSON.stringify(userPayload)
       )}`
     );
   } catch (err: any) {
     console.error('Error during Google callback:', err);
-    return res.redirect(`${FRONTEND_URL}/${locale}/login?error=ServerError`);
+    return res.redirect(`${frontendUrl}/${locale}/login?error=ServerError`);
   }
 });
 

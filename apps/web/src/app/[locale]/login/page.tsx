@@ -79,16 +79,6 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Google One-Click Login */}
-          <GoogleLoginButton mode="login" />
-
-          {/* Divider */}
-          <div className="relative border-t border-slate-800 my-2 text-center">
-            <span className="text-[10px] uppercase tracking-widest text-slate-500 font-extrabold bg-slate-900 px-3 absolute -top-2.5 left-1/2 -translate-x-1/2">
-              Hoặc với email mật khẩu
-            </span>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-4 pt-1">
             {/* Email Input */}
             <div className="space-y-1.5">
@@ -133,6 +123,16 @@ export default function LoginPage() {
               {loading ? 'Đang đăng nhập...' : 'Đăng Nhập'}
             </Button>
           </form>
+
+          {/* Divider */}
+          <div className="relative border-t border-slate-800 my-2 text-center">
+            <span className="text-[10px] uppercase tracking-widest text-slate-500 font-extrabold bg-slate-900 px-3 absolute -top-2.5 left-1/2 -translate-x-1/2">
+              Hoặc tiếp tục với
+            </span>
+          </div>
+
+          {/* Google One-Click Login */}
+          <GoogleLoginButton mode="login" />
 
           {/* Quick Demo Login Divider */}
           <div className="relative border-t border-slate-800 pt-4 text-center">
