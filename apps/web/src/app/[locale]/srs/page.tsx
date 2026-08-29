@@ -150,7 +150,7 @@ export default function SRSPage() {
       <div className="min-h-[70vh] flex items-center justify-center">
         <div className="text-center space-y-3">
           <div className="w-10 h-10 border-2 border-teal-400 border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-sm text-slate-400 font-semibold">{isVi ? 'Đang chuẩn bị thẻ ôn tập SRS...' : 'Preparing SRS Flashcard Deck...'}</p>
+          <p className="text-sm text-slate-400 font-semibold">{isVi ? 'Đang chuẩn bị bộ thẻ ghi nhớ thông minh...' : 'Preparing Smart Flashcard Deck...'}</p>
         </div>
       </div>
     );
@@ -200,7 +200,7 @@ export default function SRSPage() {
 
             <Link href={`/${locale}/dashboard`}>
               <Button variant="outline" className="w-full">
-                {isVi ? 'Về Dashboard' : 'Back to Dashboard'}
+                {isVi ? 'Về Lộ Trình' : 'Back to Dashboard'}
               </Button>
             </Link>
           </div>
@@ -252,7 +252,9 @@ export default function SRSPage() {
               <Badge variant="teal" className="font-mono font-extrabold uppercase">
                 {currentWord?.cefrLevel || 'B2'}
               </Badge>
-              <span className="text-[11px] font-mono text-slate-400">SM-2 Spaced Recall</span>
+              <span className="text-[11px] font-medium text-teal-300 bg-teal-500/10 px-2.5 py-0.5 rounded-md border border-teal-500/20">
+                Ghi Nhớ Trí Não
+              </span>
             </div>
 
             <div className="space-y-3">

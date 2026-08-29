@@ -1,13 +1,13 @@
 /**
  * Master Sample Vocabulary Dataset for LinguaFlow Smart Vocabulary Lab
- * Covers CEFR A1, A2, B1, B2 across core everyday and academic topics.
+ * Covers CEFR A1, A2, B1, B2, C1 across core everyday, business, and academic topics.
  */
 
 import { VocabularyWord } from '@linguaflow/domain';
 
 export const MASTER_VOCABULARY_LIST: VocabularyWord[] = [
   // ==========================================================================
-  // LEVEL A1: BEGINNER
+  // LEVEL A1: BEGINNER (CƠ BẢN)
   // ==========================================================================
   {
     id: 'vocab-hello',
@@ -86,9 +86,27 @@ export const MASTER_VOCABULARY_LIST: VocabularyWord[] = [
     source: 'curriculum',
     tags: ['health', 'medical'],
   },
+  {
+    id: 'vocab-family',
+    targetText: 'Family',
+    normalizedText: 'family',
+    translation: 'Gia đình',
+    phoneticUs: '/ˈfæməli/',
+    phoneticUk: '/ˈfæməli/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'A1',
+    category: 'Daily Life',
+    definitionEn: 'A group of one or more parents and their children living together as a unit.',
+    examples: [
+      { sentence: 'I love spending weekend evenings with my family.', translation: 'Tôi thích dành những buổi tối cuối tuần bên gia đình.' },
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=80',
+    source: 'curriculum',
+    tags: ['family', 'basics'],
+  },
 
   // ==========================================================================
-  // LEVEL A2: ELEMENTARY
+  // LEVEL A2: ELEMENTARY (SƠ CẤP)
   // ==========================================================================
   {
     id: 'vocab-travel',
@@ -146,9 +164,25 @@ export const MASTER_VOCABULARY_LIST: VocabularyWord[] = [
     source: 'curriculum',
     tags: ['nature', 'forecast'],
   },
+  {
+    id: 'vocab-schedule',
+    targetText: 'Schedule',
+    normalizedText: 'schedule',
+    translation: 'Lịch trình / Thời khóa biểu',
+    phoneticUs: '/ˈskedʒuːl/',
+    phoneticUk: '/ˈʃedjuːl/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'A2',
+    category: 'Workplace',
+    definitionEn: 'A plan for carrying out a process or procedure, giving lists of intended events and times.',
+    examples: [
+      { sentence: 'I have a very busy work schedule this week.', translation: 'Tuần này tôi có một lịch làm việc rất bận rộn.' },
+    ],
+    tags: ['toeic', 'work'],
+  },
 
   // ==========================================================================
-  // LEVEL B1: INTERMEDIATE
+  // LEVEL B1: INTERMEDIATE (TRUNG CẤP)
   // ==========================================================================
   {
     id: 'vocab-collaborate',
@@ -204,9 +238,41 @@ export const MASTER_VOCABULARY_LIST: VocabularyWord[] = [
     source: 'listening',
     tags: ['ai', 'growth', 'change'],
   },
+  {
+    id: 'vocab-concussion',
+    targetText: 'Concussion',
+    normalizedText: 'concussion',
+    translation: 'Chấn động não',
+    phoneticUs: '/kənˈkʌʃ.ən/',
+    phoneticUk: '/kənˈkʌʃ.ən/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'B1',
+    category: 'Health',
+    definitionEn: 'Temporary unconsciousness or confusion caused by a blow to the head.',
+    examples: [
+      { sentence: 'The doctor confirmed he had a mild concussion.', translation: 'Bác sĩ xác nhận anh ấy bị chấn động não nhẹ.' },
+    ],
+    tags: ['medical', 'ted'],
+  },
+  {
+    id: 'vocab-commencement',
+    targetText: 'Commencement',
+    normalizedText: 'commencement',
+    translation: 'Lễ tốt nghiệp / Khởi đầu',
+    phoneticUs: '/kəˈmens.mənt/',
+    phoneticUk: '/kəˈmens.mənt/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'B1',
+    category: 'Education',
+    definitionEn: 'A ceremony at which academic degrees or diplomas are conferred.',
+    examples: [
+      { sentence: 'Steve Jobs delivered a famous commencement speech at Stanford.', translation: 'Steve Jobs đã phát biểu một bài diễn thuyết tốt nghiệp nổi tiếng tại Stanford.' },
+    ],
+    tags: ['university', 'speech'],
+  },
 
   // ==========================================================================
-  // LEVEL B2: UPPER INTERMEDIATE
+  // LEVEL B2: UPPER INTERMEDIATE (KHÁ GIỎI)
   // ==========================================================================
   {
     id: 'vocab-sustainable',
@@ -243,5 +309,92 @@ export const MASTER_VOCABULARY_LIST: VocabularyWord[] = [
     synonyms: ['express', 'enunciate', 'communicate'],
     source: 'dictionary',
     tags: ['speaking', 'ielts', 'fluency'],
+  },
+  {
+    id: 'vocab-perceive',
+    targetText: 'Perceive',
+    normalizedText: 'perceive',
+    translation: 'Nhận thức / Cảm nhận',
+    phoneticUs: '/pərˈsiːv/',
+    phoneticUk: '/pəˈsiːv/',
+    partOfSpeech: 'verb',
+    cefrLevel: 'B2',
+    category: 'Psychology',
+    definitionEn: 'To interpret or look upon someone or something in a particular way.',
+    examples: [
+      { sentence: 'How we speak changes how our brains perceive the world.', translation: 'Cách chúng ta nói thay đổi cách bộ não nhận thức thế giới xung quanh.' },
+    ],
+    synonyms: ['discern', 'recognize', 'grasp'],
+    tags: ['mind', 'ielts'],
+  },
+  {
+    id: 'vocab-commitment',
+    targetText: 'Commitment',
+    normalizedText: 'commitment',
+    translation: 'Sự cam kết / Tận tụy',
+    phoneticUs: '/kəˈmɪt.mənt/',
+    phoneticUk: '/kəˈmɪt.mənt/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'B2',
+    category: 'Workplace',
+    definitionEn: 'The state or quality of being dedicated to a cause, activity, etc.',
+    examples: [
+      { sentence: 'Success requires dedication and strong long-term commitment.', translation: 'Thành công đòi hỏi sự cống hiến và cam kết lâu dài vững chắc.' },
+    ],
+    tags: ['toeic', 'work'],
+  },
+
+  // ==========================================================================
+  // LEVEL C1: ADVANCED (CAO CẤP & IELTS 7.5+)
+  // ==========================================================================
+  {
+    id: 'vocab-ubiquitous',
+    targetText: 'Ubiquitous',
+    normalizedText: 'ubiquitous',
+    translation: 'Phổ biến khắp nơi / Nhan nhản',
+    phoneticUs: '/juːˈbɪk.wə.t̬əs/',
+    phoneticUk: '/juːˈbɪk.wɪ.təs/',
+    partOfSpeech: 'adjective',
+    cefrLevel: 'C1',
+    category: 'Technology',
+    definitionEn: 'Present, appearing, or found everywhere.',
+    examples: [
+      { sentence: 'Smartphones have become ubiquitous in modern society.', translation: 'Điện thoại thông minh đã trở nên phổ biến khắp mọi nơi trong xã hội hiện đại.' },
+    ],
+    synonyms: ['omnipresent', 'pervasive', 'universal'],
+    tags: ['ielts', 'advanced', 'academic'],
+  },
+  {
+    id: 'vocab-resilience',
+    targetText: 'Resilience',
+    normalizedText: 'resilience',
+    translation: 'Khả năng phục hồi / Sự kiên cường',
+    phoneticUs: '/rɪˈzɪl.jəns/',
+    phoneticUk: '/rɪˈzɪl.jəns/',
+    partOfSpeech: 'noun',
+    cefrLevel: 'C1',
+    category: 'Psychology',
+    definitionEn: 'The capacity to recover quickly from difficulties; toughness.',
+    examples: [
+      { sentence: 'Emotional resilience helps entrepreneurs overcome severe setbacks.', translation: 'Sự kiên cường về mặt cảm xúc giúp các nhà khởi nghiệp vượt qua những trở ngại nghiêm trọng.' },
+    ],
+    synonyms: ['endurance', 'adaptability', 'fortitude'],
+    tags: ['ielts', 'mindset'],
+  },
+  {
+    id: 'vocab-disseminate',
+    targetText: 'Disseminate',
+    normalizedText: 'disseminate',
+    translation: 'Phổ biến / Truyền bá rộng rãi',
+    phoneticUs: '/dɪˈsem.ə.neɪt/',
+    phoneticUk: '/dɪˈsem.ɪ.neɪt/',
+    partOfSpeech: 'verb',
+    cefrLevel: 'C1',
+    category: 'Education',
+    definitionEn: 'To spread or disperse (something, especially information) widely.',
+    examples: [
+      { sentence: 'Universities aim to disseminate knowledge to society.', translation: 'Các trường đại học hướng tới việc phổ biến kiến thức cho xã hội.' },
+    ],
+    tags: ['academic', 'ielts'],
   },
 ];

@@ -48,7 +48,6 @@ export const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
       
       const clientId =
         process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
-        authInfo?.clientId ||
         '';
       const callbackUrl = 'http://localhost:4000/api/auth/google/callback';
 
