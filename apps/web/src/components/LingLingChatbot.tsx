@@ -594,22 +594,49 @@ export default function LingLingChatbot() {
         )}
       </AnimatePresence>
 
-      {/* Floating Toggle Button */}
-      <div className="relative inline-block">
+      {/* Floating Toggle Button (Matching User's 3D Waving Cow + Rainbow Bubble Design) */}
+      <div className="relative inline-block select-none">
+        {/* 3D LingLing Cow Mascot Peeking and Waving with Rainbow Bubble */}
+        {!isOpen && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+            className="absolute -top-16 left-1/2 -translate-x-[48%] w-24 h-24 pointer-events-none z-10 filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]"
+          >
+            <div className="relative w-full h-full">
+              <Image
+                src="/mascot/lingling_waving_bubble.png"
+                alt="LingLing Waving"
+                fill
+                unoptimized
+                className="object-contain"
+              />
+            </div>
+          </motion.div>
+        )}
+
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Mở trợ lý AI LingLing"
-          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-teal-400 text-slate-950 font-bold shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95 relative"
+          className="group relative flex items-center p-[1.5px] rounded-full bg-gradient-to-r from-blue-500/80 via-indigo-500/80 to-rose-500/80 hover:from-cyan-400 hover:to-amber-400 shadow-[0_4px_25px_rgba(99,102,241,0.4)] hover:shadow-[0_4px_30px_rgba(56,189,248,0.5)] transition-all duration-300 active:scale-95 cursor-pointer"
         >
-          <div className="w-7 h-7 rounded-full bg-slate-950 flex items-center justify-center shadow-inner overflow-hidden">
-            <LingLingMascot state={avatarState} size={26} />
+          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#0b101e]/90 hover:bg-[#11172a]/95 backdrop-blur-xl transition-colors">
+            {/* White Circle with 3 Dots Icon */}
+            <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-md shrink-0">
+              <span className="text-[10px] tracking-wider font-black text-slate-900 -mt-0.5">•••</span>
+            </div>
+
+            <span className="text-xs sm:text-sm font-extrabold text-white group-hover:text-cyan-200 transition-colors">
+              Chat với LingLing
+            </span>
+
+            <Sparkles className="w-3.5 h-3.5 text-slate-300 group-hover:text-amber-300 transition-colors animate-pulse shrink-0" />
           </div>
-          <span className="text-xs font-extrabold pr-1 hidden sm:inline text-slate-950">Chat với LingLing</span>
-          <Sparkles className="w-4 h-4 text-slate-950 animate-pulse" />
 
           {/* Subtle Idle Dot Pulse if idle >60s on exam page */}
           {idleOnExam && !isOpen && (
-            <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+            <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 z-20">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-500 border-2 border-slate-950" />
             </span>

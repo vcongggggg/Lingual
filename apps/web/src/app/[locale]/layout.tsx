@@ -33,7 +33,6 @@ import {
 } from 'lucide-react';
 import LingLingChatbot from '@/components/LingLingChatbot';
 import MascotPopup from '@/components/MascotPopup';
-import FloatingMascotUniverse from '@/components/FloatingMascotUniverse';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 import { AuthProvider } from '../../contexts/AuthContext';
 
@@ -289,10 +288,9 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 
   return (
     <AuthProvider>
-      <FloatingMascotUniverse />
-      <div className="min-h-screen flex flex-col bg-transparent text-slate-100 font-body relative z-10 pointer-events-none">
+      <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-body relative z-10">
         {/* Navigation Header */}
-        <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/85 backdrop-blur-xl pointer-events-auto">
+        <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/85 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             {/* Logo with Peeking Cow Mascot */}
             <Link href={`/${locale}`} className="flex items-center gap-2.5 group relative" aria-label="LinguaFlow Home">

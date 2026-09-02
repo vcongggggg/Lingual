@@ -79,7 +79,10 @@ export default function LessonQuizPage() {
       answer = typingInput;
     }
 
-    const correct = answer.trim().toLowerCase() === currentEx.correctAnswer.trim().toLowerCase();
+    const cleanStr = (s: string) => (s || '').toLowerCase().replace(/[.,!?;:'"()[\]{}]/g, '').replace(/\s+/g, ' ').trim();
+    const userClean = cleanStr(answer);
+    const targetClean = cleanStr(currentEx.correctAnswer);
+    const correct = userClean === targetClean || targetClean.endsWith(userClean) || userClean.endsWith(targetClean);
     setIsCorrect(correct);
     setIsAnswerChecked(true);
 

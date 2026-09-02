@@ -32,6 +32,10 @@ import {
   RotateCcw,
   Volume2,
   VolumeX,
+  Search,
+  Crown,
+  EyeOff,
+  Plus,
 } from 'lucide-react';
 import Image from 'next/image';
 import { mascotReactions } from '@linguaflow/config';
@@ -51,6 +55,7 @@ export default function GamesPage() {
 
   // Navigation & Tab State
   const [activeTab, setActiveTab] = useState<'games' | 'leaderboard'>('games');
+  const [searchQuery, setSearchQuery] = useState('');
   const [leaderboardData, setLeaderboardData] = useState<any[]>([]);
 
   // Active Game State
@@ -113,41 +118,45 @@ export default function GamesPage() {
       id: 'word_match',
       title: isVi ? 'Lật Thẻ Ghép Từ 3D' : '3D Word Match Cards',
       desc: isVi ? 'Lật từng cặp thẻ bài 3D để ghép từ tiếng Anh với nghĩa tiếng Việt tương ứng.' : 'Flip 3D cards to match English words with their contextual meanings.',
-      icon: '🧩',
-      glow: 'teal' as const,
-      bgGradient: 'from-teal-900/70 via-emerald-950/80 to-slate-950',
-      badgeColor: 'bg-teal-500/20 text-teal-300 border-teal-500/40',
-      bgImage: '/images/games/bg-card-word-match.png',
+      iconType: 'puzzle',
+      badgeColor: 'border-teal-500/40 bg-teal-950/40 text-teal-300',
+      image3d: '/images/games/card-word-match-3d.png',
+      cardBg: 'bg-gradient-to-br from-emerald-950/30 via-slate-900/95 to-teal-950/40 border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_10px_35px_rgba(6,78,59,0.2)]',
+      glowColor: 'bg-emerald-500/20',
+      decorType: 'grid',
     },
     {
       id: 'sentence_scramble',
       title: isVi ? 'Xếp Từ Thành Câu' : 'Sentence Builder Arcade',
       desc: isVi ? 'Sắp xếp các từ xáo trộn thành câu tiếng Anh hoàn chỉnh theo đúng ngữ pháp.' : 'Unscramble mixed word tokens to construct grammatically perfect sentences.',
-      icon: '🔤',
-      glow: 'amber' as const,
-      bgGradient: 'from-amber-900/70 via-orange-950/80 to-slate-950',
-      badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
-      bgImage: '/images/games/bg-card-sentence-builder.png',
+      iconType: 'abc',
+      badgeColor: 'border-amber-500/40 bg-amber-950/40 text-amber-300',
+      image3d: '/images/games/card-sentence-scramble-3d.png',
+      cardBg: 'bg-gradient-to-br from-blue-950/30 via-slate-900/95 to-indigo-950/40 border-blue-500/30 hover:border-blue-400/60 shadow-[0_10px_35px_rgba(30,58,138,0.2)]',
+      glowColor: 'bg-blue-500/20',
+      decorType: 'constellation',
     },
     {
       id: 'typing_race',
       title: isVi ? 'Đua Tốc Độ Gõ Từ' : 'Speed Typing Sprint',
       desc: isVi ? 'Thử thách gõ nhanh và chính xác các từ tiếng Anh dưới áp lực thời gian đếm ngược.' : 'Type English vocabulary fast with 100% precision before the clock expires.',
-      icon: '⚡',
-      glow: 'coral' as const,
-      bgGradient: 'from-rose-900/70 via-orange-950/80 to-slate-950',
-      badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
-      bgImage: '/images/games/bg-card-typing-speed.png',
+      iconType: 'keyboard',
+      badgeColor: 'border-rose-500/40 bg-rose-950/40 text-rose-300',
+      image3d: '/images/games/card-typing-race-3d.png',
+      cardBg: 'bg-gradient-to-br from-rose-950/30 via-slate-900/95 to-purple-950/40 border-rose-500/30 hover:border-rose-400/60 shadow-[0_10px_35px_rgba(136,19,55,0.2)]',
+      glowColor: 'bg-rose-500/20',
+      decorType: 'speed',
     },
     {
       id: 'fill_blitz',
       title: isVi ? 'Thách Thức 60 Giây' : '60-Second Rapid Blitz',
       desc: isVi ? 'Điền từ liên hoàn trong 60 giây để tích lũy điểm thưởng Combo Super 5X.' : 'Rapid-fire vocabulary challenge to build massive combo multipliers.',
-      icon: '🎯',
-      glow: 'teal' as const,
-      bgGradient: 'from-indigo-900/70 via-purple-950/80 to-slate-950',
-      badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/40',
-      bgImage: '/images/games/bg-card-fill-blitz.png',
+      iconType: 'target',
+      badgeColor: 'border-purple-500/40 bg-purple-950/40 text-purple-300',
+      image3d: '/images/games/card-fill-blitz-3d.png',
+      cardBg: 'bg-gradient-to-br from-purple-950/30 via-slate-900/95 to-indigo-950/40 border-purple-500/30 hover:border-purple-400/60 shadow-[0_10px_35px_rgba(88,28,135,0.25)]',
+      glowColor: 'bg-purple-500/20',
+      decorType: 'atomic',
     },
   ];
 
@@ -470,34 +479,52 @@ export default function GamesPage() {
     }
   };
 
+  const filteredGames = gamesList.filter(
+    (g) =>
+      g.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      g.desc.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className={`relative min-h-screen pb-24 pt-6 px-4 sm:px-6 max-w-7xl mx-auto space-y-8 font-sans ${isShaking ? 'animate-bounce' : ''}`}>
       {/* 2D Particle Canvas for Confetti, Sparks & Floating XP */}
       <ParticleCanvas ref={particleRef} />
 
       {/* Main Header / Top Navigation Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 rounded-3xl bg-slate-900/90 border border-slate-800 backdrop-blur-2xl shadow-xl relative z-10">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 sm:p-6 rounded-3xl bg-slate-900/90 border border-slate-800/80 backdrop-blur-2xl shadow-2xl relative z-10">
         <div className="flex items-center gap-3">
           <Link
             href={`/${locale}/dashboard`}
-            className="p-2.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-colors"
+            className="w-10 h-10 rounded-full bg-slate-950/80 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 flex items-center justify-center transition-all shadow-inner"
             aria-label="Trở về lộ trình học"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-amber-400">
-              <Gamepad2 className="w-4 h-4" />
-              <span>{isVi ? 'LinguaFlow Arcade Hub' : 'Arcade Game Center'}</span>
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-amber-400">
+              <span className="px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-[10px] text-amber-300">53</span>
+              <span>{isVi ? 'LINGUAFLOW ARCADE HUB' : 'LINGUAFLOW ARCADE HUB'}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">
               {isVi ? 'Đấu Trường Luyện Game' : 'Gamified Arcade Arena'}
             </h1>
           </div>
         </div>
 
-        {/* Top Controls: Audio Toggle & Tabs */}
-        <div className="flex items-center gap-2 self-stretch sm:self-auto justify-between sm:justify-end">
+        {/* Top Controls: Search Input, Audio Toggle & Tabs */}
+        <div className="flex flex-wrap items-center gap-2 self-stretch sm:self-auto justify-between sm:justify-end">
+          {/* Search Box */}
+          <div className="relative">
+            <Search className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder={isVi ? "Trò chơi n..." : "Search games..."}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-32 sm:w-44 pl-8 pr-3 py-1.5 rounded-full bg-slate-950/90 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors shadow-inner"
+            />
+          </div>
+
           <button
             type="button"
             onClick={() => {
@@ -505,20 +532,20 @@ export default function GamesPage() {
               setIsMuted(muted);
             }}
             aria-label={isMuted ? 'Bật âm thanh game' : 'Tắt âm thanh game'}
-            className="p-2.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-slate-300 hover:text-amber-300 transition-colors"
+            className="w-9 h-9 rounded-2xl bg-slate-950/90 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-slate-700 flex items-center justify-center transition-colors shadow-inner"
           >
-            {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-teal-400" />}
+            {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
           </button>
 
-          <div className="flex items-center gap-1 p-1 rounded-2xl bg-slate-950/80 border border-slate-800">
+          <div className="flex items-center gap-1 p-1 rounded-2xl bg-slate-950/90 border border-slate-800">
             <button
               onClick={() => {
                 arcadeAudio.playLaser();
                 setActiveTab('games');
               }}
-              className={`px-3.5 py-1.5 rounded-xl font-display font-bold text-xs transition-all ${
+              className={`px-4 py-1.5 rounded-xl font-display font-bold text-xs transition-all ${
                 activeTab === 'games'
-                  ? 'bg-amber-500 text-slate-950 shadow-md'
+                  ? 'bg-gradient-to-r from-purple-950/90 via-indigo-900/90 to-purple-950/90 text-white border border-purple-500/40 shadow-lg shadow-purple-950/50'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -529,9 +556,9 @@ export default function GamesPage() {
                 arcadeAudio.playLaser();
                 setActiveTab('leaderboard');
               }}
-              className={`px-3.5 py-1.5 rounded-xl font-display font-bold text-xs transition-all ${
+              className={`px-4 py-1.5 rounded-xl font-display font-bold text-xs transition-all ${
                 activeTab === 'leaderboard'
-                  ? 'bg-amber-500 text-slate-950 shadow-md'
+                  ? 'bg-gradient-to-r from-purple-950/90 via-indigo-900/90 to-purple-950/90 text-white border border-purple-500/40 shadow-lg shadow-purple-950/50'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -541,46 +568,150 @@ export default function GamesPage() {
         </div>
       </div>
 
-      {/* ARCADE GAMES LISTING GRID */}
+      {/* ARCADE GAMES LISTING GRID (Exact Layout Matching User Screenshot) */}
       {activeTab === 'games' && !activeGame && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-          {gamesList.map((g) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 relative z-10">
+          {filteredGames.map((g) => (
             <motion.div
               key={g.id}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="p-6 sm:p-7 rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 backdrop-blur-xl shadow-xl flex flex-col justify-between space-y-5 transition-all group"
+              whileHover={{ scale: 1.012 }}
+              whileTap={{ scale: 0.988 }}
+              className="relative rounded-3xl bg-[#0b101e]/90 border border-slate-800/80 hover:border-indigo-500/50 backdrop-blur-xl p-6 sm:p-7 flex flex-col justify-between space-y-5 transition-all duration-300 overflow-visible group mt-8 shadow-2xl"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl p-3 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-inner">
-                    {g.icon}
-                  </span>
-                  <span className={`px-3 py-1 rounded-full text-[11px] font-bold border ${g.badgeColor}`}>
-                    {isVi ? 'Tích lũy XP x5' : 'Earn 5X XP'}
-                  </span>
-                </div>
+              {/* Internal Themed Box Background (Confined cleanly within the card) */}
+              <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none z-0">
+                {/* Ambient radial glow under the 3D subject */}
+                <div
+                  className={`absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-48 rounded-full ${g.glowColor} blur-[65px] opacity-60 group-hover:opacity-90 transition-opacity duration-500`}
+                />
 
-                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white group-hover:text-amber-300 transition-colors">
-                  {g.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans min-h-[40px]">
-                  {g.desc}
-                </p>
+                {/* Card 1 Decor: Subtle Cyberpunk Grid */}
+                {g.decorType === 'grid' && (
+                  <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#10b98120_1px,transparent_1px),linear-gradient(to_bottom,#10b98120_1px,transparent_1px)] bg-[size:20px_20px]" />
+                )}
+
+                {/* Card 2 Decor: Glowing Constellation Wave */}
+                {g.decorType === 'constellation' && (
+                  <svg className="absolute inset-0 w-full h-full opacity-35" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M 60 140 Q 180 50 300 110 T 420 60"
+                      fill="none"
+                      stroke="#38bdf8"
+                      strokeWidth="1.5"
+                      strokeDasharray="3 3"
+                    />
+                    <circle cx="60" cy="140" r="2.5" fill="#38bdf8" />
+                    <circle cx="180" cy="50" r="3" fill="#818cf8" />
+                    <circle cx="300" cy="110" r="2.5" fill="#38bdf8" />
+                    <circle cx="420" cy="60" r="3" fill="#60a5fa" />
+                  </svg>
+                )}
+
+                {/* Card 3 Decor: High Speed Horizontal Streaks */}
+                {g.decorType === 'speed' && (
+                  <div className="absolute inset-0 opacity-15 bg-[repeating-linear-gradient(90deg,#f43f5e15,#f43f5e15_12px,transparent_12px,transparent_24px)]" />
+                )}
+
+                {/* Card 4 Decor: Concentric Quantum Energy Rings */}
+                {g.decorType === 'atomic' && (
+                  <div className="absolute top-1/2 right-8 -translate-y-1/2 w-48 h-48 rounded-full border border-purple-500/20 opacity-40 pointer-events-none">
+                    <div className="absolute inset-4 rounded-full border border-indigo-500/20" />
+                    <div className="absolute inset-8 rounded-full border border-cyan-500/20" />
+                  </div>
+                )}
               </div>
 
-              <Button
-                variant="accent"
-                size="md"
-                className="w-full font-bold"
+              {/* 3D OVERFLOWING ASSET: Top sticks out of the card, lower body sits behind text */}
+              <div className="absolute -top-10 sm:-top-14 right-2 sm:right-6 w-44 h-40 sm:w-56 sm:h-52 pointer-events-none z-10 filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.85)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-500 ease-out">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={g.image3d}
+                    alt={g.title}
+                    fill
+                    unoptimized
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* CARD CONTENT (z-20: Sits in front of the 3D asset) */}
+              <div className="relative z-20 space-y-4">
+                {/* Header Row: Icon (Left) and Badges (Right) */}
+                <div className="flex items-center justify-between">
+                  {/* Top Left Icon */}
+                  <div className="w-11 h-11 rounded-2xl bg-slate-950/90 border border-slate-800/90 flex items-center justify-center shadow-inner shrink-0">
+                    {g.iconType === 'puzzle' && <span className="text-xl text-emerald-400">🧩</span>}
+                    {g.iconType === 'abc' && (
+                      <span className="font-mono font-bold text-xs text-cyan-300 px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/40">
+                        abc
+                      </span>
+                    )}
+                    {g.iconType === 'keyboard' && <span className="text-rose-400 text-lg">⌨️</span>}
+                    {g.iconType === 'target' && <span className="text-pink-400 text-xl">🎯</span>}
+                  </div>
+
+                  {/* Top Right Badges */}
+                  <div className="flex items-center gap-2 shrink-0">
+                    {g.id === 'fill_blitz' && (
+                      <span className="px-2.5 py-0.5 rounded-xl border border-cyan-500/50 bg-cyan-950/50 text-cyan-300 font-mono font-bold text-xs shadow-[0_0_12px_rgba(6,182,212,0.3)]">
+                        60s
+                      </span>
+                    )}
+                    <span
+                      className={`px-3 py-1 rounded-full text-[11px] font-bold border ${g.badgeColor} shadow-md backdrop-blur-md`}
+                    >
+                      {isVi ? 'Tích lũy XP x5' : 'Earn 5X XP'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Title and Description: Crisp in front of the 3D asset */}
+                <div className="space-y-1.5 pt-1">
+                  <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
+                    {g.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-sans max-w-[80%] sm:max-w-[70%]">
+                    {g.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* Special Progress Milestone Bar for Card 4 (Thách Thức 60 Giây) */}
+              {g.id === 'fill_blitz' && (
+                <div className="relative z-10 space-y-2 pt-1">
+                  {/* Glowing Slider Progress Bar */}
+                  <div className="relative h-2 rounded-full bg-slate-950 border border-slate-800 overflow-hidden">
+                    <div className="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 shadow-[0_0_12px_rgba(99,102,241,0.8)]" />
+                  </div>
+                  {/* 4 Milestones */}
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-400 px-1">
+                    <span className="flex items-center gap-1 text-amber-300">
+                      <Star className="w-3 h-3 fill-amber-300" /> 00 Điệp
+                    </span>
+                    <span className="flex items-center gap-1 text-amber-300">
+                      <Star className="w-3 h-3 fill-amber-300" /> 20 Chớp
+                    </span>
+                    <span className="flex items-center gap-1 text-amber-300">
+                      <Crown className="w-3 h-3 text-amber-300 fill-amber-300/30" /> 30 Chớp
+                    </span>
+                    <span className="flex items-center gap-1 text-amber-400">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block" /> 50 Gkép
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Sleek Glowing Cosmic Play Button (Matching Image 2) */}
+              <button
                 onClick={() => {
                   arcadeAudio.playLaser();
                   setShowDifficultyModal(g.id);
                 }}
-                icon={<Play className="w-4 h-4 fill-slate-950" />}
+                className="relative z-10 w-full py-3 sm:py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#17132a] via-[#241c3e] to-[#17132a] hover:from-[#20183e] hover:to-[#1a1532] border border-indigo-500/30 hover:border-indigo-400/60 shadow-[0_4px_20px_rgba(0,0,0,0.6)] flex items-center justify-center gap-2 transition-all active:scale-[0.99] group-hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] cursor-pointer"
               >
-                {isVi ? 'Chơi Ngay' : 'Play Now'}
-              </Button>
+                <Play className="w-3 h-3 fill-white text-white" />
+                <span>{isVi ? 'Chơi Ngay' : 'Play Now'}</span>
+              </button>
             </motion.div>
           ))}
         </div>

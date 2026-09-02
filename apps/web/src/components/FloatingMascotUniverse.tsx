@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Eye, EyeOff, Zap, Plus, RotateCcw } from 'lucide-react';
@@ -292,6 +293,9 @@ interface XPPop {
 }
 
 export default function FloatingMascotUniverse() {
+  const pathname = usePathname();
+  if (pathname?.includes('/games')) return null;
+
   const [enabled, setEnabled] = useState(true);
   const [mascots, setMascots] = useState<MascotItem[]>(INITIAL_MASCOTS);
   const [activeMascotId, setActiveMascotId] = useState<string | null>(null);
