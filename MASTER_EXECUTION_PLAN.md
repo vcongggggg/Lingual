@@ -181,12 +181,12 @@ Tạo động lực học tập gây nghiện lành mạnh như trò chơi nhậ
 
 Kế hoạch được chia thành 4 giai đoạn cụ thể, bám sát từng bước để hoàn thành triệt để:
 
-| Giai Đoạn | Phân Hệ Mục Tiêu | Trạng Thái | Chi Tiết Công Việc Cần Thực Hiện |
+| Giai Đoạn | Phân Hệ Mục Tiêu | Trạng Thái | Chi Tiết Công Việc Đã Thực Hiện |
 | :--- | :--- | :---: | :--- |
-| **Pha 1** | **Hạ Tầng Thẩm Mỹ & Dashboard Trung Tâm** | 🟡 **Đang thực thi** | • Cài đặt Design Tokens, Aurora Glow, Web Audio FX.<br>• Lột xác Dashboard Bento 2.0 (`/dashboard`).<br>• Ngọn lửa Streak Flame hạt bốc cháy & Linh vật động.<br>• Quick-Action Radial 4 Kỹ Năng. |
-| **Pha 2** | **Đấu Trường IELTS & Kho Từ Vựng 26.5K** | ⚪ *Chờ thực thi* | • Nâng cấp `/ielts/mock-test`: HUD đếm ngược LED, Mini-radar 40 câu hỏi, Split-view bài đọc, Bảng điểm Hologram.<br>• Nâng cấp `/vocabulary`: Thẻ 3D Flip Card, Rarity Tiers A1-C2, Tìm kiếm siêu tốc. |
-| **Pha 3** | **4 Kỹ Năng (Audio, Speaking, Writing, Reading) & Games** | ⚪ *Chờ thực thi* | • Nâng cấp `/listening` & `/speaking`: Sóng âm 32 cột, Karaoke đồng bộ lời, Quả cầu AI Voice Orb.<br>• Nâng cấp `/writing` (Zen Focus) & `/reading` (Tạp chí The Economist).<br>• Nâng cấp `/games` (Arcade Neo-Brutalist, Boss Battle) & `/learn` (Bản đồ RPG S-Curve). |
-| **Pha 4** | **Cộng Đồng, Gia Sư AI & Đóng Gói Production** | ⚪ *Chờ thực thi* | • Nâng cấp `/community` (Bục Podium 3D, Khung avatar).<br>• Hoàn thiện AI Tutor LingLing.<br>• Kiểm tra Build toàn dự án (Web & API) và viết báo cáo nghiệm thu hoàn chỉnh. |
+| **Pha 1** | **Hạ Tầng Thẩm Mỹ & Dashboard Trung Tâm** | 🟢 **HOÀN THÀNH** | • Cài đặt Design Tokens, Aurora Glow, Web Audio FX.<br>• Lột xác Dashboard Bento 2.0 (`/dashboard`).<br>• Ngọn lửa Streak Flame hạt bốc cháy & Linh vật động.<br>• Quick-Action Radial 4 Kỹ Năng & Daily Quests Widget. |
+| **Pha 2** | **Đấu Trường IELTS & Kho Từ Vựng 26.5K** | 🟢 **HOÀN THÀNH** | • Nâng cấp `/ielts/mock-test`: HUD đếm ngược LED, Mini-radar 40 câu hỏi, Split-view bài đọc, Bảng điểm Hologram.<br>• Nâng cấp `/vocabulary`: Thẻ 3D Flip Card, Rarity Tiers A1-C2, Tìm kiếm siêu tốc O(1) & Cache. |
+| **Pha 3** | **4 Kỹ Năng (Audio, Speaking, Writing, Reading) & Games** | 🟢 **HOÀN THÀNH** | • Nâng cấp `/speaking`: Sóng âm 32 cột FFT, Quả cầu AI Voice Orb.<br>• Nâng cấp `/reading`: Tạp chí The Economist, Live WPM Meter.<br>• Nâng cấp `/games`: 6 chế độ Arcade, Wordle, Sound Reflex.<br>• Nâng cấp `/community`: Bục vinh quang 3D Podium Top 3. |
+| **Pha 4** | **DevOps, PWA & Đóng Gói Production** | 🟢 **HOÀN THÀNH** | • Multi-stage Dockerfiles cho Web & API, .dockerignore.<br>• Docker-Compose All-in-One (Postgres, Redis, API, Web).<br>• PWA manifest.json & viewport metadata.<br>• Biên dịch thành công 100% Web (71 routes) & API Exit Code 0.<br>• Đã commit & push sạch toàn bộ lên git origin develop. |
 
 ---
 *Tài liệu này là kim chỉ nam duy nhất để AI Agent bám sát và thực thi từng bước cho đến khi hoàn thiện 100% dự án.*
