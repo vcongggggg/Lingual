@@ -4,6 +4,7 @@ import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import { RegisterSchema, LoginSchema } from '../../../../packages/contracts/src/index.js';
 import { getFormattedDateInTimezone } from '../../../../packages/domain/src/index.js';
+import { userRepository } from '../repositories/user.repository.js';
 
 export const authRouter = Router();
 
@@ -47,28 +48,21 @@ authRouter.post('/register', authLimiter, async (req, res) => {
 
     const { email, password, displayName, interfaceLocale, timezone } = parseResult.data;
 
-    const existing = MOCK_USERS.find((u) => u.email === email);
+    const existing = await userRepository.findByEmail(email);
     if (existing) {
       return res.status(400).json({ error: 'Email này đã được sử dụng.' });
     }
 
     const passwordHash = await argon2.hash(password);
-    const newUser = {
+    const newUser = await userRepository.createUser({
       id: `user-${Date.now()}`,
       email,
       passwordHash,
       displayName,
-      role: 'STUDENT',
+      role: 'STUDENT' as any,
       interfaceLocale,
       timezone,
-      dailyGoalMinutes: 15,
-      totalXP: 0,
-      currentStreak: 1,
-      streakFreezes: 1,
-      lastActiveDate: getFormattedDateInTimezone(new Date(), timezone),
-    };
-
-    MOCK_USERS.push(newUser);
+    });
 
     const token = jwt.sign({ userId: newUser.id, role: newUser.role }, JWT_SECRET, { expiresIn: '15m' });
 
@@ -104,8 +98,8 @@ authRouter.post('/login', authLimiter, async (req, res) => {
       });
     }
 
-    const user = MOCK_USERS.find((u) => u.email === email);
-    if (!user) {
+    const user = await userRepository.findByEmail(email);
+    if (!user || !user.passwordHash) {
       return res.status(401).json({ error: 'Email hoặc mật khẩu không chính xác' });
     }
 
@@ -240,35 +234,20 @@ authRouter.get('/google/callback', async (req, res) => {
     }
 
     // Find or create user
-    let user = MOCK_USERS.find(
-      (u) => u.email === googleProfile.email || (u.googleId && u.googleId === googleProfile.sub)
-    );
+    let user = await userRepository.findByEmail(googleProfile.email);
 
     if (!user) {
-      user = {
+      user = await userRepository.createUser({
         id: `google-user-${Date.now()}`,
         email: googleProfile.email,
         googleId: googleProfile.sub,
         avatarUrl: googleProfile.picture || null,
         authProvider: 'google',
         displayName: googleProfile.name || googleProfile.email.split('@')[0],
-        role: 'STUDENT',
+        role: 'STUDENT' as any,
         interfaceLocale: locale,
         timezone: 'Asia/Ho_Chi_Minh',
-        dailyGoalMinutes: 15,
-        totalXP: 0,
-        currentStreak: 1,
-        streakFreezes: 1,
-        lastActiveDate: getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh'),
-      };
-      MOCK_USERS.push(user);
-    } else {
-      // Update Google profile info
-      user.googleId = googleProfile.sub;
-      if (googleProfile.picture) user.avatarUrl = googleProfile.picture;
-      if (!user.displayName || user.displayName === 'Học Viên') {
-        user.displayName = googleProfile.name;
-      }
+      });
     }
 
     const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
@@ -310,10 +289,10 @@ authRouter.post('/google/mock-login', async (req, res) => {
     }
 
     const normalizedEmail = email.toLowerCase();
-    let user = MOCK_USERS.find((u) => u.email === normalizedEmail);
+    let user = await userRepository.findByEmail(normalizedEmail);
 
     if (!user) {
-      user = {
+      user = await userRepository.createUser({
         id: `google-mock-${Date.now()}`,
         email: normalizedEmail,
         googleId: googleId || `gid-${Date.now()}`,
@@ -322,19 +301,10 @@ authRouter.post('/google/mock-login', async (req, res) => {
           `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(normalizedEmail)}`,
         authProvider: 'google',
         displayName: name || normalizedEmail.split('@')[0],
-        role: 'STUDENT',
+        role: 'STUDENT' as any,
         interfaceLocale: 'vi',
         timezone: 'Asia/Ho_Chi_Minh',
-        dailyGoalMinutes: 15,
-        totalXP: 25, // Starting bonus XP
-        currentStreak: 1,
-        streakFreezes: 1,
-        lastActiveDate: getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh'),
-      };
-      MOCK_USERS.push(user);
-    } else {
-      if (avatarUrl) user.avatarUrl = avatarUrl;
-      if (name && (!user.displayName || user.displayName === 'Học Viên')) user.displayName = name;
+      });
     }
 
     const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
@@ -369,25 +339,19 @@ authRouter.post('/google/verify-token', async (req, res) => {
       return res.status(401).json({ error: 'Token Google không hợp lệ hoặc đã hết hạn' });
     }
 
-    let user = MOCK_USERS.find((u) => u.email === tokenInfo.email);
+    let user = await userRepository.findByEmail(tokenInfo.email);
     if (!user) {
-      user = {
+      user = await userRepository.createUser({
         id: `google-user-${Date.now()}`,
         email: tokenInfo.email,
         googleId: tokenInfo.sub,
         avatarUrl: tokenInfo.picture || null,
         authProvider: 'google',
         displayName: tokenInfo.name || tokenInfo.email.split('@')[0],
-        role: 'STUDENT',
+        role: 'STUDENT' as any,
         interfaceLocale: 'vi',
         timezone: 'Asia/Ho_Chi_Minh',
-        dailyGoalMinutes: 15,
-        totalXP: 0,
-        currentStreak: 1,
-        streakFreezes: 1,
-        lastActiveDate: getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh'),
-      };
-      MOCK_USERS.push(user);
+      });
     }
 
     const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
@@ -406,7 +370,7 @@ authRouter.post('/google/verify-token', async (req, res) => {
   }
 });
 
-authRouter.get('/me', (req, res) => {
+authRouter.get('/me', async (req, res) => {
   const authHeader = req.headers.authorization;
   const cookieToken = req.cookies?.access_token;
   const token = authHeader ? authHeader.split(' ')[1] : cookieToken;
@@ -417,7 +381,7 @@ authRouter.get('/me', (req, res) => {
 
   try {
     const payload = jwt.verify(token, JWT_SECRET) as any;
-    const user = MOCK_USERS.find((u) => u.id === payload.userId);
+    const user = await userRepository.findById(payload.userId);
     if (!user) return res.status(404).json({ error: 'Không tìm thấy người dùng' });
     const { passwordHash: _, ...userWithoutPassword } = user;
     return res.json({ user: userWithoutPassword });

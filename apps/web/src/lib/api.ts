@@ -3,7 +3,9 @@
  * Handles base URL, auth headers, error handling
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
+const rawBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
+const cleanBaseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
+const API_BASE_URL = cleanBaseUrl.endsWith('/api/v1') ? cleanBaseUrl : `${cleanBaseUrl}/api/v1`;
 
 interface FetchOptions extends RequestInit {
   skipAuth?: boolean;
@@ -45,7 +47,8 @@ export async function apiFetch<T = any>(endpoint: string, options: FetchOptions 
     }
   }
 
-  const url = endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}${endpoint}`;
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}${cleanEndpoint}`;
 
   try {
     const res = await fetch(url, {
@@ -61,7 +64,7 @@ export async function apiFetch<T = any>(endpoint: string, options: FetchOptions 
     return await res.json();
   } catch (err: any) {
     if (err instanceof TypeError || (err?.message && String(err.message).includes('fetch'))) {
-      throw new Error('Không thể kết nối tới server API (http://localhost:4000). Vui lòng kiểm tra dịch vụ backend.');
+      throw new Error(`Không thể kết nối tới server API (${API_BASE_URL}). Vui lòng kiểm tra dịch vụ backend.`);
     }
     throw err;
   }

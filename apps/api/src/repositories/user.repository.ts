@@ -5,7 +5,7 @@ import { Role } from '../../../../packages/domain/src/index.js';
 export interface UserEntity {
   id: string;
   email: string;
-  passwordHash: string;
+  passwordHash?: string | null;
   displayName: string;
   role: Role;
   interfaceLocale: string;
@@ -15,6 +15,9 @@ export interface UserEntity {
   currentStreak: number;
   streakFreezes: number;
   lastActiveDate: string | null;
+  googleId?: string | null;
+  avatarUrl?: string | null;
+  authProvider?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -34,7 +37,9 @@ export class UserRepository {
       try {
         const user = await prisma.user.findUnique({ where: { id } });
         if (user) return user as UserEntity;
-      } catch {}
+      } catch (err) {
+        console.warn('Postgres findById fallback to memory:', err);
+      }
     }
     const memUser = MOCK_USERS.find((u) => u.id === id);
     if (!memUser) return null;
@@ -50,7 +55,9 @@ export class UserRepository {
       try {
         const user = await prisma.user.findUnique({ where: { email } });
         if (user) return user as UserEntity;
-      } catch {}
+      } catch (err) {
+        console.warn('Postgres findByEmail fallback to memory:', err);
+      }
     }
     const memUser = MOCK_USERS.find((u) => u.email.toLowerCase() === email.toLowerCase());
     if (!memUser) return null;
@@ -64,18 +71,21 @@ export class UserRepository {
   public async createUser(data: {
     id: string;
     email: string;
-    passwordHash: string;
+    passwordHash?: string | null;
     displayName: string;
-    role: Role;
+    role?: Role;
     interfaceLocale?: string;
     timezone?: string;
+    googleId?: string | null;
+    avatarUrl?: string | null;
+    authProvider?: string;
   }): Promise<UserEntity> {
     const newUser: UserEntity = {
       id: data.id,
       email: data.email,
-      passwordHash: data.passwordHash,
+      passwordHash: data.passwordHash || null,
       displayName: data.displayName,
-      role: data.role,
+      role: data.role || ('STUDENT' as Role),
       interfaceLocale: data.interfaceLocale || 'vi',
       timezone: data.timezone || 'Asia/Ho_Chi_Minh',
       dailyGoalMinutes: 15,
@@ -83,6 +93,9 @@ export class UserRepository {
       currentStreak: 0,
       streakFreezes: 1,
       lastActiveDate: null,
+      googleId: data.googleId || null,
+      avatarUrl: data.avatarUrl || null,
+      authProvider: data.authProvider || 'local',
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -103,9 +116,14 @@ export class UserRepository {
             currentStreak: newUser.currentStreak,
             streakFreezes: newUser.streakFreezes,
             lastActiveDate: newUser.lastActiveDate,
+            googleId: newUser.googleId,
+            avatarUrl: newUser.avatarUrl,
+            authProvider: newUser.authProvider,
           },
         });
-      } catch {}
+      } catch (err) {
+        console.warn('Failed to persist user in PostgreSQL, falling back to memory:', err);
+      }
     }
 
     // Keep memory store synced for local dev mode
@@ -122,6 +140,9 @@ export class UserRepository {
       currentStreak: newUser.currentStreak,
       streakFreezes: newUser.streakFreezes,
       lastActiveDate: newUser.lastActiveDate,
+      googleId: newUser.googleId,
+      avatarUrl: newUser.avatarUrl,
+      authProvider: newUser.authProvider,
     });
 
     return newUser;

@@ -23,9 +23,19 @@ import { communityRouter } from './routes/community.js';
 import { analyticsRouter } from './routes/analytics.js';
 import { speakingRouter } from './routes/speaking.js';
 import { tutorRouter } from './routes/tutor.js';
+import { checkDatabaseConnection, isDatabaseConnected } from './lib/prisma.js';
 
 dotenv.config();
 validateEnvironment();
+
+// Initialize Persistent Database Connection on startup
+checkDatabaseConnection().then((connected) => {
+  if (connected) {
+    console.log('✅ PostgreSQL Database connected successfully (Persistent Mode)');
+  } else {
+    console.warn('⚠️ PostgreSQL not reachable, running in resilient Mock/In-Memory Mode');
+  }
+});
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -65,13 +75,16 @@ app.use(express.json({ limit: '10kb' }));
 app.use('/api/', globalApiLimiter);
 
 // API Health Check
-app.get('/api/v1/health', (req, res) => {
+const healthHandler = (req: express.Request, res: express.Response) => {
   res.json({
     status: 'ok',
+    database: isDatabaseConnected() ? 'connected' : 'in_memory_resilient_fallback',
     service: 'Lingual Security Hardened API (OWASP Top 10 Compliant)',
     timestamp: new Date().toISOString(),
   });
-});
+};
+app.get('/api/v1/health', healthHandler);
+app.get('/health', healthHandler);
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/auth', authRouter);
