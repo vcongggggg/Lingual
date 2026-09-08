@@ -64,6 +64,36 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState<string>('Học Viên');
 
+  const [dailyQuests, setDailyQuests] = useState([
+    {
+      id: 'q1',
+      title: isVi ? 'Học 15 từ vựng mới' : 'Learn 15 new words',
+      icon: '📚',
+      current: 12,
+      target: 15,
+      xpReward: 30,
+      coinReward: 5,
+    },
+    {
+      id: 'q2',
+      title: isVi ? 'Luyện nghe hoặc phát âm' : 'Complete 1 audio session',
+      icon: '🎧',
+      current: 1,
+      target: 1,
+      xpReward: 40,
+      coinReward: 10,
+    },
+    {
+      id: 'q3',
+      title: isVi ? 'Đạt mục tiêu 15 phút học' : 'Reach 15 mins goal',
+      icon: '🔥',
+      current: 10,
+      target: 15,
+      xpReward: 25,
+      coinReward: 5,
+    },
+  ]);
+
   useEffect(() => {
     try {
       const savedUserStr = localStorage.getItem('lingual_user');
@@ -566,6 +596,69 @@ export default function DashboardPage() {
                       <span className="text-xs font-black text-amber-400 font-mono bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
                         {user.xp} XP
                       </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </Card>
+
+            {/* Daily Quests Bento Card (Nhiệm Vụ Hàng Ngày) */}
+            <Card glow="teal" className="space-y-4 border-purple-500/30">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-black uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-purple-400" />
+                  <span>{isVi ? 'Nhiệm Vụ Hàng Ngày' : 'Daily Quests'}</span>
+                </span>
+                <span className="text-[10px] font-mono font-black text-purple-300 bg-purple-500/10 px-2 py-0.5 rounded-md border border-purple-500/20">
+                  {dailyQuests.filter((q) => q.current >= q.target).length}/{dailyQuests.length} {isVi ? 'Hoàn thành' : 'Done'}
+                </span>
+              </div>
+
+              <div className="space-y-2.5">
+                {dailyQuests.map((quest) => {
+                  const isDone = quest.current >= quest.target;
+                  return (
+                    <div
+                      key={quest.id}
+                      className={`p-3 rounded-2xl border transition-all space-y-2 ${
+                        isDone
+                          ? 'bg-emerald-950/20 border-emerald-500/30'
+                          : 'bg-slate-950/70 border-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                          <span>{quest.icon}</span>
+                          <span className="truncate max-w-[160px]">{quest.title}</span>
+                        </span>
+                        <span className="text-[10px] font-mono font-bold text-amber-300 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20 shrink-0">
+                          +{quest.xpReward} XP
+                        </span>
+                      </div>
+
+                      <div className="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all duration-300 ${
+                            isDone
+                              ? 'bg-gradient-to-r from-emerald-400 to-teal-300'
+                              : 'bg-gradient-to-r from-purple-500 to-indigo-400'
+                          }`}
+                          style={{ width: `${Math.min(100, (quest.current / quest.target) * 100)}%` }}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                        <span>
+                          {quest.current}/{quest.target}
+                        </span>
+                        {isDone ? (
+                          <span className="text-emerald-400 font-bold flex items-center gap-0.5">
+                            <CheckCircle2 className="w-3 h-3" /> {isVi ? 'Đã nhận quà' : 'Claimed'}
+                          </span>
+                        ) : (
+                          <span className="text-purple-300 font-semibold">{isVi ? 'Đang làm' : 'In progress'}</span>
+                        )}
+                      </div>
                     </div>
                   );
                 })}

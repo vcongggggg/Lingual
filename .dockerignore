@@ -1,0 +1,12 @@
+node_modules
+.next
+dist
+build
+.git
+.github
+scratch
+draft
+*.log
+.env.local
+playwright-report
+test-results

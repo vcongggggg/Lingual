@@ -67,6 +67,20 @@ const ALL_VOCABULARY_WORDS = [
   })),
 ];
 
+// O(1) Exact lookup map for 26,500+ master dictionary
+const EXACT_LOOKUP_MAP = new Map<string, any>();
+for (let i = 0; i < ALL_VOCABULARY_WORDS.length; i++) {
+  const item = ALL_VOCABULARY_WORDS[i];
+  const key = item.targetText.toLowerCase().trim();
+  if (!EXACT_LOOKUP_MAP.has(key)) {
+    EXACT_LOOKUP_MAP.set(key, item);
+  }
+}
+
+// In-Memory Search Query Cache
+const SEARCH_CACHE = new Map<string, { words: any[]; total: number; totalPages: number; timestamp: number }>();
+const CACHE_TTL_MS = 60 * 1000; // 60s
+
 // In-memory bookmarks store for demo mode
 const MOCK_BOOKMARKS = new Set<string>();
 
@@ -77,8 +91,27 @@ const MOCK_BOOKMARKS = new Set<string>();
 dictionaryRouter.get('/search', async (req, res) => {
   const { q = '', cefr = '', partOfSpeech = '', page = '1', limit = '20' } = req.query;
 
-  let filtered = ALL_VOCABULARY_WORDS;
   const queryStr = typeof q === 'string' ? q.trim() : '';
+  const cacheKey = `${queryStr.toLowerCase()}_${cefr}_${partOfSpeech}_${page}_${limit}`;
+
+  const cached = SEARCH_CACHE.get(cacheKey);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+    return res.json({
+      words: cached.words.map((w) => ({
+        ...w,
+        isBookmarked: MOCK_BOOKMARKS.has(w.id),
+        inSrsDeck: MOCK_WORD_STATES.some((ws) => ws.wordId === w.id),
+      })),
+      pagination: {
+        page: parseInt(page as string, 10) || 1,
+        limit: parseInt(limit as string, 10) || 20,
+        total: cached.total,
+        totalPages: cached.totalPages,
+      },
+    });
+  }
+
+  let filtered = ALL_VOCABULARY_WORDS;
 
   if (queryStr) {
     const searchTerm = queryStr.toLowerCase();
@@ -148,6 +181,18 @@ dictionaryRouter.get('/search', async (req, res) => {
     inSrsDeck: MOCK_WORD_STATES.some((ws) => ws.wordId === w.id),
   }));
 
+  // Save to in-memory search cache (up to 500 entries)
+  if (SEARCH_CACHE.size > 500) {
+    const firstKey = SEARCH_CACHE.keys().next().value;
+    if (firstKey) SEARCH_CACHE.delete(firstKey);
+  }
+  SEARCH_CACHE.set(cacheKey, {
+    words: paginatedWords,
+    total,
+    totalPages,
+    timestamp: Date.now(),
+  });
+
   return res.json({
     words: paginatedWords,
     pagination: {
@@ -170,14 +215,13 @@ dictionaryRouter.get('/lookup/:word', async (req, res) => {
   }
 
   try {
+    const cleanWord = word.toLowerCase().trim();
+    const localMatch = EXACT_LOOKUP_MAP.get(cleanWord) || null;
     const liveResults = await RealDictionaryService.lookupWord(word);
-    const localMatch = ALL_VOCABULARY_WORDS.find(
-      (w) => w.targetText.toLowerCase() === word.toLowerCase()
-    );
 
     return res.json({
       word,
-      local: localMatch || null,
+      local: localMatch,
       definitions: liveResults,
       bookmarked: localMatch ? MOCK_BOOKMARKS.has(localMatch.id) : false,
     });
