@@ -9,6 +9,7 @@ import { ieltsApi } from '@/lib/api';
 export default function IeltsListeningPracticePage() {
   const routeParams = useParams();
   const locale = (routeParams?.locale as string) || 'vi';
+  const [questionsList, setQuestionsList] = useState<any[]>([]);
   const [question, setQuestion] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
@@ -24,6 +25,7 @@ export default function IeltsListeningPracticePage() {
       try {
         const res = await ieltsApi.getPracticeQuestions('listening');
         if (res.success && res.questions && res.questions.length > 0) {
+          setQuestionsList(res.questions);
           const detailRes = await ieltsApi.getQuestionDetail(res.questions[0].id);
           if (detailRes.success) {
             setQuestion(detailRes.question);
@@ -37,6 +39,24 @@ export default function IeltsListeningPracticePage() {
     }
     loadData();
   }, []);
+
+  const handleSelectQuestion = async (qId: string) => {
+    setLoading(true);
+    setSubmitted(false);
+    setUserAnswers({});
+    setScoreResult(null);
+    setIsPlaying(false);
+    try {
+      const res = await ieltsApi.getQuestionDetail(qId);
+      if (res.success) {
+        setQuestion(res.question);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const togglePlay = () => {
     if (!audioRef.current) return;
@@ -77,7 +97,7 @@ export default function IeltsListeningPracticePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-4 sm:p-8 space-y-6 max-w-4xl mx-auto">
       {/* Top Navbar */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-4">
         <div className="flex items-center gap-3">
           <Link
             href={`/${locale}/ielts`}
@@ -93,13 +113,30 @@ export default function IeltsListeningPracticePage() {
           </div>
         </div>
 
-        <button
-          onClick={() => setShowTranscript(!showTranscript)}
-          className="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-purple-300 hover:bg-slate-800 transition-all flex items-center gap-1.5"
-        >
-          {showTranscript ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-          {showTranscript ? 'Ẩn Transcript' : 'Xem Transcript'}
-        </button>
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Section Selector Pills */}
+          {questionsList.map((q, idx) => (
+            <button
+              key={q.id}
+              onClick={() => handleSelectQuestion(q.id)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                question?.id === q.id
+                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
+                  : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
+              }`}
+            >
+              Section {idx + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() => setShowTranscript(!showTranscript)}
+            className="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-purple-300 hover:bg-slate-800 transition-all flex items-center gap-1.5"
+          >
+            {showTranscript ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+            {showTranscript ? 'Ẩn Transcript' : 'Xem Transcript'}
+          </button>
+        </div>
       </div>
 
       {loading ? (

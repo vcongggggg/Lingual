@@ -5,6 +5,7 @@ import {
   calculateLessonXP,
   updateStreakWithTimezone,
   validateAttemptTiming,
+  getFormattedDateInTimezone,
 } from '../../../../packages/domain/src/index.js';
 
 export const curriculumRouter = Router();
@@ -61,19 +62,28 @@ curriculumRouter.post('/lessons/:lessonId/submit', (req, res) => {
   let totalQuestions = 0;
   let correctCount = 0;
 
+  let targetLesson: any = null;
   for (const unit of SEED_UNITS) {
-    const lesson = unit.lessons.find((l) => l.order.toString() === lessonId || l.title.includes(lessonId)) || unit.lessons[0];
-    totalQuestions = lesson.exercises.length;
+    const found = unit.lessons.find((l) => (l as any).id === lessonId || l.order.toString() === lessonId || l.title.includes(lessonId));
+    if (found) {
+      targetLesson = found;
+      break;
+    }
+  }
+  if (!targetLesson && SEED_UNITS[0]?.lessons[0]) {
+    targetLesson = SEED_UNITS[0].lessons[0];
+  }
 
+  if (targetLesson) {
+    totalQuestions = targetLesson.exercises.length;
     if (Array.isArray(answers)) {
       answers.forEach((ans: any, idx: number) => {
-        const ex = lesson.exercises[idx];
+        const ex = (ans.exerciseId ? targetLesson.exercises.find((e: any) => (e as any).id === ans.exerciseId) : null) || targetLesson.exercises[idx];
         if (ex && ans.userAnswer && ans.userAnswer.trim().toLowerCase() === ex.correctAnswer.trim().toLowerCase()) {
           correctCount++;
         }
       });
     }
-    break;
   }
 
   const user = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0];
@@ -90,7 +100,7 @@ curriculumRouter.post('/lessons/:lessonId/submit', (req, res) => {
 
   user.currentStreak = streakResult.currentStreak;
   user.streakFreezes = streakResult.streakFreezes;
-  user.lastActiveDate = new Date().toISOString().split('T')[0];
+  user.lastActiveDate = getFormattedDateInTimezone(new Date(), user.timezone);
 
   const xpEarned = calculateLessonXP(correctCount, totalQuestions, user.currentStreak);
   user.totalXP += xpEarned;

@@ -82,7 +82,7 @@ export default function LessonQuizPage() {
     const cleanStr = (s: string) => (s || '').toLowerCase().replace(/[.,!?;:'"()[\]{}]/g, '').replace(/\s+/g, ' ').trim();
     const userClean = cleanStr(answer);
     const targetClean = cleanStr(currentEx.correctAnswer);
-    const correct = userClean === targetClean || targetClean.endsWith(userClean) || userClean.endsWith(targetClean);
+    const correct = userClean.length > 0 && userClean === targetClean;
     setIsCorrect(correct);
     setIsAnswerChecked(true);
 

@@ -7,6 +7,7 @@ import { Trophy, Medal, Flame, Crown, BookOpen, PenTool, Headphones, FileText, S
 import { LeaderboardEntry } from '@linguaflow/domain';
 import { Badge } from '@linguaflow/ui';
 import { communityApi } from '@/lib/community/api';
+import { soundFx } from '@/lib/soundFx';
 
 interface LeaderboardViewProps {
   currentUserId?: string;
@@ -76,7 +77,10 @@ export default function LeaderboardView({
               <button
                 key={p}
                 type="button"
-                onClick={() => setPeriod(p)}
+                onClick={() => {
+                  soundFx.playClick();
+                  setPeriod(p);
+                }}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   period === p
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
@@ -95,7 +99,10 @@ export default function LeaderboardView({
             <button
               key={cat.id}
               type="button"
-              onClick={() => setCategory(cat.id)}
+              onClick={() => {
+                soundFx.playClick();
+                setCategory(cat.id);
+              }}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 border ${
                 category === cat.id
                   ? 'bg-teal-500/20 text-teal-300 border-teal-500/40 shadow-sm'

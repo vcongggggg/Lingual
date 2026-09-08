@@ -19,13 +19,28 @@ userRouter.get('/progress', (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
   const user = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0];
 
-  const userProgress = MOCK_LESSON_PROGRESS.filter((p) => p.userId === userId);
+  const userProgress = MOCK_LESSON_PROGRESS.filter((p) => p.userId === userId && p.completed);
   const allWords = SEED_UNITS.flatMap((u) => u.lessons.flatMap((l) => l.words));
+
+  // Count distinct words learned from unique completed lessons
+  const completedLessonIds = new Set(userProgress.map((p) => p.lessonId));
+  let distinctWordsLearned = 0;
+  SEED_UNITS.forEach((u) => {
+    u.lessons.forEach((l) => {
+      if (
+        completedLessonIds.has((l as any).id) ||
+        completedLessonIds.has(l.order.toString()) ||
+        completedLessonIds.has(l.title)
+      ) {
+        distinctWordsLearned += l.words.length;
+      }
+    });
+  });
 
   return res.json({
     completedLessons: userProgress,
     totalLessons: SEED_UNITS.flatMap((u) => u.lessons).length,
-    totalWordsLearned: userProgress.length * 5, // Approximate
+    totalWordsLearned: distinctWordsLearned,
     totalWords: allWords.length,
     totalXP: user.totalXP,
     currentStreak: user.currentStreak,

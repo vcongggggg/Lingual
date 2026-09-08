@@ -22,6 +22,7 @@ yarn-error.log*
 # Local-only learning notes & plan specs
 KNOWLEDGE_NOTES.local.md
 *plan*.md
+!MASTER_EXECUTION_PLAN.md
 LANGUAGE_LEARNING_APP_*.md
 
 # OS / editor
@@ -32,6 +33,7 @@ Thumbs.db
 
 # Draft & Scratch assets
 draft/
+scratch/
 
 # Playwright Test Artifacts
 playwright-report/

@@ -149,6 +149,75 @@ ieltsRouter.get('/practice/question/:id', async (req: Request, res: Response) =>
   });
 });
 
+// In-memory IELTS Mock Test Attempts
+export const MOCK_IELTS_ATTEMPTS: any[] = [];
+
+// Dynamically build complete answer key map from all reading and listening questions
+const MOCK_TEST_ANSWER_KEYS: Record<string, { skill: 'reading' | 'listening'; correctAnswer: string }> = {
+  // Legacy / quick mock test questions
+  mock_q1: { skill: 'reading', correctAnswer: 'False' },
+  mock_q2: { skill: 'reading', correctAnswer: 'Economic dislocation from plant closures' },
+  mock_q3: { skill: 'listening', correctAnswer: 'Floor 1' },
+  mock_q4: { skill: 'listening', correctAnswer: '10 books' },
+};
+
+// Populate keys dynamically from all seed questions
+for (const q of SEED_IELTS_QUESTIONS) {
+  try {
+    const parsed = typeof q.content === 'string' ? JSON.parse(q.content) : q.content;
+    if (Array.isArray(parsed?.questions)) {
+      for (const item of parsed.questions) {
+        if (item.id && item.correctAnswer) {
+          MOCK_TEST_ANSWER_KEYS[item.id] = {
+            skill: q.skill === 'listening' ? 'listening' : 'reading',
+            correctAnswer: item.correctAnswer,
+          };
+        }
+      }
+    }
+  } catch {}
+}
+
+/**
+ * GET /api/v1/ielts/mock-test/questions
+ * Get all mock test questions categorized by Reading and Listening
+ */
+ieltsRouter.get('/mock-test/questions', async (req: Request, res: Response) => {
+  const readingQuestions: any[] = [];
+  const listeningQuestions: any[] = [];
+
+  for (const q of MOCK_QUESTIONS_FALLBACK) {
+    if (q.skill === 'reading' && q.contentParsed?.questions) {
+      readingQuestions.push(
+        ...q.contentParsed.questions.map((subQ: any) => ({
+          ...subQ,
+          skill: 'Reading',
+          passageTitle: q.title,
+          passagePart: q.part,
+        }))
+      );
+    } else if (q.skill === 'listening' && q.contentParsed?.questions) {
+      listeningQuestions.push(
+        ...q.contentParsed.questions.map((subQ: any) => ({
+          ...subQ,
+          skill: 'Listening',
+          sectionTitle: q.title,
+          sectionPart: q.part,
+        }))
+      );
+    }
+  }
+
+  return res.json({
+    success: true,
+    readingTotal: readingQuestions.length,
+    listeningTotal: listeningQuestions.length,
+    questions: [...readingQuestions, ...listeningQuestions],
+    readingPassages: MOCK_QUESTIONS_FALLBACK.filter((q) => q.skill === 'reading'),
+    listeningSections: MOCK_QUESTIONS_FALLBACK.filter((q) => q.skill === 'listening'),
+  });
+});
+
 /**
  * POST /api/v1/ielts/mock-test/submit
  * Submit full IELTS exam answers and calculate bands
@@ -157,9 +226,49 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
   try {
     const { userId = 'demo-user-id-001', answers = {}, durationSec = 1800 } = req.body;
 
-    // Evaluate Reading & Listening mock raw score
-    const readingRawScore = Math.floor(Math.random() * 8) + 28; // ~ 28 - 35
-    const listeningRawScore = Math.floor(Math.random() * 8) + 27; // ~ 27 - 34
+    let readingCorrect = 0;
+    let readingTotal = 0;
+    let listeningCorrect = 0;
+    let listeningTotal = 0;
+
+    Object.entries(MOCK_TEST_ANSWER_KEYS).forEach(([qId, qInfo]) => {
+      // Only count questions that were included in the submitted answers object
+      if (answers.hasOwnProperty(qId)) {
+        const userAns = answers[qId];
+        const isCorrect =
+          typeof userAns === 'string' &&
+          userAns.trim().toLowerCase() === qInfo.correctAnswer.trim().toLowerCase();
+
+        if (qInfo.skill === 'reading') {
+          readingTotal++;
+          if (isCorrect) readingCorrect++;
+        } else {
+          listeningTotal++;
+          if (isCorrect) listeningCorrect++;
+        }
+      }
+    });
+
+    // Fallback if no specific keys matched submitted answers
+    if (readingTotal === 0 && listeningTotal === 0) {
+      Object.entries(MOCK_TEST_ANSWER_KEYS).forEach(([qId, qInfo]) => {
+        const userAns = answers[qId];
+        const isCorrect =
+          typeof userAns === 'string' &&
+          userAns.trim().toLowerCase() === qInfo.correctAnswer.trim().toLowerCase();
+        if (qInfo.skill === 'reading') {
+          readingTotal++;
+          if (isCorrect) readingCorrect++;
+        } else {
+          listeningTotal++;
+          if (isCorrect) listeningCorrect++;
+        }
+      });
+    }
+
+    // Scale to standard IELTS 40-question scale
+    const readingRawScore = readingTotal > 0 ? Math.round((readingCorrect / readingTotal) * 40) : 28;
+    const listeningRawScore = listeningTotal > 0 ? Math.round((listeningCorrect / listeningTotal) * 40) : 28;
 
     const readingBand = calculateIeltsReadingBand(readingRawScore, 'academic');
     const listeningBand = calculateIeltsListeningBand(listeningRawScore);
@@ -173,20 +282,28 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
       speaking: speakingBand,
     });
 
+    const attempt = {
+      id: `mock-attempt-${Date.now()}`,
+      userId,
+      type: 'academic',
+      durationSec,
+      readingCorrect,
+      readingTotal,
+      listeningCorrect,
+      listeningTotal,
+      readingBand,
+      listeningBand,
+      writingBand,
+      speakingBand,
+      overallBand,
+      createdAt: new Date().toISOString(),
+    };
+
+    MOCK_IELTS_ATTEMPTS.push(attempt);
+
     return res.json({
       success: true,
-      attempt: {
-        id: `mock-attempt-${Date.now()}`,
-        userId,
-        type: 'academic',
-        durationSec,
-        listeningBand,
-        readingBand,
-        writingBand,
-        speakingBand,
-        overallBand,
-        createdAt: new Date().toISOString(),
-      },
+      attempt,
     });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });

@@ -36,7 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (typeof window === 'undefined') return null;
     try {
       const token = localStorage.getItem('lingual_token') || localStorage.getItem('linguaflow_token');
-      const savedUserStr = localStorage.getItem('lingual_user');
+      const savedUserStr = localStorage.getItem('lingual_user') || localStorage.getItem('linguaflow_user');
       if (token && savedUserStr) {
         return JSON.parse(savedUserStr);
       }
@@ -49,7 +49,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const checkAuth = async () => {
       try {
         const token = localStorage.getItem('lingual_token') || localStorage.getItem('linguaflow_token');
-        const savedUserStr = localStorage.getItem('lingual_user');
+        const savedUserStr = localStorage.getItem('lingual_user') || localStorage.getItem('linguaflow_user');
         if (token && savedUserStr) {
           const parsed = JSON.parse(savedUserStr);
           setUser(parsed);
@@ -57,6 +57,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           if (res?.user) {
             setUser(res.user);
             localStorage.setItem('lingual_user', JSON.stringify(res.user));
+            localStorage.setItem('linguaflow_user', JSON.stringify(res.user));
           }
         } else {
           setUser(null);
@@ -72,7 +73,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const handleAuthChange = () => {
       const token = localStorage.getItem('lingual_token') || localStorage.getItem('linguaflow_token');
-      const savedUserStr = localStorage.getItem('lingual_user');
+      const savedUserStr = localStorage.getItem('lingual_user') || localStorage.getItem('linguaflow_user');
       if (token && savedUserStr) {
         try {
           setUser(JSON.parse(savedUserStr));
@@ -94,7 +95,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setAuthToken(res.accessToken);
       setUser(res.user);
       localStorage.setItem('lingual_user', JSON.stringify(res.user));
+      localStorage.setItem('linguaflow_user', JSON.stringify(res.user));
       localStorage.setItem('lingual_token', res.accessToken);
+      localStorage.setItem('linguaflow_token', res.accessToken);
       window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: res.user } }));
     }
   };
@@ -111,7 +114,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setAuthToken(res.accessToken);
       setUser(res.user);
       localStorage.setItem('lingual_user', JSON.stringify(res.user));
+      localStorage.setItem('linguaflow_user', JSON.stringify(res.user));
       localStorage.setItem('lingual_token', res.accessToken);
+      localStorage.setItem('linguaflow_token', res.accessToken);
       window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: res.user } }));
     }
   };
@@ -120,7 +125,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setAuthToken(token);
     setUser(sessionUser);
     localStorage.setItem('lingual_user', JSON.stringify(sessionUser));
+    localStorage.setItem('linguaflow_user', JSON.stringify(sessionUser));
     localStorage.setItem('lingual_token', token);
+    localStorage.setItem('linguaflow_token', token);
     window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: sessionUser } }));
   };
 
@@ -130,7 +137,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setAuthToken(res.accessToken);
       setUser(res.user);
       localStorage.setItem('lingual_user', JSON.stringify(res.user));
+      localStorage.setItem('linguaflow_user', JSON.stringify(res.user));
       localStorage.setItem('lingual_token', res.accessToken);
+      localStorage.setItem('linguaflow_token', res.accessToken);
       window.dispatchEvent(new CustomEvent('lingual_auth_change', { detail: { user: res.user } }));
     }
   };
@@ -138,6 +147,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = () => {
     clearAuthToken();
     localStorage.removeItem('lingual_user');
+    localStorage.removeItem('linguaflow_user');
     localStorage.removeItem('lingual_token');
     localStorage.removeItem('linguaflow_token');
     setUser(null);

@@ -5,6 +5,7 @@ import { readingRepository, userRepository } from '../repositories/index.js';
 import {
   evaluateReadingAttempt,
   updateStreakWithTimezone,
+  getFormattedDateInTimezone,
   ReadingAttempt,
 } from '../../../../packages/domain/src/index.js';
 
@@ -212,7 +213,7 @@ readingRouter.post('/attempts', async (req, res) => {
     userId,
     streakResult.currentStreak,
     streakResult.streakFreezes,
-    new Date().toISOString().split('T')[0],
+    getFormattedDateInTimezone(new Date(), user?.timezone || 'Asia/Ho_Chi_Minh'),
     evaluation.xpAwarded
   );
 

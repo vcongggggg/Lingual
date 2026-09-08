@@ -1,21 +1,71 @@
 import { Router } from 'express';
+import fs from 'fs';
+import path from 'path';
 import { SEED_UNITS } from '../../../../prisma/seed.js';
 import { MOCK_WORD_STATES } from './auth.js';
 import { RealDictionaryService } from '../services/realDictionaryService.js';
+import { BACKEND_MASTER_WORDS } from '../data/universalVocabulary.js';
+
+const currentDir = typeof __dirname !== 'undefined' ? __dirname : path.resolve();
 
 export const dictionaryRouter = Router();
 
-// Flatten all words across all units & lessons into a master dictionary list
-const ALL_VOCABULARY_WORDS = SEED_UNITS.flatMap((unit) =>
-  unit.lessons.flatMap((lesson) =>
-    lesson.words.map((w) => ({
-      ...w,
-      unitTitle: unit.title,
-      lessonTitle: lesson.title,
-      id: `word-${w.targetText.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
-    }))
-  )
-);
+// Load master 25k dictionary
+let MASTER_25K_DICTIONARY: any[] = [];
+try {
+  const candidatePaths = [
+    path.join(currentDir, '../data/masterDictionary25k.json'),
+    path.join(currentDir, '../../src/data/masterDictionary25k.json'),
+    path.join(process.cwd(), 'apps/api/src/data/masterDictionary25k.json'),
+    path.join(process.cwd(), 'src/data/masterDictionary25k.json'),
+  ];
+  for (const p of candidatePaths) {
+    if (fs.existsSync(p)) {
+      MASTER_25K_DICTIONARY = JSON.parse(fs.readFileSync(p, 'utf8'));
+      break;
+    }
+  }
+} catch (e) {
+  console.warn('Could not load masterDictionary25k.json:', e);
+}
+
+// Flatten all words across all units, master words, and 26,500 comprehensive dictionary words
+const ALL_VOCABULARY_WORDS = [
+  ...SEED_UNITS.flatMap((unit) =>
+    unit.lessons.flatMap((lesson) =>
+      lesson.words.map((w) => ({
+        ...w,
+        unitTitle: unit.title,
+        lessonTitle: lesson.title,
+        id: `word-${w.targetText.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+      }))
+    )
+  ),
+  ...BACKEND_MASTER_WORDS.map((bw) => ({
+    targetText: bw.targetText,
+    translation: bw.translation,
+    phonetic: bw.phonetic,
+    partOfSpeech: bw.pos,
+    cefrLevel: bw.cefrLevel,
+    exampleSentence: bw.exampleSentence,
+    exampleTranslation: bw.exampleTranslation,
+    unitTitle: `Chủ đề: ${bw.category}`,
+    lessonTitle: 'Từ Vựng Nâng Cao',
+    id: `bw-${bw.targetText.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+  })),
+  ...MASTER_25K_DICTIONARY.map((dw) => ({
+    targetText: dw.targetText,
+    translation: dw.translation,
+    phonetic: dw.phonetic,
+    partOfSpeech: dw.partOfSpeech,
+    cefrLevel: dw.cefrLevel,
+    exampleSentence: dw.exampleSentence,
+    exampleTranslation: dw.exampleTranslation,
+    unitTitle: `Chủ đề: ${dw.category}`,
+    lessonTitle: 'Từ Điển Toàn Diện',
+    id: dw.id,
+  })),
+];
 
 // In-memory bookmarks store for demo mode
 const MOCK_BOOKMARKS = new Set<string>();
@@ -27,17 +77,31 @@ const MOCK_BOOKMARKS = new Set<string>();
 dictionaryRouter.get('/search', async (req, res) => {
   const { q = '', cefr = '', partOfSpeech = '', page = '1', limit = '20' } = req.query;
 
-  let filtered = [...ALL_VOCABULARY_WORDS];
+  let filtered = ALL_VOCABULARY_WORDS;
   const queryStr = typeof q === 'string' ? q.trim() : '';
 
   if (queryStr) {
     const searchTerm = queryStr.toLowerCase();
-    filtered = filtered.filter(
-      (w) =>
-        w.targetText.toLowerCase().includes(searchTerm) ||
-        w.translation.toLowerCase().includes(searchTerm) ||
-        (w.exampleSentence && w.exampleSentence.toLowerCase().includes(searchTerm))
-    );
+    const exactMatches: any[] = [];
+    const prefixMatches: any[] = [];
+    const includeMatches: any[] = [];
+    const meaningMatches: any[] = [];
+
+    for (let i = 0; i < filtered.length; i++) {
+      const w = filtered[i];
+      const lower = w.targetText.toLowerCase();
+      if (lower === searchTerm) {
+        exactMatches.push(w);
+      } else if (lower.startsWith(searchTerm)) {
+        prefixMatches.push(w);
+      } else if (lower.includes(searchTerm)) {
+        includeMatches.push(w);
+      } else if (w.translation && w.translation.toLowerCase().includes(searchTerm)) {
+        meaningMatches.push(w);
+      }
+    }
+
+    filtered = [...exactMatches, ...prefixMatches, ...includeMatches, ...meaningMatches];
 
     // If local matches are few and query is a valid English word, fetch from live external dictionary
     if (filtered.length < 3 && /^[a-zA-Z\s-]+$/.test(queryStr)) {
@@ -123,75 +187,37 @@ dictionaryRouter.get('/lookup/:word', async (req, res) => {
 });
 
 /**
- * POST /api/v1/dictionary/bookmark
- * Body: { wordId: string }
+ * POST /api/v1/dictionary/bookmark/:wordId
+ * Toggle bookmark for a word
  */
-dictionaryRouter.post('/bookmark', (req, res) => {
-  const { wordId } = req.body;
+dictionaryRouter.post('/bookmark/:wordId', (req, res) => {
+  const { wordId } = req.params;
   if (!wordId) {
-    return res.status(400).json({ error: 'wordId là bắt buộc' });
+    return res.status(400).json({ error: 'wordId is required' });
   }
 
-  if (MOCK_BOOKMARKS.has(wordId)) {
+  const isBookmarked = MOCK_BOOKMARKS.has(wordId);
+  if (isBookmarked) {
     MOCK_BOOKMARKS.delete(wordId);
-    return res.json({ bookmarked: false, message: 'Đã bỏ lưu từ vựng' });
   } else {
     MOCK_BOOKMARKS.add(wordId);
-    return res.json({ bookmarked: true, message: 'Đã lưu từ vựng vào danh sách yêu thích' });
   }
+
+  return res.json({
+    wordId,
+    bookmarked: !isBookmarked,
+    totalBookmarks: MOCK_BOOKMARKS.size,
+  });
 });
 
 /**
- * POST /api/v1/dictionary/add-to-srs
- * Body: { wordId: string, userId?: string }
+ * GET /api/v1/dictionary/bookmarks
+ * Get list of bookmarked words
  */
-dictionaryRouter.post('/add-to-srs', (req, res) => {
-  const { wordId, userId = 'demo-user-id-001' } = req.body;
-  if (!wordId) {
-    return res.status(400).json({ error: 'wordId là bắt buộc' });
-  }
-
-  let wordObj = ALL_VOCABULARY_WORDS.find((w) => w.id === wordId);
-
-  // If dynamic ext- word
-  if (!wordObj && wordId.startsWith('ext-')) {
-    wordObj = {
-      id: wordId,
-      targetText: wordId.replace('ext-', '').split('-')[0],
-      translation: 'Từ tra cứu trực tuyến',
-      phonetic: '',
-      partOfSpeech: 'noun',
-      cefrLevel: 'B2',
-      exampleSentence: 'Tra cứu từ điển mở rộng.',
-      unitTitle: 'Từ Điển Mở Rộng',
-      lessonTitle: 'Tra Cứu',
-    } as any;
-  }
-
-  if (!wordObj) {
-    return res.status(404).json({ error: 'Không tìm thấy từ vựng' });
-  }
-
-  const existingStateIndex = MOCK_WORD_STATES.findIndex((ws) => ws.wordId === wordId && ws.userId === userId);
-
-  if (existingStateIndex >= 0) {
-    return res.json({ message: 'Từ vựng này đã có trong bộ thẻ SRS của bạn', added: false });
-  }
-
-  const newWordState = {
-    id: `ws-custom-${Date.now()}`,
-    userId,
-    wordId,
-    repetition: 0,
-    interval: 1,
-    efactor: 2.5,
-    dueDate: new Date().toISOString(),
-    quality: 0,
-    updatedAt: new Date().toISOString(),
-    word: wordObj,
-  };
-
-  MOCK_WORD_STATES.push(newWordState);
-
-  return res.json({ message: 'Đã thêm từ vựng vào bộ thẻ ôn tập SRS thành công!', added: true });
+dictionaryRouter.get('/bookmarks', (req, res) => {
+  const bookmarkedWords = ALL_VOCABULARY_WORDS.filter((w) => MOCK_BOOKMARKS.has(w.id));
+  return res.json({
+    bookmarks: bookmarkedWords,
+    total: bookmarkedWords.length,
+  });
 });

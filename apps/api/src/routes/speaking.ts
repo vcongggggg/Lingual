@@ -7,10 +7,11 @@ import {
   evaluateSpeakingSubmission,
   calculateSpeakingXP,
   updateStreakWithTimezone,
+  getFormattedDateInTimezone,
   mapSpeakingPerformanceToSRSQuality,
 } from '@linguaflow/domain';
 import { MASTER_SPEAKING_PROMPTS } from './speakingData.js';
-import { speakingRepository } from '../repositories/index.js';
+import { speakingRepository, userRepository } from '../repositories/index.js';
 
 export const speakingRouter = Router();
 
@@ -187,13 +188,24 @@ speakingRouter.post('/attempts', async (req, res) => {
   dailyXPTracker.set(todayKey, currentDailyXP + allowableXP);
 
   // Authoritative Streak update
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  const streakUpdate = updateStreakWithTimezone({
-    currentStreak: 5,
-    streakFreezes: 2,
-    lastActiveDate: yesterday.toISOString().split('T')[0],
-  });
+  const userProfile = (await userRepository.findById(user.id)) || (await userRepository.findById('demo-user-id-001'));
+  const streakUpdate = updateStreakWithTimezone(
+    {
+      currentStreak: userProfile?.currentStreak || 0,
+      streakFreezes: userProfile?.streakFreezes || 1,
+      lastActiveDate: userProfile?.lastActiveDate || null,
+    },
+    new Date(),
+    userProfile?.timezone || 'Asia/Ho_Chi_Minh'
+  );
+
+  await userRepository.updateStreakAndXP(
+    user.id,
+    streakUpdate.currentStreak,
+    streakUpdate.streakFreezes,
+    getFormattedDateInTimezone(new Date(), userProfile?.timezone || 'Asia/Ho_Chi_Minh'),
+    allowableXP
+  );
 
   const attemptId = `sp-att-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
   const attemptRecord: UserSpeakingAttempt = {

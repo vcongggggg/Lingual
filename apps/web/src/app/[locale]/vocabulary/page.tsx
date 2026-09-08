@@ -41,6 +41,7 @@ import {
 import { Button } from '@linguaflow/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { arcadeAudio } from '@/lib/arcadeAudio';
+import { soundFx } from '@/lib/soundFx';
 import { pronunciationService } from '@/lib/audio/pronunciationService';
 
 import {
@@ -120,9 +121,16 @@ export default function SmartVocabularyPage() {
   const currentPracticeWord = currentWordsList[activeWordIdx % currentWordsList.length];
 
   const handleSRSResponse = (rating: 'again' | 'good' | 'easy') => {
-    if (rating === 'again') arcadeAudio.playBuzzer();
-    else if (rating === 'good') arcadeAudio.playLaser();
-    else arcadeAudio.playCoin();
+    if (rating === 'again') {
+      soundFx.playError();
+      arcadeAudio.playBuzzer();
+    } else if (rating === 'good') {
+      soundFx.playClick();
+      arcadeAudio.playLaser();
+    } else {
+      soundFx.playSuccess();
+      arcadeAudio.playCoin();
+    }
 
     if (currentPracticeWord) {
       setLearnedMap((prev) => ({ ...prev, [currentPracticeWord.id]: rating }));
@@ -132,6 +140,7 @@ export default function SmartVocabularyPage() {
     if (activeWordIdx + 1 < currentWordsList.length) {
       setActiveWordIdx((prev) => prev + 1);
     } else {
+      soundFx.playFanfare();
       arcadeAudio.playVictoryFanfare();
       setActiveWordIdx(0);
     }
@@ -143,8 +152,8 @@ export default function SmartVocabularyPage() {
       if (!isFlashcardStudioOpen) return;
       if (e.code === 'Space') {
         e.preventDefault();
+        soundFx.playWoosh();
         setIsFlipped((prev) => !prev);
-        arcadeAudio.playLaser();
       } else if (e.key === '1') {
         handleSRSResponse('again');
       } else if (e.key === '2') {
@@ -152,6 +161,7 @@ export default function SmartVocabularyPage() {
       } else if (e.key === '3') {
         handleSRSResponse('easy');
       } else if (e.key === 'Escape') {
+        soundFx.playClick();
         setIsFlashcardStudioOpen(false);
       }
     };

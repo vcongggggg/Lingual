@@ -47,6 +47,7 @@ import {
 import MascotPopup from '@/components/MascotPopup';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 import { WelcomeLoginModal } from '@/components/dashboard/WelcomeLoginModal';
+import { soundFx } from '@/lib/soundFx';
 
 export default function DashboardPage() {
   const params = useParams();
@@ -261,20 +262,22 @@ export default function DashboardPage() {
             </span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
             {quickAccessItems.map((item, idx) => (
               <Link
                 key={idx}
                 href={item.href}
-                className={`p-4 rounded-3xl bg-gradient-to-b ${item.bgGlow} border border-slate-800/80 ${item.borderColor} transition-all duration-200 group shadow-lg flex flex-col justify-between h-28`}
+                onClick={() => soundFx.playClick()}
+                className={`p-4 rounded-3xl bg-gradient-to-b ${item.bgGlow} border border-slate-800/80 ${item.borderColor} transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-teal-500/10 hover:-translate-y-1 flex flex-col justify-between h-28 relative overflow-hidden`}
               >
-                <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-sm group-hover:scale-110 transition-transform">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl pointer-events-none group-hover:scale-150 transition-transform duration-500" />
+                <div className="flex items-center justify-between relative z-10">
+                  <div className="p-2 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-sm group-hover:scale-110 group-hover:border-teal-500/40 transition-all duration-300">
                     {item.icon}
                   </div>
-                  <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
                 </div>
-                <div>
+                <div className="relative z-10">
                   <span className="text-sm font-extrabold text-white group-hover:text-teal-300 transition-colors block">
                     {item.title}
                   </span>
@@ -291,15 +294,21 @@ export default function DashboardPage() {
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT 8 COLUMNS: MISSION HERO & ROADMAP */}
           <motion.div variants={itemVariants} className="relative z-10 lg:col-span-8 space-y-8">
-            {/* HERO COMMAND MISSION CARD */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-teal-950/40 border border-teal-500/30 p-6 sm:p-8 backdrop-blur-2xl shadow-2xl space-y-5">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="space-y-1.5 max-w-xl">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-extrabold uppercase tracking-wider">
-                    <Target className="w-3.5 h-3.5 text-teal-400" />
-                    <span>{isVi ? 'Nhiệm Vụ Trọng Tâm Hôm Nay' : "Today's Core Mission"}</span>
+            {/* HERO COMMAND MISSION CARD WITH BREATHING AURORA BORDER */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-teal-950/50 border border-teal-500/40 p-6 sm:p-8 backdrop-blur-2xl shadow-2xl space-y-5 before:absolute before:inset-0 before:bg-gradient-to-r before:from-teal-500/10 before:via-indigo-500/10 before:to-emerald-500/10 before:animate-pulse before:pointer-events-none">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
+                <div className="space-y-2 max-w-xl">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-extrabold uppercase tracking-wider">
+                      <Target className="w-3.5 h-3.5 text-teal-400" />
+                      <span>{isVi ? 'Nhiệm Vụ Trọng Tâm Hôm Nay' : "Today's Core Mission"}</span>
+                    </div>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 text-amber-300 text-xs font-black shadow-lg shadow-amber-500/10">
+                      <span className="text-sm flame-flutter inline-block">🔥</span>
+                      <span>5 {isVi ? 'Ngày Chuỗi' : 'Days Streak'}</span>
+                    </div>
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
                     {nextLesson ? `${nextLesson.unit.title} • ${nextLesson.lesson.title}` : (isVi ? 'Tiếp tục lộ trình chinh phục tiếng Anh' : 'Continue Your English Mastery')}
                   </h1>
                   <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
@@ -310,11 +319,15 @@ export default function DashboardPage() {
                 </div>
 
                 {nextLesson && (
-                  <Link href={`/${locale}/learn/${nextLesson.lesson.order}`} className="shrink-0 w-full sm:w-auto">
+                  <Link
+                    href={`/${locale}/learn/${nextLesson.lesson.order}`}
+                    onClick={() => soundFx.playWoosh()}
+                    className="shrink-0 w-full sm:w-auto"
+                  >
                     <Button
                       variant="primary"
                       size="lg"
-                      className="w-full sm:w-auto shadow-xl shadow-teal-500/20"
+                      className="w-full sm:w-auto shadow-xl shadow-teal-500/25 hover:shadow-teal-500/40 transition-shadow"
                       icon={<Play className="w-5 h-5 fill-slate-950" />}
                     >
                       {isVi ? 'Bắt Đầu Học Ngay' : 'Resume Learning'}
@@ -324,10 +337,11 @@ export default function DashboardPage() {
               </div>
 
               {/* 3 PRIORITIZED DAILY ACTION TILES */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-800/80">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-800/80 relative z-10">
                 <Link
                   href={nextLesson ? `/${locale}/learn/${nextLesson.lesson.order}` : '#'}
-                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-teal-400/40 transition-all flex items-center justify-between group"
+                  onClick={() => soundFx.playClick()}
+                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/90 border border-slate-800 hover:border-teal-400/50 hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-200 flex items-center justify-between group"
                 >
                   <div className="space-y-0.5">
                     <span className="text-[11px] font-bold text-teal-400 uppercase tracking-wider block">1. Bài Học Mới</span>
@@ -335,12 +349,13 @@ export default function DashboardPage() {
                       {nextLesson ? nextLesson.lesson.title : 'Hoàn thành bài'}
                     </span>
                   </div>
-                  <Play className="w-4 h-4 text-teal-400 shrink-0" />
+                  <Play className="w-4 h-4 text-teal-400 shrink-0 group-hover:scale-110 transition-transform" />
                 </Link>
 
                 <Link
                   href={`/${locale}/srs`}
-                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-amber-400/40 transition-all flex items-center justify-between group"
+                  onClick={() => soundFx.playClick()}
+                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/90 border border-slate-800 hover:border-amber-400/50 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-200 flex items-center justify-between group"
                 >
                   <div className="space-y-0.5">
                     <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">2. Thẻ Nhớ Thông Minh</span>
@@ -348,12 +363,13 @@ export default function DashboardPage() {
                       {dueSrsCount} từ đến hạn ôn
                     </span>
                   </div>
-                  <Brain className="w-4 h-4 text-amber-400 shrink-0" />
+                  <Brain className="w-4 h-4 text-amber-400 shrink-0 group-hover:scale-110 transition-transform" />
                 </Link>
 
                 <Link
                   href={`/${locale}/games`}
-                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-purple-400/40 transition-all flex items-center justify-between group"
+                  onClick={() => soundFx.playClick()}
+                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/90 border border-slate-800 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-200 flex items-center justify-between group"
                 >
                   <div className="space-y-0.5">
                     <span className="text-[11px] font-bold text-purple-400 uppercase tracking-wider block">3. Thử Thách Game</span>
@@ -361,7 +377,7 @@ export default function DashboardPage() {
                       Word Sprint x2 XP
                     </span>
                   </div>
-                  <Trophy className="w-4 h-4 text-purple-400 shrink-0" />
+                  <Trophy className="w-4 h-4 text-purple-400 shrink-0 group-hover:scale-110 transition-transform" />
                 </Link>
               </div>
             </div>
@@ -498,42 +514,61 @@ export default function DashboardPage() {
             </MotionCard>
 
             {/* Leaderboard Bento Card (Top Người Học) */}
-            <Card glow="teal" className="space-y-3.5">
+            <Card glow="teal" className="space-y-3.5 border-teal-500/30">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400 flex items-center gap-1.5">
-                  <Trophy className="w-3.5 h-3.5" />
+                  <Trophy className="w-3.5 h-3.5 text-amber-400" />
                   <span>{isVi ? 'Bảng Vàng Tuần' : 'Weekly Leaderboard'}</span>
                 </span>
-                <span className="text-[10px] font-bold text-slate-400 bg-slate-900 px-2 py-0.5 rounded-lg border border-slate-800">
-                  Top 5
-                </span>
+                <Link
+                  href={`/${locale}/community/leaderboard`}
+                  onClick={() => soundFx.playClick()}
+                  className="text-[10px] font-extrabold text-teal-400 hover:text-teal-300 bg-teal-500/10 hover:bg-teal-500/20 px-2.5 py-0.5 rounded-lg border border-teal-500/20 transition-all flex items-center gap-1"
+                >
+                  <span>{isVi ? 'Xem tất cả' : 'View all'}</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
 
               <div className="space-y-2">
-                {leaderboard.map((user, i) => (
-                  <div
-                    key={i}
-                    className={`flex items-center justify-between p-2.5 rounded-2xl border transition-all ${
-                      user.isCurrent
-                        ? 'bg-teal-500/15 border-teal-500/40 text-teal-200'
-                        : 'bg-slate-950/60 border-slate-850 text-slate-300'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-sm font-black w-5 text-center">{user.medal}</span>
-                      <div className="w-7 h-7 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-black text-[11px] text-teal-300">
-                        {user.name.charAt(0)}
+                {leaderboard.map((user, i) => {
+                  const medalRankStyles = [
+                    'bg-gradient-to-r from-amber-500/20 via-yellow-500/10 to-slate-950/80 border-amber-400/50 shadow-md shadow-amber-500/10',
+                    'bg-gradient-to-r from-slate-400/20 via-slate-300/10 to-slate-950/80 border-slate-300/40 shadow-sm',
+                    'bg-gradient-to-r from-amber-800/25 via-orange-800/10 to-slate-950/80 border-amber-700/40 shadow-sm',
+                  ];
+                  const rankStyle = i < 3 ? medalRankStyles[i] : 'bg-slate-950/60 border-slate-800 text-slate-300';
+
+                  return (
+                    <div
+                      key={i}
+                      className={`flex items-center justify-between p-2.5 rounded-2xl border transition-all ${
+                        user.isCurrent
+                          ? 'bg-teal-500/20 border-teal-400/60 text-teal-200 ring-1 ring-teal-400/30'
+                          : rankStyle
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-base font-black w-6 text-center">{user.medal}</span>
+                        <div className={`w-7 h-7 rounded-xl border flex items-center justify-center font-black text-[11px] ${
+                          i === 0 ? 'bg-amber-500/20 border-amber-400 text-amber-300' :
+                          i === 1 ? 'bg-slate-500/20 border-slate-300 text-slate-200' :
+                          i === 2 ? 'bg-amber-800/30 border-amber-600 text-amber-400' :
+                          'bg-slate-800 border-slate-700 text-teal-300'
+                        }`}>
+                          {user.name.charAt(0)}
+                        </div>
+                        <div>
+                          <span className="text-xs font-black block truncate max-w-[110px] text-white">{user.name}</span>
+                          <span className="text-[9px] text-slate-400 font-mono">{user.words}</span>
+                        </div>
                       </div>
-                      <div>
-                        <span className="text-xs font-bold block truncate max-w-[110px]">{user.name}</span>
-                        <span className="text-[9px] text-slate-400 font-mono">{user.words}</span>
-                      </div>
+                      <span className="text-xs font-black text-amber-400 font-mono bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
+                        {user.xp} XP
+                      </span>
                     </div>
-                    <span className="text-xs font-extrabold text-amber-400 font-mono">
-                      {user.xp} XP
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </Card>
 

@@ -124,20 +124,30 @@ export function updateStreakWithTimezone(
       streakMaintained: true,
       freezeUsed: false,
     };
-  } else if (diffDays === 2 && state.streakFreezes > 0) {
-    // Missed exactly 1 day, but user has Streak Freeze!
-    return {
-      currentStreak: state.currentStreak + 1,
-      streakFreezes: state.streakFreezes - 1,
-      streakMaintained: true,
-      freezeUsed: true,
-    };
+  } else if (diffDays > 1) {
+    const missedDays = diffDays - 1;
+    if (state.streakFreezes >= missedDays) {
+      // Missed days are protected by available streak freezes!
+      return {
+        currentStreak: state.currentStreak + 1,
+        streakFreezes: state.streakFreezes - missedDays,
+        streakMaintained: true,
+        freezeUsed: true,
+      };
+    } else {
+      // Streak broken, reset to 1
+      return {
+        currentStreak: 1,
+        streakFreezes: state.streakFreezes,
+        streakMaintained: false,
+        freezeUsed: false,
+      };
+    }
   } else {
-    // Streak broken, reset to 1
     return {
-      currentStreak: 1,
+      currentStreak: state.currentStreak,
       streakFreezes: state.streakFreezes,
-      streakMaintained: false,
+      streakMaintained: true,
       freezeUsed: false,
     };
   }

@@ -11,18 +11,22 @@ interface FetchOptions extends RequestInit {
 
 function getAuthToken(): string | null {
   if (typeof window === 'undefined') return null;
-  return localStorage.getItem('linguaflow_token');
+  return localStorage.getItem('linguaflow_token') || localStorage.getItem('lingual_token');
 }
 
 export function setAuthToken(token: string) {
   if (typeof window !== 'undefined') {
     localStorage.setItem('linguaflow_token', token);
+    localStorage.setItem('lingual_token', token);
   }
 }
 
 export function clearAuthToken() {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('linguaflow_token');
+    localStorage.removeItem('lingual_token');
+    localStorage.removeItem('linguaflow_user');
+    localStorage.removeItem('lingual_user');
   }
 }
 
@@ -106,17 +110,31 @@ export const srsApi = {
 // ============================================================================
 
 export const gamesApi = {
-  getData: (gameType: string) => apiFetch(`/games/data/${gameType}`),
+  getData: (gameType: string, params?: { topic?: string; cefr?: string }) => {
+    const query = new URLSearchParams();
+    if (params?.topic) query.set('topic', params.topic);
+    if (params?.cefr) query.set('cefr', params.cefr);
+    const qs = query.toString() ? `?${query.toString()}` : '';
+    return apiFetch(`/games/data/${gameType}${qs}`);
+  },
   startAttempt: (gameType: string) =>
     apiFetch('/curriculum/attempts/start', {
       method: 'POST',
       body: JSON.stringify({ sourceType: 'game', sourceId: gameType }),
     }),
-  submitScore: (data: { attemptId: string; gameType: string; userAnswers: any[]; durationSeconds: number }) =>
-    apiFetch('/games/submit', {
+  submitScore: (data: { attemptId: string; gameType: string; userAnswers: any[]; durationSeconds: number; userId?: string }) => {
+    let resolvedUserId = data.userId;
+    if (!resolvedUserId && typeof window !== 'undefined') {
+      try {
+        const u = localStorage.getItem('linguaflow_user') || localStorage.getItem('lingual_user');
+        if (u) resolvedUserId = JSON.parse(u).id;
+      } catch {}
+    }
+    return apiFetch('/games/submit', {
       method: 'POST',
-      body: JSON.stringify(data),
-    }),
+      body: JSON.stringify({ ...data, userId: resolvedUserId }),
+    });
+  },
   getHistory: () => apiFetch('/games/history'),
   getLeaderboard: () => apiFetch('/games/leaderboard'),
 };
@@ -326,6 +344,7 @@ export const ieltsApi = {
   getRoadmap: () => apiFetch('/ielts/roadmap'),
   getPracticeQuestions: (skill: string) => apiFetch(`/ielts/practice/${skill}`),
   getQuestionDetail: (id: string) => apiFetch(`/ielts/practice/question/${id}`),
+  getMockTestQuestions: () => apiFetch('/ielts/mock-test/questions'),
   submitMockTest: (data: { userId?: string; type?: string; durationSec?: number; answers: Record<string, string> }) =>
     apiFetch('/ielts/mock-test/submit', {
       method: 'POST',

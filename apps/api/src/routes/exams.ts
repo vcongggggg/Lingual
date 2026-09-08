@@ -7,6 +7,7 @@ import {
   sanitizePublicExam,
   evaluateExamAttempt,
   updateStreakWithTimezone,
+  getFormattedDateInTimezone,
   ExamAttempt,
 } from '../../../../packages/domain/src/index.js';
 
@@ -246,7 +247,7 @@ examsRouter.post('/attempts/:attemptId/submit', async (req, res) => {
     attempt.userId,
     streakResult.currentStreak,
     streakResult.streakFreezes,
-    new Date().toISOString().split('T')[0],
+    getFormattedDateInTimezone(new Date(), user?.timezone || 'Asia/Ho_Chi_Minh'),
     evaluationResult.xpAwarded
   );
 

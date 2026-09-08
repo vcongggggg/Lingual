@@ -30,11 +30,15 @@ import {
   ChevronDown,
   Layers,
   Award,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 import LingLingChatbot from '@/components/LingLingChatbot';
 import MascotPopup from '@/components/MascotPopup';
+import FloatingMascotUniverse from '@/components/FloatingMascotUniverse';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 import { AuthProvider } from '../../contexts/AuthContext';
+import { soundFx } from '@/lib/soundFx';
 
 export default function LocaleLayout({ children }: { children: React.ReactNode }) {
   const params = useParams();
@@ -43,10 +47,15 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 
   const [userXP, setUserXP] = useState(150);
   const [streakDays, setStreakDays] = useState(3);
+  const [isMuted, setIsMuted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profileDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMuted(soundFx.getMuted());
+  }, []);
 
   const [popupState, setPopupState] = useState<{
     show: boolean;
@@ -288,7 +297,14 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 
   return (
     <AuthProvider>
-      <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-body relative z-10">
+      <div className="min-h-screen flex flex-col text-slate-100 font-body relative overflow-x-clip bg-[#070b14]">
+        {/* Aurora Mesh Ambient Glow */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute -top-40 left-1/4 w-[650px] h-[650px] rounded-full bg-indigo-600/10 blur-[150px] animate-aurora" />
+          <div className="absolute top-1/3 -right-20 w-[550px] h-[550px] rounded-full bg-emerald-600/10 blur-[140px] animate-aurora" style={{ animationDelay: '-5s' }} />
+          <div className="absolute -bottom-20 left-1/3 w-[600px] h-[600px] rounded-full bg-amber-600/10 blur-[160px] animate-aurora" style={{ animationDelay: '-2s' }} />
+        </div>
+        <FloatingMascotUniverse />
         {/* Navigation Header */}
         <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/85 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -499,6 +515,25 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
                 <>
                   <StreakBadge streak={streakDays} />
                   <XPBadge xp={userXP} />
+
+                  {/* Sound FX Toggle */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const muted = soundFx.toggleMute();
+                      setIsMuted(muted);
+                      if (!muted) soundFx.playClick();
+                    }}
+                    className={`px-2.5 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm ${
+                      isMuted
+                        ? 'bg-slate-900/80 border-slate-800 text-slate-500 hover:text-slate-300'
+                        : 'bg-teal-500/10 border-teal-500/30 text-teal-300 hover:bg-teal-500/20'
+                    }`}
+                    title={isMuted ? 'Bật âm thanh hiệu ứng (Unmute)' : 'Tắt âm thanh (Mute)'}
+                    aria-label="Toggle Sound Effects"
+                  >
+                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-teal-400 animate-pulse" />}
+                  </button>
 
                   {/* Locale Switcher */}
                   <Link

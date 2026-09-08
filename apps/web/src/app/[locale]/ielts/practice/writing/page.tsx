@@ -9,6 +9,7 @@ import { ieltsApi } from '@/lib/api';
 export default function IeltsWritingPracticePage() {
   const routeParams = useParams();
   const locale = (routeParams?.locale as string) || 'vi';
+  const [questionsList, setQuestionsList] = useState<any[]>([]);
   const [question, setQuestion] = useState<any>(null);
   const [essayText, setEssayText] = useState('');
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ export default function IeltsWritingPracticePage() {
       try {
         const res = await ieltsApi.getPracticeQuestions('writing');
         if (res.success && res.questions && res.questions.length > 0) {
+          setQuestionsList(res.questions);
           const detailRes = await ieltsApi.getQuestionDetail(res.questions[0].id);
           if (detailRes.success) {
             setQuestion(detailRes.question);
@@ -33,6 +35,22 @@ export default function IeltsWritingPracticePage() {
     }
     loadData();
   }, []);
+
+  const handleSelectQuestion = async (qId: string) => {
+    setLoading(true);
+    setEssayText('');
+    setResult(null);
+    try {
+      const detailRes = await ieltsApi.getQuestionDetail(qId);
+      if (detailRes.success) {
+        setQuestion(detailRes.question);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const words = essayText.trim().split(/\s+/).filter(Boolean);
   const wordCount = words.length;
@@ -60,7 +78,7 @@ export default function IeltsWritingPracticePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-4 sm:p-8 space-y-6 max-w-5xl mx-auto">
       {/* Top Navbar */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-4">
         <div className="flex items-center gap-3">
           <Link
             href={`/${locale}/ielts`}
@@ -76,8 +94,21 @@ export default function IeltsWritingPracticePage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 text-xs">
-          <span className="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold uppercase">
+        <div className="flex items-center gap-2 flex-wrap">
+          {questionsList.map((q, idx) => (
+            <button
+              key={q.id}
+              onClick={() => handleSelectQuestion(q.id)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                question?.id === q.id
+                  ? 'bg-amber-500 text-slate-950 font-bold shadow-lg shadow-amber-500/30'
+                  : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
+              }`}
+            >
+              {q.part === 'task_1' ? `Task 1 (#${idx + 1})` : `Task 2 (#${idx + 1})`}
+            </button>
+          ))}
+          <span className="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold uppercase text-xs">
             {question?.part || 'Task 2'}
           </span>
         </div>

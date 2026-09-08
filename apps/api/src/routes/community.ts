@@ -761,10 +761,17 @@ communityRouter.post('/notes/:noteId/reactions', (req, res) => {
 
   if (existingIdx >= 0) {
     const prevType = MOCK_NOTE_REACTIONS[existingIdx].reactionType;
-    MOCK_NOTE_REACTIONS.splice(existingIdx, 1);
-    note.reactions[prevType] = Math.max(0, (note.reactions[prevType] || 1) - 1);
-    note.reactionCount = Math.max(0, note.reactionCount - 1);
-    return res.json({ success: true, activeReaction: null, reactions: note.reactions, reactionCount: note.reactionCount });
+    if (prevType === reactionType) {
+      MOCK_NOTE_REACTIONS.splice(existingIdx, 1);
+      note.reactions[prevType] = Math.max(0, (note.reactions[prevType] || 1) - 1);
+      note.reactionCount = Math.max(0, note.reactionCount - 1);
+      return res.json({ success: true, activeReaction: null, reactions: note.reactions, reactionCount: note.reactionCount });
+    } else {
+      MOCK_NOTE_REACTIONS[existingIdx].reactionType = reactionType;
+      note.reactions[prevType] = Math.max(0, (note.reactions[prevType] || 1) - 1);
+      note.reactions[reactionType] = (note.reactions[reactionType] || 0) + 1;
+      return res.json({ success: true, activeReaction: reactionType, reactions: note.reactions, reactionCount: note.reactionCount });
+    }
   }
 
   MOCK_NOTE_REACTIONS.push({ noteId: note.id, userId, reactionType, createdAt: new Date().toISOString() });
@@ -814,14 +821,16 @@ communityRouter.get('/leaderboard', (req, res) => {
   const period = ((req.query.period as string) || 'weekly') as 'weekly' | 'monthly' | 'all_time';
   const category = ((req.query.category as string) || 'xp') as 'xp' | 'vocabulary' | 'reading' | 'writing' | 'listening' | 'exams';
 
+  const periodMultiplier = period === 'weekly' ? 0.22 : period === 'monthly' ? 0.55 : 1.0;
+
   const unrankedEntries = MOCK_PROFILES.map((p) => {
     const metrics = {
-      xp: p.totalXP,
-      vocabCount: p.vocabularyLearned,
-      readingCount: p.readingCompleted,
-      writingCount: p.writingSubmissions,
-      listeningCount: p.listeningSessions,
-      examsScore: p.examsCompleted * 100,
+      xp: Math.round(p.totalXP * periodMultiplier),
+      vocabCount: Math.round(p.vocabularyLearned * periodMultiplier),
+      readingCount: Math.round(p.readingCompleted * periodMultiplier),
+      writingCount: Math.round(p.writingSubmissions * periodMultiplier),
+      listeningCount: Math.round(p.listeningSessions * periodMultiplier),
+      examsScore: Math.round(p.examsCompleted * 100 * periodMultiplier),
     };
     const score = calculateLeaderboardScore(category, metrics);
 
