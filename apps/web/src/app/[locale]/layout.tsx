@@ -298,12 +298,7 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
   return (
     <AuthProvider>
       <div className="min-h-screen flex flex-col text-slate-100 font-body relative overflow-x-clip bg-[#070b14]">
-        {/* Aurora Mesh Ambient Glow */}
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-          <div className="absolute -top-40 left-1/4 w-[650px] h-[650px] rounded-full bg-indigo-600/10 blur-[150px] animate-aurora" />
-          <div className="absolute top-1/3 -right-20 w-[550px] h-[550px] rounded-full bg-emerald-600/10 blur-[140px] animate-aurora" style={{ animationDelay: '-5s' }} />
-          <div className="absolute -bottom-20 left-1/3 w-[600px] h-[600px] rounded-full bg-amber-600/10 blur-[160px] animate-aurora" style={{ animationDelay: '-2s' }} />
-        </div>
+        {/* Unified Cosmic & Ambient Mascot Background */}
         <FloatingMascotUniverse />
         {/* Navigation Header */}
         <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/85 backdrop-blur-xl">
@@ -887,8 +882,8 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
           )}
         </AnimatePresence>
 
-        {/* Main Content Area */}
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 pb-24 md:pb-8 pointer-events-none [&_button]:pointer-events-auto [&_a]:pointer-events-auto [&_input]:pointer-events-auto [&_textarea]:pointer-events-auto [&_.pointer-events-auto]:pointer-events-auto">
+        {/* Main Content Area - Clean Stacking Context & Direct Pointer Events */}
+        <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 pb-24 md:pb-8 pointer-events-auto">
           {children}
         </main>
 

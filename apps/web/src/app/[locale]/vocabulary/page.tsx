@@ -170,7 +170,7 @@ export default function SmartVocabularyPage() {
   }, [isFlashcardStudioOpen, activeWordIdx, currentWordsList, currentPracticeWord]);
 
   return (
-    <main className="min-h-screen pb-24 pt-4 px-4 sm:px-6 max-w-7xl mx-auto space-y-6 pointer-events-auto text-slate-100 font-sans">
+    <div className="min-h-screen pb-24 pt-4 px-4 sm:px-6 max-w-7xl mx-auto space-y-6 text-slate-100 font-sans">
       {/* ===================================================================== */}
       {/* LEVEL 1: TOPIC CATALOG (DANH SÁCH BỘ TỪ VỰNG THEO CHỦ ĐỀ) */}
       {/* ===================================================================== */}
@@ -668,6 +668,6 @@ export default function SmartVocabularyPage() {
           </div>
         )}
       </AnimatePresence>
-    </main>
+    </div>
   );
 }
