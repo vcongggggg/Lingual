@@ -164,8 +164,14 @@ export const Button: React.FC<ButtonProps> = ({
 
 export const XPBadge: React.FC<{ xp: number }> = ({ xp }) => {
   return (
-    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold shadow-sm">
-      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold shadow-sm transition-transform hover:scale-105">
+      <motion.div
+        animate={{ scale: [1, 1.18, 1], rotate: [0, 15, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        className="flex items-center justify-center"
+      >
+        <Sparkles className="w-3.5 h-3.5 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
+      </motion.div>
       <span>{xp} XP</span>
     </div>
   );
@@ -173,8 +179,14 @@ export const XPBadge: React.FC<{ xp: number }> = ({ xp }) => {
 
 export const StreakBadge: React.FC<{ streak: number }> = ({ streak }) => {
   return (
-    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold shadow-sm">
-      <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold shadow-sm transition-transform hover:scale-105">
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], rotate: [-4, 4, -4] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+        className="flex items-center justify-center"
+      >
+        <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500 drop-shadow-[0_0_8px_rgba(245,158,11,0.7)]" />
+      </motion.div>
       <span>{streak} Ngày</span>
     </div>
   );
