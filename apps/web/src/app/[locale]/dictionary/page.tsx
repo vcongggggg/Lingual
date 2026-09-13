@@ -15,7 +15,7 @@ export interface WordItem {
   exampleSentence?: string;
   exampleTranslation?: string;
   cefrLevel: string;
-  partOfSpeech: string;
+  partOfSpeech?: string;
   unitTitle?: string;
   isBookmarked?: boolean;
   inSrsDeck?: boolean;

@@ -8,7 +8,8 @@
     "build": "pnpm --recursive --filter \"./apps/*\" build",
     "lint": "pnpm --recursive --filter \"./apps/*\" lint",
     "test": "pnpm --recursive test",
-    "pentest": "pnpm --filter @linguaflow/api exec tsx ../../scripts/pentest_simulator.ts"
+    "pentest": "pnpm --filter @linguaflow/api exec tsx ../../scripts/pentest_simulator.ts",
+    "seed:comprehensive": "pnpm --filter @linguaflow/api exec tsx ../../prisma/seed-comprehensive.ts"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",

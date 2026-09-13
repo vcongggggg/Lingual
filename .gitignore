@@ -39,3 +39,6 @@ scratch/
 playwright-report/
 test-results/
 
+# Python cache
+__pycache__/
+*.pyc

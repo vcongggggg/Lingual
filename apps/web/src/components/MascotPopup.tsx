@@ -13,7 +13,15 @@ export interface MascotPopupProps {
   message?: string;
   autoDismissMs?: number;
   onClose?: () => void;
+  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
 }
+
+const positionClasses: Record<string, string> = {
+  'top-right': 'top-20 right-4 sm:right-6',
+  'top-left': 'top-20 left-4 sm:left-6',
+  'bottom-right': 'bottom-24 right-4 sm:right-6',
+  'bottom-left': 'bottom-6 left-4 sm:left-6',
+};
 
 export default function MascotPopup({
   isVisible,
@@ -22,6 +30,7 @@ export default function MascotPopup({
   message,
   autoDismissMs = 3500,
   onClose,
+  position = 'top-right',
 }: MascotPopupProps) {
   const { shouldReduceMotion } = useMotionAccessibility();
 
@@ -34,16 +43,19 @@ export default function MascotPopup({
   }, [isVisible, autoDismissMs, onClose]);
 
   const stickerSrc = mascotReactions[reactionKey] || mascotReactions.greet;
+  const isTop = position.startsWith('top');
+  const yInitial = shouldReduceMotion ? 0 : isTop ? -16 : 16;
+  const yExit = shouldReduceMotion ? 0 : isTop ? -10 : 10;
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8, scale: shouldReduceMotion ? 1 : 0.9 }}
+          initial={{ opacity: 0, y: yInitial, scale: shouldReduceMotion ? 1 : 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: shouldReduceMotion ? 0 : 4, scale: 0.95 }}
+          exit={{ opacity: 0, y: yExit, scale: 0.95 }}
           transition={shouldReduceMotion ? transitionPresets.micro : springPresets.mascot}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 max-w-sm p-3.5 pr-5 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-amber-500/40 shadow-2xl text-slate-100 pointer-events-auto"
+          className={`fixed ${positionClasses[position] || positionClasses['top-right']} z-[70] flex items-center gap-3 max-w-sm p-3.5 pr-5 rounded-2xl bg-slate-900/95 backdrop-blur-2xl border border-amber-500/40 shadow-2xl text-slate-100 pointer-events-auto`}
         >
           <div className="relative w-16 h-16 shrink-0 -ml-1">
             <Image
@@ -62,6 +74,7 @@ export default function MascotPopup({
             <button
               onClick={onClose}
               className="text-slate-400 hover:text-slate-200 text-xs p-1 rounded-lg hover:bg-slate-800 transition-colors"
+              aria-label="Đóng thông báo"
             >
               ✕
             </button>

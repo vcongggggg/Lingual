@@ -124,21 +124,34 @@ export default function FloatingMascotUniverse() {
   return (
     <>
       {/* ===================================================================== */}
-      {/* 1. HIGH PERFORMANCE PURE CSS COSMIC BACKGROUND LAYER (Strict z-0)   */}
+      {/* 1. HIGH PERFORMANCE PURE CSS COSMIC STAR UNIVERSE (Strict z-0)       */}
       {/* ===================================================================== */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
-        {/* Subtle Starry Dot Matrix Grid */}
-        <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:28px_28px] opacity-20" />
+        {/* Layer 1: Dense Crisp White Micro Stars */}
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-25" />
 
-        {/* Smooth Hardware-Accelerated Ambient Nebula Spheres */}
-        <div className="absolute -top-40 left-1/4 w-[650px] h-[650px] rounded-full bg-indigo-600/10 blur-[150px] animate-aurora" />
+        {/* Layer 2: Medium Sparkling Cyan Constellation Stars with Twinkle Animation */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#67e8f9_1.5px,transparent_1.5px)] [background-size:72px_72px] opacity-35 animate-twinkle" />
+
+        {/* Layer 3: Warm Golden Star Dust */}
         <div
-          className="absolute top-1/3 -right-20 w-[550px] h-[550px] rounded-full bg-emerald-600/10 blur-[140px] animate-aurora"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,#fde047_1.5px,transparent_1.5px)] [background-size:120px_120px] opacity-30 animate-twinkle"
+          style={{ animationDelay: '-2s' }}
+        />
+
+        {/* Smooth Hardware-Accelerated Ambient Cosmic Nebula Spheres */}
+        <div className="absolute -top-40 left-1/4 w-[650px] h-[650px] rounded-full bg-indigo-600/15 blur-[150px] animate-aurora" />
+        <div
+          className="absolute top-1/3 -right-20 w-[550px] h-[550px] rounded-full bg-teal-500/12 blur-[140px] animate-aurora"
           style={{ animationDelay: '-5s' }}
         />
         <div
-          className="absolute -bottom-20 left-1/3 w-[600px] h-[600px] rounded-full bg-amber-600/10 blur-[160px] animate-aurora"
+          className="absolute -bottom-20 left-1/3 w-[600px] h-[600px] rounded-full bg-amber-600/12 blur-[160px] animate-aurora"
           style={{ animationDelay: '-2s' }}
+        />
+        <div
+          className="absolute top-2/3 left-10 w-[500px] h-[500px] rounded-full bg-purple-600/12 blur-[140px] animate-aurora"
+          style={{ animationDelay: '-7s' }}
         />
       </div>
 
@@ -159,6 +172,8 @@ export default function FloatingMascotUniverse() {
                   className="relative group cursor-pointer"
                   animate={{
                     y: [0, -mascot.floatY, 0],
+                    scale: [1, 1.04, 1],
+                    rotate: [-1.8, 1.8, -1.8],
                   }}
                   transition={{
                     duration: mascot.floatDuration,

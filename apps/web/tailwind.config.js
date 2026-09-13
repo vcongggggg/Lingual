@@ -31,9 +31,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ['Outfit', 'Space Grotesk', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
-        artistic: ['Calistoga', 'serif'],
+        display: ['var(--font-display)', 'Plus Jakarta Sans', 'Be Vietnam Pro', 'Inter', 'system-ui', 'sans-serif'],
+        body: ['var(--font-body)', 'Inter', 'Be Vietnam Pro', 'system-ui', 'sans-serif'],
+        artistic: ['var(--font-display)', 'Plus Jakarta Sans', 'Be Vietnam Pro', 'sans-serif'],
       },
     },
   },

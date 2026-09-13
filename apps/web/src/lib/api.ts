@@ -125,7 +125,7 @@ export const gamesApi = {
       method: 'POST',
       body: JSON.stringify({ sourceType: 'game', sourceId: gameType }),
     }),
-  submitScore: (data: { attemptId: string; gameType: string; userAnswers: any[]; durationSeconds: number; userId?: string }) => {
+  submitScore: (data: { attemptId: string; gameType: string; userAnswers: any[]; durationSeconds: number; userId?: string; comboMax?: number }) => {
     let resolvedUserId = data.userId;
     if (!resolvedUserId && typeof window !== 'undefined') {
       try {
@@ -139,33 +139,71 @@ export const gamesApi = {
     });
   },
   getHistory: () => apiFetch('/games/history'),
-  getLeaderboard: () => apiFetch('/games/leaderboard'),
+  getLeaderboard: (params?: { gameType?: string; userId?: string }) => {
+    const query = new URLSearchParams();
+    if (params?.gameType) query.set('gameType', params.gameType);
+    if (params?.userId) query.set('userId', params.userId);
+    const qs = query.toString() ? `?${query.toString()}` : '';
+    return apiFetch(`/games/leaderboard${qs}`);
+  },
+  getUserStats: (userId: string) => apiFetch(`/games/stats/${userId}`),
 };
 
 // ============================================================================
-// DICTIONARY API
+// DICTIONARY 26,500+ WORDS API
 // ============================================================================
+export interface DictionaryWord {
+  id: string;
+  targetText: string;
+  translation: string;
+  phonetic?: string;
+  partOfSpeech?: string;
+  cefrLevel: string;
+  category?: string;
+  exampleSentence?: string;
+  exampleTranslation?: string;
+  imageUrl?: string;
+  audioUrl?: string;
+  unitTitle?: string;
+  lessonTitle?: string;
+  isBookmarked?: boolean;
+  inSrsDeck?: boolean;
+}
+
+export interface DictionarySearchResponse {
+  words: DictionaryWord[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
 
 export const dictionaryApi = {
-  search: (params: { q?: string; cefr?: string; partOfSpeech?: string; limit?: number }) => {
+  search: (params?: { q?: string; cefr?: string; partOfSpeech?: string; page?: number; limit?: number }) => {
     const queryParams = new URLSearchParams();
-    if (params.q) queryParams.set('q', params.q);
-    if (params.cefr) queryParams.set('cefr', params.cefr);
-    if (params.partOfSpeech) queryParams.set('partOfSpeech', params.partOfSpeech);
-    if (params.limit) queryParams.set('limit', params.limit.toString());
-    return apiFetch(`/dictionary/search?${queryParams.toString()}`);
+    if (params?.q) queryParams.set('q', params.q);
+    if (params?.cefr && params.cefr !== 'all') queryParams.set('cefr', params.cefr);
+    if (params?.partOfSpeech && params.partOfSpeech !== 'all') queryParams.set('partOfSpeech', params.partOfSpeech);
+    if (params?.page) queryParams.set('page', params.page.toString());
+    if (params?.limit) queryParams.set('limit', params.limit.toString());
+    return apiFetch<DictionarySearchResponse>(`/dictionary/search?${queryParams.toString()}`);
   },
+  lookup: (word: string) =>
+    apiFetch<{ word: string; local: DictionaryWord | null; definitions: any[]; bookmarked: boolean }>(
+      `/dictionary/lookup/${encodeURIComponent(word)}`
+    ),
   bookmark: (wordId: string) =>
-    apiFetch('/dictionary/bookmark', {
+    apiFetch<{ success: boolean; isBookmarked: boolean }>(`/dictionary/bookmark/${encodeURIComponent(wordId)}`, {
       method: 'POST',
-      body: JSON.stringify({ wordId }),
     }),
   addToSrs: (wordId: string) =>
-    apiFetch('/dictionary/add-to-srs', {
+    apiFetch<{ success: boolean; inSrsDeck: boolean }>(`/dictionary/srs-add/${encodeURIComponent(wordId)}`, {
       method: 'POST',
-      body: JSON.stringify({ wordId }),
     }),
 };
+
 
 // ============================================================================
 // VOCABULARY API

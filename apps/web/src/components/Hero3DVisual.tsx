@@ -476,11 +476,11 @@ export default function Hero3DVisual() {
                 >
                   {addedSrs ? (
                     <>
-                      <CheckCircle2 className="w-4 h-4" /> Đã Thêm Vào SRS!
+                      <CheckCircle2 className="w-4 h-4" /> Đã Lưu Vào Sổ Ôn Tập!
                     </>
                   ) : (
                     <>
-                      <PlusCircle className="w-4 h-4" /> Thêm Vào Thẻ SRS
+                      <PlusCircle className="w-4 h-4" /> Lưu Vào Sổ Ôn Tập
                     </>
                   )}
                 </button>

@@ -1,5 +1,20 @@
 import type { Metadata, Viewport } from 'next';
+import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
 import './globals.css';
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   themeColor: '#070b14',
@@ -25,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" suppressHydrationWarning>
-      <body className="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-body antialiased">
+    <html lang="vi" suppressHydrationWarning className={`${plusJakartaSans.variable} ${inter.variable}`}>
+      <body className={`${plusJakartaSans.variable} ${inter.variable} bg-slate-950 text-slate-100 min-h-screen flex flex-col font-body antialiased`}>
         {children}
       </body>
     </html>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,8 +37,28 @@ import {
   Repeat,
   Radio,
   Sparkle,
+  Mic,
+  RotateCcw,
+  Activity,
+  TrendingUp,
+  XCircle,
 } from 'lucide-react';
 import { soundFx } from '@/lib/soundFx';
+import { MagneticButton } from '@/components/common/MagneticButton';
+import { DecoderText } from '@/components/common/DecoderText';
+import ParticleCanvas, { ParticleCanvasRef } from '@/components/games/ParticleCanvas';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const Hero3DVisual = dynamic(() => import('@/components/Hero3DVisual'), {
   ssr: false,
@@ -95,11 +115,11 @@ const SAMPLE_WORDS: Record<string, SampleWord> = {
 const FAQS = [
   {
     q: 'LinguaFlow có hoàn toàn miễn phí không?',
-    a: 'Có! Toàn bộ 26,500+ từ vựng, hệ thống ôn tập Spaced Repetition (SRS), 6 chế độ Arcade Games và bộ đề thi IELTS Cambridge đều có thể truy cập và luyện tập hoàn toàn miễn phí.',
+    a: 'Có! Toàn bộ 26,500+ từ vựng, hệ thống ôn tập chống quên thông minh, 6 trò chơi phản xạ và bộ đề thi thử IELTS đều có thể truy cập và luyện tập hoàn toàn miễn phí.',
   },
   {
-    q: 'Thuật toán lặp lại ngắt quãng (SRS SM-2) hoạt động như thế nào?',
-    a: 'Dựa trên Đường cong quên lãng (Ebbinghaus Forgetting Curve), hệ thống tự động tính toán thời điểm vàng trước khi não bộ quên từ vựng (sau 1 ngày, 3 ngày, 7 ngày, 1 tháng) để nhắc bạn ôn lại, giúp đưa từ vựng vào trí nhớ vĩnh viễn.',
+    q: 'Phương pháp ôn tập chống quên thông minh hoạt động như thế nào?',
+    a: 'Dựa trên quy luật ghi nhớ tự nhiên của não bộ, hệ thống sẽ tự động tính toán đúng "thời điểm vàng" trước khi bạn chuẩn bị quên từ vựng (sau 1 ngày, 3 ngày, 7 ngày, 1 tháng) để nhắc bạn mở thẻ ra xem lại một lần. Nhờ vậy, từ vựng sẽ được khắc sâu vào trí nhớ dài hạn mà không cần phải nhồi nhét cực khổ.',
   },
   {
     q: 'Ngân hàng đề thi IELTS có bám sát đề thi thật không?',
@@ -115,13 +135,169 @@ const FAQS = [
   },
 ];
 
+const CEFR_DATA: Record<
+  string,
+  {
+    name: string;
+    level: string;
+    tagline: string;
+    targetBand: string;
+    wordsCount: string;
+    color: string;
+    gaugePercent: number;
+    skills: string[];
+    sampleVocab: { word: string; ipa: string; meaning: string; example: string }[];
+  }
+> = {
+  A1: {
+    level: 'A1',
+    name: 'Khởi Động',
+    tagline: 'Làm quen bảng phiên âm 44 âm IPA & câu chào hỏi cơ bản',
+    targetBand: 'IELTS 3.0 - 3.5',
+    wordsCount: '2,450+ Từ vựng',
+    color: 'teal',
+    gaugePercent: 20,
+    skills: [
+      'Nắm vững 44 âm IPA quốc tế & trọng âm từ',
+      'Chào hỏi, giới thiệu bản thân và hỏi đường đơn giản',
+      'Đọc hiểu biển báo, hóa đơn và thực đơn nhà hàng',
+    ],
+    sampleVocab: [
+      { word: 'Hello', ipa: '/həˈləʊ/', meaning: 'Xin chào', example: 'Hello, nice to meet you!' },
+      { word: 'Family', ipa: '/ˈfæməli/', meaning: 'Gia đình', example: 'I love spending time with my family.' },
+      { word: 'Travel', ipa: '/ˈtrævl/', meaning: 'Du lịch', example: 'We travel to Da Nang every summer.' },
+    ],
+  },
+  A2: {
+    level: 'A2',
+    name: 'Cơ Bản',
+    tagline: 'Xây dựng vốn từ đời sống, diễn đạt thói quen và sở thích',
+    targetBand: 'IELTS 4.0 - 4.5',
+    wordsCount: '3,126+ Từ vựng',
+    color: 'emerald',
+    gaugePercent: 38,
+    skills: [
+      'Mô tả thói quen hàng ngày, công việc và kỳ nghỉ',
+      'Mua sắm, đặt phòng khách sạn và xử lý tình huống du lịch',
+      'Viết email ngắn và tin nhắn giao tiếp thân mật',
+    ],
+    sampleVocab: [
+      { word: 'Routine', ipa: '/ruːˈtiːn/', meaning: 'Thói quen', example: 'Morning running is my daily routine.' },
+      { word: 'Schedule', ipa: '/ˈskedʒuːl/', meaning: 'Lịch trình', example: 'I have a busy meeting schedule today.' },
+      { word: 'Convenient', ipa: '/kənˈviːniənt/', meaning: 'Thuận tiện', example: 'Living near the subway is very convenient.' },
+    ],
+  },
+  B1: {
+    level: 'B1',
+    name: 'Tự Tin',
+    tagline: 'Làm chủ giao tiếp độc lập, xem video tin tức và trao đổi công việc',
+    targetBand: 'IELTS 5.0 - 5.5',
+    wordsCount: '4,850+ Từ vựng',
+    color: 'amber',
+    gaugePercent: 55,
+    skills: [
+      'Tranh luận quan điểm, giải thích lý do và kế hoạch tương lai',
+      'Nghe hiểu các bài thuyết trình TED Talk và Podcast trung cấp',
+      'Viết bài luận ngắn mạch lạc với liên từ liên kết câu',
+    ],
+    sampleVocab: [
+      { word: 'Environment', ipa: '/ɪnˈvaɪrənmənt/', meaning: 'Môi trường', example: 'Protecting the environment is essential.' },
+      { word: 'Contribute', ipa: '/kənˈtrɪbjuːt/', meaning: 'Đóng góp', example: 'We all contribute to community projects.' },
+      { word: 'Opportunity', ipa: '/ˌɒpəˈtjuːnəti/', meaning: 'Cơ hội', example: 'This internship is a golden opportunity.' },
+    ],
+  },
+  B2: {
+    level: 'B2',
+    name: 'Trôi Chảy',
+    tagline: 'Bứt phá điểm số IELTS 6.5+, phản xạ tự nhiên không cần dịch nhẩm',
+    targetBand: 'IELTS 6.5 - 7.0',
+    wordsCount: '6,160+ Từ vựng',
+    color: 'orange',
+    gaugePercent: 72,
+    skills: [
+      'Giao tiếp trôi chảy với người bản xứ với tốc độ tự nhiên',
+      'Xử lý bài đọc học thuật phức tạp và phân tích biểu đồ Task 1',
+      'Sử dụng thành ngữ (Idioms) và Collocations tự nhiên',
+    ],
+    sampleVocab: [
+      { word: 'Substantial', ipa: '/səbˈstænʃl/', meaning: 'Đáng kể', example: 'They achieved substantial progress in AI.' },
+      { word: 'Collaborate', ipa: '/kəˈlæbəreɪt/', meaning: 'Hợp tác', example: 'Engineers collaborate on renewable energy.' },
+      { word: 'Perspective', ipa: '/pəˈspektɪv/', meaning: 'Góc nhìn', example: 'Different cultures offer fresh perspectives.' },
+    ],
+  },
+  C1: {
+    level: 'C1',
+    name: 'Học Thuật',
+    tagline: 'Chinh phục Academic Word List (AWL), viết luận học thuật IELTS 7.5+',
+    targetBand: 'IELTS 7.5 - 8.0',
+    wordsCount: '5,600+ Từ vựng',
+    color: 'purple',
+    gaugePercent: 88,
+    skills: [
+      'Hiểu sâu sắc các văn bản trừu tượng, ẩn dụ và hàm ý tinh tế',
+      'Viết luận nghiên cứu khoa học, phản biện luận điểm đa chiều',
+      'Diễn đạt ý tưởng uyển chuyển không bị vấp hay tìm từ',
+    ],
+    sampleVocab: [
+      { word: 'Perseverance', ipa: '/ˌpɜːsəˈvɪərəns/', meaning: 'Kiên trì', example: 'Perseverance guarantees long-term mastery.' },
+      { word: 'Ubiquitous', ipa: '/juːˈbɪkwɪtəs/', meaning: 'Phổ biến khắp nơi', example: 'Digital payments have become ubiquitous.' },
+      { word: 'Eloquent', ipa: '/ˈeləkwənt/', meaning: 'Lưu loát / Hùng biện', example: 'She gave an eloquent keynote address.' },
+    ],
+  },
+  C2: {
+    level: 'C2',
+    name: 'Bản Xứ',
+    tagline: 'Làm chủ ngôn ngữ như người bản xứ có học vấn cao, phản xạ trực giác',
+    targetBand: 'IELTS 8.5 - 9.0',
+    wordsCount: '4,325+ Từ vựng',
+    color: 'cyan',
+    gaugePercent: 100,
+    skills: [
+      'Đọc hiểu tài liệu triết học, văn học cổ điển và nghiên cứu chuyên sâu',
+      'Nắm bắt các sắc thái hài hước, châm biếm và ngữ điệu tinh vi',
+      'Đạt chuẩn giám khảo khảo thí quốc tế IELTS/Cambridge',
+    ],
+    sampleVocab: [
+      { word: 'Serendipity', ipa: '/ˌserənˈdɪpəti/', meaning: 'Cơ duyên bất ngờ', example: 'Meeting my co-founder was pure serendipity.' },
+      { word: 'Ephemeral', ipa: '/ɪˈfemərəl/', meaning: 'Phù du / Thoáng qua', example: 'Trends in social media are often ephemeral.' },
+      { word: 'Quintessential', ipa: '/ˌkwɪntɪˈsenʃl/', meaning: 'Tinh túy / Điển hình', example: 'It was the quintessential Cambridge library.' },
+    ],
+  },
+};
+
 export default function LandingPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
   const router = useRouter();
+  const particleRef = useRef<ParticleCanvasRef>(null);
 
   const [showPlacementModal, setShowPlacementModal] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState('beginner');
+
+  // Parallax 3D Tilt for Landing Flashcard Demo
+  const [landingCardTilt, setLandingCardTilt] = useState({ x: 0, y: 0 });
+  const [landingCardGlow, setLandingCardGlow] = useState({ x: 50, y: 50 });
+
+  const handleLandingCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setLandingCardTilt({ x: (y - 0.5) * -16, y: (x - 0.5) * 16 });
+    setLandingCardGlow({ x: Math.round(x * 100), y: Math.round(y * 100) });
+  };
+
+  const handleLandingCardMouseLeave = () => {
+    setLandingCardTilt({ x: 0, y: 0 });
+  };
+
+  // Product Studio Spotlight Glow tracking
+  const [studioGlow, setStudioGlow] = useState({ x: 50, y: 20 });
+  const handleStudioMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setStudioGlow({ x: Math.round(x), y: Math.round(y) });
+  };
 
   // Interactive Live Search Demo
   const [searchQuery, setSearchQuery] = useState('resilience');
@@ -143,8 +319,104 @@ export default function LandingPage() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [demoXP, setDemoXP] = useState(150);
 
+  // Live IELTS Simulator HUD Countdown Timer (Ticking dynamically)
+  const [mockTimerSeconds, setMockTimerSeconds] = useState(3504); // 58:24
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setMockTimerSeconds((prev) => (prev > 0 ? prev - 1 : 3600));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTimer = (totalSec: number) => {
+    const m = Math.floor(totalSec / 60);
+    const s = totalSec % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
   // FAQ open index
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
+
+  // =========================================================================
+  // DYNAMIC PLAYGROUND & INTERACTIVE STUDIO STATE
+  // =========================================================================
+  const [studioTab, setStudioTab] = useState<'speaking' | 'ielts' | 'srs' | 'arcade'>('speaking');
+
+  // Tab 1: Speaking Lab State
+  const [speakingState, setSpeakingState] = useState<'idle' | 'recording' | 'analyzing' | 'scored'>('idle');
+  const [activeSyllable, setActiveSyllable] = useState<number | null>(null);
+
+  const handleSimulateSpeaking = () => {
+    soundFx.playClick();
+    setSpeakingState('recording');
+    setTimeout(() => {
+      setSpeakingState('analyzing');
+      setTimeout(() => {
+        setSpeakingState('scored');
+        soundFx.playSuccess();
+        setDemoXP((prev) => prev + 20);
+      }, 1200);
+    }, 1400);
+  };
+
+  const playSyllable = (syllableIpa: string, index: number) => {
+    soundFx.playClick();
+    setActiveSyllable(index);
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const cleanSound = syllableIpa.replace(/[\/ˈˌ]/g, '');
+      const utterance = new SpeechSynthesisUtterance(cleanSound);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.85;
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  // Tab 2: IELTS Cambridge Question Simulator State
+  const [ieltsSelectedOption, setIeltsSelectedOption] = useState<number | null>(null);
+  const [ieltsFeedback, setIeltsFeedback] = useState<'none' | 'correct' | 'incorrect'>('none');
+
+  const handleIeltsSelect = (index: number) => {
+    setIeltsSelectedOption(index);
+    if (index === 1) {
+      setIeltsFeedback('correct');
+      soundFx.playSuccess();
+      setDemoXP((prev) => prev + 25);
+      particleRef.current?.spawnConfetti();
+    } else {
+      setIeltsFeedback('incorrect');
+      soundFx.playError();
+    }
+  };
+
+  // Tab 3: SRS Memory Curve Slider
+  const [srsDays, setSrsDays] = useState<number>(7);
+
+  // Tab 4: Arcade Typing Challenge
+  const [typingInput, setTypingInput] = useState('');
+  const [typingStreak, setTypingStreak] = useState(0);
+  const [typingSuccess, setTypingSuccess] = useState(false);
+  const targetTypingWord = 'RESILIENCE';
+
+  const handleTypingChange = (val: string) => {
+    setTypingInput(val);
+    if (val.trim().toUpperCase() === targetTypingWord) {
+      setTypingSuccess(true);
+      setTypingStreak((prev) => prev + 1);
+      soundFx.playSuccess();
+      setDemoXP((prev) => prev + 30);
+      particleRef.current?.spawnConfetti();
+    }
+  };
+
+  const handleResetTyping = () => {
+    soundFx.playClick();
+    setTypingInput('');
+    setTypingSuccess(false);
+  };
+
+  // CEFR Explorer Interactive State
+  const [activeCefr, setActiveCefr] = useState('B2');
 
   const handleStartLearning = () => {
     soundFx.playSuccess();
@@ -163,7 +435,10 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-6 sm:py-10 space-y-24 w-full">
+    <div className="flex flex-col items-center justify-center py-6 sm:py-10 space-y-24 w-full relative">
+      {/* Confetti & Particle FX Canvas */}
+      <ParticleCanvas ref={particleRef} />
+
       {/* ===================================================================== */}
       {/* 1. HERO SECTION 2.0 (THE GRAND ENTRANCE)                             */}
       {/* ===================================================================== */}
@@ -188,7 +463,7 @@ export default function LandingPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-artistic tracking-tight text-white leading-[1.15]"
+          className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-white leading-tight"
         >
           Chinh Phục Tiếng Anh Theo Cách <br />
           <span className="bg-gradient-to-r from-coral-400 via-amber-300 to-teal-300 bg-clip-text text-transparent drop-shadow-sm">
@@ -203,7 +478,7 @@ export default function LandingPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-3xl mx-auto text-base sm:text-xl text-slate-300 leading-relaxed font-normal"
         >
-          Đột phá khả năng ngôn ngữ với thuật toán lặp lại ngắt quãng **SRS Ebbinghaus**, phòng thi **IELTS Cambridge Simulator** chuẩn giám khảo, đấu trường **Arcade 6 trò chơi**, và gia sư **AI LingLing** đồng hành 24/7.
+          Đột phá khả năng ngôn ngữ với phương pháp <strong className="text-white font-semibold">ôn tập chống quên thông minh</strong>, phòng luyện thi <strong className="text-white font-semibold">IELTS mô phỏng chuẩn Cambridge</strong>, đấu trường <strong className="text-white font-semibold">6 trò chơi phản xạ</strong>, và gia sư <strong className="text-amber-300 font-semibold">AI LingLing</strong> đồng hành 24/7.
         </motion.p>
 
         {/* Dual Primary Call-To-Action Buttons */}
@@ -213,30 +488,46 @@ export default function LandingPage() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-wrap justify-center gap-4 pt-2 relative z-20"
         >
-          <Button
-            variant="accent"
-            size="lg"
-            icon={<ArrowRight className="w-5 h-5" />}
-            onClick={() => {
-              soundFx.playSuccess();
-              setShowPlacementModal(true);
-            }}
-            className="shadow-xl shadow-teal-500/20"
-          >
-            Bắt Đầu Học Ngay (Miễn Phí)
-          </Button>
+          <MagneticButton magneticPull={0.35} maxOffset={12}>
+            <Button
+              variant="accent"
+              size="lg"
+              icon={<ArrowRight className="w-5 h-5" />}
+              onClick={() => {
+                soundFx.playSuccess();
+                setShowPlacementModal(true);
+              }}
+              className="shadow-xl shadow-teal-500/20"
+            >
+              Bắt Đầu Học Ngay (Miễn Phí)
+            </Button>
+          </MagneticButton>
 
-          <Button
-            variant="secondary"
-            size="lg"
-            icon={<Trophy className="w-5 h-5 text-amber-400" />}
-            onClick={() => {
-              soundFx.playClick();
-              router.push(`/${locale}/ielts/mock-test`);
-            }}
-          >
-            Vào Phòng Thi Thử IELTS
-          </Button>
+          <MagneticButton magneticPull={0.35} maxOffset={12}>
+            <Button
+              variant="secondary"
+              size="lg"
+              icon={<Trophy className="w-5 h-5 text-amber-400" />}
+              onClick={() => {
+                soundFx.playClick();
+                router.push(`/${locale}/ielts/mock-test`);
+              }}
+            >
+              Vào Phòng Thi Thử IELTS
+            </Button>
+          </MagneticButton>
+        </motion.div>
+
+        {/* ===================================================================== */}
+        {/* INTERACTIVE 3D ORBITING VOCAB SCENE (Beloved 3D Physics Experience) */}
+        {/* ===================================================================== */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
+          className="w-full pt-2 pb-2 relative z-20"
+        >
+          <Hero3DVisual />
         </motion.div>
 
         {/* Interactive Live Search Bar Preview (Instant Aha Moment) */}
@@ -244,9 +535,18 @@ export default function LandingPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}
-          className="max-w-2xl mx-auto pt-6"
+          className="max-w-2xl mx-auto pt-8 relative overflow-visible"
         >
-          <div className="p-2.5 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl backdrop-blur-xl">
+          {/* Breaking the Box Mascot Leaning on Search Bar */}
+          <div className="absolute -top-6 right-6 sm:right-10 w-16 sm:w-20 h-16 sm:h-20 z-20 pointer-events-none transition-transform duration-300 hover:scale-110">
+            <img
+              src="/mascot/lingling_waving_bubble.png"
+              alt="Mascot LingLing Waving"
+              className="w-full h-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)]"
+            />
+          </div>
+
+          <div className="p-2.5 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl backdrop-blur-xl relative z-10">
             <div className="flex items-center gap-3 px-3 py-1.5 bg-slate-950/70 rounded-2xl border border-slate-800/80">
               <Search className="w-5 h-5 text-teal-400 shrink-0" />
               <input
@@ -290,7 +590,7 @@ export default function LandingPage() {
             <div className="mt-3 p-4 rounded-2xl bg-gradient-to-r from-slate-950/90 to-teal-950/20 border border-teal-500/20 text-left flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="space-y-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-lg font-black text-white">{activeWord.word}</span>
+                  <DecoderText text={activeWord.word} durationMs={320} className="text-lg font-black text-white" />
                   <span className="text-xs font-mono text-cyan-400 font-semibold">{activeWord.phonetic}</span>
                   <span className="px-2 py-0.5 rounded-md bg-purple-500/20 text-purple-300 text-[10px] font-mono font-bold">
                     {activeWord.partOfSpeech}
@@ -316,258 +616,626 @@ export default function LandingPage() {
           </div>
         </motion.div>
 
-        {/* 3D Orbit Hero Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="pt-4"
-        >
-          <Hero3DVisual />
-        </motion.div>
       </section>
 
       {/* ===================================================================== */}
-      {/* 2. METRICS & SOCIAL PROOF COUNTER (CON SỐ BIẾT NÓI)                  */}
+      {/* 2. REAL-TIME ACTIVITY TICKER & METRIC MATRIX                          */}
       {/* ===================================================================== */}
-      <section className="w-full max-w-6xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900/90 via-slate-900/50 to-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-xl">
-          <div className="text-center space-y-1 border-r border-slate-800/80 last:border-r-0">
-            <span className="block text-3xl sm:text-4xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-300">
-              26,500+
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        variants={sectionVariants}
+        className="w-full max-w-6xl space-y-4"
+      >
+        {/* Live Activity Marquee Ticker */}
+        <div className="p-3 px-4 rounded-2xl bg-slate-900/80 border border-teal-500/30 backdrop-blur-xl shadow-lg flex items-center justify-between gap-3 overflow-hidden text-xs">
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            <span className="text-xs sm:text-sm font-semibold text-slate-300">Từ Vựng Oxford & AWL</span>
-            <span className="block text-[11px] text-slate-500">6 Cấp độ CEFR A1 - C2</span>
+            <span className="font-bold text-emerald-400 uppercase tracking-wider text-[11px] hidden sm:inline">
+              Trực Tiếp
+            </span>
           </div>
 
-          <div className="text-center space-y-1 border-r border-slate-800/80 last:border-r-0">
-            <span className="block text-3xl sm:text-4xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300">
-              100+
-            </span>
-            <span className="text-xs sm:text-sm font-semibold text-slate-300">Bộ Đề Thi IELTS Chuẩn</span>
-            <span className="block text-[11px] text-slate-500">Full 4 Kỹ Năng Cambridge</span>
+          <div className="flex-1 overflow-hidden">
+            <div className="flex items-center gap-8 whitespace-nowrap animate-marquee">
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-amber-400 font-bold">⚡ Duy Vỹ</span> vừa hoàn thành bài học "Greetings" (+20 XP)
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-teal-400 font-bold">🎯 Thu Giang</span> vừa đạt Band 7.5 IELTS Academic Reading
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-orange-400 font-bold">🔥 Bản Lưu Thị</span> đạt mốc 45 Ngày Streak liên tục
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-purple-400 font-bold">🧠 Nhân Nguyễn</span> vừa ôn tập 50 thẻ ghi nhớ thông minh
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-cyan-400 font-bold">🎙️ Minh Quân</span> đạt 98% điểm phát âm IPA
+              </span>
+              <span className="text-slate-600">•</span>
+              {/* Duplicate track for seamless infinite scroll */}
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-amber-400 font-bold">⚡ Duy Vỹ</span> vừa hoàn thành bài học "Greetings" (+20 XP)
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-teal-400 font-bold">🎯 Thu Giang</span> vừa đạt Band 7.5 IELTS Academic Reading
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-orange-400 font-bold">🔥 Bản Lưu Thị</span> đạt mốc 45 Ngày Streak liên tục
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-purple-400 font-bold">🧠 Nhân Nguyễn</span> vừa ôn tập 50 thẻ ghi nhớ thông minh
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <span className="text-cyan-400 font-bold">🎙️ Minh Quân</span> đạt 98% điểm phát âm IPA
+              </span>
+            </div>
           </div>
 
-          <div className="text-center space-y-1 border-r border-slate-800/80 last:border-r-0">
-            <span className="block text-3xl sm:text-4xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
-              99.4%
-            </span>
-            <span className="text-xs sm:text-sm font-semibold text-slate-300">Tỷ Lệ Nhớ Từ Dài Hạn</span>
-            <span className="block text-[11px] text-slate-500">Thuật Toán SRS Ebbinghaus</span>
-          </div>
-
-          <div className="text-center space-y-1">
-            <span className="block text-3xl sm:text-4xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">
-              24/7
-            </span>
-            <span className="text-xs sm:text-sm font-semibold text-slate-300">Gia Sư AI LingLing</span>
-            <span className="block text-[11px] text-slate-500">Phản hồi và chấm bài tức thì</span>
+          <div className="shrink-0 text-slate-400 font-mono text-[11px] hidden md:block">
+            <span className="text-teal-300 font-bold">2,840</span> người đang online
           </div>
         </div>
-      </section>
+
+        {/* 4 Interactive Dynamic Metric Cards with Breaking the Box Badges */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 sm:p-7 pt-7 rounded-3xl bg-slate-900/70 border border-slate-800 shadow-2xl backdrop-blur-xl overflow-visible">
+          <div className="relative p-5 pt-6 rounded-2xl bg-slate-950/70 border border-slate-800 hover:border-teal-500/60 hover:bg-slate-900/90 transition-all duration-300 group overflow-visible shadow-xl">
+            <div className="absolute -top-3.5 -right-2 w-9 h-9 rounded-xl bg-slate-900 border border-teal-500/40 flex items-center justify-center shadow-lg group-hover:-translate-y-1.5 group-hover:scale-120 group-hover:rotate-6 transition-all duration-300 z-10">
+              <BookOpen className="w-4 h-4 text-teal-400" />
+            </div>
+            <span className="text-[11px] font-bold text-teal-400 uppercase tracking-wider block mb-1">Từ Vựng Chuẩn</span>
+            <span className="block text-2xl sm:text-3xl font-display font-extrabold text-white group-hover:text-teal-300 transition-colors">
+              26,500+
+            </span>
+            <span className="text-[11px] text-slate-400 mt-1 block">Oxford & AWL A1-C2</span>
+          </div>
+
+          <div className="relative p-5 pt-6 rounded-2xl bg-slate-950/70 border border-slate-800 hover:border-amber-500/60 hover:bg-slate-900/90 transition-all duration-300 group overflow-visible shadow-xl">
+            <div className="absolute -top-3.5 -right-2 w-9 h-9 rounded-xl bg-slate-900 border border-amber-500/40 flex items-center justify-center shadow-lg group-hover:-translate-y-1.5 group-hover:scale-120 group-hover:rotate-6 transition-all duration-300 z-10">
+              <Trophy className="w-4 h-4 text-amber-400" />
+            </div>
+            <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Phòng Thi Thử IELTS</span>
+            <span className="block text-2xl sm:text-3xl font-display font-extrabold text-white group-hover:text-amber-300 transition-colors">
+              100+ Đề
+            </span>
+            <span className="text-[11px] text-slate-400 mt-1 block">Cambridge 4 Kỹ Năng</span>
+          </div>
+
+          <div className="relative p-5 pt-6 rounded-2xl bg-slate-950/70 border border-emerald-500/60 hover:bg-slate-900/90 transition-all duration-300 group overflow-visible shadow-xl">
+            <div className="absolute -top-3.5 -right-2 w-9 h-9 rounded-xl bg-slate-900 border border-emerald-500/40 flex items-center justify-center shadow-lg group-hover:-translate-y-1.5 group-hover:scale-120 group-hover:rotate-6 transition-all duration-300 z-10">
+              <Brain className="w-4 h-4 text-emerald-400" />
+            </div>
+            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block mb-1">Tỷ Lệ Nhớ Từ</span>
+            <span className="block text-2xl sm:text-3xl font-display font-extrabold text-white group-hover:text-emerald-300 transition-colors">
+              99.4%
+            </span>
+            <span className="text-[11px] text-slate-400 mt-1 block">Nhắc Ôn Tập Đúng Lúc</span>
+          </div>
+
+          <div className="relative p-5 pt-6 rounded-2xl bg-slate-950/70 border border-slate-800 hover:border-purple-500/60 hover:bg-slate-900/90 transition-all duration-300 group overflow-visible shadow-xl">
+            <div className="absolute -top-3.5 -right-2 w-9 h-9 rounded-xl bg-slate-900 border border-purple-500/40 flex items-center justify-center shadow-lg group-hover:-translate-y-1.5 group-hover:scale-120 group-hover:rotate-6 transition-all duration-300 z-10">
+              <Sparkles className="w-4 h-4 text-purple-400" />
+            </div>
+            <span className="text-[11px] font-bold text-purple-400 uppercase tracking-wider block mb-1">AI Tutor 24/7</span>
+            <span className="block text-2xl sm:text-3xl font-display font-extrabold text-white group-hover:text-purple-300 transition-colors">
+              0.5 Giây
+            </span>
+            <span className="text-[11px] text-slate-400 mt-1 block">Phản hồi & Sửa bài tức thì</span>
+          </div>
+        </div>
+      </motion.section>
 
       {/* ===================================================================== */}
-      {/* 3. BENTO GRID 2.0: 4 TRỤ CỘT ĐỘT PHÁ CỦA LINGUAFLOW                   */}
+      {/* 3. INTERACTIVE PRODUCT EXPERIENCE STUDIO                              */}
       {/* ===================================================================== */}
-      <section className="w-full max-w-6xl space-y-8">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        variants={sectionVariants}
+        className="w-full max-w-6xl space-y-8"
+      >
         <div className="text-center space-y-3">
-          <span className="px-3.5 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
-            ⚡ Hệ Sinh Thái Học Tập Toàn Diện
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white">
-            Mọi Công Cụ Bạn Cần Để Làm Chủ Tiếng Anh
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
+            <Activity className="w-3.5 h-3.5 text-teal-400 animate-pulse" />
+            <span>Phòng Trải Nghiệm Tương Tác Trực Tiếp</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Thử Nghiệm Mọi Tính Năng Ngay Trên Trang Chủ
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
-            Không còn phải cài đặt hàng tá ứng dụng rời rạc. LinguaFlow tích hợp mọi phương pháp học tập tiên tiến nhất vào một giao diện liền mạch.
+            Không chỉ là lời giới thiệu. Hãy bấm vào các công cụ bên dưới để trực tiếp trải nghiệm sự vượt trội của LinguaFlow!
           </p>
         </div>
 
-        {/* Bento Asymmetric Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Bento Card 1: IELTS Cambridge Exam Simulator (Col 7) */}
-          <div className="md:col-span-7 p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/40 transition-all duration-300 shadow-2xl backdrop-blur-xl flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                  <Trophy className="w-6 h-6" />
-                </div>
-                <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-mono font-bold text-xs">
-                  IELTS Band 8.5 Simulator
-                </span>
-              </div>
-              <h3 className="text-2xl font-display font-black text-white group-hover:text-amber-300 transition-colors">
-                Phòng Luyện Thi IELTS Cambridge Chuẩn Giám Khảo
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Trải nghiệm giao diện phòng thi trên máy tính (Computer-delivered IELTS) với đồng hồ đếm ngược LED, radar 40 câu hỏi, chia đôi màn hình bài đọc và công cụ highlight văn bản tức thì.
-              </p>
-            </div>
+        {/* Interactive Studio Container with Dynamic Spotlight Glow */}
+        <div
+          onMouseMove={handleStudioMouseMove}
+          className="relative rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl backdrop-blur-2xl overflow-hidden p-5 sm:p-8 space-y-6 group"
+        >
+          {/* Dynamic Spotlight Glow */}
+          <div
+            className="pointer-events-none absolute inset-0 rounded-3xl opacity-40 transition-opacity duration-300"
+            style={{
+              background: `radial-gradient(600px circle at ${studioGlow.x}% ${studioGlow.y}%, rgba(20, 184, 166, 0.2), transparent 70%)`,
+            }}
+          />
+          {/* Segmented Tab Switcher */}
+          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-slate-950/80 border border-slate-800 overflow-x-auto">
+            {[
+              { id: 'speaking', label: 'Luyện Phát Âm & IPA', icon: <Mic className="w-4 h-4" /> },
+              { id: 'ielts', label: 'Thi Thử IELTS Cambridge', icon: <Trophy className="w-4 h-4" /> },
+              { id: 'srs', label: 'Ôn Tập Chống Quên Thông Minh', icon: <Brain className="w-4 h-4" /> },
+              { id: 'arcade', label: 'Đấu Trường Game Phản Xạ', icon: <Gamepad2 className="w-4 h-4" /> },
+            ].map((tab) => {
+              const isActive = studioTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    soundFx.playClick();
+                    setStudioTab(tab.id as any);
+                  }}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                    isActive
+                      ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 shadow-lg shadow-teal-500/20'
+                      : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                  }`}
+                >
+                  {tab.icon}
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
 
-            {/* Visual HUD Mock */}
-            <div className="mt-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-3">
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-slate-400">Section 3: Academic Reading</span>
-                <span className="text-amber-400 font-black animate-pulse">⏱️ 58:24 Còn lại</span>
+          {/* TAB 1: AI SPEAKING & IPA LAB */}
+          {studioTab === 'speaking' && (
+            <div className="space-y-6 animate-fadeIn">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-5 rounded-2xl bg-slate-950/70 border border-slate-800">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-teal-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <Radio className="w-4 h-4" /> Câu Luyện Âm Mẫu:
+                  </span>
+                  <p className="text-lg sm:text-xl font-display font-bold text-white">
+                    "Perseverance is key to mastering English."
+                  </p>
+                  <p className="text-xs text-slate-400">
+                    Sự kiên trì là chìa khóa để làm chủ tiếng Anh.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2.5 shrink-0">
+                  <button
+                    onClick={() => playWordAudio('Perseverance is key to mastering English')}
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-500/20 hover:bg-teal-500/30 border border-teal-500/40 text-teal-300 text-xs font-bold transition-all shadow-md"
+                  >
+                    <Volume2 className="w-4 h-4" />
+                    <span>Nghe Giọng Bản Xứ</span>
+                  </button>
+                  <button
+                    onClick={handleSimulateSpeaking}
+                    disabled={speakingState === 'recording' || speakingState === 'analyzing'}
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-teal-400 to-emerald-400 text-slate-950 font-extrabold text-xs transition-all shadow-lg hover:shadow-teal-500/30 disabled:opacity-50"
+                  >
+                    <Mic className="w-4 h-4" />
+                    <span>
+                      {speakingState === 'recording'
+                        ? 'Đang lắng nghe...'
+                        : speakingState === 'analyzing'
+                        ? 'AI đang chấm điểm...'
+                        : 'Bấm Để Nói Thử'}
+                    </span>
+                  </button>
+                </div>
               </div>
-              <div className="grid grid-cols-10 gap-1.5">
-                {Array.from({ length: 20 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-6 rounded-md flex items-center justify-center text-[10px] font-mono font-bold ${
-                      i < 8
-                        ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300'
-                        : i === 8
-                        ? 'bg-amber-500/30 border border-amber-400 text-white animate-pulse'
-                        : 'bg-slate-900 border border-slate-800 text-slate-500'
+
+              {/* Syllable-by-syllable Interactive IPA Breakdown */}
+              <div className="space-y-2">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                  Chạm vào từng âm tiết để nghe phát âm riêng biệt & xem trọng âm:
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {[
+                    { text: 'Per', ipa: '/pɜː/', tip: 'Nguyên âm dài, giữ khẩu hình tròn nhẹ', stress: false },
+                    { text: 'se', ipa: '/sɪ/', tip: 'Âm nhẹ lướt nhanh, hạ thấp giọng', stress: false },
+                    { text: 've', ipa: '/ˈvɪə/', tip: 'TRỌNG ÂM CHÍNH: Nhấn mạnh & ngân cao', stress: true },
+                    { text: 'rance', ipa: '/rəns/', tip: 'Âm đuôi /s/ xì nhẹ gió qua kẽ răng', stress: false },
+                  ].map((syl, i) => (
+                    <button
+                      key={i}
+                      onClick={() => playSyllable(syl.ipa, i)}
+                      className={`p-3.5 rounded-2xl border text-left transition-all ${
+                        activeSyllable === i
+                          ? 'bg-teal-500/20 border-teal-400 ring-2 ring-teal-400/30 shadow-lg'
+                          : syl.stress
+                          ? 'bg-amber-500/10 border-amber-500/40 hover:bg-amber-500/20'
+                          : 'bg-slate-950/60 border-slate-800 hover:border-slate-700'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-base font-extrabold text-white">{syl.text}</span>
+                        <span className={`text-xs font-mono font-bold ${syl.stress ? 'text-amber-400' : 'text-teal-400'}`}>
+                          {syl.ipa}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-400 mt-1">{syl.tip}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dynamic Sound Wave Visualizer & AI Score */}
+              <div className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-1.5 h-12 overflow-hidden flex-1 justify-center sm:justify-start">
+                  {[35, 60, 85, 40, 95, 70, 50, 90, 65, 80, 40, 75, 95, 55, 60, 45, 80, 65, 50, 90, 40, 75, 60, 35].map(
+                    (h, i) => (
+                      <div
+                        key={i}
+                        className={`w-1.5 rounded-full transition-all duration-300 ${
+                          speakingState === 'recording'
+                            ? 'bg-gradient-to-t from-rose-500 to-amber-400 animate-pulse'
+                            : 'bg-gradient-to-t from-purple-500 to-teal-400'
+                        }`}
+                        style={{
+                          height: speakingState === 'recording' ? `${Math.max(25, (h * 1.3) % 100)}%` : `${h}%`,
+                        }}
+                      />
+                    )
+                  )}
+                </div>
+
+                <div className="flex items-center gap-3 shrink-0">
+                  {speakingState === 'scored' ? (
+                    <div className="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-xl">
+                      <div className="text-right">
+                        <span className="text-xs font-bold text-emerald-400 block">AI Score: 96/100</span>
+                        <span className="text-[10px] text-slate-300">Chuẩn ngữ điệu bản xứ!</span>
+                      </div>
+                      <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
+                    </div>
+                  ) : (
+                    <span className="text-xs text-slate-500 font-mono">
+                      {speakingState === 'recording'
+                        ? '🎙️ Đang thu âm giọng bạn...'
+                        : speakingState === 'analyzing'
+                        ? '⚡ AI đang phân tích từng âm vị IPA...'
+                        : 'Nhấn "Bấm Để Nói Thử" để trải nghiệm'}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: IELTS CAMBRIDGE EXAM SIMULATOR */}
+          {studioTab === 'ielts' && (
+            <div className="space-y-6 animate-fadeIn">
+              {/* Simulator Exam Bar */}
+              <div className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
+                  <span className="text-white font-bold">Cambridge IELTS 19 Academic • Reading Section 3</span>
+                </div>
+                <div className="text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/30">
+                  ⏱️ {formatTimer(mockTimerSeconds)} Còn lại
+                </div>
+              </div>
+
+              {/* Reading Passage & Interactive Question */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div className="lg:col-span-6 p-5 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-teal-400 block">
+                    Đoạn Văn Bài Đọc (Reading Excerpt):
+                  </span>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-serif">
+                    "...Cognitive neuroscience proves that memory consolidation is fundamentally enhanced when review intervals are strategically spaced. Unlike massed repetition (cramming), which induces rapid cognitive fatigue and poor retrieval strength, the <strong>Spaced Repetition System (SRS)</strong> prompts the brain to retrieve information right as memory decay begins, thereby triggering deep synaptic reinforcement..."
+                  </p>
+                </div>
+
+                <div className="lg:col-span-6 space-y-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block">
+                    Câu Hỏi Trắc Nghiệm:
+                  </span>
+                  <p className="text-xs sm:text-sm font-bold text-white">
+                    According to the text, why does spaced repetition outperform cramming?
+                  </p>
+
+                  <div className="space-y-2 pt-1">
+                    {[
+                      'A. It allows students to study 10 hours continuously without breaks.',
+                      'B. It stimulates synaptic reinforcement right as memory decay begins.',
+                      'C. It directly translates English sentences into native languages.',
+                      'D. It replaces listening and speaking practice entirely.',
+                    ].map((opt, idx) => {
+                      const isSelected = ieltsSelectedOption === idx;
+                      const isCorrect = idx === 1;
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => handleIeltsSelect(idx)}
+                          className={`w-full p-3 rounded-xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between cursor-pointer ${
+                            isSelected
+                              ? isCorrect
+                                ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200'
+                                : 'bg-rose-500/20 border-rose-400 text-rose-200'
+                              : 'bg-slate-950/70 border-slate-800 hover:border-slate-700 text-slate-300'
+                          }`}
+                        >
+                          <span>{opt}</span>
+                          {isSelected && (
+                            <span>{isCorrect ? <Check className="w-4 h-4 text-emerald-400" /> : <XCircle className="w-4 h-4 text-rose-400" />}</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {ieltsFeedback === 'correct' && (
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center justify-between">
+                      <span>🎉 Chính Xác! Bạn vừa kiếm được <strong>+25 XP</strong> chuẩn Cambridge!</span>
+                      <span className="font-mono font-bold">Band 8.0</span>
+                    </div>
+                  )}
+                  {ieltsFeedback === 'incorrect' && (
+                    <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+                      Chưa đúng. Gợi ý: Hãy đọc lại câu cuối của đoạn văn mẫu bên trái!
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: SMART MEMORY & REVIEW MATRIX */}
+          {studioTab === 'srs' && (
+            <div className="space-y-6 animate-fadeIn">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <h4 className="text-base sm:text-lg font-display font-bold text-white">
+                    Bí Quyết Ghi Nhớ Sâu: Tự Động Nhắc Nhở Đúng "Thời Điểm Vàng"
+                  </h4>
+                  <p className="text-xs text-slate-400">
+                    Bấm chọn mốc thời gian bên dưới để so sánh sự khác biệt giữa cách học thông thường và công nghệ nhắc từ thông minh của LinguaFlow:
+                  </p>
+                </div>
+                <div className="px-3.5 py-1.5 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-mono font-bold shrink-0">
+                  Mốc Thời Gian: Sau {srsDays} Ngày
+                </div>
+              </div>
+
+              {/* Interactive Day Stepper */}
+              <div className="flex items-center gap-2">
+                {[1, 3, 7, 30, 90].map((d) => (
+                  <button
+                    key={d}
+                    onClick={() => {
+                      soundFx.playClick();
+                      setSrsDays(d);
+                    }}
+                    className={`flex-1 py-2.5 rounded-xl font-bold text-xs transition-all ${
+                      srsDays === d
+                        ? 'bg-teal-500 text-slate-950 shadow-md shadow-teal-500/20'
+                        : 'bg-slate-950/70 border border-slate-800 text-slate-400 hover:text-white'
                     }`}
                   >
-                    {i + 1}
-                  </div>
+                    {d === 1 ? '1 Ngày' : d === 3 ? '3 Ngày' : d === 7 ? '7 Ngày' : d === 30 ? '1 Tháng' : '3 Tháng'}
+                  </button>
                 ))}
               </div>
-            </div>
-          </div>
 
-          {/* Bento Card 2: Spaced Repetition (SRS SM-2) (Col 5) */}
-          <div className="md:col-span-5 p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-teal-500/40 transition-all duration-300 shadow-2xl backdrop-blur-xl flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-teal-400">
-                  <Brain className="w-6 h-6" />
+              {/* Comparison Meters */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 rounded-2xl bg-slate-950/70 border border-rose-500/30 space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-rose-400 font-bold">❌ Cách Học Thông Thường (Không có nhắc nhở)</span>
+                    <span className="font-mono text-rose-300 font-bold">
+                      {srsDays === 1 ? '54%' : srsDays === 3 ? '35%' : srsDays === 7 ? '26%' : srsDays === 30 ? '18%' : '10%'}
+                    </span>
+                  </div>
+                  <div className="w-full h-2.5 rounded-full bg-slate-900 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-rose-500 transition-all duration-500"
+                      style={{
+                        width: `${srsDays === 1 ? 54 : srsDays === 3 ? 35 : srsDays === 7 ? 26 : srsDays === 30 ? 18 : 10}%`,
+                      }}
+                    />
+                  </div>
+                  <p className="text-[11px] text-slate-400">Không có lịch nhắc ôn tập, não bộ nhanh chóng quên dần phần lớn từ vựng.</p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 font-mono font-bold text-xs">
-                  SRS Algorithm SM-2
-                </span>
-              </div>
-              <h3 className="text-2xl font-display font-black text-white group-hover:text-teal-300 transition-colors">
-                Ôn Tập Ngắt Quãng Chống Quên
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Tự động tối ưu chu kỳ nhắc lại: 1 ngày, 3 ngày, 7 ngày, 30 ngày. Đảm bảo từ vựng được ghi nhớ vĩnh viễn vào bộ nhớ dài hạn với ít thời gian nhất.
-              </p>
-            </div>
 
-            {/* SRS Timeline Pill Preview */}
-            <div className="mt-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2">
-              <div className="flex justify-between text-xs font-mono text-slate-400">
-                <span>Độ Nhớ Từ</span>
-                <span className="text-teal-400 font-bold">98.2% Ổn định</span>
-              </div>
-              <div className="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
-                <div className="h-full rounded-full bg-gradient-to-r from-teal-400 to-emerald-400 w-[85%]" />
-              </div>
-              <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-1">
-                <span>Lần 1 (+1d)</span>
-                <span>Lần 2 (+3d)</span>
-                <span>Lần 3 (+7d)</span>
-                <span className="text-teal-400 font-bold">Thành thạo (+30d)</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bento Card 3: AI Speaking Lab (Col 5) */}
-          <div className="md:col-span-5 p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/40 transition-all duration-300 shadow-2xl backdrop-blur-xl flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
-                  <Radio className="w-6 h-6" />
+                <div className="p-4 rounded-2xl bg-slate-950/70 border border-teal-500/40 space-y-2 shadow-lg shadow-teal-500/5">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-teal-400 font-bold">✅ Ôn Tập Thông Minh Cùng LinguaFlow</span>
+                    <span className="font-mono text-teal-300 font-bold">
+                      {srsDays === 1 ? '99%' : srsDays === 3 ? '98%' : srsDays === 7 ? '97%' : srsDays === 30 ? '95%' : '94%'}
+                    </span>
+                  </div>
+                  <div className="w-full h-2.5 rounded-full bg-slate-900 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-teal-400 to-emerald-400 transition-all duration-500"
+                      style={{
+                        width: `${srsDays === 1 ? 99 : srsDays === 3 ? 98 : srsDays === 7 ? 97 : srsDays === 30 ? 95 : 94}%`,
+                      }}
+                    />
+                  </div>
+                  <p className="text-[11px] text-slate-400">Tự động nhắc bạn xem lại đúng lúc sắp quên, giúp từ vựng ngấm sâu vào trí nhớ dài hạn.</p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 font-mono font-bold text-xs">
-                  AI Speech-to-Text
-                </span>
               </div>
-              <h3 className="text-2xl font-display font-black text-white group-hover:text-purple-300 transition-colors">
-                AI Speaking & Pronunciation Lab
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Phân tích sóng âm giọng nói 32 cột tần số, so sánh cao độ với phát âm người bản xứ và chấm điểm chi tiết từng âm vị IPA.
-              </p>
             </div>
+          )}
 
-            {/* Equalizer Visualizer */}
-            <div className="mt-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-center justify-center gap-1.5 h-16">
-              {[40, 65, 85, 45, 95, 75, 55, 90, 60, 80, 45, 70, 90, 50, 65, 40].map((h, i) => (
-                <div
-                  key={i}
-                  className="w-1.5 rounded-full bg-gradient-to-t from-purple-500 to-teal-400 transition-all duration-300"
-                  style={{ height: `${h}%` }}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Bento Card 4: Arcade Game Center 6 Modes (Col 7) */}
-          <div className="md:col-span-7 p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-coral-500/40 transition-all duration-300 shadow-2xl backdrop-blur-xl flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-coral-500/15 border border-coral-500/30 flex items-center justify-center text-coral-400">
-                  <Gamepad2 className="w-6 h-6" />
+          {/* TAB 4: ARCADE SPEED TYPING ARENA */}
+          {studioTab === 'arcade' && (
+            <div className="space-y-6 animate-fadeIn">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div>
+                  <h4 className="text-base sm:text-lg font-display font-bold text-white flex items-center gap-2">
+                    <span>Thử Thách Đua Gõ Phím Phản Xạ Thần Tốc</span>
+                    <span className="px-2 py-0.5 rounded-md bg-coral-500/20 text-coral-300 text-[10px] font-mono">
+                      Speed Typing WPM
+                    </span>
+                  </h4>
+                  <p className="text-xs text-slate-400">
+                    Gõ chính xác các ký tự của từ tiếng Anh bên dưới để ghi điểm combo:
+                  </p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-coral-500/20 text-coral-300 font-mono font-bold text-xs">
-                  6 Chế Độ Game Arcade
-                </span>
-              </div>
-              <h3 className="text-2xl font-display font-black text-white group-hover:text-coral-300 transition-colors">
-                Học Tiếng Anh Qua Game Phản Xạ Thần Tốc
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Giải phóng sự nhàm chán với 6 trò chơi gay cấn: Đua gõ phím tốc độ WPM, Ghép cặp trí nhớ, Ô chữ Crossword, Treo cổ Hangman và Thử thách nghe phản xạ.
-              </p>
-            </div>
-
-            {/* Game Badges */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              {['Speed Typing', 'Memory Match', 'Crossword', 'Word Search', 'Hangman', 'Listening Challenge'].map(
-                (g) => (
-                  <span
-                    key={g}
-                    className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-bold text-slate-300 hover:border-coral-500/50 hover:text-white transition-colors"
-                  >
-                    🎮 {g}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/30">
+                    🔥 COMBO x{typingStreak}
                   </span>
-                )
-              )}
+                  <button
+                    onClick={handleResetTyping}
+                    className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                    title="Đổi từ khác"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Target Word Display with Letter Matching */}
+              <div className="p-6 rounded-2xl bg-slate-950 border border-slate-800 text-center space-y-4">
+                <div className="flex justify-center items-center gap-1.5 sm:gap-2 text-2xl sm:text-4xl font-mono font-black tracking-widest">
+                  {targetTypingWord.split('').map((char, i) => {
+                    const typedChar = typingInput[i]?.toUpperCase();
+                    const isMatched = typedChar === char;
+                    const isWrong = typedChar && typedChar !== char;
+                    return (
+                      <span
+                        key={i}
+                        className={`w-8 sm:w-12 h-12 sm:h-16 rounded-xl border flex items-center justify-center transition-all ${
+                          isMatched
+                            ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-md shadow-emerald-500/20 scale-105'
+                            : isWrong
+                            ? 'bg-rose-500/20 border-rose-500 text-rose-300'
+                            : 'bg-slate-900 border-slate-800 text-slate-600'
+                        }`}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                <div className="max-w-sm mx-auto">
+                  <input
+                    type="text"
+                    value={typingInput}
+                    onChange={(e) => handleTypingChange(e.target.value)}
+                    disabled={typingSuccess}
+                    placeholder="Gõ chữ cái ở đây (ví dụ: RESILIENCE)..."
+                    className="w-full text-center px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm font-mono text-white placeholder-slate-500 focus:outline-none focus:border-teal-400 font-bold"
+                    autoFocus
+                  />
+                </div>
+
+                {typingSuccess && (
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-300 font-bold text-xs animate-bounce">
+                    <span>🎉 HOÀN THÀNH XUẤT SẮC! +30 XP</span>
+                    <button
+                      onClick={handleResetTyping}
+                      className="underline ml-2 text-white hover:text-emerald-200"
+                    >
+                      Thử lại từ mới
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
-      </section>
+      </motion.section>
 
       {/* ===================================================================== */}
       {/* 4. INTERACTIVE FLASHCARD STUDIO DEMO (THỬ LẬT THẺ NGAY TRÊN WEB)       */}
       {/* ===================================================================== */}
-      <section className="w-full max-w-4xl space-y-6 text-center">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        variants={sectionVariants}
+        className="w-full max-w-4xl space-y-6 text-center"
+      >
         <div className="space-y-2">
-          <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
+          <span className="px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
             ✨ Trải Nghiệm Thực Tế
           </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-black text-white">
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
             Thử Nghiệm Thẻ Flashcard 3D Tương Tác
           </h2>
-          <p className="text-sm text-slate-400 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-slate-400 max-w-lg mx-auto">
             Nhấp chuột vào thẻ bài dưới đây để lật mặt sau và đánh giá mức độ ghi nhớ:
           </p>
         </div>
 
-        {/* 3D Flip Card Container */}
-        <div className="relative mx-auto w-full max-w-md h-72 cursor-pointer perspective-1000" onClick={() => {
-          soundFx.playWoosh();
-          setIsFlipped(!isFlipped);
-        }}>
+        {/* 3D Flip Card Container with Parallax 3D Tilt & Dynamic Spotlight */}
+        <div
+          className="relative mx-auto w-full max-w-md h-72 cursor-pointer select-none"
+          style={{ perspective: 1200 }}
+          onMouseMove={handleLandingCardMouseMove}
+          onMouseLeave={handleLandingCardMouseLeave}
+          onClick={() => {
+            soundFx.playWoosh();
+            setIsFlipped(!isFlipped);
+          }}
+        >
           <motion.div
-            className="w-full h-full relative preserve-3d transition-transform duration-500 rounded-3xl"
-            animate={{ rotateY: isFlipped ? 180 : 0 }}
+            className="w-full h-full relative rounded-3xl"
+            style={{ transformStyle: 'preserve-3d' }}
+            initial={false}
+            animate={{
+              rotateX: landingCardTilt.x,
+              rotateY: (isFlipped ? 180 : 0) + (isFlipped ? -landingCardTilt.y : landingCardTilt.y),
+            }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
           >
             {/* FRONT OF FLASHCARD */}
-            <div className="absolute inset-0 backface-hidden p-8 rounded-3xl bg-gradient-to-tr from-slate-900 via-slate-900/90 to-slate-800 border-2 border-teal-500/40 shadow-2xl flex flex-col justify-between items-center text-center">
-              <div className="w-full flex items-center justify-between text-xs font-mono">
+            <div
+              className="absolute inset-0 p-8 rounded-3xl bg-gradient-to-tr from-slate-900 via-slate-900/90 to-slate-800 border-2 border-teal-500/40 shadow-2xl flex flex-col justify-between items-center text-center select-none overflow-hidden"
+              style={{
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                transform: 'rotateY(0deg)',
+                transformStyle: 'preserve-3d',
+                pointerEvents: isFlipped ? 'none' : 'auto',
+              }}
+            >
+              {/* Dynamic Cursor Spotlight Glow */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-3xl opacity-60 transition-opacity duration-300"
+                style={{
+                  background: `radial-gradient(350px circle at ${landingCardGlow.x}% ${landingCardGlow.y}%, rgba(20, 184, 166, 0.25), transparent 70%)`,
+                }}
+              />
+
+              <div
+                className="w-full flex items-center justify-between text-xs font-mono relative z-10"
+                style={{ transform: 'translateZ(20px)' }}
+              >
                 <span className="px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-300 font-bold">
                   Oxford 3000 • C1
                 </span>
                 <span className="text-slate-400">Click để lật 🔄</span>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-3xl sm:text-4xl font-black text-white tracking-wide">
+              <div
+                className="space-y-2 relative z-10"
+                style={{ transform: 'translateZ(35px)' }}
+              >
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-wide drop-shadow-md">
                   Perseverance
                 </h3>
                 <div className="flex items-center justify-center gap-2 text-sm font-mono text-cyan-400">
@@ -584,22 +1252,48 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <span className="text-xs text-slate-500 font-medium">
+              <span
+                className="text-xs text-slate-500 font-medium relative z-10"
+                style={{ transform: 'translateZ(15px)' }}
+              >
                 Chạm vào thẻ để xem dịch nghĩa và câu ví dụ
               </span>
             </div>
 
             {/* BACK OF FLASHCARD */}
-            <div className="absolute inset-0 backface-hidden rotate-y-180 p-8 rounded-3xl bg-gradient-to-tr from-slate-950 via-teal-950/40 to-slate-900 border-2 border-teal-400 shadow-2xl flex flex-col justify-between items-center text-center">
-              <div className="w-full flex items-center justify-between text-xs font-mono">
+            <div
+              className="absolute inset-0 p-8 rounded-3xl bg-gradient-to-tr from-slate-950 via-teal-950/40 to-slate-900 border-2 border-teal-400 shadow-2xl flex flex-col justify-between items-center text-center select-none overflow-hidden"
+              style={{
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                transform: 'rotateY(180deg)',
+                transformStyle: 'preserve-3d',
+                pointerEvents: isFlipped ? 'auto' : 'none',
+              }}
+            >
+              {/* Dynamic Cursor Spotlight Glow Back */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-3xl opacity-60 transition-opacity duration-300"
+                style={{
+                  background: `radial-gradient(350px circle at ${landingCardGlow.x}% ${landingCardGlow.y}%, rgba(20, 184, 166, 0.25), transparent 70%)`,
+                }}
+              />
+
+              <div
+                className="w-full flex items-center justify-between text-xs font-mono relative z-10"
+                style={{ transform: 'translateZ(20px)' }}
+              >
                 <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">
                   Danh từ (Noun)
                 </span>
                 <span className="text-teal-400 font-bold">Đã lật thẻ ✨</span>
               </div>
 
-              <div className="space-y-3">
-                <p className="text-xl font-bold text-white">
+              <div
+                className="space-y-3 relative z-10"
+                style={{ transform: 'translateZ(30px)' }}
+              >
+                <p className="text-xl font-bold text-white drop-shadow-md">
                   Sự kiên trì, bền bỉ, không nản lòng trước khó khăn.
                 </p>
                 <p className="text-xs text-slate-300 font-mono italic bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
@@ -609,7 +1303,8 @@ export default function LandingPage() {
 
               {/* Fake SRS Action Buttons */}
               <div
-                className="flex items-center gap-2 w-full pt-1"
+                className="flex items-center gap-2 w-full pt-1 relative z-10"
+                style={{ transform: 'translateZ(25px)' }}
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
@@ -643,114 +1338,165 @@ export default function LandingPage() {
           <span>Điểm XP Thử Nghiệm Của Bạn: </span>
           <span className="font-bold text-white">{demoXP} XP</span>
         </div>
-      </section>
+      </motion.section>
 
       {/* ===================================================================== */}
-      {/* 5. ROADMAP: TỪ MẤT GỐC ĐẾN IELTS 7.5+ (CEFR LADDER)                   */}
+      {/* 5. INTERACTIVE CEFR MASTERY JOURNEY (A1 → C2)                         */}
       {/* ===================================================================== */}
-      <section className="w-full max-w-6xl space-y-8">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        variants={sectionVariants}
+        className="w-full max-w-6xl space-y-8"
+      >
         <div className="text-center space-y-3">
-          <span className="px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold uppercase tracking-wider">
-            🗺️ Lộ Trình Rõ Ràng
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white">
-            Hành Trình Từng Bước Đến Tự Do Ngôn Ngữ
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold uppercase tracking-wider">
+            <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Lộ Trình Từng Bước Chuẩn Châu Âu</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Khám Phá Hành Trình Chinh Phục Từng Cấp Độ
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-            Không học dàn trải vô định. Lộ trình của bạn được phân cấp chặt chẽ theo khung tham chiếu châu Âu (CEFR).
+            Không học dàn trải vô định. Hãy bấm vào từng cấp độ bên dưới để xem chi tiết từ vựng mẫu, mục tiêu IELTS và kỹ năng đạt được:
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Level 1: A1 - A2 Foundation */}
-          <div className="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-teal-500/50 transition-all space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-xl bg-teal-500/20 text-teal-300 font-mono font-black text-xs">
-                CẤP ĐỘ 1: A1 - A2
-              </span>
-              <span className="text-xs text-slate-500 font-mono">5,576 Từ vựng</span>
-            </div>
-            <h4 className="text-xl font-bold text-white">Xây Dựng Nền Móng</h4>
-            <ul className="space-y-2.5 text-xs text-slate-300">
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Nắm vững bảng phiên âm quốc tế 44 âm IPA</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Từ vựng các chủ đề đời sống: Gia đình, Ăn uống, Du lịch</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Đặt câu đơn giản và phản xạ hội thoại cơ bản</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Level 2: B1 - B2 Fluency */}
-          <div className="p-6 rounded-3xl bg-slate-900/80 border-2 border-amber-500/40 hover:border-amber-400 transition-all space-y-4 shadow-xl shadow-amber-500/5 relative">
-            <div className="absolute -top-3 right-6 px-3 py-0.5 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-wider">
-              Phổ Biến Nhất
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-xl bg-amber-500/20 text-amber-300 font-mono font-black text-xs">
-                CẤP ĐỘ 2: B1 - B2
-              </span>
-              <span className="text-xs text-slate-500 font-mono">11,010 Từ vựng</span>
-            </div>
-            <h4 className="text-xl font-bold text-white">Bứt Phá Giao Tiếp & IELTS 6.5</h4>
-            <ul className="space-y-2.5 text-xs text-slate-300">
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Nói chuyện trôi chảy, diễn đạt ý kiến chuyên sâu</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Luyện nghe tin tức BBC, CNN, Podcast bản xứ</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Chiến thuật làm bài thi IELTS Reading & Listening 6.5+</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Level 3: C1 - C2 Mastery */}
-          <div className="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 transition-all space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-xl bg-purple-500/20 text-purple-300 font-mono font-black text-xs">
-                CẤP ĐỘ 3: C1 - C2
-              </span>
-              <span className="text-xs text-slate-500 font-mono">9,925 Từ vựng</span>
-            </div>
-            <h4 className="text-xl font-bold text-white">Làm Chủ Học Thuật & IELTS 8.0+</h4>
-            <ul className="space-y-2.5 text-xs text-slate-300">
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Làm chủ 570 Academic Word List (AWL) chuyên sâu</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Viết luận học thuật IELTS Task 2 mạch lạc chuẩn Band 8.0</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Đọc báo The Economist, Nature và tạp chí khoa học</span>
-              </li>
-            </ul>
-          </div>
+        {/* Level Selector Pills */}
+        <div className="flex items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800 max-w-2xl mx-auto overflow-x-auto">
+          {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((lvl) => {
+            const isCurrent = activeCefr === lvl;
+            return (
+              <button
+                key={lvl}
+                onClick={() => {
+                  soundFx.playClick();
+                  setActiveCefr(lvl);
+                }}
+                className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all whitespace-nowrap cursor-pointer ${
+                  isCurrent
+                    ? 'bg-gradient-to-r from-teal-400 to-cyan-400 text-slate-950 font-black shadow-lg shadow-teal-500/25 scale-105'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                Cấp Độ {lvl}
+              </button>
+            );
+          })}
         </div>
-      </section>
+
+        {/* Dynamic Level Showcase Card */}
+        {(() => {
+          const data = CEFR_DATA[activeCefr] || CEFR_DATA.B2;
+          return (
+            <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-teal-500/30 shadow-2xl backdrop-blur-2xl space-y-6">
+              {/* Header Split */}
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2.5">
+                    <span className="px-3 py-1 rounded-xl bg-teal-500/20 text-teal-300 font-mono font-extrabold text-xs">
+                      CEFR {data.level}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white">
+                      {data.name}
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+                    {data.tagline}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-4 shrink-0">
+                  <div className="p-3 rounded-2xl bg-slate-950/70 border border-amber-500/30 text-center">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Mục Tiêu</span>
+                    <span className="text-sm font-extrabold text-amber-400 font-mono">{data.targetBand}</span>
+                  </div>
+                  <div className="p-3 rounded-2xl bg-slate-950/70 border border-teal-500/30 text-center">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Quy Mô</span>
+                    <span className="text-sm font-extrabold text-teal-300 font-mono">{data.wordsCount}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Body: Skills Checklist (Left) & Sample Vocab Chips (Right) */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                <div className="md:col-span-6 space-y-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-teal-400 block">
+                    Kỹ Năng Đạt Được Ở Cấp Độ Này:
+                  </span>
+                  <ul className="space-y-2.5">
+                    {data.skills.map((skill, sIdx) => (
+                      <li key={sIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                        <Check className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
+                        <span>{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="pt-2">
+                    <Link href={`/${locale}/vocabulary`}>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        icon={<ArrowRight className="w-4 h-4" />}
+                        className="text-xs font-bold"
+                      >
+                        Khám Phá Kho Từ {data.level}
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="md:col-span-6 space-y-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block">
+                    3 Từ Vựng Tiêu Biểu (Chạm để nghe):
+                  </span>
+                  <div className="space-y-2">
+                    {data.sampleVocab.map((v, vIdx) => (
+                      <div
+                        key={vIdx}
+                        onClick={() => playWordAudio(v.word)}
+                        className="p-3 rounded-2xl bg-slate-950/70 hover:bg-slate-950 border border-slate-800 hover:border-teal-500/40 transition-all flex items-center justify-between cursor-pointer group"
+                      >
+                        <div className="space-y-0.5">
+                          <div className="flex items-center gap-2">
+                            <span className="font-extrabold text-white text-sm group-hover:text-teal-300 transition-colors">
+                              {v.word}
+                            </span>
+                            <span className="text-xs font-mono text-cyan-400">{v.ipa}</span>
+                          </div>
+                          <p className="text-xs text-slate-400">{v.meaning}</p>
+                          <p className="text-[11px] text-slate-500 italic truncate max-w-sm">"{v.example}"</p>
+                        </div>
+                        <div className="p-2 rounded-xl bg-slate-900 group-hover:bg-teal-500/20 text-slate-400 group-hover:text-teal-300 transition-colors shrink-0">
+                          <Volume2 className="w-4 h-4" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+      </motion.section>
 
       {/* ===================================================================== */}
       {/* 6. COMMUNITY & SOCIAL PROOF (HỌC VIÊN NÓI GÌ)                        */}
       {/* ===================================================================== */}
-      <section className="w-full max-w-6xl space-y-8">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        variants={sectionVariants}
+        className="w-full max-w-6xl space-y-8"
+      >
         <div className="text-center space-y-3">
           <span className="px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
             ⭐ Đánh Giá Thực Tế
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white">
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
             Được Tin Dùng Bởi Người Học Nghiêm Túc
           </h2>
         </div>
@@ -768,14 +1514,14 @@ export default function LandingPage() {
               name: 'Nguyễn Thu Trang',
               role: 'Chuyên viên Marketing • 920 TOEIC',
               comment:
-                'Thuật toán SRS nhắc từ trước khi mình kịp quên giúp mình nạp được hơn 3,000 từ vựng chuyên ngành trong 2 tháng mà không hề bị căng thẳng.',
+                'Tính năng nhắc từ thông minh đúng lúc sắp quên giúp mình nạp được hơn 3,000 từ vựng chuyên ngành trong 2 tháng mà không hề bị căng thẳng hay quá tải.',
               streak: 'Streak 89 ngày 🔥',
             },
             {
               name: 'Lê Minh Quân',
               role: 'Lập trình viên Software Engineer',
               comment:
-                'Giao diện Bento Grid và âm thanh haptic quá đỉnh! Vừa chơi game gõ phím vừa học từ vựng giúp mình tạo thói quen học tiếng Anh mỗi sáng.',
+                'Giao diện không gian vũ trụ và hiệu ứng âm thanh quá đỉnh! Vừa chơi game gõ phím vừa học từ vựng giúp mình tạo thói quen học tiếng Anh mỗi sáng.',
               streak: 'Streak 65 ngày 🔥',
             },
           ].map((item, idx) => (
@@ -804,17 +1550,23 @@ export default function LandingPage() {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* ===================================================================== */}
       {/* 7. FREQUENTLY ASKED QUESTIONS (ACCORDION FAQ)                          */}
       {/* ===================================================================== */}
-      <section className="w-full max-w-4xl space-y-6">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        variants={sectionVariants}
+        className="w-full max-w-4xl space-y-6"
+      >
         <div className="text-center space-y-2">
           <span className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-bold uppercase tracking-wider">
             💡 Giải Đáp Thắc Mắc
           </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-black text-white">
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
             Câu Hỏi Thường Gặp (FAQ)
           </h2>
         </div>
@@ -859,12 +1611,18 @@ export default function LandingPage() {
             );
           })}
         </div>
-      </section>
+      </motion.section>
 
       {/* ===================================================================== */}
       {/* 8. FINAL CALL TO ACTION (CTA BANNER)                                   */}
       {/* ===================================================================== */}
-      <section className="w-full max-w-6xl">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        variants={sectionVariants}
+        className="w-full max-w-6xl"
+      >
         <div className="relative overflow-hidden p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-teal-950 via-slate-900 to-indigo-950 border-2 border-teal-500/40 text-center space-y-6 shadow-2xl shadow-teal-500/10">
           <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/20 rounded-full blur-[100px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-coral-500/20 rounded-full blur-[100px] pointer-events-none" />
@@ -873,7 +1631,7 @@ export default function LandingPage() {
             🚀 Khởi Đầu Ngay Hôm Nay
           </span>
 
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white max-w-2xl mx-auto leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white max-w-2xl mx-auto leading-tight">
             Sẵn Sàng Nâng Tầm Tiếng Anh Của Bạn Cùng LinguaFlow?
           </h2>
 
@@ -915,7 +1673,7 @@ export default function LandingPage() {
             </span>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ===================================================================== */}
       {/* 9. ENTERPRISE MULTI-COLUMN FOOTER                                     */}
