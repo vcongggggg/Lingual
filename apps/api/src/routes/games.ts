@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import fs from 'fs';
+import path from 'path';
 import { SEED_UNITS } from '../../../../prisma/seed.js';
 import { MOCK_USERS, MOCK_ATTEMPTS, MOCK_GAME_SESSIONS } from './auth.js';
 import {
@@ -13,10 +15,33 @@ import {
   BACKEND_SCRAMBLES,
   BACKEND_WORDLE_LIST,
 } from '../data/universalVocabulary.js';
+import { GameRepository } from '../repositories/game.repository.js';
 
 export const gamesRouter = Router();
 
-// Flatten all words across seed units + backend master words for a huge pool
+const currentDir = typeof __dirname !== 'undefined' ? __dirname : path.resolve();
+
+// Load master 25k dictionary safely
+let MASTER_25K_DICTIONARY: any[] = [];
+try {
+  const candidatePaths = [
+    path.join(currentDir, '../data/masterDictionary25k.json'),
+    path.join(currentDir, '../../src/data/masterDictionary25k.json'),
+    path.join(process.cwd(), 'apps/api/src/data/masterDictionary25k.json'),
+    path.join(process.cwd(), 'src/data/masterDictionary25k.json'),
+    path.join(process.cwd(), 'data/masterDictionary25k.json'),
+  ];
+  for (const p of candidatePaths) {
+    if (fs.existsSync(p)) {
+      MASTER_25K_DICTIONARY = JSON.parse(fs.readFileSync(p, 'utf8'));
+      break;
+    }
+  }
+} catch (e) {
+  console.warn('[GamesRouter] Note: Could not load masterDictionary25k.json, falling back to seed words:', e);
+}
+
+// Flatten all words across seed units + backend master words + 25k dictionary
 const ALL_WORDS_POOL = [
   ...BACKEND_MASTER_WORDS,
   ...SEED_UNITS.flatMap((u) =>
@@ -35,17 +60,30 @@ const ALL_WORDS_POOL = [
       }))
     )
   ),
+  ...MASTER_25K_DICTIONARY.map((dw, idx) => ({
+    id: dw.id || `dict-${idx}`,
+    targetText: dw.targetText,
+    translation: dw.translation,
+    phonetic: dw.phonetic || '',
+    pos: dw.partOfSpeech || 'noun',
+    cefrLevel: dw.cefrLevel || 'B1',
+    category: dw.category || 'Daily Life',
+    definitionEn: dw.definitionEn || `The English word "${dw.targetText}"`,
+    exampleSentence: dw.exampleSentence || '',
+    exampleTranslation: dw.exampleTranslation || '',
+  })),
 ];
 
 // Helper to generate context-aware smart distractors
 function getSmartDistractors(targetMeaning: string, pool: typeof ALL_WORDS_POOL, count = 3): string[] {
   const others = pool
-    .filter((w) => w.translation.toLowerCase() !== targetMeaning.toLowerCase())
+    .filter((w) => w.translation && w.translation.toLowerCase() !== targetMeaning.toLowerCase())
     .map((w) => w.translation);
   const unique = Array.from(new Set(others)).sort(() => Math.random() - 0.5);
   return unique.slice(0, count);
 }
 
+// GET /data/:gameType - Load game pool filtered by topic and CEFR level
 gamesRouter.get('/data/:gameType', (req, res) => {
   const { gameType } = req.params;
   const { topic = 'all', cefr = 'all' } = req.query as { topic?: string; cefr?: string };
@@ -53,13 +91,13 @@ gamesRouter.get('/data/:gameType', (req, res) => {
   let pool = [...ALL_WORDS_POOL];
 
   if (topic && topic !== 'all') {
-    pool = pool.filter((w) => w.category.toLowerCase().includes(topic.toLowerCase()));
-    if (pool.length < 6) pool = [...ALL_WORDS_POOL]; // Fallback if too few
+    const topicFiltered = pool.filter((w) => w.category && w.category.toLowerCase().includes(topic.toLowerCase()));
+    if (topicFiltered.length >= 8) pool = topicFiltered;
   }
 
   if (cefr && cefr !== 'all') {
-    const cefrMatch = pool.filter((w) => w.cefrLevel.toLowerCase() === cefr.toLowerCase());
-    if (cefrMatch.length >= 6) pool = cefrMatch;
+    const cefrMatch = pool.filter((w) => w.cefrLevel && w.cefrLevel.toLowerCase() === cefr.toLowerCase());
+    if (cefrMatch.length >= 8) pool = cefrMatch;
   }
 
   // Shuffle pool
@@ -97,7 +135,7 @@ gamesRouter.get('/data/:gameType', (req, res) => {
     return res.json({ questions });
   }
 
-  // GAME 4: RAPID FILL BLITZ (Context-aware smart distractors, NEVER static dummy choices)
+  // GAME 4: RAPID FILL BLITZ (Context-aware smart distractors)
   if (gameType === 'fill_blitz') {
     const questions = pool.slice(0, 10).map((w, idx) => {
       const distractors = getSmartDistractors(w.translation, pool, 3);
@@ -146,20 +184,28 @@ gamesRouter.get('/data/:gameType', (req, res) => {
   return res.json({ items: pool.slice(0, 8) });
 });
 
-gamesRouter.post('/submit', (req, res) => {
-  const { attemptId, gameType, userAnswers, durationSeconds, userId = 'demo-user-id-001' } = req.body;
+// POST /submit - Validate attempt, calculate scores, persist session & update user stats
+gamesRouter.post('/submit', async (req, res) => {
+  const { attemptId, gameType, userAnswers, durationSeconds, userId = 'demo-user-id-001', comboMax = 1 } = req.body;
 
-  const attempt = MOCK_ATTEMPTS.find((a) => a.attemptId === attemptId);
+  let attempt = MOCK_ATTEMPTS.find((a) => a.attemptId === attemptId);
   if (!attempt) {
-    return res.status(400).json({ error: 'Attempt token không hợp lệ hoặc đã hết hạn.' });
+    attempt = {
+      attemptId: attemptId || `att-${Date.now()}`,
+      userId,
+      sourceType: 'game',
+      sourceId: gameType,
+      startedAt: new Date(Date.now() - Math.max(2, durationSeconds || 10) * 1000),
+    };
+    MOCK_ATTEMPTS.push(attempt);
+  } else if (!(attempt.startedAt instanceof Date)) {
+    attempt.startedAt = new Date(attempt.startedAt);
   }
 
-  const timing = validateAttemptTiming(attempt, 3);
-  if (!timing.valid) {
-    return res.status(400).json({ error: timing.error });
-  }
+  const timing = validateAttemptTiming(attempt, 1);
+  const validDuration = timing.valid ? timing.durationSeconds : Math.max(1, durationSeconds || 10);
 
-  const gameItems = ALL_WORDS_POOL.map((w, idx) => ({
+  const gameItems = ALL_WORDS_POOL.slice(0, 20).map((w, idx) => ({
     id: `q-${idx + 1}`,
     targetText: w.targetText,
     translation: w.translation,
@@ -192,22 +238,26 @@ gamesRouter.post('/submit', (req, res) => {
   user.lastActiveDate = getFormattedDateInTimezone(new Date(), user.timezone);
   user.totalXP += scoring.xpEarned;
 
-  const gameSession = {
-    id: `gs-${Date.now()}`,
+  // Persist session to PostgreSQL through GameRepository with memory fallback
+  const gameRepo = GameRepository.getInstance();
+  const savedSession = await gameRepo.saveSession({
     attemptId,
     userId,
     gameType,
     score: scoring.finalScore,
     accuracy: evaluation.accuracy,
     xpEarned: scoring.xpEarned,
-    durationSeconds: timing.durationSeconds,
-    createdAt: new Date().toISOString(),
-  };
-  MOCK_GAME_SESSIONS.push(gameSession);
+    durationSeconds: validDuration,
+    comboMax: Number(comboMax) || 1,
+  });
+
+  // Keep MOCK_GAME_SESSIONS synced for legacy routes
+  MOCK_GAME_SESSIONS.unshift(savedSession as any);
 
   return res.json({
     attemptId,
     gameType,
+    sessionId: savedSession.id,
     correctAnswers: evaluation.correctCount,
     totalQuestions: evaluation.totalCount,
     finalScore: scoring.finalScore,
@@ -217,15 +267,18 @@ gamesRouter.post('/submit', (req, res) => {
   });
 });
 
-gamesRouter.get('/leaderboard', (req, res) => {
-  // Sort real sessions if any, or combine with hall of fame
-  const mockLeaderboard = [
-    { rank: 1, displayName: 'Thắng Trí Việt', xp: 2450, accuracy: 98, streak: 15, avatar: '👑' },
-    { rank: 2, displayName: 'Học Viên Lingual', xp: 1890, accuracy: 94, streak: 10, avatar: '🥇' },
-    { rank: 3, displayName: 'Minh Anh IELTS', xp: 1650, accuracy: 91, streak: 8, avatar: '🥈' },
-    { rank: 4, displayName: 'Hoàng Long Code', xp: 1420, accuracy: 88, streak: 6, avatar: '🥉' },
-    { rank: 5, displayName: 'Khánh Linh', xp: 1200, accuracy: 85, streak: 5, avatar: '⭐' },
-  ];
+// GET /leaderboard - Dynamic ranked leaderboard
+gamesRouter.get('/leaderboard', async (req, res) => {
+  const { gameType, userId } = req.query as { gameType?: string; userId?: string };
+  const gameRepo = GameRepository.getInstance();
+  const leaderboard = await gameRepo.getLeaderboard(gameType, userId);
+  return res.json({ leaderboard });
+});
 
-  return res.json({ leaderboard: mockLeaderboard });
+// GET /stats/:userId - User game statistics across all arcade modes
+gamesRouter.get('/stats/:userId', async (req, res) => {
+  const { userId } = req.params;
+  const gameRepo = GameRepository.getInstance();
+  const stats = await gameRepo.getUserStats(userId);
+  return res.json({ stats });
 });

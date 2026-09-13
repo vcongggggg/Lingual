@@ -174,6 +174,53 @@ export class VocabularyRepository {
     MEM_FOLDERS.push(newFolder);
     return newFolder;
   }
+
+  public async saveSrsReviewLog(log: {
+    userId: string;
+    wordId: string;
+    rating: number;
+    scheduledDays: number;
+    elapsedDays: number;
+    lastInterval: number;
+    newInterval: number;
+    responseTimeMs?: number;
+    reviewedAt?: string;
+  }): Promise<void> {
+    if (isDatabaseConnected()) {
+      try {
+        await prisma.srsReviewLog.create({
+          data: {
+            userId: log.userId,
+            wordId: log.wordId,
+            rating: log.rating,
+            scheduledDays: log.scheduledDays,
+            elapsedDays: log.elapsedDays,
+            lastInterval: log.lastInterval,
+            newInterval: log.newInterval,
+            responseTimeMs: log.responseTimeMs || 0,
+            reviewedAt: log.reviewedAt ? new Date(log.reviewedAt) : new Date(),
+          },
+        });
+      } catch (err) {
+        console.warn('Could not persist SRS review log to DB:', err);
+      }
+    }
+  }
+
+  public async getMajorTopics(): Promise<any[]> {
+    if (isDatabaseConnected()) {
+      try {
+        const topics = await prisma.majorTopic.findMany({
+          include: {
+            subTopics: { orderBy: { order: 'asc' } },
+          },
+          orderBy: { order: 'asc' },
+        });
+        if (topics.length > 0) return topics;
+      } catch (err) {}
+    }
+    return [];
+  }
 }
 
 export const vocabularyRepository = VocabularyRepository.getInstance();

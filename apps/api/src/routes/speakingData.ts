@@ -1,6 +1,7 @@
 import { SpeakingPrompt } from '@linguaflow/domain';
+import { EXPANDED_SPEAKING_PROMPTS } from '../data/speakingExpandedData.js';
 
-export const MASTER_SPEAKING_PROMPTS: SpeakingPrompt[] = [
+export const INITIAL_SPEAKING_PROMPTS: SpeakingPrompt[] = [
   // 1. PRONUNCIATION
   {
     id: 'sp-pron-01',
@@ -254,4 +255,9 @@ export const MASTER_SPEAKING_PROMPTS: SpeakingPrompt[] = [
     cefr: 'C1',
     tags: ['free-speaking', 'environment', 'c1'],
   },
+];
+
+export const MASTER_SPEAKING_PROMPTS: SpeakingPrompt[] = [
+  ...INITIAL_SPEAKING_PROMPTS,
+  ...EXPANDED_SPEAKING_PROMPTS,
 ];

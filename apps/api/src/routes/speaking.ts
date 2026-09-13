@@ -60,31 +60,23 @@ function resolveUser(req: any): { id: string; email: string; role: string } {
 }
 
 // 1. GET /prompts
-speakingRouter.get('/prompts', (req, res) => {
+speakingRouter.get('/prompts', async (req, res) => {
   const { mode, difficulty, cefr, topic, limit } = req.query;
 
-  let filtered = [...MASTER_SPEAKING_PROMPTS];
-
-  if (mode && typeof mode === 'string') {
-    filtered = filtered.filter((p) => p.mode.toLowerCase() === mode.toLowerCase());
-  }
-  if (difficulty && typeof difficulty === 'string') {
-    filtered = filtered.filter((p) => p.difficulty.toLowerCase() === difficulty.toLowerCase());
-  }
-  if (cefr && typeof cefr === 'string') {
-    filtered = filtered.filter((p) => p.cefr.toUpperCase() === cefr.toUpperCase());
-  }
-  if (topic && typeof topic === 'string') {
-    filtered = filtered.filter((p) => p.topic.toLowerCase().includes(topic.toLowerCase()));
-  }
+  let filtered = await speakingRepository.getPrompts({
+    mode: mode as string,
+    difficulty: difficulty as string,
+    cefr: cefr as string,
+    topic: topic as string,
+  });
 
   const maxResults = limit ? parseInt(limit as string, 10) : filtered.length;
   res.json({ prompts: filtered.slice(0, isNaN(maxResults) ? filtered.length : maxResults) });
 });
 
 // 2. GET /prompts/:id
-speakingRouter.get('/prompts/:id', (req, res) => {
-  const prompt = MASTER_SPEAKING_PROMPTS.find((p) => p.id === req.params.id);
+speakingRouter.get('/prompts/:id', async (req, res) => {
+  const prompt = await speakingRepository.getPromptById(req.params.id);
   if (!prompt) {
     return res.status(404).json({ error: 'Speaking prompt not found.' });
   }
@@ -92,14 +84,14 @@ speakingRouter.get('/prompts/:id', (req, res) => {
 });
 
 // 3. POST /analyze (Deterministic local feedback preview without persistence)
-speakingRouter.post('/analyze', (req, res) => {
+speakingRouter.post('/analyze', async (req, res) => {
   const { promptId, transcript, durationMs } = req.body;
 
   if (!promptId || typeof promptId !== 'string') {
     return res.status(400).json({ error: 'Missing or invalid promptId.' });
   }
 
-  const prompt = MASTER_SPEAKING_PROMPTS.find((p) => p.id === promptId);
+  const prompt = await speakingRepository.getPromptById(promptId);
   if (!prompt) {
     return res.status(404).json({ error: 'Speaking prompt not found.' });
   }
@@ -135,7 +127,7 @@ speakingRouter.post('/attempts', async (req, res) => {
     return res.status(400).json({ error: 'Missing or invalid promptId.' });
   }
 
-  const prompt = MASTER_SPEAKING_PROMPTS.find((p) => p.id === promptId);
+  const prompt = await speakingRepository.getPromptById(promptId);
   if (!prompt) {
     return res.status(404).json({ error: 'Speaking prompt not found.' });
   }
@@ -242,6 +234,19 @@ speakingRouter.post('/attempts', async (req, res) => {
     fluencyScore: feedback.fluencyScore,
     xpAwarded: allowableXP,
     createdAt: new Date().toISOString(),
+  });
+
+  // Persist detailed phoneme feedback report to DB
+  await speakingRepository.savePhonemeFeedback({
+    attemptId,
+    phonemesJson: JSON.stringify(feedback.pronunciationIssues || []),
+    pronunciationScore: feedback.pronunciationScore,
+    fluencyScore: feedback.fluencyScore,
+    grammarScore: feedback.grammarScore,
+    vocabularyScore: feedback.vocabularyScore,
+    coherenceScore: feedback.coherenceScore,
+    audioRecordingUrl: req.body.audioRecordingUrl || null,
+    suggestionsJson: JSON.stringify(feedback.vocabularySuggestions || []),
   });
 
   const userAttempts = attemptsStore.get(user.id) || [];

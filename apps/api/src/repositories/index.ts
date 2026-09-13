@@ -6,3 +6,6 @@ export * from './exam.repository.js';
 export * from './vocabulary.repository.js';
 export * from './community.repository.js';
 export * from './analytics.repository.js';
+export * from './tutor.repository.js';
+export * from './gamification.repository.js';
+export * from './game.repository.js';

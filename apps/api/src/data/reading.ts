@@ -1,6 +1,7 @@
 import { ReadingArticle } from '../../../../packages/domain/src/index.js';
+import { EXPANDED_READING_ARTICLES } from './readingExpandedData.js';
 
-export const MASTER_READING_ARTICLES: ReadingArticle[] = [
+export const ORIGINAL_READING_ARTICLES: ReadingArticle[] = [
   // ==========================================================================
   // CEFR A1 ARTICLES (3 articles)
   // ==========================================================================
@@ -1180,5 +1181,10 @@ export const MASTER_READING_ARTICLES: ReadingArticle[] = [
       },
     ],
   },
+];
+
+export const MASTER_READING_ARTICLES: ReadingArticle[] = [
+  ...ORIGINAL_READING_ARTICLES,
+  ...EXPANDED_READING_ARTICLES,
 ];
 

@@ -38,6 +38,7 @@ model User {
   wordStates       UserWordState[]
   lessonProgress   UserLessonProgress[]
   gameSessions     GameSession[]
+  gameStats        UserGameStat[]
   userAchievements UserAchievement[]
   attempts         AttemptSession[]
   ieltsAttempts    IeltsMockAttempt[]
@@ -52,6 +53,14 @@ model User {
   goals            LearningGoal[]
   activityLogs     DailyActivityLog[]
   folders          VocabularyFolder[]
+
+  // Phân hệ bổ sung 2026
+  readingProgress      ReadingUserProgress[]
+  tutorSnapshots       TutorContextSnapshot[]
+  adaptivePlans        AdaptiveLearningPlan[]
+  tutorRecommendations TutorRecommendation[]
+  srsReviewLogs        SrsReviewLog[]
+  questProgress        UserQuestProgress[]
 
   @@map("users")
 }
@@ -128,18 +137,28 @@ model Vocabulary {
   id                 String   @id @default(uuid())
   lessonId           String?
   lesson             Lesson?  @relation(fields: [lessonId], references: [id], onDelete: SetNull)
+  subTopicId         String?
+  subTopic           SubTopic? @relation(fields: [subTopicId], references: [id], onDelete: SetNull)
   cefrLevel          String   @default("A1")
   targetText         String
   translation        String
   phonetic           String?
+  phoneticUs         String?
+  phoneticUk         String?
+  partOfSpeech       String?
   audioUrl           String?
   exampleSentence    String?
   exampleTranslation String?
+  collocationsJson   String?  @default("[]")
+  synonymsJson       String?  @default("[]")
+  antonymsJson       String?  @default("[]")
+  frequencyRank      Int?
   category           String   @default("general")
   status             String   @default("published")
   createdBy          String?
 
-  userStates UserWordState[]
+  userStates    UserWordState[]
+  srsReviewLogs SrsReviewLog[]
 
   @@map("vocabularies")
 }
@@ -153,6 +172,10 @@ model UserWordState {
   repetition  Int        @default(0)
   interval    Int        @default(1)
   efactor     Float      @default(2.5)
+  stability   Float      @default(2.0)
+  difficulty  Float      @default(5.0)
+  state       String     @default("review")
+  lapses      Int        @default(0)
   dueDate     DateTime   @default(now())
   lastQuality Int        @default(0)
   updatedAt   DateTime   @updatedAt
@@ -192,14 +215,36 @@ model GameSession {
   attemptId       String   @unique
   userId          String
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  gameType        String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz"
+  gameType        String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz", "lingo_wordle", "sound_reflex"
   score           Int
   accuracy        Float
   xpEarned        Int
   durationSeconds Int
+  comboMax        Int      @default(1)
+  metadataJson    String?
   createdAt       DateTime @default(now())
 
+  @@index([userId])
+  @@index([gameType, score])
   @@map("game_sessions")
+}
+
+model UserGameStat {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gameType         String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz", "lingo_wordle", "sound_reflex"
+  highScore        Int      @default(0)
+  totalGamesPlayed Int      @default(0)
+  totalWins        Int      @default(0)
+  totalXpEarned    Int      @default(0)
+  avgAccuracy      Float    @default(0.0)
+  lastPlayedAt     DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([userId, gameType])
+  @@index([gameType, highScore])
+  @@map("user_game_stats")
 }
 
 model Achievement {
@@ -584,5 +629,412 @@ model FolderVocabulary {
   @@index([folderId])
   @@map("folder_vocabularies")
 }
+
+// ============================================================================
+// LAB 14: READING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model ReadingArticle {
+  id               String                @id @default(uuid())
+  title            String
+  subtitle         String
+  level            String                // "A1" | "A2" | "B1" | "B2" | "C1"
+  topic            String                // "Daily Life", "Technology", etc.
+  author           String                @default("LinguaFlow Editorial")
+  estimatedMinutes Int                   @default(3)
+  wordCount        Int                   @default(150)
+  coverImage       String?
+  status           String                @default("published")
+  createdBy        String?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  paragraphs       ReadingParagraph[]
+  questions        ReadingQuestion[]
+  userProgress     ReadingUserProgress[]
+
+  @@map("reading_articles")
+}
+
+model ReadingParagraph {
+  id         String         @id @default(uuid())
+  articleId  String
+  article    ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  order      Int
+  english    String         @db.Text
+  vietnamese String         @db.Text
+  audioUrl   String?
+
+  @@index([articleId, order])
+  @@map("reading_paragraphs")
+}
+
+model ReadingQuestion {
+  id               String         @id @default(uuid())
+  articleId        String
+  article          ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  order            Int
+  type             String         // "main-idea", "factual", "inference", "vocabulary", "true-false"
+  question         String
+  optionsJson      String         // JSON array of strings
+  correctAnswer    String
+  explanation      String         @db.Text
+  difficulty       String         @default("A1")
+  relatedParagraph Int?
+
+  @@index([articleId, order])
+  @@map("reading_questions")
+}
+
+model ReadingUserProgress {
+  id               String         @id @default(uuid())
+  userId           String
+  user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  articleId        String
+  article          ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  currentParagraph Int            @default(0)
+  scrollProgress   Float          @default(0)
+  completed        Boolean        @default(false)
+  updatedAt        DateTime       @updatedAt
+
+  @@unique([userId, articleId])
+  @@map("reading_user_progress")
+}
+
+// ============================================================================
+// LAB 13: WRITING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model WritingPrompt {
+  id             String               @id @default(uuid())
+  mode           String               // "see-write" | "guided" | "free"
+  difficulty     String               // "A1" | "A2" | "B1" | "B2" | "C1"
+  title          String
+  instruction    String               @db.Text
+  imageHint      String?
+  scenario       String?              @db.Text
+  targetWords    String               @default("[]")
+  targetGrammar  String?
+  sampleAnswer   String?              @db.Text
+  category       String               @default("General")
+  minWords       Int                  @default(10)
+  maxWords       Int                  @default(100)
+  status         String               @default("published")
+  createdBy      String?
+  createdAt      DateTime             @default(now())
+
+  guidedSteps    GuidedWritingStep[]
+
+  @@map("writing_prompts")
+}
+
+model GuidedWritingStep {
+  id           String        @id @default(uuid())
+  promptId     String
+  prompt       WritingPrompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  stepNumber   Int
+  question     String
+  hint         String?
+  samplePhrase String?
+
+  @@index([promptId, stepNumber])
+  @@map("guided_writing_steps")
+}
+
+model WritingFeedbackReport {
+  id                        String   @id @default(uuid())
+  attemptId                 String   @unique
+  overallScore              Int
+  grammarScore              Int
+  vocabularyScore           Int
+  naturalnessScore          Int
+  relevanceScore            Int
+  completenessScore         Int
+  grade                     String
+  correctionsJson           String   @default("[]")
+  strengthsJson             String   @default("[]")
+  suggestionsJson           String   @default("[]")
+  vocabularySuggestionsJson String   @default("[]")
+  createdAt                 DateTime @default(now())
+
+  @@map("writing_feedback_reports")
+}
+
+// ============================================================================
+// LAB 18: SPEAKING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model SpeakingPrompt {
+  id              String   @id @default(uuid())
+  title           String
+  description     String   @db.Text
+  mode            String   // "pronunciation" | "repetition" | "shadowing" | "guided" | "picture" | "situation" | "free"
+  difficulty      String   @default("A1")
+  cefr            String   @default("A1")
+  topic           String   @default("Daily Life")
+  targetWords     String   @default("[]")
+  targetPhrases   String   @default("[]")
+  sampleAnswer    String?  @db.Text
+  audioSampleUrl  String?
+  durationSeconds Int      @default(30)
+  minWords        Int      @default(5)
+  maxWords        Int      @default(50)
+  tags            String   @default("[]")
+  imagePrompt     String?
+  scenario        String?  @db.Text
+  stepsJson       String?
+  status          String   @default("published")
+  createdBy       String?
+  createdAt       DateTime @default(now())
+
+  @@map("speaking_prompts")
+}
+
+model SpeakingPhonemeFeedback {
+  id                 String   @id @default(uuid())
+  attemptId          String   @unique
+  phonemesJson       String   @default("[]")
+  pronunciationScore Int
+  fluencyScore       Int
+  grammarScore       Int
+  vocabularyScore    Int
+  coherenceScore     Int
+  audioRecordingUrl  String?
+  suggestionsJson    String   @default("[]")
+  createdAt          DateTime @default(now())
+
+  @@map("speaking_phoneme_feedbacks")
+}
+
+// ============================================================================
+// LAB 15: STANDARDIZED EXAMS PERSISTENCE MODELS
+// ============================================================================
+
+model StandardizedExam {
+  id              String        @id @default(uuid())
+  code            String        @unique // e.g. "toeic-test-01", "vstep-b2-01"
+  title           String
+  type            String        // "toeic" | "vstep" | "ielts" | "toefl"
+  difficulty      String        @default("Intermediate")
+  durationMinutes Int           @default(120)
+  totalQuestions  Int           @default(200)
+  passingScore    Int           @default(600)
+  instructions    String?       @db.Text
+  status          String        @default("published")
+  createdAt       DateTime      @default(now())
+
+  sections        ExamSection[]
+
+  @@map("standardized_exams")
+}
+
+model ExamSection {
+  id              String           @id @default(uuid())
+  examId          String
+  exam            StandardizedExam @relation(fields: [examId], references: [id], onDelete: Cascade)
+  sectionType     String           // "listening" | "reading" | "writing" | "speaking"
+  partNumber      Int
+  title           String
+  instructions    String?          @db.Text
+  audioUrl        String?
+  passageText     String?          @db.Text
+  totalQuestions  Int
+  order           Int
+
+  questions       ExamQuestion[]
+
+  @@index([examId, order])
+  @@map("exam_sections")
+}
+
+model ExamQuestion {
+  id             String      @id @default(uuid())
+  sectionId      String
+  section        ExamSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  questionNumber Int
+  order          Int
+  questionText   String?     @db.Text
+  passageText    String?     @db.Text
+  audioUrl       String?
+  imageUrl       String?
+  optionsJson    String
+  correctAnswer  String
+  explanation    String?     @db.Text
+  points         Int         @default(5)
+
+  @@index([sectionId, order])
+  @@map("exam_questions")
+}
+
+// ============================================================================
+// AI TUTOR & ADAPTIVE LEARNING ENGINE PERSISTENCE MODELS
+// ============================================================================
+
+model TutorContextSnapshot {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cefrEstimate    String   @default("B2")
+  overallScore    Int      @default(75)
+  weaknesses      String   @default("[]")
+  skillScoresJson String   @default("{}")
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@map("tutor_context_snapshots")
+}
+
+model AdaptiveLearningPlan {
+  id          String             @id @default(uuid())
+  userId      String
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planName    String
+  startDate   DateTime           @default(now())
+  endDate     DateTime
+  daysCount   Int                @default(7)
+  status      String             @default("active")
+  createdAt   DateTime           @default(now())
+
+  items       AdaptivePlanItem[]
+
+  @@index([userId, status])
+  @@map("adaptive_learning_plans")
+}
+
+model AdaptivePlanItem {
+  id               String               @id @default(uuid())
+  planId           String
+  plan             AdaptiveLearningPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  dayNumber        Int
+  order            Int
+  skill            String
+  title            String
+  focusTopic       String
+  estimatedMinutes Int                  @default(15)
+  targetDrillUrl   String
+  completed        Boolean              @default(false)
+  completedAt      DateTime?
+  score            Int?
+
+  @@index([planId, dayNumber])
+  @@map("adaptive_plan_items")
+}
+
+model TutorRecommendation {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill       String
+  title       String
+  description String   @db.Text
+  priority    String   @default("medium")
+  actionUrl   String
+  reason      String
+  isDismissed Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([userId, isDismissed])
+  @@map("tutor_recommendations")
+}
+
+// ============================================================================
+// VOCABULARY MAJOR TOPICS & ENHANCED SRS 2.0 MODELS
+// ============================================================================
+
+model MajorTopic {
+  id            String     @id @default(uuid())
+  title         String
+  levelBadge    String     @default("Standard")
+  categoryGroup String     @default("cefr")
+  description   String     @db.Text
+  coverImage    String?
+  order         Int        @default(0)
+  createdAt     DateTime   @default(now())
+
+  subTopics     SubTopic[]
+
+  @@map("major_topics")
+}
+
+model SubTopic {
+  id           String       @id @default(uuid())
+  majorTopicId String
+  majorTopic   MajorTopic   @relation(fields: [majorTopicId], references: [id], onDelete: Cascade)
+  title        String
+  coverImage   String?
+  order        Int          @default(0)
+
+  words        Vocabulary[]
+
+  @@index([majorTopicId, order])
+  @@map("sub_topics")
+}
+
+model SrsReviewLog {
+  id             String     @id @default(uuid())
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wordId         String
+  word           Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  reviewedAt     DateTime   @default(now())
+  rating         Int
+  scheduledDays  Int
+  elapsedDays    Int
+  lastInterval   Int
+  newInterval    Int
+  responseTimeMs Int        @default(0)
+
+  @@index([userId, wordId])
+  @@index([reviewedAt])
+  @@map("srs_review_logs")
+}
+
+// ============================================================================
+// GAMIFICATION: DAILY QUESTS & WEEKLY LEAGUES
+// ============================================================================
+
+model DailyQuest {
+  id          String              @id @default(uuid())
+  date        String
+  questType   String
+  title       String
+  targetCount Int
+  xpReward    Int                 @default(20)
+
+  userProgress UserQuestProgress[]
+
+  @@index([date])
+  @@map("daily_quests")
+}
+
+model UserQuestProgress {
+  id           String     @id @default(uuid())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questId      String
+  quest        DailyQuest @relation(fields: [questId], references: [id], onDelete: Cascade)
+  currentCount Int        @default(0)
+  isClaimed    Boolean    @default(false)
+  claimedAt    DateTime?
+
+  @@unique([userId, questId])
+  @@map("user_quest_progress")
+}
+
+model WeeklyLeague {
+  id         String   @id @default(uuid())
+  tier       String
+  weekNumber Int
+  year       Int
+  userId     String
+  weeklyXP   Int      @default(0)
+  rank       Int      @default(1)
+  updatedAt  DateTime @updatedAt
+
+  @@unique([tier, weekNumber, year, userId])
+  @@index([tier, weekNumber, year, rank])
+  @@map("weekly_leagues")
+}
+
 
 

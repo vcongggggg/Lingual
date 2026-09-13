@@ -40,32 +40,13 @@ const MOCK_READING_PROGRESS: Record<string, { currentParagraph: number; scrollPr
 /**
  * GET /api/v1/reading/articles
  */
-readingRouter.get('/articles', (req, res) => {
-  const { level, topic, mode } = req.query;
+readingRouter.get('/articles', async (req, res) => {
+  const { level, topic } = req.query;
 
-  let filtered = MASTER_READING_ARTICLES;
-  if (level && level !== 'all') {
-    filtered = filtered.filter((a) => a.level === level);
-  }
-  if (topic && topic !== 'all') {
-    filtered = filtered.filter((a) => a.topic.toLowerCase() === (topic as string).toLowerCase());
-  }
-
-  // Map to list view metadata (avoid returning full questions on list query)
-  const list = filtered.map((a) => ({
-    id: a.id,
-    title: a.title,
-    subtitle: a.subtitle,
-    level: a.level,
-    topic: a.topic,
-    author: a.author,
-    estimatedMinutes: a.estimatedMinutes,
-    wordCount: a.wordCount,
-    coverImage: a.coverImage,
-    paragraphCount: a.paragraphs.length,
-    vocabularyCount: a.vocabularyIds.length,
-    questionCount: a.questions.length,
-  }));
+  const list = await readingRepository.getArticles({
+    level: level as string,
+    topic: topic as string,
+  });
 
   return res.json({ articles: list, total: list.length });
 });
@@ -73,8 +54,8 @@ readingRouter.get('/articles', (req, res) => {
 /**
  * GET /api/v1/reading/articles/:id
  */
-readingRouter.get('/articles/:id', (req, res) => {
-  const article = MASTER_READING_ARTICLES.find((a) => a.id === req.params.id);
+readingRouter.get('/articles/:id', async (req, res) => {
+  const article = await readingRepository.getArticleById(req.params.id);
   if (!article) {
     return res.status(404).json({ error: 'Không tìm thấy bài đọc.' });
   }
@@ -85,14 +66,14 @@ readingRouter.get('/articles/:id', (req, res) => {
 /**
  * GET /api/v1/reading/articles/:id/questions
  */
-readingRouter.get('/articles/:id/questions', (req, res) => {
-  const article = MASTER_READING_ARTICLES.find((a) => a.id === req.params.id);
+readingRouter.get('/articles/:id/questions', async (req, res) => {
+  const article = await readingRepository.getArticleById(req.params.id);
   if (!article) {
     return res.status(404).json({ error: 'Không tìm thấy bài đọc.' });
   }
 
   // Return questions without revealing correct answer prematurely
-  const sanitizedQuestions = article.questions.map((q) => ({
+  const sanitizedQuestions = article.questions.map((q: any) => ({
     id: q.id,
     type: q.type,
     question: q.question,
@@ -268,21 +249,32 @@ readingRouter.get('/stats', (req, res) => {
 /**
  * POST /api/v1/reading/progress
  */
-readingRouter.post('/progress', (req, res) => {
-  const { articleId, currentParagraph = 1, scrollProgress = 0, userId = 'demo-user-id-001' } = req.body;
+readingRouter.post('/progress', async (req, res) => {
+  const { articleId, currentParagraph = 1, scrollProgress = 0, completed = false, userId = 'demo-user-id-001' } = req.body;
 
   if (!articleId) {
     return res.status(400).json({ error: 'Thiếu articleId.' });
   }
 
-  const key = `${userId}:${articleId}`;
-  MOCK_READING_PROGRESS[key] = {
-    currentParagraph: Number(currentParagraph),
-    scrollProgress: Number(scrollProgress),
-    updatedAt: new Date().toISOString(),
-  };
+  await readingRepository.saveUserProgress(
+    userId,
+    articleId,
+    Number(currentParagraph),
+    Number(scrollProgress),
+    Boolean(completed)
+  );
 
-  return res.json({ success: true, progress: MOCK_READING_PROGRESS[key] });
+  const progress = await readingRepository.getUserProgress(userId, articleId);
+  return res.json({ success: true, progress });
+});
+
+/**
+ * GET /api/v1/reading/progress/:articleId
+ */
+readingRouter.get('/progress/:articleId', async (req, res) => {
+  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const progress = await readingRepository.getUserProgress(userId, req.params.articleId);
+  return res.json({ progress: progress || { currentParagraph: 1, scrollProgress: 0, completed: false } });
 });
 
 /**

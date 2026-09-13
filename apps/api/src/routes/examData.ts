@@ -1,6 +1,7 @@
 import { Exam } from '../../../../packages/domain/src/index.js';
+import { EXPANDED_EXAMS } from '../data/examsExpandedData.js';
 
-export const MASTER_EXAMS: Exam[] = [
+export const INITIAL_EXAMS: Exam[] = [
   // ==========================================================================
   // 1. TOEIC Full-Format Mini Simulation (Listening Part 1, 2 + Reading Part 5, 6, 7)
   // ==========================================================================
@@ -449,4 +450,9 @@ export const MASTER_EXAMS: Exam[] = [
       },
     ],
   },
+];
+
+export const MASTER_EXAMS: Exam[] = [
+  ...INITIAL_EXAMS,
+  ...EXPANDED_EXAMS,
 ];

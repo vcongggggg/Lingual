@@ -47,19 +47,14 @@ const MOCK_EXAM_ATTEMPTS: ExamAttempt[] = [];
  * GET /api/v1/exams
  * List available exams with optional query filters
  */
-examsRouter.get('/', (req, res) => {
+examsRouter.get('/', async (req, res) => {
   const { type, level, section } = req.query;
 
-  let filtered = MASTER_EXAMS;
-  if (type && type !== 'all') {
-    filtered = filtered.filter((e) => e.type.toLowerCase() === (type as string).toLowerCase());
-  }
-  if (level && level !== 'all') {
-    filtered = filtered.filter((e) => e.difficulty.toLowerCase() === (level as string).toLowerCase());
-  }
-  if (section && section !== 'all') {
-    filtered = filtered.filter((e) => e.sections.some((s) => s.type.toLowerCase() === (section as string).toLowerCase()));
-  }
+  const filtered = await examRepository.getExams({
+    type: type as string,
+    level: level as string,
+    section: section as string,
+  });
 
   // Return public sanitized exam cards
   const sanitized = filtered.map(sanitizePublicExam);
@@ -70,8 +65,8 @@ examsRouter.get('/', (req, res) => {
  * GET /api/v1/exams/:examId
  * Get public exam details (Sanitized without answers/explanations)
  */
-examsRouter.get('/:examId', (req, res) => {
-  const exam = MASTER_EXAMS.find((e) => e.id === req.params.examId);
+examsRouter.get('/:examId', async (req, res) => {
+  const exam = await examRepository.getExamById(req.params.examId);
   if (!exam) {
     return res.status(404).json({ error: 'Không tìm thấy đề thi.' });
   }
@@ -85,7 +80,7 @@ examsRouter.get('/:examId', (req, res) => {
  */
 examsRouter.post('/:examId/start', async (req, res) => {
   const { userId = 'demo-user-id-001' } = req.body;
-  const exam = MASTER_EXAMS.find((e) => e.id === req.params.examId);
+  const exam = await examRepository.getExamById(req.params.examId);
 
   if (!exam) {
     return res.status(404).json({ error: 'Không tìm thấy đề thi.' });
@@ -175,7 +170,7 @@ examsRouter.post('/attempts/:attemptId/submit', async (req, res) => {
     return res.status(404).json({ error: 'Không tìm thấy phiên làm bài.' });
   }
 
-  const exam = MASTER_EXAMS.find((e) => e.id === attempt.examId);
+  const exam = (await examRepository.getExamById(attempt.examId)) || MASTER_EXAMS.find((e) => e.id === attempt.examId);
   if (!exam) {
     return res.status(404).json({ error: 'Không tìm thấy dữ liệu đề thi gốc.' });
   }

@@ -38,7 +38,7 @@ export const SEED_UNITS = [
         ],
         exercises: [
           { type: "multiple_choice", prompt: "'Good morning' nghĩa là gì?", optionsJson: JSON.stringify(["Chào buổi sáng", "Chào buổi chiều", "Tạm biệt", "Cảm ơn"]), correctAnswer: "Chào buổi sáng", explanation: "'Good morning' là câu chào buổi sáng." },
-          { type: "sentence_scramble", prompt: "Sắp xếp lại câu chào: 'gặp bạn / Rất vui / được'", optionsJson: JSON.stringify(["Hello", "nice", "to", "meet", "you"]), correctAnswer: "Hello, nice to meet you!", explanation: "Cấu trúc chuẩn: Hello, nice to meet you!" }
+          { type: "sentence_scramble", prompt: "Ghép các từ tiếng Anh bên dưới thành câu chào: 'Xin chào, rất vui được gặp bạn!'", optionsJson: JSON.stringify(["nice", "Hello,", "you!", "to", "meet"]), correctAnswer: "Hello, nice to meet you!", explanation: "Cấu trúc chuẩn: Hello, nice to meet you!" }
         ]
       },
       {
