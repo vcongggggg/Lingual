@@ -39,15 +39,20 @@ export default function SoundReflexGame({
 
   const currentQ = questions[currentIdx];
 
-  // Play audio pronunciation with native SpeechSynthesis
+  // Play audio pronunciation with native SpeechSynthesis and audio fallback
   const playAudio = useCallback(() => {
     if (!currentQ) return;
+    arcadeAudio.playLaser();
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(currentQ.audioWord);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.85;
-      window.speechSynthesis.speak(utterance);
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(currentQ.audioWord);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.warn('SpeechSynthesis error:', err);
+      }
     }
   }, [currentQ]);
 
@@ -140,16 +145,19 @@ export default function SoundReflexGame({
           </p>
         </div>
 
-        {/* Big Pulse Audio Button */}
-        <div className="flex justify-center">
+        {/* Big Pulse Audio Button with Radar Waves */}
+        <div className="relative flex justify-center items-center py-4">
+          <div className="absolute w-36 h-36 rounded-full border-2 border-cyan-500/30 animate-ping pointer-events-none" />
+          <div className="absolute w-48 h-48 rounded-full border border-cyan-400/15 pointer-events-none" />
+
           <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.94 }}
             onClick={playAudio}
-            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 flex flex-col items-center justify-center shadow-[0_0_40px_rgba(6,182,212,0.45)] hover:shadow-[0_0_55px_rgba(6,182,212,0.7)] transition-all cursor-pointer"
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 flex flex-col items-center justify-center shadow-[0_0_45px_rgba(6,182,212,0.55)] hover:shadow-[0_0_60px_rgba(6,182,212,0.8)] transition-all cursor-pointer relative z-10"
           >
             <Volume2 className="w-10 h-10 sm:w-12 sm:h-12" />
-            <span className="text-[10px] font-bold uppercase tracking-wider mt-1">
+            <span className="text-[10px] font-black uppercase tracking-wider mt-1">
               {isVi ? 'Nghe Lại' : 'Replay'}
             </span>
           </motion.button>

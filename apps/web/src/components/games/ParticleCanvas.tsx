@@ -5,8 +5,13 @@ import React, { useEffect, useRef, useImperativeHandle, forwardRef } from 'react
 export interface ParticleCanvasHandle {
   spawnConfetti: (x?: number, y?: number) => void;
   spawnComboSpark: (x: number, y: number, text?: string) => void;
+  spawnSparks: (x: number, y: number, color?: string, count?: number) => void;
   spawnXPFloat: (x: number, y: number, amount: number) => void;
+  spawnFloatingText: (x: number, y: number, text: string, color?: string, scale?: number) => void;
+  spawnShockwave: (x: number, y: number, color?: string) => void;
 }
+
+export type ParticleCanvasRef = ParticleCanvasHandle;
 
 interface Particle {
   x: number;
@@ -35,12 +40,23 @@ interface FloatingText {
   age: number;
 }
 
+interface Shockwave {
+  x: number;
+  y: number;
+  radius: number;
+  maxRadius: number;
+  color: string;
+  alpha: number;
+  speed: number;
+}
+
 const ARCADE_COLORS = ['#f59e0b', '#2dd4bf', '#fb7185', '#38bdf8', '#a855f7', '#4ade80', '#ffffff'];
 
 const ParticleCanvas = forwardRef<ParticleCanvasHandle, { className?: string }>((props, ref) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particlesRef = useRef<Particle[]>([]);
   const floatingTextsRef = useRef<FloatingText[]>([]);
+  const shockwavesRef = useRef<Shockwave[]>([]);
   const animFrameIdRef = useRef<number | null>(null);
 
   useImperativeHandle(ref, () => ({
@@ -106,6 +122,27 @@ const ParticleCanvas = forwardRef<ParticleCanvasHandle, { className?: string }>(
       }
     },
 
+    spawnSparks: (x: number, y: number, color?: string, count: number = 16) => {
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 * i) / count;
+        const speed = 2.5 + Math.random() * 4;
+        particlesRef.current.push({
+          x,
+          y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          color: color || ARCADE_COLORS[Math.floor(Math.random() * ARCADE_COLORS.length)],
+          size: 3 + Math.random() * 3,
+          alpha: 1,
+          decay: 0.025 + Math.random() * 0.02,
+          gravity: 0.08,
+          rotation: 0,
+          vRot: 0,
+          shape: 'circle',
+        });
+      }
+    },
+
     spawnXPFloat: (x: number, y: number, amount: number) => {
       floatingTextsRef.current.push({
         x,
@@ -117,6 +154,32 @@ const ParticleCanvas = forwardRef<ParticleCanvasHandle, { className?: string }>(
         scale: 1.3,
         maxAge: 40,
         age: 0,
+      });
+    },
+
+    spawnFloatingText: (x: number, y: number, text: string, color: string = '#22d3ee', scale: number = 1.3) => {
+      floatingTextsRef.current.push({
+        x,
+        y: y - 10,
+        vy: -2.2,
+        text,
+        color,
+        alpha: 1,
+        scale,
+        maxAge: 45,
+        age: 0,
+      });
+    },
+
+    spawnShockwave: (x: number, y: number, color: string = '#22d3ee') => {
+      shockwavesRef.current.push({
+        x,
+        y,
+        radius: 8,
+        maxRadius: 75,
+        color,
+        alpha: 1,
+        speed: 4.5,
       });
     },
   }));
@@ -142,6 +205,29 @@ const ParticleCanvas = forwardRef<ParticleCanvasHandle, { className?: string }>(
 
     const loop = (currentTime: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Render & Update Shockwaves
+      for (let i = shockwavesRef.current.length - 1; i >= 0; i--) {
+        const sw = shockwavesRef.current[i];
+        sw.radius += sw.speed;
+        sw.alpha = Math.max(0, 1 - sw.radius / sw.maxRadius);
+
+        if (sw.radius >= sw.maxRadius) {
+          shockwavesRef.current.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = sw.alpha;
+        ctx.strokeStyle = sw.color;
+        ctx.lineWidth = 3.5;
+        ctx.shadowColor = sw.color;
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
 
       // Render & Update Particles
       for (let i = particlesRef.current.length - 1; i >= 0; i--) {

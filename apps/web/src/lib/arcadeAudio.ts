@@ -57,6 +57,11 @@ class ArcadeAudioEngine {
     osc.stop(now + 0.35);
   }
 
+  // Alias for crisp chime / ting sound
+  public playTing() {
+    this.playCoin();
+  }
+
   // 2. High-speed Card Flip / Laser sound
   public playLaser() {
     if (this.isMuted) return;
@@ -221,6 +226,119 @@ class ArcadeAudioEngine {
 
     osc.start(now);
     osc.stop(now + 0.05);
+  }
+
+  // 8. Card Flip / Magnetic Token Snap Whoosh
+  public playWhoosh() {
+    if (this.isMuted) return;
+    const ctx = this.initContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(300, now);
+    osc.frequency.exponentialRampToValueAtTime(80, now + 0.12);
+
+    gain.gain.setValueAtTime(0.12, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.12);
+  }
+
+  // 9. Combo Thunder / Lightning Strike
+  public playComboThunder() {
+    if (this.isMuted) return;
+    const ctx = this.initContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    // Low rumble oscillator
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(140, now);
+    osc.frequency.exponentialRampToValueAtTime(45, now + 0.35);
+
+    gain.gain.setValueAtTime(0.25, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.35);
+
+    // High zap harmonic
+    const zap = ctx.createOscillator();
+    const zapGain = ctx.createGain();
+    zap.type = 'square';
+    zap.frequency.setValueAtTime(1200, now);
+    zap.frequency.exponentialRampToValueAtTime(200, now + 0.15);
+
+    zapGain.gain.setValueAtTime(0.15, now);
+    zapGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+    zap.connect(zapGain);
+    zapGain.connect(ctx.destination);
+
+    zap.start(now);
+    zap.stop(now + 0.15);
+  }
+
+  // 10. Heart Lost Shatter
+  public playHeartLost() {
+    if (this.isMuted) return;
+    const ctx = this.initContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(220, now);
+    osc.frequency.exponentialRampToValueAtTime(70, now + 0.25);
+
+    gain.gain.setValueAtTime(0.2, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.25);
+  }
+
+  // 11. Heart Recovery Blessing
+  public playHeartRecover() {
+    if (this.isMuted) return;
+    const ctx = this.initContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    const notes = [440, 554.37, 659.25, 880]; // A4, C#5, E5, A5
+    notes.forEach((freq, idx) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+
+      gain.gain.setValueAtTime(0.15, now + idx * 0.06);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.3);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now + idx * 0.06);
+      osc.stop(now + idx * 0.06 + 0.3);
+    });
   }
 }
 
