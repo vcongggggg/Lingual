@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   PenTool,
   Eye,
@@ -60,77 +61,100 @@ export default function WritingLabPage() {
 
   return (
     <main className="min-h-screen pb-20 pt-6 px-4 sm:px-6 max-w-7xl mx-auto space-y-8 pointer-events-auto">
-      {/* Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-purple-950/40 border border-purple-500/20 p-6 sm:p-10 shadow-2xl">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
-          <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-bold uppercase tracking-wider">
-              <PenTool className="w-3.5 h-3.5 text-purple-400" />
+      {/* Hero Banner with Full-Bleed 3D Artwork */}
+      <div className="relative overflow-hidden rounded-3xl bg-slate-950 border border-purple-500/30 p-6 sm:p-10 shadow-2xl min-h-[300px] flex items-center">
+        {/* Full-Bleed 3D Mascot Artwork Background */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/dashboard/unit_study_desk.jpg"
+            alt="LingLing Writing Lab"
+            fill
+            priority
+            className="object-cover object-right md:object-[75%_center] brightness-105 contrast-105"
+          />
+          {/* Directional Glass Gradients */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/30" />
+        </div>
+
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10 w-full">
+          <div className="space-y-3.5 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/40 text-purple-300 text-xs font-black uppercase tracking-wider backdrop-blur-md">
+              <PenTool className="w-3.5 h-3.5 text-purple-300" />
               <span>Writing Lab • Phòng Luyện Viết Tiếng Anh</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-white tracking-tight leading-tight drop-shadow-md">
               Biến Suy Nghĩ Thành <br />
-              <span className="bg-gradient-to-r from-purple-400 via-teal-400 to-amber-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-300 via-teal-300 to-amber-300 bg-clip-text text-transparent">
                 Câu Từ Tiếng Anh Tự Nhiên.
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-w-xl drop-shadow-sm">
               Thực hành viết theo tranh, dựng câu từng bước và viết tự do với bộ máy phân tích ngữ pháp, gợi ý từ vựng nâng cao và đồng bộ thẻ nhớ SRS.
             </p>
           </div>
 
-          <div className="shrink-0 flex items-center justify-center">
-            <LingLingMascot state="thinking" size={120} />
+          {/* Floating Frosted Glass Companion Card */}
+          <div className="hidden lg:flex flex-col items-center gap-2 self-end p-4 rounded-3xl bg-slate-950/75 border border-purple-500/30 backdrop-blur-md shadow-2xl">
+            <div className="p-3 rounded-2xl bg-purple-500/20 border border-purple-400/40">
+              <Sparkles className="w-5 h-5 text-purple-300" />
+            </div>
+            <div className="text-center space-y-0.5">
+              <p className="text-xs font-black text-white">LingLing Writing Coach</p>
+              <span className="text-[10px] font-mono text-purple-300 bg-purple-500/15 px-2.5 py-0.5 rounded-full border border-purple-500/30 block">
+                Sửa lỗi ngữ pháp tức thì
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Writing Stats Summary Bar */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
-        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/80 border border-purple-500/20 backdrop-blur-xl shadow-lg space-y-1">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/85 border border-amber-500/30 hover:border-amber-400/60 backdrop-blur-xl shadow-xl space-y-1.5 transition-all duration-300 hover:-translate-y-0.5 group">
           <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
             <span>Chuỗi ngày luyện viết</span>
-            <Flame className="w-4 h-4 text-amber-400" />
+            <Flame className="w-4 h-4 text-amber-400 fill-amber-400/20 group-hover:scale-110 transition-transform" />
           </div>
-          <p className="text-2xl sm:text-3xl font-display font-extrabold text-amber-400">
+          <p className="text-2xl sm:text-3xl font-display font-black text-amber-400">
             {stats.writingStreakDays} ngày
           </p>
-          <span className="text-[11px] text-slate-500">Giữ thói quen viết hàng ngày</span>
+          <span className="text-[11px] text-slate-400 font-medium">Giữ thói quen viết hàng ngày</span>
         </div>
 
-        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-lg space-y-1">
+        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/85 border border-teal-500/30 hover:border-teal-400/60 backdrop-blur-xl shadow-xl space-y-1.5 transition-all duration-300 hover:-translate-y-0.5 group">
           <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
             <span>Bài viết hoàn thành</span>
-            <PenTool className="w-4 h-4 text-teal-400" />
+            <PenTool className="w-4 h-4 text-teal-400 group-hover:scale-110 transition-transform" />
           </div>
-          <p className="text-2xl sm:text-3xl font-display font-extrabold text-white">
+          <p className="text-2xl sm:text-3xl font-display font-black text-white">
             {stats.totalAttempts} bài
           </p>
-          <span className="text-[11px] text-slate-500">Đã nộp & nhận phản hồi</span>
+          <span className="text-[11px] text-slate-400 font-medium">Đã nộp & nhận phản hồi</span>
         </div>
 
-        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-lg space-y-1">
+        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/85 border border-emerald-500/30 hover:border-emerald-400/60 backdrop-blur-xl shadow-xl space-y-1.5 transition-all duration-300 hover:-translate-y-0.5 group">
           <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
             <span>Điểm trung bình</span>
-            <Award className="w-4 h-4 text-emerald-400" />
+            <Award className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
           </div>
-          <p className="text-2xl sm:text-3xl font-display font-extrabold text-emerald-400">
+          <p className="text-2xl sm:text-3xl font-display font-black text-emerald-400">
             {stats.avgScore} / 100
           </p>
-          <span className="text-[11px] text-slate-500">Dựa trên 5 tiêu chí chấm điểm</span>
+          <span className="text-[11px] text-slate-400 font-medium">Dựa trên 5 tiêu chí chấm điểm</span>
         </div>
 
-        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-lg space-y-1">
+        <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/85 border border-purple-500/30 hover:border-purple-400/60 backdrop-blur-xl shadow-xl space-y-1.5 transition-all duration-300 hover:-translate-y-0.5 group">
           <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
             <span>Tổng số từ đã viết</span>
-            <BookOpen className="w-4 h-4 text-purple-400" />
+            <BookOpen className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
           </div>
-          <p className="text-2xl sm:text-3xl font-display font-extrabold text-purple-300">
+          <p className="text-2xl sm:text-3xl font-display font-black text-purple-300">
             {stats.totalWords} từ
           </p>
-          <span className="text-[11px] text-slate-500">Vốn từ vựng đã vận dụng</span>
+          <span className="text-[11px] text-slate-400 font-medium">Vốn từ vựng đã vận dụng</span>
         </div>
       </div>
 
@@ -152,6 +176,8 @@ export default function WritingLabPage() {
             badgeText="Trực quan • A1-C1"
             badgeVariant="teal"
             glowColor="teal"
+            bannerImage="/images/dashboard/hero_study_mascot.jpg"
+            mascotSticker="/mascot/raw/mascot_sticker_clean_14.png"
           />
 
           <WritingLabCard
@@ -163,6 +189,8 @@ export default function WritingLabPage() {
             badgeText="Từng bước • A1-B1"
             badgeVariant="teal"
             glowColor="teal"
+            bannerImage="/images/dashboard/quick_vocabulary.jpg"
+            mascotSticker="/mascot/raw/mascot_sticker_clean_06.png"
           />
 
           <WritingLabCard
@@ -174,6 +202,8 @@ export default function WritingLabPage() {
             badgeText="Tự do • B1-C1"
             badgeVariant="amber"
             glowColor="amber"
+            bannerImage="/images/dashboard/unit_study_desk.jpg"
+            mascotSticker="/mascot/cow_hands_on_hips.png"
           />
         </div>
       </div>

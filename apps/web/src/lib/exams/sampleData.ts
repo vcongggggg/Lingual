@@ -3,8 +3,9 @@
  */
 
 import { Exam } from '@linguaflow/domain';
+import { EXPANDED_EXAMS } from './examsExpandedData';
 
-export const MASTER_EXAMS: Exam[] = [
+export const INITIAL_EXAMS: Exam[] = [
   // ==========================================================================
   // 1. TOEIC Full-Format Mini Simulation
   // ==========================================================================
@@ -453,4 +454,9 @@ export const MASTER_EXAMS: Exam[] = [
       },
     ],
   },
+];
+
+export const MASTER_EXAMS: Exam[] = [
+  ...INITIAL_EXAMS,
+  ...EXPANDED_EXAMS,
 ];

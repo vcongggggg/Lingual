@@ -31,7 +31,7 @@ export default function SpeakingVocabularySuggestions({
           <Sparkles className="w-4 h-4 text-teal-400" />
           <span>{isVi ? 'Gợi ý nâng cấp từ vựng học thuật:' : 'Vocabulary Upgrades:'}</span>
         </h4>
-        <span className="text-[11px] text-slate-500">Lưu vào thẻ SRS</span>
+        <span className="text-[11px] text-slate-500">Lưu vào sổ ôn tập</span>
       </div>
 
       <div className="space-y-3">
@@ -60,7 +60,7 @@ export default function SpeakingVocabularySuggestions({
                     icon={isSaved ? <Check className="w-3.5 h-3.5 text-teal-400" /> : <BookmarkPlus className="w-3.5 h-3.5" />}
                     disabled={isSaved}
                   >
-                    {isSaved ? (isVi ? 'Đã lưu' : 'Saved') : (isVi ? 'Lưu SRS' : 'Save')}
+                    {isSaved ? (isVi ? 'Đã lưu' : 'Saved') : (isVi ? 'Lưu ôn tập' : 'Save')}
                   </Button>
                 )}
               </div>

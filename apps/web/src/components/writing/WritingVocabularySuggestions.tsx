@@ -41,7 +41,7 @@ export default function WritingVocabularySuggestions({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs font-bold text-teal-400 uppercase tracking-wider">
           <Sparkles className="w-4 h-4" />
-          <span>Gợi ý nâng cấp từ vựng & Thêm vào thẻ SRS ({suggestions.length})</span>
+          <span>Gợi ý nâng cấp từ vựng & Lưu vào sổ ôn tập ({suggestions.length})</span>
         </div>
       </div>
 
@@ -90,12 +90,12 @@ export default function WritingVocabularySuggestions({
                   {isSaved ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-teal-400" />
-                      <span>Đã lưu vào SRS</span>
+                      <span>Đã lưu ôn tập</span>
                     </>
                   ) : (
                     <>
                       <Brain className="w-3.5 h-3.5 text-teal-400" />
-                      <span>Lưu vào SRS</span>
+                      <span>Lưu vào sổ ôn tập</span>
                     </>
                   )}
                 </button>

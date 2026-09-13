@@ -24,28 +24,35 @@ export default function TutorContextPanel({
 
   return (
     <div className={`space-y-5 ${className}`}>
-      {/* Weakness Detection Card */}
+      {/* Weakness Detection Card with LingLing Encouragement */}
       {context.weaknesses && context.weaknesses.length > 0 && (
-        <div className="p-5 rounded-3xl bg-slate-900/90 border border-amber-500/30 backdrop-blur-xl shadow-xl space-y-2.5">
-          <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider">
-            <AlertTriangle className="w-4 h-4 text-amber-400" />
-            <span>{isVi ? 'Kỹ Năng Cần Khắc Phục' : 'Weaknesses Detected'}</span>
+        <div className="p-5 rounded-3xl bg-slate-900/90 border border-amber-500/30 backdrop-blur-xl shadow-xl space-y-3 relative overflow-hidden group">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider">
+              <AlertTriangle className="w-4 h-4 text-amber-400" />
+              <span>{isVi ? 'Kỹ Năng Cần Khắc Phục' : 'Weaknesses Detected'}</span>
+            </div>
+            <span className="text-[10px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
+              Ưu tiên ôn tập
+            </span>
           </div>
 
-          <div className="flex flex-wrap gap-1.5 pt-1">
+          <div className="flex flex-wrap gap-2 pt-0.5">
             {context.weaknesses.map((w) => (
               <span
                 key={w}
-                className="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold capitalize"
+                className="px-3 py-1 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold capitalize shadow-sm"
               >
                 {w}
               </span>
             ))}
           </div>
 
-          <span className="text-[11px] text-slate-400 block font-sans">
-            {isVi ? 'AI Tutor sẽ tự động điều chỉnh bài tập phù hợp.' : 'AI Tutor automatically adjusts practice difficulty.'}
-          </span>
+          <p className="text-[11px] text-slate-300 leading-relaxed font-sans pt-1 border-t border-slate-800/80">
+            {isVi
+              ? '💡 LingLing AI Tutor sẽ tự động điều chỉnh độ khó và bài tập vi mô để giúp bạn cải thiện các điểm này.'
+              : '💡 LingLing AI Tutor will tailor micro-drills to strengthen these priority skills.'}
+          </p>
         </div>
       )}
 

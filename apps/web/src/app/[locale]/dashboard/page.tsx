@@ -48,6 +48,7 @@ import MascotPopup from '@/components/MascotPopup';
 import { mascotReactions, MascotReactionKey } from '@linguaflow/config';
 import { WelcomeLoginModal } from '@/components/dashboard/WelcomeLoginModal';
 import { soundFx } from '@/lib/soundFx';
+import { TiltCard } from '@/components/common/TiltCard';
 
 export default function DashboardPage() {
   const params = useParams();
@@ -208,34 +209,46 @@ export default function DashboardPage() {
     {
       title: isVi ? 'Luyện Nghe' : 'Listening',
       sub: isVi ? 'Nghe chép & Nhại giọng' : 'Dictation & Shadowing',
-      icon: <Headphones className="w-5 h-5 text-amber-400" />,
+      tag: isVi ? 'Phản Xạ Âm' : 'Audio Lab',
+      icon: <Headphones className="w-5 h-5 text-cyan-400" />,
+      image: '/images/dashboard/quick_listening.jpg',
       href: `/${locale}/listening`,
-      borderColor: 'hover:border-amber-500/50',
-      bgGlow: 'from-amber-500/10 to-slate-900/90',
+      borderColor: 'border-cyan-500/30 hover:border-cyan-400',
+      glowColor: 'rgba(6, 182, 212, 0.4)',
+      badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
     },
     {
       title: isVi ? 'Kho Từ Vựng' : 'Vocabulary',
-      sub: isVi ? '3000+ từ cốt lõi' : 'Core Flashcards',
+      sub: isVi ? '26,500+ từ vựng' : '26,500+ Lexicon',
+      tag: isVi ? 'Flashcard 3D' : 'Smart SRS',
       icon: <BookOpen className="w-5 h-5 text-teal-400" />,
+      image: '/images/dashboard/quick_vocabulary.jpg',
       href: `/${locale}/vocabulary`,
-      borderColor: 'hover:border-teal-500/50',
-      bgGlow: 'from-teal-500/10 to-slate-900/90',
+      borderColor: 'border-teal-500/30 hover:border-teal-400',
+      glowColor: 'rgba(20, 184, 166, 0.4)',
+      badgeColor: 'bg-teal-500/20 text-teal-300 border-teal-500/40',
     },
     {
       title: isVi ? 'Luyện Phát Âm' : 'Pronunciation',
       sub: isVi ? 'Chuẩn ngữ điệu IPA' : 'Phoneme & Tone',
+      tag: isVi ? 'AI Voice Check' : 'IPA Lab',
       icon: <Mic className="w-5 h-5 text-emerald-400" />,
+      image: '/images/dashboard/quick_pronunciation.jpg',
       href: `/${locale}/speaking/pronunciation`,
-      borderColor: 'hover:border-emerald-500/50',
-      bgGlow: 'from-emerald-500/10 to-slate-900/90',
+      borderColor: 'border-emerald-500/30 hover:border-emerald-400',
+      glowColor: 'rgba(16, 185, 129, 0.4)',
+      badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
     },
     {
       title: isVi ? 'Luyện Thi' : 'Exam Prep',
-      sub: isVi ? 'TOEIC & IELTS Band' : 'Mock Tests',
-      icon: <Trophy className="w-5 h-5 text-coral-400" />,
+      sub: isVi ? 'TOEIC & IELTS band' : 'Mock Tests',
+      tag: isVi ? 'Format Cambridge' : 'Band 8.5',
+      icon: <Trophy className="w-5 h-5 text-amber-400" />,
+      image: '/images/dashboard/quick_exam.jpg',
       href: `/${locale}/exam-practice`,
-      borderColor: 'hover:border-coral-500/50',
-      bgGlow: 'from-coral-500/10 to-slate-900/90',
+      borderColor: 'border-amber-500/30 hover:border-amber-400',
+      glowColor: 'rgba(245, 158, 11, 0.4)',
+      badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
     },
   ];
 
@@ -283,39 +296,68 @@ export default function DashboardPage() {
           <div className="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem] bg-indigo-500/5 rounded-full blur-3xl" />
         </div>
 
-        {/* 1. BENTO QUICK ACCESS BAR */}
+        {/* 1. QUICK ACCESS 4-PILLAR COMMAND STRIP */}
         <motion.div variants={itemVariants} className="space-y-3 relative z-10">
           <div className="flex items-center justify-between px-1">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-2">
-              <Compass className="w-4 h-4 text-teal-400" />
+            <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400 flex items-center gap-2">
+              <Zap className="w-3.5 h-3.5 text-teal-400 fill-teal-400" />
               <span>{isVi ? 'Truy Cập Nhanh' : 'Quick Access'}</span>
             </span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4">
             {quickAccessItems.map((item, idx) => (
-              <Link
+              <TiltCard
                 key={idx}
-                href={item.href}
-                onClick={() => soundFx.playClick()}
-                className={`p-4 rounded-3xl bg-gradient-to-b ${item.bgGlow} border border-slate-800/80 ${item.borderColor} transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-teal-500/10 hover:-translate-y-1 flex flex-col justify-between h-28 relative overflow-hidden`}
+                maxTilt={8}
+                spotlightColor={item.glowColor}
+                spotlightRadius={380}
+                className="h-full rounded-2xl sm:rounded-3xl"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl pointer-events-none group-hover:scale-150 transition-transform duration-500" />
-                <div className="flex items-center justify-between relative z-10">
-                  <div className="p-2 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-sm group-hover:scale-110 group-hover:border-teal-500/40 transition-all duration-300">
-                    {item.icon}
+                <Link
+                  href={item.href}
+                  onClick={() => soundFx.playClick()}
+                  className={`group relative flex flex-col justify-between h-36 sm:h-44 p-4 sm:p-5 rounded-2xl sm:rounded-3xl border ${item.borderColor} overflow-hidden transition-all duration-300 shadow-xl hover:shadow-2xl backdrop-blur-xl block bg-slate-950/90`}
+                >
+                  {/* FULL BACKGROUND 3D ARTWORK WITH MULTI-STOP VIGNETTE */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-115 opacity-85 group-hover:opacity-100 filter brightness-110 contrast-105 group-hover:brightness-125"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                    {/* Subtle multi-directional gradient overlays so neon art shines bright while text remains crystal-clear */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
                   </div>
-                  <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
-                </div>
-                <div className="relative z-10">
-                  <span className="text-sm font-extrabold text-white group-hover:text-teal-300 transition-colors block">
-                    {item.title}
-                  </span>
-                  <span className="text-[10px] text-slate-400 font-medium block truncate">
-                    {item.sub}
-                  </span>
-                </div>
-              </Link>
+
+                  {/* TOP ROW: FLOATING GLASS ICON (LEFT) + ACTION ARROW (RIGHT) */}
+                  <div className="flex items-center justify-between relative z-10 w-full" style={{ transform: 'translateZ(25px)' }}>
+                    <div className="p-2.5 rounded-2xl bg-slate-950/85 border border-white/15 backdrop-blur-md shadow-lg group-hover:scale-110 group-hover:border-white/30 transition-all duration-300">
+                      {item.icon}
+                    </div>
+                    <div className="w-7 h-7 rounded-full bg-slate-950/70 border border-white/15 backdrop-blur-sm flex items-center justify-center text-slate-400 group-hover:text-white group-hover:bg-teal-500 group-hover:border-teal-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 shadow-sm">
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
+
+                  {/* BOTTOM ROW: CATEGORY BADGE + BOLD TITLE + SUBTITLE */}
+                  <div className="space-y-1 relative z-10" style={{ transform: 'translateZ(30px)' }}>
+                    <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-mono font-bold border uppercase tracking-wider mb-0.5 backdrop-blur-md ${item.badgeColor}`}>
+                      {item.tag}
+                    </span>
+                    <h3 className="text-sm sm:text-base font-display font-extrabold text-white group-hover:text-cyan-200 transition-colors block truncate drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                      {item.title}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-slate-200 font-medium truncate drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                      {item.sub}
+                    </p>
+                  </div>
+                </Link>
+              </TiltCard>
             ))}
           </div>
         </motion.div>
@@ -324,58 +366,92 @@ export default function DashboardPage() {
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT 8 COLUMNS: MISSION HERO & ROADMAP */}
           <motion.div variants={itemVariants} className="relative z-10 lg:col-span-8 space-y-8">
-            {/* HERO COMMAND MISSION CARD WITH BREATHING AURORA BORDER */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-teal-950/50 border border-teal-500/40 p-6 sm:p-8 backdrop-blur-2xl shadow-2xl space-y-5 before:absolute before:inset-0 before:bg-gradient-to-r before:from-teal-500/10 before:via-indigo-500/10 before:to-emerald-500/10 before:animate-pulse before:pointer-events-none">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
-                <div className="space-y-2 max-w-xl">
+            {/* HERO COMMAND MISSION CARD WITH FULL-BLEED 3D MASCOT & LANDSCAPE BACKGROUND */}
+            <div className="group relative overflow-hidden rounded-3xl border border-teal-500/40 p-6 sm:p-8 backdrop-blur-2xl shadow-2xl space-y-6 bg-slate-950">
+              
+              {/* 1. FULL-BLEED 3D STUDY SCENE BACKGROUND */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <Image
+                  src="/images/dashboard/hero_study_mascot.jpg"
+                  alt="Mascot Studying English"
+                  fill
+                  priority
+                  className="object-cover object-right sm:object-right transition-transform duration-1000 group-hover:scale-105 filter brightness-105 contrast-105"
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                />
+                {/* Directional glass gradient from left to right: Dark glass on left for readability, clear on right to showcase mascot */}
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent/15" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-transparent to-slate-950/20" />
+              </div>
+
+              {/* 2. FOREGROUND CONTENT: TEXT + CTA ON LEFT */}
+              <div className="relative z-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
+                <div className="space-y-4 max-w-xl">
                   <div className="flex flex-wrap items-center gap-2">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-extrabold uppercase tracking-wider">
-                      <Target className="w-3.5 h-3.5 text-teal-400" />
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-500/20 border border-teal-500/40 text-teal-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-sm">
+                      <Target className="w-3.5 h-3.5 text-teal-300" />
                       <span>{isVi ? 'Nhiệm Vụ Trọng Tâm Hôm Nay' : "Today's Core Mission"}</span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 text-amber-300 text-xs font-black shadow-lg shadow-amber-500/10">
+                    <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-500/25 to-orange-500/25 border border-amber-500/50 text-amber-300 text-xs font-bold shadow-lg shadow-amber-500/20 backdrop-blur-md">
                       <span className="text-sm flame-flutter inline-block">🔥</span>
                       <span>5 {isVi ? 'Ngày Chuỗi' : 'Days Streak'}</span>
                     </div>
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
-                    {nextLesson ? `${nextLesson.unit.title} • ${nextLesson.lesson.title}` : (isVi ? 'Tiếp tục lộ trình chinh phục tiếng Anh' : 'Continue Your English Mastery')}
-                  </h1>
-                  <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
+
+                  {nextLesson ? (
+                    <div className="space-y-1">
+                      <span className="text-xs font-bold text-teal-300 tracking-wider uppercase block drop-shadow-sm">
+                        {nextLesson.unit.title}
+                      </span>
+                      <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
+                        {nextLesson.lesson.title}
+                      </h1>
+                    </div>
+                  ) : (
+                    <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
+                      {isVi ? 'Tiếp tục lộ trình chinh phục tiếng Anh' : 'Continue Your English Mastery'}
+                    </h1>
+                  )}
+
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed drop-shadow max-w-lg">
                     {isVi
                       ? `Hoàn thành bài học tiếp theo để nhận +${nextLesson?.lesson.xpReward || 50} XP và củng cố thói quen học tập liên tục!`
                       : `Complete the next lesson to earn +${nextLesson?.lesson.xpReward || 50} XP and maintain your daily study momentum!`}
                   </p>
+
+                  {nextLesson && (
+                    <div className="pt-2">
+                      <Link
+                        href={`/${locale}/learn/${nextLesson.lesson.order}`}
+                        onClick={() => soundFx.playWoosh()}
+                        className="inline-block"
+                      >
+                        <button
+                          type="button"
+                          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-400 hover:from-teal-300 hover:to-emerald-300 text-slate-950 font-black text-sm shadow-xl shadow-teal-500/30 hover:shadow-teal-400/50 hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
+                        >
+                          <Play className="w-5 h-5 fill-slate-950" />
+                          <span>{isVi ? 'Bắt Đầu Học Ngay' : 'Resume Learning'}</span>
+                        </button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
 
-                {nextLesson && (
-                  <Link
-                    href={`/${locale}/learn/${nextLesson.lesson.order}`}
-                    onClick={() => soundFx.playWoosh()}
-                    className="shrink-0 w-full sm:w-auto"
-                  >
-                    <Button
-                      variant="primary"
-                      size="lg"
-                      className="w-full sm:w-auto shadow-xl shadow-teal-500/25 hover:shadow-teal-500/40 transition-shadow"
-                      icon={<Play className="w-5 h-5 fill-slate-950" />}
-                    >
-                      {isVi ? 'Bắt Đầu Học Ngay' : 'Resume Learning'}
-                    </Button>
-                  </Link>
-                )}
+                {/* Right spacer for desktop so mascot scene shines unblocked */}
+                <div className="hidden md:block w-72 lg:w-96 shrink-0 h-48 pointer-events-none" />
               </div>
 
-              {/* 3 PRIORITIZED DAILY ACTION TILES */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-800/80 relative z-10">
+              {/* 3. 3 PRIORITIZED DAILY ACTION TILES (GLASSMORPHIC) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-white/10 relative z-10">
                 <Link
                   href={nextLesson ? `/${locale}/learn/${nextLesson.lesson.order}` : '#'}
                   onClick={() => soundFx.playClick()}
-                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/90 border border-slate-800 hover:border-teal-400/50 hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-200 flex items-center justify-between group"
+                  className="p-3.5 rounded-2xl bg-slate-950/80 hover:bg-slate-900/90 border border-white/10 hover:border-teal-400/50 hover:shadow-lg hover:shadow-teal-500/10 backdrop-blur-md transition-all duration-200 flex items-center justify-between group min-w-0"
                 >
-                  <div className="space-y-0.5">
-                    <span className="text-[11px] font-bold text-teal-400 uppercase tracking-wider block">1. Bài Học Mới</span>
-                    <span className="text-xs font-extrabold text-white group-hover:text-teal-300 transition-colors truncate block max-w-[130px]">
+                  <div className="space-y-0.5 min-w-0 flex-1 pr-2">
+                    <span className="text-[11px] font-bold text-teal-400 uppercase tracking-wider block">1. {isVi ? 'Bài Học Mới' : 'New Lesson'}</span>
+                    <span className="text-xs font-bold text-white group-hover:text-teal-300 transition-colors truncate block">
                       {nextLesson ? nextLesson.lesson.title : 'Hoàn thành bài'}
                     </span>
                   </div>
@@ -385,12 +461,12 @@ export default function DashboardPage() {
                 <Link
                   href={`/${locale}/srs`}
                   onClick={() => soundFx.playClick()}
-                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/90 border border-slate-800 hover:border-amber-400/50 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-200 flex items-center justify-between group"
+                  className="p-3.5 rounded-2xl bg-slate-950/80 hover:bg-slate-900/90 border border-white/10 hover:border-amber-400/50 hover:shadow-lg hover:shadow-amber-500/10 backdrop-blur-md transition-all duration-200 flex items-center justify-between group min-w-0"
                 >
-                  <div className="space-y-0.5">
-                    <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">2. Thẻ Nhớ Thông Minh</span>
-                    <span className="text-xs font-extrabold text-white group-hover:text-amber-300 transition-colors">
-                      {dueSrsCount} từ đến hạn ôn
+                  <div className="space-y-0.5 min-w-0 flex-1 pr-2">
+                    <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">2. {isVi ? 'Thẻ Nhớ Thông Minh' : 'SRS Flashcards'}</span>
+                    <span className="text-xs font-bold text-white group-hover:text-amber-300 transition-colors truncate block">
+                      {dueSrsCount} {isVi ? 'từ đến hạn ôn' : 'cards due'}
                     </span>
                   </div>
                   <Brain className="w-4 h-4 text-amber-400 shrink-0 group-hover:scale-110 transition-transform" />
@@ -399,11 +475,11 @@ export default function DashboardPage() {
                 <Link
                   href={`/${locale}/games`}
                   onClick={() => soundFx.playClick()}
-                  className="p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/90 border border-slate-800 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-200 flex items-center justify-between group"
+                  className="p-3.5 rounded-2xl bg-slate-950/80 hover:bg-slate-900/90 border border-white/10 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/10 backdrop-blur-md transition-all duration-200 flex items-center justify-between group min-w-0"
                 >
-                  <div className="space-y-0.5">
-                    <span className="text-[11px] font-bold text-purple-400 uppercase tracking-wider block">3. Thử Thách Game</span>
-                    <span className="text-xs font-extrabold text-white group-hover:text-purple-300 transition-colors">
+                  <div className="space-y-0.5 min-w-0 flex-1 pr-2">
+                    <span className="text-[11px] font-bold text-purple-400 uppercase tracking-wider block">3. {isVi ? 'Thử Thách Game' : 'Game Sprint'}</span>
+                    <span className="text-xs font-bold text-white group-hover:text-purple-300 transition-colors truncate block">
                       Word Sprint x2 XP
                     </span>
                   </div>
@@ -416,10 +492,10 @@ export default function DashboardPage() {
             <div className="space-y-12">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400 block">
+                  <span className="text-xs font-bold uppercase tracking-widest text-teal-400 block">
                     {isVi ? 'Lộ Trình Từng Bước (A1 → B2)' : 'Curriculum Roadmap (A1 → B2)'}
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-display font-extrabold text-white">
+                  <h2 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight">
                     {isVi ? 'Các Chủ Điểm Bài Học' : 'Curriculum Units'}
                   </h2>
                 </div>
@@ -446,8 +522,22 @@ export default function DashboardPage() {
                 return (
                   <motion.div key={unit.order} variants={itemVariants} className="relative space-y-6">
                     {/* Unit Header Banner */}
-                    <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-r ${cefrColors[unitCefrLevel] || cefrColors.A1} border backdrop-blur-2xl p-6 flex items-center justify-between shadow-xl`}>
-                      <div className="space-y-1">
+                    <div className={`group relative overflow-hidden rounded-3xl bg-gradient-to-r ${cefrColors[unitCefrLevel] || cefrColors.A1} border backdrop-blur-2xl p-5 sm:p-6 flex items-center justify-between shadow-xl gap-4`}>
+                      {/* Atmospheric 3D Study Scene Background for Unit 1 */}
+                      {unitIdx === 0 && (
+                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                          <Image
+                            src="/images/dashboard/unit_study_desk.jpg"
+                            alt="Study Desk"
+                            fill
+                            className="object-cover object-right opacity-75 group-hover:opacity-95 group-hover:scale-105 transition-all duration-700 filter brightness-105 contrast-105"
+                            sizes="100vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent/20" />
+                        </div>
+                      )}
+
+                      <div className="space-y-1.5 flex-1 pr-2 min-w-0 relative z-10">
                         <div className="flex items-center gap-2">
                           <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${cefrBadgeColors[unitCefrLevel] || cefrBadgeColors.A1} border text-xs font-bold`}>
                             <BookOpen className="w-3.5 h-3.5" />
@@ -457,8 +547,11 @@ export default function DashboardPage() {
                             {unitCefrLevel}
                           </span>
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white tracking-tight">{unit.title}</h3>
-                        <p className="text-xs text-slate-400">{unit.description}</p>
+                        <h3 className="text-lg sm:text-2xl font-display font-extrabold text-white tracking-tight flex items-center gap-2">
+                          <span>{unit.title}</span>
+                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-teal-400 shrink-0 inline-block group-hover:translate-x-1.5 transition-transform duration-300" />
+                        </h3>
+                        <p className="text-xs text-slate-300 truncate max-w-xl">{unit.description}</p>
                       </div>
                     </div>
 
@@ -526,8 +619,23 @@ export default function DashboardPage() {
           {/* RIGHT 4 COLUMNS: BENTO STATS & LEADERBOARD */}
           <motion.div variants={itemVariants} className="relative z-10 lg:col-span-4 space-y-6 sticky top-24">
             {/* Daily Momentum Progress Card */}
-            <MotionCard glow="amber" tilt spotlight className="space-y-4 relative overflow-hidden">
-              <div className="flex items-center justify-between">
+            <MotionCard glow="amber" tilt spotlight className="space-y-4 relative overflow-visible">
+              {/* Mascot Peeking Sticker with x2 XP Badge */}
+              <div className="absolute -top-7 -right-2 z-20 flex items-center select-none pointer-events-none">
+                <span className="text-[10px] font-black bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 px-2 py-0.5 rounded-full shadow-lg -mr-2 z-10 border border-amber-300 animate-pulse">
+                  x2 XP
+                </span>
+                <div className="relative w-14 h-14 drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]">
+                  <Image
+                    src="/mascot/cow_salute.png"
+                    alt="Mascot Mascot"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pr-16">
                 <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400 flex items-center gap-1.5">
                   <Flame className="w-4 h-4 fill-amber-400" />
                   <span>{isVi ? 'Tiến Độ Hôm Nay' : 'Daily Momentum'}</span>
@@ -544,7 +652,7 @@ export default function DashboardPage() {
             </MotionCard>
 
             {/* Leaderboard Bento Card (Top Người Học) */}
-            <Card glow="teal" className="space-y-3.5 border-teal-500/30">
+            <Card glow="teal" className="space-y-3.5 border-teal-500/30 relative">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-extrabold uppercase tracking-widest text-teal-400 flex items-center gap-1.5">
                   <Trophy className="w-3.5 h-3.5 text-amber-400" />
@@ -589,16 +697,28 @@ export default function DashboardPage() {
                           {user.name.charAt(0)}
                         </div>
                         <div>
-                          <span className="text-xs font-black block truncate max-w-[110px] text-white">{user.name}</span>
+                          <span className="text-xs font-bold block truncate max-w-[130px] text-white">{user.name}</span>
                           <span className="text-[9px] text-slate-400 font-mono">{user.words}</span>
                         </div>
                       </div>
-                      <span className="text-xs font-black text-amber-400 font-mono bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
+                      <span className="text-xs font-bold text-amber-400 font-mono bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
                         {user.xp} XP
                       </span>
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Cheerful Mascot Sticker near bottom right of Leaderboard */}
+              <div className="absolute -bottom-6 -right-5 z-20 pointer-events-none select-none">
+                <div className="relative w-14 h-14 drop-shadow-[0_6px_12px_rgba(0,0,0,0.6)]">
+                  <Image
+                    src="/mascot/cow_greet_heart.png"
+                    alt="LingLing Cheering"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </Card>
 

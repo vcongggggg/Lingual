@@ -34,7 +34,7 @@ export default function TutorChat({
         : `Hello! I am your **Personal AI Tutor** on LinguaFlow.\n\nI have reviewed your learning profile across all 18 labs (Vocabulary, Listening, Speaking, Reading, Writing, Exams). Would you like to review grammar, ask about mistakes, or build today's study plan?`,
       timestamp: new Date().toISOString(),
       actions: [
-        { type: 'start_srs', label: isVi ? 'Ôn Thẻ SRS Đến Hạn' : 'Review Due SRS Cards', route: `/${locale}/srs`, priority: 'critical' },
+        { type: 'start_srs', label: isVi ? 'Ôn Tập Từ Đến Hạn Hôm Nay' : 'Review Due Cards', route: `/${locale}/srs`, priority: 'critical' },
         { type: 'start_speaking', label: isVi ? 'Luyện Nói & Phản Xạ' : 'Practice Speaking', route: `/${locale}/speaking`, priority: 'high' },
       ],
     };

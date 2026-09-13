@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { ieltsApi } from '@/lib/api';
 import { soundFx } from '@/lib/soundFx';
+import ParticleCanvas, { ParticleCanvasHandle } from '@/components/games/ParticleCanvas';
 
 export default function IeltsMockTestPage() {
   const routeParams = useParams();
@@ -36,6 +37,7 @@ export default function IeltsMockTestPage() {
   const [activeTab, setActiveTab] = useState<'all' | 'Reading' | 'Listening'>('all');
   const [questions, setQuestions] = useState<any[]>([]);
   const [showPassageDrawer, setShowPassageDrawer] = useState(false);
+  const particleRef = React.useRef<ParticleCanvasHandle | null>(null);
 
   // Reading Passage references for split-view
   const READING_PASSAGES = [
@@ -215,6 +217,9 @@ export default function IeltsMockTestPage() {
 
   const handleSubmit = async () => {
     soundFx.playFanfare();
+    particleRef.current?.spawnConfetti();
+    setTimeout(() => particleRef.current?.spawnConfetti(), 400);
+    setTimeout(() => particleRef.current?.spawnConfetti(), 900);
     try {
       const res = await ieltsApi.submitMockTest({
         type: 'academic',
@@ -581,6 +586,9 @@ export default function IeltsMockTestPage() {
           </div>
         </div>
       )}
+
+      {/* Confetti & Particle Overlay */}
+      <ParticleCanvas ref={particleRef} className="fixed inset-0 pointer-events-none z-[9999]" />
     </div>
   );
 }

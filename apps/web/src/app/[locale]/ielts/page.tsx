@@ -20,6 +20,7 @@ import { ieltsApi } from '@/lib/api';
 import ThemeIllustration from '@/components/ThemeIllustration';
 import Image from 'next/image';
 import { mascotReactions } from '@linguaflow/config';
+import { TiltCard } from '@/components/common/TiltCard';
 
 
 const FALLBACK_ROADMAP_TRACKS = [
@@ -71,39 +72,57 @@ export default function IeltsHubPage() {
   const skills = [
     {
       id: 'reading',
-      title: 'Reading',
-      desc: 'Luyện đọc 2 cột chuẩn thi thật (Passages + 14 dạng câu hỏi)',
+      title: 'IELTS Reading',
+      desc: 'Luyện đọc 2 cột chuẩn thi thật (Passages + 14 dạng câu hỏi với bộ đếm giờ)',
       icon: BookOpen,
-      color: 'from-blue-500/20 to-indigo-500/20 border-blue-500/30 text-blue-400',
+      image: '/images/ielts/mascot_ielts_reading.jpg',
       badge: 'Passage 2-Col',
       link: `/${locale}/ielts/practice/reading`,
+      borderColor: 'border-cyan-500/30 hover:border-cyan-400',
+      glowColor: 'rgba(6, 182, 212, 0.35)',
+      badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
+      iconColor: 'bg-cyan-500/20 border-cyan-500/40 text-cyan-300',
     },
     {
       id: 'listening',
-      title: 'Listening',
-      desc: 'Nghe audio chọn đáp án, điền từ & xem Transcript thông minh',
+      title: 'IELTS Listening',
+      desc: 'Nghe audio chọn đáp án, điền từ & xem Transcript thông minh đa tốc độ',
       icon: Headphones,
-      color: 'from-purple-500/20 to-pink-500/20 border-purple-500/30 text-purple-400',
-      badge: 'Audio Player',
+      image: '/images/ielts/mascot_ielts_listening.jpg',
+      badge: 'Audio Player & Transcript',
       link: `/${locale}/ielts/practice/listening`,
+      borderColor: 'border-purple-500/30 hover:border-purple-400',
+      glowColor: 'rgba(168, 85, 247, 0.35)',
+      badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/40',
+      iconColor: 'bg-purple-500/20 border-purple-500/40 text-purple-300',
     },
     {
       id: 'writing',
-      title: 'Luyện Viết IELTS (AI Nhận Xét)',
-      desc: 'Luyện viết bài Task 1/2 và nhận đánh giá chi tiết 4 tiêu chí từ AI',
+      title: 'IELTS Writing (AI Nhận Xét)',
+      desc: 'Luyện viết Task 1 & Task 2 và nhận đánh giá chi tiết 4 tiêu chí chuẩn Examiner',
       icon: FileText,
-      color: 'from-amber-500/20 to-orange-500/20 border-amber-500/30 text-amber-400',
-      badge: 'AI Chấm điểm chi tiết',
+      image: '/images/dashboard/unit_study_desk.jpg',
+      mascot: '/mascot/cow_salute.png',
+      badge: 'AI Examiner 4 Tiêu Chí',
       link: `/${locale}/ielts/practice/writing`,
+      borderColor: 'border-amber-500/30 hover:border-amber-400',
+      glowColor: 'rgba(245, 158, 11, 0.35)',
+      badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+      iconColor: 'bg-amber-500/20 border-amber-500/40 text-amber-300',
     },
     {
       id: 'mock-test',
-      title: 'Thi Thử IELTS Tổng Hợp',
-      desc: 'Thi thử 4 kỹ năng trong áp lực thời gian thực & nhận Band điểm ước tính',
+      title: 'Thi Thử IELTS Toàn Diện',
+      desc: 'Thi thử 4 kỹ năng trong áp lực thời gian thực & nhận Band điểm ước tính tức thì',
       icon: Clock,
-      color: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30 text-emerald-400',
-      badge: 'Mô phỏng thi thật',
+      image: '/images/dashboard/quick_exam.jpg',
+      mascot: '/mascot/cow_greet_heart.png',
+      badge: 'Full Mock Test 4 Kỹ Năng',
       link: `/${locale}/ielts/mock-test`,
+      borderColor: 'border-emerald-500/30 hover:border-emerald-400',
+      glowColor: 'rgba(16, 185, 129, 0.35)',
+      badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+      iconColor: 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300',
     },
   ];
 
@@ -215,33 +234,68 @@ export default function IeltsHubPage() {
           {skills.map((skill) => {
             const Icon = skill.icon;
             return (
-              <Link
+              <TiltCard
                 key={skill.id}
-                href={skill.link}
-                className="group relative p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/50 border border-slate-800 hover:border-blue-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between"
+                maxTilt={8}
+                spotlightColor={skill.glowColor}
+                spotlightRadius={380}
+                className="h-full rounded-3xl"
               >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className={`p-3.5 rounded-xl bg-gradient-to-br border ${skill.color}`}>
+                <Link
+                  href={skill.link}
+                  className={`group relative p-6 sm:p-7 rounded-3xl bg-slate-950/90 border ${skill.borderColor} overflow-hidden transition-all duration-300 shadow-xl hover:shadow-2xl flex flex-col justify-between h-56 sm:h-64 block`}
+                >
+                  {/* FULL BACKGROUND 3D ARTWORK WITH MASCOT */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <Image
+                      src={skill.image}
+                      alt={skill.title}
+                      fill
+                      className="object-cover object-right sm:object-right transition-transform duration-700 ease-out group-hover:scale-110 opacity-85 group-hover:opacity-100 filter brightness-105 contrast-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    {/* Directional glass gradient from left to right */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/20" />
+
+                    {/* Mascot character overlay for writing and mock-test if specified */}
+                    {skill.mascot && (
+                      <div className="absolute right-4 bottom-2 w-24 sm:w-28 h-24 sm:h-28 pointer-events-none transition-transform duration-500 group-hover:scale-110">
+                        <img
+                          src={skill.mascot}
+                          alt="Mascot Cow"
+                          className="w-full h-full object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* TOP ROW: ICON + BADGE */}
+                  <div className="flex items-center justify-between relative z-10" style={{ transform: 'translateZ(25px)' }}>
+                    <div className={`p-3 rounded-2xl border backdrop-blur-md shadow-md group-hover:scale-110 transition-transform ${skill.iconColor}`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                    <span className={`text-xs font-mono font-bold px-3 py-1 rounded-full border backdrop-blur-md uppercase tracking-wider ${skill.badgeColor}`}>
                       {skill.badge}
                     </span>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors">
+
+                  {/* BOTTOM: TITLE + DESC + CTA ARROW */}
+                  <div className="space-y-2 relative z-10 max-w-sm" style={{ transform: 'translateZ(30px)' }}>
+                    <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white group-hover:text-cyan-300 transition-colors drop-shadow-md">
                       {skill.title}
                     </h3>
-                    <p className="text-slate-400 text-sm mt-1.5 leading-relaxed">{skill.desc}</p>
-                  </div>
-                </div>
+                    <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed drop-shadow line-clamp-2">
+                      {skill.desc}
+                    </p>
 
-                <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-slate-400 group-hover:text-blue-400">
-                  <span>Bắt đầu luyện tập</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
+                    <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                      <span>Bắt đầu luyện tập</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </Link>
+              </TiltCard>
             );
           })}
         </div>
