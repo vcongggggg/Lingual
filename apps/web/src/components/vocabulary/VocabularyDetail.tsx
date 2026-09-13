@@ -89,12 +89,12 @@ export default function VocabularyDetail({
             {inSrsDeck ? (
               <>
                 <Check className="w-4 h-4 text-teal-400" />
-                <span>Đã trong thẻ SRS</span>
+                <span>Đã lưu ôn tập</span>
               </>
             ) : (
               <>
                 <Brain className="w-4 h-4" />
-                <span>Thêm vào thẻ SRS</span>
+                <span>Lưu vào sổ ôn tập</span>
               </>
             )}
           </button>
@@ -155,7 +155,7 @@ export default function VocabularyDetail({
               >
                 <span className="flex items-center gap-2">
                   <Brain className="w-4 h-4 text-teal-400" />
-                  <span>Bộ thẻ nhớ SRS</span>
+                  <span>Sổ tay ghi nhớ thông minh</span>
                 </span>
                 <span>→</span>
               </Link>

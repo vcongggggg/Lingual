@@ -73,7 +73,7 @@ export default function LessonQuizPage() {
     if (!currentEx) return;
 
     let answer = selectedOption;
-    if (currentEx.type === 'scramble') {
+    if (currentEx.type === 'scramble' || currentEx.type === 'sentence_scramble') {
       answer = scrambleTokens.join(' ');
     } else if (currentEx.type === 'typing') {
       answer = typingInput;
@@ -353,42 +353,70 @@ export default function LessonQuizPage() {
                 );
               })}
             </div>
-          ) : currentEx.type === 'scramble' ? (
+          ) : (currentEx.type === 'scramble' || currentEx.type === 'sentence_scramble') ? (
             <div className="space-y-4">
-              {/* Selected Tokens Pool */}
-              <div className="min-h-16 p-4 rounded-2xl bg-slate-950 border border-dashed border-teal-500/40 flex flex-wrap gap-2">
-                {scrambleTokens.map((tok, idx) => (
+              <div className="flex items-center justify-between text-xs text-slate-400 font-semibold px-1">
+                <span className="flex items-center gap-1.5 text-teal-400">
+                  <span className="text-base">🇬🇧</span> Chạm vào các từ để ghép thành câu tiếng Anh:
+                </span>
+                {scrambleTokens.length > 0 && !isAnswerChecked && (
                   <button
-                    key={idx}
-                    onClick={() => setScrambleTokens(scrambleTokens.filter((_, i) => i !== idx))}
-                    className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold text-sm shadow-md active:scale-95"
+                    onClick={() => setScrambleTokens([])}
+                    className="text-slate-400 hover:text-rose-400 text-xs transition-colors underline underline-offset-2"
                   >
-                    {tok}
+                    Đặt lại
                   </button>
-                ))}
+                )}
               </div>
-              {/* Options Tokens Pool */}
-              <div className="flex flex-wrap gap-2">
-                {options.map((tok: string, idx: number) => {
-                  const countInSelected = scrambleTokens.filter((t) => t === tok).length;
-                  const countInOptions = options.filter((t: string) => t === tok).length;
-                  const isUsed = countInSelected >= countInOptions;
 
-                  return (
+              {/* Selected Tokens Pool (Sentence Workspace) */}
+              <div className="min-h-20 p-4 rounded-2xl bg-slate-950/80 border-2 border-dashed border-teal-500/30 flex flex-wrap items-center gap-2.5 transition-all">
+                {scrambleTokens.length === 0 ? (
+                  <span className="text-slate-500 text-sm italic font-medium select-none">
+                    Chạm vào các thẻ từ bên dưới theo thứ tự để tạo câu...
+                  </span>
+                ) : (
+                  scrambleTokens.map((tok, idx) => (
                     <button
                       key={idx}
-                      disabled={isUsed}
-                      onClick={() => setScrambleTokens([...scrambleTokens, tok])}
-                      className={`px-3.5 py-2 rounded-xl font-bold text-sm border transition-all ${
-                        isUsed
-                          ? 'bg-slate-900 border-slate-800 text-slate-600 opacity-40'
-                          : 'bg-slate-800 border-slate-700 hover:bg-slate-700 text-slate-200 active:scale-95'
-                      }`}
+                      disabled={isAnswerChecked}
+                      onClick={() => setScrambleTokens(scrambleTokens.filter((_, i) => i !== idx))}
+                      className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold text-sm shadow-md shadow-teal-500/20 active:scale-95 hover:brightness-110 transition-all flex items-center gap-1.5 group cursor-pointer"
                     >
-                      {tok}
+                      <span>{tok}</span>
+                      {!isAnswerChecked && (
+                        <span className="text-teal-900 group-hover:text-black text-xs font-black ml-0.5">✕</span>
+                      )}
                     </button>
-                  );
-                })}
+                  ))
+                )}
+              </div>
+
+              {/* Options Tokens Pool (Word Bank) */}
+              <div className="pt-2">
+                <div className="text-[11px] uppercase tracking-wider text-slate-500 font-bold mb-2">Kho từ vựng:</div>
+                <div className="flex flex-wrap gap-2.5">
+                  {options.map((tok: string, idx: number) => {
+                    const countInSelected = scrambleTokens.filter((t) => t === tok).length;
+                    const countInOptions = options.filter((t: string) => t === tok).length;
+                    const isUsed = countInSelected >= countInOptions;
+
+                    return (
+                      <button
+                        key={idx}
+                        disabled={isUsed || isAnswerChecked}
+                        onClick={() => setScrambleTokens([...scrambleTokens, tok])}
+                        className={`px-4 py-2.5 rounded-xl font-bold text-sm border-2 transition-all ${
+                          isUsed
+                            ? 'bg-slate-900/60 border-slate-800/80 text-slate-600 opacity-30 cursor-not-allowed scale-95'
+                            : 'bg-slate-800/80 border-slate-700/80 hover:border-teal-400 hover:bg-slate-700/90 text-slate-100 shadow-md active:scale-95 cursor-pointer'
+                        }`}
+                      >
+                        {tok}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           ) : (

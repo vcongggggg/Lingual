@@ -64,7 +64,7 @@ export default function VocabularyPracticeResult({
             Hoàn thành bài luyện từ vựng! 🎉
           </h2>
           <p className="text-sm font-medium text-teal-300">
-            Dữ liệu ôn tập đã tự động cập nhật vào thuật toán lặp lại ngắt quãng (SM-2 SRS).
+            Dữ liệu ôn tập đã tự động cập nhật vào sổ ghi nhớ thông minh của bạn.
           </p>
         </div>
       </div>
@@ -121,8 +121,8 @@ export default function VocabularyPracticeResult({
             <Brain className="w-6 h-6" />
           </div>
           <div>
-            <h4 className="font-bold text-sm text-white">Xem lịch ôn tập Spaced Repetition</h4>
-            <p className="text-xs text-slate-400">Kiểm tra chu kỳ ôn tập các thẻ đến hạn</p>
+            <h4 className="font-bold text-sm text-white">Xem lịch ôn tập chống quên thông minh</h4>
+            <p className="text-xs text-slate-400">Xem các từ vựng cần ôn tập hôm nay</p>
           </div>
         </div>
 
@@ -130,7 +130,7 @@ export default function VocabularyPracticeResult({
           href={`/${locale}/srs`}
           className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs inline-flex items-center justify-center gap-1.5 transition-all shadow-md shrink-0"
         >
-          <span>Vào thẻ nhớ SRS</span>
+          <span>Vào sổ tay ghi nhớ</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
