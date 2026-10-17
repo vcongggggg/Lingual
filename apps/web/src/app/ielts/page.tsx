@@ -163,12 +163,12 @@ export default function IeltsHubPage() {
             </div>
           </div>
 
-          {/* Linh vật LingLing cổ vũ có chủ đích */}
+          {/* Linh vật LingLing cử nhân có chủ đích */}
           <div className="hidden lg:flex flex-col items-center relative flex-shrink-0">
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Mục tiêu <span className="text-red">Band {targetBand}</span> trong tầm tay!
             </div>
-            <LingLing reaction="greet" size={135} />
+            <LingLing reaction="graduation" size={135} />
           </div>
         </div>
       </div>

@@ -149,7 +149,7 @@ export default function ReadingHubPage() {
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Mỗi ngày <span className="text-red">1 bài báo</span>, tích lũy 50 từ vựng!
             </div>
-            <LingLing reaction="greet" size={135} />
+            <LingLing reaction="studying" size={135} />
           </div>
         </div>
       </div>
@@ -266,6 +266,24 @@ export default function ReadingHubPage() {
           </article>
         ))}
       </div>
+
+      {filteredArticles.length === 0 && (
+        <div className="bg-card border-2 border-ink rounded-2xl p-12 text-center shadow-brutal space-y-4">
+          <LingLing reaction="shrug" size={96} />
+          <h4 className="text-lg font-black text-ink">Không tìm thấy bài báo phù hợp</h4>
+          <p className="text-sm text-ink-soft">Hãy thử tìm kiếm với từ khóa khác hoặc bỏ bớt bộ lọc bạn nhé!</p>
+          <button
+            onClick={() => {
+              setSearchQuery('');
+              setSelectedLevel('Tất cả');
+              setSelectedTopic('Tất cả');
+            }}
+            className="btn btn-paper text-xs font-black shadow-brutal"
+          >
+            Đặt lại bộ lọc
+          </button>
+        </div>
+      )}
     </div>
   );
 }

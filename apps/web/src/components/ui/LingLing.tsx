@@ -3,24 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 
-export type LingLingReaction =
-  | 'greet'          // cow_greet_heart.png (ôm tim, chào)
-  | 'salute'         // cow_salute.png (chào nghiêm trang)
-  | 'wink'           // cow_wink_kiss.png (nháy mắt)
-  | 'hands_on_hips'  // cow_hands_on_hips.png (chống nạnh quyết tâm)
-  | 'cry'            // cow_cry_soft.png (mếu máo nhẹ)
-  | 'run'            // cow_run_side.png (chạy nhanh)
-  | 'bubble';        // lingling_waving_bubble.png
+import { MASCOT_REGISTRY, MascotPose } from '../mascot';
 
-const reactionMap: Record<LingLingReaction, string> = {
-  greet: '/mascot/cow_greet_heart.png',
-  salute: '/mascot/cow_salute.png',
-  wink: '/mascot/cow_wink_kiss.png',
-  hands_on_hips: '/mascot/cow_hands_on_hips.png',
-  cry: '/mascot/cow_cry_soft.png',
-  run: '/mascot/cow_run_side.png',
-  bubble: '/mascot/lingling_waving_bubble.png',
-};
+export type LingLingReaction = MascotPose;
 
 export interface LingLingProps {
   reaction?: LingLingReaction;
@@ -39,7 +24,7 @@ export function LingLing({
   animate = true,
   className = '',
 }: LingLingProps) {
-  const imageSrc = reactionMap[reaction] || reactionMap.greet;
+  const imageSrc = MASCOT_REGISTRY[reaction] || MASCOT_REGISTRY.studying;
 
   return (
     <div className={`relative inline-flex items-center justify-center select-none ${className}`}>

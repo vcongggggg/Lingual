@@ -5,12 +5,15 @@ import Link from 'next/link';
 import { ArrowLeft, Sparkles, Clock } from 'lucide-react';
 import { LingLing } from './LingLing';
 
+import { MascotPose } from '../mascot';
+
 interface ComingSoonProps {
   title: string;
   category?: string;
   description?: string;
   backHref?: string;
   backLabel?: string;
+  reaction?: MascotPose;
 }
 
 export function ComingSoon({
@@ -19,6 +22,7 @@ export function ComingSoon({
   description = 'Tính năng đang được đội ngũ biên soạn và hoàn thiện tỉ mỉ trên nền sổ tay giấy. Hãy quay lại sau nhé!',
   backHref = '/dashboard',
   backLabel = 'Quay lại Trang chủ',
+  reaction = 'shyApologetic',
 }: ComingSoonProps) {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-20 text-center space-y-8">
@@ -57,7 +61,7 @@ export function ComingSoon({
           <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
             Tính năng đang được phát triển, quay lại sau nhé!
           </div>
-          <LingLing reaction="greet" size={120} />
+          <LingLing reaction={reaction} size={120} />
         </div>
 
         <div className="pt-4">

@@ -164,9 +164,9 @@ export default function CurriculumRoadmapPage() {
 
         <div className="flex flex-col items-center flex-shrink-0">
           <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-            Cùng bước tiếp chặng đường hôm nay nhé!
+            Tới lượt bạn chinh phục chặng đường hôm nay!
           </div>
-          <LingLing reaction="greet" size={110} />
+          <LingLing reaction="pointYou" size={110} />
         </div>
       </div>
 

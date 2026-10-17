@@ -99,7 +99,7 @@ export default function ProfilePage() {
             <div className="flex items-center gap-5">
               {/* Avatar trong vòng tròn mực */}
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-3 border-ink bg-paper p-1 shadow-brutal-sm flex-shrink-0 flex items-center justify-center overflow-hidden">
-                <LingLing reaction="greet" size={80} />
+                <LingLing reaction="proud" size={80} />
               </div>
 
               <div className="space-y-1">

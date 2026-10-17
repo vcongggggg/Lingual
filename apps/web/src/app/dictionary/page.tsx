@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
+import { EmptyState } from '../../components/ui/EmptyState';
 
 interface WordItem {
   id: string;
@@ -121,6 +122,14 @@ export default function DictionaryPage() {
   const [addedWords, setAddedWords] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) setSearchQuery(q);
+    }
+  }, []);
+
+  useEffect(() => {
     async function loadDictionary() {
       if (!searchQuery.trim() && selectedCefr === 'Tất cả' && selectedPos === 'all') {
         setWords(SAMPLE_WORDS);
@@ -214,7 +223,7 @@ export default function DictionaryPage() {
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Hôm nay cùng tớ học từ mới nhé!
             </div>
-            <LingLing reaction="greet" size={125} />
+            <LingLing reaction="studying" size={125} />
           </div>
         </div>
       </div>
@@ -290,15 +299,20 @@ export default function DictionaryPage() {
       {/* THANH TÌM KIẾM GIẤY + BỘ LỌC CHIP GIẤY */}
       <div className="space-y-4">
         {/* Ô Tìm Kiếm Giấy */}
-        <div className="relative">
-          <Search className="w-5 h-5 text-ink-muted absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Tra cứu từ vựng tiếng Anh hoặc nghĩa tiếng Việt..."
-            className="w-full bg-card border-2 border-ink rounded-2xl pl-12 pr-4 py-3 text-base font-bold text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-teal shadow-brutal-md"
-          />
+        <div className="flex items-center gap-3">
+          <div className="relative flex-1">
+            <Search className="w-5 h-5 text-ink-muted absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Tra cứu từ vựng tiếng Anh hoặc nghĩa tiếng Việt..."
+              className="w-full bg-card border-2 border-ink rounded-2xl pl-12 pr-4 py-3 text-base font-bold text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-teal shadow-brutal-md"
+            />
+          </div>
+          <div className="hidden sm:flex items-center flex-shrink-0" title="LingLing tra cứu kính lúp">
+            <LingLing reaction="magnify" size={54} />
+          </div>
         </div>
 
         {/* Hàng Chip Bậc CEFR & Dropdown Từ Loại */}
@@ -357,14 +371,11 @@ export default function DictionaryPage() {
             Đang lật trang từ điển...
           </div>
         ) : words.length === 0 ? (
-          <div className="card-paper p-10 text-center space-y-2 bg-paper-2">
-            <span className="text-base font-black text-ink block">
-              Không tìm thấy mục từ phù hợp
-            </span>
-            <p className="text-xs text-ink-soft">
-              Hãy thử tìm kiếm với từ khóa khác hoặc bỏ các bộ lọc đang chọn.
-            </p>
-          </div>
+          <EmptyState
+            title="Không tìm thấy mục từ phù hợp"
+            description="Hãy thử tìm kiếm với từ khóa khác hoặc bỏ các bộ lọc đang chọn."
+            reaction="shrug"
+          />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {words.map((w, idx) => {

@@ -154,12 +154,12 @@ export default function VocabularyHubPage() {
             </div>
           </div>
 
-          {/* Linh vật LingLing cầm thẻ flashcard */}
+          {/* Linh vật LingLing chăm chú học từ vựng */}
           <div className="hidden lg:flex flex-col items-center relative flex-shrink-0">
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Mỗi ngày <span className="text-red">10 thẻ thư viện</span>, không bao giờ quên!
             </div>
-            <LingLing reaction="greet" size={135} />
+            <LingLing reaction="studying" size={135} />
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
+import { MascotPose } from '../../components/mascot';
 
 interface ChatMessage {
   id: string;
@@ -21,6 +22,7 @@ interface ChatMessage {
   text: string;
   timestamp: string;
   references?: any[];
+  mood?: MascotPose;
 }
 
 const QUICK_SUGGESTIONS = [
@@ -33,6 +35,7 @@ const QUICK_SUGGESTIONS = [
 const INITIAL_GREETING: ChatMessage = {
   id: 'greet-1',
   sender: 'assistant',
+  mood: 'studying',
   text: `Chào bạn! Tớ là **LingLing**, người bạn đồng hành cùng bạn học tiếng Anh mỗi ngày.
 
 Tớ có thể giúp bạn giải đáp thắc mắc ngữ pháp, phân tích nghĩa từ vựng trong ngữ cảnh và gợi ý chiến thuật làm bài thực tế.
@@ -106,10 +109,22 @@ export default function TutorPage() {
 
     try {
       const res = await api.sendTutorMessage(text);
+      const replyText = res.reply || 'Cảm ơn bạn đã hỏi. Hãy cùng tớ tìm hiểu thêm nhé!';
+      let mood: MascotPose = 'studying';
+      const lower = replyText.toLowerCase();
+      if (lower.includes('chúc mừng') || lower.includes('tuyệt vời') || lower.includes('chính xác') || lower.includes('hoàn hảo')) {
+        mood = 'cheersSoda';
+      } else if (lower.includes('xin lỗi') || lower.includes('tiếc')) {
+        mood = 'shyApologetic';
+      } else if (lower.includes('sai rồi') || lower.includes('nhầm lẫn') || lower.includes('chưa đúng')) {
+        mood = 'facepalm';
+      }
+
       const assistantMsg: ChatMessage = {
         id: `reply-${Date.now()}`,
         sender: 'assistant',
-        text: res.reply || 'Cảm ơn bạn đã hỏi. Hãy cùng tớ tìm hiểu thêm nhé!',
+        mood,
+        text: replyText,
         timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
         references: res.refs || [],
       };
@@ -119,6 +134,7 @@ export default function TutorPage() {
       const fallbackReply: ChatMessage = {
         id: `reply-${Date.now()}`,
         sender: 'assistant',
+        mood: 'shyApologetic',
         text: `Tớ đã ghi nhận câu hỏi của bạn về: **${text}**.
 
 Trong tiếng Anh, việc áp dụng từ vựng vào câu ví dụ cụ thể và luyện tập ngắt quãng sẽ giúp bạn ghi nhớ sâu hơn rất nhiều!`,
@@ -190,7 +206,7 @@ Trong tiếng Anh, việc áp dụng từ vựng vào câu ví dụ cụ thể v
                 {/* Avatar Bò LingLing cho tin nhắn trợ lý */}
                 {isAssistant && (
                   <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center flex-shrink-0 shadow-brutal-sm overflow-hidden p-1">
-                    <LingLing reaction="greet" size={40} />
+                    <LingLing reaction={msg.mood || 'studying'} size={40} />
                   </div>
                 )}
 
@@ -229,10 +245,10 @@ Trong tiếng Anh, việc áp dụng từ vựng vào câu ví dụ cụ thể v
           {isSending && (
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center p-1">
-                <LingLing reaction="greet" size={40} />
+                <LingLing reaction="thinking" size={40} />
               </div>
               <div className="lined-paper p-4 rounded-2xl border-2 border-ink text-xs font-bold text-ink italic shadow-brutal-sm">
-                LingLing đang viết thư phản hồi cho bạn...
+                LingLing đang suy nghĩ và viết thư phản hồi cho bạn...
               </div>
             </div>
           )}

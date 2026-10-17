@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '../components/ui/Button';
 import { StreakCard } from '../components/ui/StreakCard';
+import { LingLing } from '../components/ui/LingLing';
 
 export default function HomePage() {
   return (
@@ -101,16 +102,9 @@ export default function HomePage() {
                 Ôn tập<br />đúng lúc
               </div>
 
-              {/* Linh vật LingLing */}
+              {/* Linh vật LingLing trao tim yêu thích */}
               <div className="absolute -top-6 right-2 sm:-top-8 sm:right-0 z-40 w-24 sm:w-32 animate-mascot">
-                <Image
-                  src="/mascot/cow_greet_heart.png"
-                  alt="LingLing chào mừng"
-                  width={128}
-                  height={128}
-                  unoptimized
-                  className="pointer-events-none drop-shadow-md w-full h-auto"
-                />
+                <LingLing reaction="heart" size={128} />
               </div>
 
               {/* Bong bóng thoại LingLing */}
@@ -218,16 +212,9 @@ export default function HomePage() {
             </Button>
           </Link>
 
-          {/* Mascot LingLing nháy mắt ở góc phải CTA */}
-          <div className="absolute -bottom-2 right-4 sm:right-10 w-20 sm:w-28 rotate-6 animate-mascot">
-            <Image
-              src="/mascot/cow_wink_kiss.png"
-              alt="LingLing nháy mắt"
-              width={112}
-              height={112}
-              unoptimized
-              className="pointer-events-none drop-shadow-md"
-            />
+          {/* Mascot LingLing chỉ tay tới lượt bạn ở góc phải CTA */}
+          <div className="absolute -bottom-2 right-4 sm:right-10 w-24 sm:w-28 rotate-6 animate-mascot">
+            <LingLing reaction="pointYou" size={112} />
           </div>
         </div>
       </section>

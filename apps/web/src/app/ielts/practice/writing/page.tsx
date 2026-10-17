@@ -248,16 +248,24 @@ export default function IeltsWritingPracticePage() {
         <div className="space-y-6 animate-in fade-in duration-300">
           {/* Header Kết Quả Overall */}
           <div className="bg-paper-2 border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div className="space-y-2">
-              <span className="text-xs font-black uppercase tracking-wider text-teal block">
-                Kết quả đánh giá bài viết
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-ink font-sans">
-                Điểm Overall ước tính
-              </h2>
-              <p className="text-xs text-ink-soft">
-                {result.note || 'Phiên bản hiện tại chấm theo quy tắc, chưa phải AI.'}
-              </p>
+            <div className="flex items-center gap-5">
+              <LingLing
+                reaction={(result.overallBand || 0) < 6.5 ? 'sternCrossed' : 'proud'}
+                size={84}
+              />
+              <div className="space-y-1">
+                <span className="text-xs font-black uppercase tracking-wider text-teal block">
+                  {(result.overallBand || 0) < 6.5 ? 'Góc Giám Khảo · Cần Cải Thiện' : 'Góc Giám Khảo · Bài Viết Tốt'}
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-black text-ink font-sans">
+                  Điểm Overall ước tính
+                </h2>
+                <p className="text-xs text-ink-soft">
+                  {(result.overallBand || 0) < 6.5
+                    ? 'Bài viết cần mở rộng thêm vốn từ và cấu trúc câu phức để đạt Band mục tiêu.'
+                    : 'Lập luận sắc bén và cấu trúc bài rất mạch lạc. Giữ vững phong độ này nhé!'}
+                </p>
+              </div>
             </div>
 
             <div className="text-center sm:text-right bg-card border-2 border-ink rounded-2xl p-4 shadow-brutal-sm flex-shrink-0">

@@ -134,9 +134,9 @@ export default function TutorPlanPage() {
 
         <div className="flex flex-col items-center flex-shrink-0">
           <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-            Hôm nay: <span className="text-red">Thi thử 30 phút</span> nhé!
+            Tập trung học sâu, <span className="text-teal">nghỉ ngơi hợp lý</span> nhé!
           </div>
-          <LingLing reaction="greet" size={100} />
+          <LingLing reaction="meditate" size={105} />
         </div>
       </div>
 

@@ -89,6 +89,26 @@ export default function IeltsMockTestPage() {
     loadQuestions();
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('submitted') === 'true') {
+        setResult({
+          readingCorrect: 9,
+          readingTotal: 10,
+          listeningCorrect: 8,
+          listeningTotal: 10,
+          readingBand: 7.5,
+          listeningBand: 7.0,
+          writingBand: null,
+          speakingBand: null,
+          overallBand: 7.5,
+        });
+        setSubmitted(true);
+      }
+    }
+  }, []);
+
   // Timer countdown
   useEffect(() => {
     if (submitted) return;
@@ -210,12 +230,15 @@ export default function IeltsMockTestPage() {
         </div>
 
         {/* ĐỒNG HỒ PHÒNG THI: THẺ MỰC, SỐ MONO TO */}
-        <div className="bg-paper-2 border-2 border-ink rounded-2xl p-4 sm:p-5 text-center shadow-brutal-md flex-shrink-0">
-          <span className="text-[10px] font-black uppercase tracking-wider text-ink-muted block mb-1">
-            Thời gian làm bài còn lại
-          </span>
-          <div className="font-mono text-3xl sm:text-4xl font-black text-red tracking-wider">
-            {formatTimer(timeLeft)}
+        <div className="bg-paper-2 border-2 border-ink rounded-2xl p-4 sm:p-5 text-center shadow-brutal-md flex-shrink-0 flex items-center gap-4">
+          <LingLing reaction="stopwatch" size={56} />
+          <div className="text-left">
+            <span className="text-[10px] font-black uppercase tracking-wider text-ink-muted block mb-1">
+              Thời gian làm bài còn lại
+            </span>
+            <div className="font-mono text-3xl sm:text-4xl font-black text-red tracking-wider">
+              {formatTimer(timeLeft)}
+            </div>
           </div>
         </div>
       </div>
@@ -337,17 +360,25 @@ export default function IeltsMockTestPage() {
       ) : (
         /* KẾT QUẢ PHÒNG THI CHUẨN XÁC, KHÔNG BỊA ĐIỂM */
         <div className="bg-card border-4 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl space-y-6 text-center animate-in fade-in duration-300">
-          <LingLing reaction="wink" size={120} animate={true} />
+          <LingLing
+            reaction={(result?.overallBand || 0) >= 6.5 ? 'trophy' : 'tear'}
+            size={120}
+            animate={true}
+          />
 
           <div className="space-y-2">
             <span className="text-xs font-black uppercase tracking-wider text-teal block">
-              Bảng điểm phòng thi thử
+              {(result?.overallBand || 0) >= 6.5 ? 'Chúc mừng bạn!' : 'Đừng nản lòng nhé!'}
             </span>
             <h2 className="text-3xl font-black text-ink font-sans">
-              Hoàn thành bài thi thử!
+              {(result?.overallBand || 0) >= 6.5
+                ? 'Kết quả thi thử xuất sắc!'
+                : 'Hoàn thành bài thi thử'}
             </h2>
             <p className="text-xs sm:text-sm text-ink-soft max-w-md mx-auto">
-              Hệ thống đã chấm điểm tự động từ answer key thật của đề thi.
+              {(result?.overallBand || 0) >= 6.5
+                ? 'Phong độ rất vững vàng! Tiếp tục phát huy trong phòng thi thật nhé!'
+                : 'Mỗi lần thi thử là một lần rút kinh nghiệm quý giá. Cùng LingLing luyện tập thêm nhé!'}
             </p>
           </div>
 

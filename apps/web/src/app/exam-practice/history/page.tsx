@@ -85,9 +85,9 @@ export default function ExamHistoryPage() {
 
         <div className="flex flex-col items-center flex-shrink-0">
           <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-            Điểm số đang tăng dần đều!
+            Điểm số đang tăng dần đều! Chúc mừng bạn!
           </div>
-          <LingLing reaction="greet" size={100} />
+          <LingLing reaction="trophy" size={100} />
         </div>
       </div>
 

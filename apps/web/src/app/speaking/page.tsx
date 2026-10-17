@@ -125,12 +125,12 @@ export default function SpeakingHubPage() {
             </div>
           </div>
 
-          {/* Linh vật LingLing đeo tai nghe trên nền giấy */}
+          {/* Linh vật LingLing cầm mic luyện nói */}
           <div className="hidden lg:flex flex-col items-center relative flex-shrink-0">
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Đừng ngại nói sai nhé, <span className="text-red">cứ tự tin phát âm</span> cùng tớ!
             </div>
-            <LingLing reaction="greet" size={135} />
+            <LingLing reaction="mic" size={135} />
           </div>
         </div>
       </div>

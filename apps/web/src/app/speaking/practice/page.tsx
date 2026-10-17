@@ -310,12 +310,12 @@ export default function SpeakingPracticePage() {
             <div className="flex-shrink-0 flex flex-col items-center">
               {evaluation.passed ? (
                 <>
-                  <LingLing reaction="greet" size={105} />
+                  <LingLing reaction="thumbsup" size={105} />
                   <span className="text-xs font-black text-teal mt-1">Chuẩn bản xứ!</span>
                 </>
               ) : (
                 <>
-                  <LingLing reaction="cry" size={105} />
+                  <LingLing reaction="tear" size={105} />
                   <span className="text-xs font-black text-red mt-1">Cố lên nhé!</span>
                 </>
               )}

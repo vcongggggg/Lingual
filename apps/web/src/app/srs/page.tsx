@@ -135,7 +135,7 @@ export default function SrsPage() {
   if (loading) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-20 text-center space-y-4">
-        <LingLing reaction="greet" size={90} animate={true} />
+        <LingLing reaction="thinking" size={90} animate={true} />
         <span className="text-sm font-black text-ink block">Đang mở hộp thẻ ghi nhớ...</span>
       </div>
     );
@@ -146,7 +146,7 @@ export default function SrsPage() {
     return (
       <div className="max-w-xl mx-auto px-4 py-16 text-center space-y-6 pb-28 sm:pb-20">
         <div className="card-paper p-8 sm:p-12 space-y-6 bg-card border-4 border-ink shadow-brutal-xl">
-          <LingLing reaction="wink" size={130} animate={true} />
+          <LingLing reaction="party" size={130} animate={true} />
 
           <div className="space-y-2">
             <span className="text-xs font-black uppercase tracking-wider text-teal block">

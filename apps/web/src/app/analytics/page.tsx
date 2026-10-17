@@ -171,9 +171,9 @@ export default function AnalyticsPage() {
 
           <div className="flex flex-col items-center flex-shrink-0">
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-              Điểm tổng kết tuần đạt <span className="text-red">{overallScore}/100</span>!
+              Điểm tổng kết tuần đạt <span className="text-red">{overallScore}/100</span>! Phong độ đỉnh cao!
             </div>
-            <LingLing reaction="greet" size={125} />
+            <LingLing reaction="flex" size={125} />
           </div>
         </div>
       </div>

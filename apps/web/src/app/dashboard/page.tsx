@@ -188,7 +188,7 @@ export default function DashboardPage() {
               </Button>
             </Link>
           </div>
-          <LingLing reaction="hands_on_hips" size={100} className="hidden sm:inline-flex" />
+          <LingLing reaction="coolSerious" size={100} className="hidden sm:inline-flex" />
         </div>
 
         <div className="bg-card border-2 border-ink rounded-2xl p-7 shadow-brutal-lg flex items-center justify-between">
@@ -206,7 +206,7 @@ export default function DashboardPage() {
               </Button>
             </Link>
           </div>
-          <LingLing reaction="run" size={100} className="hidden sm:inline-flex" />
+          <LingLing reaction="angryRun" size={100} className="hidden sm:inline-flex" />
         </div>
       </div>
     </div>

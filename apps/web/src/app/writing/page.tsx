@@ -116,7 +116,7 @@ export default function WritingHubPage() {
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Mỗi ngày viết <span className="text-red">3 câu</span>, sau 1 tháng tiến bộ vượt bậc!
             </div>
-            <LingLing reaction="greet" size={135} />
+            <LingLing reaction="writing" size={135} />
           </div>
         </div>
       </div>

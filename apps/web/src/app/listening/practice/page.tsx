@@ -291,12 +291,12 @@ export default function ListeningPracticePage() {
             <div className="flex-shrink-0">
               {result.isCorrect ? (
                 <div className="flex flex-col items-center">
-                  <LingLing reaction="greet" size={105} />
+                  <LingLing reaction="thumbsup" size={105} />
                   <span className="text-xs font-black text-teal mt-1">Xuất sắc quá!</span>
                 </div>
               ) : (
                 <div className="flex flex-col items-center">
-                  <LingLing reaction="cry" size={105} />
+                  <LingLing reaction="tear" size={105} />
                   <span className="text-xs font-black text-red mt-1">Gần trúng rồi!</span>
                 </div>
               )}

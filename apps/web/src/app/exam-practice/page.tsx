@@ -101,9 +101,9 @@ export default function ExamPracticeHubPage() {
 
         <div className="flex flex-col items-center flex-shrink-0">
           <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-            Chuẩn bị bút mực và tự tin làm bài nhé!
+            Tập trung cao độ, <span className="text-red">bước vào phòng thi</span> nào!
           </div>
-          <LingLing reaction="greet" size={110} />
+          <LingLing reaction="coolSerious" size={110} />
         </div>
       </div>
 

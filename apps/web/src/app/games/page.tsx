@@ -125,6 +125,17 @@ export default function GamesPage() {
   const [gameActive, setGameActive] = useState(false);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get('tab');
+      if (tab === 'play' || tab === 'leaderboard') {
+        setActiveTab(tab as any);
+        if (tab === 'play') setGameActive(true);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     let interval: any;
     if (gameActive && timer > 0) {
       interval = setInterval(() => setTimer((t) => t - 1), 1000);
@@ -188,7 +199,7 @@ export default function GamesPage() {
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Chơi ngay một ván <span className="text-red">60 giây</span> nhé!
             </div>
-            <LingLing reaction="greet" size={120} />
+            <LingLing reaction="laughTease" size={120} />
           </div>
         </div>
 
@@ -315,6 +326,9 @@ export default function GamesPage() {
             </div>
 
             <div className="flex items-center gap-4">
+              <div className="hidden sm:block" title={timer <= 15 ? 'Chạy nhanh kẻo hết giờ!' : 'Tung hứng từ vựng'}>
+                <LingLing reaction={timer <= 15 ? 'angryRun' : 'juggle'} size={52} />
+              </div>
               <span className="font-mono text-sm font-black text-red bg-paper-2 border-2 border-ink rounded-xl px-3 py-1.5 shadow-brutal-sm">
                 Thời gian: {timer}s
               </span>
@@ -396,7 +410,8 @@ export default function GamesPage() {
 
           {/* Khi hoàn thành toàn bộ cặp từ */}
           {matchedIds.length === MATCH_PAIRS.length && (
-            <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl text-center space-y-3 animate-in fade-in duration-200">
+            <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl text-center space-y-3 animate-in fade-in duration-200 flex flex-col items-center">
+              <LingLing reaction="trophy" size={90} animate={true} />
               <span className="text-xl font-black text-ink block font-sans">
                 Tuyệt vời! Bạn đã ghép đúng toàn bộ các cặp từ! (+100 XP)
               </span>

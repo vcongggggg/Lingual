@@ -11,6 +11,7 @@ export default function CommunityAchievementsPage() {
       description="Bộ sưu tập huy hiệu mực in, danh hiệu học giả và các mốc kỷ lục học tập của bạn đang được hoàn thiện. Hãy quay lại sau nhé!"
       backHref="/dashboard"
       backLabel="Quay lại Trang chủ"
+      reaction="roseGift"
     />
   );
 }

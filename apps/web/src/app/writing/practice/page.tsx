@@ -265,7 +265,7 @@ export default function WritingPracticePage() {
       {evaluation && (
         <div className="card-paper p-6 sm:p-8 space-y-4 shadow-brutal-xl border-teal bg-amber/15 text-left animate-in fade-in duration-150">
           <div className="flex items-center gap-3">
-            <LingLing reaction="greet" size={80} />
+            <LingLing reaction="proud" size={80} />
             <div>
               <h3 className="text-xl font-black text-ink">
                 Chúc mừng bạn đã hoàn thành bài luận!

@@ -154,7 +154,7 @@ export default function ListeningHubPage() {
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
               Hôm nay cùng tớ nghe <span className="text-red">15 phút</span> nhé!
             </div>
-            <LingLing reaction="greet" size={130} />
+            <LingLing reaction="headphones" size={130} />
           </div>
         </div>
       </div>
@@ -280,7 +280,7 @@ export default function ListeningHubPage() {
 
       {filteredLessons.length === 0 && (
         <div className="bg-card border-2 border-ink rounded-2xl p-12 text-center shadow-brutal space-y-4">
-          <LingLing reaction="cry" size={88} />
+          <LingLing reaction="shrug" size={96} />
           <h4 className="text-lg font-black text-ink">Không tìm thấy bài nghe phù hợp</h4>
           <p className="text-sm text-ink-soft">Thử chọn cấp độ khác hoặc xóa từ khóa tìm kiếm bạn nhé!</p>
           <Button variant="paper" size="sm" onClick={() => { setSearchQuery(''); setSelectedLevel('Tất cả'); setSelectedTopic('Tất cả'); }}>

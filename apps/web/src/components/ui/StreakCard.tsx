@@ -32,10 +32,12 @@ export function StreakCard({
     );
   }
 
+  const mascotReaction = currentStreak >= 7 ? 'party' : currentStreak >= 3 ? 'flex' : currentStreak > 0 ? 'proud' : 'stretch';
+
   return (
     <div className={`bg-teal text-white border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 overflow-hidden max-w-full ${className}`}>
       <div className="flex flex-col md:flex-row items-center gap-5 sm:gap-6">
-        <LingLing reaction="salute" size={105} animate={true} />
+        <LingLing reaction={mascotReaction} size={105} animate={true} />
         <div className="flex-1 text-left w-full min-w-0">
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1">
             <span className="inline-flex items-center gap-1.5 bg-card text-ink font-black text-xs px-3 py-1 rounded-full border-2 border-ink shadow-brutal-sm">
