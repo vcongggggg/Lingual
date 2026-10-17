@@ -37,25 +37,25 @@ export default function DashboardPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b-2 border-ink/20">
         <div>
           <span className="text-xs font-black uppercase tracking-wider text-red block mb-1">
-            Bàn làm việc học tập
+            TỔNG QUAN HỌC TẬP
           </span>
           <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight">
-            Xin chào, {user?.displayName || 'Bạn'}! ✍️
+            Xin chào, {user?.displayName || 'Bạn'}!
           </h1>
           <p className="text-sm text-ink-soft mt-1">
             Hôm nay là một ngày tuyệt vời để ghi nhớ thêm những điều mới.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Link href="/srs">
             <Button variant="red" size="md">
-              Ôn Thẻ SRS ({srsStats.dueToday} từ) →
+              Ôn Thẻ ghi nhớ ({srsStats.dueToday} từ) →
             </Button>
           </Link>
           <Link href="/games">
             <Button variant="white" size="md">
-              Vào Game Center
+              Chơi game
             </Button>
           </Link>
         </div>
@@ -74,19 +74,19 @@ export default function DashboardPage() {
         <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal-md">
           <span className="text-xs font-bold text-ink-soft block mb-1">Cần ôn hôm nay</span>
           <div className="text-3xl font-black text-red tracking-tight">{srsStats.dueToday} từ</div>
-          <span className="text-[11px] font-bold text-ink-soft mt-1 block">Theo thuật toán SM-2</span>
+          <span className="text-[11px] font-bold text-ink-soft mt-1 block">Theo lịch ôn thông minh</span>
         </div>
 
         <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal-md">
-          <span className="text-xs font-bold text-ink-soft block mb-1">Đang tích cực học</span>
-          <div className="text-3xl font-black text-amber tracking-tight">{srsStats.learning} từ</div>
-          <span className="text-[11px] font-bold text-ink-soft mt-1 block">Khoảng lặp 1 - 3 ngày</span>
+          <span className="text-xs font-bold text-ink-soft block mb-1">Đang học</span>
+          <div className="text-3xl font-black text-ink tracking-tight">{srsStats.learning} từ</div>
+          <span className="text-[11px] font-bold text-ink-soft mt-1 block">Lặp lại sau 1–3 ngày</span>
         </div>
 
         <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal-md">
-          <span className="text-xs font-bold text-ink-soft block mb-1">Đã làm chủ sâu</span>
-          <div className="text-3xl font-black text-teal tracking-tight">{srsStats.mastered} từ</div>
-          <span className="text-[11px] font-bold text-ink-soft mt-1 block">Lặp trên 3 lần chuẩn xác</span>
+          <span className="text-xs font-bold text-ink-soft block mb-1">Thuộc lòng</span>
+          <div className="text-3xl font-black text-ink tracking-tight">{srsStats.mastered} từ</div>
+          <span className="text-[11px] font-bold text-ink-soft mt-1 block">Trả lời đúng 3+ lần liên tiếp</span>
         </div>
 
         <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal-md">
@@ -99,7 +99,7 @@ export default function DashboardPage() {
       {/* 4. Danh Mục 5 Labs Cốt Lõi */}
       <div>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-2xl font-black text-ink tracking-tight">5 Phân Hệ Kỹ Năng</h2>
+          <h2 className="text-2xl font-black text-ink tracking-tight">5 Kỹ Năng</h2>
           <span className="text-xs font-extrabold text-ink-soft">Chọn kỹ năng bạn muốn rèn luyện</span>
         </div>
 
@@ -107,7 +107,7 @@ export default function DashboardPage() {
           <Link href="/vocabulary" className="group">
             <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal hover:-translate-y-1 transition-all h-full flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 bg-amber/30 border-2 border-ink rounded-xl flex items-center justify-center text-ink mb-3 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 bg-paper-2 border-2 border-ink rounded-xl flex items-center justify-center text-ink mb-3 group-hover:scale-105 transition-transform">
                   <BookMarked className="w-5 h-5" />
                 </div>
                 <h4 className="font-black text-base text-ink mb-1">Từ Vựng</h4>
@@ -120,20 +120,20 @@ export default function DashboardPage() {
           <Link href="/listening" className="group">
             <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal hover:-translate-y-1 transition-all h-full flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 bg-teal/20 border-2 border-ink rounded-xl flex items-center justify-center text-teal mb-3 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 bg-paper-2 border-2 border-ink rounded-xl flex items-center justify-center text-ink mb-3 group-hover:scale-105 transition-transform">
                   <Headphones className="w-5 h-5" />
                 </div>
                 <h4 className="font-black text-base text-ink mb-1">Luyện Nghe</h4>
                 <p className="text-xs text-ink-soft leading-relaxed">Chép chính tả & Shadowing theo audio</p>
               </div>
-              <span className="text-xs font-black text-teal mt-4 inline-flex items-center gap-1">Vào Lab →</span>
+              <span className="text-xs font-black text-red mt-4 inline-flex items-center gap-1">Vào Lab →</span>
             </div>
           </Link>
 
           <Link href="/speaking" className="group">
             <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal hover:-translate-y-1 transition-all h-full flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 bg-red/15 border-2 border-ink rounded-xl flex items-center justify-center text-red mb-3 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 bg-paper-2 border-2 border-ink rounded-xl flex items-center justify-center text-ink mb-3 group-hover:scale-105 transition-transform">
                   <Mic className="w-5 h-5" />
                 </div>
                 <h4 className="font-black text-base text-ink mb-1">Luyện Nói</h4>
@@ -152,26 +152,26 @@ export default function DashboardPage() {
                 <h4 className="font-black text-base text-ink mb-1">Đọc Hiểu</h4>
                 <p className="text-xs text-ink-soft leading-relaxed">Đọc bài báo & tra nghĩa tương tác</p>
               </div>
-              <span className="text-xs font-black text-ink mt-4 inline-flex items-center gap-1">Vào Lab →</span>
+              <span className="text-xs font-black text-red mt-4 inline-flex items-center gap-1">Vào Lab →</span>
             </div>
           </Link>
 
           <Link href="/writing" className="group">
             <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal hover:-translate-y-1 transition-all h-full flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 bg-[#E8DFCB] border-2 border-ink rounded-xl flex items-center justify-center text-ink mb-3 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 bg-paper-2 border-2 border-ink rounded-xl flex items-center justify-center text-ink mb-3 group-hover:scale-105 transition-transform">
                   <PenTool className="w-5 h-5" />
                 </div>
                 <h4 className="font-black text-base text-ink mb-1">Luyện Viết</h4>
                 <p className="text-xs text-ink-soft leading-relaxed">Cấu trúc câu, đoạn văn & bài luận</p>
               </div>
-              <span className="text-xs font-black text-ink mt-4 inline-flex items-center gap-1">Vào Lab →</span>
+              <span className="text-xs font-black text-red mt-4 inline-flex items-center gap-1">Vào Lab →</span>
             </div>
           </Link>
         </div>
       </div>
 
-      {/* 5. Khối Luyện Thi IELTS & Game Center */}
+      {/* 5. Khối Luyện Thi IELTS & Trò Chơi Tốc Độ */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-paper-2 border-2 border-ink rounded-2xl p-7 shadow-brutal-lg flex items-center justify-between">
           <div>
@@ -196,13 +196,13 @@ export default function DashboardPage() {
             <div className="inline-block text-[11px] font-black uppercase tracking-wider bg-amber text-ink border border-ink rounded-full px-2.5 py-0.5 mb-2">
               Thư giãn & Phản xạ
             </div>
-            <h3 className="text-2xl font-black text-ink mb-1">Game Center</h3>
+            <h3 className="text-2xl font-black text-ink mb-1">Trò chơi tốc độ</h3>
             <p className="text-xs sm:text-sm text-ink-soft max-w-sm mb-4 leading-relaxed">
-              4 trò chơi thử thách tốc độ gõ phím, nối từ và xếp câu giúp bạn ghi nhớ từ vựng tự nhiên nhất.
+              6 trò chơi thử thách tốc độ gõ phím, nối từ và xếp câu giúp bạn ghi nhớ từ vựng tự nhiên nhất.
             </p>
             <Link href="/games">
               <Button variant="ink" size="sm">
-                Chơi Ngay →
+                Chơi game →
               </Button>
             </Link>
           </div>

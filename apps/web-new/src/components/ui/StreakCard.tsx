@@ -33,29 +33,29 @@ export function StreakCard({
   }
 
   return (
-    <div className={`bg-teal text-white border-2 border-ink rounded-2xl shadow-brutal-lg p-6 ${className}`}>
-      <div className="flex flex-col md:flex-row items-center gap-6">
-        <LingLing reaction="salute" size={110} animate={true} />
-        <div className="flex-1 text-left">
-          <div className="flex items-center gap-3 mb-1">
+    <div className={`bg-teal text-white border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 overflow-hidden max-w-full ${className}`}>
+      <div className="flex flex-col md:flex-row items-center gap-5 sm:gap-6">
+        <LingLing reaction="salute" size={105} animate={true} />
+        <div className="flex-1 text-left w-full min-w-0">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1">
             <span className="inline-flex items-center gap-1.5 bg-card text-ink font-black text-xs px-3 py-1 rounded-full border-2 border-ink shadow-brutal-sm">
               <Flame className="w-4 h-4 text-red fill-red" />
               CHUỖI {currentStreak} NGÀY LIÊN TIẾP
             </span>
             <span className="inline-flex items-center gap-1 text-xs font-bold text-paper opacity-90">
               <ShieldCheck className="w-3.5 h-3.5 text-amber" />
-              {streakFreezes} bảo vệ streak
+              {streakFreezes} lượt bảo vệ chuỗi
             </span>
           </div>
           <h3 className="text-xl md:text-2xl font-black text-white tracking-tight mt-1 mb-1">
             Chuỗi ngày học là tài sản.
           </h3>
           <p className="text-xs md:text-sm text-white/90 leading-relaxed max-w-lg mb-4">
-            Mỗi ngày học xong, bạn thắp thêm một ô. Bỏ một ngày, chuỗi vẫn được bảo vệ bằng đóng băng streak.
+            Mỗi ngày học xong, bạn thắp thêm một ô. Bỏ một ngày, chuỗi vẫn được bảo vệ bằng lượt đóng băng chuỗi.
           </p>
 
           {/* Hàng 7 ngày */}
-          <div className="flex gap-2 sm:gap-2.5 overflow-x-auto pb-1">
+          <div className="flex gap-1.5 sm:gap-2.5 overflow-x-auto pb-1 max-w-full">
             {dayNames.map((name, idx) => {
               const isDone = completedDays.includes(idx);
               const isToday = idx === todayIndex;

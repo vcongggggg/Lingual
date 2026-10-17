@@ -32,20 +32,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-160px)] flex items-center justify-center px-4 py-12">
-      <div className="relative w-full max-w-md bg-card border-2 border-ink rounded-3xl shadow-brutal-2xl p-8 sm:p-10 text-left">
+    <div className="min-h-[calc(100vh-160px)] flex items-center justify-center px-4 py-10 w-full max-w-full">
+      <div className="relative w-full max-w-sm sm:max-w-md bg-card border-2 border-ink rounded-3xl shadow-brutal-2xl p-6 sm:p-10 text-left">
         {/* LingLing thò đầu ra ở góc trên */}
-        <div className="absolute -top-12 -right-4 w-24">
-          <LingLing reaction="greet" size={90} animate={true} />
+        <div className="absolute -top-11 -right-3 sm:-top-12 sm:-right-4 w-20 sm:w-24">
+          <LingLing reaction="greet" size={85} animate={true} />
         </div>
 
         <div className="mb-6">
           <span className="text-xs font-black uppercase tracking-wider text-red block mb-1">
             Chào mừng trở lại
           </span>
-          <h1 className="text-3xl font-black text-ink tracking-tight">Đăng Nhập Sổ Tay</h1>
-          <p className="text-xs sm:text-sm text-ink-soft mt-1 leading-relaxed">
-            Mỗi ngày một trang mới. Tiếp tục thắp sáng chuỗi streak của bạn nhé!
+          <h1 className="text-2xl sm:text-3xl font-black text-ink tracking-tight">Đăng Nhập Sổ Tay</h1>
+          <p className="text-xs sm:text-sm text-ink-soft mt-1.5 leading-relaxed break-words">
+            Mỗi ngày một trang mới. Tiếp tục giữ vững chuỗi ngày học của bạn nhé!
           </p>
         </div>
 

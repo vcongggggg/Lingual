@@ -17,7 +17,7 @@ export function Footer() {
               <span>Lingual</span>
             </div>
             <p className="text-xs sm:text-sm text-ink-soft max-w-md leading-relaxed">
-              Nền tảng học tiếng Anh theo phương pháp sổ tay ghi nhớ ngắt quãng (SM-2),
+              Nền tảng học tiếng Anh theo phương pháp sổ tay ôn tập thông minh,
               giúp người học xây dựng thói quen kiên trì mỗi ngày mà không bị xao nhãng bởi quảng cáo hay giao diện công nghệ lạnh lẽo.
             </p>
           </div>
@@ -38,9 +38,9 @@ export function Footer() {
           <div className="space-y-2">
             <h5 className="font-black text-xs uppercase tracking-wider text-ink mb-3">Công Cụ & Ôn Luyện</h5>
             <ul className="space-y-1.5 text-xs font-bold">
-              <li><Link href="/srs" className="hover:text-red transition-colors">Thẻ Flashcard SM-2</Link></li>
+              <li><Link href="/srs" className="hover:text-red transition-colors">Thẻ ghi nhớ thông minh</Link></li>
               <li><Link href="/ielts" className="hover:text-red transition-colors">Phòng Luyện Thi IELTS</Link></li>
-              <li><Link href="/games" className="hover:text-red transition-colors">Game Center Thử Thách</Link></li>
+              <li><Link href="/games" className="hover:text-red transition-colors">Trò chơi tốc độ</Link></li>
               <li><Link href="/dictionary" className="hover:text-red transition-colors">Từ Điển Anh - Việt</Link></li>
               <li><Link href="/tutor" className="hover:text-red transition-colors">Trợ Lý Sổ Tay LingLing</Link></li>
             </ul>
