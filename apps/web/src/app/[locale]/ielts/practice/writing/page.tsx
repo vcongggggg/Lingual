@@ -90,7 +90,7 @@ export default function IeltsWritingPracticePage() {
             <h1 className="text-xl font-bold text-slate-100 flex items-center gap-2">
               <FileText className="w-5 h-5 text-amber-400" /> IELTS Writing Evaluator
             </h1>
-            <p className="text-xs text-slate-400">AI Chấm Điểm Theo 4 Tiêu Chí Band Descriptor</p>
+            <p className="text-xs text-slate-400">Chấm điểm tự động theo bộ luật 4 tiêu chí Band Descriptor (Rule-Based)</p>
           </div>
         </div>
 
@@ -152,11 +152,11 @@ export default function IeltsWritingPracticePage() {
             >
               {evaluating ? (
                 <>
-                  <Sparkles className="w-5 h-5 animate-spin text-slate-950" /> AI Đang Chấm Bài & Phân Tích...
+                  <Sparkles className="w-5 h-5 animate-spin text-slate-950" /> Đang Phân Tích & Chấm Bài (Rule-Based)...
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-5 h-5" /> Nộp Bài & Nhận Đánh Giá AI
+                  <Sparkles className="w-5 h-5" /> Nộp Bài & Nhận Đánh Giá Tự Động
                 </>
               )}
             </button>
@@ -168,7 +168,7 @@ export default function IeltsWritingPracticePage() {
               <div className="p-6 rounded-3xl bg-slate-900 border border-amber-500/40 space-y-6 shadow-2xl animate-fadeIn">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                   <div>
-                    <span className="text-xs font-bold text-amber-400 uppercase">Báo Cáo Nhận Xét AI</span>
+                    <span className="text-xs font-bold text-amber-400 uppercase">Báo Cáo Nhận Xét (Rule-Based)</span>
                     <h3 className="text-xl font-bold text-white">Kết Quả Đánh Giá Bài Viết</h3>
                   </div>
                   <div className="p-3 rounded-2xl bg-amber-500/20 border border-amber-500/30 text-amber-300 text-center min-w-24">
@@ -226,7 +226,7 @@ export default function IeltsWritingPracticePage() {
                 <FileText className="w-12 h-12 text-slate-600" />
                 <h4 className="text-base font-bold text-slate-200">Chưa Có Kết Quả Đánh Giá</h4>
                 <p className="text-xs max-w-xs leading-relaxed">
-                  Soạn essay của bạn ở cột bên trái và nhấn nút "Nộp Bài & Nhận Đánh Giá AI" để xem kết quả phân tích 4 tiêu chí.
+                  Soạn essay của bạn ở cột bên trái và nhấn nút &quot;Nộp Bài &amp; Nhận Đánh Giá Tự Động&quot; để xem kết quả phân tích 4 tiêu chí.
                 </p>
               </div>
             )}

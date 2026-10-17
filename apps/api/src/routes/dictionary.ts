@@ -6,6 +6,7 @@ import { RealDictionaryService } from '../services/realDictionaryService.js';
 import { BACKEND_MASTER_WORDS } from '../data/universalVocabulary.js';
 import { prisma } from '../lib/prisma.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 const currentDir = typeof __dirname !== 'undefined' ? __dirname : path.resolve();
 
@@ -114,20 +115,22 @@ async function ensureVocabularyRecord(wordId: string): Promise<string> {
  */
 dictionaryRouter.get('/search', async (req, res) => {
   const { q = '', cefr = '', partOfSpeech = '', page = '1', limit = '20' } = req.query;
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
 
   const queryStr = typeof q === 'string' ? q.trim() : '';
   const cacheKey = `${queryStr.toLowerCase()}_${cefr}_${partOfSpeech}_${page}_${limit}`;
 
-  // Fetch user bookmarks from DB
+  // Fetch user bookmarks from DB if logged in
   let bookmarkedWordIds = new Set<string>();
   let srsWordIds = new Set<string>();
-  try {
-    const bookmarks = await prisma.userBookmark.findMany({ where: { userId } });
-    bookmarkedWordIds = new Set(bookmarks.map((b) => b.wordId));
-    const states = await prisma.userWordState.findMany({ where: { userId } });
-    srsWordIds = new Set(states.map((s) => s.wordId));
-  } catch {}
+  if (userId) {
+    try {
+      const bookmarks = await prisma.userBookmark.findMany({ where: { userId } });
+      bookmarkedWordIds = new Set(bookmarks.map((b) => b.wordId));
+      const states = await prisma.userWordState.findMany({ where: { userId } });
+      srsWordIds = new Set(states.map((s) => s.wordId));
+    } catch {}
+  }
 
   const cached = SEARCH_CACHE.get(cacheKey);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
@@ -237,7 +240,7 @@ dictionaryRouter.get('/search', async (req, res) => {
  */
 dictionaryRouter.get('/lookup/:word', async (req, res) => {
   const { word } = req.params;
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
 
   if (!word) {
     return res.status(400).json({ error: 'Word is required' });
@@ -249,7 +252,7 @@ dictionaryRouter.get('/lookup/:word', async (req, res) => {
     const liveResults = await RealDictionaryService.lookupWord(word);
 
     let isBookmarked = false;
-    if (localMatch) {
+    if (localMatch && userId) {
       const b = await prisma.userBookmark.findUnique({
         where: { userId_wordId: { userId, wordId: localMatch.id } },
       });
@@ -273,7 +276,10 @@ dictionaryRouter.get('/lookup/:word', async (req, res) => {
  */
 dictionaryRouter.post('/bookmark/:wordId', async (req, res) => {
   const { wordId } = req.params;
-  const userId = (req.body.userId as string) || (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để lưu từ vựng.' });
+  }
 
   if (!wordId) {
     return res.status(400).json({ error: 'wordId is required' });
@@ -339,7 +345,10 @@ dictionaryRouter.post('/bookmark/:wordId', async (req, res) => {
  * Get list of bookmarked words directly from PostgreSQL
  */
 dictionaryRouter.get('/bookmarks', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem danh sách từ đã lưu.' });
+  }
 
   try {
     const bookmarks = await prisma.userBookmark.findMany({

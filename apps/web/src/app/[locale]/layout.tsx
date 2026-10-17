@@ -197,31 +197,25 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 
   const examLinks = [
     {
-      href: `/${locale}/exam-practice`,
-      label: locale === 'vi' ? 'Thi Thử TOEIC' : 'TOEIC Exam Lab',
-      desc: 'Đề thi chuẩn & Chấm điểm tức thì',
-      icon: <Trophy className="w-4 h-4 text-amber-400" />,
-    },
-    {
       href: `/${locale}/ielts`,
       label: locale === 'vi' ? 'Luyện Thi IELTS' : 'IELTS Prep Hub',
-      desc: 'Lộ trình Band 5.0 - 8.5 & Thi thử',
+      desc: 'Thi thử Reading/Listening & Writing Lab',
       icon: <Target className="w-4 h-4 text-coral-400" />,
+    },
+    {
+      href: `/${locale}/exam-practice`,
+      label: locale === 'vi' ? 'Khảo Sát Đề Thi (Beta)' : 'Exam Simulations (Beta)',
+      desc: 'Mô phỏng TOEIC & các đề thử nghiệm',
+      icon: <Trophy className="w-4 h-4 text-amber-400" />,
     },
   ];
 
   const exploreLinks = [
     {
-      href: `/${locale}/community`,
-      label: locale === 'vi' ? 'Cộng Đồng' : 'Community',
-      desc: 'Ghi chú & Nhóm học tập',
-      icon: <Users className="w-4 h-4 text-teal-400" />,
-    },
-    {
-      href: `/${locale}/analytics`,
-      label: locale === 'vi' ? 'Phân Tích Năng Lực' : 'Analytics',
-      desc: 'Biểu đồ năng lực toàn diện',
-      icon: <Activity className="w-4 h-4 text-indigo-400" />,
+      href: `/${locale}/dictionary`,
+      label: locale === 'vi' ? 'Từ Điển Tra Cứu' : 'Dictionary',
+      desc: '26,500+ từ vựng chuẩn CEFR',
+      icon: <Search className="w-4 h-4 text-teal-400" />,
     },
     {
       href: `/${locale}/srs`,
@@ -234,6 +228,12 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
       label: locale === 'vi' ? 'Game Center' : 'Arcade Games',
       desc: 'Vừa chơi vừa nhớ từ vựng',
       icon: <Gamepad2 className="w-4 h-4 text-pink-400" />,
+    },
+    {
+      href: `/${locale}/analytics`,
+      label: locale === 'vi' ? 'Phân Tích Năng Lực' : 'Analytics',
+      desc: 'Biểu đồ năng lực toàn diện',
+      icon: <Activity className="w-4 h-4 text-indigo-400" />,
     },
     ...(isStaffRole
       ? [

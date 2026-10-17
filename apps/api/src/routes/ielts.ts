@@ -1,5 +1,7 @@
 import { Router, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
+import { JWT_SECRET } from '../middleware/rbac.js';
 import { SEED_IELTS_TRACKS, SEED_IELTS_QUESTIONS } from '../../../../prisma/seed-ielts.js';
 import {
   calculateIeltsListeningBand,
@@ -217,11 +219,27 @@ ieltsRouter.get('/mock-test/questions', async (req: Request, res: Response) => {
 
 /**
  * POST /api/v1/ielts/mock-test/submit
- * Submit full IELTS exam answers and calculate bands
+ * Submit IELTS exam answers and calculate bands for Reading & Listening
+ * Note: Writing & Speaking are not measured in this objective multiple-choice test.
  */
 ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
   try {
-    const { userId = 'demo-user-id-001', answers = {}, durationSec = 1800 } = req.body;
+    const isProd = process.env.NODE_ENV === 'production';
+    const authHeader = req.headers.authorization;
+    let authUserId: string | null = null;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      try {
+        const payload = jwt.verify(authHeader.split(' ')[1], JWT_SECRET) as any;
+        authUserId = payload?.userId || null;
+      } catch {}
+    }
+
+    const userId = authUserId || req.body.userId || (isProd ? null : 'demo-user-id-001');
+    if (!userId) {
+      return res.status(401).json({ success: false, message: 'Yêu cầu đăng nhập để lưu kết quả thi thử.' });
+    }
+
+    const { answers = {}, durationSec = 1800 } = req.body;
 
     let readingCorrect = 0;
     let readingTotal = 0;
@@ -246,37 +264,19 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
       }
     });
 
-    // Fallback if no specific keys matched submitted answers
-    if (readingTotal === 0 && listeningTotal === 0) {
-      Object.entries(IELTS_TEST_ANSWER_KEYS).forEach(([qId, qInfo]) => {
-        const userAns = answers[qId];
-        const isCorrect =
-          typeof userAns === 'string' &&
-          userAns.trim().toLowerCase() === qInfo.correctAnswer.trim().toLowerCase();
-        if (qInfo.skill === 'reading') {
-          readingTotal++;
-          if (isCorrect) readingCorrect++;
-        } else {
-          listeningTotal++;
-          if (isCorrect) listeningCorrect++;
-        }
-      });
-    }
+    // Scale to standard IELTS 40-question scale. Truthful fallback: 0 if no questions submitted
+    const readingRawScore = readingTotal > 0 ? Math.round((readingCorrect / readingTotal) * 40) : 0;
+    const listeningRawScore = listeningTotal > 0 ? Math.round((listeningCorrect / listeningTotal) * 40) : 0;
 
-    // Scale to standard IELTS 40-question scale
-    const readingRawScore = readingTotal > 0 ? Math.round((readingCorrect / readingTotal) * 40) : 28;
-    const listeningRawScore = listeningTotal > 0 ? Math.round((listeningCorrect / listeningTotal) * 40) : 28;
-
-    const readingBand = calculateIeltsReadingBand(readingRawScore, 'academic');
-    const listeningBand = calculateIeltsListeningBand(listeningRawScore);
-    const writingBand = 6.5;
-    const speakingBand = 6.0;
+    const readingBand = readingTotal > 0 ? calculateIeltsReadingBand(readingRawScore, 'academic') : 0.0;
+    const listeningBand = listeningTotal > 0 ? calculateIeltsListeningBand(listeningRawScore) : 0.0;
+    // Writing & Speaking are NOT evaluated in this objective test — never hardcode fake scores
+    const writingBand = null;
+    const speakingBand = null;
 
     const overallBand = calculateIeltsOverallBand({
-      listening: listeningBand,
-      reading: readingBand,
-      writing: writingBand,
-      speaking: speakingBand,
+      listening: listeningTotal > 0 ? listeningBand : undefined,
+      reading: readingTotal > 0 ? readingBand : undefined,
     });
 
     const attempt = {
@@ -293,6 +293,8 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
       writingBand,
       speakingBand,
       overallBand,
+      testedSkills: ['reading', 'listening'],
+      note: 'Bài thi thử đánh giá 2 kỹ năng Reading & Listening. Điểm Overall được tính trung thực từ các kỹ năng đã làm (Writing & Speaking không đo lường trong bài thi này).',
       createdAt: new Date().toISOString(),
     };
 
@@ -312,8 +314,8 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
           bandScoreJson: JSON.stringify({
             reading: attempt.readingBand,
             listening: attempt.listeningBand,
-            writing: attempt.writingBand,
-            speaking: attempt.speakingBand,
+            writing: null,
+            speaking: null,
             overall: attempt.overallBand,
           }),
         },
@@ -333,7 +335,7 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
 
 /**
  * POST /api/v1/ielts/writing/evaluate
- * Real-time AI Essay Evaluation for IELTS Writing Task 1 / 2
+ * Rule-based Heuristic Evaluation for IELTS Writing Task 1 / 2 (No AI / LLM claims)
  */
 ieltsRouter.post('/writing/evaluate', async (req: Request, res: Response) => {
   try {
@@ -341,13 +343,13 @@ ieltsRouter.post('/writing/evaluate', async (req: Request, res: Response) => {
 
     const wordCount = essayText.trim().split(/\s+/).filter(Boolean).length;
 
-    // Simple analytical Band Descriptor evaluation
+    // Rule-based analytical Band Descriptor evaluation
     let taskAchieveBand = 6.0;
-    let coherenceBand = 6.5;
-    let lexicalBand = 6.5;
+    let coherenceBand = 6.0;
+    let lexicalBand = 6.0;
     let grammarBand = 6.0;
 
-    if (wordCount >= 250) {
+    if (wordCount >= (taskType === 'task_2' ? 250 : 150)) {
       taskAchieveBand += 0.5;
     }
     if (essayText.includes('However') || essayText.includes('Furthermore') || essayText.includes('Consequently')) {
@@ -366,6 +368,8 @@ ieltsRouter.post('/writing/evaluate', async (req: Request, res: Response) => {
       wordCount,
       minRequired: taskType === 'task_2' ? 250 : 150,
       overallBand,
+      evaluationMethod: 'rule_based_heuristics',
+      note: 'Đánh giá tự động dựa trên tập luật (Rule-based: số lượng từ, từ nối liên kết và độ dài đoạn văn), không sử dụng mô hình AI/LLM.',
       criteria: {
         taskAchievement: {
           band: taskAchieveBand,

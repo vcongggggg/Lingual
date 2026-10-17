@@ -271,7 +271,7 @@ ${
     if (ragContext) {
       fallbackText = `Xin chào! LingLing đã tra cứu được dữ liệu thực tế trong hệ thống **Lingual** cho bạn:\n\n${ragContext}\n\n💡 *Mẹo từ LingLing*: Bạn có thể lưu từ vựng này vào bộ thẻ **SRS Flashcard** bên dưới để ôn tập hàng ngày nhé!`;
     } else if (message.toLowerCase().includes('ielts')) {
-      fallbackText = `Chào bạn! **LingLing** rất sẵn lòng đồng hành cùng bạn luyện thi IELTS trên Lingual! 🚀\n\nỨng dụng Lingual hiện hỗ trợ:\n• **Reading**: Bài đọc 2 cột chuẩn thi thật.\n• **Listening**: Trình phát audio + transcript.\n• **Writing**: AI Chấm bài 4 tiêu chí (Task Achievement, Coherence, Lexical, Grammar).\n• **Mock Test**: Thi thử áp lực thời gian.\n\nBạn muốn LingLing hướng dẫn kỹ năng nào trước?`;
+      fallbackText = `Chào bạn! **LingLing** rất sẵn lòng đồng hành cùng bạn luyện thi IELTS trên Lingual! 🚀\n\nỨng dụng Lingual hiện hỗ trợ:\n• **Reading**: Bài đọc 2 cột chuẩn thi thật.\n• **Listening**: Trình phát audio + transcript.\n• **Writing**: Đánh giá bài viết theo 4 tiêu chí Band Descriptor.\n• **Mock Test**: Thi thử áp lực thời gian.\n\nBạn muốn LingLing hướng dẫn kỹ năng nào trước?`;
     } else {
       fallbackText = `Chào bạn! Tôi là **LingLing** 🤖 - Trợ lý AI của Lingual. 🌟\n\nTôi có thể giúp bạn giải thích từ vựng, ngữ pháp, bài học và luyện thi IELTS. Bạn cần tôi hỗ trợ nội dung gì hôm nay?`;
     }

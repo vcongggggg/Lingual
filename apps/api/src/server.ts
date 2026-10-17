@@ -1,4 +1,6 @@
 import 'dotenv/config';
+import fs from 'fs';
+import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -75,11 +77,24 @@ app.use(express.json({ limit: '10kb' }));
 app.use('/api/', globalApiLimiter);
 
 // API Health Check
+let apiVersion = '1.0.0';
+try {
+  const pkgPath = typeof __dirname !== 'undefined'
+    ? path.resolve(__dirname, '../package.json')
+    : path.resolve(process.cwd(), 'apps/api/package.json');
+  if (fs.existsSync(pkgPath)) {
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+    if (pkg.version) apiVersion = pkg.version;
+  }
+} catch {}
+
 const healthHandler = (req: express.Request, res: express.Response) => {
   res.json({
     status: 'ok',
-    database: isDatabaseConnected() ? 'connected' : 'in_memory_resilient_fallback',
-    service: 'Lingual Security Hardened API (OWASP Top 10 Compliant)',
+    version: apiVersion,
+    database: isDatabaseConnected() ? 'connected' : 'disconnected',
+    environment: process.env.NODE_ENV || 'development',
+    service: 'Lingual Backend API',
     timestamp: new Date().toISOString(),
   });
 };

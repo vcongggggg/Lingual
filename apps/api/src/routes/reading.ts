@@ -57,16 +57,22 @@ readingRouter.get('/articles/:id/questions', async (req, res) => {
   return res.json({ questions: sanitizedQuestions, total: sanitizedQuestions.length });
 });
 
+import { resolveAuthUserId } from '../lib/authUtil.js';
+
 /**
  * POST /api/v1/reading/attempts
  */
 readingRouter.post('/attempts', async (req, res) => {
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để nộp kết quả bài đọc.' });
+  }
+
   const {
     articleId,
     mode = 'standard',
     answers = [],
     elapsedSeconds = 60,
-    userId = 'demo-user-id-001',
   } = req.body;
 
   if (!articleId || typeof articleId !== 'string') {
@@ -190,7 +196,10 @@ readingRouter.post('/attempts', async (req, res) => {
  * GET /api/v1/reading/history
  */
 readingRouter.get('/history', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem lịch sử.' });
+  }
   const history = await readingRepository.getUserAttempts(userId);
   return res.json({ history, total: history.length });
 });
@@ -199,7 +208,10 @@ readingRouter.get('/history', async (req, res) => {
  * GET /api/v1/reading/stats
  */
 readingRouter.get('/stats', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem thống kê.' });
+  }
   const userAttempts = await readingRepository.getUserAttempts(userId);
 
   const articlesCompleted = new Set(userAttempts.map((a) => a.articleId)).size;
@@ -224,7 +236,11 @@ readingRouter.get('/stats', async (req, res) => {
  * POST /api/v1/reading/progress
  */
 readingRouter.post('/progress', async (req, res) => {
-  const { articleId, currentParagraph = 1, scrollProgress = 0, completed = false, userId = 'demo-user-id-001' } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để lưu tiến độ.' });
+  }
+  const { articleId, currentParagraph = 1, scrollProgress = 0, completed = false } = req.body;
 
   if (!articleId) {
     return res.status(400).json({ error: 'Thiếu articleId.' });
@@ -246,7 +262,10 @@ readingRouter.post('/progress', async (req, res) => {
  * GET /api/v1/reading/progress/:articleId
  */
 readingRouter.get('/progress/:articleId', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem tiến độ.' });
+  }
   const progress = await readingRepository.getUserProgress(userId, req.params.articleId);
   return res.json({ progress: progress || { currentParagraph: 1, scrollProgress: 0, completed: false } });
 });

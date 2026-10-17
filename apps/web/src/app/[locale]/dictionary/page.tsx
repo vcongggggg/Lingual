@@ -98,7 +98,7 @@ export default function DictionaryPage() {
       <div className="space-y-3">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-xs font-bold text-teal-300">
           <BookOpen className="w-4 h-4 text-teal-400" />
-          <span>Tra Cứu & Khám Phá 500+ Từ Vựng Tiếng Anh</span>
+          <span>Tra Cứu & Khám Phá 26,500+ Từ Vựng Tiếng Anh Chuẩn CEFR</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
           Từ Điển Thông Minh Lingual

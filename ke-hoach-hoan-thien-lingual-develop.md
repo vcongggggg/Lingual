@@ -120,14 +120,14 @@ Verify lại TỪNG claim "hardening" cũ bằng test thật, không tin commit 
 ## Phase D5 — Scope triage + trung thực (ước lượng: 1–2h, CẦN USER)
 
 ### Việc cần làm
-- [ ] Lập bảng toàn bộ Labs/features trên develop (Listening/Speaking/Reading/Writing/Vocabulary/Exams/Community/Analytics/Tutor...): mỗi dòng ghi trạng thái thật (hoạt động / dở dang / chỉ có UI).
-- [ ] **Hỏi user**: lab nào GIỮ, lab nào CẮT (đưa về draft hoặc xóa). Không tự quyết.
-- [ ] Quét toàn repo các claim số liệu ("production", số lượng, "AI chấm") → sửa cho trung thực hoặc xóa.
-- [ ] Health check API: trả version thật từ package.json, không chữ "Production Ready" nếu chưa deploy.
+- [x] Lập bảng toàn bộ Labs/features trên develop (Listening/Speaking/Reading/Writing/Vocabulary/Exams/Community/Analytics/Tutor...): mỗi dòng ghi trạng thái thật (hoạt động / dở dang / chỉ có UI).
+- [x] **Hỏi user**: lab nào GIỮ, lab nào CẮT (đưa về draft hoặc xóa). User đã chốt GIỮ core + lab IELTS; CẮT HSK, JLPT, TOPIK, Community, VSTEP, DSAT, TOEIC mini demo.
+- [x] Quét toàn repo các claim số liệu ("production", số lượng, "AI chấm") → sửa cho trung thực hoặc xóa.
+- [x] Health check API: trả version thật từ package.json, không chữ "Production Ready" nếu chưa deploy.
 
 ### Definition of Done
-- User đã chốt danh sách features giữ/cắt (ghi vào `docs/SCOPE.md`).
-- Không còn claim sai trong code/docs/UI.
+- [x] User đã chốt danh sách features giữ/cắt (ghi vào `docs/SCOPE.md`).
+- [x] Không còn claim sai trong code/docs/UI.
 
 ---
 

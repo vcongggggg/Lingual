@@ -16,6 +16,7 @@ import {
 } from '../data/universalVocabulary.js';
 import { gameRepository } from '../repositories/game.repository.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const gamesRouter = Router();
 
@@ -173,7 +174,11 @@ gamesRouter.get('/data', (req, res) => {
 
 // POST /submit - Validate attempt, calculate scores, persist session & update user stats
 gamesRouter.post('/submit', async (req, res) => {
-  const { attemptId, gameType, userAnswers, durationSeconds, userId = 'demo-user-id-001', comboMax = 1 } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để lưu kết quả mini game.' });
+  }
+  const { attemptId, gameType, userAnswers, durationSeconds, comboMax = 1 } = req.body;
 
   let attempt = GAME_ATTEMPTS[attemptId];
   if (!attempt) {

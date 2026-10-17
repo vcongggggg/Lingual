@@ -11,12 +11,17 @@ import { userRepository } from '../repositories/user.repository.js';
 import { Roles, rolesGuard, AuthenticatedRequest } from '../middleware/rbac.js';
 import { auditLogInterceptor } from '../middleware/auditLog.js';
 import { canModifyContent } from '../../../../packages/domain/src/index.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const curriculumRouter = Router();
 
 const startAttemptHandler = async (req: any, res: any) => {
   try {
-    const { sourceType, sourceId, userId = 'demo-user-id-001' } = req.body;
+    const userId = resolveAuthUserId(req);
+    if (!userId) {
+      return res.status(401).json({ error: 'Yêu cầu đăng nhập để bắt đầu bài học.' });
+    }
+    const { sourceType, sourceId } = req.body;
     const attemptId = `att-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
 
     // Ensure user exists before inserting attempt session
@@ -110,8 +115,12 @@ curriculumRouter.get('/lessons/:lessonId', async (req, res) => {
 });
 
 curriculumRouter.post('/lessons/:lessonId/submit', async (req, res) => {
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để nộp bài học.' });
+  }
   const { lessonId } = req.params;
-  const { attemptId, answers, userId = 'demo-user-id-001' } = req.body;
+  const { attemptId, answers } = req.body;
 
   if (!attemptId || typeof attemptId !== 'string') {
     return res.status(400).json({ error: 'Attempt token không hợp lệ hoặc đã hết hạn.' });

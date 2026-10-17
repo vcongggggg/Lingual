@@ -4,6 +4,7 @@ import { SEED_UNITS, SEED_ACHIEVEMENTS } from '../../../../prisma/seed';
 import { prisma } from '../lib/prisma.js';
 import { userRepository } from '../repositories/user.repository.js';
 import { JWT_SECRET } from '../middleware/rbac.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const userRouter = Router();
 
@@ -24,7 +25,10 @@ async function resolveUser(userId: string) {
 }
 
 userRouter.get('/profile', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
   const caller = getCallerUser(req);
   if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
     return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
@@ -43,7 +47,10 @@ userRouter.get('/profile', async (req, res) => {
 });
 
 userRouter.get('/progress', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
   const caller = getCallerUser(req);
   if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
     return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
@@ -86,7 +93,10 @@ userRouter.get('/progress', async (req, res) => {
 });
 
 userRouter.get('/stats', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
   const caller = getCallerUser(req);
   if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
     return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
@@ -126,7 +136,10 @@ userRouter.get('/stats', async (req, res) => {
 });
 
 userRouter.get('/achievements', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
   const caller = getCallerUser(req);
   if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
     return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
@@ -155,7 +168,11 @@ userRouter.get('/achievements', async (req, res) => {
 });
 
 userRouter.post('/profile/update', async (req, res) => {
-  const { displayName, timezone, interfaceLocale, dailyGoalMinutes, userId = 'demo-user-id-001' } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
+  const { displayName, timezone, interfaceLocale, dailyGoalMinutes } = req.body;
   const caller = getCallerUser(req);
   if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
     return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền sửa thông tin của người dùng khác' });

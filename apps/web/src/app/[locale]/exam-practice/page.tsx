@@ -11,13 +11,13 @@ import { Card, Badge, Button } from '@linguaflow/ui';
 
 const EXAM_TYPES = [
   { id: 'all', label: 'Tất cả' },
-  { id: 'toeic', label: 'TOEIC' },
-  { id: 'ielts', label: 'IELTS' },
-  { id: 'vstep', label: 'VSTEP' },
-  { id: 'hsk', label: 'HSK' },
-  { id: 'jlpt', label: 'JLPT' },
-  { id: 'topik', label: 'TOPIK' },
-  { id: 'dsat', label: 'Digital SAT' },
+  { id: 'ielts', label: 'IELTS (Chính thức)' },
+  { id: 'toeic', label: 'TOEIC (Thử nghiệm)' },
+  { id: 'vstep', label: 'VSTEP (Sắp ra mắt)' },
+  { id: 'hsk', label: 'HSK (Sắp ra mắt)' },
+  { id: 'jlpt', label: 'JLPT (Sắp ra mắt)' },
+  { id: 'topik', label: 'TOPIK (Sắp ra mắt)' },
+  { id: 'dsat', label: 'Digital SAT (Sắp ra mắt)' },
 ];
 
 export default function ExamPracticeHubPage() {
@@ -70,7 +70,7 @@ export default function ExamPracticeHubPage() {
             </h1>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Mô phỏng phòng thi thực chiến TOEIC, IELTS, VSTEP, HSK, JLPT, TOPIK, DSAT với đồng hồ bấm giờ chuẩn, chấm điểm tự động không gian lận và phát hiện lỗ hổng kiến thức.
+              Mô phỏng phòng thi IELTS (Reading & Listening) cùng bộ đề thử nghiệm TOEIC. Các kỳ thi VSTEP, HSK, JLPT, TOPIK, DSAT đang trong lộ trình phát triển nội dung và được gắn nhãn sắp ra mắt.
             </p>
           </div>
 
@@ -162,8 +162,15 @@ export default function ExamPracticeHubPage() {
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <Badge variant="teal" className="text-[10px] font-extrabold uppercase px-2.5 py-1">
-                    {exam.type} • {exam.difficulty}
+                  <Badge
+                    variant={exam.type === 'ielts' ? 'teal' : exam.type === 'toeic' ? 'amber' : 'slate'}
+                    className="text-[10px] font-extrabold uppercase px-2.5 py-1"
+                  >
+                    {exam.type === 'ielts'
+                      ? 'IELTS • Đề chuẩn'
+                      : exam.type === 'toeic'
+                      ? 'TOEIC • Thử nghiệm'
+                      : `${exam.type.toUpperCase()} • Sắp ra mắt`}
                   </Badge>
                   <span className="text-xs font-semibold text-slate-400">
                     {exam.durationMinutes} phút

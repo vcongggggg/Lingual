@@ -57,18 +57,24 @@ writingRouter.post('/analyze', async (req, res) => {
   return res.json({ result });
 });
 
+import { resolveAuthUserId } from '../lib/authUtil.js';
+
 /**
  * POST /api/v1/writing/attempts
  * Hardened with Server-side Authoritative Evaluation (Anti-cheat & Trust Boundary Protection)
  */
 writingRouter.post('/attempts', async (req, res) => {
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để nộp bài viết.' });
+  }
+
   const {
     promptId,
     mode = 'see-write',
     content = '',
     usedHint = false,
     durationMs = 0,
-    userId = 'demo-user-id-001',
   } = req.body;
 
   if (!content || typeof content !== 'string' || content.trim().length === 0) {
@@ -180,7 +186,10 @@ writingRouter.post('/attempts', async (req, res) => {
  * GET /api/v1/writing/history
  */
 writingRouter.get('/history', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem lịch sử.' });
+  }
   const history = await writingRepository.getUserAttempts(userId);
 
   return res.json({ history, total: history.length });
@@ -190,7 +199,10 @@ writingRouter.get('/history', async (req, res) => {
  * GET /api/v1/writing/stats
  */
 writingRouter.get('/stats', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem thống kê.' });
+  }
   const userAttempts = await writingRepository.getUserAttempts(userId);
 
   const totalAttempts = userAttempts.length;

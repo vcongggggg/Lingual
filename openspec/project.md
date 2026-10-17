@@ -1,8 +1,8 @@
 # LinguaFlow Project Architecture & System Context
 
-**Document Version:** 1.0.0 (Baseline across Phases 1–20)  
-**System Status:** Production Ready  
-**Last Verified:** August 15, 2026  
+**Document Version:** 1.0.0 (Phase D5: Scope Triage)  
+**System Status:** In Development  
+**Last Verified:** October 2026  
 
 ---
 

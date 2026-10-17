@@ -47,17 +47,7 @@ const idempotencyCache = new Map<string, { timestamp: number; result: any }>();
 const dailyXPTracker = new Map<string, number>();
 const DAILY_SPEAKING_XP_CAP = 200;
 
-function resolveUser(req: any): { id: string; email: string; role: string } {
-  if (req.user && req.user.id) {
-    return req.user;
-  }
-  const authHeader = req.headers.authorization;
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.split(' ')[1];
-    return { id: `user-${token.slice(0, 8)}`, email: 'learner@linguaflow.com', role: 'STUDENT' };
-  }
-  return { id: 'demo-user-id-001', email: 'demo@linguaflow.com', role: 'STUDENT' };
-}
+import { resolveAuthUser } from '../lib/authUtil.js';
 
 // 1. GET /prompts
 speakingRouter.get('/prompts', async (req, res) => {
@@ -120,7 +110,10 @@ speakingRouter.post('/analyze', async (req, res) => {
 
 // 4. POST /attempts (Server-authoritative scoring, XP, and streak evaluation)
 speakingRouter.post('/attempts', async (req, res) => {
-  const user = resolveUser(req);
+  const user = resolveAuthUser(req);
+  if (!user) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để nộp bài nói.' });
+  }
   const { promptId, transcript, durationMs } = req.body;
 
   if (!promptId || typeof promptId !== 'string') {
@@ -274,7 +267,10 @@ speakingRouter.post('/attempts', async (req, res) => {
 
 // 5. GET /history
 speakingRouter.get('/history', async (req, res) => {
-  const user = resolveUser(req);
+  const user = resolveAuthUser(req);
+  if (!user) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem lịch sử.' });
+  }
   const repoAttempts = await speakingRepository.getUserAttempts(user.id);
   const userAttempts = attemptsStore.get(user.id) || [];
   res.json({ attempts: userAttempts.length > 0 ? userAttempts : repoAttempts });
@@ -282,7 +278,10 @@ speakingRouter.get('/history', async (req, res) => {
 
 // 6. GET /stats
 speakingRouter.get('/stats', (req, res) => {
-  const user = resolveUser(req);
+  const user = resolveAuthUser(req);
+  if (!user) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem thống kê.' });
+  }
   const userAttempts = attemptsStore.get(user.id) || [];
 
   const totalAttempts = userAttempts.length;

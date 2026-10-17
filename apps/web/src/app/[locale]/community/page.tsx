@@ -65,6 +65,21 @@ export default function CommunityHubPage() {
 
   return (
     <main className="min-h-screen pb-24 pt-6 px-4 sm:px-6 max-w-7xl mx-auto space-y-8 pointer-events-auto">
+      {/* Scope Triage Notice Banner */}
+      <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs sm:text-sm text-amber-200 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <span className="text-base">🚧</span>
+          <span>
+            {isVi
+              ? 'Tính năng Cộng Đồng đang trong quá trình hoàn thiện kiến trúc & chưa kết nối dữ liệu production. Bản xem trước (Preview) — Tính năng chính thức sắp ra mắt.'
+              : 'Community features are currently under architecture development. Preview mode — Official release coming soon.'}
+          </span>
+        </div>
+        <Badge variant="amber" className="border-amber-500/40 text-amber-300 shrink-0 font-bold">
+          {isVi ? 'Sắp ra mắt' : 'Coming Soon'}
+        </Badge>
+      </div>
+
       {/* Top Bar with Search and Notifications */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-2 overflow-x-auto pb-1">

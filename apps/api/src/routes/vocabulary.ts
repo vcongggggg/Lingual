@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { SEED_UNITS } from '../../../../prisma/seed';
 import { vocabularyRepository, userRepository } from '../repositories/index.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 import {
   calculateLessonXP,
   updateStreakWithTimezone,
@@ -130,8 +131,9 @@ vocabularyRouter.get('/search', async (req, res) => {
   const total = filtered.length;
   const totalPages = Math.ceil(total / l);
 
-  const bookmarks = await vocabularyRepository.getBookmarks('demo-user-id-001');
-  const wordStates = await vocabularyRepository.getUserWordStates('demo-user-id-001');
+  const userId = resolveAuthUserId(req);
+  const bookmarks = userId ? await vocabularyRepository.getBookmarks(userId) : [];
+  const wordStates = userId ? await vocabularyRepository.getUserWordStates(userId) : [];
 
   const paginated = filtered.slice((p - 1) * l, p * l).map((w) => {
     const isSaved = bookmarks.includes(w.id);
@@ -166,8 +168,9 @@ vocabularyRouter.get('/word/:wordId', async (req, res) => {
     return res.status(404).json({ error: 'Không tìm thấy từ vựng' });
   }
 
-  const bookmarks = await vocabularyRepository.getBookmarks('demo-user-id-001');
-  const wordStates = await vocabularyRepository.getUserWordStates('demo-user-id-001');
+  const userId = resolveAuthUserId(req);
+  const bookmarks = userId ? await vocabularyRepository.getBookmarks(userId) : [];
+  const wordStates = userId ? await vocabularyRepository.getUserWordStates(userId) : [];
   const isSaved = bookmarks.includes(word.id);
   const wordState = wordStates.find((ws) => ws.wordId === word.id);
 
@@ -186,7 +189,10 @@ vocabularyRouter.get('/word/:wordId', async (req, res) => {
  * GET /api/v1/vocabulary/folders
  */
 vocabularyRouter.get('/folders', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
   const folders = await vocabularyRepository.getFolders(userId);
   return res.json({ folders });
 });
@@ -195,7 +201,11 @@ vocabularyRouter.get('/folders', async (req, res) => {
  * POST /api/v1/vocabulary/folders
  */
 vocabularyRouter.post('/folders', async (req, res) => {
-  const { name, color = 'teal', icon = 'folder', userId = 'demo-user-id-001' } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
+  const { name, color = 'teal', icon = 'folder' } = req.body;
   if (!name || typeof name !== 'string' || !name.trim()) {
     return res.status(400).json({ error: 'Tên thư mục không được để trống' });
   }
@@ -271,7 +281,10 @@ vocabularyRouter.delete('/folders/:folderId/words/:wordId', async (req, res) => 
  * GET /api/v1/vocabulary/saved
  */
 vocabularyRouter.get('/saved', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
   const bookmarks = await vocabularyRepository.getBookmarks(userId);
   const wordStates = await vocabularyRepository.getUserWordStates(userId);
 
@@ -304,7 +317,11 @@ vocabularyRouter.get('/saved', async (req, res) => {
  * POST /api/v1/vocabulary/save
  */
 vocabularyRouter.post('/save', async (req, res) => {
-  const { wordId, targetText, userId = 'demo-user-id-001' } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
+  const { wordId, targetText } = req.body;
   const resolvedWordId = wordId || `vocab-${(targetText || 'custom').toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
 
   const isSaved = await vocabularyRepository.toggleBookmark(userId, resolvedWordId);
@@ -319,7 +336,11 @@ vocabularyRouter.post('/save', async (req, res) => {
  * Generates multi-modal practice questions
  */
 vocabularyRouter.get('/practice', async (req, res) => {
-  const { folderId, limit = '10', userId = 'demo-user-id-001' } = req.query;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
+  const { folderId, limit = '10' } = req.query;
   const numQuestions = Math.min(20, Math.max(3, parseInt(limit as string, 10) || 10));
 
   let pool = MASTER_VOCABULARY;
@@ -424,13 +445,17 @@ vocabularyRouter.get('/practice', async (req, res) => {
  * POST /api/v1/vocabulary/practice/submit
  */
 vocabularyRouter.post('/practice/submit', async (req, res) => {
-  const { questions, answers, userId = 'demo-user-id-001' } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+  }
+  const { questions, answers } = req.body;
   if (!Array.isArray(questions) || !Array.isArray(answers)) {
     return res.status(400).json({ error: 'Dữ liệu nộp bài không hợp lệ' });
   }
 
   const result = evaluateVocabularyPractice(questions, answers);
-  const user = (await userRepository.findById(userId)) || (await userRepository.findById('demo-user-id-001'));
+  const user = await userRepository.findById(userId);
 
   // Update streak
   const streakResult = updateStreakWithTimezone(

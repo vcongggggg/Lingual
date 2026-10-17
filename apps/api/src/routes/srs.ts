@@ -8,11 +8,15 @@ import {
 import { prisma } from '../lib/prisma.js';
 import { userRepository } from '../repositories/user.repository.js';
 import { vocabularyRepository } from '../repositories/vocabulary.repository.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const srsRouter = Router();
 
 srsRouter.get('/queue', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để truy cập SRS queue.' });
+  }
 
   try {
     // 1. Fetch user states from PostgreSQL
@@ -93,7 +97,11 @@ srsRouter.get('/queue', async (req, res) => {
 });
 
 srsRouter.post('/review', async (req, res) => {
-  const { wordId, quality, userId = 'demo-user-id-001' } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để ghi nhận ôn tập SRS.' });
+  }
+  const { wordId, quality } = req.body;
 
   // Validation: Quality score must be an integer between 0 and 5
   if (typeof quality !== 'number' || quality < 0 || quality > 5 || !Number.isInteger(quality)) {
@@ -182,6 +190,10 @@ srsRouter.post('/review', async (req, res) => {
 });
 
 srsRouter.post('/add', async (req, res) => {
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để thêm từ vào SRS.' });
+  }
   const {
     targetText,
     translation,
@@ -190,7 +202,6 @@ srsRouter.post('/add', async (req, res) => {
     exampleTranslation,
     imageUrl,
     cefrLevel = 'B2',
-    userId = 'demo-user-id-001',
   } = req.body;
 
   if (!targetText) {

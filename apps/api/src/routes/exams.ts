@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { MASTER_EXAMS } from './examData.js';
 import { examRepository, userRepository } from '../repositories/index.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 import {
   createExamAttempt,
   sanitizePublicExam,
@@ -48,7 +49,10 @@ examsRouter.get('/:examId', async (req, res) => {
  * Create or initialize an exam attempt with authoritative timer
  */
 examsRouter.post('/:examId/start', async (req, res) => {
-  const { userId = 'demo-user-id-001' } = req.body;
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để bắt đầu bài thi.' });
+  }
   const exam = await examRepository.getExamById(req.params.examId);
 
   if (!exam) {
@@ -232,7 +236,10 @@ examsRouter.get('/attempts/:attemptId/result', async (req, res) => {
  * List user past exam attempts
  */
 examsRouter.get('/history/all', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem lịch sử thi.' });
+  }
   const attempts = await examRepository.getUserAttempts(userId);
   const history = attempts.filter((a) => a.status === 'completed').map((a) => {
     const exam = MASTER_EXAMS.find((e) => e.id === a.examId);
@@ -261,7 +268,10 @@ examsRouter.get('/history/all', async (req, res) => {
  * Aggregate user exam performance analytics
  */
 examsRouter.get('/stats/summary', async (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem thống kê thi.' });
+  }
   const attempts = await examRepository.getUserAttempts(userId);
   const completedAttempts = attempts.filter((a) => a.status === 'completed');
 
