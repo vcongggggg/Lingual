@@ -34,6 +34,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Be Vietnam Pro', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'Cambria', 'serif'],
       },
       boxShadow: {
         'brutal-sm': '2px 2px 0 #211A13',

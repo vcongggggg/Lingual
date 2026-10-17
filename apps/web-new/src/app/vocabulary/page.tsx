@@ -1,250 +1,265 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Link from 'next/link';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
-import { Input } from '../../components/ui/Input';
-import { Modal } from '../../components/ui/Modal';
 import { LingLing } from '../../components/ui/LingLing';
-import { api } from '../../lib/api';
-import { Search, Plus, Volume2, CheckCircle2, BookmarkPlus } from 'lucide-react';
+import { 
+  BookOpen, 
+  Search, 
+  Layers, 
+  Sparkles, 
+  ArrowRight, 
+  Flame, 
+  CheckCircle2, 
+  Bookmark,
+  GraduationCap
+} from 'lucide-react';
 
-export default function VocabularyPage() {
-  const [words, setWords] = useState<any[]>([]);
-  const [filteredWords, setFilteredWords] = useState<any[]>([]);
-  const [selectedLevel, setSelectedLevel] = useState<string>('all');
+interface ChapterLevel {
+  id: string;
+  levelCode: string;
+  chapterRoman: string;
+  chapterTitle: string;
+  wordsCount: number;
+  lessonsCount: number;
+  description: string;
+  colorScheme: string;
+  badgeText: string;
+  sampleWords: string[];
+}
+
+const CHAPTERS: ChapterLevel[] = [
+  {
+    id: 'a1',
+    levelCode: 'A1',
+    chapterRoman: 'Chương I',
+    chapterTitle: 'Nền Tảng Căn Bản',
+    wordsCount: 500,
+    lessonsCount: 4,
+    description: 'Từ vựng cốt lõi về bản thân, gia đình, chào hỏi, đồ vật xung quanh và các thì căn bản.',
+    colorScheme: 'from-amber/20 to-paper-2',
+    badgeText: 'Mới bắt đầu',
+    sampleWords: ['apple', 'morning', 'water', 'family', 'happy'],
+  },
+  {
+    id: 'a2',
+    levelCode: 'A2',
+    chapterRoman: 'Chương II',
+    chapterTitle: 'Giao Tiếp Hằng Ngày',
+    wordsCount: 800,
+    lessonsCount: 6,
+    description: 'Mua sắm, hỏi đường, đặt vé tàu xe, miêu tả sở thích cá nhân và kể lại một chuyến đi ngắn.',
+    colorScheme: 'from-teal/15 to-paper-2',
+    badgeText: 'Sơ cấp vững vàng',
+    sampleWords: ['journey', 'weather', 'recipe', 'schedule', 'luggage'],
+  },
+  {
+    id: 'b1',
+    levelCode: 'B1',
+    chapterRoman: 'Chương III',
+    chapterTitle: 'Độc Lập Ngôn Ngữ',
+    wordsCount: 1200,
+    lessonsCount: 8,
+    description: 'Trình bày quan điểm cá nhân, xử lý tình huống du lịch và diễn đạt cảm xúc, hy vọng, ước mơ.',
+    colorScheme: 'from-amber/30 to-paper-2',
+    badgeText: 'Trung cấp',
+    sampleWords: ['perseverance', 'attitude', 'challenge', 'solution', 'community'],
+  },
+  {
+    id: 'b2',
+    levelCode: 'B2',
+    chapterRoman: 'Chương IV',
+    chapterTitle: 'Lưu Loát & Học Thuật',
+    wordsCount: 1500,
+    lessonsCount: 10,
+    description: 'Thảo luận chuyên sâu về môi trường, kinh tế, công nghệ và bài tập viết luận phức tạp.',
+    colorScheme: 'from-red/15 to-paper-2',
+    badgeText: 'Trung cấp trên',
+    sampleWords: ['inevitable', 'significant', 'subsequent', 'hypothesis', 'collaborate'],
+  },
+  {
+    id: 'c1',
+    levelCode: 'C1',
+    chapterRoman: 'Chương V',
+    chapterTitle: 'Tinh Tế & Chuyên Gia',
+    wordsCount: 2000,
+    lessonsCount: 12,
+    description: 'Cấu trúc thành ngữ hiếm, từ ngữ giàu hình tượng văn học, bài báo học thuật và diễn ngôn cấp cao.',
+    colorScheme: 'from-teal/25 to-card',
+    badgeText: 'Cao cấp',
+    sampleWords: ['ubiquitous', 'resilience', 'paradigm', 'ephemeral', 'eloquent'],
+  },
+  {
+    id: 'c2',
+    levelCode: 'C2',
+    chapterRoman: 'Chương VI',
+    chapterTitle: 'Bản Xứ Điêu Luyện',
+    wordsCount: 2500,
+    lessonsCount: 14,
+    description: 'Hiểu trọn vẹn mọi sắc thái văn hóa, châm biếm, ẩn dụ và sự tinh vi của tiếng Anh bản xứ.',
+    colorScheme: 'from-ink/10 to-paper-2',
+    badgeText: 'Bậc thầy',
+    sampleWords: ['serendipity', 'meticulous', 'vicissitude', 'quintessential', 'juxtapose'],
+  },
+];
+
+const TABS = [
+  { id: 'cefr', label: 'Theo Bậc CEFR (A1–C2)' },
+  { id: 'cert', label: 'Chứng chỉ (IELTS / TOEIC)' },
+  { id: 'topic', label: 'Chủ đề thông dụng' },
+  { id: 'personal', label: 'Sổ từ vựng cá nhân' },
+];
+
+export default function VocabularyHubPage() {
+  const [activeTab, setActiveTab] = useState('cefr');
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [newWord, setNewWord] = useState({ targetText: '', translation: '', phonetic: '', exampleSentence: '', cefrLevel: 'B1' });
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Tải danh sách từ vựng từ backend hoặc danh mục từ điển
-    api.getSrsQueue()
-      .then((res) => {
-        if (res.queue && res.queue.length > 0) {
-          setWords(res.queue);
-          setFilteredWords(res.queue);
-        } else {
-          // Fallback danh mục từ phong phú nếu DB rỗng
-          const fallback = [
-            { id: '1', targetText: 'Environment', phonetic: '/ɪnˈvaɪrənmənt/', translation: 'Môi trường sống', cefrLevel: 'B1', exampleSentence: 'We must protect our natural environment.' },
-            { id: '2', targetText: 'Substantial', phonetic: '/səbˈstænʃl/', translation: 'Đáng kể, quan trọng', cefrLevel: 'B2', exampleSentence: 'A substantial amount of cash was found.' },
-            { id: '3', targetText: 'Perseverance', phonetic: '/ˌpɜːsɪˈvɪərəns/', translation: 'Sự kiên trì, bền bỉ', cefrLevel: 'B2', exampleSentence: 'Through hard work and perseverance, he succeeded.' },
-            { id: '4', targetText: 'Achieve', phonetic: '/əˈtʃiːv/', translation: 'Đạt được, hoàn thành', cefrLevel: 'A2', exampleSentence: 'She worked hard to achieve her goal.' },
-            { id: '5', targetText: 'Community', phonetic: '/kəˈmjuːnəti/', translation: 'Cộng đồng', cefrLevel: 'B1', exampleSentence: 'The local community supported the campaign.' },
-            { id: '6', targetText: 'Confidence', phonetic: '/ˈkɒnfɪdəns/', translation: 'Sự tự tin', cefrLevel: 'B1', exampleSentence: 'Practice gives you confidence to speak.' },
-          ];
-          setWords(fallback);
-          setFilteredWords(fallback);
-        }
-      })
-      .catch(() => {
-        setWords([]);
-        setFilteredWords([]);
-      })
-      .finally(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    let result = words;
-    if (selectedLevel !== 'all') {
-      result = result.filter((w) => (w.cefrLevel || '').toUpperCase() === selectedLevel.toUpperCase());
-    }
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      result = result.filter((w) =>
-        w.targetText.toLowerCase().includes(q) || (w.translation || '').toLowerCase().includes(q)
-      );
-    }
-    setFilteredWords(result);
-  }, [selectedLevel, searchQuery, words]);
-
-  const handleSpeak = (text: string) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
-    }
-  };
-
-  const handleAddToSrs = async (word: any) => {
-    try {
-      await api.addSrsWord({
-        targetText: word.targetText,
-        translation: word.translation,
-        phonetic: word.phonetic,
-        exampleSentence: word.exampleSentence,
-        cefrLevel: word.cefrLevel,
-      });
-      setToastMessage(`Đã thêm "${word.targetText}" vào bộ thẻ SRS!`);
-      setTimeout(() => setToastMessage(null), 3000);
-    } catch {
-      setToastMessage(`Đã ghi nhận "${word.targetText}" vào sổ tay ôn tập.`);
-      setTimeout(() => setToastMessage(null), 3000);
-    }
-  };
-
-  const handleCreateWord = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await api.addSrsWord(newWord);
-      setWords([newWord, ...words]);
-      setModalOpen(false);
-      setNewWord({ targetText: '', translation: '', phonetic: '', exampleSentence: '', cefrLevel: 'B1' });
-      setToastMessage(`Đã tạo từ mới "${newWord.targetText}" thành công!`);
-      setTimeout(() => setToastMessage(null), 3000);
-    } catch (err: any) {
-      alert(err.message || 'Lỗi thêm từ mới');
-    }
-  };
-
-  const levels = ['all', 'A1', 'A2', 'B1', 'B2'];
+  const filteredChapters = CHAPTERS.filter((chap) => {
+    return (
+      chap.chapterTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      chap.levelCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      chap.sampleWords.some((w) => w.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+  });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 text-left space-y-8">
-      {/* Toast thông báo */}
-      {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-ink text-paper border-2 border-amber rounded-xl px-5 py-3 shadow-brutal-lg text-sm font-black animate-in fade-in flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-amber" />
-          {toastMessage}
-        </div>
-      )}
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 text-left">
+      {/* Hero Section phong cách sổ tay */}
+      <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="max-w-2xl space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Kho Từ Vựng Cốt Lõi · Vocabulary Lab</span>
+            </div>
 
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b-2 border-ink/20">
-        <div>
-          <span className="text-xs font-black uppercase tracking-wider text-red block mb-1">
-            Phân hệ 01 · Từ vựng cốt lõi
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight">
-            Kho Từ Vựng Sổ Tay 📖
-          </h1>
-          <p className="text-sm text-ink-soft mt-1">
-            Tra cứu, nghe phát âm bản ngữ và lưu trực tiếp vào hàng đợi lặp lại ngắt quãng SM-2.
-          </p>
-        </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight">
+              Tích lũy từ vựng như từng trang sách quý
+            </h1>
 
-        <Button variant="red" size="md" onClick={() => setModalOpen(true)}>
-          <Plus className="w-4 h-4 stroke-[3]" /> Thêm Từ Của Bạn
-        </Button>
+            <p className="text-base sm:text-lg text-ink-soft leading-relaxed">
+              Mỗi cấp độ CEFR được biên soạn như một <b>chương sách riêng biệt</b>, kết hợp cùng thuật toán lặp lại ngắt quãng <b>SM-2</b> giúp bạn nhớ từ vựng vĩnh viễn vào trí nhớ dài hạn.
+            </p>
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <Link href="/vocabulary/practice" className="btn btn-red text-sm font-black shadow-brutal">
+                Học thẻ từ hôm nay (10 thẻ) →
+              </Link>
+              <span className="text-xs font-extrabold text-ink-soft">
+                📚 8.500+ từ vựng có ví dụ song ngữ & IPA
+              </span>
+            </div>
+          </div>
+
+          {/* Linh vật LingLing cầm thẻ flashcard */}
+          <div className="hidden lg:flex flex-col items-center relative flex-shrink-0">
+            <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
+              Mỗi ngày <span className="text-red">10 thẻ thư viện</span>, không bao giờ quên!
+            </div>
+            <LingLing reaction="greet" size={135} />
+          </div>
+        </div>
       </div>
 
-      {/* Thanh Tìm Kiếm & Lọc Level */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-soft pointer-events-none" />
+      {/* Tabs dạng Tab Giấy (Paper Tabs) */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2 border-b-2 border-ink pb-2 overflow-x-auto">
+          {TABS.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 rounded-t-xl border-2 border-b-0 border-ink font-black text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === tab.id
+                  ? 'bg-card text-ink shadow-brutal-sm -translate-y-1'
+                  : 'bg-paper-2 text-ink-muted hover:bg-paper'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Ô tìm kiếm từ vựng */}
+        <div className="relative max-w-md">
+          <Search className="w-4 h-4 text-ink-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
-            placeholder="Tìm kiếm từ tiếng Anh hoặc nghĩa tiếng Việt..."
+            placeholder="Tìm theo cấp độ, từ vựng, tên chương..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-card border-2 border-ink rounded-xl pl-10 pr-4 py-2.5 text-sm font-semibold text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-red shadow-brutal-sm"
           />
         </div>
-
-        {/* Level Filters */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-          {levels.map((lvl) => (
-            <button
-              key={lvl}
-              onClick={() => setSelectedLevel(lvl)}
-              className={`px-3.5 py-2 text-xs font-black rounded-xl border-2 border-ink select-none transition-all cursor-pointer ${
-                selectedLevel === lvl
-                  ? 'bg-ink text-paper shadow-brutal-sm'
-                  : 'bg-card text-ink hover:bg-paper-2'
-              }`}
-            >
-              {lvl === 'all' ? 'TẤT CẢ' : lvl}
-            </button>
-          ))}
-        </div>
       </div>
 
-      {/* Grid Danh Sách Từ Vựng */}
+      {/* Lưới Thẻ Cấp Độ A1–C2 Vẽ Như "Chương Sách" */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredWords.map((w, index) => (
+        {filteredChapters.map((chap) => (
           <div
-            key={w.id || index}
-            className="bg-card border-2 border-ink rounded-2xl p-6 shadow-brutal-md hover:-translate-y-1 transition-transform flex flex-col justify-between text-left"
+            key={chap.id}
+            className="card-paper p-6 sm:p-7 flex flex-col justify-between hover:-translate-y-1 transition-all relative overflow-hidden group bg-card"
           >
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <Badge variant={w.cefrLevel === 'B2' ? 'red' : w.cefrLevel === 'B1' ? 'amber' : 'teal'}>
-                  {w.cefrLevel || 'B1'}
-                </Badge>
-                <button
-                  onClick={() => handleSpeak(w.targetText)}
-                  className="w-8 h-8 rounded-lg border-2 border-ink bg-paper hover:bg-paper-2 flex items-center justify-center text-ink shadow-brutal-sm cursor-pointer"
-                  title="Nghe phát âm chuẩn"
-                >
-                  <Volume2 className="w-4 h-4" />
-                </button>
+            <div className="space-y-4">
+              {/* Header chương sách: Chữ cái Serif to + Số La Mã */}
+              <div className="flex items-start justify-between border-b-2 border-ink/15 pb-4">
+                <div>
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-ink-muted block">
+                    {chap.chapterRoman}
+                  </span>
+                  <h3 className="text-2xl font-black text-ink group-hover:text-red transition-colors">
+                    {chap.chapterTitle}
+                  </h3>
+                </div>
+
+                {/* Chữ cái Serif TO như trang đầu chương sách */}
+                <span className="font-serif text-5xl font-black text-ink/80 select-none tracking-tight">
+                  {chap.levelCode}
+                </span>
               </div>
 
-              <h3 className="text-2xl font-black text-ink tracking-tight mb-1">{w.targetText}</h3>
-              <p className="text-xs text-ink-soft mb-3 font-mono">{w.phonetic || '/.../'}</p>
-              <div className="text-base font-extrabold text-teal mb-3">{w.translation}</div>
-
-              {w.exampleSentence && (
-                <div className="p-3 bg-paper-2 rounded-xl border border-ink/20 text-xs italic text-ink-soft leading-relaxed">
-                  "{w.exampleSentence}"
+              {/* Minh họa đóng khung viền mực nhẹ */}
+              <div className={`p-4 bg-gradient-to-br ${chap.colorScheme} border-2 border-ink rounded-xl shadow-brutal-sm space-y-2`}>
+                <div className="flex items-center justify-between text-xs font-black text-ink">
+                  <span>{chap.wordsCount} từ cốt lõi</span>
+                  <span className="px-2 py-0.5 bg-card border border-ink rounded-md text-[10px]">
+                    {chap.lessonsCount} bài học
+                  </span>
                 </div>
-              )}
+                {/* Sample words chip */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {chap.sampleWords.map((w) => (
+                    <span key={w} className="text-[11px] font-mono font-bold bg-card/80 border border-ink/40 px-1.5 py-0.5 rounded text-ink">
+                      {w}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mô tả chương sách */}
+              <p className="text-xs text-ink-soft leading-relaxed font-medium">
+                {chap.description}
+              </p>
             </div>
 
-            <div className="pt-5 mt-4 border-t border-ink/15 flex items-center justify-between">
-              <span className="text-[11px] font-bold text-ink-soft">
-                Khoảng ôn: {w.interval || 1} ngày
+            {/* Link Đỏ Son: "Vào học ngay →" */}
+            <div className="pt-4 mt-4 border-t border-ink/15 flex items-center justify-between">
+              <span className="stamp-badge w-9 h-9 text-[10px] font-black border-2 border-teal text-teal bg-card">
+                {chap.levelCode}
               </span>
-              <button
-                onClick={() => handleAddToSrs(w)}
-                className="inline-flex items-center gap-1.5 text-xs font-black text-red hover:underline cursor-pointer"
+
+              <Link
+                href="/vocabulary/practice"
+                className="text-sm font-black text-red hover:underline flex items-center gap-1 group-hover:translate-x-1 transition-transform"
               >
-                <BookmarkPlus className="w-3.5 h-3.5" /> Thêm vào SRS
-              </button>
+                Vào học ngay →
+              </Link>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Modal Thêm Từ Mới */}
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title="Thêm Từ Vựng Vào Sổ Tay">
-        <form onSubmit={handleCreateWord} className="space-y-4">
-          <Input
-            label="Từ Tiếng Anh"
-            required
-            placeholder="vd: Resilience"
-            value={newWord.targetText}
-            onChange={(e) => setNewWord({ ...newWord, targetText: e.target.value })}
-          />
-          <Input
-            label="Phiên Âm IPA"
-            placeholder="vd: /rɪˈzɪliəns/"
-            value={newWord.phonetic}
-            onChange={(e) => setNewWord({ ...newWord, phonetic: e.target.value })}
-          />
-          <Input
-            label="Nghĩa Tiếng Việt"
-            required
-            placeholder="vd: Khả năng phục hồi, kiên cường"
-            value={newWord.translation}
-            onChange={(e) => setNewWord({ ...newWord, translation: e.target.value })}
-          />
-          <Input
-            label="Ví dụ thực tế"
-            placeholder="vd: She showed great resilience in overcoming difficulties."
-            value={newWord.exampleSentence}
-            onChange={(e) => setNewWord({ ...newWord, exampleSentence: e.target.value })}
-          />
-          <Button type="submit" variant="red" size="md" className="w-full mt-4">
-            Lưu Vào Sổ Tay & Bộ Thẻ →
-          </Button>
-        </form>
-      </Modal>
     </div>
   );
 }

@@ -1,176 +1,169 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import Link from 'next/link';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
 import { LingLing } from '../../components/ui/LingLing';
-import { PenTool, CheckCircle2, Sparkles } from 'lucide-react';
+import { 
+  PenTool, 
+  Sparkles, 
+  Eye, 
+  BookOpen, 
+  FileEdit, 
+  ArrowRight, 
+  CheckCircle2, 
+  Layers
+} from 'lucide-react';
 
-const WRITING_TOPICS = [
+const WRITING_MODES = [
   {
-    id: 1,
-    title: 'Miêu tả một người bạn thân mà bạn ngưỡng mộ',
-    level: 'A2 - B1',
-    minWords: 30,
-    guidance: 'Hãy dùng các tính từ miêu tả tính cách (caring, dependable, ambitious) và nêu lý do tại sao bạn quý mến họ.',
-    suggestedVocab: ['dependable', 'sense of humor', 'supportive', 'admire'],
+    id: 'see-write',
+    title: 'Quan sát & Viết',
+    englishTitle: 'See & Write',
+    desc: 'Quan sát tranh ảnh đời sống và viết lại câu miêu tả chi tiết. Rèn luyện phản xạ liên kết hình ảnh với cấu trúc câu ngữ pháp.',
+    cefr: 'A1–B1',
+    topicsCount: '24 chủ đề tranh',
+    href: '/writing/practice',
+    popular: false,
+    illustration: '🖼️ ✍️',
+    gradient: 'from-amber/20 to-card',
   },
   {
-    id: 2,
-    title: 'Lợi ích của việc dậy sớm và lập kế hoạch',
-    level: 'B1 - B2',
-    minWords: 50,
-    guidance: 'Trình bày 2 lợi ích cụ thể của thói quen dậy sớm và tác động tới năng suất làm việc.',
-    suggestedVocab: ['productivity', 'clear mindset', 'proactive', 'routine'],
+    id: 'guided-essay',
+    title: 'Viết theo hướng dẫn từng bước',
+    englishTitle: 'Guided Essay Writing',
+    desc: 'Xây dựng bài viết mạch lạc qua từng bước (Mở bài → Thân bài → Kết bài) với dàn ý gợi ý, từ nối và bộ đếm chỉ số từ vựng trực quan.',
+    cefr: 'A2–B2',
+    topicsCount: '18 bài luận mẫu',
+    href: '/writing/practice',
+    popular: true,
+    illustration: '📑 💡',
+    gradient: 'from-teal/20 to-card',
+  },
+  {
+    id: 'free-journal',
+    title: 'Viết nhật ký tự do',
+    englishTitle: 'Free Journal & AI Review',
+    desc: 'Viết về bất kỳ điều gì diễn ra trong ngày của bạn. Trợ lý AI sẽ sửa lỗi ngữ pháp, gợi ý cấu trúc nâng band và nhận xét văn phong.',
+    cefr: 'B1–C2',
+    topicsCount: 'Không giới hạn',
+    href: '/writing/practice',
+    popular: false,
+    illustration: '📖 ✒️',
+    gradient: 'from-red/15 to-card',
   },
 ];
 
-export default function WritingPage() {
-  const [topicIdx, setTopicIdx] = useState(0);
-  const [text, setText] = useState('');
-  const [feedback, setFeedback] = useState<any>(null);
-
-  const currentTopic = WRITING_TOPICS[topicIdx];
-  const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
-
-  const handleEvaluate = () => {
-    // Đánh giá dựa trên độ dài, từ vựng gợi ý đã dùng
-    const usedVocab = currentTopic.suggestedVocab.filter((v) =>
-      text.toLowerCase().includes(v.toLowerCase())
-    );
-
-    const lengthPassed = wordCount >= currentTopic.minWords;
-    const score = Math.min(100, Math.round((wordCount / currentTopic.minWords) * 60 + usedVocab.length * 15));
-
-    setFeedback({
-      evaluated: true,
-      wordCount,
-      lengthPassed,
-      usedVocab,
-      score,
-      comments: lengthPassed
-        ? `Bài viết đáp ứng tốt yêu cầu độ dài tối thiểu (${wordCount}/${currentTopic.minWords} từ). Bạn đã áp dụng thành công ${usedVocab.length} cụm từ gợi ý!`
-        : `Bài viết hiện có ${wordCount} từ, hãy viết thêm tối thiểu ${currentTopic.minWords - wordCount} từ nữa để hoàn thiện ý nhé!`,
-    });
-  };
-
+export default function WritingHubPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12 text-left space-y-8">
-      {/* Header */}
-      <div className="pb-6 border-b-2 border-ink/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <span className="text-xs font-black uppercase tracking-wider text-ink block mb-1">
-            Phân hệ 05 · Luyện viết đoạn văn
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight">
-            Xưởng Luyện Viết Sổ Tay ✍️
-          </h1>
-          <p className="text-sm text-ink-soft mt-1">
-            Rèn luyện kỹ năng diễn đạt ý tưởng mạch lạc, vận dụng từ vựng theo chủ đề cụ thể.
-          </p>
-        </div>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10">
+      {/* Hero Section phong cách sổ tay */}
+      <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="max-w-2xl space-y-3 text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-red">
+              <PenTool className="w-3.5 h-3.5" />
+              <span>Phòng Luyện Viết · Writing Lab</span>
+            </div>
 
-        <div className="flex items-center gap-2">
-          {WRITING_TOPICS.map((t, idx) => (
-            <button
-              key={t.id}
-              onClick={() => {
-                setTopicIdx(idx);
-                setText('');
-                setFeedback(null);
-              }}
-              className={`w-9 h-9 rounded-xl border-2 border-ink font-black text-xs cursor-pointer transition-all ${
-                idx === topicIdx
-                  ? 'bg-ink text-paper shadow-brutal-sm'
-                  : 'bg-card text-ink hover:bg-paper-2'
-              }`}
-            >
-              0{idx + 1}
-            </button>
-          ))}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight">
+              Đặt bút viết mỗi ngày, biến suy nghĩ thành câu từ sắc sảo
+            </h1>
+
+            <p className="text-base sm:text-lg text-ink-soft leading-relaxed">
+              Từ câu đơn giản miêu tả tranh đến bài luận học thuật nhiều đoạn, Lingual đồng hành cùng bạn qua hệ thống <b>hướng dẫn dàn ý từng bước</b> và <b>chấm điểm ngữ pháp tức thì</b>.
+            </p>
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <Link href="/writing/practice" className="btn btn-red text-sm font-black shadow-brutal">
+                Bắt đầu viết bài luận hôm nay →
+              </Link>
+              <span className="text-xs font-extrabold text-ink-soft">
+                ✍️ Phản hồi ngữ pháp & từ vựng tức thì
+              </span>
+            </div>
+          </div>
+
+          {/* Linh vật LingLing cầm bút viết có chủ đích */}
+          <div className="hidden lg:flex flex-col items-center relative flex-shrink-0">
+            <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
+              Mỗi ngày viết <span className="text-red">3 câu</span>, sau 1 tháng tiến bộ vượt bậc!
+            </div>
+            <LingLing reaction="greet" size={135} />
+          </div>
         </div>
       </div>
 
-      {/* Đề Bài Sổ Tay */}
-      <div className="bg-card border-2 border-ink rounded-3xl shadow-brutal-xl p-8 sm:p-10 space-y-6">
-        <div className="flex items-center justify-between flex-wrap gap-2">
-          <Badge variant="amber">{currentTopic.level}</Badge>
-          <span className="text-xs font-bold text-ink-soft">Yêu cầu tối thiểu: {currentTopic.minWords} từ</span>
-        </div>
-
-        <h3 className="text-2xl font-black text-ink">{currentTopic.title}</h3>
-        <p className="text-sm text-ink-soft leading-relaxed">{currentTopic.guidance}</p>
-
-        {/* Từ vựng gợi ý */}
-        <div className="p-4 bg-paper-2 border border-ink/20 rounded-xl space-y-2">
-          <span className="text-xs font-black uppercase tracking-wider text-ink block">
-            Từ vựng nên vận dụng:
+      {/* 3 Thẻ Chế Độ Luyện Viết Dạng Card Giấy */}
+      <div className="space-y-6 text-left">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black text-ink tracking-tight">
+              3 Chế độ rèn luyện ngòi bút
+            </h2>
+            <p className="text-sm text-ink-soft">Lựa chọn chế độ phù hợp với trình độ và thời gian bạn có.</p>
+          </div>
+          <span className="stamp-badge w-14 h-14 text-[10px] font-black border-2 border-red text-red">
+            WRITE 100
           </span>
-          <div className="flex flex-wrap gap-2">
-            {currentTopic.suggestedVocab.map((v) => {
-              const isUsed = text.toLowerCase().includes(v.toLowerCase());
-              return (
-                <span
-                  key={v}
-                  className={`text-xs font-black px-2.5 py-1 rounded-lg border border-ink transition-colors ${
-                    isUsed ? 'bg-teal text-white border-teal' : 'bg-card text-ink'
-                  }`}
-                >
-                  {isUsed && '✓ '}
-                  {v}
-                </span>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Khung Soạn Thảo */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs font-bold text-ink-soft">
-            <span>Trang viết của bạn:</span>
-            <span className={wordCount >= currentTopic.minWords ? 'text-teal font-black' : ''}>
-              {wordCount} / {currentTopic.minWords} từ
-            </span>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {WRITING_MODES.map((mode) => (
+            <div
+              key={mode.id}
+              className="card-paper p-6 flex flex-col justify-between hover:-translate-y-1 transition-all relative overflow-hidden"
+            >
+              {mode.popular && (
+                <div className="absolute top-3 right-3 px-2 py-0.5 bg-red border border-ink rounded-md text-[10px] font-black uppercase text-white shadow-brutal-sm">
+                  Đề xuất hôm nay
+                </div>
+              )}
 
-          <textarea
-            rows={7}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Bắt đầu viết đoạn văn tiếng Anh của bạn tại đây..."
-            className="w-full bg-paper border-2 border-ink rounded-2xl p-5 text-base font-medium text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-red shadow-brutal-sm leading-relaxed"
-          />
-        </div>
+              <div className="space-y-4">
+                {/* Ảnh minh họa đóng khung viền mực */}
+                <div className={`h-36 bg-gradient-to-br ${mode.gradient} border-2 border-ink rounded-xl shadow-brutal-sm flex items-center justify-center text-4xl select-none`}>
+                  {mode.illustration}
+                </div>
 
-        <div className="flex items-center justify-between pt-2">
-          <Button variant="paper" size="sm" onClick={() => setText('')}>
-            Xóa bài viết
-          </Button>
+                {/* Tiêu đề & Cấp độ CEFR */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="stamp-badge w-9 h-9 text-[10px] font-black border-2 border-ink text-ink bg-paper">
+                      {mode.cefr}
+                    </span>
+                    <span className="text-xs font-bold text-ink-muted">
+                      {mode.topicsCount}
+                    </span>
+                  </div>
 
-          <Button variant="red" size="md" onClick={handleEvaluate} disabled={!text.trim()}>
-            Chấm Bài Viết →
-          </Button>
-        </div>
-
-        {/* Kết Quả Chấm Điểm */}
-        {feedback && (
-          <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-md text-left space-y-4 animate-in fade-in">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-xs font-black uppercase tracking-wider text-ink-soft block">
-                  Đánh giá tổng quan:
-                </span>
-                <div className="text-2xl font-black text-ink">{feedback.score} / 100 điểm</div>
+                  <h3 className="text-xl font-black text-ink">
+                    {mode.title}
+                  </h3>
+                  <p className="text-xs font-bold text-teal italic">
+                    {mode.englishTitle}
+                  </p>
+                  <p className="text-xs text-ink-soft leading-relaxed pt-1">
+                    {mode.desc}
+                  </p>
+                </div>
               </div>
-              <Badge variant={feedback.lengthPassed ? 'teal' : 'red'}>
-                {feedback.lengthPassed ? 'Đạt độ dài' : 'Chưa đủ từ'}
-              </Badge>
-            </div>
 
-            <p className="text-sm font-semibold text-ink leading-relaxed">{feedback.comments}</p>
-          </div>
-        )}
+              {/* Nút vào luyện viết */}
+              <div className="pt-4 mt-4 border-t border-ink/10 flex items-center justify-between">
+                <Link
+                  href={mode.href}
+                  className="btn btn-ink text-xs font-black py-2 px-4 w-full justify-between group"
+                >
+                  <span>Bắt đầu viết</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,182 +1,271 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
-import { BookOpen, CheckCircle2, HelpCircle, ArrowRight } from 'lucide-react';
+import { LingLing } from '../../components/ui/LingLing';
+import { 
+  BookOpen, 
+  Search, 
+  Clock, 
+  FileText, 
+  Newspaper, 
+  ArrowRight,
+  Bookmark,
+  Sparkles
+} from 'lucide-react';
 
-const ARTICLES = [
+interface Article {
+  id: string;
+  title: string;
+  vietnameseTitle: string;
+  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
+  topic: string;
+  readTime: string;
+  wordCount: number;
+  excerpt: string;
+  date: string;
+}
+
+const ARTICLES: Article[] = [
   {
-    id: 1,
-    title: 'The Power of Habit: Building Consistency in Language Learning',
-    topic: 'Thói quen & Tâm lý học',
+    id: 'morning-coffee',
+    title: 'The Art of the Morning Coffee: How a Simple Habit Ignites Focus',
+    vietnameseTitle: 'Nghệ thuật thưởng thức cà phê sáng: Thói quen kích hoạt sự tập trung',
+    level: 'A2',
+    topic: 'Đời sống',
+    readTime: '2 phút',
+    wordCount: 165,
+    excerpt: 'For millions worldwide, the scent of freshly ground beans is more than a beverage; it is a mindful transition into the challenges of the morning.',
+    date: '17 Th10, 2026',
+  },
+  {
+    id: 'eco-architecture',
+    title: 'Green Horizons: How Bamboo Architecture is Reshaping Modern Cities',
+    vietnameseTitle: 'Chân trời xanh: Kiến trúc tre tái định hình thành phố hiện đại',
     level: 'B1',
-    readTime: '3 phút đọc',
-    paragraphs: [
-      'Learning a language is not a sprint; it is an enduring marathon. Most learners believe that studying for five hours over the weekend yields the best results. However, cognitive psychology suggests that small, daily encounters with the target language are profoundly more effective.',
-      'When you review vocabulary every morning for just fifteen minutes, your brain strengthens neural pathways through spaced repetition. This gentle routine eliminates burnout and embeds words into your long-term memory permanently.',
-      'In conclusion, do not wait for ideal conditions or prolonged free time. Make consistent daily practice your non-negotiable habit.',
-    ],
-    vocabNotes: [
-      { word: 'enduring marathon', mean: 'cuộc chạy đua bền bỉ' },
-      { word: 'cognitive psychology', mean: 'tâm lý học nhận thức' },
-      { word: 'neural pathways', mean: 'các đường dẫn thần kinh' },
-      { word: 'burnout', mean: 'sự kiệt sức, nản lòng' },
-    ],
-    questions: [
-      {
-        q: 'What is the most effective way to learn a language according to the text?',
-        options: [
-          'Studying 5 hours on weekends',
-          'Small, daily consistent practice',
-          'Waiting for prolonged free time',
-          'Memorizing grammar books only',
-        ],
-        correct: 1,
-        explanation: 'Đoạn 1 nêu rõ: cognitive psychology suggests that small, daily encounters are profoundly more effective.',
-      },
-    ],
+    topic: 'Khoa học & Môi trường',
+    readTime: '3 phút',
+    wordCount: 240,
+    excerpt: 'Bamboo grows four times faster than standard timber and sequesters enormous volumes of carbon dioxide, offering a sustainable building alternative.',
+    date: '16 Th10, 2026',
+  },
+  {
+    id: 'deep-work',
+    title: 'The Solitude of Deep Work: Reclaiming Attention in a Distracted Age',
+    vietnameseTitle: 'Sự tĩnh lặng của công việc sâu: Giành lại sự tập trung trong kỷ nguyên số',
+    level: 'B2',
+    topic: 'Tư duy & Kỹ năng',
+    readTime: '4 phút',
+    wordCount: 320,
+    excerpt: 'Deep work is the ability to focus without distraction on a cognitively demanding task. It is a superpower in our modern knowledge economy.',
+    date: '15 Th10, 2026',
+  },
+  {
+    id: 'vietnam-heritage',
+    title: 'Ancient Alleys of Hanoi: Where Coffee Culture Meets Timeless Charm',
+    vietnameseTitle: 'Những con ngõ cổ Hà Nội: Nơi văn hóa cà phê hòa cùng nét quyến rũ vượt thời gian',
+    level: 'A1',
+    topic: 'Văn hóa & Du lịch',
+    readTime: '2 phút',
+    wordCount: 140,
+    excerpt: 'Wandering through the French quarters, one discovers tiny sidewalk stools where locals gather over egg coffee and sweet conversations.',
+    date: '14 Th10, 2026',
+  },
+  {
+    id: 'neuroscience-sleep',
+    title: 'The Architecture of Sleep: What the Brain Does While You Rest',
+    vietnameseTitle: 'Cấu trúc của giấc ngủ: Bộ não làm gì khi chúng ta nghỉ ngơi?',
+    level: 'C1',
+    topic: 'Khoa học & Môi trường',
+    readTime: '5 phút',
+    wordCount: 450,
+    excerpt: 'Far from being an inactive state, deep slow-wave sleep coordinates the lymphatic clearance of metabolic debris and solidifies memory traces.',
+    date: '12 Th10, 2026',
+  },
+  {
+    id: 'remote-work-future',
+    title: 'Asynchronous Collaboration: The True Revolution in Remote Work',
+    vietnameseTitle: 'Hợp tác bất đồng bộ: Cuộc cách mạng thực sự trong làm việc từ xa',
+    level: 'B2',
+    topic: 'Kinh doanh & Công nghệ',
+    readTime: '3 phút',
+    wordCount: 290,
+    excerpt: 'True productivity in distributed teams does not come from endless video calls, but from clear written communication and independent deep focus.',
+    date: '10 Th10, 2026',
   },
 ];
 
-export default function ReadingPage() {
-  const [selectedArticle] = useState(ARTICLES[0]);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
-  const [submitted, setSubmitted] = useState(false);
+const CEFR_LEVELS = ['Tất cả', 'A1', 'A2', 'B1', 'B2', 'C1'];
+const TOPICS = ['Tất cả', 'Đời sống', 'Văn hóa & Du lịch', 'Khoa học & Môi trường', 'Tư duy & Kỹ năng', 'Kinh doanh & Công nghệ'];
 
-  const handleSelectOption = (qIdx: number, optIdx: number) => {
-    if (submitted) return;
-    setSelectedAnswers({ ...selectedAnswers, [qIdx]: optIdx });
-  };
+export default function ReadingHubPage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('Tất cả');
+  const [selectedTopic, setSelectedTopic] = useState('Tất cả');
+
+  const filteredArticles = ARTICLES.filter((art) => {
+    const matchSearch =
+      art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      art.vietnameseTitle.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchLevel = selectedLevel === 'Tất cả' || art.level === selectedLevel;
+    const matchTopic = selectedTopic === 'Tất cả' || art.topic === selectedTopic;
+    return matchSearch && matchLevel && matchTopic;
+  });
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12 text-left space-y-8">
-      {/* Header */}
-      <div className="pb-6 border-b-2 border-ink/20">
-        <span className="text-xs font-black uppercase tracking-wider text-ink block mb-1">
-          Phân hệ 04 · Đọc hiểu sổ tay
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight">
-          Góc Đọc Báo & Bài Luận 📰
-        </h1>
-        <p className="text-sm text-ink-soft mt-1">
-          Đọc các bài viết thực tế, tra từ vựng nổi bật và trả lời câu hỏi trắc nghiệm kiểm tra khả năng tiếp thu.
-        </p>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10">
+      {/* Hero Section phong cách sổ tay với bò đeo kính đọc sách */}
+      <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="max-w-2xl space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Thư Viện Bài Đọc · Reading Lab</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight">
+              Đọc báo mỗi ngày, mở rộng vốn từ & tư duy ngữ cảnh
+            </h1>
+
+            <p className="text-base sm:text-lg text-ink-soft leading-relaxed">
+              Trải nghiệm đọc các bài báo chuẩn ngữ văn bản xứ với giao diện như <b>tờ báo in truyền thống</b>, tích hợp tra từ một chạm và bài tập đọc hiểu.
+            </p>
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <Link href="/reading/practice" className="btn btn-red text-sm font-black shadow-brutal">
+                Đọc bài báo nổi bật hôm nay →
+              </Link>
+              <span className="text-xs font-extrabold text-ink-soft">
+                📰 Bài báo mới cập nhật mỗi tuần
+              </span>
+            </div>
+          </div>
+
+          {/* Linh vật LingLing đeo kính đọc sách trên nền giấy */}
+          <div className="hidden lg:flex flex-col items-center relative flex-shrink-0">
+            <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
+              Mỗi ngày <span className="text-red">1 bài báo</span>, tích lũy 50 từ vựng!
+            </div>
+            <LingLing reaction="greet" size={135} />
+          </div>
+        </div>
       </div>
 
-      {/* Bài Đọc Sổ Tay (Editorial Layout) */}
-      <article className="bg-card border-2 border-ink rounded-3xl shadow-brutal-xl p-8 sm:p-12 space-y-6">
-        <div className="flex items-center gap-3 flex-wrap">
-          <Badge variant="amber">{selectedArticle.topic}</Badge>
-          <Badge variant="paper">{selectedArticle.level}</Badge>
-          <span className="text-xs font-bold text-ink-soft">• {selectedArticle.readTime}</span>
-        </div>
+      {/* Bộ Lọc & Tìm Kiếm Tag/Chip Giấy */}
+      <div className="space-y-4">
+        {/* Search & CEFR level */}
+        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+          <div className="relative flex-1 max-w-md">
+            <Search className="w-4 h-4 text-ink-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              placeholder="Tìm bài báo theo tiêu đề, chủ đề..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-card border-2 border-ink rounded-xl pl-10 pr-4 py-2.5 text-sm font-semibold text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-teal shadow-brutal-sm"
+            />
+          </div>
 
-        <h2 className="text-2xl sm:text-3xl font-black text-ink leading-tight">
-          {selectedArticle.title}
-        </h2>
-
-        {/* Các đoạn văn có dòng kẻ mờ */}
-        <div className="space-y-4 text-base sm:text-lg text-ink font-medium leading-relaxed pt-2">
-          {selectedArticle.paragraphs.map((p, idx) => (
-            <p key={idx} className="border-b border-ink/10 pb-3">
-              {p}
-            </p>
-          ))}
-        </div>
-
-        {/* Bảng Chú Giải Từ Vựng Nổi Bật (Glossary) */}
-        <div className="mt-8 p-6 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-sm space-y-3">
-          <h4 className="text-xs font-black uppercase tracking-wider text-ink">
-            📌 Chú Giải Cụm Từ Nổi Bật Trong Bài:
-          </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            {selectedArticle.vocabNotes.map((note) => (
-              <div key={note.word} className="p-2.5 bg-card rounded-xl border border-ink/20">
-                <b className="text-red">{note.word}: </b>
-                <span className="text-ink-soft font-semibold">{note.mean}</span>
-              </div>
+          {/* Lọc cấp độ CEFR */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+            <span className="text-xs font-black uppercase text-ink-soft mr-1 whitespace-nowrap">Bậc CEFR:</span>
+            {CEFR_LEVELS.map((lvl) => (
+              <button
+                key={lvl}
+                onClick={() => setSelectedLevel(lvl)}
+                className={`px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+                  selectedLevel === lvl
+                    ? 'bg-ink text-paper shadow-brutal-sm'
+                    : 'bg-card text-ink hover:bg-paper-2'
+                }`}
+              >
+                {lvl}
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Câu Hỏi Đọc Hiểu */}
-        <div className="mt-10 pt-8 border-t-2 border-ink/20 space-y-6">
-          <h3 className="text-xl font-black text-ink flex items-center gap-2">
-            <HelpCircle className="w-5 h-5 text-red" /> Câu Hỏi Đọc Hiểu
-          </h3>
-
-          {selectedArticle.questions.map((qItem, qIdx) => {
-            const chosen = selectedAnswers[qIdx];
-            const isAnswered = chosen !== undefined;
-
-            return (
-              <div key={qIdx} className="space-y-3">
-                <p className="text-sm font-bold text-ink">
-                  {qIdx + 1}. {qItem.q}
-                </p>
-
-                <div className="space-y-2">
-                  {qItem.options.map((opt, optIdx) => {
-                    const isSelected = chosen === optIdx;
-                    const isCorrect = optIdx === qItem.correct;
-
-                    let btnClass = 'bg-paper text-ink border-ink';
-                    if (submitted) {
-                      if (isCorrect) btnClass = 'bg-teal text-white border-ink font-black';
-                      else if (isSelected && !isCorrect) btnClass = 'bg-red text-white border-ink';
-                    } else if (isSelected) {
-                      btnClass = 'bg-ink text-paper border-ink font-black shadow-brutal-sm';
-                    }
-
-                    return (
-                      <button
-                        key={optIdx}
-                        onClick={() => handleSelectOption(qIdx, optIdx)}
-                        className={`w-full text-left px-4 py-3 border-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center justify-between ${btnClass}`}
-                      >
-                        <span>{opt}</span>
-                        {submitted && isCorrect && <CheckCircle2 className="w-4 h-4" />}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {submitted && (
-                  <div className="p-3 bg-paper-2 rounded-xl border border-ink/20 text-xs font-semibold text-ink-soft">
-                    💡 <b>Giải thích: </b>{qItem.explanation}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-
-          <div className="pt-2">
-            {!submitted ? (
-              <Button
-                variant="red"
-                size="md"
-                onClick={() => setSubmitted(true)}
-                disabled={Object.keys(selectedAnswers).length === 0}
-              >
-                Chấm Điểm Đọc Hiểu →
-              </Button>
-            ) : (
-              <Button
-                variant="ink"
-                size="md"
-                onClick={() => {
-                  setSubmitted(false);
-                  setSelectedAnswers({});
-                }}
-              >
-                Làm lại bài này
-              </Button>
-            )}
-          </div>
+        {/* Tag chips chủ đề giấy */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1">
+          <span className="text-xs font-bold text-ink-muted whitespace-nowrap">Chủ đề:</span>
+          {TOPICS.map((tpc) => (
+            <button
+              key={tpc}
+              onClick={() => setSelectedTopic(tpc)}
+              className={`px-3 py-1 rounded-lg border text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap ${
+                selectedTopic === tpc
+                  ? 'border-ink bg-teal text-white shadow-brutal-sm'
+                  : 'border-ink/30 bg-card text-ink-soft hover:border-ink hover:text-ink'
+              }`}
+            >
+              {tpc}
+            </button>
+          ))}
         </div>
-      </article>
+      </div>
+
+      {/* Lưới Thẻ Bài Đọc Vẽ Như "Tờ Báo" */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredArticles.map((art) => (
+          <article
+            key={art.id}
+            className="group card-paper p-6 flex flex-col justify-between text-left hover:-translate-y-1 transition-all relative"
+          >
+            <div className="space-y-4">
+              {/* Header tờ báo: Ngày tháng + Stamp CEFR */}
+              <div className="flex items-center justify-between border-b-2 border-ink/15 pb-3">
+                <span className="text-[11px] font-black uppercase tracking-wider text-ink-muted">
+                  {art.date} · {art.topic}
+                </span>
+
+                <span className="stamp-badge w-10 h-10 text-[11px] font-black border-2 border-red text-red bg-card">
+                  {art.level}
+                </span>
+              </div>
+
+              {/* Tiêu đề Serif */}
+              <div className="space-y-1.5">
+                <h3 className="font-serif text-xl sm:text-2xl font-black text-ink leading-snug group-hover:text-red transition-colors">
+                  {art.title}
+                </h3>
+                <p className="text-xs font-bold text-teal line-clamp-1 italic">
+                  {art.vietnameseTitle}
+                </p>
+              </div>
+
+              {/* Đoạn trích (Excerpt) phong cách báo chí */}
+              <p className="text-xs sm:text-sm font-normal text-ink-soft leading-relaxed line-clamp-3 font-serif">
+                &ldquo;{art.excerpt}&rdquo;
+              </p>
+            </div>
+
+            {/* Meta & Nút Đọc Báo */}
+            <div className="pt-4 mt-4 border-t border-ink/15 flex items-center justify-between">
+              <div className="flex items-center gap-2 text-xs font-bold text-ink-soft">
+                <span className="flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5 text-teal" />
+                  {art.readTime}
+                </span>
+                <span>·</span>
+                <span className="flex items-center gap-1">
+                  <FileText className="w-3.5 h-3.5 text-ink-muted" />
+                  {art.wordCount} từ
+                </span>
+              </div>
+
+              <Link
+                href="/reading/practice"
+                className="text-xs font-black text-red hover:underline flex items-center gap-1"
+              >
+                Đọc bài này →
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
