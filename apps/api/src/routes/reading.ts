@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { MOCK_USERS } from './auth.js';
 import { MASTER_READING_ARTICLES } from '../data/reading.js';
 import { readingRepository, userRepository } from '../repositories/index.js';
 import {
@@ -10,32 +9,6 @@ import {
 } from '../../../../packages/domain/src/index.js';
 
 export const readingRouter = Router();
-
-// In-memory reading attempts store
-const MOCK_READING_ATTEMPTS: ReadingAttempt[] = [
-  {
-    id: 'att-r-1',
-    userId: 'demo-user-id-001',
-    articleId: 'a1-morning-coffee',
-    mode: 'standard',
-    startedAt: new Date(Date.now() - 86400000).toISOString(),
-    completedAt: new Date(Date.now() - 86340000).toISOString(),
-    elapsedSeconds: 60,
-    answers: [
-      { questionId: 'q1-1', selectedOption: 'Different morning habits worldwide', isCorrect: true },
-      { questionId: 'q1-2', selectedOption: 'False', isCorrect: true },
-      { questionId: 'q1-3', selectedOption: 'The strength and vitality to be active', isCorrect: true },
-    ],
-    score: 96,
-    wpm: 165,
-    xpAwarded: 35,
-    vocabularyLearned: ['vocab-coffee', 'vocab-morning'],
-    accuracy: 100,
-  },
-];
-
-// In-memory reading progress tracking
-const MOCK_READING_PROGRESS: Record<string, { currentParagraph: number; scrollProgress: number; updatedAt: string }> = {};
 
 /**
  * GET /api/v1/reading/articles
@@ -72,7 +45,6 @@ readingRouter.get('/articles/:id/questions', async (req, res) => {
     return res.status(404).json({ error: 'Không tìm thấy bài đọc.' });
   }
 
-  // Return questions without revealing correct answer prematurely
   const sanitizedQuestions = article.questions.map((q: any) => ({
     id: q.id,
     type: q.type,
@@ -87,7 +59,6 @@ readingRouter.get('/articles/:id/questions', async (req, res) => {
 
 /**
  * POST /api/v1/reading/attempts
- * Server-side Authoritative Evaluation (Anti-cheat & Trust Boundary Protection)
  */
 readingRouter.post('/attempts', async (req, res) => {
   const {
@@ -117,15 +88,24 @@ readingRouter.post('/attempts', async (req, res) => {
   }
 
   // Idempotency check: check if identical submission within 5 seconds for same user
-  const recentDuplicate = MOCK_READING_ATTEMPTS.find(
+  const userPastAttempts = await readingRepository.getUserAttempts(userId, 5);
+  const recentDuplicate = userPastAttempts.find(
     (a) =>
-      a.userId === userId &&
       a.articleId === articleId &&
-      Date.now() - new Date(a.completedAt).getTime() < 5000
+      Date.now() - new Date(a.createdAt).getTime() < 5000
   );
 
+  let user = await userRepository.findById(userId);
+  if (!user) {
+    user = await userRepository.createUser({
+      id: userId,
+      email: `${userId}@lingual.local`,
+      displayName: 'Học Viên Reading',
+      role: 'STUDENT' as any,
+    });
+  }
+
   if (recentDuplicate) {
-    const user = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0];
     return res.status(200).json({
       attempt: recentDuplicate,
       currentStreak: user.currentStreak,
@@ -135,17 +115,54 @@ readingRouter.post('/attempts', async (req, res) => {
     });
   }
 
-  // Authoritative Server Evaluation
   const safeElapsed = Math.max(5, Number(elapsedSeconds) || 30);
   const evaluation = evaluateReadingAttempt(article, answers, safeElapsed, mode);
 
-  const newAttempt: ReadingAttempt = {
-    id: `att-r-${Date.now()}`,
-    userId,
+  const attemptId = `att-r-${Date.now()}`;
+  const nowIso = new Date().toISOString();
+
+  await readingRepository.createAttempt({
+    id: attemptId,
+    userId: user.id,
+    articleId,
+    readingTimeSeconds: safeElapsed,
+    wpm: evaluation.wpm,
+    score: evaluation.score,
+    accuracy: evaluation.accuracy,
+    xpAwarded: evaluation.xpAwarded,
+    answers: evaluation.answersFeedback.map((a) => ({
+      questionId: a.questionId,
+      selectedAnswer: a.selectedOption,
+      isCorrect: a.isCorrect,
+    })),
+    createdAt: nowIso,
+  });
+
+  const streakResult = updateStreakWithTimezone(
+    {
+      currentStreak: user.currentStreak,
+      streakFreezes: user.streakFreezes,
+      lastActiveDate: user.lastActiveDate,
+    },
+    new Date(),
+    user.timezone
+  );
+
+  const updatedUser = await userRepository.updateStreakAndXP(
+    user.id,
+    streakResult.currentStreak,
+    streakResult.streakFreezes,
+    getFormattedDateInTimezone(new Date(), user.timezone),
+    evaluation.xpAwarded
+  );
+
+  const createdAttempt: ReadingAttempt = {
+    id: attemptId,
+    userId: user.id,
     articleId,
     mode,
     startedAt: new Date(Date.now() - safeElapsed * 1000).toISOString(),
-    completedAt: new Date().toISOString(),
+    completedAt: nowIso,
     elapsedSeconds: safeElapsed,
     answers: evaluation.answersFeedback.map((fb) => ({
       questionId: fb.questionId,
@@ -159,47 +176,8 @@ readingRouter.post('/attempts', async (req, res) => {
     accuracy: evaluation.accuracy,
   };
 
-  await readingRepository.createAttempt({
-    id: newAttempt.id,
-    userId,
-    articleId,
-    readingTimeSeconds: safeElapsed,
-    wpm: evaluation.wpm,
-    score: evaluation.score,
-    accuracy: evaluation.accuracy,
-    xpAwarded: evaluation.xpAwarded,
-    answers: newAttempt.answers.map((a) => ({
-      questionId: a.questionId,
-      selectedAnswer: a.selectedOption,
-      isCorrect: a.isCorrect,
-    })),
-    createdAt: newAttempt.completedAt,
-  });
-
-  MOCK_READING_ATTEMPTS.push(newAttempt);
-
-  // Authoritatively update user XP & Streak via UserRepository
-  const user = (await userRepository.findById(userId)) || (await userRepository.findById('demo-user-id-001'));
-  const streakResult = updateStreakWithTimezone(
-    {
-      currentStreak: user?.currentStreak || 0,
-      streakFreezes: user?.streakFreezes || 1,
-      lastActiveDate: user?.lastActiveDate || null,
-    },
-    new Date(),
-    user?.timezone || 'Asia/Ho_Chi_Minh'
-  );
-
-  const updatedUser = await userRepository.updateStreakAndXP(
-    userId,
-    streakResult.currentStreak,
-    streakResult.streakFreezes,
-    getFormattedDateInTimezone(new Date(), user?.timezone || 'Asia/Ho_Chi_Minh'),
-    evaluation.xpAwarded
-  );
-
   return res.status(201).json({
-    attempt: newAttempt,
+    attempt: createdAttempt,
     evaluation,
     feedback: evaluation,
     currentStreak: updatedUser.currentStreak,
@@ -213,34 +191,30 @@ readingRouter.post('/attempts', async (req, res) => {
  */
 readingRouter.get('/history', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const history = MOCK_READING_ATTEMPTS.filter((a) => a.userId === userId).sort(
-    (a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime()
-  );
-
+  const history = await readingRepository.getUserAttempts(userId);
   return res.json({ history, total: history.length });
 });
 
 /**
  * GET /api/v1/reading/stats
  */
-readingRouter.get('/stats', (req, res) => {
+readingRouter.get('/stats', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const userAttempts = MOCK_READING_ATTEMPTS.filter((a) => a.userId === userId);
+  const userAttempts = await readingRepository.getUserAttempts(userId);
 
   const articlesCompleted = new Set(userAttempts.map((a) => a.articleId)).size;
-  const readingMinutes = Math.round(userAttempts.reduce((acc, a) => acc + a.elapsedSeconds, 0) / 60);
+  const readingMinutes = Math.round(userAttempts.reduce((acc, a) => acc + a.readingTimeSeconds, 0) / 60);
   const avgComprehension =
     userAttempts.length > 0
       ? Math.round(userAttempts.reduce((acc, a) => acc + a.score, 0) / userAttempts.length)
       : 0;
-  const wordsLearned = new Set(userAttempts.flatMap((a) => a.vocabularyLearned)).size;
 
   return res.json({
     stats: {
       articlesCompleted: articlesCompleted || 1,
       readingMinutes: readingMinutes || 2,
       avgComprehension: avgComprehension || 96,
-      wordsLearned: wordsLearned || 5,
+      wordsLearned: 5,
       readingStreakDays: 3,
     },
   });

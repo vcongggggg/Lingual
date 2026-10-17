@@ -1,5 +1,4 @@
-import { prisma, isDatabaseConnected } from '../lib/prisma.js';
-import { MOCK_USERS } from '../routes/auth.js';
+import { prisma } from '../lib/prisma.js';
 import { Role } from '../../../../packages/domain/src/index.js';
 
 export interface UserEntity {
@@ -33,39 +32,17 @@ export class UserRepository {
   }
 
   public async findById(id: string): Promise<UserEntity | null> {
-    if (isDatabaseConnected()) {
-      try {
-        const user = await prisma.user.findUnique({ where: { id } });
-        if (user) return user as UserEntity;
-      } catch (err) {
-        console.warn('Postgres findById fallback to memory:', err);
-      }
-    }
-    const memUser = MOCK_USERS.find((u) => u.id === id);
-    if (!memUser) return null;
-    return {
-      ...memUser,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    } as UserEntity;
+    const user = await prisma.user.findUnique({ where: { id } });
+    if (!user) return null;
+    return user as unknown as UserEntity;
   }
 
   public async findByEmail(email: string): Promise<UserEntity | null> {
-    if (isDatabaseConnected()) {
-      try {
-        const user = await prisma.user.findUnique({ where: { email } });
-        if (user) return user as UserEntity;
-      } catch (err) {
-        console.warn('Postgres findByEmail fallback to memory:', err);
-      }
-    }
-    const memUser = MOCK_USERS.find((u) => u.email.toLowerCase() === email.toLowerCase());
-    if (!memUser) return null;
-    return {
-      ...memUser,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    } as UserEntity;
+    const user = await prisma.user.findUnique({
+      where: { email: email.toLowerCase() },
+    });
+    if (!user) return null;
+    return user as unknown as UserEntity;
   }
 
   public async createUser(data: {
@@ -80,72 +57,26 @@ export class UserRepository {
     avatarUrl?: string | null;
     authProvider?: string;
   }): Promise<UserEntity> {
-    const newUser: UserEntity = {
-      id: data.id,
-      email: data.email,
-      passwordHash: data.passwordHash || null,
-      displayName: data.displayName,
-      role: data.role || ('STUDENT' as Role),
-      interfaceLocale: data.interfaceLocale || 'vi',
-      timezone: data.timezone || 'Asia/Ho_Chi_Minh',
-      dailyGoalMinutes: 15,
-      totalXP: 0,
-      currentStreak: 0,
-      streakFreezes: 1,
-      lastActiveDate: null,
-      googleId: data.googleId || null,
-      avatarUrl: data.avatarUrl || null,
-      authProvider: data.authProvider || 'local',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
-
-    if (isDatabaseConnected()) {
-      try {
-        await prisma.user.create({
-          data: {
-            id: newUser.id,
-            email: newUser.email,
-            passwordHash: newUser.passwordHash,
-            displayName: newUser.displayName,
-            role: newUser.role as any,
-            interfaceLocale: newUser.interfaceLocale,
-            timezone: newUser.timezone,
-            dailyGoalMinutes: newUser.dailyGoalMinutes,
-            totalXP: newUser.totalXP,
-            currentStreak: newUser.currentStreak,
-            streakFreezes: newUser.streakFreezes,
-            lastActiveDate: newUser.lastActiveDate,
-            googleId: newUser.googleId,
-            avatarUrl: newUser.avatarUrl,
-            authProvider: newUser.authProvider,
-          },
-        });
-      } catch (err) {
-        console.warn('Failed to persist user in PostgreSQL, falling back to memory:', err);
-      }
-    }
-
-    // Keep memory store synced for local dev mode
-    MOCK_USERS.push({
-      id: newUser.id,
-      email: newUser.email,
-      passwordHash: newUser.passwordHash,
-      displayName: newUser.displayName,
-      role: newUser.role,
-      interfaceLocale: newUser.interfaceLocale,
-      timezone: newUser.timezone,
-      dailyGoalMinutes: newUser.dailyGoalMinutes,
-      totalXP: newUser.totalXP,
-      currentStreak: newUser.currentStreak,
-      streakFreezes: newUser.streakFreezes,
-      lastActiveDate: newUser.lastActiveDate,
-      googleId: newUser.googleId,
-      avatarUrl: newUser.avatarUrl,
-      authProvider: newUser.authProvider,
+    const user = await prisma.user.create({
+      data: {
+        id: data.id,
+        email: data.email.toLowerCase(),
+        passwordHash: data.passwordHash || null,
+        displayName: data.displayName,
+        role: (data.role as any) || 'STUDENT',
+        interfaceLocale: data.interfaceLocale || 'vi',
+        timezone: data.timezone || 'Asia/Ho_Chi_Minh',
+        dailyGoalMinutes: 15,
+        totalXP: 0,
+        currentStreak: 0,
+        streakFreezes: 1,
+        lastActiveDate: null,
+        googleId: data.googleId || null,
+        avatarUrl: data.avatarUrl || null,
+        authProvider: data.authProvider || 'local',
+      },
     });
-
-    return newUser;
+    return user as unknown as UserEntity;
   }
 
   public async updateStreakAndXP(
@@ -155,63 +86,35 @@ export class UserRepository {
     lastActiveDate: string,
     xpIncrement: number
   ): Promise<{ currentStreak: number; totalXP: number }> {
-    if (isDatabaseConnected()) {
-      try {
-        const updated = await prisma.user.update({
-          where: { id: userId },
-          data: {
-            currentStreak,
-            streakFreezes,
-            lastActiveDate,
-            totalXP: { increment: xpIncrement },
-          },
-        });
-        return { currentStreak: updated.currentStreak, totalXP: updated.totalXP };
-      } catch {}
-    }
-
-    const memUser = MOCK_USERS.find((u) => u.id === userId);
-    if (memUser) {
-      memUser.currentStreak = currentStreak;
-      memUser.streakFreezes = streakFreezes;
-      memUser.lastActiveDate = lastActiveDate;
-      memUser.totalXP += xpIncrement;
-      return { currentStreak: memUser.currentStreak, totalXP: memUser.totalXP };
-    }
-
-    return { currentStreak, totalXP: xpIncrement };
+    const updated = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        currentStreak,
+        streakFreezes,
+        lastActiveDate,
+        totalXP: { increment: xpIncrement },
+      },
+    });
+    return { currentStreak: updated.currentStreak, totalXP: updated.totalXP };
   }
 
   public async updateRole(userId: string, newRole: Role): Promise<boolean> {
-    if (isDatabaseConnected()) {
-      try {
-        await prisma.user.update({
-          where: { id: userId },
-          data: { role: newRole as any },
-        });
-      } catch {}
-    }
-
-    const memUser = MOCK_USERS.find((u) => u.id === userId);
-    if (memUser) {
-      memUser.role = newRole;
+    try {
+      await prisma.user.update({
+        where: { id: userId },
+        data: { role: newRole as any },
+      });
       return true;
+    } catch {
+      return false;
     }
-    return false;
   }
 
   public async getAllUsers(): Promise<Omit<UserEntity, 'passwordHash'>[]> {
-    if (isDatabaseConnected()) {
-      try {
-        const users = await prisma.user.findMany();
-        return users.map(({ passwordHash, ...u }) => u as any);
-      } catch {}
-    }
-    return MOCK_USERS.map(({ passwordHash, ...u }) => ({
-      ...u,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }));
+    const users = await prisma.user.findMany({
+      orderBy: { createdAt: 'desc' },
+    });
+    return users.map(({ passwordHash, ...u }) => u as unknown as Omit<UserEntity, 'passwordHash'>);
   }
 }
 

@@ -679,6 +679,7 @@ export async function seedDatabase() {
       update: {
         role: u.role,
         displayName: u.displayName,
+        passwordHash: u.passwordHash,
       },
       create: {
         id: u.id,

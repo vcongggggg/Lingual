@@ -10,8 +10,8 @@ import {
 const prisma = new PrismaClient();
 export const ieltsRouter = Router();
 
-const MOCK_QUESTIONS_FALLBACK = SEED_IELTS_QUESTIONS.map((q, idx) => ({
-  id: `mock-q-${idx + 1}`,
+const FALLBACK_IELTS_QUESTIONS = SEED_IELTS_QUESTIONS.map((q, idx) => ({
+  id: `fallback-q-${idx + 1}`,
   title: q.title,
   skill: q.skill,
   type: q.type,
@@ -93,7 +93,7 @@ ieltsRouter.get('/practice/:skill', async (req: Request, res: Response) => {
     });
 
     if (!questions || questions.length === 0) {
-      questions = MOCK_QUESTIONS_FALLBACK.filter((q) => q.skill === targetSkill);
+      questions = FALLBACK_IELTS_QUESTIONS.filter((q) => q.skill === targetSkill);
     }
 
     return res.json({
@@ -102,7 +102,7 @@ ieltsRouter.get('/practice/:skill', async (req: Request, res: Response) => {
       questions,
     });
   } catch (error: any) {
-    const fallbackList = MOCK_QUESTIONS_FALLBACK.filter((q) => q.skill === targetSkill);
+    const fallbackList = FALLBACK_IELTS_QUESTIONS.filter((q) => q.skill === targetSkill);
     return res.json({
       success: true,
       skill: targetSkill,
@@ -141,19 +141,16 @@ ieltsRouter.get('/practice/question/:id', async (req: Request, res: Response) =>
     }
   } catch (err) {}
 
-  // Fallback to matching mock question
-  const mockQ = MOCK_QUESTIONS_FALLBACK.find((q) => q.id === id) || MOCK_QUESTIONS_FALLBACK[0];
+  // Fallback to matching fallback question
+  const fallbackQ = FALLBACK_IELTS_QUESTIONS.find((q) => q.id === id) || FALLBACK_IELTS_QUESTIONS[0];
   return res.json({
     success: true,
-    question: mockQ,
+    question: fallbackQ,
   });
 });
 
-// In-memory IELTS Mock Test Attempts
-export const MOCK_IELTS_ATTEMPTS: any[] = [];
-
 // Dynamically build complete answer key map from all reading and listening questions
-const MOCK_TEST_ANSWER_KEYS: Record<string, { skill: 'reading' | 'listening'; correctAnswer: string }> = {
+const IELTS_TEST_ANSWER_KEYS: Record<string, { skill: 'reading' | 'listening'; correctAnswer: string }> = {
   // Legacy / quick mock test questions
   mock_q1: { skill: 'reading', correctAnswer: 'False' },
   mock_q2: { skill: 'reading', correctAnswer: 'Economic dislocation from plant closures' },
@@ -168,7 +165,7 @@ for (const q of SEED_IELTS_QUESTIONS) {
     if (Array.isArray(parsed?.questions)) {
       for (const item of parsed.questions) {
         if (item.id && item.correctAnswer) {
-          MOCK_TEST_ANSWER_KEYS[item.id] = {
+          IELTS_TEST_ANSWER_KEYS[item.id] = {
             skill: q.skill === 'listening' ? 'listening' : 'reading',
             correctAnswer: item.correctAnswer,
           };
@@ -186,7 +183,7 @@ ieltsRouter.get('/mock-test/questions', async (req: Request, res: Response) => {
   const readingQuestions: any[] = [];
   const listeningQuestions: any[] = [];
 
-  for (const q of MOCK_QUESTIONS_FALLBACK) {
+  for (const q of FALLBACK_IELTS_QUESTIONS) {
     if (q.skill === 'reading' && q.contentParsed?.questions) {
       readingQuestions.push(
         ...q.contentParsed.questions.map((subQ: any) => ({
@@ -213,8 +210,8 @@ ieltsRouter.get('/mock-test/questions', async (req: Request, res: Response) => {
     readingTotal: readingQuestions.length,
     listeningTotal: listeningQuestions.length,
     questions: [...readingQuestions, ...listeningQuestions],
-    readingPassages: MOCK_QUESTIONS_FALLBACK.filter((q) => q.skill === 'reading'),
-    listeningSections: MOCK_QUESTIONS_FALLBACK.filter((q) => q.skill === 'listening'),
+    readingPassages: FALLBACK_IELTS_QUESTIONS.filter((q) => q.skill === 'reading'),
+    listeningSections: FALLBACK_IELTS_QUESTIONS.filter((q) => q.skill === 'listening'),
   });
 });
 
@@ -231,7 +228,7 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
     let listeningCorrect = 0;
     let listeningTotal = 0;
 
-    Object.entries(MOCK_TEST_ANSWER_KEYS).forEach(([qId, qInfo]) => {
+    Object.entries(IELTS_TEST_ANSWER_KEYS).forEach(([qId, qInfo]) => {
       // Only count questions that were included in the submitted answers object
       if (answers.hasOwnProperty(qId)) {
         const userAns = answers[qId];
@@ -251,7 +248,7 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
 
     // Fallback if no specific keys matched submitted answers
     if (readingTotal === 0 && listeningTotal === 0) {
-      Object.entries(MOCK_TEST_ANSWER_KEYS).forEach(([qId, qInfo]) => {
+      Object.entries(IELTS_TEST_ANSWER_KEYS).forEach(([qId, qInfo]) => {
         const userAns = answers[qId];
         const isCorrect =
           typeof userAns === 'string' &&
@@ -283,7 +280,7 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
     });
 
     const attempt = {
-      id: `mock-attempt-${Date.now()}`,
+      id: `ielts-att-${Date.now()}`,
       userId,
       type: 'academic',
       durationSec,
@@ -299,7 +296,31 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
       createdAt: new Date().toISOString(),
     };
 
-    MOCK_IELTS_ATTEMPTS.push(attempt);
+    try {
+      await prisma.ieltsMockAttempt.create({
+        data: {
+          id: attempt.id,
+          userId,
+          type: attempt.type,
+          durationSec: attempt.durationSec,
+          rawScoreJson: JSON.stringify({
+            reading: readingCorrect,
+            listening: listeningCorrect,
+            readingTotal,
+            listeningTotal,
+          }),
+          bandScoreJson: JSON.stringify({
+            reading: attempt.readingBand,
+            listening: attempt.listeningBand,
+            writing: attempt.writingBand,
+            speaking: attempt.speakingBand,
+            overall: attempt.overallBand,
+          }),
+        },
+      });
+    } catch (err) {
+      console.warn('Could not persist ieltsMockAttempt in DB:', err);
+    }
 
     return res.json({
       success: true,
@@ -388,8 +409,6 @@ import { Roles, rolesGuard, AuthenticatedRequest } from '../middleware/rbac.js';
 import { auditLogInterceptor } from '../middleware/auditLog.js';
 import { canModifyContent } from '../../../../packages/domain/src/index.js';
 
-export const MOCK_IELTS_QUESTIONS_STORE: any[] = [...MOCK_QUESTIONS_FALLBACK];
-
 /**
  * POST /api/v1/ielts/questions
  * Create IELTS question draft
@@ -400,22 +419,42 @@ ieltsRouter.post(
   Roles('CONTENT_EDITOR', 'ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['CONTENT_EDITOR', 'ADMIN', 'SUPER_ADMIN']),
   auditLogInterceptor('ielts_question.create_draft', 'IeltsQuestion'),
-  (req: AuthenticatedRequest, res: Response) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     const { title, skill, type = 'academic', part = 'passage_1', targetBand = 6.0, content } = req.body;
-    const question = {
-      id: `ielts-q-${Date.now()}`,
+    const questionId = `ielts-q-${Date.now()}`;
+    const contentStr = typeof content === 'string' ? content : JSON.stringify(content);
+
+    let question: any = {
+      id: questionId,
       title,
       skill,
       type,
       part,
-      targetBand,
-      content: typeof content === 'string' ? content : JSON.stringify(content),
+      targetBand: Number(targetBand) || 6.0,
+      content: contentStr,
       status: 'draft',
       createdBy: req.user?.id || 'editor-id',
       createdAt: new Date(),
     };
 
-    MOCK_IELTS_QUESTIONS_STORE.push(question);
+    try {
+      question = await prisma.ieltsQuestion.create({
+        data: {
+          id: questionId,
+          title,
+          skill,
+          type,
+          part,
+          targetBand: Number(targetBand) || 6.0,
+          content: contentStr,
+          status: 'draft',
+          createdBy: req.user?.id || 'editor-id',
+        },
+      });
+    } catch (err) {
+      console.warn('Could not persist ieltsQuestion to DB:', err);
+    }
+
     req.auditMeta = {
       action: 'ielts_question.create_draft',
       resourceType: 'IeltsQuestion',
@@ -437,15 +476,15 @@ ieltsRouter.put(
   Roles('CONTENT_EDITOR', 'CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['CONTENT_EDITOR', 'CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN']),
   auditLogInterceptor('ielts_question.update', 'IeltsQuestion'),
-  (req: AuthenticatedRequest, res: Response) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     const { questionId } = req.params;
-    const question = MOCK_IELTS_QUESTIONS_STORE.find((q) => q.id === questionId);
+    let question = await prisma.ieltsQuestion.findUnique({ where: { id: questionId } });
 
     if (!question) {
       return res.status(404).json({ error: 'Không tìm thấy câu hỏi IELTS' });
     }
 
-    if (!canModifyContent(req.user!, question)) {
+    if (!canModifyContent(req.user!, question as any)) {
       return res.status(403).json({
         error: 'Truy cập bị từ chối: Ban biên tập (CONTENT_EDITOR) chỉ được phép chỉnh sửa câu hỏi do chính mình tạo',
       });
@@ -459,8 +498,12 @@ ieltsRouter.put(
       afterState: { ...question, ...req.body },
     };
 
-    Object.assign(question, req.body);
-    return res.json({ message: 'Cập nhật câu hỏi IELTS thành công', question });
+    const updated = await prisma.ieltsQuestion.update({
+      where: { id: questionId },
+      data: req.body,
+    });
+
+    return res.json({ message: 'Cập nhật câu hỏi IELTS thành công', question: updated });
   }
 );
 
@@ -474,9 +517,9 @@ ieltsRouter.post(
   Roles('CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN']),
   auditLogInterceptor('ielts_question.publish', 'IeltsQuestion'),
-  (req: AuthenticatedRequest, res: Response) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     const { questionId } = req.params;
-    const question = MOCK_IELTS_QUESTIONS_STORE.find((q) => q.id === questionId);
+    const question = await prisma.ieltsQuestion.findUnique({ where: { id: questionId } });
 
     if (!question) {
       return res.status(404).json({ error: 'Không tìm thấy câu hỏi IELTS' });
@@ -490,8 +533,12 @@ ieltsRouter.post(
       afterState: { status: 'published' },
     };
 
-    question.status = 'published';
-    return res.json({ message: 'Xuất bản câu hỏi IELTS thành công', question });
+    const updated = await prisma.ieltsQuestion.update({
+      where: { id: questionId },
+      data: { status: 'published' },
+    });
+
+    return res.json({ message: 'Xuất bản câu hỏi IELTS thành công', question: updated });
   }
 );
 
@@ -505,20 +552,21 @@ ieltsRouter.delete(
   Roles('ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['ADMIN', 'SUPER_ADMIN']),
   auditLogInterceptor('ielts_question.delete', 'IeltsQuestion'),
-  (req: AuthenticatedRequest, res: Response) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     const { questionId } = req.params;
-    const index = MOCK_IELTS_QUESTIONS_STORE.findIndex((q) => q.id === questionId);
+    const question = await prisma.ieltsQuestion.findUnique({ where: { id: questionId } });
 
-    if (index === -1) {
+    if (!question) {
       return res.status(404).json({ error: 'Không tìm thấy câu hỏi IELTS' });
     }
 
-    const [deleted] = MOCK_IELTS_QUESTIONS_STORE.splice(index, 1);
+    await prisma.ieltsQuestion.delete({ where: { id: questionId } });
+
     req.auditMeta = {
       action: 'ielts_question.delete',
       resourceType: 'IeltsQuestion',
       resourceId: questionId,
-      beforeState: deleted,
+      beforeState: question,
     };
 
     return res.json({ message: 'Xóa câu hỏi IELTS thành công', questionId });

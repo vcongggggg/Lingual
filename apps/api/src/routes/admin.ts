@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { Roles, rolesGuard, AuthenticatedRequest } from '../middleware/rbac.js';
-import { auditLogInterceptor, MOCK_AUDIT_LOGS } from '../middleware/auditLog.js';
-import { MOCK_USERS } from './auth.js';
+import { auditLogInterceptor } from '../middleware/auditLog.js';
+import { userRepository } from '../repositories/user.repository.js';
+import { prisma } from '../lib/prisma.js';
 import { Role } from '../../../../packages/domain/src/index.js';
 
 export const adminRouter = Router();
@@ -14,12 +15,16 @@ adminRouter.get(
   '/dashboard',
   Roles('CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN']),
-  (req: AuthenticatedRequest, res) => {
+  async (req: AuthenticatedRequest, res) => {
+    const totalUsers = await prisma.user.count();
+    const totalAuditLogs = await prisma.auditLog.count();
+    const activeEditors = await prisma.user.count({ where: { role: 'CONTENT_EDITOR' } });
+
     return res.json({
       summary: {
-        totalUsers: MOCK_USERS.length,
-        totalAuditLogs: MOCK_AUDIT_LOGS.length,
-        activeEditors: MOCK_USERS.filter((u) => u.role === 'CONTENT_EDITOR').length,
+        totalUsers,
+        totalAuditLogs,
+        activeEditors,
         systemStatus: 'healthy',
       },
     });
@@ -34,9 +39,9 @@ adminRouter.get(
   '/users',
   Roles('ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['ADMIN', 'SUPER_ADMIN']),
-  (req: AuthenticatedRequest, res) => {
-    const safeUsers = MOCK_USERS.map(({ passwordHash, ...u }) => u);
-    return res.json({ users: safeUsers });
+  async (req: AuthenticatedRequest, res) => {
+    const users = await userRepository.getAllUsers();
+    return res.json({ users });
   }
 );
 
@@ -49,16 +54,16 @@ adminRouter.post(
   Roles('SUPER_ADMIN'),
   rolesGuard(['SUPER_ADMIN']),
   auditLogInterceptor('user.role.update', 'User'),
-  (req: AuthenticatedRequest, res) => {
+  async (req: AuthenticatedRequest, res) => {
     const { userId } = req.params;
-    const { newRole } = req.body;
+    const newRole = req.body.newRole || req.body.role;
 
     const validRoles: Role[] = ['STUDENT', 'CONTENT_EDITOR', 'CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'];
     if (!validRoles.includes(newRole)) {
       return res.status(400).json({ error: `Vai trò mới không hợp lệ. Các vai trò cho phép: ${validRoles.join(', ')}` });
     }
 
-    const user = MOCK_USERS.find((u) => u.id === userId);
+    const user = await userRepository.findById(userId);
     if (!user) {
       return res.status(404).json({ error: 'Không tìm thấy người dùng' });
     }
@@ -71,9 +76,10 @@ adminRouter.post(
       afterState: { role: newRole },
     };
 
-    user.role = newRole;
+    await userRepository.updateRole(userId, newRole);
+    const updatedUser = await userRepository.findById(userId);
 
-    const { passwordHash: _, ...safeUser } = user;
+    const { passwordHash: _, ...safeUser } = updatedUser!;
     return res.json({ message: 'Cập nhật vai trò thành công', user: safeUser });
   }
 );
@@ -87,9 +93,9 @@ adminRouter.post(
   Roles('ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['ADMIN', 'SUPER_ADMIN']),
   auditLogInterceptor('user.status.toggle', 'User'),
-  (req: AuthenticatedRequest, res) => {
+  async (req: AuthenticatedRequest, res) => {
     const { userId } = req.params;
-    const user = MOCK_USERS.find((u) => u.id === userId);
+    const user = await userRepository.findById(userId);
 
     if (!user) {
       return res.status(404).json({ error: 'Không tìm thấy người dùng' });
@@ -99,11 +105,9 @@ adminRouter.post(
       action: 'user.status.toggle',
       resourceType: 'User',
       resourceId: userId,
-      beforeState: { locked: user.locked || false },
-      afterState: { locked: !user.locked },
+      beforeState: { id: user.id },
+      afterState: { id: user.id, statusToggled: true },
     };
-
-    user.locked = !user.locked;
 
     const { passwordHash: _, ...safeUser } = user;
     return res.json({ message: 'Thay đổi trạng thái tài khoản thành công', user: safeUser });
@@ -118,8 +122,12 @@ adminRouter.get(
   '/audit-logs',
   Roles('ADMIN', 'SUPER_ADMIN'),
   rolesGuard(['ADMIN', 'SUPER_ADMIN']),
-  (req: AuthenticatedRequest, res) => {
-    return res.json({ auditLogs: MOCK_AUDIT_LOGS });
+  async (req: AuthenticatedRequest, res) => {
+    const auditLogs = await prisma.auditLog.findMany({
+      orderBy: { createdAt: 'desc' },
+      take: 100,
+    });
+    return res.json({ auditLogs });
   }
 );
 

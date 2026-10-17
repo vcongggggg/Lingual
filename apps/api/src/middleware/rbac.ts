@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { Role } from '../../../../packages/domain/src/index.js';
-import { MOCK_USERS } from '../routes/auth.js';
+import { userRepository } from '../repositories/user.repository.js';
 
 export interface AuthenticatedRequest extends Request {
   user?: {
@@ -20,7 +20,11 @@ export interface AuthenticatedRequest extends Request {
   };
 }
 
-export const JWT_SECRET = process.env.JWT_SECRET || 'linguaflow_super_secret_jwt_key_2026';
+const envJwtSecret = process.env.JWT_SECRET;
+if (!envJwtSecret) {
+  throw new Error('FATAL: JWT_SECRET environment variable is missing.');
+}
+export const JWT_SECRET = envJwtSecret;
 
 /**
  * Decorator and Middleware helper for attaching required roles metadata to routes
@@ -37,12 +41,12 @@ export function Roles(...roles: Role[]) {
 /**
  * RolesGuard Middleware implementing strict DEFAULT-DENY principle.
  * - Parses and verifies JWT token from Authorization header.
- * - Obtains user role from verified JWT or DB.
+ * - Obtains user role from PostgreSQL DB via userRepository.
  * - Default-Deny: If requiredRoles is undefined or empty, returns 403 Forbidden.
  * - Asserts requiredRoles.includes(user.role), else 403 Forbidden.
  */
 export function rolesGuard(requiredRoles?: Role[]) {
-  return (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  return async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({ error: 'Truy cập bị từ chối: Chưa cung cấp Token đăng nhập' });
@@ -53,10 +57,13 @@ export function rolesGuard(requiredRoles?: Role[]) {
       const payload = jwt.verify(token, JWT_SECRET) as any;
       const userId = payload.userId || payload.sub;
 
-      // Always read latest role from DB / memory user store
-      const dbUser = MOCK_USERS.find((u) => u.id === userId);
-      const role: Role = dbUser ? (dbUser.role as Role) : (payload.role as Role);
+      // Authoritatively read latest role directly from PostgreSQL
+      const dbUser = await userRepository.findById(userId);
+      if (!dbUser) {
+        return res.status(401).json({ error: 'Truy cập bị từ chối: Người dùng không tồn tại' });
+      }
 
+      const role: Role = dbUser.role;
       if (!role) {
         return res.status(403).json({ error: 'Truy cập bị từ chối: Không tìm thấy Role hợp lệ' });
       }
@@ -64,7 +71,7 @@ export function rolesGuard(requiredRoles?: Role[]) {
       req.user = {
         id: userId,
         role,
-        email: dbUser?.email,
+        email: dbUser.email,
       };
 
       // DEFAULT DENY PRINCIPLE: If no @Roles metadata or empty requiredRoles -> DENY
@@ -82,7 +89,10 @@ export function rolesGuard(requiredRoles?: Role[]) {
 
       return next();
     } catch (err: any) {
-      return res.status(401).json({ error: 'Token không hợp lệ hoặc đã hết hạn' });
+      if (err.name === 'TokenExpiredError') {
+        return res.status(401).json({ error: 'Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại' });
+      }
+      return res.status(401).json({ error: 'Token xác thực không hợp lệ' });
     }
   };
 }

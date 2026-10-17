@@ -3,39 +3,11 @@ import { Router } from 'express';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import { RegisterSchema, LoginSchema } from '../../../../packages/contracts/src/index.js';
-import { getFormattedDateInTimezone } from '../../../../packages/domain/src/index.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { JWT_SECRET } from '../middleware/rbac.js';
+import { authLimiter } from '../middleware/rateLimiter.js';
 
 export const authRouter = Router();
-
-const JWT_SECRET = process.env.JWT_SECRET || 'linguaflow_super_secret_jwt_key_2026';
-
-export const MOCK_USERS: any[] = [];
-export const MOCK_ATTEMPTS: any[] = [];
-export const MOCK_WORD_STATES: any[] = [];
-export const MOCK_LESSON_PROGRESS: any[] = [];
-export const MOCK_GAME_SESSIONS: any[] = [];
-
-(async () => {
-  const hashedPassword = await argon2.hash('123456');
-  const seedUser = {
-    id: 'demo-user-id-001',
-    email: 'demo@linguaflow.com',
-    passwordHash: hashedPassword,
-    displayName: 'Học Viên LinguaFlow',
-    role: 'LEARNER',
-    interfaceLocale: 'vi',
-    timezone: 'Asia/Ho_Chi_Minh',
-    dailyGoalMinutes: 15,
-    totalXP: 150,
-    currentStreak: 3,
-    streakFreezes: 1,
-    lastActiveDate: getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh'),
-  };
-  MOCK_USERS.push(seedUser);
-})();
-
-import { authLimiter } from '../middleware/rateLimiter.js';
 
 export const FAILED_LOGIN_ATTEMPTS: Record<string, { count: number; lockedUntil?: number }> = {};
 
@@ -47,8 +19,9 @@ authRouter.post('/register', authLimiter, async (req, res) => {
     }
 
     const { email, password, displayName, interfaceLocale, timezone } = parseResult.data;
+    const normalizedEmail = email.toLowerCase();
 
-    const existing = await userRepository.findByEmail(email);
+    const existing = await userRepository.findByEmail(normalizedEmail);
     if (existing) {
       return res.status(400).json({ error: 'Email này đã được sử dụng.' });
     }
@@ -56,7 +29,7 @@ authRouter.post('/register', authLimiter, async (req, res) => {
     const passwordHash = await argon2.hash(password);
     const newUser = await userRepository.createUser({
       id: `user-${Date.now()}`,
-      email,
+      email: normalizedEmail,
       passwordHash,
       displayName,
       role: 'STUDENT' as any,
@@ -88,7 +61,8 @@ authRouter.post('/login', authLimiter, async (req, res) => {
     }
 
     const { email, password } = parseResult.data;
-    const attemptRecord = FAILED_LOGIN_ATTEMPTS[email] || { count: 0 };
+    const normalizedEmail = email.toLowerCase();
+    const attemptRecord = FAILED_LOGIN_ATTEMPTS[normalizedEmail] || { count: 0 };
 
     // OWASP A07: Account Lockout Check
     if (attemptRecord.lockedUntil && Date.now() < attemptRecord.lockedUntil) {
@@ -98,7 +72,7 @@ authRouter.post('/login', authLimiter, async (req, res) => {
       });
     }
 
-    const user = await userRepository.findByEmail(email);
+    const user = await userRepository.findByEmail(normalizedEmail);
     if (!user || !user.passwordHash) {
       return res.status(401).json({ error: 'Email hoặc mật khẩu không chính xác' });
     }
@@ -109,7 +83,7 @@ authRouter.post('/login', authLimiter, async (req, res) => {
       if (attemptRecord.count >= 5) {
         attemptRecord.lockedUntil = Date.now() + 15 * 60 * 1000; // Khóa 15 phút
       }
-      FAILED_LOGIN_ATTEMPTS[email] = attemptRecord;
+      FAILED_LOGIN_ATTEMPTS[normalizedEmail] = attemptRecord;
 
       return res.status(401).json({
         error: `Email hoặc mật khẩu không chính xác. (Lần thử ${attemptRecord.count}/5)`,
@@ -117,7 +91,7 @@ authRouter.post('/login', authLimiter, async (req, res) => {
     }
 
     // Login successful: reset failed attempt record
-    delete FAILED_LOGIN_ATTEMPTS[email];
+    delete FAILED_LOGIN_ATTEMPTS[normalizedEmail];
 
     const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '15m' });
 
@@ -204,7 +178,6 @@ authRouter.get('/google/callback', async (req, res) => {
   }
 
   try {
-    // Exchange authorization code for tokens
     const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -223,7 +196,6 @@ authRouter.get('/google/callback', async (req, res) => {
       return res.redirect(`${frontendUrl}/${locale}/login?error=TokenExchangeFailed`);
     }
 
-    // Fetch user profile from Google
     const userinfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
       headers: { Authorization: `Bearer ${tokenData.access_token}` },
     });
@@ -233,7 +205,6 @@ authRouter.get('/google/callback', async (req, res) => {
       return res.redirect(`${frontendUrl}/${locale}/login?error=NoEmailFromGoogle`);
     }
 
-    // Find or create user
     let user = await userRepository.findByEmail(googleProfile.email);
 
     if (!user) {
@@ -280,8 +251,8 @@ authRouter.get('/google/callback', async (req, res) => {
   }
 });
 
-// 3. Mock Google Login / Simulator (For local development & instant testing)
-authRouter.post('/google/mock-login', async (req, res) => {
+// 3. Dev Google Login / Simulator
+authRouter.post('/google/dev-login', async (req, res) => {
   try {
     const { email, name, avatarUrl, googleId } = req.body;
     if (!email) {
@@ -293,7 +264,7 @@ authRouter.post('/google/mock-login', async (req, res) => {
 
     if (!user) {
       user = await userRepository.createUser({
-        id: `google-mock-${Date.now()}`,
+        id: `google-dev-${Date.now()}`,
         email: normalizedEmail,
         googleId: googleId || `gid-${Date.now()}`,
         avatarUrl:
@@ -323,7 +294,7 @@ authRouter.post('/google/mock-login', async (req, res) => {
   }
 });
 
-// 4. Verify Google ID Token (From Google Identity Services / One-Tap SDK)
+// 4. Verify Google ID Token
 authRouter.post('/google/verify-token', async (req, res) => {
   try {
     const { idToken } = req.body;
@@ -331,7 +302,6 @@ authRouter.post('/google/verify-token', async (req, res) => {
       return res.status(400).json({ error: 'ID Token là bắt buộc' });
     }
 
-    // Verify token with Google
     const googleRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`);
     const tokenInfo = (await googleRes.json()) as any;
 

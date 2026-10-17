@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { communityRepository } from '../repositories/index.js';
 import {
   SocialProfile,
   LearningActivity,
@@ -36,7 +37,7 @@ export const communityRouter = Router();
 // MASTER SEED DATA & IN-MEMORY REPOSITORY
 // ============================================================================
 
-export const MOCK_PROFILES: SocialProfile[] = [
+export const SEED_PROFILES: SocialProfile[] = [
   {
     userId: 'demo-user-id-001',
     username: 'minhtran',
@@ -143,7 +144,7 @@ export const MOCK_PROFILES: SocialProfile[] = [
   },
 ];
 
-export const MOCK_FRIENDSHIPS: Friendship[] = [
+export const COMMUNITY_FRIENDSHIPS: Friendship[] = [
   {
     id: 'f-1',
     requesterId: 'demo-user-id-001',
@@ -170,13 +171,13 @@ export const MOCK_FRIENDSHIPS: Friendship[] = [
   },
 ];
 
-export const MOCK_FOLLOWS: Follow[] = [
+export const COMMUNITY_FOLLOWS: Follow[] = [
   { followerId: 'demo-user-id-001', followingId: 'user-alice-002', createdAt: '2026-02-10T08:00:00.000Z' },
   { followerId: 'demo-user-id-001', followingId: 'user-kenji-003', createdAt: '2026-02-12T08:00:00.000Z' },
   { followerId: 'user-alice-002', followingId: 'demo-user-id-001', createdAt: '2026-02-11T08:00:00.000Z' },
 ];
 
-export const MOCK_ACTIVITIES: LearningActivity[] = [
+export const COMMUNITY_ACTIVITIES: LearningActivity[] = [
   {
     id: 'act-001',
     userId: 'user-alice-002',
@@ -222,7 +223,7 @@ export const MOCK_ACTIVITIES: LearningActivity[] = [
   },
 ];
 
-export const MOCK_STUDY_NOTES: StudyNote[] = [
+export const COMMUNITY_STUDY_NOTES: StudyNote[] = [
   {
     id: 'note-001',
     userId: 'user-alice-002',
@@ -255,7 +256,7 @@ export const MOCK_STUDY_NOTES: StudyNote[] = [
   },
 ];
 
-export const MOCK_NOTE_COMMENTS: StudyNoteComment[] = [
+export const COMMUNITY_NOTE_COMMENTS: StudyNoteComment[] = [
   {
     id: 'c-001',
     noteId: 'note-001',
@@ -276,12 +277,12 @@ export const MOCK_NOTE_COMMENTS: StudyNoteComment[] = [
   },
 ];
 
-export const MOCK_NOTE_REACTIONS: StudyNoteReaction[] = [
+export const COMMUNITY_NOTE_REACTIONS: StudyNoteReaction[] = [
   { noteId: 'note-001', userId: 'demo-user-id-001', reactionType: 'helpful', createdAt: '2026-02-12T11:00:00.000Z' },
   { noteId: 'note-002', userId: 'user-alice-002', reactionType: 'inspiring', createdAt: '2026-02-13T15:00:00.000Z' },
 ];
 
-export const MOCK_STUDY_GROUPS: StudyGroup[] = [
+export const SEED_STUDY_GROUPS: StudyGroup[] = [
   {
     id: 'group-toeic-900',
     name: 'Chiến Binh TOEIC 900+ ETS',
@@ -312,7 +313,7 @@ export const MOCK_STUDY_GROUPS: StudyGroup[] = [
   },
 ];
 
-export const MOCK_GROUP_MEMBERS: StudyGroupMember[] = [
+export const COMMUNITY_GROUP_MEMBERS: StudyGroupMember[] = [
   {
     groupId: 'group-toeic-900',
     userId: 'user-alice-002',
@@ -342,7 +343,7 @@ export const MOCK_GROUP_MEMBERS: StudyGroupMember[] = [
   },
 ];
 
-export const MOCK_GROUP_POSTS: GroupPost[] = [
+export const COMMUNITY_GROUP_POSTS: GroupPost[] = [
   {
     id: 'post-001',
     groupId: 'group-toeic-900',
@@ -428,7 +429,7 @@ export const MASTER_ACHIEVEMENTS: Achievement[] = [
   },
 ];
 
-export const MOCK_NOTIFICATIONS: CommunityNotification[] = [
+export const COMMUNITY_NOTIFICATIONS: CommunityNotification[] = [
   {
     id: 'notif-1',
     userId: 'demo-user-id-001',
@@ -463,7 +464,7 @@ export const MOCK_NOTIFICATIONS: CommunityNotification[] = [
  * Retrieve public social profile
  */
 communityRouter.get('/profile/:userId', (req, res) => {
-  const profile = MOCK_PROFILES.find((p) => p.userId === req.params.userId);
+  const profile = SEED_PROFILES.find((p) => p.userId === req.params.userId);
   if (!profile) {
     return res.status(404).json({ error: 'Không tìm thấy hồ sơ người dùng.' });
   }
@@ -494,15 +495,15 @@ communityRouter.get('/friends', (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
 
   // Get accepted friends
-  const friendIds = MOCK_FRIENDSHIPS.filter(
+  const friendIds = COMMUNITY_FRIENDSHIPS.filter(
     (f) => (f.requesterId === userId || f.addresseeId === userId) && f.status === 'accepted'
   ).map((f) => (f.requesterId === userId ? f.addresseeId : f.requesterId));
 
-  const friends = MOCK_PROFILES.filter((p) => friendIds.includes(p.userId));
+  const friends = SEED_PROFILES.filter((p) => friendIds.includes(p.userId));
 
   // Get following profiles
-  const followingIds = MOCK_FOLLOWS.filter((f) => f.followerId === userId).map((f) => f.followingId);
-  const followings = MOCK_PROFILES.filter((p) => followingIds.includes(p.userId));
+  const followingIds = COMMUNITY_FOLLOWS.filter((f) => f.followerId === userId).map((f) => f.followingId);
+  const followings = SEED_PROFILES.filter((p) => followingIds.includes(p.userId));
 
   return res.json({ friends, followings, totalFriends: friends.length, totalFollowing: followings.length });
 });
@@ -513,12 +514,12 @@ communityRouter.get('/friends', (req, res) => {
  */
 communityRouter.get('/friend-requests', (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const pendingFriendships = MOCK_FRIENDSHIPS.filter(
+  const pendingFriendships = COMMUNITY_FRIENDSHIPS.filter(
     (f) => f.addresseeId === userId && f.status === 'pending'
   );
 
   const requests = pendingFriendships.map((f) => {
-    const requester = MOCK_PROFILES.find((p) => p.userId === f.requesterId);
+    const requester = SEED_PROFILES.find((p) => p.userId === f.requesterId);
     return {
       friendshipId: f.id,
       requesterId: f.requesterId,
@@ -543,7 +544,7 @@ communityRouter.post('/friends/:targetUserId', (req, res) => {
     return res.status(400).json({ error: 'Không thể tự kết bạn với chính mình.' });
   }
 
-  const existing = MOCK_FRIENDSHIPS.find(
+  const existing = COMMUNITY_FRIENDSHIPS.find(
     (f) =>
       (f.requesterId === currentUserId && f.addresseeId === targetId) ||
       (f.requesterId === targetId && f.addresseeId === currentUserId)
@@ -561,7 +562,7 @@ communityRouter.post('/friends/:targetUserId', (req, res) => {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  MOCK_FRIENDSHIPS.push(newFriendship);
+  COMMUNITY_FRIENDSHIPS.push(newFriendship);
 
   return res.status(201).json({ success: true, friendship: newFriendship, message: 'Đã gửi lời mời kết bạn.' });
 });
@@ -574,7 +575,7 @@ communityRouter.post('/friends/:targetUserId/accept', (req, res) => {
   const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
   const targetId = req.params.targetUserId;
 
-  const friendship = MOCK_FRIENDSHIPS.find(
+  const friendship = COMMUNITY_FRIENDSHIPS.find(
     (f) => f.requesterId === targetId && f.addresseeId === currentUserId && f.status === 'pending'
   );
 
@@ -596,12 +597,12 @@ communityRouter.post('/friends/:targetUserId/reject', (req, res) => {
   const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
   const targetId = req.params.targetUserId;
 
-  const idx = MOCK_FRIENDSHIPS.findIndex(
+  const idx = COMMUNITY_FRIENDSHIPS.findIndex(
     (f) => f.requesterId === targetId && f.addresseeId === currentUserId && f.status === 'pending'
   );
 
   if (idx >= 0) {
-    MOCK_FRIENDSHIPS.splice(idx, 1);
+    COMMUNITY_FRIENDSHIPS.splice(idx, 1);
   }
 
   return res.json({ success: true, message: 'Đã từ chối lời mời kết bạn.' });
@@ -619,12 +620,12 @@ communityRouter.post('/users/:targetUserId/follow', (req, res) => {
     return res.status(400).json({ error: 'Không thể tự theo dõi chính mình.' });
   }
 
-  const existing = MOCK_FOLLOWS.find((f) => f.followerId === currentUserId && f.followingId === targetId);
+  const existing = COMMUNITY_FOLLOWS.find((f) => f.followerId === currentUserId && f.followingId === targetId);
   if (existing) {
     return res.json({ success: true, message: 'Đang theo dõi người dùng này.' });
   }
 
-  MOCK_FOLLOWS.push({ followerId: currentUserId, followingId: targetId, createdAt: new Date().toISOString() });
+  COMMUNITY_FOLLOWS.push({ followerId: currentUserId, followingId: targetId, createdAt: new Date().toISOString() });
   return res.status(201).json({ success: true, message: 'Đã theo dõi người dùng thành công.' });
 });
 
@@ -636,9 +637,9 @@ communityRouter.delete('/users/:targetUserId/follow', (req, res) => {
   const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
   const targetId = req.params.targetUserId;
 
-  const idx = MOCK_FOLLOWS.findIndex((f) => f.followerId === currentUserId && f.followingId === targetId);
+  const idx = COMMUNITY_FOLLOWS.findIndex((f) => f.followerId === currentUserId && f.followingId === targetId);
   if (idx >= 0) {
-    MOCK_FOLLOWS.splice(idx, 1);
+    COMMUNITY_FOLLOWS.splice(idx, 1);
   }
   return res.json({ success: true, message: 'Đã hủy theo dõi.' });
 });
@@ -651,8 +652,8 @@ communityRouter.get('/feed', (req, res) => {
   const viewerId = (req.query.viewerId as string) || 'demo-user-id-001';
 
   // Filter activities visible to viewer
-  const visible = MOCK_ACTIVITIES.filter((act) => {
-    const friendship = MOCK_FRIENDSHIPS.find(
+  const visible = COMMUNITY_ACTIVITIES.filter((act) => {
+    const friendship = COMMUNITY_FRIENDSHIPS.find(
       (f) =>
         ((f.requesterId === viewerId && f.addresseeId === act.userId) ||
           (f.requesterId === act.userId && f.addresseeId === viewerId)) &&
@@ -671,9 +672,32 @@ communityRouter.get('/feed', (req, res) => {
  * GET /api/v1/community/notes
  * List study notes
  */
-communityRouter.get('/notes', (req, res) => {
+communityRouter.get('/notes', async (req, res) => {
   const { tag, q } = req.query;
-  let notes = [...MOCK_STUDY_NOTES];
+  const dbNotes = await communityRepository.getNotes(50);
+  let notes = [...COMMUNITY_STUDY_NOTES];
+
+  if (dbNotes && dbNotes.length > 0) {
+    for (const dn of dbNotes) {
+      if (!notes.some((n) => n.id === dn.id)) {
+        notes.unshift({
+          id: dn.id,
+          userId: dn.authorId,
+          authorName: dn.authorName,
+          authorAvatar: dn.authorAvatar,
+          title: dn.title,
+          content: dn.content,
+          tags: dn.tags,
+          visibility: dn.isPublic ? 'public' : 'private',
+          reactionCount: dn.likesCount,
+          reactions: { helpful: dn.likesCount, inspiring: 0, useful: 0 },
+          commentCount: dn.commentsCount,
+          createdAt: dn.createdAt,
+          updatedAt: dn.createdAt,
+        });
+      }
+    }
+  }
 
   if (tag) {
     notes = notes.filter((n) => n.tags.includes(String(tag).toLowerCase()));
@@ -692,12 +716,12 @@ communityRouter.get('/notes', (req, res) => {
  * Get single study note with comments
  */
 communityRouter.get('/notes/:noteId', (req, res) => {
-  const note = MOCK_STUDY_NOTES.find((n) => n.id === req.params.noteId);
+  const note = COMMUNITY_STUDY_NOTES.find((n) => n.id === req.params.noteId);
   if (!note) {
     return res.status(404).json({ error: 'Không tìm thấy ghi chú học tập.' });
   }
 
-  const comments = MOCK_NOTE_COMMENTS.filter((c) => c.noteId === note.id);
+  const comments = COMMUNITY_NOTE_COMMENTS.filter((c) => c.noteId === note.id);
   return res.json({ note, comments });
 });
 
@@ -705,7 +729,7 @@ communityRouter.get('/notes/:noteId', (req, res) => {
  * POST /api/v1/community/notes
  * Create study note
  */
-communityRouter.post('/notes', (req, res) => {
+communityRouter.post('/notes', async (req, res) => {
   const { title, content, tags = [], visibility = 'public', userId = 'demo-user-id-001' } = req.body;
 
   const validation = validateStudyNoteContent(title, content, tags);
@@ -714,7 +738,7 @@ communityRouter.post('/notes', (req, res) => {
   }
 
   const normalized = normalizeStudyNote(title, content, tags, visibility);
-  const user = MOCK_PROFILES.find((p) => p.userId === userId) || MOCK_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
 
   const newNote: StudyNote = {
     id: `note-${Date.now()}`,
@@ -732,13 +756,30 @@ communityRouter.post('/notes', (req, res) => {
     updatedAt: new Date().toISOString(),
   };
 
-  MOCK_STUDY_NOTES.unshift(newNote);
+  COMMUNITY_STUDY_NOTES.unshift(newNote);
+
+  await communityRepository.createNote({
+    id: newNote.id,
+    authorId: newNote.userId,
+    authorName: newNote.authorName,
+    authorAvatar: newNote.authorAvatar || '',
+    title: newNote.title,
+    content: newNote.content,
+    tags: newNote.tags,
+    likesCount: 0,
+    likedBy: [],
+    reactions: {},
+    commentsCount: 0,
+    comments: [],
+    isPublic: newNote.visibility === 'public',
+    createdAt: newNote.createdAt,
+  });
 
   // Authoritatively broadcast activity & award XP
   const xpEarned = calculateSocialXP('NOTE_CREATED');
   user.totalXP += xpEarned;
 
-  MOCK_ACTIVITIES.unshift(
+  COMMUNITY_ACTIVITIES.unshift(
     createLearningActivity(user.userId, user.displayName, 'note_created', newNote.title, {}, normalized.visibility, user.avatarUrl)
   );
 
@@ -751,30 +792,30 @@ communityRouter.post('/notes', (req, res) => {
  */
 communityRouter.post('/notes/:noteId/reactions', (req, res) => {
   const { reactionType = 'helpful', userId = 'demo-user-id-001' } = req.body;
-  const note = MOCK_STUDY_NOTES.find((n) => n.id === req.params.noteId);
+  const note = COMMUNITY_STUDY_NOTES.find((n) => n.id === req.params.noteId);
 
   if (!note) {
     return res.status(404).json({ error: 'Không tìm thấy ghi chú.' });
   }
 
-  const existingIdx = MOCK_NOTE_REACTIONS.findIndex((r) => r.noteId === note.id && r.userId === userId);
+  const existingIdx = COMMUNITY_NOTE_REACTIONS.findIndex((r) => r.noteId === note.id && r.userId === userId);
 
   if (existingIdx >= 0) {
-    const prevType = MOCK_NOTE_REACTIONS[existingIdx].reactionType;
+    const prevType = COMMUNITY_NOTE_REACTIONS[existingIdx].reactionType;
     if (prevType === reactionType) {
-      MOCK_NOTE_REACTIONS.splice(existingIdx, 1);
+      COMMUNITY_NOTE_REACTIONS.splice(existingIdx, 1);
       note.reactions[prevType] = Math.max(0, (note.reactions[prevType] || 1) - 1);
       note.reactionCount = Math.max(0, note.reactionCount - 1);
       return res.json({ success: true, activeReaction: null, reactions: note.reactions, reactionCount: note.reactionCount });
     } else {
-      MOCK_NOTE_REACTIONS[existingIdx].reactionType = reactionType;
+      COMMUNITY_NOTE_REACTIONS[existingIdx].reactionType = reactionType;
       note.reactions[prevType] = Math.max(0, (note.reactions[prevType] || 1) - 1);
       note.reactions[reactionType] = (note.reactions[reactionType] || 0) + 1;
       return res.json({ success: true, activeReaction: reactionType, reactions: note.reactions, reactionCount: note.reactionCount });
     }
   }
 
-  MOCK_NOTE_REACTIONS.push({ noteId: note.id, userId, reactionType, createdAt: new Date().toISOString() });
+  COMMUNITY_NOTE_REACTIONS.push({ noteId: note.id, userId, reactionType, createdAt: new Date().toISOString() });
   note.reactions[reactionType] = (note.reactions[reactionType] || 0) + 1;
   note.reactionCount += 1;
 
@@ -787,7 +828,7 @@ communityRouter.post('/notes/:noteId/reactions', (req, res) => {
  */
 communityRouter.post('/notes/:noteId/comments', (req, res) => {
   const { content, userId = 'demo-user-id-001' } = req.body;
-  const note = MOCK_STUDY_NOTES.find((n) => n.id === req.params.noteId);
+  const note = COMMUNITY_STUDY_NOTES.find((n) => n.id === req.params.noteId);
 
   if (!note) {
     return res.status(404).json({ error: 'Không tìm thấy ghi chú.' });
@@ -796,7 +837,7 @@ communityRouter.post('/notes/:noteId/comments', (req, res) => {
     return res.status(400).json({ error: 'Nội dung bình luận không được để trống.' });
   }
 
-  const user = MOCK_PROFILES.find((p) => p.userId === userId) || MOCK_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
   const newComment: StudyNoteComment = {
     id: `c-${Date.now()}`,
     noteId: note.id,
@@ -807,7 +848,7 @@ communityRouter.post('/notes/:noteId/comments', (req, res) => {
     createdAt: new Date().toISOString(),
   };
 
-  MOCK_NOTE_COMMENTS.push(newComment);
+  COMMUNITY_NOTE_COMMENTS.push(newComment);
   note.commentCount += 1;
 
   return res.status(201).json({ comment: newComment });
@@ -823,7 +864,7 @@ communityRouter.get('/leaderboard', (req, res) => {
 
   const periodMultiplier = period === 'weekly' ? 0.22 : period === 'monthly' ? 0.55 : 1.0;
 
-  const unrankedEntries = MOCK_PROFILES.map((p) => {
+  const unrankedEntries = SEED_PROFILES.map((p) => {
     const metrics = {
       xp: Math.round(p.totalXP * periodMultiplier),
       vocabCount: Math.round(p.vocabularyLearned * periodMultiplier),
@@ -855,7 +896,7 @@ communityRouter.get('/leaderboard', (req, res) => {
  * List study groups
  */
 communityRouter.get('/groups', (req, res) => {
-  return res.json({ groups: MOCK_STUDY_GROUPS, total: MOCK_STUDY_GROUPS.length });
+  return res.json({ groups: SEED_STUDY_GROUPS, total: SEED_STUDY_GROUPS.length });
 });
 
 /**
@@ -863,13 +904,13 @@ communityRouter.get('/groups', (req, res) => {
  * Get single study group with members and posts
  */
 communityRouter.get('/groups/:groupId', (req, res) => {
-  const group = MOCK_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
+  const group = SEED_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
   if (!group) {
     return res.status(404).json({ error: 'Không tìm thấy nhóm học tập.' });
   }
 
-  const members = MOCK_GROUP_MEMBERS.filter((m) => m.groupId === group.id);
-  const posts = MOCK_GROUP_POSTS.filter((p) => p.groupId === group.id);
+  const members = COMMUNITY_GROUP_MEMBERS.filter((m) => m.groupId === group.id);
+  const posts = COMMUNITY_GROUP_POSTS.filter((p) => p.groupId === group.id);
 
   return res.json({ group, members, posts });
 });
@@ -880,20 +921,20 @@ communityRouter.get('/groups/:groupId', (req, res) => {
  */
 communityRouter.post('/groups/:groupId/join', (req, res) => {
   const userId = (req.body.userId as string) || 'demo-user-id-001';
-  const group = MOCK_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
+  const group = SEED_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
 
   if (!group) {
     return res.status(404).json({ error: 'Không tìm thấy nhóm học tập.' });
   }
 
-  const currentMembers = MOCK_GROUP_MEMBERS.filter((m) => m.groupId === group.id).map((m) => m.userId);
+  const currentMembers = COMMUNITY_GROUP_MEMBERS.filter((m) => m.groupId === group.id).map((m) => m.userId);
   const canJoin = canJoinGroup(group, userId, currentMembers);
 
   if (!canJoin.allowed) {
     return res.status(400).json({ error: canJoin.reason });
   }
 
-  const user = MOCK_PROFILES.find((p) => p.userId === userId) || MOCK_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
   const newMember: StudyGroupMember = {
     groupId: group.id,
     userId: user.userId,
@@ -904,7 +945,7 @@ communityRouter.post('/groups/:groupId/join', (req, res) => {
     contributedXP: 0,
   };
 
-  MOCK_GROUP_MEMBERS.push(newMember);
+  COMMUNITY_GROUP_MEMBERS.push(newMember);
   group.memberCount += 1;
 
   return res.status(201).json({ success: true, member: newMember, message: 'Gia nhập nhóm học tập thành công!' });
@@ -916,7 +957,7 @@ communityRouter.post('/groups/:groupId/join', (req, res) => {
  */
 communityRouter.post('/groups/:groupId/posts', (req, res) => {
   const { content, userId = 'demo-user-id-001' } = req.body;
-  const group = MOCK_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
+  const group = SEED_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
 
   if (!group) {
     return res.status(404).json({ error: 'Không tìm thấy nhóm.' });
@@ -925,7 +966,7 @@ communityRouter.post('/groups/:groupId/posts', (req, res) => {
     return res.status(400).json({ error: 'Nội dung thảo luận không được để trống.' });
   }
 
-  const user = MOCK_PROFILES.find((p) => p.userId === userId) || MOCK_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
   const newPost: GroupPost = {
     id: `post-${Date.now()}`,
     groupId: group.id,
@@ -937,7 +978,7 @@ communityRouter.post('/groups/:groupId/posts', (req, res) => {
     createdAt: new Date().toISOString(),
   };
 
-  MOCK_GROUP_POSTS.unshift(newPost);
+  COMMUNITY_GROUP_POSTS.unshift(newPost);
   return res.status(201).json({ post: newPost, message: 'Đã đăng bài thảo luận thành công.' });
 });
 
@@ -947,14 +988,14 @@ communityRouter.post('/groups/:groupId/posts', (req, res) => {
  */
 communityRouter.get('/achievements', (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const user = MOCK_PROFILES.find((p) => p.userId === userId) || MOCK_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
 
   const userStats = {
-    notesCount: MOCK_STUDY_NOTES.filter((n) => n.userId === user.userId).length,
-    friendsCount: MOCK_FRIENDSHIPS.filter(
+    notesCount: COMMUNITY_STUDY_NOTES.filter((n) => n.userId === user.userId).length,
+    friendsCount: COMMUNITY_FRIENDSHIPS.filter(
       (f) => (f.requesterId === user.userId || f.addresseeId === user.userId) && f.status === 'accepted'
     ).length,
-    groupsCount: MOCK_GROUP_MEMBERS.filter((m) => m.userId === user.userId).length,
+    groupsCount: COMMUNITY_GROUP_MEMBERS.filter((m) => m.userId === user.userId).length,
     helpfulReactions: 12,
     streak: user.currentStreak,
     totalXP: user.totalXP,
@@ -982,7 +1023,7 @@ communityRouter.get('/achievements', (req, res) => {
  */
 communityRouter.get('/notifications', (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const notifs = MOCK_NOTIFICATIONS.filter((n) => n.userId === userId);
+  const notifs = COMMUNITY_NOTIFICATIONS.filter((n) => n.userId === userId);
   const unreadCount = notifs.filter((n) => !n.isRead).length;
 
   return res.json({ notifications: notifs, unreadCount });
@@ -993,7 +1034,7 @@ communityRouter.get('/notifications', (req, res) => {
  * Mark notification as read
  */
 communityRouter.post('/notifications/:id/read', (req, res) => {
-  const notif = MOCK_NOTIFICATIONS.find((n) => n.id === req.params.id);
+  const notif = COMMUNITY_NOTIFICATIONS.find((n) => n.id === req.params.id);
   if (notif) {
     notif.isRead = true;
   }
@@ -1010,15 +1051,15 @@ communityRouter.get('/search', (req, res) => {
     return res.json({ users: [], notes: [], groups: [] });
   }
 
-  const users = MOCK_PROFILES.filter(
+  const users = SEED_PROFILES.filter(
     (p) => p.displayName.toLowerCase().includes(q) || p.username.toLowerCase().includes(q)
   );
 
-  const notes = MOCK_STUDY_NOTES.filter(
+  const notes = COMMUNITY_STUDY_NOTES.filter(
     (n) => n.title.toLowerCase().includes(q) || n.tags.some((t) => t.includes(q))
   );
 
-  const groups = MOCK_STUDY_GROUPS.filter(
+  const groups = SEED_STUDY_GROUPS.filter(
     (g) => g.name.toLowerCase().includes(q) || g.topic.toLowerCase().includes(q)
   );
 

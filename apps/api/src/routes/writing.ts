@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { MOCK_USERS } from './auth.js';
 import { writingRepository, userRepository } from '../repositories/index.js';
 import {
   evaluateWritingSubmission,
@@ -8,40 +7,8 @@ import {
   WritingSubmission,
   WritingResult,
 } from '../../../../packages/domain/src/index.js';
-import { MASTER_WRITING_PROMPTS } from '../data/writingExpandedData.js';
 
 export const writingRouter = Router();
-
-// In-memory master writing prompts
-const MOCK_PROMPTS: WritingPrompt[] = MASTER_WRITING_PROMPTS;
-
-
-// In-memory writing attempts store
-const MOCK_WRITING_ATTEMPTS: Array<{
-  id: string;
-  userId: string;
-  promptId: string;
-  mode: string;
-  content: string;
-  wordCount: number;
-  score: number;
-  xpAwarded: number;
-  durationMs: number;
-  createdAt: string;
-}> = [
-  {
-    id: 'att-w-1',
-    userId: 'demo-user-id-001',
-    promptId: 'see-write-a1-morning',
-    mode: 'see-write',
-    content: 'Every morning I wake up and drink hot coffee.',
-    wordCount: 9,
-    score: 92,
-    xpAwarded: 25,
-    durationMs: 45000,
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-  },
-];
 
 /**
  * GET /api/v1/writing/prompts
@@ -224,13 +191,13 @@ writingRouter.get('/history', async (req, res) => {
  */
 writingRouter.get('/stats', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const userAttempts = MOCK_WRITING_ATTEMPTS.filter((a) => a.userId === userId);
+  const userAttempts = await writingRepository.getUserAttempts(userId);
 
   const totalAttempts = userAttempts.length;
-  const totalWords = userAttempts.reduce((acc, a) => acc + a.wordCount, 0);
+  const totalWords = userAttempts.reduce((acc, a) => acc + (a.wordCount || 0), 0);
   const avgScore =
     totalAttempts > 0
-      ? Math.round(userAttempts.reduce((acc, a) => acc + a.score, 0) / totalAttempts)
+      ? Math.round(userAttempts.reduce((acc, a) => acc + (a.score || 0), 0) / totalAttempts)
       : 0;
 
   return res.json({

@@ -1,5 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { AuthenticatedRequest } from './rbac.js';
+import { prisma } from '../lib/prisma.js';
 
 export interface AuditLogEntry {
   id: string;
@@ -12,12 +13,10 @@ export interface AuditLogEntry {
   createdAt: Date;
 }
 
-export const MOCK_AUDIT_LOGS: AuditLogEntry[] = [];
-
 /**
  * AuditLogInterceptor Middleware:
  * Automatically records actorId, action, resourceType, resourceId, beforeState, and afterState
- * into AuditLog for sensitive actions.
+ * into PostgreSQL AuditLog model for sensitive actions.
  */
 export function auditLogInterceptor(actionName: string, resourceType: string) {
   return (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
@@ -31,18 +30,20 @@ export function auditLogInterceptor(actionName: string, resourceType: string) {
           const beforeState = req.auditMeta?.beforeState || null;
           const afterState = req.auditMeta?.afterState || body || null;
 
-          const logEntry: AuditLogEntry = {
-            id: `audit-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
-            actorId,
-            action: req.auditMeta?.action || actionName,
-            resourceType,
-            resourceId,
-            beforeState,
-            afterState,
-            createdAt: new Date(),
-          };
-
-          MOCK_AUDIT_LOGS.unshift(logEntry);
+          prisma.auditLog
+            .create({
+              data: {
+                actorId,
+                action: req.auditMeta?.action || actionName,
+                resourceType,
+                resourceId: String(resourceId),
+                beforeState: beforeState ?? undefined,
+                afterState: afterState ?? undefined,
+              },
+            })
+            .catch((err) => {
+              console.error('AuditLogInterceptor failed to persist log in PostgreSQL:', err);
+            });
         } catch (err) {
           console.error('AuditLogInterceptor failed:', err);
         }
