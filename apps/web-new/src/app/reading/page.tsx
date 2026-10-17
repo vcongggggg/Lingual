@@ -116,7 +116,7 @@ export default function ReadingHubPage() {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20">
       {/* Hero Section phong cách sổ tay với bò đeo kính đọc sách */}
       <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
@@ -139,7 +139,7 @@ export default function ReadingHubPage() {
                 Đọc bài báo nổi bật hôm nay →
               </Link>
               <span className="text-xs font-extrabold text-ink-soft">
-                📰 Bài báo mới cập nhật mỗi tuần
+                Bài báo mới cập nhật mỗi tuần
               </span>
             </div>
           </div>
@@ -170,13 +170,13 @@ export default function ReadingHubPage() {
           </div>
 
           {/* Lọc cấp độ CEFR */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-            <span className="text-xs font-black uppercase text-ink-soft mr-1 whitespace-nowrap">Bậc CEFR:</span>
+          <div className="w-full sm:w-auto flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+            <span className="text-xs font-black uppercase text-ink-soft mr-1 whitespace-nowrap flex-shrink-0">Bậc CEFR:</span>
             {CEFR_LEVELS.map((lvl) => (
               <button
                 key={lvl}
                 onClick={() => setSelectedLevel(lvl)}
-                className={`px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                   selectedLevel === lvl
                     ? 'bg-ink text-paper shadow-brutal-sm'
                     : 'bg-card text-ink hover:bg-paper-2'
@@ -189,13 +189,13 @@ export default function ReadingHubPage() {
         </div>
 
         {/* Tag chips chủ đề giấy */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
-          <span className="text-xs font-bold text-ink-muted whitespace-nowrap">Chủ đề:</span>
+        <div className="w-full flex items-center gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none">
+          <span className="text-xs font-bold text-ink-muted whitespace-nowrap flex-shrink-0">Chủ đề:</span>
           {TOPICS.map((tpc) => (
             <button
               key={tpc}
               onClick={() => setSelectedTopic(tpc)}
-              className={`px-3 py-1 rounded-lg border text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg border text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                 selectedTopic === tpc
                   ? 'border-ink bg-teal text-white shadow-brutal-sm'
                   : 'border-ink/30 bg-card text-ink-soft hover:border-ink hover:text-ink'

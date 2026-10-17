@@ -129,7 +129,7 @@ export default function SpeakingPracticePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 pb-28 sm:pb-20">
       {/* Breadcrumb mực */}
       <div className="flex items-center justify-between">
         <Link
@@ -260,12 +260,12 @@ export default function SpeakingPracticePage() {
         {/* Ô Transcript Giấy Kẻ Dòng */}
         <div className="text-left space-y-2">
           <span className="text-xs font-black uppercase tracking-wider text-ink block">
-            📝 Bản ghi nhận diện giọng nói (Transcript):
+            Bản ghi nhận diện giọng nói (Transcript):
           </span>
           <div className="lined-paper border-2 border-ink rounded-2xl p-4 sm:p-5 shadow-brutal-sm text-center">
             {isRecording ? (
               <p className="text-base font-bold text-red italic animate-pulse">
-                🎙️ Đang nghe khẩu hình của bạn... hãy phát âm rõ &quot;{currentItem.word}&quot;
+                Đang nghe khẩu hình của bạn... hãy phát âm rõ &quot;{currentItem.word}&quot;
               </p>
             ) : evaluation ? (
               <div className="space-y-1">
@@ -287,8 +287,7 @@ export default function SpeakingPracticePage() {
         {/* Dòng Ghi Chú Riêng Tư Dạng Giấy Nhỏ Dễ Đọc */}
         <div className="bg-amber-soft border-2 border-ink rounded-xl p-4 text-left shadow-brutal-sm relative">
           <div className="flex items-start gap-2.5">
-            <span className="text-base">📌</span>
-            <div className="space-y-1">
+            <div className="space-y-1 w-full">
               <span className="text-xs font-black uppercase tracking-wider text-ink block">
                 Mảnh ghi chú phát âm:
               </span>

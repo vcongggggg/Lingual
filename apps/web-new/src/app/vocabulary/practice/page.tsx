@@ -120,7 +120,7 @@ export default function VocabularyPracticePage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 text-left">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 text-left pb-28 sm:pb-20">
       {/* Breadcrumb mực */}
       <div className="flex items-center justify-between">
         <Link
@@ -132,7 +132,7 @@ export default function VocabularyPracticePage() {
         </Link>
 
         <span className="px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black text-teal uppercase tracking-wider">
-          Thẻ ghi nhớ SM-2
+          Thẻ ghi nhớ
         </span>
       </div>
 
@@ -209,7 +209,7 @@ export default function VocabularyPracticePage() {
               </div>
 
               <p className="text-xs text-ink-soft pt-4 font-semibold">
-                👆 Bấm vào thẻ để lật xem nghĩa & câu ví dụ
+                Bấm vào thẻ để lật xem nghĩa & câu ví dụ
               </p>
             </div>
           ) : (
@@ -251,7 +251,7 @@ export default function VocabularyPracticePage() {
 
           {/* Footer thẻ thư viện */}
           <div className="border-t-2 border-ink/20 pt-3 flex items-center justify-between text-[11px] font-black text-ink-muted">
-            <span>THUẬT TOÁN SM-2 V2.4</span>
+            <span>SỔ TAY TỪ VỰNG</span>
             <span>HỆ THỐNG THẺ GHI NHỚ LINGUAL</span>
           </div>
         </div>
@@ -261,7 +261,7 @@ export default function VocabularyPracticePage() {
       <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal-sm space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs font-black uppercase tracking-wider text-ink block">
-            Mức độ ghi nhớ của bạn (Thuật toán SM-2):
+            Mức độ ghi nhớ của bạn:
           </span>
           <span className="text-[11px] font-bold text-ink-muted">0: Quên → 5: Hoàn hảo</span>
         </div>

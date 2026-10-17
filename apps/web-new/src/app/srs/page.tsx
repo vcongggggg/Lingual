@@ -92,9 +92,9 @@ export default function SrsPage() {
       <div className="max-w-xl mx-auto px-4 py-16 text-center space-y-6">
         <div className="bg-card border-2 border-ink rounded-3xl shadow-brutal-2xl p-8 sm:p-12 space-y-6">
           <LingLing reaction="wink" size={120} animate={true} />
-          <h2 className="text-3xl font-black text-ink">Hoàn thành phiên ôn tập! 🎉</h2>
+          <h2 className="text-3xl font-black text-ink">Hoàn thành phiên ôn tập!</h2>
           <p className="text-sm text-ink-soft leading-relaxed max-w-sm mx-auto">
-            Bạn đã ôn tập xong toàn bộ các từ đến hạn hôm nay. Thuật toán SM-2 đã tự động xếp lịch nhắc nhở vào những ngày tiếp theo!
+            Bạn đã ôn tập xong toàn bộ các từ đến hạn hôm nay. Hệ thống đã tự động xếp lịch nhắc nhở thông minh vào những ngày tiếp theo!
           </p>
 
           <div className="flex justify-center gap-4 pt-2">
@@ -118,7 +118,7 @@ export default function SrsPage() {
       <div className="flex items-center justify-between gap-4 pb-4 border-b-2 border-ink/20">
         <div>
           <span className="text-xs font-black uppercase tracking-wider text-red block mb-0.5">
-            Thuật toán lặp lại ngắt quãng SM-2
+            Lịch ôn tập thông minh
           </span>
           <h1 className="text-2xl sm:text-3xl font-black text-ink">Thẻ Ghi Nhớ Hôm Nay</h1>
         </div>
@@ -183,12 +183,12 @@ export default function SrsPage() {
 
           {/* Chân Thẻ */}
           <div className="text-xs font-bold text-ink-soft">
-            {isFlipped ? 'Đánh giá mức độ nhớ của bạn ở bên dưới:' : 'Thuật toán SuperMemo SM-2'}
+            {isFlipped ? 'Đánh giá mức độ nhớ của bạn ở bên dưới:' : 'Hệ thống thẻ ghi nhớ ngắt quãng'}
           </div>
         </div>
       </div>
 
-      {/* 6 Nút Đánh Giá Chất Lượng Ghi Nhớ SM-2 */}
+      {/* 6 Nút Đánh Giá Mức Độ Ghi Nhớ */}
       {isFlipped ? (
         <div className="space-y-3 text-center">
           <span className="text-xs font-black uppercase tracking-wider text-ink block">

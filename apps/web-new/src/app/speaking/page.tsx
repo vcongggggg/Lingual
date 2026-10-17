@@ -97,7 +97,7 @@ const SPEAKING_MODES = [
 
 export default function SpeakingHubPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20">
       {/* Hero Section phong cách sổ tay với bò đeo tai nghe */}
       <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
@@ -120,7 +120,7 @@ export default function SpeakingHubPage() {
                 Luyện phát âm ngay hôm nay →
               </Link>
               <span className="text-xs font-extrabold text-ink-soft">
-                🎙️ Micro AI sẵn sàng nhận diện
+                Micro AI sẵn sàng nhận diện
               </span>
             </div>
           </div>

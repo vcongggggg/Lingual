@@ -27,8 +27,16 @@ const WRITING_MODES = [
     topicsCount: '24 chủ đề tranh',
     href: '/writing/practice',
     popular: false,
-    illustration: '🖼️ ✍️',
     gradient: 'from-amber/20 to-card',
+    illustration: (
+      <svg className="w-16 h-16 stroke-ink text-ink" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="10" width="34" height="26" rx="4" stroke="currentColor" strokeWidth="2.5" fill="#FFFDF6" />
+        <circle cx="18" cy="18" r="3" fill="#F2A93B" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 30 L22 20 L30 27 L38 22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M46 16 L52 22 L30 44 L24 44 L24 38 Z" fill="#D64027" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M24 44 L21 47" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     id: 'guided-essay',
@@ -39,8 +47,17 @@ const WRITING_MODES = [
     topicsCount: '18 bài luận mẫu',
     href: '/writing/practice',
     popular: true,
-    illustration: '📑 💡',
     gradient: 'from-teal/20 to-card',
+    illustration: (
+      <svg className="w-16 h-16 stroke-ink text-ink" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="12" y="8" width="40" height="48" rx="5" stroke="currentColor" strokeWidth="2.5" fill="#FFFDF6" />
+        <line x1="18" y1="18" x2="46" y2="18" stroke="#0F766E" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="18" y1="26" x2="46" y2="26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 3" />
+        <line x1="18" y1="34" x2="40" y2="34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 3" />
+        <line x1="18" y1="42" x2="32" y2="42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 3" />
+        <circle cx="44" cy="42" r="7" fill="#F2A93B" stroke="currentColor" strokeWidth="2" />
+      </svg>
+    ),
   },
   {
     id: 'free-journal',
@@ -51,14 +68,22 @@ const WRITING_MODES = [
     topicsCount: 'Không giới hạn',
     href: '/writing/practice',
     popular: false,
-    illustration: '📖 ✒️',
     gradient: 'from-red/15 to-card',
+    illustration: (
+      <svg className="w-16 h-16 stroke-ink text-ink" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 46 C 20 42, 28 42, 32 46 C 36 42, 44 42, 54 46 L 54 18 C 44 14, 36 14, 32 18 C 28 14, 20 14, 10 18 Z" fill="#FFFDF6" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
+        <line x1="32" y1="18" x2="32" y2="46" stroke="currentColor" strokeWidth="2" />
+        <path d="M32 18 L32 30 L35 27 L38 30 L38 18" fill="#D64027" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <line x1="16" y1="26" x2="26" y2="26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="16" y1="32" x2="24" y2="32" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
   },
 ];
 
 export default function WritingHubPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20">
       {/* Hero Section phong cách sổ tay */}
       <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
@@ -81,7 +106,7 @@ export default function WritingHubPage() {
                 Bắt đầu viết bài luận hôm nay →
               </Link>
               <span className="text-xs font-extrabold text-ink-soft">
-                ✍️ Phản hồi ngữ pháp & từ vựng tức thì
+                Phản hồi ngữ pháp & từ vựng tức thì
               </span>
             </div>
           </div>

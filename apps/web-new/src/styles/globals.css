@@ -311,3 +311,12 @@ body {
   box-shadow: 2px 2px 0 var(--ink);
 }
 
+/* Ẩn dev tools overlay / indicator tránh đè lên nội dung trên mobile */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay],
+div[data-nextjs-route-announcer] {
+  display: none !important;
+}
+
+

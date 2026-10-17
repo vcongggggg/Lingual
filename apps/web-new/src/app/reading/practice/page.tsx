@@ -122,7 +122,7 @@ export default function ReadingPracticePage() {
       : 'text-xl sm:text-2xl leading-[2.2]';
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 pb-28 sm:pb-20">
       {/* Breadcrumb mực */}
       <div className="flex items-center justify-between">
         <Link
@@ -130,7 +130,7 @@ export default function ReadingPracticePage() {
           className="inline-flex items-center gap-2 text-sm font-black text-ink hover:text-red transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span>Quay lại Thư Viện Đọc</span>
+          <span>Quay lại Thư viện bài đọc</span>
         </Link>
 
         {/* Stamp CEFR */}
@@ -260,7 +260,7 @@ export default function ReadingPracticePage() {
         <div className="border-b-2 border-ink/20 pb-3 flex items-center justify-between">
           <div>
             <h3 className="text-xl sm:text-2xl font-black text-ink">
-              Bài tập đọc hiểu bài báo 📝
+              Bài tập đọc hiểu bài báo
             </h3>
             <p className="text-xs text-ink-soft">Chọn đáp án đúng nhất dựa trên nội dung bài viết vừa đọc.</p>
           </div>

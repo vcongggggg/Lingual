@@ -118,7 +118,7 @@ export default function ListeningHubPage() {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20">
       {/* Hero Section phong cách sổ tay */}
       <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-amber/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none" />
@@ -176,13 +176,13 @@ export default function ListeningHubPage() {
           </div>
 
           {/* Lọc cấp độ CEFR */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-            <span className="text-xs font-black uppercase text-ink-soft mr-1 whitespace-nowrap">Cấp độ:</span>
+          <div className="w-full sm:w-auto flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+            <span className="text-xs font-black uppercase text-ink-soft mr-1 whitespace-nowrap flex-shrink-0">Cấp độ:</span>
             {LEVELS.map((lvl) => (
               <button
                 key={lvl}
                 onClick={() => setSelectedLevel(lvl)}
-                className={`px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                   selectedLevel === lvl
                     ? 'bg-ink text-paper shadow-brutal-sm'
                     : 'bg-card text-ink hover:bg-paper-2'
@@ -195,13 +195,13 @@ export default function ListeningHubPage() {
         </div>
 
         {/* Tag chips chủ đề */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
-          <span className="text-xs font-bold text-ink-muted whitespace-nowrap">Chủ đề:</span>
+        <div className="w-full flex items-center gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none">
+          <span className="text-xs font-bold text-ink-muted whitespace-nowrap flex-shrink-0">Chủ đề:</span>
           {TOPICS.map((tpc) => (
             <button
               key={tpc}
               onClick={() => setSelectedTopic(tpc)}
-              className={`px-3 py-1 rounded-lg border text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg border text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                 selectedTopic === tpc
                   ? 'border-ink bg-teal text-white shadow-brutal-sm'
                   : 'border-ink/30 bg-card text-ink-soft hover:border-ink hover:text-ink'

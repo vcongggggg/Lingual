@@ -124,7 +124,7 @@ export default function ListeningPracticePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 pb-28 sm:pb-20">
       {/* Breadcrumb mực */}
       <div className="flex items-center justify-between">
         <Link
@@ -159,7 +159,7 @@ export default function ListeningPracticePage() {
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-red border border-ink" />
             <span className="font-mono text-xs font-black uppercase tracking-widest text-ink">
-              STEREO CASSETTE · SM-2 TAPE 0{currentIdx + 1}
+              STEREO CASSETTE · BĂNG 0{currentIdx + 1}
             </span>
           </div>
 
@@ -236,7 +236,7 @@ export default function ListeningPracticePage() {
         {/* Gợi ý nếu bật */}
         {showHint && (
           <div className="bg-amber-soft border-2 border-ink rounded-xl p-3 text-xs font-bold text-ink space-y-1 shadow-brutal-sm">
-            <span className="text-red font-black">💡 Gợi ý nghĩa tiếng Việt: </span>
+            <span className="text-red font-black">Gợi ý nghĩa tiếng Việt: </span>
             <span>{currentItem.vietnamese}</span>
           </div>
         )}
@@ -246,7 +246,7 @@ export default function ListeningPracticePage() {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <label className="text-xs font-black uppercase tracking-wider text-ink block">
-            ✍️ Ô chép chính tả (Gõ lại những gì bạn nghe được):
+            Ô chép chính tả (Gõ lại những gì bạn nghe được):
           </label>
           <span className="text-xs font-bold text-ink-muted">
             {userInput.trim().split(/\s+/).filter(Boolean).length} từ đã gõ
@@ -335,7 +335,7 @@ export default function ListeningPracticePage() {
 
               {/* Mẹo ngữ âm */}
               <div className="text-xs font-bold text-ink-soft bg-card border border-ink/20 rounded-lg p-3">
-                🎧 <b>Mẹo nối âm: </b>{currentItem.phoneticsNote}
+                <b>Mẹo nối âm: </b>{currentItem.phoneticsNote}
               </div>
 
               <div className="pt-2 flex items-center justify-end gap-3">

@@ -111,7 +111,7 @@ export default function WritingPracticePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 text-left">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 text-left pb-28 sm:pb-20">
       {/* Breadcrumb mực */}
       <div className="flex items-center justify-between">
         <Link
@@ -188,7 +188,7 @@ export default function WritingPracticePage() {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <label className="text-xs font-black uppercase tracking-wider text-ink block">
-            ✍️ Phần bài viết của bạn:
+            Phần bài viết của bạn:
           </label>
           {/* Word count ghi ở lề */}
           <span className="px-2.5 py-1 bg-paper-2 border border-ink rounded-lg font-mono text-xs font-black text-ink shadow-brutal-sm">
@@ -268,7 +268,7 @@ export default function WritingPracticePage() {
             <LingLing reaction="greet" size={80} />
             <div>
               <h3 className="text-xl font-black text-ink">
-                Chúc mừng bạn đã hoàn thành bài luận! 🎉
+                Chúc mừng bạn đã hoàn thành bài luận!
               </h3>
               <p className="text-xs font-bold text-ink-soft">
                 Điểm phong phú từ vựng & cấu trúc: <b className="text-red text-sm">{evaluation.lexicalScore}/100</b>

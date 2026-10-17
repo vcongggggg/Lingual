@@ -126,7 +126,7 @@ export default function VocabularyHubPage() {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 text-left">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 text-left pb-28 sm:pb-20">
       {/* Hero Section phong cách sổ tay */}
       <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
@@ -141,7 +141,7 @@ export default function VocabularyHubPage() {
             </h1>
 
             <p className="text-base sm:text-lg text-ink-soft leading-relaxed">
-              Mỗi cấp độ CEFR được biên soạn như một <b>chương sách riêng biệt</b>, kết hợp cùng thuật toán lặp lại ngắt quãng <b>SM-2</b> giúp bạn nhớ từ vựng vĩnh viễn vào trí nhớ dài hạn.
+              Mỗi cấp độ CEFR được biên soạn như một <b>chương sách riêng biệt</b>, kết hợp cùng <b>lịch ôn thông minh</b> giúp bạn nhớ từ vựng vĩnh viễn vào trí nhớ dài hạn.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -149,7 +149,7 @@ export default function VocabularyHubPage() {
                 Học thẻ từ hôm nay (10 thẻ) →
               </Link>
               <span className="text-xs font-extrabold text-ink-soft">
-                📚 8.500+ từ vựng có ví dụ song ngữ & IPA
+                8.500+ từ vựng có ví dụ song ngữ & IPA
               </span>
             </div>
           </div>
@@ -166,12 +166,12 @@ export default function VocabularyHubPage() {
 
       {/* Tabs dạng Tab Giấy (Paper Tabs) */}
       <div className="space-y-4">
-        <div className="flex items-center gap-2 border-b-2 border-ink pb-2 overflow-x-auto">
+        <div className="w-full flex items-center gap-2 border-b-2 border-ink pb-2 overflow-x-auto scrollbar-none">
           {TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-t-xl border-2 border-b-0 border-ink font-black text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-4 py-2 rounded-t-xl border-2 border-b-0 border-ink font-black text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                 activeTab === tab.id
                   ? 'bg-card text-ink shadow-brutal-sm -translate-y-1'
                   : 'bg-paper-2 text-ink-muted hover:bg-paper'
