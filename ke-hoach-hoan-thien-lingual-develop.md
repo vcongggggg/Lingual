@@ -76,10 +76,10 @@ cd apps/api && pnpm exec tsc --noEmit                    # pass, không lỗi Pr
 ## Phase D3 — Test integrity (ước lượng: 2h)
 
 ### Việc cần làm
-- [ ] Fix 7 API tests đang fail vì Prisma client chưa init (sau D1+D2 chúng phải chạy được trên DB test/ephemeral).
-- [ ] Root `package.json`: khai báo script `test` thật cho từng workspace (domain/api/web) — cấm vacuous pass. `pnpm --recursive test` phải chạy test thật.
-- [ ] Sửa CI (`.github/workflows/ci.yml`): pnpm 11, `--frozen-lockfile`, jobs = domain test + api test + api typecheck + web build + web lint + `prisma validate`. Trigger cả `develop`.
-- [ ] Chạy Playwright E2E suite (`apps/web/e2e/`), báo cáo kết quả thật (pass/fail từng spec, không giấu).
+- [x] Fix 7 API tests đang fail vì Prisma client chưa init (sau D1+D2 chúng phải chạy được trên DB test/ephemeral).
+- [x] Root `package.json`: khai báo script `test` thật cho từng workspace (domain/api/web) — cấm vacuous pass. `pnpm --recursive test` phải chạy test thật.
+- [x] Sửa CI (`.github/workflows/ci.yml`): pnpm 11, `--frozen-lockfile`, jobs = domain test + api test + api typecheck + web build + web lint + `prisma validate`. Trigger cả `develop`.
+- [x] Chạy Playwright E2E suite (`apps/web/e2e/`), báo cáo kết quả thật (pass/fail từng spec, không giấu).
 
 ### Tester checklist (chạy tay sau khi D1+D2 xong — mỗi mục ghi: bước, lệnh, kết quả mong đợi, kết quả thực tế, PASS/FAIL)
 **A. Auth & RBAC:** (1) register → login → /me = 200 đúng user; (2) register trùng email → 400; (3) sai password → 401; (4) /me không token → 401; (5) restart API → login lại credential cũ → 200 (chứng minh hết in-memory); (6) non-admin đổi role user khác → 403; (7) user A đọc dữ liệu user B (IDOR) → 403/404.

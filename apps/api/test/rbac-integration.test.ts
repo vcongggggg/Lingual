@@ -1,21 +1,37 @@
 import jwt from 'jsonwebtoken';
 import { rolesGuard, JWT_SECRET, AuthenticatedRequest } from '../src/middleware/rbac.js';
 import { canModifyContent, Role } from '../../../packages/domain/src/index.js';
-import { MOCK_USERS } from '../src/routes/auth.js';
+import { prisma } from '../src/lib/prisma.js';
 
 function generateToken(userId: string, role: Role): string {
   return jwt.sign({ userId, sub: userId, role }, JWT_SECRET, { expiresIn: '15m' });
 }
 
-// Seed mock test users with all 5 roles
-MOCK_USERS.push(
-  { id: 'user-student-001', email: 'student@lingual.com', role: 'STUDENT' },
-  { id: 'user-editor-001', email: 'editor1@lingual.com', role: 'CONTENT_EDITOR' },
-  { id: 'user-editor-002', email: 'editor2@lingual.com', role: 'CONTENT_EDITOR' },
-  { id: 'user-reviewer-001', email: 'reviewer@lingual.com', role: 'CONTENT_REVIEWER' },
-  { id: 'user-admin-001', email: 'admin@lingual.com', role: 'ADMIN' },
-  { id: 'user-superadmin-001', email: 'superadmin@lingual.com', role: 'SUPER_ADMIN' }
-);
+const testUsers: { id: string; email: string; role: Role }[] = [
+  { id: 'user-student-001', email: 'student-rbac@lingual.test', role: 'STUDENT' },
+  { id: 'user-content_editor-001', email: 'editor1-rbac@lingual.test', role: 'CONTENT_EDITOR' },
+  { id: 'user-content_editor-002', email: 'editor2-rbac@lingual.test', role: 'CONTENT_EDITOR' },
+  { id: 'user-editor-001', email: 'editor-legacy1-rbac@lingual.test', role: 'CONTENT_EDITOR' },
+  { id: 'user-editor-002', email: 'editor-legacy2-rbac@lingual.test', role: 'CONTENT_EDITOR' },
+  { id: 'user-content_reviewer-001', email: 'reviewer-rbac@lingual.test', role: 'CONTENT_REVIEWER' },
+  { id: 'user-admin-001', email: 'admin-rbac@lingual.test', role: 'ADMIN' },
+  { id: 'user-super_admin-001', email: 'superadmin-rbac@lingual.test', role: 'SUPER_ADMIN' },
+];
+
+async function seedTestUsers() {
+  for (const u of testUsers) {
+    await prisma.user.upsert({
+      where: { id: u.id },
+      update: { role: u.role as any },
+      create: {
+        id: u.id,
+        email: u.email,
+        displayName: u.id,
+        role: u.role as any,
+      },
+    });
+  }
+}
 
 async function testGuard(
   role: Role,
@@ -46,6 +62,7 @@ async function testGuard(
 }
 
 async function runRBACIntegrationTests() {
+  await seedTestUsers();
   console.log('🧪 Running Comprehensive 5-Role RBAC Integration Tests...\n');
   let failures = 0;
 

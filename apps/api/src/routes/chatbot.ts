@@ -128,10 +128,10 @@ async function retrieveRagDetails(query: string): Promise<{ textContext: string;
 }
 
 /**
- * SSE Streaming Endpoint (Server-Sent Events)
- * POST /api/v1/chatbot/stream
+ * SSE Streaming Endpoint Handler (Server-Sent Events)
+ * Supports both POST /api/v1/chatbot/stream and POST /api/v1/chatbot/chat
  */
-chatbotRouter.post('/stream', async (req: Request, res: Response) => {
+const sseStreamHandler = async (req: Request, res: Response) => {
   // Set SSE Headers
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
@@ -278,12 +278,23 @@ ${
 
     return streamFallbackTokens(fallbackText);
   }
-});
+};
+
+chatbotRouter.post('/stream', sseStreamHandler);
 
 /**
- * Legacy JSON Endpoint POST /api/v1/chatbot/chat
+ * Endpoint POST /api/v1/chatbot/chat
+ * Supports both SSE streaming (when Accept: text/event-stream or stream: true) and legacy JSON response
  */
 chatbotRouter.post('/chat', async (req: Request, res: Response) => {
+  if (
+    req.headers.accept?.includes('text/event-stream') ||
+    req.body?.stream === true ||
+    req.query?.stream === 'true'
+  ) {
+    return sseStreamHandler(req, res);
+  }
+
   try {
     const { message = '' } = req.body;
     const { textContext: ragContext, refs: ragRefs } = await retrieveRagDetails(message);

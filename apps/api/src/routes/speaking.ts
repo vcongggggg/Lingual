@@ -56,7 +56,7 @@ function resolveUser(req: any): { id: string; email: string; role: string } {
     const token = authHeader.split(' ')[1];
     return { id: `user-${token.slice(0, 8)}`, email: 'learner@linguaflow.com', role: 'STUDENT' };
   }
-  return { id: 'demo-speaking-user', email: 'demo@linguaflow.com', role: 'STUDENT' };
+  return { id: 'demo-user-id-001', email: 'demo@linguaflow.com', role: 'STUDENT' };
 }
 
 // 1. GET /prompts

@@ -1,7 +1,60 @@
-import test from 'node:test';
+import test, { before } from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
 import { readingRouter } from '../src/routes/reading.js';
+import { prisma } from '../src/lib/prisma.js';
+import { MASTER_READING_ARTICLES } from '../src/data/reading.js';
+
+before(async () => {
+  await prisma.user.upsert({
+    where: { id: 'demo-user-id-001' },
+    update: {},
+    create: {
+      id: 'demo-user-id-001',
+      email: 'demo@linguaflow.com',
+      displayName: 'Demo Learner',
+      role: 'STUDENT',
+    },
+  });
+
+  for (const article of MASTER_READING_ARTICLES) {
+    const existing = await prisma.readingArticle.findUnique({ where: { id: article.id } });
+    if (!existing) {
+      await prisma.readingArticle.create({
+        data: {
+          id: article.id,
+          title: article.title,
+          subtitle: article.subtitle,
+          level: article.level,
+          topic: article.topic,
+          author: article.author,
+          estimatedMinutes: article.estimatedMinutes,
+          wordCount: article.wordCount,
+          coverImage: article.coverImage,
+          status: 'published',
+          paragraphs: {
+            create: article.paragraphs.map((p) => ({
+              order: p.order,
+              english: p.english,
+              vietnamese: p.vietnamese,
+            })),
+          },
+          questions: {
+            create: article.questions.map((q, idx) => ({
+              order: idx + 1,
+              type: q.type,
+              question: q.question,
+              optionsJson: JSON.stringify(q.options),
+              correctAnswer: q.correctAnswer,
+              explanation: q.explanation || '',
+              difficulty: q.difficulty || article.level,
+            })),
+          },
+        },
+      });
+    }
+  }
+});
 
 function createTestApp() {
   const app = express();

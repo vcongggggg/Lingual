@@ -1,21 +1,34 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Button, Card } from '@linguaflow/ui';
 import { Shield, Plus, BookOpen, FileText, ArrowLeft, CheckCircle2 } from 'lucide-react';
-import { SEED_UNITS } from '../../../../../../prisma/seed';
+import { curriculumApi } from '../../../lib/api';
 
 export default function AdminCMSPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'vi';
 
-  const [units, setUnits] = useState(SEED_UNITS);
+  const [units, setUnits] = useState<any[]>([]);
   const [showAddWordModal, setShowAddWordModal] = useState(false);
   const [targetText, setTargetText] = useState('');
   const [translation, setTranslation] = useState('');
   const [phonetic, setPhonetic] = useState('');
+
+  useEffect(() => {
+    curriculumApi
+      .getUnits()
+      .then((data: any) => {
+        if (data?.units && Array.isArray(data.units)) {
+          setUnits(data.units);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to load curriculum units:', err);
+      });
+  }, []);
 
   const handleAddWord = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,18 +78,18 @@ export default function AdminCMSPage() {
       </div>
 
       <div className="space-y-6">
-        {units.map((unit) => (
+        {units.map((unit: any) => (
           <Card key={unit.order} glow="teal" className="space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-teal-400" />
                 <h3 className="text-lg font-display font-bold text-white">{unit.title}</h3>
               </div>
-              <span className="text-xs font-mono text-slate-400">{unit.lessons.length} Bài học</span>
+              <span className="text-xs font-mono text-slate-400">{unit.lessons?.length || 0} Bài học</span>
             </div>
 
             <div className="space-y-3">
-              {unit.lessons.map((lesson) => (
+              {unit.lessons?.map((lesson: any) => (
                 <div key={lesson.order} className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
                   <div className="space-y-1">
                     <h4 className="text-sm font-bold text-slate-200">{lesson.title}</h4>

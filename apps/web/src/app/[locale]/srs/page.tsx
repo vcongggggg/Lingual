@@ -219,7 +219,7 @@ export default function SRSPage() {
             className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>{isVi ? 'Về Lộ Trình' : 'Dashboard'}</span>
+            <h1 className="text-sm font-bold text-slate-200">{isVi ? 'Ôn Tập Thông Minh' : 'SRS Smart Review'}</h1>
           </Link>
 
           <div className="flex items-center gap-2 font-mono font-bold text-teal-300">

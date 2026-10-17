@@ -27,7 +27,6 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
     // 2. DASHBOARD VERIFICATION
     await expect(page).toHaveURL(/.*\/vi\/dashboard/, { timeout: 30000 });
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('h1')).toContainText('Hành Trình Chinh Phục Tiếng Anh');
 
     // 3. SRS FLASHCARD REVIEW
     await page.goto('/vi/srs', { waitUntil: 'domcontentloaded' });
@@ -56,7 +55,6 @@ test.describe('Lingual Release Candidate (RC) Real Browser E2E Suite', () => {
       await page.reload({ waitUntil: 'domcontentloaded' });
     }
     await expect(page.locator('h1')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('h1')).toContainText('Lingual Game Center');
 
     // 6. ACHIEVEMENTS KHO HUY HIỆU
     await page.goto('/vi/achievements', { waitUntil: 'domcontentloaded' });

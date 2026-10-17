@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --ext .ts,.tsx --max-warnings 50"
+    "lint": "eslint src --ext .ts,.tsx --max-warnings 50",
+    "test": "node ../../scripts/run-e2e-suite.mjs",
+    "test:e2e": "node ../../scripts/run-e2e-suite.mjs"
   },
   "dependencies": {
     "@linguaflow/config": "file:../../packages/config",

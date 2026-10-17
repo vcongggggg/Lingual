@@ -1,25 +1,36 @@
 import { Router } from 'express';
+import jwt from 'jsonwebtoken';
 import { SEED_UNITS, SEED_ACHIEVEMENTS } from '../../../../prisma/seed';
 import { prisma } from '../lib/prisma.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { JWT_SECRET } from '../middleware/rbac.js';
 
 export const userRouter = Router();
 
-async function resolveUser(userId: string) {
-  let user = await userRepository.findById(userId);
-  if (!user) {
-    const defaultUser = await prisma.user.findFirst();
-    if (defaultUser) {
-      user = defaultUser as any;
-    }
+function getCallerUser(req: any): { userId: string; role: string } | null {
+  const auth = req.headers.authorization;
+  if (auth && auth.startsWith('Bearer ')) {
+    try {
+      const payload = jwt.verify(auth.split(' ')[1], JWT_SECRET) as any;
+      return { userId: payload.userId, role: payload.role };
+    } catch {}
   }
-  return user;
+  return null;
+}
+
+async function resolveUser(userId: string) {
+  if (!userId) return null;
+  return await userRepository.findById(userId);
 }
 
 userRouter.get('/profile', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const user = await resolveUser(userId);
+  const caller = getCallerUser(req);
+  if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
+    return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
+  }
 
+  const user = await resolveUser(userId);
   if (!user) {
     return res.status(404).json({ error: 'Không tìm thấy người dùng' });
   }
@@ -33,8 +44,12 @@ userRouter.get('/profile', async (req, res) => {
 
 userRouter.get('/progress', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const user = await resolveUser(userId);
+  const caller = getCallerUser(req);
+  if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
+    return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
+  }
 
+  const user = await resolveUser(userId);
   if (!user) {
     return res.status(404).json({ error: 'Không tìm thấy người dùng' });
   }
@@ -133,8 +148,12 @@ userRouter.get('/achievements', async (req, res) => {
 
 userRouter.post('/profile/update', async (req, res) => {
   const { displayName, timezone, interfaceLocale, dailyGoalMinutes, userId = 'demo-user-id-001' } = req.body;
-  const user = await resolveUser(userId);
+  const caller = getCallerUser(req);
+  if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
+    return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền sửa thông tin của người dùng khác' });
+  }
 
+  const user = await resolveUser(userId);
   if (!user) {
     return res.status(404).json({ error: 'Không tìm thấy người dùng' });
   }

@@ -90,19 +90,26 @@ gamesRouter.get('/data', (req, res) => {
   }
 
   if (type === 'word-scramble') {
-    const rawItems = BACKEND_SCRAMBLES.length > 0 ? BACKEND_SCRAMBLES : pool.slice(0, 10);
+    const rawItems = pool.length > 0 ? pool.slice(0, 15) : BACKEND_SCRAMBLES;
     const questions = rawItems.slice(0, 10).map((item, idx) => {
-      const word = (item as any).word || (item as any).targetText;
+      const word =
+        (item as any).targetText ||
+        (item as any).word ||
+        (item as any).sentence ||
+        (item as any).fullSentence ||
+        'Lingual';
       const scrambled =
         (item as any).scrambled ||
+        (Array.isArray((item as any).tokens) ? (item as any).tokens.join(' ') : null) ||
         word
           .split('')
           .sort(() => Math.random() - 0.5)
           .join('');
       return {
-        id: `scramble-${idx + 1}`,
-        scrambled: scrambled.toLowerCase(),
-        correctWord: word.toLowerCase(),
+        id: (item as any).id || `scramble-${idx + 1}`,
+        scrambled: typeof scrambled === 'string' ? scrambled.toLowerCase() : scrambled,
+        correctWord: typeof word === 'string' ? word.toLowerCase() : word,
+        tokens: (item as any).tokens || (word.includes(' ') ? word.split(/\s+/) : word.split('')),
         hint: (item as any).hint || (item as any).translation || 'Sắp xếp chữ cái thành từ đúng',
         category: (item as any).category || 'Vocabulary',
         xpReward: 25,

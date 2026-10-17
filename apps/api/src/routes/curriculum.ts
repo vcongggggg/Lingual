@@ -14,7 +14,7 @@ import { canModifyContent } from '../../../../packages/domain/src/index.js';
 
 export const curriculumRouter = Router();
 
-curriculumRouter.post('/attempts/start', async (req, res) => {
+const startAttemptHandler = async (req: any, res: any) => {
   try {
     const { sourceType, sourceId, userId = 'demo-user-id-001' } = req.body;
     const attemptId = `att-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
@@ -44,10 +44,13 @@ curriculumRouter.post('/attempts/start', async (req, res) => {
       attemptId: attemptSession.id,
       startedAt: attemptSession.startedAt.toISOString(),
     });
-  } catch (err: any) {
-    return res.status(500).json({ error: 'Lỗi khởi tạo attempt session' });
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message || 'Failed to start attempt' });
   }
-});
+};
+
+curriculumRouter.post('/attempts/start', startAttemptHandler);
+curriculumRouter.post('/attempt/start', startAttemptHandler);
 
 curriculumRouter.get('/units', async (req, res) => {
   try {
@@ -109,6 +112,10 @@ curriculumRouter.get('/lessons/:lessonId', async (req, res) => {
 curriculumRouter.post('/lessons/:lessonId/submit', async (req, res) => {
   const { lessonId } = req.params;
   const { attemptId, answers, userId = 'demo-user-id-001' } = req.body;
+
+  if (!attemptId || typeof attemptId !== 'string') {
+    return res.status(400).json({ error: 'Attempt token không hợp lệ hoặc đã hết hạn.' });
+  }
 
   const attempt = await prisma.attemptSession.findUnique({
     where: { id: attemptId },

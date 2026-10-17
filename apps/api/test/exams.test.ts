@@ -1,7 +1,69 @@
-import test from 'node:test';
+import test, { before } from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
 import { examsRouter } from '../src/routes/exams.js';
+import { prisma } from '../src/lib/prisma.js';
+
+before(async () => {
+  const usersToSeed = [
+    { id: 'demo-user-id-001', email: 'demo@linguaflow.com' },
+    { id: 'test-user-001', email: 'test1@linguaflow.com' },
+    { id: 'test-user-002', email: 'test2@linguaflow.com' },
+    { id: 'test-user-003', email: 'test3@linguaflow.com' },
+  ];
+
+  for (const u of usersToSeed) {
+    await prisma.user.upsert({
+      where: { id: u.id },
+      update: {},
+      create: {
+        id: u.id,
+        email: u.email,
+        displayName: u.id,
+        role: 'STUDENT',
+      },
+    });
+  }
+
+  await prisma.examAttempt.upsert({
+    where: { id: 'att-demo-toeic-01' },
+    update: {},
+    create: {
+      id: 'att-demo-toeic-01',
+      userId: 'demo-user-id-001',
+      examId: 'exam-toeic-01',
+      status: 'completed',
+      startedAt: new Date(Date.now() - 3600000),
+      expiresAt: new Date(Date.now() + 3600000),
+      submittedAt: new Date(),
+      elapsedSeconds: 900,
+      answersJson: JSON.stringify([
+        { questionId: 't-l1-q1', selectedOption: 'A man is adjusting his necktie.' },
+        { questionId: 't-l1-q2', selectedOption: 'On Ms. Lee’s reception desk.' },
+        { questionId: 't-r1-q1', selectedOption: 'prior to' },
+        { questionId: 't-r1-q2', selectedOption: 'remarkably' },
+        { questionId: 't-r1-q3', selectedOption: 'unless' },
+        { questionId: 't-r2-q1', selectedOption: 'To announce the rollout of a new inventory tracking system' },
+        { questionId: 't-r2-q2', selectedOption: 'Attend a 30-minute orientation session' },
+      ]),
+      resultJson: JSON.stringify({
+        attemptId: 'att-demo-toeic-01',
+        examId: 'exam-toeic-01',
+        totalQuestions: 7,
+        answeredQuestions: 7,
+        correctAnswers: 7,
+        score: 7,
+        maxScore: 990,
+        accuracy: 100,
+        timeSpentSeconds: 900,
+        grade: 'Excellent',
+        passed: true,
+        xpAwarded: 100,
+        sectionBreakdown: [],
+      }),
+    },
+  });
+});
 
 function createTestApp() {
   const app = express();

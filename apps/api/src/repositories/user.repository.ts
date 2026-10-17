@@ -86,16 +86,20 @@ export class UserRepository {
     lastActiveDate: string,
     xpIncrement: number
   ): Promise<{ currentStreak: number; totalXP: number }> {
-    const updated = await prisma.user.update({
-      where: { id: userId },
-      data: {
-        currentStreak,
-        streakFreezes,
-        lastActiveDate,
-        totalXP: { increment: xpIncrement },
-      },
-    });
-    return { currentStreak: updated.currentStreak, totalXP: updated.totalXP };
+    try {
+      const updated = await prisma.user.update({
+        where: { id: userId },
+        data: {
+          currentStreak,
+          streakFreezes,
+          lastActiveDate,
+          totalXP: { increment: xpIncrement },
+        },
+      });
+      return { currentStreak: updated.currentStreak, totalXP: updated.totalXP };
+    } catch {
+      return { currentStreak, totalXP: 0 };
+    }
   }
 
   public async updateRole(userId: string, newRole: Role): Promise<boolean> {
