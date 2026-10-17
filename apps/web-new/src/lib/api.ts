@@ -87,14 +87,44 @@ export const api = {
   getVocabularies: (limit = 100) => fetchApi<{ vocabularies: any[] }>(`/vocabulary?limit=${limit}`),
 
   // 5. IELTS
-  getIeltsQuestions: () => fetchApi<{ tracks: any[]; questions: any[] }>('/ielts/practice/questions'),
+  getIeltsRoadmap: () => fetchApi<{ success: boolean; tracks: any[] }>('/ielts/roadmap'),
+  getIeltsPracticeQuestions: (skill: string) => fetchApi<{ success: boolean; skill: string; questions: any[] }>(`/ielts/practice/${skill}`),
+  getIeltsQuestionDetail: (id: string) => fetchApi<{ success: boolean; question: any }>(`/ielts/practice/question/${id}`),
+  getIeltsMockTestQuestions: () => fetchApi<{ success: boolean; readingTotal: number; listeningTotal: number; questions: any[]; readingPassages: any[]; listeningSections: any[] }>('/ielts/mock-test/questions'),
+  submitIeltsMockTest: (data: { userId?: string; type?: string; durationSec?: number; answers: Record<string, string> }) =>
+    fetchApi<{ success: boolean; attempt: any }>('/ielts/mock-test/submit', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  evaluateIeltsWriting: (data: { userId?: string; taskType?: string; prompt: string; essayText: string }) =>
+    fetchApi<{ success: boolean; evaluation: any }>('/ielts/writing/evaluate', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
 
-  // 6. Games
+  // 6. Analytics
+  getAnalyticsOverview: () => fetchApi<{
+    overallScore: number;
+    estimatedCEFR: string;
+    totalStudyMinutes: number;
+    totalXP: number;
+    currentStreak: number;
+    weeklyMinutes: number;
+    skills: any[];
+    weaknesses: any[];
+    strengths: any[];
+    goals: any[];
+  }>('/analytics/overview'),
+
+  // 7. Games
   getGamesList: () =>
     Promise.resolve([
-      { id: 'word-match', title: 'Nối Từ Siêu Tốc', desc: 'Ghép cặp từ vựng và nghĩa tiếng Việt trong 60 giây', badge: 'Từ vựng', icon: 'zap' },
-      { id: 'scramble', title: 'Xếp Câu Trật Tự', desc: 'Sắp xếp các khối từ đảo lộn thành câu hoàn chỉnh', badge: 'Ngữ pháp', icon: 'shuffle' },
-      { id: 'fast-typing', title: 'Gõ Phím Thần Tốc', desc: 'Gõ đúng chính tả từ vựng đang rơi để tăng tốc độ phản xạ', badge: 'Chính tả', icon: 'keyboard' },
-      { id: 'word-fill', title: 'Điền Khuyết Thử Thách', desc: 'Chọn từ còn thiếu phù hợp nhất với ngữ cảnh câu', badge: 'Ngữ cảnh', icon: 'check-circle' },
+      { id: 'word-match', title: 'Nối từ siêu tốc', englishTitle: 'Speed Word Match', desc: 'Ghép cặp từ vựng và nghĩa tiếng Việt trong 60 giây', badge: 'Từ vựng', xp: '+25 XP', icon: 'zap' },
+      { id: 'scramble', title: 'Xếp câu trật tự', englishTitle: 'Sentence Scramble', desc: 'Sắp xếp các khối từ đảo lộn thành câu hoàn chỉnh', badge: 'Ngữ pháp', xp: '+30 XP', icon: 'shuffle' },
+      { id: 'fast-typing', title: 'Gõ phím thần tốc', englishTitle: 'Spelling Rain', desc: 'Gõ đúng chính tả từ vựng đang rơi để tăng tốc độ phản xạ', badge: 'Chính tả', xp: '+40 XP', icon: 'keyboard' },
+      { id: 'word-fill', title: 'Điền khuyết ngữ cảnh', englishTitle: 'Context Cloze', desc: 'Chọn từ còn thiếu phù hợp nhất với ngữ cảnh câu văn bản xứ', badge: 'Ngữ cảnh', xp: '+20 XP', icon: 'check-circle' },
     ]),
+  getGamesLeaderboard: (gameType?: string) => fetchApi<{ leaderboard: any[] }>(`/games/leaderboard${gameType ? `?gameType=${gameType}` : ''}`),
+  getGameData: (type: string, difficulty?: string) => fetchApi<any>(`/games/data?type=${type}&difficulty=${difficulty || 'all'}`),
+  submitGameScore: (data: any) => fetchApi<any>('/games/submit', { method: 'POST', body: JSON.stringify(data) }),
 };
