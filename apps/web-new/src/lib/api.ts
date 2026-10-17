@@ -127,4 +127,30 @@ export const api = {
   getGamesLeaderboard: (gameType?: string) => fetchApi<{ leaderboard: any[] }>(`/games/leaderboard${gameType ? `?gameType=${gameType}` : ''}`),
   getGameData: (type: string, difficulty?: string) => fetchApi<any>(`/games/data?type=${type}&difficulty=${difficulty || 'all'}`),
   submitGameScore: (data: any) => fetchApi<any>('/games/submit', { method: 'POST', body: JSON.stringify(data) }),
+
+  // 8. Dictionary
+  searchDictionary: (params?: { q?: string; cefr?: string; partOfSpeech?: string; page?: number; limit?: number }) => {
+    const qp = new URLSearchParams();
+    if (params?.q) qp.append('q', params.q);
+    if (params?.cefr && params.cefr !== 'all') qp.append('cefr', params.cefr);
+    if (params?.partOfSpeech && params.partOfSpeech !== 'all') qp.append('partOfSpeech', params.partOfSpeech);
+    if (params?.page) qp.append('page', params.page.toString());
+    if (params?.limit) qp.append('limit', params.limit.toString());
+    return fetchApi<{ words: any[]; pagination: { page: number; limit: number; total: number; totalPages: number } }>(`/dictionary/search?${qp.toString()}`);
+  },
+  lookupDictionaryWord: (word: string) => fetchApi<any>(`/dictionary/lookup/${encodeURIComponent(word)}`),
+  toggleDictionaryBookmark: (wordId: string) => fetchApi<any>(`/dictionary/bookmark/${wordId}`, { method: 'POST' }),
+
+  // 9. Tutor LingLing
+  sendTutorMessage: (message: string, context?: any) =>
+    fetchApi<{ reply: string; usedRag?: boolean; refs?: any[]; suggestedActions?: any[] }>('/tutor/chat', {
+      method: 'POST',
+      body: JSON.stringify({ message, locale: 'vi', customContext: context }),
+    }),
+  getTutorContext: () => fetchApi<{ context: any }>('/tutor/context'),
+  getTutorPlan: () => fetchApi<{ plan: any }>('/tutor/plan'),
+
+  // 10. Admin CMS & Audit Log
+  getCurriculumUnits: () => fetchApi<{ units: any[] }>('/curriculum/units'),
+  getAuditLogs: () => fetchApi<{ auditLogs: any[] }>('/admin/audit-logs'),
 };
