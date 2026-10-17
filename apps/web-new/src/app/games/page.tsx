@@ -171,7 +171,7 @@ export default function GamesPage() {
           <div className="max-w-xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-amber">
               <Gamepad2 className="w-3.5 h-3.5" />
-              <span>Khu Trò Chơi Tiếng Anh · Arcade Hub</span>
+              <span>Khu Trò Chơi Tiếng Anh</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight font-sans">
@@ -193,40 +193,42 @@ export default function GamesPage() {
         </div>
 
         {/* Tab chuyển đổi chế độ */}
-        <div className="pt-6 mt-6 border-t-2 border-ink/15 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-          <button
-            onClick={() => setActiveTab('hub')}
-            className={`px-4 py-2 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
-              activeTab === 'hub'
-                ? 'bg-ink text-paper shadow-brutal-sm'
-                : 'bg-card text-ink hover:bg-paper-2'
-            }`}
-          >
-            Danh sách vé trò chơi
-          </button>
-          <button
-            onClick={() => {
-              setActiveTab('play');
-              if (!gameActive) handleStartGame();
-            }}
-            className={`px-4 py-2 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
-              activeTab === 'play'
-                ? 'bg-ink text-paper shadow-brutal-sm'
-                : 'bg-card text-ink hover:bg-paper-2'
-            }`}
-          >
-            Đấu trường Nối từ trực tiếp
-          </button>
-          <button
-            onClick={() => setActiveTab('leaderboard')}
-            className={`px-4 py-2 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
-              activeTab === 'leaderboard'
-                ? 'bg-ink text-paper shadow-brutal-sm'
-                : 'bg-card text-ink hover:bg-paper-2'
-            }`}
-          >
-            Bảng xếp hạng danh dự
-          </button>
+        <div className="pt-6 mt-6 border-t-2 border-ink/15 w-full overflow-x-auto pb-2 scrollbar-none">
+          <div className="flex items-center gap-2.5 min-w-max">
+            <button
+              onClick={() => setActiveTab('hub')}
+              className={`px-4 py-2.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
+                activeTab === 'hub'
+                  ? 'bg-ink text-paper shadow-brutal-sm'
+                  : 'bg-card text-ink hover:bg-paper-2'
+              }`}
+            >
+              Danh sách vé trò chơi
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab('play');
+                if (!gameActive) handleStartGame();
+              }}
+              className={`px-4 py-2.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
+                activeTab === 'play'
+                  ? 'bg-ink text-paper shadow-brutal-sm'
+                  : 'bg-card text-ink hover:bg-paper-2'
+              }`}
+            >
+              Đấu trường Nối từ trực tiếp
+            </button>
+            <button
+              onClick={() => setActiveTab('leaderboard')}
+              className={`px-4 py-2.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
+                activeTab === 'leaderboard'
+                  ? 'bg-ink text-paper shadow-brutal-sm'
+                  : 'bg-card text-ink hover:bg-paper-2'
+              }`}
+            >
+              Bảng xếp hạng danh dự
+            </button>
+          </div>
         </div>
       </div>
 

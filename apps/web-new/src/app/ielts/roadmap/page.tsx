@@ -174,8 +174,11 @@ export default function IeltsRoadmapPage() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/ielts/mock-test" className="btn btn-red text-sm font-black shadow-brutal flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
+            <Link
+              href="/ielts/mock-test"
+              className="btn btn-red text-sm font-black shadow-brutal inline-flex items-center justify-center gap-2 whitespace-nowrap px-6 py-3 flex-shrink-0"
+            >
               <Play className="w-4 h-4 fill-white" />
               <span>Thi thử toàn bộ</span>
             </Link>
