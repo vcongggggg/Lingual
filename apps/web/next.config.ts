@@ -1,24 +1,16 @@
-import type { NextConfig } from "next";
-import path from "path";
+import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  outputFileTracingRoot: path.join(__dirname, "../../"),
-  transpilePackages: [
-    "@linguaflow/ui",
-    "@linguaflow/config",
-    "@linguaflow/contracts",
-    "@linguaflow/domain",
-  ],
-  eslint: {
-    ignoreDuringBuilds: true,
+  output: process.platform !== 'win32' || process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
+  outputFileTracingRoot: path.join(__dirname, '../../'),
+  transpilePackages: ['@linguaflow/contracts', '@linguaflow/domain'],
+  images: {
+    unoptimized: true,
   },
-  webpack: (config, { dev }) => {
-    if (dev) {
-      // Disable persistent filesystem cache in dev mode on Windows to prevent HMR pack cache corruption
-      config.cache = false;
-    }
-    return config;
+  devIndicators: {
+    buildActivity: false,
+    appIsrStatus: false,
   },
 };
 

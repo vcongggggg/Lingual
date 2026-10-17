@@ -1,10 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { mascotReactions } from '@linguaflow/config';
-import { mascotStateVariants, useMotionAccessibility, transitionPresets } from '@linguaflow/ui';
+import { LingLing, LingLingReaction } from './ui/LingLing';
 
 export type MascotState = 'idle' | 'thinking' | 'speaking' | 'celebrating' | 'apologetic';
 
@@ -14,12 +11,12 @@ interface LingLingMascotProps {
   size?: number;
 }
 
-const stateAssetMap: Record<MascotState, string> = {
-  idle: mascotReactions.idle_empty,
-  thinking: mascotReactions.focus_mode,
-  speaking: mascotReactions.greet,
-  celebrating: mascotReactions.celebrate_big,
-  apologetic: mascotReactions.wrong_mild,
+const stateToReaction: Record<MascotState, LingLingReaction> = {
+  idle: 'greet',
+  thinking: 'salute',
+  speaking: 'greet',
+  celebrating: 'wink',
+  apologetic: 'cry',
 };
 
 export default function LingLingMascot({
@@ -27,36 +24,6 @@ export default function LingLingMascot({
   className = '',
   size = 48,
 }: LingLingMascotProps) {
-  const { shouldReduceMotion } = useMotionAccessibility();
-  const stickerSrc = stateAssetMap[state] || mascotReactions.greet;
-
-  const currentVariant = shouldReduceMotion
-    ? { opacity: 1 }
-    : mascotStateVariants[state] || mascotStateVariants.idle;
-
-  return (
-    <div
-      className={`relative inline-flex items-center justify-center select-none shrink-0 ${className}`}
-      style={{ width: size, height: size }}
-    >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={state}
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={currentVariant as any}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={shouldReduceMotion ? transitionPresets.micro : undefined}
-          className="w-full h-full flex items-center justify-center"
-        >
-          <Image
-            src={stickerSrc}
-            alt={`LingLing Cow Mascot - ${state}`}
-            fill
-            unoptimized
-            className="object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] pointer-events-none"
-          />
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
+  const reaction = stateToReaction[state] || 'greet';
+  return <LingLing reaction={reaction} size={size} className={className} />;
 }

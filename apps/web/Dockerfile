@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for @linguaflow/web (Next.js 15 Standalone)
+# Multi-stage Dockerfile for web (Next.js 15 Standalone)
 FROM node:22-alpine AS base
 RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app

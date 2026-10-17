@@ -1,499 +1,156 @@
-/**
- * Centralized API client for LinguaFlow frontend
- * Handles base URL, auth headers, error handling
- */
+// API Client for Lingual Web App connecting to Lingual Production API
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
 
-const rawBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
-const cleanBaseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
-const API_BASE_URL = cleanBaseUrl.endsWith('/api/v1') ? cleanBaseUrl : `${cleanBaseUrl}/api/v1`;
-
-interface FetchOptions extends RequestInit {
-  skipAuth?: boolean;
-}
-
-function getAuthToken(): string | null {
+export function getAuthToken(): string | null {
   if (typeof window === 'undefined') return null;
-  return localStorage.getItem('linguaflow_token') || localStorage.getItem('lingual_token');
+  return localStorage.getItem('lingual_token');
 }
 
-export function setAuthToken(token: string) {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem('linguaflow_token', token);
-    localStorage.setItem('lingual_token', token);
-  }
+export function setAuthToken(token: string): void {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem('lingual_token', token);
+  document.cookie = `access_token=${token}; path=/; max-age=604800; SameSite=Lax`;
 }
 
-export function clearAuthToken() {
-  if (typeof window !== 'undefined') {
-    localStorage.removeItem('linguaflow_token');
-    localStorage.removeItem('lingual_token');
-    localStorage.removeItem('linguaflow_user');
-    localStorage.removeItem('lingual_user');
-  }
+export function removeAuthToken(): void {
+  if (typeof window === 'undefined') return;
+  localStorage.removeItem('lingual_token');
+  document.cookie = 'access_token=; path=/; max-age=0';
 }
 
-export async function apiFetch<T = any>(endpoint: string, options: FetchOptions = {}): Promise<T> {
-  const { skipAuth = false, headers: customHeaders, ...rest } = options;
-
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    ...(customHeaders as Record<string, string>),
-  };
-
-  if (!skipAuth) {
-    const token = getAuthToken();
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
-    }
+async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+  const token = getAuthToken();
+  const headers = new Headers(options.headers || {});
+  
+  if (!headers.has('Content-Type') && !(options.body instanceof FormData)) {
+    headers.set('Content-Type', 'application/json');
   }
 
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-  const url = endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}${cleanEndpoint}`;
-
-  try {
-    const res = await fetch(url, {
-      ...rest,
-      headers,
-    });
-
-    if (!res.ok) {
-      const errorData = await res.json().catch(() => ({ error: 'Lỗi kết nối server' }));
-      throw new Error(errorData.error || `HTTP ${res.status}`);
-    }
-
-    return await res.json();
-  } catch (err: any) {
-    if (err instanceof TypeError || (err?.message && String(err.message).includes('fetch'))) {
-      throw new Error(`Không thể kết nối tới server API (${API_BASE_URL}). Vui lòng kiểm tra dịch vụ backend.`);
-    }
-    throw err;
+  if (token && !headers.has('Authorization')) {
+    headers.set('Authorization', `Bearer ${token}`);
   }
+
+  const url = `${API_BASE}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
+
+  const res = await fetch(url, {
+    ...options,
+    headers,
+  });
+
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    const errorMessage = data?.error || data?.message || `HTTP ${res.status}: Lỗi kết nối máy chủ`;
+    throw new Error(errorMessage);
+  }
+
+  return data as T;
 }
 
-// ============================================================================
-// CURRICULUM API
-// ============================================================================
+export const api = {
+  // 1. Health check
+  getHealth: () => fetchApi<{ status: string; version: string; database: string }>('/health'),
 
-export const curriculumApi = {
-  getUnits: () => apiFetch('/curriculum/units'),
-  getLesson: (lessonId: string) => apiFetch(`/curriculum/lessons/${lessonId}`),
-  startAttempt: (sourceType: string, sourceId: string) =>
-    apiFetch('/curriculum/attempts/start', {
+  // 2. Auth
+  register: (payload: { email: string; password: string; displayName: string; interfaceLocale?: string; timezone?: string }) =>
+    fetchApi<{ user: any; accessToken: string }>('/auth/register', {
       method: 'POST',
-      body: JSON.stringify({ sourceType, sourceId }),
+      body: JSON.stringify(payload),
     }),
-  submitLesson: (lessonId: string, data: { attemptId: string; answers: any[] }) =>
-    apiFetch(`/curriculum/lessons/${lessonId}/submit`, {
+
+  login: (payload: { email: string; password: string }) =>
+    fetchApi<{ user: any; accessToken: string }>('/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ ...data, lessonId }),
+      body: JSON.stringify(payload),
     }),
-};
 
-// ============================================================================
-// SRS API
-// ============================================================================
+  getMe: () => fetchApi<{ user: any }>('/auth/me'),
 
-export const srsApi = {
-  getQueue: () => apiFetch('/srs/queue'),
-  getStats: () => apiFetch('/srs/stats'),
-  submitReview: (wordId: string, quality: number) =>
-    apiFetch('/srs/review', {
+  logout: () => fetchApi<{ message: string }>('/auth/logout', { method: 'POST' }),
+
+  // 3. SRS
+  getSrsQueue: () => fetchApi<{ queue: any[]; stats: { dueToday: number; learning: number; mastered: number; newWords: number; totalWords: number } }>('/srs/queue'),
+
+  reviewSrsWord: (wordId: string, quality: number) =>
+    fetchApi<{ wordId: string; quality: number; nextInterval: number; nextRepetition: number; nextEFactor: number; dueDate: string; xpEarned: number; totalXP: number }>('/srs/review', {
       method: 'POST',
       body: JSON.stringify({ wordId, quality }),
     }),
-  addWord: (data: { targetText: string; translation?: string; phonetic?: string; exampleSentence?: string; cefrLevel?: string }) =>
-    apiFetch('/srs/add', {
+
+  addSrsWord: (payload: { targetText: string; translation: string; phonetic?: string; exampleSentence?: string; cefrLevel?: string }) =>
+    fetchApi<{ success: boolean; message: string; word: any }>('/srs/add', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  // 4. Vocabulary
+  getVocabularies: (limit = 100) => fetchApi<{ vocabularies: any[] }>(`/vocabulary?limit=${limit}`),
+
+  // 5. IELTS
+  getIeltsRoadmap: () => fetchApi<{ success: boolean; tracks: any[] }>('/ielts/roadmap'),
+  getIeltsPracticeQuestions: (skill: string) => fetchApi<{ success: boolean; skill: string; questions: any[] }>(`/ielts/practice/${skill}`),
+  getIeltsQuestionDetail: (id: string) => fetchApi<{ success: boolean; question: any }>(`/ielts/practice/question/${id}`),
+  getIeltsMockTestQuestions: () => fetchApi<{ success: boolean; readingTotal: number; listeningTotal: number; questions: any[]; readingPassages: any[]; listeningSections: any[] }>('/ielts/mock-test/questions'),
+  submitIeltsMockTest: (data: { userId?: string; type?: string; durationSec?: number; answers: Record<string, string> }) =>
+    fetchApi<{ success: boolean; attempt: any }>('/ielts/mock-test/submit', {
       method: 'POST',
       body: JSON.stringify(data),
     }),
-};
+  evaluateIeltsWriting: (data: { userId?: string; taskType?: string; prompt: string; essayText: string }) =>
+    fetchApi<{ success: boolean; evaluation: any }>('/ielts/writing/evaluate', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
 
-// ============================================================================
-// GAMES API
-// ============================================================================
+  // 6. Analytics
+  getAnalyticsOverview: () => fetchApi<{
+    overallScore: number;
+    estimatedCEFR: string;
+    totalStudyMinutes: number;
+    totalXP: number;
+    currentStreak: number;
+    weeklyMinutes: number;
+    skills: any[];
+    weaknesses: any[];
+    strengths: any[];
+    goals: any[];
+  }>('/analytics/overview'),
 
-export const gamesApi = {
-  getData: (gameType: string, params?: { topic?: string; cefr?: string }) => {
-    const query = new URLSearchParams();
-    if (params?.topic) query.set('topic', params.topic);
-    if (params?.cefr) query.set('cefr', params.cefr);
-    const qs = query.toString() ? `?${query.toString()}` : '';
-    return apiFetch(`/games/data/${gameType}${qs}`);
+  // 7. Games
+  getGamesList: () =>
+    Promise.resolve([
+      { id: 'word-match', title: 'Nối từ siêu tốc', englishTitle: 'Speed Word Match', desc: 'Ghép cặp từ vựng và nghĩa tiếng Việt trong 60 giây', badge: 'Từ vựng', xp: '+25 XP', icon: 'zap' },
+      { id: 'scramble', title: 'Xếp câu trật tự', englishTitle: 'Sentence Scramble', desc: 'Sắp xếp các khối từ đảo lộn thành câu hoàn chỉnh', badge: 'Ngữ pháp', xp: '+30 XP', icon: 'shuffle' },
+      { id: 'fast-typing', title: 'Gõ phím thần tốc', englishTitle: 'Spelling Rain', desc: 'Gõ đúng chính tả từ vựng đang rơi để tăng tốc độ phản xạ', badge: 'Chính tả', xp: '+40 XP', icon: 'keyboard' },
+      { id: 'word-fill', title: 'Điền khuyết ngữ cảnh', englishTitle: 'Context Cloze', desc: 'Chọn từ còn thiếu phù hợp nhất với ngữ cảnh câu văn bản xứ', badge: 'Ngữ cảnh', xp: '+20 XP', icon: 'check-circle' },
+    ]),
+  getGamesLeaderboard: (gameType?: string) => fetchApi<{ leaderboard: any[] }>(`/games/leaderboard${gameType ? `?gameType=${gameType}` : ''}`),
+  getGameData: (type: string, difficulty?: string) => fetchApi<any>(`/games/data?type=${type}&difficulty=${difficulty || 'all'}`),
+  submitGameScore: (data: any) => fetchApi<any>('/games/submit', { method: 'POST', body: JSON.stringify(data) }),
+
+  // 8. Dictionary
+  searchDictionary: (params?: { q?: string; cefr?: string; partOfSpeech?: string; page?: number; limit?: number }) => {
+    const qp = new URLSearchParams();
+    if (params?.q) qp.append('q', params.q);
+    if (params?.cefr && params.cefr !== 'all') qp.append('cefr', params.cefr);
+    if (params?.partOfSpeech && params.partOfSpeech !== 'all') qp.append('partOfSpeech', params.partOfSpeech);
+    if (params?.page) qp.append('page', params.page.toString());
+    if (params?.limit) qp.append('limit', params.limit.toString());
+    return fetchApi<{ words: any[]; pagination: { page: number; limit: number; total: number; totalPages: number } }>(`/dictionary/search?${qp.toString()}`);
   },
-  startAttempt: (gameType: string) =>
-    apiFetch('/curriculum/attempts/start', {
+  lookupDictionaryWord: (word: string) => fetchApi<any>(`/dictionary/lookup/${encodeURIComponent(word)}`),
+  toggleDictionaryBookmark: (wordId: string) => fetchApi<any>(`/dictionary/bookmark/${wordId}`, { method: 'POST' }),
+
+  // 9. Tutor LingLing
+  sendTutorMessage: (message: string, context?: any) =>
+    fetchApi<{ reply: string; usedRag?: boolean; refs?: any[]; suggestedActions?: any[] }>('/tutor/chat', {
       method: 'POST',
-      body: JSON.stringify({ sourceType: 'game', sourceId: gameType }),
+      body: JSON.stringify({ message, locale: 'vi', customContext: context }),
     }),
-  submitScore: (data: { attemptId: string; gameType: string; userAnswers: any[]; durationSeconds: number; userId?: string; comboMax?: number }) => {
-    let resolvedUserId = data.userId;
-    if (!resolvedUserId && typeof window !== 'undefined') {
-      try {
-        const u = localStorage.getItem('linguaflow_user') || localStorage.getItem('lingual_user');
-        if (u) resolvedUserId = JSON.parse(u).id;
-      } catch {}
-    }
-    return apiFetch('/games/submit', {
-      method: 'POST',
-      body: JSON.stringify({ ...data, userId: resolvedUserId }),
-    });
-  },
-  getHistory: () => apiFetch('/games/history'),
-  getLeaderboard: (params?: { gameType?: string; userId?: string }) => {
-    const query = new URLSearchParams();
-    if (params?.gameType) query.set('gameType', params.gameType);
-    if (params?.userId) query.set('userId', params.userId);
-    const qs = query.toString() ? `?${query.toString()}` : '';
-    return apiFetch(`/games/leaderboard${qs}`);
-  },
-  getUserStats: (userId: string) => apiFetch(`/games/stats/${userId}`),
+  getTutorContext: () => fetchApi<{ context: any }>('/tutor/context'),
+  getTutorPlan: () => fetchApi<{ plan: any }>('/tutor/plan'),
+
+  // 10. Admin CMS & Audit Log
+  getCurriculumUnits: () => fetchApi<{ units: any[] }>('/curriculum/units'),
+  getAuditLogs: () => fetchApi<{ auditLogs: any[] }>('/admin/audit-logs'),
 };
-
-// ============================================================================
-// DICTIONARY 26,500+ WORDS API
-// ============================================================================
-export interface DictionaryWord {
-  id: string;
-  targetText: string;
-  translation: string;
-  phonetic?: string;
-  partOfSpeech?: string;
-  cefrLevel: string;
-  category?: string;
-  exampleSentence?: string;
-  exampleTranslation?: string;
-  imageUrl?: string;
-  audioUrl?: string;
-  unitTitle?: string;
-  lessonTitle?: string;
-  isBookmarked?: boolean;
-  inSrsDeck?: boolean;
-}
-
-export interface DictionarySearchResponse {
-  words: DictionaryWord[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-}
-
-export const dictionaryApi = {
-  search: (params?: { q?: string; cefr?: string; partOfSpeech?: string; page?: number; limit?: number }) => {
-    const queryParams = new URLSearchParams();
-    if (params?.q) queryParams.set('q', params.q);
-    if (params?.cefr && params.cefr !== 'all') queryParams.set('cefr', params.cefr);
-    if (params?.partOfSpeech && params.partOfSpeech !== 'all') queryParams.set('partOfSpeech', params.partOfSpeech);
-    if (params?.page) queryParams.set('page', params.page.toString());
-    if (params?.limit) queryParams.set('limit', params.limit.toString());
-    return apiFetch<DictionarySearchResponse>(`/dictionary/search?${queryParams.toString()}`);
-  },
-  lookup: (word: string) =>
-    apiFetch<{ word: string; local: DictionaryWord | null; definitions: any[]; bookmarked: boolean }>(
-      `/dictionary/lookup/${encodeURIComponent(word)}`
-    ),
-  bookmark: (wordId: string) =>
-    apiFetch<{ success: boolean; isBookmarked: boolean }>(`/dictionary/bookmark/${encodeURIComponent(wordId)}`, {
-      method: 'POST',
-    }),
-  addToSrs: (wordId: string) =>
-    apiFetch<{ success: boolean; inSrsDeck: boolean }>(`/dictionary/srs-add/${encodeURIComponent(wordId)}`, {
-      method: 'POST',
-    }),
-};
-
-
-// ============================================================================
-// VOCABULARY API
-// ============================================================================
-
-export const vocabularyApi = {
-  search: (params: { q?: string; cefr?: string; category?: string; partOfSpeech?: string; page?: number; limit?: number }) => {
-    const queryParams = new URLSearchParams();
-    if (params.q) queryParams.set('q', params.q);
-    if (params.cefr) queryParams.set('cefr', params.cefr);
-    if (params.category) queryParams.set('category', params.category);
-    if (params.partOfSpeech) queryParams.set('partOfSpeech', params.partOfSpeech);
-    if (params.page) queryParams.set('page', params.page.toString());
-    if (params.limit) queryParams.set('limit', params.limit.toString());
-    return apiFetch(`/vocabulary/search?${queryParams.toString()}`);
-  },
-  getWord: (wordId: string) => apiFetch(`/vocabulary/word/${wordId}`),
-  getFolders: () => apiFetch('/vocabulary/folders'),
-  createFolder: (data: { name: string; description?: string; icon?: string; color?: string }) =>
-    apiFetch('/vocabulary/folders', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  updateFolder: (folderId: string, data: { name?: string; description?: string; color?: string; icon?: string }) =>
-    apiFetch(`/vocabulary/folders/${folderId}`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-    }),
-  deleteFolder: (folderId: string) =>
-    apiFetch(`/vocabulary/folders/${folderId}`, {
-      method: 'DELETE',
-    }),
-  addWordToFolder: (folderId: string, wordId: string) =>
-    apiFetch(`/vocabulary/folders/${folderId}/words`, {
-      method: 'POST',
-      body: JSON.stringify({ wordId }),
-    }),
-  removeWordFromFolder: (folderId: string, wordId: string) =>
-    apiFetch(`/vocabulary/folders/${folderId}/words/${wordId}`, {
-      method: 'DELETE',
-    }),
-  getSavedWords: (folderId?: string) => {
-    const query = folderId ? `?folderId=${folderId}` : '';
-    return apiFetch(`/vocabulary/saved${query}`);
-  },
-  saveWord: (data: { wordId?: string; targetText?: string; translation?: string; phonetic?: string; cefrLevel?: string }) =>
-    apiFetch('/vocabulary/save', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  getPractice: (params: { folderId?: string; limit?: number } = {}) => {
-    const queryParams = new URLSearchParams();
-    if (params.folderId) queryParams.set('folderId', params.folderId);
-    if (params.limit) queryParams.set('limit', params.limit.toString());
-    return apiFetch(`/vocabulary/practice?${queryParams.toString()}`);
-  },
-  submitPractice: (data: { questions: any[]; answers: any[] }) =>
-    apiFetch('/vocabulary/practice/submit', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-};
-
-// ============================================================================
-// WRITING API
-// ============================================================================
-
-export const writingApi = {
-  getPrompts: (params: { mode?: string; difficulty?: string; category?: string } = {}) => {
-    const queryParams = new URLSearchParams();
-    if (params.mode) queryParams.set('mode', params.mode);
-    if (params.difficulty) queryParams.set('difficulty', params.difficulty);
-    if (params.category) queryParams.set('category', params.category);
-    return apiFetch(`/writing/prompts?${queryParams.toString()}`);
-  },
-  analyze: (data: { promptId?: string; mode?: string; content: string; usedHint?: boolean; durationMs?: number }) =>
-    apiFetch('/writing/analyze', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  submitAttempt: (data: {
-    promptId?: string;
-    mode?: string;
-    content: string;
-    score: number;
-    xpAwarded: number;
-    durationMs?: number;
-  }) =>
-    apiFetch('/writing/attempts', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  getHistory: () => apiFetch('/writing/history'),
-  getStats: () => apiFetch('/writing/stats'),
-};
-
-// ============================================================================
-// READING API
-// ============================================================================
-
-export const readingApi = {
-  getArticles: (params: { level?: string; topic?: string; mode?: string } = {}) => {
-    const queryParams = new URLSearchParams();
-    if (params.level) queryParams.set('level', params.level);
-    if (params.topic) queryParams.set('topic', params.topic);
-    if (params.mode) queryParams.set('mode', params.mode);
-    return apiFetch(`/reading/articles?${queryParams.toString()}`);
-  },
-  getArticle: (id: string) => apiFetch(`/reading/articles/${id}`),
-  getQuestions: (id: string) => apiFetch(`/reading/articles/${id}/questions`),
-  submitAttempt: (data: {
-    articleId: string;
-    mode?: string;
-    answers: { questionId: string; selectedOption: string }[];
-    elapsedSeconds: number;
-  }) =>
-    apiFetch('/reading/attempts', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  getHistory: () => apiFetch('/reading/history'),
-  getStats: () => apiFetch('/reading/stats'),
-  saveProgress: (data: { articleId: string; currentParagraph: number; scrollProgress: number }) =>
-    apiFetch('/reading/progress', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  saveVocabulary: (data: { word: string; meaning?: string; cefrLevel?: string; articleId?: string }) =>
-    apiFetch('/reading/vocabulary/save', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-};
-
-// ============================================================================
-// USER API
-// ============================================================================
-
-export const userApi = {
-  getMe: () => apiFetch('/auth/me'),
-  getProgress: () => apiFetch('/user/progress'),
-  getStats: () => apiFetch('/user/stats'),
-  getAchievements: () => apiFetch('/user/achievements'),
-  login: (email: string, password: string) =>
-    apiFetch('/auth/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      skipAuth: true,
-    }),
-  register: (data: { email: string; password: string; displayName: string; timezone?: string; interfaceLocale?: string }) =>
-    apiFetch('/auth/register', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      skipAuth: true,
-    }),
-  getGoogleAuthUrl: (locale: string = 'vi') =>
-    apiFetch<{ isConfigured: boolean; url?: string; message?: string }>(`/auth/google/url?locale=${locale}`, {
-      skipAuth: true,
-    }),
-  mockGoogleLogin: (data: { email: string; name?: string; avatarUrl?: string; googleId?: string }) =>
-    apiFetch('/auth/google/mock-login', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      skipAuth: true,
-    }),
-  verifyGoogleToken: (idToken: string) =>
-    apiFetch('/auth/google/verify-token', {
-      method: 'POST',
-      body: JSON.stringify({ idToken }),
-      skipAuth: true,
-    }),
-};
-
-// ============================================================================
-// IELTS API
-// ============================================================================
-
-export const ieltsApi = {
-  getRoadmap: () => apiFetch('/ielts/roadmap'),
-  getPracticeQuestions: (skill: string) => apiFetch(`/ielts/practice/${skill}`),
-  getQuestionDetail: (id: string) => apiFetch(`/ielts/practice/question/${id}`),
-  getMockTestQuestions: () => apiFetch('/ielts/mock-test/questions'),
-  submitMockTest: (data: { userId?: string; type?: string; durationSec?: number; answers: Record<string, string> }) =>
-    apiFetch('/ielts/mock-test/submit', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  evaluateWriting: (data: { userId?: string; taskType?: string; prompt: string; essayText: string }) =>
-    apiFetch('/ielts/writing/evaluate', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-};
-
-// ============================================================================
-// CHATBOT LINGLING API
-// ============================================================================
-
-export const chatbotApi = {
-  sendMessage: (data: { message: string; history?: any[]; contextPage?: string }) =>
-    apiFetch('/chatbot/chat', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-  streamMessage: async (
-    data: { message: string; history?: any[]; contextPage?: string },
-    callbacks: {
-      onMetadata?: (meta: { usedOllama?: boolean; ragApplied?: boolean; ragRefs?: any[] }) => void;
-      onToken?: (token: string) => void;
-      onDone?: () => void;
-      onError?: (err: any) => void;
-    }
-  ) => {
-    try {
-      const token = getAuthToken();
-      const headers: Record<string, string> = {
-        'Content-Type': 'application/json',
-      };
-      if (token) headers['Authorization'] = `Bearer ${token}`;
-
-      const res = await fetch(`${API_BASE_URL}/chatbot/stream`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok || !res.body) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder('utf-8');
-      let buffer = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n\n');
-        buffer = lines.pop() || '';
-
-        for (const block of lines) {
-          const eventMatch = block.match(/event:\s*(\w+)/);
-          const dataMatch = block.match(/data:\s*(.+)/);
-
-          if (eventMatch && dataMatch) {
-            const eventName = eventMatch[1];
-            try {
-              const payload = JSON.parse(dataMatch[1]);
-              if (eventName === 'metadata' && callbacks.onMetadata) {
-                callbacks.onMetadata(payload);
-              } else if (eventName === 'token' && callbacks.onToken && payload.token) {
-                callbacks.onToken(payload.token);
-              } else if (eventName === 'done' && callbacks.onDone) {
-                callbacks.onDone();
-              }
-            } catch (pErr) {}
-          }
-        }
-      }
-      callbacks.onDone?.();
-    } catch (err) {
-      callbacks.onError?.(err);
-    }
-  },
-};
-
-// ============================================================================
-// ADMIN MODULE API
-// ============================================================================
-export const adminApi = {
-  getDashboard: () => apiFetch('/admin/dashboard'),
-  getUsers: () => apiFetch('/admin/users'),
-  updateUserRole: (userId: string, newRole: string) =>
-    apiFetch(`/admin/users/${userId}/role`, { method: 'POST', body: JSON.stringify({ newRole }) }),
-  toggleUserStatus: (userId: string) =>
-    apiFetch(`/admin/users/${userId}/toggle-status`, { method: 'POST' }),
-  getAuditLogs: () => apiFetch('/admin/audit-logs'),
-  updateConfig: (configData: any) =>
-    apiFetch('/admin/config', { method: 'POST', body: JSON.stringify(configData) }),
-};
-
-export { examsApi } from './exams/api';
-export { communityApi } from './community/api';
-export { analyticsApi } from './analytics/analyticsApi';
-export { speakingApi } from './speaking/api';
-export { tutorApi } from './tutor/tutorApi';
-
-export { API_BASE_URL };
-export default apiFetch;
-
-

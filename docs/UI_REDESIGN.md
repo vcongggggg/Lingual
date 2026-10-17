@@ -2,7 +2,7 @@
 
 **Version:** 1.0.0  
 **Status:** Approved by User  
-**Target App:** `apps/web-new` (Độc lập hoàn toàn, không sửa đổi `apps/web` cũ)  
+**Target App:** `apps/web` (Giao diện chính thức sau Cutover, `apps/web-old-archive` lưu trữ bản cũ)  
 **Tài liệu tham khảo trực quan:** [mockup-lingual-giay-linhvat.html](file:///c:/Study/HocKy6/LinguaFlow/mockup-lingual-giay-linhvat.html) & Screenshots tại `docs/screenshots/`.
 
 ---
@@ -69,7 +69,7 @@ Lingual chuyển mình từ giao diện "AI Slop" chung chung (dark mode phát s
 2. **Không Gradient Blobs & Glowing:** Cấm tạo các khối cầu màu tím/hồng/xanh mờ chạy nền hoặc bóng phát sáng neon rực rỡ (`box-shadow: 0 0 25px #...`).
 3. **Không Text Gradient 3 Màu:** Cấm các đoạn chữ `bg-gradient-to-r from-blue-400 via-pink-500 to-purple-600 bg-clip-text text-transparent`.
 4. **Không Staggered Fade-Up Thừa Thãi:** Không làm delay animation từng dòng text khiến người dùng phải chờ trang hiện ra.
-5. **Không sửa đổi `apps/web` cũ:** Mọi thay đổi code UI CHỈ ĐƯỢC PHÉP nằm trong thư mục `apps/web-new`.
+5. **Lịch sử mã nguồn được bảo toàn:** Giao diện cũ được lưu trữ tại `apps/web-old-archive`. Mọi thay đổi UI chính thức nằm tại `apps/web`.
 
 ### ✅ BẮT BUỘC TUÂN THỦ (Mandatory Guidelines):
 1. **Nền giấy kraft:** Sử dụng `background: var(--paper)` kết hợp mẫu chấm mực `radial-gradient(#211a1314 1px, transparent 1px)` kích thước `22px 22px`.
@@ -82,7 +82,7 @@ Lingual chuyển mình từ giao diện "AI Slop" chung chung (dark mode phát s
 
 ## 4. Danh Mục Linh Vật LingLing & Ngữ Cảnh Sử Dụng
 
-| Sticker File | Biểu Cảm Linh Vật | Ngữ Cảnh Triển Khai Trong Web-New |
+| Sticker File | Biểu Cảm Linh Vật | Ngữ Cảnh Triển Khai Trong Web |
 |:---|:---|:---|
 | `cow_greet_heart.png` | Cầm trà sữa, ôm tim chào | Hero Section, Welcome Screen, Trang chủ |
 | `cow_salute.png` | Giơ tay chào kiểu chiến binh | Dải Streak Card, Bảng điểm danh hàng ngày |
@@ -93,10 +93,10 @@ Lingual chuyển mình từ giao diện "AI Slop" chung chung (dark mode phát s
 
 ---
 
-## 5. Cấu Trúc Monorepo Của Ứng Dụng Mới (`apps/web-new`)
+## 5. Cấu Trúc Monorepo Của Ứng Dụng (`apps/web`)
 
 ```
-apps/web-new/
+apps/web/
 ├── public/
 │   ├── mascot/             # Bộ sticker LingLing gốc (PNG)
 │   └── fonts/              # Font Be Vietnam Pro

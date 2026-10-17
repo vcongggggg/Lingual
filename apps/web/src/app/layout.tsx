@@ -1,48 +1,38 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
-import './globals.css';
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-  display: 'swap',
-});
-
-export const viewport: Viewport = {
-  themeColor: '#070b14',
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 5,
-};
+import '../styles/globals.css';
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: 'LinguaFlow — Học Tiếng Anh & Luyện Thi IELTS Chuẩn Quốc Tế',
-  description: 'Nền tảng học tiếng Anh & luyện thi IELTS thông minh với 26,500+ từ vựng chuẩn CEFR, lặp lại ngắt quãng SRS SM-2, và giao diện Cyber-Academic Luminescence.',
-  manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'black-translucent',
-    title: 'LinguaFlow',
-  },
+  title: 'Lingual — Học tiếng Anh mỗi ngày, nhớ lâu thật sự',
+  description: 'Nền tảng học tiếng Anh sổ tay giấy kết hợp ôn tập thông minh, 5 Kỹ Năng và luyện thi IELTS chuẩn hóa.',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="vi" suppressHydrationWarning className={`${plusJakartaSans.variable} ${inter.variable}`}>
-      <body className={`${plusJakartaSans.variable} ${inter.variable} bg-slate-950 text-slate-100 min-h-screen flex flex-col font-body antialiased`}>
-        {children}
+    <html lang="vi">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen flex flex-col justify-between selection:bg-amber selection:text-ink w-full max-w-full overflow-x-clip">
+        <Navbar />
+        <main className="flex-1 w-full">{children}</main>
+        <Footer />
       </body>
     </html>
   );
