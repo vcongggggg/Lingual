@@ -42,3 +42,7 @@ test-results/
 # Python cache
 __pycache__/
 *.pyc
+
+# Local runtime data
+apps/api/data/*.json
+!apps/api/data/.gitkeep

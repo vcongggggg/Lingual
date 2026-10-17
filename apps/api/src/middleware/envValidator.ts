@@ -7,7 +7,7 @@ import { z } from 'zod';
 const EnvSchema = z.object({
   PORT: z.string().optional().default('4000'),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  JWT_SECRET: z.string().min(16, 'JWT_SECRET phải dài ít nhất 16 ký tự để bảo mật').default('linguaflow_super_secret_jwt_key_2026'),
+  JWT_SECRET: z.string({ required_error: 'JWT_SECRET là bắt buộc và không được để trống' }).min(16, 'JWT_SECRET phải dài ít nhất 16 ký tự để bảo mật'),
   DATABASE_URL: z.string().optional(),
 });
 

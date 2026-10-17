@@ -87,6 +87,10 @@ userRouter.get('/progress', async (req, res) => {
 
 userRouter.get('/stats', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const caller = getCallerUser(req);
+  if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
+    return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
+  }
   const user = await resolveUser(userId);
 
   if (!user) {
@@ -123,6 +127,10 @@ userRouter.get('/stats', async (req, res) => {
 
 userRouter.get('/achievements', async (req, res) => {
   const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const caller = getCallerUser(req);
+  if (caller && caller.userId !== userId && caller.role !== 'ADMIN' && caller.role !== 'SUPER_ADMIN') {
+    return res.status(403).json({ error: 'Truy cập bị từ chối: Bạn không có quyền truy cập dữ liệu của người dùng khác' });
+  }
   const user = await resolveUser(userId);
 
   if (!user) {

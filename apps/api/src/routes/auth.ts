@@ -9,7 +9,8 @@ import { authLimiter } from '../middleware/rateLimiter.js';
 
 export const authRouter = Router();
 
-export const FAILED_LOGIN_ATTEMPTS: Record<string, { count: number; lockedUntil?: number }> = {};
+import { FAILED_LOGIN_ATTEMPTS, lockoutStore } from '../lib/lockoutStore.js';
+export { FAILED_LOGIN_ATTEMPTS, lockoutStore };
 
 authRouter.post('/register', authLimiter, async (req, res) => {
   try {
@@ -251,8 +252,12 @@ authRouter.get('/google/callback', async (req, res) => {
   }
 });
 
-// 3. Dev Google Login / Simulator
+// 3. Dev Google Login / Simulator (Blocked in Production)
 authRouter.post('/google/dev-login', async (req, res) => {
+  if (process.env.NODE_ENV === 'production') {
+    return res.status(404).json({ error: 'Endpoint không tồn tại' });
+  }
+
   try {
     const { email, name, avatarUrl, googleId } = req.body;
     if (!email) {

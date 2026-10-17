@@ -102,15 +102,15 @@ cd apps/api && pnpm exec tsc --noEmit                    # pass, không lỗi Pr
 ## Phase D4 — Security verification (ước lượng: 2–3h)
 
 Verify lại TỪNG claim "hardening" cũ bằng test thật, không tin commit message:
-- [ ] JWT: không fallback secret; token hết hạn đúng; refresh (nếu có) đúng chuẩn.
-- [ ] RBAC 5 roles: ma trận test — mỗi role × mỗi route nhạy cảm → đúng 200/403. RBAC chạy trên DB thật (sau D2).
-- [ ] Rate limiting: login brute-force 20 lần → 429.
-- [ ] Helmet headers, CORS origin từ env, không lộ stack trace ở production.
-- [ ] OWASP quick pass: SQL injection (Prisma parameterized — verify), XSS (không có dangerouslySetInnerHTML với user input), IDOR (user A không đọc/sửa dữ liệu user B).
-- [ ] **Khóa endpoint `/google/dev-login` ở production**: endpoint này tạo user với email tùy ý không cần verify — chỉ cho chạy khi `NODE_ENV=development` (hoặc flag riêng), production phải trả 404. Test: gọi endpoint ở NODE_ENV=production → 404.
-- [ ] **`FAILED_LOGIN_ATTEMPTS` đang in-memory**: restart server là mất đếm khóa tài khoản → chuyển sang persist (DB hoặc Redis). Tối thiểu: document rõ giới hạn single-instance nếu chưa chuyển được, và ghi issue.
-- [ ] **Audit log fire-and-forget**: `auditLogInterceptor` đang `.catch()` lặng lẽ — DB fail là mất log không ai biết. Với action nhạy cảm (đổi role, xóa content): phải `await` và trả lỗi nếu ghi log thất bại; với action thường: log rõ vào error log + metric.
-- [ ] Xóa các file "pentest report" cũ nếu không có bằng chứng chạy thật đi kèm.
+- [x] JWT: không fallback secret; token hết hạn đúng; refresh (nếu có) đúng chuẩn.
+- [x] RBAC 5 roles: ma trận test — mỗi role × mỗi route nhạy cảm → đúng 200/403. RBAC chạy trên DB thật (sau D2).
+- [x] Rate limiting: login brute-force 20 lần → 429.
+- [x] Helmet headers, CORS origin từ env, không lộ stack trace ở production.
+- [x] OWASP quick pass: SQL injection (Prisma parameterized — verify), XSS (không có dangerouslySetInnerHTML với user input), IDOR (user A không đọc/sửa dữ liệu user B).
+- [x] **Khóa endpoint `/google/dev-login` ở production**: endpoint này tạo user với email tùy ý không cần verify — chỉ cho chạy khi `NODE_ENV=development` (hoặc flag riêng), production phải trả 404. Test: gọi endpoint ở NODE_ENV=production → 404.
+- [x] **`FAILED_LOGIN_ATTEMPTS` đang in-memory**: restart server là mất đếm khóa tài khoản → chuyển sang persist (DB hoặc Redis). Tối thiểu: document rõ giới hạn single-instance nếu chưa chuyển được, và ghi issue.
+- [x] **Audit log fire-and-forget**: `auditLogInterceptor` đang `.catch()` lặng lẽ — DB fail là mất log không ai biết. Với action nhạy cảm (đổi role, xóa content): phải `await` và trả lỗi nếu ghi log thất bại; với action thường: log rõ vào error log + metric.
+- [x] Xóa các file "pentest report" cũ nếu không có bằng chứng chạy thật đi kèm.
 
 ### Definition of Done
 - File `docs/SECURITY.md`: checklist trên, mỗi mục có lệnh test + kết quả.
