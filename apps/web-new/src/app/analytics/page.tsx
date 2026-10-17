@@ -156,7 +156,7 @@ export default function AnalyticsPage() {
           <div className="max-w-xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-red">
               <BarChart3 className="w-3.5 h-3.5" />
-              <span>Báo Cáo Học Tập · Learning Report</span>
+              <span>Báo Cáo Học Tập</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight font-sans">

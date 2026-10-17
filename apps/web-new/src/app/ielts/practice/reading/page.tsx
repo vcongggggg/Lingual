@@ -149,7 +149,7 @@ Water from aqueducts fed three critical destinations: public fountains (lacus) f
           <span>Quay lại Trung tâm IELTS</span>
         </Link>
         <span>/</span>
-        <span className="text-ink">Luyện đọc 2 cột · Reading Lab</span>
+        <span className="text-ink">Luyện đọc 2 cột</span>
       </div>
 
       {/* Header bar */}

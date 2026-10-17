@@ -198,7 +198,7 @@ export default function DictionaryPage() {
           <div className="max-w-xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Từ Điển Toàn Diện · Dictionary</span>
+              <span>Từ Điển Toàn Diện</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight font-sans">

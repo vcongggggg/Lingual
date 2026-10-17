@@ -137,7 +137,7 @@ export default function ListeningPracticePage() {
 
         {/* Badge chế độ */}
         <span className="px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black text-teal uppercase tracking-wider">
-          Chép chính tả · Dictation
+          Chép chính tả
         </span>
       </div>
 

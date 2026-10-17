@@ -279,7 +279,7 @@ export default function IeltsMockTestPage() {
                         : 'border-amber bg-amber/10 text-amber'
                     }`}
                   >
-                    {isReading ? 'BÀI ĐỌC · READING' : 'BÀI NGHE · LISTENING'}
+                    {isReading ? 'BÀI ĐỌC' : 'BÀI NGHE'}
                   </span>
                 </div>
 

@@ -149,7 +149,7 @@ export default function AdminContentPage() {
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
             <FolderKanban className="w-3.5 h-3.5" />
-            <span>Sổ Biên Soạn & Quản Lý Nội Dung · Content CMS</span>
+            <span>Sổ Biên Soạn & Quản Lý Nội Dung</span>
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-black text-ink tracking-tight font-sans">

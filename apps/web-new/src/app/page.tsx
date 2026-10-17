@@ -82,8 +82,7 @@ export default function HomePage() {
                   Động từ · A2
                 </span>
                 <div className="text-xl sm:text-3xl font-black text-ink tracking-tight mb-1">Achieve</div>
-                <div className="text-[11px] sm:text-xs text-ink-soft mb-2 sm:mb-3">/əˈtʃiːv/</div>
-                <div className="text-sm sm:text-lg font-extrabold text-teal">Đạt được</div>
+                <div className="text-[11px] sm:text-xs text-ink-soft">/əˈtʃiːv/</div>
               </div>
 
               {/* Thẻ 3 (trên cùng bên phải) */}

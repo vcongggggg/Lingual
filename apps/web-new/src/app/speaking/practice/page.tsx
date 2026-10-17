@@ -141,7 +141,7 @@ export default function SpeakingPracticePage() {
         </Link>
 
         <span className="px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black text-red uppercase tracking-wider">
-          Phát âm cặp âm · Pronunciation
+          Phát âm cặp âm
         </span>
       </div>
 

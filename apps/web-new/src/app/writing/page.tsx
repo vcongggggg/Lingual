@@ -90,7 +90,7 @@ export default function WritingHubPage() {
           <div className="max-w-2xl space-y-3 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-red">
               <PenTool className="w-3.5 h-3.5" />
-              <span>Phòng Luyện Viết · Writing Lab</span>
+              <span>Phòng Luyện Viết</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight">

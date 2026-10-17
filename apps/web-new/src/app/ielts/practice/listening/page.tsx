@@ -155,7 +155,7 @@ export default function IeltsListeningPracticePage() {
           <span>Quay lại Trung tâm IELTS</span>
         </Link>
         <span>/</span>
-        <span className="text-ink">Luyện nghe IELTS · Listening Lab</span>
+        <span className="text-ink">Luyện nghe IELTS</span>
       </div>
 
       {/* Header bar */}

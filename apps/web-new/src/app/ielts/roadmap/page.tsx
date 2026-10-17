@@ -162,7 +162,7 @@ export default function IeltsRoadmapPage() {
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
               <Target className="w-3.5 h-3.5" />
-              <span>Bản Đồ Hành Trình · Band Score Roadmap</span>
+              <span>Bản Đồ Hành Trình</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight font-sans">

@@ -123,7 +123,7 @@ export default function WritingPracticePage() {
         </Link>
 
         <span className="px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black text-red uppercase tracking-wider">
-          Viết theo hướng dẫn · Guided Essay
+          Viết theo hướng dẫn
         </span>
       </div>
 
