@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { MOCK_USERS, MOCK_LESSON_PROGRESS, MOCK_GAME_SESSIONS } from './auth.js';
-import { SEED_UNITS, SEED_ACHIEVEMENTS } from '../../../../prisma/seed.js';
+import { SEED_UNITS, SEED_ACHIEVEMENTS } from '../../../../prisma/seed';
 
 export const userRouter = Router();
 

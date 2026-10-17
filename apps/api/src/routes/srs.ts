@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { SEED_UNITS } from '../../../../prisma/seed.js';
+import { SEED_UNITS } from '../../../../prisma/seed';
 import { MOCK_USERS, MOCK_WORD_STATES } from './auth.js';
 import {
   calculateSM2,

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { SEED_UNITS, SEED_ACHIEVEMENTS } from '../../../../prisma/seed.js';
+import { SEED_UNITS, SEED_ACHIEVEMENTS } from '../../../../prisma/seed';
 import { MOCK_USERS, MOCK_ATTEMPTS, MOCK_LESSON_PROGRESS } from './auth.js';
 import {
   calculateLessonXP,

@@ -53,6 +53,7 @@ model User {
   goals            LearningGoal[]
   activityLogs     DailyActivityLog[]
   folders          VocabularyFolder[]
+  bookmarks        UserBookmark[]
 
   // Phân hệ bổ sung 2026
   readingProgress      ReadingUserProgress[]
@@ -159,6 +160,7 @@ model Vocabulary {
 
   userStates    UserWordState[]
   srsReviewLogs SrsReviewLog[]
+  bookmarks     UserBookmark[]
 
   @@map("vocabularies")
 }
@@ -314,6 +316,9 @@ model AuditLog {
   afterState   Json?
   createdAt    DateTime @default(now())
 
+  @@index([actorId])
+  @@index([action])
+  @@index([createdAt])
   @@map("audit_logs")
 }
 
@@ -628,6 +633,20 @@ model FolderVocabulary {
   @@unique([folderId, wordId])
   @@index([folderId])
   @@map("folder_vocabularies")
+}
+
+model UserBookmark {
+  id        String     @id @default(uuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wordId    String
+  word      Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  createdAt DateTime   @default(now())
+
+  @@unique([userId, wordId])
+  @@index([userId])
+  @@index([wordId])
+  @@map("user_bookmarks")
 }
 
 // ============================================================================

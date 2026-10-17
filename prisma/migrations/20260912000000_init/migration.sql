@@ -167,9 +167,27 @@ CREATE TABLE "game_sessions" (
     "accuracy" DOUBLE PRECISION NOT NULL,
     "xpEarned" INTEGER NOT NULL,
     "durationSeconds" INTEGER NOT NULL,
+    "comboMax" INTEGER NOT NULL DEFAULT 1,
+    "metadataJson" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "game_sessions_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "user_game_stats" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "gameType" TEXT NOT NULL,
+    "highScore" INTEGER NOT NULL DEFAULT 0,
+    "totalGamesPlayed" INTEGER NOT NULL DEFAULT 0,
+    "totalWins" INTEGER NOT NULL DEFAULT 0,
+    "totalXpEarned" INTEGER NOT NULL DEFAULT 0,
+    "avgAccuracy" DOUBLE PRECISION NOT NULL DEFAULT 0.0,
+    "lastPlayedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "user_game_stats_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -496,6 +514,16 @@ CREATE TABLE "folder_vocabularies" (
     "addedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "folder_vocabularies_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "user_bookmarks" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "wordId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "user_bookmarks_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -863,10 +891,31 @@ CREATE UNIQUE INDEX "user_lesson_progress_userId_lessonId_key" ON "user_lesson_p
 CREATE UNIQUE INDEX "game_sessions_attemptId_key" ON "game_sessions"("attemptId");
 
 -- CreateIndex
+CREATE INDEX "game_sessions_userId_idx" ON "game_sessions"("userId");
+
+-- CreateIndex
+CREATE INDEX "game_sessions_gameType_score_idx" ON "game_sessions"("gameType", "score");
+
+-- CreateIndex
+CREATE INDEX "user_game_stats_gameType_highScore_idx" ON "user_game_stats"("gameType", "highScore");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_game_stats_userId_gameType_key" ON "user_game_stats"("userId", "gameType");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "achievements_code_key" ON "achievements"("code");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_achievements_userId_achievementId_key" ON "user_achievements"("userId", "achievementId");
+
+-- CreateIndex
+CREATE INDEX "audit_logs_actorId_idx" ON "audit_logs"("actorId");
+
+-- CreateIndex
+CREATE INDEX "audit_logs_action_idx" ON "audit_logs"("action");
+
+-- CreateIndex
+CREATE INDEX "audit_logs_createdAt_idx" ON "audit_logs"("createdAt");
 
 -- CreateIndex
 CREATE INDEX "writing_attempts_userId_createdAt_idx" ON "writing_attempts"("userId", "createdAt");
@@ -924,6 +973,15 @@ CREATE INDEX "folder_vocabularies_folderId_idx" ON "folder_vocabularies"("folder
 
 -- CreateIndex
 CREATE UNIQUE INDEX "folder_vocabularies_folderId_wordId_key" ON "folder_vocabularies"("folderId", "wordId");
+
+-- CreateIndex
+CREATE INDEX "user_bookmarks_userId_idx" ON "user_bookmarks"("userId");
+
+-- CreateIndex
+CREATE INDEX "user_bookmarks_wordId_idx" ON "user_bookmarks"("wordId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_bookmarks_userId_wordId_key" ON "user_bookmarks"("userId", "wordId");
 
 -- CreateIndex
 CREATE INDEX "reading_paragraphs_articleId_order_idx" ON "reading_paragraphs"("articleId", "order");
@@ -1022,6 +1080,9 @@ ALTER TABLE "attempt_sessions" ADD CONSTRAINT "attempt_sessions_userId_fkey" FOR
 ALTER TABLE "game_sessions" ADD CONSTRAINT "game_sessions_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "user_game_stats" ADD CONSTRAINT "user_game_stats_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "user_achievements" ADD CONSTRAINT "user_achievements_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -1080,6 +1141,12 @@ ALTER TABLE "vocabulary_folders" ADD CONSTRAINT "vocabulary_folders_userId_fkey"
 
 -- AddForeignKey
 ALTER TABLE "folder_vocabularies" ADD CONSTRAINT "folder_vocabularies_folderId_fkey" FOREIGN KEY ("folderId") REFERENCES "vocabulary_folders"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "user_bookmarks" ADD CONSTRAINT "user_bookmarks_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "user_bookmarks" ADD CONSTRAINT "user_bookmarks_wordId_fkey" FOREIGN KEY ("wordId") REFERENCES "vocabularies"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "reading_paragraphs" ADD CONSTRAINT "reading_paragraphs_articleId_fkey" FOREIGN KEY ("articleId") REFERENCES "reading_articles"("id") ON DELETE CASCADE ON UPDATE CASCADE;

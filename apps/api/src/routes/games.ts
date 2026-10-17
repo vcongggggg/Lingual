@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import { SEED_UNITS } from '../../../../prisma/seed.js';
+import { SEED_UNITS } from '../../../../prisma/seed';
 import { MOCK_USERS, MOCK_ATTEMPTS, MOCK_GAME_SESSIONS } from './auth.js';
 import {
   calculateGameScore,

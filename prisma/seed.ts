@@ -1,8 +1,8 @@
-/**
- * LinguaFlow Full Production Curriculum Dataset
- * Course: Tiếng Việt -> Tiếng Anh (Vietnamese -> English A1 - B1)
- * 10 Units, 30 Lessons, 150+ Vocabularies & Exercises with Illustration Images & Audio Metadata
- */
+import { PrismaClient, Role } from '@prisma/client';
+import argon2 from 'argon2';
+import { SEED_IELTS_TRACKS, SEED_IELTS_QUESTIONS } from './seed-ielts';
+
+const prisma = new PrismaClient();
 
 export const SEED_ACHIEVEMENTS = [
   { code: 'FIRST_LESSON', nameKey: 'achievement.first_lesson', icon: 'sparkles', xpBonus: 50 },
@@ -616,3 +616,290 @@ export const SEED_UNITS = [
     ]
   }
 ];
+
+export async function seedDatabase() {
+  console.log('🌱 Starting Lingual database seed...');
+
+  // 1. Seed Users for all 5 roles
+  console.log('👤 Seeding default users for all 5 roles...');
+  const defaultPasswordHash = await argon2.hash('123456');
+  const adminPasswordHash = await argon2.hash('Admin@123456');
+
+  const defaultUsers = [
+    {
+      id: 'super-admin-001',
+      email: process.env.SUPER_ADMIN_EMAIL || 'superadmin@lingual.com',
+      passwordHash: adminPasswordHash,
+      displayName: 'Lingual Super Admin',
+      role: Role.SUPER_ADMIN,
+      totalXP: 1000,
+      currentStreak: 10,
+    },
+    {
+      id: 'admin-user-001',
+      email: 'admin@lingual.com',
+      passwordHash: adminPasswordHash,
+      displayName: 'Lingual Admin',
+      role: Role.ADMIN,
+      totalXP: 500,
+      currentStreak: 5,
+    },
+    {
+      id: 'editor-user-001',
+      email: 'editor@lingual.com',
+      passwordHash: defaultPasswordHash,
+      displayName: 'Lingual Content Editor',
+      role: Role.CONTENT_EDITOR,
+      totalXP: 300,
+      currentStreak: 4,
+    },
+    {
+      id: 'reviewer-user-001',
+      email: 'reviewer@lingual.com',
+      passwordHash: defaultPasswordHash,
+      displayName: 'Lingual Content Reviewer',
+      role: Role.CONTENT_REVIEWER,
+      totalXP: 300,
+      currentStreak: 4,
+    },
+    {
+      id: 'demo-user-id-001',
+      email: 'demo@linguaflow.com',
+      passwordHash: defaultPasswordHash,
+      displayName: 'Học Viên Demo',
+      role: Role.STUDENT,
+      totalXP: 150,
+      currentStreak: 3,
+    },
+  ];
+
+  for (const u of defaultUsers) {
+    await prisma.user.upsert({
+      where: { email: u.email },
+      update: {
+        role: u.role,
+        displayName: u.displayName,
+      },
+      create: {
+        id: u.id,
+        email: u.email,
+        passwordHash: u.passwordHash,
+        displayName: u.displayName,
+        role: u.role,
+        interfaceLocale: 'vi',
+        timezone: 'Asia/Ho_Chi_Minh',
+        dailyGoalMinutes: 15,
+        totalXP: u.totalXP,
+        currentStreak: u.currentStreak,
+        streakFreezes: 1,
+      },
+    });
+  }
+  console.log(`✅ Seeded ${defaultUsers.length} users covering all 5 roles (SUPER_ADMIN, ADMIN, CONTENT_EDITOR, CONTENT_REVIEWER, STUDENT)`);
+
+
+  // 2. Seed Achievements
+  console.log('🏆 Seeding achievements...');
+  for (const ach of SEED_ACHIEVEMENTS) {
+    await prisma.achievement.upsert({
+      where: { code: ach.code },
+      update: {
+        nameKey: ach.nameKey,
+        icon: ach.icon,
+        xpBonus: ach.xpBonus,
+      },
+      create: {
+        code: ach.code,
+        nameKey: ach.nameKey,
+        icon: ach.icon,
+        xpBonus: ach.xpBonus,
+      },
+    });
+  }
+  console.log(`✅ Seeded ${SEED_ACHIEVEMENTS.length} achievements`);
+
+  // 3. Seed Course, Units, Lessons, Vocabularies, Exercises
+  console.log('📚 Seeding curriculum (Course, Units, Lessons, Vocabs, Exercises)...');
+  const course = await prisma.course.upsert({
+    where: { id: 'course-vi-en-a1' },
+    update: {},
+    create: {
+      id: 'course-vi-en-a1',
+      sourceLanguageCode: 'vi',
+      targetLanguageCode: 'en',
+      cefrLevel: 'A1',
+      title: 'Tiếng Anh Giao Tiếp Toàn Diện A1 - B1',
+      description: 'Lộ trình chuẩn CEFR từ mất gốc đến tự tin giao tiếp.',
+    },
+  });
+
+  let totalLessons = 0;
+  let totalVocabs = 0;
+  let totalExercises = 0;
+
+  for (const unitData of SEED_UNITS) {
+    const unitId = `unit-${unitData.order}`;
+    const unit = await prisma.unit.upsert({
+      where: { id: unitId },
+      update: {
+        title: unitData.title,
+        description: unitData.description,
+        order: unitData.order,
+        iconName: unitData.iconName,
+        course: { connect: { id: course.id } },
+      },
+      create: {
+        id: unitId,
+        title: unitData.title,
+        description: unitData.description,
+        order: unitData.order,
+        iconName: unitData.iconName,
+        course: { connect: { id: course.id } },
+      },
+    });
+
+    for (const lessonData of unitData.lessons) {
+      totalLessons++;
+      const lessonId = `unit-${unitData.order}-lesson-${lessonData.order}`;
+      const lesson = await prisma.lesson.upsert({
+        where: { id: lessonId },
+        update: {
+          title: lessonData.title,
+          description: lessonData.description,
+          order: lessonData.order,
+          xpReward: lessonData.xpReward,
+          unit: { connect: { id: unit.id } },
+        },
+        create: {
+          id: lessonId,
+          title: lessonData.title,
+          description: lessonData.description,
+          order: lessonData.order,
+          xpReward: lessonData.xpReward,
+          unit: { connect: { id: unit.id } },
+        },
+      });
+
+      for (let wIdx = 0; wIdx < lessonData.words.length; wIdx++) {
+        totalVocabs++;
+        const word = lessonData.words[wIdx];
+        const wordId = `vocab-u${unitData.order}-l${lessonData.order}-${wIdx + 1}`;
+        await prisma.vocabulary.upsert({
+          where: { id: wordId },
+          update: {
+            targetText: word.targetText,
+            translation: word.translation,
+            phonetic: word.phonetic,
+            exampleSentence: word.exampleSentence,
+            exampleTranslation: word.exampleTranslation,
+            cefrLevel: word.cefrLevel || 'A1',
+            partOfSpeech: word.partOfSpeech || 'noun',
+            lesson: { connect: { id: lesson.id } },
+          },
+          create: {
+            id: wordId,
+            targetText: word.targetText,
+            translation: word.translation,
+            phonetic: word.phonetic,
+            exampleSentence: word.exampleSentence,
+            exampleTranslation: word.exampleTranslation,
+            cefrLevel: word.cefrLevel || 'A1',
+            partOfSpeech: word.partOfSpeech || 'noun',
+            lesson: { connect: { id: lesson.id } },
+          },
+        });
+      }
+
+      for (let exIdx = 0; exIdx < lessonData.exercises.length; exIdx++) {
+        totalExercises++;
+        const ex = lessonData.exercises[exIdx];
+        const exId = `ex-u${unitData.order}-l${lessonData.order}-${exIdx + 1}`;
+        await prisma.quizExercise.upsert({
+          where: { id: exId },
+          update: {
+            type: ex.type,
+            prompt: ex.prompt,
+            optionsJson: ex.optionsJson,
+            correctAnswer: ex.correctAnswer,
+            explanation: ex.explanation,
+            lesson: { connect: { id: lesson.id } },
+          },
+          create: {
+            id: exId,
+            type: ex.type,
+            prompt: ex.prompt,
+            optionsJson: ex.optionsJson,
+            correctAnswer: ex.correctAnswer,
+            explanation: ex.explanation,
+            lesson: { connect: { id: lesson.id } },
+          },
+        });
+      }
+    }
+  }
+  console.log(`✅ Seeded ${SEED_UNITS.length} Units, ${totalLessons} Lessons, ${totalVocabs} Vocabularies, ${totalExercises} Exercises`);
+
+  // 4. Seed IELTS Tracks & Questions
+  console.log('🎯 Seeding IELTS Tracks & Questions...');
+  for (let i = 0; i < SEED_IELTS_TRACKS.length; i++) {
+    const t = SEED_IELTS_TRACKS[i];
+    const trackId = `track-ielts-${i + 1}`;
+    await prisma.ieltsTrack.upsert({
+      where: { id: trackId },
+      update: {
+        targetBand: t.targetBand,
+        type: t.type,
+        description: t.description,
+      },
+      create: {
+        id: trackId,
+        targetBand: t.targetBand,
+        type: t.type,
+        description: t.description,
+      },
+    });
+  }
+
+  for (const q of SEED_IELTS_QUESTIONS) {
+    await prisma.ieltsQuestion.upsert({
+      where: { id: q.id },
+      update: {
+        title: q.title,
+        skill: q.skill,
+        type: q.type,
+        part: q.part,
+        targetBand: q.targetBand,
+        passageText: q.passageText || null,
+        audioUrl: (q as any).audioUrl || null,
+        prompt: (q as any).prompt || null,
+        content: q.content,
+      },
+      create: {
+        id: q.id,
+        title: q.title,
+        skill: q.skill,
+        type: q.type,
+        part: q.part,
+        targetBand: q.targetBand,
+        passageText: q.passageText || null,
+        audioUrl: (q as any).audioUrl || null,
+        prompt: (q as any).prompt || null,
+        content: q.content,
+      },
+    });
+  }
+  console.log(`✅ Seeded ${SEED_IELTS_TRACKS.length} IELTS Tracks & ${SEED_IELTS_QUESTIONS.length} IELTS Questions`);
+
+  console.log('🎉 Database seeding completed successfully!');
+}
+
+if (process.argv[1]?.endsWith('seed.ts') || process.argv[1]?.endsWith('seed.js')) {
+  seedDatabase()
+    .catch((e) => {
+      console.error('❌ Seeding failed:', e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}

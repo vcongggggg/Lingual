@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import { SEED_UNITS } from '../../../../prisma/seed.js';
+import { SEED_UNITS } from '../../../../prisma/seed';
 import { MOCK_WORD_STATES } from './auth.js';
 import { RealDictionaryService } from '../services/realDictionaryService.js';
 import { BACKEND_MASTER_WORDS } from '../data/universalVocabulary.js';

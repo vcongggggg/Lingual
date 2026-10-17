@@ -18,14 +18,6 @@ Nhánh `develop` (a5267cd) là codebase thật, không phải vaporware:
 
 ## Quy tắc làm việc (giữ 8 quy tắc cũ + thêm 2)
 
-1. **Không bịa, không mock thay implement thật.** Mọi dữ liệu phải đi qua Prisma + PostgreSQL. Cấm tạo thêm mảng `MOCK_*`, `Set` global, hay hardcode kết quả.
-2. **Mọi con số trong code/comment/docs phải đúng sự thật.** Không ghi "500+" khi chỉ có 55. Nếu chưa có dữ liệu thì ghi rõ `TODO`, không thổi phồng.
-3. **Không hardcode secret.** `JWT_SECRET` và mọi credential đọc từ env; nếu thiếu ở production thì crash lúc start với thông báo rõ ràng, không fallback giá trị mặc định.
-4. **Làm theo đúng thứ tự phase D0 → D6.** Không nhảy phase. Mỗi phase xong mới sang phase tiếp theo.
-5. **Mỗi phase có Definition of Done (DoD) và lệnh verify.** Tự chạy lệnh verify; chỉ coi phase xong khi TẤT CẢ lệnh pass. Ghi kết quả chạy lệnh vào commit message hoặc PR description.
-6. **Khi spec mơ hồ thì HỎI user, không tự đoán.** Liệt kê câu hỏi ngắn gọn, đề xuất phương án mặc định của mình.
-7. **Commit nhỏ, đúng chuẩn đã có trong `.agents/AGENTS.md`** (conventional commits, branch `feature/<ten-phase>` / `fix/<ten-bug>`, merge về `develop` khi phase xong).
-8. **Không commit:** `.env`, `node_modules`, file biên dịch (`*.js` cạnh `*.ts`), ảnh/binary nặng. Kiểm tra `git status` trước mỗi commit.
 9. **ĐÓNG BĂNG SCOPE.** Từ giờ tới khi Phase D4 xong: cấm thêm tính năng/lab/route mới. Chỉ sửa những gì plan liệt kê.
 10. **Mọi claim "đã xong / production / secure" phải chứng minh bằng lệnh chạy.** Không có output thì coi như chưa làm.
 
@@ -36,10 +28,10 @@ Branch: mọi việc làm trên `feature/<ten-phase>` tách từ `develop`, merg
 ## Phase D0 — Inventory & đóng băng (ước lượng: 1h)
 
 ### Việc cần làm
-- [x] Chạy và lưu output: `grep -rn "MOCK_" apps/api/src --include='*.ts' | wc -l` + full list vào file `docs/INVENTORY.md`.
-- [x] Liệt kê toàn bộ files trong `apps/api/src/repositories/`, `apps/api/src/middleware/`, `apps/api/src/routes/` vào `docs/INVENTORY.md`, đánh dấu file nào dùng mock, file nào dùng Prisma thật.
-- [x] Liệt kê toàn bộ test suites + trạng thái hiện tại (pass/fail/vacuous) vào `docs/INVENTORY.md`.
-- [x] Xóa/duyệt các file docs "audit report" thổi phồng nếu chứa claim sai (ghi rõ trong commit message).
+- [ ] Chạy và lưu output: `grep -rn "MOCK_" apps/api/src --include='*.ts' | wc -l` + full list vào file `docs/INVENTORY.md`.
+- [ ] Liệt kê toàn bộ files trong `apps/api/src/repositories/`, `apps/api/src/middleware/`, `apps/api/src/routes/` vào `docs/INVENTORY.md`, đánh dấu file nào dùng mock, file nào dùng Prisma thật.
+- [ ] Liệt kê toàn bộ test suites + trạng thái hiện tại (pass/fail/vacuous) vào `docs/INVENTORY.md`.
+- [ ] Xóa/duyệt các file docs "audit report" thổi phồng nếu chứa claim sai (ghi rõ trong commit message).
 
 ### Definition of Done
 - File `docs/INVENTORY.md` tồn tại, liệt kê đầy đủ 3 mục trên với số liệu từ lệnh chạy thật.
@@ -89,9 +81,21 @@ cd apps/api && pnpm exec tsc --noEmit                    # pass, không lỗi Pr
 - [ ] Sửa CI (`.github/workflows/ci.yml`): pnpm 11, `--frozen-lockfile`, jobs = domain test + api test + api typecheck + web build + web lint + `prisma validate`. Trigger cả `develop`.
 - [ ] Chạy Playwright E2E suite (`apps/web/e2e/`), báo cáo kết quả thật (pass/fail từng spec, không giấu).
 
+### Tester checklist (chạy tay sau khi D1+D2 xong — mỗi mục ghi: bước, lệnh, kết quả mong đợi, kết quả thực tế, PASS/FAIL)
+**A. Auth & RBAC:** (1) register → login → /me = 200 đúng user; (2) register trùng email → 400; (3) sai password → 401; (4) /me không token → 401; (5) restart API → login lại credential cũ → 200 (chứng minh hết in-memory); (6) non-admin đổi role user khác → 403; (7) user A đọc dữ liệu user B (IDOR) → 403/404.
+**B. SRS:** (1) GET /srs/queue → items; (2) POST /srs/review quality=5 → 200 + XP; (3) quality=99 → **400** (bug: trước đây chấp nhận — phải fix ở D2); (4) quality=-1 → 400.
+**C. Curriculum:** (1) GET /curriculum/units; (2) submit lesson < 2s → 400 anti-cheat; (3) submit đúng flow → chấm theo đúng unit của lesson (bug main: luôn chấm Unit 1).
+**D. Games:** (1) GET /games/data?type=... đúng type; (2) submit → leaderboard cập nhật, restart không mất.
+**E. IELTS:** (1) GET đề thi có câu hỏi thật; (2) submit 2 lần cùng đáp án → **cùng điểm** (cấm random); (3) writing evaluate có feedback nội dung thật.
+**F. Dictionary:** (1) search có kết quả; (2) bookmark → restart → còn.
+**G. Admin:** (1) non-admin GET /admin/* → 403; (2) audit logs còn sau restart.
+**H. Chatbot SSE:** POST /chatbot/chat → stream SSE có nội dung.
+
 ### Definition of Done
 - `pnpm --recursive test`: tất cả suites chạy thật, 0 fail (hoặc fail nào cũng có issue ghi nhận + plan fix).
+- Toàn bộ tester checklist A–H: PASS (mục nào FAIL phải fix hoặc ghi issue + plan).
 - CI xanh trên PR vào `develop`.
+
 
 ---
 
