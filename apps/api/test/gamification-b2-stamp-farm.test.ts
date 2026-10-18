@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'fs';
 import path from 'path';
 import { stampRepository, StampRepository } from '../src/repositories/stamp.repository.js';
+import { userRepository } from '../src/repositories/user.repository.js';
 import { getFormattedDateInTimezone } from '../../../packages/domain/src/index.js';
 
 describe('B2: Anti-Farm Stamp Ledger & Persistent Free Writing Engine', () => {
@@ -11,6 +12,11 @@ describe('B2: Anti-Farm Stamp Ledger & Persistent Free Writing Engine', () => {
 
   it('1. DoD B2.1: Gọi award với DAILY_GOAL 3 lần cùng ngày -> chỉ lần 1 thành công, lần 2 và 3 bị từ chối', async () => {
     const testUserId = `test-antifarm-user-${Date.now()}`;
+    await userRepository.createUser({
+      id: testUserId,
+      email: `${testUserId}@lingual.local`,
+      displayName: 'Anti Farm User',
+    });
 
     // Lần 1: Thành công
     const call1 = await stampRepository.awardStamps(testUserId, 'DAILY_GOAL', 1);
@@ -31,6 +37,11 @@ describe('B2: Anti-Farm Stamp Ledger & Persistent Free Writing Engine', () => {
 
   it('2. DoD B2.2: Balance không vượt quá cap 10 dù cộng nhiều lần với các lý do khác nhau', async () => {
     const testUserId = `test-cap10-user-${Date.now()}`;
+    await userRepository.createUser({
+      id: testUserId,
+      email: `${testUserId}@lingual.local`,
+      displayName: 'Cap 10 Learner',
+    });
 
     // Giả lập cộng dồn cho đến mức 9
     for (let i = 0; i < 9; i++) {

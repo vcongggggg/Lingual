@@ -55,6 +55,7 @@ describe('B1: Server-side Leave Pass & Streak Protection Engine', () => {
     user.leave_passes = 1;
     user.lastActiveDate = twoDaysAgoStr;
     user.lastLeavePassUsedDate = null;
+    await userRepository.persistUser(user);
 
     // Server tính toán streak
     const res = await userRepository.evaluateStreakAndLeavePasses(user.id);
@@ -83,6 +84,7 @@ describe('B1: Server-side Leave Pass & Streak Protection Engine', () => {
     user.leave_passes = 0;
     user.lastLeavePassGrantWeek = currentWeek; // Đã grant trong tuần rồi nên không được lazy-grant thêm
     user.lastActiveDate = twoDaysAgoStr;
+    await userRepository.persistUser(user);
 
     // Server tính toán streak
     const res = await userRepository.evaluateStreakAndLeavePasses(user.id);

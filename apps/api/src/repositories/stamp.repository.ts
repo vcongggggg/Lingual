@@ -167,6 +167,17 @@ export class StampRepository {
 
     if (await isDatabaseAvailable()) {
       try {
+        const existing = await prisma.user.findUnique({ where: { id: userId }, select: { id: true } });
+        if (!existing) {
+          await prisma.user.create({
+            data: {
+              id: userId,
+              email: `${userId}@lingual.local`,
+              displayName: 'Stamp Holder',
+              role: 'STUDENT',
+            },
+          });
+        }
         await prisma.stampLedger.create({
           data: {
             id: newEntry.id,
@@ -261,6 +272,17 @@ export class StampRepository {
 
     if (await isDatabaseAvailable()) {
       try {
+        const existing = await prisma.user.findUnique({ where: { id: userId }, select: { id: true } });
+        if (!existing) {
+          await prisma.user.create({
+            data: {
+              id: userId,
+              email: `${userId}@lingual.local`,
+              displayName: 'Stamp Holder',
+              role: 'STUDENT',
+            },
+          });
+        }
         await prisma.stampLedger.create({
           data: {
             id: newEntry.id,

@@ -411,7 +411,7 @@ export class UserRepository {
     }
   }
 
-  private async persistUser(user: UserEntity): Promise<void> {
+  public async persistUser(user: UserEntity): Promise<void> {
     user.updatedAt = new Date();
     if (await isDatabaseAvailable()) {
       try {
