@@ -16,6 +16,8 @@
   --amber: #F2A93B;
   --amber-soft: #FDF3E3;
   --line: 2px solid var(--ink);
+  --ease-paper: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-stamp: cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 * {
@@ -96,7 +98,7 @@ body {
   border-radius: 18px;
   box-shadow: 6px 6px 0 var(--ink);
   padding: 24px;
-  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.18s var(--ease-paper), box-shadow 0.18s var(--ease-paper);
 }
 
 .card-paper:hover {
@@ -371,7 +373,7 @@ div[data-nextjs-route-announcer] {
 }
 
 .animate-stamp-slam {
-  animation: stamp-slam 250ms cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+  animation: stamp-slam 250ms var(--ease-stamp) forwards;
 }
 
 .animate-stamp-shake {
@@ -403,7 +405,7 @@ div[data-nextjs-route-announcer] {
 }
 
 .animate-card-emerge {
-  animation: card-emerge 250ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: card-emerge 250ms var(--ease-paper) forwards;
 }
 
 /* 4. Tin Nhắn Chat LingLing & Typing Dots */
@@ -419,7 +421,7 @@ div[data-nextjs-route-announcer] {
 }
 
 .animate-message-slide {
-  animation: message-slide-in 200ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: message-slide-in 200ms var(--ease-paper) forwards;
 }
 
 @keyframes ink-drop-pulse {
@@ -468,7 +470,7 @@ div[data-nextjs-route-announcer] {
 }
 
 .animate-bar-grow {
-  animation: bar-grow 320ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: bar-grow 320ms var(--ease-paper) forwards;
 }
 
 /* 7. Vé Trò Chơi Răng Cưa & Xé Đôi */
@@ -478,7 +480,7 @@ div[data-nextjs-route-announcer] {
   border: var(--line);
   border-radius: 16px;
   box-shadow: 4px 4px 0 var(--ink);
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.2s var(--ease-paper), box-shadow 0.2s var(--ease-paper);
 }
 
 .ticket-card:hover {
@@ -527,7 +529,7 @@ div[data-nextjs-route-announcer] {
 }
 
 .animate-paper-envelope {
-  animation: paper-to-envelope 400ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: paper-to-envelope 400ms var(--ease-paper) forwards;
 }
 
 /* 9. Nấc Slider Haptic Wiggle */
@@ -553,7 +555,7 @@ div[data-nextjs-route-announcer] {
 }
 
 .animate-page-entry {
-  animation: page-entry-fade 200ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: page-entry-fade 200ms var(--ease-paper) forwards;
 }
 
 /* 11. Hỗ Trợ Tôn Trọng Người Dùng Bật Giảm Chuyển Động */
