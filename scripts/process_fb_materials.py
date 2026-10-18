@@ -271,7 +271,9 @@ def main():
             "source_type": "facebook_shared_open_licenses",
             "total_kept_collections": len(kept_list),
             "verified_licenses": ["Public Domain (17 U.S.C. § 105)", "CC BY 4.0", "CC BY-SA 4.0", "CC BY 3.0", "CC BY-NC-SA 3.0", "Author Free Share"],
-            "total_records_extracted": sum(c["records_count"] for c in kept_list)
+            "total_records_extracted": len(kept_list),
+            "record_type": "collection_summary",
+            "note": "File chứa chính xác 8 bản ghi tóm tắt bộ sưu tập (collection summaries) và cấu trúc mẫu từ 8 nguồn mở được lọc bản quyền. Không claim 390 records riêng lẻ."
         },
         "items": [
             {
@@ -285,7 +287,8 @@ def main():
                     "source": f"{c['name']} ({c['license']})",
                     "verified": True
                 },
-                "records_extracted": c["records_count"]
+                "records_extracted": 1,
+                "record_type": "collection_summary"
             }
             for c in kept_list
         ]
@@ -301,11 +304,17 @@ def main():
     report_data = {
         "total_links": len(COLLECTIONS),
         "downloaded": len(COLLECTIONS),
+        "total_kept": len(kept_list),
+        "total_skipped": len(skipped_list),
+        "total_records_extracted": len(kept_list),
+        "record_type": "collection_summary",
+        "note": "File data/standardized/fb_extracted_materials.json chứa chính xác 8 bản ghi collection summary + sample từ các nguồn open license, không claim 390 records riêng lẻ.",
         "kept": [
             {
                 "name": c["name"],
                 "license": c["license"],
-                "records_extracted": c["records_count"]
+                "records_extracted": 1,
+                "record_type": "collection_summary"
             }
             for c in kept_list
         ],
@@ -327,7 +336,7 @@ def main():
     print("FB MATERIALS AUDIT SUMMARY:")
     print(f"Total links inspected: {report_data['total_links']}")
     print(f"Kept open collections: {len(report_data['kept'])}")
-    print(f"Total records extracted: {sum(k['records_extracted'] for k in report_data['kept'])}")
+    print(f"Total collection summary records extracted: {len(report_data['kept'])}")
     print(f"Skipped commercial collections: {len(report_data['skipped'])}")
     print("="*50 + "\n")
 

@@ -10,7 +10,9 @@
       "CC BY-NC-SA 3.0",
       "Author Free Share"
     ],
-    "total_records_extracted": 390
+    "total_records_extracted": 8,
+    "record_type": "collection_summary",
+    "note": "File chứa chính xác 8 bản ghi tóm tắt bộ sưu tập (collection summaries) và cấu trúc mẫu từ 8 nguồn mở được lọc bản quyền. Không claim 390 records riêng lẻ."
   },
   "items": [
     {
@@ -24,7 +26,8 @@
         "source": "VOA Learning English: Words and Their Stories & As It Is Transcripts (Public Domain (U.S. Government Work under 17 U.S.C. § 105))",
         "verified": true
       },
-      "records_extracted": 65
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     },
     {
       "id": "fb-open-mat-014",
@@ -37,7 +40,8 @@
         "source": "BBC Learning English: 6 Minute English Episode Transcripts & Vocab Sheets (Free to Share / Educational Use Policy (Phát thanh công cộng miễn phí kèm transcript học tập))",
         "verified": true
       },
-      "records_extracted": 50
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     },
     {
       "id": "fb-open-mat-015",
@@ -50,7 +54,8 @@
         "source": "OpenStax English Composition & Study Skills Lexicon (Creative Commons Attribution 4.0 International (CC BY 4.0))",
         "verified": true
       },
-      "records_extracted": 45
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     },
     {
       "id": "fb-open-mat-016",
@@ -63,7 +68,8 @@
         "source": "Classic English Short Stories for ESL Readers (Gutenberg Public Archive) (Public Domain (Hết hạn bản quyền quốc tế))",
         "verified": true
       },
-      "records_extracted": 35
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     },
     {
       "id": "fb-open-mat-017",
@@ -76,7 +82,8 @@
         "source": "Wikibooks: English as a Second Language Grammar Manual (Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0))",
         "verified": true
       },
-      "records_extracted": 40
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     },
     {
       "id": "fb-open-mat-018",
@@ -89,7 +96,8 @@
         "source": "Saylor Academy ESL001 & ESL002 Free Coursework Collection (Creative Commons Attribution 3.0 Unported (CC BY 3.0))",
         "verified": true
       },
-      "records_extracted": 50
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     },
     {
       "id": "fb-open-mat-019",
@@ -102,7 +110,8 @@
         "source": "EnglishClub Open Reference: 200 Common Phrasal Verbs & Everyday Idioms (Author Free Open Distribution for Educational Purpose (Ghi rõ 'free to copy and share for study'))",
         "verified": true
       },
-      "records_extracted": 60
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     },
     {
       "id": "fb-open-mat-020",
@@ -115,7 +124,8 @@
         "source": "LibreTexts ESL Reading Comprehension & Multi-Paragraph Texts (Creative Commons Attribution-NonCommercial-ShareAlike 3.0 (CC BY-NC-SA 3.0))",
         "verified": true
       },
-      "records_extracted": 45
+      "records_extracted": 1,
+      "record_type": "collection_summary"
     }
   ]
 }
