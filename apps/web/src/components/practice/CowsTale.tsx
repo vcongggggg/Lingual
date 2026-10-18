@@ -18,6 +18,7 @@ import {
   Check
 } from 'lucide-react';
 import { LingLing } from '../ui/LingLing';
+import { MascotPose } from '../mascot';
 import { StampSlam } from '../ui/StampSlam';
 import { api } from '../../lib/api';
 
@@ -47,7 +48,7 @@ const FALLBACK_VOCAB: VocabWord[] = [
 interface StoryTemplate {
   id: string;
   title: string;
-  mascotReaction: 'laughTease' | 'party' | 'cheersSoda' | 'studying' | 'proud';
+  mascotReaction: MascotPose;
   paragraphs: (words: VocabWord[]) => string[];
   quizQuestions: {
     question: string;
@@ -60,7 +61,7 @@ const STORY_TEMPLATES: StoryTemplate[] = [
   {
     id: 'story-kitchen-heist',
     title: 'Vụ Đột Kích Tủ Lạnh Lúc Nửa Đêm Của Bò LingLing',
-    mascotReaction: 'laughTease',
+    mascotReaction: 'storyteller',
     paragraphs: (words) => [
       `Đúng 2 giờ sáng, khi cả nông trại đã chìm vào giấc ngủ sâu, Bò LingLing bắt đầu kế hoạch vĩ đại: đột nhập vào nhà bếp để tìm hũ bánh quy bơ. Bò tin rằng một kế hoạch táo bạo như thế này đòi hỏi sự [0:${words[0].word}] tột bậc và khả năng tính toán chuẩn xác từng bước chân.`,
       `Nhón gót đi qua sàn gỗ kẽo kẹt, LingLing trượt chân ngã uỵch vào một bao bột mì mở sẵn. Cả người Bò phủ kín một lớp bột trắng xóa trông vô cùng [1:${words[1].word}]. Không hề nản lòng, với tinh thần [2:${words[2].word}] phi thường của một chú bò kiên định, LingLing phủi bụi và quyết định [3:${words[3].word}] với chú mèo Miu Miu đang ngồi canh góc bếp bằng một đĩa phô mai béo ngậy.`,
@@ -445,7 +446,7 @@ export function CowsTale() {
           {/* Nút bắt đầu sinh truyện */}
           <div className="pt-4 border-t-2 border-ink/20 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <LingLing reaction="studying" size={48} />
+              <LingLing reaction="storyteller" size={48} />
               <span className="text-xs font-bold text-ink-muted">
                 {selectedWordIds.length === 5
                   ? 'Tuyệt vời! Bấm nút bên cạnh để Bò LingLing bắt đầu kể chuyện.'

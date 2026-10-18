@@ -392,10 +392,10 @@ export function CowEavesdrop() {
           </span>
         </div>
 
-        {/* Khối Linh vật Thám tử Bò với kính lúp & Lời dẫn dắt */}
+        {/* Khối Linh vật Bò nghe lén & Lời dẫn dắt */}
         <div className="p-4 bg-paper rounded-2xl border-2 border-ink flex flex-col sm:flex-row items-center gap-4">
           <div className="flex-shrink-0">
-            <LingLing reaction="magnify" size={76} />
+            <LingLing reaction="sneaky" size={76} />
           </div>
           <div className="space-y-1">
             <div className="flex items-center gap-1.5 text-xs font-black text-red">

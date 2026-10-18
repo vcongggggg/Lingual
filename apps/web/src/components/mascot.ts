@@ -20,6 +20,8 @@ export const MASCOT_REGISTRY = {
   shrug: '/mascot/cow_gen_shrug.png',
   pointYou: '/mascot/cow_gen_point_you.png',
   laughTease: '/mascot/cow_gen_laugh_tease.png',
+  sneaky: '/mascot/cow_gen_sneaky.png',
+  storyteller: '/mascot/cow_gen_storyteller.png',
   dizzy: '/mascot/cow_gen_dizzy.png',
   shocked: '/mascot/cow_shocked.png',
   shyApologetic: '/mascot/cow_shy_apologetic.png',
