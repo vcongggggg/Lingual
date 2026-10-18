@@ -26,7 +26,8 @@ import {
   Share2,
   Calendar,
   Mail,
-  Mic
+  Mic,
+  Ear
 } from 'lucide-react';
 import { LingLing } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
@@ -34,6 +35,8 @@ import { MASCOT_REGISTRY } from '../../components/mascot';
 import { DailyChallenge } from '../../components/practice/DailyChallenge';
 import { LettersFromLingLing } from '../../components/practice/LettersFromLingLing';
 import { ShadowingLab } from '../../components/practice/ShadowingLab';
+import { CowsTale } from '../../components/practice/CowsTale';
+import { CowEavesdrop } from '../../components/practice/CowEavesdrop';
 
 
 /* =========================================================================
@@ -463,7 +466,9 @@ export type PracticeMode =
   | 'sentence_scramble'
   | 'daily_challenge'
   | 'letters_from_cow'
-  | 'shadowing_lab';
+  | 'shadowing_lab'
+  | 'cow_tale'
+  | 'cow_eavesdrop';
 
 export default function PracticeHubPage() {
   const [activeMode, setActiveMode] = useState<PracticeMode>('collocation');
@@ -475,6 +480,8 @@ export default function PracticeHubPage() {
       if (m === 'daily') setActiveMode('daily_challenge');
       else if (m === 'letters') setActiveMode('letters_from_cow');
       else if (m === 'shadowing') setActiveMode('shadowing_lab');
+      else if (m === 'story') setActiveMode('cow_tale');
+      else if (m === 'eavesdrop') setActiveMode('cow_eavesdrop');
     }
   }, []);
 
@@ -866,6 +873,30 @@ export default function PracticeHubPage() {
           >
             <Mic className="w-3.5 h-3.5 text-red" />
             <span>7. Bò nhại tiếng</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMode('cow_tale')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+              activeMode === 'cow_tale'
+                ? 'bg-amber text-ink shadow-brutal-sm'
+                : 'text-ink hover:bg-paper'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5 text-amber-700" />
+            <span>8. Chuyện Bò kể</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMode('cow_eavesdrop')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+              activeMode === 'cow_eavesdrop'
+                ? 'bg-red text-white shadow-brutal-sm'
+                : 'text-ink hover:bg-paper'
+            }`}
+          >
+            <Ear className="w-3.5 h-3.5 text-white" />
+            <span>9. Bò đọc trộm</span>
           </button>
         </div>
       </div>
@@ -1979,6 +2010,24 @@ export default function PracticeHubPage() {
       {activeMode === 'shadowing_lab' && (
         <div className="space-y-6 animate-message-slide">
           <ShadowingLab />
+        </div>
+      )}
+
+      {/* ===================================================================
+          MODE 8: CHUYỆN BÒ KỂ (MAD-LIBS STORY GENERATOR)
+          =================================================================== */}
+      {activeMode === 'cow_tale' && (
+        <div className="space-y-6 animate-message-slide">
+          <CowsTale />
+        </div>
+      )}
+
+      {/* ===================================================================
+          MODE 9: BÒ ĐỌC TRỘM (EAVESDROPPING COW LISTENING QUIZ)
+          =================================================================== */}
+      {activeMode === 'cow_eavesdrop' && (
+        <div className="space-y-6 animate-message-slide">
+          <CowEavesdrop />
         </div>
       )}
     </div>
