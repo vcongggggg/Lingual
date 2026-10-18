@@ -89,6 +89,25 @@ userRouter.get('/progress', async (req, res) => {
     totalXP: user.totalXP,
     currentStreak: user.currentStreak,
     streakFreezes: user.streakFreezes,
+    leavePasses: user.leavePasses,
+    leave_passes: user.leavePasses,
+    lastLeavePassGrantWeek: user.lastLeavePassGrantWeek,
+  });
+});
+
+userRouter.get('/streak', async (req, res) => {
+  const userId = resolveAuthUserId(req) || (req.query.userId as string) || 'demo-user-id-001';
+  const result = await userRepository.evaluateStreakAndLeavePasses(userId);
+  return res.json({
+    currentStreak: result.currentStreak,
+    leavePasses: result.leavePasses,
+    leave_passes: result.leavePasses,
+    leavePassUsed: result.leavePassUsed,
+    streakBroken: result.streakBroken,
+    streakMaintained: result.streakMaintained,
+    lastActiveDate: result.user.lastActiveDate,
+    lastLeavePassGrantWeek: result.user.lastLeavePassGrantWeek,
+    streakFreezes: result.user.streakFreezes,
   });
 });
 

@@ -64,8 +64,10 @@ export default function DashboardPage() {
 
       {/* 2. Streak Card Banner */}
       <StreakCard
-        currentStreak={user?.currentStreak || 5}
-        streakFreezes={user?.streakFreezes || 1}
+        currentStreak={user?.currentStreak}
+        streakFreezes={user?.streakFreezes}
+        leavePasses={user?.leavePasses ?? user?.leave_passes}
+        leavePassUsed={user?.leavePassUsed}
         completedDays={[0, 1, 2, 3]}
         todayIndex={4}
       />

@@ -16,6 +16,7 @@ import {
 } from '../data/universalVocabulary.js';
 import { gameRepository } from '../repositories/game.repository.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { stampRepository } from '../repositories/stamp.repository.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const gamesRouter = Router();
@@ -238,6 +239,16 @@ gamesRouter.post('/submit', async (req, res) => {
     getFormattedDateInTimezone(new Date(), user.timezone),
     scoring.xpEarned
   );
+
+  // Server tự động tặng tem khi đạt điểm tuyệt đối (accuracy = 100%)
+  if (evaluation.totalCount > 0 && evaluation.accuracy === 100) {
+    await stampRepository.awardStamps(user.id, 'PERFECT_SCORE', 1);
+  }
+
+  // Server tự động tặng tem khi chạm mốc streak 7 ngày
+  if (streakResult.currentStreak === 7) {
+    await stampRepository.awardStamps(user.id, 'STREAK_7_DAYS', 2);
+  }
 
   // Authoritatively persist session to PostgreSQL through GameRepository
   const savedSession = await gameRepository.saveSession({

@@ -186,5 +186,28 @@ export const api = {
     }>('/stamps/redeem-writing', {
       method: 'POST',
     }),
+  claimDailyGoal: () =>
+    fetchApi<{
+      success: boolean;
+      deltaAwarded: number;
+      newBalance: number;
+      message: string;
+      maxCap: number;
+      error?: string;
+    }>('/stamps/claim-daily-goal', {
+      method: 'POST',
+    }),
+  getUserStreak: () =>
+    fetchApi<{
+      currentStreak: number;
+      leavePasses: number;
+      leave_passes: number;
+      leavePassUsed: boolean;
+      streakBroken: boolean;
+      streakMaintained: boolean;
+      lastActiveDate: string | null;
+      lastLeavePassGrantWeek: string | null;
+      streakFreezes: number;
+    }>('/user/streak'),
 };
 

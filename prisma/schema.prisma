@@ -32,6 +32,9 @@ model User {
   currentStreak    Int      @default(0)
   streakFreezes    Int      @default(1)                     // Number of streak freezes available
   lastActiveDate   String?                                  // Formatted YYYY-MM-DD in user's timezone
+  leavePasses             Int      @default(0) @map("leave_passes") // Weekly leave passes (1 max, resets Monday)
+  lastLeavePassGrantWeek  String?                                  // YYYY-Www in Asia/Ho_Chi_Minh
+  lastLeavePassUsedDate   String?                                  // YYYY-MM-DD when pass was last consumed
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 

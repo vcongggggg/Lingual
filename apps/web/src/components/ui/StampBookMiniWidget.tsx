@@ -6,7 +6,7 @@ import { api } from '../../lib/api';
 import { Sparkles, ArrowRight, PenTool } from 'lucide-react';
 
 export function StampBookMiniWidget() {
-  const [balance, setBalance] = useState(3);
+  const [balance, setBalance] = useState(0);
   const [maxCap] = useState(10);
   const [freeUsedToday, setFreeUsedToday] = useState(false);
 

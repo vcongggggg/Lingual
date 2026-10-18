@@ -8,6 +8,7 @@ import {
 } from '../../../../packages/domain/src/index.js';
 import { prisma } from '../lib/prisma.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { stampRepository } from '../repositories/stamp.repository.js';
 import { Roles, rolesGuard, AuthenticatedRequest } from '../middleware/rbac.js';
 import { auditLogInterceptor } from '../middleware/auditLog.js';
 import { canModifyContent } from '../../../../packages/domain/src/index.js';
@@ -224,6 +225,17 @@ curriculumRouter.post('/lessons/:lessonId/submit', async (req, res) => {
   );
 
   const xpEarned = calculateLessonXP(correctCount, totalQuestions, user.currentStreak);
+
+  // Server tự động tặng tem khi đạt điểm tuyệt đối (score = 100%)
+  if (totalQuestions > 0 && correctCount === totalQuestions) {
+    await stampRepository.awardStamps(user.id, 'PERFECT_SCORE', 1);
+  }
+
+  // Server tự động tặng tem khi chạm mốc streak 7 ngày
+  if (streakResult.currentStreak === 7) {
+    await stampRepository.awardStamps(user.id, 'STREAK_7_DAYS', 2);
+  }
+
   const updatedUser = await userRepository.updateStreakAndXP(
     user.id,
     streakResult.currentStreak,

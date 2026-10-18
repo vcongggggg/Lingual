@@ -24,14 +24,10 @@ interface StampHistoryItem {
 }
 
 export function StampBookSection({ className = '' }: { className?: string }) {
-  const [balance, setBalance] = useState<number>(3);
+  const [balance, setBalance] = useState<number>(0);
   const [maxCap, setMaxCap] = useState<number>(10);
   const [freeUsedToday, setFreeUsedToday] = useState<boolean>(false);
-  const [history, setHistory] = useState<StampHistoryItem[]>([
-    { id: 'h1', delta: 1, reason: 'DAILY_GOAL', createdAt: new Date(Date.now() - 3600000 * 24) },
-    { id: 'h2', delta: 1, reason: 'PERFECT_SCORE', createdAt: new Date(Date.now() - 3600000 * 12) },
-    { id: 'h3', delta: 1, reason: 'DAILY_GOAL', createdAt: new Date(Date.now() - 3600000 * 2) },
-  ]);
+  const [history, setHistory] = useState<StampHistoryItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error' | 'info'; text: string } | null>(null);
   const [newlyStampedIdx, setNewlyStampedIdx] = useState<number | null>(null);
@@ -49,7 +45,7 @@ export function StampBookSection({ className = '' }: { className?: string }) {
         }
       }
     } catch {
-      // Graceful fallback đã có dữ liệu mẫu
+      // Backend unavailable or initial load failed
     }
   };
 
@@ -73,21 +69,12 @@ export function StampBookSection({ className = '' }: { className?: string }) {
         setNewlyStampedIdx(res.newBalance - 1);
         setMessage({ type: 'success', text: res.message || `Đã dán thêm +${res.deltaAwarded} tem vào sổ!` });
         setTimeout(() => setNewlyStampedIdx(null), 1500);
+        fetchStampData();
       } else {
         setMessage({ type: 'error', text: res.message || 'Không thể dán thêm tem.' });
       }
-    } catch {
-      // Fallback cục bộ tuân thủ cap 10
-      const actualDelta = Math.min(delta, 10 - balance);
-      if (actualDelta > 0) {
-        const next = balance + actualDelta;
-        setBalance(next);
-        setNewlyStampedIdx(next - 1);
-        setMessage({ type: 'success', text: `Đã dán thêm +${actualDelta} tem vào sổ!` });
-        setTimeout(() => setNewlyStampedIdx(null), 1500);
-      } else {
-        setMessage({ type: 'error', text: 'Sổ tem đã đầy (tối đa 10 tem)!' });
-      }
+    } catch (err: any) {
+      setMessage({ type: 'error', text: err?.message || 'Lỗi kết nối máy chủ: Không thể dán tem.' });
     } finally {
       setLoading(false);
     }
@@ -108,19 +95,12 @@ export function StampBookSection({ className = '' }: { className?: string }) {
             ? 'Đã sử dụng lượt chấm AI miễn phí trong ngày hôm nay!'
             : 'Đã đổi 1 tem cho 1 lượt chấm AI Writing thành công!',
         });
+        fetchStampData();
       } else {
         setMessage({ type: 'error', text: res.message || 'Hết tem, mai quay lại' });
       }
     } catch (err: any) {
-      if (!freeUsedToday) {
-        setFreeUsedToday(true);
-        setMessage({ type: 'success', text: 'Đã sử dụng 1 lượt chấm AI miễn phí trong ngày hôm nay!' });
-      } else if (balance >= 1) {
-        setBalance((prev) => prev - 1);
-        setMessage({ type: 'success', text: 'Đã đổi 1 tem cho lượt chấm AI Writing!' });
-      } else {
-        setMessage({ type: 'error', text: 'Hết tem, mai quay lại' });
-      }
+      setMessage({ type: 'error', text: err?.message || 'Hết tem, mai quay lại' });
     } finally {
       setLoading(false);
     }

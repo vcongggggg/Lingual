@@ -1,4 +1,7 @@
-import { prisma } from '../lib/prisma.js';
+import fs from 'fs';
+import path from 'path';
+import { prisma, isDatabaseAvailable } from '../lib/prisma.js';
+import { getFormattedDateInTimezone } from '../../../../packages/domain/src/index.js';
 
 export interface StampLedgerEntity {
   id: string;
@@ -8,35 +11,27 @@ export interface StampLedgerEntity {
   createdAt: Date;
 }
 
+interface StampStoreData {
+  dailyFreeWritingRecord: Record<string, boolean>;
+  dailyAwardRecords: Record<string, boolean>;
+  fallbackLedger: StampLedgerEntity[];
+}
+
+const DATA_DIR = typeof __dirname !== 'undefined'
+  ? path.resolve(__dirname, '../../data')
+  : path.resolve(process.cwd(), 'apps/api/data');
+const STAMP_STORE_FILE = path.join(DATA_DIR, 'stamp-store.json');
+
 export class StampRepository {
   private static instance: StampRepository;
-  // In-memory fallback ledger when database is unavailable
-  private inMemoryLedger: StampLedgerEntity[] = [
-    {
-      id: 'stamp-init-1',
-      userId: 'demo-user-id-001',
-      delta: 1,
-      reason: 'DAILY_GOAL',
-      createdAt: new Date(Date.now() - 3600000 * 24),
-    },
-    {
-      id: 'stamp-init-2',
-      userId: 'demo-user-id-001',
-      delta: 1,
-      reason: 'PERFECT_SCORE',
-      createdAt: new Date(Date.now() - 3600000 * 12),
-    },
-    {
-      id: 'stamp-init-3',
-      userId: 'demo-user-id-001',
-      delta: 1,
-      reason: 'DAILY_GOAL',
-      createdAt: new Date(Date.now() - 3600000 * 2),
-    },
-  ];
+  private inMemoryLedger: StampLedgerEntity[] = [];
+  private dailyFreeWritingRecord: Record<string, boolean> = {};
+  private dailyAwardRecords: Record<string, boolean> = {};
 
-  // Map of userId_YYYY-MM-DD -> boolean indicating if free writing evaluation was used
-  private dailyFreeWritingRecord: Map<string, boolean> = new Map();
+  constructor() {
+    this.ensureDirectory();
+    this.load();
+  }
 
   public static getInstance(): StampRepository {
     if (!StampRepository.instance) {
@@ -45,53 +40,113 @@ export class StampRepository {
     return StampRepository.instance;
   }
 
+  private ensureDirectory() {
+    try {
+      if (!fs.existsSync(DATA_DIR)) {
+        fs.mkdirSync(DATA_DIR, { recursive: true });
+      }
+    } catch (err) {
+      console.error('[StampRepository] Failed to ensure data directory:', err);
+    }
+  }
+
+  public load() {
+    try {
+      if (fs.existsSync(STAMP_STORE_FILE)) {
+        const raw = fs.readFileSync(STAMP_STORE_FILE, 'utf-8');
+        const parsed = JSON.parse(raw) as StampStoreData;
+        this.dailyFreeWritingRecord = parsed.dailyFreeWritingRecord || {};
+        this.dailyAwardRecords = parsed.dailyAwardRecords || {};
+        if (Array.isArray(parsed.fallbackLedger)) {
+          this.inMemoryLedger = parsed.fallbackLedger.map((item) => ({
+            ...item,
+            createdAt: new Date(item.createdAt),
+          }));
+        }
+      }
+    } catch (err) {
+      console.error('[StampRepository] Failed to load stamp-store.json:', err);
+    }
+  }
+
+  public save() {
+    try {
+      this.ensureDirectory();
+      const payload: StampStoreData = {
+        dailyFreeWritingRecord: this.dailyFreeWritingRecord,
+        dailyAwardRecords: this.dailyAwardRecords,
+        fallbackLedger: this.inMemoryLedger,
+      };
+      fs.writeFileSync(STAMP_STORE_FILE, JSON.stringify(payload, null, 2), 'utf-8');
+    } catch (err) {
+      console.error('[StampRepository] Failed to save stamp-store.json:', err);
+    }
+  }
+
   /**
    * Tính số dư tem hiện tại = SUM(delta), áp dụng giới hạn [0, 10]
    */
   public async getBalance(userId: string): Promise<number> {
-    try {
-      const records = await prisma.stampLedger.findMany({
-        where: { userId },
-        select: { delta: true },
-      });
-      const sum = records.reduce((acc, r) => acc + r.delta, 0);
-      return Math.min(10, Math.max(0, sum));
-    } catch {
-      const userRecords = this.inMemoryLedger.filter((r) => r.userId === userId || userId === 'demo-user-id-001');
-      const sum = userRecords.reduce((acc, r) => acc + r.delta, 0);
-      return Math.min(10, Math.max(0, sum));
+    if (await isDatabaseAvailable()) {
+      try {
+        const records = await prisma.stampLedger.findMany({
+          where: { userId },
+          select: { delta: true },
+        });
+        const sum = records.reduce((acc, r) => acc + r.delta, 0);
+        return Math.min(10, Math.max(0, sum));
+      } catch {}
     }
+    const userRecords = this.inMemoryLedger.filter((r) => r.userId === userId);
+    const sum = userRecords.reduce((acc, r) => acc + r.delta, 0);
+    return Math.min(10, Math.max(0, sum));
   }
 
   /**
    * Lịch sử ledger tem (append-only)
    */
   public async getHistory(userId: string): Promise<StampLedgerEntity[]> {
-    try {
-      const records = await prisma.stampLedger.findMany({
-        where: { userId },
-        orderBy: { createdAt: 'desc' },
-        take: 30,
-      });
-      return records;
-    } catch {
-      return this.inMemoryLedger
-        .filter((r) => r.userId === userId || userId === 'demo-user-id-001')
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+    if (await isDatabaseAvailable()) {
+      try {
+        const records = await prisma.stampLedger.findMany({
+          where: { userId },
+          orderBy: { createdAt: 'desc' },
+          take: 30,
+        });
+        return records;
+      } catch {}
     }
+    return this.inMemoryLedger
+      .filter((r) => r.userId === userId)
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   }
 
   /**
-   * Cộng tem vào sổ với enforce cap tối đa 10 tem
+   * Cộng tem vào sổ với:
+   * - Enforce cap tối đa 10 tem
+   * - Idempotency & chống farm: mỗi (userId, reason, ngày Asia/Ho_Chi_Minh) chỉ được award 1 lần
    */
   public async awardStamps(
     userId: string,
     reason: 'DAILY_GOAL' | 'PERFECT_SCORE' | 'STREAK_7_DAYS' | string,
     delta: number
   ): Promise<{ success: boolean; deltaAwarded: number; newBalance: number; message: string }> {
-    const currentBalance = await this.getBalance(userId);
-    const room = 10 - currentBalance;
+    const todayStr = getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh');
+    const idempotencyKey = `${userId}_${reason}_${todayStr}`;
 
+    const currentBalance = await this.getBalance(userId);
+
+    // Chặn trùng lặp / farm trong cùng ngày
+    if (this.dailyAwardRecords[idempotencyKey]) {
+      return {
+        success: false,
+        deltaAwarded: 0,
+        newBalance: currentBalance,
+        message: 'Nhiệm vụ này đã nhận tem hôm nay rồi. Mỗi ngày chỉ được nhận 1 lần!',
+      };
+    }
+
+    const room = 10 - currentBalance;
     if (room <= 0) {
       return {
         success: false,
@@ -110,19 +165,27 @@ export class StampRepository {
       createdAt: new Date(),
     };
 
-    try {
-      await prisma.stampLedger.create({
-        data: {
-          id: newEntry.id,
-          userId,
-          delta: actualDelta,
-          reason,
-          createdAt: newEntry.createdAt,
-        },
-      });
-    } catch {
+    if (await isDatabaseAvailable()) {
+      try {
+        await prisma.stampLedger.create({
+          data: {
+            id: newEntry.id,
+            userId,
+            delta: actualDelta,
+            reason,
+            createdAt: newEntry.createdAt,
+          },
+        });
+      } catch {
+        this.inMemoryLedger.push(newEntry);
+      }
+    } else {
       this.inMemoryLedger.push(newEntry);
     }
+
+    // Đánh dấu đã nhận thành công và lưu file persistent
+    this.dailyAwardRecords[idempotencyKey] = true;
+    this.save();
 
     const newBalance = currentBalance + actualDelta;
     return {
@@ -134,11 +197,11 @@ export class StampRepository {
   }
 
   /**
-   * Kiểm tra xem hôm nay user đã dùng lượt chấm AI miễn phí chưa
+   * Kiểm tra xem hôm nay user đã dùng lượt chấm AI miễn phí chưa (theo Asia/Ho_Chi_Minh)
    */
   public async hasUsedFreeWritingToday(userId: string, todayDateStr: string): Promise<boolean> {
     const key = `${userId}_${todayDateStr}`;
-    return this.dailyFreeWritingRecord.get(key) === true;
+    return this.dailyFreeWritingRecord[key] === true;
   }
 
   /**
@@ -146,6 +209,7 @@ export class StampRepository {
    * - Mỗi ngày 1 lượt free
    * - Từ lượt 2: tốn 1 tem/lượt
    * - Hết tem: báo "Hết tem, mai quay lại"
+   * Trạng thái free writing được lưu bền vững (persist), restart server không bị reset
    */
   public async redeemWritingEvaluation(
     userId: string,
@@ -161,7 +225,9 @@ export class StampRepository {
 
     if (!freeUsed) {
       // Lượt đầu tiên trong ngày hoàn toàn MIỄN PHÍ
-      this.dailyFreeWritingRecord.set(`${userId}_${todayDateStr}`, true);
+      this.dailyFreeWritingRecord[`${userId}_${todayDateStr}`] = true;
+      this.save();
+
       const balance = await this.getBalance(userId);
       return {
         success: true,
@@ -193,20 +259,25 @@ export class StampRepository {
       createdAt: new Date(),
     };
 
-    try {
-      await prisma.stampLedger.create({
-        data: {
-          id: newEntry.id,
-          userId,
-          delta: -1,
-          reason: 'AI_WRITING_EVALUATION',
-          createdAt: newEntry.createdAt,
-        },
-      });
-    } catch {
+    if (await isDatabaseAvailable()) {
+      try {
+        await prisma.stampLedger.create({
+          data: {
+            id: newEntry.id,
+            userId,
+            delta: -1,
+            reason: 'AI_WRITING_EVALUATION',
+            createdAt: newEntry.createdAt,
+          },
+        });
+      } catch {
+        this.inMemoryLedger.push(newEntry);
+      }
+    } else {
       this.inMemoryLedger.push(newEntry);
     }
 
+    this.save();
     const newBalance = currentBalance - 1;
     return {
       success: true,

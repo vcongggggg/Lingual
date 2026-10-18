@@ -70,6 +70,9 @@ export interface StreakState {
   currentStreak: number;
   streakFreezes: number;
   lastActiveDate: string | null; // Format: YYYY-MM-DD in user's timezone
+  leavePasses?: number;          // Weekly leave passes (1 max, resets Monday)
+  lastLeavePassGrantWeek?: string | null;
+  lastLeavePassUsedDate?: string | null;
 }
 
 /**
@@ -85,21 +88,69 @@ export function getFormattedDateInTimezone(date: Date = new Date(), timezone: st
 }
 
 /**
- * Updates user's streak considering timezone and streak freezes.
+ * Lấy mã tuần YYYY-Www theo chuẩn ISO tuần tại Asia/Ho_Chi_Minh (Thứ Hai bắt đầu tuần)
+ */
+export function getFormattedWeekInTimezone(date: Date = new Date(), timezone: string = 'Asia/Ho_Chi_Minh'): string {
+  const ymd = getFormattedDateInTimezone(date, timezone);
+  const [y, m, d] = ymd.split('-').map(Number);
+  const target = new Date(Date.UTC(y, m - 1, d));
+  const dayNr = ((target.getUTCDay() + 6) % 7) + 1; // 1 = Mon, 7 = Sun
+  target.setUTCDate(target.getUTCDate() - dayNr + 4);
+  const isoYear = target.getUTCFullYear();
+  const firstThursday = new Date(Date.UTC(isoYear, 0, 4));
+  const firstThursdayDayNr = ((firstThursday.getUTCDay() + 6) % 7) + 1;
+  firstThursday.setUTCDate(firstThursday.getUTCDate() - firstThursdayDayNr + 4);
+  const weekNumber = 1 + Math.round(((target.getTime() - firstThursday.getTime()) / 86400000) / 7);
+  const weekStr = weekNumber < 10 ? `0${weekNumber}` : `${weekNumber}`;
+  return `${isoYear}-W${weekStr}`;
+}
+
+/**
+ * Tính ngày hôm qua theo định dạng YYYY-MM-DD
+ */
+export function getYesterdayDateString(ymd: string): string {
+  const [y, m, d] = ymd.split('-').map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d - 1));
+  return date.toISOString().split('T')[0];
+}
+
+/**
+ * Tính chênh lệch số ngày chính xác giữa 2 mốc YYYY-MM-DD
+ */
+export function getDayDifference(lastYmd: string, todayYmd: string): number {
+  const [y1, m1, d1] = lastYmd.split('-').map(Number);
+  const [y2, m2, d2] = todayYmd.split('-').map(Number);
+  const utc1 = Date.UTC(y1, m1 - 1, d1);
+  const utc2 = Date.UTC(y2, m2 - 1, d2);
+  return Math.round((utc2 - utc1) / 86400000);
+}
+
+/**
+ * Updates user's streak considering timezone, leave passes, and streak freezes.
  */
 export function updateStreakWithTimezone(
   state: StreakState,
   currentDate: Date = new Date(),
   timezone: string = 'Asia/Ho_Chi_Minh'
-): { currentStreak: number; streakFreezes: number; streakMaintained: boolean; freezeUsed: boolean } {
+): {
+  currentStreak: number;
+  streakFreezes: number;
+  leavePasses: number;
+  streakMaintained: boolean;
+  freezeUsed: boolean;
+  leavePassUsed: boolean;
+} {
   const todayStr = getFormattedDateInTimezone(currentDate, timezone);
+  const currentLeavePasses = state.leavePasses ?? 0;
 
   if (!state.lastActiveDate) {
     return {
       currentStreak: 1,
       streakFreezes: state.streakFreezes,
+      leavePasses: currentLeavePasses,
       streakMaintained: true,
       freezeUsed: false,
+      leavePassUsed: false,
     };
   }
 
@@ -107,48 +158,87 @@ export function updateStreakWithTimezone(
     return {
       currentStreak: state.currentStreak,
       streakFreezes: state.streakFreezes,
+      leavePasses: currentLeavePasses,
       streakMaintained: true,
       freezeUsed: false,
+      leavePassUsed: state.lastLeavePassUsedDate === todayStr,
     };
   }
 
-  const lastDate = new Date(state.lastActiveDate);
-  const todayDate = new Date(todayStr);
-  const diffDays = Math.floor((todayDate.getTime() - lastDate.getTime()) / (1000 * 3600 * 24));
+  const diffDays = getDayDifference(state.lastActiveDate, todayStr);
 
   if (diffDays === 1) {
-    // Consecutive day activity!
+    // Hoạt động ngày kế tiếp liên tục!
     return {
       currentStreak: state.currentStreak + 1,
       streakFreezes: state.streakFreezes,
+      leavePasses: currentLeavePasses,
       streakMaintained: true,
       freezeUsed: false,
+      leavePassUsed: false,
     };
-  } else if (diffDays > 1) {
-    const missedDays = diffDays - 1;
-    if (state.streakFreezes >= missedDays) {
-      // Missed days are protected by available streak freezes!
+  } else if (diffDays === 2) {
+    // Quên học ĐÚNG 1 ngày (hôm qua)!
+    // Ưu tiên sử dụng Phiếu Nghỉ Phép (Leave Pass) trước
+    if (currentLeavePasses > 0) {
       return {
         currentStreak: state.currentStreak + 1,
-        streakFreezes: state.streakFreezes - missedDays,
+        streakFreezes: state.streakFreezes,
+        leavePasses: currentLeavePasses - 1,
+        streakMaintained: true,
+        freezeUsed: false,
+        leavePassUsed: true,
+      };
+    } else if (state.streakFreezes >= 1) {
+      // Dùng streak freeze nếu còn
+      return {
+        currentStreak: state.currentStreak + 1,
+        streakFreezes: state.streakFreezes - 1,
+        leavePasses: 0,
         streakMaintained: true,
         freezeUsed: true,
+        leavePassUsed: false,
       };
     } else {
-      // Streak broken, reset to 1
+      // Hết cả phiếu nghỉ phép lẫn freeze -> streak đứt
       return {
         currentStreak: 1,
         streakFreezes: state.streakFreezes,
+        leavePasses: 0,
         streakMaintained: false,
         freezeUsed: false,
+        leavePassUsed: false,
+      };
+    }
+  } else if (diffDays > 2) {
+    const missedDays = diffDays - 1;
+    if (state.streakFreezes >= missedDays) {
+      return {
+        currentStreak: state.currentStreak + 1,
+        streakFreezes: state.streakFreezes - missedDays,
+        leavePasses: currentLeavePasses,
+        streakMaintained: true,
+        freezeUsed: true,
+        leavePassUsed: false,
+      };
+    } else {
+      return {
+        currentStreak: 1,
+        streakFreezes: state.streakFreezes,
+        leavePasses: currentLeavePasses,
+        streakMaintained: false,
+        freezeUsed: false,
+        leavePassUsed: false,
       };
     }
   } else {
     return {
       currentStreak: state.currentStreak,
       streakFreezes: state.streakFreezes,
+      leavePasses: currentLeavePasses,
       streakMaintained: true,
       freezeUsed: false,
+      leavePassUsed: false,
     };
   }
 }
