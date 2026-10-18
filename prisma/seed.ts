@@ -1,6 +1,7 @@
 import { PrismaClient, Role } from '@prisma/client';
 import argon2 from 'argon2';
 import { SEED_IELTS_TRACKS, SEED_IELTS_QUESTIONS } from './seed-ielts';
+import { seedVocabBulk } from './seed-vocab-bulk';
 
 const prisma = new PrismaClient();
 
@@ -151,7 +152,7 @@ export const SEED_UNITS = [
         description: "Cơm, phở, bánh mì, trái cây.",
         xpReward: 30,
         words: [
-          { targetText: "Water", translation: "Nước uống", phonetic: "/ˈwɔːtər/", imageUrl: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=500&auto=format&fit=crop&q=80", exampleSentence: "Drink more water every day.", exampleTranslation: "Hãy uống nhiều nước hơn mỗi ngày.", cefrLevel: "A1", partOfSpeech: "noun" },
+          { targetText: "Water", translation: "Nước uống", phonetic: "/ˈwɔːtər/", imageUrl: null, exampleSentence: "Drink more water every day.", exampleTranslation: "Hãy uống nhiều nước hơn mỗi ngày.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Rice", translation: "Cơm / Gạo", phonetic: "/raɪs/", imageUrl: "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=500&auto=format&fit=crop&q=80", exampleSentence: "We eat rice for dinner.", exampleTranslation: "Chúng tôi ăn cơm vào buổi tối.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Coffee", translation: "Cà phê", phonetic: "/ˈkɔːfi/", imageUrl: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format&fit=crop&q=80", exampleSentence: "Hot coffee in the morning.", exampleTranslation: "Cà phê nóng vào buổi sáng.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Apple", translation: "Quả táo", phonetic: "/ˈæpl/", imageUrl: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=80", exampleSentence: "An apple a day keeps the doctor away.", exampleTranslation: "Mỗi ngày một quả táo giúp cơ thể khỏe mạnh.", cefrLevel: "A1", partOfSpeech: "noun" },
@@ -170,7 +171,7 @@ export const SEED_UNITS = [
           { targetText: "Menu", translation: "Thực đơn", phonetic: "/ˈmenjuː/", imageUrl: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&auto=format&fit=crop&q=80", exampleSentence: "Can I see the menu, please?", exampleTranslation: "Cho tôi xem thực đơn được không?", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Order", translation: "Gọi món / Đặt hàng", phonetic: "/ˈɔːrdər/", imageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=80", exampleSentence: "Are you ready to order?", exampleTranslation: "Quý khách đã sẵn sàng gọi món chưa?", cefrLevel: "A1", partOfSpeech: "verb" },
           { targetText: "Delicious", translation: "Thơm ngon", phonetic: "/dɪˈlɪʃəs/", imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&auto=format&fit=crop&q=80", exampleSentence: "The grilled chicken is delicious.", exampleTranslation: "Món gà nướng này rất thơm ngon.", cefrLevel: "A2", partOfSpeech: "adjective" },
-          { targetText: "Bill", translation: "Hóa đơn thanh toán", phonetic: "/bɪl/", imageUrl: "https://images.unsplash.com/photo-1554415707-9e49017a5815?w=500&auto=format&fit=crop&q=80", exampleSentence: "Could we have the bill, please?", exampleTranslation: "Làm ơn cho chúng tôi xin hóa đơn.", cefrLevel: "A1", partOfSpeech: "noun" },
+          { targetText: "Bill", translation: "Hóa đơn thanh toán", phonetic: "/bɪl/", imageUrl: null, exampleSentence: "Could we have the bill, please?", exampleTranslation: "Làm ơn cho chúng tôi xin hóa đơn.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Waiter", translation: "Người phục vụ bàn", phonetic: "/ˈweɪtər/", imageUrl: "https://images.unsplash.com/photo-1581349485608-9469926a8e5e?w=500&auto=format&fit=crop&q=80", exampleSentence: "The waiter brought our drinks quickly.", exampleTranslation: "Người phục vụ mang đồ uống ra rất nhanh.", cefrLevel: "A1", partOfSpeech: "noun" }
         ],
         exercises: [
@@ -186,7 +187,7 @@ export const SEED_UNITS = [
           { targetText: "Cook", translation: "Nấu ăn / Đầu bếp", phonetic: "/kʊk/", imageUrl: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=500&auto=format&fit=crop&q=80", exampleSentence: "I love to cook Italian pasta.", exampleTranslation: "Tôi rất thích nấu mì Ý.", cefrLevel: "A1", partOfSpeech: "verb" },
           { targetText: "Vegetable", translation: "Rau củ", phonetic: "/ˈvedʒtəbl/", imageUrl: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&auto=format&fit=crop&q=80", exampleSentence: "Eat fresh vegetables every meal.", exampleTranslation: "Ăn rau củ tươi trong mỗi bữa ăn.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Spice", translation: "Gia vị", phonetic: "/spaɪs/", imageUrl: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&auto=format&fit=crop&q=80", exampleSentence: "Traditional spices make the soup aromatic.", exampleTranslation: "Gia vị truyền thống làm cho món súp đậm đà hương vị.", cefrLevel: "B1", partOfSpeech: "noun" },
-          { targetText: "Taste", translation: "Hương vị / Nếm thử", phonetic: "/teɪst/", imageUrl: "https://images.unsplash.com/photo-1505253758473-96b3015f27eb?w=500&auto=format&fit=crop&q=80", exampleSentence: "This soup has a rich taste.", exampleTranslation: "Món súp này có hương vị rất đậm đà.", cefrLevel: "A2", partOfSpeech: "noun" },
+          { targetText: "Taste", translation: "Hương vị / Nếm thử", phonetic: "/teɪst/", imageUrl: null, exampleSentence: "This soup has a rich taste.", exampleTranslation: "Món súp này có hương vị rất đậm đà.", cefrLevel: "A2", partOfSpeech: "noun" },
           { targetText: "Fresh", translation: "Tươi mới / Trong lành", phonetic: "/freʃ/", imageUrl: "https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=500&auto=format&fit=crop&q=80", exampleSentence: "Buy fresh fruits at the local market.", exampleTranslation: "Mua hoa quả tươi ở chợ địa phương.", cefrLevel: "A1", partOfSpeech: "adjective" }
         ],
         exercises: [
@@ -215,7 +216,7 @@ export const SEED_UNITS = [
           { targetText: "Breakfast", translation: "Bữa ăn sáng", phonetic: "/ˈbrekfəst/", imageUrl: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=500&auto=format&fit=crop&q=80", exampleSentence: "Never skip breakfast.", exampleTranslation: "Đừng bao giờ bỏ bữa sáng.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Shower", translation: "Tắm vòi sen", phonetic: "/ˈʃaʊər/", imageUrl: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&auto=format&fit=crop&q=80", exampleSentence: "A morning shower refreshes the body.", exampleTranslation: "Tắm buổi sáng giúp cơ thể sảng khoái.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Routine", translation: "Thói quen định kỳ", phonetic: "/ruːˈtiːn/", imageUrl: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&auto=format&fit=crop&q=80", exampleSentence: "Maintain a productive daily routine.", exampleTranslation: "Duy trì một thói quen hàng ngày hiệu quả.", cefrLevel: "A2", partOfSpeech: "noun" },
-          { targetText: "Early", translation: "Sớm", phonetic: "/ˈɜːrli/", imageUrl: "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?w=500&auto=format&fit=crop&q=80", exampleSentence: "The early bird catches the worm.", exampleTranslation: "Dậy sớm gặt hái thành công.", cefrLevel: "A1", partOfSpeech: "adverb" }
+          { targetText: "Early", translation: "Sớm", phonetic: "/ˈɜːrli/", imageUrl: null, exampleSentence: "The early bird catches the worm.", exampleTranslation: "Dậy sớm gặt hái thành công.", cefrLevel: "A1", partOfSpeech: "adverb" }
         ],
         exercises: [
           { type: "multiple_choice", prompt: "'Wake up' nghĩa là gì?", optionsJson: JSON.stringify(["Thức dậy", "Đi ngủ", "Tập thể dục", "Ăn tối"]), correctAnswer: "Thức dậy", explanation: "'Wake up' là thức dậy." }
@@ -304,7 +305,7 @@ export const SEED_UNITS = [
         xpReward: 35,
         words: [
           { targetText: "Straight", translation: "Đi thẳng", phonetic: "/streɪt/", imageUrl: "https://images.unsplash.com/photo-1476820865390-c52aeebb9891?w=500&auto=format&fit=crop&q=80", exampleSentence: "Go straight for 200 meters.", exampleTranslation: "Đi thẳng khoảng 200 mét.", cefrLevel: "A1", partOfSpeech: "adverb" },
-          { targetText: "Turn left", translation: "Rẽ trái", phonetic: "/tɜːrn left/", imageUrl: "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?w=500&auto=format&fit=crop&q=80", exampleSentence: "Turn left at the traffic light.", exampleTranslation: "Rẽ trái ở cột đèn giao thông.", cefrLevel: "A1", partOfSpeech: "phrase" },
+          { targetText: "Turn left", translation: "Rẽ trái", phonetic: "/tɜːrn left/", imageUrl: null, exampleSentence: "Turn left at the traffic light.", exampleTranslation: "Rẽ trái ở cột đèn giao thông.", cefrLevel: "A1", partOfSpeech: "phrase" },
           { targetText: "Turn right", translation: "Rẽ phải", phonetic: "/tɜːrn raɪt/", imageUrl: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=500&auto=format&fit=crop&q=80", exampleSentence: "Turn right after the supermarket.", exampleTranslation: "Rẽ phải sau siêu thị.", cefrLevel: "A1", partOfSpeech: "phrase" },
           { targetText: "Map", translation: "Bản đồ", phonetic: "/mæp/", imageUrl: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=500&auto=format&fit=crop&q=80", exampleSentence: "Check Google Maps for directions.", exampleTranslation: "Tra cứu Google Maps để xem đường đi.", cefrLevel: "A1", partOfSpeech: "noun" },
           { targetText: "Near", translation: "Gần đây", phonetic: "/nɪr/", imageUrl: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&auto=format&fit=crop&q=80", exampleSentence: "The station is near the museum.", exampleTranslation: "Nhà ga nằm gần bảo tàng.", cefrLevel: "A1", partOfSpeech: "preposition" }
@@ -351,7 +352,7 @@ export const SEED_UNITS = [
           { targetText: "Cheap", translation: "Rẻ tiền / Giá hợp lý", phonetic: "/tʃiːp/", imageUrl: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=500&auto=format&fit=crop&q=80", exampleSentence: "Street food in Vietnam is very cheap.", exampleTranslation: "Ẩm thực đường phố ở Việt Nam rất rẻ.", cefrLevel: "A1", partOfSpeech: "adjective" },
           { targetText: "Expensive", translation: "Đắt đỏ", phonetic: "/ɪkˈspensɪv/", imageUrl: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format&fit=crop&q=80", exampleSentence: "Designer bags are quite expensive.", exampleTranslation: "Túi hàng hiệu khá đắt đỏ.", cefrLevel: "A1", partOfSpeech: "adjective" },
           { targetText: "Special offer", translation: "Khuyến mãi đặc biệt", phonetic: "/ˈspeʃl ˈɔːfər/", imageUrl: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&auto=format&fit=crop&q=80", exampleSentence: "Check out today's special offer.", exampleTranslation: "Xem qua ưu đãi đặc biệt hôm nay.", cefrLevel: "A2", partOfSpeech: "phrase" },
-          { targetText: "Receipt", translation: "Biên lai mua hàng", phonetic: "/rɪˈsiːt/", imageUrl: "https://images.unsplash.com/photo-1554415707-9e49017a5815?w=500&auto=format&fit=crop&q=80", exampleSentence: "Keep your receipt for returns.", exampleTranslation: "Giữ biên lai của bạn để đổi trả hàng.", cefrLevel: "A2", partOfSpeech: "noun" }
+          { targetText: "Receipt", translation: "Biên lai mua hàng", phonetic: "/rɪˈsiːt/", imageUrl: null, exampleSentence: "Keep your receipt for returns.", exampleTranslation: "Giữ biên lai của bạn để đổi trả hàng.", cefrLevel: "A2", partOfSpeech: "noun" }
         ],
         exercises: [
           { type: "multiple_choice", prompt: "'Discount' nghĩa là gì?", optionsJson: JSON.stringify(["Giảm giá", "Hóa đơn", "Đắt tiền", "Tiền mặt"]), correctAnswer: "Giảm giá", explanation: "'Discount' có nghĩa là giảm giá hoặc chiết khấu." }
@@ -470,7 +471,7 @@ export const SEED_UNITS = [
           { targetText: "Nutrition", translation: "Dinh dưỡng", phonetic: "/nuːˈtrɪʃn/", imageUrl: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=500&auto=format&fit=crop&q=80", exampleSentence: "Good nutrition improves mental focus.", exampleTranslation: "Dinh dưỡng tốt giúp tăng cường sự tập trung trí não.", cefrLevel: "B1", partOfSpeech: "noun" },
           { targetText: "Healthy", translation: "Khỏe mạnh / Lành mạnh", phonetic: "/ˈhelθi/", imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&auto=format&fit=crop&q=80", exampleSentence: "Maintain a healthy lifestyle.", exampleTranslation: "Duy trì một lối sống lành mạnh.", cefrLevel: "A1", partOfSpeech: "adjective" },
           { targetText: "Energy", translation: "Năng lượng", phonetic: "/ˈenərdʒi/", imageUrl: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=500&auto=format&fit=crop&q=80", exampleSentence: "Fruits provide natural energy.", exampleTranslation: "Trái cây cung cấp nguồn năng lượng tự nhiên.", cefrLevel: "A2", partOfSpeech: "noun" },
-          { targetText: "Hydration", translation: "Sự đủ nước cơ thể", phonetic: "/haɪˈdreɪʃn/", imageUrl: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=500&auto=format&fit=crop&q=80", exampleSentence: "Stay hydrated during exercise.", exampleTranslation: "Giữ cơ thể đủ nước trong khi vận động.", cefrLevel: "B2", partOfSpeech: "noun" },
+          { targetText: "Hydration", translation: "Sự đủ nước cơ thể", phonetic: "/haɪˈdreɪʃn/", imageUrl: null, exampleSentence: "Stay hydrated during exercise.", exampleTranslation: "Giữ cơ thể đủ nước trong khi vận động.", cefrLevel: "B2", partOfSpeech: "noun" },
           { targetText: "Habit", translation: "Thói quen", phonetic: "/ˈhæbɪt/", imageUrl: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&auto=format&fit=crop&q=80", exampleSentence: "Drinking green tea is a great habit.", exampleTranslation: "Uống trà xanh là một thói quen rất tốt.", cefrLevel: "A2", partOfSpeech: "noun" }
         ],
         exercises: [
@@ -543,7 +544,7 @@ export const SEED_UNITS = [
         description: "Mô hình ngôn ngữ, tự động hóa, robot thông minh.",
         xpReward: 50,
         words: [
-          { targetText: "Artificial intelligence", translation: "Trí tuệ nhân tạo (AI)", phonetic: "/ˌɑːrtɪfɪʃl ɪnˈtelɪdʒəns/", imageUrl: "https://images.unsplash.com/photo-1677442136019-21780efad99a?w=500&auto=format&fit=crop&q=80", exampleSentence: "Artificial intelligence is changing education.", exampleTranslation: "Trí tuệ nhân tạo đang làm thay đổi nền giáo dục.", cefrLevel: "B2", partOfSpeech: "noun" },
+          { targetText: "Artificial intelligence", translation: "Trí tuệ nhân tạo (AI)", phonetic: "/ˌɑːrtɪfɪʃl ɪnˈtelɪdʒəns/", imageUrl: null, exampleSentence: "Artificial intelligence is changing education.", exampleTranslation: "Trí tuệ nhân tạo đang làm thay đổi nền giáo dục.", cefrLevel: "B2", partOfSpeech: "noun" },
           { targetText: "Automation", translation: "Tự động hóa", phonetic: "/ˌɔːtəˈmeɪʃn/", imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80", exampleSentence: "Automation streamlines complex workflows.", exampleTranslation: "Tự động hóa tinh gọn các quy trình công việc phức tạp.", cefrLevel: "B2", partOfSpeech: "noun" },
           { targetText: "Innovation", translation: "Sự đổi mới sáng tạo", phonetic: "/ˌɪnəˈveɪʃn/", imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=80", exampleSentence: "Technological innovation drives progress.", exampleTranslation: "Sự đổi mới công nghệ thúc đẩy sự tiến bộ xã hội.", cefrLevel: "B2", partOfSpeech: "noun" },
           { targetText: "Algorithm", translation: "Thuật toán", phonetic: "/ˈælɡərɪðəm/", imageUrl: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=500&auto=format&fit=crop&q=80", exampleSentence: "Recommendation algorithms suggest helpful lessons.", exampleTranslation: "Thuật toán gợi ý các bài học bổ ích.", cefrLevel: "B2", partOfSpeech: "noun" },
@@ -591,7 +592,7 @@ export const SEED_UNITS = [
           { targetText: "Renewable energy", translation: "Năng lượng tái tạo", phonetic: "/rɪˈnuːəbl ˈenərdʒi/", imageUrl: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=500&auto=format&fit=crop&q=80", exampleSentence: "Solar and wind are key renewable energies.", exampleTranslation: "Mặt trời và gió là các dạng năng lượng tái tạo chủ chốt.", cefrLevel: "B2", partOfSpeech: "phrase" },
           { targetText: "Sustainable", translation: "Bền vững / Thân thiện môi trường", phonetic: "/səˈsteɪnəbl/", imageUrl: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&auto=format&fit=crop&q=80", exampleSentence: "Adopt sustainable lifestyle practices.", exampleTranslation: "Áp dụng những thói quen sống bền vững.", cefrLevel: "B2", partOfSpeech: "adjective" },
           { targetText: "Recycle", translation: "Tái chế rác thải", phonetic: "/ˌriːˈsaɪkl/", imageUrl: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500&auto=format&fit=crop&q=80", exampleSentence: "Recycle plastic bottles and paper.", exampleTranslation: "Tái chế chai nhựa và giấy đã qua sử dụng.", cefrLevel: "A2", partOfSpeech: "verb" },
-          { targetText: "Conservation", translation: "Sự bảo tồn", phonetic: "/ˌkɑːnsərˈveɪʃn/", imageUrl: "https://images.unsplash.com/photo-1511497584788-87676104235f?w=500&auto=format&fit=crop&q=80", exampleSentence: "Forest conservation saves endangered species.", exampleTranslation: "Bảo tồn rừng giúp cứu các loài động vật có nguy cơ tuyệt chủng.", cefrLevel: "B2", partOfSpeech: "noun" }
+          { targetText: "Conservation", translation: "Sự bảo tồn", phonetic: "/ˌkɑːnsərˈveɪʃn/", imageUrl: null, exampleSentence: "Forest conservation saves endangered species.", exampleTranslation: "Bảo tồn rừng giúp cứu các loài động vật có nguy cơ tuyệt chủng.", cefrLevel: "B2", partOfSpeech: "noun" }
         ],
         exercises: [
           { type: "multiple_choice", prompt: "'Sustainable' nghĩa là gì?", optionsJson: JSON.stringify(["Bền vững", "Đắt đỏ", "Tạm thời", "Nguy hiểm"]), correctAnswer: "Bền vững", explanation: "'Sustainable' là bền vững, có thể duy trì lâu dài mà không hủy hoại tài nguyên." }
@@ -793,6 +794,7 @@ export async function seedDatabase() {
             phonetic: word.phonetic,
             exampleSentence: word.exampleSentence,
             exampleTranslation: word.exampleTranslation,
+            audioUrl: `/audio/vocab/${word.targetText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.mp3`,
             cefrLevel: word.cefrLevel || 'A1',
             partOfSpeech: word.partOfSpeech || 'noun',
             lesson: { connect: { id: lesson.id } },
@@ -802,6 +804,7 @@ export async function seedDatabase() {
             targetText: word.targetText,
             translation: word.translation,
             phonetic: word.phonetic,
+            audioUrl: `/audio/vocab/${word.targetText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.mp3`,
             exampleSentence: word.exampleSentence,
             exampleTranslation: word.exampleTranslation,
             cefrLevel: word.cefrLevel || 'A1',
@@ -890,6 +893,10 @@ export async function seedDatabase() {
     });
   }
   console.log(`✅ Seeded ${SEED_IELTS_TRACKS.length} IELTS Tracks & ${SEED_IELTS_QUESTIONS.length} IELTS Questions`);
+
+  // 5. Seed Bulk Vocabularies (Oxford 5000 + CEFR dataset)
+  console.log('📚 Seeding Bulk Vocabularies...');
+  await seedVocabBulk(prisma);
 
   console.log('🎉 Database seeding completed successfully!');
 }

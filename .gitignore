@@ -46,3 +46,9 @@ __pycache__/
 # Local runtime data
 apps/api/data/*.json
 !apps/api/data/.gitkeep
+
+# Raw data pipeline caches (keep standardized data)
+data/*
+!data/standardized/
+!data/standardized/**
+
