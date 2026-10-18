@@ -1159,6 +1159,54 @@ model StoryTemplate {
   @@map("story_templates")
 }
 
+model ContentPackage {
+  id            String   @id
+  topic         String?
+  topicVi       String?
+  cefrLevel     String   @default("A2")
+  dialogueJson  String   @default("{}")
+  dictationJson String   @default("{}")
+  shadowingJson String   @default("{}")
+  wordOrderJson String   @default("[]")
+  quizJson      String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
 
+  @@index([cefrLevel])
+  @@map("content_packages")
+}
 
+model BilingualArticle {
+  id             String   @id
+  title          String
+  titleVi        String?
+  cefrLevel      String   @default("A2")
+  topic          String?
+  topicVi        String?
+  paragraphsJson String   @default("[]")
+  quizJson       String   @default("[]")
+  source         String   @default("ai-generated")
+  verified       Boolean  @default(false)
+  createdAt      DateTime @default(now())
 
+  @@index([cefrLevel])
+  @@map("bilingual_articles")
+}
+
+model BilingualStory {
+  id         String   @id
+  title      String
+  titleVi    String?
+  cefrLevel  String   @default("A2")
+  topic      String?
+  topicVi    String?
+  pagesJson  String   @default("[]")
+  quizJson   String   @default("[]")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("bilingual_stories")
+}

@@ -1,0 +1,785 @@
+[
+  {
+    "id": "story-01",
+    "title": "The Lost Puppy",
+    "titleVi": "Chú cún đi lạc",
+    "cefrLevel": "A2",
+    "topic": "animals",
+    "topicVi": "Động vật",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "One sunny morning, Mai found a small puppy near her house. The puppy was brown and very cute. It was crying softly. Mai looked around, but no one was there.",
+        "vi": "Một buổi sáng nắng đẹp, Mai tìm thấy một chú cún nhỏ gần nhà mình. Chú cún màu nâu và rất đáng yêu. Nó đang khóc khẽ khẽ. Mai nhìn xung quanh nhưng không có ai ở đó."
+      },
+      {
+        "id": "pg-2",
+        "en": "Mai decided to take the puppy home. She gave it some warm milk. The puppy drank the milk quickly. Then it wagged its tail happily. Mai smiled and named it Lucky.",
+        "vi": "Mai quyết định đưa chú cún về nhà. Cô cho nó uống sữa ấm. Chú cún uống sữa rất nhanh. Rồi nó vẫy đuôi vui vẻ. Mai mỉm cười và đặt tên cho nó là Lucky."
+      },
+      {
+        "id": "pg-3",
+        "en": "In the afternoon, Mai made posters with Lucky's picture. She wrote 'LOST PUPPY' in big letters. Then she and her brother walked around the neighborhood. They put the posters on trees and walls.",
+        "vi": "Buổi chiều, Mai làm những tờ rơi có hình của Lucky. Cô viết chữ 'TÌM CHỦ CÚN LẠC' thật to. Sau đó cô và em trai đi khắp khu phố. Hai chị em dán tờ rơi lên cây và tường."
+      },
+      {
+        "id": "pg-4",
+        "en": "The next day, an old man came to Mai's house. He was crying. He said his puppy ran away two days ago. He showed Mai a photo of the same brown puppy.",
+        "vi": "Hôm sau, một ông cụ đến nhà Mai. Ông đang khóc. Ông nói cún con của ông đã chạy mất hai ngày trước. Ông cho Mai xem ảnh của đúng chú cún nâu đó."
+      },
+      {
+        "id": "pg-5",
+        "en": "Mai felt sad. She loved Lucky very much. But she knew the puppy missed its owner. She gave Lucky back to the old man. The puppy jumped into his arms happily.",
+        "vi": "Mai cảm thấy buồn. Cô rất yêu Lucky. Nhưng cô biết chú cún nhớ chủ của nó. Cô trả Lucky lại cho ông cụ. Chú cún nhảy vào lòng ông vui vẻ."
+      },
+      {
+        "id": "pg-6",
+        "en": "The old man thanked Mai many times. He said, 'You are a kind girl.' Mai smiled, but tears were in her eyes. She watched them walk away together.",
+        "vi": "Ông cụ cảm ơn Mai nhiều lần. Ông nói: 'Cháu là một cô bé tốt bụng.' Mai mỉm cười, nhưng nước mắt rưng rưng. Cô nhìn hai ông cháu cùng nhau bước đi."
+      },
+      {
+        "id": "pg-7",
+        "en": "That evening, there was a knock at the door. The old man was back with Lucky. He said, 'I am old and live alone. Lucky likes you. Please keep him.' Mai could not believe her ears.",
+        "vi": "Tối hôm đó, có tiếng gõ cửa. Ông cụ quay lại cùng Lucky. Ông nói: 'Ông già rồi và sống một mình. Lucky quý cháu. Hãy giữ nó nhé.' Mai không tin vào tai mình."
+      },
+      {
+        "id": "pg-8",
+        "en": "From that day, Lucky lived with Mai. The old man visited them every weekend. They drank tea and played with Lucky in the garden. Everyone was happy, especially Lucky.",
+        "vi": "Từ hôm đó, Lucky sống cùng Mai. Ông cụ đến thăm hai chị em mỗi cuối tuần. Họ uống trà và chơi với Lucky trong vườn. Ai cũng vui vẻ, nhất là Lucky."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where did Mai find the puppy?",
+        "options": [
+          "Near her house",
+          "In the park",
+          "At school",
+          "In the market"
+        ],
+        "correctAnswer": "Near her house",
+        "explanation": "Đáp án ở trang 1: Mai found a small puppy near her house."
+      },
+      {
+        "question": "What did Mai do to find the puppy's owner?",
+        "options": [
+          "She made posters",
+          "She called the police",
+          "She posted on the internet",
+          "She did nothing"
+        ],
+        "correctAnswer": "She made posters",
+        "explanation": "Đáp án ở trang 3: Mai made posters with Lucky's picture."
+      },
+      {
+        "question": "Why did the old man give Lucky back to Mai?",
+        "options": [
+          "Because he was old, lived alone, and Lucky liked Mai",
+          "Because he did not like dogs",
+          "Because Mai paid him money",
+          "Because Lucky was sick"
+        ],
+        "correctAnswer": "Because he was old, lived alone, and Lucky liked Mai",
+        "explanation": "Đáp án ở trang 7: I am old and live alone. Lucky likes you."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-02",
+    "title": "Grandma's Kitchen",
+    "titleVi": "Căn bếp của bà",
+    "cefrLevel": "A2",
+    "topic": "family",
+    "topicVi": "Gia đình",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "Every Sunday, Nam visits his grandmother. Her house is small but very warm. The kitchen is Nam's favorite place. It always smells of delicious food.",
+        "vi": "Chủ nhật nào Nam cũng đến thăm bà. Nhà bà nhỏ nhưng rất ấm cúng. Căn bếp là nơi Nam thích nhất. Nơi đó lúc nào cũng thơm mùi đồ ăn ngon."
+      },
+      {
+        "id": "pg-2",
+        "en": "This Sunday, Grandma is making banh chung. Nam watches her carefully. She puts sticky rice, mung beans, and pork into green leaves. Her hands move quickly and skillfully.",
+        "vi": "Chủ nhật này, bà đang gói bánh chưng. Nam chăm chú nhìn bà làm. Bà cho gạo nếp, đậu xanh và thịt lợn vào lá dong. Đôi tay bà thoăn thoắt và khéo léo."
+      },
+      {
+        "id": "pg-3",
+        "en": "Nam wants to help. Grandma gives him a small task: washing the leaves. Nam washes each leaf very carefully. Grandma smiles and says, 'Good boy!'",
+        "vi": "Nam muốn giúp bà. Bà giao cho cậu một việc nhỏ: rửa lá. Nam rửa từng chiếc lá rất cẩn thận. Bà mỉm cười và nói: 'Cháu ngoan lắm!'"
+      },
+      {
+        "id": "pg-4",
+        "en": "Then they put the cakes into a big pot. Grandma says they must cook for ten hours. Nam is surprised. 'Ten hours? That's so long!' Grandma laughs. 'Good food needs time, my dear.'",
+        "vi": "Rồi hai bà cháu cho bánh vào một chiếc nồi lớn. Bà nói phải nấu mười tiếng đồng hồ. Nam ngạc nhiên. 'Mười tiếng? Lâu quá bà ơi!' Bà cười. 'Món ngon cần thời gian, cháu yêu.'"
+      },
+      {
+        "id": "pg-5",
+        "en": "While waiting, Grandma tells Nam stories about her childhood. She talks about the old village and the big banyan tree. Nam listens with wide eyes. Time flies by quickly.",
+        "vi": "Trong lúc chờ đợi, bà kể cho Nam nghe những câu chuyện thời thơ ấu. Bà kể về ngôi làng cũ và cây đa to. Nam lắng nghe với đôi mắt tròn xoe. Thời gian trôi qua thật nhanh."
+      },
+      {
+        "id": "pg-6",
+        "en": "At night, the banh chung is ready. Grandma cuts one cake into eight pieces. The cake is green outside and golden inside. Nam takes a bite. 'Delicious!' he shouts.",
+        "vi": "Tối đến, bánh chưng đã chín. Bà cắt một chiếc bánh thành tám miếng. Bánh xanh bên ngoài, vàng óng bên trong. Nam cắn một miếng. 'Ngon quá!' cậu reo lên."
+      },
+      {
+        "id": "pg-7",
+        "en": "Nam brings some cakes home for his parents. His mother says, 'Thank you, son. And thank Grandma for us.' The whole family eats the banh chung together. Everyone is happy.",
+        "vi": "Nam mang một ít bánh về cho bố mẹ. Mẹ cậu nói: 'Cảm ơn con. Và cảm ơn bà giúp mẹ nhé.' Cả nhà cùng ăn bánh chưng. Ai cũng vui vẻ."
+      },
+      {
+        "id": "pg-8",
+        "en": "Before Tet, Nam visits Grandma again. This time, he can wrap a small cake by himself. Grandma hugs him and says, 'Now you are a real man of the family.' Nam feels very proud.",
+        "vi": "Trước Tết, Nam lại đến thăm bà. Lần này, cậu đã tự gói được một chiếc bánh nhỏ. Bà ôm cậu và nói: 'Giờ cháu đã là người đàn ông thực thụ của gia đình.' Nam cảm thấy rất tự hào."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is Nam's favorite place in Grandma's house?",
+        "options": [
+          "The kitchen",
+          "The garden",
+          "The living room",
+          "The bedroom"
+        ],
+        "correctAnswer": "The kitchen",
+        "explanation": "Đáp án ở trang 1: The kitchen is Nam's favorite place."
+      },
+      {
+        "question": "How long must the banh chung cook?",
+        "options": [
+          "Ten hours",
+          "Two hours",
+          "Five hours",
+          "One hour"
+        ],
+        "correctAnswer": "Ten hours",
+        "explanation": "Đáp án ở trang 4: they must cook for ten hours."
+      },
+      {
+        "question": "What can Nam do at the end of the story?",
+        "options": [
+          "Wrap a small cake by himself",
+          "Cook the cakes alone",
+          "Grow rice",
+          "Make green leaves"
+        ],
+        "correctAnswer": "Wrap a small cake by himself",
+        "explanation": "Đáp án ở trang 8: he can wrap a small cake by himself."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-03",
+    "title": "LingLing's Big Adventure",
+    "titleVi": "Cuộc phiêu lưu lớn của bò LingLing",
+    "cefrLevel": "A2",
+    "topic": "adventure",
+    "topicVi": "Phiêu lưu",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "LingLing is a chubby black-and-white cow. She lives on a green farm with her friends. But LingLing is not like other cows. She is curious and a little bit naughty.",
+        "vi": "LingLing là một cô bò sữa mũm mĩm khoang đen trắng. Cô sống trong một trang trại xanh cùng các bạn. Nhưng LingLing không giống những con bò khác. Cô rất tò mò và hơi nghịch ngợm một chút."
+      },
+      {
+        "id": "pg-2",
+        "en": "One morning, LingLing sees a red balloon flying over the fence. 'Wow! Where is it going?' she thinks. She wants to follow the balloon. So she quietly opens the farm gate with her nose.",
+        "vi": "Một buổi sáng, LingLing thấy một quả bóng bay đỏ bay qua hàng rào. 'Ồ! Nó đang bay đi đâu thế?' cô nghĩ. Cô muốn đi theo quả bóng. Thế là cô khẽ mở cổng trang trại bằng mũi của mình."
+      },
+      {
+        "id": "pg-3",
+        "en": "LingLing walks into the town. Everything is new and exciting. She sees colorful shops and many people. A little boy points at her and laughs. 'Look, Mom! A cow in the town!'",
+        "vi": "LingLing đi vào thị trấn. Mọi thứ đều mới lạ và thú vị. Cô thấy những cửa hàng đầy màu sắc và rất nhiều người. Một cậu bé chỉ vào cô và cười. 'Nhìn kìa mẹ! Có con bò trong thị trấn!'"
+      },
+      {
+        "id": "pg-4",
+        "en": "The balloon flies into an ice cream shop. LingLing follows it inside. The shopkeeper is very surprised. But LingLing just looks at the ice cream with big eyes. She wants strawberry flavor.",
+        "vi": "Quả bóng bay vào một tiệm kem. LingLing đi theo vào trong. Người bán hàng rất ngạc nhiên. Nhưng LingLing chỉ nhìn kem với đôi mắt to tròn. Cô muốn vị dâu tây."
+      },
+      {
+        "id": "pg-5",
+        "en": "The kind shopkeeper gives LingLing a big strawberry ice cream. LingLing eats it happily. Her pink tongue becomes pinker. Everyone in the shop laughs and takes photos of her.",
+        "vi": "Người bán hàng tốt bụng tặng LingLing một cây kem dâu to. LingLing ăn ngon lành. Cái lưỡi hồng của cô càng hồng hơn. Mọi người trong tiệm cười vang và chụp ảnh cô."
+      },
+      {
+        "id": "pg-6",
+        "en": "Suddenly, LingLing hears her farmer calling. 'LingLing! Where are you?' She remembers the farm. She says goodbye to her new friends. Then she runs back home quickly.",
+        "vi": "Bỗng nhiên, LingLing nghe tiếng bác nông dân gọi. 'LingLing! Cháu ở đâu?' Cô nhớ ra trang trại. Cô chào tạm biệt những người bạn mới. Rồi cô chạy nhanh về nhà."
+      },
+      {
+        "id": "pg-7",
+        "en": "The farmer is worried, but he is not angry. He hugs LingLing's big head. 'Don't run away again, naughty girl!' LingLing promises to be good. But her eyes are still full of mischief.",
+        "vi": "Bác nông dân lo lắng, nhưng không giận. Bác ôm cái đầu to của LingLing. 'Đừng chạy lung tung nữa nhé, cô bé nghịch ngợm!' LingLing hứa sẽ ngoan. Nhưng đôi mắt cô vẫn đầy vẻ tinh nghịch."
+      },
+      {
+        "id": "pg-8",
+        "en": "That night, LingLing dreams of the red balloon. She smiles in her sleep. Tomorrow will be another ordinary day on the farm. But LingLing will always remember her big adventure.",
+        "vi": "Đêm đó, LingLing mơ thấy quả bóng bay đỏ. Cô mỉm cười trong giấc ngủ. Ngày mai sẽ lại là một ngày bình thường ở trang trại. Nhưng LingLing sẽ mãi nhớ cuộc phiêu lưu lớn của mình."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why did LingLing leave the farm?",
+        "options": [
+          "To follow a red balloon",
+          "To find food",
+          "To visit a friend",
+          "To drink water"
+        ],
+        "correctAnswer": "To follow a red balloon",
+        "explanation": "Đáp án ở trang 2: She wants to follow the balloon."
+      },
+      {
+        "question": "What ice cream flavor did LingLing want?",
+        "options": [
+          "Strawberry",
+          "Chocolate",
+          "Vanilla",
+          "Mango"
+        ],
+        "correctAnswer": "Strawberry",
+        "explanation": "Đáp án ở trang 4: She wants strawberry flavor."
+      },
+      {
+        "question": "How did the farmer feel when LingLing came back?",
+        "options": [
+          "Worried but not angry",
+          "Very angry",
+          "Sad and crying",
+          "Happy and laughing"
+        ],
+        "correctAnswer": "Worried but not angry",
+        "explanation": "Đáp án ở trang 7: The farmer is worried, but he is not angry."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-04",
+    "title": "The New Neighbor",
+    "titleVi": "Người hàng xóm mới",
+    "cefrLevel": "B1",
+    "topic": "friendship",
+    "topicVi": "Tình bạn",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "Last month, a new family moved into the house next to Lan's. They had a daughter about Lan's age, but she never came outside. The curtains were always closed, and the house was strangely quiet.",
+        "vi": "Tháng trước, một gia đình mới chuyển đến ngôi nhà cạnh nhà Lan. Họ có một cô con gái trạc tuổi Lan, nhưng cô bé không bao giờ ra ngoài. Rèm cửa lúc nào cũng đóng kín, và ngôi nhà yên tĩnh một cách kỳ lạ."
+      },
+      {
+        "id": "pg-2",
+        "en": "Lan's mother said, 'Maybe they are just shy. Give them some time.' But Lan was curious. Every day after school, she looked at the quiet house. She wondered what the girl was like.",
+        "vi": "Mẹ Lan nói: 'Có lẽ họ chỉ nhút nhát thôi. Hãy cho họ thời gian.' Nhưng Lan rất tò mò. Mỗi ngày đi học về, cô đều nhìn sang ngôi nhà yên tĩnh. Cô tự hỏi cô gái kia là người như thế nào."
+      },
+      {
+        "id": "pg-3",
+        "en": "One rainy afternoon, Lan saw the girl standing at the window. She was holding a violin. When their eyes met, the girl quickly disappeared behind the curtain. Lan felt a little sad.",
+        "vi": "Một buổi chiều mưa, Lan thấy cô gái đứng bên cửa sổ. Cô bé đang cầm một cây đàn violin. Khi hai ánh mắt chạm nhau, cô gái nhanh chóng biến mất sau rèm. Lan cảm thấy hơi buồn."
+      },
+      {
+        "id": "pg-4",
+        "en": "That evening, beautiful violin music came from the next house. Lan sat by her window and listened. The music was sad but wonderful. She realized the girl was not shy — she was just lonely.",
+        "vi": "Tối hôm đó, tiếng đàn violin du dương vang lên từ nhà bên cạnh. Lan ngồi bên cửa sổ lắng nghe. Tiếng đàn buồn nhưng tuyệt đẹp. Cô nhận ra cô gái không hề nhút nhát — cô ấy chỉ cô đơn mà thôi."
+      },
+      {
+        "id": "pg-5",
+        "en": "The next day, Lan baked some cookies and knocked on the neighbor's door. A tired-looking woman opened it. Lan smiled and said, 'Hi, I'm Lan from next door. These are for your family.'",
+        "vi": "Hôm sau, Lan nướng một ít bánh quy và gõ cửa nhà hàng xóm. Một người phụ nữ trông mệt mỏi mở cửa. Lan mỉm cười và nói: 'Cháu chào cô, cháu là Lan ở nhà bên cạnh. Bánh này tặng gia đình mình ạ.'"
+      },
+      {
+        "id": "pg-6",
+        "en": "To Lan's surprise, the girl appeared behind her mother. 'I'm Hana,' she said quietly. 'I just moved from Japan. I don't speak Vietnamese well.' Lan laughed. 'That's okay! I don't speak Japanese at all!'",
+        "vi": "Khiến Lan ngạc nhiên, cô gái xuất hiện sau lưng mẹ. 'Mình là Hana,' cô bé nói khẽ. 'Mình mới chuyển từ Nhật Bản đến. Mình nói tiếng Việt chưa giỏi.' Lan cười. 'Không sao! Mình còn chẳng biết tiếng Nhật chút nào!'"
+      },
+      {
+        "id": "pg-7",
+        "en": "From that day, Lan and Hana became best friends. Lan taught Hana Vietnamese, and Hana taught Lan to play the violin. They laughed a lot, especially when Lan's violin sounded like a crying cat.",
+        "vi": "Từ hôm đó, Lan và Hana trở thành bạn thân. Lan dạy Hana tiếng Việt, còn Hana dạy Lan chơi violin. Hai cô bé cười rất nhiều, nhất là khi tiếng đàn của Lan nghe như mèo kêu."
+      },
+      {
+        "id": "pg-8",
+        "en": "Now the quiet house is full of music and laughter. Lan learned something important: sometimes people are not cold or strange. They are just waiting for someone brave enough to knock on their door.",
+        "vi": "Giờ đây ngôi nhà yên tĩnh đã đầy ắp tiếng nhạc và tiếng cười. Lan học được một điều quan trọng: đôi khi người ta không hề lạnh lùng hay kỳ lạ. Họ chỉ đang chờ một ai đó đủ dũng cảm để gõ cửa mà thôi."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where did Hana move from?",
+        "options": [
+          "Japan",
+          "Korea",
+          "China",
+          "Thailand"
+        ],
+        "correctAnswer": "Japan",
+        "explanation": "Đáp án ở trang 6: I just moved from Japan."
+      },
+      {
+        "question": "What made Lan realize Hana was lonely, not shy?",
+        "options": [
+          "Hearing her sad but wonderful violin music",
+          "Seeing her at the window",
+          "Talking to her mother",
+          "Reading her diary"
+        ],
+        "correctAnswer": "Hearing her sad but wonderful violin music",
+        "explanation": "Đáp án ở trang 4: The music was sad but wonderful. She realized the girl was just lonely."
+      },
+      {
+        "question": "What is the main lesson of the story?",
+        "options": [
+          "Be brave and reach out to lonely people",
+          "Learn to play the violin",
+          "Bake cookies for neighbors",
+          "Move to a new house"
+        ],
+        "correctAnswer": "Be brave and reach out to lonely people",
+        "explanation": "Đáp án ở trang 8: they are just waiting for someone brave enough to knock on their door."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-05",
+    "title": "The Secret Garden",
+    "titleVi": "Khu vườn bí mật",
+    "cefrLevel": "B1",
+    "topic": "mystery",
+    "topicVi": "Bí ẩn",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "Behind Minh's school, there was an old abandoned house. Everyone said it was haunted. But Minh didn't believe in ghosts. He was a curious boy who loved exploring.",
+        "vi": "Sau trường học của Minh có một ngôi nhà cũ bỏ hoang. Mọi người đều nói nơi đó có ma. Nhưng Minh không tin vào ma quỷ. Cậu là một cậu bé tò mò, thích khám phá."
+      },
+      {
+        "id": "pg-2",
+        "en": "One Saturday, Minh climbed over the broken fence. The garden was full of tall grass and wild flowers. In the middle, he found a small wooden door covered in vines. His heart beat fast with excitement.",
+        "vi": "Một ngày thứ Bảy, Minh trèo qua hàng rào đổ nát. Khu vườn đầy cỏ cao và hoa dại. Ở giữa vườn, cậu phát hiện một cánh cửa gỗ nhỏ phủ đầy dây leo. Tim cậu đập nhanh vì hồi hộp."
+      },
+      {
+        "id": "pg-3",
+        "en": "Minh pushed the door open. Behind it was the most beautiful garden he had ever seen. Roses, sunflowers, and orchids were blooming everywhere. Butterflies danced in the sunlight. It felt like a dream.",
+        "vi": "Minh đẩy cửa bước vào. Phía sau là khu vườn đẹp nhất mà cậu từng thấy. Hoa hồng, hoa hướng dương và hoa lan nở rộ khắp nơi. Bướm bay lượn trong nắng. Cảm giác như một giấc mơ."
+      },
+      {
+        "id": "pg-4",
+        "en": "In the center of the garden stood a small stone statue of a girl reading a book. Under the statue, Minh found an old notebook. The pages were yellow, but the handwriting was still clear.",
+        "vi": "Giữa vườn có một bức tượng đá nhỏ hình cô gái đang đọc sách. Dưới chân tượng, Minh tìm thấy một cuốn sổ cũ. Các trang giấy đã ngả vàng, nhưng nét chữ vẫn còn rõ."
+      },
+      {
+        "id": "pg-5",
+        "en": "The notebook belonged to a girl named An, who lived in the house fifty years ago. She wrote about the garden she planted with her grandmother. 'This garden is my happiest memory,' one page said.",
+        "vi": "Cuốn sổ thuộc về một cô gái tên An, người đã sống trong ngôi nhà này năm mươi năm trước. Cô viết về khu vườn mà cô đã trồng cùng bà ngoại. 'Khu vườn này là kỷ niệm hạnh phúc nhất của tôi,' một trang viết."
+      },
+      {
+        "id": "pg-6",
+        "en": "Minh read the whole notebook sitting under a big tree. He learned that An had to move away when she was twelve. She never forgot the garden. Neither did the garden forget her — it kept blooming every year.",
+        "vi": "Minh ngồi dưới gốc cây lớn đọc hết cuốn sổ. Cậu biết được rằng An đã phải chuyển đi khi mới mười hai tuổi. Cô không bao giờ quên khu vườn. Và khu vườn cũng không quên cô — nó vẫn nở hoa mỗi năm."
+      },
+      {
+        "id": "pg-7",
+        "en": "Minh decided to take care of the secret garden. Every weekend, he cleaned the paths and watered the flowers. He told no one about it. It was his secret, and An's secret too.",
+        "vi": "Minh quyết định chăm sóc khu vườn bí mật. Mỗi cuối tuần, cậu dọn đường đi và tưới hoa. Cậu không kể với ai về nó. Đó là bí mật của cậu, và cũng là bí mật của An."
+      },
+      {
+        "id": "pg-8",
+        "en": "Years later, Minh became a landscape designer. He always told people that his love for gardens began behind an old house. And sometimes, he still visits the secret garden — which is not so secret anymore, because he brings his own children there.",
+        "vi": "Nhiều năm sau, Minh trở thành nhà thiết kế cảnh quan. Cậu luôn kể rằng tình yêu với vườn tược bắt đầu từ phía sau một ngôi nhà cũ. Và thỉnh thoảng, cậu vẫn ghé thăm khu vườn bí mật — giờ đã không còn bí mật nữa, vì cậu đưa chính con mình đến đó."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What did Minh find under the statue?",
+        "options": [
+          "An old notebook",
+          "A golden key",
+          "A treasure box",
+          "A map"
+        ],
+        "correctAnswer": "An old notebook",
+        "explanation": "Đáp án ở trang 4: Under the statue, Minh found an old notebook."
+      },
+      {
+        "question": "Who planted the garden fifty years ago?",
+        "options": [
+          "A girl named An and her grandmother",
+          "Minh's grandmother",
+          "The school principal",
+          "A famous gardener"
+        ],
+        "correctAnswer": "A girl named An and her grandmother",
+        "explanation": "Đáp án ở trang 5: she planted with her grandmother."
+      },
+      {
+        "question": "What did Minh become when he grew up?",
+        "options": [
+          "A landscape designer",
+          "A teacher",
+          "A writer",
+          "An architect"
+        ],
+        "correctAnswer": "A landscape designer",
+        "explanation": "Đáp án ở trang 8: Minh became a landscape designer."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-06",
+    "title": "A Night at the Beach",
+    "titleVi": "Đêm trên bãi biển",
+    "cefrLevel": "B1",
+    "topic": "travel",
+    "topicVi": "Du lịch",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "It was the last night of the family trip to Da Nang. Twenty-year-old Khoa sat alone on the beach. The waves whispered, and the stars filled the sky. He didn't want the trip to end.",
+        "vi": "Đó là đêm cuối của chuyến du lịch gia đình ở Đà Nẵng. Khoa, hai mươi tuổi, ngồi một mình trên bãi biển. Sóng vỗ rì rào, sao giăng đầy trời. Anh không muốn chuyến đi kết thúc."
+      },
+      {
+        "id": "pg-2",
+        "en": "Khoa's father joined him with two coconuts. 'When I was your age,' his father said, 'I dreamed of traveling the world. But then you were born, and my world became this family.'",
+        "vi": "Bố Khoa đến ngồi cạnh, mang theo hai quả dừa. 'Hồi bằng tuổi con,' bố nói, 'bố từng mơ đi khắp thế giới. Nhưng rồi con ra đời, và thế giới của bố trở thành gia đình này.'"
+      },
+      {
+        "id": "pg-3",
+        "en": "Khoa felt a lump in his throat. He had always thought his father was boring — always working, never playing. Now he understood: his father's adventure was raising him.",
+        "vi": "Khoa cảm thấy nghẹn ngào. Anh luôn nghĩ bố mình nhàm chán — lúc nào cũng làm việc, chẳng bao giờ vui chơi. Giờ anh mới hiểu: cuộc phiêu lưu của bố chính là nuôi nấng anh khôn lớn."
+      },
+      {
+        "id": "pg-4",
+        "en": "They talked until midnight. His father told funny stories about his youth — like the time he got lost in Saigon with only five thousand dong in his pocket. Khoa laughed until his stomach hurt.",
+        "vi": "Hai bố con trò chuyện đến nửa đêm. Bố kể những câu chuyện hài hước thời trẻ — như lần ông bị lạc ở Sài Gòn mà trong túi chỉ có năm nghìn đồng. Khoa cười đến đau cả bụng."
+      },
+      {
+        "id": "pg-5",
+        "en": "Then Khoa's mother and little sister came with a small cake. There were candles on it. 'Happy birthday!' they shouted. Khoa had completely forgotten — he turned twenty-one at midnight.",
+        "vi": "Rồi mẹ và em gái Khoa mang đến một chiếc bánh nhỏ, trên có nến. 'Chúc mừng sinh nhật!' cả nhà reo lên. Khoa đã quên bẵng mất — anh vừa bước sang tuổi hai mươi mốt lúc nửa đêm."
+      },
+      {
+        "id": "pg-6",
+        "en": "They sang and ate cake on the sand. The little sister gave Khoa her drawing: their family holding hands under a big moon. It was crooked and colorful. Khoa decided to keep it forever.",
+        "vi": "Cả nhà hát và ăn bánh trên cát. Em gái tặng Khoa bức vẽ của mình: cả gia đình nắm tay nhau dưới vầng trăng lớn. Bức vẽ nguệch ngoạc đầy màu sắc. Khoa quyết định sẽ giữ nó mãi mãi."
+      },
+      {
+        "id": "pg-7",
+        "en": "Before leaving the beach, Khoa wrote something in the sand: 'Thank you, family.' The waves would wash it away by morning. But the feeling would stay in his heart for a long time. He took a photo of the words before the sea claimed them.",
+        "vi": "Trước khi rời bãi biển, Khoa viết lên cát: 'Cảm ơn gia đình.' Sóng sẽ xóa dòng chữ vào sáng mai. Nhưng cảm xúc ấy sẽ ở lại trong tim anh rất lâu. Anh chụp ảnh dòng chữ trước khi biển xóa nhòa nó."
+      },
+      {
+        "id": "pg-8",
+        "en": "On the way home, Khoa thought about his father's words. Maybe one day he would travel the world. But first, he wanted to be like his father — someone whose greatest adventure is love.",
+        "vi": "Trên đường về, Khoa nghĩ về lời bố. Có lẽ một ngày nào đó anh sẽ đi khắp thế giới. Nhưng trước hết, anh muốn giống như bố — một người mà cuộc phiêu lưu vĩ đại nhất chính là tình yêu thương."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What did Khoa's father dream of when he was young?",
+        "options": [
+          "Traveling the world",
+          "Becoming rich",
+          "Living in Da Nang",
+          "Opening a restaurant"
+        ],
+        "correctAnswer": "Traveling the world",
+        "explanation": "Đáp án ở trang 2: I dreamed of traveling the world."
+      },
+      {
+        "question": "What special event happened at midnight?",
+        "options": [
+          "Khoa turned twenty-one",
+          "They saw fireworks",
+          "It started raining",
+          "They went swimming"
+        ],
+        "correctAnswer": "Khoa turned twenty-one",
+        "explanation": "Đáp án ở trang 5: he turned twenty-one at midnight."
+      },
+      {
+        "question": "What did Khoa write in the sand?",
+        "options": [
+          "Thank you, family",
+          "Happy birthday",
+          "I love Da Nang",
+          "Goodbye, beach"
+        ],
+        "correctAnswer": "Thank you, family",
+        "explanation": "Đáp án ở trang 7: 'Thank you, family.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-07",
+    "title": "LingLing and the Moon Cake",
+    "titleVi": "LingLing và bánh trung thu",
+    "cefrLevel": "B1",
+    "topic": "culture",
+    "topicVi": "Văn hóa",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "It was the night of the Mid-Autumn Festival. The moon was big and round like a giant rice cake. On the farm, all the animals were excited. But LingLing the cow was the most excited of all.",
+        "vi": "Đêm rằm Trung thu. Trăng tròn và to như một chiếc bánh gạo khổng lồ. Ở trang trại, mọi con vật đều háo hức. Nhưng bò LingLing là háo hức nhất."
+      },
+      {
+        "id": "pg-2",
+        "en": "The farmer's children were eating mooncakes in the yard. LingLing watched them with hungry eyes. The cakes smelled sweet — like honey, lotus seeds, and something mysterious. Her mouth watered.",
+        "vi": "Các con của bác nông dân đang ăn bánh trung thu ngoài sân. LingLing nhìn họ với ánh mắt thèm thuồng. Bánh thơm ngọt — mùi mật ong, hạt sen và thứ gì đó bí ẩn. Nước miếng cô chảy ra."
+      },
+      {
+        "id": "pg-3",
+        "en": "LingLing had an idea — a naughty idea. She would wait until everyone went inside, then 'borrow' one mooncake. Just one. Nobody would notice. Her plan was perfect. Or so she thought.",
+        "vi": "LingLing nảy ra một ý tưởng — một ý tưởng nghịch ngợm. Cô sẽ đợi mọi người vào nhà hết, rồi 'mượn' một chiếc bánh. Chỉ một chiếc thôi. Sẽ chẳng ai để ý. Kế hoạch thật hoàn hảo. Ít nhất là cô nghĩ vậy."
+      },
+      {
+        "id": "pg-4",
+        "en": "When the yard was empty, LingLing tiptoed — as quietly as a 500-kilo cow can tiptoe — toward the table. She stretched her long neck. Her pink tongue reached out. Almost there... almost...",
+        "vi": "Khi sân đã vắng, LingLing rón rén — nhẹ nhàng nhất có thể với một cô bò 500 ký — tiến về phía chiếc bàn. Cô vươn cái cổ dài. Cái lưỡi hồng thè ra. Sắp được rồi... sắp rồi..."
+      },
+      {
+        "id": "pg-5",
+        "en": "Crash! The table fell over. Mooncakes flew everywhere. The children ran out, laughing. LingLing stood frozen, a mooncake stuck on her nose. She looked so silly that even the farmer couldn't stay angry.",
+        "vi": "Rầm! Chiếc bàn đổ nhào. Bánh trung thu bay tứ tung. Lũ trẻ chạy ra, cười vang. LingLing đứng chết trân, một chiếc bánh dính trên mũi. Trông cô ngốc nghếch đến mức bác nông dân cũng không giận nổi."
+      },
+      {
+        "id": "pg-6",
+        "en": "Instead of punishment, the farmer cut a mooncake into small pieces. 'Here, greedy girl,' he laughed. 'Next time, just ask!' LingLing ate happily. The mooncake was even better than it smelled.",
+        "vi": "Thay vì phạt, bác nông dân cắt một chiếc bánh thành miếng nhỏ. 'Này, cô bé tham ăn,' bác cười. 'Lần sau cứ xin nhé!' LingLing ăn ngon lành. Bánh còn ngon hơn cả mùi thơm của nó."
+      },
+      {
+        "id": "pg-7",
+        "en": "That night, LingLing looked at the moon. It really did look like a giant mooncake. She wondered what it tasted like. Probably honey and happiness, she decided. She fell asleep smiling.",
+        "vi": "Đêm đó, LingLing ngắm trăng. Trăng trông đúng như một chiếc bánh trung thu khổng lồ. Cô tự hỏi trăng có vị gì. Chắc là vị mật ong và hạnh phúc, cô kết luận. Cô chìm vào giấc ngủ với nụ cười."
+      },
+      {
+        "id": "pg-8",
+        "en": "From then on, every Mid-Autumn Festival, the farmer saved a special mooncake for LingLing. And LingLing learned an important lesson: asking is always better than sneaking. Well... almost always.",
+        "vi": "Từ đó về sau, mỗi dịp Trung thu, bác nông dân đều dành riêng một chiếc bánh đặc biệt cho LingLing. Và LingLing học được một bài học quan trọng: xin xỏ bao giờ cũng tốt hơn lén lút. Ừm... hầu như lúc nào cũng vậy."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What was LingLing's naughty plan?",
+        "options": [
+          "To secretly take one mooncake",
+          "To eat all the mooncakes",
+          "To break the table",
+          "To scare the children"
+        ],
+        "correctAnswer": "To secretly take one mooncake",
+        "explanation": "Đáp án ở trang 3: then 'borrow' one mooncake. Just one."
+      },
+      {
+        "question": "What happened when LingLing reached for the cake?",
+        "options": [
+          "The table fell over",
+          "The farmer caught her",
+          "The children shared with her",
+          "She ran away"
+        ],
+        "correctAnswer": "The table fell over",
+        "explanation": "Đáp án ở trang 5: The table fell over. Mooncakes flew everywhere."
+      },
+      {
+        "question": "What lesson did LingLing learn?",
+        "options": [
+          "Asking is better than sneaking",
+          "Never eat mooncakes",
+          "The moon is made of cake",
+          "Farmers are scary"
+        ],
+        "correctAnswer": "Asking is better than sneaking",
+        "explanation": "Đáp án ở trang 8: asking is always better than sneaking."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-08",
+    "title": "The Last Message",
+    "titleVi": "Tin nhắn cuối cùng",
+    "cefrLevel": "B2",
+    "topic": "sci-fi",
+    "topicVi": "Khoa học viễn tưởng",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "In 2045, Dr. Elena Voss worked alone in a space station orbiting Mars. Her mission was simple: listen for signals from deep space. For three years, she had heard nothing but silence.",
+        "vi": "Năm 2045, tiến sĩ Elena Voss làm việc một mình trên trạm vũ trụ quay quanh sao Hỏa. Nhiệm vụ của bà rất đơn giản: lắng nghe tín hiệu từ vũ trụ sâu thẳm. Ba năm qua, bà chỉ nghe thấy sự im lặng."
+      },
+      {
+        "id": "pg-2",
+        "en": "On a Tuesday morning, the computer beeped. A signal — weak, repeating, and clearly artificial. Elena's hands shook as she decoded it. The message contained only eleven words: 'We are leaving. The water is gone. Remember the color blue.'",
+        "vi": "Vào một sáng thứ Ba, máy tính kêu bíp. Một tín hiệu — yếu, lặp lại, và rõ ràng là nhân tạo. Tay Elena run lên khi bà giải mã nó. Thông điệp chỉ có mười một từ: 'Chúng tôi đang rời đi. Nước đã cạn. Hãy nhớ màu xanh.'"
+      },
+      {
+        "id": "pg-3",
+        "en": "Elena sent the message to Earth immediately. Scientists argued for weeks. Some said it was a warning from a dying civilization. Others said it was a hoax. Elena believed it was a warning — and it was meant for humanity.",
+        "vi": "Elena gửi ngay thông điệp về Trái Đất. Các nhà khoa học tranh cãi suốt nhiều tuần. Một số nói đó là lời cảnh báo từ một nền văn minh đang lụi tàn. Số khác bảo đó là trò lừa. Elena tin đó là lời cảnh báo — và nó dành cho nhân loại."
+      },
+      {
+        "id": "pg-4",
+        "en": "She spent months tracing the signal's origin. It came from a star system 40 light-years away — a system with a planet that once had oceans. The planet was now a desert. Its people had left, or died trying.",
+        "vi": "Bà dành nhiều tháng truy tìm nguồn gốc tín hiệu. Nó đến từ một hệ sao cách 40 năm ánh sáng — nơi có một hành tinh từng có đại dương. Giờ hành tinh đó chỉ là sa mạc. Người dân của nó đã rời đi, hoặc chết trong lúc cố gắng."
+      },
+      {
+        "id": "pg-5",
+        "en": "'Remember the color blue,' Elena whispered, looking at Earth through the window. From space, Earth was still beautifully blue. But she knew the oceans were warming, the ice was melting, and time was running out.",
+        "vi": "'Hãy nhớ màu xanh,' Elena thì thầm, nhìn Trái Đất qua cửa sổ. Từ vũ trụ, Trái Đất vẫn xanh đẹp tuyệt vời. Nhưng bà biết các đại dương đang ấm lên, băng đang tan, và thời gian không còn nhiều."
+      },
+      {
+        "id": "pg-6",
+        "en": "Elena made a decision that would end her career. She broadcast the message herself — to every screen on Earth, unedited. 'This is not from me,' she said. 'This is from someone who lost their blue. Don't lose yours.'",
+        "vi": "Elena đưa ra một quyết định sẽ chấm dứt sự nghiệp của mình. Bà tự phát sóng thông điệp — đến mọi màn hình trên Trái Đất, không cắt xén. 'Đây không phải từ tôi,' bà nói. 'Đây là từ những người đã mất đi màu xanh của họ. Đừng để mất màu xanh của các bạn.'"
+      },
+      {
+        "id": "pg-7",
+        "en": "The world listened. For the first time in decades, nations agreed on something. Massive projects began: cleaning the oceans, cooling the planet, protecting the blue. It was slow, but it was a start.",
+        "vi": "Cả thế giới lắng nghe. Lần đầu tiên sau nhiều thập kỷ, các quốc gia đồng thuận về một điều gì đó. Những dự án khổng lồ bắt đầu: làm sạch đại dương, làm mát hành tinh, bảo vệ màu xanh. Chậm chạp, nhưng đó là một khởi đầu."
+      },
+      {
+        "id": "pg-8",
+        "en": "Elena never returned to Earth. She stayed on the station, watching the blue planet turn. Every night, she sent one message into the darkness: 'Thank you. We remembered.' And somewhere, 40 light-years away, perhaps someone was still listening.",
+        "vi": "Elena không bao giờ trở về Trái Đất. Bà ở lại trạm, ngắm hành tinh xanh xoay tròn. Mỗi đêm, bà gửi một thông điệp vào bóng tối: 'Cảm ơn. Chúng tôi đã nhớ.' Và đâu đó, cách 40 năm ánh sáng, có lẽ vẫn còn ai đó đang lắng nghe."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What did the eleven-word message say?",
+        "options": [
+          "We are leaving. The water is gone. Remember the color blue.",
+          "We are coming. The water is rising. Remember the color red.",
+          "We are staying. The water is clean. Remember the color green.",
+          "We are hiding. The water is cold. Remember the color white."
+        ],
+        "correctAnswer": "We are leaving. The water is gone. Remember the color blue.",
+        "explanation": "Đáp án ở trang 2: nguyên văn thông điệp mười một từ."
+      },
+      {
+        "question": "Why did Elena broadcast the message herself?",
+        "options": [
+          "To warn humanity before it was too late",
+          "To become famous",
+          "To prove scientists wrong",
+          "To contact the aliens"
+        ],
+        "correctAnswer": "To warn humanity before it was too late",
+        "explanation": "Đáp án ở trang 6: This is from someone who lost their blue. Don't lose yours."
+      },
+      {
+        "question": "What message did Elena send every night at the end?",
+        "options": [
+          "Thank you. We remembered.",
+          "Goodbye. We are leaving.",
+          "Hello. Is anyone there?",
+          "Sorry. We were late."
+        ],
+        "correctAnswer": "Thank you. We remembered.",
+        "explanation": "Đáp án ở trang 8: 'Thank you. We remembered.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-09",
+    "title": "LingLing's Dream",
+    "titleVi": "Giấc mơ của LingLing",
+    "cefrLevel": "B2",
+    "topic": "dreams",
+    "topicVi": "Ước mơ",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "LingLing had a secret. Every night, when the farm was quiet, she stood on the small hill and looked at the sky. Airplanes flew overhead, blinking like slow stars. LingLing wanted to fly.",
+        "vi": "LingLing có một bí mật. Mỗi đêm, khi trang trại yên tĩnh, cô đứng trên ngọn đồi nhỏ ngắm bầu trời. Máy bay bay qua đầu, nhấp nháy như những ngôi sao chậm chạp. LingLing muốn được bay."
+      },
+      {
+        "id": "pg-2",
+        "en": "The other animals laughed at her dream. 'Cows don't fly, silly!' said the chicken. 'Your job is to give milk, not to dream,' said the old goat. Even the kind horse shook his head. But LingLing didn't stop dreaming.",
+        "vi": "Các con vật khác cười nhạo giấc mơ của cô. 'Bò thì không bay được, ngốc ạ!' gà mái nói. 'Nhiệm vụ của cô là cho sữa, không phải mơ mộng,' dê già nói. Ngay cả chú ngựa tốt bụng cũng lắc đầu. Nhưng LingLing không ngừng mơ."
+      },
+      {
+        "id": "pg-3",
+        "en": "One autumn day, a hot air balloon landed in the farm's field. It was colorful — red, yellow, and blue. The pilot, a young woman named Thao, needed a place to rest for the night. LingLing's eyes shone brighter than ever.",
+        "vi": "Một ngày thu, một khinh khí cầu hạ cánh xuống cánh đồng của trang trại. Nó đầy màu sắc — đỏ, vàng và xanh. Cô phi công trẻ tên Thảo cần một chỗ nghỉ qua đêm. Mắt LingLing sáng hơn bao giờ hết."
+      },
+      {
+        "id": "pg-4",
+        "en": "That evening, LingLing walked up to Thao. She looked at the balloon, then at the sky, then back at Thao. Thao laughed. 'You want to fly, don't you, big girl?' LingLing nodded her huge head eagerly.",
+        "vi": "Tối hôm đó, LingLing tiến đến chỗ Thảo. Cô nhìn khinh khí cầu, rồi nhìn bầu trời, rồi lại nhìn Thảo. Thảo cười. 'Cô muốn bay phải không, cô bé to xác?' LingLing gật cái đầu to lia lịa."
+      },
+      {
+        "id": "pg-5",
+        "en": "Thao thought for a long time. Then she smiled mischievously — almost as mischievously as LingLing herself. 'The basket is strong. And you... you are the bravest cow I've ever met. Why not?'",
+        "vi": "Thảo suy nghĩ rất lâu. Rồi cô mỉm cười tinh nghịch — tinh nghịch gần bằng chính LingLing. 'Giỏ khí cầu chắc chắn lắm. Còn cô... cô là con bò dũng cảm nhất tôi từng gặp. Tại sao không nhỉ?'"
+      },
+      {
+        "id": "pg-6",
+        "en": "At sunrise, LingLing stepped into the basket. It creaked under her weight but held. The balloon rose slowly. The farm became smaller and smaller. LingLing's heart pounded — she was really flying!",
+        "vi": "Lúc bình minh, LingLing bước vào giỏ khí cầu. Giỏ kêu cọt kẹt dưới sức nặng của cô nhưng vẫn chịu được. Khinh khí cầu từ từ bay lên. Trang trại nhỏ dần, nhỏ dần. Tim LingLing đập thình thịch — cô thực sự đang bay!"
+      },
+      {
+        "id": "pg-7",
+        "en": "From above, the world was beautiful. Rivers shone like silver ribbons. The fields were a patchwork of green and gold. LingLing mooed with joy — the happiest sound in the sky that morning.",
+        "vi": "Từ trên cao, thế giới thật đẹp. Những dòng sông lấp lánh như dải ruy băng bạc. Cánh đồng như tấm thảm chắp vá xanh vàng. LingLing rống lên vì sung sướng — âm thanh hạnh phúc nhất trên bầu trời sáng hôm đó."
+      },
+      {
+        "id": "pg-8",
+        "en": "LingLing never flew again after that day. She didn't need to. Whenever someone said 'cows can't,' she just smiled her mischievous smile. Because she knew the truth: dreams don't have weight limits.",
+        "vi": "LingLing không bao giờ bay nữa sau hôm đó. Cô cũng không cần. Mỗi khi ai đó nói 'bò thì không thể,' cô chỉ mỉm cười tinh nghịch. Vì cô biết sự thật: ước mơ thì không có giới hạn cân nặng."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What was LingLing's secret dream?",
+        "options": [
+          "To fly",
+          "To swim",
+          "To sing",
+          "To run fast"
+        ],
+        "correctAnswer": "To fly",
+        "explanation": "Đáp án ở trang 1: LingLing wanted to fly."
+      },
+      {
+        "question": "How did LingLing finally fly?",
+        "options": [
+          "In a hot air balloon",
+          "With airplane wings",
+          "In a helicopter",
+          "On a magic carpet"
+        ],
+        "correctAnswer": "In a hot air balloon",
+        "explanation": "Đáp án ở trang 6: LingLing stepped into the basket. The balloon rose slowly."
+      },
+      {
+        "question": "What is the message of the story?",
+        "options": [
+          "Dreams don't have weight limits",
+          "Cows should stay on farms",
+          "Flying is dangerous",
+          "Listen to older animals"
+        ],
+        "correctAnswer": "Dreams don't have weight limits",
+        "explanation": "Đáp án ở trang 8: dreams don't have weight limits."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]
