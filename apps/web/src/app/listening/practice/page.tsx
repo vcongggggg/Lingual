@@ -21,7 +21,11 @@ import {
   VolumeX,
   Disc,
   BookOpen,
-  Edit3
+  Edit3,
+  Sparkles,
+  HelpCircle as QuestionIcon,
+  Check,
+  X
 } from 'lucide-react';
 
 interface SentenceItem {
@@ -52,8 +56,82 @@ const DICTATION_ITEMS: SentenceItem[] = [
   },
 ];
 
+/* =========================================================================
+   DỮ LIỆU QUIZ CÓ BẰNG CHỨNG (SINH TỪ TRANSCRIPT BÀI HỌC) (FEATURE 4)
+   ========================================================================= */
+interface EvidenceQuizItem {
+  id: string;
+  type: 'multiple_choice' | 'true_false' | 'fill_blank';
+  typeLabel: string;
+  question: string;
+  options?: string[];
+  correctAnswer: number | string;
+  evidenceAudioSentence: string;
+  evidenceTranscript: string;
+  explanation: string;
+}
+
+const EVIDENCE_QUIZ_DATA: EvidenceQuizItem[] = [
+  {
+    id: 'eq-1',
+    type: 'multiple_choice',
+    typeLabel: 'Trắc nghiệm',
+    question: '1. Thói quen buổi sáng được người nói nhắc đến trong bài là gì?',
+    options: [
+      'A. Uống cà phê đá và kiểm tra tin nhắn công việc',
+      'B. Uống một cốc nước ấm và lên kế hoạch làm việc trong ngày',
+      'C. Đi chạy bộ nhanh quanh công viên trước khi ăn',
+      'D. Đọc sách triết học trong không gian tĩnh lặng',
+    ],
+    correctAnswer: 1,
+    evidenceAudioSentence: 'Every morning, I drink a cup of warm water and plan my work for the day.',
+    evidenceTranscript: 'Trích transcript: "Every morning, I drink a cup of warm water and plan my work for the day."',
+    explanation: 'Người nói nêu rõ thói quen uống một cốc nước ấm và lên kế hoạch làm việc cho ngày mới.',
+  },
+  {
+    id: 'eq-2',
+    type: 'true_false',
+    typeLabel: 'Đúng / Sai',
+    question: '2. Đúng hay Sai: Theo người nói, năng khiếu bẩm sinh quan trọng hơn rất nhiều so với sự kiên trì bền bỉ.',
+    options: [
+      'A. True (Đúng)',
+      'B. False (Sai - Sự đều đặn và kiên trì quan trọng hơn)',
+    ],
+    correctAnswer: 1,
+    evidenceAudioSentence: 'Consistency and perseverance are more crucial than natural talent when mastering a new skill.',
+    evidenceTranscript: 'Trích transcript: "Consistency and perseverance are more crucial than natural talent when mastering a new skill."',
+    explanation: 'Người nói khẳng định sự đều đặn và kiên trì mới là yếu tố cốt lõi quan trọng hơn năng khiếu bẩm sinh.',
+  },
+  {
+    id: 'eq-3',
+    type: 'fill_blank',
+    typeLabel: 'Điền từ',
+    question: '3. Điền từ còn thiếu vào ô trống: "Protecting the local environment requires small and ________ actions from everyone in our community."',
+    correctAnswer: 'sustained',
+    evidenceAudioSentence: 'Protecting the local environment requires small and sustained actions from everyone in our community.',
+    evidenceTranscript: 'Trích transcript: "...requires small and sustained actions from everyone in our community."',
+    explanation: 'Từ còn thiếu chính xác trong đoạn nghe là "sustained" (hành động bền bỉ, được duy trì lâu dài).',
+  },
+  {
+    id: 'eq-4',
+    type: 'multiple_choice',
+    typeLabel: 'Trắc nghiệm chi tiết',
+    question: '4. Những hành động như thế nào là cần thiết để bảo vệ môi trường địa phương?',
+    options: [
+      'A. Những chiến dịch lớn tốn kém một lần duy nhất',
+      'B. Những hành động nhỏ nhưng bền bỉ từ mọi người trong cộng đồng',
+      'C. Di dời hoàn toàn các nhà máy ra nước ngoài',
+      'D. Cấm tất cả phương tiện giao thông cá nhân',
+    ],
+    correctAnswer: 1,
+    evidenceAudioSentence: 'Protecting the local environment requires small and sustained actions from everyone in our community.',
+    evidenceTranscript: 'Trích transcript: "Protecting the local environment requires small and sustained actions from everyone in our community."',
+    explanation: 'Bằng chứng ghi rõ: Những hành động nhỏ và bền bỉ từ mỗi cá nhân trong cộng đồng.',
+  },
+];
+
 export default function ListeningPracticePage() {
-  const [mode, setMode] = useState<'lined' | 'free'>('lined');
+  const [mode, setMode] = useState<'lined' | 'free' | 'quiz'>('lined');
   const [currentIdx, setCurrentIdx] = useState(0);
   const [speed, setSpeed] = useState<0.75 | 1 | 1.25>(1);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -70,6 +148,12 @@ export default function ListeningPracticePage() {
   } | null>(null);
 
   const inputRefs = React.useRef<(HTMLInputElement | null)[]>([]);
+
+  /* State cho Quiz Có Bằng Chứng */
+  const [quizAnswers, setQuizAnswers] = useState<Record<string, number | string>>({});
+  const [quizBlankInput, setQuizBlankInput] = useState<Record<string, string>>({});
+  const [quizCheckedMap, setQuizCheckedMap] = useState<Record<string, boolean>>({});
+  const [playingEvidenceId, setPlayingEvidenceId] = useState<string | null>(null);
 
   useEffect(() => {
     let interval: any;
@@ -117,104 +201,129 @@ export default function ListeningPracticePage() {
     setIsPlaying(false);
   };
 
-  // Xử lý gõ ô từ chính tả dòng kẻ
-  const handleWordChange = (idx: number, val: string) => {
-    // Nếu gõ chứa space thì chuyển focus sang ô tiếp theo
-    if (val.includes(' ')) {
-      const clean = val.replace(/\s+/g, '');
-      setLinedInputs((prev) => ({ ...prev, [idx]: clean }));
-      if (idx < rawTokens.length - 1) {
-        inputRefs.current[idx + 1]?.focus();
-      }
+  // Phát đoạn audio chứng cứ
+  const handlePlayEvidence = (audioText: string, qId: string) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+
+    if (playingEvidenceId === qId) {
+      setPlayingEvidenceId(null);
       return;
     }
 
+    const u = new SpeechSynthesisUtterance(audioText);
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    u.onstart = () => setPlayingEvidenceId(qId);
+    u.onend = () => setPlayingEvidenceId(null);
+    u.onerror = () => setPlayingEvidenceId(null);
+    window.speechSynthesis.speak(u);
+  };
+
+  // Trả lời quiz có bằng chứng và chấm ngay
+  const handleSelectQuizOption = (qId: string, optIdx: number) => {
+    setQuizAnswers((prev) => ({ ...prev, [qId]: optIdx }));
+    setQuizCheckedMap((prev) => ({ ...prev, [qId]: true }));
+  };
+
+  const handleSubmitBlankAnswer = (qId: string) => {
+    const userVal = (quizBlankInput[qId] || '').trim();
+    if (!userVal) return;
+    setQuizAnswers((prev) => ({ ...prev, [qId]: userVal }));
+    setQuizCheckedMap((prev) => ({ ...prev, [qId]: true }));
+  };
+
+  // Xử lý gõ phím trong chế độ Chính tả dòng kẻ
+  const handleLinedInputChange = (idx: number, val: string) => {
     setLinedInputs((prev) => ({ ...prev, [idx]: val }));
-    if (linedValidation) {
+    if (linedValidation?.checked) {
       setLinedValidation(null);
     }
   };
 
-  const handleKeyDownWord = (e: React.KeyboardEvent<HTMLInputElement>, idx: number) => {
-    if (e.key === ' ' || e.key === 'Spacebar') {
+  const handleLinedKeyDown = (idx: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       if (idx < rawTokens.length - 1) {
         inputRefs.current[idx + 1]?.focus();
       }
-    } else if (e.key === 'Backspace') {
-      if (!linedInputs[idx] && idx > 0) {
-        e.preventDefault();
+    } else if (e.key === 'Backspace' && (!linedInputs[idx] || linedInputs[idx].length === 0)) {
+      if (idx > 0) {
         inputRefs.current[idx - 1]?.focus();
       }
     } else if (e.key === 'ArrowRight' && idx < rawTokens.length - 1) {
       inputRefs.current[idx + 1]?.focus();
     } else if (e.key === 'ArrowLeft' && idx > 0) {
       inputRefs.current[idx - 1]?.focus();
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      handleCheckLined();
     }
   };
 
-  // Chấm điểm Chính tả dòng kẻ
+  // Chấm câu dòng kẻ
   const handleCheckLined = () => {
-    let allRight = true;
+    let allOk = true;
     const statusMap: Record<number, boolean> = {};
 
     rawTokens.forEach((token, idx) => {
-      const cleanTarget = token.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-      const cleanTyped = (linedInputs[idx] || '').trim().toLowerCase();
-      const isWordMatch = cleanTyped === cleanTarget;
-      statusMap[idx] = isWordMatch;
-      if (!isWordMatch) allRight = false;
+      const cleanTarget = token.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const userVal = (linedInputs[idx] || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+      const isOk = userVal === cleanTarget;
+      statusMap[idx] = isOk;
+      if (!isOk) allOk = false;
     });
 
     setLinedValidation({
       checked: true,
-      allCorrect: allRight,
+      allCorrect: allOk,
       statusMap,
     });
   };
 
-  const handleNext = () => {
-    setUserInput('');
-    setLinedInputs({});
-    setRevealedAnswers({});
-    setLinedValidation(null);
-    setResult(null);
-    setShowHint(false);
-    setCurrentIdx((prev) => (prev + 1) % DICTATION_ITEMS.length);
-  };
-
+  // Chấm câu tự do (Free input)
   const handleCheck = () => {
-    const cleanUser = userInput.trim().toLowerCase().replace(/[.,!?'"]/g, '');
-    const cleanTarget = currentItem.audioText.trim().toLowerCase().replace(/[.,!?'"]/g, '');
-
-    const targetWords = cleanTarget.split(/\s+/).filter(Boolean);
-    const userWords = cleanUser.split(/\s+/).filter(Boolean);
+    const targetWords = currentItem.audioText.toLowerCase().replace(/[.,!?;:]/g, '').split(/\s+/);
+    const userWords = userInput.toLowerCase().replace(/[.,!?;:]/g, '').split(/\s+/).filter(Boolean);
 
     let matchCount = 0;
-    const diffWords = targetWords.map((tWord) => {
-      if (userWords.includes(tWord)) {
+    const diff: { word: string; status: 'correct' | 'missing' | 'extra' }[] = [];
+
+    targetWords.forEach((tw, index) => {
+      if (userWords[index] === tw) {
         matchCount++;
-        return { word: tWord, status: 'correct' as const };
+        diff.push({ word: targetWords[index], status: 'correct' });
+      } else {
+        diff.push({ word: targetWords[index], status: 'missing' });
       }
-      return { word: tWord, status: 'missing' as const };
     });
 
-    const accuracy = Math.round((matchCount / Math.max(targetWords.length, 1)) * 100);
-    const isCorrect = cleanUser === cleanTarget || accuracy >= 95;
+    const accuracy = Math.round((matchCount / targetWords.length) * 100);
+    const isCorrect = accuracy >= 85;
 
     setResult({
       checked: true,
       isCorrect,
       accuracy,
-      diffWords,
+      diffWords: diff,
     });
   };
 
+  const handleNext = () => {
+    if (currentIdx < DICTATION_ITEMS.length - 1) {
+      setCurrentIdx((prev) => prev + 1);
+      setUserInput('');
+      setLinedInputs({});
+      setRevealedAnswers({});
+      setLinedValidation(null);
+      setResult(null);
+      setShowHint(false);
+      setTapeCounter((c) => c + 35);
+    } else {
+      // Khi hoàn thành cả 3 câu, tự động mở sang Quiz có bằng chứng
+      setMode('quiz');
+    }
+  };
+
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 pb-28 sm:pb-20 text-left">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 pb-28 sm:pb-20 text-left select-none">
       {/* Breadcrumb mực */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <Link
@@ -225,8 +334,8 @@ export default function ListeningPracticePage() {
           <span>Quay lại Phòng Luyện Nghe</span>
         </Link>
 
-        {/* Chuyển chế độ luyện nghe */}
-        <div className="flex items-center gap-1.5 bg-paper-2 border-2 border-ink rounded-xl p-1 shadow-brutal-sm">
+        {/* Chuyển 3 chế độ: Chính tả dòng kẻ / Chép tự do / Quiz có bằng chứng */}
+        <div className="flex items-center gap-1.5 bg-paper-2 border-2 border-ink rounded-xl p-1 shadow-brutal-sm flex-wrap">
           <button
             onClick={() => setMode('lined')}
             className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
@@ -249,6 +358,17 @@ export default function ListeningPracticePage() {
             <BookOpen className="w-3.5 h-3.5" />
             <span>Chép đoạn tự do</span>
           </button>
+          <button
+            onClick={() => setMode('quiz')}
+            className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              mode === 'quiz'
+                ? 'bg-red text-white shadow-brutal-sm'
+                : 'text-ink hover:text-red'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Quiz có bằng chứng</span>
+          </button>
         </div>
       </div>
 
@@ -265,7 +385,6 @@ export default function ListeningPracticePage() {
 
       {/* Máy Nghe Băng Cát-sét Sổ Tay (Cassette Player on Paper) */}
       <div className="cassette-player p-6 sm:p-8 space-y-6">
-        {/* Nhãn máy cassette cổ điển */}
         <div className="flex items-center justify-between border-b-2 border-ink/20 pb-3">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-red border border-ink" />
@@ -274,7 +393,6 @@ export default function ListeningPracticePage() {
             </span>
           </div>
 
-          {/* Chọn Tốc độ nút giấy ghép (0.75x / 1x / 1.25x) */}
           <div className="flex items-center gap-1 bg-card border-2 border-ink rounded-xl p-1 shadow-brutal-sm">
             {([0.75, 1, 1.25] as const).map((s) => (
               <button
@@ -290,22 +408,17 @@ export default function ListeningPracticePage() {
           </div>
         </div>
 
-        {/* Cửa sổ cuộn băng cassette (Cassette Window, Spools & Mechanical Counter) */}
         <div className="cassette-window p-4 sm:p-6 flex items-center justify-around relative">
-          {/* Trục bánh răng trái */}
           <div className={`cassette-spool ${isPlaying ? 'animate-spool-spin' : ''}`}>
             <Disc className="w-6 h-6 text-ink/70" />
           </div>
 
-          {/* Cụm giữa: Thước đo băng mực & Bộ đếm số chạy cơ học (Mechanical Counter) */}
           <div className="flex flex-col items-center gap-2 mx-3 flex-1 max-w-[170px]">
-            {/* Bộ đếm cơ học 3 chữ số chạy khi phát */}
-            <div className="flex items-center gap-1.5 bg-ink text-paper px-2.5 py-0.5 rounded border border-ink shadow-inner font-mono text-xs font-black tracking-widest select-none" title="Bộ đếm số cassette chạy khi phát">
+            <div className="flex items-center gap-1.5 bg-ink text-paper px-2.5 py-0.5 rounded border border-ink shadow-inner font-mono text-xs font-black tracking-widest select-none">
               <span className="text-[9px] text-paper-2/60">TAPE</span>
               <span>{String(tapeCounter).padStart(3, '0')}</span>
             </div>
 
-            {/* Thước đo băng mực */}
             <div className="h-4 w-full bg-paper-2 border-2 border-ink rounded-md flex items-center px-2 justify-between">
               <span className="w-2 h-2 rounded-full bg-ink" />
               <div className="h-1 flex-1 mx-2 bg-ink/20 rounded overflow-hidden">
@@ -318,15 +431,12 @@ export default function ListeningPracticePage() {
             </div>
           </div>
 
-          {/* Trục bánh răng phải */}
           <div className={`cassette-spool ${isPlaying ? 'animate-spool-spin' : ''}`}>
             <Disc className="w-6 h-6 text-ink/70" />
           </div>
         </div>
 
-        {/* Nút điều khiển phát âm thanh: Nút Play ĐỎ TO ở giữa */}
         <div className="flex items-center justify-center gap-6 pt-2">
-          {/* Nút tua lùi / Nghe lại từng câu */}
           <button
             onClick={handlePlayAudio}
             className="w-11 h-11 rounded-xl bg-card hover:bg-paper-2 border-2 border-ink text-ink flex items-center justify-center shadow-brutal-sm hover:translate-y-0.5 transition-all cursor-pointer"
@@ -335,7 +445,6 @@ export default function ListeningPracticePage() {
             <RotateCcw className="w-5 h-5" />
           </button>
 
-          {/* NÚT PLAY ĐỎ TO TRUNG TÂM */}
           <button
             onClick={isPlaying ? handleStopAudio : handlePlayAudio}
             className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red hover:bg-red-dark text-white border-3 border-ink flex items-center justify-center shadow-brutal-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
@@ -348,7 +457,6 @@ export default function ListeningPracticePage() {
             )}
           </button>
 
-          {/* Nút gợi ý */}
           <button
             onClick={() => setShowHint(!showHint)}
             className="w-11 h-11 rounded-xl bg-card hover:bg-paper-2 border-2 border-ink text-ink flex items-center justify-center shadow-brutal-sm hover:translate-y-0.5 transition-all cursor-pointer"
@@ -358,7 +466,6 @@ export default function ListeningPracticePage() {
           </button>
         </div>
 
-        {/* Gợi ý nếu bật */}
         {showHint && (
           <div className="bg-amber-soft border-2 border-ink rounded-xl p-3 text-xs font-bold text-ink space-y-1 shadow-brutal-sm">
             <span className="text-red font-black">Gợi ý nghĩa tiếng Việt: </span>
@@ -367,8 +474,10 @@ export default function ListeningPracticePage() {
         )}
       </div>
 
-      {/* CHẾ ĐỘ 1: CHÍNH TẢ DÒNG KẺ (WORD BY WORD NOTEBOOK BLANKS) */}
-      {mode === 'lined' ? (
+      {/* ===================================================================
+          CHẾ ĐỘ 1: CHÍNH TẢ DÒNG KẺ (WORD BY WORD NOTEBOOK BLANKS)
+          =================================================================== */}
+      {mode === 'lined' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
@@ -379,174 +488,172 @@ export default function ListeningPracticePage() {
                 Dùng phím cách (Space) để qua ô tiếp theo, Backspace để lùi về
               </span>
             </div>
-            <button
-              onClick={handlePlayAudio}
-              className="btn btn-paper text-xs py-1.5 px-3 flex items-center gap-1.5 shadow-brutal-sm cursor-pointer"
-            >
-              <Volume2 className="w-3.5 h-3.5 text-teal" />
-              <span>Nghe lại câu này</span>
-            </button>
+            <span className="text-xs font-mono font-bold text-ink-soft">
+              {rawTokens.length} từ
+            </span>
           </div>
 
-          {/* Vở Dòng Kẻ Chứa Từng Ô Từ */}
-          <div className="lined-paper border-2 border-ink bg-card rounded-2xl p-6 sm:p-8 shadow-brutal-lg space-y-6">
-            <div className="flex flex-wrap items-center gap-x-2.5 sm:gap-x-3.5 gap-y-6 font-mono text-base sm:text-lg leading-loose">
-              {rawTokens.map((token, idx) => {
-                const cleanTarget = token.replace(/[^a-zA-Z0-9]/g, '');
-                const punctuation = token.replace(/[a-zA-Z0-9]/g, '');
-                const val = linedInputs[idx] || '';
+          <div className="lined-paper p-5 sm:p-7 rounded-2xl border-2 border-ink shadow-brutal-md bg-paper space-y-4">
+            <div className="flex flex-wrap gap-2.5 items-center">
+              {rawTokens.map((rawToken, idx) => {
+                const userVal = linedInputs[idx] || '';
                 const isChecked = linedValidation?.checked;
-                const isWordCorrect = linedValidation?.statusMap[idx];
-                const isWordWrong = isChecked && !isWordCorrect;
+                const isCorrect = linedValidation?.statusMap[idx];
+                const cleanTarget = rawToken.replace(/[.,!?;:]/g, '');
+                const hasPunctuation = /[.,!?;:]$/.test(rawToken);
+                const punctChar = hasPunctuation ? rawToken.slice(-1) : '';
                 const isRevealed = revealedAnswers[idx];
 
+                const inputWidth = Math.max(cleanTarget.length * 14 + 18, 52);
+
                 return (
-                  <div key={idx} className="relative inline-flex items-baseline">
-                    {/* Popover hiển thị đáp án khi gõ sai và click vào */}
-                    {isWordWrong && isRevealed && (
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-ink text-paper text-[11px] font-black uppercase font-mono shadow-brutal-sm z-30 whitespace-nowrap animate-in fade-in">
-                        Đáp án: <span className="text-amber underline">{cleanTarget}</span>
-                      </div>
+                  <div key={idx} className="relative inline-flex items-center my-1">
+                    <input
+                      ref={(el) => {
+                        inputRefs.current[idx] = el;
+                      }}
+                      type="text"
+                      value={userVal}
+                      onChange={(e) => handleLinedInputChange(idx, e.target.value)}
+                      onKeyDown={(e) => handleLinedKeyDown(idx, e)}
+                      style={{ width: `${inputWidth}px` }}
+                      placeholder="..."
+                      className={`text-center font-mono font-bold text-base py-1 px-1.5 rounded-md border-b-2 bg-transparent focus:outline-none transition-all ${
+                        isChecked
+                          ? isCorrect
+                            ? 'border-teal text-teal bg-teal/10 font-black'
+                            : 'border-red text-red line-through bg-red/10 cursor-pointer'
+                          : 'border-ink/60 text-ink focus:border-red focus:bg-paper-2'
+                      }`}
+                      onClick={() => {
+                        if (isChecked && !isCorrect) {
+                          setRevealedAnswers((prev) => ({ ...prev, [idx]: !prev[idx] }));
+                        }
+                      }}
+                      title={isChecked && !isCorrect ? 'Bấm để xem đáp án đúng' : undefined}
+                    />
+
+                    {punctChar && (
+                      <span className="font-mono text-base font-black text-ink select-none pl-0.5">
+                        {punctChar}
+                      </span>
                     )}
 
-                    <div className="relative inline-flex items-center">
-                      <input
-                        ref={(el) => {
-                          inputRefs.current[idx] = el;
-                        }}
-                        type="text"
-                        value={val}
-                        disabled={linedValidation?.allCorrect}
-                        onChange={(e) => handleWordChange(idx, e.target.value)}
-                        onKeyDown={(e) => handleKeyDownWord(e, idx)}
-                        style={{ width: `${Math.max(cleanTarget.length + 1, 4)}ch` }}
-                        className={`text-center font-mono font-black border-b-2 transition-all px-1 py-0.5 focus:outline-none ${
-                          isWordCorrect
-                            ? 'border-teal text-teal bg-teal/15 font-black'
-                            : isWordWrong
-                            ? 'border-red text-red line-through bg-red/10 cursor-pointer'
-                            : 'border-ink focus:border-red bg-paper/60 text-ink'
-                        }`}
-                        placeholder="____"
-                        title={isWordWrong ? 'Bấm vào để xem đáp án đúng' : undefined}
-                        onClick={() => {
-                          if (isWordWrong) {
-                            setRevealedAnswers((prev) => ({ ...prev, [idx]: !prev[idx] }));
-                          }
-                        }}
-                      />
-                      {punctuation && (
-                        <span className="font-serif font-black text-ink select-none ml-0.5">
-                          {punctuation}
-                        </span>
-                      )}
-                    </div>
+                    {isChecked && !isCorrect && isRevealed && (
+                      <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-ink text-paper text-xs font-mono font-black px-2 py-0.5 rounded shadow-brutal-sm z-20 whitespace-nowrap">
+                        {cleanTarget}
+                      </div>
+                    )}
                   </div>
                 );
               })}
             </div>
-
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-ink/15">
-              <button
-                onClick={() => {
-                  setLinedInputs({});
-                  setRevealedAnswers({});
-                  setLinedValidation(null);
-                }}
-                className="btn btn-paper text-xs font-black shadow-brutal-sm cursor-pointer"
-              >
-                Xóa làm lại từ đầu
-              </button>
-
-              <button
-                onClick={handleCheckLined}
-                className="btn btn-red text-sm font-black shadow-brutal cursor-pointer"
-              >
-                Kiểm tra chính tả →
-              </button>
-            </div>
           </div>
 
-          {/* Kết quả kiểm tra Chính tả dòng kẻ */}
-          {linedValidation && (
-            <div
-              className={`border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg space-y-4 animate-in fade-in duration-150 ${
-                linedValidation.allCorrect ? 'bg-teal/10 border-teal' : 'bg-card border-red'
-              }`}
-            >
-              <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex-shrink-0">
-                    {linedValidation.allCorrect ? (
-                      <LingLing reaction="thumbsup" size={96} />
-                    ) : (
-                      <LingLing reaction="thinking" size={96} />
-                    )}
-                  </div>
+          <div className="flex items-center justify-between pt-1">
+            <span className="text-xs text-ink-muted italic">
+              * Khi gõ sai, bấm vào ô gạch đỏ để xem đáp án chuẩn.
+            </span>
 
-                  <div className="space-y-1">
-                    <h3 className="text-xl font-black text-ink font-sans">
-                      {linedValidation.allCorrect
-                        ? 'Chính xác hoàn hảo từng từ! 🎉'
-                        : 'Vẫn còn từ chưa chuẩn xác!'}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-ink-soft font-semibold font-sans">
-                      {linedValidation.allCorrect
-                        ? 'Bạn đã nghe và gõ đúng 100% các từ trên dòng kẻ.'
-                        : 'Các từ gạch đỏ là chỗ sai. Bấm vào từ đó để xem đáp án hoặc nghe lại nhé!'}
-                    </p>
+            <Button
+              variant="red"
+              size="md"
+              onClick={handleCheckLined}
+              className="shadow-brutal"
+            >
+              Kiểm tra dòng kẻ →
+            </Button>
+          </div>
+
+          {linedValidation?.checked && (
+            <div className="mt-4">
+              {linedValidation.allCorrect ? (
+                <div className="p-6 bg-teal/10 border-2 border-teal rounded-3xl space-y-4 shadow-brutal-md">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <LingLing reaction="thumbsup" size={80} />
+                      <div>
+                        <h4 className="text-xl font-serif font-black text-ink">
+                          Chính xác tuyệt đối!
+                        </h4>
+                        <p className="text-xs text-teal font-bold">
+                          Bạn đã nghe và viết đúng từng từ trên dòng kẻ vở.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <StampSlam
+                        text="CHÍNH XÁC"
+                        variant="badge"
+                        color="teal"
+                        size="md"
+                      />
+                      <Button variant="ink" size="sm" onClick={handleNext}>
+                        Câu tiếp theo →
+                      </Button>
+                    </div>
                   </div>
                 </div>
+              ) : (
+                <div className="p-5 bg-paper-2 border-2 border-red rounded-2xl flex items-center justify-between flex-wrap gap-3 shadow-brutal-sm">
+                  <div className="flex items-center gap-3">
+                    <LingLing reaction="thinking" size={54} />
+                    <div>
+                      <h4 className="text-sm font-black text-red">
+                        Có từ chưa khớp chính tả!
+                      </h4>
+                      <p className="text-xs text-ink-soft">
+                        Hãy bấm vào các từ có gạch đỏ để xem đáp án, sau đó bấm nút Nghe lại để luyện tai.
+                      </p>
+                    </div>
+                  </div>
 
-                <div className="flex items-center gap-3">
-                  {linedValidation.allCorrect && (
-                    <StampSlam text="CHÍNH XÁC" variant="badge" color="teal" size="md" />
-                  )}
-                  {!linedValidation.allCorrect && (
+                  <div className="flex items-center gap-2">
                     <button
                       onClick={handlePlayAudio}
-                      className="btn btn-paper text-xs font-black shadow-brutal-sm flex items-center gap-1 cursor-pointer"
+                      className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-1.5"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
-                      <span>Nghe lại</span>
+                      <span>Nghe lại câu này</span>
                     </button>
-                  )}
-                  <button
-                    onClick={handleNext}
-                    className="btn btn-ink text-xs font-black shadow-brutal-sm cursor-pointer"
-                  >
-                    Câu tiếp theo →
-                  </button>
+                    <button
+                      onClick={handleNext}
+                      className="btn btn-ink text-xs font-black shadow-brutal"
+                    >
+                      Bỏ qua & Qua câu sau →
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           )}
         </div>
-      ) : (
-        /* CHẾ ĐỘ 2: CHÉP ĐOẠN TỰ DO (TEXTAREA FREE DICTATION) */
-        <div className="space-y-3">
+      )}
+
+      {/* ===================================================================
+          CHẾ ĐỘ 2: CHÉP TỰ DO (FREE TEXTAREA)
+          =================================================================== */}
+      {mode === 'free' && (
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
             <label className="text-xs font-black uppercase tracking-wider text-ink block">
-              Ô chép chính tả (Gõ lại những gì bạn nghe được):
+              Vở viết chính tả tự do:
             </label>
-            <span className="text-xs font-bold text-ink-muted">
-              {userInput.trim().split(/\s+/).filter(Boolean).length} từ đã gõ
+            <span className="text-xs font-mono font-bold text-ink-soft">
+              {userInput.trim().split(/\s+/).filter(Boolean).length} / {rawTokens.length} từ
             </span>
           </div>
 
           <textarea
-            rows={4}
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Lắng nghe và chép lại câu tiếng Anh vào đây..."
-            className="w-full lined-paper border-2 border-ink rounded-2xl p-5 text-base sm:text-lg font-bold text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-red shadow-brutal resize-none"
+            placeholder="Lắng nghe băng cassette và gõ lại toàn bộ câu vào đây..."
+            rows={4}
+            className="w-full lined-paper p-5 sm:p-6 text-base sm:text-lg font-bold text-ink rounded-2xl border-2 border-ink focus:outline-none focus:border-red shadow-inner transition-all resize-none font-sans"
           />
 
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-            <Button variant="paper" size="sm" onClick={() => setUserInput('')}>
-              Xóa gõ lại
-            </Button>
-
+          <div className="flex items-center justify-end pt-1">
             <Button
               variant="red"
               size="lg"
@@ -560,56 +667,35 @@ export default function ListeningPracticePage() {
 
           {result && (
             <div
-              className={`border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg space-y-6 animate-in fade-in duration-150 mt-4 ${
+              className={`border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg space-y-6 mt-4 ${
                 result.isCorrect ? 'bg-amber/15 border-teal' : 'bg-card border-red'
               }`}
             >
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                 <div className="flex-shrink-0">
-                  {result.isCorrect ? (
-                    <div className="flex flex-col items-center">
-                      <LingLing reaction="thumbsup" size={105} />
-                      <span className="text-xs font-black text-teal mt-1">Xuất sắc quá!</span>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center">
-                      <LingLing reaction="tear" size={105} />
-                      <span className="text-xs font-black text-red mt-1">Gần trúng rồi!</span>
-                    </div>
-                  )}
+                  <LingLing reaction={result.isCorrect ? 'thumbsup' : 'thinking'} size={90} />
                 </div>
 
                 <div className="flex-1 space-y-3 text-left w-full">
                   <div className="flex items-center justify-between flex-wrap gap-2">
-                    <div className="flex items-center gap-2">
-                      {result.isCorrect ? (
-                        <CheckCircle2 className="w-6 h-6 text-teal" />
-                      ) : (
-                        <AlertCircle className="w-6 h-6 text-red" />
-                      )}
-                      <h3 className="text-xl font-black text-ink">
-                        {result.isCorrect ? 'Chính xác hoàn hảo! 🎉' : 'Chưa chuẩn xác, thử lại nhé!'}
-                      </h3>
-                    </div>
-                    <span className="px-3 py-1 bg-card border-2 border-ink rounded-xl text-xs font-black shadow-brutal-sm text-ink">
+                    <h3 className="text-xl font-black text-ink">
+                      {result.isCorrect ? 'Chính xác hoàn hảo! 🎉' : 'Chưa chuẩn xác, thử lại nhé!'}
+                    </h3>
+                    <span className="px-3 py-1 bg-card border-2 border-ink rounded-xl text-xs font-black shadow-brutal-sm text-ink font-mono">
                       Độ chính xác: {result.accuracy}%
                     </span>
                   </div>
 
-                  <div className="p-4 bg-paper-2 border-2 border-ink rounded-xl space-y-2">
+                  <div className="p-4 bg-paper-2 border-2 border-ink rounded-xl space-y-1">
                     <span className="text-[11px] font-black uppercase tracking-wider text-ink-soft block">
                       Câu chuẩn bản xứ:
                     </span>
-                    <p className="text-base sm:text-lg font-black text-ink leading-relaxed">
+                    <p className="text-base sm:text-lg font-black text-ink">
                       {currentItem.audioText}
                     </p>
                     <p className="text-xs font-bold text-teal">
                       Nghĩa: {currentItem.vietnamese}
                     </p>
-                  </div>
-
-                  <div className="text-xs font-bold text-ink-soft bg-card border border-ink/20 rounded-lg p-3">
-                    <b>Mẹo nối âm: </b>{currentItem.phoneticsNote}
                   </div>
 
                   <div className="pt-2 flex items-center justify-end gap-3">
@@ -626,6 +712,173 @@ export default function ListeningPracticePage() {
           )}
         </div>
       )}
+
+      {/* ===================================================================
+          CHẾ ĐỘ 3 / PHẦN THỬ THÁCH: "QUIZ CÓ BẰNG CHỨNG" (FEATURE 4)
+          =================================================================== */}
+      <div className="space-y-6 pt-6 border-t-2 border-ink/20">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-red border-2 border-ink" />
+            <h3 className="text-xl sm:text-2xl font-black text-ink font-serif tracking-tight">
+              Quiz Có Bằng Chứng (Evidence-Based Listening Quiz)
+            </h3>
+          </div>
+
+          <span className="text-xs font-mono font-bold text-teal px-2.5 py-0.5 rounded border border-teal bg-teal/10">
+            Sinh từ transcript bài học
+          </span>
+        </div>
+
+        <p className="text-xs sm:text-sm text-ink-soft">
+          Mỗi câu hỏi được trích xuất trực tiếp từ bài nghe vừa học. Bạn có thể bấm nút <strong>Nghe đoạn chứng cứ</strong> để phát lại chính xác đoạn audio chứa câu trả lời.
+        </p>
+
+        {/* Danh sách 4 câu hỏi Quiz */}
+        <div className="space-y-5">
+          {EVIDENCE_QUIZ_DATA.map((q, qIdx) => {
+            const hasChecked = quizCheckedMap[q.id];
+            const userAns = quizAnswers[q.id];
+            const isPlayingThisEvidence = playingEvidenceId === q.id;
+
+            const isCorrect =
+              q.type === 'fill_blank'
+                ? String(userAns || '').toLowerCase().trim() === String(q.correctAnswer).toLowerCase().trim()
+                : userAns === q.correctAnswer;
+
+            return (
+              <div
+                key={q.id}
+                className={`p-5 sm:p-6 rounded-2xl border-2 transition-all space-y-4 ${
+                  hasChecked
+                    ? isCorrect
+                      ? 'bg-teal/10 border-teal shadow-brutal-sm'
+                      : 'bg-red/10 border-red shadow-brutal-sm'
+                    : 'bg-card border-ink shadow-brutal-md'
+                }`}
+              >
+                {/* Header câu hỏi: Dạng câu + Nút Loa nghe đoạn chứng cứ */}
+                <div className="flex items-center justify-between flex-wrap gap-2 border-b border-ink/15 pb-2.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded border border-ink/40 bg-paper-2 text-ink">
+                      {q.typeLabel}
+                    </span>
+                    <span className="text-xs font-mono font-bold text-ink-muted">
+                      Câu {qIdx + 1}
+                    </span>
+                  </div>
+
+                  {/* NÚT "NGHE ĐOẠN CHỨNG CỨ" */}
+                  <button
+                    onClick={() => handlePlayEvidence(q.evidenceAudioSentence, q.id)}
+                    className={`px-3 py-1 rounded-lg border-2 border-ink text-xs font-mono font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                      isPlayingThisEvidence
+                        ? 'bg-red text-white shadow-brutal-sm'
+                        : 'bg-paper text-ink hover:bg-amber'
+                    }`}
+                    title="Phát lại đoạn audio chứa bằng chứng đáp án"
+                  >
+                    <Volume2 className="w-3.5 h-3.5 text-red" />
+                    <span>{isPlayingThisEvidence ? 'Đang phát chứng cứ...' : 'Nghe đoạn chứng cứ'}</span>
+                  </button>
+                </div>
+
+                <h4 className="text-base font-black text-ink font-serif leading-snug">
+                  {q.question}
+                </h4>
+
+                {/* Các phương án trả lời tùy theo dạng câu */}
+                {q.type === 'fill_blank' ? (
+                  /* Dạng Điền từ */
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={quizBlankInput[q.id] || ''}
+                        disabled={hasChecked}
+                        onChange={(e) =>
+                          setQuizBlankInput((prev) => ({ ...prev, [q.id]: e.target.value }))
+                        }
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') handleSubmitBlankAnswer(q.id);
+                        }}
+                        placeholder="Gõ từ còn thiếu tại đây..."
+                        className="px-3.5 py-2 rounded-xl border-2 border-ink bg-paper text-sm font-bold text-ink focus:outline-none focus:border-red shadow-inner flex-1 max-w-sm"
+                      />
+                      {!hasChecked && (
+                        <button
+                          onClick={() => handleSubmitBlankAnswer(q.id)}
+                          disabled={!quizBlankInput[q.id]?.trim()}
+                          className="btn btn-red text-xs font-black shadow-brutal py-2 px-3.5 cursor-pointer disabled:opacity-40"
+                        >
+                          Chấm điểm
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  /* Dạng Trắc nghiệm & Đúng/Sai */
+                  <div className="grid grid-cols-1 gap-2">
+                    {q.options?.map((opt, oIdx) => {
+                      let optClass = 'bg-paper hover:bg-paper-2 border border-ink/40 text-ink';
+                      if (userAns === oIdx) {
+                        optClass = 'bg-ink text-paper border-2 border-ink font-black shadow-brutal-sm';
+                      }
+
+                      if (hasChecked) {
+                        if (oIdx === q.correctAnswer) {
+                          optClass = 'bg-teal/20 border-2 border-teal text-teal font-black shadow-brutal-sm';
+                        } else if (userAns === oIdx && !isCorrect) {
+                          optClass = 'bg-red/15 border-2 border-red text-red line-through';
+                        }
+                      }
+
+                      return (
+                        <button
+                          key={oIdx}
+                          disabled={hasChecked}
+                          onClick={() => handleSelectQuizOption(q.id, oIdx)}
+                          className={`w-full text-left p-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${optClass}`}
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* KẾT QUẢ CHẤM NGAY + GIẢI THÍCH 1 DÒNG TRÍCH TRANSCRIPT */}
+                {hasChecked && (
+                  <div className="p-3 bg-paper rounded-xl border-2 border-ink space-y-1.5 animate-scale-up">
+                    <div className="flex items-center gap-1.5 text-xs font-black">
+                      {isCorrect ? (
+                        <>
+                          <CheckCircle2 className="w-4 h-4 text-teal" />
+                          <span className="text-teal">Chính xác tuyệt đối!</span>
+                        </>
+                      ) : (
+                        <>
+                          <AlertCircle className="w-4 h-4 text-red" />
+                          <span className="text-red">Chưa chính xác!</span>
+                        </>
+                      )}
+                    </div>
+
+                    {/* DÒNG TRÍCH NGUYÊN VĂN TỪ TRANSCRIPT */}
+                    <div className="text-xs font-serif italic text-ink font-medium pl-5 border-l-2 border-red">
+                      {q.evidenceTranscript}
+                    </div>
+
+                    <p className="text-xs text-ink-soft pl-5 font-sans">
+                      {q.explanation}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
