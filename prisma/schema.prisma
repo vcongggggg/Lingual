@@ -1210,3 +1210,66 @@ model BilingualStory {
   @@index([cefrLevel])
   @@map("bilingual_stories")
 }
+
+model IeltsReadingPassage {
+  id            String   @id
+  section       String   @default("reading")
+  cefrLevel     String   @default("B1")
+  title         String
+  passageJson   String   @default("[]")
+  questionsJson String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("ielts_reading_passages")
+}
+
+model IeltsListeningSection {
+  id            String   @id
+  section       String   @default("listening")
+  cefrLevel     String   @default("B1")
+  title         String
+  titleVi       String?
+  scriptJson    String   @default("[]")
+  questionsJson String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("ielts_listening_sections")
+}
+
+model CurriculumUnit {
+  id            String   @id
+  order         Int
+  cefrLevel     String   @default("B1")
+  title         String
+  titleVi       String?
+  description   String
+  descriptionVi String?
+  lessonsJson   String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("curriculum_units")
+}
+
+model DiaryPrompt {
+  id           String   @id
+  cefrLevel    String   @default("A2")
+  prompt       String
+  promptVi     String?
+  keywordsJson String   @default("[]")
+  minSentences Int      @default(3)
+  source       String   @default("ai-generated")
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("diary_prompts")
+}

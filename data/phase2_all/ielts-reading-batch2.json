@@ -1,0 +1,457 @@
+[
+  {
+    "id": "ielts-r-006",
+    "section": "reading",
+    "cefrLevel": "B1",
+    "title": "The Amazing Honeybee",
+    "passage": [
+      "Honeybees are small insects, but they play a huge role in our world. These busy insects live in groups called colonies, and a single colony can have as many as 60,000 bees. Inside the hive, each bee has a special job: some collect food, some take care of the young bees, and one bee, the queen, lays all the eggs.",
+      "One of the most important jobs of honeybees is pollination. When a bee visits a flower to drink its sweet juice, called nectar, tiny yellow powder called pollen sticks to its body. As the bee flies to the next flower, some of this pollen falls off. This helps the flowers make seeds and fruit. Without bees, many of the foods we love — apples, almonds, cucumbers, and strawberries — would be much harder to grow.",
+      "Bees are also famous for making honey. Worker bees fly from flower to flower, collecting nectar in a special stomach. Back at the hive, they pass the nectar to other bees, who chew it and turn it into honey. It takes the nectar from about two million flowers to make just one jar of honey.",
+      "In recent years, scientists have become worried because bee numbers are falling in many countries. The main reasons are the use of strong chemicals on farms, the loss of wild flowers, and new diseases that attack bees. Some experts call this problem 'colony collapse', when large numbers of bees suddenly disappear from a hive.",
+      "There are simple ways everyone can help bees. Planting wild flowers in gardens, avoiding strong chemicals, and buying honey from local beekeepers all make a difference. As one scientist says, 'Saving the bees is not just about saving insects — it is about protecting the food on our own tables.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What is the queen bee's job in the colony?",
+        "options": [
+          "Collecting nectar from flowers",
+          "Laying all the eggs",
+          "Taking care of young bees",
+          "Guarding the hive entrance"
+        ],
+        "correctAnswer": "Laying all the eggs",
+        "explanationVi": "Đoạn 1: 'one bee, the queen, lays all the eggs' — đáp án ở đoạn 1."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "A single colony can contain up to 60,000 bees.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 1: 'a single colony can have as many as 60,000 bees' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Bees only visit flowers during the summer months.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Bài không hề nhắc đến mùa nào bees thăm hoa — không có thông tin nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 3 với tiêu đề đúng nhất.",
+        "options": [
+          "i. Why bees are disappearing",
+          "ii. How honey is made",
+          "iii. The job of the queen bee",
+          "iv. Flowers that bees prefer"
+        ],
+        "correctAnswer": "ii. How honey is made",
+        "explanationVi": "Đoạn 3 mô tả quy trình bees thu thập nectar và biến thành mật ong — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the scientist mean by 'protecting the food on our own tables'?",
+        "options": [
+          "Bees steal food from tables",
+          "People should eat more honey",
+          "Saving bees also protects human food supply",
+          "Tables need protection from insects"
+        ],
+        "correctAnswer": "Saving bees also protects human food supply",
+        "explanationVi": "Đoạn 5: câu trích dẫn kết nối việc 'saving the bees' với thực phẩm của con người, vì đoạn 2 đã nói bees giúp trồng trái cây — đáp án suy ra từ toàn bài."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-007",
+    "section": "reading",
+    "cefrLevel": "B1",
+    "title": "The Story of the Olympic Games",
+    "passage": [
+      "The Olympic Games are the biggest sports event in the world, watched by billions of people every four years. But the story of the Olympics began almost 3,000 years ago in ancient Greece.",
+      "The first Olympic Games took place in 776 BC in a small town called Olympia. At that time, there was only one event: a short running race of about 190 metres. The winner was a cook named Coroebus. Over the following centuries, more sports were added, including wrestling, boxing, and chariot racing. Only men were allowed to compete, and wars between Greek cities were paused so athletes could travel safely to the games.",
+      "The ancient games lasted for nearly 1,200 years, until they were stopped in 393 AD. For the next 1,500 years, there were no Olympic Games. Then, in 1896, a French teacher named Pierre de Coubertin brought the idea back to life. He believed that sport could bring countries together and create peace. The first modern Olympics were held in Athens, Greece, with 241 athletes from 14 countries.",
+      "Today, the Olympics are very different from the ancient games. There are summer and winter Olympics, with more than 30 sports and over 10,000 athletes. Women compete in almost every event. The games are also much bigger business, with television rights and sponsors worth billions of dollars.",
+      "However, the original spirit of the Olympics remains. The Olympic flag has five rings, which represent the five parts of the world joined together. The Olympic motto is 'Faster, Higher, Stronger'. For many athletes, simply taking part in the games is the greatest achievement of their lives."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "How many events were there at the first Olympic Games in 776 BC?",
+        "options": [
+          "Thirty different sports",
+          "Only one running race",
+          "Five events",
+          "Twelve events"
+        ],
+        "correctAnswer": "Only one running race",
+        "explanationVi": "Đoạn 2: 'there was only one event: a short running race of about 190 metres' — đáp án ở đoạn 2."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Wars between Greek cities were paused during the ancient games.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2: 'wars between Greek cities were paused so athletes could travel safely to the games' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The ancient Olympic Games were held every two years.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Bài không nói chu kỳ tổ chức của ancient games là bao lâu — không có thông tin nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 3 với tiêu đề đúng nhất.",
+        "options": [
+          "i. The first winner in history",
+          "ii. The modern games are reborn",
+          "iii. Sports in ancient Greece",
+          "iv. The Olympic motto"
+        ],
+        "correctAnswer": "ii. The modern games are reborn",
+        "explanationVi": "Đoạn 3 kể về Pierre de Coubertin 'brought the idea back to life' và Olympics 1896 — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What do the five rings on the Olympic flag represent?",
+        "options": [
+          "The five oldest sports",
+          "The five parts of the world joined together",
+          "The five first host cities",
+          "The five Olympic medals"
+        ],
+        "correctAnswer": "The five parts of the world joined together",
+        "explanationVi": "Đoạn 5: 'five rings, which represent the five parts of the world joined together' — đáp án ở đoạn cuối."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-008",
+    "section": "reading",
+    "cefrLevel": "B1",
+    "title": "Volcanoes: Fire from Below",
+    "passage": [
+      "A volcano is an opening in the Earth's surface where hot, melted rock can escape from deep underground. When this melted rock, called magma, reaches the surface, it is called lava. A volcanic eruption can be one of the most powerful and frightening events in nature.",
+      "Volcanoes form in places where the Earth's outer shell is weak or broken. The Earth is covered by huge pieces of rock called tectonic plates, which move very slowly. Most volcanoes are found where these plates meet — for example, around the Pacific Ocean, in an area scientists call the 'Ring of Fire'. About 90% of the world's earthquakes also happen in this region.",
+      "Eruptions can be very different from one volcano to another. Some volcanoes, like those in Hawaii, erupt gently: lava flows slowly down the sides like a red river, and people can often watch safely from a distance. Other volcanoes erupt violently, throwing ash, rocks, and gas high into the sky. In 1991, Mount Pinatubo in the Philippines erupted so strongly that its ash cloud circled the whole planet.",
+      "Although eruptions are dangerous, volcanoes also bring benefits. The ash from eruptions makes the soil very rich, so farms near volcanoes often grow excellent crops. The heat from underground can also be used to make electricity, a clean energy source called geothermal energy. Countries like Iceland get much of their power this way.",
+      "Scientists now watch volcanoes carefully with special instruments that measure tiny movements of the ground and changes in gas. These warnings have saved thousands of lives by giving people time to leave dangerous areas. Still, as one volcanologist says, 'We can watch a volcano, but we can never fully control it.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What is lava?",
+        "options": [
+          "Cold rock from mountains",
+          "Magma that has reached the Earth's surface",
+          "Ash from forest fires",
+          "Water from underground springs"
+        ],
+        "correctAnswer": "Magma that has reached the Earth's surface",
+        "explanationVi": "Đoạn 1: 'hot, melted rock, called magma... when it reaches the surface, it is called lava' — đáp án ở đoạn 1."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "About 90% of the world's earthquakes happen in the Ring of Fire.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2: 'About 90% of the world's earthquakes also happen in this region' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The 1991 eruption of Mount Pinatubo killed more than 10,000 people.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 3 chỉ nói về ash cloud 'circled the whole planet' — không hề nhắc số người thiệt mạng, nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. The dangers of lava flows",
+          "ii. The good side of volcanoes",
+          "iii. How plates move",
+          "iv. Famous eruptions in history"
+        ],
+        "correctAnswer": "ii. The good side of volcanoes",
+        "explanationVi": "Đoạn 4 nói về lợi ích: 'ash makes the soil very rich', 'geothermal energy' — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How do scientists warn people about eruptions?",
+        "options": [
+          "By measuring ground movements and gas changes",
+          "By listening to the volcano's sounds",
+          "By watching clouds from space only",
+          "By asking local people for news"
+        ],
+        "correctAnswer": "By measuring ground movements and gas changes",
+        "explanationVi": "Đoạn 5: 'special instruments that measure tiny movements of the ground and changes in gas' — đáp án ở đoạn cuối."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-009",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "AI in Medicine: The Doctor's New Assistant",
+    "passage": [
+      "Artificial intelligence is changing many industries, but few areas show its promise — and its risks — as clearly as medicine. From reading X-ray images to predicting disease, AI systems are now working alongside doctors in hospitals around the world.",
+      "One of the most successful uses of AI is in medical imaging. A trained radiologist needs years of study to spot a small tumour in a scan, but AI models can now do this task in seconds, often with equal or better accuracy. In 2023, a large study found that an AI system detected breast cancer in mammograms with fewer missed cases than human doctors working alone. Importantly, the best results came not from AI alone, but from doctors and AI working together.",
+      "AI is also helping with early warning. By analysing patterns in millions of patient records, machine learning systems can predict which patients are likely to develop conditions such as heart disease or diabetes years before symptoms appear. This gives doctors a chance to act early, when treatment is simpler and cheaper. In some hospitals, AI monitors patients in intensive care, alerting nurses the moment a patient's condition starts to worsen.",
+      "However, the technology raises serious questions. AI systems learn from data, and if that data comes mostly from one group of people, the system may work poorly for others. Researchers have found examples where diagnostic AI performed worse for patients with darker skin, simply because they were underrepresented in the training data. Privacy is another concern: medical records are among the most sensitive data a person has.",
+      "Regulation is struggling to keep up. Unlike a new drug, which must pass years of clinical trials, many AI medical tools reach hospitals with limited testing. Experts argue that AI should be treated as an assistant, not a replacement. As one leading doctor explains, 'AI can process more data than any human, but it cannot sit beside a frightened patient and understand what they are going through.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What did the 2023 study find about AI and breast cancer detection?",
+        "options": [
+          "AI was slower than human doctors",
+          "AI detected cancer with fewer missed cases than doctors alone",
+          "AI could not read mammograms at all",
+          "AI replaced all radiologists in the study"
+        ],
+        "correctAnswer": "AI detected cancer with fewer missed cases than doctors alone",
+        "explanationVi": "Đoạn 2: 'an AI system detected breast cancer in mammograms with fewer missed cases than human doctors working alone' — đáp án ở đoạn 2."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "AI systems can predict heart disease years before symptoms appear.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 3: 'predict which patients are likely to develop conditions such as heart disease or diabetes years before symptoms appear' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Most hospitals have already replaced their radiologists with AI.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Bài nói AI 'working alongside doctors' — không hề nói bệnh viện đã thay thế bác sĩ, nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. How AI reads X-ray images",
+          "ii. Bias and privacy problems",
+          "iii. AI in intensive care",
+          "iv. The history of medical AI"
+        ],
+        "correctAnswer": "ii. Bias and privacy problems",
+        "explanationVi": "Đoạn 4 bàn về AI 'performed worse for patients with darker skin' (bias) và 'Privacy is another concern' — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the leading doctor suggest about AI's role?",
+        "options": [
+          "AI should replace doctors completely",
+          "AI is only an assistant and cannot replace human care",
+          "AI should not be used in hospitals",
+          "AI understands patients' feelings better than doctors"
+        ],
+        "correctAnswer": "AI is only an assistant and cannot replace human care",
+        "explanationVi": "Đoạn 5 trích lời: 'AI should be treated as an assistant, not a replacement' và 'it cannot sit beside a frightened patient' — đáp án ở cuối bài."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-010",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "The Remote Work Revolution",
+    "passage": [
+      "In 2019, working from home was a rare privilege, enjoyed by only a small minority of office workers. Then the pandemic forced millions of people to do their jobs from kitchen tables and spare bedrooms. Five years later, remote and hybrid work have become a permanent part of working life in many countries — and researchers are still debating whether this change is good or bad.",
+      "Supporters point to clear benefits. Studies consistently show that remote workers save one to two hours a day by not commuting, time they often spend on sleep, exercise, or family. Companies report lower office costs, and many employees say they are more productive at home, with fewer interruptions from meetings and office noise. The environment benefits too: fewer commuters means less traffic and lower carbon emissions.",
+      "Critics, however, warn about hidden costs. Young workers, they argue, miss out on the informal learning that happens by watching experienced colleagues. Building trust and team spirit is harder over video calls, and some managers complain that creativity suffers when people rarely meet in person. There are also concerns about isolation: surveys show that a significant number of remote workers feel lonely, especially those living alone.",
+      "Perhaps the most interesting finding is that the effects depend greatly on the type of work. Tasks that require deep focus, such as writing or programming, are often done better at home. But work that depends on quick, unplanned conversations — brainstorming new ideas or solving sudden problems — still seems to work better face to face. This may explain why most companies have settled on hybrid models, asking employees to come to the office two or three days a week.",
+      "The debate is far from over, but one thing is clear: the old idea that serious work can only happen in an office is gone forever. As one management researcher puts it, 'The question is no longer where we work, but how we work well wherever we are.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to supporters, how do remote workers use the time saved from commuting?",
+        "options": [
+          "They work longer hours for extra pay",
+          "They spend it on sleep, exercise, or family",
+          "They travel to other countries",
+          "They take a second job"
+        ],
+        "correctAnswer": "They spend it on sleep, exercise, or family",
+        "explanationVi": "Đoạn 2: 'time they often spend on sleep, exercise, or family' — đáp án ở đoạn 2."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Surveys show that some remote workers feel lonely.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 3: 'a significant number of remote workers feel lonely, especially those living alone' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Remote workers earn higher salaries than office workers.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Bài không hề so sánh lương của remote workers và office workers — không có thông tin nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. The history of the pandemic",
+          "ii. Different jobs, different needs",
+          "iii. Why offices will disappear",
+          "iv. The cost of office buildings"
+        ],
+        "correctAnswer": "ii. Different jobs, different needs",
+        "explanationVi": "Đoạn 4 nói 'the effects depend greatly on the type of work', phân biệt tasks 'deep focus' và 'unplanned conversations' — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What is the management researcher's main point?",
+        "options": [
+          "Everyone should return to the office",
+          "The key question is how to work well anywhere",
+          "Remote work should be banned",
+          "Offices are better than homes"
+        ],
+        "correctAnswer": "The key question is how to work well anywhere",
+        "explanationVi": "Đoạn 5 trích lời: 'The question is no longer where we work, but how we work well wherever we are' — đáp án ở cuối bài."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-011",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "Coral Reefs: Cities Under the Sea",
+    "passage": [
+      "Coral reefs cover less than 1% of the ocean floor, yet they support around 25% of all marine life. These underwater structures, built over thousands of years by tiny animals called coral polyps, are among the most diverse ecosystems on Earth — often described as the rainforests of the sea.",
+      "Reefs are also vital for people. More than 500 million people depend on reefs for food, income, or coastal protection. The complex structure of a reef acts as a natural barrier, absorbing up to 97% of a wave's energy before it reaches the shore. In countries like the Philippines and Indonesia, reef tourism brings in billions of dollars each year.",
+      "Despite their importance, reefs are in serious trouble. When ocean water becomes too warm, corals expel the tiny algae living inside them — the algae that give corals their colour and most of their food. Without these algae, the corals turn white, a process called bleaching. If the water stays warm for too long, the corals die. Mass bleaching events, once rare, now happen every few years on reefs worldwide.",
+      "Pollution and overfishing add to the damage. Chemicals from farms wash into the sea and feed harmful algae that smother young corals. In some regions, destructive fishing methods physically break the reef structure. Scientists estimate that the world has already lost about half of its shallow-water corals in the last 30 years.",
+      "There is still hope. Researchers have discovered that some corals are naturally more resistant to heat, and they are breeding these 'super corals' for reef restoration projects. Marine protected areas, where fishing is limited, have also shown remarkable recovery. As one marine biologist says, 'Reefs have survived for millions of years. If we give them a chance, they can come back — but the window is closing.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Why are coral reefs compared to rainforests?",
+        "options": [
+          "Because they are both green in colour",
+          "Because they are among the most diverse ecosystems on Earth",
+          "Because they both grow on land",
+          "Because they have the same animals"
+        ],
+        "correctAnswer": "Because they are among the most diverse ecosystems on Earth",
+        "explanationVi": "Đoạn 1: 'among the most diverse ecosystems on Earth — often described as the rainforests of the sea' — đáp án ở đoạn 1."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Reefs can absorb up to 97% of a wave's energy.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2: 'absorbing up to 97% of a wave's energy before it reaches the shore' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Coral bleaching is caused by cold water.",
+        "correctAnswer": "False",
+        "explanationVi": "Đoạn 3 nói rõ bleaching xảy ra 'When ocean water becomes too warm' — thông tin mâu thuẫn với câu hỏi nên là False."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 5 với tiêu đề đúng nhất.",
+        "options": [
+          "i. How reefs protect the coast",
+          "ii. Reasons for hope and recovery",
+          "iii. The causes of bleaching",
+          "iv. Fishing methods around the world"
+        ],
+        "correctAnswer": "ii. Reasons for hope and recovery",
+        "explanationVi": "Đoạn 5 nói 'There is still hope', 'super corals', 'remarkable recovery' — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What have scientists estimated about shallow-water corals?",
+        "options": [
+          "They have doubled in the last 30 years",
+          "About half have been lost in the last 30 years",
+          "They are immune to warm water",
+          "They grow faster in polluted water"
+        ],
+        "correctAnswer": "About half have been lost in the last 30 years",
+        "explanationVi": "Đoạn 4: 'the world has already lost about half of its shallow-water corals in the last 30 years' — đáp án ở đoạn 4."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-012",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "The Power of Music on the Human Mind",
+    "passage": [
+      "Music is found in every known human culture, from ancient drum ceremonies to modern streaming playlists. But why does a simple sequence of sounds have such a powerful effect on our emotions, our memories, and even our health?",
+      "Part of the answer lies in the brain's reward system. When we listen to music we enjoy, the brain releases dopamine, the same chemical involved in the pleasure of eating good food. Interestingly, the strongest response often comes not during the favourite part of a song, but just before it — the brain enjoys predicting what comes next. This may explain why we can listen to the same song hundreds of times without getting bored.",
+      "Music is also closely linked to memory. The part of the brain that processes music sits near the areas responsible for autobiographical memories, which is why a song from our teenage years can instantly bring back forgotten moments. Doctors have used this connection to help patients with Alzheimer's disease: even when other memories fade, many patients can still sing songs they learned decades ago.",
+      "Beyond emotion and memory, music affects the body directly. Studies show that listening to calm music can lower heart rate and reduce stress hormones, while rhythmic music can improve movement in patients recovering from strokes. Some surgeons even play music in the operating room, reporting that it helps them focus during long, difficult procedures.",
+      "Despite centuries of music-making, scientists admit that many questions remain unanswered. Why do some people love heavy metal while others find it unbearable? Why does a sad song sometimes make us feel better? As one researcher notes, 'We understand the physics of sound perfectly, but the mystery of why music moves us is still largely unsolved.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "When does the brain's strongest dopamine response to music occur?",
+        "options": [
+          "During the favourite part of the song",
+          "Just before the favourite part",
+          "After the song has ended",
+          "Only when hearing a song for the first time"
+        ],
+        "correctAnswer": "Just before the favourite part",
+        "explanationVi": "Đoạn 2: 'the strongest response often comes not during the favourite part of a song, but just before it' — đáp án ở đoạn 2."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Alzheimer's patients can often still sing old songs.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 3: 'many patients can still sing songs they learned decades ago' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Listening to heavy metal always increases stress hormones.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 4 chỉ nói calm music 'lower heart rate and reduce stress hormones' — không nói gì về heavy metal và stress hormones, nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. Music and the body",
+          "ii. Why we love sad songs",
+          "iii. Music in ancient cultures",
+          "iv. How dopamine works"
+        ],
+        "correctAnswer": "i. Music and the body",
+        "explanationVi": "Đoạn 4 nói về tác động lên cơ thể: 'lower heart rate', 'improve movement', surgeons 'play music in the operating room' — khớp tiêu đề i."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the researcher say remains a mystery?",
+        "options": [
+          "How sound travels through air",
+          "Why music moves us emotionally",
+          "How to play musical instruments",
+          "Why people stream music online"
+        ],
+        "correctAnswer": "Why music moves us emotionally",
+        "explanationVi": "Đoạn 5 trích lời: 'the mystery of why music moves us is still largely unsolved' — đáp án ở cuối bài."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

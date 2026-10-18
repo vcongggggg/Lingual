@@ -1,0 +1,1682 @@
+[
+  {
+    "id": "diary-061",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite fruit.",
+    "promptVi": "Viết về loại trái cây bạn thích nhất.",
+    "keywords": [
+      "sweet",
+      "juicy",
+      "fresh"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-062",
+    "cefrLevel": "A2",
+    "prompt": "Write about learning to ride a bicycle.",
+    "promptVi": "Viết về lần học đi xe đạp.",
+    "keywords": [
+      "balance",
+      "fall",
+      "practice"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-063",
+    "cefrLevel": "A2",
+    "prompt": "Describe a park you like to visit.",
+    "promptVi": "Miêu tả một công viên bạn thích đến.",
+    "keywords": [
+      "green",
+      "trees",
+      "play"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-064",
+    "cefrLevel": "A2",
+    "prompt": "Write about your grandmother's house.",
+    "promptVi": "Viết về nhà của bà bạn.",
+    "keywords": [
+      "old",
+      "warm",
+      "garden"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-065",
+    "cefrLevel": "A2",
+    "prompt": "Write about the Mid-Autumn Festival.",
+    "promptVi": "Viết về Tết Trung thu.",
+    "keywords": [
+      "mooncake",
+      "lantern",
+      "children"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-066",
+    "cefrLevel": "A2",
+    "prompt": "What is your favorite season? Why?",
+    "promptVi": "Mùa nào bạn thích nhất? Vì sao?",
+    "keywords": [
+      "cool",
+      "flowers",
+      "comfortable"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-067",
+    "cefrLevel": "A2",
+    "prompt": "What is inside your school bag?",
+    "promptVi": "Trong cặp sách của bạn có gì?",
+    "keywords": [
+      "books",
+      "pen",
+      "lunch"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-068",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite cartoon character.",
+    "promptVi": "Viết về nhân vật hoạt hình bạn thích nhất.",
+    "keywords": [
+      "funny",
+      "brave",
+      "cute"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-069",
+    "cefrLevel": "A2",
+    "prompt": "Write about a funny story at school.",
+    "promptVi": "Viết về một câu chuyện vui ở trường.",
+    "keywords": [
+      "laugh",
+      "classmates",
+      "remember"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-070",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite drink.",
+    "promptVi": "Viết về đồ uống bạn thích nhất.",
+    "keywords": [
+      "sweet",
+      "cold",
+      "bubble tea"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-071",
+    "cefrLevel": "A2",
+    "prompt": "Write about a hobby you enjoy at home.",
+    "promptVi": "Viết về một sở thích bạn thích làm ở nhà.",
+    "keywords": [
+      "free time",
+      "enjoy",
+      "relax"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-072",
+    "cefrLevel": "A2",
+    "prompt": "Write about a birthday party you remember.",
+    "promptVi": "Viết về một bữa tiệc sinh nhật bạn còn nhớ.",
+    "keywords": [
+      "cake",
+      "candles",
+      "friends"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-073",
+    "cefrLevel": "A2",
+    "prompt": "Write about your school canteen.",
+    "promptVi": "Viết về căng tin trường bạn.",
+    "keywords": [
+      "food",
+      "cheap",
+      "break"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-074",
+    "cefrLevel": "A2",
+    "prompt": "Write about a flower you like.",
+    "promptVi": "Viết về một loài hoa bạn thích.",
+    "keywords": [
+      "colorful",
+      "smell",
+      "beautiful"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-075",
+    "cefrLevel": "A2",
+    "prompt": "Write about a traditional game you played as a child.",
+    "promptVi": "Viết về một trò chơi dân gian bạn từng chơi hồi nhỏ.",
+    "keywords": [
+      "hide and seek",
+      "friends",
+      "fun"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-076",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite breakfast.",
+    "promptVi": "Viết về bữa sáng bạn thích nhất.",
+    "keywords": [
+      "pho",
+      "bread",
+      "hot"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-077",
+    "cefrLevel": "A2",
+    "prompt": "Write about a bus ride you remember.",
+    "promptVi": "Viết về một chuyến xe buýt bạn còn nhớ.",
+    "keywords": [
+      "crowded",
+      "window",
+      "long"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-078",
+    "cefrLevel": "A2",
+    "prompt": "Write about your school uniform.",
+    "promptVi": "Viết về đồng phục trường bạn.",
+    "keywords": [
+      "white",
+      "neat",
+      "proud"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-079",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite vegetable.",
+    "promptVi": "Viết về loại rau bạn thích nhất.",
+    "keywords": [
+      "green",
+      "healthy",
+      "cook"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-080",
+    "cefrLevel": "A2",
+    "prompt": "Describe what you do before bed.",
+    "promptVi": "Miêu tả những việc bạn làm trước khi đi ngủ.",
+    "keywords": [
+      "brush teeth",
+      "read",
+      "sleepy"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-081",
+    "cefrLevel": "A2",
+    "prompt": "Write about morning exercise.",
+    "promptVi": "Viết về việc tập thể dục buổi sáng.",
+    "keywords": [
+      "run",
+      "fresh air",
+      "healthy"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-082",
+    "cefrLevel": "A2",
+    "prompt": "Write about a family photo you love.",
+    "promptVi": "Viết về một tấm ảnh gia đình bạn yêu thích.",
+    "keywords": [
+      "smile",
+      "together",
+      "memory"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-083",
+    "cefrLevel": "A2",
+    "prompt": "Write about flying a kite.",
+    "promptVi": "Viết về lần thả diều.",
+    "keywords": [
+      "wind",
+      "sky",
+      "high"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-084",
+    "cefrLevel": "A2",
+    "prompt": "Describe your desk or study corner.",
+    "promptVi": "Miêu tả bàn học hoặc góc học tập của bạn.",
+    "keywords": [
+      "tidy",
+      "lamp",
+      "books"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-085",
+    "cefrLevel": "A2",
+    "prompt": "Write about a lake or river near your home.",
+    "promptVi": "Viết về một cái hồ hoặc dòng sông gần nhà bạn.",
+    "keywords": [
+      "water",
+      "calm",
+      "fishing"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-086",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite pair of shoes.",
+    "promptVi": "Viết về đôi giày bạn thích nhất.",
+    "keywords": [
+      "comfortable",
+      "new",
+      "wear"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-087",
+    "cefrLevel": "A2",
+    "prompt": "Write about a holiday you love (not Tet).",
+    "promptVi": "Viết về một ngày lễ bạn yêu thích (không phải Tết).",
+    "keywords": [
+      "celebrate",
+      "family",
+      "happy"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-088",
+    "cefrLevel": "A2",
+    "prompt": "What do you usually bring for lunch?",
+    "promptVi": "Bạn thường mang gì cho bữa trưa?",
+    "keywords": [
+      "rice",
+      "box",
+      "share"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-089",
+    "cefrLevel": "A2",
+    "prompt": "Write about a shopkeeper in your neighborhood.",
+    "promptVi": "Viết về một người bán hàng trong khu phố bạn.",
+    "keywords": [
+      "friendly",
+      "small shop",
+      "every day"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-090",
+    "cefrLevel": "A2",
+    "prompt": "Write about a sunny day at the beach.",
+    "promptVi": "Viết về một ngày nắng ở biển.",
+    "keywords": [
+      "sand",
+      "swim",
+      "waves"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-091",
+    "cefrLevel": "A2",
+    "prompt": "Write about an animal you think is beautiful.",
+    "promptVi": "Viết về một loài động vật bạn thấy đẹp.",
+    "keywords": [
+      "colors",
+      "graceful",
+      "wild"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-092",
+    "cefrLevel": "A2",
+    "prompt": "Write about helping your parents at home.",
+    "promptVi": "Viết về việc giúp đỡ cha mẹ ở nhà.",
+    "keywords": [
+      "clean",
+      "cook",
+      "happy"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-093",
+    "cefrLevel": "A2",
+    "prompt": "Write about a dessert you like.",
+    "promptVi": "Viết về một món tráng miệng bạn thích.",
+    "keywords": [
+      "sweet",
+      "cold",
+      "after meal"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-094",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite hat or cap.",
+    "promptVi": "Viết về chiếc mũ bạn thích nhất.",
+    "keywords": [
+      "sunny",
+      "wear",
+      "cool"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-095",
+    "cefrLevel": "A2",
+    "prompt": "Write about your best drawing.",
+    "promptVi": "Viết về bức vẽ đẹp nhất của bạn.",
+    "keywords": [
+      "colors",
+      "draw",
+      "proud"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-096",
+    "cefrLevel": "A2",
+    "prompt": "What is your favorite day of the week? Why?",
+    "promptVi": "Ngày nào trong tuần bạn thích nhất? Vì sao?",
+    "keywords": [
+      "free",
+      "weekend",
+      "relax"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-097",
+    "cefrLevel": "A2",
+    "prompt": "Write about a plant you grow or take care of.",
+    "promptVi": "Viết về một cái cây bạn trồng hoặc chăm sóc.",
+    "keywords": [
+      "water",
+      "grow",
+      "green"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-098",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite storybook.",
+    "promptVi": "Viết về cuốn truyện bạn thích nhất.",
+    "keywords": [
+      "story",
+      "pictures",
+      "read again"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-099",
+    "cefrLevel": "A2",
+    "prompt": "Write about a picnic with friends.",
+    "promptVi": "Viết về một buổi dã ngoại cùng bạn bè.",
+    "keywords": [
+      "grass",
+      "food",
+      "laugh"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-100",
+    "cefrLevel": "A2",
+    "prompt": "Write about your favorite ice cream flavor.",
+    "promptVi": "Viết về vị kem bạn thích nhất.",
+    "keywords": [
+      "cold",
+      "sweet",
+      "summer"
+    ],
+    "minSentences": 3,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-101",
+    "cefrLevel": "B1",
+    "prompt": "Write about a school trip or excursion.",
+    "promptVi": "Viết về một chuyến đi dã ngoại của trường.",
+    "keywords": [
+      "bus",
+      "excited",
+      "explore"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-102",
+    "cefrLevel": "B1",
+    "prompt": "Write about learning to ride a motorbike.",
+    "promptVi": "Viết về lần học đi xe máy.",
+    "keywords": [
+      "nervous",
+      "balance",
+      "practice"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-103",
+    "cefrLevel": "B1",
+    "prompt": "Write about your first trip alone.",
+    "promptVi": "Viết về chuyến đi một mình đầu tiên của bạn.",
+    "keywords": [
+      "independent",
+      "worried",
+      "free"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-104",
+    "cefrLevel": "B1",
+    "prompt": "Write about a kind stranger you met.",
+    "promptVi": "Viết về một người lạ tốt bụng bạn từng gặp.",
+    "keywords": [
+      "help",
+      "grateful",
+      "unexpected"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-105",
+    "cefrLevel": "B1",
+    "prompt": "Write about your favorite movie.",
+    "promptVi": "Viết về bộ phim bạn thích nhất.",
+    "keywords": [
+      "story",
+      "actors",
+      "touching"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-106",
+    "cefrLevel": "B1",
+    "prompt": "Write about a difficult subject and how you study it.",
+    "promptVi": "Viết về một môn học khó và cách bạn học nó.",
+    "keywords": [
+      "struggle",
+      "method",
+      "improve"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-107",
+    "cefrLevel": "B1",
+    "prompt": "Write about your sleep habits.",
+    "promptVi": "Viết về thói quen ngủ của bạn.",
+    "keywords": [
+      "late",
+      "tired",
+      "enough"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-108",
+    "cefrLevel": "B1",
+    "prompt": "Write about the oldest temple or building in your town.",
+    "promptVi": "Viết về ngôi đền hoặc tòa nhà cổ nhất ở quê bạn.",
+    "keywords": [
+      "history",
+      "old",
+      "visit"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-109",
+    "cefrLevel": "B1",
+    "prompt": "Write about your plans for next year.",
+    "promptVi": "Viết về kế hoạch của bạn cho năm tới.",
+    "keywords": [
+      "goal",
+      "change",
+      "hope"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-110",
+    "cefrLevel": "B1",
+    "prompt": "Write about a rainy day that ruined your plans.",
+    "promptVi": "Viết về một ngày mưa làm hỏng kế hoạch của bạn.",
+    "keywords": [
+      "cancel",
+      "disappointed",
+      "instead"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-111",
+    "cefrLevel": "B1",
+    "prompt": "Write about your favorite Vietnamese singer or band.",
+    "promptVi": "Viết về ca sĩ hoặc ban nhạc Việt Nam bạn thích nhất.",
+    "keywords": [
+      "voice",
+      "songs",
+      "concert"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-112",
+    "cefrLevel": "B1",
+    "prompt": "Write about your journey learning English.",
+    "promptVi": "Viết về hành trình học tiếng Anh của bạn.",
+    "keywords": [
+      "difficult",
+      "practice",
+      "progress"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-113",
+    "cefrLevel": "B1",
+    "prompt": "Write about a family celebration (wedding, anniversary...).",
+    "promptVi": "Viết về một dịp lễ của gia đình (đám cưới, kỷ niệm...).",
+    "keywords": [
+      "gather",
+      "happy",
+      "relatives"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-114",
+    "cefrLevel": "B1",
+    "prompt": "Write about your relationship with your grandparents.",
+    "promptVi": "Viết về mối quan hệ của bạn với ông bà.",
+    "keywords": [
+      "love",
+      "stories",
+      "time"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-115",
+    "cefrLevel": "B1",
+    "prompt": "Write about a sport you want to try.",
+    "promptVi": "Viết về một môn thể thao bạn muốn thử.",
+    "keywords": [
+      "new",
+      "exciting",
+      "learn"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-116",
+    "cefrLevel": "B1",
+    "prompt": "Which season suits your personality? Why?",
+    "promptVi": "Mùa nào hợp với tính cách của bạn? Vì sao?",
+    "keywords": [
+      "personality",
+      "calm",
+      "energy"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-117",
+    "cefrLevel": "B1",
+    "prompt": "Write about a place you want to revisit.",
+    "promptVi": "Viết về một nơi bạn muốn quay lại.",
+    "keywords": [
+      "memory",
+      "beautiful",
+      "return"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-118",
+    "cefrLevel": "B1",
+    "prompt": "Write about your first day at a new school.",
+    "promptVi": "Viết về ngày đầu tiên ở trường mới.",
+    "keywords": [
+      "nervous",
+      "new friends",
+      "lost"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-119",
+    "cefrLevel": "B1",
+    "prompt": "Write about cooking a full meal by yourself.",
+    "promptVi": "Viết về lần nấu một bữa ăn đầy đủ một mình.",
+    "keywords": [
+      "recipe",
+      "burn",
+      "proud"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-120",
+    "cefrLevel": "B1",
+    "prompt": "Write about an evening with a power outage.",
+    "promptVi": "Viết về một buổi tối mất điện.",
+    "keywords": [
+      "dark",
+      "candles",
+      "stories"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-121",
+    "cefrLevel": "B1",
+    "prompt": "Write about your favorite childhood toy.",
+    "promptVi": "Viết về món đồ chơi tuổi thơ bạn thích nhất.",
+    "keywords": [
+      "old",
+      "keep",
+      "precious"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-122",
+    "cefrLevel": "B1",
+    "prompt": "Write about helping a neighbor.",
+    "promptVi": "Viết về lần giúp đỡ hàng xóm.",
+    "keywords": [
+      "kind",
+      "thank",
+      "community"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-123",
+    "cefrLevel": "B1",
+    "prompt": "Write about buying clothes with your family.",
+    "promptVi": "Viết về lần đi mua quần áo cùng gia đình.",
+    "keywords": [
+      "try on",
+      "cheap",
+      "new"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-124",
+    "cefrLevel": "B1",
+    "prompt": "Describe your dream house.",
+    "promptVi": "Miêu tả ngôi nhà mơ ước của bạn.",
+    "keywords": [
+      "big",
+      "garden",
+      "peaceful"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-125",
+    "cefrLevel": "B1",
+    "prompt": "Write about a thunderstorm night.",
+    "promptVi": "Viết về một đêm giông bão.",
+    "keywords": [
+      "loud",
+      "flash",
+      "scared"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-126",
+    "cefrLevel": "B1",
+    "prompt": "Write about your favorite Vietnamese festival.",
+    "promptVi": "Viết về lễ hội Việt Nam bạn thích nhất.",
+    "keywords": [
+      "traditional",
+      "crowded",
+      "colorful"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-127",
+    "cefrLevel": "B1",
+    "prompt": "Write about a long bus or train journey.",
+    "promptVi": "Viết về một chuyến xe buýt hoặc tàu dài.",
+    "keywords": [
+      "hours",
+      "sleep",
+      "view"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-128",
+    "cefrLevel": "B1",
+    "prompt": "Write about your evening walk habit.",
+    "promptVi": "Viết về thói quen đi dạo buổi tối của bạn.",
+    "keywords": [
+      "relax",
+      "street",
+      "think"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-129",
+    "cefrLevel": "B1",
+    "prompt": "Write about a book you could not finish.",
+    "promptVi": "Viết về một cuốn sách bạn không đọc hết được.",
+    "keywords": [
+      "boring",
+      "give up",
+      "try again"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-130",
+    "cefrLevel": "B1",
+    "prompt": "Write about your favorite Vietnamese proverb.",
+    "promptVi": "Viết về câu tục ngữ Việt Nam bạn thích nhất.",
+    "keywords": [
+      "meaning",
+      "wise",
+      "apply"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-131",
+    "cefrLevel": "B1",
+    "prompt": "Write about a disagreement with your parents.",
+    "promptVi": "Viết về một lần bất đồng với cha mẹ.",
+    "keywords": [
+      "argue",
+      "understand",
+      "forgive"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-132",
+    "cefrLevel": "B1",
+    "prompt": "What part-time job would you like to try?",
+    "promptVi": "Bạn muốn thử công việc bán thời gian nào?",
+    "keywords": [
+      "earn",
+      "experience",
+      "free time"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-133",
+    "cefrLevel": "B1",
+    "prompt": "Write about a foggy morning.",
+    "promptVi": "Viết về một buổi sáng sương mù.",
+    "keywords": [
+      "mist",
+      "quiet",
+      "mysterious"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-134",
+    "cefrLevel": "B1",
+    "prompt": "Write about advice from an older sibling or cousin.",
+    "promptVi": "Viết về lời khuyên từ anh chị của bạn.",
+    "keywords": [
+      "listen",
+      "wise",
+      "follow"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-135",
+    "cefrLevel": "B1",
+    "prompt": "Write about a day without your phone.",
+    "promptVi": "Viết về một ngày không có điện thoại.",
+    "keywords": [
+      "strange",
+      "free",
+      "notice"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-136",
+    "cefrLevel": "B1",
+    "prompt": "Write about your hometown's most famous dish.",
+    "promptVi": "Viết về món ăn nổi tiếng nhất của quê bạn.",
+    "keywords": [
+      "special",
+      "recipe",
+      "proud"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-137",
+    "cefrLevel": "B1",
+    "prompt": "Write about a funny story in your family.",
+    "promptVi": "Viết về một câu chuyện vui trong gia đình bạn.",
+    "keywords": [
+      "laugh",
+      "remember",
+      "tell again"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-138",
+    "cefrLevel": "B1",
+    "prompt": "Describe your study space.",
+    "promptVi": "Miêu tả không gian học tập của bạn.",
+    "keywords": [
+      "quiet",
+      "comfortable",
+      "focus"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-139",
+    "cefrLevel": "B1",
+    "prompt": "Write about a volunteer experience.",
+    "promptVi": "Viết về một trải nghiệm tình nguyện.",
+    "keywords": [
+      "help",
+      "meaningful",
+      "community"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-140",
+    "cefrLevel": "B1",
+    "prompt": "Write about your favorite photo.",
+    "promptVi": "Viết về tấm ảnh bạn thích nhất.",
+    "keywords": [
+      "moment",
+      "keep",
+      "story"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-141",
+    "cefrLevel": "B1",
+    "prompt": "Write about a night market visit.",
+    "promptVi": "Viết về một lần đi chợ đêm.",
+    "keywords": [
+      "lights",
+      "food",
+      "crowded"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-142",
+    "cefrLevel": "B1",
+    "prompt": "Write about your first English conversation.",
+    "promptVi": "Viết về cuộc trò chuyện tiếng Anh đầu tiên của bạn.",
+    "keywords": [
+      "nervous",
+      "simple",
+      "brave"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-143",
+    "cefrLevel": "B1",
+    "prompt": "Write about a typhoon or flood experience.",
+    "promptVi": "Viết về một lần trải qua bão hoặc lụt.",
+    "keywords": [
+      "strong",
+      "water",
+      "safe"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-144",
+    "cefrLevel": "B1",
+    "prompt": "Write about games you played during school break.",
+    "promptVi": "Viết về các trò chơi giờ ra chơi ở trường.",
+    "keywords": [
+      "run",
+      "friends",
+      "short"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-145",
+    "cefrLevel": "B1",
+    "prompt": "Write about a letter you once received.",
+    "promptVi": "Viết về một lá thư bạn từng nhận.",
+    "keywords": [
+      "paper",
+      "surprise",
+      "keep"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-146",
+    "cefrLevel": "B1",
+    "prompt": "Write about your morning coffee or tea habit.",
+    "promptVi": "Viết về thói quen uống cà phê hoặc trà buổi sáng.",
+    "keywords": [
+      "hot",
+      "wake up",
+      "quiet"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-147",
+    "cefrLevel": "B1",
+    "prompt": "Write about a sunrise or sunset you remember.",
+    "promptVi": "Viết về một lần ngắm bình minh hoặc hoàng hôn bạn còn nhớ.",
+    "keywords": [
+      "sky",
+      "orange",
+      "beautiful"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-148",
+    "cefrLevel": "B1",
+    "prompt": "Write about your favorite Vietnamese film.",
+    "promptVi": "Viết về bộ phim Việt Nam bạn thích nhất.",
+    "keywords": [
+      "story",
+      "actors",
+      "emotional"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-149",
+    "cefrLevel": "B1",
+    "prompt": "Write about a bicycle trip you remember.",
+    "promptVi": "Viết về một chuyến đi xe đạp bạn còn nhớ.",
+    "keywords": [
+      "road",
+      "tired",
+      "fun"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-150",
+    "cefrLevel": "B1",
+    "prompt": "Write about your New Year resolutions.",
+    "promptVi": "Viết về các quyết tâm năm mới của bạn.",
+    "keywords": [
+      "promise",
+      "change",
+      "try hard"
+    ],
+    "minSentences": 4,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-151",
+    "cefrLevel": "B2",
+    "prompt": "Should university be free for everyone?",
+    "promptVi": "Đại học có nên miễn phí cho mọi người?",
+    "keywords": [
+      "equal",
+      "tax",
+      "quality"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-152",
+    "cefrLevel": "B2",
+    "prompt": "Should young Vietnamese work abroad or stay home?",
+    "promptVi": "Người trẻ Việt Nam nên ra nước ngoài làm việc hay ở lại?",
+    "keywords": [
+      "opportunity",
+      "family",
+      "brain drain"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-153",
+    "cefrLevel": "B2",
+    "prompt": "What role will English play in Vietnam's future?",
+    "promptVi": "Tiếng Anh sẽ đóng vai trò gì trong tương lai Việt Nam?",
+    "keywords": [
+      "global",
+      "jobs",
+      "necessary"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-154",
+    "cefrLevel": "B2",
+    "prompt": "Is homework really necessary?",
+    "promptVi": "Bài tập về nhà có thực sự cần thiết?",
+    "keywords": [
+      "pressure",
+      "learn",
+      "free time"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-155",
+    "cefrLevel": "B2",
+    "prompt": "Write about the pressure to succeed.",
+    "promptVi": "Viết về áp lực phải thành công.",
+    "keywords": [
+      "expect",
+      "compare",
+      "burden"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-156",
+    "cefrLevel": "B2",
+    "prompt": "Traditional medicine or modern medicine?",
+    "promptVi": "Y học cổ truyền hay y học hiện đại?",
+    "keywords": [
+      "natural",
+      "science",
+      "trust"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-157",
+    "cefrLevel": "B2",
+    "prompt": "Should Vietnam build a high-speed railway?",
+    "promptVi": "Việt Nam có nên xây đường sắt cao tốc?",
+    "keywords": [
+      "develop",
+      "cost",
+      "connect"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-158",
+    "cefrLevel": "B2",
+    "prompt": "Should cars be banned in city centers?",
+    "promptVi": "Có nên cấm ô tô ở trung tâm thành phố?",
+    "keywords": [
+      "traffic",
+      "air",
+      "walkable"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-159",
+    "cefrLevel": "B2",
+    "prompt": "What does Tet mean to young people today?",
+    "promptVi": "Tết có ý nghĩa gì với người trẻ hôm nay?",
+    "keywords": [
+      "tradition",
+      "change",
+      "reunion"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-160",
+    "cefrLevel": "B2",
+    "prompt": "Write about plastic waste in Vietnam.",
+    "promptVi": "Viết về rác thải nhựa ở Việt Nam.",
+    "keywords": [
+      "pollute",
+      "reduce",
+      "recycle"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-161",
+    "cefrLevel": "B2",
+    "prompt": "Is fame worth pursuing?",
+    "promptVi": "Danh tiếng có đáng để theo đuổi?",
+    "keywords": [
+      "famous",
+      "price",
+      "private"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-162",
+    "cefrLevel": "B2",
+    "prompt": "What is the role of grandparents in modern families?",
+    "promptVi": "Ông bà có vai trò gì trong gia đình hiện đại?",
+    "keywords": [
+      "care",
+      "wisdom",
+      "busy"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-163",
+    "cefrLevel": "B2",
+    "prompt": "Should students have part-time jobs?",
+    "promptVi": "Học sinh có nên làm thêm?",
+    "keywords": [
+      "experience",
+      "study",
+      "tired"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-164",
+    "cefrLevel": "B2",
+    "prompt": "How can cities solve urban flooding?",
+    "promptVi": "Các thành phố có thể giải quyết ngập lụt đô thị bằng cách nào?",
+    "keywords": [
+      "drain",
+      "rain",
+      "plan"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-165",
+    "cefrLevel": "B2",
+    "prompt": "Write about the value of failure.",
+    "promptVi": "Viết về giá trị của thất bại.",
+    "keywords": [
+      "learn",
+      "fall",
+      "stand up"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-166",
+    "cefrLevel": "B2",
+    "prompt": "Is Vietnam's street food culture at risk?",
+    "promptVi": "Văn hóa ẩm thực đường phố Việt Nam có đang gặp nguy?",
+    "keywords": [
+      "modern",
+      "hygiene",
+      "preserve"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-167",
+    "cefrLevel": "B2",
+    "prompt": "Digital detox: necessary or impossible?",
+    "promptVi": "Cai nghiện số: cần thiết hay bất khả thi?",
+    "keywords": [
+      "screen",
+      "addiction",
+      "balance"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-168",
+    "cefrLevel": "B2",
+    "prompt": "The future of work: remote or office?",
+    "promptVi": "Tương lai của công việc: từ xa hay văn phòng?",
+    "keywords": [
+      "flexible",
+      "lonely",
+      "productive"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-169",
+    "cefrLevel": "B2",
+    "prompt": "Should Vietnam invest more in public transport?",
+    "promptVi": "Việt Nam có nên đầu tư nhiều hơn cho giao thông công cộng?",
+    "keywords": [
+      "bus",
+      "metro",
+      "convenient"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-170",
+    "cefrLevel": "B2",
+    "prompt": "Should university students wear uniforms?",
+    "promptVi": "Sinh viên đại học có nên mặc đồng phục?",
+    "keywords": [
+      "equal",
+      "identity",
+      "freedom"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-171",
+    "cefrLevel": "B2",
+    "prompt": "Is competition healthy for students?",
+    "promptVi": "Cạnh tranh có tốt cho học sinh?",
+    "keywords": [
+      "motivate",
+      "stress",
+      "compare"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-172",
+    "cefrLevel": "B2",
+    "prompt": "How can young people preserve the Vietnamese language?",
+    "promptVi": "Người trẻ có thể gìn giữ tiếng Việt bằng cách nào?",
+    "keywords": [
+      "slang",
+      "read",
+      "identity"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-173",
+    "cefrLevel": "B2",
+    "prompt": "Write about the ethics of zoos.",
+    "promptVi": "Viết về mặt đạo đức của sở thú.",
+    "keywords": [
+      "cage",
+      "free",
+      "educate"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-174",
+    "cefrLevel": "B2",
+    "prompt": "Should school start later in the morning?",
+    "promptVi": "Trường học có nên bắt đầu muộn hơn vào buổi sáng?",
+    "keywords": [
+      "sleep",
+      "tired",
+      "focus"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-175",
+    "cefrLevel": "B2",
+    "prompt": "What is the impact of K-pop on Vietnamese youth?",
+    "promptVi": "K-pop ảnh hưởng đến giới trẻ Việt Nam ra sao?",
+    "keywords": [
+      "music",
+      "idol",
+      "culture"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-176",
+    "cefrLevel": "B2",
+    "prompt": "Is cash disappearing?",
+    "promptVi": "Tiền mặt có đang biến mất?",
+    "keywords": [
+      "digital",
+      "pay",
+      "convenient"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-177",
+    "cefrLevel": "B2",
+    "prompt": "Write about renewable energy in Vietnam.",
+    "promptVi": "Viết về năng lượng tái tạo ở Việt Nam.",
+    "keywords": [
+      "solar",
+      "wind",
+      "future"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-178",
+    "cefrLevel": "B2",
+    "prompt": "What does it mean to be Vietnamese?",
+    "promptVi": "Là người Việt Nam có nghĩa là gì?",
+    "keywords": [
+      "identity",
+      "proud",
+      "culture"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-179",
+    "cefrLevel": "B2",
+    "prompt": "Write about the cost of fast fashion.",
+    "promptVi": "Viết về cái giá của thời trang nhanh.",
+    "keywords": [
+      "cheap",
+      "waste",
+      "environment"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "diary-180",
+    "cefrLevel": "B2",
+    "prompt": "Imagine a world without smartphones.",
+    "promptVi": "Hãy tưởng tượng một thế giới không có điện thoại thông minh.",
+    "keywords": [
+      "quiet",
+      "connect",
+      "different"
+    ],
+    "minSentences": 5,
+    "source": "ai-generated",
+    "verified": false
+  }
+]
