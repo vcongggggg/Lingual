@@ -1076,6 +1076,88 @@ model StampLedger {
   @@map("stamp_ledgers")
 }
 
+// ============================================================================
+// DATA PHASE 2: CONTENT REPOSITORIES (GRAMMAR, SHADOWING, DIALOGUES, STORIES)
+// ============================================================================
+
+model GrammarQuestion {
+  id            String   @id
+  question      String
+  optionsJson   String   // JSON string array of options
+  correctAnswer String
+  explanationVi String?
+  cefrLevel     String   @default("A2")
+  topic         String?
+  topicVi       String?
+  skillFocus    String   @default("grammar")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("grammar_questions")
+}
+
+model ShadowingSentence {
+  id         String   @id
+  textEn     String
+  textVi     String
+  phonetic   String?
+  audioUrl   String?
+  cefrLevel  String   @default("A2")
+  topic      String?
+  focusWords String?  @default("[]")
+  skillFocus String   @default("speaking")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("shadowing_sentences")
+}
+
+model DialogueScenario {
+  id            String   @id
+  title         String
+  titleVi       String?
+  topic         String?
+  topicVi       String?
+  location      String?
+  locationVi    String?
+  characters    String?
+  contextDesc   String?
+  linesJson     String   @default("[]")
+  questionsJson String   @default("[]")
+  cefrLevel     String   @default("B1")
+  skillFocus    String   @default("listening")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("dialogue_scenarios")
+}
+
+model StoryTemplate {
+  id                String   @id
+  title             String
+  titleVi           String?
+  mascotReaction    String   @default("storyteller")
+  paragraphsJson    String   @default("[]")
+  slotsJson         String   @default("[]")
+  slotHintsJson     String   @default("[]")
+  quizQuestionsJson String   @default("[]")
+  cefrLevel         String   @default("B1")
+  topic             String?
+  skillFocus        String   @default("reading")
+  source            String   @default("ai-generated")
+  verified          Boolean  @default(false)
+  createdAt         DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("story_templates")
+}
+
 
 
 
