@@ -51,4 +51,6 @@ apps/api/data/*.json
 data/*
 !data/standardized/
 !data/standardized/**
+!data/phase2_batch2/
+!data/phase2_batch2/**
 
