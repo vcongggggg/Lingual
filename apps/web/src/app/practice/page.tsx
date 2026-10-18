@@ -23,11 +23,17 @@ import {
   Puzzle,
   Compass,
   Bookmark,
-  Share2
+  Share2,
+  Calendar,
+  Mail,
+  Mic
 } from 'lucide-react';
 import { LingLing } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
 import { MASCOT_REGISTRY } from '../../components/mascot';
+import { DailyChallenge } from '../../components/practice/DailyChallenge';
+import { LettersFromLingLing } from '../../components/practice/LettersFromLingLing';
+import { ShadowingLab } from '../../components/practice/ShadowingLab';
 
 
 /* =========================================================================
@@ -450,11 +456,27 @@ const SCRAMBLE_ITEMS: ScrambleItem[] = [
   },
 ];
 
-/* =========================================================================
-   COMPONENTS CHÍNH: TRANG /practice VỚI 4 TÍNH NĂNG
-   ========================================================================= */
+export type PracticeMode =
+  | 'collocation'
+  | 'error_hunt'
+  | 'bilingual_story'
+  | 'sentence_scramble'
+  | 'daily_challenge'
+  | 'letters_from_cow'
+  | 'shadowing_lab';
+
 export default function PracticeHubPage() {
-  const [activeMode, setActiveMode] = useState<'collocation' | 'error_hunt' | 'bilingual_story' | 'sentence_scramble'>('collocation');
+  const [activeMode, setActiveMode] = useState<PracticeMode>('collocation');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const m = urlParams.get('mode');
+      if (m === 'daily') setActiveMode('daily_challenge');
+      else if (m === 'letters') setActiveMode('letters_from_cow');
+      else if (m === 'shadowing') setActiveMode('shadowing_lab');
+    }
+  }, []);
 
   /* -------------------------------------------------------------
      STATE CHO MODE 1: DÁN CỤM LÊN BẢNG
@@ -808,6 +830,42 @@ export default function PracticeHubPage() {
           >
             <Puzzle className="w-3.5 h-3.5 text-amber" />
             <span>4. Xếp câu</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMode('daily_challenge')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+              activeMode === 'daily_challenge'
+                ? 'bg-red text-white shadow-brutal-sm'
+                : 'text-ink hover:bg-paper'
+            }`}
+          >
+            <Calendar className="w-3.5 h-3.5" />
+            <span>5. Thử thách ngày</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMode('letters_from_cow')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+              activeMode === 'letters_from_cow'
+                ? 'bg-teal text-white shadow-brutal-sm'
+                : 'text-ink hover:bg-paper'
+            }`}
+          >
+            <Mail className="w-3.5 h-3.5" />
+            <span>6. Lá thư từ Bò</span>
+          </button>
+
+          <button
+            onClick={() => setActiveMode('shadowing_lab')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+              activeMode === 'shadowing_lab'
+                ? 'bg-ink text-paper shadow-brutal-sm'
+                : 'text-ink hover:bg-paper'
+            }`}
+          >
+            <Mic className="w-3.5 h-3.5 text-red" />
+            <span>7. Bò nhại tiếng</span>
           </button>
         </div>
       </div>
@@ -1894,6 +1952,33 @@ export default function PracticeHubPage() {
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ===================================================================
+          MODE 5: THỬ THÁCH MỖI NGÀY (DAILY CHALLENGE)
+          =================================================================== */}
+      {activeMode === 'daily_challenge' && (
+        <div className="space-y-6 animate-message-slide">
+          <DailyChallenge />
+        </div>
+      )}
+
+      {/* ===================================================================
+          MODE 6: LÁ THƯ TỪ BÒ (LETTERS FROM LINGLING - SRS LETTERS)
+          =================================================================== */}
+      {activeMode === 'letters_from_cow' && (
+        <div className="space-y-6 animate-message-slide">
+          <LettersFromLingLing />
+        </div>
+      )}
+
+      {/* ===================================================================
+          MODE 7: BÒ NHẠI TIẾNG (SHADOWING LAB)
+          =================================================================== */}
+      {activeMode === 'shadowing_lab' && (
+        <div className="space-y-6 animate-message-slide">
+          <ShadowingLab />
         </div>
       )}
     </div>
