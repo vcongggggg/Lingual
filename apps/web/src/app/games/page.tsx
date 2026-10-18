@@ -123,6 +123,17 @@ export default function GamesPage() {
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(60);
   const [gameActive, setGameActive] = useState(false);
+  const [tearingTicketId, setTearingTicketId] = useState<string | null>(null);
+
+  const handlePlayTicket = (ticketId: string) => {
+    if (tearingTicketId) return;
+    setTearingTicketId(ticketId);
+    setTimeout(() => {
+      setActiveTab('play');
+      handleStartGame();
+      setTearingTicketId(null);
+    }, 300);
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -256,11 +267,20 @@ export default function GamesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {GAME_TICKETS.map((ticket) => {
               const Icon = ticket.icon;
+              const isTearing = tearingTicketId === ticket.id;
+
               return (
                 <div
                   key={ticket.id}
-                  className="card-paper p-6 flex flex-col justify-between space-y-5 bg-card hover:-translate-y-1 transition-all relative border-2 border-dashed border-ink/40"
+                  onClick={() => handlePlayTicket(ticket.id)}
+                  className={`ticket-card p-6 flex flex-col justify-between space-y-4 bg-card cursor-pointer select-none relative overflow-visible ${
+                    isTearing ? 'animate-ticket-tear pointer-events-none' : ''
+                  }`}
                 >
+                  {/* Hai rãnh răng cưa bấm vé bên cạnh mép giấy */}
+                  <div className="ticket-notch-l" />
+                  <div className="ticket-notch-r" />
+
                   {/* Cuống vé: Header + Code */}
                   <div className="space-y-3">
                     <div className="flex items-center justify-between border-b-2 border-dashed border-ink/20 pb-2.5">
@@ -292,16 +312,19 @@ export default function GamesPage() {
                     </p>
                   </div>
 
-                  {/* Nút Đỏ "Chơi ngay" */}
-                  <div className="pt-2 border-t-2 border-dashed border-ink/20">
+                  {/* Đường răng cưa xé vé */}
+                  <div className="border-t-2 border-dashed border-ink/25 my-1" />
+
+                  {/* Nút Đỏ "Xé vé chơi ngay" */}
+                  <div className="pt-1">
                     <button
-                      onClick={() => {
-                        setActiveTab('play');
-                        handleStartGame();
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePlayTicket(ticket.id);
                       }}
                       className="w-full btn btn-red text-xs font-black shadow-brutal flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <span>Chơi ngay</span>
+                      <span>{isTearing ? 'Đang xé vé...' : 'Xé vé chơi ngay'}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>

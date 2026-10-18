@@ -6,6 +6,7 @@ import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
 import { Badge } from '../../../components/ui/Badge';
 import { LingLing } from '../../../components/ui/LingLing';
+import { StampSlam } from '../../../components/ui/StampSlam';
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -15,7 +16,8 @@ import {
   Sparkles, 
   AlertCircle,
   HelpCircle,
-  RotateCcw
+  RotateCcw,
+  Send
 } from 'lucide-react';
 
 interface StepData {
@@ -65,10 +67,12 @@ export default function WritingPracticePage() {
     1: '',
     2: '',
   });
+  const [isFoldingEnvelope, setIsFoldingEnvelope] = useState(false);
   const [evaluation, setEvaluation] = useState<{
     grammarPassed: boolean;
     feedback: string;
     lexicalScore: number;
+    teacherSuggestions?: string[];
   } | null>(null);
 
   const step = STEPS[currentStepIdx];
@@ -89,16 +93,24 @@ export default function WritingPracticePage() {
     setEvaluation(null);
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = async () => {
     if (currentStepIdx < STEPS.length - 1) {
       setCurrentStepIdx((prev) => prev + 1);
       setEvaluation(null);
     } else {
-      // Hoàn thành cả 3 bước -> chấm điểm toàn bài
+      // Hoàn thành cả 3 bước -> Gấp giấy vào phong bì (400ms) rồi chấm điểm
+      setIsFoldingEnvelope(true);
+      await new Promise((r) => setTimeout(r, 400));
+      setIsFoldingEnvelope(false);
       setEvaluation({
         grammarPassed: true,
         feedback: 'Bài viết có bố cục 3 phần rất mạch lạc! Cấu trúc câu tự nhiên, vốn từ học thuật phong phú và sử dụng từ nối nhuần nhuyễn.',
         lexicalScore: 92,
+        teacherSuggestions: [
+          'Ý kiến mở bài rõ ràng, dẫn dắt tự nhiên bằng cấu trúc bị động / khách quan.',
+          'Thân bài phân chia 2 luận cứ sắc sảo, có bổ sung ví dụ thực tế về kỹ năng mềm.',
+          'Kết bài đã tóm lược trọn vẹn luận điểm chính và đưa ra lời khuyên thiết thực.',
+        ],
       });
     }
   };
@@ -185,7 +197,11 @@ export default function WritingPracticePage() {
       </div>
 
       {/* Ô Viết Bài Là Giấy Kẻ Dòng (Lined Paper) */}
-      <div className="space-y-3">
+      <div
+        className={`space-y-3 transition-all duration-300 ${
+          isFoldingEnvelope ? 'animate-paper-envelope pointer-events-none' : ''
+        }`}
+      >
         <div className="flex items-center justify-between">
           <label className="text-xs font-black uppercase tracking-wider text-ink block">
             Phần bài viết của bạn:
@@ -244,7 +260,7 @@ export default function WritingPracticePage() {
           variant="paper"
           size="md"
           onClick={handlePrevStep}
-          disabled={currentStepIdx === 0}
+          disabled={currentStepIdx === 0 || isFoldingEnvelope}
           className="shadow-brutal"
         >
           ← Bước trước
@@ -254,25 +270,43 @@ export default function WritingPracticePage() {
           variant="red"
           size="lg"
           onClick={handleNextStep}
-          disabled={currentWordCount < 5}
+          disabled={currentWordCount < 5 || isFoldingEnvelope}
           className="shadow-brutal"
         >
-          {currentStepIdx === STEPS.length - 1 ? 'Hoàn thành bài viết ✓' : 'Bước tiếp theo →'}
+          {isFoldingEnvelope ? (
+            <span>Đang gửi bài vào phong bì...</span>
+          ) : currentStepIdx === STEPS.length - 1 ? (
+            'Hoàn thành bài viết ✓'
+          ) : (
+            'Bước tiếp theo →'
+          )}
         </Button>
       </div>
 
       {/* Đánh Giá Toàn Bài Khi Hoàn Thành */}
       {evaluation && (
-        <div className="card-paper p-6 sm:p-8 space-y-4 shadow-brutal-xl border-teal bg-amber/15 text-left animate-in fade-in duration-150">
-          <div className="flex items-center gap-3">
-            <LingLing reaction="proud" size={80} />
-            <div>
-              <h3 className="text-xl font-black text-ink">
-                Chúc mừng bạn đã hoàn thành bài luận!
-              </h3>
-              <p className="text-xs font-bold text-ink-soft">
-                Điểm phong phú từ vựng & cấu trúc: <b className="text-red text-sm">{evaluation.lexicalScore}/100</b>
-              </p>
+        <div className="card-paper p-6 sm:p-8 space-y-5 shadow-brutal-xl border-teal bg-paper-2 text-left animate-in fade-in duration-150">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <LingLing reaction="proud" size={80} />
+              <div>
+                <h3 className="text-xl font-black text-ink font-sans">
+                  Chúc mừng bạn đã hoàn thành bài luận!
+                </h3>
+                <p className="text-xs font-bold text-ink-soft">
+                  Điểm phong phú từ vựng & cấu trúc: <b className="text-red text-sm">{evaluation.lexicalScore}/100</b>
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center sm:justify-end flex-shrink-0">
+              <StampSlam
+                text="ĐÃ CHẤM"
+                subtext="XUẤT SẮC"
+                variant="circle"
+                color="red"
+                size="md"
+              />
             </div>
           </div>
 
@@ -280,10 +314,32 @@ export default function WritingPracticePage() {
             <span className="text-xs font-black uppercase tracking-wider text-teal block">
               Nhận xét của trợ lý biên tập:
             </span>
-            <p className="text-sm font-bold text-ink leading-relaxed">
+            <p className="text-sm font-bold text-ink leading-relaxed font-sans">
               {evaluation.feedback}
             </p>
           </div>
+
+          {/* Nhận xét bút tích mực đỏ viết tay hiện dần */}
+          {evaluation.teacherSuggestions && evaluation.teacherSuggestions.length > 0 && (
+            <div className="lined-paper border-2 border-ink rounded-2xl p-5 space-y-3 shadow-brutal-sm bg-card">
+              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-red">
+                <span>✍️</span>
+                <span>Bút tích nhận xét của trợ lý (hiện dần nét mực đỏ):</span>
+              </div>
+              <div className="space-y-2">
+                {evaluation.teacherSuggestions.map((sug, idx) => (
+                  <p
+                    key={idx}
+                    style={{ animationDelay: `${idx * 160}ms` }}
+                    className="text-xs sm:text-sm font-serif italic font-bold text-red tracking-wide animate-message-slide flex items-start gap-2"
+                  >
+                    <span className="text-red font-sans">✦</span>
+                    <span>{sug}</span>
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="pt-2 flex items-center justify-end">
             <Link href="/writing" className="btn btn-ink text-xs font-black py-2 px-4">

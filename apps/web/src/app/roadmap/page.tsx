@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
+import { StampSlam } from '../../components/ui/StampSlam';
 
 interface Lesson {
   order: number;
@@ -110,6 +111,22 @@ const DEFAULT_UNITS: UnitNode[] = [
 
 export default function CurriculumRoadmapPage() {
   const [units, setUnits] = useState<UnitNode[]>(DEFAULT_UNITS);
+  const roadmapRef = React.useRef<HTMLDivElement>(null);
+  const [threadDrawn, setThreadDrawn] = useState(false);
+
+  useEffect(() => {
+    if (!roadmapRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setThreadDrawn(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(roadmapRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     async function loadUnits() {
@@ -170,8 +187,32 @@ export default function CurriculumRoadmapPage() {
         </div>
       </div>
 
-      {/* BẢN ĐỒ HÀNH TRÌNH CÁC NODE NỐI BẰNG ĐƯỜNG MỰC ĐỨT NÉT */}
-      <div className="relative pl-6 sm:pl-10 space-y-8 before:absolute before:top-4 before:bottom-4 before:left-[19px] sm:before:left-[35px] before:w-0.5 before:border-l-2 before:border-dashed before:border-ink/40">
+      {/* BẢN ĐỒ HÀNH TRÌNH CÁC NODE NỐI BẰNG SỢI CHỈ ĐỎ SVG VẼ DẦN */}
+      <div
+        ref={roadmapRef}
+        className="relative pl-6 sm:pl-10 space-y-8 before:absolute before:top-4 before:bottom-4 before:left-[19px] sm:before:left-[35px] before:w-0.5 before:border-l-2 before:border-dashed before:border-ink/20"
+      >
+        {/* Sợi chỉ đỏ SVG vẽ dần khi scroll tới (stroke-dashoffset animation) */}
+        <svg
+          className="absolute top-4 bottom-4 left-[18px] sm:left-[34px] w-2 h-[calc(100%-32px)] pointer-events-none z-0 overflow-visible"
+          aria-hidden="true"
+        >
+          <line
+            x1="1.5"
+            y1="0"
+            x2="1.5"
+            y2="100%"
+            stroke="#D64027"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeDasharray="1400"
+            strokeDashoffset={threadDrawn ? '0' : '1400'}
+            style={{
+              transition: 'stroke-dashoffset 900ms cubic-bezier(0.2, 0.8, 0.2, 1)',
+            }}
+          />
+        </svg>
+
         {units.map((unit) => {
           const isCompleted = unit.status === 'COMPLETED';
           const isInProgress = unit.status === 'IN_PROGRESS';
@@ -181,7 +222,7 @@ export default function CurriculumRoadmapPage() {
             <div key={unit.order} className="relative group">
               {/* Node Tròn Biểu Tượng Trên Trục Mực */}
               <div
-                className={`absolute -left-[27px] sm:-left-[43px] top-6 w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-ink flex items-center justify-center font-mono font-black text-xs sm:text-sm shadow-brutal-sm z-10 ${
+                className={`absolute -left-[27px] sm:-left-[43px] top-6 w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-ink flex items-center justify-center font-mono font-black text-xs sm:text-sm shadow-brutal-sm z-10 transition-transform ${
                   isCompleted
                     ? 'bg-teal text-white'
                     : isInProgress
@@ -200,7 +241,7 @@ export default function CurriculumRoadmapPage() {
 
               {/* Thẻ Unit Giấy */}
               <div
-                className={`card-paper p-6 sm:p-8 rounded-3xl border-2 transition-all ${
+                className={`card-paper p-6 sm:p-8 rounded-3xl border-2 transition-all relative overflow-visible ${
                   isInProgress
                     ? 'border-4 border-ink bg-card shadow-brutal-xl'
                     : isCompleted
@@ -208,6 +249,20 @@ export default function CurriculumRoadmapPage() {
                     : 'border-2 border-ink/40 bg-paper-2 opacity-65 shadow-none'
                 }`}
               >
+                {/* Con dấu ĐẠT tự động đóng xuống cho node hoàn thành */}
+                {isCompleted && (
+                  <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 pointer-events-none">
+                    <StampSlam
+                      text="ĐẠT"
+                      subtext="HOÀN THÀNH"
+                      variant="circle"
+                      color="teal"
+                      size="sm"
+                      delayMs={200}
+                    />
+                  </div>
+                )}
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ink/15 pb-4 mb-4">
                   <div className="space-y-1">
                     <div className="flex flex-wrap items-center gap-2">

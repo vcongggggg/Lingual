@@ -199,13 +199,13 @@ Trong tiếng Anh, việc áp dụng từ vựng vào câu ví dụ cụ thể v
             return (
               <div
                 key={msg.id}
-                className={`flex gap-3 items-start ${
+                className={`flex gap-3 items-start animate-message-slide ${
                   isAssistant ? 'justify-start' : 'justify-end'
                 }`}
               >
-                {/* Avatar Bò LingLing cho tin nhắn trợ lý */}
+                {/* Avatar Bò LingLing cho tin nhắn trợ lý với crossfade transition */}
                 {isAssistant && (
-                  <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center flex-shrink-0 shadow-brutal-sm overflow-hidden p-1">
+                  <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center flex-shrink-0 shadow-brutal-sm overflow-hidden p-1 transition-opacity duration-300 ease-in-out">
                     <LingLing reaction={msg.mood || 'studying'} size={40} />
                   </div>
                 )}
@@ -242,13 +242,19 @@ Trong tiếng Anh, việc áp dụng từ vựng vào câu ví dụ cụ thể v
             );
           })}
 
+          {/* Typing Indicator: 3 chấm mực nhấp nháy + Bò thinking crossfade */}
           {isSending && (
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center p-1">
+            <div className="flex items-center gap-3 animate-message-slide">
+              <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center p-1 shadow-brutal-sm transition-opacity duration-300">
                 <LingLing reaction="thinking" size={40} />
               </div>
-              <div className="lined-paper p-4 rounded-2xl border-2 border-ink text-xs font-bold text-ink italic shadow-brutal-sm">
-                LingLing đang suy nghĩ và viết thư phản hồi cho bạn...
+              <div className="lined-paper py-3 px-4 rounded-2xl border-2 border-ink flex items-center gap-2.5 text-xs font-bold text-ink italic shadow-brutal-sm">
+                <span>LingLing đang chấm bút mực viết thư</span>
+                <div className="flex items-center gap-1.5 py-1">
+                  <span className="w-2 h-2 rounded-full bg-ink inline-block animate-ink-dot-1" />
+                  <span className="w-2 h-2 rounded-full bg-red inline-block animate-ink-dot-2" />
+                  <span className="w-2 h-2 rounded-full bg-ink inline-block animate-ink-dot-3" />
+                </div>
               </div>
             </div>
           )}

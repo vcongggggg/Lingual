@@ -53,7 +53,18 @@ export default function ListeningPracticePage() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [speed, setSpeed] = useState<0.75 | 1 | 1.25>(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [tapeCounter, setTapeCounter] = useState(24);
   const [userInput, setUserInput] = useState('');
+
+  useEffect(() => {
+    let interval: any;
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setTapeCounter((c) => (c + 1) % 999);
+      }, 250);
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying]);
   const [showHint, setShowHint] = useState(false);
   const [result, setResult] = useState<{
     checked: boolean;
@@ -179,22 +190,36 @@ export default function ListeningPracticePage() {
           </div>
         </div>
 
-        {/* Cửa sổ cuộn băng cassette (Cassette Window & Spools) */}
-        <div className="cassette-window p-4 sm:p-6 flex items-center justify-around">
+        {/* Cửa sổ cuộn băng cassette (Cassette Window, Spools & Mechanical Counter) */}
+        <div className="cassette-window p-4 sm:p-6 flex items-center justify-around relative">
           {/* Trục bánh răng trái */}
-          <div className={`cassette-spool ${isPlaying ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }}>
+          <div className={`cassette-spool ${isPlaying ? 'animate-spool-spin' : ''}`}>
             <Disc className="w-6 h-6 text-ink/70" />
           </div>
 
-          {/* Thước đo băng mực */}
-          <div className="h-6 flex-1 max-w-[160px] mx-4 bg-paper-2 border-2 border-ink rounded-md flex items-center px-2 justify-between">
-            <span className="w-2 h-2 rounded-full bg-ink" />
-            <div className="h-1 flex-1 mx-2 bg-ink/20 rounded" />
-            <span className="w-2 h-2 rounded-full bg-red" />
+          {/* Cụm giữa: Thước đo băng mực & Bộ đếm số chạy cơ học (Mechanical Counter) */}
+          <div className="flex flex-col items-center gap-2 mx-3 flex-1 max-w-[170px]">
+            {/* Bộ đếm cơ học 3 chữ số chạy khi phát */}
+            <div className="flex items-center gap-1.5 bg-ink text-paper px-2.5 py-0.5 rounded border border-ink shadow-inner font-mono text-xs font-black tracking-widest select-none" title="Bộ đếm số cassette chạy khi phát">
+              <span className="text-[9px] text-paper-2/60">TAPE</span>
+              <span>{String(tapeCounter).padStart(3, '0')}</span>
+            </div>
+
+            {/* Thước đo băng mực */}
+            <div className="h-4 w-full bg-paper-2 border-2 border-ink rounded-md flex items-center px-2 justify-between">
+              <span className="w-2 h-2 rounded-full bg-ink" />
+              <div className="h-1 flex-1 mx-2 bg-ink/20 rounded overflow-hidden">
+                <div
+                  className="h-full bg-red transition-all duration-300"
+                  style={{ width: `${(tapeCounter % 100)}%` }}
+                />
+              </div>
+              <span className="w-2 h-2 rounded-full bg-red" />
+            </div>
           </div>
 
           {/* Trục bánh răng phải */}
-          <div className={`cassette-spool ${isPlaying ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }}>
+          <div className={`cassette-spool ${isPlaying ? 'animate-spool-spin' : ''}`}>
             <Disc className="w-6 h-6 text-ink/70" />
           </div>
         </div>

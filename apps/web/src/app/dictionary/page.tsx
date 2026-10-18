@@ -120,6 +120,16 @@ export default function DictionaryPage() {
   const [featuredWord, setFeaturedWord] = useState<WordItem>(DEFAULT_FEATURED_WORD);
   const [loading, setLoading] = useState(false);
   const [addedWords, setAddedWords] = useState<Record<string, boolean>>({});
+  const [drawerPulled, setDrawerPulled] = useState(true);
+  const [activeDrawerSection, setActiveDrawerSection] = useState<'ALL' | 'AF' | 'GL' | 'MR' | 'SZ'>('ALL');
+  const [isPulling, setIsPulling] = useState(false);
+
+  const handlePullDrawer = (section: 'ALL' | 'AF' | 'GL' | 'MR' | 'SZ') => {
+    setActiveDrawerSection(section);
+    setIsPulling(true);
+    setDrawerPulled(true);
+    setTimeout(() => setIsPulling(false), 300);
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -355,37 +365,102 @@ export default function DictionaryPage() {
         </div>
       </div>
 
-      {/* KẾT QUẢ TRA CỨU VẼ NHƯ "TRANG TỪ ĐIỂN" */}
+      {/* NGĂN TỦ CATALOG THƯ VIỆN & CÁC THẺ TỪ */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-black text-ink font-sans">
-            Mục từ tìm kiếm
-          </h2>
-          <span className="text-xs font-mono font-bold text-ink-muted">
-            {words.length} kết quả
-          </span>
+        {/* Ngăn kéo Catalog — click để kéo trượt ra (translateY) */}
+        <div
+          onClick={() => handlePullDrawer(activeDrawerSection)}
+          className={`p-4 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer select-none transition-all duration-200 ${
+            isPulling ? 'translate-y-1.5 shadow-brutal-sm' : 'hover:-translate-y-0.5'
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl border-2 border-ink bg-amber/30 flex items-center justify-center text-ink font-mono font-black text-sm shadow-brutal-sm">
+              🗄️
+            </div>
+            <div>
+              <div className="text-xs font-black uppercase tracking-wider text-ink flex items-center gap-2">
+                <span>Ngăn tủ Catalog Thư viện</span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-card border border-ink text-teal">
+                  {isPulling ? 'Đang trượt ngăn kéo...' : 'Nhấn để kéo ngăn'}
+                </span>
+              </div>
+              <span className="text-[11px] text-ink-soft">
+                Thẻ từ vựng được xếp thứ tự chữ cái, trượt ra sau 100ms
+              </span>
+            </div>
+          </div>
+
+          {/* Các ngăn phân loại chữ cái */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            {[
+              { id: 'ALL', label: 'Tất cả' },
+              { id: 'AF', label: 'A – F' },
+              { id: 'GL', label: 'G – L' },
+              { id: 'MR', label: 'M – R' },
+              { id: 'SZ', label: 'S – Z' },
+            ].map((section) => (
+              <button
+                key={section.id}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePullDrawer(section.id as any);
+                }}
+                className={`px-2.5 py-1 rounded-lg border border-ink text-xs font-mono font-black transition-all cursor-pointer ${
+                  activeDrawerSection === section.id
+                    ? 'bg-ink text-paper shadow-brutal-sm'
+                    : 'bg-card text-ink hover:bg-paper'
+                }`}
+              >
+                {section.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {loading ? (
-          <div className="text-center py-12 text-sm font-black text-ink">
-            Đang lật trang từ điển...
-          </div>
-        ) : words.length === 0 ? (
-          <EmptyState
-            title="Không tìm thấy mục từ phù hợp"
-            description="Hãy thử tìm kiếm với từ khóa khác hoặc bỏ các bộ lọc đang chọn."
-            reaction="shrug"
-          />
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {words.map((w, idx) => {
-              const isAdded = addedWords[w.id];
+        {(() => {
+          const displayedWords = words.filter((w) => {
+            if (activeDrawerSection === 'ALL') return true;
+            const ch = (w.targetText || '').trim().toUpperCase().charAt(0);
+            if (activeDrawerSection === 'AF') return ch >= 'A' && ch <= 'F';
+            if (activeDrawerSection === 'GL') return ch >= 'G' && ch <= 'L';
+            if (activeDrawerSection === 'MR') return ch >= 'M' && ch <= 'R';
+            if (activeDrawerSection === 'SZ') return ch >= 'S' && ch <= 'Z';
+            return true;
+          });
 
-              return (
-                <div
-                  key={w.id}
-                  className="card-paper p-6 space-y-3 bg-card hover:-translate-y-1 transition-all flex flex-col justify-between shadow-brutal-md border-2 border-ink"
-                >
+          return (
+            <>
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-black text-ink font-sans">
+                  Mục từ trong ngăn kéo ({activeDrawerSection})
+                </h2>
+                <span className="text-xs font-mono font-bold text-ink-muted">
+                  {displayedWords.length} thẻ từ
+                </span>
+              </div>
+
+              {loading ? (
+                <div className="text-center py-12 text-sm font-black text-ink">
+                  Đang kéo ngăn tủ từ điển...
+                </div>
+              ) : displayedWords.length === 0 ? (
+                <EmptyState
+                  title="Không tìm thấy mục từ phù hợp"
+                  description="Hãy thử tìm kiếm với từ khóa khác hoặc chọn ngăn kéo khác."
+                  reaction="shrug"
+                />
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {displayedWords.map((w, idx) => {
+                    const isAdded = addedWords[w.id];
+
+                    return (
+                      <div
+                        key={w.id}
+                        style={{ animationDelay: `${(idx % 10) * 100}ms` }}
+                        className="card-paper p-6 space-y-3 bg-card hover:-translate-y-1 transition-all flex flex-col justify-between shadow-brutal-md border-2 border-ink animate-message-slide"
+                      >
                   <div className="space-y-2.5">
                     {/* Header mục từ: Tiêu đề + Phiên âm + Stamp từ loại */}
                     <div className="flex items-start justify-between gap-2 border-b border-ink/15 pb-2.5">
@@ -469,8 +544,11 @@ export default function DictionaryPage() {
                 </div>
               );
             })}
-          </div>
-        )}
+                </div>
+              )}
+            </>
+          );
+        })()}
       </div>
     </div>
   );

@@ -21,6 +21,17 @@ export default function IeltsListeningPracticePage() {
   const [questionsList, setQuestionsList] = useState<any[]>([]);
   const [selectedQuestion, setSelectedQuestion] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [tapeCounter, setTapeCounter] = useState(105);
+
+  useEffect(() => {
+    let interval: any;
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setTapeCounter((c) => (c + 1) % 999);
+      }, 250);
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying]);
   const [showTranscript, setShowTranscript] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -203,22 +214,28 @@ export default function IeltsListeningPracticePage() {
           </span>
         </div>
 
-        {/* Khung Băng Cassette với 2 Bánh Răng Quay */}
+        {/* Khung Băng Cassette với 2 Bánh Răng Quay & Bộ Đếm Cơ Học */}
         <div className="bg-card border-2 border-ink rounded-2xl p-6 sm:p-8 shadow-inner flex flex-col items-center justify-center space-y-5">
-          <div className="w-full max-w-sm flex items-center justify-around py-3 bg-paper-2 border-2 border-ink rounded-xl shadow-brutal-sm">
+          <div className="w-full max-w-sm flex items-center justify-around py-3 px-2 bg-paper-2 border-2 border-ink rounded-xl shadow-brutal-sm">
             {/* Bánh răng trái */}
             <div
               className={`w-14 h-14 rounded-full border-4 border-ink bg-card flex items-center justify-center transition-all ${
-                isPlaying ? 'animate-spin' : ''
+                isPlaying ? 'animate-spool-spin' : ''
               }`}
-              style={{ animationDuration: '3s' }}
             >
               <div className="w-4 h-4 rounded-full bg-ink" />
             </div>
 
-            {/* Dải phim băng cassette */}
-            <div className="flex-1 px-4 space-y-1">
-              <div className="h-2 bg-ink/20 rounded-full overflow-hidden border border-ink/40">
+            {/* Cụm giữa: Dải phim & Bộ đếm số chạy */}
+            <div className="flex-1 px-3 space-y-1.5 flex flex-col items-center">
+              {/* Bộ đếm cơ học 3 số */}
+              <div className="flex items-center gap-1 bg-ink text-paper px-2 py-0.5 rounded border border-ink shadow-inner font-mono text-[11px] font-black tracking-widest select-none">
+                <span className="text-[9px] text-paper-2/60">COUNT</span>
+                <span>{String(tapeCounter).padStart(3, '0')}</span>
+              </div>
+
+              {/* Dải phim băng cassette */}
+              <div className="w-full h-2 bg-ink/20 rounded-full overflow-hidden border border-ink/40">
                 <div
                   className="h-full bg-red transition-all duration-300"
                   style={{ width: isPlaying ? '60%' : '15%' }}
@@ -232,9 +249,8 @@ export default function IeltsListeningPracticePage() {
             {/* Bánh răng phải */}
             <div
               className={`w-14 h-14 rounded-full border-4 border-ink bg-card flex items-center justify-center transition-all ${
-                isPlaying ? 'animate-spin' : ''
+                isPlaying ? 'animate-spool-spin' : ''
               }`}
-              style={{ animationDuration: '3s' }}
             >
               <div className="w-4 h-4 rounded-full bg-ink" />
             </div>

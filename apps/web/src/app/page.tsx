@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { Button } from '../components/ui/Button';
 import { StreakCard } from '../components/ui/StreakCard';
 import { LingLing } from '../components/ui/LingLing';
+import { InteractiveFlashcardDeck } from '../components/ui/InteractiveFlashcardDeck';
+import { StampSlam } from '../components/ui/StampSlam';
 
 export default function HomePage() {
   return (
@@ -64,54 +66,27 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Cột phải: Visual Bộ Thẻ & LingLing Mascot */}
-          <div className="lg:col-span-5 relative h-[360px] sm:h-[420px] select-none flex items-center justify-center max-w-full overflow-visible mx-auto w-full">
-            <div className="relative w-full max-w-[330px] sm:max-w-[400px] h-[330px] sm:h-[380px]">
-              {/* Thẻ 1 (phía sau bên trái) */}
-              <div className="absolute w-[220px] sm:w-[280px] bg-card border-2 border-ink rounded-2xl shadow-brutal p-4 sm:p-6 text-center top-3 left-0 sm:left-2 -rotate-6 z-10 transition-transform hover:-rotate-3">
-                <span className="inline-block text-[10px] sm:text-[11px] font-black uppercase tracking-wider bg-paper-2 border border-ink rounded-full px-2.5 py-0.5 sm:px-3 sm:py-1 mb-2 sm:mb-4">
-                  Danh từ · B1
-                </span>
-                <div className="text-xl sm:text-3xl font-black text-ink tracking-tight mb-1">Environment</div>
-                <div className="text-[11px] sm:text-xs text-ink-soft mb-2 sm:mb-3">/ɪnˈvaɪrənmənt/</div>
-                <div className="text-sm sm:text-lg font-extrabold text-teal">Môi trường sống</div>
-              </div>
-
-              {/* Thẻ 2 (ở giữa nền ngà) */}
-              <div className="absolute w-[220px] sm:w-[280px] bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal p-4 sm:p-6 text-center top-9 left-7 sm:top-14 sm:left-14 rotate-3 z-20 transition-transform hover:rotate-1">
-                <span className="inline-block text-[10px] sm:text-[11px] font-black uppercase tracking-wider bg-card border border-ink rounded-full px-2.5 py-0.5 sm:px-3 sm:py-1 mb-2 sm:mb-4">
-                  Động từ · A2
-                </span>
-                <div className="text-xl sm:text-3xl font-black text-ink tracking-tight mb-1">Achieve</div>
-                <div className="text-[11px] sm:text-xs text-ink-soft">/əˈtʃiːv/</div>
-              </div>
-
-              {/* Thẻ 3 (trên cùng bên phải) */}
-              <div className="absolute w-[230px] sm:w-[290px] bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-4 sm:p-6 text-center top-2 left-14 sm:top-4 sm:left-20 -rotate-2 z-30 transition-transform hover:rotate-0">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-5 sm:h-6 bg-amber/70 border-l-2 border-r-2 border-dashed border-ink/40 -rotate-3" />
-                <span className="inline-block text-[10px] sm:text-[11px] font-black uppercase tracking-wider bg-paper-2 border border-ink rounded-full px-2.5 py-0.5 sm:px-3 sm:py-1 mb-2 sm:mb-4">
-                  Tính từ · B2
-                </span>
-                <div className="text-xl sm:text-3xl font-black text-ink tracking-tight mb-1">Substantial</div>
-                <div className="text-[11px] sm:text-xs text-ink-soft mb-1 sm:mb-2">/səbˈstænʃl/</div>
-                {/* Đã xóa chữ "Đáng kể" thừa dưới cụm flashcard theo review 3.d */}
-              </div>
-
-              {/* Con dấu mực đỏ */}
-              <div className="absolute bottom-2 right-0 sm:bottom-4 sm:right-2 z-40 w-20 h-20 sm:w-28 sm:h-28 p-2 border-[3px] border-red rounded-full flex items-center justify-center -rotate-12 bg-[#FAF5EA]/95 text-red font-black text-[10px] sm:text-xs uppercase tracking-widest text-center shadow-brutal-sm">
-                Ôn tập<br />đúng lúc
-              </div>
-
+          {/* Cột phải: Visual Bộ Thẻ Tương Tác & LingLing Mascot */}
+          <div className="lg:col-span-5 relative select-none flex items-center justify-center max-w-full overflow-visible mx-auto w-full pt-4 sm:pt-0">
+            <div className="relative w-full max-w-[360px] sm:max-w-[400px] flex flex-col items-center">
               {/* Linh vật LingLing trao tim yêu thích */}
-              <div className="absolute -top-6 right-2 sm:-top-8 sm:right-0 z-40 w-24 sm:w-32 animate-mascot">
-                <LingLing reaction="heart" size={128} />
+              <div className="absolute -top-10 -right-2 sm:-top-12 sm:right-0 z-40 w-20 sm:w-24 pointer-events-none animate-mascot">
+                <LingLing reaction="heart" size={96} />
               </div>
 
-              {/* Bong bóng thoại LingLing */}
-              <div className="absolute top-14 sm:top-16 right-10 sm:right-16 z-50 max-w-[170px] sm:max-w-[210px] bg-card border-2 border-ink rounded-xl p-2.5 sm:p-3 text-[11px] sm:text-xs font-bold leading-snug shadow-brutal text-ink">
-                <b className="text-red">LingLing: </b>
-                Hôm nay ôn 5 từ thôi là đủ giữ chuỗi ngày học rồi! Cố lên nhé!
-                <div className="absolute -top-2 right-5 sm:right-6 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-card border-l-2 border-t-2 border-ink rotate-45" />
+              {/* Interactive Flashcard Deck */}
+              <InteractiveFlashcardDeck />
+
+              {/* Con dấu mực đỏ đóng xuống góc */}
+              <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:right-0 z-40 hidden sm:block pointer-events-none">
+                <StampSlam
+                  text="ÔN TẬP"
+                  subtext="ĐÚNG LÚC"
+                  variant="circle"
+                  color="red"
+                  size="sm"
+                  delayMs={300}
+                />
               </div>
             </div>
           </div>

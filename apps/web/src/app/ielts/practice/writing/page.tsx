@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../../../lib/api';
 import { LingLing } from '../../../../components/ui/LingLing';
+import { StampSlam } from '../../../../components/ui/StampSlam';
 
 export default function IeltsWritingPracticePage() {
   const [questionsList, setQuestionsList] = useState<any[]>([]);
@@ -21,6 +22,7 @@ export default function IeltsWritingPracticePage() {
   const [essayText, setEssayText] = useState('');
   const [loading, setLoading] = useState(true);
   const [evaluating, setEvaluating] = useState(false);
+  const [isFoldingEnvelope, setIsFoldingEnvelope] = useState(false);
   const [result, setResult] = useState<any>(null);
 
   // Fallback demo questions if offline
@@ -80,6 +82,9 @@ export default function IeltsWritingPracticePage() {
 
   const handleEvaluate = async () => {
     if (!essayText.trim() || !selectedQuestion) return;
+    setIsFoldingEnvelope(true);
+    await new Promise((r) => setTimeout(r, 400));
+    setIsFoldingEnvelope(false);
     setEvaluating(true);
     try {
       const res = await api.evaluateIeltsWriting({
@@ -195,7 +200,11 @@ export default function IeltsWritingPracticePage() {
       </div>
 
       {/* KHUNG SOẠN THẢO BÀI VIẾT: GIẤY KẺ DÒNG (LINED PAPER) */}
-      <div className="card-paper p-6 sm:p-8 space-y-4 shadow-brutal-xl bg-card">
+      <div
+        className={`card-paper p-6 sm:p-8 space-y-4 shadow-brutal-xl bg-card transition-all duration-300 ${
+          isFoldingEnvelope ? 'animate-paper-envelope pointer-events-none' : ''
+        }`}
+      >
         <div className="flex items-center justify-between border-b-2 border-ink/20 pb-3">
           <span className="text-xs font-black uppercase tracking-wider text-ink block">
             Bài viết của bạn:
@@ -228,15 +237,17 @@ export default function IeltsWritingPracticePage() {
 
           <button
             onClick={handleEvaluate}
-            disabled={evaluating || wordCount < 20}
+            disabled={evaluating || isFoldingEnvelope || wordCount < 20}
             className="btn btn-red text-sm font-black shadow-brutal flex items-center justify-center gap-2 self-start sm:self-auto disabled:opacity-50"
           >
-            {evaluating ? (
+            {isFoldingEnvelope ? (
+              <span>Đang gửi bài vào phong bì...</span>
+            ) : evaluating ? (
               <span>Đang đối chiếu quy tắc...</span>
             ) : (
               <>
                 <Send className="w-4 h-4" />
-                <span>Chấm điểm theo 4 tiêu chí →</span>
+                <span>Nộp bài chấm điểm →</span>
               </>
             )}
           </button>
@@ -247,7 +258,7 @@ export default function IeltsWritingPracticePage() {
       {result && (
         <div className="space-y-6 animate-in fade-in duration-300">
           {/* Header Kết Quả Overall */}
-          <div className="bg-paper-2 border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="bg-paper-2 border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative">
             <div className="flex items-center gap-5">
               <LingLing
                 reaction={(result.overallBand || 0) < 6.5 ? 'sternCrossed' : 'proud'}
@@ -268,11 +279,14 @@ export default function IeltsWritingPracticePage() {
               </div>
             </div>
 
-            <div className="text-center sm:text-right bg-card border-2 border-ink rounded-2xl p-4 shadow-brutal-sm flex-shrink-0">
-              <span className="text-[11px] font-black uppercase text-ink-muted block">Overall Band</span>
-              <span className="text-4xl font-black font-mono text-red">
-                Band {result.overallBand?.toFixed(1) || '6.0'}
-              </span>
+            <div className="flex justify-center sm:justify-end flex-shrink-0">
+              <StampSlam
+                text={`BAND ${result.overallBand?.toFixed(1) || '6.0'}`}
+                subtext="ĐÃ CHẤM"
+                variant="circle"
+                color="red"
+                size="md"
+              />
             </div>
           </div>
 
@@ -351,17 +365,25 @@ export default function IeltsWritingPracticePage() {
             </div>
           </div>
 
-          {/* Gợi Ý Nâng Band dạng Giấy Note Ghim */}
+          {/* Gợi Ý Nâng Band dạng Bút Tích Mực Đỏ Viết Tay Hiện Dần */}
           {Array.isArray(result.suggestions) && result.suggestions.length > 0 && (
-            <div className="lined-paper border-2 border-ink rounded-2xl p-5 sm:p-6 space-y-2.5 shadow-brutal-sm">
-              <span className="text-xs font-black uppercase tracking-wider text-teal block">
-                Gợi ý nâng Band từ bộ luật:
-              </span>
-              <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-ink font-sans">
+            <div className="lined-paper border-2 border-ink rounded-2xl p-5 sm:p-6 space-y-3 shadow-brutal-sm">
+              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-red">
+                <span>✍️</span>
+                <span>Bút tích nhận xét của giám khảo (hiện dần nét mực):</span>
+              </div>
+              <div className="space-y-2">
                 {result.suggestions.map((sug: string, idx: number) => (
-                  <li key={idx}>{sug}</li>
+                  <p
+                    key={idx}
+                    style={{ animationDelay: `${idx * 160}ms` }}
+                    className="text-xs sm:text-sm font-serif italic font-bold text-red tracking-wide animate-message-slide flex items-start gap-2"
+                  >
+                    <span className="text-red font-sans">✦</span>
+                    <span>{sug}</span>
+                  </p>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
         </div>

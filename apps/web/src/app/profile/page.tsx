@@ -29,10 +29,18 @@ const DAILY_GOALS = [
 
 export default function ProfilePage() {
   const [goalIndex, setGoalIndex] = useState(1); // Mặc định: Vừa sức (30p)
+  const [isCardFlipped, setIsCardFlipped] = useState(false);
+  const [isSliderWiggling, setIsSliderWiggling] = useState(false);
   const [timezone, setTimezone] = useState('Asia/Ho_Chi_Minh');
   const [emailAlert, setEmailAlert] = useState(true);
   const [paperSound, setPaperSound] = useState(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const handleGoalChange = (newIdx: number) => {
+    setGoalIndex(newIdx);
+    setIsSliderWiggling(true);
+    setTimeout(() => setIsSliderWiggling(false), 200);
+  };
 
   const [formData, setFormData] = useState({
     fullName: 'Vũ Công',
@@ -77,72 +85,134 @@ export default function ProfilePage() {
         <span className="text-ink">Hồ sơ học viên</span>
       </div>
 
-      {/* 1. CONCEPT THẺ HỌC VIÊN (CARD GIẤY NHƯ THẺ ID) */}
-      <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl relative overflow-hidden">
-        {/* Họa tiết góc thẻ ID */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-paper-2 rounded-bl-full border-l-2 border-b-2 border-ink -z-0 opacity-50" />
+      {/* 1. CONCEPT THẺ HỌC VIÊN LẬT 3D XEM BẢNG VÀNG THÀNH TÍCH MẶT SAU */}
+      <div className="perspective-1000 w-full select-none">
+        <div
+          onClick={() => setIsCardFlipped(!isCardFlipped)}
+          className={`preserve-3d transition-transform duration-300 relative cursor-pointer min-h-[300px] sm:min-h-[220px] ${
+            isCardFlipped ? 'rotate-y-180' : ''
+          }`}
+        >
+          {/* MẶT TRƯỚC THẺ HỌC VIÊN */}
+          <div className="backface-hidden bg-card border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl relative overflow-hidden">
+            {/* Họa tiết góc thẻ ID */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-paper-2 rounded-bl-full border-l-2 border-b-2 border-ink -z-0 opacity-50 pointer-events-none" />
 
-        <div className="relative z-10 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-ink/20 pb-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
-              <Shield className="w-3.5 h-3.5" />
-              <span>Thẻ Học Viên Lingual</span>
-            </div>
+            <div className="relative z-10 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-ink/20 pb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
+                  <Shield className="w-3.5 h-3.5" />
+                  <span>Thẻ Học Viên Lingual (Mặt Trước)</span>
+                </div>
 
-            <div className="text-xs font-mono font-bold text-ink-muted">
-              MÃ ĐỊNH DANH: <span className="text-ink font-black">LNG-2026-9921</span>
+                <div className="text-xs font-mono font-bold text-ink-muted">
+                  MÃ ĐỊNH DANH: <span className="text-ink font-black">LNG-2026-9921</span>
+                </div>
+              </div>
+
+              {/* Chi Tiết Thẻ Học Viên */}
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="flex items-center gap-5">
+                  {/* Avatar trong vòng tròn mực */}
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-3 border-ink bg-paper p-1 shadow-brutal-sm flex-shrink-0 flex items-center justify-center overflow-hidden">
+                    <LingLing reaction="proud" size={80} />
+                  </div>
+
+                  <div className="space-y-1">
+                    <h1 className="text-2xl sm:text-3xl font-black text-ink tracking-tight font-sans">
+                      {formData.fullName}
+                    </h1>
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-ink-soft">
+                      <span>@{formData.displayName}</span>
+                      <span>·</span>
+                      <span>{formData.email}</span>
+                    </div>
+                    <div className="text-[11px] font-bold text-ink-muted flex items-center gap-1.5 pt-1">
+                      <Calendar className="w-3.5 h-3.5 text-teal" />
+                      <span>Gia nhập sổ tay: 15/09/2026</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Con Dấu Mực (Stamps) Chuỗi ngày học & XP */}
+                <div className="flex flex-wrap items-center gap-3">
+                  {/* Stamp Chuyên Cần */}
+                  <div className="card-paper p-3 bg-paper-2 border-2 border-ink rounded-2xl text-center min-w-[105px]">
+                    <span className="text-[10px] font-black uppercase text-ink-muted block">Chuyên cần</span>
+                    <span className="text-lg font-black font-mono text-teal">6 / 7 ngày</span>
+                    <span className="text-[10px] font-bold text-ink-soft block">Tuần này</span>
+                  </div>
+
+                  {/* Stamp Điểm Tích Lũy */}
+                  <div className="card-paper p-3 bg-paper-2 border-2 border-ink rounded-2xl text-center min-w-[105px]">
+                    <span className="text-[10px] font-black uppercase text-ink-muted block">Kinh nghiệm</span>
+                    <span className="text-lg font-black font-mono text-red">1,420 XP</span>
+                    <span className="text-[10px] font-bold text-ink-soft block">Hạng Vàng</span>
+                  </div>
+
+                  {/* Nút Đăng Xuất Dạng Nút Giấy */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleLogout();
+                    }}
+                    className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-2 cursor-pointer self-stretch sm:self-auto"
+                    title="Đăng xuất tài khoản"
+                  >
+                    <LogOut className="w-3.5 h-3.5 text-ink-muted" />
+                    <span>Đăng xuất</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="text-[11px] font-bold text-amber-800 bg-amber-50/80 rounded px-2.5 py-1 w-fit border border-dashed border-ink/20 flex items-center gap-1.5">
+                <span>↻</span>
+                <span>Chạm thẻ để lật 3D xem bảng vàng thành tích mặt sau</span>
+              </div>
             </div>
           </div>
 
-          {/* Chi Tiết Thẻ Học Viên */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="flex items-center gap-5">
-              {/* Avatar trong vòng tròn mực */}
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-3 border-ink bg-paper p-1 shadow-brutal-sm flex-shrink-0 flex items-center justify-center overflow-hidden">
-                <LingLing reaction="proud" size={80} />
+          {/* MẶT SAU THẺ HỌC VIÊN (STATS & HUY HIỆU) */}
+          <div className="backface-hidden rotate-y-180 absolute inset-0 bg-paper-2 border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl flex flex-col justify-between">
+            <div className="flex items-center justify-between border-b-2 border-ink/20 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-red" />
+                <span className="font-mono text-xs font-black uppercase tracking-wider text-ink">
+                  HỒ SƠ NĂNG LỰC & CHỈ SỐ HỌC VIÊN
+                </span>
+              </div>
+              <span className="text-[11px] font-bold text-ink-muted">↺ Chạm để lật lại mặt trước</span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2">
+              <div className="card-paper p-3.5 bg-card border border-ink text-center shadow-brutal-sm">
+                <span className="text-[10px] font-black uppercase text-ink-muted block">Tổng từ đã thuộc</span>
+                <span className="text-2xl font-mono font-black text-ink">482 từ</span>
+                <span className="text-[9px] text-teal font-bold block mt-0.5">Top 5% toàn hệ thống</span>
               </div>
 
-              <div className="space-y-1">
-                <h1 className="text-2xl sm:text-3xl font-black text-ink tracking-tight font-sans">
-                  {formData.fullName}
-                </h1>
-                <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-ink-soft">
-                  <span>@{formData.displayName}</span>
-                  <span>·</span>
-                  <span>{formData.email}</span>
-                </div>
-                <div className="text-[11px] font-bold text-ink-muted flex items-center gap-1.5 pt-1">
-                  <Calendar className="w-3.5 h-3.5 text-teal" />
-                  <span>Gia nhập sổ tay: 15/09/2026</span>
-                </div>
+              <div className="card-paper p-3.5 bg-card border border-ink text-center shadow-brutal-sm">
+                <span className="text-[10px] font-black uppercase text-ink-muted block">Streak kỷ lục</span>
+                <span className="text-2xl font-mono font-black text-red">28 ngày</span>
+                <span className="text-[9px] text-red font-bold block mt-0.5">Không đứt đoạn</span>
+              </div>
+
+              <div className="card-paper p-3.5 bg-card border border-ink text-center shadow-brutal-sm">
+                <span className="text-[10px] font-black uppercase text-ink-muted block">Đóng băng bảo vệ</span>
+                <span className="text-2xl font-mono font-black text-teal">1 lượt</span>
+                <span className="text-[9px] text-ink-soft font-bold block mt-0.5">Sẵn sàng kích hoạt</span>
+              </div>
+
+              <div className="card-paper p-3.5 bg-card border border-ink text-center shadow-brutal-sm">
+                <span className="text-[10px] font-black uppercase text-ink-muted block">Huy hiệu đạt được</span>
+                <span className="text-2xl font-mono font-black text-amber">12</span>
+                <span className="text-[9px] text-amber-700 font-bold block mt-0.5">Bộ sưu tập danh dự</span>
               </div>
             </div>
 
-            {/* Con Dấu Mực (Stamps) Chuỗi ngày học & XP */}
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Stamp Chuyên Cần */}
-              <div className="card-paper p-3 bg-paper-2 border-2 border-ink rounded-2xl text-center min-w-[105px]">
-                <span className="text-[10px] font-black uppercase text-ink-muted block">Chuyên cần</span>
-                <span className="text-lg font-black font-mono text-teal">6 / 7 ngày</span>
-                <span className="text-[10px] font-bold text-ink-soft block">Tuần này</span>
-              </div>
-
-              {/* Stamp Điểm Tích Lũy */}
-              <div className="card-paper p-3 bg-paper-2 border-2 border-ink rounded-2xl text-center min-w-[105px]">
-                <span className="text-[10px] font-black uppercase text-ink-muted block">Kinh nghiệm</span>
-                <span className="text-lg font-black font-mono text-red">1,420 XP</span>
-                <span className="text-[10px] font-bold text-ink-soft block">Hạng Vàng</span>
-              </div>
-
-              {/* Nút Đăng Xuất Dạng Nút Giấy */}
-              <button
-                onClick={handleLogout}
-                className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-2 cursor-pointer self-stretch sm:self-auto"
-                title="Đăng xuất tài khoản"
-              >
-                <LogOut className="w-3.5 h-3.5 text-ink-muted" />
-                <span>Đăng xuất</span>
-              </button>
+            <div className="flex items-center justify-between border-t-2 border-ink/20 pt-2 text-[11px] font-black text-ink-muted">
+              <span>SỔ TAY TIẾNG ANH LINGUAL · ĐÃ XÁC THỰC BẢN QUYỀN</span>
+              <span className="text-red">✦ NIÊN KHÓA 2026</span>
             </div>
           </div>
         </div>
@@ -220,7 +290,11 @@ export default function ProfilePage() {
               2. Mục tiêu rèn luyện mỗi ngày:
             </span>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-xl text-xs font-black text-red">
+            <div
+              className={`inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-xl text-xs font-black text-red transition-transform ${
+                isSliderWiggling ? 'animate-notch-snap' : ''
+              }`}
+            >
               <Clock className="w-3.5 h-3.5" />
               <span>
                 Mức {activeGoal.level}: {activeGoal.name} ({activeGoal.minutes} phút/ngày)
@@ -229,14 +303,14 @@ export default function ProfilePage() {
           </div>
 
           <div className="p-5 bg-paper border-2 border-ink rounded-2xl space-y-5">
-            {/* Thanh Slider 4 Mốc */}
+            {/* Thanh Slider 4 Mốc có snap từng nấc */}
             <input
               type="range"
               min={0}
               max={3}
               step={1}
               value={goalIndex}
-              onChange={(e) => setGoalIndex(parseInt(e.target.value))}
+              onChange={(e) => handleGoalChange(parseInt(e.target.value))}
               className="w-full h-3 bg-paper-2 rounded-lg appearance-none cursor-pointer accent-red border border-ink"
             />
 
@@ -248,7 +322,7 @@ export default function ProfilePage() {
                   <button
                     type="button"
                     key={g.level}
-                    onClick={() => setGoalIndex(idx)}
+                    onClick={() => handleGoalChange(idx)}
                     className={`p-3 rounded-xl border-2 text-left transition-all cursor-pointer ${
                       isSelected
                         ? 'border-ink bg-card shadow-brutal-sm -translate-y-0.5'

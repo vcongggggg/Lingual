@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
+import { StampSlam } from '../../components/ui/StampSlam';
 
 // 6 mức đánh giá ghi nhớ (tương đương thang đo lặp lại ngắt quãng 0–5)
 const MEMORY_RATINGS = [
@@ -32,6 +33,12 @@ export default function SrsPage() {
   const [loading, setLoading] = useState(true);
   const [sessionCompleted, setSessionCompleted] = useState(false);
   const [reviewedCount, setReviewedCount] = useState(0);
+  const [stamped, setStamped] = useState(false);
+  const [cardStamps, setCardStamps] = useState<Record<string, number>>({
+    'card-1': 4, // 4 stamps initially so 1 review triggers 5 stamps and red border
+    'card-2': 2,
+    'card-3': 1,
+  });
 
   // Fallback demo flashcard queue if API is offline
   const FALLBACK_QUEUE = [
@@ -117,19 +124,27 @@ export default function SrsPage() {
   };
 
   const handleRating = async (ratingLevel: number) => {
+    const cardId = currentCard?.id || `card-${currentIndex + 1}`;
+    const nextStamps = (cardStamps[cardId] || 0) + 1;
+    setCardStamps((prev) => ({ ...prev, [cardId]: nextStamps }));
+    setStamped(true);
     setReviewedCount((prev) => prev + 1);
+
     try {
       if (currentCard?.id) {
         await api.reviewSrsWord(currentCard.id, ratingLevel);
       }
     } catch {}
 
-    setIsFlipped(false);
-    if (currentIndex + 1 < queue.length) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      setSessionCompleted(true);
-    }
+    setTimeout(() => {
+      setStamped(false);
+      setIsFlipped(false);
+      if (currentIndex + 1 < queue.length) {
+        setCurrentIndex((prev) => prev + 1);
+      } else {
+        setSessionCompleted(true);
+      }
+    }, 320);
   };
 
   if (loading) {
@@ -145,7 +160,17 @@ export default function SrsPage() {
   if (sessionCompleted) {
     return (
       <div className="max-w-xl mx-auto px-4 py-16 text-center space-y-6 pb-28 sm:pb-20">
-        <div className="card-paper p-8 sm:p-12 space-y-6 bg-card border-4 border-ink shadow-brutal-xl">
+        <div className="card-paper p-8 sm:p-12 space-y-6 bg-card border-4 border-ink shadow-brutal-xl relative">
+          <div className="flex justify-center -mb-2">
+            <StampSlam
+              text="HOÀN THÀNH"
+              subtext="PHIÊN ÔN TẬP"
+              variant="badge"
+              color="teal"
+              size="lg"
+            />
+          </div>
+
           <LingLing reaction="party" size={130} animate={true} />
 
           <div className="space-y-2">
@@ -218,34 +243,75 @@ export default function SrsPage() {
         <div className="tape-corner-tr" />
 
         {/* Khung thẻ thư viện cổ điển */}
-        <div
-          onClick={() => setIsFlipped(!isFlipped)}
-          className={`card-paper p-8 sm:p-12 min-h-[380px] sm:min-h-[420px] flex flex-col justify-between cursor-pointer select-none relative transition-all duration-300 hover:shadow-brutal-xl ${
-            isFlipped ? 'bg-paper-2' : 'bg-card'
-          }`}
-        >
-          {/* Header thẻ thư viện */}
-          <div className="flex items-center justify-between border-b-2 border-ink/20 pb-4">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-ink-muted">
-                {currentCard.libraryCode}
-              </span>
-              <span className="text-[10px] font-black uppercase tracking-wider bg-card border border-ink px-2 py-0.5 rounded text-teal">
-                Cấp độ {currentCard.level}
-              </span>
-            </div>
+        {(() => {
+          const currentCardStamps = cardStamps[currentCard?.id || `card-${currentIndex + 1}`] || 0;
+          const isMastered = currentCardStamps >= 5;
 
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsFlipped(!isFlipped);
-              }}
-              className="flex items-center gap-1.5 text-xs font-black text-red hover:underline"
+          return (
+            <div
+              onClick={() => setIsFlipped(!isFlipped)}
+              className={`p-8 sm:p-12 min-h-[380px] sm:min-h-[420px] rounded-2xl flex flex-col justify-between cursor-pointer select-none relative transition-all duration-300 hover:shadow-brutal-xl ${
+                isFlipped ? 'bg-paper-2' : 'bg-card'
+              } ${
+                isMastered
+                  ? 'border-4 border-red shadow-[0_0_0_2px_#D64027,8px_9px_0_#211A13]'
+                  : 'border-2 border-ink shadow-brutal'
+              }`}
             >
-              <RotateCw className="w-3.5 h-3.5" />
-              <span>{isFlipped ? 'Xem mặt trước' : 'Lật mặt sau'}</span>
-            </button>
-          </div>
+              {/* Hiệu ứng con dấu ĐÃ ÔN đóng xuống khi vừa đánh giá */}
+              {stamped && (
+                <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
+                  <StampSlam
+                    text="ĐÃ ÔN"
+                    subtext={`DẤU ${currentCardStamps}/5`}
+                    variant="circle"
+                    color="red"
+                    size="lg"
+                  />
+                </div>
+              )}
+
+              {/* Header thẻ thư viện */}
+              <div className="flex items-center justify-between border-b-2 border-ink/20 pb-4">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-mono text-xs font-black text-ink-muted">
+                    {currentCard.libraryCode}
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-wider bg-card border border-ink px-2 py-0.5 rounded text-teal">
+                    Cấp độ {currentCard.level}
+                  </span>
+
+                  {/* 5 Hộp con dấu tiến độ ôn */}
+                  <div className="flex items-center gap-1 ml-2 bg-paper-2 border border-ink/30 px-2 py-0.5 rounded-md" title={`${currentCardStamps}/5 dấu ôn tập`}>
+                    {[1, 2, 3, 4, 5].map((idx) => (
+                      <span
+                        key={idx}
+                        className={`w-3.5 h-3.5 rounded-sm border text-[8px] font-black flex items-center justify-center ${
+                          idx <= currentCardStamps
+                            ? 'bg-red border-red text-white'
+                            : 'border-ink/30 text-ink/30'
+                        }`}
+                      >
+                        {idx <= currentCardStamps ? '✓' : idx}
+                      </span>
+                    ))}
+                    {isMastered && (
+                      <span className="text-[9px] font-black uppercase text-red ml-1">Đủ 5 dấu</span>
+                    )}
+                  </div>
+                </div>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsFlipped(!isFlipped);
+                  }}
+                  className="flex items-center gap-1.5 text-xs font-black text-red hover:underline"
+                >
+                  <RotateCw className="w-3.5 h-3.5" />
+                  <span>{isFlipped ? 'Xem mặt trước' : 'Lật mặt sau'}</span>
+                </button>
+              </div>
 
           {/* Nội dung Mặt Trước / Mặt Sau */}
           {!isFlipped ? (
@@ -319,6 +385,8 @@ export default function SrsPage() {
             <span>HỆ THỐNG THẺ GHI NHỚ LINGUAL</span>
           </div>
         </div>
+        );
+      })()}
       </div>
 
       {/* CỤM NÚT CHẤM ĐIỂM NHỚ 0–5 DẠNG NÚT GIẤY */}

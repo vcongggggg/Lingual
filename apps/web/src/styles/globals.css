@@ -62,8 +62,8 @@ body {
 }
 
 .btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0 0 0 var(--ink);
+  transform: translate(3px, 3px) scale(0.96);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 .btn-red {
@@ -96,7 +96,12 @@ body {
   border-radius: 18px;
   box-shadow: 6px 6px 0 var(--ink);
   padding: 24px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card-paper:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 9px 0 var(--ink);
 }
 
 .card-paper-tilt-1 {
@@ -317,6 +322,253 @@ nextjs-portal,
 [data-nextjs-dialog-overlay],
 div[data-nextjs-route-announcer] {
   display: none !important;
+}
+
+/* ==========================================================================
+   MICRO-INTERACTIONS PHONG CÁCH SỔ TAY GIẤY (PAPER CRAFT MICRO-INTERACTIONS)
+   ========================================================================== */
+
+/* 1. 3D Perspective & Flip */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* 2. Con Dấu Đóng Xuống (Stamp Slam) */
+@keyframes stamp-slam {
+  0% {
+    opacity: 0;
+    transform: scale(2.4) rotate(14deg);
+  }
+  70% {
+    opacity: 0.95;
+    transform: scale(0.92) rotate(-10deg);
+  }
+  85% {
+    transform: scale(1.04) rotate(-7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@keyframes stamp-shake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1.5px); }
+  40% { transform: translate(2px, -1.5px); }
+  60% { transform: translate(-1.5px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+.animate-stamp-slam {
+  animation: stamp-slam 250ms cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+.animate-stamp-shake {
+  animation: stamp-shake 220ms ease-in-out;
+}
+
+/* 3. Flashcard Thẻ Bay (Card Throw) */
+@keyframes card-fly-right {
+  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(130%) rotate(16deg); opacity: 0; }
+}
+
+@keyframes card-fly-left {
+  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(-130%) rotate(-16deg); opacity: 0; }
+}
+
+@keyframes card-emerge {
+  0% { transform: scale(0.94); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-card-fly-right {
+  animation: card-fly-right 300ms ease-out forwards;
+}
+
+.animate-card-fly-left {
+  animation: card-fly-left 300ms ease-out forwards;
+}
+
+.animate-card-emerge {
+  animation: card-emerge 250ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 4. Tin Nhắn Chat LingLing & Typing Dots */
+@keyframes message-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message-slide {
+  animation: message-slide-in 200ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes ink-drop-pulse {
+  0%, 80%, 100% {
+    transform: scale(0.65);
+    opacity: 0.35;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.animate-ink-dot-1 {
+  animation: ink-drop-pulse 1.2s infinite ease-in-out 0ms;
+}
+.animate-ink-dot-2 {
+  animation: ink-drop-pulse 1.2s infinite ease-in-out 180ms;
+}
+.animate-ink-dot-3 {
+  animation: ink-drop-pulse 1.2s infinite ease-in-out 360ms;
+}
+
+/* 5. Cassette Tape Reel Rotation */
+@keyframes tape-spool-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spool-spin {
+  animation: tape-spool-spin 3s linear infinite;
+}
+
+/* 6. Biểu Đồ Analytics Mọc Cột */
+@keyframes bar-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.origin-bottom {
+  transform-origin: bottom;
+}
+
+.animate-bar-grow {
+  animation: bar-grow 320ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 7. Vé Trò Chơi Răng Cưa & Xé Đôi */
+.ticket-card {
+  position: relative;
+  background-color: var(--card);
+  border: var(--line);
+  border-radius: 16px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ticket-card:hover {
+  transform: translateY(-4px) rotate(1deg);
+  box-shadow: 6px 8px 0 var(--ink);
+}
+
+.ticket-notch-l, .ticket-notch-r {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: var(--paper);
+  border: var(--line);
+  border-radius: 50%;
+  z-index: 5;
+}
+.ticket-notch-l {
+  left: -10px;
+}
+.ticket-notch-r {
+  right: -10px;
+}
+
+@keyframes ticket-tear-anim {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.96) rotate(-2deg); opacity: 0.7; }
+  100% { transform: scale(0.85) translateY(10px); opacity: 0; }
+}
+
+.animate-ticket-tear {
+  animation: ticket-tear-anim 300ms ease-out forwards;
+}
+
+/* 8. Bài Viết Nộp Vào Phong Bì */
+@keyframes paper-to-envelope {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-24px) scale(0.82);
+    opacity: 0;
+  }
+}
+
+.animate-paper-envelope {
+  animation: paper-to-envelope 400ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 9. Nấc Slider Haptic Wiggle */
+@keyframes notch-snap-wiggle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08) rotate(1deg); }
+}
+
+.animate-notch-snap {
+  animation: notch-snap-wiggle 180ms ease-out;
+}
+
+/* 10. Chuyển Route / Page Entry */
+@keyframes page-entry-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-entry {
+  animation: page-entry-fade 200ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 11. Hỗ Trợ Tôn Trọng Người Dùng Bật Giảm Chuyển Động */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:hover, .btn:active, .card-paper:hover, .ticket-card:hover {
+    transform: none !important;
+  }
 }
 
 

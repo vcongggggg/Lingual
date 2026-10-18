@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../../lib/api';
 import { LingLing } from '../../../components/ui/LingLing';
+import { StampSlam } from '../../../components/ui/StampSlam';
 
 export default function IeltsMockTestPage() {
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
@@ -359,7 +360,18 @@ export default function IeltsMockTestPage() {
         </div>
       ) : (
         /* KẾT QUẢ PHÒNG THI CHUẨN XÁC, KHÔNG BỊA ĐIỂM */
-        <div className="bg-card border-4 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl space-y-6 text-center animate-in fade-in duration-300">
+        <div className="bg-card border-4 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl space-y-6 text-center animate-in fade-in duration-300 relative overflow-visible">
+          {/* Con dấu ĐÃ NỘP đóng xuống đầu tiên */}
+          <div className="flex justify-center -mb-2">
+            <StampSlam
+              text="ĐÃ NỘP"
+              subtext="MOCK TEST"
+              variant="badge"
+              color="red"
+              size="lg"
+            />
+          </div>
+
           <LingLing
             reaction={(result?.overallBand || 0) >= 6.5 ? 'trophy' : 'tear'}
             size={120}
@@ -382,25 +394,37 @@ export default function IeltsMockTestPage() {
             </p>
           </div>
 
-          {/* Bảng 4 Kỹ Năng: Reading/Listening chấm thật, Writing/Speaking để "Chưa chấm" */}
+          {/* Bảng 4 Kỹ Năng: Reading/Listening chấm thật đóng dấu theo nhịp, Writing/Speaking để "Chưa chấm" */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
             {/* Reading */}
-            <div className="card-paper p-4 bg-paper-2 space-y-1">
+            <div className="card-paper p-4 bg-paper-2 space-y-1 relative">
               <span className="text-[10px] font-black uppercase text-ink-muted block">Reading</span>
-              <span className="text-2xl font-black font-mono text-teal">
-                Band {result?.readingBand?.toFixed(1) || '0.0'}
-              </span>
+              <div className="py-1">
+                <StampSlam
+                  text={`BAND ${result?.readingBand?.toFixed(1) || '0.0'}`}
+                  variant="rect"
+                  color="teal"
+                  size="sm"
+                  delayMs={150}
+                />
+              </div>
               <span className="text-[10px] text-ink-soft block font-bold">
                 {result?.readingCorrect} / {result?.readingTotal} câu đúng
               </span>
             </div>
 
             {/* Listening */}
-            <div className="card-paper p-4 bg-paper-2 space-y-1">
+            <div className="card-paper p-4 bg-paper-2 space-y-1 relative">
               <span className="text-[10px] font-black uppercase text-ink-muted block">Listening</span>
-              <span className="text-2xl font-black font-mono text-amber">
-                Band {result?.listeningBand?.toFixed(1) || '0.0'}
-              </span>
+              <div className="py-1">
+                <StampSlam
+                  text={`BAND ${result?.listeningBand?.toFixed(1) || '0.0'}`}
+                  variant="rect"
+                  color="red"
+                  size="sm"
+                  delayMs={300}
+                />
+              </div>
               <span className="text-[10px] text-ink-soft block font-bold">
                 {result?.listeningCorrect} / {result?.listeningTotal} câu đúng
               </span>
@@ -429,13 +453,20 @@ export default function IeltsMockTestPage() {
             </div>
           </div>
 
-          {/* Overall Band */}
-          <div className="p-4 bg-paper-2 border-2 border-ink rounded-2xl max-w-sm mx-auto space-y-1">
+          {/* Overall Band với con dấu tròn to đóng sau 450ms */}
+          <div className="p-4 bg-paper-2 border-2 border-ink rounded-2xl max-w-sm mx-auto space-y-2 relative">
             <span className="text-xs font-black uppercase text-ink-muted block">
               Band Điểm Ước Tính (Reading & Listening)
             </span>
-            <div className="text-3xl font-black font-mono text-red">
-              Overall Band {result?.overallBand?.toFixed(1) || '6.0'}
+            <div className="flex justify-center py-1">
+              <StampSlam
+                text={`BAND ${result?.overallBand?.toFixed(1) || '6.0'}`}
+                subtext="OVERALL"
+                variant="circle"
+                color="red"
+                size="md"
+                delayMs={450}
+              />
             </div>
           </div>
 

@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
+import { StampSlam } from '../../components/ui/StampSlam';
+import { useCountUp } from '../../lib/useCountUp';
 
 interface SkillScore {
   key: string;
@@ -112,6 +114,9 @@ export default function AnalyticsPage() {
   const [skills, setSkills] = useState<SkillScore[]>(DEFAULT_SKILLS);
   const [loading, setLoading] = useState(true);
 
+  const animatedScore = useCountUp(overallScore, 800);
+  const animatedMinutes = useCountUp(totalStudyMinutes, 800);
+
   useEffect(() => {
     async function loadData() {
       try {
@@ -171,7 +176,7 @@ export default function AnalyticsPage() {
 
           <div className="flex flex-col items-center flex-shrink-0">
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-              Điểm tổng kết tuần đạt <span className="text-red">{overallScore}/100</span>! Phong độ đỉnh cao!
+              Điểm tổng kết tuần đạt <span className="text-red">{animatedScore}/100</span>! Phong độ đỉnh cao!
             </div>
             <LingLing reaction="flex" size={125} />
           </div>
@@ -191,7 +196,7 @@ export default function AnalyticsPage() {
             </span>
           </div>
           <div className="text-4xl font-black text-ink font-mono">
-            {overallScore}<span className="text-lg font-bold text-ink-muted">/100</span>
+            {animatedScore}<span className="text-lg font-bold text-ink-muted">/100</span>
           </div>
           <span className="text-xs font-bold text-teal block">
             Trình độ ước tính: Bậc {estimatedCEFR}
@@ -209,7 +214,7 @@ export default function AnalyticsPage() {
             </span>
           </div>
           <div className="text-4xl font-black text-teal font-mono">
-            {Math.floor(totalStudyMinutes / 60)}h {totalStudyMinutes % 60}p
+            {Math.floor(animatedMinutes / 60)}h {animatedMinutes % 60}p
           </div>
           <span className="text-xs font-bold text-ink-soft block">
             Tổng số phút tích lũy trên hệ thống
@@ -235,70 +240,128 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      {/* LỊCH HỌC NHƯ "BẢNG CHẤM CÔNG" (ATTENDANCE RECORD) */}
-      <div className="card-paper p-6 sm:p-8 space-y-4 bg-paper-2 border-2 border-ink shadow-brutal-md">
-        <div className="flex items-center justify-between border-b-2 border-ink/20 pb-3">
+      {/* LỊCH HỌC NHƯ "BẢNG CHẤM CÔNG" (ATTENDANCE RECORD) & BIỂU ĐỒ HIGHLIGHTER 7 NGÀY */}
+      <div className="card-paper p-6 sm:p-8 space-y-6 bg-paper-2 border-2 border-ink shadow-brutal-md">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-ink/20 pb-3">
           <div>
             <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
-              Bảng chấm công rèn luyện
+              Bảng chấm công rèn luyện & Phân tích thời lượng
             </span>
             <h3 className="text-lg font-black text-ink font-sans">
-              Nhật ký chuyên cần tuần này
+              Nhật ký chuyên cần & Cột giờ học tuần này
             </h3>
           </div>
-          <span className="font-mono text-xs font-black text-teal bg-card border border-ink px-2.5 py-1 rounded-md">
+          <span className="font-mono text-xs font-black text-teal bg-card border border-ink px-2.5 py-1 rounded-md self-start sm:self-auto">
             Mục tiêu: 30 phút/ngày
           </span>
         </div>
 
-        {/* 7 Ô Chấm Công */}
-        <div className="grid grid-cols-2 sm:grid-cols-7 gap-3 pt-2">
-          {ATTENDANCE_DAYS.map((d, idx) => {
-            const isChecked = d.status === 'checked';
-            const isToday = d.status === 'today';
+        {/* Biểu đồ cột highlighter 7 ngày (Bars grow upward like highlighter strokes with 80ms stagger) */}
+        <div className="bg-card border-2 border-ink rounded-2xl p-5 shadow-brutal-sm space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-black uppercase tracking-wider text-ink flex items-center gap-1.5">
+              <span>📊</span>
+              <span>Thời lượng học mỗi ngày (Vệt mực bút dạ quang):</span>
+            </span>
+            <span className="text-[11px] font-mono text-ink-muted">Mục tiêu 30p - 50p</span>
+          </div>
 
-            return (
-              <div
-                key={idx}
-                className={`p-3.5 rounded-xl border-2 text-center transition-all ${
-                  isToday
-                    ? 'border-red bg-red/10 shadow-brutal-sm'
-                    : isChecked
-                    ? 'border-ink bg-card shadow-brutal-sm'
-                    : 'border-ink/30 bg-paper opacity-60'
-                }`}
-              >
-                <span className="text-xs font-black text-ink block font-sans">
-                  {d.day}
-                </span>
-                <span className="text-[10px] font-mono text-ink-muted block mb-2">
-                  {d.date}
-                </span>
+          <div className="h-36 pt-4 pb-2 px-2 flex items-end justify-between gap-2 sm:gap-4 border-b-2 border-dashed border-ink/30">
+            {ATTENDANCE_DAYS.map((d, idx) => {
+              const heightPercent = d.minutes > 0 ? Math.min(100, Math.round((d.minutes / 50) * 100)) : 8;
+              const isToday = d.status === 'today';
 
-                {isChecked && (
-                  <span className="w-7 h-7 rounded-full border border-ink bg-teal text-white inline-flex items-center justify-center font-black text-xs mx-auto mb-1">
-                    ✓
+              return (
+                <div key={idx} className="flex-1 flex flex-col items-center h-full justify-end group">
+                  <span className="text-[10px] font-mono font-bold text-ink-muted mb-1 group-hover:text-ink transition-colors">
+                    {d.minutes > 0 ? `${d.minutes}p` : '0p'}
                   </span>
-                )}
-
-                {isToday && (
-                  <span className="w-7 h-7 rounded-full border border-red bg-red text-white inline-flex items-center justify-center font-black text-xs mx-auto mb-1 animate-pulse">
-                    ★
+                  <div className="w-full max-w-[42px] h-full flex items-end">
+                    <div
+                      className={`w-full rounded-t-lg border-2 border-ink origin-bottom animate-bar-grow shadow-brutal-sm ${
+                        isToday ? 'bg-red' : d.minutes >= 30 ? 'bg-teal' : d.minutes > 0 ? 'bg-amber' : 'bg-paper-2 opacity-50'
+                      }`}
+                      style={{
+                        height: `${heightPercent}%`,
+                        animationDelay: `${idx * 80}ms`,
+                      }}
+                      title={`${d.day}: ${d.minutes} phút`}
+                    />
+                  </div>
+                  <span className={`text-xs font-black font-sans mt-2 ${isToday ? 'text-red font-black underline' : 'text-ink'}`}>
+                    {d.day}
                   </span>
-                )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
 
-                {!isChecked && !isToday && (
-                  <span className="w-7 h-7 rounded-full border border-ink/30 inline-flex items-center justify-center font-mono text-xs text-ink-muted mx-auto mb-1">
-                    -
+        {/* 7 Ô Chấm Công (Attendance matrix with sequential StampSlam delayMs={idx * 150}) */}
+        <div>
+          <span className="text-xs font-black uppercase tracking-wider text-ink-muted block mb-3">
+            Dấu mộc điểm danh theo ngày:
+          </span>
+          <div className="grid grid-cols-2 sm:grid-cols-7 gap-3">
+            {ATTENDANCE_DAYS.map((d, idx) => {
+              const isChecked = d.status === 'checked';
+              const isToday = d.status === 'today';
+
+              return (
+                <div
+                  key={idx}
+                  className={`p-3.5 rounded-xl border-2 text-center transition-all flex flex-col items-center justify-between min-h-[110px] ${
+                    isToday
+                      ? 'border-red bg-red/10 shadow-brutal-sm'
+                      : isChecked
+                      ? 'border-ink bg-card shadow-brutal-sm'
+                      : 'border-ink/30 bg-paper opacity-60'
+                  }`}
+                >
+                  <div>
+                    <span className="text-xs font-black text-ink block font-sans">
+                      {d.day}
+                    </span>
+                    <span className="text-[10px] font-mono text-ink-muted block">
+                      {d.date}
+                    </span>
+                  </div>
+
+                  <div className="my-2 flex items-center justify-center min-h-[32px]">
+                    {isChecked && (
+                      <StampSlam
+                        text="ĐÃ HỌC"
+                        variant="rect"
+                        color="teal"
+                        size="sm"
+                        delayMs={idx * 150}
+                      />
+                    )}
+
+                    {isToday && (
+                      <StampSlam
+                        text="HÔM NAY"
+                        variant="rect"
+                        color="red"
+                        size="sm"
+                        delayMs={idx * 150}
+                      />
+                    )}
+
+                    {!isChecked && !isToday && (
+                      <span className="w-7 h-7 rounded-full border border-ink/30 inline-flex items-center justify-center font-mono text-xs text-ink-muted">
+                        -
+                      </span>
+                    )}
+                  </div>
+
+                  <span className="text-[10px] font-mono font-bold text-ink-soft block">
+                    {d.minutes > 0 ? `${d.minutes}p` : 'Nghỉ'}
                   </span>
-                )}
-
-                <span className="text-[10px] font-mono font-bold text-ink-soft block">
-                  {d.minutes > 0 ? `${d.minutes}p` : 'Nghỉ'}
-                </span>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
