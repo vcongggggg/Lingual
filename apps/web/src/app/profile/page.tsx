@@ -19,6 +19,9 @@ import {
   Sliders,
 } from 'lucide-react';
 import { LingLing } from '../../components/ui/LingLing';
+import { StampBookSection } from '../../components/ui/StampBookSection';
+
+
 
 const DAILY_GOALS = [
   { level: 1, name: 'Thong thả', minutes: 15, desc: 'Duy trì phản xạ nhẹ nhàng mỗi ngày' },
@@ -218,7 +221,10 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {/* 2. CÀI ĐẶT VẼ NHƯ "ĐƠN ĐĂNG KÝ" TRÊN GIẤY */}
+      {/* 2. PHÂN HỆ SỔ TEM (STAMP BOOK) · GAMIFICATION */}
+      <StampBookSection />
+
+      {/* 3. CÀI ĐẶT VẼ NHƯ "ĐƠN ĐĂNG KÝ" TRÊN GIẤY */}
       <form onSubmit={handleSave} className="card-paper p-6 sm:p-10 bg-card border-2 border-ink rounded-3xl shadow-brutal-xl space-y-8">
         <div className="border-b-2 border-ink/20 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>

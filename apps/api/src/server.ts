@@ -25,6 +25,7 @@ import { communityRouter } from './routes/community.js';
 import { analyticsRouter } from './routes/analytics.js';
 import { speakingRouter } from './routes/speaking.js';
 import { tutorRouter } from './routes/tutor.js';
+import { stampRouter } from './routes/stamp.js';
 import { checkDatabaseConnection, isDatabaseConnected } from './lib/prisma.js';
 
 dotenv.config();
@@ -120,6 +121,8 @@ app.use('/api/v1/tutor', tutorRouter);
 app.use('/api/v1/ielts', ieltsRouter);
 app.use('/api/v1/chatbot', chatbotRouter);
 app.use('/api/v1/admin', adminRouter);
+app.use('/api/v1/stamps', stampRouter);
+
 
 // OWASP A05: Generic Production Error Handler (Never leak stack traces)
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

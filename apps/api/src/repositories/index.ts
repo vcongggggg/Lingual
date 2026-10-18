@@ -9,3 +9,4 @@ export * from './analytics.repository.js';
 export * from './tutor.repository.js';
 export * from './gamification.repository.js';
 export * from './game.repository.js';
+export * from './stamp.repository.js';

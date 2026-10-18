@@ -121,11 +121,27 @@ export function LibraryCatalogCard({
           </span>
         </div>
 
-        <div className="flex items-center gap-2 text-[10px] font-mono font-bold text-ink-soft">
-          <span>Ngày lập: {catalogDate}</span>
-          <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-teal/10 border border-teal text-teal font-black">
-            KHO LINGUAL
+        {/* Nút Audio US / UK dùng chung toàn phiếu */}
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-mono font-bold text-ink-soft hidden sm:inline-block">
+            Âm chuẩn toàn phiếu:
           </span>
+          <button
+            onClick={() => playAudio(word.targetText, 'US')}
+            className="px-2.5 py-1 rounded-lg border-2 border-ink bg-card hover:bg-amber text-[11px] font-mono font-black text-ink shadow-brutal-sm flex items-center gap-1 transition-transform active:translate-y-0.5 cursor-pointer"
+            title="Phát âm tiếng Anh - Mỹ (US)"
+          >
+            <Volume2 className="w-3.5 h-3.5 text-red" />
+            <span>US</span>
+          </button>
+          <button
+            onClick={() => playAudio(word.targetText, 'UK')}
+            className="px-2.5 py-1 rounded-lg border-2 border-ink bg-card hover:bg-teal/20 text-[11px] font-mono font-black text-ink shadow-brutal-sm flex items-center gap-1 transition-transform active:translate-y-0.5 cursor-pointer"
+            title="Phát âm tiếng Anh - Anh (UK)"
+          >
+            <Volume2 className="w-3.5 h-3.5 text-teal" />
+            <span>UK</span>
+          </button>
         </div>
       </div>
 
@@ -155,24 +171,11 @@ export function LibraryCatalogCard({
             )}
           </div>
 
-          {/* Cặp nút phát âm US / UK riêng biệt */}
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <button
-              onClick={() => playAudio(word.targetText, 'US')}
-              className="px-2.5 py-1 rounded-lg border-2 border-ink bg-paper hover:bg-amber text-xs font-mono font-black text-ink shadow-brutal-sm flex items-center gap-1.5 transition-transform active:translate-y-0.5 cursor-pointer"
-              title="Phát âm tiếng Anh - Mỹ (US)"
-            >
-              <Volume2 className="w-3.5 h-3.5 text-red" />
-              <span>US</span>
-            </button>
-            <button
-              onClick={() => playAudio(word.targetText, 'UK')}
-              className="px-2.5 py-1 rounded-lg border-2 border-ink bg-paper hover:bg-teal/20 text-xs font-mono font-black text-ink shadow-brutal-sm flex items-center gap-1.5 transition-transform active:translate-y-0.5 cursor-pointer"
-              title="Phát âm tiếng Anh - Anh (UK)"
-            >
-              <Volume2 className="w-3.5 h-3.5 text-teal" />
-              <span>UK</span>
-            </button>
+          {/* Huy hiệu kho thẻ thư viện */}
+          <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
+            <span className="text-[10px] font-mono px-2 py-1 rounded border border-ink/30 bg-paper-2 text-ink-soft">
+              Ngày lập: {catalogDate}
+            </span>
           </div>
         </div>
 
@@ -212,22 +215,9 @@ export function LibraryCatalogCard({
                 <span className="text-[11px] font-black uppercase tracking-wider text-ink-muted">
                   Giải nghĩa chuẩn xác:
                 </span>
-                <div className="flex items-center gap-1 text-[11px] font-mono text-ink-soft">
-                  <span>Âm chuẩn:</span>
-                  <button
-                    onClick={() => playAudio(word.targetText, 'US')}
-                    className="underline hover:text-red cursor-pointer"
-                  >
-                    US
-                  </button>
-                  <span>/</span>
-                  <button
-                    onClick={() => playAudio(word.targetText, 'UK')}
-                    className="underline hover:text-teal cursor-pointer"
-                  >
-                    UK
-                  </button>
-                </div>
+                <span className="text-[10px] font-mono text-teal font-bold">
+                  Bản dịch chuẩn ngữ nghĩa
+                </span>
               </div>
               <p className="text-base font-bold text-ink leading-relaxed font-sans">
                 {word.translation}
@@ -277,23 +267,6 @@ export function LibraryCatalogCard({
                         </p>
                       )}
                     </div>
-
-                    <div className="flex items-center gap-1 flex-shrink-0 pt-0.5">
-                      <button
-                        onClick={() => playAudio(item.phrase, 'US')}
-                        className="p-1 rounded border border-ink/30 bg-paper hover:bg-amber text-[10px] font-mono font-bold text-ink"
-                        title="Nghe US"
-                      >
-                        US
-                      </button>
-                      <button
-                        onClick={() => playAudio(item.phrase, 'UK')}
-                        className="p-1 rounded border border-ink/30 bg-paper hover:bg-teal/20 text-[10px] font-mono font-bold text-ink"
-                        title="Nghe UK"
-                      >
-                        UK
-                      </button>
-                    </div>
                   </div>
                 ))}
               </div>
@@ -327,20 +300,6 @@ export function LibraryCatalogCard({
                           ({syn.translation})
                         </span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <button
-                          onClick={() => playAudio(syn.word, 'US')}
-                          className="px-1.5 py-0.5 rounded border border-ink/30 bg-paper hover:bg-amber text-[10px] font-mono font-bold"
-                        >
-                          US
-                        </button>
-                        <button
-                          onClick={() => playAudio(syn.word, 'UK')}
-                          className="px-1.5 py-0.5 rounded border border-ink/30 bg-paper hover:bg-teal/20 text-[10px] font-mono font-bold"
-                        >
-                          UK
-                        </button>
-                      </div>
                     </div>
                     <p className="text-xs text-ink-soft font-sans">
                       <strong className="text-ink">Sắc thái:</strong> {syn.nuance}
@@ -370,26 +329,10 @@ export function LibraryCatalogCard({
 
               {/* Câu ví dụ ngữ cảnh chuẩn */}
               <div className="lined-paper p-3.5 rounded-xl border border-ink/30 space-y-2">
-                <div className="flex items-start justify-between gap-2">
+                <div>
                   <p className="text-sm font-serif italic text-ink leading-relaxed">
                     &ldquo;{word.exampleSentence || `We must cultivate ${word.targetText.toLowerCase()} to conquer complex obstacles.`}&rdquo;
                   </p>
-                  <div className="flex items-center gap-1 flex-shrink-0">
-                    <button
-                      onClick={() => playAudio(word.exampleSentence || word.targetText, 'US')}
-                      className="px-1.5 py-0.5 rounded border border-ink/30 bg-paper hover:bg-amber text-[10px] font-mono font-bold"
-                      title="Nghe câu US"
-                    >
-                      US
-                    </button>
-                    <button
-                      onClick={() => playAudio(word.exampleSentence || word.targetText, 'UK')}
-                      className="px-1.5 py-0.5 rounded border border-ink/30 bg-paper hover:bg-teal/20 text-[10px] font-mono font-bold"
-                      title="Nghe câu UK"
-                    >
-                      UK
-                    </button>
-                  </div>
                 </div>
 
                 <p className="text-xs font-bold text-teal pl-1">

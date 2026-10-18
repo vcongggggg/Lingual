@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
@@ -138,6 +138,23 @@ export default function ReadingPracticePage() {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [lookupPopup, setLookupPopup] = useState<InlineWordLookup | null>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  // Tự động đóng popup tra từ khi chạm hoặc bấm ra ngoài vùng popup
+  useEffect(() => {
+    if (!lookupPopup) return;
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
+        setLookupPopup(null);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, [lookupPopup]);
 
   // Phát âm toàn bài hoặc đoạn
   const speakParagraph = (text: string, paraId?: number) => {
@@ -268,9 +285,9 @@ export default function ReadingPracticePage() {
         </button>
       </div>
 
-      {/* POPUP TRA TỪ NHANH INLINE (KHI CHẠM VÀO TỪ BẤT KỲ) */}
+      {/* POPUP TRA TỪ NHANH INLINE (KHI CHẠM VÀO TỪ BẤT KỲ) - TỰ ĐÓNG KHI TAP RA NGOÀI */}
       {lookupPopup && (
-        <div className="p-4 bg-[#FAF5EB] border-2 border-ink rounded-2xl shadow-brutal-lg space-y-2 relative animate-scale-up">
+        <div ref={popupRef} className="p-4 bg-[#FAF5EB] border-2 border-ink rounded-2xl shadow-brutal-lg space-y-2 relative animate-scale-up">
           <div className="flex items-start justify-between gap-3 border-b border-ink/20 pb-2">
             <div>
               <div className="flex items-center gap-2">

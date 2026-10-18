@@ -27,6 +27,8 @@ import {
 } from 'lucide-react';
 import { LingLing } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
+import { MASCOT_REGISTRY } from '../../components/mascot';
+
 
 /* =========================================================================
    DỮ LIỆU THỰC: 2 ĐOẠN VĂN CỤM TỪ (DÁN CỤM LÊN BẢNG)
@@ -636,6 +638,29 @@ export default function PracticeHubPage() {
   const storyScore = STORY_QUIZ_QUESTIONS.filter(
     (q) => storyQuizAnswers[q.id] === q.correctAnswer
   ).length;
+
+  // PRELOAD TRƯỚC 1 TRANG KẾ BÊN (ASSETS + MASCOT + TEXT)
+  useEffect(() => {
+    if (activeMode !== 'bilingual_story') return;
+    const nextIdx = storyPageIdx + 1;
+    if (nextIdx < STORY_PAGES.length) {
+      const nextPage = STORY_PAGES[nextIdx];
+      const nextMascot = MASCOT_REGISTRY[nextPage.mascotReaction as keyof typeof MASCOT_REGISTRY];
+      if (nextMascot && typeof window !== 'undefined') {
+        const img = new Image();
+        img.src = nextMascot;
+      }
+    }
+    const prevIdx = storyPageIdx - 1;
+    if (prevIdx >= 0) {
+      const prevPage = STORY_PAGES[prevIdx];
+      const prevMascot = MASCOT_REGISTRY[prevPage.mascotReaction as keyof typeof MASCOT_REGISTRY];
+      if (prevMascot && typeof window !== 'undefined') {
+        const img = new Image();
+        img.src = prevMascot;
+      }
+    }
+  }, [storyPageIdx, activeMode]);
 
   /* -------------------------------------------------------------
      STATE CHO MODE 4: XẾP CÂU (FEATURE 3)
@@ -1416,10 +1441,21 @@ export default function PracticeHubPage() {
                 {storyPageIdx < STORY_PAGES.length ? `Trang 0${storyPageIdx + 1} / 08` : 'Bài tập cuối truyện'}
               </span>
               <span className="text-[11px] text-ink-muted italic hidden sm:inline-block">
-                (Có lưu tiến độ tự động)
+                (Có lưu tiến độ tự động & preload mượt)
               </span>
             </div>
           </div>
+
+          {/* PRELOAD KHÔNG GIAN BỘ NHỚ CHO TRANG TIẾP THEO */}
+          {storyPageIdx + 1 < STORY_PAGES.length && (
+            <div className="hidden" aria-hidden="true">
+              <LingLing
+                reaction={STORY_PAGES[storyPageIdx + 1].mascotReaction}
+                size={1}
+                animate={false}
+              />
+            </div>
+          )}
 
           {storyPageIdx < STORY_PAGES.length ? (
             /* TRANG SÁCH LẬT 3D NHƯ SÁCH THẬT */

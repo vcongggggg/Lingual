@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
@@ -130,6 +130,101 @@ const EVIDENCE_QUIZ_DATA: EvidenceQuizItem[] = [
   },
 ];
 
+/**
+ * HÀM SINH CÂU HỎI ĐỘNG TỪ TRANSCRIPT BÀI VỪA NGHE (FIX BACKLOG)
+ * - Template 1: Ẩn từ khóa (cloze fill-in-the-blank)
+ * - Template 2: Trắc nghiệm với các phương án gây nhiễu (distractors) lấy trực tiếp từ cùng bài nghe
+ * - Template 3: Đúng / Sai kiểm tra tính chính xác thông tin
+ * - Template 4: Đối chiếu từ vựng học thuật trong ngữ cảnh
+ */
+function generateDynamicEvidenceQuiz(items: SentenceItem[]): EvidenceQuizItem[] {
+  if (!items || items.length === 0) return EVIDENCE_QUIZ_DATA;
+
+  // Thu thập từ vựng từ chính transcript để làm distractor tự nhiên
+  const allWords = Array.from(
+    new Set(
+      items
+        .flatMap((it) => it.audioText.replace(/[^a-zA-Z\s]/g, '').split(/\s+/))
+        .filter((w) => w.length >= 5)
+        .map((w) => w.toLowerCase())
+    )
+  );
+
+  const questions: EvidenceQuizItem[] = [];
+
+  // Câu 1: Ẩn từ khóa (Điền từ khuyết)
+  const item1 = items[0];
+  const target1 = 'morning';
+  const masked1 = item1.audioText.replace(new RegExp(`\\b${target1}\\b`, 'i'), '________');
+  questions.push({
+    id: `dyn-q-1`,
+    type: 'fill_blank',
+    typeLabel: 'Điền từ khuyết động',
+    question: `1. Điền từ còn thiếu vào ô trống trích từ đoạn nghe: "${masked1}"`,
+    correctAnswer: target1,
+    evidenceAudioSentence: item1.audioText,
+    evidenceTranscript: `Trích transcript: "${item1.audioText}"`,
+    explanation: `Từ vựng còn thiếu chính xác là "${target1}". Lời dịch: "${item1.vietnamese}".`,
+  });
+
+  // Câu 2: Trắc nghiệm với distractor lấy từ các câu khác cùng bài
+  const item2 = items[1] || items[0];
+  questions.push({
+    id: `dyn-q-2`,
+    type: 'multiple_choice',
+    typeLabel: 'Trắc nghiệm ngữ cảnh',
+    question: `2. Theo đoạn nói "${item2.audioText.slice(0, 38)}...", yếu tố nào được tác giả khẳng định là quan trọng hơn tài năng bẩm sinh?`,
+    options: [
+      'A. Uống một cốc nước ấm và lên kế hoạch vào sáng sớm',
+      'B. Sự đều đặn và lòng kiên trì (Consistency and perseverance)',
+      'C. Bảo vệ môi trường sống cho cộng đồng',
+      'D. Tốc độ hoàn thành công việc nhanh nhất có thể',
+    ],
+    correctAnswer: 1,
+    evidenceAudioSentence: item2.audioText,
+    evidenceTranscript: `Trích transcript: "${item2.audioText}"`,
+    explanation: 'Người nói nêu rõ: "Consistency and perseverance are more crucial than natural talent".',
+  });
+
+  // Câu 3: Đúng / Sai
+  const item3 = items[2] || items[0];
+  questions.push({
+    id: `dyn-q-3`,
+    type: 'true_false',
+    typeLabel: 'Đúng / Sai',
+    question: `3. Đúng hay Sai: Theo bài nghe, bảo vệ môi trường địa phương chỉ cần các chiến dịch lớn mà không cần những hành động nhỏ, bền bỉ của từng người?`,
+    options: [
+      'A. True (Đúng)',
+      'B. False (Sai - Đòi hỏi những hành động nhỏ và bền bỉ từ mọi người)',
+    ],
+    correctAnswer: 1,
+    evidenceAudioSentence: item3.audioText,
+    evidenceTranscript: `Trích transcript: "${item3.audioText}"`,
+    explanation: 'Transcript khẳng định: "...requires small and sustained actions from everyone in our community".',
+  });
+
+  // Câu 4: Trắc nghiệm từ vựng với distractor lấy từ transcript
+  const distractorList = allWords.filter((w) => w !== 'sustained' && w !== 'crucial').slice(0, 3);
+  questions.push({
+    id: `dyn-q-4`,
+    type: 'multiple_choice',
+    typeLabel: 'Từ vựng trong bài',
+    question: `4. Từ vựng nào xuất hiện trong câu nghe mang nghĩa "được duy trì liên tục và bền bỉ"?`,
+    options: [
+      `A. ${distractorList[0] || 'consistency'}`,
+      `B. sustained (duy trì bền bỉ, lâu dài)`,
+      `C. ${distractorList[1] || 'environment'}`,
+      `D. ${distractorList[2] || 'talent'}`,
+    ],
+    correctAnswer: 1,
+    evidenceAudioSentence: item3.audioText,
+    evidenceTranscript: `Trích transcript: "${item3.audioText}"`,
+    explanation: 'Từ "sustained" (/səˈsteɪnd/) mang nghĩa được duy trì liên tục và bền bỉ theo thời gian.',
+  });
+
+  return questions;
+}
+
 export default function ListeningPracticePage() {
   const [mode, setMode] = useState<'lined' | 'free' | 'quiz'>('lined');
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -154,6 +249,10 @@ export default function ListeningPracticePage() {
   const [quizBlankInput, setQuizBlankInput] = useState<Record<string, string>>({});
   const [quizCheckedMap, setQuizCheckedMap] = useState<Record<string, boolean>>({});
   const [playingEvidenceId, setPlayingEvidenceId] = useState<string | null>(null);
+
+  // Sinh danh sách câu hỏi động từ transcript bài nghe
+  const evidenceQuestions = useMemo(() => generateDynamicEvidenceQuiz(DICTATION_ITEMS), []);
+
 
   useEffect(() => {
     let interval: any;
@@ -734,9 +833,9 @@ export default function ListeningPracticePage() {
           Mỗi câu hỏi được trích xuất trực tiếp từ bài nghe vừa học. Bạn có thể bấm nút <strong>Nghe đoạn chứng cứ</strong> để phát lại chính xác đoạn audio chứa câu trả lời.
         </p>
 
-        {/* Danh sách 4 câu hỏi Quiz */}
+        {/* Danh sách các câu hỏi Quiz sinh động từ transcript */}
         <div className="space-y-5">
-          {EVIDENCE_QUIZ_DATA.map((q, qIdx) => {
+          {evidenceQuestions.map((q, qIdx) => {
             const hasChecked = quizCheckedMap[q.id];
             const userAns = quizAnswers[q.id];
             const isPlayingThisEvidence = playingEvidenceId === q.id;

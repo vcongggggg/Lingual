@@ -63,6 +63,7 @@ model User {
   tutorRecommendations TutorRecommendation[]
   srsReviewLogs        SrsReviewLog[]
   questProgress        UserQuestProgress[]
+  stampLedgers         StampLedger[]
 
   @@map("users")
 }
@@ -1055,6 +1056,23 @@ model WeeklyLeague {
   @@index([tier, weekNumber, year, rank])
   @@map("weekly_leagues")
 }
+
+// ============================================================================
+// GAMIFICATION: SỔ TEM (STAMP LEDGER - APPEND ONLY)
+// ============================================================================
+
+model StampLedger {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  delta     Int      // +1 (mục tiêu ngày / điểm tuyệt đối), +2 (streak 7 ngày), -1 (AI writing)
+  reason    String   // "DAILY_GOAL" | "PERFECT_SCORE" | "STREAK_7_DAYS" | "AI_WRITING_EVALUATION"
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("stamp_ledgers")
+}
+
 
 
 

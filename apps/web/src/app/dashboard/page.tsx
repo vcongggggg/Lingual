@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { StreakCard } from '../../components/ui/StreakCard';
+import { StampBookMiniWidget } from '../../components/ui/StampBookMiniWidget';
 import { LingLing } from '../../components/ui/LingLing';
 import { api, getAuthToken } from '../../lib/api';
 import { BookOpen, Layers, Zap, GraduationCap, Headphones, Mic, BookMarked, PenTool, Flame, ArrowRight } from 'lucide-react';
@@ -63,11 +64,14 @@ export default function DashboardPage() {
 
       {/* 2. Streak Card Banner */}
       <StreakCard
-        currentStreak={user?.currentStreak || 3}
+        currentStreak={user?.currentStreak || 5}
         streakFreezes={user?.streakFreezes || 1}
         completedDays={[0, 1, 2, 3]}
         todayIndex={4}
       />
+
+      {/* Widget Sổ Tem Thu Nhỏ */}
+      <StampBookMiniWidget />
 
       {/* 3. 4 Khối Thống Kê Sổ Tay */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

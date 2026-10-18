@@ -153,4 +153,38 @@ export const api = {
   // 10. Admin CMS & Audit Log
   getCurriculumUnits: () => fetchApi<{ units: any[] }>('/curriculum/units'),
   getAuditLogs: () => fetchApi<{ auditLogs: any[] }>('/admin/audit-logs'),
+
+  // 11. Gamification: Sổ Tem & Đổi Lượt Chấm AI Writing
+  getStamps: () =>
+    fetchApi<{
+      balance: number;
+      maxCap: number;
+      history: any[];
+      freeWritingUsedToday: boolean;
+      freeWritingRemainingToday: number;
+      canEvaluateWriting: boolean;
+    }>('/stamps'),
+  awardStamp: (reason: 'DAILY_GOAL' | 'PERFECT_SCORE' | 'STREAK_7_DAYS' | string, delta?: number) =>
+    fetchApi<{
+      success: boolean;
+      deltaAwarded: number;
+      newBalance: number;
+      message: string;
+      maxCap: number;
+    }>('/stamps/award', {
+      method: 'POST',
+      body: JSON.stringify({ reason, delta }),
+    }),
+  redeemWritingEvaluation: () =>
+    fetchApi<{
+      success: boolean;
+      isFree: boolean;
+      stampDeducted: number;
+      newBalance: number;
+      message: string;
+      error?: string;
+    }>('/stamps/redeem-writing', {
+      method: 'POST',
+    }),
 };
+
