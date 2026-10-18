@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import {
-  Map,
+  Compass,
   CheckCircle2,
   Lock,
   Play,
@@ -12,11 +12,20 @@ import {
   Sparkles,
   Award,
   Clock,
-  Compass,
+  MapPin,
+  Flag,
+  RotateCcw,
+  Navigation,
 } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { api } from '../../lib/api';
-import { LingLing } from '../../components/ui/LingLing';
+import { LingLing, LingLingReaction } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface Lesson {
   order: number;
@@ -109,31 +118,37 @@ const DEFAULT_UNITS: UnitNode[] = [
   },
 ];
 
+const MASCOT_MESSAGES: Record<number, { text: string; pose: LingLingReaction }> = {
+  1: { text: 'Chào bạn! Bắt đầu chặng A1 với bài chào hỏi nhé! 🎒', pose: 'pointYou' },
+  2: { text: 'Chặng A2 đang rực cháy! Tiếp tục giữ phong độ nào! 🔥', pose: 'magnify' },
+  3: { text: 'Sắp tới thế giới B1 với ẩm thực & mua sắm! 🍜', pose: 'thinking' },
+  4: { text: 'B1+ công sở & đàm phán, kiến thức siêu giá trị! 💼', pose: 'proud' },
+  5: { text: 'B2 độc lập, tự tin du lịch & giao lưu năm châu! ✈️', pose: 'thumbsup' },
+  6: { text: 'Tuyệt đỉnh! Bạn đã hoàn thành toàn bộ hành trình! 🏆🎉', pose: 'party' },
+};
+
 export default function CurriculumRoadmapPage() {
   const [units, setUnits] = useState<UnitNode[]>(DEFAULT_UNITS);
-  const roadmapRef = React.useRef<HTMLDivElement>(null);
-  const [threadDrawn, setThreadDrawn] = useState(false);
+  const [pathD, setPathD] = useState<string>('');
+  const [pathLength, setPathLength] = useState<number>(1000);
+  const [activeUnitIndex, setActiveUnitIndex] = useState<number>(2); // Mặc định Unit 2 đang học dở
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [revealedUnits, setRevealedUnits] = useState<Set<number>>(new Set([1, 2]));
+  const [isReducedMotion, setIsReducedMotion] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (!roadmapRef.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setThreadDrawn(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(roadmapRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const guidePathRef = useRef<SVGPathElement>(null);
+  const travelerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Tải dữ liệu giáo trình thực tế từ server
   useEffect(() => {
     async function loadUnits() {
       try {
         const res = await api.getCurriculumUnits();
         if (res && res.units && res.units.length > 0) {
-          // Map DB units into roadmap nodes
           const mapped: UnitNode[] = res.units.map((u: any, idx: number) => {
             const isCompleted = idx === 0;
             const isInProgress = idx === 1;
@@ -160,208 +175,589 @@ export default function CurriculumRoadmapPage() {
     loadUnits();
   }, []);
 
+  // Kiểm tra prefers-reduced-motion
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setIsReducedMotion(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Tính toán tọa độ Sợi chỉ đỏ SVG (Red Thread Path) nối chuẩn qua tâm các node
+  const calculateThreadPath = () => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const containerRect = container.getBoundingClientRect();
+    const isMobile = window.innerWidth < 768;
+
+    const anchors = container.querySelectorAll<HTMLElement>('.journey-node-anchor');
+    if (anchors.length === 0) return;
+
+    const points: { x: number; y: number }[] = [];
+
+    // Điểm bắt đầu ở phía trên node đầu tiên
+    const firstAnchorRect = anchors[0].getBoundingClientRect();
+    const startX = isMobile
+      ? firstAnchorRect.left - containerRect.left + firstAnchorRect.width / 2
+      : containerRect.width / 2;
+    points.push({ x: startX, y: 10 });
+
+    anchors.forEach((anchor) => {
+      const rect = anchor.getBoundingClientRect();
+      points.push({
+        x: rect.left - containerRect.left + rect.width / 2,
+        y: rect.top - containerRect.top + rect.height / 2,
+      });
+    });
+
+    // Điểm kết thúc ở card đích
+    const finishEl = container.querySelector<HTMLElement>('#destination-anchor');
+    if (finishEl) {
+      const finishRect = finishEl.getBoundingClientRect();
+      points.push({
+        x: finishRect.left - containerRect.left + finishRect.width / 2,
+        y: finishRect.top - containerRect.top + finishRect.height / 2,
+      });
+    } else {
+      const last = points[points.length - 1];
+      points.push({ x: last.x, y: last.y + 160 });
+    }
+
+    // Vẽ đường cong Bezier bậc ba mượt mà như đường chỉ thêu
+    let d = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+    for (let i = 0; i < points.length - 1; i++) {
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const dy = (p2.y - p1.y) * 0.52;
+      d += ` C ${p1.x.toFixed(1)} ${(p1.y + dy).toFixed(1)}, ${p2.x.toFixed(1)} ${(p2.y - dy).toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+    }
+
+    setPathD(d);
+  };
+
+  // Cập nhật path khi mount, resize hoặc đổi units
+  useLayoutEffect(() => {
+    calculateThreadPath();
+    const handleResize = () => calculateThreadPath();
+    window.addEventListener('resize', handleResize);
+    const timer = setTimeout(calculateThreadPath, 200);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timer);
+    };
+  }, [units]);
+
+  // Cập nhật độ dài đường path sau khi setPathD
+  useEffect(() => {
+    if (pathRef.current) {
+      const len = pathRef.current.getTotalLength();
+      if (len > 0) {
+        setPathLength(len);
+      }
+    }
+  }, [pathD]);
+
+  // Thiết lập Scrollytelling bằng GSAP + ScrollTrigger (scrub: true, KHÔNG pin)
+  useEffect(() => {
+    if (typeof window === 'undefined' || isReducedMotion) return;
+    if (!containerRef.current || !pathRef.current || pathLength <= 0) return;
+
+    // Reset ScrollTriggers cũ nếu có
+    const triggers: ScrollTrigger[] = [];
+
+    const path = pathRef.current;
+    gsap.set(path, {
+      strokeDasharray: pathLength,
+      strokeDashoffset: pathLength,
+    });
+
+    // 1. Chỉ đỏ vẽ dần theo vị trí scroll (scrub: true) + Bò LingLing di chuyển bám sát sợi chỉ
+    const scrubTrigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: 'top 40%',
+      end: 'bottom 85%',
+      scrub: 0.6,
+      onUpdate: (self) => {
+        const progress = Math.max(0, Math.min(1, self.progress));
+        setScrollProgress(Math.round(progress * 100));
+
+        // Vẽ dần nét chỉ
+        const offset = pathLength * (1 - progress);
+        path.style.strokeDashoffset = `${offset}`;
+
+        // Di chuyển bò LingLing chính xác theo getPointAtLength của sợi chỉ
+        if (travelerRef.current && path) {
+          const distance = progress * pathLength;
+          const pt = path.getPointAtLength(Math.min(distance, pathLength));
+          travelerRef.current.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
+        }
+
+        // Cập nhật stage hiển thị trên Hộ Chiếu Hành Trình
+        if (progress < 0.2) setActiveUnitIndex(1);
+        else if (progress < 0.45) setActiveUnitIndex(2);
+        else if (progress < 0.65) setActiveUnitIndex(3);
+        else if (progress < 0.85) setActiveUnitIndex(4);
+        else if (progress < 0.98) setActiveUnitIndex(5);
+        else setActiveUnitIndex(6); // Destination
+      },
+    });
+    triggers.push(scrubTrigger);
+
+    // 2. Reveal các card chặng khi đi vào viewport (trượt nhẹ + hiện dần) + đóng dấu
+    cardRefs.current.forEach((card, idx) => {
+      if (!card) return;
+      const unitOrder = idx + 1;
+
+      gsap.set(card, { opacity: 0, y: 35 });
+
+      const cardTrigger = ScrollTrigger.create({
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+        onEnter: () => {
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power2.out',
+          });
+          setRevealedUnits((prev) => new Set(prev).add(unitOrder));
+        },
+      });
+      triggers.push(cardTrigger);
+    });
+
+    return () => {
+      triggers.forEach((t) => t.kill());
+    };
+  }, [pathD, pathLength, isReducedMotion]);
+
+  // Cuộn mượt tới chặng mong muốn
+  const scrollToUnit = (order: number) => {
+    const target = document.getElementById(`unit-stage-${order}`);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  const currentMascotMsg = MASCOT_MESSAGES[activeUnitIndex] || MASCOT_MESSAGES[2];
+
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20 text-left">
-      {/* Header bar Bản Đồ Lộ Trình Giáo Trình */}
-      <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div className="space-y-3 max-w-xl">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-10 pb-32 text-left relative">
+      {/* 1. Header sổ tay: Bản đồ lộ trình học tập */}
+      <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 relative overflow-hidden">
+        {/* Nếp gấp gáy sổ tay */}
+        <div className="absolute top-0 left-0 bottom-0 w-3 bg-red/10 border-r border-ink/20 pointer-events-none" />
+
+        <div className="space-y-3 max-w-xl pl-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
             <Compass className="w-3.5 h-3.5" />
-            <span>Lộ Trình Giáo Trình</span>
+            <span>Hành Trình Cuộn · Scrollytelling</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight font-sans">
-            Bản đồ lộ trình học tập Lingual
+          <h1 className="text-2xl sm:text-4xl font-black text-ink tracking-tight font-sans">
+            Hành trình Lộ trình Sổ tay Lingual
           </h1>
 
           <p className="text-xs sm:text-sm text-ink-soft leading-relaxed font-sans">
-            Hành trình từng bước làm chủ tiếng Anh từ cơ bản đến nâng cao. Mỗi chặng đường được nối liền như những trang sách mở ra chân trời mới.
+            Cuộn trang để theo chân sợi chỉ đỏ và chú bò LingLing qua 5 chặng luyện tiếng Anh thực tế từ A1 đến B2. Mỗi bước chân ghi dấu một nấc thang tiến bộ.
           </p>
         </div>
 
         <div className="flex flex-col items-center flex-shrink-0">
-          <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-            Tới lượt bạn chinh phục chặng đường hôm nay!
+          <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink max-w-[200px] text-center">
+            {isReducedMotion
+              ? 'Chế độ tĩnh: sẵn sàng khám phá lộ trình!'
+              : 'Cuộn xuống để cùng tớ bước đi trên sợi chỉ đỏ!'}
           </div>
-          <LingLing reaction="pointYou" size={110} />
+          <LingLing reaction={currentMascotMsg.pose} size={105} animate={!isReducedMotion} />
         </div>
       </div>
 
-      {/* BẢN ĐỒ HÀNH TRÌNH CÁC NODE NỐI BẰNG SỢI CHỈ ĐỎ SVG VẼ DẦN */}
-      <div
-        ref={roadmapRef}
-        className="relative pl-6 sm:pl-10 space-y-8 before:absolute before:top-4 before:bottom-4 before:left-[19px] sm:before:left-[35px] before:w-0.5 before:border-l-2 before:border-dashed before:border-ink/20"
-      >
-        {/* Sợi chỉ đỏ SVG vẽ dần khi scroll tới (stroke-dashoffset animation) */}
-        <svg
-          className="absolute top-4 bottom-4 left-[18px] sm:left-[34px] w-2 h-[calc(100%-32px)] pointer-events-none z-0 overflow-visible"
-          aria-hidden="true"
-        >
-          <line
-            x1="1.5"
-            y1="0"
-            x2="1.5"
-            y2="100%"
-            stroke="#D64027"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="1400"
-            strokeDashoffset={threadDrawn ? '0' : '1400'}
-            style={{
-              transition: 'stroke-dashoffset 900ms cubic-bezier(0.2, 0.8, 0.2, 1)',
-            }}
-          />
-        </svg>
+      {/* 2. Layout chính: Timeline hành trình + Hộ chiếu sticky */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
+        {/* CỘT TIMELINE SCROLLYTELLING (8 CỘT DESKTOP) */}
+        <div ref={containerRef} className="lg:col-span-8 relative min-h-[1600px] pb-16">
+          {/* SỢI CHỈ ĐỎ SVG UỐN LƯỢN XUYÊN SUỐT TRANG */}
+          <svg
+            ref={svgRef}
+            className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+            aria-hidden="true"
+          >
+            {/* Đường nét đứt màu chì tượng trưng cho vết may kim định sẵn trên trang giấy */}
+            <path
+              ref={guidePathRef}
+              d={pathD}
+              stroke="#211A13"
+              strokeOpacity="0.18"
+              strokeWidth="2.5"
+              strokeDasharray="6 6"
+              fill="none"
+              strokeLinecap="round"
+            />
 
-        {units.map((unit) => {
-          const isCompleted = unit.status === 'COMPLETED';
-          const isInProgress = unit.status === 'IN_PROGRESS';
-          const isLocked = unit.status === 'LOCKED';
+            {/* Sợi chỉ đỏ chính: VẼ DẦN THEO VỊ TRÍ SCROLL (scrub: true) */}
+            <path
+              ref={pathRef}
+              d={pathD}
+              stroke="#D64027"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+              style={{
+                strokeDasharray: pathLength,
+                strokeDashoffset: isReducedMotion ? 0 : pathLength,
+                transition: isReducedMotion ? 'none' : undefined,
+              }}
+            />
+          </svg>
 
-          return (
-            <div key={unit.order} className="relative group">
-              {/* Node Tròn Biểu Tượng Trên Trục Mực */}
-              <div
-                className={`absolute -left-[27px] sm:-left-[43px] top-6 w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-ink flex items-center justify-center font-mono font-black text-xs sm:text-sm shadow-brutal-sm z-10 transition-transform ${
-                  isCompleted
-                    ? 'bg-teal text-white'
-                    : isInProgress
-                    ? 'bg-red text-white animate-bounce-subtle'
-                    : 'bg-paper-2 text-ink-muted'
-                }`}
-              >
-                {isCompleted ? (
-                  <CheckCircle2 className="w-5 h-5 stroke-[3]" />
-                ) : isLocked ? (
-                  <Lock className="w-4 h-4" />
-                ) : (
-                  unit.order
-                )}
-              </div>
-
-              {/* Thẻ Unit Giấy */}
-              <div
-                className={`card-paper p-6 sm:p-8 rounded-3xl border-2 transition-all relative overflow-visible ${
-                  isInProgress
-                    ? 'border-4 border-ink bg-card shadow-brutal-xl'
-                    : isCompleted
-                    ? 'border-2 border-ink bg-paper shadow-brutal'
-                    : 'border-2 border-ink/40 bg-paper-2 opacity-65 shadow-none'
-                }`}
-              >
-                {/* Con dấu ĐẠT tự động đóng xuống cho node hoàn thành */}
-                {isCompleted && (
-                  <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 pointer-events-none">
-                    <StampSlam
-                      text="ĐẠT"
-                      subtext="HOÀN THÀNH"
-                      variant="circle"
-                      color="teal"
-                      size="sm"
-                      delayMs={200}
-                    />
-                  </div>
-                )}
-
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ink/15 pb-4 mb-4">
-                  <div className="space-y-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded bg-card border border-ink text-ink">
-                        {unit.level}
-                      </span>
-
-                      {/* Con Dấu Mực (Stamps) */}
-                      {isCompleted && (
-                        <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded border-2 border-teal text-teal bg-teal/10 -rotate-2 inline-block">
-                          ĐÃ HOÀN THÀNH
-                        </span>
-                      )}
-
-                      {isInProgress && (
-                        <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded border-2 border-red text-red bg-red/10 rotate-1 inline-block">
-                          ĐANG HỌC DỞ
-                        </span>
-                      )}
-
-                      {isLocked && (
-                        <span className="text-[10px] font-bold text-ink-muted flex items-center gap-1">
-                          <Lock className="w-3 h-3" />
-                          <span>Chưa mở khóa</span>
-                        </span>
-                      )}
-                    </div>
-
-                    <h2 className="text-lg sm:text-2xl font-black text-ink tracking-tight font-sans pt-1">
-                      {unit.title}
-                    </h2>
-                  </div>
-
-                  <div className="text-xs font-mono font-bold text-ink-muted self-start sm:self-auto">
-                    Tiến độ: <strong className="text-ink">{unit.completedLessons}/{unit.totalLessons}</strong> bài
-                  </div>
+          {/* BÒ LINGLING ĐỒNG HÀNH: ĐI DỌC ĐÚNG THEO SỢI CHỈ ĐỎ BÁM TIẾN ĐỘ SCROLL */}
+          {!isReducedMotion && (
+            <div
+              ref={travelerRef}
+              className="absolute top-0 left-0 z-30 pointer-events-none transition-opacity duration-300 will-change-transform"
+              style={{
+                transform: 'translate3d(0, 0, 0) translate(-50%, -50%)',
+              }}
+            >
+              <div className="relative flex flex-col items-center">
+                {/* Lời nhắn nhỏ của LingLing khi đến từng chặng */}
+                <div className="bg-card text-ink border-2 border-ink text-[11px] font-black px-2.5 py-1 rounded-xl shadow-brutal-sm whitespace-nowrap mb-1">
+                  {currentMascotMsg.text}
                 </div>
 
-                <p className="text-xs sm:text-sm text-ink-soft mb-5 leading-relaxed font-sans">
-                  {unit.description}
-                </p>
-
-                {/* Danh sách các bài học con */}
-                <div className="space-y-2 mb-6">
-                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-ink-muted block">
-                    Các bài học trong chặng này:
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {unit.lessons.map((lesson) => (
-                      <div
-                        key={lesson.order}
-                        className={`p-3 rounded-xl border flex items-center justify-between gap-2 text-xs ${
-                          lesson.completed
-                            ? 'bg-card border-ink/40 text-ink font-bold'
-                            : isLocked
-                            ? 'bg-transparent border-dashed border-ink/30 text-ink-muted'
-                            : 'bg-paper border-ink text-ink font-bold'
-                        }`}
-                      >
-                        <div className="truncate">
-                          <span className="text-ink-muted mr-1.5">#{lesson.order}</span>
-                          <span>{lesson.title}</span>
-                        </div>
-                        {lesson.completed && (
-                          <CheckCircle2 className="w-4 h-4 text-teal flex-shrink-0" />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Nút Hành Động Theo Trạng Thái */}
-                <div className="pt-2 flex items-center justify-between">
-                  {isCompleted ? (
-                    <Link
-                      href="/vocabulary/practice"
-                      className="btn btn-outline text-xs font-black shadow-brutal flex items-center gap-2"
-                    >
-                      <span>Ôn tập lại Unit này</span>
-                    </Link>
-                  ) : isInProgress ? (
-                    <Link
-                      href="/listening/practice"
-                      className="btn btn-red text-xs font-black shadow-brutal flex items-center gap-2"
-                    >
-                      <Play className="w-3.5 h-3.5 fill-white" />
-                      <span>Tiếp tục bài 2 ngay →</span>
-                    </Link>
-                  ) : (
-                    <div className="text-xs font-bold text-ink-muted flex items-center gap-1.5 italic">
-                      <Lock className="w-3.5 h-3.5" />
-                      <span>Hoàn thành Unit {unit.order - 1} để mở khóa chặng này</span>
-                    </div>
-                  )}
+                {/* Bò con di chuyển */}
+                <div className="w-14 h-14 relative filter drop-shadow-[0_4px_8px_rgba(33,26,19,0.25)]">
+                  <LingLing reaction={currentMascotMsg.pose} size={56} animate={true} />
                 </div>
               </div>
             </div>
-          );
-        })}
+          )}
+
+          {/* DANH SÁCH 5 CHẶNG HỌC TẬP (CARDS XEN KẼ TRÁI / PHẢI) */}
+          <div className="space-y-24 sm:space-y-36 relative z-10 pt-8">
+            {units.map((unit, index) => {
+              const isEven = index % 2 === 0;
+              const isCompleted = unit.status === 'COMPLETED';
+              const isInProgress = unit.status === 'IN_PROGRESS';
+              const isLocked = unit.status === 'LOCKED';
+              const isRevealed = isReducedMotion || revealedUnits.has(unit.order);
+
+              return (
+                <div
+                  key={unit.order}
+                  id={`unit-stage-${unit.order}`}
+                  ref={(el) => {
+                    cardRefs.current[index] = el;
+                  }}
+                  className={`relative flex flex-col ${
+                    isEven ? 'md:items-start md:pr-12' : 'md:items-end md:pl-12'
+                  }`}
+                  style={{
+                    opacity: isReducedMotion ? 1 : 0,
+                    transform: isReducedMotion ? 'none' : 'translateY(35px)',
+                  }}
+                >
+                  {/* Điểm Neo Node Tròn (Anchor để SVG nối chỉ đỏ xuyên qua) */}
+                  <div
+                    className={`journey-node-anchor w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-ink flex items-center justify-center font-mono font-black text-sm shadow-brutal mb-4 z-20 ${
+                      isCompleted
+                        ? 'bg-teal text-white'
+                        : isInProgress
+                        ? 'bg-red text-white animate-pulse'
+                        : 'bg-paper-2 text-ink-muted'
+                    }`}
+                  >
+                    {isCompleted ? (
+                      <CheckCircle2 className="w-6 h-6 stroke-[3]" />
+                    ) : isLocked ? (
+                      <Lock className="w-4 h-4" />
+                    ) : (
+                      unit.order
+                    )}
+                  </div>
+
+                  {/* THẺ CHẶNG SỔ TAY GIẤY */}
+                  <div
+                    className={`w-full md:w-[92%] card-paper p-5 sm:p-7 rounded-3xl border-2 transition-all relative overflow-visible ${
+                      isInProgress
+                        ? 'border-4 border-ink bg-card shadow-brutal-xl ring-2 ring-red/30'
+                        : isCompleted
+                        ? 'border-2 border-ink bg-paper shadow-brutal'
+                        : 'border-2 border-ink/40 bg-paper-2 opacity-75 shadow-none'
+                    }`}
+                  >
+                    {/* Con Dấu StampSlam đóng xuống khi hoàn thành chặng */}
+                    {isCompleted && isRevealed && (
+                      <div className="absolute top-4 right-4 sm:top-5 sm:right-5 z-20 pointer-events-none">
+                        <StampSlam
+                          text="ĐẠT"
+                          subtext="HOÀN THÀNH"
+                          variant="circle"
+                          color="teal"
+                          size="sm"
+                          delayMs={isReducedMotion ? 0 : 250}
+                        />
+                      </div>
+                    )}
+
+                    {/* Header chặng */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-ink/15 pb-3 mb-3">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-card border border-ink text-ink">
+                            {unit.level}
+                          </span>
+
+                          {isCompleted && (
+                            <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded border-2 border-teal text-teal bg-teal/10 -rotate-1">
+                              ĐÃ HOÀN THÀNH
+                            </span>
+                          )}
+
+                          {isInProgress && (
+                            <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded border-2 border-red text-red bg-red/10 rotate-1 animate-pulse">
+                              ĐANG HỌC DỞ
+                            </span>
+                          )}
+
+                          {isLocked && (
+                            <span className="text-[10px] font-bold text-ink-muted flex items-center gap-1">
+                              <Lock className="w-3 h-3" />
+                              <span>Chưa mở khóa</span>
+                            </span>
+                          )}
+                        </div>
+
+                        <h2 className="text-lg sm:text-xl font-black text-ink tracking-tight font-sans">
+                          {unit.title}
+                        </h2>
+                      </div>
+
+                      <div className="text-xs font-mono font-bold text-ink-muted self-start sm:self-auto">
+                        Tiến độ: <strong className="text-ink">{unit.completedLessons}/{unit.totalLessons}</strong> bài
+                      </div>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-ink-soft mb-4 leading-relaxed font-sans">
+                      {unit.description}
+                    </p>
+
+                    {/* Danh sách bài học con */}
+                    <div className="space-y-2 mb-5">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-ink-muted block">
+                        Các bài học trong chặng này:
+                      </span>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        {unit.lessons.map((lesson) => (
+                          <div
+                            key={lesson.order}
+                            className={`p-2.5 rounded-xl border flex items-center justify-between gap-1.5 text-xs ${
+                              lesson.completed
+                                ? 'bg-card border-ink/40 text-ink font-bold'
+                                : isLocked
+                                ? 'bg-transparent border-dashed border-ink/30 text-ink-muted'
+                                : 'bg-paper border-ink text-ink font-bold'
+                            }`}
+                          >
+                            <div className="truncate">
+                              <span className="text-ink-muted mr-1">#{lesson.order}</span>
+                              <span>{lesson.title}</span>
+                            </div>
+                            {lesson.completed && (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-teal flex-shrink-0" />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Nút hành động theo trạng thái */}
+                    <div className="pt-2 flex items-center justify-between">
+                      {isCompleted ? (
+                        <Link
+                          href="/vocabulary/practice"
+                          className="btn btn-outline text-xs font-black shadow-brutal flex items-center gap-1.5"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5" />
+                          <span>Ôn tập lại Unit này</span>
+                        </Link>
+                      ) : isInProgress ? (
+                        <Link
+                          href="/listening/practice"
+                          className="btn btn-red text-xs font-black shadow-brutal flex items-center gap-1.5"
+                        >
+                          <Play className="w-3.5 h-3.5 fill-white" />
+                          <span>Tiếp tục học ngay →</span>
+                        </Link>
+                      ) : (
+                        <div className="text-xs font-bold text-ink-muted flex items-center gap-1.5 italic">
+                          <Lock className="w-3.5 h-3.5" />
+                          <span>Hoàn thành Unit {unit.order - 1} để mở khóa</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 5. CUỐI HÀNH TRÌNH: TỔNG KẾT NGẮN + CTA + BÒ CELEBRATING + ĐÓNG DẤU HOÀN THÀNH */}
+          <div
+            id="destination-anchor"
+            className="mt-32 pt-8 border-t-2 border-dashed border-ink/30 relative"
+          >
+            <div className="bg-card border-4 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-visible text-center space-y-6">
+              {/* Con dấu lớn HOÀN THÀNH */}
+              <div className="absolute -top-7 right-6 sm:right-10 z-20 pointer-events-none">
+                <StampSlam
+                  text="HOÀN THÀNH"
+                  subtext="XUẤT SẮC"
+                  variant="circle"
+                  color="teal"
+                  size="md"
+                  delayMs={isReducedMotion ? 0 : 300}
+                />
+              </div>
+
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-soft border border-ink rounded-full text-xs font-black uppercase tracking-wider text-ink">
+                <Flag className="w-3.5 h-3.5 text-red" />
+                <span>Đích Đến Cuối Cùng Của Giáo Trình</span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-black text-ink tracking-tight font-sans">
+                Chúc mừng bạn đã chinh phục toàn bộ Lộ trình Lingual!
+              </h3>
+
+              <p className="text-xs sm:text-sm text-ink-soft max-w-xl mx-auto leading-relaxed">
+                Từ chặng A1 khởi đầu đến B2 giao lưu tự tin, bạn đã xây dựng nền tảng vững chắc với 15 bài học ngữ cảnh thực tế và hàng trăm cụm từ thực dụng.
+              </p>
+
+              {/* Bò celebrating */}
+              <div className="flex justify-center py-2">
+                <LingLing reaction="party" size={120} animate={!isReducedMotion} />
+              </div>
+
+              {/* CTA Bắt đầu học */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  href="/listening/practice"
+                  className="btn btn-red text-sm font-black shadow-brutal-lg px-8 py-3.5 flex items-center gap-2"
+                >
+                  <Play className="w-4 h-4 fill-white" />
+                  <span>Bắt đầu bài học chặng 2 ngay hôm nay</span>
+                </Link>
+
+                <Link
+                  href="/dashboard"
+                  className="btn btn-outline text-sm font-black shadow-brutal px-6 py-3.5"
+                >
+                  <span>Quay về Dashboard</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. HỘ CHIẾU HÀNH TRÌNH (STICKY PASSPORT SIDEBAR TRÊN DESKTOP) */}
+        <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+          <div className="card-paper p-5 sm:p-6 rounded-3xl border-2 border-ink shadow-brutal bg-card relative overflow-hidden">
+            {/* Ruy-băng đỏ kẹp trang sổ */}
+            <div className="absolute -top-3 right-5 w-6 h-10 bg-red border-x-2 border-b-2 border-ink shadow-sm" />
+
+            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-red mb-3">
+              <Navigation className="w-4 h-4" />
+              <span>Hộ Chiếu Hành Trình</span>
+            </div>
+
+            <h4 className="text-lg font-black text-ink mb-1 font-sans">
+              Chặng {Math.min(5, activeUnitIndex)}/5 · {activeUnitIndex === 6 ? 'Đã về đích' : units[activeUnitIndex - 1]?.title.split(':')[1] || 'Đang khám phá'}
+            </h4>
+
+            <p className="text-xs text-ink-soft mb-4">
+              Dấu mốc theo bước chân cuộn trang của bạn.
+            </p>
+
+            {/* Thước đo tiến độ cuộn trang */}
+            <div className="space-y-1.5 mb-5">
+              <div className="flex justify-between text-[11px] font-mono font-bold text-ink">
+                <span>Tiến độ cuộn:</span>
+                <span className="text-red font-black">{scrollProgress}%</span>
+              </div>
+              <div className="w-full h-3 bg-paper-2 border border-ink rounded-full overflow-hidden p-0.5">
+                <div
+                  className="h-full bg-red rounded-full transition-all duration-150"
+                  style={{ width: `${scrollProgress}%` }}
+                />
+              </div>
+            </div>
+
+            {/* 5 Ô DẤU VISA TÍCH DẦN THEO SCROLL */}
+            <div className="space-y-2 border-t border-ink/15 pt-4">
+              <span className="text-[10px] font-black uppercase tracking-wider text-ink-muted block mb-2">
+                Dấu thị thực các chặng:
+              </span>
+
+              <div className="grid grid-cols-5 gap-2">
+                {units.map((u) => {
+                  const isPassed = activeUnitIndex >= u.order;
+                  const isCurrent = activeUnitIndex === u.order;
+                  const isCompletedInDb = u.status === 'COMPLETED';
+
+                  return (
+                    <button
+                      key={u.order}
+                      onClick={() => scrollToUnit(u.order)}
+                      title={`Cuộn đến ${u.title}`}
+                      className={`aspect-square rounded-xl border-2 flex flex-col items-center justify-center p-1 transition-all ${
+                        isCurrent
+                          ? 'border-red bg-red/10 text-red font-black scale-105 shadow-brutal-sm'
+                          : isPassed || isCompletedInDb
+                          ? 'border-teal bg-teal/10 text-teal font-black'
+                          : 'border-dashed border-ink/30 text-ink-muted hover:border-ink/60'
+                      }`}
+                    >
+                      <span className="text-[10px] font-mono leading-none">U{u.order}</span>
+                      {isCompletedInDb || (isPassed && activeUnitIndex > u.order) ? (
+                        <CheckCircle2 className="w-3 h-3 mt-1 stroke-[3]" />
+                      ) : isCurrent ? (
+                        <span className="w-1.5 h-1.5 rounded-full bg-red mt-1 animate-ping" />
+                      ) : (
+                        <Lock className="w-2.5 h-2.5 mt-1 opacity-50" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Nút tắt/bật thông tin hỗ trợ */}
+            <div className="mt-5 pt-3 border-t border-ink/15 text-[11px] text-ink-muted space-y-1 font-sans">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-teal" />
+                <span>Unit 1: Đã hoàn thành (+1 tem)</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-red animate-pulse" />
+                <span>Unit 2: Đang học dở (Bài 2/3)</span>
+              </div>
+            </div>
+
+            {/* Nút cuộn nhanh tới chặng đang học dở */}
+            <button
+              onClick={() => scrollToUnit(2)}
+              className="w-full mt-4 btn btn-red text-xs font-black shadow-brutal py-2 flex items-center justify-center gap-1.5"
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              <span>Chuyển tới chặng đang học</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
