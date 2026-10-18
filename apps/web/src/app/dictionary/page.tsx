@@ -16,18 +16,10 @@ import {
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
 import { EmptyState } from '../../components/ui/EmptyState';
-
-interface WordItem {
-  id: string;
-  targetText: string;
-  translation: string;
-  phonetic?: string;
-  cefrLevel: string;
-  partOfSpeech?: string;
-  exampleSentence?: string;
-  exampleTranslation?: string;
-  isBookmarked?: boolean;
-}
+import {
+  LibraryCatalogCard,
+  LibraryWordData,
+} from '../../components/ui/LibraryCatalogCard';
 
 const CEFR_LEVELS = ['Tất cả', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const PARTS_OF_SPEECH = [
@@ -38,18 +30,54 @@ const PARTS_OF_SPEECH = [
   { value: 'adverb', label: 'Phó từ (Adv)' },
 ];
 
-const DEFAULT_FEATURED_WORD: WordItem = {
+const DEFAULT_FEATURED_WORD: LibraryWordData = {
   id: 'word-serendipity',
   targetText: 'Serendipity',
   phonetic: '/ˌser.ənˈdɪp.ə.ti/',
   cefrLevel: 'C1',
   partOfSpeech: 'noun',
   translation: 'Sự may mắn bất ngờ, khả năng tình cờ tìm thấy những điều tươi đẹp.',
+  callNumber: 'LIB-820.1/VOC-SEREN',
+  catalogDate: '18/10/2026',
+  collocations: [
+    {
+      phrase: 'pure serendipity',
+      translation: 'sự may mắn hoàn toàn tình cờ',
+      example: 'Finding this peaceful bookstore was pure serendipity on a rainy afternoon.',
+    },
+    {
+      phrase: 'stroke of serendipity',
+      translation: 'một dịp may mắn ngẫu nhiên',
+      example: 'By a stroke of serendipity, they met the leading researcher at the airport.',
+    },
+    {
+      phrase: 'serendipity and fate',
+      translation: 'cơ duyên và định mệnh',
+      example: 'Their breakthrough was a blend of hard work, serendipity and fate.',
+    },
+  ],
+  synonyms: [
+    {
+      word: 'Fluke',
+      translation: 'May mắn bất ngờ (văn nói)',
+      nuance: 'Mang tính ngẫu nhiên nhiều hơn, ít chất thơ và triết lý hơn serendipity.',
+    },
+    {
+      word: 'Fortuity',
+      translation: 'Sự tình cờ may mắn (trang trọng)',
+      nuance: 'Thường dùng trong văn bản học thuật hoặc luật pháp diễn tả biến cố ngẫu nhiên có lợi.',
+    },
+  ],
   exampleSentence: 'Finding this peaceful bookstore was pure serendipity on a rainy afternoon.',
   exampleTranslation: 'Tình cờ tìm thấy hiệu sách yên bình này vào một chiều mưa thật là một sự may mắn kỳ diệu.',
+  learnedSource: {
+    lessonTitle: 'Bài 3: Trải nghiệm & Cảm xúc cá nhân',
+    unitTitle: 'Unit 5: Đời sống Thường nhật',
+    stage: 'Chặng 2',
+  },
 };
 
-const SAMPLE_WORDS: WordItem[] = [
+const SAMPLE_WORDS: LibraryWordData[] = [
   {
     id: 'w-1',
     targetText: 'Perseverance',
@@ -57,8 +85,44 @@ const SAMPLE_WORDS: WordItem[] = [
     cefrLevel: 'B2',
     partOfSpeech: 'noun',
     translation: 'Sự kiên trì, lòng bền bỉ, quyết tâm vượt qua mọi khó khăn thử thách.',
+    callNumber: 'LIB-820.1/VOC-PERSEV',
+    catalogDate: '18/10/2026',
+    collocations: [
+      {
+        phrase: 'show immense perseverance',
+        translation: 'thể hiện lòng kiên trì to lớn',
+        example: 'He showed immense perseverance throughout his intensive IELTS preparation.',
+      },
+      {
+        phrase: 'perseverance pays off',
+        translation: 'sự kiên trì sẽ được đền đáp',
+        example: 'Ultimately, her unwavering perseverance paid off with a band 8.0 score.',
+      },
+      {
+        phrase: 'sheer perseverance',
+        translation: 'sự kiên trì thuần túy',
+        example: 'They conquered the summit through sheer perseverance and teamwork.',
+      },
+    ],
+    synonyms: [
+      {
+        word: 'Persistence',
+        translation: 'Sự bền bỉ, kiên định',
+        nuance: 'Nhấn mạnh vào hành động tiếp tục làm việc gì đó dù bị phản đối hay trở ngại.',
+      },
+      {
+        word: 'Tenacity',
+        translation: 'Sự ngoan cường, bám đuổi mục tiêu',
+        nuance: 'Nhấn mạnh ý chí kiên quyết không buông bỏ mục tiêu dù có bất lợi.',
+      },
+    ],
     exampleSentence: 'Success in language learning requires patience and perseverance.',
     exampleTranslation: 'Thành công trong việc học ngoại ngữ đòi hỏi sự kiên nhẫn và lòng kiên trì bền bỉ.',
+    learnedSource: {
+      lessonTitle: 'Bài 2: Tên & Quốc tịch (Name & Nationality)',
+      unitTitle: 'Unit 1: Chào hỏi & Giới thiệu bản thân',
+      stage: 'Chặng 1',
+    },
   },
   {
     id: 'w-2',
@@ -67,8 +131,44 @@ const SAMPLE_WORDS: WordItem[] = [
     cefrLevel: 'B2',
     partOfSpeech: 'adjective',
     translation: 'Đáng kể, quan trọng, có số lượng lớn hoặc có giá trị thật sự.',
-    exampleSentence: 'We have made substantial progress in our daily vocabulary retention.',
-    exampleTranslation: 'Chúng ta đã đạt được tiến bộ đáng kể trong việc ghi nhớ từ vựng mỗi ngày.',
+    callNumber: 'LIB-820.1/VOC-SUBST',
+    catalogDate: '18/10/2026',
+    collocations: [
+      {
+        phrase: 'substantial progress',
+        translation: 'tiến bộ đáng kể',
+        example: 'We have made substantial progress in our daily vocabulary retention.',
+      },
+      {
+        phrase: 'substantial amount of water',
+        translation: 'khối lượng nước đáng kể',
+        example: 'The ancient aqueducts transported a substantial amount of fresh water daily.',
+      },
+      {
+        phrase: 'substantial evidence',
+        translation: 'bằng chứng xác thực có sức nặng',
+        example: 'Researchers found substantial evidence supporting climate adaptation.',
+      },
+    ],
+    synonyms: [
+      {
+        word: 'Significant',
+        translation: 'Đáng kể, có ý nghĩa',
+        nuance: 'Dùng rất phổ biến trong bài luận học thuật khi phân tích số liệu và xu hướng.',
+      },
+      {
+        word: 'Considerable',
+        translation: 'Lớn lao, đáng chú ý',
+        nuance: 'Nhấn mạnh độ lớn về kích cỡ, số lượng hoặc tầm quan trọng xã hội.',
+      },
+    ],
+    exampleSentence: 'The aqueduct network carried a substantial volume of fresh water to Rome daily.',
+    exampleTranslation: 'Mạng lưới cống dẫn nước đã vận chuyển một khối lượng nước ngọt đáng kể về La Mã mỗi ngày.',
+    learnedSource: {
+      lessonTitle: 'The Engineering Marvel of Roman Aqueducts',
+      unitTitle: 'IELTS Reading Passage 1',
+      stage: 'Chặng 3',
+    },
   },
   {
     id: 'w-3',
@@ -77,8 +177,39 @@ const SAMPLE_WORDS: WordItem[] = [
     cefrLevel: 'C1',
     partOfSpeech: 'adjective',
     translation: 'Hùng biện, lưu loát, có tài ăn nói thuyết phục và truyền cảm.',
+    callNumber: 'LIB-820.1/VOC-ELOQU',
+    catalogDate: '18/10/2026',
+    collocations: [
+      {
+        phrase: 'eloquent speaker',
+        translation: 'diễn giả hùng biện truyền cảm',
+        example: 'The keynote presenter was an eloquent speaker who captivated the hall.',
+      },
+      {
+        phrase: 'eloquent testimony',
+        translation: 'lời khai hoặc bằng chứng đầy sức thuyết phục',
+        example: 'The clean streets are an eloquent testimony to the citizens civic pride.',
+      },
+    ],
+    synonyms: [
+      {
+        word: 'Articulate',
+        translation: 'Diễn đạt khúc chiết, mạch lạc',
+        nuance: 'Tập trung vào sự rõ ràng, rành mạch từng luận điểm.',
+      },
+      {
+        word: 'Persuasive',
+        translation: 'Có sức thuyết phục cao',
+        nuance: 'Nhấn mạnh khả năng khiến người nghe tin và thay đổi quan điểm.',
+      },
+    ],
     exampleSentence: 'Her eloquent explanation helped the students grasp the grammar rule quickly.',
     exampleTranslation: 'Lời giải thích lưu loát của cô ấy đã giúp học sinh nắm bắt quy tắc ngữ pháp một cách nhanh chóng.',
+    learnedSource: {
+      lessonTitle: 'Bài 1: Thành viên gia đình (Family Members)',
+      unitTitle: 'Unit 2: Gia đình & Bạn bè',
+      stage: 'Chặng 1',
+    },
   },
   {
     id: 'w-4',
@@ -86,9 +217,45 @@ const SAMPLE_WORDS: WordItem[] = [
     phonetic: '/rɪˈzɪl.jənt/',
     cefrLevel: 'B2',
     partOfSpeech: 'adjective',
-    translation: 'Kiên cường, có khả năng phục hồi nhanh chóng sau khó khăn.',
-    exampleSentence: 'He remained resilient despite facing numerous academic setbacks.',
-    exampleTranslation: 'Anh ấy vẫn luôn kiên cường dù phải đối mặt với nhiều trở ngại học tập.',
+    translation: 'Kiên cường, có khả năng phục hồi nhanh chóng sau khó khăn hoặc nghịch cảnh.',
+    callNumber: 'LIB-820.1/VOC-RESIL',
+    catalogDate: '18/10/2026',
+    collocations: [
+      {
+        phrase: 'resilient urban infrastructure',
+        translation: 'hạ tầng đô thị có khả năng chống chịu',
+        example: 'Engineers designed resilient urban infrastructure to withstand floods.',
+      },
+      {
+        phrase: 'remain resilient',
+        translation: 'duy trì sự kiên cường',
+        example: 'He remained resilient despite facing numerous academic setbacks.',
+      },
+      {
+        phrase: 'resilient economy',
+        translation: 'nền kinh tế phục hồi linh hoạt',
+        example: 'Tourism helped foster a more resilient economy for local communities.',
+      },
+    ],
+    synonyms: [
+      {
+        word: 'Hardy',
+        translation: 'Dẻo dai, chịu đựng tốt',
+        nuance: 'Thường dùng cho sinh vật sống có thể sinh tồn trong điều kiện khắc nghiệt.',
+      },
+      {
+        word: 'Tough',
+        translation: 'Bền bỉ, cứng cỏi',
+        nuance: 'Văn phong thông thường mô tả tính cách không ngại khó khăn.',
+      },
+    ],
+    exampleSentence: 'Urban ecosystems must remain resilient against the accelerating impacts of climate change.',
+    exampleTranslation: 'Hệ sinh thái đô thị phải duy trì khả năng chống chịu bền bỉ trước những tác động ngày càng tăng của biến đổi khí hậu.',
+    learnedSource: {
+      lessonTitle: 'Phát triển Đô thị Bền vững & Môi trường',
+      unitTitle: 'Chuyên đề IELTS Writing Task 2',
+      stage: 'Chặng 2',
+    },
   },
   {
     id: 'w-5',
@@ -97,8 +264,44 @@ const SAMPLE_WORDS: WordItem[] = [
     cefrLevel: 'B2',
     partOfSpeech: 'adjective',
     translation: 'Thuộc về nhận thức, khả năng tư duy và xử lý thông tin của não bộ.',
+    callNumber: 'LIB-820.1/VOC-COGNI',
+    catalogDate: '18/10/2026',
+    collocations: [
+      {
+        phrase: 'cognitive flexibility',
+        translation: 'sự linh hoạt trong nhận thức',
+        example: 'Bilingualism has been shown to boost cognitive flexibility in adults.',
+      },
+      {
+        phrase: 'cognitive development',
+        translation: 'sự phát triển tư duy nhận thức',
+        example: 'Reading varied materials stimulates healthy cognitive development.',
+      },
+      {
+        phrase: 'cognitive load',
+        translation: 'tải trọng nhận thức của trí não',
+        example: 'Good user interfaces reduce cognitive load for language students.',
+      },
+    ],
+    synonyms: [
+      {
+        word: 'Intellectual',
+        translation: 'Thuộc về trí tuệ, lý trí',
+        nuance: 'Tập trung vào năng lực trí tuệ, học vấn và các vấn đề tư tưởng.',
+      },
+      {
+        word: 'Mental',
+        translation: 'Thuộc về tâm trí',
+        nuance: 'Bao quát tất cả trạng thái và hoạt động trong não bộ cũng như tâm lý.',
+      },
+    ],
     exampleSentence: 'Bilingualism has been shown to boost cognitive flexibility in adults.',
     exampleTranslation: 'Việc biết hai ngôn ngữ đã được chứng minh là giúp nâng cao sự linh hoạt trong nhận thức ở người trưởng thành.',
+    learnedSource: {
+      lessonTitle: 'Bài 3: Hỏi thăm sức khỏe & Tạm biệt',
+      unitTitle: 'Unit 1: Chào hỏi & Giới thiệu bản thân',
+      stage: 'Chặng 1',
+    },
   },
   {
     id: 'w-6',
@@ -107,8 +310,39 @@ const SAMPLE_WORDS: WordItem[] = [
     cefrLevel: 'C1',
     partOfSpeech: 'adjective',
     translation: 'Thực dụng, mang tính thực tiễn, giải quyết vấn đề dựa trên thực tế.',
+    callNumber: 'LIB-820.1/VOC-PRAGM',
+    catalogDate: '18/10/2026',
+    collocations: [
+      {
+        phrase: 'pragmatic approach',
+        translation: 'hướng tiếp cận thực tiễn',
+        example: 'We need a pragmatic approach to improve speaking fluency without fear of errors.',
+      },
+      {
+        phrase: 'pragmatic solution',
+        translation: 'giải pháp thực tế khả thi',
+        example: 'City planners selected a pragmatic solution to ease traffic congestion.',
+      },
+    ],
+    synonyms: [
+      {
+        word: 'Practical',
+        translation: 'Thực tế, có thể làm được',
+        nuance: 'Từ thông dụng nhất chỉ những gì dễ áp dụng trong đời sống.',
+      },
+      {
+        word: 'Realistic',
+        translation: 'Hiện thực, không viển vông',
+        nuance: 'Nhìn nhận mục tiêu sát với khả năng và tài nguyên thực tế.',
+      },
+    ],
     exampleSentence: 'We need a pragmatic approach to improve speaking fluency without fear of errors.',
     exampleTranslation: 'Chúng ta cần một hướng tiếp cận thực tiễn để nâng cao độ trôi chảy khi nói mà không sợ mắc lỗi.',
+    learnedSource: {
+      lessonTitle: 'Campus Orientation & Library Tour',
+      unitTitle: 'IELTS Listening Section 1',
+      stage: 'Chặng 2',
+    },
   },
 ];
 
@@ -116,8 +350,8 @@ export default function DictionaryPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCefr, setSelectedCefr] = useState('Tất cả');
   const [selectedPos, setSelectedPos] = useState('all');
-  const [words, setWords] = useState<WordItem[]>(SAMPLE_WORDS);
-  const [featuredWord, setFeaturedWord] = useState<WordItem>(DEFAULT_FEATURED_WORD);
+  const [words, setWords] = useState<LibraryWordData[]>(SAMPLE_WORDS);
+  const [featuredWord, setFeaturedWord] = useState<LibraryWordData>(DEFAULT_FEATURED_WORD);
   const [loading, setLoading] = useState(false);
   const [addedWords, setAddedWords] = useState<Record<string, boolean>>({});
   const [drawerPulled, setDrawerPulled] = useState(true);
@@ -156,7 +390,24 @@ export default function DictionaryPage() {
         });
 
         if (res.words && res.words.length > 0) {
-          setWords(res.words);
+          const enrichedWords: LibraryWordData[] = res.words.map((w: any) => ({
+            id: w.id,
+            targetText: w.targetText,
+            translation: w.translation,
+            phonetic: w.phonetic,
+            cefrLevel: w.cefrLevel || 'B1',
+            partOfSpeech: w.partOfSpeech || 'noun',
+            callNumber: `LIB-820.1/VOC-${(w.targetText || 'VOC').toUpperCase().slice(0, 5)}`,
+            catalogDate: '18/10/2026',
+            exampleSentence: w.exampleSentence,
+            exampleTranslation: w.exampleTranslation,
+            learnedSource: {
+              lessonTitle: w.lessonTitle || 'Bài 1: Chào hỏi thường ngày (Greetings)',
+              unitTitle: w.unitTitle || 'Unit 1: Chào hỏi & Giới thiệu bản thân',
+              stage: 'Chặng 1',
+            },
+          }));
+          setWords(enrichedWords);
         } else {
           setWords([]);
         }
@@ -186,17 +437,7 @@ export default function DictionaryPage() {
     return () => clearTimeout(timer);
   }, [searchQuery, selectedCefr, selectedPos]);
 
-  const handleSpeak = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
-    }
-  };
-
-  const handleAddToDeck = async (word: WordItem) => {
+  const handleAddToDeck = async (word: LibraryWordData) => {
     setAddedWords((prev) => ({ ...prev, [word.id]: true }));
     try {
       await api.addSrsWord({
@@ -210,100 +451,53 @@ export default function DictionaryPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20 text-left">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20 text-left select-none">
       {/* Header Từ Điển */}
       <div className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <div className="max-w-xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Từ Điển Toàn Diện</span>
+              <span>Phiếu Thư Viện Mục Lục Tra Cứu</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight font-sans">
-              Tra cứu chuẩn xác, mở rộng vốn từ mỗi ngày
+            <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight font-serif">
+              Từ Điển Phiếu Thư Viện Cổ Điển
             </h1>
 
             <p className="text-sm sm:text-base text-ink-soft leading-relaxed font-sans">
-              Tra cứu hơn 25.000 mục từ vựng học thuật kèm phiên âm chuẩn quốc tế, ví dụ song ngữ ngữ cảnh và dễ dàng lưu vào thẻ ghi nhớ.
+              Mỗi mục từ là một <strong>Phiếu thư viện</strong> 4 tab đầy đủ: Định nghĩa, Cụm từ đi kèm, Từ đồng nghĩa và Ví dụ ngữ cảnh trích dẫn trực tiếp từ các bài học bạn đã hoàn thành.
             </p>
           </div>
 
           <div className="flex flex-col items-center relative flex-shrink-0">
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-              Hôm nay cùng tớ học từ mới nhé!
+              Mỗi từ là một tấm phiếu thư viện cổ!
             </div>
             <LingLing reaction="studying" size={125} />
           </div>
         </div>
       </div>
 
-      {/* "TỪ VỰNG TIÊU BIỂU TRONG NGÀY" DẠNG CARD GIẤY */}
-      <div className="card-paper p-6 sm:p-8 space-y-4 bg-paper-2 border-2 border-ink shadow-brutal-lg relative">
-        <div className="flex items-center justify-between border-b-2 border-ink/20 pb-3">
-          <span className="text-xs font-black uppercase tracking-wider text-red">
-            Mục từ tiêu biểu trong ngày (Word of the Day)
-          </span>
-          <span className="font-mono text-xs font-black px-2.5 py-0.5 rounded border border-ink bg-card text-teal">
-            Bậc {featuredWord.cefrLevel}
+      {/* "PHIẾU THƯ VIỆN TIÊU BIỂU TRONG NGÀY" (FEATURE 5) */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-3 h-3 rounded-full bg-red border-2 border-ink" />
+            <h2 className="text-xl sm:text-2xl font-black text-ink font-serif tracking-tight">
+              Phiếu Thư Viện Tiêu Biểu Trong Ngày
+            </h2>
+          </div>
+          <span className="text-xs font-mono font-bold text-teal px-2.5 py-0.5 rounded border border-teal bg-teal/10">
+            Học sâu 4 Tab
           </span>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-3 flex-wrap">
-              <h2 className="text-3xl sm:text-4xl font-black text-ink font-serif tracking-tight">
-                {featuredWord.targetText}
-              </h2>
-              <span className="text-sm font-mono font-bold text-teal">
-                {featuredWord.phonetic}
-              </span>
-              <button
-                onClick={() => handleSpeak(featuredWord.targetText)}
-                className="w-8 h-8 rounded-full border border-ink bg-card hover:bg-amber flex items-center justify-center text-ink shadow-brutal-sm cursor-pointer transition-all"
-                title="Phát âm"
-              >
-                <Volume2 className="w-4 h-4" />
-              </button>
-            </div>
-            <span className="text-xs font-bold text-ink-muted italic block">
-              {featuredWord.partOfSpeech === 'noun' ? 'Danh từ' : 'Tính từ'}
-            </span>
-          </div>
-
-          <button
-            onClick={() => handleAddToDeck(featuredWord)}
-            disabled={addedWords[featuredWord.id]}
-            className="btn btn-red text-xs font-black shadow-brutal flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
-          >
-            {addedWords[featuredWord.id] ? (
-              <>
-                <Check className="w-3.5 h-3.5" />
-                <span>Đã lưu vào thẻ</span>
-              </>
-            ) : (
-              <>
-                <Plus className="w-3.5 h-3.5" />
-                <span>Thêm vào thẻ ghi nhớ</span>
-              </>
-            )}
-          </button>
-        </div>
-
-        <p className="text-base font-bold text-ink leading-relaxed font-sans">
-          {featuredWord.translation}
-        </p>
-
-        {featuredWord.exampleSentence && (
-          <div className="lined-paper border border-ink/25 rounded-xl p-3.5 space-y-1 shadow-brutal-sm">
-            <p className="text-xs sm:text-sm font-bold text-ink italic font-serif">
-              &ldquo;{featuredWord.exampleSentence}&rdquo;
-            </p>
-            <p className="text-xs text-teal font-semibold">
-              {featuredWord.exampleTranslation}
-            </p>
-          </div>
-        )}
+        <LibraryCatalogCard
+          word={featuredWord}
+          onAddToDeck={handleAddToDeck}
+          isAdded={addedWords[featuredWord.id]}
+        />
       </div>
 
       {/* THANH TÌM KIẾM GIẤY + BỘ LỌC CHIP GIẤY */}
@@ -316,8 +510,8 @@ export default function DictionaryPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Tra cứu từ vựng tiếng Anh hoặc nghĩa tiếng Việt..."
-              className="w-full bg-card border-2 border-ink rounded-2xl pl-12 pr-4 py-3 text-base font-bold text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-teal shadow-brutal-md"
+              placeholder="Tra cứu từ vựng tiếng Anh hoặc nghĩa tiếng Việt trên phiếu..."
+              className="w-full bg-card border-2 border-ink rounded-2xl pl-12 pr-4 py-3 text-base font-bold text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-teal shadow-brutal-md font-sans"
             />
           </div>
           <div className="hidden sm:flex items-center flex-shrink-0" title="LingLing tra cứu kính lúp">
@@ -330,7 +524,7 @@ export default function DictionaryPage() {
           {/* Chip Bậc CEFR */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
             <span className="text-xs font-black uppercase text-ink-muted mr-1 whitespace-nowrap flex-shrink-0">
-              Bậc:
+              Bậc CEFR:
             </span>
             {CEFR_LEVELS.map((lvl) => (
               <button
@@ -365,8 +559,8 @@ export default function DictionaryPage() {
         </div>
       </div>
 
-      {/* NGĂN TỦ CATALOG THƯ VIỆN & CÁC THẺ TỪ */}
-      <div className="space-y-4">
+      {/* NGĂN TỦ CATALOG THƯ VIỆN & CÁC PHIẾU THƯ VIỆN */}
+      <div className="space-y-5">
         {/* Ngăn kéo Catalog — click để kéo trượt ra (translateY) */}
         <div
           onClick={() => handlePullDrawer(activeDrawerSection)}
@@ -380,13 +574,13 @@ export default function DictionaryPage() {
             </div>
             <div>
               <div className="text-xs font-black uppercase tracking-wider text-ink flex items-center gap-2">
-                <span>Ngăn tủ Catalog Thư viện</span>
+                <span>Ngăn tủ Mục lục Phiếu Thư Viện</span>
                 <span className="text-[10px] px-2 py-0.5 rounded bg-card border border-ink text-teal">
-                  {isPulling ? 'Đang trượt ngăn kéo...' : 'Nhấn để kéo ngăn'}
+                  {isPulling ? 'Đang trượt ngăn kéo...' : 'Nhấn để đổi ngăn'}
                 </span>
               </div>
               <span className="text-[11px] text-ink-soft">
-                Thẻ từ vựng được xếp thứ tự chữ cái, trượt ra sau 100ms
+                Phiếu mục lục sắp xếp theo vần chữ cái, chuẩn bị sẵn 4 tab kèm audio US/UK
               </span>
             </div>
           </div>
@@ -432,118 +626,34 @@ export default function DictionaryPage() {
           return (
             <>
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-black text-ink font-sans">
-                  Mục từ trong ngăn kéo ({activeDrawerSection})
+                <h2 className="text-xl font-black text-ink font-serif">
+                  Danh Mục Phiếu Trong Ngăn ({activeDrawerSection})
                 </h2>
                 <span className="text-xs font-mono font-bold text-ink-muted">
-                  {displayedWords.length} thẻ từ
+                  {displayedWords.length} phiếu thư viện
                 </span>
               </div>
 
               {loading ? (
-                <div className="text-center py-12 text-sm font-black text-ink">
-                  Đang kéo ngăn tủ từ điển...
+                <div className="text-center py-12 text-sm font-black text-ink font-mono">
+                  Đang kéo ngăn tủ phiếu thư viện...
                 </div>
               ) : displayedWords.length === 0 ? (
                 <EmptyState
-                  title="Không tìm thấy mục từ phù hợp"
-                  description="Hãy thử tìm kiếm với từ khóa khác hoặc chọn ngăn kéo khác."
+                  title="Không tìm thấy phiếu thư viện phù hợp"
+                  description="Hãy thử tìm kiếm với từ khóa khác hoặc chọn ngăn chữ cái khác."
                   reaction="shrug"
                 />
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {displayedWords.map((w, idx) => {
-                    const isAdded = addedWords[w.id];
-
-                    return (
-                      <div
-                        key={w.id}
-                        style={{ animationDelay: `${(idx % 10) * 100}ms` }}
-                        className="card-paper p-6 space-y-3 bg-card hover:-translate-y-1 transition-all flex flex-col justify-between shadow-brutal-md border-2 border-ink animate-message-slide"
-                      >
-                  <div className="space-y-2.5">
-                    {/* Header mục từ: Tiêu đề + Phiên âm + Stamp từ loại */}
-                    <div className="flex items-start justify-between gap-2 border-b border-ink/15 pb-2.5">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-2xl font-black text-ink font-serif tracking-tight">
-                            {w.targetText}
-                          </h3>
-                          <button
-                            onClick={() => handleSpeak(w.targetText)}
-                            className="w-7 h-7 rounded-full border border-ink bg-paper-2 hover:bg-amber flex items-center justify-center text-ink shadow-brutal-sm cursor-pointer"
-                            title="Phát âm"
-                          >
-                            <Volume2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                        {w.phonetic && (
-                          <span className="text-xs font-mono font-bold text-teal block mt-0.5">
-                            {w.phonetic}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="flex items-center gap-1.5 flex-shrink-0">
-                        <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded border border-ink/40 bg-paper-2 text-ink">
-                          {w.partOfSpeech || 'noun'}
-                        </span>
-                        <span className="text-[10px] font-mono font-black px-2 py-0.5 rounded border border-ink bg-teal/10 text-teal">
-                          {w.cefrLevel}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Định nghĩa đánh số */}
-                    <div className="space-y-1">
-                      <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
-                        1. Định nghĩa:
-                      </span>
-                      <p className="text-sm font-bold text-ink leading-relaxed font-sans">
-                        {w.translation}
-                      </p>
-                    </div>
-
-                    {/* Ví dụ in nghiêng */}
-                    {w.exampleSentence && (
-                      <div className="lined-paper p-3 rounded-lg border border-ink/20 space-y-1">
-                        <p className="text-xs font-serif italic text-ink">
-                          &ldquo;{w.exampleSentence}&rdquo;
-                        </p>
-                        {w.exampleTranslation && (
-                          <p className="text-[11px] text-teal font-semibold">
-                            {w.exampleTranslation}
-                          </p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Nút Đỏ "Thêm vào thẻ ghi nhớ" */}
-                  <div className="pt-2 border-t border-ink/15 flex items-center justify-end">
-                    <button
-                      onClick={() => handleAddToDeck(w)}
-                      disabled={isAdded}
-                      className={`btn ${
-                        isAdded ? 'btn-paper opacity-75' : 'btn-red'
-                      } text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer`}
-                    >
-                      {isAdded ? (
-                        <>
-                          <Check className="w-3.5 h-3.5" />
-                          <span>Đã lưu vào thẻ</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="w-3.5 h-3.5" />
-                          <span>Thêm vào thẻ ghi nhớ</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {displayedWords.map((w) => (
+                    <LibraryCatalogCard
+                      key={w.id}
+                      word={w}
+                      onAddToDeck={handleAddToDeck}
+                      isAdded={addedWords[w.id]}
+                    />
+                  ))}
                 </div>
               )}
             </>

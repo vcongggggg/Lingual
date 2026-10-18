@@ -38,6 +38,7 @@ export function Navbar() {
     { href: '/vocabulary', label: '5 Labs' },
     { href: '/games', label: 'Game' },
     { href: '/ielts', label: 'Luyện IELTS' },
+    { href: '/practice', label: 'Luyện tập' },
     { href: '/dictionary', label: 'Từ điển' },
   ];
 

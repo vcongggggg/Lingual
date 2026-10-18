@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../../../lib/api';
 import { LingLing } from '../../../../components/ui/LingLing';
+import { TeacherExplanationPanel } from '../../../../components/ui/TeacherExplanationPanel';
 
 export default function IeltsListeningPracticePage() {
   const [questionsList, setQuestionsList] = useState<any[]>([]);
@@ -54,6 +55,13 @@ export default function IeltsListeningPracticePage() {
           options: ['Biotechnology', 'Civil Engineering', 'Computer Science', 'Business Administration'],
           correctAnswer: 'Biotechnology',
           explanation: 'The transcript states: "I will be enrolled in the Master of Biotechnology program."',
+          step1QuestionIntent: 'Yêu cầu xác định chuyên ngành học (academic subject) mà thí sinh Daniel đăng ký tại trường đại học.',
+          step2Paraphrases: [
+            { questionKeyword: 'academic subject / study', passageKeyword: 'enrolled in the Master of Biotechnology program' },
+          ],
+          step3EvidenceSnippet: 'Daniel: I will be enrolled in the Master of Biotechnology program.',
+          step3EvidenceAudioText: 'I will be enrolled in the Master of Biotechnology program.',
+          step4AnswerReasoning: 'Daniel nói rõ ràng và trực tiếp: "Master of Biotechnology". Các đáp án khác hoàn toàn không xuất hiện trong lời thoại.',
         },
         {
           id: 'l_q2',
@@ -62,6 +70,13 @@ export default function IeltsListeningPracticePage() {
           options: ['£150', '£165', '£180', '£200'],
           correctAnswer: '£180',
           explanation: 'Daniel mentions: "My absolute maximum ceiling is 180 pounds per week."',
+          step1QuestionIntent: 'Tìm số tiền tối đa mỗi tuần (maximum weekly budget ceiling) mà Daniel có thể chi trả cho phòng ở.',
+          step2Paraphrases: [
+            { questionKeyword: 'maximum weekly budget ceiling', passageKeyword: 'absolute maximum ceiling is 180 pounds per week' },
+          ],
+          step3EvidenceSnippet: 'Daniel: My absolute maximum ceiling is 180 pounds per week, preferably with utilities included.',
+          step3EvidenceAudioText: 'My absolute maximum ceiling is 180 pounds per week, preferably with utilities included.',
+          step4AnswerReasoning: 'Bẫy số liệu: £165 là giá thuê phòng của Greenfield Court, còn trần ngân sách Daniel chấp nhận chi trả là £180.',
         },
         {
           id: 'l_q3',
@@ -70,6 +85,13 @@ export default function IeltsListeningPracticePage() {
           options: ['Riverside Lodge', 'Greenfield Court', 'Victoria Residence', 'Oakwood Hall'],
           correctAnswer: 'Greenfield Court',
           explanation: 'The officer confirms: "Greenfield Court is 165 pounds per week with high-speed internet and all heating included."',
+          step1QuestionIntent: 'Xác định tên khu ký túc xá có mức giá £165/tuần bao gồm trọn gói dịch vụ điện nước/sưởi.',
+          step2Paraphrases: [
+            { questionKeyword: 'quoted at £165 / utilities included', passageKeyword: 'Greenfield Court is 165 pounds per week with high-speed internet and all heating included' },
+          ],
+          step3EvidenceSnippet: 'Admissions Officer: Greenfield Court is 165 pounds per week with high-speed internet and all heating included.',
+          step3EvidenceAudioText: 'Greenfield Court is 165 pounds per week with high-speed internet and all heating included.',
+          step4AnswerReasoning: 'Greenfield Court đáp ứng đầy đủ cả hai dữ kiện: giá 165 bảng/tuần và bao gồm internet tốc độ cao cùng hệ thống sưởi.',
         },
       ],
     },
@@ -361,13 +383,28 @@ export default function IeltsListeningPracticePage() {
                     })}
                   </div>
 
-                  {/* Giải thích khi đã nộp bài */}
+                  {/* Giải thích khi đã nộp bài: Cô giáo chữa bài 4 bước */}
                   {submitted && (
-                    <div className="pt-2 text-xs font-semibold text-ink-soft border-t border-ink/15 space-y-1">
-                      <span className="font-black text-ink block">
-                        Đáp án đúng: <b className="text-teal">{q.correctAnswer}</b>
-                      </span>
-                      {q.explanation && <p className="italic text-ink-muted">{q.explanation}</p>}
+                    <div className="pt-3">
+                      <TeacherExplanationPanel
+                        data={{
+                          step1QuestionIntent:
+                            q.step1QuestionIntent ||
+                            `Tìm thông tin trả lời cho câu hỏi: "${q.prompt.replace(/^\d+\.\s*/, '')}"`,
+                          step2Paraphrases: q.step2Paraphrases || [
+                            { questionKeyword: 'Từ khóa trong câu hỏi', passageKeyword: q.correctAnswer },
+                          ],
+                          step3EvidenceSnippet:
+                            q.step3EvidenceSnippet ||
+                            q.explanation ||
+                            'Transcript đoạn audio chứa câu trả lời trực tiếp.',
+                          step3EvidenceAudioText: q.step3EvidenceAudioText || q.step3EvidenceSnippet || q.explanation,
+                          step4AnswerReasoning:
+                            q.step4AnswerReasoning ||
+                            `Đáp án chính xác là "${q.correctAnswer}". Cần chú ý bẫy phát âm và các con số tương tự.`,
+                          correctAnswer: q.correctAnswer,
+                        }}
+                      />
                     </div>
                   )}
                 </div>

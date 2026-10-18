@@ -11,6 +11,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { api } from '../../../../lib/api';
+import { TeacherExplanationPanel } from '../../../../components/ui/TeacherExplanationPanel';
 
 export default function IeltsReadingPracticePage() {
   const [questionsList, setQuestionsList] = useState<any[]>([]);
@@ -43,6 +44,13 @@ Water from aqueducts fed three critical destinations: public fountains (lacus) f
           options: ['Less than 20 percent', 'Approximately 50 percent', 'Over 80 percent', '100 percent'],
           correctAnswer: 'Over 80 percent',
           explanation: 'Paragraph A states: "over 80 percent of the total 800-kilometer empire-wide network was buried subterranean conduits."',
+          step1QuestionIntent: 'Tìm tỷ lệ phần trăm (percentage) hệ thống cống dẫn nước La Mã được xây dựng ngầm dưới lòng đất.',
+          step2Paraphrases: [
+            { questionKeyword: 'constructed as underground conduits', passageKeyword: 'buried subterranean conduits' },
+          ],
+          step3EvidenceSnippet: 'Paragraph A: "...over 80 percent of the total 800-kilometer empire-wide network was buried subterranean conduits."',
+          step3EvidenceAudioText: 'Over 80 percent of the total 800-kilometer empire-wide network was buried subterranean conduits.',
+          step4AnswerReasoning: 'Cụm từ "buried subterranean conduits" đồng nghĩa với "underground conduits", với tỷ lệ rõ ràng là "over 80 percent".',
         },
         {
           id: 'r_q2',
@@ -51,6 +59,13 @@ Water from aqueducts fed three critical destinations: public fountains (lacus) f
           options: ['The astrolabe', 'The chorobates', 'The sextant', 'The magnetic compass'],
           correctAnswer: 'The chorobates',
           explanation: 'Paragraph B notes: "specialized levelling instruments, most notably the chorobates—a wooden bench-like device 20 feet long."',
+          step1QuestionIntent: 'Xác định tên thiết bị (instrument) được các kỹ sư La Mã dùng để đo độ dốc chính xác của đường ống nước.',
+          step2Paraphrases: [
+            { questionKeyword: 'instrument to calculate precise gradients', passageKeyword: 'specialized levelling instruments, most notably the chorobates' },
+          ],
+          step3EvidenceSnippet: 'Paragraph B: "...specialized levelling instruments, most notably the chorobates—a wooden bench-like device 20 feet long."',
+          step3EvidenceAudioText: 'Specialized levelling instruments, most notably the chorobates, a wooden bench-like device 20 feet long.',
+          step4AnswerReasoning: 'Tác giả nêu đích danh "chorobates" là công cụ đo độ thăng bằng và độ dốc tiêu chuẩn của các kỹ sư La Mã.',
         },
         {
           id: 'r_q3',
@@ -59,6 +74,13 @@ Water from aqueducts fed three critical destinations: public fountains (lacus) f
           options: ['A tithe of grain', 'A specialized water tax (vectigal)', 'No payment was required', 'A annual civic labor duty'],
           correctAnswer: 'A specialized water tax (vectigal)',
           explanation: 'Paragraph C explains: "private villas of patrician families who paid a specialized water tax (vectigal)."',
+          step1QuestionIntent: 'Tìm khoản chi phí hoặc hình thức thanh toán mà các gia đình quý tộc (patrician) phải trả để được cấp nước riêng vào biệt thự.',
+          step2Paraphrases: [
+            { questionKeyword: 'pay for private water access', passageKeyword: 'paid a specialized water tax (vectigal)' },
+          ],
+          step3EvidenceSnippet: 'Paragraph C: "...private villas of patrician families who paid a specialized water tax (vectigal)."',
+          step3EvidenceAudioText: 'Private villas of patrician families who paid a specialized water tax, known as vectigal.',
+          step4AnswerReasoning: 'Thuật ngữ chính xác được bài đọc nhắc đến là "a specialized water tax (vectigal)".',
         },
       ],
     },
@@ -279,13 +301,28 @@ Water from aqueducts fed three critical destinations: public fountains (lacus) f
                         })}
                       </div>
 
-                      {/* Explanation */}
+                      {/* Explanation: Lời cô giáo chữa bài 4 bước */}
                       {submitted && (
-                        <div className="pt-2 text-xs font-semibold text-ink-soft border-t border-ink/15 space-y-1">
-                          <span className="font-black text-ink block">
-                            Đáp án: <b className="text-teal">{q.correctAnswer}</b>
-                          </span>
-                          {q.explanation && <p className="italic text-ink-muted">{q.explanation}</p>}
+                        <div className="pt-3">
+                          <TeacherExplanationPanel
+                            data={{
+                              step1QuestionIntent:
+                                q.step1QuestionIntent ||
+                                `Xác định thông tin trả lời cho câu hỏi: "${q.prompt.replace(/^\d+\.\s*/, '')}"`,
+                              step2Paraphrases: q.step2Paraphrases || [
+                                { questionKeyword: 'Từ khóa trong câu hỏi', passageKeyword: q.correctAnswer },
+                              ],
+                              step3EvidenceSnippet:
+                                q.step3EvidenceSnippet ||
+                                q.explanation ||
+                                'Đoạn văn trích dẫn chứa bằng chứng cho câu trả lời.',
+                              step3EvidenceAudioText: q.step3EvidenceAudioText || q.step3EvidenceSnippet || q.explanation,
+                              step4AnswerReasoning:
+                                q.step4AnswerReasoning ||
+                                `Phương án chính xác là "${q.correctAnswer}". Đã được đối chiếu khớp với văn bản.`,
+                              correctAnswer: q.correctAnswer,
+                            }}
+                          />
                         </div>
                       )}
                     </div>
