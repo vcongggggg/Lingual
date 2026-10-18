@@ -15,6 +15,7 @@ export interface BulkVocabItem {
   exampleTranslation?: string | null;
   imageUrl?: string | null;
   audioUrl?: string | null;
+  exampleAudioUrl?: string | null;
   source: string;
   verified: boolean;
 }
@@ -57,6 +58,7 @@ export async function seedVocabBulk(prismaClient?: PrismaClient) {
         partOfSpeech: item.partOfSpeech || 'noun',
         cefrLevel: item.cefrLevel || 'B1',
         audioUrl: item.audioUrl || null,
+        exampleAudioUrl: item.exampleAudioUrl || null,
         exampleSentence: item.exampleSentence || null,
         exampleTranslation: item.exampleTranslation || null,
         category: 'oxford5000',

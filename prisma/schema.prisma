@@ -153,6 +153,7 @@ model Vocabulary {
   phoneticUk         String?
   partOfSpeech       String?
   audioUrl           String?
+  exampleAudioUrl    String?
   exampleSentence    String?
   exampleTranslation String?
   collocationsJson   String?  @default("[]")
