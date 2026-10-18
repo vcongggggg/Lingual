@@ -10,18 +10,35 @@ jobs:
   ci-pipeline:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: linguaflow_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 11.9.0
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -29,13 +46,18 @@ jobs:
       - name: Prisma Validate
         run: pnpm exec prisma validate
 
+      - name: Push Database Schema
+        run: pnpm exec prisma db push --skip-generate
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/linguaflow_db?schema=public
+
       - name: Run Domain Unit Tests
         run: pnpm --filter "@linguaflow/domain" test
 
       - name: Run API Tests
         run: pnpm --filter "@linguaflow/api" test
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/linguaflow_db?schema=public' }}
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/linguaflow_db?schema=public
           JWT_SECRET: 'linguaflow_test_super_secret_jwt_key_2026'
 
       - name: Typecheck API
