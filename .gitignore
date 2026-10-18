@@ -55,4 +55,6 @@ data/*
 !data/phase2_batch2/**
 !data/phase2_all/
 !data/phase2_all/**
+!data/fb-materials-report.json
+!data/skipped-materials.txt
 
