@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "prv-001",
+    "proverb": "Actions speak louder than words.",
+    "meaningVi": "Hành động có sức thuyết phục hơn lời nói suông.",
+    "vietnameseEquivalent": "Nói ít làm nhiều.",
+    "exampleEn": "Don't just promise to help — actions speak louder than words.",
+    "exampleVi": "Đừng chỉ hứa giúp — hãy hành động, vì nói ít làm nhiều.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-002",
+    "proverb": "A picture is worth a thousand words.",
+    "meaningVi": "Một hình ảnh truyền đạt nhiều hơn ngàn lời nói.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "The chart explains it better — a picture is worth a thousand words.",
+    "exampleVi": "Biểu đồ giải thích rõ hơn — một hình ảnh đáng giá ngàn lời nói.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-003",
+    "proverb": "Seeing is believing.",
+    "meaningVi": "Phải tận mắt thấy mới tin được.",
+    "vietnameseEquivalent": "Trăm nghe không bằng một thấy.",
+    "exampleEn": "I didn't believe the beach was that beautiful until I went — seeing is believing.",
+    "exampleVi": "Tôi đã không tin bãi biển đẹp đến thế cho tới khi tự đi — trăm nghe không bằng một thấy.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-004",
+    "proverb": "Practice makes perfect.",
+    "meaningVi": "Luyện tập chăm chỉ sẽ dẫn đến thành công.",
+    "vietnameseEquivalent": "Có công mài sắt, có ngày nên kim.",
+    "exampleEn": "Keep practicing the piano every day — practice makes perfect.",
+    "exampleVi": "Hãy tiếp tục luyện đàn mỗi ngày — có công mài sắt, có ngày nên kim.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-005",
+    "proverb": "Rome wasn't built in a day.",
+    "meaningVi": "Việc lớn cần thời gian, không thể vội vàng.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Learning English takes years — Rome wasn't built in a day.",
+    "exampleVi": "Học tiếng Anh cần nhiều năm — việc lớn không thể một sớm một chiều.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-006",
+    "proverb": "Don't count your chickens before they hatch.",
+    "meaningVi": "Đừng vội mừng trước khi việc chắc chắn thành.",
+    "vietnameseEquivalent": "Đừng đếm cua trong lỗ.",
+    "exampleEn": "The deal isn't signed yet — don't count your chickens before they hatch.",
+    "exampleVi": "Hợp đồng chưa ký đâu — đừng đếm cua trong lỗ.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-007",
+    "proverb": "A bird in the hand is worth two in the bush.",
+    "meaningVi": "Cái chắc chắn trong tay quý hơn cái mơ hồ chưa có.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Take the job offer you have — a bird in the hand is worth two in the bush.",
+    "exampleVi": "Hãy nhận lời mời việc đang có — cái chắc trong tay quý hơn cái chưa chắc.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-008",
+    "proverb": "The early bird catches the worm.",
+    "meaningVi": "Ai nhanh chân thì được lợi.",
+    "vietnameseEquivalent": "Trâu chậm uống nước đục.",
+    "exampleEn": "I arrived at 6am to get the best seats — the early bird catches the worm.",
+    "exampleVi": "Tôi đến từ 6 giờ sáng để có chỗ đẹp — nhanh chân thì được lợi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-009",
+    "proverb": "Don't put all your eggs in one basket.",
+    "meaningVi": "Đừng dồn hết vào một chỗ, hãy chia rủi ro.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Invest in different things — don't put all your eggs in one basket.",
+    "exampleVi": "Hãy đầu tư nhiều kênh — đừng bỏ hết trứng vào một giỏ.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-010",
+    "proverb": "Where there's a will, there's a way.",
+    "meaningVi": "Có quyết tâm thì sẽ tìm ra cách.",
+    "vietnameseEquivalent": "Có chí thì nên.",
+    "exampleEn": "She studied at night after work and passed — where there's a will, there's a way.",
+    "exampleVi": "Cô ấy học buổi tối sau giờ làm và đã đỗ — có chí thì nên.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-011",
+    "proverb": "Better late than never.",
+    "meaningVi": "Muộn còn hơn là không làm.",
+    "vietnameseEquivalent": "Muộn còn hơn không.",
+    "exampleEn": "He finally apologized after a year — better late than never.",
+    "exampleVi": "Một năm sau anh ấy cũng đã xin lỗi — muộn còn hơn không.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-012",
+    "proverb": "The pen is mightier than the sword.",
+    "meaningVi": "Ngòi bút có sức mạnh hơn gươm đao.",
+    "vietnameseEquivalent": "Bút sa gà chết.",
+    "exampleEn": "One article exposed the corruption — the pen is mightier than the sword.",
+    "exampleVi": "Một bài báo đã phanh phui vụ tham nhũng — ngòi bút mạnh hơn gươm đao.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-013",
+    "proverb": "When in Rome, do as the Romans do.",
+    "meaningVi": "Đến đâu thì theo phong tục ở đó.",
+    "vietnameseEquivalent": "Nhập gia tùy tục.",
+    "exampleEn": "In Japan, bow when you greet — when in Rome, do as the Romans do.",
+    "exampleVi": "Ở Nhật, hãy cúi chào khi gặp mặt — nhập gia tùy tục.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-014",
+    "proverb": "Blood is thicker than water.",
+    "meaningVi": "Tình ruột thịt bền chặt hơn mọi quan hệ khác.",
+    "vietnameseEquivalent": "Một giọt máu đào hơn ao nước lã.",
+    "exampleEn": "He chose to help his brother first — blood is thicker than water.",
+    "exampleVi": "Anh ấy chọn giúp em trai mình trước — một giọt máu đào hơn ao nước lã.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-015",
+    "proverb": "All's well that ends well.",
+    "meaningVi": "Miễn là kết thúc tốt đẹp thì mọi chuyện đều ổn.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "The trip was chaotic but we arrived safely — all's well that ends well.",
+    "exampleVi": "Chuyến đi hỗn loạn nhưng cả nhà đến nơi an toàn — kết thúc tốt là được.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-016",
+    "proverb": "Barking dogs seldom bite.",
+    "meaningVi": "Kẻ hay đe dọa thường không dám làm thật.",
+    "vietnameseEquivalent": "Chó sủa là chó không cắn.",
+    "exampleEn": "Don't fear his threats — barking dogs seldom bite.",
+    "exampleVi": "Đừng sợ lời đe dọa của hắn — chó sủa là chó không cắn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-017",
+    "proverb": "Curiosity killed the cat.",
+    "meaningVi": "Tò mò quá có thể rước họa vào thân.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Stop asking about their private life — curiosity killed the cat.",
+    "exampleVi": "Đừng hỏi chuyện riêng của họ nữa — tò mò quá rước họa vào thân.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-018",
+    "proverb": "Don't bite the hand that feeds you.",
+    "meaningVi": "Đừng phản bội người đã giúp đỡ mình.",
+    "vietnameseEquivalent": "Ăn cháo đá bát.",
+    "exampleEn": "He insulted the boss who promoted him — don't bite the hand that feeds you.",
+    "exampleVi": "Hắn xúc phạm sếp đã đề bạt mình — đúng là ăn cháo đá bát.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-019",
+    "proverb": "Don't judge a book by its cover.",
+    "meaningVi": "Đừng đánh giá qua vẻ bề ngoài.",
+    "vietnameseEquivalent": "Đừng trông mặt mà bắt hình dong.",
+    "exampleEn": "The old teacher looks strict but is very kind — don't judge a book by its cover.",
+    "exampleVi": "Thầy giáo già trông nghiêm khắc nhưng rất tốt bụng — đừng trông mặt mà bắt hình dong.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-020",
+    "proverb": "The grass is always greener on the other side.",
+    "meaningVi": "Người ta hay tưởng cái của người khác tốt hơn của mình.",
+    "vietnameseEquivalent": "Đứng núi này trông núi nọ.",
+    "exampleEn": "She envies her friend's job, but the grass is always greener on the other side.",
+    "exampleVi": "Cô ấy ghen tị với công việc của bạn, nhưng đứng núi này trông núi nọ thôi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-021",
+    "proverb": "Haste makes waste.",
+    "meaningVi": "Vội vàng hấp tấp dễ hỏng việc.",
+    "vietnameseEquivalent": "Dục tốc bất đạt.",
+    "exampleEn": "Check your answers carefully — haste makes waste.",
+    "exampleVi": "Hãy kiểm tra bài cẩn thận — dục tốc bất đạt.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-022",
+    "proverb": "Look before you leap.",
+    "meaningVi": "Hãy suy nghĩ kỹ trước khi hành động.",
+    "vietnameseEquivalent": "Cẩn tắc vô ưu.",
+    "exampleEn": "Read the contract twice — look before you leap.",
+    "exampleVi": "Hãy đọc hợp đồng hai lần — cẩn tắc vô ưu.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-023",
+    "proverb": "A friend in need is a friend indeed.",
+    "meaningVi": "Lúc hoạn nạn mới biết ai là bạn thật.",
+    "vietnameseEquivalent": "Gian nan mới biết bạn hiền.",
+    "exampleEn": "Only Lan stayed to help me move — a friend in need is a friend indeed.",
+    "exampleVi": "Chỉ có Lan ở lại giúp tôi chuyển nhà — gian nan mới biết bạn hiền.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-024",
+    "proverb": "Birds of a feather flock together.",
+    "meaningVi": "Người giống nhau thì tụ lại với nhau.",
+    "vietnameseEquivalent": "Ngưu tầm ngưu, mã tầm mã.",
+    "exampleEn": "All the gamers in class became friends — birds of a feather flock together.",
+    "exampleVi": "Mấy bạn mê game trong lớp đều chơi thân với nhau — ngưu tầm ngưu, mã tầm mã.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-025",
+    "proverb": "Two heads are better than one.",
+    "meaningVi": "Hai người cùng nghĩ thì hơn một người.",
+    "vietnameseEquivalent": "Một cây làm chẳng nên non, ba cây chụm lại nên hòn núi cao.",
+    "exampleEn": "Let's solve this together — two heads are better than one.",
+    "exampleVi": "Cùng nhau giải bài này đi — một cây làm chẳng nên non.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-026",
+    "proverb": "Strike while the iron is hot.",
+    "meaningVi": "Hãy hành động ngay khi cơ hội đến.",
+    "vietnameseEquivalent": "Thừa thắng xông lên.",
+    "exampleEn": "The shop is crowded today — strike while the iron is hot and launch the sale.",
+    "exampleVi": "Hôm nay quán đông khách — hãy thừa thắng xông lên mà tung đợt giảm giá.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-027",
+    "proverb": "Time is money.",
+    "meaningVi": "Thời gian quý như tiền bạc, đừng lãng phí.",
+    "vietnameseEquivalent": "Thời giờ là vàng bạc.",
+    "exampleEn": "Finish the report today — time is money.",
+    "exampleVi": "Hãy xong báo cáo hôm nay — thời giờ là vàng bạc.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-028",
+    "proverb": "A stitch in time saves nine.",
+    "meaningVi": "Xử lý sớm một việc nhỏ sẽ đỡ tốn công về sau.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Fix the leak now — a stitch in time saves nine.",
+    "exampleVi": "Hãy sửa chỗ rò rỉ ngay — làm sớm một chút đỡ tốn công về sau.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-029",
+    "proverb": "Prevention is better than cure.",
+    "meaningVi": "Phòng ngừa tốt hơn chữa trị.",
+    "vietnameseEquivalent": "Phòng bệnh hơn chữa bệnh.",
+    "exampleEn": "Wear a helmet — prevention is better than cure.",
+    "exampleVi": "Hãy đội mũ bảo hiểm — phòng bệnh hơn chữa bệnh.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-030",
+    "proverb": "Laughter is the best medicine.",
+    "meaningVi": "Tiếng cười giúp tinh thần khỏe mạnh.",
+    "vietnameseEquivalent": "Một nụ cười bằng mười thang thuốc bổ.",
+    "exampleEn": "After a hard day, a comedy show helps — laughter is the best medicine.",
+    "exampleVi": "Sau một ngày mệt mỏi, xem hài giúp thư giãn — một nụ cười bằng mười thang thuốc bổ.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-031",
+    "proverb": "Honesty is the best policy.",
+    "meaningVi": "Thật thà là cách sống tốt nhất.",
+    "vietnameseEquivalent": "Thật thà là cha quỷ quái.",
+    "exampleEn": "Admit your mistake — honesty is the best policy.",
+    "exampleVi": "Hãy nhận lỗi của mình — thật thà vẫn là tốt nhất.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-032",
+    "proverb": "The truth will out.",
+    "meaningVi": "Sự thật sớm muộn cũng lộ ra.",
+    "vietnameseEquivalent": "Cái kim trong bọc lâu ngày cũng lòi ra.",
+    "exampleEn": "He lied, but the truth will out eventually.",
+    "exampleVi": "Hắn nói dối, nhưng cái kim trong bọc lâu ngày cũng lòi ra.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-033",
+    "proverb": "What goes around comes around.",
+    "meaningVi": "Gieo điều ác sẽ gặt hậu quả xấu.",
+    "vietnameseEquivalent": "Gieo gió gặt bão.",
+    "exampleEn": "He cheated everyone and lost everything — what goes around comes around.",
+    "exampleVi": "Hắn lừa dối mọi người rồi mất tất cả — gieo gió gặt bão.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-034",
+    "proverb": "You reap what you sow.",
+    "meaningVi": "Làm điều gì sẽ nhận lại điều ấy.",
+    "vietnameseEquivalent": "Gieo nhân nào gặt quả nấy.",
+    "exampleEn": "Study hard now and you'll succeed — you reap what you sow.",
+    "exampleVi": "Chăm học bây giờ rồi sẽ thành công — gieo nhân nào gặt quả nấy.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-035",
+    "proverb": "Every cloud has a silver lining.",
+    "meaningVi": "Trong chuyện xui vẫn có điểm may.",
+    "vietnameseEquivalent": "Trong cái rủi có cái may.",
+    "exampleEn": "Losing that job led him to a better one — every cloud has a silver lining.",
+    "exampleVi": "Mất việc đó lại giúp anh ấy tìm được việc tốt hơn — trong cái rủi có cái may.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-036",
+    "proverb": "After the storm comes the calm.",
+    "meaningVi": "Khó khăn qua đi, bình yên sẽ đến.",
+    "vietnameseEquivalent": "Sau cơn mưa trời lại sáng.",
+    "exampleEn": "Don't despair — after the storm comes the calm.",
+    "exampleVi": "Đừng tuyệt vọng — sau cơn mưa trời lại sáng.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-037",
+    "proverb": "It's always darkest before the dawn.",
+    "meaningVi": "Lúc khó khăn nhất là lúc gần thoát khỏi nó nhất.",
+    "vietnameseEquivalent": "Hết cơn bĩ cực tới hồi thái lai.",
+    "exampleEn": "Hold on a little longer — it's always darkest before the dawn.",
+    "exampleVi": "Cố thêm chút nữa — hết cơn bĩ cực tới hồi thái lai.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-038",
+    "proverb": "Necessity is the mother of invention.",
+    "meaningVi": "Hoàn cảnh khó khăn khiến con người sáng tạo.",
+    "vietnameseEquivalent": "Cái khó ló cái khôn.",
+    "exampleEn": "With no money for tools, he built his own — necessity is the mother of invention.",
+    "exampleVi": "Không tiền mua dụng cụ, anh ấy tự chế — cái khó ló cái khôn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-039",
+    "proverb": "No pain, no gain.",
+    "meaningVi": "Muốn được thì phải chịu khó.",
+    "vietnameseEquivalent": "Muốn ăn phải lăn vào bếp.",
+    "exampleEn": "Training is tough, but no pain, no gain.",
+    "exampleVi": "Tập luyện vất vả, nhưng muốn ăn phải lăn vào bếp.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-040",
+    "proverb": "Money doesn't grow on trees.",
+    "meaningVi": "Tiền bạc không tự nhiên mà có, phải tiết kiệm.",
+    "vietnameseEquivalent": "Tiền không phải lá mít.",
+    "exampleEn": "Turn off the lights when you leave — money doesn't grow on trees.",
+    "exampleVi": "Ra khỏi phòng nhớ tắt đèn — tiền không phải lá mít.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-041",
+    "proverb": "A penny saved is a penny earned.",
+    "meaningVi": "Tiết kiệm được đồng nào là có thêm đồng ấy.",
+    "vietnameseEquivalent": "Tích tiểu thành đại.",
+    "exampleEn": "She saves a little each month — a penny saved is a penny earned.",
+    "exampleVi": "Cô ấy để dành chút ít mỗi tháng — tích tiểu thành đại.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-042",
+    "proverb": "Easy come, easy go.",
+    "meaningVi": "Tiền đến dễ thì đi cũng dễ.",
+    "vietnameseEquivalent": "Của thiên trả địa.",
+    "exampleEn": "He spent all his lottery winnings in a year — easy come, easy go.",
+    "exampleVi": "Hắn tiêu hết tiền trúng số trong một năm — của thiên trả địa.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-043",
+    "proverb": "Beggars can't be choosers.",
+    "meaningVi": "Đã nhờ vả thì đừng kén chọn.",
+    "vietnameseEquivalent": "Ăn mày còn đòi xôi gấc.",
+    "exampleEn": "Take the free room offered — beggars can't be choosers.",
+    "exampleVi": "Cứ nhận phòng miễn phí người ta cho — ăn mày còn đòi xôi gấc à.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-044",
+    "proverb": "Nothing ventured, nothing gained.",
+    "meaningVi": "Không liều thì không được gì.",
+    "vietnameseEquivalent": "Liều ăn nhiều.",
+    "exampleEn": "Apply for that job abroad — nothing ventured, nothing gained.",
+    "exampleVi": "Cứ nộp đơn việc ở nước ngoài đi — liều ăn nhiều.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-045",
+    "proverb": "Slow and steady wins the race.",
+    "meaningVi": "Chậm mà chắc thì thắng.",
+    "vietnameseEquivalent": "Chậm mà chắc.",
+    "exampleEn": "Study a little every day — slow and steady wins the race.",
+    "exampleVi": "Mỗi ngày học một ít — chậm mà chắc.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-046",
+    "proverb": "Patience is a virtue.",
+    "meaningVi": "Kiên nhẫn là đức tính quý.",
+    "vietnameseEquivalent": "Chữ nhẫn là chữ tương vàng.",
+    "exampleEn": "Wait calmly for your turn — patience is a virtue.",
+    "exampleVi": "Hãy kiên nhẫn chờ đến lượt mình — chữ nhẫn là chữ tương vàng.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-047",
+    "proverb": "All good things must come to an end.",
+    "meaningVi": "Mọi cuộc vui rồi cũng tàn.",
+    "vietnameseEquivalent": "Cuộc vui nào cũng tàn.",
+    "exampleEn": "The holiday was wonderful, but all good things must come to an end.",
+    "exampleVi": "Kỳ nghỉ thật tuyệt, nhưng cuộc vui nào cũng tàn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-048",
+    "proverb": "What doesn't kill you makes you stronger.",
+    "meaningVi": "Khó khăn không quật ngã được bạn sẽ khiến bạn mạnh mẽ hơn.",
+    "vietnameseEquivalent": "Lửa thử vàng, gian nan thử sức.",
+    "exampleEn": "She survived the failure and grew — what doesn't kill you makes you stronger.",
+    "exampleVi": "Cô ấy vượt qua thất bại và trưởng thành — lửa thử vàng, gian nan thử sức.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-049",
+    "proverb": "Fall seven times, stand up eight.",
+    "meaningVi": "Ngã ở đâu thì đứng dậy ở đó.",
+    "vietnameseEquivalent": "Ngã ở đâu đứng dậy ở đó.",
+    "exampleEn": "You failed the exam — fall seven times, stand up eight.",
+    "exampleVi": "Thi trượt thì ôn lại thi tiếp — ngã ở đâu đứng dậy ở đó.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-050",
+    "proverb": "If at first you don't succeed, try, try again.",
+    "meaningVi": "Thất bại lần đầu thì hãy thử lại.",
+    "vietnameseEquivalent": "Thất bại là mẹ thành công.",
+    "exampleEn": "Your cake flopped? Try again — if at first you don't succeed, try, try again.",
+    "exampleVi": "Làm bánh hỏng à? Làm lại đi — thất bại là mẹ thành công.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-051",
+    "proverb": "A journey of a thousand miles begins with a single step.",
+    "meaningVi": "Việc lớn bắt đầu từ bước đầu tiên.",
+    "vietnameseEquivalent": "Đường đi ngàn dặm bắt đầu từ một bước chân.",
+    "exampleEn": "Just start writing — a journey of a thousand miles begins with a single step.",
+    "exampleVi": "Cứ bắt đầu viết đi — đường đi ngàn dặm bắt đầu từ một bước chân.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-052",
+    "proverb": "Well begun is half done.",
+    "meaningVi": "Khởi đầu tốt là đã xong một nửa.",
+    "vietnameseEquivalent": "Đầu xuôi đuôi lọt.",
+    "exampleEn": "Plan the essay well — well begun is half done.",
+    "exampleVi": "Lên dàn ý kỹ vào — đầu xuôi đuôi lọt.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-053",
+    "proverb": "It's never too late to learn.",
+    "meaningVi": "Học bao giờ cũng không muộn.",
+    "vietnameseEquivalent": "Học, học nữa, học mãi.",
+    "exampleEn": "Grandma is learning to use a smartphone — it's never too late to learn.",
+    "exampleVi": "Bà ngoại đang học dùng điện thoại thông minh — học bao giờ cũng không muộn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-054",
+    "proverb": "Knowledge is power.",
+    "meaningVi": "Tri thức là sức mạnh.",
+    "vietnameseEquivalent": "Tri thức là sức mạnh.",
+    "exampleEn": "Read more books — knowledge is power.",
+    "exampleVi": "Hãy đọc thêm sách — tri thức là sức mạnh.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-055",
+    "proverb": "Live and learn.",
+    "meaningVi": "Đi nhiều, trải nghiệm nhiều thì khôn ra.",
+    "vietnameseEquivalent": "Đi một ngày đàng, học một sàng khôn.",
+    "exampleEn": "Traveling taught me so much — live and learn.",
+    "exampleVi": "Đi du lịch dạy tôi bao điều — đi một ngày đàng, học một sàng khôn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-056",
+    "proverb": "You can't teach an old dog new tricks.",
+    "meaningVi": "Người già khó thay đổi thói quen.",
+    "vietnameseEquivalent": "Tre già khó uốn.",
+    "exampleEn": "Grandpa won't use email — you can't teach an old dog new tricks.",
+    "exampleVi": "Ông nội nhất định không dùng email — tre già khó uốn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-057",
+    "proverb": "The apple doesn't fall far from the tree.",
+    "meaningVi": "Con cái thường giống cha mẹ.",
+    "vietnameseEquivalent": "Cha nào con nấy.",
+    "exampleEn": "He's as stubborn as his father — the apple doesn't fall far from the tree.",
+    "exampleVi": "Anh ấy cứng đầu y như bố — cha nào con nấy.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-058",
+    "proverb": "Like father, like son.",
+    "meaningVi": "Cha nào con nấy.",
+    "vietnameseEquivalent": "Con nhà tông không giống lông cũng giống cánh.",
+    "exampleEn": "Both love football — like father, like son.",
+    "exampleVi": "Hai bố con đều mê bóng đá — con nhà tông không giống lông cũng giống cánh.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-059",
+    "proverb": "Spare the rod and spoil the child.",
+    "meaningVi": "Thương con thì phải nghiêm khắc dạy dỗ.",
+    "vietnameseEquivalent": "Thương cho roi cho vọt.",
+    "exampleEn": "Discipline your kids — spare the rod and spoil the child.",
+    "exampleVi": "Hãy kỷ luật con cái — thương cho roi cho vọt.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-060",
+    "proverb": "Too many cooks spoil the broth.",
+    "meaningVi": "Nhiều người cùng chỉ huy thì hỏng việc.",
+    "vietnameseEquivalent": "Lắm thầy nhiều ma.",
+    "exampleEn": "Let one person lead the project — too many cooks spoil the broth.",
+    "exampleVi": "Để một người dẫn dắt dự án thôi — lắm thầy nhiều ma.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-061",
+    "proverb": "Don't cry over spilled milk.",
+    "meaningVi": "Chuyện đã rồi thì đừng tiếc nuối vô ích.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "You lost the game — don't cry over spilled milk, prepare for the next one.",
+    "exampleVi": "Thua trận rồi — đừng tiếc nữa, lo chuẩn bị trận sau đi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-062",
+    "proverb": "Love is blind.",
+    "meaningVi": "Khi yêu, người ta bỏ qua khuyết điểm của nhau.",
+    "vietnameseEquivalent": "Yêu nhau yêu cả đường đi.",
+    "exampleEn": "She ignores all his flaws — love is blind.",
+    "exampleVi": "Cô ấy bỏ qua mọi khuyết điểm của anh ta — yêu nhau yêu cả đường đi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-063",
+    "proverb": "Out of sight, out of mind.",
+    "meaningVi": "Xa mặt thì dễ quên nhau.",
+    "vietnameseEquivalent": "Xa mặt cách lòng.",
+    "exampleEn": "They stopped writing after he moved away — out of sight, out of mind.",
+    "exampleVi": "Từ khi anh ấy chuyển đi, hai người bặt tin — xa mặt cách lòng.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-064",
+    "proverb": "Beauty is only skin deep.",
+    "meaningVi": "Vẻ đẹp bề ngoài không quan trọng bằng phẩm chất bên trong.",
+    "vietnameseEquivalent": "Tốt gỗ hơn tốt nước sơn.",
+    "exampleEn": "Choose a kind partner — beauty is only skin deep.",
+    "exampleVi": "Hãy chọn người bạn đời tốt bụng — tốt gỗ hơn tốt nước sơn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-065",
+    "proverb": "Empty vessels make the most noise.",
+    "meaningVi": "Kẻ kém cỏi thường hay khoe khoang ồn ào.",
+    "vietnameseEquivalent": "Thùng rỗng kêu to.",
+    "exampleEn": "He brags constantly but knows little — empty vessels make the most noise.",
+    "exampleVi": "Hắn khoe khoang suốt ngày mà chẳng biết gì — thùng rỗng kêu to.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-066",
+    "proverb": "Talk is cheap.",
+    "meaningVi": "Lời nói thì dễ, làm mới khó.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Anyone can promise — talk is cheap, show me results.",
+    "exampleVi": "Ai hứa chẳng được — lời nói thì rẻ, hãy cho tôi thấy kết quả.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-067",
+    "proverb": "Practice what you preach.",
+    "meaningVi": "Hãy làm đúng những gì mình nói.",
+    "vietnameseEquivalent": "Nói được làm được.",
+    "exampleEn": "You tell kids not to smoke, so quit yourself — practice what you preach.",
+    "exampleVi": "Anh bảo con đừng hút thuốc thì anh cũng bỏ đi — nói được làm được.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-068",
+    "proverb": "Easier said than done.",
+    "meaningVi": "Nói thì dễ, làm mới khó.",
+    "vietnameseEquivalent": "Nói dễ hơn làm.",
+    "exampleEn": "Quitting sugar is easier said than done.",
+    "exampleVi": "Bỏ đường nói dễ hơn làm nhiều.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-069",
+    "proverb": "Think before you speak.",
+    "meaningVi": "Hãy suy nghĩ kỹ trước khi nói.",
+    "vietnameseEquivalent": "Uốn lưỡi bảy lần trước khi nói.",
+    "exampleEn": "Careful with your words in the meeting — think before you speak.",
+    "exampleVi": "Cẩn thận lời nói trong cuộc họp — uốn lưỡi bảy lần trước khi nói.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-070",
+    "proverb": "Silence is golden.",
+    "meaningVi": "Im lặng nhiều khi quý hơn nói.",
+    "vietnameseEquivalent": "Im lặng là vàng.",
+    "exampleEn": "In the argument, he stayed quiet — silence is golden.",
+    "exampleVi": "Trong cuộc cãi vã, anh ấy im lặng — im lặng là vàng.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-071",
+    "proverb": "Loose lips sink ships.",
+    "meaningVi": "Nói hớ có thể gây họa lớn.",
+    "vietnameseEquivalent": "Họa từ miệng mà ra.",
+    "exampleEn": "Don't share company secrets — loose lips sink ships.",
+    "exampleVi": "Đừng tiết lộ bí mật công ty — họa từ miệng mà ra.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-072",
+    "proverb": "Words have power.",
+    "meaningVi": "Lời nói có sức ảnh hưởng lớn, hãy lựa lời.",
+    "vietnameseEquivalent": "Lời nói chẳng mất tiền mua, lựa lời mà nói cho vừa lòng nhau.",
+    "exampleEn": "Encourage her gently — words have power.",
+    "exampleVi": "Hãy động viên cô ấy nhẹ nhàng — lựa lời mà nói cho vừa lòng nhau.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-073",
+    "proverb": "Walk the talk.",
+    "meaningVi": "Nói phải đi đôi với làm.",
+    "vietnameseEquivalent": "Nói đi đôi với làm.",
+    "exampleEn": "The manager works overtime too — he walks the talk.",
+    "exampleVi": "Quản lý cũng tăng ca như mọi người — nói đi đôi với làm.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-074",
+    "proverb": "Don't cross the bridge until you come to it.",
+    "meaningVi": "Đừng lo chuyện chưa xảy ra.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Stop worrying about the exam next month — don't cross the bridge until you come to it.",
+    "exampleVi": "Đừng lo kỳ thi tháng sau nữa — lo chuyện chưa tới làm gì.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-075",
+    "proverb": "Let sleeping dogs lie.",
+    "meaningVi": "Đừng khơi lại chuyện cũ đã yên.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "Don't mention his divorce — let sleeping dogs lie.",
+    "exampleVi": "Đừng nhắc chuyện ly hôn của anh ấy — để chuyện cũ ngủ yên đi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-076",
+    "proverb": "Great minds think alike.",
+    "meaningVi": "Người giỏi thường nghĩ giống nhau.",
+    "vietnameseEquivalent": "không có tương đương trực tiếp",
+    "exampleEn": "We both chose the same solution — great minds think alike!",
+    "exampleVi": "Hai đứa cùng chọn một cách giải — đúng là ý tưởng lớn gặp nhau!",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-077",
+    "proverb": "The customer is always right.",
+    "meaningVi": "Khách hàng luôn được ưu tiên.",
+    "vietnameseEquivalent": "Khách hàng là thượng đế.",
+    "exampleEn": "Apologize to her politely — the customer is always right.",
+    "exampleVi": "Hãy xin lỗi cô ấy lịch sự — khách hàng là thượng đế.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-078",
+    "proverb": "Ignorance is bliss.",
+    "meaningVi": "Không biết thì đỡ khổ tâm.",
+    "vietnameseEquivalent": "Biết nhiều khổ nhiều.",
+    "exampleEn": "He's happier not knowing the gossip — ignorance is bliss.",
+    "exampleVi": "Không biết chuyện tầm phào, anh ấy sống vui hơn — biết nhiều khổ nhiều.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-079",
+    "proverb": "God helps those who help themselves.",
+    "meaningVi": "Trời giúp người biết tự giúp mình.",
+    "vietnameseEquivalent": "Tự lực cánh sinh.",
+    "exampleEn": "Don't wait for luck — God helps those who help themselves.",
+    "exampleVi": "Đừng ngồi chờ may mắn — phải tự lực cánh sinh.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-080",
+    "proverb": "Man proposes, God disposes.",
+    "meaningVi": "Người tính không bằng trời tính.",
+    "vietnameseEquivalent": "Mưu sự tại nhân, thành sự tại thiên.",
+    "exampleEn": "We planned everything, but the storm canceled it — man proposes, God disposes.",
+    "exampleVi": "Tính toán đủ đường mà bão đến hủy hết — mưu sự tại nhân, thành sự tại thiên.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-081",
+    "proverb": "Never put off till tomorrow what you can do today.",
+    "meaningVi": "Việc hôm nay chớ để ngày mai.",
+    "vietnameseEquivalent": "Việc hôm nay chớ để ngày mai.",
+    "exampleEn": "Do your homework now — never put off till tomorrow what you can do today.",
+    "exampleVi": "Làm bài tập ngay đi — việc hôm nay chớ để ngày mai.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-082",
+    "proverb": "All that glitters is not gold.",
+    "meaningVi": "Đừng để vẻ hào nhoáng bên ngoài đánh lừa.",
+    "vietnameseEquivalent": "Đừng thấy đỏ mà tưởng chín.",
+    "exampleEn": "That cheap phone looks fancy — all that glitters is not gold.",
+    "exampleVi": "Chiếc điện thoại rẻ trông sang đấy — đừng thấy đỏ mà tưởng chín.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-083",
+    "proverb": "Familiarity breeds contempt.",
+    "meaningVi": "Quen quá hóa coi thường.",
+    "vietnameseEquivalent": "Gần chùa gọi bụt bằng anh.",
+    "exampleEn": "The new staff respect the boss, but old staff joke about him — familiarity breeds contempt.",
+    "exampleVi": "Nhân viên mới nể sếp, nhân viên cũ thì đùa cợt — gần chùa gọi bụt bằng anh.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-084",
+    "proverb": "Tell me who your friends are and I'll tell you who you are.",
+    "meaningVi": "Nhìn bạn bè thì biết con người bạn.",
+    "vietnameseEquivalent": "Gần mực thì đen, gần đèn thì sáng.",
+    "exampleEn": "He hangs out with hardworking students — tell me who your friends are and I'll tell you who you are.",
+    "exampleVi": "Nó chơi với mấy bạn chăm học — gần mực thì đen, gần đèn thì sáng.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-085",
+    "proverb": "Experience is the best teacher.",
+    "meaningVi": "Trải nghiệm thực tế dạy ta nhiều nhất.",
+    "vietnameseEquivalent": "Trăm hay không bằng tay quen.",
+    "exampleEn": "No course beats real practice — experience is the best teacher.",
+    "exampleVi": "Không khóa học nào bằng thực hành thật — trăm hay không bằng tay quen.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-086",
+    "proverb": "A double-edged sword.",
+    "meaningVi": "Việc gì cũng có hai mặt lợi hại.",
+    "vietnameseEquivalent": "Con dao hai lưỡi.",
+    "exampleEn": "Social media is a double-edged sword.",
+    "exampleVi": "Mạng xã hội là con dao hai lưỡi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-087",
+    "proverb": "A blessing in disguise.",
+    "meaningVi": "Chuyện xui hóa ra lại là may.",
+    "vietnameseEquivalent": "Trong họa có phúc.",
+    "exampleEn": "Missing the bus saved him from the accident — a blessing in disguise.",
+    "exampleVi": "Lỡ chuyến xe buýt lại giúp anh ấy thoát tai nạn — trong họa có phúc.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-088",
+    "proverb": "Where there's life, there's hope.",
+    "meaningVi": "Còn sống là còn hy vọng, đừng bỏ cuộc.",
+    "vietnameseEquivalent": "Còn nước còn tát.",
+    "exampleEn": "The patient is still fighting — where there's life, there's hope.",
+    "exampleVi": "Bệnh nhân vẫn đang chiến đấu — còn nước còn tát.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-089",
+    "proverb": "He who dares wins.",
+    "meaningVi": "Dám nghĩ dám làm thì thắng.",
+    "vietnameseEquivalent": "Dám nghĩ dám làm.",
+    "exampleEn": "She quit her job to start a bakery — he who dares wins.",
+    "exampleVi": "Cô ấy nghỉ việc mở tiệm bánh — dám nghĩ dám làm thì thắng.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-090",
+    "proverb": "Hard work beats talent.",
+    "meaningVi": "Chăm chỉ thắng cả tài năng bẩm sinh.",
+    "vietnameseEquivalent": "Cần cù bù thông minh.",
+    "exampleEn": "He wasn't gifted, but he outworked everyone — hard work beats talent.",
+    "exampleVi": "Anh ấy không có năng khiếu nhưng chăm hơn tất cả — cần cù bù thông minh.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-091",
+    "proverb": "Repetition is the mother of learning.",
+    "meaningVi": "Ôn đi ôn lại thì mới nhớ lâu.",
+    "vietnameseEquivalent": "Ôn cố tri tân.",
+    "exampleEn": "Review vocabulary daily — repetition is the mother of learning.",
+    "exampleVi": "Hãy ôn từ vựng mỗi ngày — ôn cố tri tân.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-092",
+    "proverb": "With age comes wisdom.",
+    "meaningVi": "Càng già càng từng trải khôn ngoan.",
+    "vietnameseEquivalent": "Gừng càng già càng cay.",
+    "exampleEn": "Ask grandma for advice — with age comes wisdom.",
+    "exampleVi": "Hỏi ý kiến bà ngoại đi — gừng càng già càng cay.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-093",
+    "proverb": "Respect your elders.",
+    "meaningVi": "Hãy kính trọng người lớn tuổi.",
+    "vietnameseEquivalent": "Kính trên nhường dưới.",
+    "exampleEn": "Give up your seat for the old man — respect your elders.",
+    "exampleVi": "Nhường ghế cho cụ già đi — kính trên nhường dưới.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-094",
+    "proverb": "Don't forget where you came from.",
+    "meaningVi": "Đừng quên cội nguồn của mình.",
+    "vietnameseEquivalent": "Uống nước nhớ nguồn.",
+    "exampleEn": "He still visits his poor village — he doesn't forget where he came from.",
+    "exampleVi": "Anh ấy vẫn về thăm quê nghèo — uống nước nhớ nguồn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-095",
+    "proverb": "Honor your parents.",
+    "meaningVi": "Hãy hiếu thảo với cha mẹ.",
+    "vietnameseEquivalent": "Ăn quả nhớ kẻ trồng cây.",
+    "exampleEn": "Call your mother every week — honor your parents.",
+    "exampleVi": "Gọi điện cho mẹ mỗi tuần — ăn quả nhớ kẻ trồng cây.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-096",
+    "proverb": "Kill two birds with one stone.",
+    "meaningVi": "Một việc làm được hai mục đích.",
+    "vietnameseEquivalent": "Một mũi tên trúng hai đích.",
+    "exampleEn": "Cycling to work saves money and keeps fit — kill two birds with one stone.",
+    "exampleVi": "Đạp xe đi làm vừa tiết kiệm vừa khỏe — một mũi tên trúng hai đích.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-097",
+    "proverb": "Between a rock and a hard place.",
+    "meaningVi": "Tiến thoái lưỡng nan, đường nào cũng khó.",
+    "vietnameseEquivalent": "Tiến thoái lưỡng nan.",
+    "exampleEn": "He can't afford rent but can't move either — between a rock and a hard place.",
+    "exampleVi": "Anh ấy không đủ tiền thuê nhà mà cũng chẳng chuyển đi được — tiến thoái lưỡng nan.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-098",
+    "proverb": "Out of the frying pan into the fire.",
+    "meaningVi": "Tránh được cái khó này lại gặp cái khó khác.",
+    "vietnameseEquivalent": "Tránh vỏ dưa gặp vỏ dừa.",
+    "exampleEn": "He quit the bad job for a worse one — out of the frying pan into the fire.",
+    "exampleVi": "Hắn bỏ việc tệ để nhận việc tệ hơn — tránh vỏ dưa gặp vỏ dừa.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-099",
+    "proverb": "Time heals all wounds.",
+    "meaningVi": "Thời gian sẽ xoa dịu mọi nỗi đau.",
+    "vietnameseEquivalent": "Thời gian sẽ chữa lành mọi vết thương.",
+    "exampleEn": "Be patient with your grief — time heals all wounds.",
+    "exampleVi": "Hãy kiên nhẫn với nỗi buồn — thời gian sẽ chữa lành mọi vết thương.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "prv-100",
+    "proverb": "Do unto others as you would have them do unto you.",
+    "meaningVi": "Hãy đối xử với người khác như cách bạn muốn được đối xử.",
+    "vietnameseEquivalent": "Kỷ sở bất dục, vật thi ư nhân.",
+    "exampleEn": "Be polite to the waiter — do unto others as you would have them do unto you.",
+    "exampleVi": "Hãy lịch sự với người phục vụ — kỷ sở bất dục, vật thi ư nhân.",
+    "source": "ai-generated",
+    "verified": false
+  }
+]

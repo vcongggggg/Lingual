@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "grm-001",
+    "topic": "Present Simple",
+    "topicVi": "Thì hiện tại đơn",
+    "cefrLevel": "A2",
+    "ruleVi": "Dùng để diễn tả thói quen, sự thật hiển nhiên, lịch trình cố định. Công thức: S + V(s/es) (khẳng định); S + do/does + not + V (phủ định); Do/Does + S + V? (nghi vấn). Chủ ngữ he/she/it (ngôi 3 số ít) thì động từ thêm -s/-es.",
+    "examples": [
+      {
+        "en": "I drink coffee every morning.",
+        "vi": "Tôi uống cà phê mỗi sáng."
+      },
+      {
+        "en": "She works in a bank.",
+        "vi": "Cô ấy làm việc ở ngân hàng."
+      },
+      {
+        "en": "The sun rises in the east.",
+        "vi": "Mặt trời mọc ở phía đông."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "She work in a bank.",
+        "correct": "She works in a bank.",
+        "explainVi": "Chủ ngữ số ít ngôi 3 (she) thì động từ phải thêm -s."
+      },
+      {
+        "wrong": "He don't like tea.",
+        "correct": "He doesn't like tea.",
+        "explainVi": "Với he/she/it dùng doesn't, không dùng don't."
+      },
+      {
+        "wrong": "Does she works here?",
+        "correct": "Does she work here?",
+        "explainVi": "Sau does, động từ giữ nguyên mẫu, không thêm -s."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-002",
+    "topic": "Present Continuous",
+    "topicVi": "Thì hiện tại tiếp diễn",
+    "cefrLevel": "A2",
+    "ruleVi": "Diễn tả hành động ĐANG xảy ra lúc nói hoặc kế hoạch đã sắp đặt trong tương lai gần. Công thức: S + am/is/are + V-ing. Dấu hiệu: now, right now, at the moment, currently, today.",
+    "examples": [
+      {
+        "en": "I am studying English now.",
+        "vi": "Tôi đang học tiếng Anh."
+      },
+      {
+        "en": "They are playing football at the moment.",
+        "vi": "Họ đang đá bóng lúc này."
+      },
+      {
+        "en": "We are having a party this weekend.",
+        "vi": "Chúng tôi sẽ tổ chức tiệc cuối tuần này (đã lên kế hoạch)."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I am study English now.",
+        "correct": "I am studying English now.",
+        "explainVi": "Sau am/is/are phải là V-ing, không phải động từ nguyên mẫu."
+      },
+      {
+        "wrong": "She is work today.",
+        "correct": "She is working today.",
+        "explainVi": "Thiếu -ing sau is."
+      },
+      {
+        "wrong": "They are play football.",
+        "correct": "They are playing football.",
+        "explainVi": "Quên thêm -ing vào động từ chính."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-003",
+    "topic": "Past Simple",
+    "topicVi": "Thì quá khứ đơn",
+    "cefrLevel": "A2",
+    "ruleVi": "Diễn tả hành động đã XẢY RA VÀ KẾT THÚC trong quá khứ, có thời gian xác định. Công thức: S + V2/V-ed. Động từ bất quy tắc phải học thuộc dạng V2 (go→went, eat→ate...). Dấu hiệu: yesterday, last night/week, in 2010, ago.",
+    "examples": [
+      {
+        "en": "I watched a movie last night.",
+        "vi": "Tôi đã xem phim tối qua."
+      },
+      {
+        "en": "She went to Hanoi in 2020.",
+        "vi": "Cô ấy đã đến Hà Nội năm 2020."
+      },
+      {
+        "en": "They didn't come to class yesterday.",
+        "vi": "Họ đã không đến lớp hôm qua."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I didn't went there.",
+        "correct": "I didn't go there.",
+        "explainVi": "Sau didn't, động từ về nguyên mẫu, không dùng V2."
+      },
+      {
+        "wrong": "Did you ate breakfast?",
+        "correct": "Did you eat breakfast?",
+        "explainVi": "Sau did, động từ nguyên mẫu."
+      },
+      {
+        "wrong": "She buyed a new dress.",
+        "correct": "She bought a new dress.",
+        "explainVi": "Buy là động từ bất quy tắc: buy→bought, không thêm -ed."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-004",
+    "topic": "Future Simple (will)",
+    "topicVi": "Thì tương lai đơn với will",
+    "cefrLevel": "A2",
+    "ruleVi": "Dùng will để diễn tả: quyết định tức thì lúc nói, lời hứa, dự đoán. Công thức: S + will + V (nguyên mẫu). Dạng rút gọn: I'll, he'll... Phủ định: won't.",
+    "examples": [
+      {
+        "en": "I will help you with your homework.",
+        "vi": "Tôi sẽ giúp bạn làm bài tập (quyết định ngay lúc nói)."
+      },
+      {
+        "en": "It will rain tomorrow.",
+        "vi": "Ngày mai trời sẽ mưa (dự đoán)."
+      },
+      {
+        "en": "I promise I won't be late.",
+        "vi": "Tôi hứa sẽ không đến muộn."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I will to help you.",
+        "correct": "I will help you.",
+        "explainVi": "Sau will là động từ nguyên mẫu, không có to."
+      },
+      {
+        "wrong": "She wills come.",
+        "correct": "She will come.",
+        "explainVi": "Will không thêm -s với bất kỳ chủ ngữ nào."
+      },
+      {
+        "wrong": "They will not comes.",
+        "correct": "They will not come.",
+        "explainVi": "Sau will not, động từ nguyên mẫu."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-005",
+    "topic": "Be Going To",
+    "topicVi": "Cấu trúc be going to",
+    "cefrLevel": "A2",
+    "ruleVi": "Diễn tả dự định đã có từ trước hoặc dự đoán dựa trên bằng chứng hiện tại. Công thức: S + am/is/are + going to + V. Khác will (quyết định tức thì): going to = đã có kế hoạch.",
+    "examples": [
+      {
+        "en": "I am going to visit my grandmother this weekend.",
+        "vi": "Tôi định thăm bà cuối tuần này (đã lên kế hoạch)."
+      },
+      {
+        "en": "Look at those clouds! It is going to rain.",
+        "vi": "Nhìn mây kìa! Trời sắp mưa (có bằng chứng)."
+      },
+      {
+        "en": "They are going to buy a new house.",
+        "vi": "Họ định mua nhà mới."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I going to visit her.",
+        "correct": "I am going to visit her.",
+        "explainVi": "Thiếu am/is/are trước going to."
+      },
+      {
+        "wrong": "She is going to to travel.",
+        "correct": "She is going to travel.",
+        "explainVi": "Thừa to — sau going to chỉ có 1 to."
+      },
+      {
+        "wrong": "We are going buy a car.",
+        "correct": "We are going to buy a car.",
+        "explainVi": "Thiếu to sau going."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-006",
+    "topic": "Articles: a / an / the",
+    "topicVi": "Mạo từ a / an / the",
+    "cefrLevel": "A2",
+    "ruleVi": "a/an: dùng cho danh từ số ít, lần đầu nhắc đến (a + phụ âm, an + nguyên âm u, e, o, a, i — theo ÂM, không theo chữ). the: dùng khi cả người nói và người nghe đều biết đang nói về cái gì (đã nhắc trước đó, hoặc duy nhất).",
+    "examples": [
+      {
+        "en": "I saw a dog. The dog was cute.",
+        "vi": "Tôi thấy một con chó. Con chó đó dễ thương."
+      },
+      {
+        "en": "She is an honest person.",
+        "vi": "Cô ấy là người trung thực (honest đọc là /ˈɒnɪst/, âm đầu là nguyên âm)."
+      },
+      {
+        "en": "The sun is shining.",
+        "vi": "Mặt trời đang chiếu sáng (duy nhất)."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I saw an dog.",
+        "correct": "I saw a dog.",
+        "explainVi": "Dog bắt đầu bằng phụ âm /d/ nên dùng a."
+      },
+      {
+        "wrong": "She is a honest person.",
+        "correct": "She is an honest person.",
+        "explainVi": "Honest phát âm bắt đầu bằng nguyên âm nên dùng an."
+      },
+      {
+        "wrong": "I like a music.",
+        "correct": "I like music.",
+        "explainVi": "Danh từ không đếm được (music) không dùng a/an."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-007",
+    "topic": "Plural Nouns",
+    "topicVi": "Danh từ số nhiều",
+    "cefrLevel": "A2",
+    "ruleVi": "Quy tắc chung thêm -s (book→books). Tận cùng s, x, ch, sh, o → thêm -es (box→boxes, tomato→tomatoes). Phụ âm + y → đổi y thành i + es (baby→babies). Một số bất quy tắc phải học thuộc: child→children, man→men, foot→feet, tooth→teeth, mouse→mice.",
+    "examples": [
+      {
+        "en": "There are three books on the table.",
+        "vi": "Có 3 quyển sách trên bàn."
+      },
+      {
+        "en": "The children are playing outside.",
+        "vi": "Bọn trẻ đang chơi ngoài sân."
+      },
+      {
+        "en": "She bought two boxes of apples.",
+        "vi": "Cô ấy mua 2 thùng táo."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "There are three childs.",
+        "correct": "There are three children.",
+        "explainVi": "Child là danh từ bất quy tắc: children."
+      },
+      {
+        "wrong": "He has two foots.",
+        "correct": "He has two feet.",
+        "explainVi": "Foot → feet, không thêm -s."
+      },
+      {
+        "wrong": "I like tomatos.",
+        "correct": "I like tomatoes.",
+        "explainVi": "Tận cùng o thêm -es: tomatoes."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-008",
+    "topic": "Comparatives",
+    "topicVi": "So sánh hơn",
+    "cefrLevel": "A2",
+    "ruleVi": "Tính từ ngắn (1 âm tiết): adj + -er + than (tall→taller than). Tính từ dài (2+ âm tiết): more + adj + than (more beautiful than). Bất quy tắc: good→better, bad→worse, far→farther/further. Tính từ tận cùng y: happy→happier.",
+    "examples": [
+      {
+        "en": "My house is bigger than yours.",
+        "vi": "Nhà tôi to hơn nhà bạn."
+      },
+      {
+        "en": "This book is more interesting than that one.",
+        "vi": "Quyển sách này thú vị hơn quyển kia."
+      },
+      {
+        "en": "Today is better than yesterday.",
+        "vi": "Hôm nay tốt hơn hôm qua."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "My house is more bigger than yours.",
+        "correct": "My house is bigger than yours.",
+        "explainVi": "Không dùng more với tính từ ngắn đã có -er."
+      },
+      {
+        "wrong": "She is beautifuler than me.",
+        "correct": "She is more beautiful than me.",
+        "explainVi": "Tính từ dài dùng more, không thêm -er."
+      },
+      {
+        "wrong": "This is gooder than that.",
+        "correct": "This is better than that.",
+        "explainVi": "Good là bất quy tắc: better."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-009",
+    "topic": "Superlatives",
+    "topicVi": "So sánh nhất",
+    "cefrLevel": "A2",
+    "ruleVi": "Tính từ ngắn: the + adj + -est (the tallest). Tính từ dài: the most + adj (the most beautiful). Bất quy tắc: good→the best, bad→the worst. Luôn có THE trước so sánh nhất.",
+    "examples": [
+      {
+        "en": "Mount Everest is the highest mountain in the world.",
+        "vi": "Everest là ngọn núi cao nhất thế giới."
+      },
+      {
+        "en": "She is the most intelligent student in class.",
+        "vi": "Cô ấy là học sinh thông minh nhất lớp."
+      },
+      {
+        "en": "This is the worst movie I have ever seen.",
+        "vi": "Đây là bộ phim tệ nhất tôi từng xem."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "He is tallest in class.",
+        "correct": "He is the tallest in class.",
+        "explainVi": "So sánh nhất luôn phải có the."
+      },
+      {
+        "wrong": "She is the most beautifullest.",
+        "correct": "She is the most beautiful.",
+        "explainVi": "Không dùng đồng thời most và -est."
+      },
+      {
+        "wrong": "This is the goodest.",
+        "correct": "This is the best.",
+        "explainVi": "Good → the best (bất quy tắc)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-010",
+    "topic": "Modal Verbs: can / could",
+    "topicVi": "Động từ khuyết thiếu can / could",
+    "cefrLevel": "A2",
+    "ruleVi": "Can: khả năng ở hiện tại, xin phép, đề nghị. Could: khả năng trong quá khứ, hoặc cách nói lịch sự hơn can. Công thức: S + can/could + V (nguyên mẫu, không to). Phủ định: cannot/can't, could not/couldn't.",
+    "examples": [
+      {
+        "en": "I can swim very well.",
+        "vi": "Tôi bơi rất giỏi."
+      },
+      {
+        "en": "Could you open the window, please?",
+        "vi": "Bạn mở cửa sổ giúp tôi được không? (lịch sự)"
+      },
+      {
+        "en": "When I was five, I could ride a bike.",
+        "vi": "Hồi 5 tuổi tôi đã biết đi xe đạp."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I can to swim.",
+        "correct": "I can swim.",
+        "explainVi": "Sau can là động từ nguyên mẫu, không có to."
+      },
+      {
+        "wrong": "She cans drive.",
+        "correct": "She can drive.",
+        "explainVi": "Can không thêm -s với bất kỳ chủ ngữ nào."
+      },
+      {
+        "wrong": "Could you to help me?",
+        "correct": "Could you help me?",
+        "explainVi": "Sau could cũng không có to."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-011",
+    "topic": "There is / There are",
+    "topicVi": "Cấu trúc There is / There are",
+    "cefrLevel": "A2",
+    "ruleVi": "Dùng để nói 'có' cái gì ở đâu. There is + danh từ số ít/không đếm được; There are + danh từ số nhiều. Chia động từ theo DANH TỪ ĐẰNG SAU, không theo there.",
+    "examples": [
+      {
+        "en": "There is a book on the desk.",
+        "vi": "Có một quyển sách trên bàn."
+      },
+      {
+        "en": "There are many students in the class.",
+        "vi": "Có nhiều học sinh trong lớp."
+      },
+      {
+        "en": "Is there any milk in the fridge?",
+        "vi": "Trong tủ lạnh còn sữa không?"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "There is many students.",
+        "correct": "There are many students.",
+        "explainVi": "Danh từ số nhiều (students) phải dùng there are."
+      },
+      {
+        "wrong": "There are a book.",
+        "correct": "There is a book.",
+        "explainVi": "Danh từ số ít (a book) phải dùng there is."
+      },
+      {
+        "wrong": "There have a car.",
+        "correct": "There is a car.",
+        "explainVi": "Cấu trúc là there is/are, không phải there have."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-012",
+    "topic": "Countable and Uncountable Nouns",
+    "topicVi": "Danh từ đếm được và không đếm được",
+    "cefrLevel": "A2",
+    "ruleVi": "Đếm được: có số nhiều, dùng a/an, many, few (apple, book). Không đếm được: không có số nhiều, dùng much, little, some (water, rice, information, advice, furniture, news — news là số ít!). Muốn đếm danh từ không đếm được thì dùng đơn vị: a glass of water, a piece of advice.",
+    "examples": [
+      {
+        "en": "I need some information about the course.",
+        "vi": "Tôi cần một số thông tin về khóa học."
+      },
+      {
+        "en": "How much water do you drink a day?",
+        "vi": "Bạn uống bao nhiêu nước mỗi ngày?"
+      },
+      {
+        "en": "She gave me a good piece of advice.",
+        "vi": "Cô ấy cho tôi một lời khuyên hay."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I need some informations.",
+        "correct": "I need some information.",
+        "explainVi": "Information không đếm được, không thêm -s."
+      },
+      {
+        "wrong": "How many water do you drink?",
+        "correct": "How much water do you drink?",
+        "explainVi": "Water không đếm được → dùng much, không dùng many."
+      },
+      {
+        "wrong": "That's a good news.",
+        "correct": "That's good news.",
+        "explainVi": "News là danh từ không đếm được, không dùng a."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-013",
+    "topic": "Prepositions of Time: in / on / at",
+    "topicVi": "Giới từ chỉ thời gian in / on / at",
+    "cefrLevel": "A2",
+    "ruleVi": "in: tháng, năm, mùa, buổi trong ngày (in May, in 2024, in summer, in the morning). on: ngày cụ thể, thứ (on Monday, on May 5th, on Christmas Day). at: giờ cụ thể, dịp lễ ngắn (at 7 o'clock, at noon, at night, at Christmas).",
+    "examples": [
+      {
+        "en": "My birthday is in June.",
+        "vi": "Sinh nhật tôi vào tháng 6."
+      },
+      {
+        "en": "We have a meeting on Friday.",
+        "vi": "Chúng tôi họp vào thứ Sáu."
+      },
+      {
+        "en": "The train leaves at 6 a.m.",
+        "vi": "Tàu khởi hành lúc 6 giờ sáng."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "My birthday is on June.",
+        "correct": "My birthday is in June.",
+        "explainVi": "Tháng dùng in, không dùng on."
+      },
+      {
+        "wrong": "We met at Monday.",
+        "correct": "We met on Monday.",
+        "explainVi": "Thứ trong tuần dùng on."
+      },
+      {
+        "wrong": "She wakes up in 6 o'clock.",
+        "correct": "She wakes up at 6 o'clock.",
+        "explainVi": "Giờ cụ thể dùng at."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-014",
+    "topic": "Adverbs of Frequency",
+    "topicVi": "Trạng từ chỉ tần suất",
+    "cefrLevel": "A2",
+    "ruleVi": "Thứ tự tần suất: always (100%) > usually > often > sometimes > rarely/seldom > never (0%). Vị trí: ĐỨNG TRƯỚC động từ thường (I always drink coffee), nhưng ĐỨNG SAU to be (She is always late).",
+    "examples": [
+      {
+        "en": "I usually go to bed at 10 p.m.",
+        "vi": "Tôi thường đi ngủ lúc 10 giờ tối."
+      },
+      {
+        "en": "He is never late for work.",
+        "vi": "Anh ấy không bao giờ đi làm muộn."
+      },
+      {
+        "en": "Do you often play sports?",
+        "vi": "Bạn có thường chơi thể thao không?"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I drink always coffee.",
+        "correct": "I always drink coffee.",
+        "explainVi": "Trạng từ tần suất đứng TRƯỚC động từ thường."
+      },
+      {
+        "wrong": "She always is late.",
+        "correct": "She is always late.",
+        "explainVi": "Nhưng đứng SAU động từ to be."
+      },
+      {
+        "wrong": "I don't never smoke.",
+        "correct": "I never smoke.",
+        "explainVi": "Never đã mang nghĩa phủ định, không dùng thêm don't."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-015",
+    "topic": "Possessive Adjectives and Pronouns",
+    "topicVi": "Tính từ và đại từ sở hữu",
+    "cefrLevel": "A2",
+    "ruleVi": "Tính từ sở hữu + danh từ: my, your, his, her, its, our, their (my book). Đại từ sở hữu đứng ĐỘC LẬP, không cần danh từ sau: mine, yours, his, hers, its, ours, theirs (The book is mine). Chú ý: its (của nó) ≠ it's (it is).",
+    "examples": [
+      {
+        "en": "This is my pen. That one is yours.",
+        "vi": "Đây là bút của tôi. Cái kia là của bạn."
+      },
+      {
+        "en": "Their house is bigger than ours.",
+        "vi": "Nhà họ to hơn nhà chúng tôi."
+      },
+      {
+        "en": "The dog wagged its tail.",
+        "vi": "Con chó vẫy đuôi của nó."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "This book is my.",
+        "correct": "This book is mine.",
+        "explainVi": "Đứng độc lập cuối câu phải dùng mine, không dùng my."
+      },
+      {
+        "wrong": "The dog wagged it's tail.",
+        "correct": "The dog wagged its tail.",
+        "explainVi": "It's = it is; sở hữu của nó là its (không dấu ')."
+      },
+      {
+        "wrong": "This is yours book.",
+        "correct": "This is your book.",
+        "explainVi": "Trước danh từ phải dùng your (tính từ sở hữu), không dùng yours."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-016",
+    "topic": "Present Perfect",
+    "topicVi": "Thì hiện tại hoàn thành",
+    "cefrLevel": "B1",
+    "ruleVi": "Diễn tả hành động xảy ra trong quá khứ nhưng KẾT QUẢ còn liên quan đến hiện tại, hoặc trải nghiệm tính đến nay. Công thức: S + have/has + V3/V-ed. Dấu hiệu: just, already, yet, ever, never, since, for, so far. KHÁC quá khứ đơn: hiện tại hoàn thành KHÔNG dùng với thời gian xác định đã qua (yesterday, in 2010).",
+    "examples": [
+      {
+        "en": "I have just finished my homework.",
+        "vi": "Tôi vừa làm xong bài tập (kết quả: giờ rảnh)."
+      },
+      {
+        "en": "She has lived here since 2015.",
+        "vi": "Cô ấy sống ở đây từ năm 2015 (vẫn đang sống)."
+      },
+      {
+        "en": "Have you ever tried Vietnamese food?",
+        "vi": "Bạn đã bao giờ thử món Việt chưa? (trải nghiệm)"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I have seen him yesterday.",
+        "correct": "I saw him yesterday.",
+        "explainVi": "Đã có yesterday (thời gian xác định) thì dùng quá khứ đơn, không dùng hiện tại hoàn thành."
+      },
+      {
+        "wrong": "She has went to school.",
+        "correct": "She has gone to school.",
+        "explainVi": "Sau have/has phải là V3 (gone), không phải V2 (went)."
+      },
+      {
+        "wrong": "They have lived here since five years.",
+        "correct": "They have lived here for five years.",
+        "explainVi": "Khoảng thời gian (five years) dùng for; mốc thời gian (2015) dùng since."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-017",
+    "topic": "Past Continuous",
+    "topicVi": "Thì quá khứ tiếp diễn",
+    "cefrLevel": "B1",
+    "ruleVi": "Diễn tả hành động ĐANG XẢY RA tại một thời điểm trong quá khứ, hoặc hành động dài bị hành động ngắn cắt ngang. Công thức: S + was/were + V-ing. Thường đi với quá khứ đơn: While I was cooking, he arrived.",
+    "examples": [
+      {
+        "en": "I was sleeping at 10 p.m. last night.",
+        "vi": "Tối qua lúc 10 giờ tôi đang ngủ."
+      },
+      {
+        "en": "While she was studying, her phone rang.",
+        "vi": "Trong lúc cô ấy đang học thì điện thoại reo."
+      },
+      {
+        "en": "They were playing football when it started to rain.",
+        "vi": "Họ đang đá bóng thì trời bắt đầu mưa."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I was sleep at 10 p.m.",
+        "correct": "I was sleeping at 10 p.m.",
+        "explainVi": "Sau was/were phải là V-ing."
+      },
+      {
+        "wrong": "While she studied, her phone rang.",
+        "correct": "While she was studying, her phone rang.",
+        "explainVi": "Hành động đang diễn ra (dài) dùng quá khứ tiếp diễn, không dùng quá khứ đơn."
+      },
+      {
+        "wrong": "They was playing football.",
+        "correct": "They were playing football.",
+        "explainVi": "They đi với were, không phải was."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-018",
+    "topic": "Past Perfect (Introduction)",
+    "topicVi": "Thì quá khứ hoàn thành (cơ bản)",
+    "cefrLevel": "B1",
+    "ruleVi": "Diễn tả hành động xảy ra TRƯỚC một hành động khác trong quá khứ (quá khứ của quá khứ). Công thức: S + had + V3/V-ed. Thường dùng với after, before, when, by the time.",
+    "examples": [
+      {
+        "en": "When I arrived, the train had left.",
+        "vi": "Khi tôi đến thì tàu đã đi rồi (tàu đi TRƯỚC)."
+      },
+      {
+        "en": "She had finished her work before 5 p.m.",
+        "vi": "Cô ấy đã xong việc trước 5 giờ."
+      },
+      {
+        "en": "After he had eaten, he went out.",
+        "vi": "Sau khi ăn xong, anh ấy đi ra ngoài."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "When I arrived, the train had leave.",
+        "correct": "When I arrived, the train had left.",
+        "explainVi": "Sau had phải là V3 (left), không phải nguyên mẫu."
+      },
+      {
+        "wrong": "She had finished before 5 p.m. yesterday.",
+        "correct": "She finished before 5 p.m. yesterday.",
+        "explainVi": "Câu này chỉ có 1 hành động quá khứ → dùng quá khứ đơn là đủ, không cần quá khứ hoàn thành."
+      },
+      {
+        "wrong": "I had go home early.",
+        "correct": "I had gone home early.",
+        "explainVi": "Go → V3 là gone."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-019",
+    "topic": "First Conditional",
+    "topicVi": "Câu điều kiện loại 1",
+    "cefrLevel": "B1",
+    "ruleVi": "Diễn tả điều kiện CÓ THẬT, có thể xảy ra ở hiện tại/tương lai. Công thức: If + S + V (hiện tại đơn), S + will + V. Mệnh đề if luôn ở thì hiện tại đơn, KHÔNG dùng will trong mệnh đề if.",
+    "examples": [
+      {
+        "en": "If it rains, we will stay at home.",
+        "vi": "Nếu trời mưa, chúng tôi sẽ ở nhà."
+      },
+      {
+        "en": "If you study hard, you will pass the exam.",
+        "vi": "Nếu bạn học chăm, bạn sẽ đỗ kỳ thi."
+      },
+      {
+        "en": "She will be angry if he is late.",
+        "vi": "Cô ấy sẽ giận nếu anh ấy đến muộn."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "If it will rain, we will stay.",
+        "correct": "If it rains, we will stay.",
+        "explainVi": "Trong mệnh đề if KHÔNG dùng will — dùng hiện tại đơn."
+      },
+      {
+        "wrong": "If you will study hard, you pass.",
+        "correct": "If you study hard, you will pass.",
+        "explainVi": "Mệnh đề chính mới dùng will; mệnh đề if dùng hiện tại đơn."
+      },
+      {
+        "wrong": "If it rains, we stay at home.",
+        "correct": "If it rains, we will stay at home.",
+        "explainVi": "Mệnh đề chính của điều kiện loại 1 cần will (hoặc can/may)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-020",
+    "topic": "Second Conditional",
+    "topicVi": "Câu điều kiện loại 2",
+    "cefrLevel": "B1",
+    "ruleVi": "Diễn tả điều kiện KHÔNG CÓ THẬT ở hiện tại (giả định, ước muốn trái thực tế). Công thức: If + S + V2/V-ed, S + would + V. Với to be, dùng were cho mọi chủ ngữ (If I were you...).",
+    "examples": [
+      {
+        "en": "If I were rich, I would travel the world.",
+        "vi": "Nếu tôi giàu, tôi sẽ đi du lịch khắp thế giới (thực tế: không giàu)."
+      },
+      {
+        "en": "If she studied harder, she would get better grades.",
+        "vi": "Nếu cô ấy học chăm hơn thì điểm đã tốt hơn."
+      },
+      {
+        "en": "What would you do if you won the lottery?",
+        "vi": "Bạn sẽ làm gì nếu trúng số?"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "If I was rich, I will travel.",
+        "correct": "If I were rich, I would travel.",
+        "explainVi": "Điều kiện loại 2: mệnh đề if dùng V2/were, mệnh đề chính dùng would."
+      },
+      {
+        "wrong": "If I were you, I will say sorry.",
+        "correct": "If I were you, I would say sorry.",
+        "explainVi": "Mệnh đề chính phải dùng would, không dùng will."
+      },
+      {
+        "wrong": "If she would study, she would pass.",
+        "correct": "If she studied, she would pass.",
+        "explainVi": "Trong mệnh đề if KHÔNG dùng would."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-021",
+    "topic": "Passive Voice (Present and Past)",
+    "topicVi": "Câu bị động (hiện tại và quá khứ)",
+    "cefrLevel": "B1",
+    "ruleVi": "Dùng khi muốn nhấn mạnh HÀNH ĐỘNG/đối tượng chịu tác động hơn là người thực hiện. Công thức: S + be (chia theo thì) + V3/V-ed. Hiện tại đơn: is/are + V3. Quá khứ đơn: was/were + V3. Tác nhân (nếu cần) đi với by.",
+    "examples": [
+      {
+        "en": "English is spoken in many countries.",
+        "vi": "Tiếng Anh được nói ở nhiều nước."
+      },
+      {
+        "en": "The bridge was built in 1990.",
+        "vi": "Cây cầu được xây năm 1990."
+      },
+      {
+        "en": "My bike was stolen yesterday.",
+        "vi": "Xe đạp của tôi bị trộm hôm qua."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "English is speak in many countries.",
+        "correct": "English is spoken in many countries.",
+        "explainVi": "Câu bị động cần V3 (spoken), không phải nguyên mẫu."
+      },
+      {
+        "wrong": "The bridge was build in 1990.",
+        "correct": "The bridge was built in 1990.",
+        "explainVi": "Build → V3 là built."
+      },
+      {
+        "wrong": "My bike was stolen by yesterday.",
+        "correct": "My bike was stolen yesterday.",
+        "explainVi": "Yesterday là trạng từ thời gian, không phải tác nhân — không dùng by."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-022",
+    "topic": "Reported Speech (Statements)",
+    "topicVi": "Câu tường thuật (câu kể)",
+    "cefrLevel": "B1",
+    "ruleVi": "Khi tường thuật lại lời nói, động từ thường LÙI 1 thì: hiện tại đơn → quá khứ đơn, will → would, can → could, hiện tại hoàn thành → quá khứ hoàn thành. Đại từ và trạng từ thời gian cũng đổi (I→he, today→that day, tomorrow→the next day).",
+    "examples": [
+      {
+        "en": "\"I am tired,\" she said. → She said (that) she was tired.",
+        "vi": "Cô ấy nói cô ấy mệt."
+      },
+      {
+        "en": "\"I will call you,\" he told me. → He told me (that) he would call me.",
+        "vi": "Anh ấy bảo sẽ gọi cho tôi."
+      },
+      {
+        "en": "\"We have finished,\" they said. → They said they had finished.",
+        "vi": "Họ nói họ đã làm xong."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "She said that she is tired.",
+        "correct": "She said that she was tired.",
+        "explainVi": "Tường thuật phải lùi thì: is → was."
+      },
+      {
+        "wrong": "He told me he will call me.",
+        "correct": "He told me he would call me.",
+        "explainVi": "Will → would khi tường thuật."
+      },
+      {
+        "wrong": "She said me she was tired.",
+        "correct": "She said (that) she was tired. / She told me (that) she was tired.",
+        "explainVi": "Said không có tân ngữ trực tiếp; told phải có tân ngữ (told me)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-023",
+    "topic": "Relative Clauses",
+    "topicVi": "Mệnh đề quan hệ",
+    "cefrLevel": "B1",
+    "ruleVi": "Dùng để bổ nghĩa cho danh từ. Who: người (chủ ngữ/tân ngữ). Which: vật. That: người/vật (không dùng sau dấu phẩy). Whose: sở hữu (người/vật). Where: nơi chốn. When: thời gian. Đại từ quan hệ làm tân ngữ có thể lược bỏ: The book (which) I bought.",
+    "examples": [
+      {
+        "en": "The woman who lives next door is a doctor.",
+        "vi": "Người phụ nữ sống cạnh nhà là bác sĩ."
+      },
+      {
+        "en": "I bought a phone which was made in Vietnam.",
+        "vi": "Tôi mua chiếc điện thoại được sản xuất ở Việt Nam."
+      },
+      {
+        "en": "Hanoi, where I was born, is beautiful.",
+        "vi": "Hà Nội, nơi tôi sinh ra, rất đẹp."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "The woman which lives next door...",
+        "correct": "The woman who lives next door...",
+        "explainVi": "Người thì dùng who, không dùng which."
+      },
+      {
+        "wrong": "The book who I bought is good.",
+        "correct": "The book which/that I bought is good.",
+        "explainVi": "Vật thì dùng which/that, không dùng who."
+      },
+      {
+        "wrong": "This is the house which I grew up.",
+        "correct": "This is the house where I grew up. / ...which I grew up in.",
+        "explainVi": "Nơi chốn dùng where; nếu dùng which phải có giới từ in."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-024",
+    "topic": "Used To",
+    "topicVi": "Cấu trúc used to",
+    "cefrLevel": "B1",
+    "ruleVi": "Diễn tả thói quen TRONG QUÁ KHỨ nhưng giờ không còn nữa. Công thức: S + used to + V (nguyên mẫu). Phủ định/nghi vấn: didn't use to / Did... use to... (bỏ d). Phân biệt: be used to + V-ing = đã quen với việc gì.",
+    "examples": [
+      {
+        "en": "I used to play football when I was young.",
+        "vi": "Hồi trẻ tôi thường đá bóng (giờ không)."
+      },
+      {
+        "en": "She didn't use to like coffee.",
+        "vi": "Trước đây cô ấy không thích cà phê."
+      },
+      {
+        "en": "Did you use to live here?",
+        "vi": "Trước đây bạn có sống ở đây không?"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I used to playing football.",
+        "correct": "I used to play football.",
+        "explainVi": "Sau used to là động từ nguyên mẫu, không phải V-ing."
+      },
+      {
+        "wrong": "She didn't used to like coffee.",
+        "correct": "She didn't use to like coffee.",
+        "explainVi": "Sau didn't, used bỏ d thành use."
+      },
+      {
+        "wrong": "I am used to get up early.",
+        "correct": "I am used to getting up early.",
+        "explainVi": "Be used to + V-ing (đã quen), khác used to + V (thói quen quá khứ)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-025",
+    "topic": "Modal Verbs: must / have to / should",
+    "topicVi": "Động từ khuyết thiếu must / have to / should",
+    "cefrLevel": "B1",
+    "ruleVi": "Must: bắt buộc (người nói cho là cần thiết). Have to: bắt buộc do hoàn cảnh/quy định bên ngoài. Mustn't: cấm đoán. Don't have to: không cần (được phép không làm). Should: lời khuyên. Tất cả + V nguyên mẫu.",
+    "examples": [
+      {
+        "en": "You must wear a helmet. It's the law.",
+        "vi": "Bạn phải đội mũ bảo hiểm. Đó là luật."
+      },
+      {
+        "en": "You don't have to come if you're busy.",
+        "vi": "Bạn không cần đến nếu bận (được phép không đến)."
+      },
+      {
+        "en": "You should see a doctor.",
+        "vi": "Bạn nên đi khám bác sĩ (lời khuyên)."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "You mustn't come if you're busy.",
+        "correct": "You don't have to come if you're busy.",
+        "explainVi": "Mustn't = CẤM; don't have to = KHÔNG CẦN — nghĩa khác nhau hoàn toàn!"
+      },
+      {
+        "wrong": "She must to wear uniform.",
+        "correct": "She must wear uniform.",
+        "explainVi": "Sau must không có to."
+      },
+      {
+        "wrong": "They should to study harder.",
+        "correct": "They should study harder.",
+        "explainVi": "Sau should cũng không có to."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-026",
+    "topic": "Gerund vs Infinitive",
+    "topicVi": "Danh động từ và động từ nguyên mẫu",
+    "cefrLevel": "B1",
+    "ruleVi": "Một số động từ + V-ing: enjoy, avoid, finish, mind, suggest, keep, practise. Một số + to V: want, decide, hope, plan, agree, promise, expect. Một số đổi nghĩa: stop smoking (bỏ hẳn) vs stop to smoke (dừng lại để hút); remember doing (nhớ đã làm) vs remember to do (nhớ phải làm).",
+    "examples": [
+      {
+        "en": "I enjoy reading books.",
+        "vi": "Tôi thích đọc sách."
+      },
+      {
+        "en": "She decided to move to Hanoi.",
+        "vi": "Cô ấy quyết định chuyển ra Hà Nội."
+      },
+      {
+        "en": "I stopped smoking last year.",
+        "vi": "Tôi đã bỏ thuốc lá năm ngoái (bỏ hẳn)."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I enjoy to read books.",
+        "correct": "I enjoy reading books.",
+        "explainVi": "Enjoy luôn đi với V-ing."
+      },
+      {
+        "wrong": "She decided moving to Hanoi.",
+        "correct": "She decided to move to Hanoi.",
+        "explainVi": "Decide luôn đi với to V."
+      },
+      {
+        "wrong": "I stopped to smoke last year.",
+        "correct": "I stopped smoking last year.",
+        "explainVi": "Stop to V = dừng lại ĐỂ làm việc khác; stop V-ing = từ bỏ hẳn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-027",
+    "topic": "So and Such",
+    "topicVi": "Cấu trúc so / such",
+    "cefrLevel": "B1",
+    "ruleVi": "So + adj/adv (+ that): quá... đến nỗi. Such + (a/an) + adj + N (+ that): quá... đến nỗi. Nhớ: so đi với TÍNH TỪ, such đi với CỤM DANH TỪ. So many/much + N (nhiều).",
+    "examples": [
+      {
+        "en": "The movie was so interesting that I watched it twice.",
+        "vi": "Bộ phim hay đến nỗi tôi xem 2 lần."
+      },
+      {
+        "en": "It was such a beautiful day that we went out.",
+        "vi": "Đó là một ngày đẹp đến nỗi chúng tôi ra ngoài."
+      },
+      {
+        "en": "There were so many people that we couldn't get in.",
+        "vi": "Đông người đến nỗi chúng tôi không vào được."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "It was so a beautiful day.",
+        "correct": "It was such a beautiful day.",
+        "explainVi": "Trước cụm danh từ (a beautiful day) dùng such, không dùng so."
+      },
+      {
+        "wrong": "She is such tall.",
+        "correct": "She is so tall.",
+        "explainVi": "Trước tính từ đơn (tall) dùng so, không dùng such."
+      },
+      {
+        "wrong": "It was such beautiful day.",
+        "correct": "It was such a beautiful day.",
+        "explainVi": "Danh từ số ít đếm được sau such cần a/an."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-028",
+    "topic": "Tag Questions",
+    "topicVi": "Câu hỏi đuôi",
+    "cefrLevel": "B1",
+    "ruleVi": "Vế chính khẳng định → đuôi phủ định; vế chính phủ định → đuôi khẳng định. Đuôi dùng trợ động từ/tobe/modal + đại từ chủ ngữ. Trường hợp đặc biệt: I am → aren't I?; Let's... → shall we?; mệnh lệnh → will you?",
+    "examples": [
+      {
+        "en": "You're Vietnamese, aren't you?",
+        "vi": "Bạn là người Việt, đúng không?"
+      },
+      {
+        "en": "She can't swim, can she?",
+        "vi": "Cô ấy không biết bơi, đúng không?"
+      },
+      {
+        "en": "Let's go out, shall we?",
+        "vi": "Mình ra ngoài đi, nhé?"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "You're Vietnamese, are you?",
+        "correct": "You're Vietnamese, aren't you?",
+        "explainVi": "Vế chính khẳng định thì đuôi phải phủ định."
+      },
+      {
+        "wrong": "She can't swim, can't she?",
+        "correct": "She can't swim, can she?",
+        "explainVi": "Vế chính phủ định thì đuôi phải khẳng định."
+      },
+      {
+        "wrong": "I'm late, amn't I?",
+        "correct": "I'm late, aren't I?",
+        "explainVi": "Trường hợp đặc biệt: I am → aren't I."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-029",
+    "topic": "Present Perfect Continuous (Introduction)",
+    "topicVi": "Thì hiện tại hoàn thành tiếp diễn (cơ bản)",
+    "cefrLevel": "B1",
+    "ruleVi": "Nhấn mạnh hành động BẮT ĐẦU trong quá khứ, KÉO DÀI đến hiện tại (và có thể tiếp tục). Công thức: S + have/has + been + V-ing. Dùng với since/for. Khác hiện tại hoàn thành: thì này nhấn mạnh QUÁ TRÌNH kéo dài.",
+    "examples": [
+      {
+        "en": "I have been studying English for 3 years.",
+        "vi": "Tôi đã học tiếng Anh được 3 năm (nhấn mạnh quá trình)."
+      },
+      {
+        "en": "She has been working here since 2020.",
+        "vi": "Cô ấy làm ở đây từ năm 2020."
+      },
+      {
+        "en": "You look tired. Have you been running?",
+        "vi": "Trông bạn mệt. Bạn vừa chạy à?"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I have been study for 3 years.",
+        "correct": "I have been studying for 3 years.",
+        "explainVi": "Sau been phải là V-ing."
+      },
+      {
+        "wrong": "She has working since 2020.",
+        "correct": "She has been working since 2020.",
+        "explainVi": "Thiếu been trong công thức."
+      },
+      {
+        "wrong": "I have been knowing him for years.",
+        "correct": "I have known him for years.",
+        "explainVi": "Động từ chỉ trạng thái (know, like, believe) không dùng thì tiếp diễn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-030",
+    "topic": "Quantifiers: much / many / a lot of / few / little",
+    "topicVi": "Từ chỉ số lượng",
+    "cefrLevel": "B1",
+    "ruleVi": "Many + danh từ đếm được số nhiều; much + danh từ không đếm được (thường dùng trong câu phủ định/nghi vấn). A lot of/lots of: dùng cho cả 2 (thân mật). Few/a few + đếm được (few = ít, tiêu cực; a few = một vài, tích cực). Little/a little + không đếm được (tương tự).",
+    "examples": [
+      {
+        "en": "I don't have much time.",
+        "vi": "Tôi không có nhiều thời gian."
+      },
+      {
+        "en": "There are a few students waiting outside.",
+        "vi": "Có một vài học sinh đang đợi ngoài (tích cực)."
+      },
+      {
+        "en": "She has little money left.",
+        "vi": "Cô ấy còn lại rất ít tiền (tiêu cực, gần như hết)."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I don't have many time.",
+        "correct": "I don't have much time.",
+        "explainVi": "Time không đếm được → dùng much."
+      },
+      {
+        "wrong": "There is few water.",
+        "correct": "There is little water.",
+        "explainVi": "Water không đếm được → dùng little, không dùng few."
+      },
+      {
+        "wrong": "I have a little friends.",
+        "correct": "I have a few friends.",
+        "explainVi": "Friends đếm được → dùng a few."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-031",
+    "topic": "Reflexive Pronouns",
+    "topicVi": "Đại từ phản thân",
+    "cefrLevel": "B1",
+    "ruleVi": "myself, yourself, himself, herself, itself, ourselves, yourselves, themselves. Dùng khi chủ ngữ và tân ngữ là MỘT (I hurt myself). Hoặc nhấn mạnh tự mình làm: by oneself = một mình; oneself trong thành ngữ (enjoy oneself = vui chơi).",
+    "examples": [
+      {
+        "en": "Be careful! Don't hurt yourself.",
+        "vi": "Cẩn thận! Đừng làm mình bị thương."
+      },
+      {
+        "en": "She did the homework by herself.",
+        "vi": "Cô ấy tự làm bài tập một mình."
+      },
+      {
+        "en": "The children enjoyed themselves at the party.",
+        "vi": "Bọn trẻ chơi rất vui ở bữa tiệc."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I hurt me.",
+        "correct": "I hurt myself.",
+        "explainVi": "Khi chủ ngữ và tân ngữ cùng là tôi, phải dùng myself."
+      },
+      {
+        "wrong": "She did it by hisself.",
+        "correct": "She did it by herself.",
+        "explainVi": "She → herself, không có hisself."
+      },
+      {
+        "wrong": "They enjoyed them at the party.",
+        "correct": "They enjoyed themselves at the party.",
+        "explainVi": "Enjoy oneself là cụm cố định với đại từ phản thân."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-032",
+    "topic": "Comparisons: as...as / not as...as",
+    "topicVi": "So sánh bằng và không bằng",
+    "cefrLevel": "B1",
+    "ruleVi": "as + adj/adv + as: bằng, ngang nhau. not as/so + adj/adv + as: không bằng. Twice/three times + as...as: gấp 2/3 lần.",
+    "examples": [
+      {
+        "en": "She is as tall as her sister.",
+        "vi": "Cô ấy cao bằng chị gái."
+      },
+      {
+        "en": "This test is not as difficult as the last one.",
+        "vi": "Bài kiểm tra này không khó bằng bài trước."
+      },
+      {
+        "en": "My house is twice as big as yours.",
+        "vi": "Nhà tôi to gấp đôi nhà bạn."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "She is as tall than her sister.",
+        "correct": "She is as tall as her sister.",
+        "explainVi": "Cấu trúc là as...as, không phải as...than."
+      },
+      {
+        "wrong": "This is not as difficult than that.",
+        "correct": "This is not as difficult as that.",
+        "explainVi": "Phủ định vẫn dùng as...as."
+      },
+      {
+        "wrong": "He is so tall as me.",
+        "correct": "He is as tall as me.",
+        "explainVi": "Khẳng định dùng as...as; so...as chỉ dùng trong phủ định."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-033",
+    "topic": "Wish (Introduction)",
+    "topicVi": "Câu ước với wish (cơ bản)",
+    "cefrLevel": "B1",
+    "ruleVi": "Ước về HIỆN TẠI (trái thực tế): S + wish + S + V2/V-ed (giống điều kiện loại 2). Ước về TƯƠNG LAI: wish + would + V (phàn nàn/mong muốn thay đổi).",
+    "examples": [
+      {
+        "en": "I wish I were taller.",
+        "vi": "Ước gì tôi cao hơn (thực tế: không cao)."
+      },
+      {
+        "en": "She wishes she had more money.",
+        "vi": "Cô ấy ước có nhiều tiền hơn."
+      },
+      {
+        "en": "I wish it would stop raining.",
+        "vi": "Ước gì trời tạnh mưa (mong thay đổi)."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I wish I am taller.",
+        "correct": "I wish I were taller.",
+        "explainVi": "Ước trái hiện tại phải lùi về quá khứ đơn (were)."
+      },
+      {
+        "wrong": "I wish I will be rich.",
+        "correct": "I wish I were rich. / I wish I would be rich.",
+        "explainVi": "Không dùng will sau wish cho ước hiện tại."
+      },
+      {
+        "wrong": "She wish she had more time.",
+        "correct": "She wishes she had more time.",
+        "explainVi": "Wish chia theo chủ ngữ: she → wishes."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-034",
+    "topic": "Future Continuous (Introduction)",
+    "topicVi": "Thì tương lai tiếp diễn (cơ bản)",
+    "cefrLevel": "B1",
+    "ruleVi": "Diễn tả hành động SẼ ĐANG XẢY RA tại một thời điểm trong tương lai. Công thức: S + will + be + V-ing. Thường dùng với at this time tomorrow, at 8 p.m. tonight...",
+    "examples": [
+      {
+        "en": "At this time tomorrow, I will be flying to Japan.",
+        "vi": "Giờ này ngày mai, tôi sẽ đang bay sang Nhật."
+      },
+      {
+        "en": "Don't call at 8 p.m. We will be having dinner.",
+        "vi": "Đừng gọi lúc 8 giờ tối. Chúng tôi sẽ đang ăn tối."
+      },
+      {
+        "en": "She will be waiting for you at the station.",
+        "vi": "Cô ấy sẽ đang đợi bạn ở ga."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I will flying tomorrow.",
+        "correct": "I will be flying tomorrow.",
+        "explainVi": "Thiếu be trong công thức will be + V-ing."
+      },
+      {
+        "wrong": "They will be play at 8 p.m.",
+        "correct": "They will be playing at 8 p.m.",
+        "explainVi": "Sau be phải là V-ing."
+      },
+      {
+        "wrong": "I am flying tomorrow at 10.",
+        "correct": "I will be flying tomorrow at 10. (nếu muốn nhấn mạnh 'đang bay' tại thời điểm đó)",
+        "explainVi": "Hiện tại tiếp diễn chỉ nói kế hoạch; muốn nhấn mạnh hành động đang diễn ra tại thời điểm tương lai thì dùng tương lai tiếp diễn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-035",
+    "topic": "Infinitive of Purpose",
+    "topicVi": "Động từ nguyên mẫu chỉ mục đích",
+    "cefrLevel": "B1",
+    "ruleVi": "Dùng to + V để nói MỤC ĐÍCH (để làm gì). Có thể thêm in order to / so as to (trang trọng hơn). Phủ định: in order not to / so as not to.",
+    "examples": [
+      {
+        "en": "I went to the library to borrow some books.",
+        "vi": "Tôi đến thư viện để mượn sách."
+      },
+      {
+        "en": "She studies hard in order to pass the exam.",
+        "vi": "Cô ấy học chăm để đỗ kỳ thi."
+      },
+      {
+        "en": "He woke up early so as not to miss the bus.",
+        "vi": "Anh ấy dậy sớm để không lỡ xe buýt."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I went to the library for borrow books.",
+        "correct": "I went to the library to borrow books.",
+        "explainVi": "Chỉ mục đích dùng to + V, không dùng for + V."
+      },
+      {
+        "wrong": "She studies hard for pass the exam.",
+        "correct": "She studies hard to pass the exam.",
+        "explainVi": "Tương tự: không dùng for + V nguyên mẫu."
+      },
+      {
+        "wrong": "He woke up early to not miss the bus.",
+        "correct": "He woke up early so as not to miss the bus. / ...in order not to miss the bus.",
+        "explainVi": "Phủ định của to V chỉ mục đích: dùng in order not to / so as not to."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-036",
+    "topic": "Third Conditional",
+    "topicVi": "Câu điều kiện loại 3",
+    "cefrLevel": "B2",
+    "ruleVi": "Diễn tả điều kiện KHÔNG CÓ THẬT trong QUÁ KHỨ (hối tiếc về chuyện đã rồi). Công thức: If + S + had + V3, S + would have + V3. Các biến thể: could have, might have.",
+    "examples": [
+      {
+        "en": "If I had studied harder, I would have passed the exam.",
+        "vi": "Nếu hồi đó tôi học chăm hơn thì đã đỗ kỳ thi (thực tế: đã trượt)."
+      },
+      {
+        "en": "If she had left earlier, she wouldn't have missed the bus.",
+        "vi": "Nếu cô ấy đi sớm hơn thì đã không lỡ xe."
+      },
+      {
+        "en": "We could have won if he had played better.",
+        "vi": "Chúng ta đã có thể thắng nếu anh ấy chơi tốt hơn."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "If I would have studied, I would have passed.",
+        "correct": "If I had studied, I would have passed.",
+        "explainVi": "Trong mệnh đề if KHÔNG dùng would — dùng had + V3."
+      },
+      {
+        "wrong": "If I had studied, I would pass.",
+        "correct": "If I had studied, I would have passed.",
+        "explainVi": "Mệnh đề chính phải là would have + V3."
+      },
+      {
+        "wrong": "If she had leave earlier...",
+        "correct": "If she had left earlier...",
+        "explainVi": "Sau had là V3 (left), không phải nguyên mẫu."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-037",
+    "topic": "Mixed Conditionals",
+    "topicVi": "Câu điều kiện hỗn hợp",
+    "cefrLevel": "B2",
+    "ruleVi": "Kết hợp quá khứ và hiện tại: (1) If + had + V3 (quá khứ), would + V (hiện tại): chuyện quá khứ ảnh hưởng hiện tại. (2) If + V2 (hiện tại), would have + V3 (quá khứ): giả định hiện tại khác đi thì quá khứ đã khác.",
+    "examples": [
+      {
+        "en": "If I had saved money, I would be rich now.",
+        "vi": "Nếu hồi đó tôi tiết kiệm thì giờ đã giàu (quá khứ → hiện tại)."
+      },
+      {
+        "en": "If I were taller, I would have joined the basketball team.",
+        "vi": "Nếu tôi cao hơn thì hồi đó đã vào đội bóng rổ (hiện tại → quá khứ)."
+      },
+      {
+        "en": "If she hadn't missed the flight, she would be here now.",
+        "vi": "Nếu cô ấy không lỡ chuyến bay thì giờ đã ở đây."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "If I had saved money, I would have been rich now.",
+        "correct": "If I had saved money, I would be rich now.",
+        "explainVi": "Kết quả ở HIỆN TẠI (now) thì dùng would + V, không phải would have + V3."
+      },
+      {
+        "wrong": "If I had been taller, I would have joined.",
+        "correct": "If I were taller, I would have joined.",
+        "explainVi": "Giả định về hiện tại (chiều cao bây giờ) dùng were, không dùng had been."
+      },
+      {
+        "wrong": "If I saved money, I would be rich now.",
+        "correct": "If I had saved money, I would be rich now.",
+        "explainVi": "Nguyên nhân là chuyện QUÁ KHỨ (đã không tiết kiệm) → mệnh đề if phải là had + V3."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-038",
+    "topic": "Passive Voice (Advanced)",
+    "topicVi": "Câu bị động nâng cao",
+    "cefrLevel": "B2",
+    "ruleVi": "Bị động với các thì hoàn thành/tiếp diễn: have been + V3 (has been done), be being + V3 (is being repaired). Bị động với động từ tường thuật: It is said that... / He is said to... Bị động với 2 tân ngữ: I was given a gift (= A gift was given to me).",
+    "examples": [
+      {
+        "en": "The road is being repaired at the moment.",
+        "vi": "Con đường đang được sửa lúc này."
+      },
+      {
+        "en": "He is said to be very rich.",
+        "vi": "Người ta nói anh ấy rất giàu."
+      },
+      {
+        "en": "I was offered the job yesterday.",
+        "vi": "Tôi đã được mời nhận việc hôm qua."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "The road is repairing now.",
+        "correct": "The road is being repaired now.",
+        "explainVi": "Bị động tiếp diễn: be + being + V3."
+      },
+      {
+        "wrong": "The work has done.",
+        "correct": "The work has been done.",
+        "explainVi": "Bị động hoàn thành: have + been + V3."
+      },
+      {
+        "wrong": "It is said that he is rich by people.",
+        "correct": "It is said that he is rich.",
+        "explainVi": "Cấu trúc It is said that... đã hàm ý 'người ta nói', không cần by people."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-039",
+    "topic": "Reported Speech (Questions and Commands)",
+    "topicVi": "Câu tường thuật (câu hỏi và mệnh lệnh)",
+    "cefrLevel": "B2",
+    "ruleVi": "Câu hỏi Yes/No: S + asked + if/whether + S + V (lùi thì). Câu hỏi Wh-: S + asked + wh- + S + V (KHÔNG đảo ngữ, không dùng do/does/did). Mệnh lệnh: S + told/asked + O + (not) to + V.",
+    "examples": [
+      {
+        "en": "She asked me if I liked coffee. → (trực tiếp: Do you like coffee?)",
+        "vi": "Cô ấy hỏi tôi có thích cà phê không."
+      },
+      {
+        "en": "He asked where I lived. → (Where do you live?)",
+        "vi": "Anh ấy hỏi tôi sống ở đâu."
+      },
+      {
+        "en": "The teacher told us to open our books.",
+        "vi": "Cô giáo bảo chúng tôi mở sách ra."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "She asked me do I like coffee.",
+        "correct": "She asked me if I liked coffee.",
+        "explainVi": "Câu tường thuật: dùng if/whether + lùi thì, bỏ do."
+      },
+      {
+        "wrong": "He asked where did I live.",
+        "correct": "He asked where I lived.",
+        "explainVi": "Câu hỏi Wh- tường thuật KHÔNG đảo ngữ, không dùng did."
+      },
+      {
+        "wrong": "She said me to open the book.",
+        "correct": "She told me to open the book.",
+        "explainVi": "Mệnh lệnh tường thuật dùng told + O + to V (said không có tân ngữ)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-040",
+    "topic": "Inversion",
+    "topicVi": "Đảo ngữ",
+    "cefrLevel": "B2",
+    "ruleVi": "Khi câu bắt đầu bằng phủ định/hạn chế (Never, Rarely, Seldom, Hardly...when, No sooner...than, Not only...but also, Only when...), ta ĐẢO trợ động từ lên trước chủ ngữ. Dùng trong văn viết trang trọng.",
+    "examples": [
+      {
+        "en": "Never have I seen such a beautiful sunset.",
+        "vi": "Tôi chưa bao giờ thấy hoàng hôn đẹp như vậy. (= I have never seen...)"
+      },
+      {
+        "en": "Not only did she sing, but she also danced.",
+        "vi": "Cô ấy không chỉ hát mà còn nhảy."
+      },
+      {
+        "en": "Hardly had he arrived when it started raining.",
+        "vi": "Anh ấy vừa đến thì trời đổ mưa."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "Never I have seen such sunset.",
+        "correct": "Never have I seen such a sunset.",
+        "explainVi": "Sau Never đầu câu phải đảo: trợ động từ + chủ ngữ."
+      },
+      {
+        "wrong": "Not only she sang but she also danced.",
+        "correct": "Not only did she sing, but she also danced.",
+        "explainVi": "Not only đầu câu → đảo ngữ ở vế đầu."
+      },
+      {
+        "wrong": "Rarely she goes out.",
+        "correct": "Rarely does she go out.",
+        "explainVi": "Rarely đầu câu → dùng does + chủ ngữ + V nguyên mẫu."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-041",
+    "topic": "Cleft Sentences",
+    "topicVi": "Câu chẻ (nhấn mạnh)",
+    "cefrLevel": "B2",
+    "ruleVi": "Dùng để NHẤN MẠNH một thành phần trong câu. It is/was + thành phần nhấn mạnh + that/who...: It was Lan who broke the vase (nhấn mạnh Lan). What + S + V + is/was + ...: What I need is a holiday (nhấn mạnh cái cần).",
+    "examples": [
+      {
+        "en": "It was yesterday that we met.",
+        "vi": "Chính là hôm qua chúng ta đã gặp nhau (nhấn mạnh thời gian)."
+      },
+      {
+        "en": "It is English that she teaches.",
+        "vi": "Chính là tiếng Anh mà cô ấy dạy."
+      },
+      {
+        "en": "What I want is some peace and quiet.",
+        "vi": "Điều tôi muốn là sự yên tĩnh."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "It is yesterday when we met.",
+        "correct": "It was yesterday that we met.",
+        "explainVi": "Câu chẻ với thời gian: dùng that (quá khứ dùng was)."
+      },
+      {
+        "wrong": "What I want is a holiday peaceful.",
+        "correct": "What I want is a peaceful holiday.",
+        "explainVi": "Tính từ đứng trước danh từ: a peaceful holiday."
+      },
+      {
+        "wrong": "It was Lan broke the vase.",
+        "correct": "It was Lan who broke the vase.",
+        "explainVi": "Nhấn mạnh người: It was + người + who/that + ..."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-042",
+    "topic": "Subjunctive",
+    "topicVi": "Thức giả định",
+    "cefrLevel": "B2",
+    "ruleVi": "Dùng sau các động từ/tính từ chỉ yêu cầu, đề nghị, cần thiết: suggest, recommend, demand, insist, require, necessary, important, vital... Công thức: S + V + that + S + (should) + V (nguyên mẫu, KHÔNG chia). Với to be dùng be cho mọi chủ ngữ.",
+    "examples": [
+      {
+        "en": "I suggest that he study harder.",
+        "vi": "Tôi đề nghị anh ấy học chăm hơn (study không thêm -s)."
+      },
+      {
+        "en": "It is necessary that everyone be present.",
+        "vi": "Mọi người cần có mặt (be, không phải is)."
+      },
+      {
+        "en": "The doctor recommended that she rest.",
+        "vi": "Bác sĩ khuyên cô ấy nghỉ ngơi."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I suggest that he studies harder.",
+        "correct": "I suggest that he study harder.",
+        "explainVi": "Giả định: động từ nguyên mẫu, không thêm -s dù chủ ngữ số ít."
+      },
+      {
+        "wrong": "It is necessary that everyone is present.",
+        "correct": "It is necessary that everyone be present.",
+        "explainVi": "Sau necessary that, to be luôn là be."
+      },
+      {
+        "wrong": "She demanded that he apologizes.",
+        "correct": "She demanded that he apologize.",
+        "explainVi": "Giả định không chia động từ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-043",
+    "topic": "Participle Clauses",
+    "topicVi": "Mệnh đề phân từ",
+    "cefrLevel": "B2",
+    "ruleVi": "Rút gọn mệnh đề khi 2 vế CÙNG CHỦ NGỮ. Chủ động: V-ing (Opening the door, he walked in). Bị động: V3 (Built in 1990, the bridge is old). Hoàn thành: Having + V3 (nhấn mạnh trước-sau). Phủ định: Not + V-ing/V3.",
+    "examples": [
+      {
+        "en": "Walking in the park, I saw an old friend.",
+        "vi": "Đang đi bộ trong công viên, tôi gặp một người bạn cũ. (= While I was walking...)"
+      },
+      {
+        "en": "Written in 1945, the book is still popular.",
+        "vi": "Được viết năm 1945, cuốn sách vẫn nổi tiếng."
+      },
+      {
+        "en": "Having finished his work, he went home.",
+        "vi": "Sau khi làm xong việc, anh ấy về nhà."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "Walked in the park, I saw a friend.",
+        "correct": "Walking in the park, I saw a friend.",
+        "explainVi": "Chủ động rút gọn dùng V-ing, không phải V-ed."
+      },
+      {
+        "wrong": "Building in 1990, the bridge is old.",
+        "correct": "Built in 1990, the bridge is old.",
+        "explainVi": "Bị động rút gọn dùng V3."
+      },
+      {
+        "wrong": "He walked in, opened the door.",
+        "correct": "Opening the door, he walked in.",
+        "explainVi": "Hành động mở cửa xảy ra TRƯỚC và cùng chủ ngữ → rút gọn bằng V-ing đầu câu."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-044",
+    "topic": "Wish and If Only (Advanced)",
+    "topicVi": "Câu ước nâng cao với wish / if only",
+    "cefrLevel": "B2",
+    "ruleVi": "If only = wish nhưng cảm xúc mạnh hơn. 3 loại: ước hiện tại (V2/were), ước quá khứ (had + V3 — hối tiếc), ước tương lai (would + V — mong thay đổi/phàn nàn).",
+    "examples": [
+      {
+        "en": "If only I had listened to my parents!",
+        "vi": "Giá như hồi đó tôi nghe lời bố mẹ! (hối tiếc quá khứ)"
+      },
+      {
+        "en": "I wish I hadn't said that.",
+        "vi": "Ước gì tôi đã không nói điều đó."
+      },
+      {
+        "en": "If only he would drive more carefully!",
+        "vi": "Giá như anh ấy lái xe cẩn thận hơn! (phàn nàn)"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I wish I didn't say that yesterday.",
+        "correct": "I wish I hadn't said that yesterday.",
+        "explainVi": "Hối tiếc chuyện QUÁ KHỨ (yesterday) phải dùng had + V3."
+      },
+      {
+        "wrong": "If only I would have more time now.",
+        "correct": "If only I had more time now.",
+        "explainVi": "Ước về hiện tại (now) dùng V2, không dùng would."
+      },
+      {
+        "wrong": "I wish it stops raining.",
+        "correct": "I wish it would stop raining.",
+        "explainVi": "Mong thay đổi trong tương lai → wish + would."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-045",
+    "topic": "Causative: have / get",
+    "topicVi": "Cấu trúc nhờ vả have / get",
+    "cefrLevel": "B2",
+    "ruleVi": "Nhờ ai làm gì (mình không tự làm): have + O (người) + V (nguyên mẫu): I had him fix my bike. have/get + O (vật) + V3 (bị động): I had my bike fixed / got my bike fixed. Get + O (người) + to V: I got him to fix my bike.",
+    "examples": [
+      {
+        "en": "I had my hair cut yesterday.",
+        "vi": "Hôm qua tôi đã đi cắt tóc (nhờ thợ cắt)."
+      },
+      {
+        "en": "She got her car repaired.",
+        "vi": "Cô ấy đã cho sửa xe."
+      },
+      {
+        "en": "He had the waiter bring more water.",
+        "vi": "Anh ấy bảo bồi bàn mang thêm nước."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I had cut my hair yesterday.",
+        "correct": "I had my hair cut yesterday.",
+        "explainVi": "Nhờ thợ cắt: have + O (vật) + V3. Câu sai nghĩa là 'tôi đã tự cắt'."
+      },
+      {
+        "wrong": "She got her car repair.",
+        "correct": "She got her car repaired.",
+        "explainVi": "Sau O (vật) phải là V3 (repaired)."
+      },
+      {
+        "wrong": "He got the waiter bring water.",
+        "correct": "He got the waiter to bring water.",
+        "explainVi": "Get + người + TO V (có to); have + người + V (không to)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-046",
+    "topic": "Modal Perfect",
+    "topicVi": "Động từ khuyết thiếu hoàn thành",
+    "cefrLevel": "B2",
+    "ruleVi": "Phỏng đoán/phê phán về QUÁ KHỨ. Must have + V3: chắc chắn đã (suy luận logic). Can't have + V3: chắc chắn đã không. Should have + V3: lẽ ra nên (nhưng đã không). Needn't have + V3: lẽ ra không cần (nhưng đã làm).",
+    "examples": [
+      {
+        "en": "He must have forgotten — he never misses meetings.",
+        "vi": "Chắc hẳn anh ấy đã quên — anh ấy không bao giờ lỡ họp."
+      },
+      {
+        "en": "You should have told me earlier!",
+        "vi": "Lẽ ra bạn nên nói với tôi sớm hơn! (nhưng đã không)"
+      },
+      {
+        "en": "She can't have done it alone.",
+        "vi": "Chắc chắn cô ấy không thể làm một mình."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "He must forgot.",
+        "correct": "He must have forgotten.",
+        "explainVi": "Phỏng đoán quá khứ: must + have + V3."
+      },
+      {
+        "wrong": "You should told me earlier.",
+        "correct": "You should have told me earlier.",
+        "explainVi": "Phê phán quá khứ: should + have + V3."
+      },
+      {
+        "wrong": "She can't did it alone.",
+        "correct": "She can't have done it alone.",
+        "explainVi": "Can't have + V3 (do → done)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-047",
+    "topic": "Ellipsis",
+    "topicVi": "Lược bỏ (ellipsis)",
+    "cefrLevel": "B2",
+    "ruleVi": "Lược bỏ từ đã rõ nghĩa để câu gọn, tự nhiên — phổ biến trong hội thoại và câu so sánh. Sau trợ động từ có thể lược động từ chính: I can swim, and she can too (= can swim). Trong so sánh: She is taller than I (am).",
+    "examples": [
+      {
+        "en": "I like coffee, and my sister does too.",
+        "vi": "Tôi thích cà phê, chị tôi cũng vậy (= does like coffee)."
+      },
+      {
+        "en": "He works harder than I do.",
+        "vi": "Anh ấy làm việc chăm hơn tôi (= than I work)."
+      },
+      {
+        "en": "— Will you come? — I hope so.",
+        "vi": "— Bạn đến chứ? — Mong là vậy (= I hope I will come)."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I like coffee, and my sister does like too.",
+        "correct": "I like coffee, and my sister does too.",
+        "explainVi": "Đã lược thì không lặp lại động từ chính."
+      },
+      {
+        "wrong": "He works harder than I.",
+        "correct": "He works harder than I do.",
+        "explainVi": "Văn phong trang trọng nên giữ do; hoặc dùng than me (thân mật)."
+      },
+      {
+        "wrong": "She can speak three languages, and I can speak two.",
+        "correct": "She can speak three languages, and I can two.",
+        "explainVi": "Khi đối tượng khác nhau thì giữ lại, nhưng động từ speak được lược."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-048",
+    "topic": "Discourse Markers",
+    "topicVi": "Từ nối diễn ngôn",
+    "cefrLevel": "B2",
+    "ruleVi": "Từ/cụm nối ý trong văn nói-viết: thêm ý (Moreover, Furthermore, In addition), đối lập (However, Nevertheless, On the other hand), kết luận (Therefore, Consequently, In conclusion), ví dụ (For instance). Chú ý dấu câu: However, ... (phẩy sau).",
+    "examples": [
+      {
+        "en": "The food was delicious. Moreover, it was cheap.",
+        "vi": "Món ăn ngon. Hơn nữa còn rẻ."
+      },
+      {
+        "en": "It was raining. However, we went out.",
+        "vi": "Trời đang mưa. Tuy nhiên chúng tôi vẫn ra ngoài."
+      },
+      {
+        "en": "He studied hard. Therefore, he passed.",
+        "vi": "Anh ấy học chăm. Vì vậy anh ấy đã đỗ."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "It was raining. However we went out.",
+        "correct": "It was raining. However, we went out.",
+        "explainVi": "However đầu câu phải có dấu phẩy sau."
+      },
+      {
+        "wrong": "The food was delicious. Moreover it was cheap.",
+        "correct": "The food was delicious. Moreover, it was cheap.",
+        "explainVi": "Tương tự: Moreover, + phẩy."
+      },
+      {
+        "wrong": "He was tired. Because he went to bed.",
+        "correct": "He was tired, so he went to bed.",
+        "explainVi": "Because không đứng đầu câu độc lập như vậy; dùng so hoặc nối câu."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-049",
+    "topic": "Future Perfect",
+    "topicVi": "Thì tương lai hoàn thành",
+    "cefrLevel": "B2",
+    "ruleVi": "Diễn tả hành động SẼ HOÀN THÀNH trước một thời điểm/mốc trong tương lai. Công thức: S + will + have + V3. Thường dùng với by, by the time, before.",
+    "examples": [
+      {
+        "en": "By 2030, I will have graduated.",
+        "vi": "Đến năm 2030, tôi sẽ đã tốt nghiệp."
+      },
+      {
+        "en": "By the time you arrive, we will have finished dinner.",
+        "vi": "Lúc bạn đến thì chúng tôi sẽ đã ăn tối xong."
+      },
+      {
+        "en": "She will have saved enough money by next year.",
+        "vi": "Cô ấy sẽ đã tiết kiệm đủ tiền vào năm sau."
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "By 2030, I will graduate.",
+        "correct": "By 2030, I will have graduated.",
+        "explainVi": "Có by + mốc tương lai và ý 'hoàn thành trước mốc đó' → dùng tương lai hoàn thành."
+      },
+      {
+        "wrong": "I will have finish by Friday.",
+        "correct": "I will have finished by Friday.",
+        "explainVi": "Sau have là V3 (finished)."
+      },
+      {
+        "wrong": "By the time you arrive, we finish dinner.",
+        "correct": "By the time you arrive, we will have finished dinner.",
+        "explainVi": "Thiếu will have + V3."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "grm-050",
+    "topic": "Emphasis with Do / Inversion with Only",
+    "topicVi": "Nhấn mạnh với do và đảo ngữ với only",
+    "cefrLevel": "B2",
+    "ruleVi": "Do/does/did + V để NHẤN MẠNH khẳng định: I do love you (tôi thực sự yêu bạn). Only + cụm thời gian/nơi chốn đầu câu → đảo ngữ: Only then did I understand. Only by working hard can you succeed.",
+    "examples": [
+      {
+        "en": "I do believe you.",
+        "vi": "Tôi thực sự tin bạn."
+      },
+      {
+        "en": "Only after the meeting did she speak.",
+        "vi": "Mãi sau cuộc họp cô ấy mới lên tiếng."
+      },
+      {
+        "en": "He did finish on time!",
+        "vi": "Anh ấy ĐÃ làm xong đúng giờ đấy! (nhấn mạnh, phản bác nghi ngờ)"
+      }
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I do loves you.",
+        "correct": "I do love you.",
+        "explainVi": "Sau do nhấn mạnh, động từ nguyên mẫu không thêm -s."
+      },
+      {
+        "wrong": "Only after the meeting she spoke.",
+        "correct": "Only after the meeting did she speak.",
+        "explainVi": "Only + cụm thời gian đầu câu → phải đảo ngữ."
+      },
+      {
+        "wrong": "Only by work hard you can succeed.",
+        "correct": "Only by working hard can you succeed.",
+        "explainVi": "By + V-ing; và đảo can lên trước chủ ngữ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

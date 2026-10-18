@@ -1,0 +1,3693 @@
+[
+  {
+    "id": "syn-001",
+    "word": "happy",
+    "meaningVi": "vui vẻ",
+    "synonyms": [
+      "glad",
+      "delighted",
+      "cheerful"
+    ],
+    "antonyms": [
+      "sad",
+      "unhappy"
+    ],
+    "exampleEn": "She felt happy about the good news.",
+    "exampleVi": "Cô ấy cảm thấy vui về tin tốt lành.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-002",
+    "word": "sad",
+    "meaningVi": "buồn",
+    "synonyms": [
+      "sorrowful",
+      "gloomy",
+      "unhappy"
+    ],
+    "antonyms": [
+      "happy",
+      "cheerful"
+    ],
+    "exampleEn": "He felt sad after his dog died.",
+    "exampleVi": "Cậu ấy cảm thấy buồn sau khi con chó của mình chết.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-003",
+    "word": "big",
+    "meaningVi": "to, lớn",
+    "synonyms": [
+      "large",
+      "huge",
+      "enormous"
+    ],
+    "antonyms": [
+      "small",
+      "tiny"
+    ],
+    "exampleEn": "They live in a big house near the river.",
+    "exampleVi": "Họ sống trong một ngôi nhà lớn gần sông.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-004",
+    "word": "small",
+    "meaningVi": "nhỏ",
+    "synonyms": [
+      "tiny",
+      "little",
+      "miniature"
+    ],
+    "antonyms": [
+      "big",
+      "large"
+    ],
+    "exampleEn": "She wore a small ring on her finger.",
+    "exampleVi": "Cô ấy đeo một chiếc nhẫn nhỏ trên ngón tay.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-005",
+    "word": "fast",
+    "meaningVi": "nhanh",
+    "synonyms": [
+      "quick",
+      "rapid",
+      "swift"
+    ],
+    "antonyms": [
+      "slow"
+    ],
+    "exampleEn": "Cheetahs are very fast animals.",
+    "exampleVi": "Báo gêpa là loài động vật rất nhanh.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-006",
+    "word": "slow",
+    "meaningVi": "chậm",
+    "synonyms": [
+      "sluggish",
+      "gradual",
+      "unhurried"
+    ],
+    "antonyms": [
+      "fast",
+      "quick"
+    ],
+    "exampleEn": "Traffic was slow this morning.",
+    "exampleVi": "Giao thông chậm chạp sáng nay.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-007",
+    "word": "hot",
+    "meaningVi": "nóng",
+    "synonyms": [
+      "warm",
+      "boiling",
+      "scorching"
+    ],
+    "antonyms": [
+      "cold",
+      "cool"
+    ],
+    "exampleEn": "Be careful, the soup is very hot.",
+    "exampleVi": "Cẩn thận, món súp rất nóng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-008",
+    "word": "cold",
+    "meaningVi": "lạnh",
+    "synonyms": [
+      "chilly",
+      "freezing",
+      "icy"
+    ],
+    "antonyms": [
+      "hot",
+      "warm"
+    ],
+    "exampleEn": "I need a jacket because it is cold outside.",
+    "exampleVi": "Tôi cần áo khoác vì bên ngoài trời lạnh.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-009",
+    "word": "good",
+    "meaningVi": "tốt",
+    "synonyms": [
+      "excellent",
+      "fine",
+      "great"
+    ],
+    "antonyms": [
+      "bad",
+      "poor"
+    ],
+    "exampleEn": "She is a good student.",
+    "exampleVi": "Cô ấy là một học sinh giỏi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-010",
+    "word": "bad",
+    "meaningVi": "tồi, xấu",
+    "synonyms": [
+      "terrible",
+      "awful",
+      "poor"
+    ],
+    "antonyms": [
+      "good",
+      "excellent"
+    ],
+    "exampleEn": "Smoking is bad for your health.",
+    "exampleVi": "Hút thuốc có hại cho sức khỏe.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-011",
+    "word": "easy",
+    "meaningVi": "dễ",
+    "synonyms": [
+      "simple",
+      "effortless",
+      "straightforward"
+    ],
+    "antonyms": [
+      "difficult",
+      "hard"
+    ],
+    "exampleEn": "This exercise is very easy.",
+    "exampleVi": "Bài tập này rất dễ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-012",
+    "word": "difficult",
+    "meaningVi": "khó",
+    "synonyms": [
+      "hard",
+      "challenging",
+      "tough"
+    ],
+    "antonyms": [
+      "easy",
+      "simple"
+    ],
+    "exampleEn": "Learning Chinese is difficult for me.",
+    "exampleVi": "Học tiếng Trung rất khó đối với tôi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-013",
+    "word": "rich",
+    "meaningVi": "giàu",
+    "synonyms": [
+      "wealthy",
+      "affluent",
+      "prosperous"
+    ],
+    "antonyms": [
+      "poor"
+    ],
+    "exampleEn": "He became rich after selling his company.",
+    "exampleVi": "Anh ấy trở nên giàu có sau khi bán công ty.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-014",
+    "word": "poor",
+    "meaningVi": "nghèo",
+    "synonyms": [
+      "needy",
+      "impoverished",
+      "destitute"
+    ],
+    "antonyms": [
+      "rich",
+      "wealthy"
+    ],
+    "exampleEn": "The charity helps poor families.",
+    "exampleVi": "Tổ chức từ thiện giúp đỡ các gia đình nghèo.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-015",
+    "word": "new",
+    "meaningVi": "mới",
+    "synonyms": [
+      "fresh",
+      "novel",
+      "recent"
+    ],
+    "antonyms": [
+      "old"
+    ],
+    "exampleEn": "I bought a new phone yesterday.",
+    "exampleVi": "Tôi đã mua một chiếc điện thoại mới hôm qua.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-016",
+    "word": "old",
+    "meaningVi": "già, cũ",
+    "synonyms": [
+      "aged",
+      "elderly",
+      "ancient"
+    ],
+    "antonyms": [
+      "new",
+      "young"
+    ],
+    "exampleEn": "My grandmother is very old.",
+    "exampleVi": "Bà tôi đã rất già.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-017",
+    "word": "young",
+    "meaningVi": "trẻ",
+    "synonyms": [
+      "youthful",
+      "juvenile",
+      "teenage"
+    ],
+    "antonyms": [
+      "old",
+      "elderly"
+    ],
+    "exampleEn": "Young people love new technology.",
+    "exampleVi": "Người trẻ yêu thích công nghệ mới.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-018",
+    "word": "beautiful",
+    "meaningVi": "đẹp",
+    "synonyms": [
+      "lovely",
+      "pretty",
+      "gorgeous"
+    ],
+    "antonyms": [
+      "ugly"
+    ],
+    "exampleEn": "Vietnam has many beautiful beaches.",
+    "exampleVi": "Việt Nam có nhiều bãi biển đẹp.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-019",
+    "word": "ugly",
+    "meaningVi": "xấu xí",
+    "synonyms": [
+      "unattractive",
+      "hideous",
+      "unsightly"
+    ],
+    "antonyms": [
+      "beautiful",
+      "pretty"
+    ],
+    "exampleEn": "The old building looks ugly now.",
+    "exampleVi": "Tòa nhà cũ trông xấu xí quá.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-020",
+    "word": "clean",
+    "meaningVi": "sạch",
+    "synonyms": [
+      "tidy",
+      "spotless",
+      "neat"
+    ],
+    "antonyms": [
+      "dirty"
+    ],
+    "exampleEn": "Please keep your room clean.",
+    "exampleVi": "Hãy giữ phòng của bạn sạch sẽ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-021",
+    "word": "dirty",
+    "meaningVi": "bẩn",
+    "synonyms": [
+      "filthy",
+      "muddy",
+      "soiled"
+    ],
+    "antonyms": [
+      "clean"
+    ],
+    "exampleEn": "Wash your dirty hands before eating.",
+    "exampleVi": "Rửa tay bẩn trước khi ăn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-022",
+    "word": "strong",
+    "meaningVi": "khỏe, mạnh",
+    "synonyms": [
+      "powerful",
+      "sturdy",
+      "mighty"
+    ],
+    "antonyms": [
+      "weak"
+    ],
+    "exampleEn": "He is strong enough to lift the box.",
+    "exampleVi": "Anh ấy đủ khỏe để nhấc chiếc hộp.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-023",
+    "word": "weak",
+    "meaningVi": "yếu",
+    "synonyms": [
+      "feeble",
+      "fragile",
+      "frail"
+    ],
+    "antonyms": [
+      "strong"
+    ],
+    "exampleEn": "She felt weak after the illness.",
+    "exampleVi": "Cô ấy cảm thấy yếu sau cơn bệnh.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-024",
+    "word": "tall",
+    "meaningVi": "cao",
+    "synonyms": [
+      "high",
+      "towering",
+      "lofty"
+    ],
+    "antonyms": [
+      "short"
+    ],
+    "exampleEn": "He is the tallest boy in class.",
+    "exampleVi": "Cậu ấy là bạn nam cao nhất lớp.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-025",
+    "word": "short",
+    "meaningVi": "thấp, ngắn",
+    "synonyms": [
+      "brief",
+      "little",
+      "petite"
+    ],
+    "antonyms": [
+      "tall",
+      "long"
+    ],
+    "exampleEn": "The movie was too short.",
+    "exampleVi": "Bộ phim quá ngắn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-026",
+    "word": "bright",
+    "meaningVi": "sáng",
+    "synonyms": [
+      "shiny",
+      "radiant",
+      "vivid"
+    ],
+    "antonyms": [
+      "dark",
+      "dim"
+    ],
+    "exampleEn": "The bright sun hurt my eyes.",
+    "exampleVi": "Ánh nắng chói làm đau mắt tôi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-027",
+    "word": "dark",
+    "meaningVi": "tối",
+    "synonyms": [
+      "dim",
+      "gloomy",
+      "shadowy"
+    ],
+    "antonyms": [
+      "bright",
+      "light"
+    ],
+    "exampleEn": "It gets dark very early in winter.",
+    "exampleVi": "Mùa đông trời tối rất sớm.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-028",
+    "word": "heavy",
+    "meaningVi": "nặng",
+    "synonyms": [
+      "weighty",
+      "hefty",
+      "massive"
+    ],
+    "antonyms": [
+      "light"
+    ],
+    "exampleEn": "This bag is too heavy for me.",
+    "exampleVi": "Chiếc túi này quá nặng đối với tôi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-029",
+    "word": "light",
+    "meaningVi": "nhẹ",
+    "synonyms": [
+      "weightless",
+      "airy",
+      "portable"
+    ],
+    "antonyms": [
+      "heavy"
+    ],
+    "exampleEn": "This laptop is very light.",
+    "exampleVi": "Chiếc laptop này rất nhẹ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-030",
+    "word": "cheap",
+    "meaningVi": "rẻ",
+    "synonyms": [
+      "inexpensive",
+      "affordable",
+      "economical"
+    ],
+    "antonyms": [
+      "expensive",
+      "costly"
+    ],
+    "exampleEn": "Fruits are cheap in summer.",
+    "exampleVi": "Trái cây rẻ vào mùa hè.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-031",
+    "word": "expensive",
+    "meaningVi": "đắt",
+    "synonyms": [
+      "costly",
+      "pricey",
+      "overpriced"
+    ],
+    "antonyms": [
+      "cheap",
+      "inexpensive"
+    ],
+    "exampleEn": "That watch is too expensive.",
+    "exampleVi": "Chiếc đồng hồ đó quá đắt.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-032",
+    "word": "hungry",
+    "meaningVi": "đói",
+    "synonyms": [
+      "starving",
+      "famished",
+      "ravenous"
+    ],
+    "antonyms": [
+      "full"
+    ],
+    "exampleEn": "The children were hungry after school.",
+    "exampleVi": "Bọn trẻ đói bụng sau giờ học.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-033",
+    "word": "thirsty",
+    "meaningVi": "khát",
+    "synonyms": [
+      "parched",
+      "dry"
+    ],
+    "antonyms": [
+      "hydrated"
+    ],
+    "exampleEn": "Drink some water if you are thirsty.",
+    "exampleVi": "Hãy uống nước nếu bạn khát.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-034",
+    "word": "tired",
+    "meaningVi": "mệt",
+    "synonyms": [
+      "exhausted",
+      "weary",
+      "sleepy"
+    ],
+    "antonyms": [
+      "energetic",
+      "rested"
+    ],
+    "exampleEn": "I was too tired to cook dinner.",
+    "exampleVi": "Tôi quá mệt để nấu bữa tối.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-035",
+    "word": "angry",
+    "meaningVi": "tức giận",
+    "synonyms": [
+      "furious",
+      "mad",
+      "annoyed"
+    ],
+    "antonyms": [
+      "calm"
+    ],
+    "exampleEn": "Dad was angry about the broken window.",
+    "exampleVi": "Bố tức giận vì cái cửa sổ bị vỡ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-036",
+    "word": "afraid",
+    "meaningVi": "sợ",
+    "synonyms": [
+      "scared",
+      "frightened",
+      "terrified"
+    ],
+    "antonyms": [
+      "brave"
+    ],
+    "exampleEn": "The little girl is afraid of dogs.",
+    "exampleVi": "Cô bé sợ chó.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-037",
+    "word": "brave",
+    "meaningVi": "dũng cảm",
+    "synonyms": [
+      "courageous",
+      "bold",
+      "fearless"
+    ],
+    "antonyms": [
+      "afraid",
+      "cowardly"
+    ],
+    "exampleEn": "The brave fireman saved the child.",
+    "exampleVi": "Người lính cứu hỏa dũng cảm đã cứu đứa trẻ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-038",
+    "word": "kind",
+    "meaningVi": "tử tế",
+    "synonyms": [
+      "nice",
+      "generous",
+      "caring"
+    ],
+    "antonyms": [
+      "cruel",
+      "mean"
+    ],
+    "exampleEn": "She is kind to everyone.",
+    "exampleVi": "Cô ấy tử tế với mọi người.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-039",
+    "word": "cruel",
+    "meaningVi": "tàn nhẫn",
+    "synonyms": [
+      "brutal",
+      "harsh",
+      "merciless"
+    ],
+    "antonyms": [
+      "kind",
+      "gentle"
+    ],
+    "exampleEn": "It is cruel to hurt animals.",
+    "exampleVi": "Làm đau động vật là tàn nhẫn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-040",
+    "word": "honest",
+    "meaningVi": "trung thực",
+    "synonyms": [
+      "truthful",
+      "sincere",
+      "frank"
+    ],
+    "antonyms": [
+      "dishonest"
+    ],
+    "exampleEn": "An honest person never lies.",
+    "exampleVi": "Người trung thực không bao giờ nói dối.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-041",
+    "word": "funny",
+    "meaningVi": "buồn cười",
+    "synonyms": [
+      "humorous",
+      "amusing",
+      "comical"
+    ],
+    "antonyms": [
+      "serious",
+      "boring"
+    ],
+    "exampleEn": "He told a funny story.",
+    "exampleVi": "Anh ấy kể một câu chuyện buồn cười.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-042",
+    "word": "boring",
+    "meaningVi": "chán",
+    "synonyms": [
+      "dull",
+      "tedious",
+      "uninteresting"
+    ],
+    "antonyms": [
+      "interesting",
+      "exciting"
+    ],
+    "exampleEn": "The lecture was so boring.",
+    "exampleVi": "Bài giảng chán quá.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-043",
+    "word": "interesting",
+    "meaningVi": "thú vị",
+    "synonyms": [
+      "fascinating",
+      "engaging",
+      "intriguing"
+    ],
+    "antonyms": [
+      "boring",
+      "dull"
+    ],
+    "exampleEn": "This book is very interesting.",
+    "exampleVi": "Cuốn sách này rất thú vị.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-044",
+    "word": "loud",
+    "meaningVi": "ồn ào",
+    "synonyms": [
+      "noisy",
+      "deafening",
+      "booming"
+    ],
+    "antonyms": [
+      "quiet",
+      "soft"
+    ],
+    "exampleEn": "Please do not be so loud.",
+    "exampleVi": "Xin đừng ồn ào quá.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-045",
+    "word": "quiet",
+    "meaningVi": "yên tĩnh",
+    "synonyms": [
+      "silent",
+      "calm",
+      "peaceful"
+    ],
+    "antonyms": [
+      "loud",
+      "noisy"
+    ],
+    "exampleEn": "The library is very quiet.",
+    "exampleVi": "Thư viện rất yên tĩnh.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-046",
+    "word": "wet",
+    "meaningVi": "ướt",
+    "synonyms": [
+      "damp",
+      "soaked",
+      "moist"
+    ],
+    "antonyms": [
+      "dry"
+    ],
+    "exampleEn": "My clothes are wet from the rain.",
+    "exampleVi": "Quần áo tôi ướt vì mưa.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-047",
+    "word": "dry",
+    "meaningVi": "khô",
+    "synonyms": [
+      "arid",
+      "parched",
+      "dehydrated"
+    ],
+    "antonyms": [
+      "wet",
+      "moist"
+    ],
+    "exampleEn": "The dry season lasts five months.",
+    "exampleVi": "Mùa khô kéo dài năm tháng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-048",
+    "word": "full",
+    "meaningVi": "đầy",
+    "synonyms": [
+      "packed",
+      "crowded",
+      "brimming"
+    ],
+    "antonyms": [
+      "empty"
+    ],
+    "exampleEn": "The bus was full this morning.",
+    "exampleVi": "Xe buýt đông nghẹt sáng nay.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-049",
+    "word": "empty",
+    "meaningVi": "trống rỗng",
+    "synonyms": [
+      "vacant",
+      "hollow",
+      "blank"
+    ],
+    "antonyms": [
+      "full"
+    ],
+    "exampleEn": "The room was completely empty.",
+    "exampleVi": "Căn phòng hoàn toàn trống rỗng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-050",
+    "word": "safe",
+    "meaningVi": "an toàn",
+    "synonyms": [
+      "secure",
+      "protected",
+      "harmless"
+    ],
+    "antonyms": [
+      "dangerous",
+      "risky"
+    ],
+    "exampleEn": "It is safe to walk here at night.",
+    "exampleVi": "Đi bộ ở đây vào ban đêm rất an toàn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-051",
+    "word": "dangerous",
+    "meaningVi": "nguy hiểm",
+    "synonyms": [
+      "risky",
+      "hazardous",
+      "perilous"
+    ],
+    "antonyms": [
+      "safe"
+    ],
+    "exampleEn": "Speeding is very dangerous.",
+    "exampleVi": "Chạy quá tốc độ rất nguy hiểm.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-052",
+    "word": "early",
+    "meaningVi": "sớm",
+    "synonyms": [
+      "prompt",
+      "timely",
+      "premature"
+    ],
+    "antonyms": [
+      "late"
+    ],
+    "exampleEn": "She arrived early for the meeting.",
+    "exampleVi": "Cô ấy đến sớm cho cuộc họp.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-053",
+    "word": "late",
+    "meaningVi": "muộn",
+    "synonyms": [
+      "delayed",
+      "overdue",
+      "tardy"
+    ],
+    "antonyms": [
+      "early",
+      "punctual"
+    ],
+    "exampleEn": "Sorry I am late for class.",
+    "exampleVi": "Xin lỗi tôi đến lớp muộn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-054",
+    "word": "busy",
+    "meaningVi": "bận rộn",
+    "synonyms": [
+      "occupied",
+      "engaged",
+      "hectic"
+    ],
+    "antonyms": [
+      "free",
+      "idle"
+    ],
+    "exampleEn": "I am too busy to talk now.",
+    "exampleVi": "Tôi quá bận để nói chuyện bây giờ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-055",
+    "word": "free",
+    "meaningVi": "rảnh, miễn phí",
+    "synonyms": [
+      "available",
+      "complimentary",
+      "vacant"
+    ],
+    "antonyms": [
+      "busy",
+      "occupied"
+    ],
+    "exampleEn": "Are you free tomorrow evening?",
+    "exampleVi": "Tối mai bạn có rảnh không?",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-056",
+    "word": "thick",
+    "meaningVi": "dày",
+    "synonyms": [
+      "dense",
+      "chunky",
+      "bulky"
+    ],
+    "antonyms": [
+      "thin"
+    ],
+    "exampleEn": "She wore a thick coat in winter.",
+    "exampleVi": "Cô ấy mặc áo khoác dày vào mùa đông.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-057",
+    "word": "thin",
+    "meaningVi": "mỏng, gầy",
+    "synonyms": [
+      "slim",
+      "slender",
+      "narrow"
+    ],
+    "antonyms": [
+      "thick",
+      "fat"
+    ],
+    "exampleEn": "He is tall and thin.",
+    "exampleVi": "Anh ấy cao và gầy.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-058",
+    "word": "wide",
+    "meaningVi": "rộng",
+    "synonyms": [
+      "broad",
+      "vast",
+      "spacious"
+    ],
+    "antonyms": [
+      "narrow"
+    ],
+    "exampleEn": "The river is very wide here.",
+    "exampleVi": "Con sông ở đây rất rộng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-059",
+    "word": "narrow",
+    "meaningVi": "hẹp",
+    "synonyms": [
+      "slim",
+      "tight",
+      "constricted"
+    ],
+    "antonyms": [
+      "wide",
+      "broad"
+    ],
+    "exampleEn": "The narrow street was crowded.",
+    "exampleVi": "Con phố hẹp đông đúc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-060",
+    "word": "smooth",
+    "meaningVi": "mịn, mượt",
+    "synonyms": [
+      "silky",
+      "sleek",
+      "even"
+    ],
+    "antonyms": [
+      "rough"
+    ],
+    "exampleEn": "The baby's skin is so smooth.",
+    "exampleVi": "Da em bé thật mịn màng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-061",
+    "word": "achieve",
+    "meaningVi": "đạt được",
+    "synonyms": [
+      "accomplish",
+      "attain",
+      "fulfill"
+    ],
+    "antonyms": [
+      "fail"
+    ],
+    "exampleEn": "She achieved her dream of becoming a doctor.",
+    "exampleVi": "Cô ấy đã đạt được ước mơ trở thành bác sĩ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-062",
+    "word": "admire",
+    "meaningVi": "ngưỡng mộ",
+    "synonyms": [
+      "respect",
+      "appreciate",
+      "look up to"
+    ],
+    "antonyms": [
+      "despise",
+      "dislike"
+    ],
+    "exampleEn": "I admire her courage.",
+    "exampleVi": "Tôi ngưỡng mộ sự can đảm của cô ấy.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-063",
+    "word": "amazing",
+    "meaningVi": "tuyệt vời",
+    "synonyms": [
+      "wonderful",
+      "astonishing",
+      "incredible"
+    ],
+    "antonyms": [
+      "terrible",
+      "awful"
+    ],
+    "exampleEn": "We had an amazing trip to Da Lat.",
+    "exampleVi": "Chúng tôi đã có chuyến đi tuyệt vời đến Đà Lạt.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-064",
+    "word": "ancient",
+    "meaningVi": "cổ xưa",
+    "synonyms": [
+      "old",
+      "antique",
+      "archaic"
+    ],
+    "antonyms": [
+      "modern",
+      "new"
+    ],
+    "exampleEn": "They found ancient coins in the cave.",
+    "exampleVi": "Họ tìm thấy những đồng xu cổ trong hang.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-065",
+    "word": "anxious",
+    "meaningVi": "lo lắng",
+    "synonyms": [
+      "worried",
+      "nervous",
+      "uneasy"
+    ],
+    "antonyms": [
+      "calm",
+      "relaxed"
+    ],
+    "exampleEn": "She felt anxious before the exam.",
+    "exampleVi": "Cô ấy cảm thấy lo lắng trước kỳ thi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-066",
+    "word": "apologize",
+    "meaningVi": "xin lỗi",
+    "synonyms": [
+      "say sorry",
+      "regret",
+      "atone"
+    ],
+    "antonyms": [],
+    "exampleEn": "He apologized for being late.",
+    "exampleVi": "Anh ấy đã xin lỗi vì đến muộn.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-067",
+    "word": "argue",
+    "meaningVi": "tranh cãi",
+    "synonyms": [
+      "debate",
+      "dispute",
+      "quarrel"
+    ],
+    "antonyms": [
+      "agree"
+    ],
+    "exampleEn": "They often argue about money.",
+    "exampleVi": "Họ thường tranh cãi về tiền bạc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-068",
+    "word": "ashamed",
+    "meaningVi": "xấu hổ",
+    "synonyms": [
+      "embarrassed",
+      "humiliated",
+      "guilty"
+    ],
+    "antonyms": [
+      "proud"
+    ],
+    "exampleEn": "He was ashamed of his behavior.",
+    "exampleVi": "Anh ấy xấu hổ về hành vi của mình.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-069",
+    "word": "attractive",
+    "meaningVi": "hấp dẫn",
+    "synonyms": [
+      "appealing",
+      "charming",
+      "alluring"
+    ],
+    "antonyms": [
+      "unattractive",
+      "repulsive"
+    ],
+    "exampleEn": "The job offer was very attractive.",
+    "exampleVi": "Lời mời làm việc rất hấp dẫn.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-070",
+    "word": "avoid",
+    "meaningVi": "tránh",
+    "synonyms": [
+      "evade",
+      "dodge",
+      "shun"
+    ],
+    "antonyms": [
+      "face",
+      "confront"
+    ],
+    "exampleEn": "She avoids eating fast food.",
+    "exampleVi": "Cô ấy tránh ăn đồ ăn nhanh.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-071",
+    "word": "blame",
+    "meaningVi": "đổ lỗi",
+    "synonyms": [
+      "accuse",
+      "fault",
+      "criticize"
+    ],
+    "antonyms": [
+      "praise",
+      "credit"
+    ],
+    "exampleEn": "Do not blame others for your mistakes.",
+    "exampleVi": "Đừng đổ lỗi cho người khác về lỗi của bạn.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-072",
+    "word": "bold",
+    "meaningVi": "táo bạo",
+    "synonyms": [
+      "daring",
+      "brave",
+      "fearless"
+    ],
+    "antonyms": [
+      "timid",
+      "shy"
+    ],
+    "exampleEn": "It was a bold decision to quit.",
+    "exampleVi": "Đó là một quyết định táo bạo khi nghỉ việc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-073",
+    "word": "bother",
+    "meaningVi": "làm phiền",
+    "synonyms": [
+      "disturb",
+      "annoy",
+      "trouble"
+    ],
+    "antonyms": [],
+    "exampleEn": "Sorry to bother you so late.",
+    "exampleVi": "Xin lỗi đã làm phiền bạn muộn thế này.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-074",
+    "word": "calm",
+    "meaningVi": "bình tĩnh",
+    "synonyms": [
+      "peaceful",
+      "serene",
+      "composed"
+    ],
+    "antonyms": [
+      "nervous",
+      "anxious"
+    ],
+    "exampleEn": "Stay calm and breathe deeply.",
+    "exampleVi": "Hãy bình tĩnh và hít thở sâu.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-075",
+    "word": "capable",
+    "meaningVi": "có năng lực",
+    "synonyms": [
+      "competent",
+      "able",
+      "skilled"
+    ],
+    "antonyms": [
+      "incapable",
+      "incompetent"
+    ],
+    "exampleEn": "She is capable of handling pressure.",
+    "exampleVi": "Cô ấy có khả năng chịu áp lực.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-076",
+    "word": "capture",
+    "meaningVi": "bắt giữ, chụp",
+    "synonyms": [
+      "seize",
+      "catch",
+      "arrest"
+    ],
+    "antonyms": [
+      "release",
+      "free"
+    ],
+    "exampleEn": "The photographer captured a perfect moment.",
+    "exampleVi": "Nhiếp ảnh gia đã chụp được khoảnh khắc hoàn hảo.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-077",
+    "word": "celebrate",
+    "meaningVi": "ăn mừng",
+    "synonyms": [
+      "commemorate",
+      "honor",
+      "rejoice"
+    ],
+    "antonyms": [
+      "mourn"
+    ],
+    "exampleEn": "We celebrated her birthday yesterday.",
+    "exampleVi": "Chúng tôi đã tổ chức sinh nhật cho cô ấy hôm qua.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-078",
+    "word": "certain",
+    "meaningVi": "chắc chắn",
+    "synonyms": [
+      "sure",
+      "confident",
+      "definite"
+    ],
+    "antonyms": [
+      "uncertain",
+      "unsure"
+    ],
+    "exampleEn": "Are you certain about the answer?",
+    "exampleVi": "Bạn có chắc về đáp án không?",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-079",
+    "word": "cheerful",
+    "meaningVi": "vui vẻ",
+    "synonyms": [
+      "happy",
+      "joyful",
+      "merry"
+    ],
+    "antonyms": [
+      "gloomy",
+      "sad"
+    ],
+    "exampleEn": "She always has a cheerful smile.",
+    "exampleVi": "Cô ấy luôn có nụ cười vui vẻ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-080",
+    "word": "clever",
+    "meaningVi": "thông minh",
+    "synonyms": [
+      "smart",
+      "intelligent",
+      "bright"
+    ],
+    "antonyms": [
+      "stupid",
+      "dull"
+    ],
+    "exampleEn": "The clever boy solved the puzzle.",
+    "exampleVi": "Cậu bé thông minh đã giải được câu đố.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-081",
+    "word": "clumsy",
+    "meaningVi": "vụng về",
+    "synonyms": [
+      "awkward",
+      "uncoordinated",
+      "ungainly"
+    ],
+    "antonyms": [
+      "graceful",
+      "skillful"
+    ],
+    "exampleEn": "He is too clumsy to play football.",
+    "exampleVi": "Anh ấy quá vụng về để chơi bóng đá.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-082",
+    "word": "combine",
+    "meaningVi": "kết hợp",
+    "synonyms": [
+      "merge",
+      "unite",
+      "blend"
+    ],
+    "antonyms": [
+      "separate",
+      "divide"
+    ],
+    "exampleEn": "Combine the flour and sugar first.",
+    "exampleVi": "Trộn bột và đường trước.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-083",
+    "word": "comfort",
+    "meaningVi": "an ủi, sự thoải mái",
+    "synonyms": [
+      "console",
+      "soothe",
+      "reassure"
+    ],
+    "antonyms": [
+      "distress",
+      "upset"
+    ],
+    "exampleEn": "She tried to comfort the crying child.",
+    "exampleVi": "Cô ấy cố an ủi đứa trẻ đang khóc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-084",
+    "word": "common",
+    "meaningVi": "phổ biến",
+    "synonyms": [
+      "usual",
+      "widespread",
+      "ordinary"
+    ],
+    "antonyms": [
+      "rare",
+      "uncommon"
+    ],
+    "exampleEn": "Rice is a common food in Asia.",
+    "exampleVi": "Cơm là món ăn phổ biến ở châu Á.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-085",
+    "word": "compare",
+    "meaningVi": "so sánh",
+    "synonyms": [
+      "contrast",
+      "liken",
+      "match"
+    ],
+    "antonyms": [],
+    "exampleEn": "Let us compare the two phones.",
+    "exampleVi": "Hãy so sánh hai chiếc điện thoại.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-086",
+    "word": "compete",
+    "meaningVi": "cạnh tranh",
+    "synonyms": [
+      "contest",
+      "rival",
+      "vie"
+    ],
+    "antonyms": [
+      "cooperate"
+    ],
+    "exampleEn": "Ten teams will compete in the final.",
+    "exampleVi": "Mười đội sẽ cạnh tranh trong trận chung kết.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-087",
+    "word": "complain",
+    "meaningVi": "phàn nàn",
+    "synonyms": [
+      "grumble",
+      "protest",
+      "moan"
+    ],
+    "antonyms": [
+      "praise"
+    ],
+    "exampleEn": "Customers complained about the service.",
+    "exampleVi": "Khách hàng phàn nàn về dịch vụ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-088",
+    "word": "complex",
+    "meaningVi": "phức tạp",
+    "synonyms": [
+      "complicated",
+      "intricate",
+      "sophisticated"
+    ],
+    "antonyms": [
+      "simple",
+      "easy"
+    ],
+    "exampleEn": "This is a complex problem.",
+    "exampleVi": "Đây là một vấn đề phức tạp.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-089",
+    "word": "concentrate",
+    "meaningVi": "tập trung",
+    "synonyms": [
+      "focus",
+      "center",
+      "fixate"
+    ],
+    "antonyms": [
+      "distract"
+    ],
+    "exampleEn": "I cannot concentrate with this noise.",
+    "exampleVi": "Tôi không thể tập trung với tiếng ồn này.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-090",
+    "word": "confident",
+    "meaningVi": "tự tin",
+    "synonyms": [
+      "self-assured",
+      "certain",
+      "assured"
+    ],
+    "antonyms": [
+      "shy",
+      "insecure"
+    ],
+    "exampleEn": "She felt confident before the interview.",
+    "exampleVi": "Cô ấy cảm thấy tự tin trước buổi phỏng vấn.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-091",
+    "word": "confuse",
+    "meaningVi": "làm bối rối",
+    "synonyms": [
+      "bewilder",
+      "perplex",
+      "baffle"
+    ],
+    "antonyms": [
+      "clarify"
+    ],
+    "exampleEn": "The instructions confused me.",
+    "exampleVi": "Hướng dẫn làm tôi bối rối.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-092",
+    "word": "connect",
+    "meaningVi": "kết nối",
+    "synonyms": [
+      "link",
+      "join",
+      "attach"
+    ],
+    "antonyms": [
+      "disconnect",
+      "separate"
+    ],
+    "exampleEn": "Connect the printer to the computer.",
+    "exampleVi": "Kết nối máy in với máy tính.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-093",
+    "word": "consider",
+    "meaningVi": "cân nhắc",
+    "synonyms": [
+      "think about",
+      "contemplate",
+      "ponder"
+    ],
+    "antonyms": [
+      "ignore",
+      "disregard"
+    ],
+    "exampleEn": "Please consider my proposal.",
+    "exampleVi": "Hãy cân nhắc đề xuất của tôi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-094",
+    "word": "contain",
+    "meaningVi": "chứa đựng",
+    "synonyms": [
+      "include",
+      "hold",
+      "comprise"
+    ],
+    "antonyms": [
+      "exclude"
+    ],
+    "exampleEn": "This box contains old books.",
+    "exampleVi": "Chiếc hộp này chứa sách cũ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-095",
+    "word": "contribute",
+    "meaningVi": "đóng góp",
+    "synonyms": [
+      "donate",
+      "give",
+      "provide"
+    ],
+    "antonyms": [
+      "withhold"
+    ],
+    "exampleEn": "Everyone contributed to the fund.",
+    "exampleVi": "Mọi người đều đóng góp vào quỹ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-096",
+    "word": "convince",
+    "meaningVi": "thuyết phục",
+    "synonyms": [
+      "persuade",
+      "assure",
+      "win over"
+    ],
+    "antonyms": [
+      "dissuade"
+    ],
+    "exampleEn": "He convinced me to join the trip.",
+    "exampleVi": "Anh ấy thuyết phục tôi tham gia chuyến đi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-097",
+    "word": "curious",
+    "meaningVi": "tò mò",
+    "synonyms": [
+      "inquisitive",
+      "nosy",
+      "interested"
+    ],
+    "antonyms": [
+      "indifferent"
+    ],
+    "exampleEn": "The curious child asked many questions.",
+    "exampleVi": "Đứa trẻ tò mò hỏi rất nhiều câu.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-098",
+    "word": "decrease",
+    "meaningVi": "giảm",
+    "synonyms": [
+      "reduce",
+      "decline",
+      "lessen"
+    ],
+    "antonyms": [
+      "increase",
+      "rise"
+    ],
+    "exampleEn": "Prices decreased after Tet.",
+    "exampleVi": "Giá cả giảm sau Tết.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-099",
+    "word": "defeat",
+    "meaningVi": "đánh bại",
+    "synonyms": [
+      "beat",
+      "conquer",
+      "overcome"
+    ],
+    "antonyms": [
+      "lose to",
+      "surrender"
+    ],
+    "exampleEn": "Our team defeated them 3-0.",
+    "exampleVi": "Đội chúng ta đã đánh bại họ 3-0.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-100",
+    "word": "defend",
+    "meaningVi": "bảo vệ",
+    "synonyms": [
+      "protect",
+      "guard",
+      "shield"
+    ],
+    "antonyms": [
+      "attack"
+    ],
+    "exampleEn": "Soldiers defended the border.",
+    "exampleVi": "Binh lính bảo vệ biên giới.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-101",
+    "word": "delay",
+    "meaningVi": "trì hoãn",
+    "synonyms": [
+      "postpone",
+      "defer",
+      "put off"
+    ],
+    "antonyms": [
+      "hurry",
+      "hasten"
+    ],
+    "exampleEn": "The flight was delayed by rain.",
+    "exampleVi": "Chuyến bay bị hoãn vì mưa.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-102",
+    "word": "delicate",
+    "meaningVi": "tinh tế, mỏng manh",
+    "synonyms": [
+      "fragile",
+      "subtle",
+      "fine"
+    ],
+    "antonyms": [
+      "sturdy",
+      "robust"
+    ],
+    "exampleEn": "Be careful, the vase is delicate.",
+    "exampleVi": "Cẩn thận, chiếc bình rất mỏng manh.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-103",
+    "word": "demand",
+    "meaningVi": "yêu cầu",
+    "synonyms": [
+      "require",
+      "request",
+      "insist on"
+    ],
+    "antonyms": [],
+    "exampleEn": "Workers demanded higher wages.",
+    "exampleVi": "Công nhân yêu cầu tăng lương.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-104",
+    "word": "deny",
+    "meaningVi": "phủ nhận",
+    "synonyms": [
+      "refuse",
+      "reject",
+      "contradict"
+    ],
+    "antonyms": [
+      "admit",
+      "confess"
+    ],
+    "exampleEn": "He denied stealing the money.",
+    "exampleVi": "Anh ta phủ nhận đã ăn cắp tiền.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-105",
+    "word": "depend",
+    "meaningVi": "phụ thuộc",
+    "synonyms": [
+      "rely on",
+      "count on",
+      "trust"
+    ],
+    "antonyms": [],
+    "exampleEn": "Children depend on their parents.",
+    "exampleVi": "Trẻ em phụ thuộc vào bố mẹ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-106",
+    "word": "deserve",
+    "meaningVi": "xứng đáng",
+    "synonyms": [
+      "merit",
+      "earn",
+      "warrant"
+    ],
+    "antonyms": [],
+    "exampleEn": "She deserves a reward.",
+    "exampleVi": "Cô ấy xứng đáng được thưởng.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-107",
+    "word": "desire",
+    "meaningVi": "khao khát",
+    "synonyms": [
+      "wish",
+      "want",
+      "crave"
+    ],
+    "antonyms": [
+      "dislike",
+      "dread"
+    ],
+    "exampleEn": "He has a strong desire to travel.",
+    "exampleVi": "Anh ấy khao khát được đi du lịch.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-108",
+    "word": "destroy",
+    "meaningVi": "phá hủy",
+    "synonyms": [
+      "demolish",
+      "ruin",
+      "wreck"
+    ],
+    "antonyms": [
+      "build",
+      "create"
+    ],
+    "exampleEn": "The storm destroyed many houses.",
+    "exampleVi": "Cơn bão đã phá hủy nhiều ngôi nhà.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-109",
+    "word": "develop",
+    "meaningVi": "phát triển",
+    "synonyms": [
+      "grow",
+      "evolve",
+      "expand"
+    ],
+    "antonyms": [
+      "shrink",
+      "decline"
+    ],
+    "exampleEn": "The city developed very fast.",
+    "exampleVi": "Thành phố phát triển rất nhanh.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-110",
+    "word": "devote",
+    "meaningVi": "cống hiến",
+    "synonyms": [
+      "dedicate",
+      "commit",
+      "consecrate"
+    ],
+    "antonyms": [
+      "neglect"
+    ],
+    "exampleEn": "She devoted her life to teaching.",
+    "exampleVi": "Cô ấy cống hiến cuộc đời cho giảng dạy.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-111",
+    "word": "differ",
+    "meaningVi": "khác nhau",
+    "synonyms": [
+      "vary",
+      "disagree",
+      "diverge"
+    ],
+    "antonyms": [
+      "agree",
+      "match"
+    ],
+    "exampleEn": "Their opinions differ greatly.",
+    "exampleVi": "Ý kiến của họ khác nhau rất nhiều.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-112",
+    "word": "diligent",
+    "meaningVi": "siêng năng",
+    "synonyms": [
+      "hardworking",
+      "industrious",
+      "conscientious"
+    ],
+    "antonyms": [
+      "lazy"
+    ],
+    "exampleEn": "Diligent students always do homework.",
+    "exampleVi": "Học sinh siêng năng luôn làm bài tập.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-113",
+    "word": "discover",
+    "meaningVi": "khám phá",
+    "synonyms": [
+      "find",
+      "uncover",
+      "detect"
+    ],
+    "antonyms": [
+      "miss",
+      "overlook"
+    ],
+    "exampleEn": "Scientists discovered a new planet.",
+    "exampleVi": "Các nhà khoa học đã khám phá một hành tinh mới.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-114",
+    "word": "discuss",
+    "meaningVi": "thảo luận",
+    "synonyms": [
+      "talk about",
+      "debate",
+      "confer"
+    ],
+    "antonyms": [],
+    "exampleEn": "We discussed the plan yesterday.",
+    "exampleVi": "Chúng tôi đã thảo luận kế hoạch hôm qua.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-115",
+    "word": "dismiss",
+    "meaningVi": "sa thải, bỏ qua",
+    "synonyms": [
+      "fire",
+      "reject",
+      "disregard"
+    ],
+    "antonyms": [
+      "hire",
+      "accept"
+    ],
+    "exampleEn": "He was dismissed from his job.",
+    "exampleVi": "Anh ấy bị sa thải khỏi công việc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-116",
+    "word": "display",
+    "meaningVi": "trưng bày",
+    "synonyms": [
+      "show",
+      "exhibit",
+      "present"
+    ],
+    "antonyms": [
+      "hide",
+      "conceal"
+    ],
+    "exampleEn": "The museum displays ancient artifacts.",
+    "exampleVi": "Bảo tàng trưng bày các cổ vật.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-117",
+    "word": "distant",
+    "meaningVi": "xa xôi",
+    "synonyms": [
+      "far",
+      "remote",
+      "faraway"
+    ],
+    "antonyms": [
+      "near",
+      "close"
+    ],
+    "exampleEn": "We could see distant mountains.",
+    "exampleVi": "Chúng tôi có thể thấy những ngọn núi xa.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-118",
+    "word": "donate",
+    "meaningVi": "quyên góp",
+    "synonyms": [
+      "give",
+      "contribute",
+      "present"
+    ],
+    "antonyms": [
+      "keep",
+      "withhold"
+    ],
+    "exampleEn": "She donated blood last month.",
+    "exampleVi": "Cô ấy đã hiến máu tháng trước.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-119",
+    "word": "doubt",
+    "meaningVi": "nghi ngờ",
+    "synonyms": [
+      "suspect",
+      "question",
+      "distrust"
+    ],
+    "antonyms": [
+      "trust",
+      "believe"
+    ],
+    "exampleEn": "I doubt his story is true.",
+    "exampleVi": "Tôi nghi ngờ câu chuyện của anh ta.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-120",
+    "word": "eager",
+    "meaningVi": "háo hức",
+    "synonyms": [
+      "keen",
+      "enthusiastic",
+      "willing"
+    ],
+    "antonyms": [
+      "reluctant",
+      "unwilling"
+    ],
+    "exampleEn": "The kids are eager to go swimming.",
+    "exampleVi": "Bọn trẻ háo hức đi bơi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-121",
+    "word": "earn",
+    "meaningVi": "kiếm được",
+    "synonyms": [
+      "gain",
+      "make",
+      "obtain"
+    ],
+    "antonyms": [
+      "lose",
+      "spend"
+    ],
+    "exampleEn": "He earns a good salary.",
+    "exampleVi": "Anh ấy kiếm được lương cao.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-122",
+    "word": "efficient",
+    "meaningVi": "hiệu quả",
+    "synonyms": [
+      "effective",
+      "productive",
+      "competent"
+    ],
+    "antonyms": [
+      "inefficient",
+      "wasteful"
+    ],
+    "exampleEn": "This machine is very efficient.",
+    "exampleVi": "Cỗ máy này rất hiệu quả.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-123",
+    "word": "elegant",
+    "meaningVi": "thanh lịch",
+    "synonyms": [
+      "graceful",
+      "stylish",
+      "refined"
+    ],
+    "antonyms": [
+      "clumsy",
+      "inelegant"
+    ],
+    "exampleEn": "She wore an elegant dress.",
+    "exampleVi": "Cô ấy mặc một chiếc váy thanh lịch.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-124",
+    "word": "eliminate",
+    "meaningVi": "loại bỏ",
+    "synonyms": [
+      "remove",
+      "erase",
+      "get rid of"
+    ],
+    "antonyms": [
+      "keep",
+      "add"
+    ],
+    "exampleEn": "We must eliminate waste.",
+    "exampleVi": "Chúng ta phải loại bỏ lãng phí.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-125",
+    "word": "embarrass",
+    "meaningVi": "làm xấu hổ",
+    "synonyms": [
+      "shame",
+      "humiliate",
+      "mortify"
+    ],
+    "antonyms": [],
+    "exampleEn": "His joke embarrassed everyone.",
+    "exampleVi": "Câu đùa của anh ta làm mọi người xấu hổ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-126",
+    "word": "embrace",
+    "meaningVi": "ôm ấp, chấp nhận",
+    "synonyms": [
+      "hug",
+      "accept",
+      "adopt"
+    ],
+    "antonyms": [
+      "reject",
+      "push away"
+    ],
+    "exampleEn": "She embraced her old friend.",
+    "exampleVi": "Cô ấy ôm người bạn cũ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-127",
+    "word": "emerge",
+    "meaningVi": "nổi lên",
+    "synonyms": [
+      "appear",
+      "surface",
+      "arise"
+    ],
+    "antonyms": [
+      "disappear",
+      "vanish"
+    ],
+    "exampleEn": "The sun emerged from the clouds.",
+    "exampleVi": "Mặt trời ló ra khỏi đám mây.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-128",
+    "word": "employ",
+    "meaningVi": "thuê, mướn",
+    "synonyms": [
+      "hire",
+      "engage",
+      "recruit"
+    ],
+    "antonyms": [
+      "fire",
+      "dismiss"
+    ],
+    "exampleEn": "The company employs 200 workers.",
+    "exampleVi": "Công ty thuê 200 công nhân.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-129",
+    "word": "enable",
+    "meaningVi": "cho phép",
+    "synonyms": [
+      "allow",
+      "permit",
+      "facilitate"
+    ],
+    "antonyms": [
+      "prevent",
+      "disable"
+    ],
+    "exampleEn": "This app enables quick payment.",
+    "exampleVi": "Ứng dụng này cho phép thanh toán nhanh.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-130",
+    "word": "encourage",
+    "meaningVi": "khuyến khích",
+    "synonyms": [
+      "inspire",
+      "motivate",
+      "support"
+    ],
+    "antonyms": [
+      "discourage"
+    ],
+    "exampleEn": "Teachers should encourage students.",
+    "exampleVi": "Giáo viên nên khuyến khích học sinh.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-131",
+    "word": "endure",
+    "meaningVi": "chịu đựng",
+    "synonyms": [
+      "bear",
+      "tolerate",
+      "withstand"
+    ],
+    "antonyms": [],
+    "exampleEn": "They endured many hardships.",
+    "exampleVi": "Họ đã chịu đựng nhiều gian khổ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-132",
+    "word": "enhance",
+    "meaningVi": "nâng cao",
+    "synonyms": [
+      "improve",
+      "boost",
+      "strengthen"
+    ],
+    "antonyms": [
+      "reduce",
+      "diminish"
+    ],
+    "exampleEn": "Exercise enhances your health.",
+    "exampleVi": "Tập thể dục nâng cao sức khỏe.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-133",
+    "word": "enjoy",
+    "meaningVi": "thích thú",
+    "synonyms": [
+      "like",
+      "love",
+      "relish"
+    ],
+    "antonyms": [
+      "hate",
+      "dislike"
+    ],
+    "exampleEn": "I enjoy reading novels.",
+    "exampleVi": "Tôi thích đọc tiểu thuyết.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-134",
+    "word": "enormous",
+    "meaningVi": "to lớn",
+    "synonyms": [
+      "huge",
+      "massive",
+      "gigantic"
+    ],
+    "antonyms": [
+      "tiny",
+      "small"
+    ],
+    "exampleEn": "They built an enormous dam.",
+    "exampleVi": "Họ đã xây một con đập khổng lồ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-135",
+    "word": "envy",
+    "meaningVi": "ghen tị",
+    "synonyms": [
+      "jealousy",
+      "covet",
+      "resent"
+    ],
+    "antonyms": [
+      "admire"
+    ],
+    "exampleEn": "I envy her talent.",
+    "exampleVi": "Tôi ghen tị với tài năng của cô ấy.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-136",
+    "word": "arise",
+    "meaningVi": "phát sinh",
+    "synonyms": [
+      "emerge",
+      "occur",
+      "happen"
+    ],
+    "antonyms": [
+      "disappear"
+    ],
+    "exampleEn": "Problems may arise during the trip.",
+    "exampleVi": "Vấn đề có thể phát sinh trong chuyến đi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-137",
+    "word": "astonish",
+    "meaningVi": "làm kinh ngạc",
+    "synonyms": [
+      "amaze",
+      "surprise",
+      "astound"
+    ],
+    "antonyms": [
+      "bore"
+    ],
+    "exampleEn": "The news astonished everyone.",
+    "exampleVi": "Tin tức làm mọi người kinh ngạc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-138",
+    "word": "attentive",
+    "meaningVi": "chú ý",
+    "synonyms": [
+      "observant",
+      "alert",
+      "mindful"
+    ],
+    "antonyms": [
+      "inattentive",
+      "careless"
+    ],
+    "exampleEn": "Be attentive in class.",
+    "exampleVi": "Hãy chú ý trong lớp.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-139",
+    "word": "awkward",
+    "meaningVi": "lúng túng",
+    "synonyms": [
+      "clumsy",
+      "embarrassing",
+      "uncomfortable"
+    ],
+    "antonyms": [
+      "graceful",
+      "comfortable"
+    ],
+    "exampleEn": "There was an awkward silence.",
+    "exampleVi": "Có một khoảng lặng lúng túng.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-140",
+    "word": "ban",
+    "meaningVi": "cấm",
+    "synonyms": [
+      "forbid",
+      "prohibit",
+      "outlaw"
+    ],
+    "antonyms": [
+      "allow",
+      "permit"
+    ],
+    "exampleEn": "Smoking is banned here.",
+    "exampleVi": "Hút thuốc bị cấm ở đây.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-141",
+    "word": "abolish",
+    "meaningVi": "bãi bỏ",
+    "synonyms": [
+      "eliminate",
+      "annul",
+      "repeal"
+    ],
+    "antonyms": [
+      "establish",
+      "create"
+    ],
+    "exampleEn": "They abolished the old law.",
+    "exampleVi": "Họ đã bãi bỏ luật cũ.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-142",
+    "word": "abrupt",
+    "meaningVi": "đột ngột",
+    "synonyms": [
+      "sudden",
+      "unexpected",
+      "hasty"
+    ],
+    "antonyms": [
+      "gradual",
+      "slow"
+    ],
+    "exampleEn": "The meeting ended with an abrupt decision.",
+    "exampleVi": "Cuộc họp kết thúc bằng một quyết định đột ngột.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-143",
+    "word": "absurd",
+    "meaningVi": "vô lý",
+    "synonyms": [
+      "ridiculous",
+      "silly",
+      "nonsensical"
+    ],
+    "antonyms": [
+      "reasonable",
+      "sensible"
+    ],
+    "exampleEn": "It was absurd to blame him.",
+    "exampleVi": "Thật vô lý khi đổ lỗi cho anh ấy.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-144",
+    "word": "abundant",
+    "meaningVi": "dồi dào",
+    "synonyms": [
+      "plentiful",
+      "ample",
+      "copious"
+    ],
+    "antonyms": [
+      "scarce",
+      "rare"
+    ],
+    "exampleEn": "Vietnam has abundant natural resources.",
+    "exampleVi": "Việt Nam có tài nguyên thiên nhiên dồi dào.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-145",
+    "word": "accelerate",
+    "meaningVi": "tăng tốc",
+    "synonyms": [
+      "speed up",
+      "hasten",
+      "quicken"
+    ],
+    "antonyms": [
+      "slow down",
+      "decelerate"
+    ],
+    "exampleEn": "The car accelerated quickly.",
+    "exampleVi": "Chiếc xe tăng tốc nhanh chóng.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-146",
+    "word": "acclaim",
+    "meaningVi": "hoan nghênh",
+    "synonyms": [
+      "praise",
+      "applaud",
+      "hail"
+    ],
+    "antonyms": [
+      "criticize",
+      "condemn"
+    ],
+    "exampleEn": "The film won critical acclaim.",
+    "exampleVi": "Bộ phim nhận được sự hoan nghênh của giới phê bình.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-147",
+    "word": "accumulate",
+    "meaningVi": "tích lũy",
+    "synonyms": [
+      "gather",
+      "collect",
+      "amass"
+    ],
+    "antonyms": [
+      "scatter",
+      "disperse"
+    ],
+    "exampleEn": "Dust accumulated on the shelf.",
+    "exampleVi": "Bụi tích tụ trên kệ.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-148",
+    "word": "adamant",
+    "meaningVi": "kiên quyết",
+    "synonyms": [
+      "firm",
+      "resolute",
+      "stubborn"
+    ],
+    "antonyms": [
+      "flexible",
+      "yielding"
+    ],
+    "exampleEn": "She was adamant about her decision.",
+    "exampleVi": "Cô ấy kiên quyết với quyết định của mình.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-149",
+    "word": "adept",
+    "meaningVi": "thành thạo",
+    "synonyms": [
+      "skilled",
+      "proficient",
+      "expert"
+    ],
+    "antonyms": [
+      "clumsy",
+      "inept"
+    ],
+    "exampleEn": "He is adept at fixing computers.",
+    "exampleVi": "Anh ấy thành thạo sửa máy tính.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-150",
+    "word": "adhere",
+    "meaningVi": "tuân thủ",
+    "synonyms": [
+      "follow",
+      "obey",
+      "stick to"
+    ],
+    "antonyms": [
+      "ignore",
+      "violate"
+    ],
+    "exampleEn": "You must adhere to the rules.",
+    "exampleVi": "Bạn phải tuân thủ các quy tắc.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-151",
+    "word": "adjacent",
+    "meaningVi": "liền kề",
+    "synonyms": [
+      "neighboring",
+      "adjoining",
+      "nearby"
+    ],
+    "antonyms": [
+      "distant",
+      "far"
+    ],
+    "exampleEn": "Our house is adjacent to the park.",
+    "exampleVi": "Nhà chúng tôi liền kề công viên.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-152",
+    "word": "adverse",
+    "meaningVi": "bất lợi",
+    "synonyms": [
+      "unfavorable",
+      "harmful",
+      "hostile"
+    ],
+    "antonyms": [
+      "favorable",
+      "beneficial"
+    ],
+    "exampleEn": "The drug has adverse effects.",
+    "exampleVi": "Thuốc có tác dụng phụ bất lợi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-153",
+    "word": "advocate",
+    "meaningVi": "ủng hộ",
+    "synonyms": [
+      "support",
+      "champion",
+      "promote"
+    ],
+    "antonyms": [
+      "oppose"
+    ],
+    "exampleEn": "She advocates free education.",
+    "exampleVi": "Cô ấy ủng hộ giáo dục miễn phí.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-154",
+    "word": "aesthetic",
+    "meaningVi": "thẩm mỹ",
+    "synonyms": [
+      "beautiful",
+      "artistic",
+      "tasteful"
+    ],
+    "antonyms": [
+      "ugly",
+      "unattractive"
+    ],
+    "exampleEn": "The room has a pleasing aesthetic.",
+    "exampleVi": "Căn phòng có tính thẩm mỹ dễ chịu.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-155",
+    "word": "affluent",
+    "meaningVi": "giàu có",
+    "synonyms": [
+      "wealthy",
+      "rich",
+      "prosperous"
+    ],
+    "antonyms": [
+      "poor"
+    ],
+    "exampleEn": "They live in an affluent neighborhood.",
+    "exampleVi": "Họ sống trong khu phố giàu có.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-156",
+    "word": "aggravate",
+    "meaningVi": "làm trầm trọng",
+    "synonyms": [
+      "worsen",
+      "intensify",
+      "exacerbate"
+    ],
+    "antonyms": [
+      "alleviate",
+      "improve"
+    ],
+    "exampleEn": "Smoking aggravates the illness.",
+    "exampleVi": "Hút thuốc làm bệnh trầm trọng hơn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-157",
+    "word": "agile",
+    "meaningVi": "nhanh nhẹn",
+    "synonyms": [
+      "nimble",
+      "flexible",
+      "quick"
+    ],
+    "antonyms": [
+      "clumsy",
+      "stiff"
+    ],
+    "exampleEn": "The agile monkey climbed fast.",
+    "exampleVi": "Con khỉ nhanh nhẹn leo rất nhanh.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-158",
+    "word": "alienate",
+    "meaningVi": "xa lánh",
+    "synonyms": [
+      "estrange",
+      "isolate",
+      "distance"
+    ],
+    "antonyms": [
+      "befriend",
+      "unite"
+    ],
+    "exampleEn": "His rudeness alienated his friends.",
+    "exampleVi": "Sự thô lỗ khiến bạn bè xa lánh anh ta.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-159",
+    "word": "alleviate",
+    "meaningVi": "làm dịu bớt",
+    "synonyms": [
+      "ease",
+      "relieve",
+      "soothe"
+    ],
+    "antonyms": [
+      "worsen",
+      "aggravate"
+    ],
+    "exampleEn": "Medicine alleviated her pain.",
+    "exampleVi": "Thuốc làm dịu cơn đau của cô ấy.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-160",
+    "word": "allocate",
+    "meaningVi": "phân bổ",
+    "synonyms": [
+      "assign",
+      "distribute",
+      "allot"
+    ],
+    "antonyms": [
+      "withhold"
+    ],
+    "exampleEn": "Funds were allocated to schools.",
+    "exampleVi": "Kinh phí được phân bổ cho các trường học.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-161",
+    "word": "ambiguous",
+    "meaningVi": "mơ hồ",
+    "synonyms": [
+      "vague",
+      "unclear",
+      "equivocal"
+    ],
+    "antonyms": [
+      "clear",
+      "definite"
+    ],
+    "exampleEn": "His answer was ambiguous.",
+    "exampleVi": "Câu trả lời của anh ta mơ hồ.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-162",
+    "word": "ambitious",
+    "meaningVi": "tham vọng",
+    "synonyms": [
+      "driven",
+      "aspiring",
+      "determined"
+    ],
+    "antonyms": [
+      "unambitious",
+      "lazy"
+    ],
+    "exampleEn": "She is ambitious and hardworking.",
+    "exampleVi": "Cô ấy tham vọng và chăm chỉ.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-163",
+    "word": "amend",
+    "meaningVi": "sửa đổi",
+    "synonyms": [
+      "revise",
+      "modify",
+      "alter"
+    ],
+    "antonyms": [
+      "keep"
+    ],
+    "exampleEn": "They amended the contract.",
+    "exampleVi": "Họ đã sửa đổi hợp đồng.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-164",
+    "word": "amiable",
+    "meaningVi": "dễ mến",
+    "synonyms": [
+      "friendly",
+      "pleasant",
+      "likable"
+    ],
+    "antonyms": [
+      "hostile",
+      "unfriendly"
+    ],
+    "exampleEn": "He is an amiable person.",
+    "exampleVi": "Anh ấy là người dễ mến.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-165",
+    "word": "amplify",
+    "meaningVi": "khuếch đại",
+    "synonyms": [
+      "increase",
+      "magnify",
+      "boost"
+    ],
+    "antonyms": [
+      "reduce",
+      "diminish"
+    ],
+    "exampleEn": "The speaker amplified his voice.",
+    "exampleVi": "Diễn giả khuếch đại giọng nói.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-166",
+    "word": "anguish",
+    "meaningVi": "nỗi đau đớn",
+    "synonyms": [
+      "agony",
+      "torment",
+      "suffering"
+    ],
+    "antonyms": [
+      "joy",
+      "delight"
+    ],
+    "exampleEn": "She cried out in anguish.",
+    "exampleVi": "Cô ấy khóc trong đau đớn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-167",
+    "word": "annihilate",
+    "meaningVi": "tiêu diệt",
+    "synonyms": [
+      "destroy",
+      "obliterate",
+      "wipe out"
+    ],
+    "antonyms": [
+      "create",
+      "build"
+    ],
+    "exampleEn": "The army annihilated the enemy.",
+    "exampleVi": "Quân đội đã tiêu diệt kẻ thù.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-168",
+    "word": "anticipate",
+    "meaningVi": "dự đoán",
+    "synonyms": [
+      "expect",
+      "foresee",
+      "predict"
+    ],
+    "antonyms": [
+      "doubt"
+    ],
+    "exampleEn": "We anticipate heavy rain.",
+    "exampleVi": "Chúng tôi dự đoán mưa lớn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-169",
+    "word": "apathy",
+    "meaningVi": "thờ ơ",
+    "synonyms": [
+      "indifference",
+      "unconcern",
+      "passivity"
+    ],
+    "antonyms": [
+      "enthusiasm",
+      "concern"
+    ],
+    "exampleEn": "Voter apathy is a problem.",
+    "exampleVi": "Sự thờ ơ của cử tri là một vấn đề.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-170",
+    "word": "apparent",
+    "meaningVi": "rõ ràng",
+    "synonyms": [
+      "obvious",
+      "evident",
+      "clear"
+    ],
+    "antonyms": [
+      "hidden",
+      "obscure"
+    ],
+    "exampleEn": "It was apparent that he was tired.",
+    "exampleVi": "Rõ ràng là anh ấy mệt.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-171",
+    "word": "appease",
+    "meaningVi": "xoa dịu",
+    "synonyms": [
+      "calm",
+      "pacify",
+      "soothe"
+    ],
+    "antonyms": [
+      "provoke",
+      "anger"
+    ],
+    "exampleEn": "They tried to appease the angry crowd.",
+    "exampleVi": "Họ cố xoa dịu đám đông tức giận.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-172",
+    "word": "apprehend",
+    "meaningVi": "bắt giữ, hiểu",
+    "synonyms": [
+      "arrest",
+      "grasp",
+      "comprehend"
+    ],
+    "antonyms": [
+      "release",
+      "misunderstand"
+    ],
+    "exampleEn": "Police apprehended the thief.",
+    "exampleVi": "Cảnh sát đã bắt giữ tên trộm.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-173",
+    "word": "apprehensive",
+    "meaningVi": "lo ngại",
+    "synonyms": [
+      "worried",
+      "anxious",
+      "fearful"
+    ],
+    "antonyms": [
+      "confident",
+      "calm"
+    ],
+    "exampleEn": "She felt apprehensive about the test.",
+    "exampleVi": "Cô ấy lo ngại về bài kiểm tra.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-174",
+    "word": "arbitrary",
+    "meaningVi": "tùy tiện",
+    "synonyms": [
+      "random",
+      "capricious",
+      "haphazard"
+    ],
+    "antonyms": [
+      "reasoned",
+      "deliberate"
+    ],
+    "exampleEn": "The choice seemed arbitrary.",
+    "exampleVi": "Lựa chọn có vẻ tùy tiện.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-175",
+    "word": "arduous",
+    "meaningVi": "gian khổ",
+    "synonyms": [
+      "strenuous",
+      "laborious",
+      "tough"
+    ],
+    "antonyms": [
+      "easy",
+      "effortless"
+    ],
+    "exampleEn": "Climbing the mountain was arduous.",
+    "exampleVi": "Leo núi thật gian khổ.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-176",
+    "word": "arrogant",
+    "meaningVi": "kiêu ngạo",
+    "synonyms": [
+      "haughty",
+      "conceited",
+      "proud"
+    ],
+    "antonyms": [
+      "humble",
+      "modest"
+    ],
+    "exampleEn": "Nobody likes an arrogant boss.",
+    "exampleVi": "Không ai thích một ông sếp kiêu ngạo.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-177",
+    "word": "articulate",
+    "meaningVi": "diễn đạt lưu loát",
+    "synonyms": [
+      "eloquent",
+      "fluent",
+      "expressive"
+    ],
+    "antonyms": [
+      "inarticulate"
+    ],
+    "exampleEn": "She is an articulate speaker.",
+    "exampleVi": "Cô ấy là một diễn giả lưu loát.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-178",
+    "word": "ascend",
+    "meaningVi": "leo lên",
+    "synonyms": [
+      "climb",
+      "rise",
+      "mount"
+    ],
+    "antonyms": [
+      "descend",
+      "fall"
+    ],
+    "exampleEn": "They ascended the hill slowly.",
+    "exampleVi": "Họ leo lên đồi chậm rãi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-179",
+    "word": "ascertain",
+    "meaningVi": "xác định",
+    "synonyms": [
+      "determine",
+      "establish",
+      "verify"
+    ],
+    "antonyms": [],
+    "exampleEn": "We need to ascertain the facts.",
+    "exampleVi": "Chúng ta cần xác định sự thật.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-180",
+    "word": "aspire",
+    "meaningVi": "khao khát",
+    "synonyms": [
+      "aim",
+      "seek",
+      "desire"
+    ],
+    "antonyms": [],
+    "exampleEn": "She aspires to be a lawyer.",
+    "exampleVi": "Cô ấy khao khát trở thành luật sư.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-181",
+    "word": "assemble",
+    "meaningVi": "lắp ráp, tập hợp",
+    "synonyms": [
+      "gather",
+      "collect",
+      "construct"
+    ],
+    "antonyms": [
+      "disassemble",
+      "scatter"
+    ],
+    "exampleEn": "Workers assembled the machine.",
+    "exampleVi": "Công nhân đã lắp ráp cỗ máy.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-182",
+    "word": "assert",
+    "meaningVi": "khẳng định",
+    "synonyms": [
+      "declare",
+      "state",
+      "maintain"
+    ],
+    "antonyms": [
+      "deny"
+    ],
+    "exampleEn": "He asserted his innocence.",
+    "exampleVi": "Anh ta khẳng định mình vô tội.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-183",
+    "word": "assess",
+    "meaningVi": "đánh giá",
+    "synonyms": [
+      "evaluate",
+      "appraise",
+      "judge"
+    ],
+    "antonyms": [],
+    "exampleEn": "Teachers assess student work.",
+    "exampleVi": "Giáo viên đánh giá bài làm của học sinh.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-184",
+    "word": "assiduous",
+    "meaningVi": "cần mẫn",
+    "synonyms": [
+      "diligent",
+      "industrious",
+      "hardworking"
+    ],
+    "antonyms": [
+      "lazy",
+      "negligent"
+    ],
+    "exampleEn": "She is an assiduous worker.",
+    "exampleVi": "Cô ấy là một nhân viên cần mẫn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-185",
+    "word": "assimilate",
+    "meaningVi": "đồng hóa",
+    "synonyms": [
+      "absorb",
+      "integrate",
+      "adopt"
+    ],
+    "antonyms": [],
+    "exampleEn": "Immigrants assimilate into society.",
+    "exampleVi": "Người nhập cư hòa nhập vào xã hội.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-186",
+    "word": "assure",
+    "meaningVi": "đảm bảo",
+    "synonyms": [
+      "guarantee",
+      "promise",
+      "reassure"
+    ],
+    "antonyms": [],
+    "exampleEn": "I assure you it is safe.",
+    "exampleVi": "Tôi đảm bảo với bạn là an toàn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-187",
+    "word": "abstain",
+    "meaningVi": "kiêng, không tham gia",
+    "synonyms": [
+      "refrain",
+      "avoid",
+      "shun"
+    ],
+    "antonyms": [
+      "indulge",
+      "participate"
+    ],
+    "exampleEn": "He abstained from alcohol.",
+    "exampleVi": "Anh ấy kiêng rượu.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-188",
+    "word": "accentuate",
+    "meaningVi": "nhấn mạnh",
+    "synonyms": [
+      "emphasize",
+      "stress",
+      "highlight"
+    ],
+    "antonyms": [
+      "downplay"
+    ],
+    "exampleEn": "The dress accentuated her figure.",
+    "exampleVi": "Chiếc váy tôn lên vóc dáng của cô ấy.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-189",
+    "word": "accommodate",
+    "meaningVi": "đáp ứng, chứa",
+    "synonyms": [
+      "house",
+      "hold",
+      "oblige"
+    ],
+    "antonyms": [],
+    "exampleEn": "The hall accommodates 500 people.",
+    "exampleVi": "Hội trường chứa được 500 người.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-190",
+    "word": "acquaint",
+    "meaningVi": "làm quen",
+    "synonyms": [
+      "introduce",
+      "familiarize",
+      "inform"
+    ],
+    "antonyms": [],
+    "exampleEn": "Let me acquaint you with the team.",
+    "exampleVi": "Để tôi giới thiệu bạn với đội.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-191",
+    "word": "acquit",
+    "meaningVi": "tuyên trắng án",
+    "synonyms": [
+      "exonerate",
+      "clear",
+      "absolve"
+    ],
+    "antonyms": [
+      "convict"
+    ],
+    "exampleEn": "The court acquitted him.",
+    "exampleVi": "Tòa đã tuyên anh ta trắng án.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-192",
+    "word": "adorn",
+    "meaningVi": "trang trí",
+    "synonyms": [
+      "decorate",
+      "embellish",
+      "ornament"
+    ],
+    "antonyms": [],
+    "exampleEn": "Flowers adorned the hall.",
+    "exampleVi": "Hoa trang trí hội trường.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-193",
+    "word": "allure",
+    "meaningVi": "sức quyến rũ",
+    "synonyms": [
+      "charm",
+      "attraction",
+      "appeal"
+    ],
+    "antonyms": [
+      "repulsion"
+    ],
+    "exampleEn": "The allure of the city drew him.",
+    "exampleVi": "Sức quyến rũ của thành phố thu hút anh ta.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-194",
+    "word": "ample",
+    "meaningVi": "dồi dào",
+    "synonyms": [
+      "abundant",
+      "plentiful",
+      "sufficient"
+    ],
+    "antonyms": [
+      "scarce",
+      "insufficient"
+    ],
+    "exampleEn": "We have ample time.",
+    "exampleVi": "Chúng ta có dồi dào thời gian.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-195",
+    "word": "annotate",
+    "meaningVi": "chú thích",
+    "synonyms": [
+      "comment",
+      "note",
+      "explain"
+    ],
+    "antonyms": [],
+    "exampleEn": "She annotated the text.",
+    "exampleVi": "Cô ấy chú thích văn bản.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-196",
+    "word": "appall",
+    "meaningVi": "làm kinh hãi",
+    "synonyms": [
+      "horrify",
+      "shock",
+      "dismay"
+    ],
+    "antonyms": [
+      "delight"
+    ],
+    "exampleEn": "The cruelty appalled us.",
+    "exampleVi": "Sự tàn nhẫn làm chúng tôi kinh hãi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-197",
+    "word": "applaud",
+    "meaningVi": "vỗ tay, hoan nghênh",
+    "synonyms": [
+      "clap",
+      "praise",
+      "acclaim"
+    ],
+    "antonyms": [
+      "boo",
+      "criticize"
+    ],
+    "exampleEn": "The audience applauded loudly.",
+    "exampleVi": "Khán giả vỗ tay nhiệt liệt.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-198",
+    "word": "apt",
+    "meaningVi": "thích hợp",
+    "synonyms": [
+      "suitable",
+      "appropriate",
+      "fitting"
+    ],
+    "antonyms": [
+      "unsuitable",
+      "inappropriate"
+    ],
+    "exampleEn": "This book is apt for beginners.",
+    "exampleVi": "Cuốn sách này thích hợp cho người mới bắt đầu.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-199",
+    "word": "arid",
+    "meaningVi": "khô cằn",
+    "synonyms": [
+      "dry",
+      "parched",
+      "barren"
+    ],
+    "antonyms": [
+      "fertile",
+      "lush"
+    ],
+    "exampleEn": "Nothing grows in the arid desert.",
+    "exampleVi": "Không gì mọc được trên sa mạc khô cằn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "syn-200",
+    "word": "assail",
+    "meaningVi": "tấn công",
+    "synonyms": [
+      "attack",
+      "assault",
+      "bombard"
+    ],
+    "antonyms": [
+      "defend",
+      "protect"
+    ],
+    "exampleEn": "Critics assailed the new policy.",
+    "exampleVi": "Các nhà phê bình tấn công chính sách mới.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  }
+]

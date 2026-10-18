@@ -1,0 +1,502 @@
+[
+  {
+    "id": "tw-001",
+    "text": "She sells seashells by the seashore.",
+    "difficulty": "easy",
+    "focusSounds": "/s/ vs /ʃ/",
+    "guideVi": "Luyện phân biệt âm /s/ (nhẹ) và /ʃ/ (nặng, chu môi)",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-001.mp3"
+  },
+  {
+    "id": "tw-002",
+    "text": "Red lorry, yellow lorry.",
+    "difficulty": "easy",
+    "focusSounds": "/r/ vs /l/",
+    "guideVi": "Luyện âm /r/ (cong lưỡi) và /l/ (chạm nướu)",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-002.mp3"
+  },
+  {
+    "id": "tw-003",
+    "text": "Toy boat, toy boat, toy boat.",
+    "difficulty": "easy",
+    "focusSounds": "/t/ vs /b/",
+    "guideVi": "Luyện chuyển nhanh giữa âm /t/ và /b/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-003.mp3"
+  },
+  {
+    "id": "tw-004",
+    "text": "Big black bug bit a big black bear.",
+    "difficulty": "easy",
+    "focusSounds": "/b/ vs /g/",
+    "guideVi": "Luyện âm bật hơi /b/ và /g/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-004.mp3"
+  },
+  {
+    "id": "tw-005",
+    "text": "Peter Piper picked a peck of pickled peppers.",
+    "difficulty": "easy",
+    "focusSounds": "/p/",
+    "guideVi": "Luyện âm bật hơi /p/ liên tục",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-005.mp3"
+  },
+  {
+    "id": "tw-006",
+    "text": "How much wood would a woodchuck chuck?",
+    "difficulty": "easy",
+    "focusSounds": "/w/ vs /tʃ/",
+    "guideVi": "Luyện âm /w/ (tròn môi) và /tʃ/ (như 'ch' Việt)",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-006.mp3"
+  },
+  {
+    "id": "tw-007",
+    "text": "Fuzzy Wuzzy was a bear.",
+    "difficulty": "easy",
+    "focusSounds": "/f/ vs /w/",
+    "guideVi": "Luyện âm /f/ (răng-môi) và /w/ (tròn môi)",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-007.mp3"
+  },
+  {
+    "id": "tw-008",
+    "text": "Six slippery snails slid slowly seaward.",
+    "difficulty": "easy",
+    "focusSounds": "/s/ vs /sl/",
+    "guideVi": "Luyện cụm /sl/ và âm /s/ dài",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-008.mp3"
+  },
+  {
+    "id": "tw-009",
+    "text": "I saw Susie sitting in a shoeshine shop.",
+    "difficulty": "easy",
+    "focusSounds": "/s/ vs /ʃ/",
+    "guideVi": "Luyện xen kẽ /s/ và /ʃ/ trong câu dài",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-009.mp3"
+  },
+  {
+    "id": "tw-010",
+    "text": "Thin thinkers think thick thoughts.",
+    "difficulty": "easy",
+    "focusSounds": "/θ/ vs /ð/",
+    "guideVi": "Luyện âm 'th' không rung /θ/ và rung /ð/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-010.mp3"
+  },
+  {
+    "id": "tw-011",
+    "text": "A proper copper coffee pot.",
+    "difficulty": "easy",
+    "focusSounds": "/p/ vs /k/",
+    "guideVi": "Luyện chuyển nhanh /p/ sang /k/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-011.mp3"
+  },
+  {
+    "id": "tw-012",
+    "text": "Weave the wheat while we wait.",
+    "difficulty": "easy",
+    "focusSounds": "/w/ vs /ð/",
+    "guideVi": "Luyện /w/ và âm 'th' rung /ð/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-012.mp3"
+  },
+  {
+    "id": "tw-013",
+    "text": "Blue bluebird, black bluebird.",
+    "difficulty": "easy",
+    "focusSounds": "/b/ vs /bl/",
+    "guideVi": "Luyện cụm phụ âm đầu /bl/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-013.mp3"
+  },
+  {
+    "id": "tw-014",
+    "text": "Three free throws.",
+    "difficulty": "easy",
+    "focusSounds": "/θ/ vs /f/ vs /θr/",
+    "guideVi": "Luyện phân biệt 'th' /θ/ và /f/, cụm /θr/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-014.mp3"
+  },
+  {
+    "id": "tw-015",
+    "text": "Nice knights kneel nightly.",
+    "difficulty": "easy",
+    "focusSounds": "/n/ vs /naɪ/",
+    "guideVi": "Luyện âm /n/ và vần /naɪ/ ('kn' câm chữ k)",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-015.mp3"
+  },
+  {
+    "id": "tw-016",
+    "text": "Betty Botter bought some butter, but she said the butter's bitter.",
+    "difficulty": "medium",
+    "focusSounds": "/b/ vs /t/",
+    "guideVi": "Luyện /b/ và /t/ xen kẽ, chú ý trọng âm từ",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-016.mp3"
+  },
+  {
+    "id": "tw-017",
+    "text": "The sixth sick sheikh's sixth sheep's sick.",
+    "difficulty": "medium",
+    "focusSounds": "/s/ vs /ʃ/ vs /θ/",
+    "guideVi": "Cực khó: xen kẽ /s/, /ʃ/, /θ/ trong một câu",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-017.mp3"
+  },
+  {
+    "id": "tw-018",
+    "text": "Unique New York, unique New York.",
+    "difficulty": "medium",
+    "focusSounds": "/n/ vs /j/",
+    "guideVi": "Luyện /n/ và âm /j/ (như 'y' trong 'yes')",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-018.mp3"
+  },
+  {
+    "id": "tw-019",
+    "text": "Which wicked witch wished the wicked wish?",
+    "difficulty": "medium",
+    "focusSounds": "/w/ vs /wɪ/",
+    "guideVi": "Luyện /w/ và vần /wɪ/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-019.mp3"
+  },
+  {
+    "id": "tw-020",
+    "text": "Fresh fried fish, fish fresh fried.",
+    "difficulty": "medium",
+    "focusSounds": "/f/ vs /ʃ/ vs /fr/",
+    "guideVi": "Luyện /f/, /ʃ/ và cụm /fr/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-020.mp3"
+  },
+  {
+    "id": "tw-021",
+    "text": "Double bubble gum bubbles double.",
+    "difficulty": "medium",
+    "focusSounds": "/b/ vs /ʌ/",
+    "guideVi": "Luyện âm /b/ và nguyên âm ngắn /ʌ/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-021.mp3"
+  },
+  {
+    "id": "tw-022",
+    "text": "I wish to wish the wish you wish to wish.",
+    "difficulty": "medium",
+    "focusSounds": "/w/ vs /ʃ/",
+    "guideVi": "Luyện lặp /w/ và /ʃ/ tốc độ cao",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-022.mp3"
+  },
+  {
+    "id": "tw-023",
+    "text": "Silly Sally swiftly shooed seven silly sheep.",
+    "difficulty": "medium",
+    "focusSounds": "/s/ vs /ʃ/ vs /ʃiː/",
+    "guideVi": "Luyện /s/, /ʃ/ và vần dài /ʃiː/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-023.mp3"
+  },
+  {
+    "id": "tw-024",
+    "text": "Truly rural.",
+    "difficulty": "medium",
+    "focusSounds": "/r/ vs /uː/",
+    "guideVi": "Câu ngắn nhưng khó: /r/ kép + nguyên âm dài /uː/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-024.mp3"
+  },
+  {
+    "id": "tw-025",
+    "text": "Eleven benevolent elephants.",
+    "difficulty": "medium",
+    "focusSounds": "/l/ vs /v/ vs /e/",
+    "guideVi": "Luyện /l/, /v/ và nguyên âm /e/ ngắn",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-025.mp3"
+  },
+  {
+    "id": "tw-026",
+    "text": "Crisp crusts crackle and crunch.",
+    "difficulty": "medium",
+    "focusSounds": "/kr/ vs /k/",
+    "guideVi": "Luyện cụm /kr/ và âm /k/ cuối từ",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-026.mp3"
+  },
+  {
+    "id": "tw-027",
+    "text": "The blue blue blouse bled blue blood.",
+    "difficulty": "medium",
+    "focusSounds": "/b/ vs /bl/ vs /ʌ/",
+    "guideVi": "Luyện /b/, /bl/ và /ʌ/ trong câu dài",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-027.mp3"
+  },
+  {
+    "id": "tw-028",
+    "text": "Greek grapes, Greek grapes, Greek grapes.",
+    "difficulty": "medium",
+    "focusSounds": "/g/ vs /gr/",
+    "guideVi": "Luyện /g/ và cụm /gr/ lặp nhanh",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-028.mp3"
+  },
+  {
+    "id": "tw-029",
+    "text": "Flash message!",
+    "difficulty": "medium",
+    "focusSounds": "/fl/ vs /m/",
+    "guideVi": "Luyện cụm /fl/ và chuyển sang /m/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-029.mp3"
+  },
+  {
+    "id": "tw-030",
+    "text": "Pad kid poured curd pulled cod.",
+    "difficulty": "medium",
+    "focusSounds": "/p/ vs /k/ vs /d/",
+    "guideVi": "Luyện 3 âm bật hơi xen kẽ nhanh",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-030.mp3"
+  },
+  {
+    "id": "tw-031",
+    "text": "Brisk brave brigadiers brandished broad bright blades.",
+    "difficulty": "medium",
+    "focusSounds": "/b/ vs /br/",
+    "guideVi": "Luyện /b/ và cụm /br/ với nhiều từ khó",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-031.mp3"
+  },
+  {
+    "id": "tw-032",
+    "text": "A snake sneaks to seek a sunset snack.",
+    "difficulty": "medium",
+    "focusSounds": "/s/ vs /sn/ vs /sk/",
+    "guideVi": "Luyện /s/ và các cụm /sn/, /sk/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-032.mp3"
+  },
+  {
+    "id": "tw-033",
+    "text": "Mixed biscuits, biscuits mixed.",
+    "difficulty": "medium",
+    "focusSounds": "/m/ vs /ks/",
+    "guideVi": "Luyện âm /m/ và cụm /ks/ ('x')",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-033.mp3"
+  },
+  {
+    "id": "tw-034",
+    "text": "Vincent vowed vengeance very vehemently.",
+    "difficulty": "medium",
+    "focusSounds": "/v/",
+    "guideVi": "Luyện âm /v/ rung liên tục",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-034.mp3"
+  },
+  {
+    "id": "tw-035",
+    "text": "Zebras zig and zebras zag.",
+    "difficulty": "medium",
+    "focusSounds": "/z/ vs /g/",
+    "guideVi": "Luyện âm /z/ rung và /g/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-035.mp3"
+  },
+  {
+    "id": "tw-036",
+    "text": "The thirty-three thieves thought that they thrilled the throne throughout Thursday.",
+    "difficulty": "hard",
+    "focusSounds": "/θ/ vs /ð/ vs /θr/",
+    "guideVi": "Toàn câu dùng 'th' — bài kiểm tra tổng hợp /θ/, /ð/, /θr/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-036.mp3"
+  },
+  {
+    "id": "tw-037",
+    "text": "She stood on the balcony, inexplicably mimicking him hiccupping, and amicably welcoming him in.",
+    "difficulty": "hard",
+    "focusSounds": "/m/ vs /h/ vs /ɪ/",
+    "guideVi": "Câu dài với nhiều âm mũi /m/ và nguyên âm ngắn /ɪ/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-037.mp3"
+  },
+  {
+    "id": "tw-038",
+    "text": "If Stu chews shoes, should Stu choose the shoes he chews?",
+    "difficulty": "hard",
+    "focusSounds": "/tʃ/ vs /ʃ/ vs /s/",
+    "guideVi": "Luyện /tʃ/ ('ch'), /ʃ/ ('sh') và /s/ xen kẽ",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-038.mp3"
+  },
+  {
+    "id": "tw-039",
+    "text": "Rural ruler.",
+    "difficulty": "hard",
+    "focusSounds": "/r/ vs /uː/",
+    "guideVi": "Chỉ 2 từ nhưng là câu líu lưỡi khó nhất nhì tiếng Anh",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-039.mp3"
+  },
+  {
+    "id": "tw-040",
+    "text": "Irish wristwatch.",
+    "difficulty": "hard",
+    "focusSounds": "/r/ vs /s/ vs /tʃ/",
+    "guideVi": "3 từ ngắn, cụm /rɪʃ/ + /w/ câm + /wɒtʃ/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-040.mp3"
+  },
+  {
+    "id": "tw-041",
+    "text": "Swan swam over the sea. Swim, swan, swim!",
+    "difficulty": "hard",
+    "focusSounds": "/s/ vs /sw/ vs /w/",
+    "guideVi": "Luyện /s/, cụm /sw/ và /w/ trong câu dài",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-041.mp3"
+  },
+  {
+    "id": "tw-042",
+    "text": "Four furious friends fought for the phone.",
+    "difficulty": "hard",
+    "focusSounds": "/f/ vs /fr/",
+    "guideVi": "Luyện /f/ và cụm /fr/ tốc độ cao",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-042.mp3"
+  },
+  {
+    "id": "tw-043",
+    "text": "Strict strong stringy Stephen Stills.",
+    "difficulty": "hard",
+    "focusSounds": "/s/ vs /str/",
+    "guideVi": "Luyện cụm 3 phụ âm /str/ liên tục",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-043.mp3"
+  },
+  {
+    "id": "tw-044",
+    "text": "Scissors sizzle, thistles sizzle.",
+    "difficulty": "hard",
+    "focusSounds": "/s/ vs /z/ vs /θ/",
+    "guideVi": "Luyện /s/, /z/ và 'th' /θ/ trong vần -izzle",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-044.mp3"
+  },
+  {
+    "id": "tw-045",
+    "text": "Peggy Babcock.",
+    "difficulty": "hard",
+    "focusSounds": "/p/ vs /b/ vs /k/",
+    "guideVi": "Tên riêng ngắn nhưng cực khó: /p/-/b/ xen kẽ",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-045.mp3"
+  },
+  {
+    "id": "tw-046",
+    "text": "A skunk sat on a stump and thunk the stump stunk, but the stump thunk the skunk stunk.",
+    "difficulty": "hard",
+    "focusSounds": "/s/ vs /sk/ vs /st/ vs /ʌ/",
+    "guideVi": "Câu dài với cụm /sk/, /st/ và nguyên âm /ʌ/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-046.mp3"
+  },
+  {
+    "id": "tw-047",
+    "text": "Lesser leather never weathered wetter weather better.",
+    "difficulty": "hard",
+    "focusSounds": "/l/ vs /ð/ vs /w/ vs /e/",
+    "guideVi": "Luyện /l/, 'th' rung /ð/, /w/ và /e/ trong câu dài",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-047.mp3"
+  },
+  {
+    "id": "tw-048",
+    "text": "We surely shall see the sun shine soon.",
+    "difficulty": "hard",
+    "focusSounds": "/ʃ/ vs /s/ vs /ʃuː/",
+    "guideVi": "Luyện xen kẽ /ʃ/ và /s/ toàn câu",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-048.mp3"
+  },
+  {
+    "id": "tw-049",
+    "text": "How can a clam cram in a clean cream can?",
+    "difficulty": "hard",
+    "focusSounds": "/k/ vs /kl/ vs /kr/",
+    "guideVi": "Luyện /k/ và các cụm /kl/, /kr/",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-049.mp3"
+  },
+  {
+    "id": "tw-050",
+    "text": "Yellow leather, red leather, yellow leather, red leather.",
+    "difficulty": "hard",
+    "focusSounds": "/j/ vs /ð/ vs /l/ vs /r/",
+    "guideVi": "Luyện /j/, 'th' rung /ð/, /l/ và /r/ xen kẽ nhanh",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/pronunciation/tw-050.mp3"
+  }
+]

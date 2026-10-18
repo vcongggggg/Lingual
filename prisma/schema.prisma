@@ -1273,3 +1273,164 @@ model DiaryPrompt {
   @@index([cefrLevel])
   @@map("diary_prompts")
 }
+
+model DailyVocabQuestion {
+  id            String   @id
+  type          String   @default("en_to_vi")
+  cefrLevel     String   @default("A2")
+  question      String
+  optionsJson   String   @default("[]")
+  correctAnswer String
+  explanation   String?
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("daily_vocab_questions")
+}
+
+model Idiom {
+  id          String   @id
+  idiom       String
+  meaningVi   String
+  exampleEn   String?
+  exampleVi   String?
+  cefrLevel   String   @default("B2")
+  source      String   @default("ai-generated")
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("idioms")
+}
+
+model PhrasalVerb {
+  id         String   @id
+  verb       String
+  meaningVi  String
+  exampleEn  String?
+  exampleVi  String?
+  separable  Boolean  @default(false)
+  cefrLevel  String   @default("B1")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("phrasal_verbs")
+}
+
+model Collocation {
+  id          String   @id
+  collocation String
+  type        String   @default("verb+noun")
+  meaningVi   String
+  exampleEn   String?
+  exampleVi   String?
+  cefrLevel   String   @default("B1")
+  source      String   @default("ai-generated")
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("collocations")
+}
+
+model SynonymAntonym {
+  id           String   @id
+  word         String
+  meaningVi    String
+  synonymsJson String   @default("[]")
+  antonymsJson String   @default("[]")
+  exampleEn    String?
+  exampleVi    String?
+  cefrLevel    String   @default("B1")
+  source       String   @default("ai-generated")
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("synonyms_antonyms")
+}
+
+model MinimalPair {
+  id           String   @id
+  word1        String
+  word2        String
+  phonetic1    String?
+  phonetic2    String?
+  differenceVi String?
+  exampleEn    String?
+  exampleVi    String?
+  audioUrl1    String?
+  audioUrl2    String?
+  source       String   @default("ai-generated")
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@map("minimal_pairs")
+}
+
+model TongueTwister {
+  id          String   @id
+  text        String
+  difficulty  String   @default("easy")
+  focusSounds String?
+  guideVi     String?
+  audioUrl    String?
+  source      String   @default("ai-generated")
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@map("tongue_twisters")
+}
+
+model Proverb {
+  id                   String   @id
+  proverb              String
+  meaningVi            String
+  vietnameseEquivalent String?
+  exampleEn            String?
+  exampleVi            String?
+  source               String   @default("ai-generated")
+  verified             Boolean  @default(false)
+  createdAt            DateTime @default(now())
+
+  @@map("proverbs")
+}
+
+model GameWordPool {
+  id                 String   @id
+  targetText         String
+  translation        String
+  phonetic           String?
+  topic              String
+  topicVi            String?
+  cefrLevel          String   @default("A1")
+  exampleSentence    String?
+  exampleTranslation String?
+  source             String   @default("ai-generated")
+  verified           Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  @@index([topic])
+  @@index([cefrLevel])
+  @@map("game_word_pools")
+}
+
+model GrammarExplanation {
+  id                 String   @id
+  topic              String
+  topicVi            String?
+  cefrLevel          String   @default("A2")
+  ruleVi             String   @db.Text
+  examplesJson       String   @default("[]")
+  commonMistakesJson String   @default("[]")
+  source             String   @default("ai-generated")
+  verified           Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("grammar_explanations")
+}
