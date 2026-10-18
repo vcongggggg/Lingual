@@ -1434,3 +1434,86 @@ model GrammarExplanation {
   @@index([cefrLevel])
   @@map("grammar_explanations")
 }
+
+model ListeningMonologue {
+  id            String   @id
+  title         String
+  titleVi       String?
+  cefrLevel     String   @default("A2")
+  scriptJson    String   @default("[]")
+  questionsJson String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("listening_monologues")
+}
+
+model DictationSentence {
+  id              String   @id
+  textEn          String
+  textVi          String
+  trickyWordsJson String   @default("[]")
+  audioUrl        String?
+  cefrLevel       String   @default("A2")
+  source          String   @default("ai-generated")
+  verified        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("dictation_sentences")
+}
+
+model SituationalPhrase {
+  id          String   @id
+  situation   String
+  situationVi String?
+  en          String
+  vi          String
+  audioUrl    String?
+  cefrLevel   String   @default("A2")
+  source      String   @default("ai-generated")
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([situation])
+  @@index([cefrLevel])
+  @@map("situational_phrases")
+}
+
+model BusinessPhrase {
+  id         String   @id
+  category   String
+  categoryVi String?
+  en         String
+  vi         String
+  exampleEn  String?
+  audioUrl   String?
+  cefrLevel  String   @default("B2")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([category])
+  @@index([cefrLevel])
+  @@map("business_phrases")
+}
+
+model TravelPhrase {
+  id         String   @id
+  category   String
+  categoryVi String?
+  en         String
+  vi         String
+  exampleEn  String?
+  audioUrl   String?
+  cefrLevel  String   @default("A2")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([category])
+  @@index([cefrLevel])
+  @@map("travel_phrases")
+}

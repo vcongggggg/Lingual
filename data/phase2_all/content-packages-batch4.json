@@ -1,0 +1,4472 @@
+[
+  {
+    "id": "pkg-061",
+    "cefrLevel": "A2",
+    "topic": "beauty",
+    "topicVi": "Làm đẹp",
+    "dialogue": {
+      "title": "At the Hair Salon",
+      "titleVi": "Tại tiệm cắt tóc",
+      "location": "Tiệm tóc Lan Anh, chiều thứ 7",
+      "characters": [
+        {
+          "name": "Mai",
+          "role": "Customer",
+          "roleVi": "Khách hàng",
+          "gender": "female"
+        },
+        {
+          "name": "Lan",
+          "role": "Hairdresser",
+          "roleVi": "Thợ cắt tóc",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mai",
+          "textEn": "Good afternoon! I'd like a haircut, please.",
+          "textVi": "Chào buổi chiều! Tôi muốn cắt tóc."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Lan",
+          "textEn": "Good afternoon! Sit here, please. How would you like it?",
+          "textVi": "Chào buổi chiều! Mời chị ngồi đây. Chị muốn cắt kiểu gì ạ?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mai",
+          "textEn": "Just a trim, please. Not too short.",
+          "textVi": "Tỉa gọn thôi, đừng cắt ngắn quá nhé."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Lan",
+          "textEn": "Okay. Would you like me to wash your hair first?",
+          "textVi": "Vâng ạ. Chị có muốn gội đầu trước không?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mai",
+          "textEn": "Yes, please. That sounds nice.",
+          "textVi": "Có, gội giúp tôi nhé."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Lan",
+          "textEn": "Is the water too hot?",
+          "textVi": "Nước có nóng quá không chị?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mai",
+          "textEn": "No, it's perfect. Thank you.",
+          "textVi": "Không, vừa rồi. Cảm ơn em."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Lan",
+          "textEn": "All done! Do you like it?",
+          "textVi": "Xong rồi ạ! Chị thấy thế nào?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mai",
+          "textEn": "I love it! How much is it?",
+          "textVi": "Tôi thích lắm! Bao nhiêu tiền vậy?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Lan",
+          "textEn": "It's one hundred thousand dong.",
+          "textVi": "Một trăm nghìn đồng ạ."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mai muốn làm gì ở tiệm?",
+        "options": [
+          "Cắt tóc",
+          "Gội đầu",
+          "Nhuộm tóc",
+          "Uốn tóc"
+        ],
+        "correctAnswer": "Cắt tóc",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Mai nói 'I'd like a haircut'."
+      },
+      {
+        "question": "Mai muốn cắt kiểu nào?",
+        "options": [
+          "Rất ngắn",
+          "Tỉa gọn, không quá ngắn",
+          "Cạo trọc",
+          "Để dài"
+        ],
+        "correctAnswer": "Tỉa gọn, không quá ngắn",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Mai nói 'Just a trim, not too short'."
+      },
+      {
+        "question": "Giá cắt tóc là bao nhiêu?",
+        "options": [
+          "50 nghìn đồng",
+          "100 nghìn đồng",
+          "150 nghìn đồng",
+          "200 nghìn đồng"
+        ],
+        "correctAnswer": "100 nghìn đồng",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: Lan nói 'one hundred thousand dong'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-062",
+    "cefrLevel": "A2",
+    "topic": "flowers",
+    "topicVi": "Hoa",
+    "dialogue": {
+      "title": "At the Flower Market",
+      "titleVi": "Tại chợ hoa",
+      "location": "Chợ hoa Hồ Thị Kỷ, sáng sớm",
+      "characters": [
+        {
+          "name": "Tom",
+          "role": "Tourist",
+          "roleVi": "Du khách",
+          "gender": "male"
+        },
+        {
+          "name": "Hoa",
+          "role": "Flower seller",
+          "roleVi": "Người bán hoa",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Tom",
+          "textEn": "Wow, so many beautiful flowers!",
+          "textVi": "Ồ, nhiều hoa đẹp quá!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Hoa",
+          "textEn": "Welcome! Are you looking for something special?",
+          "textVi": "Chào anh! Anh tìm hoa gì đặc biệt không?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Tom",
+          "textEn": "I want to buy some flowers for my mother.",
+          "textVi": "Tôi muốn mua ít hoa tặng mẹ."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Hoa",
+          "textEn": "How about these roses? They're very fresh.",
+          "textVi": "Hoa hồng này thì sao? Tươi lắm anh ạ."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Tom",
+          "textEn": "They're lovely. How much for ten roses?",
+          "textVi": "Đẹp quá. Mười bông hồng bao nhiêu tiền?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Hoa",
+          "textEn": "Eighty thousand dong for ten.",
+          "textVi": "Mười bông tám mươi nghìn đồng anh ạ."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Tom",
+          "textEn": "Can you wrap them nicely, please?",
+          "textVi": "Em gói đẹp giúp anh được không?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Hoa",
+          "textEn": "Of course! Give me one minute.",
+          "textVi": "Dạ được! Cho em một phút nhé."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Tom",
+          "textEn": "Thank you so much. She will love them.",
+          "textVi": "Cảm ơn em nhiều. Mẹ anh sẽ thích lắm."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Hoa",
+          "textEn": "You're welcome! Come back again!",
+          "textVi": "Không có gì ạ! Lần sau lại ghé nhé!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Tom mua hoa tặng ai?",
+        "options": [
+          "Mẹ",
+          "Vợ",
+          "Bạn gái",
+          "Cô giáo"
+        ],
+        "correctAnswer": "Mẹ",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Tom nói 'for my mother'."
+      },
+      {
+        "question": "Mười bông hồng giá bao nhiêu?",
+        "options": [
+          "50 nghìn",
+          "80 nghìn",
+          "100 nghìn",
+          "120 nghìn"
+        ],
+        "correctAnswer": "80 nghìn",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Hoa nói 'eighty thousand dong'."
+      },
+      {
+        "question": "Tom nhờ người bán làm gì?",
+        "options": [
+          "Giảm giá",
+          "Gói hoa đẹp",
+          "Tặng thêm hoa",
+          "Giao tận nhà"
+        ],
+        "correctAnswer": "Gói hoa đẹp",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Tom nói 'wrap them nicely'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-063",
+    "cefrLevel": "A2",
+    "topic": "swimming",
+    "topicVi": "Bơi lội",
+    "dialogue": {
+      "title": "Learning to Swim",
+      "titleVi": "Học bơi",
+      "location": "Bể bơi công cộng, sáng chủ nhật",
+      "characters": [
+        {
+          "name": "Anna",
+          "role": "Student",
+          "roleVi": "Học viên",
+          "gender": "female"
+        },
+        {
+          "name": "Coach Minh",
+          "role": "Swimming coach",
+          "roleVi": "Huấn luyện viên bơi",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Anna",
+          "textEn": "Good morning, coach! I'm a little nervous.",
+          "textVi": "Chào buổi sáng thầy! Em hơi lo một chút."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Coach Minh",
+          "textEn": "Good morning, Anna! Don't worry. Can you swim at all?",
+          "textVi": "Chào buổi sáng Anna! Đừng lo. Em có biết bơi chút nào không?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Anna",
+          "textEn": "No, this is my first time in a pool.",
+          "textVi": "Dạ không, đây là lần đầu em xuống bể bơi."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Coach Minh",
+          "textEn": "That's fine. First, let's practice floating.",
+          "textVi": "Không sao. Đầu tiên, mình tập nổi trên mặt nước nhé."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Anna",
+          "textEn": "Like this? Am I doing it right?",
+          "textVi": "Như thế này ạ? Em làm đúng chưa?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Coach Minh",
+          "textEn": "Yes! Relax your body. Breathe slowly.",
+          "textVi": "Đúng rồi! Thả lỏng người ra. Thở chậm thôi."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Anna",
+          "textEn": "Wow, I'm floating! This is fun!",
+          "textVi": "Ồ, em nổi được rồi! Vui quá!"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Coach Minh",
+          "textEn": "Great! Now let's try kicking your legs.",
+          "textVi": "Tuyệt! Giờ mình thử đạp chân nhé."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Anna",
+          "textEn": "Okay! One, two, one, two...",
+          "textVi": "Vâng ạ! Một, hai, một, hai..."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Coach Minh",
+          "textEn": "Excellent! You're a fast learner.",
+          "textVi": "Xuất sắc! Em học nhanh lắm."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Anna cảm thấy thế nào lúc đầu?",
+        "options": [
+          "Hào hứng",
+          "Lo lắng",
+          "Buồn ngủ",
+          "Tức giận"
+        ],
+        "correctAnswer": "Lo lắng",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Anna nói 'I'm a little nervous'."
+      },
+      {
+        "question": "Bài tập đầu tiên là gì?",
+        "options": [
+          "Tập nổi",
+          "Tập đạp chân",
+          "Tập thở",
+          "Tập lặn"
+        ],
+        "correctAnswer": "Tập nổi",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: thầy nói 'let's practice floating'."
+      },
+      {
+        "question": "Thầy khen Anna điều gì?",
+        "options": [
+          "Bơi nhanh",
+          "Học nhanh",
+          "Thở tốt",
+          "Nổi lâu"
+        ],
+        "correctAnswer": "Học nhanh",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: thầy nói 'You're a fast learner'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-5",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-064",
+    "cefrLevel": "A2",
+    "topic": "school",
+    "topicVi": "Trường học",
+    "dialogue": {
+      "title": "The School Canteen",
+      "titleVi": "Căng tin trường học",
+      "location": "Căng tin trường, giờ nghỉ trưa",
+      "characters": [
+        {
+          "name": "Linh",
+          "role": "Student",
+          "roleVi": "Học sinh",
+          "gender": "female"
+        },
+        {
+          "name": "Nam",
+          "role": "Student",
+          "roleVi": "Học sinh",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Linh",
+          "textEn": "I'm so hungry! What's for lunch today?",
+          "textVi": "Tớ đói quá! Trưa nay có món gì?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Nam",
+          "textEn": "There's rice, chicken, and vegetable soup.",
+          "textVi": "Có cơm, gà và canh rau."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Linh",
+          "textEn": "Yum! I love chicken. Let's get in line.",
+          "textVi": "Ngon quá! Tớ thích gà. Xếp hàng thôi."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Nam",
+          "textEn": "The line is so long today!",
+          "textVi": "Hôm nay hàng dài quá!"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Linh",
+          "textEn": "It's okay. We have 30 minutes.",
+          "textVi": "Không sao. Mình có 30 phút mà."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Nam",
+          "textEn": "What do you want to drink?",
+          "textVi": "Cậu muốn uống gì?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Linh",
+          "textEn": "Just water for me. What about you?",
+          "textVi": "Tớ uống nước lọc thôi. Còn cậu?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Nam",
+          "textEn": "I'll have orange juice.",
+          "textVi": "Tớ uống nước cam."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Linh",
+          "textEn": "Let's sit near the window.",
+          "textVi": "Mình ngồi gần cửa sổ nhé."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Nam",
+          "textEn": "Good idea! It's cool there.",
+          "textVi": "Ý hay đấy! Ở đó mát."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Trưa nay căng tin có món gì?",
+        "options": [
+          "Cơm, gà, canh rau",
+          "Mì, bò, salad",
+          "Bánh mì, trứng, súp",
+          "Phở, chả, rau"
+        ],
+        "correctAnswer": "Cơm, gà, canh rau",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Nam nói 'rice, chicken, and vegetable soup'."
+      },
+      {
+        "question": "Hai bạn có bao nhiêu phút ăn trưa?",
+        "options": [
+          "20 phút",
+          "30 phút",
+          "40 phút",
+          "60 phút"
+        ],
+        "correctAnswer": "30 phút",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Linh nói 'We have 30 minutes'."
+      },
+      {
+        "question": "Nam uống gì?",
+        "options": [
+          "Nước lọc",
+          "Nước cam",
+          "Trà đá",
+          "Sữa"
+        ],
+        "correctAnswer": "Nước cam",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: Nam nói 'I'll have orange juice'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-065",
+    "cefrLevel": "A2",
+    "topic": "grandparents",
+    "topicVi": "Ông bà",
+    "dialogue": {
+      "title": "Visiting Grandma",
+      "titleVi": "Thăm bà",
+      "location": "Nhà bà ngoại ở quê, cuối tuần",
+      "characters": [
+        {
+          "name": "Mai",
+          "role": "Granddaughter",
+          "roleVi": "Cháu gái",
+          "gender": "female"
+        },
+        {
+          "name": "Grandma",
+          "role": "Grandmother",
+          "roleVi": "Bà ngoại",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mai",
+          "textEn": "Grandma! We're here!",
+          "textVi": "Bà ơi! Cháu đến rồi!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Grandma",
+          "textEn": "My dear! Come in, come in! Did you have a good trip?",
+          "textVi": "Cháu yêu! Vào nhà đi! Đi đường có mệt không?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mai",
+          "textEn": "It was fine. I missed you so much!",
+          "textVi": "Dạ không mệt. Cháu nhớ bà lắm!"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Grandma",
+          "textEn": "I missed you too. Are you hungry?",
+          "textVi": "Bà cũng nhớ cháu. Cháu có đói không?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mai",
+          "textEn": "A little. What's that delicious smell?",
+          "textVi": "Hơi đói ạ. Mùi gì thơm thế bà?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Grandma",
+          "textEn": "I'm cooking your favorite soup!",
+          "textVi": "Bà đang nấu món canh cháu thích nhất đấy!"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mai",
+          "textEn": "Yay! Can I help you in the kitchen?",
+          "textVi": "Tuyệt quá! Cháu phụ bà được không?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Grandma",
+          "textEn": "Of course! Wash these vegetables for me.",
+          "textVi": "Được chứ! Rửa rau giúp bà nhé."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mai",
+          "textEn": "Okay! Grandma, tell me a story after lunch?",
+          "textVi": "Vâng! Ăn trưa xong bà kể chuyện cho cháu nghe nhé?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Grandma",
+          "textEn": "Always, my dear. Always.",
+          "textVi": "Lúc nào cũng được, cháu yêu."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mai đến thăm ai?",
+        "options": [
+          "Bà ngoại",
+          "Bà nội",
+          "Cô",
+          "Dì"
+        ],
+        "correctAnswer": "Bà ngoại",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Mai gọi 'Grandma'."
+      },
+      {
+        "question": "Bà đang nấu món gì?",
+        "options": [
+          "Món canh Mai thích",
+          "Cơm chiên",
+          "Phở",
+          "Bánh xèo"
+        ],
+        "correctAnswer": "Món canh Mai thích",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Bà nói 'your favorite soup'."
+      },
+      {
+        "question": "Mai giúp bà việc gì?",
+        "options": [
+          "Rửa rau",
+          "Nấu cơm",
+          "Quét nhà",
+          "Rửa bát"
+        ],
+        "correctAnswer": "Rửa rau",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: Bà nói 'Wash these vegetables'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-8"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-066",
+    "cefrLevel": "A2",
+    "topic": "book-fair",
+    "topicVi": "Hội sách",
+    "dialogue": {
+      "title": "The Book Fair",
+      "titleVi": "Hội sách",
+      "location": "Hội sách thành phố, sáng thứ 7",
+      "characters": [
+        {
+          "name": "David",
+          "role": "Visitor",
+          "roleVi": "Khách tham quan",
+          "gender": "male"
+        },
+        {
+          "name": "Linh",
+          "role": "Bookseller",
+          "roleVi": "Người bán sách",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "David",
+          "textEn": "This book fair is amazing! So many books!",
+          "textVi": "Hội sách tuyệt quá! Nhiều sách thế!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Linh",
+          "textEn": "Welcome! Are you looking for anything?",
+          "textVi": "Chào anh! Anh đang tìm sách gì ạ?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "David",
+          "textEn": "I love detective stories. Any recommendations?",
+          "textVi": "Tôi thích truyện trinh thám. Em có gợi ý gì không?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Linh",
+          "textEn": "This one is very popular. It's about a clever detective.",
+          "textVi": "Cuốn này rất được yêu thích. Về một thám tử thông minh."
+        },
+        {
+          "id": "line-5",
+          "speaker": "David",
+          "textEn": "Sounds great! How much is it?",
+          "textVi": "Nghe hay đấy! Bao nhiêu tiền?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Linh",
+          "textEn": "It's 120 thousand, but today it's 20% off.",
+          "textVi": "120 nghìn, nhưng hôm nay giảm 20%."
+        },
+        {
+          "id": "line-7",
+          "speaker": "David",
+          "textEn": "Wonderful! I'll take it. Do you have a bag?",
+          "textVi": "Tuyệt! Tôi lấy cuốn này. Em có túi không?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Linh",
+          "textEn": "Yes, here you are. Enjoy your book!",
+          "textVi": "Có ạ, đây anh. Chúc anh đọc sách vui vẻ!"
+        },
+        {
+          "id": "line-9",
+          "speaker": "David",
+          "textEn": "Thank you! I also want this cookbook.",
+          "textVi": "Cảm ơn! Tôi muốn lấy thêm cuốn sách nấu ăn này."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Linh",
+          "textEn": "Good choice! Cooking is fun.",
+          "textVi": "Lựa chọn hay đấy! Nấu ăn rất vui."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "David thích thể loại sách nào?",
+        "options": [
+          "Trinh thám",
+          "Tình cảm",
+          "Khoa học",
+          "Lịch sử"
+        ],
+        "correctAnswer": "Trinh thám",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: David nói 'detective stories'."
+      },
+      {
+        "question": "Cuốn sách trinh thám giảm giá bao nhiêu?",
+        "options": [
+          "10%",
+          "20%",
+          "30%",
+          "50%"
+        ],
+        "correctAnswer": "20%",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Linh nói '20% off'."
+      },
+      {
+        "question": "Ngoài truyện trinh thám, David còn mua gì?",
+        "options": [
+          "Sách nấu ăn",
+          "Sách du lịch",
+          "Truyện tranh",
+          "Từ điển"
+        ],
+        "correctAnswer": "Sách nấu ăn",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: David nói 'cookbook'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-067",
+    "cefrLevel": "A2",
+    "topic": "night-market",
+    "topicVi": "Chợ đêm",
+    "dialogue": {
+      "title": "At the Night Market",
+      "titleVi": "Tại chợ đêm",
+      "location": "Chợ đêm Đà Lạt, 8 giờ tối",
+      "characters": [
+        {
+          "name": "Sarah",
+          "role": "Tourist",
+          "roleVi": "Du khách",
+          "gender": "female"
+        },
+        {
+          "name": "Tuan",
+          "role": "Local guide",
+          "roleVi": "Hướng dẫn viên",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Sarah",
+          "textEn": "The night market is so lively!",
+          "textVi": "Chợ đêm nhộn nhịp quá!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Tuan",
+          "textEn": "Yes! It's the best place to try street food.",
+          "textVi": "Đúng vậy! Đây là nơi tuyệt nhất để thử đồ ăn đường phố."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Sarah",
+          "textEn": "What's that amazing smell?",
+          "textVi": "Mùi gì thơm thế?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Tuan",
+          "textEn": "That's grilled corn. Want to try?",
+          "textVi": "Ngô nướng đấy. Chị muốn thử không?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Sarah",
+          "textEn": "Yes, please! One, please.",
+          "textVi": "Có! Cho chị một bắp."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Tuan",
+          "textEn": "Here you go. It's hot, be careful!",
+          "textVi": "Đây ạ. Nóng đấy, chị cẩn thận!"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Sarah",
+          "textEn": "Mmm, delicious! How much?",
+          "textVi": "Mmm, ngon quá! Bao nhiêu tiền?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Tuan",
+          "textEn": "Only 15 thousand dong.",
+          "textVi": "Chỉ 15 nghìn đồng thôi."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Sarah",
+          "textEn": "So cheap! Let's look at the clothes stalls too.",
+          "textVi": "Rẻ quá! Mình xem cả gian quần áo nữa nhé."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Tuan",
+          "textEn": "Sure! Follow me, it's this way.",
+          "textVi": "Được ạ! Đi theo em, lối này."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Chợ đêm nổi tiếng về điều gì?",
+        "options": [
+          "Đồ ăn đường phố",
+          "Quần áo đắt tiền",
+          "Đồ cổ",
+          "Hoa quả nhập khẩu"
+        ],
+        "correctAnswer": "Đồ ăn đường phố",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Tuấn nói 'best place to try street food'."
+      },
+      {
+        "question": "Sarah mua gì đầu tiên?",
+        "options": [
+          "Ngô nướng",
+          "Bánh tráng",
+          "Trà sữa",
+          "Kem"
+        ],
+        "correctAnswer": "Ngô nướng",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Tuấn nói 'grilled corn'."
+      },
+      {
+        "question": "Một bắp ngô giá bao nhiêu?",
+        "options": [
+          "10 nghìn",
+          "15 nghìn",
+          "20 nghìn",
+          "25 nghìn"
+        ],
+        "correctAnswer": "15 nghìn",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: Tuấn nói '15 thousand dong'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-068",
+    "cefrLevel": "A2",
+    "topic": "bicycle",
+    "topicVi": "Xe đạp",
+    "dialogue": {
+      "title": "The Broken Bicycle",
+      "titleVi": "Chiếc xe đạp hỏng",
+      "location": "Tiệm sửa xe gần nhà, chiều muộn",
+      "characters": [
+        {
+          "name": "Nam",
+          "role": "Student",
+          "roleVi": "Học sinh",
+          "gender": "male"
+        },
+        {
+          "name": "Mr. Ba",
+          "role": "Repairman",
+          "roleVi": "Thợ sửa xe",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Nam",
+          "textEn": "Good evening! My bike has a problem.",
+          "textVi": "Chào bác! Xe đạp của cháu có vấn đề."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Ba",
+          "textEn": "Good evening! What's wrong with it?",
+          "textVi": "Chào cháu! Xe bị sao vậy?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Nam",
+          "textEn": "The front tire is flat.",
+          "textVi": "Lốp trước bị xẹp ạ."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Ba",
+          "textEn": "Let me take a look. Ah, there's a small hole.",
+          "textVi": "Để bác xem nào. À, có một lỗ thủng nhỏ."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Nam",
+          "textEn": "Can you fix it today?",
+          "textVi": "Bác sửa hôm nay được không ạ?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Ba",
+          "textEn": "Sure! It will take about 20 minutes.",
+          "textVi": "Được chứ! Khoảng 20 phút là xong."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Nam",
+          "textEn": "Great! How much will it cost?",
+          "textVi": "Tuyệt! Hết bao nhiêu tiền ạ?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Ba",
+          "textEn": "Just 30 thousand dong.",
+          "textVi": "Chỉ 30 nghìn đồng thôi."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Nam",
+          "textEn": "That's cheap! Thank you so much.",
+          "textVi": "Rẻ quá! Cháu cảm ơn bác nhiều."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Ba",
+          "textEn": "You're welcome! Ride safely!",
+          "textVi": "Không có gì! Đi xe cẩn thận nhé!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Xe của Nam bị sao?",
+        "options": [
+          "Xẹp lốp trước",
+          "Hỏng phanh",
+          "Gãy xích",
+          "Hỏng đèn"
+        ],
+        "correctAnswer": "Xẹp lốp trước",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Nam nói 'front tire is flat'."
+      },
+      {
+        "question": "Sửa xe mất bao lâu?",
+        "options": [
+          "10 phút",
+          "20 phút",
+          "30 phút",
+          "1 tiếng"
+        ],
+        "correctAnswer": "20 phút",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: bác Ba nói '20 minutes'."
+      },
+      {
+        "question": "Tiền sửa là bao nhiêu?",
+        "options": [
+          "20 nghìn",
+          "30 nghìn",
+          "50 nghìn",
+          "100 nghìn"
+        ],
+        "correctAnswer": "30 nghìn",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: bác Ba nói '30 thousand dong'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-069",
+    "cefrLevel": "A2",
+    "topic": "aquarium",
+    "topicVi": "Thủy cung",
+    "dialogue": {
+      "title": "A Day at the Aquarium",
+      "titleVi": "Một ngày ở thủy cung",
+      "location": "Thủy cung thành phố, sáng chủ nhật",
+      "characters": [
+        {
+          "name": "Linh",
+          "role": "Visitor",
+          "roleVi": "Khách tham quan",
+          "gender": "female"
+        },
+        {
+          "name": "David",
+          "role": "Visitor",
+          "roleVi": "Khách tham quan",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Linh",
+          "textEn": "Look! The sharks are swimming above us!",
+          "textVi": "Nhìn kìa! Cá mập đang bơi phía trên mình!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "David",
+          "textEn": "Wow! This tunnel is incredible!",
+          "textVi": "Ồ! Đường hầm này tuyệt quá!"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Linh",
+          "textEn": "Do you know sharks don't sleep?",
+          "textVi": "Cậu có biết cá mập không ngủ không?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "David",
+          "textEn": "Really? That's strange!",
+          "textVi": "Thật á? Lạ thật!"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Linh",
+          "textEn": "Look at the colorful fish over there!",
+          "textVi": "Nhìn đàn cá đầy màu sắc đằng kia kìa!"
+        },
+        {
+          "id": "line-6",
+          "speaker": "David",
+          "textEn": "They're so pretty! Let's take a photo.",
+          "textVi": "Chúng đẹp quá! Chụp ảnh nào."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Linh",
+          "textEn": "Smile! One, two, three... perfect!",
+          "textVi": "Cười lên! Một, hai, ba... đẹp rồi!"
+        },
+        {
+          "id": "line-8",
+          "speaker": "David",
+          "textEn": "What time is the dolphin show?",
+          "textVi": "Mấy giờ có show cá heo?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Linh",
+          "textEn": "At 11 o'clock. We have 20 minutes.",
+          "textVi": "11 giờ. Mình còn 20 phút."
+        },
+        {
+          "id": "line-10",
+          "speaker": "David",
+          "textEn": "Let's buy some ice cream first!",
+          "textVi": "Mua kem ăn trước đã!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Hai bạn đang ở đâu?",
+        "options": [
+          "Thủy cung",
+          "Sở thú",
+          "Bảo tàng",
+          "Công viên"
+        ],
+        "correctAnswer": "Thủy cung",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Linh nói về cá mập bơi phía trên (đường hầm thủy cung)."
+      },
+      {
+        "question": "Điều gì lạ về cá mập?",
+        "options": [
+          "Không ngủ",
+          "Không ăn",
+          "Không bơi",
+          "Không thở"
+        ],
+        "correctAnswer": "Không ngủ",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Linh nói 'sharks don't sleep'."
+      },
+      {
+        "question": "Show cá heo bắt đầu lúc mấy giờ?",
+        "options": [
+          "10 giờ",
+          "11 giờ",
+          "12 giờ",
+          "1 giờ"
+        ],
+        "correctAnswer": "11 giờ",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Linh nói 'At 11 o'clock'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-5",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-070",
+    "cefrLevel": "A2",
+    "topic": "home-life",
+    "topicVi": "Đời sống gia đình",
+    "dialogue": {
+      "title": "When the Lights Go Out",
+      "titleVi": "Khi mất điện",
+      "location": "Căn hộ chung cư, 7 giờ tối",
+      "characters": [
+        {
+          "name": "Mom",
+          "role": "Mother",
+          "roleVi": "Mẹ",
+          "gender": "female"
+        },
+        {
+          "name": "Minh",
+          "role": "Son",
+          "roleVi": "Con trai",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mom",
+          "textEn": "Oh no! The power is out!",
+          "textVi": "Ôi không! Mất điện rồi!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Minh",
+          "textEn": "Really? I was playing a game!",
+          "textVi": "Thật á? Con đang chơi game dở!"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mom",
+          "textEn": "Don't worry. Let me find the candles.",
+          "textVi": "Đừng lo. Để mẹ tìm nến."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Minh",
+          "textEn": "I have my phone flashlight!",
+          "textVi": "Con có đèn pin điện thoại!"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mom",
+          "textEn": "Good! Is everyone okay?",
+          "textVi": "Tốt! Mọi người có ổn không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Minh",
+          "textEn": "Yes! This is kind of fun!",
+          "textVi": "Ổn ạ! Vui ra phết!"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mom",
+          "textEn": "Let's sit together and talk.",
+          "textVi": "Mình ngồi lại với nhau trò chuyện nhé."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Minh",
+          "textEn": "Can you tell me a story, Mom?",
+          "textVi": "Mẹ kể chuyện cho con nghe được không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mom",
+          "textEn": "Of course! Once upon a time...",
+          "textVi": "Được chứ! Ngày xửa ngày xưa..."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Minh",
+          "textEn": "I love power cuts now!",
+          "textVi": "Giờ con thích mất điện rồi!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Chuyện gì xảy ra?",
+        "options": [
+          "Mất điện",
+          "Mất nước",
+          "Mất mạng",
+          "Hỏng TV"
+        ],
+        "correctAnswer": "Mất điện",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Mẹ nói 'The power is out'."
+      },
+      {
+        "question": "Minh đang làm gì khi mất điện?",
+        "options": [
+          "Chơi game",
+          "Học bài",
+          "Xem phim",
+          "Ngủ"
+        ],
+        "correctAnswer": "Chơi game",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Minh nói 'I was playing a game'."
+      },
+      {
+        "question": "Minh dùng gì để soi sáng?",
+        "options": [
+          "Nến",
+          "Đèn pin điện thoại",
+          "Đèn dầu",
+          "Đèn pin"
+        ],
+        "correctAnswer": "Đèn pin điện thoại",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Minh nói 'phone flashlight'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-071",
+    "cefrLevel": "B1",
+    "topic": "company-trip",
+    "topicVi": "Du lịch công ty",
+    "dialogue": {
+      "title": "The Company Trip",
+      "titleVi": "Chuyến du lịch công ty",
+      "location": "Văn phòng công ty, giờ nghỉ trưa",
+      "characters": [
+        {
+          "name": "Anna",
+          "role": "Employee",
+          "roleVi": "Nhân viên",
+          "gender": "female"
+        },
+        {
+          "name": "Tom",
+          "role": "Employee",
+          "roleVi": "Nhân viên",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Anna",
+          "textEn": "Did you hear? We're going on a company trip next month!",
+          "textVi": "Cậu nghe chưa? Tháng sau công ty mình đi du lịch đấy!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Tom",
+          "textEn": "Really? Where are we going?",
+          "textVi": "Thật á? Đi đâu vậy?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Anna",
+          "textEn": "To Phu Quoc island! Three days, two nights.",
+          "textVi": "Đi đảo Phú Quốc! 3 ngày 2 đêm."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Tom",
+          "textEn": "Amazing! Is the company paying for everything?",
+          "textVi": "Tuyệt quá! Công ty chi trả hết à?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Anna",
+          "textEn": "Yes! Transport, hotel, and meals are all included.",
+          "textVi": "Ừ! Tiền xe, khách sạn và ăn uống đều bao hết."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Tom",
+          "textEn": "That's generous! What activities are planned?",
+          "textVi": "Hào phóng quá! Có hoạt động gì?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Anna",
+          "textEn": "Team building games, a beach party, and a gala dinner.",
+          "textVi": "Trò chơi team building, tiệc bãi biển và gala dinner."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Tom",
+          "textEn": "I can't wait! I need to buy sunscreen.",
+          "textVi": "Mong quá! Tớ phải mua kem chống nắng."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Anna",
+          "textEn": "Me too. Let's go shopping this weekend!",
+          "textVi": "Tớ cũng vậy. Cuối tuần đi mua sắm nhé!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Tom",
+          "textEn": "Deal! I'll make a list of what we need.",
+          "textVi": "Chốt! Tớ sẽ lập danh sách đồ cần mua."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Chuyến du lịch công ty đi đâu?",
+        "options": [
+          "Phú Quốc",
+          "Đà Nẵng",
+          "Nha Trang",
+          "Hạ Long"
+        ],
+        "correctAnswer": "Phú Quốc",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Anna nói 'Phu Quoc island'."
+      },
+      {
+        "question": "Chuyến đi kéo dài bao lâu?",
+        "options": [
+          "2 ngày 1 đêm",
+          "3 ngày 2 đêm",
+          "4 ngày 3 đêm",
+          "1 tuần"
+        ],
+        "correctAnswer": "3 ngày 2 đêm",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Anna nói 'Three days, two nights'."
+      },
+      {
+        "question": "Công ty chi trả những gì?",
+        "options": [
+          "Chỉ tiền xe",
+          "Xe, khách sạn và ăn uống",
+          "Chỉ khách sạn",
+          "Tự túc"
+        ],
+        "correctAnswer": "Xe, khách sạn và ăn uống",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Anna nói 'Transport, hotel, and meals are all included'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-072",
+    "cefrLevel": "B1",
+    "topic": "driving",
+    "topicVi": "Lái xe",
+    "dialogue": {
+      "title": "Learning to Drive",
+      "titleVi": "Học lái xe",
+      "location": "Sân tập lái xe, sáng thứ 7",
+      "characters": [
+        {
+          "name": "Linh",
+          "role": "Student driver",
+          "roleVi": "Học viên lái xe",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Hung",
+          "role": "Driving instructor",
+          "roleVi": "Thầy dạy lái",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Linh",
+          "textEn": "Good morning! I'm ready for my first lesson.",
+          "textVi": "Chào buổi sáng thầy! Em sẵn sàng cho buổi học đầu tiên."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Hung",
+          "textEn": "Good morning, Linh! First, adjust your seat and mirrors.",
+          "textVi": "Chào buổi sáng Linh! Đầu tiên, chỉnh ghế và gương nhé."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Linh",
+          "textEn": "Like this? Can you check?",
+          "textVi": "Như thế này ạ? Thầy kiểm tra giúp em."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Hung",
+          "textEn": "Perfect. Now, put your foot gently on the brake.",
+          "textVi": "Hoàn hảo. Giờ đặt chân nhẹ lên phanh."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Linh",
+          "textEn": "Okay... I'm a bit nervous.",
+          "textVi": "Vâng... em hơi run."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Hung",
+          "textEn": "That's normal. Take a deep breath. Now start the engine.",
+          "textVi": "Bình thường thôi. Hít thở sâu nào. Giờ nổ máy."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Linh",
+          "textEn": "It's running! Now what?",
+          "textVi": "Máy nổ rồi! Giờ sao nữa thầy?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Hung",
+          "textEn": "Slowly release the brake. The car will move forward.",
+          "textVi": "Từ từ nhả phanh. Xe sẽ tiến lên."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Linh",
+          "textEn": "Wow, it's moving! I'm actually driving!",
+          "textVi": "Ồ, xe chạy rồi! Em đang lái xe thật này!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Hung",
+          "textEn": "Well done! You're doing great for a beginner.",
+          "textVi": "Tốt lắm! Mới học mà em làm rất tốt."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Việc đầu tiên Linh phải làm là gì?",
+        "options": [
+          "Nổ máy",
+          "Chỉnh ghế và gương",
+          "Đạp ga",
+          "Thắt dây an toàn"
+        ],
+        "correctAnswer": "Chỉnh ghế và gương",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: thầy nói 'adjust your seat and mirrors'."
+      },
+      {
+        "question": "Linh cảm thấy thế nào?",
+        "options": [
+          "Tự tin",
+          "Hơi run",
+          "Buồn ngủ",
+          "Chán"
+        ],
+        "correctAnswer": "Hơi run",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Linh nói 'I'm a bit nervous'."
+      },
+      {
+        "question": "Sau khi nổ máy, thầy bảo Linh làm gì?",
+        "options": [
+          "Đạp ga mạnh",
+          "Từ từ nhả phanh",
+          "Quay vô lăng",
+          "Bật đèn"
+        ],
+        "correctAnswer": "Từ từ nhả phanh",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: thầy nói 'Slowly release the brake'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-073",
+    "cefrLevel": "B1",
+    "topic": "charity",
+    "topicVi": "Từ thiện",
+    "dialogue": {
+      "title": "The Charity Run",
+      "titleVi": "Giải chạy từ thiện",
+      "location": "Công viên trung tâm, sáng chủ nhật",
+      "characters": [
+        {
+          "name": "David",
+          "role": "Volunteer",
+          "roleVi": "Tình nguyện viên",
+          "gender": "male"
+        },
+        {
+          "name": "Mai",
+          "role": "Organizer",
+          "roleVi": "Ban tổ chức",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "David",
+          "textEn": "Hi! I'm here for the charity run. Where do I sign in?",
+          "textVi": "Chào! Tôi đến tham gia giải chạy từ thiện. Đăng ký ở đâu?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mai",
+          "textEn": "Welcome! Sign in at that table over there.",
+          "textVi": "Chào mừng! Anh đăng ký ở bàn đằng kia."
+        },
+        {
+          "id": "line-3",
+          "speaker": "David",
+          "textEn": "Thanks! What's the money used for?",
+          "textVi": "Cảm ơn! Tiền quyên góp dùng để làm gì?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mai",
+          "textEn": "We're raising money to build a school library.",
+          "textVi": "Để gây quỹ xây thư viện trường học ạ."
+        },
+        {
+          "id": "line-5",
+          "speaker": "David",
+          "textEn": "That's wonderful! How long is the run?",
+          "textVi": "Tuyệt quá! Chạy bao xa?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mai",
+          "textEn": "Five kilometers. Are you ready?",
+          "textVi": "5 km. Anh sẵn sàng chưa?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "David",
+          "textEn": "I think so! I've been training for a month.",
+          "textVi": "Chắc rồi! Tôi đã tập luyện cả tháng nay."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mai",
+          "textEn": "Great! Here's your number bib. Good luck!",
+          "textVi": "Tuyệt! Đây là số báo danh của anh. Chúc may mắn!"
+        },
+        {
+          "id": "line-9",
+          "speaker": "David",
+          "textEn": "Thank you! How many people joined?",
+          "textVi": "Cảm ơn! Có bao nhiêu người tham gia?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mai",
+          "textEn": "Over 500! It's our biggest event ever.",
+          "textVi": "Hơn 500 người! Đây là sự kiện lớn nhất của chúng tôi."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Tiền quyên góp dùng để làm gì?",
+        "options": [
+          "Xây thư viện trường học",
+          "Mua sách giáo khoa",
+          "Xây bệnh viện",
+          "Trồng cây"
+        ],
+        "correctAnswer": "Xây thư viện trường học",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Mai nói 'build a school library'."
+      },
+      {
+        "question": "Quãng đường chạy bao xa?",
+        "options": [
+          "3 km",
+          "5 km",
+          "10 km",
+          "21 km"
+        ],
+        "correctAnswer": "5 km",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Mai nói 'Five kilometers'."
+      },
+      {
+        "question": "Có bao nhiêu người tham gia?",
+        "options": [
+          "Hơn 300",
+          "Hơn 400",
+          "Hơn 500",
+          "Hơn 1000"
+        ],
+        "correctAnswer": "Hơn 500",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: Mai nói 'Over 500'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-074",
+    "cefrLevel": "B1",
+    "topic": "roommate",
+    "topicVi": "Bạn cùng phòng",
+    "dialogue": {
+      "title": "A Roommate Wanted",
+      "titleVi": "Tìm bạn cùng phòng",
+      "location": "Quán cà phê gần trường đại học",
+      "characters": [
+        {
+          "name": "Anna",
+          "role": "Student",
+          "roleVi": "Sinh viên",
+          "gender": "female"
+        },
+        {
+          "name": "Linh",
+          "role": "Student",
+          "roleVi": "Sinh viên",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Anna",
+          "textEn": "I saw your ad. You're looking for a roommate?",
+          "textVi": "Tớ thấy tin của cậu. Cậu đang tìm bạn cùng phòng à?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Linh",
+          "textEn": "Yes! My old roommate moved out last week.",
+          "textVi": "Ừ! Bạn cùng phòng cũ của tớ chuyển đi tuần trước."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Anna",
+          "textEn": "Tell me about the apartment.",
+          "textVi": "Kể cho tớ nghe về căn hộ đi."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Linh",
+          "textEn": "It's a two-bedroom near the university. Rent is 4 million a month.",
+          "textVi": "Căn 2 phòng ngủ gần trường. Tiền thuê 4 triệu một tháng."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Anna",
+          "textEn": "That's reasonable! Is it fully furnished?",
+          "textVi": "Hợp lý đấy! Có đầy đủ nội thất không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Linh",
+          "textEn": "Yes, beds, desks, and even a washing machine.",
+          "textVi": "Có, giường, bàn học, cả máy giặt nữa."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Anna",
+          "textEn": "Nice! What are the house rules?",
+          "textVi": "Thích nhỉ! Nội quy nhà thế nào?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Linh",
+          "textEn": "Keep it clean, no loud music after 10 PM.",
+          "textVi": "Giữ sạch sẽ, không mở nhạc to sau 10 giờ tối."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Anna",
+          "textEn": "Fair enough. When can I move in?",
+          "textVi": "Hợp lý. Khi nào tớ chuyển vào được?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Linh",
+          "textEn": "Anytime! Let's visit the place tomorrow.",
+          "textVi": "Lúc nào cũng được! Mai mình đi xem nhà nhé."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Tại sao Linh tìm bạn cùng phòng?",
+        "options": [
+          "Bạn cũ chuyển đi",
+          "Muốn chuyển nhà",
+          "Cần thêm tiền",
+          "Phòng quá rộng"
+        ],
+        "correctAnswer": "Bạn cũ chuyển đi",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Linh nói 'My old roommate moved out'."
+      },
+      {
+        "question": "Tiền thuê nhà bao nhiêu một tháng?",
+        "options": [
+          "3 triệu",
+          "4 triệu",
+          "5 triệu",
+          "6 triệu"
+        ],
+        "correctAnswer": "4 triệu",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Linh nói '4 million a month'."
+      },
+      {
+        "question": "Nội quy nào sau đây là đúng?",
+        "options": [
+          "Không mở nhạc to sau 10 giờ tối",
+          "Không được nấu ăn",
+          "Không được mời bạn đến",
+          "Phải dậy trước 6 giờ"
+        ],
+        "correctAnswer": "Không mở nhạc to sau 10 giờ tối",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: Linh nói 'no loud music after 10 PM'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-075",
+    "cefrLevel": "B1",
+    "topic": "flea-market",
+    "topicVi": "Chợ đồ cũ",
+    "dialogue": {
+      "title": "The Flea Market",
+      "titleVi": "Chợ đồ cũ",
+      "location": "Chợ đồ cũ cuối tuần, buổi sáng",
+      "characters": [
+        {
+          "name": "Tom",
+          "role": "Buyer",
+          "roleVi": "Người mua",
+          "gender": "male"
+        },
+        {
+          "name": "Sarah",
+          "role": "Seller",
+          "roleVi": "Người bán",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Tom",
+          "textEn": "This flea market is huge! How long have you been selling here?",
+          "textVi": "Chợ đồ cũ này to quá! Chị bán ở đây lâu chưa?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Sarah",
+          "textEn": "About two years. I sell old books and records.",
+          "textVi": "Khoảng 2 năm rồi. Chị bán sách cũ và đĩa than."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Tom",
+          "textEn": "Cool! I'm looking for old cameras. Any luck?",
+          "textVi": "Hay quá! Tôi đang tìm máy ảnh cũ. Có không chị?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Sarah",
+          "textEn": "Actually, I have one! A film camera from the 1980s.",
+          "textVi": "Có đấy! Một chiếc máy phim từ những năm 1980."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Tom",
+          "textEn": "Wow, let me see! Does it still work?",
+          "textVi": "Ồ, cho tôi xem! Nó còn dùng được không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Sarah",
+          "textEn": "Yes, I tested it last week. It works perfectly.",
+          "textVi": "Còn chứ, tuần trước chị đã test. Chạy tốt."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Tom",
+          "textEn": "How much are you asking?",
+          "textVi": "Chị bán bao nhiêu?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Sarah",
+          "textEn": "Two million dong. But I can give you a small discount.",
+          "textVi": "2 triệu. Chị bớt cho chút."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Tom",
+          "textEn": "Would you take 1.5 million?",
+          "textVi": "1,5 triệu được không?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Sarah",
+          "textEn": "Hmm... Deal! Cash or transfer?",
+          "textVi": "Ừm... chốt! Tiền mặt hay chuyển khoản?"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Sarah bán gì ở chợ?",
+        "options": [
+          "Sách cũ và đĩa than",
+          "Máy ảnh cũ",
+          "Quần áo cũ",
+          "Đồ điện tử"
+        ],
+        "correctAnswer": "Sách cũ và đĩa than",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Sarah nói 'old books and records'."
+      },
+      {
+        "question": "Chiếc máy ảnh từ thập niên nào?",
+        "options": [
+          "1970",
+          "1980",
+          "1990",
+          "2000"
+        ],
+        "correctAnswer": "1980",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Sarah nói 'from the 1980s'."
+      },
+      {
+        "question": "Giá chốt cuối cùng là bao nhiêu?",
+        "options": [
+          "2 triệu",
+          "1,8 triệu",
+          "1,5 triệu",
+          "1,2 triệu"
+        ],
+        "correctAnswer": "1,5 triệu",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Tom trả '1.5 million' và Sarah đồng ý."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-7"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-8",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-076",
+    "cefrLevel": "B1",
+    "topic": "education-meeting",
+    "topicVi": "Giáo dục",
+    "dialogue": {
+      "title": "The Parent-Teacher Meeting",
+      "titleVi": "Buổi họp phụ huynh",
+      "location": "Trường tiểu học, chiều thứ 6",
+      "characters": [
+        {
+          "name": "Ms. Lan",
+          "role": "Teacher",
+          "roleVi": "Cô giáo",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Nam",
+          "role": "Parent",
+          "roleVi": "Phụ huynh",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ms. Lan",
+          "textEn": "Good afternoon! Thank you for coming today.",
+          "textVi": "Chào buổi chiều! Cảm ơn anh đã đến."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Nam",
+          "textEn": "Good afternoon! How is my son doing?",
+          "textVi": "Chào cô! Con trai tôi học thế nào?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ms. Lan",
+          "textEn": "Minh is doing well! He's very active in class.",
+          "textVi": "Cháu Minh học tốt! Cháu rất năng nổ trong lớp."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Nam",
+          "textEn": "That's good to hear! What about his math?",
+          "textVi": "Nghe mừng quá! Còn môn toán thì sao cô?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ms. Lan",
+          "textEn": "His math is improving, but he needs more practice.",
+          "textVi": "Toán của cháu đang tiến bộ, nhưng cần luyện thêm."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Nam",
+          "textEn": "I see. What can we do at home?",
+          "textVi": "Tôi hiểu. Ở nhà chúng tôi nên làm gì?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ms. Lan",
+          "textEn": "Just 20 minutes of practice every day is enough.",
+          "textVi": "Mỗi ngày luyện 20 phút là đủ ạ."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Nam",
+          "textEn": "We'll do that. Any other concerns?",
+          "textVi": "Chúng tôi sẽ làm. Cô còn lưu ý gì nữa không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ms. Lan",
+          "textEn": "He's great! Just keep encouraging him.",
+          "textVi": "Cháu rất tốt! Anh cứ động viên cháu nhé."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Nam",
+          "textEn": "Thank you so much for your time!",
+          "textVi": "Cảm ơn cô nhiều!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Minh học thế nào theo lời cô?",
+        "options": [
+          "Tốt, năng nổ trong lớp",
+          "Trung bình",
+          "Kém",
+          "Nghịch ngợm"
+        ],
+        "correctAnswer": "Tốt, năng nổ trong lớp",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: cô nói 'doing well, very active'."
+      },
+      {
+        "question": "Môn toán của Minh cần gì?",
+        "options": [
+          "Luyện tập thêm",
+          "Học thêm buổi tối",
+          "Đổi phương pháp",
+          "Không cần gì"
+        ],
+        "correctAnswer": "Luyện tập thêm",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: cô nói 'needs more practice'."
+      },
+      {
+        "question": "Cô khuyên phụ huynh cho con luyện bao lâu mỗi ngày?",
+        "options": [
+          "10 phút",
+          "20 phút",
+          "30 phút",
+          "1 tiếng"
+        ],
+        "correctAnswer": "20 phút",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: cô nói '20 minutes of practice every day'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-077",
+    "cefrLevel": "B1",
+    "topic": "tour-booking",
+    "topicVi": "Đặt tour",
+    "dialogue": {
+      "title": "Booking a Tour",
+      "titleVi": "Đặt tour du lịch",
+      "location": "Văn phòng công ty du lịch, buổi chiều",
+      "characters": [
+        {
+          "name": "Sarah",
+          "role": "Customer",
+          "roleVi": "Khách hàng",
+          "gender": "female"
+        },
+        {
+          "name": "Tuan",
+          "role": "Travel agent",
+          "roleVi": "Nhân viên du lịch",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Sarah",
+          "textEn": "Hi! I'd like to book a tour to Ha Long Bay.",
+          "textVi": "Chào! Tôi muốn đặt tour đi Vịnh Hạ Long."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Tuan",
+          "textEn": "Great choice! When would you like to go?",
+          "textVi": "Lựa chọn tuyệt vời! Chị muốn đi khi nào?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Sarah",
+          "textEn": "Next weekend. Is there a 2-day tour?",
+          "textVi": "Cuối tuần sau. Có tour 2 ngày không?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Tuan",
+          "textEn": "Yes! We have a 2-day, 1-night cruise tour.",
+          "textVi": "Có! Tour du thuyền 2 ngày 1 đêm."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Sarah",
+          "textEn": "Perfect! How much per person?",
+          "textVi": "Hoàn hảo! Bao nhiêu một người?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Tuan",
+          "textEn": "3.5 million dong, including meals and kayaking.",
+          "textVi": "3,5 triệu, bao gồm ăn uống và chèo kayak."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Sarah",
+          "textEn": "Sounds good! What time does it depart?",
+          "textVi": "Nghe được đấy! Mấy giờ khởi hành?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Tuan",
+          "textEn": "We pick you up at 7 AM from your hotel.",
+          "textVi": "Chúng tôi đón chị lúc 7 giờ sáng tại khách sạn."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Sarah",
+          "textEn": "Excellent! I'd like to book for two people.",
+          "textVi": "Tuyệt! Tôi đặt cho 2 người."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Tuan",
+          "textEn": "Done! Please leave your phone number.",
+          "textVi": "Xong! Chị để lại số điện thoại nhé."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Sarah muốn đi đâu?",
+        "options": [
+          "Vịnh Hạ Long",
+          "Phú Quốc",
+          "Đà Nẵng",
+          "Sapa"
+        ],
+        "correctAnswer": "Vịnh Hạ Long",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Sarah nói 'tour to Ha Long Bay'."
+      },
+      {
+        "question": "Tour kéo dài bao lâu?",
+        "options": [
+          "1 ngày",
+          "2 ngày 1 đêm",
+          "3 ngày 2 đêm",
+          "Nửa ngày"
+        ],
+        "correctAnswer": "2 ngày 1 đêm",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Tuấn nói '2-day, 1-night cruise tour'."
+      },
+      {
+        "question": "Giá tour bao gồm những gì?",
+        "options": [
+          "Ăn uống và chèo kayak",
+          "Chỉ vé tham quan",
+          "Khách sạn 5 sao",
+          "Vé máy bay"
+        ],
+        "correctAnswer": "Ăn uống và chèo kayak",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Tuấn nói 'including meals and kayaking'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-078",
+    "cefrLevel": "B1",
+    "topic": "office-party",
+    "topicVi": "Tiệc văn phòng",
+    "dialogue": {
+      "title": "The Office Party",
+      "titleVi": "Tiệc văn phòng",
+      "location": "Văn phòng công ty, 5 giờ chiều thứ 6",
+      "characters": [
+        {
+          "name": "Tom",
+          "role": "Employee",
+          "roleVi": "Nhân viên",
+          "gender": "male"
+        },
+        {
+          "name": "Anna",
+          "role": "Employee",
+          "roleVi": "Nhân viên",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Tom",
+          "textEn": "The office looks great! Who decorated all this?",
+          "textVi": "Văn phòng trang trí đẹp quá! Ai trang trí vậy?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Anna",
+          "textEn": "The admin team did. It's our year-end party!",
+          "textVi": "Team hành chính làm đấy. Tiệc cuối năm mà!"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Tom",
+          "textEn": "Right! This year went by so fast.",
+          "textVi": "Ừ nhỉ! Năm nay trôi nhanh thật."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Anna",
+          "textEn": "What was your biggest achievement this year?",
+          "textVi": "Thành tựu lớn nhất của cậu năm nay là gì?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Tom",
+          "textEn": "I finished the big project two weeks early!",
+          "textVi": "Tớ hoàn thành dự án lớn sớm 2 tuần!"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Anna",
+          "textEn": "Impressive! The boss mentioned you in the meeting.",
+          "textVi": "Ấn tượng! Sếp còn nhắc đến cậu trong cuộc họp."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Tom",
+          "textEn": "Really? That makes me so happy!",
+          "textVi": "Thật á? Tớ vui quá!"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Anna",
+          "textEn": "Let's take a photo together!",
+          "textVi": "Chụp ảnh chung nào!"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Tom",
+          "textEn": "Sure! Say cheese!",
+          "textVi": "Được! Cười lên nào!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Anna",
+          "textEn": "Perfect shot! Let's enjoy the party!",
+          "textVi": "Ảnh đẹp! Quẩy thôi!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Đây là tiệc gì?",
+        "options": [
+          "Tiệc cuối năm",
+          "Tiệc sinh nhật",
+          "Tiệc cưới",
+          "Tiệc tân gia"
+        ],
+        "correctAnswer": "Tiệc cuối năm",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Anna nói 'year-end party'."
+      },
+      {
+        "question": "Thành tựu của Tom năm nay là gì?",
+        "options": [
+          "Hoàn thành dự án lớn sớm 2 tuần",
+          "Được thăng chức",
+          "Ký hợp đồng lớn",
+          "Học xong MBA"
+        ],
+        "correctAnswer": "Hoàn thành dự án lớn sớm 2 tuần",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Tom nói 'finished the big project two weeks early'."
+      },
+      {
+        "question": "Ai nhắc đến Tom trong cuộc họp?",
+        "options": [
+          "Sếp",
+          "Đồng nghiệp",
+          "Khách hàng",
+          "Trợ lý"
+        ],
+        "correctAnswer": "Sếp",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Anna nói 'The boss mentioned you'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-079",
+    "cefrLevel": "B1",
+    "topic": "volunteering",
+    "topicVi": "Tình nguyện",
+    "dialogue": {
+      "title": "Volunteering at the Shelter",
+      "titleVi": "Tình nguyện tại mái ấm",
+      "location": "Mái ấm tình thương, sáng thứ 7",
+      "characters": [
+        {
+          "name": "Linh",
+          "role": "Volunteer",
+          "roleVi": "Tình nguyện viên",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Ba",
+          "role": "Coordinator",
+          "roleVi": "Điều phối viên",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Linh",
+          "textEn": "Good morning! I'm here to volunteer.",
+          "textVi": "Chào buổi sáng! Cháu đến làm tình nguyện."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Ba",
+          "textEn": "Wonderful! Have you volunteered before?",
+          "textVi": "Tuyệt quá! Cháu đã làm tình nguyện bao giờ chưa?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Linh",
+          "textEn": "No, this is my first time. What should I do?",
+          "textVi": "Dạ chưa, đây là lần đầu. Cháu nên làm gì ạ?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Ba",
+          "textEn": "You can help serve lunch to the children.",
+          "textVi": "Cháu có thể phụ phát cơm trưa cho các em nhỏ."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Linh",
+          "textEn": "I'd love to! How many children are here?",
+          "textVi": "Cháu rất muốn! Ở đây có bao nhiêu em?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Ba",
+          "textEn": "About 40 children. They'll love meeting you.",
+          "textVi": "Khoảng 40 em. Các em sẽ thích gặp cháu lắm."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Linh",
+          "textEn": "What time is lunch?",
+          "textVi": "Mấy giờ ăn trưa ạ?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Ba",
+          "textEn": "At 11:30. Can you come at 10 to help prepare?",
+          "textVi": "11:30. Cháu đến lúc 10 giờ phụ chuẩn bị được không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Linh",
+          "textEn": "Of course! Should I bring anything?",
+          "textVi": "Dạ được! Cháu có cần mang gì không?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Ba",
+          "textEn": "Just bring your smile! That's enough.",
+          "textVi": "Chỉ cần mang nụ cười đến! Thế là đủ."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Linh sẽ giúp việc gì?",
+        "options": [
+          "Phát cơm trưa cho trẻ em",
+          "Dạy học",
+          "Dọn dẹp",
+          "Quyên góp tiền"
+        ],
+        "correctAnswer": "Phát cơm trưa cho trẻ em",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: bác Ba nói 'help serve lunch'."
+      },
+      {
+        "question": "Mái ấm có bao nhiêu trẻ em?",
+        "options": [
+          "Khoảng 30",
+          "Khoảng 40",
+          "Khoảng 50",
+          "Khoảng 60"
+        ],
+        "correctAnswer": "Khoảng 40",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: bác Ba nói 'About 40 children'."
+      },
+      {
+        "question": "Linh cần đến lúc mấy giờ?",
+        "options": [
+          "9 giờ",
+          "10 giờ",
+          "11 giờ",
+          "11:30"
+        ],
+        "correctAnswer": "10 giờ",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: bác Ba nói 'come at 10'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-080",
+    "cefrLevel": "B1",
+    "topic": "online-interview",
+    "topicVi": "Phỏng vấn online",
+    "dialogue": {
+      "title": "The Online Interview",
+      "titleVi": "Buổi phỏng vấn trực tuyến",
+      "location": "Phòng ngủ của Nam, 9 giờ sáng",
+      "characters": [
+        {
+          "name": "Nam",
+          "role": "Candidate",
+          "roleVi": "Ứng viên",
+          "gender": "male"
+        },
+        {
+          "name": "Ms. Hoa",
+          "role": "Interviewer",
+          "roleVi": "Nhà tuyển dụng",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Nam",
+          "textEn": "Good morning! Can you hear me clearly?",
+          "textVi": "Chào buổi sáng! Chị nghe em rõ không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Hoa",
+          "textEn": "Good morning, Nam! Yes, loud and clear.",
+          "textVi": "Chào buổi sáng Nam! Rõ lắm."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Nam",
+          "textEn": "Great! Thank you for this opportunity.",
+          "textVi": "Tuyệt! Cảm ơn chị đã cho em cơ hội."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Hoa",
+          "textEn": "You're welcome. First, tell me about yourself.",
+          "textVi": "Không có gì. Đầu tiên, em giới thiệu về mình đi."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Nam",
+          "textEn": "I'm a recent graduate in marketing. I love creative work.",
+          "textVi": "Em mới tốt nghiệp ngành marketing. Em thích công việc sáng tạo."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Hoa",
+          "textEn": "Nice! Why do you want to join our company?",
+          "textVi": "Hay đấy! Tại sao em muốn vào công ty chị?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Nam",
+          "textEn": "Because your campaigns are amazing. I want to learn from the best.",
+          "textVi": "Vì các chiến dịch của công ty rất ấn tượng. Em muốn học hỏi từ những người giỏi nhất."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Hoa",
+          "textEn": "Good answer! Do you have any questions for me?",
+          "textVi": "Trả lời hay! Em có câu hỏi nào cho chị không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Nam",
+          "textEn": "Yes! What's the team like?",
+          "textVi": "Có ạ! Team mình như thế nào ạ?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Hoa",
+          "textEn": "Young, fun, and hardworking. We'll contact you this week!",
+          "textVi": "Trẻ, vui và chăm chỉ. Tuần này chị sẽ liên lạc lại!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Nam tốt nghiệp ngành gì?",
+        "options": [
+          "Marketing",
+          "Kế toán",
+          "IT",
+          "Thiết kế"
+        ],
+        "correctAnswer": "Marketing",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Nam nói 'graduate in marketing'."
+      },
+      {
+        "question": "Tại sao Nam muốn vào công ty?",
+        "options": [
+          "Lương cao",
+          "Chiến dịch ấn tượng, muốn học hỏi",
+          "Gần nhà",
+          "Bạn giới thiệu"
+        ],
+        "correctAnswer": "Chiến dịch ấn tượng, muốn học hỏi",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Nam nói 'campaigns are amazing, want to learn'."
+      },
+      {
+        "question": "Nhà tuyển dụng mô tả team thế nào?",
+        "options": [
+          "Trẻ, vui và chăm chỉ",
+          "Già dặn kinh nghiệm",
+          "Nghiêm túc",
+          "Ít người"
+        ],
+        "correctAnswer": "Trẻ, vui và chăm chỉ",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: chị Hoa nói 'Young, fun, and hardworking'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-081",
+    "cefrLevel": "B1",
+    "topic": "dance",
+    "topicVi": "Nhảy múa",
+    "dialogue": {
+      "title": "The Dance Class",
+      "titleVi": "Lớp học nhảy",
+      "location": "Studio nhảy, tối thứ 4",
+      "characters": [
+        {
+          "name": "Anna",
+          "role": "Student",
+          "roleVi": "Học viên",
+          "gender": "female"
+        },
+        {
+          "name": "Coach Lee",
+          "role": "Dance instructor",
+          "roleVi": "Giáo viên dạy nhảy",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Anna",
+          "textEn": "Hi! Is this the beginner salsa class?",
+          "textVi": "Chào! Đây có phải lớp salsa cho người mới không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Coach Lee",
+          "textEn": "Yes, welcome! Have you danced before?",
+          "textVi": "Đúng rồi, chào mừng! Em đã nhảy bao giờ chưa?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Anna",
+          "textEn": "Never! I have two left feet!",
+          "textVi": "Chưa bao giờ! Em vụng về lắm!"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Coach Lee",
+          "textEn": "Don't worry! Everyone starts somewhere. Let's try the basic step.",
+          "textVi": "Đừng lo! Ai cũng bắt đầu từ đâu đó. Thử bước cơ bản nhé."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Anna",
+          "textEn": "One, two, three... like this?",
+          "textVi": "Một, hai, ba... như thế này ạ?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Coach Lee",
+          "textEn": "Exactly! Now add the arm movement.",
+          "textVi": "Chính xác! Giờ thêm động tác tay."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Anna",
+          "textEn": "This is harder than it looks!",
+          "textVi": "Khó hơn nhìn nhiều!"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Coach Lee",
+          "textEn": "You're doing well! Feel the music.",
+          "textVi": "Em làm tốt đấy! Cảm nhận âm nhạc đi."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Anna",
+          "textEn": "The music is so catchy! I'm getting the rhythm!",
+          "textVi": "Nhạc hay quá! Em bắt được nhịp rồi!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Coach Lee",
+          "textEn": "See? Practice makes perfect. Same time next week?",
+          "textVi": "Thấy chưa? Có công mài sắt có ngày nên kim. Tuần sau giờ này nhé?"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Anna học điệu nhảy nào?",
+        "options": [
+          "Salsa",
+          "Tango",
+          "Hip-hop",
+          "Ballet"
+        ],
+        "correctAnswer": "Salsa",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Anna hỏi 'beginner salsa class'."
+      },
+      {
+        "question": "Anna tự nhận mình thế nào?",
+        "options": [
+          "Vụng về",
+          "Nhanh nhẹn",
+          "Có năng khiếu",
+          "Đã biết nhảy"
+        ],
+        "correctAnswer": "Vụng về",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Anna nói 'two left feet'."
+      },
+      {
+        "question": "Thầy khuyên Anna điều gì?",
+        "options": [
+          "Cảm nhận âm nhạc",
+          "Nhảy nhanh hơn",
+          "Tập thêm ở nhà",
+          "Đổi lớp"
+        ],
+        "correctAnswer": "Cảm nhận âm nhạc",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: thầy nói 'Feel the music'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-082",
+    "cefrLevel": "B1",
+    "topic": "baking",
+    "topicVi": "Làm bánh",
+    "dialogue": {
+      "title": "The Baking Contest",
+      "titleVi": "Cuộc thi làm bánh",
+      "location": "Trung tâm văn hóa, chiều chủ nhật",
+      "characters": [
+        {
+          "name": "Mai",
+          "role": "Contestant",
+          "roleVi": "Thí sinh",
+          "gender": "female"
+        },
+        {
+          "name": "David",
+          "role": "Judge",
+          "roleVi": "Giám khảo",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mai",
+          "textEn": "I'm so nervous! This is my first contest.",
+          "textVi": "Em hồi hộp quá! Đây là cuộc thi đầu tiên của em."
+        },
+        {
+          "id": "line-2",
+          "speaker": "David",
+          "textEn": "Relax! What did you bake today?",
+          "textVi": "Thư giãn đi! Hôm nay em làm bánh gì?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mai",
+          "textEn": "A chocolate cake with a secret ingredient!",
+          "textVi": "Bánh sô cô la với một nguyên liệu bí mật!"
+        },
+        {
+          "id": "line-4",
+          "speaker": "David",
+          "textEn": "Ooh, mysterious! Can I taste it?",
+          "textVi": "Ồ, bí ẩn nhỉ! Tôi nếm thử được không?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mai",
+          "textEn": "Of course! Please tell me what you think.",
+          "textVi": "Dạ được! Anh cho em biết cảm nhận nhé."
+        },
+        {
+          "id": "line-6",
+          "speaker": "David",
+          "textEn": "Mmm... delicious! What's the secret ingredient?",
+          "textVi": "Mmm... ngon quá! Nguyên liệu bí mật là gì?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mai",
+          "textEn": "A pinch of chili powder! It makes the chocolate richer.",
+          "textVi": "Một chút bột ớt! Nó làm sô cô la đậm đà hơn."
+        },
+        {
+          "id": "line-8",
+          "speaker": "David",
+          "textEn": "Brilliant! That's so creative!",
+          "textVi": "Tuyệt vời! Sáng tạo quá!"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mai",
+          "textEn": "Thank you! Do you think I can win?",
+          "textVi": "Cảm ơn anh! Anh nghĩ em thắng được không?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "David",
+          "textEn": "You have a real chance! Good luck!",
+          "textVi": "Em có cơ hội thật đấy! Chúc may mắn!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mai làm bánh gì?",
+        "options": [
+          "Bánh sô cô la",
+          "Bánh vani",
+          "Bánh dâu",
+          "Bánh chanh"
+        ],
+        "correctAnswer": "Bánh sô cô la",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Mai nói 'chocolate cake'."
+      },
+      {
+        "question": "Nguyên liệu bí mật là gì?",
+        "options": [
+          "Bột ớt",
+          "Quế",
+          "Gừng",
+          "Mật ong"
+        ],
+        "correctAnswer": "Bột ớt",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Mai nói 'chili powder'."
+      },
+      {
+        "question": "Giám khảo đánh giá thế nào?",
+        "options": [
+          "Sáng tạo, có cơ hội thắng",
+          "Bình thường",
+          "Quá cay",
+          "Chưa chín"
+        ],
+        "correctAnswer": "Sáng tạo, có cơ hội thắng",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8-10: 'Brilliant', 'real chance'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-083",
+    "cefrLevel": "B2",
+    "topic": "performance-review",
+    "topicVi": "Đánh giá hiệu suất",
+    "dialogue": {
+      "title": "The Performance Review",
+      "titleVi": "Buổi đánh giá hiệu suất",
+      "location": "Phòng họp công ty, 10 giờ sáng",
+      "characters": [
+        {
+          "name": "Mr. Smith",
+          "role": "Manager",
+          "roleVi": "Quản lý",
+          "gender": "male"
+        },
+        {
+          "name": "Linh",
+          "role": "Employee",
+          "roleVi": "Nhân viên",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mr. Smith",
+          "textEn": "Thanks for coming, Linh. Let's review your performance this quarter.",
+          "textVi": "Cảm ơn em đã đến, Linh. Mình cùng đánh giá hiệu suất quý này nhé."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Linh",
+          "textEn": "Of course! I'm a bit nervous, to be honest.",
+          "textVi": "Dạ! Nói thật là em hơi hồi hộp."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mr. Smith",
+          "textEn": "No need to be. Your project results were outstanding.",
+          "textVi": "Không cần đâu. Kết quả dự án của em rất xuất sắc."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Linh",
+          "textEn": "Thank you! The team worked really hard on it.",
+          "textVi": "Cảm ơn sếp! Cả team đã rất cố gắng."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mr. Smith",
+          "textEn": "Your leadership skills have improved a lot too.",
+          "textVi": "Kỹ năng lãnh đạo của em cũng tiến bộ nhiều."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Linh",
+          "textEn": "I've been taking an online management course.",
+          "textVi": "Em đang học một khóa quản lý online."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mr. Smith",
+          "textEn": "That explains it! One area to improve: time management.",
+          "textVi": "Ra vậy! Một điểm cần cải thiện: quản lý thời gian."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Linh",
+          "textEn": "I agree. I sometimes take on too much.",
+          "textVi": "Em đồng ý. Đôi khi em ôm đồm quá nhiều."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mr. Smith",
+          "textEn": "Learn to delegate. Overall, excellent work!",
+          "textVi": "Hãy học cách giao việc. Nhìn chung, làm rất tốt!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Linh",
+          "textEn": "Thank you! I'll keep pushing myself.",
+          "textVi": "Cảm ơn sếp! Em sẽ tiếp tục cố gắng."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Kết quả dự án của Linh được đánh giá thế nào?",
+        "options": [
+          "Xuất sắc",
+          "Tốt",
+          "Trung bình",
+          "Kém"
+        ],
+        "correctAnswer": "Xuất sắc",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: sếp nói 'outstanding'."
+      },
+      {
+        "question": "Điểm cần cải thiện của Linh là gì?",
+        "options": [
+          "Quản lý thời gian",
+          "Kỹ năng giao tiếp",
+          "Chuyên môn",
+          "Tinh thần team"
+        ],
+        "correctAnswer": "Quản lý thời gian",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: sếp nói 'time management'."
+      },
+      {
+        "question": "Linh đang làm gì để phát triển bản thân?",
+        "options": [
+          "Học khóa quản lý online",
+          "Đọc sách",
+          "Đi hội thảo",
+          "Học MBA"
+        ],
+        "correctAnswer": "Học khóa quản lý online",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Linh nói 'online management course'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-7"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-8",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-084",
+    "cefrLevel": "B2",
+    "topic": "crowdfunding",
+    "topicVi": "Gọi vốn cộng đồng",
+    "dialogue": {
+      "title": "The Crowdfunding Campaign",
+      "titleVi": "Chiến dịch gọi vốn cộng đồng",
+      "location": "Văn phòng startup, buổi tối",
+      "characters": [
+        {
+          "name": "David",
+          "role": "Founder",
+          "roleVi": "Nhà sáng lập",
+          "gender": "male"
+        },
+        {
+          "name": "Anna",
+          "role": "Co-founder",
+          "roleVi": "Đồng sáng lập",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "David",
+          "textEn": "Our crowdfunding campaign goes live tomorrow!",
+          "textVi": "Chiến dịch gọi vốn của mình lên sóng ngày mai!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Anna",
+          "textEn": "Finally! Are we ready? The video is done, right?",
+          "textVi": "Cuối cùng! Mình sẵn sàng chưa? Video xong rồi đúng không?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "David",
+          "textEn": "Yes! The video, the rewards, everything is set.",
+          "textVi": "Rồi! Video, quà tặng, mọi thứ đã sẵn sàng."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Anna",
+          "textEn": "What's our funding goal?",
+          "textVi": "Mục tiêu gọi vốn là bao nhiêu?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "David",
+          "textEn": "500 million dong in 30 days.",
+          "textVi": "500 triệu đồng trong 30 ngày."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Anna",
+          "textEn": "Ambitious! What if we don't reach it?",
+          "textVi": "Tham vọng đấy! Nếu không đạt thì sao?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "David",
+          "textEn": "It's all-or-nothing. If we fail, backers get refunded.",
+          "textVi": "Kiểu được ăn cả ngã về không. Thất bại thì hoàn tiền cho nhà đầu tư."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Anna",
+          "textEn": "No pressure then! Have we promoted it enough?",
+          "textVi": "Thế thì không áp lực gì! Mình đã quảng bá đủ chưa?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "David",
+          "textEn": "We've contacted 20 tech bloggers. Fingers crossed!",
+          "textVi": "Đã liên hệ 20 blogger công nghệ. Hy vọng may mắn!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Anna",
+          "textEn": "Let's do this! Our product deserves to succeed.",
+          "textVi": "Chiến thôi! Sản phẩm của mình xứng đáng thành công."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mục tiêu gọi vốn là bao nhiêu?",
+        "options": [
+          "300 triệu",
+          "500 triệu",
+          "700 triệu",
+          "1 tỷ"
+        ],
+        "correctAnswer": "500 triệu",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: David nói '500 million dong'."
+      },
+      {
+        "question": "Thời hạn chiến dịch là bao lâu?",
+        "options": [
+          "15 ngày",
+          "30 ngày",
+          "45 ngày",
+          "60 ngày"
+        ],
+        "correctAnswer": "30 ngày",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: David nói 'in 30 days'."
+      },
+      {
+        "question": "Nếu thất bại thì sao?",
+        "options": [
+          "Mất hết",
+          "Hoàn tiền cho nhà đầu tư",
+          "Kéo dài thêm",
+          "Giảm mục tiêu"
+        ],
+        "correctAnswer": "Hoàn tiền cho nhà đầu tư",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: David nói 'backers get refunded'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-085",
+    "cefrLevel": "B2",
+    "topic": "digital-detox",
+    "topicVi": "Cai nghiện số",
+    "dialogue": {
+      "title": "The Digital Detox Challenge",
+      "titleVi": "Thử thách cai nghiện số",
+      "location": "Quán cà phê sách, chiều thứ 7",
+      "characters": [
+        {
+          "name": "Mai",
+          "role": "Friend",
+          "roleVi": "Bạn",
+          "gender": "female"
+        },
+        {
+          "name": "Tom",
+          "role": "Friend",
+          "roleVi": "Bạn",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mai",
+          "textEn": "I'm doing a digital detox this weekend. No phone for 48 hours!",
+          "textVi": "Cuối tuần này tớ cai nghiện số. 48 tiếng không điện thoại!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Tom",
+          "textEn": "Are you serious? That's impossible for you!",
+          "textVi": "Cậu nghiêm túc à? Với cậu thì bất khả thi!"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mai",
+          "textEn": "I know, I'm addicted. I check my phone 100 times a day.",
+          "textVi": "Tớ biết, tớ nghiện rồi. Ngày check điện thoại 100 lần."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Tom",
+          "textEn": "What will you do instead?",
+          "textVi": "Thế cậu làm gì thay vào?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mai",
+          "textEn": "Read books, go for walks, actually talk to people!",
+          "textVi": "Đọc sách, đi dạo, trò chuyện với mọi người thật sự!"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Tom",
+          "textEn": "Hmm, that sounds... nice, actually.",
+          "textVi": "Ừm, nghe... hay đấy chứ."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mai",
+          "textEn": "Want to join me? We can do it together!",
+          "textVi": "Tham gia cùng tớ không? Mình cùng làm!"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Tom",
+          "textEn": "I don't know... What about emergencies?",
+          "textVi": "Tớ không chắc... Lỡ có việc khẩn cấp thì sao?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mai",
+          "textEn": "We'll tell family beforehand. They can call the landline.",
+          "textVi": "Mình báo trước cho gia đình. Họ gọi điện thoại bàn."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Tom",
+          "textEn": "Okay, I'm in! But you owe me coffee if I survive.",
+          "textVi": "Được, tớ tham gia! Nhưng nếu tớ sống sót thì cậu nợ tớ cà phê."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mai định cai điện thoại bao lâu?",
+        "options": [
+          "24 tiếng",
+          "48 tiếng",
+          "1 tuần",
+          "1 tháng"
+        ],
+        "correctAnswer": "48 tiếng",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Mai nói 'No phone for 48 hours'."
+      },
+      {
+        "question": "Mai check điện thoại bao nhiêu lần một ngày?",
+        "options": [
+          "50 lần",
+          "80 lần",
+          "100 lần",
+          "200 lần"
+        ],
+        "correctAnswer": "100 lần",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Mai nói '100 times a day'."
+      },
+      {
+        "question": "Tom đồng ý tham gia với điều kiện gì?",
+        "options": [
+          "Được mời cà phê",
+          "Được dùng máy tính",
+          "Được check tin nhắn",
+          "Rút ngắn thời gian"
+        ],
+        "correctAnswer": "Được mời cà phê",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: Tom nói 'you owe me coffee'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-7"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-9",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-086",
+    "cefrLevel": "B2",
+    "topic": "freelancing",
+    "topicVi": "Làm tự do",
+    "dialogue": {
+      "title": "The Freelance Life",
+      "titleVi": "Cuộc sống freelancer",
+      "location": "Không gian làm việc chung, giờ nghỉ trưa",
+      "characters": [
+        {
+          "name": "Sarah",
+          "role": "Freelancer",
+          "roleVi": "Freelancer",
+          "gender": "female"
+        },
+        {
+          "name": "David",
+          "role": "Office worker",
+          "roleVi": "Nhân viên văn phòng",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Sarah",
+          "textEn": "Another day, another deadline! Freelance life is busy.",
+          "textVi": "Lại một ngày, lại một deadline! Đời freelancer bận rộn."
+        },
+        {
+          "id": "line-2",
+          "speaker": "David",
+          "textEn": "Do you ever miss having a stable job?",
+          "textVi": "Cậu có bao giờ nhớ công việc ổn định không?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Sarah",
+          "textEn": "Sometimes. The income is unpredictable.",
+          "textVi": "Thỉnh thoảng. Thu nhập thất thường lắm."
+        },
+        {
+          "id": "line-4",
+          "speaker": "David",
+          "textEn": "So why did you quit your office job?",
+          "textVi": "Vậy sao cậu lại nghỉ việc văn phòng?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Sarah",
+          "textEn": "Freedom. I work when I want, where I want.",
+          "textVi": "Tự do. Tớ làm khi nào, ở đâu tùy thích."
+        },
+        {
+          "id": "line-6",
+          "speaker": "David",
+          "textEn": "That does sound amazing. But what about insurance?",
+          "textVi": "Nghe tuyệt thật. Nhưng bảo hiểm thì sao?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Sarah",
+          "textEn": "I pay for it myself. It's part of the trade-off.",
+          "textVi": "Tớ tự đóng. Đó là cái giá của tự do."
+        },
+        {
+          "id": "line-8",
+          "speaker": "David",
+          "textEn": "How do you find clients?",
+          "textVi": "Cậu tìm khách hàng bằng cách nào?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Sarah",
+          "textEn": "Mostly through referrals and my portfolio website.",
+          "textVi": "Chủ yếu qua giới thiệu và website portfolio."
+        },
+        {
+          "id": "line-10",
+          "speaker": "David",
+          "textEn": "Maybe I'll try freelancing one day too!",
+          "textVi": "Biết đâu một ngày tớ cũng thử làm freelancer!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Nhược điểm của freelance theo Sarah là gì?",
+        "options": [
+          "Thu nhập thất thường",
+          "Cô đơn",
+          "Thiếu kỹ năng",
+          "Không có thời gian"
+        ],
+        "correctAnswer": "Thu nhập thất thường",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Sarah nói 'income is unpredictable'."
+      },
+      {
+        "question": "Lý do Sarah nghỉ việc văn phòng?",
+        "options": [
+          "Lương thấp",
+          "Sếp khó tính",
+          "Muốn tự do",
+          "Chuyển thành phố"
+        ],
+        "correctAnswer": "Muốn tự do",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Sarah nói 'Freedom'."
+      },
+      {
+        "question": "Sarah tìm khách hàng bằng cách nào?",
+        "options": [
+          "Quảng cáo",
+          "Giới thiệu và website portfolio",
+          "Mạng xã hội",
+          "Hội chợ việc làm"
+        ],
+        "correctAnswer": "Giới thiệu và website portfolio",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Sarah nói 'referrals and my portfolio website'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-087",
+    "cefrLevel": "B2",
+    "topic": "language-exchange",
+    "topicVi": "Trao đổi ngôn ngữ",
+    "dialogue": {
+      "title": "The Language Exchange",
+      "titleVi": "Buổi trao đổi ngôn ngữ",
+      "location": "Quán cà phê, tối thứ 5",
+      "characters": [
+        {
+          "name": "Linh",
+          "role": "Vietnamese speaker",
+          "roleVi": "Người Việt",
+          "gender": "female"
+        },
+        {
+          "name": "James",
+          "role": "English speaker",
+          "roleVi": "Người Anh",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Linh",
+          "textEn": "So, how does this language exchange work?",
+          "textVi": "Vậy buổi trao đổi ngôn ngữ này hoạt động thế nào?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "James",
+          "textEn": "Simple! 30 minutes in English, 30 minutes in Vietnamese.",
+          "textVi": "Đơn giản! 30 phút tiếng Anh, 30 phút tiếng Việt."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Linh",
+          "textEn": "Sounds fair! My English is okay, but my pronunciation is terrible.",
+          "textVi": "Công bằng đấy! Tiếng Anh của tớ ổn, nhưng phát âm thì tệ."
+        },
+        {
+          "id": "line-4",
+          "speaker": "James",
+          "textEn": "And my Vietnamese tones are a disaster!",
+          "textVi": "Còn thanh điệu tiếng Việt của tớ thì thảm họa!"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Linh",
+          "textEn": "Ha! Let's start with English. Ask me anything.",
+          "textVi": "Ha! Bắt đầu bằng tiếng Anh nhé. Cậu hỏi gì cũng được."
+        },
+        {
+          "id": "line-6",
+          "speaker": "James",
+          "textEn": "Okay... What's the difference between 'borrow' and 'lend'?",
+          "textVi": "Được... 'borrow' và 'lend' khác nhau thế nào?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Linh",
+          "textEn": "Good question! 'Borrow' is taking, 'lend' is giving.",
+          "textVi": "Câu hay đấy! 'Borrow' là mượn vào, 'lend' là cho mượn ra."
+        },
+        {
+          "id": "line-8",
+          "speaker": "James",
+          "textEn": "Ah, I see! Now teach me some Vietnamese slang.",
+          "textVi": "À, hiểu rồi! Giờ dạy tớ tiếng lóng Việt đi."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Linh",
+          "textEn": "Okay! 'Xịn xò' means cool or awesome.",
+          "textVi": "Được! 'Xịn xò' nghĩa là cool, tuyệt vời."
+        },
+        {
+          "id": "line-10",
+          "speaker": "James",
+          "textEn": "Xịn xò! I love this exchange already!",
+          "textVi": "Xịn xò! Tớ thích buổi trao đổi này rồi!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mỗi ngôn ngữ trao đổi bao lâu?",
+        "options": [
+          "15 phút",
+          "30 phút",
+          "45 phút",
+          "1 tiếng"
+        ],
+        "correctAnswer": "30 phút",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: James nói '30 minutes in English, 30 minutes in Vietnamese'."
+      },
+      {
+        "question": "Điểm yếu của Linh là gì?",
+        "options": [
+          "Phát âm",
+          "Từ vựng",
+          "Ngữ pháp",
+          "Nghe"
+        ],
+        "correctAnswer": "Phát âm",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Linh nói 'my pronunciation is terrible'."
+      },
+      {
+        "question": "'Xịn xò' nghĩa là gì?",
+        "options": [
+          "Tuyệt vời",
+          "Đắt tiền",
+          "Mới lạ",
+          "Nhanh"
+        ],
+        "correctAnswer": "Tuyệt vời",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Linh nói 'cool or awesome'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-088",
+    "cefrLevel": "B2",
+    "topic": "side-hustle",
+    "topicVi": "Nghề tay trái",
+    "dialogue": {
+      "title": "The Side Hustle",
+      "titleVi": "Nghề tay trái",
+      "location": "Quán trà sữa sau giờ làm",
+      "characters": [
+        {
+          "name": "Tom",
+          "role": "Employee",
+          "roleVi": "Nhân viên",
+          "gender": "male"
+        },
+        {
+          "name": "Mai",
+          "role": "Employee",
+          "roleVi": "Nhân viên",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Tom",
+          "textEn": "You look tired. Still working on your side hustle?",
+          "textVi": "Cậu trông mệt đấy. Vẫn làm nghề tay trái à?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mai",
+          "textEn": "Yeah! My online shop is finally taking off.",
+          "textVi": "Ừ! Shop online của tớ cuối cùng cũng khởi sắc."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Tom",
+          "textEn": "What do you sell again?",
+          "textVi": "Cậu bán gì nhỉ?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mai",
+          "textEn": "Handmade candles. I make them every evening.",
+          "textVi": "Nến thủ công. Tối nào tớ cũng làm."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Tom",
+          "textEn": "That's cool! How many orders per week?",
+          "textVi": "Hay đấy! Mỗi tuần bao nhiêu đơn?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mai",
+          "textEn": "Around 50 now. It's almost my full salary!",
+          "textVi": "Khoảng 50 đơn. Gần bằng lương chính rồi!"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Tom",
+          "textEn": "Wow! Will you quit your day job?",
+          "textVi": "Ồ! Cậu định nghỉ việc chính không?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mai",
+          "textEn": "Not yet. I want 6 months of savings first.",
+          "textVi": "Chưa. Tớ muốn có 6 tháng tiền tiết kiệm đã."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Tom",
+          "textEn": "Smart move. How do you manage your time?",
+          "textVi": "Khôn ngoan. Cậu quản lý thời gian thế nào?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mai",
+          "textEn": "Strict schedule: 2 hours every night, no excuses!",
+          "textVi": "Lịch nghiêm ngặt: 2 tiếng mỗi tối, không viện cớ!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mai bán gì online?",
+        "options": [
+          "Nến thủ công",
+          "Quần áo",
+          "Mỹ phẩm",
+          "Đồ ăn"
+        ],
+        "correctAnswer": "Nến thủ công",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Mai nói 'Handmade candles'."
+      },
+      {
+        "question": "Mỗi tuần Mai có bao nhiêu đơn?",
+        "options": [
+          "Khoảng 30",
+          "Khoảng 50",
+          "Khoảng 80",
+          "Khoảng 100"
+        ],
+        "correctAnswer": "Khoảng 50",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Mai nói 'Around 50'."
+      },
+      {
+        "question": "Mai dành bao nhiêu thời gian mỗi tối cho shop?",
+        "options": [
+          "1 tiếng",
+          "2 tiếng",
+          "3 tiếng",
+          "4 tiếng"
+        ],
+        "correctAnswer": "2 tiếng",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: Mai nói '2 hours every night'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-089",
+    "cefrLevel": "B2",
+    "topic": "book-club",
+    "topicVi": "Câu lạc bộ sách",
+    "dialogue": {
+      "title": "The Book Club Discussion",
+      "titleVi": "Buổi thảo luận câu lạc bộ sách",
+      "location": "Thư viện quận, chiều chủ nhật",
+      "characters": [
+        {
+          "name": "Anna",
+          "role": "Book club leader",
+          "roleVi": "Trưởng nhóm",
+          "gender": "female"
+        },
+        {
+          "name": "David",
+          "role": "Member",
+          "roleVi": "Thành viên",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Anna",
+          "textEn": "Welcome everyone! Today we discuss 'The Alchemist'.",
+          "textVi": "Chào mọi người! Hôm nay mình thảo luận 'Nhà giả kim'."
+        },
+        {
+          "id": "line-2",
+          "speaker": "David",
+          "textEn": "I loved it! The message about following your dreams really hit me.",
+          "textVi": "Tớ thích lắm! Thông điệp theo đuổi ước mơ chạm đến tớ."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Anna",
+          "textEn": "Same here! What did you think of Santiago's journey?",
+          "textVi": "Tớ cũng vậy! Cậu nghĩ sao về hành trình của Santiago?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "David",
+          "textEn": "It taught me that the journey matters more than the destination.",
+          "textVi": "Nó dạy tớ rằng hành trình quan trọng hơn đích đến."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Anna",
+          "textEn": "Beautifully said! Did anyone dislike the book?",
+          "textVi": "Nói hay quá! Có ai không thích sách không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "David",
+          "textEn": "Honestly, I found the beginning a bit slow.",
+          "textVi": "Thật lòng, tớ thấy phần đầu hơi chậm."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Anna",
+          "textEn": "Fair point. But the ending made it worthwhile, right?",
+          "textVi": "Ý kiến hay. Nhưng cái kết xứng đáng, đúng không?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "David",
+          "textEn": "Absolutely! I finished it in two days.",
+          "textVi": "Chắc chắn! Tớ đọc xong trong 2 ngày."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Anna",
+          "textEn": "What should we read next month?",
+          "textVi": "Tháng sau mình đọc gì?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "David",
+          "textEn": "How about a Vietnamese novel in translation?",
+          "textVi": "Thử tiểu thuyết Việt Nam bản dịch thì sao?"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Hôm nay nhóm thảo luận cuốn sách nào?",
+        "options": [
+          "Nhà giả kim",
+          "Hoàng tử bé",
+          "Đắc nhân tâm",
+          "Tuổi trẻ đáng giá bao nhiêu"
+        ],
+        "correctAnswer": "Nhà giả kim",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Anna nói 'The Alchemist'."
+      },
+      {
+        "question": "David rút ra bài học gì?",
+        "options": [
+          "Hành trình quan trọng hơn đích đến",
+          "Tiền không mua được hạnh phúc",
+          "Ước mơ là viển vông",
+          "Nên sống thực tế"
+        ],
+        "correctAnswer": "Hành trình quan trọng hơn đích đến",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: David nói 'the journey matters more than the destination'."
+      },
+      {
+        "question": "David đọc xong sách trong bao lâu?",
+        "options": [
+          "1 ngày",
+          "2 ngày",
+          "1 tuần",
+          "1 tháng"
+        ],
+        "correctAnswer": "2 ngày",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: David nói 'in two days'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-090",
+    "cefrLevel": "B2",
+    "topic": "alumni",
+    "topicVi": "Cựu sinh viên",
+    "dialogue": {
+      "title": "The Alumni Talk",
+      "titleVi": "Buổi nói chuyện cựu sinh viên",
+      "location": "Hội trường đại học, sáng thứ 7",
+      "characters": [
+        {
+          "name": "Linh",
+          "role": "Student",
+          "roleVi": "Sinh viên",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Tuan",
+          "role": "Alumni speaker",
+          "roleVi": "Diễn giả cựu sinh viên",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Linh",
+          "textEn": "Thank you for coming back to share with us!",
+          "textVi": "Cảm ơn anh đã về chia sẻ với chúng em!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Tuan",
+          "textEn": "My pleasure! I graduated from here 10 years ago.",
+          "textVi": "Rất vui! Anh tốt nghiệp ở đây 10 năm trước."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Linh",
+          "textEn": "What's the biggest lesson from your career?",
+          "textVi": "Bài học lớn nhất trong sự nghiệp của anh là gì?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Tuan",
+          "textEn": "Never stop learning. Your degree is just the beginning.",
+          "textVi": "Đừng bao giờ ngừng học. Tấm bằng chỉ là khởi đầu."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Linh",
+          "textEn": "Did you know what you wanted to do after graduation?",
+          "textVi": "Anh có biết mình muốn làm gì sau tốt nghiệp không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Tuan",
+          "textEn": "Honestly? No. I changed careers twice!",
+          "textVi": "Thật lòng? Không. Anh đã đổi nghề 2 lần!"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Linh",
+          "textEn": "Really? That's reassuring to hear!",
+          "textVi": "Thật ạ? Nghe vậy em yên tâm quá!"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Tuan",
+          "textEn": "It's normal. Focus on building skills, not titles.",
+          "textVi": "Bình thường mà. Hãy tập trung xây dựng kỹ năng, không phải chức danh."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Linh",
+          "textEn": "Any advice for job hunting?",
+          "textVi": "Anh có lời khuyên nào khi tìm việc không?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Tuan",
+          "textEn": "Network genuinely. Most jobs come through people you know.",
+          "textVi": "Xây dựng mối quan hệ chân thành. Hầu hết việc làm đến từ người quen."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Diễn giả tốt nghiệp cách đây bao lâu?",
+        "options": [
+          "5 năm",
+          "10 năm",
+          "15 năm",
+          "20 năm"
+        ],
+        "correctAnswer": "10 năm",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: anh Tuấn nói '10 years ago'."
+      },
+      {
+        "question": "Anh Tuấn đã đổi nghề mấy lần?",
+        "options": [
+          "1 lần",
+          "2 lần",
+          "3 lần",
+          "Chưa từng"
+        ],
+        "correctAnswer": "2 lần",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: anh Tuấn nói 'changed careers twice'."
+      },
+      {
+        "question": "Lời khuyên tìm việc của anh là gì?",
+        "options": [
+          "Xây dựng mối quan hệ chân thành",
+          "Nộp thật nhiều CV",
+          "Học thêm bằng cấp",
+          "Chờ việc tốt"
+        ],
+        "correctAnswer": "Xây dựng mối quan hệ chân thành",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: anh Tuấn nói 'Network genuinely'."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  }
+]

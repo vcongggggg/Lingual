@@ -1,0 +1,4422 @@
+[
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Lan",
+          "role": "Khách hàng"
+        },
+        {
+          "gender": "male",
+          "name": "Mr. Hung",
+          "role": "Chủ cửa hàng"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Lan",
+          "textEn": "Good morning! These roses are beautiful.",
+          "textVi": "Chào buổi sáng! Mấy bông hồng này đẹp quá."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Hung",
+          "textEn": "Good morning! Yes, they are fresh from this morning.",
+          "textVi": "Chào buổi sáng! Vâng, chúng tươi lắm, vừa nhập sáng nay."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Lan",
+          "textEn": "How much is one rose?",
+          "textVi": "Một bông hồng giá bao nhiêu ạ?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Hung",
+          "textEn": "Ten thousand dong for one. Or ninety thousand for ten.",
+          "textVi": "Mười nghìn một bông, hoặc chín mươi nghìn mười bông."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Lan",
+          "textEn": "I want to buy ten red roses for my mother.",
+          "textVi": "Cháu muốn mua mười bông hồng đỏ tặng mẹ cháu."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Hung",
+          "textEn": "That is very sweet. Her birthday is today?",
+          "textVi": "Thật là tình cảm. Hôm nay là sinh nhật mẹ cháu à?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Lan",
+          "textEn": "Yes, she turns fifty today. Can you wrap them nicely?",
+          "textVi": "Vâng, hôm nay mẹ cháu tròn năm mươi tuổi. Bác gói đẹp giúp cháu nhé?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Hung",
+          "textEn": "Of course! I will add some green leaves for free.",
+          "textVi": "Tất nhiên! Bác sẽ tặng thêm ít lá xanh miễn phí."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Lan",
+          "textEn": "Thank you so much! Here is one hundred thousand dong.",
+          "textVi": "Cháu cảm ơn nhiều! Đây là một trăm nghìn đồng."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Hung",
+          "textEn": "Thank you! Ten thousand back. Happy birthday to your mother!",
+          "textVi": "Cảm ơn cháu! Thối lại mười nghìn. Chúc mẹ cháu sinh nhật vui vẻ!"
+        }
+      ],
+      "location": "Cửa hàng hoa ở chợ Đà Lạt",
+      "title": "Buying Flowers",
+      "titleVi": "Mua hoa"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8",
+        "line-10"
+      ]
+    },
+    "id": "pkg-091",
+    "quiz": [
+      {
+        "correctAnswer": "Hoa hồng",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Lan khen 'These roses are beautiful' và dòng 5 cô muốn mua 'ten red roses'.",
+        "options": [
+          "Hoa hồng",
+          "Hoa lan",
+          "Hoa cúc",
+          "Hoa tulip"
+        ],
+        "question": "Lan muốn mua hoa gì?"
+      },
+      {
+        "correctAnswer": "Tặng mẹ",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Lan nói 'I want to buy ten red roses for my mother'.",
+        "options": [
+          "Tặng bạn",
+          "Tặng mẹ",
+          "Tặng cô giáo",
+          "Tặng em gái"
+        ],
+        "question": "Lan mua hoa tặng ai?"
+      },
+      {
+        "correctAnswer": "Chín mươi nghìn",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: ông Hùng nói 'ninety thousand for ten'.",
+        "options": [
+          "Tám mươi nghìn",
+          "Chín mươi nghìn",
+          "Một trăm nghìn",
+          "Một trăm hai mươi nghìn"
+        ],
+        "question": "Mười bông hồng giá bao nhiêu?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "shopping",
+    "topicVi": "Mua sắm",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-7"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "Minh",
+          "role": "Khách hàng"
+        },
+        {
+          "gender": "female",
+          "name": "Anna",
+          "role": "Nhân viên bán hàng"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Minh",
+          "textEn": "Excuse me, where are the English storybooks?",
+          "textVi": "Xin lỗi, khu vực truyện tiếng Anh ở đâu ạ?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Anna",
+          "textEn": "They are on the second floor, next to the children's books.",
+          "textVi": "Chúng ở tầng hai, cạnh khu sách thiếu nhi ạ."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Minh",
+          "textEn": "I am looking for a book for beginners. Any ideas?",
+          "textVi": "Tôi đang tìm một cuốn sách cho người mới bắt đầu. Chị có gợi ý nào không?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Anna",
+          "textEn": "This one is very popular. It has pictures and simple words.",
+          "textVi": "Cuốn này rất được ưa chuộng. Có tranh và từ vựng đơn giản."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Minh",
+          "textEn": "It looks nice. How much does it cost?",
+          "textVi": "Trông hay đấy. Cuốn này giá bao nhiêu?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Anna",
+          "textEn": "It is eighty-five thousand dong. We have a ten percent discount today.",
+          "textVi": "Giá tám mươi lăm nghìn, hôm nay giảm giá mười phần trăm ạ."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Minh",
+          "textEn": "Great! I will take it. Do you sell notebooks too?",
+          "textVi": "Tuyệt! Tôi lấy cuốn này. Ở đây có bán vở ghi chép không?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Anna",
+          "textEn": "Yes, the notebooks are right here by the door.",
+          "textVi": "Có ạ, vở ghi chép ở ngay cạnh cửa ra vào."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Minh",
+          "textEn": "I will buy two notebooks. Can I pay by card?",
+          "textVi": "Tôi sẽ mua hai cuốn vở. Tôi thanh toán bằng thẻ được không?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Anna",
+          "textEn": "Sure. Please follow me to the counter.",
+          "textVi": "Được ạ. Anh vui lòng theo em ra quầy thu ngân."
+        }
+      ],
+      "location": "Hiệu sách Fahasa ở Quận 1, TP.HCM",
+      "title": "At the Bookstore",
+      "titleVi": "Ở hiệu sách"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8",
+        "line-10"
+      ]
+    },
+    "id": "pkg-092",
+    "quiz": [
+      {
+        "correctAnswer": "Truyện tiếng Anh",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Minh hỏi 'where are the English storybooks?'.",
+        "options": [
+          "Sách toán",
+          "Truyện tiếng Anh",
+          "Sách nấu ăn",
+          "Truyện tranh"
+        ],
+        "question": "Minh muốn mua loại sách gì?"
+      },
+      {
+        "correctAnswer": "Tầng hai",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Anna nói 'They are on the second floor'.",
+        "options": [
+          "Tầng một",
+          "Tầng hai",
+          "Tầng hầm",
+          "Tầng ba"
+        ],
+        "question": "Khu vực truyện tiếng Anh ở đâu?"
+      },
+      {
+        "correctAnswer": "Mười phần trăm",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: Anna nói 'We have a ten percent discount today'.",
+        "options": [
+          "Năm phần trăm",
+          "Mười phần trăm",
+          "Mười lăm phần trăm",
+          "Hai mươi phần trăm"
+        ],
+        "question": "Hôm nay cửa hàng giảm giá bao nhiêu?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "bookstore",
+    "topicVi": "Hiệu sách",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-7"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Thu",
+          "role": "Bạn nấu chính"
+        },
+        {
+          "gender": "male",
+          "name": "David",
+          "role": "Bạn học tiếng Anh của Thu"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Thu",
+          "textEn": "Today I will teach you how to cook pho. Are you ready?",
+          "textVi": "Hôm nay mình sẽ dạy bạn nấu phở. Bạn sẵn sàng chưa?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "David",
+          "textEn": "Yes! I love pho, but I never cooked it before.",
+          "textVi": "Rồi! Tôi thích phở lắm, nhưng chưa bao giờ nấu."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Thu",
+          "textEn": "First, we need to wash the beef bones and boil them.",
+          "textVi": "Đầu tiên, chúng ta cần rửa xương bò rồi cho vào ninh."
+        },
+        {
+          "id": "line-4",
+          "speaker": "David",
+          "textEn": "How long do we cook the bones?",
+          "textVi": "Chúng ta ninh xương bao lâu?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Thu",
+          "textEn": "About four hours. A good broth takes time.",
+          "textVi": "Khoảng bốn tiếng. Nước dùng ngon cần thời gian."
+        },
+        {
+          "id": "line-6",
+          "speaker": "David",
+          "textEn": "Four hours! What do we do while we wait?",
+          "textVi": "Bốn tiếng! Trong lúc chờ mình làm gì?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Thu",
+          "textEn": "We can slice the onions and prepare the herbs.",
+          "textVi": "Mình có thể thái hành và chuẩn bị rau thơm."
+        },
+        {
+          "id": "line-8",
+          "speaker": "David",
+          "textEn": "I can slice the onions. Do you have a sharp knife?",
+          "textVi": "Tôi thái hành được. Bạn có dao sắc không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Thu",
+          "textEn": "Here it is. Be careful with your fingers!",
+          "textVi": "Đây này. Cẩn thận ngón tay nhé!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "David",
+          "textEn": "Do not worry. I am a careful cook!",
+          "textVi": "Đừng lo. Tôi là đầu bếp cẩn thận mà!"
+        },
+        {
+          "id": "line-11",
+          "speaker": "Thu",
+          "textEn": "Good! Now let us smell the broth. It smells wonderful!",
+          "textVi": "Tốt! Giờ ngửi thử nước dùng nào. Thơm quá!"
+        },
+        {
+          "id": "line-12",
+          "speaker": "David",
+          "textEn": "Yes! I cannot wait to eat our pho!",
+          "textVi": "Ừ! Tôi không thể chờ để ăn phở của chúng ta!"
+        }
+      ],
+      "location": "Bếp nhà Thu ở Hà Nội",
+      "title": "Cooking Pho",
+      "titleVi": "Nấu phở"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-3",
+        "line-5",
+        "line-8",
+        "line-12"
+      ]
+    },
+    "id": "pkg-093",
+    "quiz": [
+      {
+        "correctAnswer": "Phở",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Thu nói 'Today I will teach you how to cook pho'.",
+        "options": [
+          "Phở",
+          "Bún chả",
+          "Cơm chiên",
+          "Mì xào"
+        ],
+        "question": "Thu và David đang nấu món gì?"
+      },
+      {
+        "correctAnswer": "Bốn tiếng",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Thu nói 'About four hours'.",
+        "options": [
+          "Một tiếng",
+          "Hai tiếng",
+          "Bốn tiếng",
+          "Sáu tiếng"
+        ],
+        "question": "Ninh xương bò trong bao lâu?"
+      },
+      {
+        "correctAnswer": "Thái hành và chuẩn bị rau thơm",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Thu nói 'We can slice the onions and prepare the herbs'.",
+        "options": [
+          "Xem ti vi",
+          "Thái hành và chuẩn bị rau thơm",
+          "Đi chợ",
+          "Rửa bát"
+        ],
+        "question": "Trong lúc chờ nước dùng, họ làm gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-4",
+        "line-6",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "cooking",
+    "topicVi": "Nấu ăn",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-7"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Hoa",
+          "role": "Du khách"
+        },
+        {
+          "gender": "male",
+          "name": "Peter",
+          "role": "Bạn du lịch của Hoa"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Hoa",
+          "textEn": "Wow, the night market is so crowded and colorful!",
+          "textVi": "Wow, chợ đêm đông vui và nhiều màu sắc quá!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Peter",
+          "textEn": "Yes! I can smell grilled food everywhere. What is that?",
+          "textVi": "Ừ! Tôi ngửi thấy mùi đồ nướng ở khắp nơi. Đó là món gì vậy?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Hoa",
+          "textEn": "That is banh trang nuong, grilled rice paper. It is very famous here.",
+          "textVi": "Đó là bánh tráng nướng. Món này rất nổi tiếng ở đây."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Peter",
+          "textEn": "Let us buy two. I am really hungry now.",
+          "textVi": "Mình mua hai cái đi. Giờ tôi đói lắm rồi."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Hoa",
+          "textEn": "Good idea! After that, we can look at the clothes stalls.",
+          "textVi": "Ý hay đấy! Sau đó mình có thể xem các quầy quần áo."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Peter",
+          "textEn": "How late is the market open?",
+          "textVi": "Chợ mở đến mấy giờ?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Hoa",
+          "textEn": "It is open until eleven at night. We have a lot of time.",
+          "textVi": "Chợ mở đến mười một giờ đêm. Mình còn nhiều thời gian."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Peter",
+          "textEn": "Look! They sell warm soy milk. It is perfect for this cold weather.",
+          "textVi": "Nhìn kìa! Họ bán sữa đậu nành nóng. Hợp với thời tiết lạnh này quá."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Hoa",
+          "textEn": "Yes, Da Lat is cold at night. Let us buy two cups.",
+          "textVi": "Ừ, Đà Lạt buổi tối lạnh. Mình mua hai ly đi."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Peter",
+          "textEn": "This night market is the best part of our trip!",
+          "textVi": "Chợ đêm này là phần tuyệt nhất trong chuyến đi của mình!"
+        }
+      ],
+      "location": "Chợ đêm Đà Lạt",
+      "title": "The Night Market",
+      "titleVi": "Chợ đêm"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8",
+        "line-9"
+      ]
+    },
+    "id": "pkg-094",
+    "quiz": [
+      {
+        "correctAnswer": "Mùi đồ nướng",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Peter nói 'I can smell grilled food everywhere'.",
+        "options": [
+          "Mùi hoa",
+          "Mùi đồ nướng",
+          "Mùi cà phê",
+          "Mùi trái cây"
+        ],
+        "question": "Peter ngửi thấy mùi gì ở chợ đêm?"
+      },
+      {
+        "correctAnswer": "Bánh tráng nướng trên lửa",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Hoa nói 'That is banh trang nuong, grilled rice paper'.",
+        "options": [
+          "Bánh mì nướng",
+          "Cơm chiên",
+          "Bánh tráng nướng trên lửa",
+          "Phở xào"
+        ],
+        "question": "Bánh tráng nướng là món gì?"
+      },
+      {
+        "correctAnswer": "Mười một giờ đêm",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Hoa nói 'It is open until eleven at night'.",
+        "options": [
+          "Chín giờ tối",
+          "Mười giờ tối",
+          "Mười một giờ đêm",
+          "Mười hai giờ đêm"
+        ],
+        "question": "Chợ đêm mở đến mấy giờ?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "night-market",
+    "topicVi": "Chợ đêm",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-4",
+        "line-6"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "Tuan",
+          "role": "Học viên"
+        },
+        {
+          "gender": "female",
+          "name": "Coach Mai",
+          "role": "Huấn luyện viên bơi"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Coach Mai",
+          "textEn": "Welcome to your first swimming lesson! Are you nervous?",
+          "textVi": "Chào mừng đến buổi học bơi đầu tiên! Em có lo lắng không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Tuan",
+          "textEn": "A little. I am afraid of deep water.",
+          "textVi": "Hơi lo một chút. Em sợ nước sâu."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Coach Mai",
+          "textEn": "Do not worry. We will start in the shallow pool.",
+          "textVi": "Đừng lo. Chúng ta sẽ bắt đầu ở bể nông."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Tuan",
+          "textEn": "Okay. What should I do first?",
+          "textVi": "Vâng. Em nên làm gì trước ạ?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Coach Mai",
+          "textEn": "First, hold the wall and practice kicking your legs.",
+          "textVi": "Trước tiên, bám vào thành bể và tập đạp chân."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Tuan",
+          "textEn": "Like this? Am I doing it right?",
+          "textVi": "Như thế này ạ? Em làm đúng chưa?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Coach Mai",
+          "textEn": "Very good! Now try to put your face in the water.",
+          "textVi": "Rất tốt! Giờ thử úp mặt xuống nước xem."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Tuan",
+          "textEn": "The water is cold! But I can do it.",
+          "textVi": "Nước lạnh quá! Nhưng em làm được."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Coach Mai",
+          "textEn": "Excellent! You are a fast learner. Let us rest for five minutes.",
+          "textVi": "Tuyệt vời! Em học nhanh lắm. Nghỉ năm phút nào."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Tuan",
+          "textEn": "Thank you, coach! I feel more confident now.",
+          "textVi": "Cảm ơn cô! Giờ em tự tin hơn nhiều rồi."
+        }
+      ],
+      "location": "Bể bơi Yết Kiêu, Hà Nội",
+      "title": "Learning to Swim",
+      "titleVi": "Học bơi"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8",
+        "line-10"
+      ]
+    },
+    "id": "pkg-095",
+    "quiz": [
+      {
+        "correctAnswer": "Sợ nước sâu",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Tuấn nói 'I am afraid of deep water'.",
+        "options": [
+          "Sợ nước lạnh",
+          "Sợ nước sâu",
+          "Sợ huấn luyện viên",
+          "Sợ đám đông"
+        ],
+        "question": "Tuấn sợ điều gì?"
+      },
+      {
+        "correctAnswer": "Bám thành bể và đạp chân",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: cô Mai nói 'First, hold the wall and practice kicking your legs'.",
+        "options": [
+          "Lặn xuống đáy",
+          "Bám thành bể và đạp chân",
+          "Bơi 100 mét",
+          "Nhảy từ cầu nhảy"
+        ],
+        "question": "Bài tập đầu tiên của Tuấn là gì?"
+      },
+      {
+        "correctAnswer": "Năm phút",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: cô Mai nói 'Let us rest for five minutes'.",
+        "options": [
+          "Ba phút",
+          "Năm phút",
+          "Mười phút",
+          "Mười lăm phút"
+        ],
+        "question": "Họ nghỉ bao lâu?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-7"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "swimming",
+    "topicVi": "Học bơi",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-4",
+        "line-6"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "Nam",
+          "role": "Chủ nhà"
+        },
+        {
+          "gender": "female",
+          "name": "Linh",
+          "role": "Bạn cùng phòng của Nam"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Nam",
+          "textEn": "Oh no! I cannot find my house key!",
+          "textVi": "Ôi không! Tôi không tìm thấy chìa khóa nhà!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Linh",
+          "textEn": "Calm down. When did you last see it?",
+          "textVi": "Bình tĩnh nào. Bạn nhìn thấy nó lần cuối khi nào?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Nam",
+          "textEn": "This morning. I put it in my jacket pocket.",
+          "textVi": "Sáng nay. Tôi để nó trong túi áo khoác."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Linh",
+          "textEn": "Did you check all your pockets?",
+          "textVi": "Bạn đã kiểm tra hết các túi chưa?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Nam",
+          "textEn": "Yes, three times. It is not there.",
+          "textVi": "Rồi, ba lần rồi. Không có ở đó."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Linh",
+          "textEn": "Maybe it fell out at the coffee shop. Let us call them.",
+          "textVi": "Có thể nó rơi ở quán cà phê. Mình gọi cho họ nhé."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Nam",
+          "textEn": "Good idea! I was there at eight o'clock.",
+          "textVi": "Ý hay đấy! Tôi đã ở đó lúc tám giờ."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Linh",
+          "textEn": "Hello? Did anyone find a silver key this morning? ... Really? Great!",
+          "textVi": "Alo? Sáng nay có ai nhặt được chìa khóa bạc không ạ? ... Thật ạ? Tuyệt vời!"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Nam",
+          "textEn": "They found it? That is wonderful news!",
+          "textVi": "Họ tìm thấy rồi à? Tin tuyệt vời!"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Linh",
+          "textEn": "Yes, it is at the counter. Let us go and get it now.",
+          "textVi": "Ừ, nó đang ở quầy. Mình đi lấy ngay thôi."
+        }
+      ],
+      "location": "Căn hộ của Nam ở Quận 7, TP.HCM",
+      "title": "The Lost Key",
+      "titleVi": "Chiếc chìa khóa bị mất"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-7",
+        "line-10"
+      ]
+    },
+    "id": "pkg-096",
+    "quiz": [
+      {
+        "correctAnswer": "Chìa khóa nhà",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Nam nói 'I cannot find my house key!'.",
+        "options": [
+          "Ví tiền",
+          "Điện thoại",
+          "Chìa khóa nhà",
+          "Thẻ xe buýt"
+        ],
+        "question": "Nam đánh mất cái gì?"
+      },
+      {
+        "correctAnswer": "Trong túi áo khoác",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Nam nói 'I put it in my jacket pocket'.",
+        "options": [
+          "Trong túi áo khoác",
+          "Trên bàn",
+          "Ở quán cà phê",
+          "Trong xe"
+        ],
+        "question": "Lần cuối Nam thấy chìa khóa ở đâu?"
+      },
+      {
+        "correctAnswer": "Quán cà phê",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: Linh gọi cho quán cà phê và họ xác nhận có nhặt được chìa khóa.",
+        "options": [
+          "Linh",
+          "Hàng xóm",
+          "Quán cà phê",
+          "Bảo vệ"
+        ],
+        "question": "Ai đã tìm thấy chìa khóa?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "lost-key",
+    "topicVi": "Đánh mất chìa khóa",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-2",
+        "line-4"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Ba",
+          "role": "Bà chủ vườn"
+        },
+        {
+          "gender": "male",
+          "name": "Tom",
+          "role": "Cháu họ từ Mỹ về thăm"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ba",
+          "textEn": "Tom, today I will show you how to plant vegetables.",
+          "textVi": "Tom à, hôm nay bà sẽ chỉ cháu cách trồng rau."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Tom",
+          "textEn": "That sounds fun, Grandma! What will we plant?",
+          "textVi": "Nghe vui đấy bà! Mình sẽ trồng gì ạ?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ba",
+          "textEn": "We will plant tomatoes, cucumbers, and morning glory.",
+          "textVi": "Mình sẽ trồng cà chua, dưa chuột và rau muống."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Tom",
+          "textEn": "I have never seen morning glory. What does it look like?",
+          "textVi": "Cháu chưa bao giờ thấy rau muống. Nó trông thế nào ạ?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ba",
+          "textEn": "It is a green vegetable. Vietnamese people eat it every day.",
+          "textVi": "Đó là một loại rau xanh. Người Việt ăn nó mỗi ngày."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Tom",
+          "textEn": "How deep should I dig the holes?",
+          "textVi": "Cháu nên đào hố sâu bao nhiêu ạ?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ba",
+          "textEn": "About five centimeters. Then put one seed in each hole.",
+          "textVi": "Khoảng năm xăng-ti-mét. Rồi bỏ một hạt vào mỗi hố."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Tom",
+          "textEn": "Done! Now should I water them?",
+          "textVi": "Xong rồi! Giờ cháu tưới nước nhé?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ba",
+          "textEn": "Yes, water them gently every morning.",
+          "textVi": "Ừ, tưới nhẹ nhàng mỗi buổi sáng nhé."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Tom",
+          "textEn": "When can we eat our vegetables?",
+          "textVi": "Khi nào mình được ăn rau của mình ạ?"
+        },
+        {
+          "id": "line-11",
+          "speaker": "Ba",
+          "textEn": "In about one month. Good things take time!",
+          "textVi": "Khoảng một tháng nữa. Điều tốt đẹp cần thời gian mà!"
+        }
+      ],
+      "location": "Vườn sau nhà bà Ba ở Cần Thơ",
+      "title": "Planting a Garden",
+      "titleVi": "Trồng vườn rau"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-5",
+        "line-6",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "id": "pkg-097",
+    "quiz": [
+      {
+        "correctAnswer": "Cà chua, dưa chuột, rau muống",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: bà Ba nói 'We will plant tomatoes, cucumbers, and morning glory'.",
+        "options": [
+          "Cà chua, dưa chuột, rau muống",
+          "Cải bắp, cà rốt, khoai tây",
+          "Hành, tỏi, ớt",
+          "Rau xà lách, rau mùi, húng quế"
+        ],
+        "question": "Bà Ba và Tom trồng những loại rau gì?"
+      },
+      {
+        "correctAnswer": "Năm xăng-ti-mét",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: bà Ba nói 'About five centimeters'.",
+        "options": [
+          "Ba xăng-ti-mét",
+          "Năm xăng-ti-mét",
+          "Mười xăng-ti-mét",
+          "Mười lăm xăng-ti-mét"
+        ],
+        "question": "Hố trồng nên đào sâu bao nhiêu?"
+      },
+      {
+        "correctAnswer": "Một tháng",
+        "evidenceLineId": "line-11",
+        "explanation": "Dòng 11: bà Ba nói 'In about one month'.",
+        "options": [
+          "Một tuần",
+          "Hai tuần",
+          "Một tháng",
+          "Ba tháng"
+        ],
+        "question": "Bao lâu nữa họ mới được ăn rau?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-3",
+        "line-8",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "gardening",
+    "topicVi": "Làm vườn",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-6",
+        "line-10"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "Khoa",
+          "role": "Khách hàng nhí"
+        },
+        {
+          "gender": "female",
+          "name": "Ms. Phuong",
+          "role": "Nhân viên tiệm kem"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Khoa",
+          "textEn": "Hello! I would like an ice cream, please.",
+          "textVi": "Cháu chào cô! Cháu muốn mua một cây kem ạ."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Phuong",
+          "textEn": "Hello, little boy! We have chocolate, vanilla, and strawberry.",
+          "textVi": "Chào cháu! Cô có kem sô-cô-la, va-ni và dâu tây."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Khoa",
+          "textEn": "Hmm, I cannot decide. Which one do children like most?",
+          "textVi": "Hmm, cháu không biết chọn vị nào. Các bạn nhỏ thích vị nào nhất ạ?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Phuong",
+          "textEn": "Chocolate is the most popular. Do you want to try a small taste?",
+          "textVi": "Sô-cô-la được yêu thích nhất. Cháu muốn nếm thử một chút không?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Khoa",
+          "textEn": "Yes, please! ... Mmm, it is delicious!",
+          "textVi": "Dạ có! ... Mmm, ngon quá!"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Phuong",
+          "textEn": "Great! One scoop or two scoops?",
+          "textVi": "Tuyệt! Cháu lấy một viên hay hai viên?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Khoa",
+          "textEn": "Two scoops, please. One chocolate and one strawberry.",
+          "textVi": "Hai viên ạ. Một viên sô-cô-la và một viên dâu tây."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Phuong",
+          "textEn": "In a cup or a cone?",
+          "textVi": "Lấy ly hay ốc quế cháu?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Khoa",
+          "textEn": "A cone, please. That is thirty thousand dong, right?",
+          "textVi": "Ốc quế ạ. Ba mươi nghìn đúng không cô?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Phuong",
+          "textEn": "That is right! Enjoy your ice cream, sweet boy!",
+          "textVi": "Đúng rồi! Chúc cháu ăn kem ngon miệng nhé!"
+        }
+      ],
+      "location": "Tiệm kem Tràng Tiền, Hà Nội",
+      "title": "The Ice Cream Shop",
+      "titleVi": "Tiệm kem"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-5",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "id": "pkg-098",
+    "quiz": [
+      {
+        "correctAnswer": "Sô-cô-la, va-ni, dâu tây",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: cô Phương nói 'We have chocolate, vanilla, and strawberry'.",
+        "options": [
+          "Sô-cô-la, va-ni, dâu tây",
+          "Trà xanh, cà phê, dừa",
+          "Xoài, chanh, bạc hà",
+          "Sầu riêng, mít, nhãn"
+        ],
+        "question": "Tiệm kem có những vị nào?"
+      },
+      {
+        "correctAnswer": "Hai viên sô-cô-la và dâu tây",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Khoa nói 'Two scoops, please. One chocolate and one strawberry'.",
+        "options": [
+          "Một viên va-ni",
+          "Hai viên sô-cô-la và dâu tây",
+          "Hai viên va-ni",
+          "Ba viên sô-cô-la"
+        ],
+        "question": "Khoa chọn mấy viên kem và vị gì?"
+      },
+      {
+        "correctAnswer": "Ốc quế",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Khoa nói 'A cone, please'.",
+        "options": [
+          "Ly nhựa",
+          "Hộp giấy",
+          "Ốc quế",
+          "Túi ni-lông"
+        ],
+        "question": "Kem của Khoa đựng trong gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "ice-cream",
+    "topicVi": "Tiệm kem",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-7"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "name": "Mai",
+          "role": "Khách hàng",
+          "gender": "female"
+        },
+        {
+          "gender": "male",
+          "name": "Mr. Tam",
+          "role": "Thợ sửa xe"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mai",
+          "textEn": "Good afternoon! My bicycle has a flat tire.",
+          "textVi": "Cháu chào chú! Xe đạp của cháu bị xì lốp."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Tam",
+          "textEn": "Good afternoon! Let me take a look. Ah, there is a small nail.",
+          "textVi": "Chào cháu! Để chú xem nào. À, có một cái đinh nhỏ."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mai",
+          "textEn": "Can you fix it today? I need my bike for school tomorrow.",
+          "textVi": "Chú sửa hôm nay được không? Mai cháu cần xe đi học."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Tam",
+          "textEn": "No problem. It will take about twenty minutes.",
+          "textVi": "Không vấn đề gì. Mất khoảng hai mươi phút."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mai",
+          "textEn": "That is fast! How much will it cost?",
+          "textVi": "Nhanh quá! Hết bao nhiêu tiền ạ?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Tam",
+          "textEn": "Only thirty thousand dong. I will also check your brakes for free.",
+          "textVi": "Chỉ ba mươi nghìn thôi. Chú sẽ kiểm tra phanh miễn phí cho cháu."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mai",
+          "textEn": "Thank you! Your shop is the best in the town.",
+          "textVi": "Cháu cảm ơn! Tiệm của chú là tốt nhất trong thị trấn."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Tam",
+          "textEn": "Ha ha, thank you! Please wait here and drink some tea.",
+          "textVi": "Ha ha, cảm ơn cháu! Cháu ngồi đây chờ và uống trà nhé."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mai",
+          "textEn": "The tea is nice. Is my bike ready now?",
+          "textVi": "Trà ngon quá. Xe của cháu xong chưa ạ?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Tam",
+          "textEn": "All done! The tire is fixed and the brakes work well.",
+          "textVi": "Xong rồi! Lốp đã vá và phanh hoạt động tốt."
+        }
+      ],
+      "location": "Tiệm sửa xe của chú Tâm ở Hội An",
+      "title": "Fixing a Bicycle",
+      "titleVi": "Sửa xe đạp"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8",
+        "line-10"
+      ]
+    },
+    "id": "pkg-099",
+    "quiz": [
+      {
+        "correctAnswer": "Xì lốp",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Đức nói 'My bicycle has a flat tire'.",
+        "options": [
+          "Hỏng phanh",
+          "Xì lốp",
+          "Gãy xích",
+          "Hỏng đèn"
+        ],
+        "question": "Xe đạp của Mai bị hỏng gì?"
+      },
+      {
+        "correctAnswer": "Đinh nhỏ",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: chú Tâm nói 'there is a small nail'.",
+        "options": [
+          "Lốp cũ",
+          "Đinh nhỏ",
+          "Đá sắc",
+          "Van hỏng"
+        ],
+        "question": "Nguyên nhân xì lốp là gì?"
+      },
+      {
+        "correctAnswer": "Ba mươi nghìn",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: chú Tâm nói 'Only thirty thousand dong'.",
+        "options": [
+          "Hai mươi nghìn",
+          "Ba mươi nghìn",
+          "Bốn mươi nghìn",
+          "Năm mươi nghìn"
+        ],
+        "question": "Sửa xe hết bao nhiêu tiền?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-7"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "bicycle-repair",
+    "topicVi": "Sửa xe đạp",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-5"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "A2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Ngoc",
+          "role": "Chị gái"
+        },
+        {
+          "gender": "male",
+          "name": "Kevin",
+          "role": "Em trai của Ngọc"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ngoc",
+          "textEn": "Look outside! It is raining very hard.",
+          "textVi": "Nhìn ra ngoài kìa! Mưa to quá."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Kevin",
+          "textEn": "Oh no! We cannot play football in the park today.",
+          "textVi": "Ôi không! Hôm nay mình không đá bóng ở công viên được rồi."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ngoc",
+          "textEn": "That is okay. We can stay home and do something fun.",
+          "textVi": "Không sao. Mình ở nhà làm gì đó vui vui."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Kevin",
+          "textEn": "Like what? I am bored already.",
+          "textVi": "Như làm gì? Em chán rồi nè."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ngoc",
+          "textEn": "How about baking cookies? Mom left some flour and sugar.",
+          "textVi": "Làm bánh quy thì sao? Mẹ để lại bột mì và đường nè."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Kevin",
+          "textEn": "Yes! I love chocolate cookies. Do we have chocolate?",
+          "textVi": "Dạ! Em thích bánh sô-cô-la. Nhà mình có sô-cô-la không?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ngoc",
+          "textEn": "We do. First, wash your hands, then help me mix the flour.",
+          "textVi": "Có nè. Trước tiên rửa tay đi, rồi giúp chị trộn bột."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Kevin",
+          "textEn": "The dough is sticky! This is so much fun!",
+          "textVi": "Bột dính quá! Vui quá đi!"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ngoc",
+          "textEn": "Now put the cookies in the oven for fifteen minutes.",
+          "textVi": "Giờ cho bánh vào lò nướng mười lăm phút."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Kevin",
+          "textEn": "They smell amazing! Rainy days at home are the best!",
+          "textVi": "Thơm quá! Ngày mưa ở nhà là tuyệt nhất!"
+        }
+      ],
+      "location": "Phòng khách nhà Ngọc ở Huế",
+      "title": "A Rainy Day at Home",
+      "titleVi": "Một ngày mưa ở nhà"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-7",
+        "line-10"
+      ]
+    },
+    "id": "pkg-100",
+    "quiz": [
+      {
+        "correctAnswer": "Vì trời mưa to",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: Ngọc nói 'It is raining very hard' và dòng 2 Kevin nói không thể đá bóng ở công viên.",
+        "options": [
+          "Vì trời mưa to",
+          "Vì công viên đóng cửa",
+          "Vì họ bị ốm",
+          "Vì họ phải học bài"
+        ],
+        "question": "Tại sao Ngọc và Kevin không ra công viên?"
+      },
+      {
+        "correctAnswer": "Nướng bánh quy",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Ngọc đề nghị 'How about baking cookies?'.",
+        "options": [
+          "Xem phim",
+          "Nướng bánh quy",
+          "Chơi game",
+          "Đọc truyện"
+        ],
+        "question": "Hai chị em làm gì ở nhà?"
+      },
+      {
+        "correctAnswer": "Mười lăm phút",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Ngọc nói 'put the cookies in the oven for fifteen minutes'.",
+        "options": [
+          "Mười phút",
+          "Mười lăm phút",
+          "Hai mươi phút",
+          "Ba mươi phút"
+        ],
+        "question": "Nướng bánh trong bao lâu?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-8"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "rainy-day",
+    "topicVi": "Ngày mưa ở nhà",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-4",
+        "line-6"
+      ]
+    }
+  },
+  {
+    "id": "pkg-101",
+    "cefrLevel": "B1",
+    "topic": "family",
+    "topicVi": "Gia đình",
+    "dialogue": {
+      "title": "The Parent-Teacher Meeting",
+      "titleVi": "Buổi họp phụ huynh",
+      "location": "Trường THPT Nguyễn Trãi, chiều thứ 6",
+      "characters": [
+        {
+          "name": "Mrs. Mai",
+          "role": "Phụ huynh",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Thompson",
+          "role": "Giáo viên",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mrs. Mai",
+          "textEn": "Good afternoon! I'm here to talk about my son's progress.",
+          "textVi": "Chào buổi chiều! Tôi đến để trao đổi về tiến bộ của con trai tôi."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Thompson",
+          "textEn": "Good afternoon, Mrs. Mai. Please sit down. Which class is your son in?",
+          "textVi": "Chào buổi chiều, chị Mai. Mời chị ngồi. Con trai chị học lớp nào?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mrs. Mai",
+          "textEn": "He's in class 10A2. I'm a little worried because his math grades have gone down recently.",
+          "textVi": "Cháu học lớp 10A2. Tôi hơi lo vì điểm Toán của cháu gần đây bị giảm."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Thompson",
+          "textEn": "I see. Actually, his homework is fine, but he seems distracted during tests.",
+          "textVi": "Tôi hiểu. Thực ra bài tập về nhà của cháu ổn, nhưng cháu có vẻ mất tập trung trong giờ kiểm tra."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mrs. Mai",
+          "textEn": "That's strange. He studies every evening until quite late.",
+          "textVi": "Lạ thật. Cháu học mỗi tối đến khá khuya."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Thompson",
+          "textEn": "He might be studying too much and not sleeping enough. Teenagers need at least eight hours of sleep.",
+          "textVi": "Có thể cháu học quá nhiều mà ngủ không đủ. Thanh thiếu niên cần ngủ ít nhất tám tiếng."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mrs. Mai",
+          "textEn": "You might be right. He's often on his phone before bed.",
+          "textVi": "Thầy nói có thể đúng. Cháu thường xuyên dùng điện thoại trước khi ngủ."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Thompson",
+          "textEn": "That's a common problem. Could you try collecting his phone at ten o'clock every night?",
+          "textVi": "Đó là vấn đề phổ biến. Chị có thể thử thu điện thoại của cháu lúc mười giờ mỗi tối không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mrs. Mai",
+          "textEn": "That's a good idea. I'll talk to him about it tonight. Thank you for your advice.",
+          "textVi": "Ý kiến hay đấy. Tôi sẽ nói chuyện với cháu tối nay. Cảm ơn lời khuyên của thầy."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Thompson",
+          "textEn": "You're welcome. Let's meet again in a month and see if his grades improve.",
+          "textVi": "Không có gì. Một tháng nữa chúng ta gặp lại để xem điểm của cháu có cải thiện không."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Bà Mai đến gặp giáo viên vì lý do gì?",
+        "options": [
+          "Trao đổi về tiến bộ của con",
+          "Xin nghỉ học cho con",
+          "Đóng học phí",
+          "Chuyển trường cho con"
+        ],
+        "correctAnswer": "Trao đổi về tiến bộ của con",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: bà Mai nói muốn trao đổi về tiến bộ của con trai."
+      },
+      {
+        "question": "Theo thầy Thompson, vấn đề của con trai bà Mai là gì?",
+        "options": [
+          "Mất tập trung trong giờ kiểm tra",
+          "Không làm bài tập về nhà",
+          "Nghỉ học nhiều",
+          "Hay nói chuyện trong lớp"
+        ],
+        "correctAnswer": "Mất tập trung trong giờ kiểm tra",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: thầy nói bài tập của cháu ổn nhưng cháu mất tập trung khi kiểm tra."
+      },
+      {
+        "question": "Thầy Thompson đề nghị bà Mai làm gì?",
+        "options": [
+          "Thu điện thoại của con lúc 10 giờ tối",
+          "Cho con nghỉ học một tuần",
+          "Thuê gia sư dạy Toán",
+          "Chuyển con sang lớp khác"
+        ],
+        "correctAnswer": "Thu điện thoại của con lúc 10 giờ tối",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: thầy đề nghị chị Mai thu điện thoại của cháu lúc mười giờ mỗi tối."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-4",
+        "line-6",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-3",
+        "line-5",
+        "line-7",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-8",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-102",
+    "cefrLevel": "B1",
+    "topic": "blood-donation",
+    "topicVi": "Hiến máu",
+    "dialogue": {
+      "title": "Donating Blood",
+      "titleVi": "Hiến máu",
+      "location": "Trung tâm hiến máu, sáng thứ 7",
+      "characters": [
+        {
+          "name": "Nurse Lan",
+          "role": "Y tá",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Hung",
+          "role": "Người hiến máu",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Nurse Lan",
+          "textEn": "Good morning! Are you here to donate blood for the first time?",
+          "textVi": "Chào buổi sáng! Anh đến hiến máu lần đầu phải không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Hung",
+          "textEn": "Yes, I'm a little nervous. Is the process painful?",
+          "textVi": "Vâng, tôi hơi lo lắng. Quy trình này có đau không?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Nurse Lan",
+          "textEn": "Don't worry. Most people only feel a small pinch when the needle goes in.",
+          "textVi": "Đừng lo. Hầu hết mọi người chỉ thấy hơi nhói khi kim đâm vào."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Hung",
+          "textEn": "How long does the whole thing take?",
+          "textVi": "Toàn bộ quy trình mất bao lâu?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Nurse Lan",
+          "textEn": "About forty-five minutes, including the health check and the rest afterwards.",
+          "textVi": "Khoảng bốn mươi lăm phút, bao gồm kiểm tra sức khỏe và nghỉ ngơi sau đó."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Hung",
+          "textEn": "That's fine. I have a free morning. What do I need to do first?",
+          "textVi": "Được thôi. Tôi rảnh cả sáng nay. Tôi cần làm gì trước?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Nurse Lan",
+          "textEn": "First, please fill out this health form, then we'll check your blood pressure.",
+          "textVi": "Đầu tiên, anh điền vào mẫu khai sức khỏe này, sau đó chúng tôi sẽ đo huyết áp."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Hung",
+          "textEn": "I heard that donating blood regularly is good for your health. Is that true?",
+          "textVi": "Tôi nghe nói hiến máu thường xuyên tốt cho sức khỏe. Điều đó có đúng không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Nurse Lan",
+          "textEn": "Yes, it helps your body make new blood cells, and it can also save a life.",
+          "textVi": "Đúng vậy, nó giúp cơ thể tạo tế bào máu mới, và còn có thể cứu một mạng người."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Hung",
+          "textEn": "That's wonderful. I'm ready now. Let's begin!",
+          "textVi": "Tuyệt vời. Tôi sẵn sàng rồi. Chúng ta bắt đầu thôi!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Anh Hùng lo lắng điều gì khi đến hiến máu?",
+        "options": [
+          "Sợ đau",
+          "Sợ mất nhiều thời gian",
+          "Sợ thiếu máu sau khi hiến",
+          "Sợ kim tiêm không sạch"
+        ],
+        "correctAnswer": "Sợ đau",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: anh Hùng hỏi quy trình có đau không."
+      },
+      {
+        "question": "Toàn bộ quy trình hiến máu mất khoảng bao lâu?",
+        "options": [
+          "Khoảng 45 phút",
+          "Khoảng 15 phút",
+          "Khoảng 2 tiếng",
+          "Cả buổi sáng"
+        ],
+        "correctAnswer": "Khoảng 45 phút",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: cô Lan nói khoảng bốn mươi lăm phút."
+      },
+      {
+        "question": "Theo cô Lan, hiến máu mang lại lợi ích gì?",
+        "options": [
+          "Giúp cơ thể tạo tế bào máu mới và cứu người",
+          "Giúp tăng cân",
+          "Giúp ngủ ngon hơn",
+          "Giúp khỏi bị cảm cúm"
+        ],
+        "correctAnswer": "Giúp cơ thể tạo tế bào máu mới và cứu người",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: cô Lan nói hiến máu giúp cơ thể tạo tế bào máu mới và có thể cứu một mạng người."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-103",
+    "cefrLevel": "B1",
+    "topic": "car",
+    "topicVi": "Xe cộ",
+    "dialogue": {
+      "title": "At the Car Repair Shop",
+      "titleVi": "Ở gara sửa xe",
+      "location": "Gara ô tô Minh Phát, sáng thứ 2",
+      "characters": [
+        {
+          "name": "Mr. Dat",
+          "role": "Chủ xe",
+          "gender": "male"
+        },
+        {
+          "name": "Ms. Huong",
+          "role": "Kỹ thuật viên",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mr. Dat",
+          "textEn": "Hi! My car started making a strange noise yesterday.",
+          "textVi": "Chào! Xe tôi hôm qua bắt đầu phát ra tiếng kêu lạ."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Huong",
+          "textEn": "What kind of noise? Is it coming from the engine?",
+          "textVi": "Tiếng kêu thế nào? Nó phát ra từ động cơ à?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mr. Dat",
+          "textEn": "Yes, it's a loud clicking sound, especially when I turn left.",
+          "textVi": "Đúng vậy, đó là tiếng lách cách lớn, nhất là khi tôi rẽ trái."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Huong",
+          "textEn": "Let me take a look. Could you start the engine for me?",
+          "textVi": "Để tôi xem thử. Anh nổ máy giúp tôi được không?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mr. Dat",
+          "textEn": "Sure. Do you think it's something serious?",
+          "textVi": "Được chứ. Chị nghĩ có phải vấn đề nghiêm trọng không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Huong",
+          "textEn": "It sounds like a problem with the front wheel. We need to replace a small part.",
+          "textVi": "Nghe có vẻ là vấn đề ở bánh xe trước. Chúng ta cần thay một chi tiết nhỏ."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mr. Dat",
+          "textEn": "How much will that cost, and how long will it take?",
+          "textVi": "Cái đó tốn bao nhiêu và mất bao lâu?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Huong",
+          "textEn": "Around eight hundred thousand dong, and we can finish it by this afternoon.",
+          "textVi": "Khoảng tám trăm nghìn đồng, và chúng tôi có thể xong trong chiều nay."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mr. Dat",
+          "textEn": "That's reasonable. Please go ahead. I'll wait here.",
+          "textVi": "Giá hợp lý đấy. Chị cứ làm đi. Tôi sẽ đợi ở đây."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Xe của anh Đạt gặp vấn đề gì?",
+        "options": [
+          "Phát ra tiếng kêu lạ",
+          "Hết xăng giữa đường",
+          "Vỡ kính chắn gió",
+          "Hỏng điều hòa"
+        ],
+        "correctAnswer": "Phát ra tiếng kêu lạ",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: anh Đạt nói xe bắt đầu phát ra tiếng kêu lạ."
+      },
+      {
+        "question": "Khi nào tiếng kêu to nhất?",
+        "options": [
+          "Khi rẽ trái",
+          "Khi phanh gấp",
+          "Khi đỗ xe",
+          "Khi mở cửa xe"
+        ],
+        "correctAnswer": "Khi rẽ trái",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: anh Đạt nói tiếng kêu lớn nhất là khi rẽ trái."
+      },
+      {
+        "question": "Sửa xe tốn bao nhiêu tiền và mất bao lâu?",
+        "options": [
+          "800 nghìn đồng, xong trong chiều nay",
+          "2 triệu đồng, mất 3 ngày",
+          "500 nghìn đồng, mất một tuần",
+          "Miễn phí, xong ngay lập tức"
+        ],
+        "correctAnswer": "800 nghìn đồng, xong trong chiều nay",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: chị Hương báo giá khoảng tám trăm nghìn đồng và xong trong chiều nay."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-9"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-8"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-104",
+    "cefrLevel": "B1",
+    "topic": "career",
+    "topicVi": "Sự nghiệp",
+    "dialogue": {
+      "title": "The Job Promotion",
+      "titleVi": "Thăng chức",
+      "location": "Văn phòng công ty, phòng họp tầng 5",
+      "characters": [
+        {
+          "name": "Ms. Trang",
+          "role": "Nhân viên",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Phong",
+          "role": "Quản lý",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mr. Phong",
+          "textEn": "Ms. Trang, thank you for coming. I have some good news for you.",
+          "textVi": "Chị Trang, cảm ơn chị đã đến. Tôi có tin tốt cho chị."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Trang",
+          "textEn": "Good news? I hope it's about my application for the team leader position.",
+          "textVi": "Tin tốt ạ? Tôi hy vọng là về đơn ứng tuyển vị trí trưởng nhóm của tôi."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mr. Phong",
+          "textEn": "Exactly. After reviewing your performance, we've decided to promote you.",
+          "textVi": "Đúng vậy. Sau khi xem xét hiệu suất, chúng tôi quyết định thăng chức cho chị."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Trang",
+          "textEn": "That's amazing! Thank you so much. I didn't expect it this soon.",
+          "textVi": "Thật tuyệt vời! Cảm ơn anh nhiều. Tôi không ngờ lại sớm như vậy."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mr. Phong",
+          "textEn": "You've earned it. Your project last month saved the company a lot of money.",
+          "textVi": "Chị xứng đáng. Dự án tháng trước của chị đã giúp công ty tiết kiệm nhiều tiền."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Trang",
+          "textEn": "I'm happy to hear that. When do I start in the new role?",
+          "textVi": "Tôi vui khi nghe điều đó. Khi nào tôi bắt đầu vai trò mới?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mr. Phong",
+          "textEn": "Next Monday. You'll lead a team of five people.",
+          "textVi": "Thứ Hai tuần sau. Chị sẽ dẫn dắt một nhóm năm người."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Trang",
+          "textEn": "Five people? That sounds challenging, but I'm ready to try my best.",
+          "textVi": "Năm người ạ? Nghe có vẻ thử thách, nhưng tôi sẵn sàng cố gắng hết sức."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mr. Phong",
+          "textEn": "I believe in you. If you need any support, my door is always open.",
+          "textVi": "Tôi tin chị. Nếu cần hỗ trợ gì, cửa phòng tôi luôn mở."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Trang",
+          "textEn": "Thank you, Mr. Phong. I won't let you down.",
+          "textVi": "Cảm ơn anh Phong. Tôi sẽ không làm anh thất vọng."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Anh Phong gọi chị Trang đến để làm gì?",
+        "options": [
+          "Thông báo thăng chức",
+          "Kỷ luật vi phạm",
+          "Giao thêm việc",
+          "Phỏng vấn lại vị trí"
+        ],
+        "correctAnswer": "Thông báo thăng chức",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: anh Phong nói công ty quyết định thăng chức cho chị Trang."
+      },
+      {
+        "question": "Vì sao chị Trang được thăng chức?",
+        "options": [
+          "Dự án giúp công ty tiết kiệm nhiều tiền",
+          "Làm việc lâu năm nhất công ty",
+          "Có bằng cấp cao nhất",
+          "Quen biết lãnh đạo"
+        ],
+        "correctAnswer": "Dự án giúp công ty tiết kiệm nhiều tiền",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: anh Phong nói dự án tháng trước của chị đã giúp công ty tiết kiệm nhiều tiền."
+      },
+      {
+        "question": "Chị Trang sẽ bắt đầu vai trò mới khi nào?",
+        "options": [
+          "Thứ Hai tuần sau",
+          "Ngay hôm nay",
+          "Cuối năm nay",
+          "Đầu tháng sau"
+        ],
+        "correctAnswer": "Thứ Hai tuần sau",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: anh Phong nói thứ Hai tuần sau chị sẽ dẫn dắt nhóm năm người."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-8"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-6",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-105",
+    "cefrLevel": "B1",
+    "topic": "moving",
+    "topicVi": "Chuyển nhà",
+    "dialogue": {
+      "title": "Moving to a New City",
+      "titleVi": "Chuyển đến thành phố mới",
+      "location": "Quán cà phê gần bến xe, tối chủ nhật",
+      "characters": [
+        {
+          "name": "Ms. Thao",
+          "role": "Người chuyển nhà",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Binh",
+          "role": "Bạn",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mr. Binh",
+          "textEn": "Thao! I heard you're moving to Da Nang next month. Is that true?",
+          "textVi": "Thảo! Tôi nghe nói tháng sau bạn chuyển đến Đà Nẵng. Có thật không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Thao",
+          "textEn": "Yes, it's true. I got a new job there, and the salary is much better.",
+          "textVi": "Đúng vậy. Tôi có công việc mới ở đó, và lương cao hơn nhiều."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mr. Binh",
+          "textEn": "Congratulations! But I'll miss you. We've been friends for ten years.",
+          "textVi": "Chúc mừng nhé! Nhưng tôi sẽ nhớ bạn. Chúng ta đã là bạn mười năm rồi."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Thao",
+          "textEn": "I'll miss you too. But it's only a one-hour flight, so we can visit each other.",
+          "textVi": "Tôi cũng sẽ nhớ bạn. Nhưng chỉ bay một tiếng thôi, nên chúng ta có thể thăm nhau."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mr. Binh",
+          "textEn": "Have you found an apartment there yet?",
+          "textVi": "Bạn đã tìm được căn hộ ở đó chưa?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Thao",
+          "textEn": "Not yet. I've been looking online, but the good ones are quite expensive.",
+          "textVi": "Chưa. Tôi đã tìm trên mạng, nhưng những căn tốt thì khá đắt."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mr. Binh",
+          "textEn": "My cousin lives in Da Nang. I can ask him to help you look for a place.",
+          "textVi": "Anh họ tôi sống ở Đà Nẵng. Tôi có thể nhờ anh ấy giúp bạn tìm chỗ ở."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Thao",
+          "textEn": "That would be wonderful! Please thank him for me.",
+          "textVi": "Tuyệt vời quá! Nhờ bạn cảm ơn anh ấy giúp tôi."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mr. Binh",
+          "textEn": "No problem. When exactly are you leaving?",
+          "textVi": "Không vấn đề gì. Chính xác khi nào bạn đi?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Thao",
+          "textEn": "On the fifteenth. Can you come to my farewell party on the tenth?",
+          "textVi": "Ngày mười lăm. Bạn có đến bữa tiệc chia tay của tôi ngày mùng mười không?"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Vì sao chị Thảo chuyển đến Đà Nẵng?",
+        "options": [
+          "Có công việc mới lương cao hơn",
+          "Đi du học nước ngoài",
+          "Về quê chăm sóc bố mẹ",
+          "Bị công ty điều chuyển bắt buộc"
+        ],
+        "correctAnswer": "Có công việc mới lương cao hơn",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: chị Thảo nói có công việc mới ở đó và lương cao hơn nhiều."
+      },
+      {
+        "question": "Chị Thảo gặp khó khăn gì khi tìm căn hộ?",
+        "options": [
+          "Căn tốt thì khá đắt",
+          "Không có mạng để tìm",
+          "Không ai giúp đỡ",
+          "Chủ nhà không cho thuê"
+        ],
+        "correctAnswer": "Căn tốt thì khá đắt",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: chị Thảo nói những căn tốt thì khá đắt."
+      },
+      {
+        "question": "Anh Bình đề nghị giúp gì cho chị Thảo?",
+        "options": [
+          "Nhờ anh họ giúp tìm chỗ ở",
+          "Cho mượn tiền đặt cọc",
+          "Tìm việc làm thêm",
+          "Giới thiệu bạn mới"
+        ],
+        "correctAnswer": "Nhờ anh họ giúp tìm chỗ ở",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: anh Bình nói sẽ nhờ anh họ ở Đà Nẵng giúp chị Thảo tìm chỗ ở."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-6"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-8",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-106",
+    "cefrLevel": "B1",
+    "topic": "volunteering",
+    "topicVi": "Tình nguyện",
+    "dialogue": {
+      "title": "Volunteering at the Orphanage",
+      "titleVi": "Tình nguyện ở trại trẻ mồ côi",
+      "location": "Trại trẻ mồ côi Hoa Mai, sáng chủ nhật",
+      "characters": [
+        {
+          "name": "Ms. Ngoc",
+          "role": "Tình nguyện viên",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Son",
+          "role": "Quản lý trại trẻ",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mr. Son",
+          "textEn": "Welcome, Ngoc! Thank you for volunteering with us this weekend.",
+          "textVi": "Chào Ngọc! Cảm ơn bạn đã tình nguyện cùng chúng tôi cuối tuần này."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Ngoc",
+          "textEn": "I'm happy to help. How many children are living here now?",
+          "textVi": "Tôi rất vui được giúp. Hiện có bao nhiêu trẻ đang sống ở đây?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mr. Son",
+          "textEn": "There are forty-five children, from age three to sixteen.",
+          "textVi": "Có bốn mươi lăm trẻ, từ ba đến mười sáu tuổi."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Ngoc",
+          "textEn": "That's a lot! What will I be doing today?",
+          "textVi": "Nhiều thật! Hôm nay tôi sẽ làm gì?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mr. Son",
+          "textEn": "You can help the younger kids with their English homework in the morning.",
+          "textVi": "Bạn có thể giúp các em nhỏ làm bài tập tiếng Anh buổi sáng."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Ngoc",
+          "textEn": "That sounds perfect. I used to be an English teacher.",
+          "textVi": "Tuyệt vời. Tôi từng là giáo viên tiếng Anh."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mr. Son",
+          "textEn": "Wonderful! In the afternoon, we're organizing games in the playground.",
+          "textVi": "Tuyệt vời! Buổi chiều, chúng tôi tổ chức trò chơi ở sân chơi."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Ngoc",
+          "textEn": "Do you need me to bring anything for the games?",
+          "textVi": "Tôi có cần mang gì cho các trò chơi không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mr. Son",
+          "textEn": "Just bring yourself and your energy. We have all the equipment ready.",
+          "textVi": "Chỉ cần mang theo chính bạn và năng lượng của bạn. Chúng tôi đã chuẩn bị đầy đủ dụng cụ."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Ngoc",
+          "textEn": "Great! I can't wait to meet the children.",
+          "textVi": "Tuyệt! Tôi nóng lòng muốn gặp các em."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Có bao nhiêu trẻ đang sống ở trại trẻ?",
+        "options": [
+          "45 trẻ",
+          "30 trẻ",
+          "50 trẻ",
+          "60 trẻ"
+        ],
+        "correctAnswer": "45 trẻ",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: anh Sơn nói có bốn mươi lăm trẻ, từ ba đến mười sáu tuổi."
+      },
+      {
+        "question": "Buổi sáng chị Ngọc sẽ làm gì?",
+        "options": [
+          "Giúp các em làm bài tập tiếng Anh",
+          "Nấu ăn cho các em",
+          "Dọn dẹp sân chơi",
+          "Dạy các em vẽ tranh"
+        ],
+        "correctAnswer": "Giúp các em làm bài tập tiếng Anh",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: anh Sơn nói chị Ngọc có thể giúp các em nhỏ làm bài tập tiếng Anh buổi sáng."
+      },
+      {
+        "question": "Buổi chiều trại trẻ tổ chức hoạt động gì?",
+        "options": [
+          "Trò chơi ở sân chơi",
+          "Đi dã ngoại ngoại thành",
+          "Xem phim hoạt hình",
+          "Học nhạc cụ"
+        ],
+        "correctAnswer": "Trò chơi ở sân chơi",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: anh Sơn nói buổi chiều tổ chức trò chơi ở sân chơi."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7",
+        "line-9"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-8",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-107",
+    "cefrLevel": "B1",
+    "topic": "shopping",
+    "topicVi": "Mua sắm",
+    "dialogue": {
+      "title": "Buying a Motorbike",
+      "titleVi": "Mua xe máy",
+      "location": "Cửa hàng xe máy Honda, chiều thứ 7",
+      "characters": [
+        {
+          "name": "Mr. Tuan",
+          "role": "Khách mua",
+          "gender": "male"
+        },
+        {
+          "name": "Ms. Linh",
+          "role": "Nhân viên bán hàng",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ms. Linh",
+          "textEn": "Good afternoon! Are you looking for a new motorbike?",
+          "textVi": "Chào buổi chiều! Anh đang tìm mua xe máy mới phải không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Tuan",
+          "textEn": "Yes. I need something reliable for my daily commute to work.",
+          "textVi": "Vâng. Tôi cần một chiếc bền để đi làm hằng ngày."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ms. Linh",
+          "textEn": "This model is very popular. It uses little fuel and is easy to maintain.",
+          "textVi": "Mẫu này rất được ưa chuộng. Nó tiết kiệm xăng và dễ bảo dưỡng."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Tuan",
+          "textEn": "It looks nice. How much does it cost?",
+          "textVi": "Trông đẹp đấy. Giá bao nhiêu?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ms. Linh",
+          "textEn": "Forty-two million dong. We also offer a one-year warranty.",
+          "textVi": "Bốn mươi hai triệu đồng. Chúng tôi còn có bảo hành một năm."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Tuan",
+          "textEn": "That's a bit over my budget. Do you have any discounts?",
+          "textVi": "Hơi vượt ngân sách của tôi. Cửa hàng có giảm giá không?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ms. Linh",
+          "textEn": "If you pay in full today, we can give you a two-million-dong discount.",
+          "textVi": "Nếu anh trả hết hôm nay, chúng tôi có thể giảm hai triệu đồng."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Tuan",
+          "textEn": "Can I take it for a short test ride first?",
+          "textVi": "Tôi có thể chạy thử một vòng ngắn trước không?"
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ms. Linh",
+          "textEn": "Of course! Please wear this helmet, and follow me to the test area.",
+          "textVi": "Tất nhiên! Anh đội mũ bảo hiểm này, và theo tôi ra khu vực chạy thử."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Tuan",
+          "textEn": "It runs very smoothly. I'll take it!",
+          "textVi": "Xe chạy rất êm. Tôi lấy chiếc này!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Anh Tuấn cần xe máy để làm gì?",
+        "options": [
+          "Đi làm hằng ngày",
+          "Đi phượt đường dài",
+          "Chở hàng thuê",
+          "Tặng cho em trai"
+        ],
+        "correctAnswer": "Đi làm hằng ngày",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: anh Tuấn nói cần xe bền để đi làm hằng ngày."
+      },
+      {
+        "question": "Giá của chiếc xe là bao nhiêu?",
+        "options": [
+          "42 triệu đồng",
+          "40 triệu đồng",
+          "45 triệu đồng",
+          "38 triệu đồng"
+        ],
+        "correctAnswer": "42 triệu đồng",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: chị Linh báo giá bốn mươi hai triệu đồng."
+      },
+      {
+        "question": "Cửa hàng giảm giá bao nhiêu nếu anh Tuấn trả hết hôm nay?",
+        "options": [
+          "2 triệu đồng",
+          "1 triệu đồng",
+          "3 triệu đồng",
+          "5 triệu đồng"
+        ],
+        "correctAnswer": "2 triệu đồng",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: chị Linh nói trả hết hôm nay được giảm hai triệu đồng."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-8"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-7"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-108",
+    "cefrLevel": "B1",
+    "topic": "neighborhood",
+    "topicVi": "Khu dân cư",
+    "dialogue": {
+      "title": "The Noisy Construction Site",
+      "titleVi": "Công trình xây dựng ồn ào",
+      "location": "Khu chung cư, văn phòng ban quản lý",
+      "characters": [
+        {
+          "name": "Mr. Quang",
+          "role": "Cư dân",
+          "gender": "male"
+        },
+        {
+          "name": "Ms. Van",
+          "role": "Quản lý công trình",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mr. Quang",
+          "textEn": "Excuse me. I need to complain about the noise from the construction site.",
+          "textVi": "Xin lỗi. Tôi cần phàn nàn về tiếng ồn từ công trình xây dựng."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Van",
+          "textEn": "I'm sorry to hear that. What's the problem exactly?",
+          "textVi": "Tôi rất tiếc khi nghe điều đó. Vấn đề cụ thể là gì?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mr. Quang",
+          "textEn": "The workers start drilling at six in the morning. My baby can't sleep.",
+          "textVi": "Công nhân bắt đầu khoan từ sáu giờ sáng. Con tôi không ngủ được."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Van",
+          "textEn": "I understand. That's too early. The rule is that work starts at seven thirty.",
+          "textVi": "Tôi hiểu. Như vậy là quá sớm. Quy định là công việc bắt đầu lúc bảy rưỡi."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mr. Quang",
+          "textEn": "Can you talk to the workers about this?",
+          "textVi": "Chị có thể nói chuyện với công nhân về việc này không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Van",
+          "textEn": "Of course. I'll remind them today, and the noise will stop before eight in the evening too.",
+          "textVi": "Tất nhiên. Hôm nay tôi sẽ nhắc họ, và tiếng ồn cũng sẽ dừng trước tám giờ tối."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mr. Quang",
+          "textEn": "Thank you. When will the construction be finished?",
+          "textVi": "Cảm ơn. Khi nào công trình hoàn thành?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Van",
+          "textEn": "The project should be completed by the end of next month.",
+          "textVi": "Dự án dự kiến hoàn thành vào cuối tháng sau."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mr. Quang",
+          "textEn": "I hope so. Please keep your promise about the working hours.",
+          "textVi": "Tôi hy vọng vậy. Chị nhớ giữ lời hứa về giờ làm việc nhé."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Anh Quang đến phàn nàn về điều gì?",
+        "options": [
+          "Tiếng ồn từ công trình",
+          "Nước sinh hoạt bị cắt",
+          "Thang máy bị hỏng",
+          "Rác thải bừa bãi"
+        ],
+        "correctAnswer": "Tiếng ồn từ công trình",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: anh Quang nói cần phàn nàn về tiếng ồn từ công trình xây dựng."
+      },
+      {
+        "question": "Theo quy định, công việc bắt đầu lúc mấy giờ?",
+        "options": [
+          "7 giờ 30",
+          "6 giờ",
+          "8 giờ",
+          "9 giờ"
+        ],
+        "correctAnswer": "7 giờ 30",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: chị Vân nói quy định là công việc bắt đầu lúc bảy rưỡi."
+      },
+      {
+        "question": "Dự án dự kiến hoàn thành khi nào?",
+        "options": [
+          "Cuối tháng sau",
+          "Cuối tuần này",
+          "Cuối năm nay",
+          "Sau hai tháng nữa"
+        ],
+        "correctAnswer": "Cuối tháng sau",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: chị Vân nói dự án dự kiến hoàn thành vào cuối tháng sau."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-5"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-109",
+    "cefrLevel": "B1",
+    "topic": "picnic",
+    "topicVi": "Đi picnic",
+    "dialogue": {
+      "title": "Planning a Picnic",
+      "titleVi": "Lên kế hoạch đi picnic",
+      "location": "Sân trường, giờ ra chơi",
+      "characters": [
+        {
+          "name": "Ms. Hoa",
+          "role": "Học sinh",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Duc",
+          "role": "Bạn học",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ms. Hoa",
+          "textEn": "Duc, the weather forecast says it'll be sunny this Sunday. Let's go on a picnic!",
+          "textVi": "Đức, dự báo thời tiết nói chủ nhật này sẽ nắng. Chúng ta đi picnic nhé!"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Duc",
+          "textEn": "Great idea! Where should we go?",
+          "textVi": "Ý hay đấy! Chúng ta nên đi đâu?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ms. Hoa",
+          "textEn": "How about Ba Vi National Park? It's not too far, and the view is beautiful.",
+          "textVi": "Vườn quốc gia Ba Vì thì sao? Không quá xa, và cảnh đẹp."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Duc",
+          "textEn": "I love that place. Should we invite the whole class?",
+          "textVi": "Tôi thích chỗ đó. Chúng ta có nên mời cả lớp không?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ms. Hoa",
+          "textEn": "Let's invite our close friends first. A small group is easier to organize.",
+          "textVi": "Mời bạn thân trước đã. Nhóm nhỏ dễ tổ chức hơn."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Duc",
+          "textEn": "Good point. What food should we bring?",
+          "textVi": "Đúng đấy. Chúng ta nên mang đồ ăn gì?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ms. Hoa",
+          "textEn": "I'll make sandwiches, and you can bring fruit and drinks.",
+          "textVi": "Tôi sẽ làm bánh mì kẹp, còn bạn mang trái cây và nước uống."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Duc",
+          "textEn": "Deal! I'll also bring a football so we can play games.",
+          "textVi": "Nhất trí! Tôi cũng sẽ mang bóng đá để chúng ta chơi trò chơi."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ms. Hoa",
+          "textEn": "Perfect. Let's meet at the school gate at seven in the morning.",
+          "textVi": "Hoàn hảo. Chúng ta gặp nhau ở cổng trường lúc bảy giờ sáng."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Duc",
+          "textEn": "Seven o'clock. I'll be there on time!",
+          "textVi": "Bảy giờ. Tôi sẽ đến đúng giờ!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Hai bạn dự định đi picnic ở đâu?",
+        "options": [
+          "Vườn quốc gia Ba Vì",
+          "Hồ Gươm",
+          "Bãi biển",
+          "Công viên gần nhà"
+        ],
+        "correctAnswer": "Vườn quốc gia Ba Vì",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Hoa đề xuất đi vườn quốc gia Ba Vì."
+      },
+      {
+        "question": "Vì sao họ chỉ mời bạn thân mà không mời cả lớp?",
+        "options": [
+          "Nhóm nhỏ dễ tổ chức",
+          "Không đủ tiền mua đồ ăn",
+          "Xe không đủ chỗ ngồi",
+          "Sợ nơi đó quá ồn ào"
+        ],
+        "correctAnswer": "Nhóm nhỏ dễ tổ chức",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Hoa nói nhóm nhỏ dễ tổ chức hơn."
+      },
+      {
+        "question": "Hai bạn hẹn gặp nhau ở đâu, lúc mấy giờ?",
+        "options": [
+          "Cổng trường, 7 giờ sáng",
+          "Công viên, 8 giờ sáng",
+          "Nhà ga, 6 giờ sáng",
+          "Sân trường, 9 giờ sáng"
+        ],
+        "correctAnswer": "Cổng trường, 7 giờ sáng",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Hoa nói gặp nhau ở cổng trường lúc bảy giờ sáng."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-8"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-110",
+    "cefrLevel": "B1",
+    "topic": "flu-season",
+    "topicVi": "Mùa cúm",
+    "dialogue": {
+      "title": "The Flu Season",
+      "titleVi": "Mùa cúm",
+      "location": "Phòng khám đa khoa, sáng thứ 3",
+      "characters": [
+        {
+          "name": "Dr. Nam",
+          "role": "Bác sĩ",
+          "gender": "male"
+        },
+        {
+          "name": "Ms. Phuong",
+          "role": "Bệnh nhân",
+          "gender": "female"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ms. Phuong",
+          "textEn": "Doctor, I've had a fever and a sore throat for three days.",
+          "textVi": "Bác sĩ, tôi bị sốt và đau họng ba ngày rồi."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Dr. Nam",
+          "textEn": "It's flu season, so many people have the same symptoms. Have you taken any medicine?",
+          "textVi": "Đang mùa cúm, nên nhiều người có triệu chứng giống vậy. Chị đã uống thuốc gì chưa?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ms. Phuong",
+          "textEn": "Just some paracetamol, but the fever keeps coming back.",
+          "textVi": "Chỉ uống paracetamol, nhưng sốt cứ tái đi tái lại."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Dr. Nam",
+          "textEn": "Let me check your temperature and listen to your lungs.",
+          "textVi": "Để tôi đo nhiệt độ và nghe phổi của chị."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ms. Phuong",
+          "textEn": "Is it serious? I'm worried because I have an important meeting next week.",
+          "textVi": "Có nghiêm trọng không? Tôi lo vì tuần sau tôi có cuộc họp quan trọng."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Dr. Nam",
+          "textEn": "Don't worry too much. It's a common flu. You need to rest for a few days.",
+          "textVi": "Đừng lo quá. Đây là cúm thông thường. Chị cần nghỉ ngơi vài ngày."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ms. Phuong",
+          "textEn": "Can I go to work if I wear a mask?",
+          "textVi": "Tôi có thể đi làm nếu đeo khẩu trang không?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Dr. Nam",
+          "textEn": "It's better to stay home so you don't spread the virus to others.",
+          "textVi": "Tốt nhất là ở nhà để không lây virus cho người khác."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ms. Phuong",
+          "textEn": "You're right. What medicine should I take?",
+          "textVi": "Bác sĩ nói đúng. Tôi nên uống thuốc gì?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Dr. Nam",
+          "textEn": "I'll give you a prescription. Drink plenty of water and get lots of sleep.",
+          "textVi": "Tôi sẽ kê đơn cho chị. Uống nhiều nước và ngủ đủ giấc."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Chị Phương có những triệu chứng gì?",
+        "options": [
+          "Sốt và đau họng",
+          "Ho và sổ mũi",
+          "Đau bụng và buồn nôn",
+          "Chóng mặt và nhức đầu"
+        ],
+        "correctAnswer": "Sốt và đau họng",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: chị Phương nói bị sốt và đau họng ba ngày rồi."
+      },
+      {
+        "question": "Bác sĩ Nam khuyên chị Phương nên làm gì?",
+        "options": [
+          "Nghỉ ngơi ở nhà vài ngày",
+          "Đi làm bình thường",
+          "Tập thể dục nhiều hơn",
+          "Uống cà phê cho tỉnh táo"
+        ],
+        "correctAnswer": "Nghỉ ngơi ở nhà vài ngày",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: bác sĩ Nam nói đây là cúm thông thường và chị cần nghỉ ngơi vài ngày."
+      },
+      {
+        "question": "Vì sao bác sĩ khuyên chị Phương nên ở nhà?",
+        "options": [
+          "Để không lây virus cho người khác",
+          "Để tiết kiệm tiền đi lại",
+          "Vì phòng khám quá đông",
+          "Vì thời tiết bên ngoài xấu"
+        ],
+        "correctAnswer": "Để không lây virus cho người khác",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: bác sĩ Nam nói ở nhà để không lây virus cho người khác."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-7"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-111",
+    "cefrLevel": "B1",
+    "topic": "pets",
+    "topicVi": "Thú cưng",
+    "dialogue": {
+      "title": "Adopting a Stray Cat",
+      "titleVi": "Nhận nuôi mèo hoang",
+      "location": "Trạm cứu hộ động vật, chiều thứ 7",
+      "characters": [
+        {
+          "name": "Ms. Yen",
+          "role": "Người nhận nuôi",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Khoa",
+          "role": "Nhân viên trạm cứu hộ",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ms. Yen",
+          "textEn": "Hi! I saw a photo of a stray cat on your website. Is it still available?",
+          "textVi": "Chào! Tôi thấy ảnh một con mèo hoang trên website của các bạn. Nó còn không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Khoa",
+          "textEn": "Yes! Her name is Mimi. She was found near the market last month.",
+          "textVi": "Còn! Nó tên là Mimi. Nó được tìm thấy gần chợ tháng trước."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ms. Yen",
+          "textEn": "She's so cute. How old is she?",
+          "textVi": "Nó dễ thương quá. Nó bao nhiêu tuổi?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Khoa",
+          "textEn": "The vet thinks she's about one year old. She's very healthy now.",
+          "textVi": "Bác sĩ thú y đoán nó khoảng một tuổi. Giờ nó rất khỏe."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ms. Yen",
+          "textEn": "I live in a small apartment. Is she suitable for indoor living?",
+          "textVi": "Tôi sống trong căn hộ nhỏ. Nó có hợp sống trong nhà không?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Khoa",
+          "textEn": "Absolutely. She's quiet and loves sleeping on the sofa.",
+          "textVi": "Hoàn toàn hợp. Nó hiền và thích ngủ trên ghế sofa."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ms. Yen",
+          "textEn": "What do I need to do to adopt her?",
+          "textVi": "Tôi cần làm gì để nhận nuôi nó?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Khoa",
+          "textEn": "Just fill out this form and pay a small fee for her vaccinations.",
+          "textVi": "Chỉ cần điền mẫu này và đóng một khoản phí nhỏ cho việc tiêm phòng."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ms. Yen",
+          "textEn": "That sounds easy. Can I take her home today?",
+          "textVi": "Nghe dễ đấy. Hôm nay tôi có thể đưa nó về nhà không?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Khoa",
+          "textEn": "Yes, you can. Here's her favorite toy. Take good care of her!",
+          "textVi": "Được chứ. Đây là đồ chơi yêu thích của nó. Chăm sóc nó thật tốt nhé!"
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Mimi được tìm thấy ở đâu?",
+        "options": [
+          "Gần chợ",
+          "Trong công viên",
+          "Ở bến xe buýt",
+          "Trước cổng trường"
+        ],
+        "correctAnswer": "Gần chợ",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: anh Khoa nói Mimi được tìm thấy gần chợ tháng trước."
+      },
+      {
+        "question": "Mimi bao nhiêu tuổi?",
+        "options": [
+          "Khoảng một tuổi",
+          "Ba tháng tuổi",
+          "Hai tuổi",
+          "Năm tuổi"
+        ],
+        "correctAnswer": "Khoảng một tuổi",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: anh Khoa nói bác sĩ thú y đoán Mimi khoảng một tuổi."
+      },
+      {
+        "question": "Chị Yến cần làm gì để nhận nuôi Mimi?",
+        "options": [
+          "Điền mẫu và đóng phí tiêm phòng",
+          "Mua lồng sắt mới",
+          "Ký hợp đồng một năm",
+          "Trả tiền mua mèo"
+        ],
+        "correctAnswer": "Điền mẫu và đóng phí tiêm phòng",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: anh Khoa nói chỉ cần điền mẫu và đóng phí nhỏ cho việc tiêm phòng."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-7"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "pkg-112",
+    "cefrLevel": "B1",
+    "topic": "fundraising",
+    "topicVi": "Gây quỹ",
+    "dialogue": {
+      "title": "The Library Fundraiser",
+      "titleVi": "Gây quỹ cho thư viện",
+      "location": "Thư viện trường, sau giờ học",
+      "characters": [
+        {
+          "name": "Ms. Chau",
+          "role": "Thủ thư",
+          "gender": "female"
+        },
+        {
+          "name": "Mr. Vinh",
+          "role": "Phụ huynh",
+          "gender": "male"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ms. Chau",
+          "textEn": "Mr. Vinh, thank you for coming to our fundraiser meeting.",
+          "textVi": "Anh Vinh, cảm ơn anh đã đến buổi họp gây quỹ."
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Vinh",
+          "textEn": "My pleasure. What is the fundraiser for?",
+          "textVi": "Vinh hạnh của tôi. Buổi gây quỹ này nhằm mục đích gì?"
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ms. Chau",
+          "textEn": "We want to buy two hundred new books for the school library.",
+          "textVi": "Chúng tôi muốn mua hai trăm cuốn sách mới cho thư viện trường."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Vinh",
+          "textEn": "That's a great cause. How much money do you need?",
+          "textVi": "Đó là việc tốt. Các chị cần bao nhiêu tiền?"
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ms. Chau",
+          "textEn": "We need about thirty million dong. We've already raised half of it.",
+          "textVi": "Chúng tôi cần khoảng ba mươi triệu đồng. Chúng tôi đã quyên được một nửa."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Vinh",
+          "textEn": "Impressive! What's the plan for the rest?",
+          "textVi": "Ấn tượng đấy! Kế hoạch cho phần còn lại là gì?"
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ms. Chau",
+          "textEn": "We're organizing a book fair this Saturday. Parents can donate old books to sell.",
+          "textVi": "Chúng tôi tổ chức hội chợ sách thứ Bảy này. Phụ huynh có thể quyên sách cũ để bán."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Vinh",
+          "textEn": "I have many old books at home. I'll bring them tomorrow.",
+          "textVi": "Tôi có nhiều sách cũ ở nhà. Ngày mai tôi sẽ mang đến."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ms. Chau",
+          "textEn": "Wonderful! Every book you donate helps a child read more.",
+          "textVi": "Tuyệt vời! Mỗi cuốn sách anh quyên góp giúp một em đọc nhiều hơn."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Vinh",
+          "textEn": "Count me in. Reading changed my life, and I want that for our children too.",
+          "textVi": "Tính tôi vào nhé. Việc đọc đã thay đổi cuộc đời tôi, và tôi muốn điều đó cho con em chúng ta."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Buổi gây quỹ nhằm mục đích gì?",
+        "options": [
+          "Mua 200 cuốn sách mới cho thư viện",
+          "Sửa chữa phòng học",
+          "Mua máy tính cho trường",
+          "Xây sân chơi mới"
+        ],
+        "correctAnswer": "Mua 200 cuốn sách mới cho thư viện",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: chị Châu nói muốn mua hai trăm cuốn sách mới cho thư viện trường."
+      },
+      {
+        "question": "Họ cần bao nhiêu tiền và đã quyên được bao nhiêu?",
+        "options": [
+          "30 triệu đồng, đã được một nửa",
+          "20 triệu đồng, đã đủ",
+          "50 triệu đồng, chưa được gì",
+          "10 triệu đồng, đã đủ"
+        ],
+        "correctAnswer": "30 triệu đồng, đã được một nửa",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: chị Châu nói cần khoảng ba mươi triệu đồng và đã quyên được một nửa."
+      },
+      {
+        "question": "Kế hoạch gây quỹ tiếp theo là gì?",
+        "options": [
+          "Tổ chức hội chợ sách",
+          "Bán vé số từ thiện",
+          "Kêu gọi doanh nghiệp tài trợ",
+          "Tổ chức đấu giá tranh"
+        ],
+        "correctAnswer": "Tổ chức hội chợ sách",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: chị Châu nói sẽ tổ chức hội chợ sách vào thứ Bảy."
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-6"
+      ]
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-8",
+        "line-10"
+      ]
+    },
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-7"
+      ]
+    },
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Dr. Linh",
+          "role": "Nhà nghiên cứu"
+        },
+        {
+          "gender": "male",
+          "name": "James",
+          "role": "Phóng viên"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "James",
+          "textEn": "Dr. Linh, how serious is climate migration in the Mekong Delta?",
+          "textVi": "Tiến sĩ Linh, tình trạng di cư khí hậu ở Đồng bằng sông Cửu Long nghiêm trọng đến mức nào?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Dr. Linh",
+          "textEn": "It is more serious than most people realise. Rising sea levels and saltwater intrusion have already forced thousands of farming families to abandon their land.",
+          "textVi": "Nghiêm trọng hơn những gì đa số người ta vẫn nghĩ. Nước biển dâng và xâm nhập mặn đã buộc hàng nghìn hộ nông dân phải bỏ ruộng đất của mình."
+        },
+        {
+          "id": "line-3",
+          "speaker": "James",
+          "textEn": "But isn't migration simply a natural adaptation strategy? People have always moved in search of better livelihoods.",
+          "textVi": "Nhưng di cư chẳng phải chỉ là một chiến lược thích ứng tự nhiên sao? Con người từ xưa vẫn luôn di chuyển để tìm kế sinh nhai tốt hơn."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Dr. Linh",
+          "textEn": "There is a difference between voluntary migration and forced displacement. When your rice fields become too salty to cultivate, you are not choosing to leave — you are being pushed out.",
+          "textVi": "Có sự khác biệt giữa di cư tự nguyện và di dời bị ép buộc. Khi ruộng lúa của bạn đã quá mặn không thể canh tác, bạn không phải đang chọn ra đi — mà là bị đẩy đi."
+        },
+        {
+          "id": "line-5",
+          "speaker": "James",
+          "textEn": "What about government resettlement programmes? Surely they can provide a safety net for these communities.",
+          "textVi": "Còn các chương trình tái định cư của chính phủ thì sao? Chắc chắn chúng có thể tạo lưới an sinh cho các cộng đồng này."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Dr. Linh",
+          "textEn": "The programmes exist on paper, but implementation is painfully slow. Many families receive compensation that barely covers a few months of living expenses.",
+          "textVi": "Chương trình thì có trên giấy tờ, nhưng triển khai thì chậm đến đau lòng. Nhiều gia đình nhận tiền đền bù chỉ đủ trang trải vài tháng sinh hoạt."
+        },
+        {
+          "id": "line-7",
+          "speaker": "James",
+          "textEn": "Some economists argue that migration could actually benefit the delta, by reducing pressure on fragile ecosystems. What is your view?",
+          "textVi": "Một số nhà kinh tế cho rằng di cư thực ra có thể có lợi cho đồng bằng, vì giảm áp lực lên hệ sinh thái mong manh. Quan điểm của bà thế nào?"
+        },
+        {
+          "id": "line-8",
+          "speaker": "Dr. Linh",
+          "textEn": "That argument overlooks the human cost. Migrants often end up in overcrowded urban slums, doing precarious informal work with no social protection.",
+          "textVi": "Lập luận đó bỏ qua cái giá con người phải trả. Người di cư thường kết thúc ở các khu ổ chuột đô thị chật chội, làm những công việc bấp bênh không có bảo trợ xã hội."
+        },
+        {
+          "id": "line-9",
+          "speaker": "James",
+          "textEn": "So what would an effective response look like, in your opinion?",
+          "textVi": "Vậy theo bà, một giải pháp hiệu quả sẽ như thế nào?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Dr. Linh",
+          "textEn": "We need a combination of climate adaptation at home — such as salt-tolerant crops — and planned, dignified relocation for those who cannot stay.",
+          "textVi": "Chúng ta cần kết hợp thích ứng khí hậu tại chỗ — như giống cây chịu mặn — với việc di dời có kế hoạch, đảm bảo nhân phẩm cho những người không thể ở lại."
+        },
+        {
+          "id": "line-11",
+          "speaker": "James",
+          "textEn": "And how can the international community contribute?",
+          "textVi": "Và cộng đồng quốc tế có thể đóng góp ra sao?"
+        },
+        {
+          "id": "line-12",
+          "speaker": "Dr. Linh",
+          "textEn": "Developed countries bear historical responsibility for emissions, so climate finance should directly reach the communities most affected.",
+          "textVi": "Các nước phát triển mang trách nhiệm lịch sử về phát thải, vì vậy tài chính khí hậu cần đến trực tiếp tay các cộng đồng chịu ảnh hưởng nặng nề nhất."
+        }
+      ],
+      "location": "Hội thảo môi trường, Hà Nội",
+      "title": "Climate Migration",
+      "titleVi": "Di cư khí hậu"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-6",
+        "line-8",
+        "line-12"
+      ]
+    },
+    "id": "pkg-113",
+    "quiz": [
+      {
+        "correctAnswer": "Di cư khí hậu ở Đồng bằng sông Cửu Long",
+        "evidenceLineId": "line-1",
+        "explanation": "Dòng 1: James hỏi Dr. Linh về mức độ nghiêm trọng của di cư khí hậu ở Đồng bằng sông Cửu Long.",
+        "options": [
+          "Di cư khí hậu ở Đồng bằng sông Cửu Long",
+          "Ô nhiễm không khí ở Hà Nội",
+          "Sạt lở đất ở miền Trung",
+          "Hạn hán ở Tây Nguyên"
+        ],
+        "question": "James mở đầu cuộc phỏng vấn bằng câu hỏi về vấn đề gì?"
+      },
+      {
+        "correctAnswer": "Đó là di dời bị ép buộc, không phải lựa chọn",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Dr. Linh phân biệt di cư tự nguyện với di dời bị ép buộc — khi ruộng quá mặn không canh tác được, người dân 'không phải đang chọn ra đi, mà là bị đẩy đi'.",
+        "options": [
+          "Đó là di dời bị ép buộc, không phải lựa chọn",
+          "Đó là chiến lược thích ứng tự nhiên",
+          "Nó giúp giảm áp lực lên hệ sinh thái",
+          "Nó mang lại việc làm tốt hơn ở thành phố"
+        ],
+        "question": "Theo quan điểm của Dr. Linh, di cư khí hậu khác di cư tự nguyện ở điểm nào?"
+      },
+      {
+        "correctAnswer": "Thích ứng tại chỗ và di dời có kế hoạch, đảm bảo nhân phẩm",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: giải pháp là kết hợp thích ứng khí hậu tại chỗ (giống cây chịu mặn) với di dời có kế hoạch, đảm bảo nhân phẩm.",
+        "options": [
+          "Thích ứng tại chỗ và di dời có kế hoạch, đảm bảo nhân phẩm",
+          "Chỉ trông chờ vào chương trình tái định cư hiện có",
+          "Cấm người dân rời khỏi đồng bằng",
+          "Tăng trợ cấp thêm vài tháng sinh hoạt"
+        ],
+        "question": "Giải pháp mà Dr. Linh đề xuất gồm những gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-4",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "society",
+    "topicVi": "Xã hội",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-7"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Sarah",
+          "role": "Nhân viên công tác xã hội"
+        },
+        {
+          "gender": "male",
+          "name": "Dr. Hùng",
+          "role": "Nhà kinh tế học"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Sarah",
+          "textEn": "Dr. Hùng, with automation threatening millions of jobs, do you think a universal basic income could work in Vietnam?",
+          "textVi": "Tiến sĩ Hùng, khi tự động hóa đang đe dọa hàng triệu việc làm, ông có nghĩ thu nhập cơ bản toàn dân có thể áp dụng ở Việt Nam không?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Dr. Hùng",
+          "textEn": "In theory it sounds appealing, but the fiscal burden would be enormous. Paying every citizen a monthly income could consume a huge share of the national budget.",
+          "textVi": "Về lý thuyết nghe rất hấp dẫn, nhưng gánh nặng tài khóa sẽ khổng lồ. Trả thu nhập hàng tháng cho mọi công dân có thể ngốn một phần rất lớn ngân sách quốc gia."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Sarah",
+          "textEn": "But consider the alternative: growing inequality and social unrest. A basic income would give people the security to retrain and start small businesses.",
+          "textVi": "Nhưng hãy nghĩ đến kịch bản ngược lại: bất bình đẳng gia tăng và bất ổn xã hội. Thu nhập cơ bản sẽ cho người dân sự an tâm để học nghề mới và khởi sự kinh doanh nhỏ."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Dr. Hùng",
+          "textEn": "That assumes people would use the money productively. Critics worry that guaranteed income might discourage work, especially among young people.",
+          "textVi": "Điều đó giả định rằng người ta sẽ dùng tiền một cách hiệu quả. Các nhà phê bình lo rằng thu nhập đảm bảo có thể làm giảm động lực làm việc, nhất là ở người trẻ."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Sarah",
+          "textEn": "Evidence from pilot programmes in Finland and Kenya tells a different story. Most recipients continued working, and reported better health and lower stress.",
+          "textVi": "Bằng chứng từ các chương trình thí điểm ở Phần Lan và Kenya lại kể câu chuyện khác. Hầu hết người nhận vẫn tiếp tục làm việc, và cho biết sức khỏe tốt hơn, bớt căng thẳng hơn."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Dr. Hùng",
+          "textEn": "Those pilots were small and short-term. Scaling up to an entire country is a completely different challenge, particularly for a developing economy.",
+          "textVi": "Những thí điểm đó quy mô nhỏ và ngắn hạn. Nhân rộng ra cả một quốc gia là thách thức hoàn toàn khác, đặc biệt với một nền kinh tế đang phát triển."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Sarah",
+          "textEn": "Even a partial basic income, targeted at vulnerable groups, could break the cycle of poverty far more effectively than our current fragmented welfare system.",
+          "textVi": "Ngay cả một mức thu nhập cơ bản một phần, hướng tới nhóm yếu thế, cũng có thể phá vỡ vòng luẩn quẩn đói nghèo hiệu quả hơn nhiều so với hệ thống phúc lợi manh mún hiện nay."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Dr. Hùng",
+          "textEn": "I agree our welfare system needs reform, but I would rather see investment in education and healthcare — public goods that benefit everyone in the long run.",
+          "textVi": "Tôi đồng ý hệ thống phúc lợi cần cải cách, nhưng tôi muốn thấy đầu tư vào giáo dục và y tế hơn — những hàng hóa công mang lại lợi ích cho mọi người về lâu dài."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Sarah",
+          "textEn": "Why not both? A modest basic income alongside stronger public services could be funded by progressive taxation on the tech giants profiting from automation.",
+          "textVi": "Sao không làm cả hai? Một mức thu nhập cơ bản khiêm tốn cùng với dịch vụ công mạnh hơn có thể được tài trợ bằng thuế lũy tiến đánh vào các gã khổng lồ công nghệ đang hưởng lợi từ tự động hóa."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Dr. Hùng",
+          "textEn": "That is an interesting proposal, though politically difficult. Still, the debate itself is valuable — it forces us to rethink what economic security means in the 21st century.",
+          "textVi": "Đó là một đề xuất thú vị, dù khó khăn về mặt chính trị. Dù sao, bản thân cuộc tranh luận đã có giá trị — nó buộc chúng ta phải suy nghĩ lại về ý nghĩa của an sinh kinh tế trong thế kỷ 21."
+        }
+      ],
+      "location": "Diễn đàn chính sách, TP. Hồ Chí Minh",
+      "title": "Universal Basic Income",
+      "titleVi": "Thu nhập cơ bản toàn dân"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "id": "pkg-114",
+    "quiz": [
+      {
+        "correctAnswer": "Gánh nặng tài khóa khổng lồ cho ngân sách",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Dr. Hùng cho rằng trả thu nhập hàng tháng cho mọi công dân sẽ ngốn một phần rất lớn ngân sách quốc gia.",
+        "options": [
+          "Gánh nặng tài khóa khổng lồ cho ngân sách",
+          "Người dân sẽ không chịu học nghề mới",
+          "Công nghệ chưa đủ phát triển",
+          "Chính phủ thiếu dữ liệu dân số"
+        ],
+        "question": "Quan điểm chính của Dr. Hùng về thu nhập cơ bản toàn dân là gì?"
+      },
+      {
+        "correctAnswer": "Thí điểm ở Phần Lan và Kenya: người nhận vẫn làm việc, sức khỏe tốt hơn",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Sarah dẫn chứng thí điểm ở Phần Lan và Kenya — hầu hết người nhận vẫn tiếp tục làm việc, sức khỏe tốt hơn và bớt căng thẳng.",
+        "options": [
+          "Thí điểm ở Phần Lan và Kenya: người nhận vẫn làm việc, sức khỏe tốt hơn",
+          "Khảo sát ở Mỹ: 90% người nhận bỏ việc",
+          "Thí điểm ở Nhật: năng suất giảm một nửa",
+          "Chưa có bằng chứng thực tế nào"
+        ],
+        "question": "Sarah dùng bằng chứng nào để phản bác lo ngại 'làm mất động lực làm việc'?"
+      },
+      {
+        "correctAnswer": "Thuế lũy tiến đánh vào các gã khổng lồ công nghệ",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Sarah đề xuất tài trợ bằng thuế lũy tiến đánh vào các gã khổng lồ công nghệ đang hưởng lợi từ tự động hóa.",
+        "options": [
+          "Thuế lũy tiến đánh vào các gã khổng lồ công nghệ",
+          "In thêm tiền để chi trả",
+          "Cắt toàn bộ ngân sách giáo dục",
+          "Vay nợ nước ngoài dài hạn"
+        ],
+        "question": "Đề xuất cuối cùng của Sarah để tài trợ chính sách này là gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-1",
+        "line-5",
+        "line-9"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "economy",
+    "topicVi": "Kinh tế",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-7"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "David",
+          "role": "Nhà phát triển công nghệ giáo dục"
+        },
+        {
+          "gender": "female",
+          "name": "Ms. Trang",
+          "role": "Giáo viên"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "David",
+          "textEn": "Ms. Trang, as a teacher with fifteen years of experience, what is your honest opinion of AI in the classroom?",
+          "textVi": "Cô Trang, với tư cách giáo viên có mười lăm năm kinh nghiệm, cô đánh giá thật lòng thế nào về AI trong lớp học?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Trang",
+          "textEn": "I see both promise and danger. AI can personalise learning, but I worry it may weaken students' ability to think independently.",
+          "textVi": "Tôi thấy cả triển vọng lẫn nguy cơ. AI có thể cá nhân hóa việc học, nhưng tôi lo nó làm suy yếu khả năng tư duy độc lập của học sinh."
+        },
+        {
+          "id": "line-3",
+          "speaker": "David",
+          "textEn": "But isn't that the same fear people had about calculators? Technology doesn't replace thinking — it frees students to focus on higher-level problem solving.",
+          "textVi": "Nhưng đó chẳng phải cũng là nỗi sợ người ta từng có với máy tính bỏ túi sao? Công nghệ không thay thế tư duy — nó giải phóng học sinh để tập trung vào giải quyết vấn đề ở tầm cao hơn."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Trang",
+          "textEn": "The comparison is misleading. A calculator does arithmetic; AI writes entire essays. When students outsource their thinking, the learning never happens.",
+          "textVi": "So sánh như vậy là sai lệch. Máy tính bỏ túi chỉ làm phép tính số học; còn AI viết cả bài luận. Khi học sinh thuê ngoài tư duy của mình, việc học thực sự không bao giờ diễn ra."
+        },
+        {
+          "id": "line-5",
+          "speaker": "David",
+          "textEn": "That depends on how we design the tools. AI tutors can ask guiding questions instead of giving answers, scaffolding the learning process step by step.",
+          "textVi": "Điều đó phụ thuộc vào cách chúng ta thiết kế công cụ. Gia sư AI có thể đặt câu hỏi gợi mở thay vì đưa đáp án, nâng đỡ quá trình học từng bước một."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Trang",
+          "textEn": "In an ideal world, yes. But in reality, most students will take the shortcut. We already see a rise in AI-generated homework in my school.",
+          "textVi": "Trong thế giới lý tưởng thì đúng. Nhưng thực tế, hầu hết học sinh sẽ chọn đường tắt. Trường tôi đã thấy bài tập do AI làm tăng lên rõ rệt."
+        },
+        {
+          "id": "line-7",
+          "speaker": "David",
+          "textEn": "Then perhaps assessment must change. If AI can pass our exams, the exams are testing the wrong skills — we should assess creativity and critical thinking instead.",
+          "textVi": "Vậy có lẽ cách đánh giá phải thay đổi. Nếu AI có thể vượt qua các kỳ thi của chúng ta, nghĩa là kỳ thi đang kiểm tra sai kỹ năng — chúng ta nên đánh giá sự sáng tạo và tư duy phản biện thay vào đó."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Trang",
+          "textEn": "I agree assessment needs reform, but there is another concern: data privacy. These platforms collect enormous amounts of information about children.",
+          "textVi": "Tôi đồng ý cách đánh giá cần cải cách, nhưng còn một lo ngại khác: quyền riêng tư dữ liệu. Các nền tảng này thu thập lượng thông tin khổng lồ về trẻ em."
+        },
+        {
+          "id": "line-9",
+          "speaker": "David",
+          "textEn": "That is a legitimate concern, and regulation must keep pace. Still, we shouldn't deny students in remote areas access to world-class tutoring because of risks we can manage.",
+          "textVi": "Đó là lo ngại chính đáng, và quy định pháp luật phải theo kịp. Tuy vậy, chúng ta không nên tước đi cơ hội tiếp cận gia sư đẳng cấp thế giới của học sinh vùng sâu chỉ vì những rủi ro mà ta có thể kiểm soát."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Trang",
+          "textEn": "Fair point. My position is not to ban AI, but to ensure teachers remain at the centre — technology should assist us, never replace the human relationship at the heart of education.",
+          "textVi": "Ý kiến xác đáng. Lập trường của tôi không phải cấm AI, mà là đảm bảo giáo viên vẫn ở vị trí trung tâm — công nghệ nên hỗ trợ chúng tôi, không bao giờ thay thế mối quan hệ con người vốn là cốt lõi của giáo dục."
+        }
+      ],
+      "location": "Hội thảo giáo dục, Hà Nội",
+      "title": "AI in Education",
+      "titleVi": "Trí tuệ nhân tạo trong giáo dục"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-3",
+        "line-4",
+        "line-6",
+        "line-8"
+      ]
+    },
+    "id": "pkg-115",
+    "quiz": [
+      {
+        "correctAnswer": "AI có triển vọng nhưng không được thay thế mối quan hệ thầy–trò; công nghệ chỉ nên hỗ trợ",
+        "evidenceLineId": "line-10",
+        "explanation": "Dòng 10: cô Trang khẳng định lập trường không phải cấm AI, mà là giáo viên vẫn ở vị trí trung tâm — công nghệ hỗ trợ, không thay thế mối quan hệ con người.",
+        "options": [
+          "AI có triển vọng nhưng không được thay thế mối quan hệ thầy–trò; công nghệ chỉ nên hỗ trợ",
+          "Nên cấm hoàn toàn AI trong trường học",
+          "AI nên thay thế giáo viên để tiết kiệm chi phí",
+          "Học sinh nên tự do dùng AI làm mọi bài tập"
+        ],
+        "question": "Quan điểm cốt lõi của cô Trang về AI trong giáo dục là gì?"
+      },
+      {
+        "correctAnswer": "Nỗi sợ máy tính bỏ túi",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: David cho rằng nỗi sợ AI cũng giống nỗi sợ người ta từng có với máy tính bỏ túi.",
+        "options": [
+          "Nỗi sợ máy tính bỏ túi",
+          "Nỗi sợ tivi",
+          "Nỗi sợ internet",
+          "Nỗi sợ điện thoại di động"
+        ],
+        "question": "David so sánh nỗi sợ AI với nỗi sợ nào trong quá khứ?"
+      },
+      {
+        "correctAnswer": "Kỳ thi đang kiểm tra sai kỹ năng; nên đánh giá sáng tạo và tư duy phản biện",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: David lập luận nếu AI vượt qua được kỳ thi thì kỳ thi đang kiểm tra sai kỹ năng — nên đánh giá sáng tạo và tư duy phản biện thay vào đó.",
+        "options": [
+          "Kỳ thi đang kiểm tra sai kỹ năng; nên đánh giá sáng tạo và tư duy phản biện",
+          "Nên cấm AI tham gia thi cử",
+          "Học sinh hiện nay quá lười biếng",
+          "Kỳ thi nên khó hơn nữa"
+        ],
+        "question": "Theo David, nếu AI có thể vượt qua các kỳ thi thì điều đó cho thấy điều gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-5",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "education",
+    "topicVi": "Giáo dục",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-9"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Emma",
+          "role": "Nhà quy hoạch đô thị"
+        },
+        {
+          "gender": "male",
+          "name": "Mr. Tuấn",
+          "role": "Nông dân đô thị"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Emma",
+          "textEn": "Mr. Tuấn, your rooftop farm in the middle of Ho Chi Minh City is impressive. What inspired you to start growing food on top of a building?",
+          "textVi": "Anh Tuấn, trang trại trên mái nhà giữa lòng TP. Hồ Chí Minh của anh thật ấn tượng. Điều gì đã truyền cảm hứng để anh bắt đầu trồng thực phẩm trên nóc tòa nhà?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Mr. Tuấn",
+          "textEn": "I wanted to prove that cities don't have to depend entirely on rural areas for fresh produce. We harvest over two tonnes of vegetables a year from just 200 square metres.",
+          "textVi": "Tôi muốn chứng minh rằng thành phố không nhất thiết phải phụ thuộc hoàn toàn vào nông thôn về rau tươi. Chúng tôi thu hoạch hơn hai tấn rau mỗi năm chỉ trên 200 mét vuông."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Emma",
+          "textEn": "That's remarkable, but can urban farming ever be more than a niche hobby? The scale seems too small to feed a city of nine million people.",
+          "textVi": "Thật đáng nể, nhưng nông nghiệp đô thị liệu có bao giờ vượt qua mức sở thích nhỏ lẻ? Quy mô có vẻ quá nhỏ để nuôi sống một thành phố chín triệu dân."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Mr. Tuấn",
+          "textEn": "No single rooftop will feed the city, but thousands of them together make a difference. More importantly, we shorten supply chains and cut transport emissions dramatically.",
+          "textVi": "Không mái nhà đơn lẻ nào nuôi nổi cả thành phố, nhưng hàng nghìn mái nhà cộng lại sẽ tạo khác biệt. Quan trọng hơn, chúng tôi rút ngắn chuỗi cung ứng và cắt giảm mạnh khí thải vận chuyển."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Emma",
+          "textEn": "What about the economics? High rents and setup costs must make urban-grown vegetables far more expensive than those from the countryside.",
+          "textVi": "Còn khía cạnh kinh tế thì sao? Giá thuê cao và chi phí đầu tư hẳn khiến rau trồng trong đô thị đắt hơn nhiều so với rau từ nông thôn."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Mr. Tuấn",
+          "textEn": "Initially, yes. But our customers pay a premium for pesticide-free produce harvested hours — not days — before it reaches their table. Demand keeps growing.",
+          "textVi": "Ban đầu thì đúng. Nhưng khách hàng của chúng tôi sẵn sàng trả giá cao cho rau không thuốc trừ sâu, được thu hoạch chỉ vài giờ — chứ không phải vài ngày — trước khi lên bàn ăn. Nhu cầu vẫn đang tăng."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Emma",
+          "textEn": "From a planning perspective, I see another benefit: green rooftops reduce the urban heat island effect and absorb rainwater during heavy storms.",
+          "textVi": "Từ góc độ quy hoạch, tôi thấy thêm một lợi ích: mái nhà xanh giảm hiệu ứng đảo nhiệt đô thị và hấp thụ nước mưa trong những trận bão lớn."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Mr. Tuấn",
+          "textEn": "Exactly. And there is a social dimension too — our farm employs local youth and teaches children where their food actually comes from.",
+          "textVi": "Chính xác. Và còn khía cạnh xã hội nữa — trang trại của chúng tôi tạo việc làm cho thanh niên địa phương và dạy trẻ em biết thực phẩm thực sự đến từ đâu."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Emma",
+          "textEn": "Still, zoning regulations and building safety codes were not designed with farms in mind. Scaling up will require serious policy changes.",
+          "textVi": "Dù vậy, các quy định phân vùng và tiêu chuẩn an toàn công trình không được thiết kế cho nông trại. Muốn nhân rộng sẽ cần những thay đổi chính sách nghiêm túc."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Mr. Tuấn",
+          "textEn": "I agree. But cities that adapt will be more resilient. When the next supply disruption hits, the neighbourhoods that grow their own food will be the ones that cope best.",
+          "textVi": "Tôi đồng ý. Nhưng những thành phố biết thích ứng sẽ kiên cường hơn. Khi cú sốc nguồn cung tiếp theo ập đến, những khu phố tự trồng được thực phẩm sẽ là nơi chống chịu tốt nhất."
+        }
+      ],
+      "location": "Trang trại trên mái nhà, TP. Hồ Chí Minh",
+      "title": "Urban Farming",
+      "titleVi": "Nông nghiệp đô thị"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-6",
+        "line-7",
+        "line-10"
+      ]
+    },
+    "id": "pkg-116",
+    "quiz": [
+      {
+        "correctAnswer": "Hơn 2 tấn trên 200 m²",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: anh Tuấn cho biết trang trại thu hoạch hơn hai tấn rau mỗi năm chỉ trên 200 mét vuông.",
+        "options": [
+          "Hơn 2 tấn trên 200 m²",
+          "500 kg trên 100 m²",
+          "10 tấn trên 1 ha",
+          "Chưa có số liệu cụ thể"
+        ],
+        "question": "Trang trại của anh Tuấn thu hoạch bao nhiêu rau mỗi năm?"
+      },
+      {
+        "correctAnswer": "Giảm hiệu ứng đảo nhiệt và hấp thụ nước mưa khi bão lớn",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Emma chỉ ra mái nhà xanh giảm hiệu ứng đảo nhiệt đô thị và hấp thụ nước mưa trong những trận bão lớn.",
+        "options": [
+          "Giảm hiệu ứng đảo nhiệt và hấp thụ nước mưa khi bão lớn",
+          "Tăng giá thuê nhà trong khu vực",
+          "Giảm chi phí điện của tòa nhà 50%",
+          "Thay thế hoàn toàn công viên thành phố"
+        ],
+        "question": "Theo quan điểm của Emma, lợi ích của mái nhà xanh đối với quy hoạch đô thị là gì?"
+      },
+      {
+        "correctAnswer": "Quy định phân vùng và tiêu chuẩn an toàn công trình chưa phù hợp",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: Emma cho rằng quy định phân vùng và tiêu chuẩn an toàn công trình không được thiết kế cho nông trại, nên nhân rộng cần thay đổi chính sách nghiêm túc.",
+        "options": [
+          "Quy định phân vùng và tiêu chuẩn an toàn công trình chưa phù hợp",
+          "Thiếu hạt giống rau",
+          "Người dân không thích ăn rau",
+          "Khí hậu TP. Hồ Chí Minh quá lạnh"
+        ],
+        "question": "Rào cản lớn nhất để nhân rộng nông nghiệp đô thị theo Emma là gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-8"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "environment",
+    "topicVi": "Môi trường",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-9"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "Alex",
+          "role": "Nhà thiết kế ứng dụng"
+        },
+        {
+          "gender": "female",
+          "name": "Dr. Linh",
+          "role": "Nhà tâm lý học"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Alex",
+          "textEn": "Dr. Linh, as someone who designs apps for a living, I have to ask: is the whole 'digital detox' movement just a fashionable overreaction?",
+          "textVi": "Tiến sĩ Linh, với tư cách người thiết kế ứng dụng để kiếm sống, tôi phải hỏi: liệu phong trào 'cai nghiện số' có chỉ là phản ứng thái quá theo mốt?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Dr. Linh",
+          "textEn": "Not at all. Research consistently links excessive screen time to anxiety, poor sleep, and declining attention spans — especially among teenagers.",
+          "textVi": "Hoàn toàn không. Nghiên cứu luôn chỉ ra mối liên hệ giữa thời gian dùng màn hình quá mức với lo âu, ngủ kém và khả năng tập trung suy giảm — nhất là ở thanh thiếu niên."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Alex",
+          "textEn": "But technology is also how people work, learn, and stay connected. Telling everyone to switch off feels unrealistic, even privileged.",
+          "textVi": "Nhưng công nghệ cũng là cách người ta làm việc, học tập và giữ kết nối. Bảo mọi người tắt hết thiết bị nghe phi thực tế, thậm chí có phần đặc quyền."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Dr. Linh",
+          "textEn": "A detox doesn't mean abandoning technology. It means regaining control — setting boundaries so that you use your phone intentionally rather than compulsively.",
+          "textVi": "Cai nghiện số không có nghĩa từ bỏ công nghệ. Nó có nghĩa lấy lại quyền kiểm soát — đặt ra ranh giới để bạn dùng điện thoại một cách chủ động thay vì bị thôi thúc."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Alex",
+          "textEn": "Ironically, that's exactly what good design should do. Many of us in the industry now advocate for humane technology that respects users' time.",
+          "textVi": "Trớ trêu thay, đó chính là điều thiết kế tốt nên làm. Nhiều người trong ngành chúng tôi giờ đây ủng hộ công nghệ nhân văn, tôn trọng thời gian của người dùng."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Dr. Linh",
+          "textEn": "I appreciate that shift, but let's be honest: most apps are still engineered to maximise engagement, using the same psychological tricks as slot machines.",
+          "textVi": "Tôi ghi nhận sự chuyển dịch đó, nhưng hãy thành thật: hầu hết ứng dụng vẫn được thiết kế để tối đa hóa tương tác, dùng chính những mánh khóe tâm lý như máy đánh bạc."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Alex",
+          "textEn": "Fair criticism. Still, wouldn't digital literacy be more effective than detoxes? Teaching people to recognise manipulative design seems more sustainable.",
+          "textVi": "Phê bình xác đáng. Nhưng liệu giáo dục hiểu biết số có hiệu quả hơn cai nghiện? Dạy người ta nhận diện thiết kế thao túng có vẻ bền vững hơn."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Dr. Linh",
+          "textEn": "Both matter. Literacy builds long-term resistance, but a periodic detox breaks the habit loop — it shows people what life feels like without constant notifications.",
+          "textVi": "Cả hai đều quan trọng. Hiểu biết số tạo sức đề kháng lâu dài, nhưng cai nghiện định kỳ phá vỡ vòng lặp thói quen — nó cho người ta thấy cuộc sống không thông báo liên tục là thế nào."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Alex",
+          "textEn": "So what would you recommend for someone like me, who can't simply log off for a month?",
+          "textVi": "Vậy bà khuyên gì cho người như tôi, không thể đơn giản ngắt kết nối cả tháng?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Dr. Linh",
+          "textEn": "Start small: no phones at meals, notifications limited to essentials, and one screen-free day a week. Most of my clients are surprised by how quickly their focus returns.",
+          "textVi": "Hãy bắt đầu nhỏ: không dùng điện thoại trong bữa ăn, chỉ giữ thông báo thiết yếu, và một ngày không màn hình mỗi tuần. Hầu hết khách hàng của tôi đều ngạc nhiên vì khả năng tập trung trở lại nhanh đến vậy."
+        }
+      ],
+      "location": "Phòng khám tâm lý, Hà Nội",
+      "title": "The Digital Detox",
+      "titleVi": "Cai nghiện số"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-6",
+        "line-8",
+        "line-9"
+      ]
+    },
+    "id": "pkg-117",
+    "quiz": [
+      {
+        "correctAnswer": "Lo âu, ngủ kém và suy giảm khả năng tập trung",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Dr. Linh cho biết nghiên cứu luôn liên hệ thời gian dùng màn hình quá mức với lo âu, ngủ kém và khả năng tập trung suy giảm.",
+        "options": [
+          "Lo âu, ngủ kém và suy giảm khả năng tập trung",
+          "Tăng cân và rụng tóc",
+          "Mù màu và điếc",
+          "Không có vấn đề sức khỏe nào"
+        ],
+        "question": "Nghiên cứu liên hệ thời gian dùng màn hình quá mức với những vấn đề nào?"
+      },
+      {
+        "correctAnswer": "Lấy lại quyền kiểm soát, đặt ranh giới dùng điện thoại chủ động",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Dr. Linh giải thích cai nghiện số là lấy lại quyền kiểm soát — đặt ranh giới để dùng điện thoại chủ động thay vì bị thôi thúc.",
+        "options": [
+          "Lấy lại quyền kiểm soát, đặt ranh giới dùng điện thoại chủ động",
+          "Vứt bỏ hoàn toàn điện thoại thông minh",
+          "Chuyển về sống ở nông thôn",
+          "Cấm trẻ em dùng internet"
+        ],
+        "question": "Theo quan điểm của Dr. Linh, 'cai nghiện số' thực chất có nghĩa là gì?"
+      },
+      {
+        "correctAnswer": "Giáo dục hiểu biết số — dạy nhận diện thiết kế thao túng",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: Alex cho rằng dạy người ta nhận diện thiết kế thao túng (digital literacy) có vẻ bền vững hơn các đợt cai nghiện.",
+        "options": [
+          "Giáo dục hiểu biết số — dạy nhận diện thiết kế thao túng",
+          "Tăng giá điện thoại thông minh",
+          "Cấm mọi ứng dụng mạng xã hội",
+          "Quay lại dùng điện thoại cục gạch"
+        ],
+        "question": "Alex cho rằng giải pháp nào bền vững hơn các đợt cai nghiện?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "technology",
+    "topicVi": "Công nghệ",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-5"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "Mark",
+          "role": "Nhà kinh tế đô thị"
+        },
+        {
+          "gender": "female",
+          "name": "Ms. Hạnh",
+          "role": "Môi giới bất động sản"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Mark",
+          "textEn": "Ms. Hạnh, property prices in Hanoi have tripled in a decade while wages have barely moved. Are we facing a full-blown housing crisis?",
+          "textVi": "Chị Hạnh, giá bất động sản ở Hà Nội đã tăng gấp ba trong một thập kỷ trong khi lương hầu như không nhúc nhích. Chúng ta có đang đối mặt với một cuộc khủng hoảng nhà ở toàn diện?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Hạnh",
+          "textEn": "For young buyers, absolutely. A modest apartment now costs twenty times the average annual salary — homeownership has become a distant dream for most.",
+          "textVi": "Với người mua trẻ thì đúng vậy. Một căn hộ khiêm tốn giờ có giá gấp hai mươi lần lương năm trung bình — sở hữu nhà đã thành giấc mơ xa vời với đa số."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Mark",
+          "textEn": "Economists often blame speculation. When apartments are treated as investment assets rather than homes, prices detach from what residents can actually afford.",
+          "textVi": "Các nhà kinh tế thường đổ lỗi cho đầu cơ. Khi căn hộ bị coi là tài sản đầu tư thay vì nơi ở, giá cả tách rời khỏi khả năng chi trả thực tế của người dân."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Hạnh",
+          "textEn": "Speculation is part of it, but supply is the deeper problem. Developers prefer luxury projects with high margins, while affordable housing barely gets built.",
+          "textVi": "Đầu cơ chỉ là một phần, vấn đề sâu xa hơn là nguồn cung. Chủ đầu tư thích dự án cao cấp biên lợi nhuận cao, trong khi nhà ở giá rẻ hầu như không được xây."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Mark",
+          "textEn": "Some cities have tried rent controls to protect tenants. Do you think that could work here?",
+          "textVi": "Một số thành phố đã thử kiểm soát giá thuê để bảo vệ người thuê. Chị nghĩ cách đó có hiệu quả ở đây?"
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Hạnh",
+          "textEn": "Rent control sounds compassionate, but it often backfires — landlords stop maintaining properties, and new construction slows down even further.",
+          "textVi": "Kiểm soát giá thuê nghe có vẻ nhân văn, nhưng thường phản tác dụng — chủ nhà ngừng bảo trì, và xây dựng mới càng chậm lại."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Mark",
+          "textEn": "What about a tax on vacant properties? That would discourage hoarding and push empty apartments back onto the market.",
+          "textVi": "Còn thuế đánh vào bất động sản bỏ trống thì sao? Cách đó sẽ hạn chế găm hàng và đưa căn hộ trống trở lại thị trường."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Hạnh",
+          "textEn": "That has potential, though enforcement would be challenging. A more direct approach is for the government to build large-scale social housing, as Singapore did.",
+          "textVi": "Cách đó có tiềm năng, dù thực thi sẽ khó khăn. Cách trực tiếp hơn là chính phủ xây nhà ở xã hội quy mô lớn, như Singapore đã làm."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Mark",
+          "textEn": "Singapore's model required decades of consistent policy and enormous public investment — a difficult act to follow, but the results speak for themselves.",
+          "textVi": "Mô hình Singapore đòi hỏi hàng thập kỷ chính sách nhất quán và đầu tư công khổng lồ — khó mà theo kịp, nhưng kết quả đã tự nói lên tất cả."
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Hạnh",
+          "textEn": "Whatever the solution, time is running out. If an entire generation gives up on owning a home, the social consequences will last far longer than any market cycle.",
+          "textVi": "Dù giải pháp là gì, thời gian cũng không còn nhiều. Nếu cả một thế hệ từ bỏ giấc mơ sở hữu nhà, hậu quả xã hội sẽ kéo dài hơn bất kỳ chu kỳ thị trường nào."
+        }
+      ],
+      "location": "Văn phòng bất động sản, Hà Nội",
+      "title": "The Housing Crisis",
+      "titleVi": "Khủng hoảng nhà ở"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-3",
+        "line-4",
+        "line-8"
+      ]
+    },
+    "id": "pkg-118",
+    "quiz": [
+      {
+        "correctAnswer": "20 lần",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: chị Hạnh cho biết một căn hộ khiêm tốn giờ có giá gấp hai mươi lần lương năm trung bình.",
+        "options": [
+          "20 lần",
+          "5 lần",
+          "10 lần",
+          "50 lần"
+        ],
+        "question": "Một căn hộ khiêm tốn ở Hà Nội hiện có giá bằng bao nhiêu lần lương năm trung bình?"
+      },
+      {
+        "correctAnswer": "Nghe nhân văn nhưng thường phản tác dụng",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: chị Hạnh cho rằng kiểm soát giá thuê nghe nhân văn nhưng thường phản tác dụng — chủ nhà ngừng bảo trì, xây dựng mới chậm lại.",
+        "options": [
+          "Nghe nhân văn nhưng thường phản tác dụng",
+          "Là giải pháp hoàn hảo cho mọi thành phố",
+          "Nên áp dụng ngay lập tức",
+          "Chỉ hiệu quả ở nông thôn"
+        ],
+        "question": "Quan điểm của chị Hạnh về kiểm soát giá thuê là gì?"
+      },
+      {
+        "correctAnswer": "Xây nhà ở xã hội quy mô lớn như Singapore",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: chị Hạnh đề xuất chính phủ xây nhà ở xã hội quy mô lớn, như Singapore đã làm.",
+        "options": [
+          "Xây nhà ở xã hội quy mô lớn như Singapore",
+          "Để thị trường tự điều chỉnh hoàn toàn",
+          "Cấm người nước ngoài mua nhà",
+          "Phát nhà miễn phí cho mọi người"
+        ],
+        "question": "Chị Hạnh đề xuất học mô hình nào để giải quyết khủng hoảng nhà ở?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "society",
+    "topicVi": "Xã hội",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-5",
+        "line-7"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "female",
+          "name": "Anna",
+          "role": "Nhà làm phim tài liệu"
+        },
+        {
+          "gender": "male",
+          "name": "Professor Sơn",
+          "role": "Nhà ngôn ngữ học"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Anna",
+          "textEn": "Professor Sơn, linguists warn that half of the world's languages could disappear this century. Why should we care?",
+          "textVi": "Giáo sư Sơn, các nhà ngôn ngữ học cảnh báo một nửa ngôn ngữ thế giới có thể biến mất trong thế kỷ này. Vì sao chúng ta nên quan tâm?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Professor Sơn",
+          "textEn": "Because each language carries a unique way of seeing the world. When a language dies, we lose centuries of knowledge about nature, medicine, and human experience.",
+          "textVi": "Vì mỗi ngôn ngữ mang một cách nhìn thế giới độc đáo. Khi một ngôn ngữ chết đi, chúng ta mất hàng thế kỷ tri thức về thiên nhiên, y học và trải nghiệm con người."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Anna",
+          "textEn": "Some argue this is simply natural evolution — dominant languages win because they are more useful for trade and communication. Isn't resistance futile?",
+          "textVi": "Một số người cho rằng đây chỉ là tiến hóa tự nhiên — ngôn ngữ thống trị thắng thế vì hữu ích hơn cho thương mại và giao tiếp. Chống lại chẳng phải vô ích sao?"
+        },
+        {
+          "id": "line-4",
+          "speaker": "Professor Sơn",
+          "textEn": "That view treats languages like products competing in a market. But languages don't die naturally; they are killed by policies that punish children for speaking their mother tongue.",
+          "textVi": "Quan điểm đó coi ngôn ngữ như sản phẩm cạnh tranh trên thị trường. Nhưng ngôn ngữ không chết một cách tự nhiên; chúng bị giết bởi những chính sách trừng phạt trẻ em nói tiếng mẹ đẻ."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Anna",
+          "textEn": "In my documentaries, I've met elders who are the last fluent speakers of their language. The grief in their eyes is unforgettable.",
+          "textVi": "Trong các phim tài liệu của mình, tôi từng gặp những cụ già là người cuối cùng nói thành thạo ngôn ngữ của họ. Nỗi đau trong mắt họ thật khó quên."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Professor Sơn",
+          "textEn": "And yet revitalisation is possible. Wales and Hawaii show that with education policy and community pride, even nearly extinct languages can come back to life.",
+          "textVi": "Thế nhưng hồi sinh là điều có thể. Xứ Wales và Hawaii cho thấy rằng với chính sách giáo dục và niềm tự hào cộng đồng, ngay cả ngôn ngữ gần tuyệt chủng cũng có thể sống lại."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Anna",
+          "textEn": "Technology seems to offer new hope too — apps and online archives can preserve recordings for future generations.",
+          "textVi": "Công nghệ dường như cũng mang lại hy vọng mới — ứng dụng và kho lưu trữ trực tuyến có thể bảo tồn bản ghi âm cho thế hệ sau."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Professor Sơn",
+          "textEn": "Documentation is valuable, but a language locked in an archive is like a caged bird. True preservation means children speaking it in playgrounds, not just scholars studying recordings.",
+          "textVi": "Ghi chép tư liệu rất quý, nhưng ngôn ngữ bị nhốt trong kho lưu trữ như chim trong lồng. Bảo tồn đích thực là trẻ em nói ngôn ngữ đó ở sân chơi, chứ không chỉ học giả nghiên cứu bản ghi."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Anna",
+          "textEn": "So the real battle is making the language useful and prestigious again in daily life?",
+          "textVi": "Vậy trận chiến thực sự là làm cho ngôn ngữ trở nên hữu ích và đáng tự hào trở lại trong đời sống hàng ngày?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Professor Sơn",
+          "textEn": "Precisely. A language survives when its speakers see a future in it — when it opens doors rather than closing them.",
+          "textVi": "Chính xác. Một ngôn ngữ tồn tại khi người nói thấy tương lai trong đó — khi nó mở ra cánh cửa thay vì đóng lại."
+        }
+      ],
+      "location": "Liên hoan phim tài liệu, Huế",
+      "title": "Saving Endangered Languages",
+      "titleVi": "Bảo tồn ngôn ngữ nguy cấp"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-1",
+        "line-6",
+        "line-8",
+        "line-9"
+      ]
+    },
+    "id": "pkg-119",
+    "quiz": [
+      {
+        "correctAnswer": "Hàng thế kỷ tri thức về thiên nhiên, y học và trải nghiệm con người",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: Giáo sư Sơn cho biết mỗi ngôn ngữ mang một cách nhìn thế giới độc đáo; khi nó chết đi, ta mất hàng thế kỷ tri thức về thiên nhiên, y học và trải nghiệm con người.",
+        "options": [
+          "Hàng thế kỷ tri thức về thiên nhiên, y học và trải nghiệm con người",
+          "Một công cụ giao tiếp thương mại",
+          "Một vài bài hát dân gian",
+          "Không mất gì đáng kể"
+        ],
+        "question": "Theo Giáo sư Sơn, khi một ngôn ngữ chết đi, nhân loại mất đi điều gì?"
+      },
+      {
+        "correctAnswer": "Ngôn ngữ không chết tự nhiên mà bị giết bởi chính sách trừng phạt tiếng mẹ đẻ",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: Giáo sư Sơn phản bác — ngôn ngữ không chết tự nhiên mà bị giết bởi những chính sách trừng phạt trẻ em nói tiếng mẹ đẻ.",
+        "options": [
+          "Ngôn ngữ không chết tự nhiên mà bị giết bởi chính sách trừng phạt tiếng mẹ đẻ",
+          "Đồng ý hoàn toàn với quan điểm đó",
+          "Cho rằng ngôn ngữ mạnh luôn công bằng",
+          "Không đưa ra ý kiến"
+        ],
+        "question": "Giáo sư Sơn phản bác quan điểm 'ngôn ngữ yếu tự đào thải là tiến hóa tự nhiên' như thế nào?"
+      },
+      {
+        "correctAnswer": "Trẻ em nói ngôn ngữ đó ở sân chơi, không chỉ lưu trữ bản ghi",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: bảo tồn đích thực là trẻ em nói ngôn ngữ đó ở sân chơi, chứ không chỉ học giả nghiên cứu bản ghi âm trong kho lưu trữ.",
+        "options": [
+          "Trẻ em nói ngôn ngữ đó ở sân chơi, không chỉ lưu trữ bản ghi",
+          "Quay phim tài liệu về người già",
+          "Dịch mọi sách sang ngôn ngữ đó",
+          "Dạy ngôn ngữ đó ở đại học nước ngoài"
+        ],
+        "question": "Theo quan điểm của Giáo sư Sơn, bảo tồn ngôn ngữ đích thực nghĩa là gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-10"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "culture",
+    "topicVi": "Văn hóa",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-3",
+        "line-5"
+      ]
+    }
+  },
+  {
+    "cefrLevel": "B2",
+    "dialogue": {
+      "characters": [
+        {
+          "gender": "male",
+          "name": "Ben",
+          "role": "Blogger du lịch"
+        },
+        {
+          "gender": "female",
+          "name": "Ms. Mai",
+          "role": "Kỹ sư hàng không vũ trụ"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line-1",
+          "speaker": "Ben",
+          "textEn": "Ms. Mai, tickets to space now cost less than a luxury apartment in Saigon. Is space tourism finally becoming a reality for ordinary people?",
+          "textVi": "Cô Mai, vé lên vũ trụ giờ rẻ hơn một căn hộ cao cấp ở Sài Gòn. Du lịch vũ trụ cuối cùng có đang thành hiện thực với người bình thường?"
+        },
+        {
+          "id": "line-2",
+          "speaker": "Ms. Mai",
+          "textEn": "'Less than a luxury apartment' still means hundreds of thousands of dollars. For now, space remains a playground for the ultra-rich, not ordinary travellers.",
+          "textVi": "'Rẻ hơn căn hộ cao cấp' vẫn có nghĩa là hàng trăm nghìn đô la. Hiện tại, vũ trụ vẫn là sân chơi của giới siêu giàu, chứ không phải du khách bình thường."
+        },
+        {
+          "id": "line-3",
+          "speaker": "Ben",
+          "textEn": "But every technology starts expensive. Commercial aviation was once a luxury too — prices fall as the industry matures.",
+          "textVi": "Nhưng công nghệ nào lúc đầu cũng đắt. Hàng không thương mại từng là xa xỉ phẩm — giá sẽ giảm khi ngành công nghiệp trưởng thành."
+        },
+        {
+          "id": "line-4",
+          "speaker": "Ms. Mai",
+          "textEn": "Aviation didn't have to escape Earth's gravity. The physics of rocket launches imposes costs that no amount of innovation can entirely eliminate.",
+          "textVi": "Hàng không không phải thoát khỏi trọng lực Trái Đất. Vật lý của phóng tên lửa áp đặt những chi phí mà không đổi mới nào có thể xóa bỏ hoàn toàn."
+        },
+        {
+          "id": "line-5",
+          "speaker": "Ben",
+          "textEn": "Even so, supporters argue that space tourism funds research that benefits everyone — from medical advances to better climate monitoring.",
+          "textVi": "Dù vậy, những người ủng hộ cho rằng du lịch vũ trụ tài trợ nghiên cứu mang lợi ích cho mọi người — từ tiến bộ y học đến giám sát khí hậu tốt hơn."
+        },
+        {
+          "id": "line-6",
+          "speaker": "Ms. Mai",
+          "textEn": "Some spinoffs are real, but let's not exaggerate. Most of that research could be funded directly, without joyrides for billionaires as the middleman.",
+          "textVi": "Một số ứng dụng phái sinh là thật, nhưng đừng phóng đại. Hầu hết nghiên cứu đó có thể được tài trợ trực tiếp, không cần những chuyến đi chơi của tỷ phú làm trung gian."
+        },
+        {
+          "id": "line-7",
+          "speaker": "Ben",
+          "textEn": "What about the environmental cost? A single suborbital flight emits as much carbon as some people produce in a lifetime.",
+          "textVi": "Còn chi phí môi trường thì sao? Một chuyến bay dưới quỹ đạo thải ra lượng carbon bằng cả đời một số người tạo ra."
+        },
+        {
+          "id": "line-8",
+          "speaker": "Ms. Mai",
+          "textEn": "That is my biggest concern. At a time when we are struggling to decarbonise aviation, adding a carbon-intensive luxury industry seems deeply irresponsible.",
+          "textVi": "Đó là mối lo lớn nhất của tôi. Trong lúc chúng ta còn chật vật giảm carbon cho ngành hàng không, việc thêm một ngành xa xỉ tốn carbon nữa thật vô trách nhiệm sâu sắc."
+        },
+        {
+          "id": "line-9",
+          "speaker": "Ben",
+          "textEn": "So you would ban space tourism outright?",
+          "textVi": "Vậy cô sẽ cấm hẳn du lịch vũ trụ?"
+        },
+        {
+          "id": "line-10",
+          "speaker": "Ms. Mai",
+          "textEn": "Not necessarily ban, but regulate strictly — limit flights, tax emissions heavily, and require operators to invest in genuine scientific missions, not just sightseeing.",
+          "textVi": "Không nhất thiết cấm, nhưng quản lý chặt — hạn chế chuyến bay, đánh thuế nặng khí thải, và yêu cầu doanh nghiệp đầu tư vào sứ mệnh khoa học thực thụ, chứ không chỉ ngắm cảnh."
+        }
+      ],
+      "location": "Triển lãm hàng không vũ trụ, Hà Nội",
+      "title": "Space Tourism",
+      "titleVi": "Du lịch vũ trụ"
+    },
+    "dictation": {
+      "lineIds": [
+        "line-3",
+        "line-5",
+        "line-6",
+        "line-10"
+      ]
+    },
+    "id": "pkg-120",
+    "quiz": [
+      {
+        "correctAnswer": "Hàng trăm nghìn đô la — sân chơi của giới siêu giàu",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: cô Mai cho biết vé vẫn có giá hàng trăm nghìn đô la — vũ trụ hiện là sân chơi của giới siêu giàu.",
+        "options": [
+          "Hàng trăm nghìn đô la — sân chơi của giới siêu giàu",
+          "Vài nghìn đô la — ai cũng mua được",
+          "Miễn phí cho nhà khoa học",
+          "Rẻ hơn vé máy bay nội địa"
+        ],
+        "question": "Theo cô Mai, vé du lịch vũ trụ hiện nay có giá khoảng bao nhiêu?"
+      },
+      {
+        "correctAnswer": "Mọi công nghệ lúc đầu đều đắt; giá sẽ giảm khi ngành trưởng thành như hàng không",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: Ben lập luận mọi công nghệ lúc đầu đều đắt đỏ, và giá sẽ giảm khi ngành công nghiệp trưởng thành — như hàng không thương mại từng là xa xỉ phẩm.",
+        "options": [
+          "Mọi công nghệ lúc đầu đều đắt; giá sẽ giảm khi ngành trưởng thành như hàng không",
+          "Vũ trụ không tốn chi phí nào",
+          "Chính phủ sẽ trả hết cho mọi người",
+          "Tên lửa chạy bằng năng lượng miễn phí"
+        ],
+        "question": "Ben lập luận gì để bảo vệ tương lai của du lịch vũ trụ?"
+      },
+      {
+        "correctAnswer": "Chi phí carbon khổng lồ của một ngành xa xỉ giữa lúc cần giảm phát thải",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: cô Mai cho rằng mối lo lớn nhất là chi phí carbon — thêm một ngành xa xỉ tốn carbon giữa lúc đang chật vật giảm phát thải hàng không là vô trách nhiệm sâu sắc.",
+        "options": [
+          "Chi phí carbon khổng lồ của một ngành xa xỉ giữa lúc cần giảm phát thải",
+          "Tên lửa quá ồn ào",
+          "Phi hành gia thiếu kinh nghiệm",
+          "Vé quá rẻ gây quá tải"
+        ],
+        "question": "Theo quan điểm của cô Mai, mối lo lớn nhất về du lịch vũ trụ là gì?"
+      }
+    ],
+    "shadowing": {
+      "lineIds": [
+        "line-2",
+        "line-4",
+        "line-8"
+      ]
+    },
+    "source": "ai-generated",
+    "topic": "technology",
+    "topicVi": "Công nghệ",
+    "verified": false,
+    "wordOrder": {
+      "lineIds": [
+        "line-7",
+        "line-9"
+      ]
+    }
+  }
+]
