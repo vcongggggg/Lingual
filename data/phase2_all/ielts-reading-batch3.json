@@ -1,0 +1,812 @@
+[
+  {
+    "cefrLevel": "B1",
+    "id": "ielts-r-013",
+    "passage": [
+      "Chocolate comes from the seeds of the cacao tree. The cacao tree grows in warm countries near the equator, such as in West Africa and South America. Thousands of years ago, people in Central America were the first to use cacao. They made a bitter drink from the seeds and used it in special ceremonies.",
+      "When European explorers arrived in the Americas in the 1500s, they discovered chocolate. They took cacao seeds back to Europe. At first, only rich people could drink chocolate because it was very expensive. They added sugar and milk to make the bitter drink sweet.",
+      "In the 1800s, new machines changed everything. Factories could make chocolate faster and cheaper than before. Soon, ordinary people could buy chocolate in shops. The first solid chocolate bars appeared during this time.",
+      "Today, chocolate is one of the most popular foods in the world. Millions of people eat it every day. However, farmers in warm countries do most of the hard work growing cacao. Many people now ask for \"fair trade\" chocolate, which means farmers get a fair price for their work."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "In Central America",
+        "explanationVi": "Đáp án ở đoạn 1: \"people in Central America were the first to use cacao\" (người Trung Mỹ là những người đầu tiên dùng cacao).",
+        "options": [
+          "In Europe",
+          "In Central America",
+          "In West Africa",
+          "In Asia"
+        ],
+        "question": "Where did people first use cacao?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "It was very expensive",
+        "explanationVi": "Đáp án ở đoạn 2: \"only rich people could drink chocolate because it was very expensive\" (lúc đầu chỉ người giàu uống được vì sô-cô-la rất đắt).",
+        "options": [
+          "They liked bitter drinks",
+          "It was very expensive",
+          "It was used as medicine",
+          "Only they knew how to make it"
+        ],
+        "question": "Why could only rich people drink chocolate in Europe at first?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "True",
+        "explanationVi": "Đáp án ở đoạn 3: \"The first solid chocolate bars appeared during this time\" — \"this time\" chỉ thập niên 1800s được nhắc ở đầu đoạn, nên câu này đúng.",
+        "question": "The first solid chocolate bars appeared in the 1800s.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Đáp án ở đoạn 4: bài chỉ nói \"many people now ask for 'fair trade' chocolate\" (nhiều người đang kêu gọi sô-cô-la thương mại công bằng), tức đây là điều mọi người mong muốn chứ chưa phải thực tế với mọi nông dân — nên câu \"tất cả nông dân đều được trả giá công bằng\" là sai.",
+        "question": "All cacao farmers in the world today get a fair price for their work.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "ii. Machines make chocolate cheaper",
+        "explanationVi": "Đoạn 3 nói về máy móc mới trong thập niên 1800s giúp làm sô-cô-la nhanh hơn và rẻ hơn (\"new machines changed everything... faster and cheaper\"), nên tiêu đề \"ii. Machines make chocolate cheaper\" là đúng nhất.",
+        "options": [
+          "i. A drink for rich people",
+          "ii. Machines make chocolate cheaper",
+          "iii. The first cacao trees",
+          "iv. Farmers and fair trade"
+        ],
+        "question": "Nối đoạn 3 với tiêu đề đúng.",
+        "type": "matching_heading"
+      }
+    ],
+    "section": "reading",
+    "source": "ai-generated",
+    "title": "The Story of Chocolate",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "ielts-r-014",
+    "passage": [
+      "Rivers are very important for life on Earth. They give water to people, animals, and plants. Almost all big cities in history were built near rivers because people needed water to drink, to cook, and to grow food.",
+      "Rivers start in mountains or hills. Rain and melting snow flow down and join small streams. These streams join together and form a river. The river then flows on until it reaches a lake or the sea.",
+      "Rivers are also the roads of nature. For thousands of years, people have used rivers to travel and to move goods. Boats can carry heavy things on water more easily than people can carry them on land. Even today, many countries still use rivers for transport.",
+      "But rivers need our protection. Factories and farms can put dirty water into rivers. This pollution can kill fish and make the water unsafe to drink. Many governments now work hard to keep their rivers clean."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Because people needed water",
+        "explanationVi": "Đáp án ở đoạn 1: \"big cities in history were built near rivers because people needed water to drink, to cook, and to grow food\" (các thành phố lớn được xây gần sông vì con người cần nước).",
+        "options": [
+          "Because rivers are beautiful",
+          "Because people needed water",
+          "Because rivers stop enemies",
+          "Because land there is cheaper"
+        ],
+        "question": "Why were big cities built near rivers in history?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "From rain and melting snow in mountains",
+        "explanationVi": "Đáp án ở đoạn 2: \"Rivers start in mountains or hills. Rain and melting snow flow down and join small streams\" (sông bắt nguồn từ núi đồi, từ mưa và tuyết tan).",
+        "options": [
+          "From the sea",
+          "From rain and melting snow in mountains",
+          "From factories",
+          "From lakes"
+        ],
+        "question": "How do rivers begin?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "True",
+        "explanationVi": "Đáp án ở đoạn 3: \"Boats can carry heavy things on water more easily than people can carry them on land\" — câu hỏi diễn đạt lại đúng ý này nên là True.",
+        "question": "Boats can carry heavy goods on rivers more easily than on land.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Đáp án ở đoạn 4: bài nói nhà máy và trang trại thải nước bẩn ra sông, ô nhiễm giết chết cá và làm nước không an toàn — và các chính phủ \"now work hard to keep their rivers clean\" (đang nỗ lực giữ sông sạch), chứng tỏ ô nhiễm vẫn là vấn đề, nên câu này sai.",
+        "question": "River pollution is no longer a problem in the world today.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "ii. Rivers need protection",
+        "explanationVi": "Đoạn 4 nói về ô nhiễm sông từ nhà máy/trang trại và việc chính phủ nỗ lực giữ sông sạch (\"rivers need our protection... work hard to keep their rivers clean\"), nên tiêu đề \"ii. Rivers need protection\" là đúng nhất.",
+        "options": [
+          "i. How rivers are born",
+          "ii. Rivers need protection",
+          "iii. Cities and water",
+          "iv. Travelling on rivers"
+        ],
+        "question": "Nối đoạn 4 với tiêu đề đúng.",
+        "type": "matching_heading"
+      }
+    ],
+    "section": "reading",
+    "source": "ai-generated",
+    "title": "Rivers: The Lifelines of Earth",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "ielts-r-015",
+    "passage": [
+      "The Sahara is the largest hot desert in the world. It covers most of North Africa. The weather there is very dry, and it almost never rains. During the day, the sun makes the sand very hot, but the nights can be cold.",
+      "Life in the Sahara is hard, but some plants and animals can survive there. Camels are famous desert animals. They can live for many days without water. Some plants have very deep roots to find water under the ground.",
+      "People also live in the Sahara. For a long time, groups of people called nomads moved from place to place with their animals. They looked for water and grass for their animals. Today, some nomads still live this way, but many others now live in towns.",
+      "The Sahara is also important for the whole world. The wind can carry sand from the desert across the ocean to other countries. Scientists study the desert to learn about the Earth's climate and how it is changing."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Very dry with almost no rain",
+        "explanationVi": "Đáp án ở đoạn 1: \"The weather there is very dry, and it almost never rains\" (thời tiết rất khô, hầu như không bao giờ mưa). Chú ý đoạn còn nói ban ngày nóng, ban đêm lạnh nên đáp án \"nhiệt độ như nhau cả ngày\" là sai.",
+        "options": [
+          "Cold and wet",
+          "Very dry with almost no rain",
+          "Warm and rainy",
+          "The same temperature all day"
+        ],
+        "question": "What is the weather like in the Sahara?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "They have very deep roots",
+        "explanationVi": "Đáp án ở đoạn 2: \"Some plants have very deep roots to find water under the ground\" (một số cây có rễ rất sâu để tìm nước dưới lòng đất).",
+        "options": [
+          "They drink morning rain",
+          "They have very deep roots",
+          "Nomads give them water",
+          "They take water from camels"
+        ],
+        "question": "How do some desert plants find water?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "True",
+        "explanationVi": "Đáp án ở đoạn 2: \"They can live for many days without water\" — câu hỏi lặp lại đúng ý này nên là True.",
+        "question": "Camels can live for many days without water.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Đáp án ở đoạn 3: bài nói \"some nomads still live this way\" (một số người du mục vẫn sống kiểu di chuyển như xưa), chỉ \"many others now live in towns\" — nên câu \"tất cả đều sống ở thị trấn\" là sai.",
+        "question": "All nomads in the Sahara now live in towns.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "i. Plants and animals that survive the desert",
+        "explanationVi": "Đoạn 2 nói về lạc đà và cây có rễ sâu — những sinh vật thích nghi để sống sót ở sa mạc, nên tiêu đề \"i. Plants and animals that survive the desert\" là đúng nhất.",
+        "options": [
+          "i. Plants and animals that survive the desert",
+          "ii. The largest hot desert",
+          "iii. People of the desert",
+          "iv. Sand in the wind"
+        ],
+        "question": "Nối đoạn 2 với tiêu đề đúng.",
+        "type": "matching_heading"
+      }
+    ],
+    "section": "reading",
+    "source": "ai-generated",
+    "title": "The Sahara Desert: Life in the Heat",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "ielts-r-016",
+    "passage": [
+      "The bicycle is one of the most popular machines in the world. Today, millions of people ride bikes to school, to work, or just for fun. But the bicycle was not always like the one we know today. It took many years and many inventors to make it.",
+      "In 1817, a German man named Karl Drais built a strange machine. It had two wheels but no pedals. The rider sat on it and pushed the ground with their feet. This machine was called the \"draisine\". It was the first two-wheeled vehicle.",
+      "In the 1860s, French inventors added pedals to the front wheel. The rider could now push the pedals to move forward. These bicycles were called \"velocipedes\", which means \"fast foot\". However, they were heavy and uncomfortable to ride.",
+      "In the 1870s, a new design appeared: the \"penny-farthing\". It had a very big front wheel and a small back wheel. The big wheel helped the rider go faster. But the penny-farthing was dangerous. The rider sat very high, and a fall could cause serious injury.",
+      "In 1885, John Kemp Starley made the \"safety bicycle\". It had two wheels of the same size, a chain, and pedals in the middle. This design was safe and comfortable. It is very similar to the bicycles we ride today. After that, the bicycle became cheap enough for ordinary people to buy.",
+      "Today, the bicycle is more than a toy. It is clean transport. It makes no pollution and keeps people healthy. Many cities now build special lanes for bicycles. From the simple draisine to the modern bike, this machine has a long and interesting story."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Karl Drais",
+        "explanationVi": "Đoạn 2 nói rõ: \"a German man named Karl Drais built a strange machine\" — chính Karl Drais đã chế tạo chiếc draisine.",
+        "options": [
+          "Karl Drais",
+          "John Kemp Starley",
+          "A French inventor",
+          "A British engineer"
+        ],
+        "question": "Who built the first two-wheeled vehicle, the draisine?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "The rider sat very high",
+        "explanationVi": "Đoạn 4 giải thích: \"The rider sat very high, and a fall could cause serious injury\" — người lái ngồi rất cao nên ngã sẽ nguy hiểm.",
+        "options": [
+          "It was too heavy",
+          "The rider sat very high",
+          "It had no brakes",
+          "It was too expensive"
+        ],
+        "question": "Why was the penny-farthing dangerous?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Đoạn 2 nói chiếc draisine \"had two wheels but no pedals\" — không có bàn đạp, trái với câu hỏi.",
+        "question": "The draisine had pedals for the rider to push.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 5 nói: \"It is very similar to the bicycles we ride today\" — chiếc safety bicycle rất giống xe đạp ngày nay.",
+        "question": "The safety bicycle was similar to modern bicycles.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "ii. The first steps with pedals",
+        "explanationVi": "Đoạn 3 nói về việc các nhà phát minh Pháp gắn bàn đạp vào bánh trước, nên tiêu đề \"ii. The first steps with pedals\" đúng nhất. Các tiêu đề còn lại nói về nguy hiểm (đoạn 4) và ngày nay (đoạn 6).",
+        "options": [
+          "i. A design that caused injuries",
+          "ii. The first steps with pedals",
+          "iii. Cycling in modern cities"
+        ],
+        "question": "Nối đoạn 3 với tiêu đề đúng",
+        "type": "matching_heading"
+      }
+    ],
+    "section": "reading",
+    "source": "ai-generated",
+    "title": "The Invention of the Bicycle",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "ielts-r-017",
+    "passage": [
+      "A library is a place where people can borrow books for free. Public libraries are open to everyone — children, students, workers, and old people. They are one of the oldest and most useful public services in the world.",
+      "Libraries have a long history. Thousands of years ago, people kept important writings in special rooms. In the 19th century, public libraries began to open in many countries. The idea was simple: knowledge should be free for all people, not only for the rich.",
+      "Today, a public library is much more than a room full of books. Most libraries have computers with free internet. Many organise story time for children, English classes, and clubs for teenagers. Some even lend musical instruments or tools.",
+      "Libraries are especially important for people with little money. Students can study there for exams. Job seekers can use the computers to write applications and search for work. For many families, the library is the only place where children can find quiet space to read and learn.",
+      "Some people think libraries are no longer needed because everything is on the internet. This is not true. Not everyone can buy books or pay for the internet at home. Libraries also give people a place to meet, to learn together, and to belong to a community.",
+      "To keep libraries alive, they need support. Visiting your local library, borrowing books, and joining its activities are simple ways to help. A library is not just a building. It is a door to knowledge that stays open for everyone."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Everyone",
+        "explanationVi": "Đoạn 1 nói thư viện công \"are open to everyone — children, students, workers, and old people\" nên đáp án \"Everyone\" đúng.",
+        "options": [
+          "Only students",
+          "Only rich people",
+          "Everyone",
+          "Only children"
+        ],
+        "question": "According to the passage, who can use public libraries?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "Free internet and classes",
+        "explanationVi": "Đoạn 3 nói hầu hết thư viện \"have computers with free internet\" và tổ chức các lớp học, câu lạc bộ — đáp án a đúng.",
+        "options": [
+          "Free internet and classes",
+          "Paid gym services",
+          "Food delivery",
+          "Taxi booking"
+        ],
+        "question": "What do many modern libraries offer besides books?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2 nói: \"In the 19th century, public libraries began to open in many countries\" — khớp với câu hỏi.",
+        "question": "Public libraries began to open in many countries in the 19th century.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Đoạn 3 chỉ nói \"Some even lend musical instruments or tools\" — một số thư viện cho mượn nhạc cụ, không phải tất cả.",
+        "question": "All libraries lend musical instruments to visitors.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "ii. Help for those who need it most",
+        "explanationVi": "Đoạn 4 nói thư viện đặc biệt quan trọng với \"people with little money\", học sinh ôn thi và người tìm việc — đúng với tiêu đề ii. Tiêu đề i nói về lịch sử (đoạn 2), tiêu đề iii là ý kiến sai bị đoạn 5 bác bỏ.",
+        "options": [
+          "i. A history of written knowledge",
+          "ii. Help for those who need it most",
+          "iii. The internet replaces libraries"
+        ],
+        "question": "Nối đoạn 4 với tiêu đề đúng",
+        "type": "matching_heading"
+      }
+    ],
+    "section": "reading",
+    "source": "ai-generated",
+    "title": "Public Libraries: Free Knowledge for All",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "id": "ielts-r-018",
+    "passage": [
+      "Fast fashion is a business model in which clothing companies produce new collections very quickly and sell them at low prices. Trends that once lasted for a season now change within weeks. As a result, consumers are encouraged to buy more clothes and throw them away sooner.",
+      "The environmental cost of this model is enormous. The textile industry consumes vast amounts of water and energy, while the production of synthetic fabrics releases significant quantities of greenhouse gases. Moreover, discarded clothing contributes to the growing problem of textile waste, much of which ends up in landfill sites where it can take decades to decompose.",
+      "The social cost is equally concerning. To keep prices low, many brands outsource production to countries where labour costs are lower. Workers in these factories often face long working hours, unsafe conditions, and low wages. Although several companies have introduced codes of conduct, monitoring every supplier in a complex global supply chain remains extremely difficult.",
+      "Consumers also play a role in this system. Marketing strategies, including social media advertising and limited-time offers, create a sense of urgency that drives unnecessary purchases. Research in consumer psychology suggests that the satisfaction gained from buying new clothes is often short-lived, leading to a cycle of repeated consumption.",
+      "In response to growing criticism, some brands have launched recycling programmes and collections made from organic materials. However, critics argue that these efforts are limited in scale and may serve mainly as a marketing tool, a practice sometimes described as greenwashing. A more effective solution, they suggest, would be to produce fewer, higher-quality garments designed to last.",
+      "Ultimately, reducing the impact of fast fashion will require changes on several levels. Governments can introduce stricter regulations on production and waste, companies can adopt more transparent practices, and consumers can choose to buy less and choose well. Cheap clothes are never truly cheap when their hidden costs are taken into account."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Buy more and discard sooner",
+        "explanationVi": "Đoạn 1 nói rõ: \"consumers are encouraged to buy more clothes and throw them away sooner\" — mua nhiều hơn và vứt đi sớm hơn.",
+        "options": [
+          "Buy more and discard sooner",
+          "Buy fewer, better clothes",
+          "Repair old clothes",
+          "Ignore new trends"
+        ],
+        "question": "What does the fast fashion model encourage consumers to do?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "The supply chain is complex and global",
+        "explanationVi": "Đoạn 3 giải thích: \"monitoring every supplier in a complex global supply chain remains extremely difficult\" — vì chuỗi cung ứng toàn cầu phức tạp.",
+        "options": [
+          "Brands do not care about workers",
+          "The supply chain is complex and global",
+          "Workers refuse to cooperate",
+          "Governments forbid inspections"
+        ],
+        "question": "According to the passage, why is monitoring suppliers difficult?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2 nói quần áo bị vứt bỏ \"can take decades to decompose\" trong các bãi rác — khớp với câu hỏi.",
+        "question": "Discarded clothing can take decades to decompose in landfill sites.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Đoạn 6 nói giảm tác động của thời trang nhanh \"will require changes on several levels\" (chính phủ, công ty, người tiêu dùng) — không chỉ có một giải pháp duy nhất là mua ít quần áo.",
+        "question": "The passage claims that buying fewer clothes is the only solution to fast fashion.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "i. The human price of cheap clothes",
+        "explanationVi": "Đoạn 3 nói về điều kiện làm việc của công nhân: giờ làm dài, môi trường không an toàn, lương thấp — đúng với tiêu đề i. Tiêu đề ii nói về quảng cáo (đoạn 4), tiêu đề iii nói về giải pháp (đoạn 5-6).",
+        "options": [
+          "i. The human price of cheap clothes",
+          "ii. Marketing tricks that drive sales",
+          "iii. Possible ways to fix the problem"
+        ],
+        "question": "Nối đoạn 3 với tiêu đề đúng",
+        "type": "matching_heading"
+      }
+    ],
+    "section": "reading",
+    "source": "ai-generated",
+    "title": "Fast Fashion: The Hidden Cost of Cheap Clothes",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-019",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "Memory and Aging: What Science Tells Us",
+    "passage": [
+      "Few aspects of growing older cause as much anxiety as the fear of losing one's memory. Many people over the age of sixty complain about forgetting names, misplacing keys, or walking into a room and forgetting why they went there. Such experiences are often interpreted as early signs of serious mental decline. However, psychologists who study aging argue that this picture is far too pessimistic. While it is true that some mental abilities become weaker with age, others remain stable or even improve, and occasional forgetfulness is a normal part of life at any age.",
+      "To understand what really happens, researchers distinguish between different kinds of memory. Episodic memory — the ability to recall personal experiences and specific events — does tend to decline after middle age. An older adult may struggle to remember what they had for dinner last Tuesday. Semantic memory, in contrast, which stores general knowledge, facts, and vocabulary, usually remains strong throughout life and may even grow richer. An experienced teacher of seventy, for example, often commands a larger vocabulary and a deeper store of professional knowledge than a young graduate.",
+      "Brain imaging studies reveal how these changes occur. The hippocampus, a region essential for forming new memories, gradually shrinks with age, and the speed at which the brain processes information slows down. Yet the aging brain is not simply deteriorating. Research shows that older adults often recruit both hemispheres of the brain to solve problems, whereas younger adults typically use only one — a strategy that appears to compensate for reduced processing speed. In other words, the brain adapts its methods as it ages.",
+      "What, then, can people do to keep their memory sharp? A large body of evidence points to physical exercise as one of the most effective strategies, since it improves blood flow to the brain and supports the growth of new neural connections. Social engagement and sufficient sleep are also strongly associated with better cognitive health. Learning genuinely new and challenging skills — such as a foreign language or a musical instrument — appears particularly beneficial. Passive activities, such as completing the same type of crossword puzzle every day, show far less evidence of lasting benefit, probably because they demand little that is truly new.",
+      "It is important to distinguish normal age-related forgetfulness from genuine warning signs. Occasionally forgetting a name but remembering it later is typical and no cause for alarm. Becoming lost in a familiar neighbourhood, repeatedly asking the same question without realising it, or being unable to follow a familiar recipe, however, may indicate a more serious condition such as mild cognitive impairment or dementia. Doctors advise anyone who notices such changes — in themselves or in a relative — to seek professional assessment rather than assuming the worst or ignoring the problem.",
+      "The overall message from science is cautiously optimistic. Memory does change with age, but these changes are selective rather than total, and the brain retains a remarkable capacity to adapt. Maintaining a healthy lifestyle, staying socially connected, and continuing to challenge the mind with new experiences appear to offer the best protection. Aging, researchers conclude, alters memory but need not destroy it."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to paragraph 2, which type of memory generally stays strong or improves as people grow older?",
+        "options": [
+          "Episodic memory, which stores personal experiences",
+          "Semantic memory, which stores facts and vocabulary",
+          "Working memory, which holds information for a short time",
+          "Sensory memory, which records sights and sounds"
+        ],
+        "correctAnswer": "Semantic memory, which stores facts and vocabulary",
+        "explanationVi": "Đoạn 2 nói rõ episodic memory (nhớ sự kiện cá nhân) có xu hướng suy giảm sau tuổi trung niên, trong khi semantic memory (kiến thức chung, từ vựng) \"usually remains strong throughout life and may even grow richer\". Đáp án nằm ở đoạn 2. Các đáp án nhiễu: episodic memory là loại SUY GIẢM (bẫy nhầm đoạn), working/sensory memory bài không hề nhắc tới."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Why does the passage suggest that doing the same crossword puzzle every day may have limited benefit?",
+        "options": [
+          "It damages the hippocampus over time",
+          "It does not require learning anything genuinely new",
+          "Researchers have never studied its effects",
+          "It reduces blood flow to the brain"
+        ],
+        "correctAnswer": "It does not require learning anything genuinely new",
+        "explanationVi": "Đoạn 4 viết: các hoạt động thụ động như làm cùng một loại crossword mỗi ngày \"show far less evidence of lasting benefit, probably because they demand little that is truly new\" — tức là lợi ích hạn chế vì không đòi hỏi học điều thực sự mới. Đáp án nhiễu \"chưa từng được nghiên cứu\" là suy diễn quá đà (bài nói \"ít bằng chứng\" chứ không phải \"không có nghiên cứu\")."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The hippocampus becomes larger as people get older.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "correctAnswer": "False",
+        "explanationVi": "Đoạn 3 viết rõ: \"The hippocampus ... gradually shrinks with age\" (teo dần theo tuổi), trái ngược hoàn toàn với câu hỏi nên đáp án là False."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Scientists have proved that learning a musical instrument completely prevents dementia.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 4 chỉ nói học kỹ năng mới \"appears particularly beneficial\" (có vẻ đặc biệt có lợi) và lối sống lành mạnh \"offer the best protection\". Bài KHÔNG hề khẳng định điều gì \"ngăn ngừa hoàn toàn\" dementia — đây là bẫy suy diễn quá đà, đáp án là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 3 với tiêu đề phù hợp nhất",
+        "options": [
+          "i. The brain's way of compensating",
+          "ii. Why crosswords may disappoint",
+          "iii. When forgetfulness becomes worrying",
+          "iv. Two kinds of memory, two different fates"
+        ],
+        "correctAnswer": "i. The brain's way of compensating",
+        "explanationVi": "Đoạn 3 mô tả hippocampus teo và tốc độ xử lý chậm lại, NHƯNG não người già \"adapts its methods\" — huy động cả hai bán cầu để bù đắp. Tiêu đề i phản ánh đúng ý chính này. Các tiêu đề nhiễu: ii thuộc đoạn 4, iii thuộc đoạn 5, iv thuộc đoạn 2 (bẫy nhầm đoạn)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-020",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "Electric Cars: The Road Ahead",
+    "passage": [
+      "Not long ago, electric cars were a rare sight, regarded as expensive curiosities suitable only for enthusiastic environmentalists. Today, they have become a familiar part of city traffic in many countries, and their share of new car sales continues to rise. This rapid transformation has been driven by a combination of technological progress, government policies, and growing public concern about air pollution and climate change.",
+      "The most obvious advantage of electric vehicles is that they produce no exhaust emissions while driving. This can significantly improve air quality in congested urban areas, where traffic fumes are a major health concern. However, environmental groups caution that a full assessment must look beyond the tailpipe. Manufacturing batteries requires mining raw materials, and the electricity used to charge cars may itself come from fossil fuels. Studies that consider the entire life cycle of a vehicle generally conclude that electric cars still produce considerably fewer total emissions than petrol cars — but the size of the benefit depends heavily on how clean the local electricity supply is.",
+      "Battery technology lies at the heart of both the promise and the limitations of electric cars. Modern lithium-ion batteries have become cheaper and more energy-dense over the past decade, allowing typical driving ranges to increase substantially. Yet two concerns remain: how far a car can travel on a single charge, and how long recharging takes. Researchers around the world are therefore working on next-generation designs, such as solid-state batteries, which laboratory tests suggest could offer longer range and faster charging — although they are not yet ready for mass production.",
+      "A second major challenge is infrastructure. For drivers who can charge at home overnight, running an electric car is already highly convenient. The situation is more difficult for residents of apartment buildings and for people in rural areas, where public charging points are still scarce. Although networks of fast chargers along motorways are expanding in many countries, coverage remains uneven, and queues at popular charging stations during holiday periods have become a familiar complaint.",
+      "Cost is the third factor shaping the market. Electric cars generally have a higher purchase price than equivalent petrol models, largely because batteries remain expensive. Their running costs, however, are typically lower: electricity is usually cheaper than petrol per kilometre, and electric motors have far fewer moving parts, which means less maintenance. As battery prices continue to fall, analysts expect the price gap to narrow further, making electric cars accessible to a wider range of buyers.",
+      "Looking ahead, most experts agree that the shift towards electric transport is likely to continue, supported by stricter emissions regulations and falling costs. Significant obstacles remain, however, from the capacity of electricity grids to the recycling of millions of used batteries. Whether electric cars fulfil their environmental promise will depend not only on the vehicles themselves, but on the wider energy system that powers them."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to paragraph 2, the environmental benefit of electric cars depends mainly on",
+        "options": [
+          "how quiet their motors are",
+          "how clean the local electricity supply is",
+          "how many charging stations exist in a country",
+          "how often drivers take their cars for servicing"
+        ],
+        "correctAnswer": "how clean the local electricity supply is",
+        "explanationVi": "Đoạn 2 kết luận: lợi ích môi trường \"depends heavily on how clean the local electricity supply is\" (phụ thuộc lớn vào nguồn điện địa phương sạch đến đâu). Đáp án nhiễu \"số trạm sạc\" thuộc về đoạn 4 (bẫy nhầm đoạn); \"động cơ êm\" bài không hề nhắc tới."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does paragraph 3 say about solid-state batteries?",
+        "options": [
+          "They are already used in most new electric cars",
+          "Laboratory tests suggest they could improve range and charging speed, but they are not yet ready for mass production",
+          "Researchers have abandoned work on them",
+          "They are cheaper to make than lithium-ion batteries"
+        ],
+        "correctAnswer": "Laboratory tests suggest they could improve range and charging speed, but they are not yet ready for mass production",
+        "explanationVi": "Đoạn 3 viết: pin thể rắn \"laboratory tests suggest could offer longer range and faster charging — although they are not yet ready for mass production\". Đáp án nhiễu \"đã dùng phổ biến\" đi ngược hẳn với \"not yet ready\"; \"bị bỏ\" cũng trái với \"researchers ... are working on\"."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Electric cars produce no exhaust emissions while they are being driven.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2 viết nguyên văn: \"they produce no exhaust emissions while driving\" — câu hỏi diễn đạt lại đúng ý này nên đáp án là True."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Analysts predict that electric cars will become cheaper to buy than petrol cars within the next two years.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 5 chỉ nói \"analysts expect the price gap to narrow further\" (khoảng cách giá sẽ thu hẹp) — bài KHÔNG đưa ra mốc thời gian cụ thể nào như \"trong 2 năm tới\", cũng không nói xe điện sẽ rẻ hơn xe xăng. Đây là bẫy thêm chi tiết bịa đặt, đáp án là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề phù hợp nhất",
+        "options": [
+          "i. The price problem",
+          "ii. Charging: convenient for some, difficult for others",
+          "iii. Why batteries matter",
+          "iv. Cleaner air for crowded cities"
+        ],
+        "correctAnswer": "ii. Charging: convenient for some, difficult for others",
+        "explanationVi": "Đoạn 4 bàn về hạ tầng sạc: tiện cho người sạc được ở nhà, khó cho dân chung cư và vùng nông thôn nơi trạm sạc còn hiếm. Tiêu đề ii tóm đúng ý này. Các tiêu đề nhiễu: i thuộc đoạn 5, iii thuộc đoạn 3, iv thuộc đoạn 2 (bẫy nhầm đoạn)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-021",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "Dying Languages: Saving Words from Silence",
+    "passage": [
+      "Every language carries within it a unique way of seeing the world — yet languages are disappearing at an alarming rate. Linguists estimate that of the roughly seven thousand languages spoken in the world today, a large proportion could fall silent within this century, with some researchers suggesting that a language dies as often as every few weeks. When the last fluent speaker of a language passes away without having passed it on, centuries of accumulated knowledge and culture vanish with them.",
+      "Languages rarely die of natural causes. The most common reason is that speakers switch to a more dominant language, often under economic or social pressure. When education, government services, and the media all operate in a national or global language, parents may decide — sometimes reluctantly — not to teach their children their mother tongue, believing that the dominant language offers better opportunities. Urban migration accelerates this process: young people who move to cities for work frequently adopt the language of their new environment.",
+      "The loss goes far beyond words. Many small languages contain specialised knowledge about local plants, animals, and ecosystems that has been refined over generations — knowledge that may never have been written down. Oral traditions, from epic poems to practical wisdom about farming or medicine, are often tied to the structure of the language itself and resist translation. When a language dies, its speakers also lose a central pillar of their cultural identity, a loss that communities themselves describe in terms of grief.",
+      "In response, a growing revitalisation movement has emerged around the world. In some communities, elders work with linguists to record and document endangered languages before they disappear, creating dictionaries and archives for future generations. Elsewhere, schools have introduced immersion programmes in which children learn entirely through the local language. Digital technology has become a powerful ally: smartphone apps, online courses, and social media allow scattered speakers to connect and enable young people to practise a heritage language in a format they find appealing.",
+      "These efforts face formidable obstacles. Revitalisation programmes are often chronically short of funding, and in many cases only a handful of fluent speakers remain to teach the language. Perhaps the greatest challenge is motivation: teenagers who see the dominant language as the key to jobs and social status may feel little enthusiasm for studying a language spoken by only a few hundred people. Without the active desire of the younger generation, even the best-designed programme is unlikely to succeed.",
+      "Linguists are divided about how many endangered languages can realistically be saved. Some argue that resources should be concentrated on languages with the strongest community support, while others insist that every language deserves documentation at minimum. What nearly all agree on is that the decisive factor is not technology or funding alone, but the will of the community itself. A language survives only as long as people choose to speak it."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to paragraph 2, why do some parents choose not to teach their children their mother tongue?",
+        "options": [
+          "They believe the dominant language offers better opportunities",
+          "They have completely forgotten the language themselves",
+          "Their children refuse to listen to them",
+          "Linguists have advised them against it"
+        ],
+        "correctAnswer": "They believe the dominant language offers better opportunities",
+        "explanationVi": "Đoạn 2 viết: cha mẹ \"decide — sometimes reluctantly — not to teach their children their mother tongue, believing that the dominant language offers better opportunities\". Đáp án nhiễu \"quên hẳn tiếng mẹ đẻ\" không có trong bài (bài nói họ chủ động chọn, dù miễn cưỡng)."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What point does paragraph 3 make about the knowledge contained in small languages?",
+        "options": [
+          "It is always written down in books",
+          "It is mostly concerned with modern technology",
+          "It may include generations of unwritten knowledge about the local environment",
+          "It can easily be translated into dominant languages"
+        ],
+        "correctAnswer": "It may include generations of unwritten knowledge about the local environment",
+        "explanationVi": "Đoạn 3 viết: nhiều ngôn ngữ nhỏ chứa \"specialised knowledge about local plants, animals, and ecosystems ... that may never have been written down\" (kiến thức chuyên sâu về môi trường địa phương có thể chưa bao giờ được ghi chép). Đáp án nhiễu \"dễ dịch\" bị đoạn văn bác bỏ trực tiếp: \"resist translation\"."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Urban migration can speed up the decline of a minority language.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2 viết nguyên văn: \"Urban migration accelerates this process\" (di cư ra thành phố đẩy nhanh quá trình này) — câu hỏi diễn đạt lại đúng ý nên đáp án là True."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Most linguists agree that all endangered languages can be saved if there is enough funding.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "correctAnswer": "False",
+        "explanationVi": "Đoạn 6 viết: \"Linguists are divided\" (các nhà ngôn ngữ học còn chia rẽ) và yếu tố quyết định \"is not technology or funding alone, but the will of the community itself\". Vì vậy khẳng định \"hầu hết đồng ý rằng chỉ cần đủ tiền là cứu được mọi ngôn ngữ\" là SAI — đáp án False."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề phù hợp nhất",
+        "options": [
+          "i. Why parents abandon their mother tongue",
+          "ii. Efforts to bring languages back to life",
+          "iii. More than words are lost",
+          "iv. The decisive factor: community will"
+        ],
+        "correctAnswer": "ii. Efforts to bring languages back to life",
+        "explanationVi": "Đoạn 4 kể về phong trào \"revitalisation\": người già cùng nhà ngôn ngữ học ghi chép, trường học dạy immersion, công nghệ số hỗ trợ — tất cả đều là nỗ lực hồi sinh ngôn ngữ. Tiêu đề ii đúng ý này. Các tiêu đề nhiễu: i thuộc đoạn 2, iii thuộc đoạn 3, iv thuộc đoạn 6 (bẫy nhầm đoạn)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-022",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "Antibiotic Resistance: The Silent Crisis",
+    "passage": [
+      "For much of the twentieth century, antibiotics were regarded as one of the greatest triumphs of modern medicine. Before their widespread use, a minor wound or a common infection could easily prove fatal, and doctors had few reliable tools with which to fight bacterial disease. The discovery that certain moulds and microbes could destroy harmful bacteria transformed healthcare, making complex surgery, organ transplants, and cancer treatment possible. This medical revolution, however, is now under serious threat. Bacteria are remarkably adaptable organisms, and through the natural process of evolution, some strains have developed the ability to survive drugs that once killed them with ease. This phenomenon, known as antibiotic resistance, has been described by health experts as a silent crisis that could undo decades of medical progress.",
+      "Resistance does not appear by chance; it is largely driven by the way antibiotics are used. In many parts of the world, these drugs are prescribed for illnesses they cannot cure, such as colds and influenza, which are caused by viruses rather than bacteria. Patients share part of the responsibility as well: some stop taking their medicine as soon as they begin to feel better, leaving the strongest bacteria alive to multiply. Beyond human medicine, antibiotics are widely used in farming, where they are given to healthy livestock to promote growth and prevent disease in crowded conditions. Every unnecessary exposure gives bacteria another opportunity to develop resistance, and resistant strains can spread between animals, people, and the wider environment.",
+      "The consequences of this trend are already visible in hospitals across the globe. Infections that were once cleared with a simple course of tablets now demand stronger drugs, longer hospital stays, and far more expensive care. Routine procedures such as hip replacements or caesarean sections carry greater risk when doctors can no longer rely on antibiotics to prevent or control infection afterwards. In the most serious cases, patients are left facing infections for which very few treatment options remain. Health workers warn that if present trends continue, medicine could gradually slide back towards an era in which even minor injuries are potentially dangerous.",
+      "In response, governments and health organisations have begun to promote what is called antibiotic stewardship - the careful management of how these drugs are prescribed and used. Hospitals in many countries now require doctors to justify each prescription and to review regularly whether patients still need treatment. At the same time, scientists are searching for alternatives, including new classes of drugs and approaches such as using natural viruses that attack bacteria. International cooperation has also intensified, because resistant bacteria do not respect national borders and can travel with people, animals, and traded goods.",
+      "Ordinary citizens have an important role to play too. People should take antibiotics only when prescribed by a qualified professional, and they should always complete the full course of treatment. Good hygiene - including regular handwashing and safe food preparation - slows the spread of infection and therefore reduces the need for drugs in the first place. Vaccination helps as well, since preventing disease means fewer occasions on which antibiotics might be required. Although the crisis has been building quietly for years, experts believe it is not too late to act, provided that individuals, doctors, and policymakers all recognise their share of the responsibility."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to the passage, antibiotic resistance mainly develops because",
+        "options": [
+          "bacteria have always been immune to most medical drugs.",
+          "antibiotics are frequently used in situations where they are not needed.",
+          "doctors refuse to prescribe antibiotics for serious infections.",
+          "new antibiotics are too expensive for most hospitals to purchase."
+        ],
+        "correctAnswer": "antibiotics are frequently used in situations where they are not needed.",
+        "explanationVi": "Đáp án nằm ở đoạn 2: kháng thuốc 'largely driven by the way antibiotics are used' — kê đơn cho bệnh do virus (cảm cúm), bệnh nhân bỏ dở liều, và dùng trong chăn nuôi. Các phương án khác đều sai hoặc không được đề cập (đoạn 1 nói thuốc từng rất hiệu quả nên không thể 'luôn miễn nhiễm')."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "The writer describes the crisis as 'silent' mainly because",
+        "options": [
+          "it affects only a very small number of patients worldwide.",
+          "its effects have built up gradually without attracting much public attention.",
+          "scientists have deliberately kept their findings secret from the public.",
+          "it appeared suddenly and entirely without warning."
+        ],
+        "correctAnswer": "its effects have built up gradually without attracting much public attention.",
+        "explanationVi": "Đoạn 1 gọi đây là 'a silent crisis', đoạn 5 nhắc lại 'the crisis has been building quietly for years' — tức âm thầm tích tụ, ít được công chúng chú ý. Không có chuyện các nhà khoa học giấu kết quả (đoạn 4 còn nói hợp tác quốc tế tăng cường)."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Antibiotics can cure illnesses such as colds and influenza.",
+        "correctAnswer": "False",
+        "explanationVi": "Sai. Đoạn 2 nêu rõ cảm cúm 'caused by viruses rather than bacteria' và thuốc 'cannot cure' các bệnh này — đây chính là ví dụ của việc lạm dụng kháng sinh."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The passage states that antibiotic resistance first appeared in farm animals before spreading to humans.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Không có thông tin. Đoạn 2 chỉ nói chủng kháng thuốc 'can spread between animals, people, and the wider environment' chứ không khẳng định nó xuất hiện đầu tiên ở động vật trang trại — đây là bẫy suy diễn thứ tự."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn văn 3 với tiêu đề phù hợp nhất",
+        "options": [
+          "i. Why the drugs are misused",
+          "ii. The price medicine is paying",
+          "iii. New hope from scientific research",
+          "iv. Advice for ordinary patients"
+        ],
+        "correctAnswer": "ii. The price medicine is paying",
+        "explanationVi": "Đoạn 3 mô tả hậu quả đã thấy trong bệnh viện: thuốc mạnh hơn, nằm viện lâu hơn, chi phí đắt đỏ hơn, phẫu thuật thường quy rủi ro hơn — tức 'cái giá' y học đang trả. Các tiêu đề còn lại thuộc về đoạn 2 (nguyên nhân), đoạn 4 (nghiên cứu) và đoạn 5 (lời khuyên)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-023",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "The Rise of Urban Farming",
+    "passage": [
+      "In cities around the world, food is increasingly being grown in unexpected places: on rooftops, in disused warehouses, along railway embankments, and even inside converted shipping containers. This movement, known as urban farming, has expanded rapidly in recent years as city dwellers search for fresher produce and a closer connection to what they eat. Supporters argue that growing food where people actually live makes cities more self-sufficient and less dependent on long, fragile supply chains.",
+      "One of the strongest arguments in favour of urban farming is environmental. In conventional agriculture, fresh produce often travels enormous distances before reaching urban consumers, generating considerable emissions from transport and refrigeration along the way. Food grown within the city, by contrast, can be harvested and sold on the same day, cutting these 'food miles' dramatically. Some urban farms also employ innovative methods such as hydroponics, in which plants grow in nutrient-rich water instead of soil, producing high yields in very small spaces while using far less water than traditional field farming.",
+      "Beyond the environment, urban farms deliver social benefits. Community gardens transform neglected plots of land into shared green spaces where neighbours meet, work side by side, and learn new skills. For residents of poorer districts, where fresh fruit and vegetables are often expensive or difficult to find, locally grown produce can improve diets and strengthen food security. Schools have embraced the idea as well: children who plant and harvest their own vegetables are more likely to develop healthy eating habits and a basic understanding of where food comes from.",
+      "Despite its promise, urban farming faces genuine obstacles. Land in cities is scarce and costly, and many projects struggle to cover their expenses without subsidies or volunteer labour. Indoor farms that depend on artificial lighting and climate control can consume large amounts of electricity, which partly offsets their environmental advantages. There are also practical limits: staple crops such as wheat and rice, which form the basis of most diets, require far more space than cities can offer, so urban farms tend to concentrate on leafy greens, herbs, and other high-value crops.",
+      "Even so, urban farming is unlikely to fade away. A growing number of city governments now include food-growing in their planning policies, offering vacant land or tax incentives to farming projects. Technological improvements are gradually reducing the cost of indoor growing systems, while rising public interest in local food keeps demand strong. Most experts conclude that urban farming will not replace traditional rural agriculture, but will instead become a valuable complement to it - one more tool for building cities that are greener, healthier, and more resilient."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to the passage, the main environmental advantage of urban farming is that it",
+        "options": [
+          "uses no water whatsoever in the growing process.",
+          "greatly reduces the distance food travels to reach consumers.",
+          "removes the need for any kind of farming technology.",
+          "produces larger harvests than conventional rural farms."
+        ],
+        "correctAnswer": "greatly reduces the distance food travels to reach consumers.",
+        "explanationVi": "Đoạn 2 nêu lợi thế môi trường mạnh nhất là cắt giảm 'food miles': rau trồng trong thành phố 'harvested and sold on the same day', giảm khí thải vận chuyển và làm lạnh. Các đáp án khác đều sai: thủy canh chỉ dùng 'far less water' chứ không phải không dùng nước, và bài không hề nói năng suất vượt nông thôn."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "The writer mentions staple crops such as wheat and rice mainly to",
+        "options": [
+          "prove that urban farms are already feeding entire cities.",
+          "explain why most traditional rural farms are failing.",
+          "illustrate a practical limitation of urban farming.",
+          "argue that cities should stop importing grain from abroad."
+        ],
+        "correctAnswer": "illustrate a practical limitation of urban farming.",
+        "explanationVi": "Đoạn 4 đưa lúa mì/gạo vào như ví dụ cho 'practical limits': các cây lương thực chủ lực cần diện tích quá lớn so với thành phố, nên nông trại đô thị chỉ tập trung rau lá, thảo mộc. Đây là giới hạn, không phải bằng chứng thành công."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Urban farming alone will be sufficient to feed entire cities in the future.",
+        "correctAnswer": "False",
+        "explanationVi": "Sai. Đoạn 5 khẳng định 'urban farming will not replace traditional rural agriculture, but will instead become a valuable complement to it' — chỉ là bổ trợ, không thể một mình nuôi cả thành phố."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The passage states that community gardens have reduced crime rates in poor districts.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Không có thông tin. Đoạn 3 chỉ nói vườn cộng đồng cải thiện chế độ ăn, an ninh lương thực và gắn kết hàng xóm — không hề nhắc tới tỉ lệ tội phạm. Đây là bẫy 'suy diễn quá đà' từ cụm 'poorer districts'."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn văn 4 với tiêu đề phù hợp nhất",
+        "options": [
+          "i. Feeding the world from the rooftops",
+          "ii. The social harvest of shared gardens",
+          "iii. Obstacles on the ground",
+          "iv. A new kind of classroom"
+        ],
+        "correctAnswer": "iii. Obstacles on the ground",
+        "explanationVi": "Đoạn 4 liệt kê các trở ngại: đất đắt đỏ, chi phí cao, điện năng cho farm trong nhà, giới hạn cây trồng được — khớp với 'Obstacles'. Các tiêu đề kia thuộc đoạn 1-2 (triển vọng), đoạn 3 (lợi ích xã hội, lớp học)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-024",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "Decision Making: The Science of Choice",
+    "passage": [
+      "Every day, each of us makes an extraordinary number of decisions, ranging from trivial choices about what to wear to life-changing ones about careers and relationships. Psychologists estimate that a large proportion of these decisions are made quickly and almost automatically, without any conscious deliberation. This is hardly surprising: if we had to analyse every option in detail, we would never get through the day. Yet the very speed of our decision-making can sometimes lead us astray, and understanding how choices are made has become one of the most active fields of psychological research.",
+      "A widely accepted explanation holds that the mind operates in two distinct modes. The first is fast, intuitive, and emotional - it lets us react instantly to danger or recognise a familiar face in a crowd. The second is slower, more deliberate, and logical; it is the mode we rely on when solving a difficult mathematics problem or comparing insurance policies. While the fast system is efficient, it depends on mental shortcuts that can produce systematic errors, whereas the slow system is more reliable but demands time and effort that we are not always willing to invest.",
+      "Researchers have identified several common biases that distort our judgement. One is anchoring: when we encounter a number first, our later estimates tend to stay close to it, even if the initial figure was completely arbitrary. Another is loss aversion - the tendency to feel the pain of a loss more intensely than the pleasure of an equivalent gain, which explains why investors often hold on to failing shares for far too long. A third is confirmation bias, our habit of seeking out information that supports what we already believe while disregarding contradictory evidence. Together, these biases mean that even highly intelligent people frequently make choices they later regret.",
+      "Emotions also play a powerful, and often underestimated, role in decision-making. Far from being the enemy of reason, feelings supply valuable information: a sense of unease before signing a contract may reflect concerns we have not yet managed to put into words. Strong emotions, however, can also cloud our judgement. Research suggests that people under stress tend to focus on immediate rewards while neglecting long-term consequences, whereas those in an unusually positive mood may underestimate risks. Recognising our own emotional state is therefore an important step towards making wiser choices.",
+      "Fortunately, decision-making is a skill that can be improved. Simple strategies - such as listing the advantages and disadvantages of each option, setting clear criteria before evaluating alternatives, or deliberately seeking opinions that challenge our own views - can reduce the influence of bias. Allowing ourselves sufficient time and rest matters too, since tired minds fall back on shortcuts. Perhaps most importantly, accepting that no decision can ever be perfect frees us from the paralysis of hunting for the single best option, and allows us to choose well enough and move on."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to the passage, most everyday decisions are made",
+        "options": [
+          "after long and careful analysis of every option.",
+          "quickly and almost automatically.",
+          "only when people are under severe stress.",
+          "by the slow, logical system of the mind."
+        ],
+        "correctAnswer": "quickly and almost automatically.",
+        "explanationVi": "Đoạn 1 nêu rõ 'a large proportion of these decisions are made quickly and almost automatically, without any conscious deliberation'. Phương án phân tích kỹ/cẩn thận thuộc về hệ thống chậm (đoạn 2), không phải đa số quyết định hằng ngày."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Loss aversion is described in the passage as",
+        "options": [
+          "the tendency to avoid taking any risks at all.",
+          "preferring a guaranteed small gain to a risky larger one.",
+          "feeling the pain of a loss more intensely than the pleasure of an equivalent gain.",
+          "ignoring evidence that contradicts our existing beliefs."
+        ],
+        "correctAnswer": "feeling the pain of a loss more intensely than the pleasure of an equivalent gain.",
+        "explanationVi": "Đoạn 3 định nghĩa loss aversion đúng nguyên văn: 'the tendency to feel the pain of a loss more intensely than the pleasure of an equivalent gain'. Phương án cuối là confirmation bias — bẫy nhầm lẫn giữa các thiên kiến trong cùng đoạn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The passage claims that the fast, intuitive system always produces worse decisions than the slow system.",
+        "correctAnswer": "False",
+        "explanationVi": "Sai. Đoạn 2 chỉ nói hệ thống nhanh 'efficient' nhưng dùng lối tắt có thể gây lỗi hệ thống — không hề nói nó luôn tệ hơn. Đoạn 4 còn khẳng định cảm xúc/cảm giác 'supply valuable information', tức trực giác có giá trị riêng."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The passage says that people make poorer decisions when they are hungry.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Không có thông tin. Đoạn 4-5 chỉ nói stress, tâm trạng quá tích cực và sự mệt mỏi ('tired minds') ảnh hưởng quyết định — không hề nhắc tới đói bụng. Đây là bẫy suy diễn từ kiến thức ngoài bài."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn văn 3 với tiêu đề phù hợp nhất",
+        "options": [
+          "i. Two ways of thinking",
+          "ii. When feelings take over",
+          "iii. Traps of the mind",
+          "iv. Learning to decide better"
+        ],
+        "correctAnswer": "iii. Traps of the mind",
+        "explanationVi": "Đoạn 3 giới thiệu 3 thiên kiến (anchoring, loss aversion, confirmation bias) làm méo mó phán đoán — tức 'những cái bẫy của tâm trí'. 'Two ways of thinking' là đoạn 2, 'feelings' là đoạn 4, 'decide better' là đoạn 5 — bẫy nhầm đoạn điển hình."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

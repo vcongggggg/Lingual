@@ -1,0 +1,2032 @@
+[
+ {
+  "id": "news-051",
+  "title": "Kites in the Sky",
+  "titleVi": "Những cánh diều trên bầu trời",
+  "cefrLevel": "A2",
+  "topic": "culture",
+  "topicVi": "Văn hóa",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "In many villages in Vietnam, children love flying kites in the summer.",
+    "vi": "Ở nhiều làng quê Việt Nam, trẻ em thích thả diều vào mùa hè."
+   },
+   {
+    "id": "p2",
+    "en": "The kites are colorful. Some look like birds, some look like fish.",
+    "vi": "Những cánh diều đầy màu sắc. Có con giống chim, có con giống cá."
+   },
+   {
+    "id": "p3",
+    "en": "Children run in the open fields. The wind lifts the kites high into the sky.",
+    "vi": "Trẻ em chạy trên cánh đồng rộng. Gió nâng diều bay cao lên bầu trời."
+   },
+   {
+    "id": "p4",
+    "en": "Flying kites is also a game for adults. In some festivals, people make very big kites.",
+    "vi": "Thả diều cũng là trò chơi của người lớn. Trong một số lễ hội, người ta làm diều rất lớn."
+   },
+   {
+    "id": "p5",
+    "en": "The biggest kites need two or three people to hold the string.",
+    "vi": "Những con diều lớn nhất cần hai hoặc ba người giữ dây."
+   },
+   {
+    "id": "p6",
+    "en": "On a windy afternoon, the sky is full of kites. It is a beautiful picture.",
+    "vi": "Vào một buổi chiều gió, bầu trời đầy diều. Đó là một bức tranh đẹp."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "When do children in Vietnamese villages love flying kites?",
+    "options": [
+     "In the summer",
+     "In the winter",
+     "In the rain",
+     "At night"
+    ],
+    "correctAnswer": "In the summer",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói trẻ em thích thả diều vào mùa hè."
+   },
+   {
+    "question": "What do the biggest kites need?",
+    "options": [
+     "Two or three people to hold the string",
+     "A small child",
+     "No wind",
+     "A short string"
+    ],
+    "correctAnswer": "Two or three people to hold the string",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói diều lớn nhất cần hai hoặc ba người giữ dây."
+   },
+   {
+    "question": "What does the sky look like on a windy afternoon?",
+    "options": [
+     "Full of kites",
+     "Full of clouds only",
+     "Empty",
+     "Dark and scary"
+    ],
+    "correctAnswer": "Full of kites",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói bầu trời đầy diều vào buổi chiều gió."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-052",
+  "title": "The Library on a Boat",
+  "titleVi": "Thư viện trên thuyền",
+  "cefrLevel": "A2",
+  "topic": "culture",
+  "topicVi": "Văn hóa",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "In the Mekong Delta, many children live far from towns. There is no library near their homes.",
+    "vi": "Ở đồng bằng sông Cửu Long, nhiều trẻ em sống xa thị trấn. Không có thư viện nào gần nhà các em."
+   },
+   {
+    "id": "p2",
+    "en": "A kind teacher had a good idea. She put many books on a small boat.",
+    "vi": "Một cô giáo tốt bụng đã có ý tưởng hay. Cô đặt nhiều sách lên một chiếc thuyền nhỏ."
+   },
+   {
+    "id": "p3",
+    "en": "Every week, the boat travels from village to village. Children wait at the river bank.",
+    "vi": "Mỗi tuần, thuyền đi từ làng này sang làng khác. Trẻ em chờ ở bờ sông."
+   },
+   {
+    "id": "p4",
+    "en": "The children can borrow books for free. They return the books the next week.",
+    "vi": "Các em có thể mượn sách miễn phí. Các em trả sách vào tuần sau."
+   },
+   {
+    "id": "p5",
+    "en": "Some children read comic books. Others like books about animals and space.",
+    "vi": "Một số em đọc truyện tranh. Những em khác thích sách về động vật và vũ trụ."
+   },
+   {
+    "id": "p6",
+    "en": "The boat library brings joy and knowledge to children on the river.",
+    "vi": "Thư viện thuyền mang niềm vui và tri thức đến cho trẻ em trên sông."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "Where does the boat library travel?",
+    "options": [
+     "In the Mekong Delta",
+     "In the mountains",
+     "In big cities",
+     "In the desert"
+    ],
+    "correctAnswer": "In the Mekong Delta",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói về đồng bằng sông Cửu Long."
+   },
+   {
+    "question": "How often does the boat visit the villages?",
+    "options": [
+     "Every week",
+     "Every day",
+     "Every month",
+     "Every year"
+    ],
+    "correctAnswer": "Every week",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói mỗi tuần thuyền đi từ làng này sang làng khác."
+   },
+   {
+    "question": "How much do children pay to borrow books?",
+    "options": [
+     "Nothing, it is free",
+     "A lot of money",
+     "One dollar",
+     "Ten dollars"
+    ],
+    "correctAnswer": "Nothing, it is free",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói các em mượn sách miễn phí."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-053",
+  "title": "A Garden on the Roof",
+  "titleVi": "Khu vườn trên mái nhà",
+  "cefrLevel": "A2",
+  "topic": "environment",
+  "topicVi": "Môi trường",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "In big cities, there is not much land for gardens. But some people grow plants on their roofs.",
+    "vi": "Ở các thành phố lớn, không có nhiều đất để làm vườn. Nhưng một số người trồng cây trên mái nhà."
+   },
+   {
+    "id": "p2",
+    "en": "They put soil in boxes and plant vegetables. Tomatoes, lettuce, and herbs grow well.",
+    "vi": "Họ đổ đất vào thùng xốp và trồng rau. Cà chua, xà lách và rau thơm phát triển tốt."
+   },
+   {
+    "id": "p3",
+    "en": "A roof garden makes the house cooler in summer. The plants block the hot sun.",
+    "vi": "Vườn trên mái giúp ngôi nhà mát hơn vào mùa hè. Cây cối che bớt nắng nóng."
+   },
+   {
+    "id": "p4",
+    "en": "Families can pick fresh vegetables every day. The food is clean and safe.",
+    "vi": "Các gia đình có thể hái rau tươi mỗi ngày. Thực phẩm sạch và an toàn."
+   },
+   {
+    "id": "p5",
+    "en": "Birds and bees also visit the roof gardens. The city becomes greener and more alive.",
+    "vi": "Chim và ong cũng ghé thăm các vườn trên mái. Thành phố trở nên xanh hơn và sống động hơn."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "Where do people grow plants in this story?",
+    "options": [
+     "On their roofs",
+     "In the forest",
+     "Under the sea",
+     "On the moon"
+    ],
+    "correctAnswer": "On their roofs",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói một số người trồng cây trên mái nhà."
+   },
+   {
+    "question": "What do they plant?",
+    "options": [
+     "Vegetables like tomatoes and lettuce",
+     "Big trees",
+     "Rice fields",
+     "Flowers only"
+    ],
+    "correctAnswer": "Vegetables like tomatoes and lettuce",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói họ trồng cà chua, xà lách và rau thơm."
+   },
+   {
+    "question": "How does a roof garden help the house?",
+    "options": [
+     "It makes the house cooler",
+     "It makes the house hotter",
+     "It makes the house darker",
+     "It makes the house smaller"
+    ],
+    "correctAnswer": "It makes the house cooler",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói vườn trên mái giúp nhà mát hơn vào mùa hè."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-054",
+  "title": "The Oldest Tree in the Village",
+  "titleVi": "Cây cổ thụ nhất làng",
+  "cefrLevel": "A2",
+  "topic": "nature",
+  "topicVi": "Thiên nhiên",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "In the middle of my village, there is a very old banyan tree. It is more than 300 years old.",
+    "vi": "Giữa làng tôi có một cây đa rất già. Nó đã hơn 300 tuổi."
+   },
+   {
+    "id": "p2",
+    "en": "The tree is so big that ten people cannot hug it. Its branches cover a large yard.",
+    "vi": "Cây to đến mức mười người ôm không xuể. Tán cây che phủ một khoảng sân rộng."
+   },
+   {
+    "id": "p3",
+    "en": "In summer, old people sit under the tree and talk. Children play games around it.",
+    "vi": "Vào mùa hè, các cụ ngồi dưới gốc cây trò chuyện. Trẻ em chơi đùa xung quanh."
+   },
+   {
+    "id": "p4",
+    "en": "Birds build nests in the branches. At night, you can hear them singing.",
+    "vi": "Chim làm tổ trên cành cây. Ban đêm, bạn có thể nghe chúng hót."
+   },
+   {
+    "id": "p5",
+    "en": "The villagers love the tree. They say it protects the village from storms.",
+    "vi": "Dân làng yêu quý cây đa. Họ nói cây che chở cho làng khỏi bão tố."
+   },
+   {
+    "id": "p6",
+    "en": "Every year, the village holds a small festival under the tree to thank it.",
+    "vi": "Mỗi năm, làng tổ chức một lễ hội nhỏ dưới gốc cây để cảm ơn nó."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "How old is the banyan tree?",
+    "options": [
+     "More than 300 years old",
+     "About 30 years old",
+     "About 100 years old",
+     "Only 10 years old"
+    ],
+    "correctAnswer": "More than 300 years old",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói cây đã hơn 300 tuổi."
+   },
+   {
+    "question": "What do old people do under the tree in summer?",
+    "options": [
+     "Sit and talk",
+     "Plant rice",
+     "Build houses",
+     "Swim"
+    ],
+    "correctAnswer": "Sit and talk",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói các cụ ngồi dưới gốc cây trò chuyện."
+   },
+   {
+    "question": "Why does the village hold a festival under the tree?",
+    "options": [
+     "To thank the tree",
+     "To cut the tree",
+     "To sell the tree",
+     "To paint the tree"
+    ],
+    "correctAnswer": "To thank the tree",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói làng tổ chức lễ hội để cảm ơn cây."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-055",
+  "title": "How Bread Is Made",
+  "titleVi": "Bánh mì được làm như thế nào",
+  "cefrLevel": "A2",
+  "topic": "food",
+  "topicVi": "Ẩm thực",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Bread is one of the oldest foods in the world. People have made it for thousands of years.",
+    "vi": "Bánh mì là một trong những món ăn lâu đời nhất thế giới. Con người đã làm bánh mì hàng nghìn năm."
+   },
+   {
+    "id": "p2",
+    "en": "To make bread, you need flour, water, salt, and yeast. Yeast is a tiny living thing.",
+    "vi": "Để làm bánh mì, bạn cần bột mì, nước, muối và men. Men là một sinh vật nhỏ bé."
+   },
+   {
+    "id": "p3",
+    "en": "First, you mix everything into dough. Then you wait. The yeast makes the dough grow bigger.",
+    "vi": "Đầu tiên, bạn trộn mọi thứ thành bột nhào. Sau đó bạn chờ. Men làm khối bột nở to ra."
+   },
+   {
+    "id": "p4",
+    "en": "Next, you put the dough in a hot oven. After about 30 minutes, the bread is golden and ready.",
+    "vi": "Tiếp theo, bạn cho bột vào lò nóng. Sau khoảng 30 phút, bánh mì vàng ươm và chín."
+   },
+   {
+    "id": "p5",
+    "en": "Fresh bread smells wonderful. Many people love eating it with butter or jam.",
+    "vi": "Bánh mì mới ra lò thơm phức. Nhiều người thích ăn với bơ hoặc mứt."
+   },
+   {
+    "id": "p6",
+    "en": "In Vietnam, 'bánh mì' also means a tasty sandwich with meat and vegetables.",
+    "vi": "Ở Việt Nam, 'bánh mì' còn có nghĩa là món sandwich ngon với thịt và rau."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is yeast?",
+    "options": [
+     "A tiny living thing",
+     "A kind of sugar",
+     "A type of oven",
+     "A kitchen tool"
+    ],
+    "correctAnswer": "A tiny living thing",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói men là một sinh vật nhỏ bé."
+   },
+   {
+    "question": "What does the yeast do to the dough?",
+    "options": [
+     "It makes the dough grow bigger",
+     "It makes the dough smaller",
+     "It makes the dough salty",
+     "It makes the dough cold"
+    ],
+    "correctAnswer": "It makes the dough grow bigger",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói men làm khối bột nở to ra."
+   },
+   {
+    "question": "In Vietnam, what else does 'bánh mì' mean?",
+    "options": [
+     "A tasty sandwich with meat and vegetables",
+     "A kind of rice",
+     "A soup",
+     "A dessert"
+    ],
+    "correctAnswer": "A tasty sandwich with meat and vegetables",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói ở Việt Nam 'bánh mì' còn là món sandwich với thịt và rau."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-056",
+  "title": "The Night Market",
+  "titleVi": "Chợ đêm",
+  "cefrLevel": "A2",
+  "topic": "culture",
+  "topicVi": "Văn hóa",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "When the sun goes down, the night market wakes up. Lights turn on everywhere.",
+    "vi": "Khi mặt trời lặn, chợ đêm thức dậy. Đèn bật sáng khắp nơi."
+   },
+   {
+    "id": "p2",
+    "en": "People sell many kinds of food. You can smell grilled meat from far away.",
+    "vi": "Người ta bán đủ loại đồ ăn. Bạn có thể ngửi thấy mùi thịt nướng từ xa."
+   },
+   {
+    "id": "p3",
+    "en": "There are clothes, toys, and souvenirs. Everything is cheaper than in big shops.",
+    "vi": "Có quần áo, đồ chơi và quà lưu niệm. Mọi thứ rẻ hơn trong các cửa hàng lớn."
+   },
+   {
+    "id": "p4",
+    "en": "Visitors love trying new dishes. A bowl of hot noodles on a cool night is wonderful.",
+    "vi": "Du khách thích thử món mới. Một bát mì nóng trong đêm mát thật tuyệt vời."
+   },
+   {
+    "id": "p5",
+    "en": "The market is also noisy and crowded. You must walk slowly and watch your bag.",
+    "vi": "Chợ cũng ồn ào và đông đúc. Bạn phải đi chậm và để ý túi xách."
+   },
+   {
+    "id": "p6",
+    "en": "For many people, the night market is the most fun part of the trip.",
+    "vi": "Với nhiều người, chợ đêm là phần vui nhất của chuyến đi."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "When does the night market wake up?",
+    "options": [
+     "When the sun goes down",
+     "In the early morning",
+     "At noon",
+     "At midnight only"
+    ],
+    "correctAnswer": "When the sun goes down",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói khi mặt trời lặn, chợ đêm thức dậy."
+   },
+   {
+    "question": "Why do visitors like the night market?",
+    "options": [
+     "They can try new dishes",
+     "It is very quiet",
+     "It is empty",
+     "There is no food"
+    ],
+    "correctAnswer": "They can try new dishes",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói du khách thích thử món mới."
+   },
+   {
+    "question": "What should you do in the crowded market?",
+    "options": [
+     "Walk slowly and watch your bag",
+     "Run fast",
+     "Close your eyes",
+     "Shout loudly"
+    ],
+    "correctAnswer": "Walk slowly and watch your bag",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói bạn phải đi chậm và để ý túi xách."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-057",
+  "title": "Penguins: Birds That Cannot Fly",
+  "titleVi": "Chim cánh cụt: loài chim không biết bay",
+  "cefrLevel": "A2",
+  "topic": "animals",
+  "topicVi": "Động vật",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Penguins are birds, but they cannot fly. Their wings are small and strong like flippers.",
+    "vi": "Chim cánh cụt là chim, nhưng chúng không bay được. Cánh của chúng nhỏ và khỏe như chân chèo."
+   },
+   {
+    "id": "p2",
+    "en": "They live in very cold places, like Antarctica. The temperature can be minus 40 degrees.",
+    "vi": "Chúng sống ở những nơi rất lạnh, như Nam Cực. Nhiệt độ có thể xuống âm 40 độ."
+   },
+   {
+    "id": "p3",
+    "en": "Penguins are excellent swimmers. They catch fish in the icy sea.",
+    "vi": "Chim cánh cụt bơi rất giỏi. Chúng bắt cá trong biển băng."
+   },
+   {
+    "id": "p4",
+    "en": "They have thick feathers and a lot of fat. This keeps them warm in the cold.",
+    "vi": "Chúng có bộ lông dày và nhiều mỡ. Điều này giữ ấm cho chúng trong giá lạnh."
+   },
+   {
+    "id": "p5",
+    "en": "Mother and father penguins take turns keeping the egg warm. One stays, one goes to eat.",
+    "vi": "Chim bố và chim mẹ thay nhau ấp trứng. Một con ở lại, một con đi kiếm ăn."
+   },
+   {
+    "id": "p6",
+    "en": "Baby penguins are soft and gray. They stay with their parents until they grow up.",
+    "vi": "Chim cánh cụt con mềm mại và màu xám. Chúng ở với bố mẹ cho đến khi lớn."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "Why can't penguins fly?",
+    "options": [
+     "Their wings are small like flippers",
+     "They are afraid of heights",
+     "They have no wings",
+     "They are too heavy to move"
+    ],
+    "correctAnswer": "Their wings are small like flippers",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói cánh của chúng nhỏ và khỏe như chân chèo."
+   },
+   {
+    "question": "How do penguins stay warm?",
+    "options": [
+     "With thick feathers and a lot of fat",
+     "With warm clothes",
+     "With fire",
+     "With hot water"
+    ],
+    "correctAnswer": "With thick feathers and a lot of fat",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói lông dày và mỡ giữ ấm cho chúng."
+   },
+   {
+    "question": "How do parent penguins keep the egg warm?",
+    "options": [
+     "They take turns",
+     "Only the mother stays",
+     "They leave the egg alone",
+     "They put the egg in water"
+    ],
+    "correctAnswer": "They take turns",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói chim bố và chim mẹ thay nhau ấp trứng."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-058",
+  "title": "The Postman of the Mountains",
+  "titleVi": "Người đưa thư vùng cao",
+  "cefrLevel": "A2",
+  "topic": "society",
+  "topicVi": "Xã hội",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Mr. Thanh is a postman in a mountain village. He is 55 years old.",
+    "vi": "Chú Thanh là người đưa thư ở một bản vùng cao. Chú 55 tuổi."
+   },
+   {
+    "id": "p2",
+    "en": "Every morning, he puts letters and packages in a big bag. Then he rides his old motorbike.",
+    "vi": "Mỗi sáng, chú cho thư và bưu phẩm vào một chiếc túi lớn. Rồi chú đi chiếc xe máy cũ."
+   },
+   {
+    "id": "p3",
+    "en": "The roads are small and dangerous. Sometimes he must walk for two hours.",
+    "vi": "Đường nhỏ và nguy hiểm. Có lúc chú phải đi bộ hai tiếng đồng hồ."
+   },
+   {
+    "id": "p4",
+    "en": "The villagers are always happy to see him. He brings news from their children in the city.",
+    "vi": "Dân bản luôn vui khi thấy chú. Chú mang tin tức từ con cái họ ở thành phố về."
+   },
+   {
+    "id": "p5",
+    "en": "He also brings medicine and small gifts. He knows every family in the village.",
+    "vi": "Chú còn mang thuốc và những món quà nhỏ. Chú biết mọi gia đình trong bản."
+   },
+   {
+    "id": "p6",
+    "en": "Mr. Thanh says he will work until he cannot walk anymore. He loves his job.",
+    "vi": "Chú Thanh nói sẽ làm đến khi không đi được nữa. Chú yêu công việc của mình."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "How does Mr. Thanh travel?",
+    "options": [
+     "By old motorbike, and sometimes on foot",
+     "By airplane",
+     "By train",
+     "By boat only"
+    ],
+    "correctAnswer": "By old motorbike, and sometimes on foot",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 và 3 nói chú đi xe máy cũ, có lúc phải đi bộ."
+   },
+   {
+    "question": "Why are the villagers happy to see him?",
+    "options": [
+     "He brings news from their children",
+     "He brings bad news",
+     "He takes their money",
+     "He sells expensive things"
+    ],
+    "correctAnswer": "He brings news from their children",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói chú mang tin tức từ con cái họ ở thành phố."
+   },
+   {
+    "question": "What does Mr. Thanh say about his job?",
+    "options": [
+     "He loves it and will work as long as he can",
+     "He wants to quit soon",
+     "He hates the mountains",
+     "He wants a new bag"
+    ],
+    "correctAnswer": "He loves it and will work as long as he can",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói chú yêu công việc và sẽ làm đến khi không đi được nữa."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-059",
+  "title": "Why Do We Dream?",
+  "titleVi": "Vì sao chúng ta mơ?",
+  "cefrLevel": "B1",
+  "topic": "science",
+  "topicVi": "Khoa học",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Every night, we dream. But scientists still do not fully understand why.",
+    "vi": "Mỗi đêm, chúng ta đều mơ. Nhưng các nhà khoa học vẫn chưa hiểu hoàn toàn vì sao."
+   },
+   {
+    "id": "p2",
+    "en": "One idea is that dreams help our brain organize memories. During the day, we learn many things.",
+    "vi": "Một giả thuyết cho rằng giấc mơ giúp não sắp xếp ký ức. Ban ngày, chúng ta học nhiều điều."
+   },
+   {
+    "id": "p3",
+    "en": "At night, the brain chooses what to keep and what to forget. Dreams may be part of this process.",
+    "vi": "Ban đêm, não chọn những gì cần giữ và những gì nên quên. Giấc mơ có thể là một phần của quá trình này."
+   },
+   {
+    "id": "p4",
+    "en": "Another idea is that dreams help us practice solving problems. In a dream, we can try new ideas safely.",
+    "vi": "Một ý tưởng khác là giấc mơ giúp ta luyện giải quyết vấn đề. Trong mơ, ta có thể thử ý tưởng mới một cách an toàn."
+   },
+   {
+    "id": "p5",
+    "en": "Some dreams are happy, some are scary. Nightmares often happen when we feel stressed.",
+    "vi": "Có giấc mơ vui, có giấc mơ đáng sợ. Ác mộng thường xuất hiện khi ta căng thẳng."
+   },
+   {
+    "id": "p6",
+    "en": "Although we do not have all the answers, studying dreams teaches us a lot about the brain.",
+    "vi": "Dù chưa có mọi câu trả lời, việc nghiên cứu giấc mơ dạy ta nhiều điều về bộ não."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is one idea about why we dream?",
+    "options": [
+     "Dreams help the brain organize memories",
+     "Dreams make us hungry",
+     "Dreams stop the heart",
+     "Dreams make us taller"
+    ],
+    "correctAnswer": "Dreams help the brain organize memories",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói giấc mơ giúp não sắp xếp ký ức."
+   },
+   {
+    "question": "When do nightmares often happen?",
+    "options": [
+     "When we feel stressed",
+     "When we are happy",
+     "When we are running",
+     "When we are eating"
+    ],
+    "correctAnswer": "When we feel stressed",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói ác mộng thường xuất hiện khi ta căng thẳng."
+   },
+   {
+    "question": "Do scientists fully understand dreams?",
+    "options": [
+     "No, not yet",
+     "Yes, completely",
+     "They never study dreams",
+     "They stopped studying"
+    ],
+    "correctAnswer": "No, not yet",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói các nhà khoa học vẫn chưa hiểu hoàn toàn."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-060",
+  "title": "The Ancient Town of Hoi An",
+  "titleVi": "Phố cổ Hội An",
+  "cefrLevel": "B1",
+  "topic": "culture",
+  "topicVi": "Văn hóa",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Hoi An is a small town in central Vietnam. It is famous for its old houses and lanterns.",
+    "vi": "Hội An là một thị trấn nhỏ ở miền Trung Việt Nam. Nơi đây nổi tiếng với những ngôi nhà cổ và đèn lồng."
+   },
+   {
+    "id": "p2",
+    "en": "Hundreds of years ago, Hoi An was a busy trading port. Ships from Japan, China, and Europe came here.",
+    "vi": "Hàng trăm năm trước, Hội An là một thương cảng sầm uất. Tàu thuyền từ Nhật Bản, Trung Quốc và châu Âu đã đến đây."
+   },
+   {
+    "id": "p3",
+    "en": "That is why the town has a mix of styles. You can see Japanese bridges and Chinese temples next to Vietnamese houses.",
+    "vi": "Vì vậy thị trấn có sự pha trộn nhiều phong cách. Bạn có thể thấy cầu Nhật Bản và chùa Trung Hoa bên cạnh nhà Việt."
+   },
+   {
+    "id": "p4",
+    "en": "At night, the old town glows with colorful lanterns. The streets become magical.",
+    "vi": "Ban đêm, phố cổ rực sáng với những chiếc đèn lồng đầy màu sắc. Các con phố trở nên kỳ diệu."
+   },
+   {
+    "id": "p5",
+    "en": "Many visitors also order custom-made clothes here. Tailors can make a suit in just one day.",
+    "vi": "Nhiều du khách còn đặt may quần áo tại đây. Thợ may có thể may xong một bộ vest chỉ trong một ngày."
+   },
+   {
+    "id": "p6",
+    "en": "Hoi An shows how different cultures can live together and create something beautiful.",
+    "vi": "Hội An cho thấy các nền văn hóa khác nhau có thể chung sống và tạo nên điều đẹp đẽ."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "Why does Hoi An have a mix of architectural styles?",
+    "options": [
+     "It was a trading port visited by many countries",
+     "It was built last year",
+     "It copies another town",
+     "Nobody knows"
+    ],
+    "correctAnswer": "It was a trading port visited by many countries",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói tàu thuyền từ nhiều nước đã đến đây buôn bán."
+   },
+   {
+    "question": "What can you see at night in Hoi An?",
+    "options": [
+     "Colorful lanterns",
+     "Snow",
+     "Desert",
+     "Nothing"
+    ],
+    "correctAnswer": "Colorful lanterns",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói ban đêm phố cổ rực sáng đèn lồng."
+   },
+   {
+    "question": "How fast can tailors make a suit in Hoi An?",
+    "options": [
+     "In just one day",
+     "In one year",
+     "In one month",
+     "Never"
+    ],
+    "correctAnswer": "In just one day",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói thợ may có thể may xong một bộ vest chỉ trong một ngày."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-061",
+  "title": "Urban Farming: Food in the City",
+  "titleVi": "Nông nghiệp đô thị: thực phẩm trong thành phố",
+  "cefrLevel": "B1",
+  "topic": "environment",
+  "topicVi": "Môi trường",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "More and more people live in cities. But cities need a lot of food every day.",
+    "vi": "Ngày càng nhiều người sống ở thành phố. Nhưng các thành phố cần rất nhiều thực phẩm mỗi ngày."
+   },
+   {
+    "id": "p2",
+    "en": "Urban farming is a new answer. People grow food inside the city, sometimes inside buildings.",
+    "vi": "Nông nghiệp đô thị là một lời giải mới. Người ta trồng thực phẩm ngay trong thành phố, đôi khi trong các tòa nhà."
+   },
+   {
+    "id": "p3",
+    "en": "Some farms use tall shelves with special lights. Plants grow in water, not soil. This is called hydroponics.",
+    "vi": "Một số trang trại dùng kệ cao với đèn đặc biệt. Cây trồng trong nước, không cần đất. Cách này gọi là thủy canh."
+   },
+   {
+    "id": "p4",
+    "en": "These farms use much less water than normal farms. They also do not need pesticides.",
+    "vi": "Các trang trại này dùng ít nước hơn nhiều so với nông trại thường. Chúng cũng không cần thuốc trừ sâu."
+   },
+   {
+    "id": "p5",
+    "en": "The food travels only a short distance to shops and homes. So it stays fresh.",
+    "vi": "Thực phẩm chỉ đi quãng đường ngắn đến cửa hàng và nhà dân. Vì vậy nó luôn tươi."
+   },
+   {
+    "id": "p6",
+    "en": "Urban farming cannot replace all traditional farms yet. But it is an important step for the future of food.",
+    "vi": "Nông nghiệp đô thị chưa thể thay thế hoàn toàn nông trại truyền thống. Nhưng đó là bước quan trọng cho tương lai thực phẩm."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is hydroponics?",
+    "options": [
+     "Growing plants in water, not soil",
+     "Growing plants on the moon",
+     "Cooking vegetables",
+     "Cutting trees"
+    ],
+    "correctAnswer": "Growing plants in water, not soil",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói cây trồng trong nước, không cần đất, gọi là thủy canh."
+   },
+   {
+    "question": "What is one advantage of urban farms?",
+    "options": [
+     "They use much less water",
+     "They use more land",
+     "They need more pesticides",
+     "The food travels far"
+    ],
+    "correctAnswer": "They use much less water",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói các trang trại này dùng ít nước hơn nhiều."
+   },
+   {
+    "question": "Can urban farming replace all traditional farms now?",
+    "options": [
+     "Not yet",
+     "Yes, completely",
+     "It already did",
+     "Nobody knows"
+    ],
+    "correctAnswer": "Not yet",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói nông nghiệp đô thị chưa thể thay thế hoàn toàn."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-062",
+  "title": "The Power of Music Therapy",
+  "titleVi": "Sức mạnh của liệu pháp âm nhạc",
+  "cefrLevel": "B1",
+  "topic": "health",
+  "topicVi": "Sức khỏe",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Music is not only for fun. Doctors now use it to help patients feel better. This is called music therapy.",
+    "vi": "Âm nhạc không chỉ để giải trí. Các bác sĩ nay dùng nó để giúp bệnh nhân khỏe hơn. Đó gọi là liệu pháp âm nhạc."
+   },
+   {
+    "id": "p2",
+    "en": "Listening to calm music can slow the heartbeat and reduce stress. It helps the body relax.",
+    "vi": "Nghe nhạc nhẹ nhàng có thể làm chậm nhịp tim và giảm căng thẳng. Nó giúp cơ thể thư giãn."
+   },
+   {
+    "id": "p3",
+    "en": "For people with memory loss, old songs can bring back memories. A grandmother may remember her wedding song.",
+    "vi": "Với người bị mất trí nhớ, những bài hát xưa có thể gợi lại ký ức. Một bà cụ có thể nhớ bài hát trong đám cưới của mình."
+   },
+   {
+    "id": "p4",
+    "en": "Playing an instrument is also good exercise for the brain. It improves focus and coordination.",
+    "vi": "Chơi nhạc cụ cũng là bài tập tốt cho não. Nó cải thiện sự tập trung và phối hợp."
+   },
+   {
+    "id": "p5",
+    "en": "Hospitals in many countries now have music rooms. Patients can listen or play every day.",
+    "vi": "Bệnh viện ở nhiều nước nay có phòng nhạc. Bệnh nhân có thể nghe hoặc chơi mỗi ngày."
+   },
+   {
+    "id": "p6",
+    "en": "Music cannot replace medicine. But it is a gentle helper on the road to recovery.",
+    "vi": "Âm nhạc không thể thay thế thuốc. Nhưng nó là người bạn nhẹ nhàng trên con đường hồi phục."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is music therapy?",
+    "options": [
+     "Using music to help patients feel better",
+     "A music concert",
+     "A singing contest",
+     "A dance party"
+    ],
+    "correctAnswer": "Using music to help patients feel better",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói các bác sĩ dùng âm nhạc để giúp bệnh nhân, gọi là liệu pháp âm nhạc."
+   },
+   {
+    "question": "How can old songs help people with memory loss?",
+    "options": [
+     "They can bring back memories",
+     "They make memory worse",
+     "They do nothing",
+     "They cause headaches"
+    ],
+    "correctAnswer": "They can bring back memories",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói những bài hát xưa có thể gợi lại ký ức."
+   },
+   {
+    "question": "Can music replace medicine?",
+    "options": [
+     "No, but it helps recovery",
+     "Yes, completely",
+     "It replaces doctors",
+     "It is useless"
+    ],
+    "correctAnswer": "No, but it helps recovery",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói âm nhạc không thể thay thế thuốc nhưng hỗ trợ hồi phục."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-063",
+  "title": "Why Do Leaves Change Color?",
+  "titleVi": "Vì sao lá đổi màu?",
+  "cefrLevel": "B1",
+  "topic": "nature",
+  "topicVi": "Thiên nhiên",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "In autumn, green leaves turn yellow, orange, and red. But why does this happen?",
+    "vi": "Vào mùa thu, lá xanh chuyển sang vàng, cam và đỏ. Nhưng vì sao lại thế?"
+   },
+   {
+    "id": "p2",
+    "en": "Leaves are green because of chlorophyll. It helps the leaf use sunlight to make food.",
+    "vi": "Lá có màu xanh nhờ diệp lục. Nó giúp lá dùng ánh sáng mặt trời để tạo thức ăn."
+   },
+   {
+    "id": "p3",
+    "en": "In autumn, days become shorter and colder. The tree stops making chlorophyll.",
+    "vi": "Vào mùa thu, ngày ngắn và lạnh hơn. Cây ngừng tạo diệp lục."
+   },
+   {
+    "id": "p4",
+    "en": "When the green color fades, other colors appear. Yellow and orange were always there, hidden under the green.",
+    "vi": "Khi màu xanh phai đi, các màu khác hiện ra. Màu vàng và cam vốn luôn ở đó, ẩn dưới màu xanh."
+   },
+   {
+    "id": "p5",
+    "en": "Red is different. The tree makes red color to protect the leaf in its final days.",
+    "vi": "Màu đỏ thì khác. Cây tạo ra màu đỏ để bảo vệ chiếc lá trong những ngày cuối."
+   },
+   {
+    "id": "p6",
+    "en": "Finally, the leaves fall. They become food for the soil and help new leaves grow in spring.",
+    "vi": "Cuối cùng, lá rụng. Chúng thành thức ăn cho đất và giúp lá mới mọc vào mùa xuân."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "Why are leaves green?",
+    "options": [
+     "Because of chlorophyll",
+     "Because of paint",
+     "Because of water only",
+     "Nobody knows"
+    ],
+    "correctAnswer": "Because of chlorophyll",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói lá xanh nhờ diệp lục."
+   },
+   {
+    "question": "Where do the yellow and orange colors come from?",
+    "options": [
+     "They were always there, hidden under the green",
+     "From the sky",
+     "From paint",
+     "From the soil"
+    ],
+    "correctAnswer": "They were always there, hidden under the green",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói màu vàng và cam vốn luôn ở đó, ẩn dưới màu xanh."
+   },
+   {
+    "question": "What happens to fallen leaves?",
+    "options": [
+     "They become food for the soil",
+     "They disappear forever",
+     "They fly to the moon",
+     "They turn into stones"
+    ],
+    "correctAnswer": "They become food for the soil",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói lá rụng thành thức ăn cho đất."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-064",
+  "title": "The World of Street Art",
+  "titleVi": "Thế giới nghệ thuật đường phố",
+  "cefrLevel": "B1",
+  "topic": "art",
+  "topicVi": "Nghệ thuật",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Walk through any big city and you will see colorful paintings on walls. This is street art.",
+    "vi": "Đi qua bất kỳ thành phố lớn nào bạn cũng sẽ thấy những bức tranh đầy màu sắc trên tường. Đó là nghệ thuật đường phố."
+   },
+   {
+    "id": "p2",
+    "en": "Street art started as illegal graffiti. Young people painted on walls at night without permission.",
+    "vi": "Nghệ thuật đường phố bắt đầu từ graffiti bất hợp pháp. Người trẻ vẽ lên tường ban đêm mà không xin phép."
+   },
+   {
+    "id": "p3",
+    "en": "Today, many cities invite artists to paint large murals. These paintings make gray walls beautiful.",
+    "vi": "Ngày nay, nhiều thành phố mời nghệ sĩ vẽ những bức tranh tường lớn. Chúng làm những bức tường xám trở nên đẹp."
+   },
+   {
+    "id": "p4",
+    "en": "Street art often talks about important topics: peace, nature, and freedom.",
+    "vi": "Nghệ thuật đường phố thường nói về các chủ đề quan trọng: hòa bình, thiên nhiên và tự do."
+   },
+   {
+    "id": "p5",
+    "en": "Some street artists are now famous around the world. Their works sell for millions of dollars.",
+    "vi": "Một số nghệ sĩ đường phố nay nổi tiếng khắp thế giới. Tác phẩm của họ bán được hàng triệu đô la."
+   },
+   {
+    "id": "p6",
+    "en": "From illegal painting to respected art, street art shows that creativity can change a city.",
+    "vi": "Từ vẽ bậy bất hợp pháp đến nghệ thuật được tôn trọng, nghệ thuật đường phố cho thấy sáng tạo có thể thay đổi thành phố."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "How did street art start?",
+    "options": [
+     "As illegal graffiti painted at night",
+     "In art museums",
+     "In schools",
+     "On television"
+    ],
+    "correctAnswer": "As illegal graffiti painted at night",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói nó bắt đầu từ graffiti bất hợp pháp vẽ ban đêm."
+   },
+   {
+    "question": "What topics does street art often talk about?",
+    "options": [
+     "Peace, nature, and freedom",
+     "Cooking recipes",
+     "Sports scores",
+     "Weather forecasts"
+    ],
+    "correctAnswer": "Peace, nature, and freedom",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói về hòa bình, thiên nhiên và tự do."
+   },
+   {
+    "question": "What does street art show?",
+    "options": [
+     "That creativity can change a city",
+     "That walls should be gray",
+     "That art is useless",
+     "That cities hate color"
+    ],
+    "correctAnswer": "That creativity can change a city",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói sáng tạo có thể thay đổi thành phố."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-065",
+  "title": "Deserts Are Growing",
+  "titleVi": "Sa mạc đang lan rộng",
+  "cefrLevel": "B1",
+  "topic": "environment",
+  "topicVi": "Môi trường",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Every year, deserts grow bigger. This process is called desertification.",
+    "vi": "Mỗi năm, sa mạc lại lan rộng. Quá trình này gọi là sa mạc hóa."
+   },
+   {
+    "id": "p2",
+    "en": "It happens when good land becomes dry and empty. Trees die, and nothing grows.",
+    "vi": "Nó xảy ra khi đất tốt trở nên khô cằn. Cây chết, và không gì mọc được."
+   },
+   {
+    "id": "p3",
+    "en": "People cause desertification in many ways. Cutting too many trees is one big reason.",
+    "vi": "Con người gây sa mạc hóa bằng nhiều cách. Chặt quá nhiều cây là một nguyên nhân lớn."
+   },
+   {
+    "id": "p4",
+    "en": "Climate change makes it worse. Hotter weather dries the land faster.",
+    "vi": "Biến đổi khí hậu làm mọi thứ tệ hơn. Thời tiết nóng hơn làm đất khô nhanh hơn."
+   },
+   {
+    "id": "p5",
+    "en": "But there is hope. In Africa, people are planting a 'Great Green Wall' of trees across the continent.",
+    "vi": "Nhưng vẫn có hy vọng. Ở châu Phi, người ta đang trồng 'Bức tường xanh vĩ đại' bằng cây xuyên lục địa."
+   },
+   {
+    "id": "p6",
+    "en": "If we protect forests and use water wisely, we can slow down the deserts.",
+    "vi": "Nếu ta bảo vệ rừng và dùng nước khôn ngoan, ta có thể làm chậm sa mạc."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is desertification?",
+    "options": [
+     "Good land becoming dry and empty",
+     "Deserts becoming forests",
+     "Rain falling in deserts",
+     "People moving to deserts"
+    ],
+    "correctAnswer": "Good land becoming dry and empty",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói đất tốt trở nên khô cằn."
+   },
+   {
+    "question": "What is one human cause of desertification?",
+    "options": [
+     "Cutting too many trees",
+     "Planting too many trees",
+     "Drinking water",
+     "Building schools"
+    ],
+    "correctAnswer": "Cutting too many trees",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói chặt quá nhiều cây là nguyên nhân lớn."
+   },
+   {
+    "question": "What is the 'Great Green Wall'?",
+    "options": [
+     "Trees planted across Africa",
+     "A wall made of stone",
+     "A desert festival",
+     "A new city"
+    ],
+    "correctAnswer": "Trees planted across Africa",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói người ta đang trồng 'Bức tường xanh' bằng cây xuyên châu Phi."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-066",
+  "title": "The History of Tea",
+  "titleVi": "Lịch sử của trà",
+  "cefrLevel": "B1",
+  "topic": "culture",
+  "topicVi": "Văn hóa",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Tea is the most popular drink in the world after water. But where did it come from?",
+    "vi": "Trà là đồ uống phổ biến nhất thế giới sau nước. Nhưng nó đến từ đâu?"
+   },
+   {
+    "id": "p2",
+    "en": "The story begins in China, thousands of years ago. People discovered that hot water with leaves tasted good.",
+    "vi": "Câu chuyện bắt đầu ở Trung Quốc hàng nghìn năm trước. Người ta phát hiện nước nóng với lá có vị ngon."
+   },
+   {
+    "id": "p3",
+    "en": "Tea traveled along trade roads to Japan, the Middle East, and Europe. Each place made its own tea culture.",
+    "vi": "Trà theo các con đường thương mại đến Nhật Bản, Trung Đông và châu Âu. Mỗi nơi tạo ra văn hóa trà riêng."
+   },
+   {
+    "id": "p4",
+    "en": "In Japan, the tea ceremony is a calm and beautiful art. Every movement has meaning.",
+    "vi": "Ở Nhật Bản, trà đạo là một nghệ thuật tĩnh lặng và đẹp. Mỗi động tác đều có ý nghĩa."
+   },
+   {
+    "id": "p5",
+    "en": "In England, afternoon tea became a social event. People drink tea with small cakes at 4 p.m.",
+    "vi": "Ở Anh, trà chiều trở thành sự kiện xã giao. Người ta uống trà với bánh nhỏ lúc 4 giờ chiều."
+   },
+   {
+    "id": "p6",
+    "en": "In Vietnam, people enjoy green tea every day, often with friends and long conversations.",
+    "vi": "Ở Việt Nam, người ta thưởng thức trà xanh mỗi ngày, thường cùng bạn bè và những cuộc trò chuyện dài."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is the most popular drink after water?",
+    "options": [
+     "Tea",
+     "Coffee",
+     "Milk",
+     "Juice"
+    ],
+    "correctAnswer": "Tea",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói trà là đồ uống phổ biến nhất sau nước."
+   },
+   {
+    "question": "What is special about the Japanese tea ceremony?",
+    "options": [
+     "Every movement has meaning",
+     "It is very loud",
+     "It takes 5 seconds",
+     "It uses coffee"
+    ],
+    "correctAnswer": "Every movement has meaning",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói mỗi động tác trong trà đạo đều có ý nghĩa."
+   },
+   {
+    "question": "When do English people have afternoon tea?",
+    "options": [
+     "At 4 p.m.",
+     "At midnight",
+     "At 6 a.m.",
+     "At 10 p.m."
+    ],
+    "correctAnswer": "At 4 p.m.",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói người Anh uống trà chiều lúc 4 giờ."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-067",
+  "title": "Volunteers Around the World",
+  "titleVi": "Tình nguyện viên khắp thế giới",
+  "cefrLevel": "B1",
+  "topic": "society",
+  "topicVi": "Xã hội",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "A volunteer is someone who works for free to help others. Millions of people volunteer every year.",
+    "vi": "Tình nguyện viên là người làm việc miễn phí để giúp người khác. Hàng triệu người làm tình nguyện mỗi năm."
+   },
+   {
+    "id": "p2",
+    "en": "Some volunteers teach children in poor villages. Others clean beaches or plant trees.",
+    "vi": "Một số tình nguyện viên dạy học cho trẻ em ở làng nghèo. Những người khác dọn bãi biển hoặc trồng cây."
+   },
+   {
+    "id": "p3",
+    "en": "After natural disasters, volunteers are often the first to arrive. They bring food, water, and hope.",
+    "vi": "Sau thiên tai, tình nguyện viên thường là những người đến đầu tiên. Họ mang thực phẩm, nước và hy vọng."
+   },
+   {
+    "id": "p4",
+    "en": "Volunteering is not only good for others. It also makes the volunteer happier and healthier.",
+    "vi": "Làm tình nguyện không chỉ tốt cho người khác. Nó còn khiến tình nguyện viên vui vẻ và khỏe mạnh hơn."
+   },
+   {
+    "id": "p5",
+    "en": "Many young people volunteer to learn new skills. It also looks good on a job application.",
+    "vi": "Nhiều bạn trẻ làm tình nguyện để học kỹ năng mới. Điều này cũng đẹp trong hồ sơ xin việc."
+   },
+   {
+    "id": "p6",
+    "en": "You do not need to travel far. Helping an old neighbor is also volunteering.",
+    "vi": "Bạn không cần đi xa. Giúp một cụ già hàng xóm cũng là làm tình nguyện."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is a volunteer?",
+    "options": [
+     "Someone who works for free to help others",
+     "Someone who works for high pay",
+     "A professional athlete",
+     "A tourist"
+    ],
+    "correctAnswer": "Someone who works for free to help others",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 định nghĩa tình nguyện viên là người làm miễn phí để giúp người khác."
+   },
+   {
+    "question": "How does volunteering help the volunteer?",
+    "options": [
+     "It makes them happier and healthier",
+     "It makes them tired only",
+     "It costs them friends",
+     "It has no effect"
+    ],
+    "correctAnswer": "It makes them happier and healthier",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói tình nguyện khiến người ta vui vẻ và khỏe mạnh hơn."
+   },
+   {
+    "question": "Do you need to travel far to volunteer?",
+    "options": [
+     "No, helping a neighbor counts too",
+     "Yes, always abroad",
+     "Yes, to another planet",
+     "Only to the capital"
+    ],
+    "correctAnswer": "No, helping a neighbor counts too",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói giúp cụ già hàng xóm cũng là tình nguyện."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-068",
+  "title": "How Do Spiders Make Webs?",
+  "titleVi": "Nhện giăng tơ như thế nào?",
+  "cefrLevel": "B1",
+  "topic": "nature",
+  "topicVi": "Thiên nhiên",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "A spider web looks simple, but it is an amazing piece of engineering.",
+    "vi": "Mạng nhện trông đơn giản, nhưng đó là một công trình kỹ thuật tuyệt vời."
+   },
+   {
+    "id": "p2",
+    "en": "Spiders make silk inside their bodies. The silk comes out as a liquid and becomes strong in the air.",
+    "vi": "Nhện tạo tơ trong cơ thể. Tơ chảy ra dạng lỏng và trở nên chắc khi gặp không khí."
+   },
+   {
+    "id": "p3",
+    "en": "First, the spider builds the frame. It connects strong lines between two points, like a bridge.",
+    "vi": "Đầu tiên, nhện dựng khung. Nó nối những sợi chắc giữa hai điểm, như một cây cầu."
+   },
+   {
+    "id": "p4",
+    "en": "Then it adds circles from the center outward. Some lines are sticky to catch insects.",
+    "vi": "Rồi nó thêm các vòng tròn từ tâm ra ngoài. Một số sợi dính để bắt côn trùng."
+   },
+   {
+    "id": "p5",
+    "en": "Spider silk is stronger than steel of the same thickness. Scientists are studying it for new materials.",
+    "vi": "Tơ nhện chắc hơn thép cùng độ dày. Các nhà khoa học đang nghiên cứu nó để làm vật liệu mới."
+   },
+   {
+    "id": "p6",
+    "en": "The next time you see a web in the morning dew, stop and admire this tiny architect.",
+    "vi": "Lần tới khi thấy mạng nhện trong sương sớm, hãy dừng lại và ngắm nhìn kiến trúc sư tí hon này."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "How does spider silk become strong?",
+    "options": [
+     "It becomes strong in the air",
+     "It is strong in water",
+     "It needs fire",
+     "It is never strong"
+    ],
+    "correctAnswer": "It becomes strong in the air",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói tơ trở nên chắc khi gặp không khí."
+   },
+   {
+    "question": "What is the first step in building a web?",
+    "options": [
+     "Building the frame between two points",
+     "Catching insects",
+     "Sleeping",
+     "Eating leaves"
+    ],
+    "correctAnswer": "Building the frame between two points",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói đầu tiên nhện dựng khung giữa hai điểm."
+   },
+   {
+    "question": "How does spider silk compare to steel?",
+    "options": [
+     "It is stronger than steel of the same thickness",
+     "It is weaker",
+     "It is the same as paper",
+     "It melts like ice"
+    ],
+    "correctAnswer": "It is stronger than steel of the same thickness",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói tơ nhện chắc hơn thép cùng độ dày."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-069",
+  "title": "The Attention Economy",
+  "titleVi": "Nền kinh tế chú ý",
+  "cefrLevel": "B2",
+  "topic": "technology",
+  "topicVi": "Công nghệ",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "In the past, companies competed for your money. Today, they compete for something else: your attention.",
+    "vi": "Trước đây, các công ty cạnh tranh để lấy tiền của bạn. Ngày nay, họ cạnh tranh vì thứ khác: sự chú ý của bạn."
+   },
+   {
+    "id": "p2",
+    "en": "Every app wants you to spend more time on it. The longer you stay, the more ads you see.",
+    "vi": "Mỗi ứng dụng muốn bạn dành nhiều thời gian hơn cho nó. Bạn ở càng lâu, bạn thấy càng nhiều quảng cáo."
+   },
+   {
+    "id": "p3",
+    "en": "Designers use clever tricks to keep you scrolling. Notifications, autoplay, and endless feeds are not accidents.",
+    "vi": "Các nhà thiết kế dùng những mẹo khôn khéo để giữ bạn lướt mãi. Thông báo, tự phát video và nguồn cấp vô tận không phải ngẫu nhiên."
+   },
+   {
+    "id": "p4",
+    "en": "This is called the attention economy. Your focus has become a product that companies buy and sell.",
+    "vi": "Điều này gọi là nền kinh tế chú ý. Sự tập trung của bạn đã thành món hàng để các công ty mua bán."
+   },
+   {
+    "id": "p5",
+    "en": "The cost is real. Studies suggest heavy social media use is linked to shorter attention spans and anxiety.",
+    "vi": "Cái giá là thật. Các nghiên cứu cho thấy dùng mạng xã hội nhiều liên quan đến khả năng tập trung ngắn hơn và lo âu."
+   },
+   {
+    "id": "p6",
+    "en": "Some people are fighting back. They turn off notifications, set time limits, or take digital detox weekends.",
+    "vi": "Một số người đang phản kháng. Họ tắt thông báo, đặt giới hạn thời gian, hoặc nghỉ ngơi số vào cuối tuần."
+   },
+   {
+    "id": "p7",
+    "en": "Attention is one of the most valuable things you own. Spending it wisely may be the skill of our century.",
+    "vi": "Sự chú ý là một trong những tài sản quý giá nhất của bạn. Dùng nó khôn ngoan có thể là kỹ năng của thế kỷ này."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What do companies compete for in the attention economy?",
+    "options": [
+     "Your attention",
+     "Your money directly",
+     "Your house",
+     "Your car"
+    ],
+    "correctAnswer": "Your attention",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói các công ty cạnh tranh vì sự chú ý của bạn."
+   },
+   {
+    "question": "Why do apps want you to stay longer?",
+    "options": [
+     "So you see more ads",
+     "To make you happy",
+     "To save your battery",
+     "To teach you science"
+    ],
+    "correctAnswer": "So you see more ads",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói bạn ở càng lâu, bạn thấy càng nhiều quảng cáo."
+   },
+   {
+    "question": "What is one way people fight back?",
+    "options": [
+     "Turning off notifications",
+     "Buying more phones",
+     "Scrolling faster",
+     "Deleting all friends"
+    ],
+    "correctAnswer": "Turning off notifications",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói họ tắt thông báo, đặt giới hạn thời gian."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-070",
+  "title": "Why Do We Procrastinate?",
+  "titleVi": "Vì sao chúng ta trì hoãn?",
+  "cefrLevel": "B2",
+  "topic": "psychology",
+  "topicVi": "Tâm lý",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "You have an important deadline tomorrow, yet you are watching videos instead. Why?",
+    "vi": "Bạn có hạn chót quan trọng vào ngày mai, nhưng bạn lại đang xem video. Vì sao?"
+   },
+   {
+    "id": "p2",
+    "en": "Procrastination is not about laziness. Psychologists say it is about managing emotions, not time.",
+    "vi": "Trì hoãn không phải vì lười. Các nhà tâm lý nói đó là vấn đề quản lý cảm xúc, không phải thời gian."
+   },
+   {
+    "id": "p3",
+    "en": "We avoid tasks that make us feel bored, anxious, or unsure. Delaying gives short-term relief.",
+    "vi": "Ta tránh những việc khiến mình chán, lo lắng hoặc không chắc chắn. Trì hoãn mang lại sự dễ chịu ngắn hạn."
+   },
+   {
+    "id": "p4",
+    "en": "But the relief does not last. The task grows scarier in our mind, and guilt joins the stress.",
+    "vi": "Nhưng sự dễ chịu không kéo dài. Công việc trở nên đáng sợ hơn trong tâm trí, và cảm giác tội lỗi nhập vào cùng căng thẳng."
+   },
+   {
+    "id": "p5",
+    "en": "One solution is to make the first step tiny. Instead of 'write the report', try 'open the document'.",
+    "vi": "Một giải pháp là làm bước đầu thật nhỏ. Thay vì 'viết báo cáo', hãy thử 'mở tài liệu ra'."
+   },
+   {
+    "id": "p6",
+    "en": "Another trick is self-compassion. People who forgive themselves for delaying are less likely to delay again.",
+    "vi": "Một mẹo khác là tự cảm thông. Người tha thứ cho bản thân khi trì hoãn ít có khả năng trì hoãn tiếp."
+   },
+   {
+    "id": "p7",
+    "en": "Understanding procrastination is the first step to beating it. The task is rarely as bad as we imagine.",
+    "vi": "Hiểu về trì hoãn là bước đầu để đánh bại nó. Công việc hiếm khi tệ như ta tưởng."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What do psychologists say procrastination is about?",
+    "options": [
+     "Managing emotions, not time",
+     "Being lazy",
+     "Lack of intelligence",
+     "Bad luck"
+    ],
+    "correctAnswer": "Managing emotions, not time",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói đó là vấn đề quản lý cảm xúc, không phải thời gian."
+   },
+   {
+    "question": "Why do we avoid certain tasks?",
+    "options": [
+     "They make us feel bored, anxious, or unsure",
+     "They are too easy",
+     "They are too fun",
+     "They pay too well"
+    ],
+    "correctAnswer": "They make us feel bored, anxious, or unsure",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói ta tránh những việc khiến mình chán, lo lắng hoặc không chắc chắn."
+   },
+   {
+    "question": "What is one suggested solution?",
+    "options": [
+     "Make the first step tiny",
+     "Wait until the last minute",
+     "Do everything at once",
+     "Give up completely"
+    ],
+    "correctAnswer": "Make the first step tiny",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói hãy làm bước đầu thật nhỏ."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-071",
+  "title": "The Four-Day Work Week",
+  "titleVi": "Tuần làm việc 4 ngày",
+  "cefrLevel": "B2",
+  "topic": "society",
+  "topicVi": "Xã hội",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "For a hundred years, most people have worked five or six days a week. Now some companies are trying four.",
+    "vi": "Suốt một trăm năm, hầu hết mọi người làm việc năm hoặc sáu ngày mỗi tuần. Nay một số công ty đang thử bốn ngày."
+   },
+   {
+    "id": "p2",
+    "en": "The idea is simple: work four days, keep the same pay, and rest for three.",
+    "vi": "Ý tưởng rất đơn giản: làm bốn ngày, giữ nguyên lương, và nghỉ ba ngày."
+   },
+   {
+    "id": "p3",
+    "en": "Several countries have tested it. In many trials, productivity stayed the same or even improved.",
+    "vi": "Một số quốc gia đã thử nghiệm. Trong nhiều đợt thử, năng suất giữ nguyên hoặc thậm chí tăng."
+   },
+   {
+    "id": "p4",
+    "en": "Workers report less stress and better sleep. They also have more time for family and hobbies.",
+    "vi": "Người lao động cho biết ít căng thẳng hơn và ngủ ngon hơn. Họ cũng có nhiều thời gian cho gia đình và sở thích."
+   },
+   {
+    "id": "p5",
+    "en": "Critics warn it may not fit every job. Hospitals, restaurants, and factories need people every day.",
+    "vi": "Những người phản đối cảnh báo nó có thể không phù hợp mọi nghề. Bệnh viện, nhà hàng và nhà máy cần người mỗi ngày."
+   },
+   {
+    "id": "p6",
+    "en": "Supporters answer that schedules can be flexible. Different teams can rest on different days.",
+    "vi": "Người ủng hộ đáp rằng lịch có thể linh hoạt. Các nhóm khác nhau có thể nghỉ vào ngày khác nhau."
+   },
+   {
+    "id": "p7",
+    "en": "Whether it becomes normal everywhere is unclear. But the experiment is changing how we think about work.",
+    "vi": "Liệu nó có thành bình thường khắp nơi hay không còn chưa rõ. Nhưng thử nghiệm đang thay đổi cách ta nghĩ về công việc."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is the four-day work week idea?",
+    "options": [
+     "Work four days, same pay, rest three",
+     "Work four hours a day",
+     "Work only on weekends",
+     "Never work again"
+    ],
+    "correctAnswer": "Work four days, same pay, rest three",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói làm bốn ngày, giữ nguyên lương, nghỉ ba ngày."
+   },
+   {
+    "question": "What happened to productivity in many trials?",
+    "options": [
+     "It stayed the same or improved",
+     "It dropped to zero",
+     "Nobody measured it",
+     "It became negative"
+    ],
+    "correctAnswer": "It stayed the same or improved",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói năng suất giữ nguyên hoặc thậm chí tăng."
+   },
+   {
+    "question": "What is one criticism of the idea?",
+    "options": [
+     "It may not fit jobs needing people every day",
+     "It pays too much",
+     "It gives too much rest",
+     "Workers hate it"
+    ],
+    "correctAnswer": "It may not fit jobs needing people every day",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói bệnh viện, nhà hàng, nhà máy cần người mỗi ngày."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-072",
+  "title": "The Science of Taste",
+  "titleVi": "Khoa học về vị giác",
+  "cefrLevel": "B2",
+  "topic": "science",
+  "topicVi": "Khoa học",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Sweet, salty, sour, bitter, umami: we learn these five tastes at school. But taste is more complex than that.",
+    "vi": "Ngọt, mặn, chua, đắng, umami: ta học năm vị này ở trường. Nhưng vị giác phức tạp hơn thế."
+   },
+   {
+    "id": "p2",
+    "en": "What we call 'taste' is mostly smell. If you hold your nose while eating, food becomes surprisingly bland.",
+    "vi": "Cái ta gọi là 'vị' chủ yếu là mùi. Nếu bạn bịt mũi khi ăn, thức ăn trở nên nhạt nhẽo đến ngạc nhiên."
+   },
+   {
+    "id": "p3",
+    "en": "Temperature matters too. The same soup tastes saltier when it is hot than when it is cold.",
+    "vi": "Nhiệt độ cũng quan trọng. Cùng một bát súp, khi nóng sẽ thấy mặn hơn khi nguội."
+   },
+   {
+    "id": "p4",
+    "en": "Even the color of the plate changes flavor. Studies show food on red plates can taste sweeter.",
+    "vi": "Ngay cả màu đĩa cũng thay đổi hương vị. Các nghiên cứu cho thấy thức ăn trên đĩa đỏ có thể thấy ngọt hơn."
+   },
+   {
+    "id": "p5",
+    "en": "Our genes also play a role. Some people taste bitterness strongly; others barely notice it.",
+    "vi": "Gen của ta cũng đóng vai trò. Một số người cảm nhận vị đắng rất rõ; người khác hầu như không nhận ra."
+   },
+   {
+    "id": "p6",
+    "en": "Chefs use this science every day. They balance taste, smell, color, and texture to create the perfect dish.",
+    "vi": "Các đầu bếp dùng khoa học này mỗi ngày. Họ cân bằng vị, mùi, màu sắc và kết cấu để tạo món ăn hoàn hảo."
+   },
+   {
+    "id": "p7",
+    "en": "The next time you eat, pay attention. You are experiencing one of the most complex senses of the body.",
+    "vi": "Lần tới khi ăn, hãy chú ý. Bạn đang trải nghiệm một trong những giác quan phức tạp nhất của cơ thể."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is 'taste' mostly made of?",
+    "options": [
+     "Smell",
+     "Sound",
+     "Touch only",
+     "Sight only"
+    ],
+    "correctAnswer": "Smell",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói cái ta gọi là 'vị' chủ yếu là mùi."
+   },
+   {
+    "question": "How does temperature affect taste?",
+    "options": [
+     "Hot soup tastes saltier than cold soup",
+     "Temperature has no effect",
+     "Cold food has no taste",
+     "Hot food is always sweet"
+    ],
+    "correctAnswer": "Hot soup tastes saltier than cold soup",
+    "evidenceParagraph": "p3",
+    "explanation": "Đoạn 3 nói cùng một bát súp, khi nóng sẽ thấy mặn hơn khi nguội."
+   },
+   {
+    "question": "What role do genes play in taste?",
+    "options": [
+     "Some people taste bitterness more strongly",
+     "Genes decide your favorite color",
+     "Genes make food hot",
+     "Genes have no role"
+    ],
+    "correctAnswer": "Some people taste bitterness more strongly",
+    "evidenceParagraph": "p5",
+    "explanation": "Đoạn 5 nói một số người cảm nhận vị đắng rất rõ."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-073",
+  "title": "Why Cities Need Dark Skies",
+  "titleVi": "Vì sao thành phố cần bầu trời tối",
+  "cefrLevel": "B2",
+  "topic": "environment",
+  "topicVi": "Môi trường",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "Look up at the night sky in a big city. You will see few stars. This is light pollution.",
+    "vi": "Ngước nhìn bầu trời đêm ở thành phố lớn. Bạn sẽ thấy ít sao. Đó là ô nhiễm ánh sáng."
+   },
+   {
+    "id": "p2",
+    "en": "Street lights, billboards, and buildings shine all night. Their light washes out the stars.",
+    "vi": "Đèn đường, biển quảng cáo và tòa nhà sáng suốt đêm. Ánh sáng của chúng làm mờ các vì sao."
+   },
+   {
+    "id": "p3",
+    "en": "Light pollution harms more than stargazing. It confuses birds that migrate at night.",
+    "vi": "Ô nhiễm ánh sáng hại nhiều hơn việc ngắm sao. Nó làm rối loạn chim di cư ban đêm."
+   },
+   {
+    "id": "p4",
+    "en": "Sea turtles are also victims. Baby turtles follow moonlight to the sea, but city lights lead them the wrong way.",
+    "vi": "Rùa biển cũng là nạn nhân. Rùa con theo ánh trăng ra biển, nhưng đèn thành phố dẫn chúng đi lạc."
+   },
+   {
+    "id": "p5",
+    "en": "Human health suffers too. Too much light at night can disturb sleep and natural body rhythms.",
+    "vi": "Sức khỏe con người cũng bị ảnh hưởng. Quá nhiều ánh sáng ban đêm có thể làm rối giấc ngủ và nhịp sinh học."
+   },
+   {
+    "id": "p6",
+    "en": "The solution is simple: use lights only where needed, point them downward, and turn them off when possible.",
+    "vi": "Giải pháp rất đơn giản: chỉ dùng đèn nơi cần thiết, hướng xuống dưới, và tắt khi có thể."
+   },
+   {
+    "id": "p7",
+    "en": "A few cities have already dimmed their lights. Their citizens can see the Milky Way again.",
+    "vi": "Một vài thành phố đã giảm độ sáng đèn. Người dân của họ lại có thể thấy dải Ngân Hà."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is light pollution?",
+    "options": [
+     "Too much artificial light hiding the stars",
+     "Dirty air",
+     "Loud noise",
+     "Polluted water"
+    ],
+    "correctAnswer": "Too much artificial light hiding the stars",
+    "evidenceParagraph": "p1",
+    "explanation": "Đoạn 1 nói bạn sẽ thấy ít sao, đó là ô nhiễm ánh sáng."
+   },
+   {
+    "question": "How does light pollution harm baby sea turtles?",
+    "options": [
+     "City lights lead them the wrong way",
+     "It makes them grow faster",
+     "It helps them swim",
+     "It has no effect"
+    ],
+    "correctAnswer": "City lights lead them the wrong way",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói đèn thành phố dẫn rùa con đi lạc."
+   },
+   {
+    "question": "What is one suggested solution?",
+    "options": [
+     "Use lights only where needed and point them downward",
+     "Turn on more lights",
+     "Remove all windows",
+     "Never go outside"
+    ],
+    "correctAnswer": "Use lights only where needed and point them downward",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói chỉ dùng đèn nơi cần thiết và hướng xuống dưới."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-074",
+  "title": "The Paradox of Choice",
+  "titleVi": "Nghịch lý của sự lựa chọn",
+  "cefrLevel": "B2",
+  "topic": "psychology",
+  "topicVi": "Tâm lý",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "More choices should make us happier. But psychologists have found the opposite can be true.",
+    "vi": "Nhiều lựa chọn hơn lẽ ra phải khiến ta hạnh phúc hơn. Nhưng các nhà tâm lý phát hiện điều ngược lại có thể đúng."
+   },
+   {
+    "id": "p2",
+    "en": "In a famous experiment, shoppers saw either 6 or 24 types of jam. More people stopped at 24, but more people bought from 6.",
+    "vi": "Trong một thí nghiệm nổi tiếng, người mua thấy 6 hoặc 24 loại mứt. Nhiều người dừng lại ở quầy 24, nhưng nhiều người mua hơn ở quầy 6."
+   },
+   {
+    "id": "p3",
+    "en": "Too many options make decisions harder. We fear making the wrong choice.",
+    "vi": "Quá nhiều lựa chọn khiến quyết định khó hơn. Ta sợ chọn sai."
+   },
+   {
+    "id": "p4",
+    "en": "Even after choosing, we feel less satisfied. We keep imagining the options we gave up.",
+    "vi": "Ngay cả sau khi đã chọn, ta vẫn ít hài lòng hơn. Ta cứ tưởng tượng về những lựa chọn đã bỏ qua."
+   },
+   {
+    "id": "p5",
+    "en": "This is called the paradox of choice: freedom can become a burden.",
+    "vi": "Điều này gọi là nghịch lý của sự lựa chọn: tự do có thể thành gánh nặng."
+   },
+   {
+    "id": "p6",
+    "en": "The advice? Limit your options, decide what is 'good enough', and stop comparing.",
+    "vi": "Lời khuyên? Giới hạn lựa chọn, quyết định thế nào là 'đủ tốt', và ngừng so sánh."
+   },
+   {
+    "id": "p7",
+    "en": "A smaller menu can lead to a happier life. Sometimes, less really is more.",
+    "vi": "Một thực đơn nhỏ hơn có thể dẫn đến cuộc sống hạnh phúc hơn. Đôi khi, ít hơn thật sự là nhiều hơn."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What did the jam experiment find?",
+    "options": [
+     "More people bought from 6 types than from 24",
+     "Everyone bought from 24",
+     "Nobody bought jam",
+     "Jam was free"
+    ],
+    "correctAnswer": "More people bought from 6 types than from 24",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói nhiều người mua hơn ở quầy 6 loại."
+   },
+   {
+    "question": "Why do too many options make us less satisfied?",
+    "options": [
+     "We keep imagining the options we gave up",
+     "We forget what we bought",
+     "The products are bad",
+     "We lose money"
+    ],
+    "correctAnswer": "We keep imagining the options we gave up",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói ta cứ tưởng tượng về những lựa chọn đã bỏ qua."
+   },
+   {
+    "question": "What advice does the article give?",
+    "options": [
+     "Limit options and accept 'good enough'",
+     "Always choose the most expensive",
+     "Never decide anything",
+     "Ask strangers to choose"
+    ],
+    "correctAnswer": "Limit options and accept 'good enough'",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 nói hãy giới hạn lựa chọn và chấp nhận 'đủ tốt'."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "news-075",
+  "title": "Can We Bring Back Extinct Animals?",
+  "titleVi": "Liệu ta có thể hồi sinh động vật tuyệt chủng?",
+  "cefrLevel": "B2",
+  "topic": "science",
+  "topicVi": "Khoa học",
+  "paragraphs": [
+   {
+    "id": "p1",
+    "en": "The dodo, the mammoth, the Tasmanian tiger: all gone forever. Or are they?",
+    "vi": "Chim dodo, voi ma mút, hổ Tasmania: tất cả đã biến mất mãi mãi. Hay là chưa?"
+   },
+   {
+    "id": "p2",
+    "en": "Scientists are working on 'de-extinction': bringing extinct species back to life using DNA.",
+    "vi": "Các nhà khoa học đang nghiên cứu 'hồi sinh tuyệt chủng': đưa loài đã tuyệt chủng trở lại bằng DNA."
+   },
+   {
+    "id": "p3",
+    "en": "The idea works like this. Take DNA from a preserved mammoth, mix it with elephant DNA, and create a similar animal.",
+    "vi": "Ý tưởng hoạt động như sau. Lấy DNA từ xác voi ma mút được bảo quản, trộn với DNA voi, và tạo ra con vật tương tự."
+   },
+   {
+    "id": "p4",
+    "en": "Supporters say it could restore damaged ecosystems. Mammoths might help keep Arctic grasslands healthy.",
+    "vi": "Người ủng hộ nói điều này có thể phục hồi hệ sinh thái bị tổn hại. Voi ma mút có thể giúp giữ đồng cỏ Bắc Cực khỏe mạnh."
+   },
+   {
+    "id": "p5",
+    "en": "Critics raise serious questions. Where would these animals live? Could they carry unknown diseases?",
+    "vi": "Người phản đối đặt câu hỏi nghiêm túc. Những con vật này sẽ sống ở đâu? Chúng có mang mầm bệnh lạ không?"
+   },
+   {
+    "id": "p6",
+    "en": "There is also an ethical debate. Should we spend millions on the past while living species need help now?",
+    "vi": "Còn có tranh luận đạo đức. Có nên chi hàng triệu đô cho quá khứ trong khi các loài đang sống cần giúp ngay?"
+   },
+   {
+    "id": "p7",
+    "en": "De-extinction is still far from reality. But the debate itself teaches us how much we value nature.",
+    "vi": "Hồi sinh tuyệt chủng vẫn còn xa thực tế. Nhưng chính cuộc tranh luận dạy ta ta trân trọng thiên nhiên đến mức nào."
+   }
+  ],
+  "quiz": [
+   {
+    "question": "What is 'de-extinction'?",
+    "options": [
+     "Bringing extinct species back using DNA",
+     "Killing more animals",
+     "Building zoos",
+     "Planting trees"
+    ],
+    "correctAnswer": "Bringing extinct species back using DNA",
+    "evidenceParagraph": "p2",
+    "explanation": "Đoạn 2 nói hồi sinh tuyệt chủng là đưa loài đã tuyệt chủng trở lại bằng DNA."
+   },
+   {
+    "question": "What is one argument FOR de-extinction?",
+    "options": [
+     "It could restore damaged ecosystems",
+     "It is cheap",
+     "It needs no science",
+     "Animals want it"
+    ],
+    "correctAnswer": "It could restore damaged ecosystems",
+    "evidenceParagraph": "p4",
+    "explanation": "Đoạn 4 nói điều này có thể phục hồi hệ sinh thái bị tổn hại."
+   },
+   {
+    "question": "What is one ethical concern?",
+    "options": [
+     "Spending millions on the past while living species need help",
+     "It is too easy",
+     "Scientists are bored",
+     "DNA is free"
+    ],
+    "correctAnswer": "Spending millions on the past while living species need help",
+    "evidenceParagraph": "p6",
+    "explanation": "Đoạn 6 đặt câu hỏi có nên chi hàng triệu đô cho quá khứ trong khi các loài đang sống cần giúp."
+   }
+  ],
+  "source": "ai-generated",
+  "verified": false
+ }
+]

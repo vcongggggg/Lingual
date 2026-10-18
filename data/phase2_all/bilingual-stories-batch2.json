@@ -1,0 +1,785 @@
+[
+  {
+    "id": "story-10",
+    "title": "The Magic Umbrella",
+    "titleVi": "Chiếc ô kỳ diệu",
+    "cefrLevel": "A2",
+    "topic": "weather",
+    "topicVi": "Thời tiết",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "An loved rainy days. Every morning, she looked at the sky before school. But today the sky was dark and grey. 'Oh no! I forgot my umbrella,' she said.",
+        "vi": "An rất thích những ngày mưa. Mỗi sáng, cô bé đều nhìn lên bầu trời trước khi đi học. Nhưng hôm nay bầu trời tối đen và xám xịt. 'Ôi không! Mình quên mang ô rồi,' cô bé nói."
+      },
+      {
+        "id": "pg-2",
+        "en": "On the way to school, An saw an old shop. It sold old things: clocks, lamps, and toys. In the window, she saw a small red umbrella. It looked very special.",
+        "vi": "Trên đường tới trường, An thấy một cửa hàng đồ cũ. Cửa hàng bán đủ thứ: đồng hồ, đèn, và đồ chơi. Ở cửa kính, cô bé thấy một chiếc ô đỏ nhỏ. Trông nó rất đặc biệt."
+      },
+      {
+        "id": "pg-3",
+        "en": "The shop owner was a kind old man. 'This umbrella is magic,' he said. 'When you open it in the rain, you will hear beautiful music.' An did not believe him, but she bought it anyway.",
+        "vi": "Chủ cửa hàng là một ông lão tốt bụng. 'Chiếc ô này có phép thuật đấy,' ông nói. 'Khi cháu mở nó dưới mưa, cháu sẽ nghe thấy nhạc rất hay.' An không tin ông, nhưng cô bé vẫn mua nó."
+      },
+      {
+        "id": "pg-4",
+        "en": "After school, big black clouds came. Rain started to fall, drop by drop. An quickly opened the red umbrella. Then something amazing happened.",
+        "vi": "Sau giờ học, những đám mây đen lớn kéo tới. Mưa bắt đầu rơi, từng giọt từng giọt. An nhanh chóng mở chiếc ô đỏ. Rồi một điều kỳ diệu đã xảy ra."
+      },
+      {
+        "id": "pg-5",
+        "en": "She heard soft piano music coming from the umbrella. Each raindrop made a different note. Drop, drop, drop — the rain was playing a song. An smiled happily.",
+        "vi": "Cô bé nghe thấy tiếng đàn piano dịu dàng phát ra từ chiếc ô. Mỗi giọt mưa tạo ra một nốt nhạc khác nhau. Tách, tách, tách — cơn mưa đang chơi một bài hát. An mỉm cười hạnh phúc."
+      },
+      {
+        "id": "pg-6",
+        "en": "People on the street stopped to listen. A little boy danced under the rain. An old woman closed her eyes and smiled. The rainy street became a concert.",
+        "vi": "Mọi người trên phố dừng lại để lắng nghe. Một cậu bé nhảy múa dưới mưa. Một bà cụ nhắm mắt mỉm cười. Con phố mưa bỗng trở thành một buổi hòa nhạc."
+      },
+      {
+        "id": "pg-7",
+        "en": "The next day, An went back to the old shop. She wanted to thank the old man. But the shop was gone. Only a small red note was on the door: 'Music is everywhere, if you listen.'",
+        "vi": "Hôm sau, An quay lại cửa hàng đồ cũ. Cô bé muốn cảm ơn ông lão. Nhưng cửa hàng đã biến mất. Chỉ còn một mẩu giấy đỏ trên cửa: 'Âm nhạc ở khắp mọi nơi, nếu cháu chịu lắng nghe.'"
+      },
+      {
+        "id": "pg-8",
+        "en": "An kept the umbrella for many years. On every rainy day, she opened it and listened. She learned the old man's lesson: happy people can find music even in the rain.",
+        "vi": "An giữ chiếc ô nhiều năm sau. Vào mỗi ngày mưa, cô bé mở nó ra và lắng nghe. Cô bé đã hiểu bài học của ông lão: người hạnh phúc có thể tìm thấy âm nhạc ngay cả trong cơn mưa."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What did An forget at home?",
+        "options": [
+          "Her umbrella",
+          "Her schoolbag",
+          "Her lunch",
+          "Her raincoat"
+        ],
+        "correctAnswer": "Her umbrella",
+        "explanation": "Đáp án ở trang 1: 'Oh no! I forgot my umbrella,' she said."
+      },
+      {
+        "question": "What happened when An opened the umbrella in the rain?",
+        "options": [
+          "She heard piano music",
+          "The rain stopped",
+          "The umbrella flew away",
+          "She got wet"
+        ],
+        "correctAnswer": "She heard piano music",
+        "explanation": "Đáp án ở trang 5: 'She heard soft piano music coming from the umbrella.'"
+      },
+      {
+        "question": "What lesson did An learn?",
+        "options": [
+          "Happy people can find music even in the rain",
+          "Umbrellas are expensive",
+          "Old shops are strange",
+          "Rain is bad for concerts"
+        ],
+        "correctAnswer": "Happy people can find music even in the rain",
+        "explanation": "Đáp án ở trang 8: 'happy people can find music even in the rain.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-11",
+    "title": "A Busy Morning",
+    "titleVi": "Buổi sáng bận rộn",
+    "cefrLevel": "A2",
+    "topic": "daily-life",
+    "topicVi": "Đời sống hàng ngày",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "Nam's alarm clock rang at 6:30. But he was too tired. He turned it off and went back to sleep. 'Just five more minutes,' he said to himself.",
+        "vi": "Đồng hồ báo thức của Nam reo lúc 6:30. Nhưng cậu bé quá buồn ngủ. Cậu tắt đồng hồ và ngủ tiếp. 'Chỉ thêm năm phút nữa thôi,' cậu tự nhủ."
+      },
+      {
+        "id": "pg-2",
+        "en": "When Nam woke up again, it was 7:15! School started at 7:30. 'Oh no! I am late!' he shouted. He jumped out of bed very fast.",
+        "vi": "Khi Nam tỉnh dậy lần nữa, đã là 7:15! Trường học bắt đầu lúc 7:30. 'Ôi không! Mình trễ mất rồi!' cậu hét lên. Cậu nhảy ra khỏi giường rất nhanh."
+      },
+      {
+        "id": "pg-3",
+        "en": "Nam brushed his teeth in one minute. He put on his clothes backwards. His mother laughed, 'Your shirt is inside out!' Nam fixed it quickly.",
+        "vi": "Nam đánh răng trong một phút. Cậu mặc quần áo ngược. Mẹ cậu cười: 'Áo của con bị lộn trái rồi kìa!' Nam sửa lại thật nhanh."
+      },
+      {
+        "id": "pg-4",
+        "en": "At the breakfast table, Nam ate his bread in three big bites. He drank his milk too fast and coughed. 'Slow down!' his father said. 'Being late is bad, but choking is worse.'",
+        "vi": "Ở bàn ăn sáng, Nam ăn bánh mì trong ba miếng to. Cậu uống sữa quá nhanh và bị sặc. 'Chậm lại nào!' bố cậu nói. 'Trễ là tệ, nhưng bị nghẹn còn tệ hơn.'"
+      },
+      {
+        "id": "pg-5",
+        "en": "Nam ran to the bus stop. But the school bus was already leaving. 'Wait for me!' he shouted. The driver saw him in the mirror and stopped the bus.",
+        "vi": "Nam chạy tới trạm xe buýt. Nhưng xe buýt trường đã rời đi. 'Đợi cháu với!' cậu hét lên. Bác tài xế nhìn thấy cậu qua gương và dừng xe lại."
+      },
+      {
+        "id": "pg-6",
+        "en": "On the bus, Nam looked at his bag. 'Oh no!' he said. 'I forgot my homework!' His friend Linh smiled. 'Don't worry. I have my notebook. You can copy it quickly.'",
+        "vi": "Trên xe buýt, Nam nhìn vào cặp sách. 'Ôi không!' cậu nói. 'Mình quên bài tập về nhà rồi!' Bạn Linh mỉm cười. 'Đừng lo. Tớ có vở đây. Cậu chép nhanh đi.'"
+      },
+      {
+        "id": "pg-7",
+        "en": "Nam arrived at school at 7:29 — just one minute before the bell! His teacher, Mrs. Hoa, smiled at him. 'You made it! But please wake up earlier tomorrow.'",
+        "vi": "Nam tới trường lúc 7:29 — chỉ một phút trước tiếng chuông! Cô giáo Hoa mỉm cười với cậu. 'Em tới kịp rồi! Nhưng ngày mai dậy sớm hơn nhé.'"
+      },
+      {
+        "id": "pg-8",
+        "en": "That evening, Nam set TWO alarm clocks: one at 6:00 and one at 6:05. He put them far from his bed. 'Tomorrow will be different,' he promised himself. And it was.",
+        "vi": "Tối hôm đó, Nam đặt HAI đồng hồ báo thức: một cái lúc 6:00 và một cái lúc 6:05. Cậu để chúng xa giường. 'Ngày mai sẽ khác,' cậu tự hứa. Và đúng là khác thật."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why was Nam late?",
+        "options": [
+          "He turned off his alarm and slept more",
+          "The bus broke down",
+          "He lost his schoolbag",
+          "His mother woke him late"
+        ],
+        "correctAnswer": "He turned off his alarm and slept more",
+        "explanation": "Đáp án ở trang 1: 'He turned it off and went back to sleep.'"
+      },
+      {
+        "question": "Who helped Nam with his homework?",
+        "options": [
+          "His friend Linh",
+          "His mother",
+          "The bus driver",
+          "Mrs. Hoa"
+        ],
+        "correctAnswer": "His friend Linh",
+        "explanation": "Đáp án ở trang 6: Linh said 'You can copy it quickly.'"
+      },
+      {
+        "question": "What did Nam do that evening?",
+        "options": [
+          "He set two alarm clocks",
+          "He bought a new bag",
+          "He finished his homework",
+          "He went to bed early"
+        ],
+        "correctAnswer": "He set two alarm clocks",
+        "explanation": "Đáp án ở trang 8: 'Nam set TWO alarm clocks.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-12",
+    "title": "LingLing Learns to Swim",
+    "titleVi": "LingLing học bơi",
+    "cefrLevel": "A2",
+    "topic": "animals",
+    "topicVi": "Động vật",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "It was a very hot summer day. LingLing the cow sat under a big tree. She was sweating and fanning herself with a leaf. 'I need to cool down!' she said.",
+        "vi": "Đó là một ngày hè rất nóng. Bò LingLing ngồi dưới một gốc cây lớn. Cô bò đổ mồ hôi và quạt bằng một chiếc lá. 'Mình cần làm mát người!' cô nói."
+      },
+      {
+        "id": "pg-2",
+        "en": "Nearby, some ducks were swimming in the pond. 'Swimming looks fun!' LingLing said. She walked to the pond and put one hoof in the water. 'Brrr! It is cold!'",
+        "vi": "Gần đó, mấy chú vịt đang bơi trong ao. 'Bơi lội trông vui quá!' LingLing nói. Cô đi tới ao và thò một móng xuống nước. 'Lạnh quá!'"
+      },
+      {
+        "id": "pg-3",
+        "en": "The ducks laughed. 'Come in, cow! The water is wonderful!' LingLing shook her head. 'But I cannot swim. Cows are not swimmers!' Then she had an idea.",
+        "vi": "Mấy chú vịt cười. 'Xuống đây đi, bạn bò! Nước tuyệt lắm!' LingLing lắc đầu. 'Nhưng mình không biết bơi. Bò đâu có biết bơi!' Rồi cô nảy ra một ý."
+      },
+      {
+        "id": "pg-4",
+        "en": "LingLing went home and found a big pink swimming ring. She put it around her belly. 'Now I am ready!' she said proudly. The ducks clapped their wings.",
+        "vi": "LingLing về nhà và tìm một chiếc phao bơi hồng to. Cô đeo nó quanh bụng. 'Giờ mình sẵn sàng rồi!' cô nói đầy tự hào. Mấy chú vịt vỗ cánh."
+      },
+      {
+        "id": "pg-5",
+        "en": "Splash! LingLing jumped into the pond. The water was cold but nice. She floated on the pink ring like a queen. 'This is amazing!' she shouted happily.",
+        "vi": "Tùm! LingLing nhảy xuống ao. Nước lạnh nhưng dễ chịu. Cô nổi trên chiếc phao hồng như một nữ hoàng. 'Tuyệt vời quá!' cô hét lên sung sướng."
+      },
+      {
+        "id": "pg-6",
+        "en": "LingLing kicked her legs and moved slowly around the pond. The ducks swam next to her. 'You are doing great, cow!' they said. LingLing smiled widely.",
+        "vi": "LingLing đạp chân và di chuyển chậm rãi quanh ao. Mấy chú vịt bơi bên cạnh cô. 'Bạn làm tốt lắm, bạn bò!' chúng nói. LingLing cười tươi."
+      },
+      {
+        "id": "pg-7",
+        "en": "Soon, all the farm animals came to watch. The chickens brought lemonade. The pig brought a towel. Everyone cheered for the swimming cow.",
+        "vi": "Chẳng mấy chốc, tất cả các con vật trong trang trại tới xem. Mấy chú gà mang nước chanh. Chú heo mang khăn tắm. Mọi người cổ vũ cho cô bò biết bơi."
+      },
+      {
+        "id": "pg-8",
+        "en": "From that day, LingLing swam every afternoon. She learned an important lesson: you do not have to be perfect to have fun. You just have to try!",
+        "vi": "Từ hôm đó, LingLing bơi mỗi buổi chiều. Cô học được một bài học quan trọng: không cần phải giỏi mới vui. Chỉ cần dám thử là được!"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why did LingLing want to swim?",
+        "options": [
+          "It was a hot day and she wanted to cool down",
+          "She wanted to catch the ducks",
+          "She lost her leaf fan",
+          "The tree was too small"
+        ],
+        "correctAnswer": "It was a hot day and she wanted to cool down",
+        "explanation": "Đáp án ở trang 1: 'I need to cool down!' she said."
+      },
+      {
+        "question": "What did LingLing use to swim?",
+        "options": [
+          "A big pink swimming ring",
+          "A boat",
+          "A life jacket",
+          "A duck's help"
+        ],
+        "correctAnswer": "A big pink swimming ring",
+        "explanation": "Đáp án ở trang 4: 'She put it around her belly.'"
+      },
+      {
+        "question": "What lesson did LingLing learn?",
+        "options": [
+          "You just have to try to have fun",
+          "Cows are better than ducks",
+          "Summer is too hot",
+          "Ponds are dangerous"
+        ],
+        "correctAnswer": "You just have to try to have fun",
+        "explanation": "Đáp án ở trang 8: 'You just have to try!'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-13",
+    "title": "The Old Camera",
+    "titleVi": "Chiếc máy ảnh cũ",
+    "cefrLevel": "B1",
+    "topic": "mystery",
+    "topicVi": "Bí ẩn",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "Minh loved visiting his grandfather's house in the countryside. The old house was full of interesting things. One rainy afternoon, Minh went up to the attic to explore.",
+        "vi": "Minh rất thích về thăm nhà ông nội ở quê. Ngôi nhà cũ đầy những thứ thú vị. Một buổi chiều mưa, Minh lên gác mái để khám phá."
+      },
+      {
+        "id": "pg-2",
+        "en": "Under an old blanket, Minh found a black camera. It was heavy and dusty. A small note was tied to it: 'Do not open until you are ready to see the truth.' Minh's hands shook a little.",
+        "vi": "Dưới một tấm chăn cũ, Minh tìm thấy một chiếc máy ảnh đen. Nó nặng và đầy bụi. Một mẩu giấy nhỏ buộc vào đó: 'Đừng mở ra cho tới khi cháu sẵn sàng nhìn thấy sự thật.' Tay Minh run run."
+      },
+      {
+        "id": "pg-3",
+        "en": "Minh ran downstairs and showed the camera to his grandfather. The old man's eyes became wet. 'That was my camera,' he said quietly. 'I have not touched it for forty years.'",
+        "vi": "Minh chạy xuống nhà và đưa chiếc máy ảnh cho ông. Đôi mắt ông nội ươn ướt. 'Đó là máy ảnh của ông,' ông nói khẽ. 'Ông đã không động vào nó suốt bốn mươi năm.'"
+      },
+      {
+        "id": "pg-4",
+        "en": "'Why?' Minh asked. Grandfather sighed. 'Inside this camera, there is one last photo. It was taken on the day your grandmother and I said goodbye.' Minh listened carefully.",
+        "vi": "'Tại sao ạ?' Minh hỏi. Ông nội thở dài. 'Trong chiếc máy ảnh này còn một tấm ảnh cuối cùng. Nó được chụp vào ngày bà cháu và ông nói lời tạm biệt.' Minh lắng nghe chăm chú."
+      },
+      {
+        "id": "pg-5",
+        "en": "Grandfather explained that the camera had broken that day. The last photo was never developed. 'I was afraid to see it,' he said. 'Afraid the memory would hurt too much.'",
+        "vi": "Ông giải thích rằng chiếc máy ảnh đã hỏng vào ngày hôm đó. Tấm ảnh cuối cùng chưa bao giờ được rửa. 'Ông sợ nhìn thấy nó,' ông nói. 'Sợ ký ức sẽ làm ông đau quá.'"
+      },
+      {
+        "id": "pg-6",
+        "en": "Minh thought for a moment. Then he said, 'Grandpa, memories are not only pain. They are also love. Let me help you develop this photo.' Grandfather nodded slowly.",
+        "vi": "Minh suy nghĩ một lúc. Rồi cậu nói: 'Ông ơi, ký ức không chỉ là nỗi đau. Đó còn là tình yêu. Để cháu giúp ông rửa tấm ảnh này.' Ông nội gật đầu chậm rãi."
+      },
+      {
+        "id": "pg-7",
+        "en": "They took the camera to a photo shop in town. Three days later, they received the photo. It showed a young couple laughing in a flower garden. Grandfather smiled through his tears.",
+        "vi": "Họ mang chiếc máy ảnh tới tiệm ảnh trong thị trấn. Ba ngày sau, họ nhận được tấm ảnh. Trong ảnh là một đôi trẻ đang cười trong vườn hoa. Ông nội mỉm cười trong nước mắt."
+      },
+      {
+        "id": "pg-8",
+        "en": "Grandfather hung the photo on the wall. 'Thank you, Minh,' he said. 'You taught me that the past is not something to fear. It is something to treasure.' Minh hugged his grandfather tightly.",
+        "vi": "Ông nội treo tấm ảnh lên tường. 'Cảm ơn cháu, Minh,' ông nói. 'Cháu đã dạy ông rằng quá khứ không phải thứ để sợ hãi. Đó là thứ để trân trọng.' Minh ôm chặt ông nội."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where did Minh find the camera?",
+        "options": [
+          "In the attic under a blanket",
+          "In the garden",
+          "In his grandfather's room",
+          "At a photo shop"
+        ],
+        "correctAnswer": "In the attic under a blanket",
+        "explanation": "Đáp án ở trang 2: 'Under an old blanket, Minh found a black camera.'"
+      },
+      {
+        "question": "Why hadn't the grandfather touched the camera for forty years?",
+        "options": [
+          "He was afraid the memory would hurt",
+          "He forgot about it",
+          "The camera was too heavy",
+          "He bought a new camera"
+        ],
+        "correctAnswer": "He was afraid the memory would hurt",
+        "explanation": "Đáp án ở trang 5: 'I was afraid to see it... the memory would hurt too much.'"
+      },
+      {
+        "question": "What did the last photo show?",
+        "options": [
+          "A young couple laughing in a flower garden",
+          "An old house in the rain",
+          "A black camera",
+          "A flower garden without people"
+        ],
+        "correctAnswer": "A young couple laughing in a flower garden",
+        "explanation": "Đáp án ở trang 7: 'It showed a young couple laughing in a flower garden.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-14",
+    "title": "Cooking with Dad",
+    "titleVi": "Nấu ăn cùng bố",
+    "cefrLevel": "B1",
+    "topic": "family",
+    "topicVi": "Gia đình",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "Tomorrow was Mother's Day. Lan wanted to surprise her mother with a special dinner. 'Dad, can you teach me to cook?' she asked. Her father laughed, 'I can barely boil water!'",
+        "vi": "Ngày mai là Ngày của Mẹ. Lan muốn gây bất ngờ cho mẹ bằng một bữa tối đặc biệt. 'Bố ơi, bố dạy con nấu ăn được không?' cô hỏi. Bố cô cười: 'Bố còn chẳng biết luộc trứng!'"
+      },
+      {
+        "id": "pg-2",
+        "en": "But Lan did not give up. She found her grandmother's old recipe book. 'Look, Dad! Banh xeo — Mom's favorite dish!' Her father looked nervous but said, 'Okay, let's try.'",
+        "vi": "Nhưng Lan không bỏ cuộc. Cô tìm thấy cuốn sổ công thức cũ của bà ngoại. 'Nhìn này bố! Bánh xèo — món mẹ thích nhất!' Bố cô trông lo lắng nhưng nói: 'Được rồi, thử xem sao.'"
+      },
+      {
+        "id": "pg-3",
+        "en": "The kitchen soon became a battlefield. Flour was on the floor. Eggs were on the wall. Lan's father wore an apron backwards. They both laughed until their stomachs hurt.",
+        "vi": "Căn bếp nhanh chóng biến thành chiến trường. Bột mì vương đầy sàn. Trứng dính trên tường. Bố Lan đeo tạp dề ngược. Cả hai cười tới đau cả bụng."
+      },
+      {
+        "id": "pg-4",
+        "en": "After two hours, they made five banh xeo. They were not beautiful — some were too thick, some were burnt. But they smelled delicious. 'Not bad for beginners!' Lan said proudly.",
+        "vi": "Sau hai tiếng, họ làm được năm chiếc bánh xèo. Chúng không đẹp — có chiếc quá dày, có chiếc bị cháy. Nhưng mùi thì thơm nức. 'Không tệ cho người mới!' Lan nói đầy tự hào."
+      },
+      {
+        "id": "pg-5",
+        "en": "That evening, Lan's mother came home tired from work. She saw the messy kitchen and the strange-looking banh xeo. For a moment, she did not know what to say.",
+        "vi": "Tối hôm đó, mẹ Lan về nhà mệt mỏi sau giờ làm. Mẹ thấy căn bếp bừa bộn và những chiếc bánh xèo hình thù kỳ lạ. Một lúc, mẹ không biết nói gì."
+      },
+      {
+        "id": "pg-6",
+        "en": "'Happy Mother's Day!' Lan and her father shouted together. Lan's mother tasted a piece of banh xeo. Her eyes became wet. 'This is the best banh xeo I have ever eaten,' she said.",
+        "vi": "'Chúc mừng Ngày của Mẹ!' Lan và bố cùng hét lên. Mẹ Lan nếm một miếng bánh xèo. Đôi mắt mẹ ươn ướt. 'Đây là chiếc bánh xèo ngon nhất mẹ từng ăn,' mẹ nói."
+      },
+      {
+        "id": "pg-7",
+        "en": "They ate dinner together and laughed about the flour on the ceiling. Lan's father promised, 'Next year, I will learn to cook properly. Maybe.' Everyone laughed again.",
+        "vi": "Cả nhà ăn tối cùng nhau và cười về vụ bột mì trên trần nhà. Bố Lan hứa: 'Năm sau, bố sẽ học nấu ăn cho đàng hoàng. Chắc vậy.' Mọi người lại cười."
+      },
+      {
+        "id": "pg-8",
+        "en": "Later that night, Lan wrote in her diary: 'The food was not perfect, but the love was. The best gift is not what you buy — it is what you make with your heart.'",
+        "vi": "Tối hôm đó, Lan viết vào nhật ký: 'Món ăn không hoàn hảo, nhưng tình yêu thì có. Món quà tuyệt nhất không phải thứ mua được — mà là thứ làm bằng cả trái tim.'"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What dish did Lan want to cook?",
+        "options": [
+          "Banh xeo",
+          "Pho",
+          "Spring rolls",
+          "Fried rice"
+        ],
+        "correctAnswer": "Banh xeo",
+        "explanation": "Đáp án ở trang 2: 'Banh xeo — Mom's favorite dish!'"
+      },
+      {
+        "question": "How did the banh xeo look?",
+        "options": [
+          "Not beautiful — some too thick, some burnt",
+          "Perfect like a restaurant",
+          "Very small and cute",
+          "Colorful and artistic"
+        ],
+        "correctAnswer": "Not beautiful — some too thick, some burnt",
+        "explanation": "Đáp án ở trang 4: 'some were too thick, some were burnt.'"
+      },
+      {
+        "question": "What did Lan learn?",
+        "options": [
+          "The best gift is what you make with your heart",
+          "Cooking is too difficult",
+          "Mothers prefer bought gifts",
+          "Fathers cannot cook"
+        ],
+        "correctAnswer": "The best gift is what you make with your heart",
+        "explanation": "Đáp án ở trang 8: 'it is what you make with your heart.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-15",
+    "title": "The Midnight Train",
+    "titleVi": "Chuyến tàu đêm",
+    "cefrLevel": "B1",
+    "topic": "travel",
+    "topicVi": "Du lịch",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "Hoa was traveling alone for the first time. She took the midnight train from Hanoi to Hue. The train station was quiet and a little scary. 'This is my big adventure,' she whispered.",
+        "vi": "Hoa đi du lịch một mình lần đầu tiên. Cô đi chuyến tàu đêm từ Hà Nội vào Huế. Ga tàu yên tĩnh và hơi đáng sợ. 'Đây là cuộc phiêu lưu lớn của mình,' cô thì thầm."
+      },
+      {
+        "id": "pg-2",
+        "en": "In her cabin, an old woman was already sitting by the window. She smiled warmly. 'First time traveling alone?' she asked. Hoa nodded. 'Don't worry, child. I have taken this train a hundred times.'",
+        "vi": "Trong khoang tàu, một bà cụ đã ngồi bên cửa sổ. Bà mỉm cười ấm áp. 'Lần đầu đi một mình à cháu?' bà hỏi. Hoa gật đầu. 'Đừng lo, cháu. Bà đã đi chuyến tàu này cả trăm lần rồi.'"
+      },
+      {
+        "id": "pg-3",
+        "en": "As the train moved through the dark night, the old woman told stories. She talked about the mountains, the rivers, and the small villages along the way. Hoa listened with wide eyes.",
+        "vi": "Khi đoàn tàu chạy qua màn đêm, bà cụ kể chuyện. Bà kể về núi non, sông ngòi, và những ngôi làng nhỏ dọc đường. Hoa lắng nghe với đôi mắt mở to."
+      },
+      {
+        "id": "pg-4",
+        "en": "'Look!' the old woman pointed at the window. Outside, thousands of stars filled the sky. The moon was so bright that Hoa could see the rice fields. It was the most beautiful night she had ever seen.",
+        "vi": "'Nhìn kìa!' bà cụ chỉ ra cửa sổ. Bên ngoài, hàng ngàn ngôi sao lấp đầy bầu trời. Trăng sáng tới mức Hoa có thể nhìn thấy cánh đồng lúa. Đó là đêm đẹp nhất cô từng thấy."
+      },
+      {
+        "id": "pg-5",
+        "en": "The old woman gave Hoa a small paper crane. 'For good luck,' she said. 'Traveling alone is brave. But remember — you are never really alone. Kind people are everywhere.'",
+        "vi": "Bà cụ tặng Hoa một con hạc giấy nhỏ. 'Để may mắn nhé,' bà nói. 'Đi một mình là dũng cảm. Nhưng nhớ nhé — cháu không bao giờ thực sự một mình. Người tốt ở khắp mọi nơi.'"
+      },
+      {
+        "id": "pg-6",
+        "en": "Hoa fell asleep to the gentle rocking of the train. When she woke up, the sun was rising. The old woman was gone. Only the paper crane remained on the seat.",
+        "vi": "Hoa ngủ thiếp đi theo nhịp lắc nhẹ của đoàn tàu. Khi cô tỉnh dậy, mặt trời đang lên. Bà cụ đã đi mất. Chỉ còn con hạc giấy trên ghế."
+      },
+      {
+        "id": "pg-7",
+        "en": "Hoa looked around the cabin, but the old woman was nowhere. She asked the conductor, but he said the cabin had been empty all night. Hoa held the paper crane tightly.",
+        "vi": "Hoa nhìn quanh khoang tàu, nhưng bà cụ không ở đâu cả. Cô hỏi nhân viên soát vé, nhưng ông nói khoang tàu trống suốt đêm. Hoa nắm chặt con hạc giấy."
+      },
+      {
+        "id": "pg-8",
+        "en": "The train arrived in Hue. Hoa kept the paper crane in her bag for the whole trip. She never saw the old woman again, but she never forgot her words: kind people are everywhere.",
+        "vi": "Tàu tới Huế. Hoa giữ con hạc giấy trong túi suốt chuyến đi. Cô không bao giờ gặp lại bà cụ, nhưng không bao giờ quên lời bà: người tốt ở khắp mọi nơi."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where was Hoa traveling to?",
+        "options": [
+          "Hue",
+          "Da Nang",
+          "Saigon",
+          "Hoi An"
+        ],
+        "correctAnswer": "Hue",
+        "explanation": "Đáp án ở trang 1: 'She took the midnight train from Hanoi to Hue.'"
+      },
+      {
+        "question": "What did the old woman give Hoa?",
+        "options": [
+          "A small paper crane",
+          "A train ticket",
+          "A map",
+          "Some food"
+        ],
+        "correctAnswer": "A small paper crane",
+        "explanation": "Đáp án ở trang 5: 'The old woman gave Hoa a small paper crane.'"
+      },
+      {
+        "question": "What happened when Hoa woke up?",
+        "options": [
+          "The old woman was gone",
+          "The train had stopped",
+          "It was raining",
+          "Her bag was missing"
+        ],
+        "correctAnswer": "The old woman was gone",
+        "explanation": "Đáp án ở trang 6: 'The old woman was gone.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-16",
+    "title": "LingLing the Detective",
+    "titleVi": "Thám tử LingLing",
+    "cefrLevel": "B1",
+    "topic": "mystery",
+    "topicVi": "Bí ẩn",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "One morning, the farm was in chaos. Mrs. Hen's carrot cake had disappeared from the kitchen window! 'My prize cake for the fair!' she cried. 'Who took it?'",
+        "vi": "Một buổi sáng, trang trại náo loạn. Chiếc bánh cà rốt của cô Gà Mái đã biến mất khỏi cửa sổ bếp! 'Chiếc bánh dự thi của tôi!' cô kêu lên. 'Ai đã lấy nó?'"
+      },
+      {
+        "id": "pg-2",
+        "en": "LingLing the cow put on a detective hat. It was far too small for her big head, but she did not care. 'Do not worry!' she said. 'Detective LingLing is on the case!'",
+        "vi": "Bò LingLing đội một chiếc mũ thám tử. Nó quá nhỏ so với cái đầu to của cô, nhưng cô không quan tâm. 'Đừng lo!' cô nói. 'Thám tử LingLing đã vào cuộc!'"
+      },
+      {
+        "id": "pg-3",
+        "en": "First, LingLing questioned the pig. 'Where were you at breakfast time?' The pig looked nervous. 'I... I was sleeping! Ask anyone!' His snout was suspiciously orange.",
+        "vi": "Đầu tiên, LingLing thẩm vấn chú Heo. 'Sáng nay lúc ăn sáng anh ở đâu?' Chú Heo trông lo lắng. 'Tôi... tôi đang ngủ! Hỏi ai cũng được!' Cái mõm của chú cam một cách đáng ngờ."
+      },
+      {
+        "id": "pg-4",
+        "en": "Next, she questioned the dog. 'I was chasing my tail all morning,' the dog said. 'It is my new hobby.' LingLing wrote in her notebook: 'Dog — alibi: silly but true.'",
+        "vi": "Tiếp theo, cô thẩm vấn chú Chó. 'Sáng nay tôi đuổi theo cái đuôi của mình,' chú Chó nói. 'Đó là sở thích mới của tôi.' LingLing ghi vào sổ: 'Chó — bằng chứng ngoại phạm: ngớ ngẩn nhưng thật.'"
+      },
+      {
+        "id": "pg-5",
+        "en": "Then LingLing found a clue: orange crumbs on the pig's bed! 'Aha!' she shouted. 'The pig is guilty!' The pig started to cry. 'Okay, okay! I took ONE small bite... but then the cake fell!'",
+        "vi": "Rồi LingLing tìm thấy manh mối: vụn bánh màu cam trên giường chú Heo! 'Aha!' cô hét lên. 'Heo là thủ phạm!' Chú Heo bắt đầu khóc. 'Được rồi! Tôi chỉ cắn MỘT miếng nhỏ... nhưng rồi chiếc bánh rơi mất!'"
+      },
+      {
+        "id": "pg-6",
+        "en": "'Where did it fall?' LingLing asked. The pig pointed to the river. They all ran to the river bank. There, on a rock, sat the carrot cake — a little squashed, but mostly fine!",
+        "vi": "'Nó rơi ở đâu?' LingLing hỏi. Chú Heo chỉ về phía con sông. Tất cả chạy tới bờ sông. Ở đó, trên một tảng đá, chiếc bánh cà rốt nằm — hơi bẹp một chút, nhưng vẫn ổn!"
+      },
+      {
+        "id": "pg-7",
+        "en": "Mrs. Hen was so happy she forgave the pig. But LingLing had one more question: 'Pig, how did you reach the window? You are too short!' The pig blushed. 'I... stood on the dog.'",
+        "vi": "Cô Gà Mái vui tới mức tha thứ cho chú Heo. Nhưng LingLing còn một câu hỏi: 'Heo này, làm sao anh với tới cửa sổ? Anh lùn mà!' Chú Heo đỏ mặt. 'Tôi... đứng lên lưng chú Chó.'"
+      },
+      {
+        "id": "pg-8",
+        "en": "Everyone laughed. Mrs. Hen shared the cake with all the animals. LingLing took off her tiny hat and said, 'Case closed! Detective LingLing never fails!' The pig whispered, 'Worth it.'",
+        "vi": "Mọi người cười vang. Cô Gà Mái chia bánh cho tất cả các con vật. LingLing cởi chiếc mũ bé xíu và nói: 'Phá án thành công! Thám tử LingLing không bao giờ thất bại!' Chú Heo thì thầm: 'Đáng lắm.'"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What disappeared from the kitchen window?",
+        "options": [
+          "Mrs. Hen's carrot cake",
+          "A detective hat",
+          "The pig's bed",
+          "A notebook"
+        ],
+        "correctAnswer": "Mrs. Hen's carrot cake",
+        "explanation": "Đáp án ở trang 1: 'Mrs. Hen's carrot cake had disappeared from the kitchen window!'"
+      },
+      {
+        "question": "What clue did LingLing find?",
+        "options": [
+          "Orange crumbs on the pig's bed",
+          "A broken window",
+          "Footprints in the mud",
+          "A missing plate"
+        ],
+        "correctAnswer": "Orange crumbs on the pig's bed",
+        "explanation": "Đáp án ở trang 5: 'orange crumbs on the pig's bed!'"
+      },
+      {
+        "question": "Where was the cake found?",
+        "options": [
+          "On a rock by the river",
+          "Under the pig's bed",
+          "In the dog's house",
+          "At the fair"
+        ],
+        "correctAnswer": "On a rock by the river",
+        "explanation": "Đáp án ở trang 6: 'on a rock, sat the carrot cake.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-17",
+    "title": "The Letter from Saigon",
+    "titleVi": "Lá thư từ Sài Gòn",
+    "cefrLevel": "B2",
+    "topic": "history",
+    "topicVi": "Lịch sử",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "While cleaning her grandmother's old house in Hue, Thao found a wooden box under the floor. Inside was a yellow letter, written in beautiful handwriting. The date on it was 1968.",
+        "vi": "Khi dọn nhà cũ của bà ngoại ở Huế, Thảo tìm thấy một chiếc hộp gỗ dưới sàn nhà. Bên trong là một lá thư đã ngả vàng, viết bằng nét chữ rất đẹp. Ngày ghi trên thư là năm 1968."
+      },
+      {
+        "id": "pg-2",
+        "en": "The letter was from Thao's grandfather, a young teacher in Saigon at the time. He wrote to his wife — Thao's grandmother — who was living in Hue. The war had separated them for two years.",
+        "vi": "Lá thư là của ông ngoại Thảo, lúc đó là một thầy giáo trẻ ở Sài Gòn. Ông viết cho vợ mình — bà ngoại Thảo — đang sống ở Huế. Chiến tranh đã chia cắt họ suốt hai năm."
+      },
+      {
+        "id": "pg-3",
+        "en": "'My dearest,' the letter began, 'I teach my students by day and write to you by night. The city is noisy, but my heart is quiet when I think of you and our daughter.'",
+        "vi": "'Em yêu dấu,' lá thư mở đầu, 'Ban ngày anh dạy học trò, ban đêm anh viết thư cho em. Thành phố ồn ào, nhưng lòng anh bình yên khi nghĩ về em và con gái chúng ta.'"
+      },
+      {
+        "id": "pg-4",
+        "en": "Thao had never met her grandfather — he passed away before she was born. But as she read his words, she felt as if she knew him. His love for his family shone through every sentence.",
+        "vi": "Thảo chưa bao giờ gặp ông ngoại — ông mất trước khi cô ra đời. Nhưng khi đọc những dòng chữ của ông, cô cảm thấy như mình hiểu ông. Tình yêu gia đình của ông tỏa sáng qua từng câu chữ."
+      },
+      {
+        "id": "pg-5",
+        "en": "The letter ended with a promise: 'When this war is over, I will take you to the sea. We will watch the sunrise together, and I will never leave your side again.'",
+        "vi": "Lá thư kết thúc bằng một lời hứa: 'Khi chiến tranh qua đi, anh sẽ đưa em ra biển. Chúng ta sẽ cùng ngắm bình minh, và anh sẽ không bao giờ rời xa em nữa.'"
+      },
+      {
+        "id": "pg-6",
+        "en": "Thao's eyes filled with tears. She ran to show the letter to her grandmother, now ninety years old. The old woman held the letter with shaking hands and smiled.",
+        "vi": "Mắt Thảo rưng rưng. Cô chạy đi đưa lá thư cho bà ngoại, nay đã chín mươi tuổi. Bà cụ cầm lá thư bằng đôi tay run run và mỉm cười."
+      },
+      {
+        "id": "pg-7",
+        "en": "'He kept his promise,' grandmother said softly. 'After the war, he took me to the sea. We watched the sunrise, just as he wrote. It was the happiest day of my life.'",
+        "vi": "'Ông đã giữ lời hứa,' bà nói khẽ. 'Sau chiến tranh, ông đưa bà ra biển. Hai ông bà cùng ngắm bình minh, đúng như ông viết. Đó là ngày hạnh phúc nhất đời bà.'"
+      },
+      {
+        "id": "pg-8",
+        "en": "Thao framed the letter and hung it in her room. It reminded her that love can survive anything — even war, even time. Some promises are stronger than history itself.",
+        "vi": "Thảo đóng khung lá thư và treo trong phòng mình. Nó nhắc cô rằng tình yêu có thể vượt qua mọi thứ — kể cả chiến tranh, kể cả thời gian. Có những lời hứa còn mạnh mẽ hơn cả lịch sử."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where did Thao find the letter?",
+        "options": [
+          "In a wooden box under the floor",
+          "In a library",
+          "In her schoolbag",
+          "At a museum"
+        ],
+        "correctAnswer": "In a wooden box under the floor",
+        "explanation": "Đáp án ở trang 1: 'found a wooden box under the floor.'"
+      },
+      {
+        "question": "What did the grandfather promise in the letter?",
+        "options": [
+          "To take his wife to the sea after the war",
+          "To buy a new house",
+          "To become a principal",
+          "To move to Hue"
+        ],
+        "correctAnswer": "To take his wife to the sea after the war",
+        "explanation": "Đáp án ở trang 5: 'I will take you to the sea.'"
+      },
+      {
+        "question": "What is the main message of the story?",
+        "options": [
+          "Love can survive anything, even war and time",
+          "Old letters are valuable",
+          "Teachers write beautiful letters",
+          "The sea is beautiful at sunrise"
+        ],
+        "correctAnswer": "Love can survive anything, even war and time",
+        "explanation": "Đáp án ở trang 8: 'love can survive anything — even war, even time.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-18",
+    "title": "The Last Lighthouse Keeper",
+    "titleVi": "Người gác hải đăng cuối cùng",
+    "cefrLevel": "B2",
+    "topic": "inspiration",
+    "topicVi": "Truyền cảm hứng",
+    "pages": [
+      {
+        "id": "pg-1",
+        "en": "On a small rocky island off the coast of Vietnam stood an old lighthouse. For thirty years, Mr. Tam had been its keeper. Every night, he climbed the 200 steps to light the lamp.",
+        "vi": "Trên một hòn đảo đá nhỏ ngoài khơi Việt Nam có một ngọn hải đăng cũ. Suốt ba mươi năm, bác Tâm là người gác đèn. Mỗi đêm, bác leo 200 bậc thang để thắp đèn."
+      },
+      {
+        "id": "pg-2",
+        "en": "One morning, a letter arrived from the government. The lighthouse would be replaced by an automatic system. 'Your job is no longer needed,' the letter said. Mr. Tam read it three times in silence.",
+        "vi": "Một buổi sáng, một lá thư từ chính quyền tới. Ngọn hải đăng sẽ được thay bằng hệ thống tự động. 'Công việc của bác không còn cần thiết nữa,' lá thư viết. Bác Tâm đọc nó ba lần trong im lặng."
+      },
+      {
+        "id": "pg-3",
+        "en": "That night, a terrible storm hit the island. Waves crashed against the rocks. Mr. Tam lit the lamp as always, even though it was his last week. 'The sea does not care about letters,' he said.",
+        "vi": "Đêm đó, một cơn bão khủng khiếp ập vào đảo. Sóng đánh vào đá. Bác Tâm vẫn thắp đèn như mọi khi, dù đây là tuần cuối cùng của bác. 'Biển cả đâu quan tâm tới thư từ,' bác nói."
+      },
+      {
+        "id": "pg-4",
+        "en": "At midnight, Mr. Tam saw a small fishing boat struggling in the waves. Its engine had died. The boat was drifting toward the rocks. Mr. Tam's hands shook as he made the light brighter.",
+        "vi": "Nửa đêm, bác Tâm thấy một chiếc thuyền đánh cá nhỏ đang vật lộn với sóng. Động cơ của nó đã chết. Thuyền đang trôi về phía đá. Tay bác run run khi bác làm đèn sáng hơn."
+      },
+      {
+        "id": "pg-5",
+        "en": "The boat's captain saw the light just in time. He turned the boat away from the rocks. By morning, the storm had passed, and the boat was safe in the harbor. Five fishermen owed their lives to the old keeper.",
+        "vi": "Thuyền trưởng nhìn thấy ánh đèn đúng lúc. Ông lái thuyền tránh khỏi đá. Đến sáng, bão đã qua, và thuyền an toàn trong cảng. Năm ngư dân nợ mạng sống của mình cho người gác đèn già."
+      },
+      {
+        "id": "pg-6",
+        "en": "When the officials came to close the lighthouse, the fishermen were waiting. 'This man saved our lives,' the captain said. 'A machine cannot care. A machine cannot watch the sea like he does.'",
+        "vi": "Khi các quan chức tới đóng cửa hải đăng, các ngư dân đã đợi sẵn. 'Người này đã cứu mạng chúng tôi,' thuyền trưởng nói. 'Máy móc không biết quan tâm. Máy móc không thể canh biển như bác ấy.'"
+      },
+      {
+        "id": "pg-7",
+        "en": "The officials changed their decision. Mr. Tam would stay as the keeper, and the automatic system would be his assistant — not his replacement. Mr. Tam smiled for the first time in weeks.",
+        "vi": "Các quan chức đổi quyết định. Bác Tâm sẽ ở lại làm người gác đèn, và hệ thống tự động sẽ là trợ lý của bác — chứ không phải người thay thế. Bác Tâm mỉm cười lần đầu tiên sau nhiều tuần."
+      },
+      {
+        "id": "pg-8",
+        "en": "Every night since then, the lighthouse shines brighter than ever. Mr. Tam still climbs the 200 steps. He knows that some jobs are not just jobs — they are promises made to the sea.",
+        "vi": "Từ đó, mỗi đêm ngọn hải đăng sáng hơn bao giờ hết. Bác Tâm vẫn leo 200 bậc thang. Bác biết rằng có những công việc không chỉ là công việc — đó là lời hứa với biển cả."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why was Mr. Tam going to lose his job?",
+        "options": [
+          "The lighthouse would be replaced by an automatic system",
+          "He was too old to climb the steps",
+          "The lighthouse was broken",
+          "He wanted to retire"
+        ],
+        "correctAnswer": "The lighthouse would be replaced by an automatic system",
+        "explanation": "Đáp án ở trang 2: 'The lighthouse would be replaced by an automatic system.'"
+      },
+      {
+        "question": "What did Mr. Tam do during the storm?",
+        "options": [
+          "He lit the lamp and made it brighter to guide the boat",
+          "He called the government for help",
+          "He left the island",
+          "He slept through the storm"
+        ],
+        "correctAnswer": "He lit the lamp and made it brighter to guide the boat",
+        "explanation": "Đáp án ở trang 4: 'he made the light brighter.'"
+      },
+      {
+        "question": "What was the officials' final decision?",
+        "options": [
+          "Mr. Tam stays as keeper, the system becomes his assistant",
+          "The lighthouse was closed immediately",
+          "Mr. Tam was fired",
+          "The fishermen became keepers"
+        ],
+        "correctAnswer": "Mr. Tam stays as keeper, the system becomes his assistant",
+        "explanation": "Đáp án ở trang 7: 'the automatic system would be his assistant — not his replacement.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]
