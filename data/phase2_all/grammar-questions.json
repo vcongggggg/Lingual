@@ -1,0 +1,1702 @@
+[
+  {
+    "id": "gr-a2-001",
+    "cefrLevel": "A2",
+    "topic": "present-simple",
+    "topicVi": "Thì hiện tại đơn",
+    "question": "She ___ to school every day.",
+    "options": [
+      "gone",
+      "go",
+      "going",
+      "goes"
+    ],
+    "correctAnswer": "goes",
+    "explanation": "Chủ ngữ số ít 'she' + thì hiện tại đơn → động từ thêm -s. Lỗi phổ biến của người Việt là quên thêm -s vì tiếng Việt không chia động từ theo ngôi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-002",
+    "cefrLevel": "A2",
+    "topic": "present-simple",
+    "topicVi": "Thì hiện tại đơn",
+    "question": "They ___ football on Sundays.",
+    "options": [
+      "plays",
+      "playing",
+      "play",
+      "played"
+    ],
+    "correctAnswer": "play",
+    "explanation": "Chủ ngữ số nhiều 'they' + thì hiện tại đơn → động từ giữ nguyên, không thêm -s. Nhiều người Việt hay thêm -s theo thói quen như với 'he/she'.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-003",
+    "cefrLevel": "A2",
+    "topic": "present-simple",
+    "topicVi": "Thì hiện tại đơn",
+    "question": "He ___ like coffee in the morning.",
+    "options": [
+      "not",
+      "isn't",
+      "doesn't",
+      "don't"
+    ],
+    "correctAnswer": "doesn't",
+    "explanation": "Câu phủ định với chủ ngữ số ít 'he' dùng trợ động từ 'doesn't' + động từ nguyên mẫu. Lỗi phổ biến: dùng 'don't' cho mọi ngôi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-004",
+    "cefrLevel": "A2",
+    "topic": "present-simple",
+    "topicVi": "Thì hiện tại đơn",
+    "question": "___ your brother work in Ha Noi?",
+    "options": [
+      "Is",
+      "Has",
+      "Does",
+      "Do"
+    ],
+    "correctAnswer": "Does",
+    "explanation": "Câu hỏi thì hiện tại đơn với chủ ngữ số ít 'your brother' → dùng 'Does' + S + V nguyên mẫu. Lỗi phổ biến: dùng 'Do' cho cả ngôi thứ ba số ít.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-005",
+    "cefrLevel": "A2",
+    "topic": "present-continuous",
+    "topicVi": "Thì hiện tại tiếp diễn",
+    "question": "Look! The baby ___.",
+    "options": [
+      "crying",
+      "cry",
+      "is crying",
+      "cries"
+    ],
+    "correctAnswer": "is crying",
+    "explanation": "'Look!' báo hiệu hành động đang diễn ra → thì hiện tại tiếp diễn: am/is/are + V-ing. Lỗi phổ biến: dùng thì hiện tại đơn 'cries' vì nhầm với thói quen.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-006",
+    "cefrLevel": "A2",
+    "topic": "present-continuous",
+    "topicVi": "Thì hiện tại tiếp diễn",
+    "question": "I ___ my homework right now.",
+    "options": [
+      "does",
+      "doing",
+      "am doing",
+      "do"
+    ],
+    "correctAnswer": "am doing",
+    "explanation": "'right now' chỉ thời điểm hiện tại → thì hiện tại tiếp diễn. Với 'I' dùng 'am' + V-ing. Lỗi phổ biến: thiếu to be ('doing') vì tiếng Việt không có 'đang' bắt buộc.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-007",
+    "cefrLevel": "A2",
+    "topic": "present-continuous",
+    "topicVi": "Thì hiện tại tiếp diễn",
+    "question": "They ___ in the garden at the moment.",
+    "options": [
+      "work",
+      "are working",
+      "works",
+      "is working"
+    ],
+    "correctAnswer": "are working",
+    "explanation": "'at the moment' → thì hiện tại tiếp diễn. Chủ ngữ số nhiều 'they' đi với 'are' + V-ing. Lỗi phổ biến: dùng 'is' cho mọi ngôi vì không quen chia to be.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-008",
+    "cefrLevel": "A2",
+    "topic": "past-simple",
+    "topicVi": "Thì quá khứ đơn",
+    "question": "I ___ a great movie last night.",
+    "options": [
+      "watched",
+      "watch",
+      "watches",
+      "have watched"
+    ],
+    "correctAnswer": "watched",
+    "explanation": "'last night' là dấu hiệu của thì quá khứ đơn → động từ có quy tắc thêm -ed. Lỗi phổ biến: quên chia quá khứ vì trong tiếng Việt 'xem' không thay đổi.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-009",
+    "cefrLevel": "A2",
+    "topic": "past-simple",
+    "topicVi": "Thì quá khứ đơn",
+    "question": "She ___ to school yesterday.",
+    "options": [
+      "gone",
+      "goed",
+      "goes",
+      "went"
+    ],
+    "correctAnswer": "went",
+    "explanation": "'yesterday' → thì quá khứ đơn; 'go' là động từ bất quy tắc, dạng quá khứ là 'went'. Lỗi phổ biến: tự thêm -ed thành 'goed'.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-010",
+    "cefrLevel": "A2",
+    "topic": "past-simple",
+    "topicVi": "Thì quá khứ đơn",
+    "question": "We ___ very tired after the trip.",
+    "options": [
+      "was",
+      "be",
+      "are",
+      "were"
+    ],
+    "correctAnswer": "were",
+    "explanation": "Thì quá khứ đơn của 'be' với chủ ngữ số nhiều 'we' là 'were'. Lỗi phổ biến: dùng 'was' cho mọi ngôi vì không quen phân biệt was/were.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-011",
+    "cefrLevel": "A2",
+    "topic": "past-simple",
+    "topicVi": "Thì quá khứ đơn",
+    "question": "He didn't ___ to the party last week.",
+    "options": [
+      "went",
+      "go",
+      "goes",
+      "gone"
+    ],
+    "correctAnswer": "go",
+    "explanation": "Câu phủ định quá khứ dùng 'didn't' + động từ NGUYÊN MẪU, không chia quá khứ nữa. Lỗi phổ biến: viết 'didn't went' — chia thì hai lần.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-012",
+    "cefrLevel": "A2",
+    "topic": "future-going-to",
+    "topicVi": "Thì tương lai gần",
+    "question": "Look at the clouds! It ___.",
+    "options": [
+      "raining",
+      "is going to rain",
+      "rains",
+      "will rains"
+    ],
+    "correctAnswer": "is going to rain",
+    "explanation": "Dự đoán dựa vào dấu hiệu rõ ràng trước mắt (mây đen) → dùng 'be going to' + V nguyên mẫu. Lỗi phổ biến: thêm -s sau 'will' vì nhầm với thì hiện tại đơn.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-013",
+    "cefrLevel": "A2",
+    "topic": "future-going-to",
+    "topicVi": "Thì tương lai gần",
+    "question": "I ___ visit my grandmother this weekend.",
+    "options": [
+      "go to",
+      "am going to",
+      "going to",
+      "will to"
+    ],
+    "correctAnswer": "am going to",
+    "explanation": "Kế hoạch đã định trước → dùng 'am/is/are going to'. Với 'I' phải có 'am', không được bỏ. Lỗi phổ biến: viết 'going to' thiếu to be vì dịch từ tiếng Việt 'sẽ'.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-014",
+    "cefrLevel": "A2",
+    "topic": "future-going-to",
+    "topicVi": "Thì tương lai gần",
+    "question": "Don't worry, I ___ you with your bags.",
+    "options": [
+      "am help",
+      "will help",
+      "helps will",
+      "will helps"
+    ],
+    "correctAnswer": "will help",
+    "explanation": "Quyết định đưa ra ngay lúc nói (lời hứa giúp đỡ) → dùng 'will' + V nguyên mẫu, không thêm -s. Lỗi phổ biến: 'will helps' — chia động từ sau will.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-015",
+    "cefrLevel": "A2",
+    "topic": "articles",
+    "topicVi": "Mạo từ",
+    "question": "She is ___ honest person.",
+    "options": [
+      "an",
+      "a",
+      "x (no article)",
+      "the"
+    ],
+    "correctAnswer": "an",
+    "explanation": "'honest' phát âm bắt đầu bằng nguyên âm /ɒ/ (chữ h câm) → dùng 'an'. Lỗi phổ biến của người Việt: chỉ nhìn mặt chữ 'h' mà chọn 'a'.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-016",
+    "cefrLevel": "A2",
+    "topic": "articles",
+    "topicVi": "Mạo từ",
+    "question": "___ sun rises in the east.",
+    "options": [
+      "An",
+      "x (no article)",
+      "A",
+      "The"
+    ],
+    "correctAnswer": "The",
+    "explanation": "'the sun' — mặt trời là vật duy nhất → dùng mạo từ xác định 'the'. Lỗi phổ biến: dùng 'a' vì nghĩ mặt trời là danh từ đếm được thông thường.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-017",
+    "cefrLevel": "A2",
+    "topic": "articles",
+    "topicVi": "Mạo từ",
+    "question": "My father is ___ engineer.",
+    "options": [
+      "the",
+      "an",
+      "x (no article)",
+      "a"
+    ],
+    "correctAnswer": "an",
+    "explanation": "Nghề nghiệp dùng mạo từ không xác định; 'engineer' bắt đầu bằng nguyên âm /e/ → 'an'. Lỗi phổ biến: bỏ hẳn mạo từ vì tiếng Việt không có mạo từ ('bố tôi là kỹ sư').",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-018",
+    "cefrLevel": "A2",
+    "topic": "articles",
+    "topicVi": "Mạo từ",
+    "question": "I love ___ music.",
+    "options": [
+      "the",
+      "x (no article)",
+      "a",
+      "an"
+    ],
+    "correctAnswer": "x (no article)",
+    "explanation": "'music' là danh từ không đếm được nói chung chung → KHÔNG dùng mạo từ. Lỗi phổ biến: thêm 'the' vì dịch từ tiếng Việt 'âm nhạc' hay nghĩ cần mạo từ trước danh từ.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-019",
+    "cefrLevel": "A2",
+    "topic": "prepositions",
+    "topicVi": "Giới từ",
+    "question": "The meeting is ___ Monday morning.",
+    "options": [
+      "for",
+      "in",
+      "on",
+      "at"
+    ],
+    "correctAnswer": "on",
+    "explanation": "Ngày cụ thể trong tuần (Monday morning) dùng 'on'. Quy tắc nhớ: on + ngày/thứ, at + giờ, in + tháng/năm. Lỗi phổ biến: dùng 'in' cho mọi mốc thời gian.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-020",
+    "cefrLevel": "A2",
+    "topic": "prepositions",
+    "topicVi": "Giới từ",
+    "question": "She was born ___ 2010.",
+    "options": [
+      "from",
+      "at",
+      "in",
+      "on"
+    ],
+    "correctAnswer": "in",
+    "explanation": "Năm (2010) dùng giới từ 'in'. Quy tắc: in + năm/tháng/mùa. Lỗi phổ biến: dùng 'on' vì nhầm với 'on Monday' (ngày cụ thể).",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-021",
+    "cefrLevel": "A2",
+    "topic": "prepositions",
+    "topicVi": "Giới từ",
+    "question": "The cat is hiding ___ the table.",
+    "options": [
+      "on",
+      "under",
+      "between",
+      "in"
+    ],
+    "correctAnswer": "under",
+    "explanation": "Mèo nấp ở phía DƯỚI bàn → 'under'. Lỗi phổ biến: dùng 'in' (dịch máy móc từ 'ở trong') hoặc 'on' (trên bàn).",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-022",
+    "cefrLevel": "A2",
+    "topic": "prepositions",
+    "topicVi": "Giới từ",
+    "question": "I'll meet you ___ 7 o'clock.",
+    "options": [
+      "at",
+      "to",
+      "on",
+      "in"
+    ],
+    "correctAnswer": "at",
+    "explanation": "Giờ cụ thể (7 o'clock) dùng 'at'. Lỗi phổ biến: dùng 'on' hoặc 'in' vì dịch từ tiếng Việt 'lúc 7 giờ' — tiếng Việt không phân biệt giới từ theo loại mốc thời gian.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-023",
+    "cefrLevel": "A2",
+    "topic": "prepositions",
+    "topicVi": "Giới từ",
+    "question": "She is afraid ___ dogs.",
+    "options": [
+      "of",
+      "with",
+      "from",
+      "by"
+    ],
+    "correctAnswer": "of",
+    "explanation": "Tính từ 'afraid' đi với giới từ cố định 'of': be afraid of + N. Đây là cụm giới từ phải học thuộc. Lỗi phổ biến: dùng 'with' hoặc 'from' theo suy đoán.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-024",
+    "cefrLevel": "A2",
+    "topic": "modals-basic",
+    "topicVi": "Động từ khuyết thiếu cơ bản",
+    "question": "You ___ smoke here. It's forbidden.",
+    "options": [
+      "mustn't",
+      "mustn't to",
+      "not must",
+      "don't must"
+    ],
+    "correctAnswer": "mustn't",
+    "explanation": "Cấm đoán dùng 'mustn't' + V nguyên mẫu, không có 'to'. Lỗi phổ biến: thêm 'to' sau mustn't hoặc đảo vị trí 'not' vì áp dụng sai quy tắc phủ định thường.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-025",
+    "cefrLevel": "A2",
+    "topic": "modals-basic",
+    "topicVi": "Động từ khuyết thiếu cơ bản",
+    "question": "He ___ swim very well when he was five.",
+    "options": [
+      "can",
+      "is can",
+      "cans",
+      "could"
+    ],
+    "correctAnswer": "could",
+    "explanation": "Khả năng trong QUÁ KHỨ → dùng 'could' (quá khứ của can). Lỗi phổ biến: dùng 'can' cho cả quá khứ vì tiếng Việt 'có thể' không chia thì.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-026",
+    "cefrLevel": "A2",
+    "topic": "modals-basic",
+    "topicVi": "Động từ khuyết thiếu cơ bản",
+    "question": "She can ___ English fluently.",
+    "options": [
+      "speak",
+      "speaks",
+      "speaking",
+      "to speak"
+    ],
+    "correctAnswer": "speak",
+    "explanation": "Sau động từ khuyết thiếu (can) luôn là V NGUYÊN MẪU, không -s, không -ing, không 'to'. Lỗi phổ biến: 'can speaks' vì quen chia -s theo ngôi thứ ba.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-027",
+    "cefrLevel": "A2",
+    "topic": "comparatives-basic",
+    "topicVi": "So sánh hơn cơ bản",
+    "question": "This book is ___ than that one.",
+    "options": [
+      "interestinger",
+      "interested",
+      "most interesting",
+      "more interesting"
+    ],
+    "correctAnswer": "more interesting",
+    "explanation": "Tính từ dài (3 âm tiết: in-te-res-ting) → so sánh hơn dùng 'more + adj'. Lỗi phổ biến: thêm -er cho tính từ dài như 'interestinger'.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-028",
+    "cefrLevel": "A2",
+    "topic": "comparatives-basic",
+    "topicVi": "So sánh hơn cơ bản",
+    "question": "My house is ___ than yours.",
+    "options": [
+      "bigger",
+      "more big",
+      "biggest",
+      "biger"
+    ],
+    "correctAnswer": "bigger",
+    "explanation": "Tính từ ngắn 1 âm tiết (big) → thêm -er; phụ âm cuối gấp đôi trước -er: big → bigger. Lỗi phổ biến: 'more big' hoặc quên gấp đôi phụ âm ('biger').",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-029",
+    "cefrLevel": "A2",
+    "topic": "there-is-are",
+    "topicVi": "There is / There are",
+    "question": "___ a cat under the chair.",
+    "options": [
+      "There are",
+      "There be",
+      "It is",
+      "There is"
+    ],
+    "correctAnswer": "There is",
+    "explanation": "Chủ ngữ 'a cat' số ít → dùng 'There is'. Lỗi phổ biến: dùng 'There are' cho mọi trường hợp vì không quen chia theo danh từ đứng sau.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "gr-a2-030",
+    "cefrLevel": "A2",
+    "topic": "there-is-are",
+    "topicVi": "There is / There are",
+    "question": "___ many students in the classroom.",
+    "options": [
+      "There are",
+      "There is",
+      "They are",
+      "There have"
+    ],
+    "correctAnswer": "There are",
+    "explanation": "Chủ ngữ 'many students' số nhiều → dùng 'There are'. Lỗi phổ biến: 'There have' vì dịch máy móc từ tiếng Việt 'có nhiều học sinh'.",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "have lived",
+    "explanation": "Có 'since 2020' → hành động bắt đầu trong quá khứ và còn kéo dài đến hiện tại → dùng thì hiện tại hoàn thành (have lived).",
+    "id": "gr-b1-001",
+    "options": [
+      "live",
+      "lived",
+      "have lived",
+      "am living"
+    ],
+    "question": "I ___ in Hanoi since 2020.",
+    "source": "ai-generated",
+    "topic": "present-perfect",
+    "topicVi": "Thì hiện tại hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "finished",
+    "explanation": "'Has just' là dấu hiệu của thì hiện tại hoàn thành; sau has/have phải dùng phân từ quá khứ (finished).",
+    "id": "gr-b1-002",
+    "options": [
+      "finished",
+      "finish",
+      "finishing",
+      "finishes"
+    ],
+    "question": "She has just ___ her homework.",
+    "source": "ai-generated",
+    "topic": "present-perfect",
+    "topicVi": "Thì hiện tại hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "been",
+    "explanation": "'Have you ever' dùng để hỏi kinh nghiệm đã từng có → thì hiện tại hoàn thành; 'been to' nghĩa là 'đã từng đến'.",
+    "id": "gr-b1-003",
+    "options": [
+      "went",
+      "been",
+      "go",
+      "going"
+    ],
+    "question": "Have you ever ___ to Da Lat?",
+    "source": "ai-generated",
+    "topic": "present-perfect",
+    "topicVi": "Thì hiện tại hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "have seen",
+    "explanation": "'Three times' diễn tả kinh nghiệm đã có tính đến hiện tại → thì hiện tại hoàn thành; dạng đúng là 'have seen' (see – saw – seen).",
+    "id": "gr-b1-004",
+    "options": [
+      "saw",
+      "see",
+      "have saw",
+      "have seen"
+    ],
+    "question": "They ___ this movie three times.",
+    "source": "ai-generated",
+    "topic": "present-perfect",
+    "topicVi": "Thì hiện tại hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "eaten",
+    "explanation": "'Has never' + động từ → thì hiện tại hoàn thành; cần phân từ quá khứ 'eaten' (eat – ate – eaten).",
+    "id": "gr-b1-005",
+    "options": [
+      "ate",
+      "eat",
+      "eaten",
+      "eating"
+    ],
+    "question": "My brother has never ___ sushi.",
+    "source": "ai-generated",
+    "topic": "present-perfect",
+    "topicVi": "Thì hiện tại hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "have",
+    "explanation": "'Already' là dấu hiệu của thì hiện tại hoàn thành; chủ ngữ 'we' đi với trợ động từ 'have'.",
+    "id": "gr-b1-006",
+    "options": [
+      "have",
+      "had",
+      "has",
+      "having"
+    ],
+    "question": "We ___ already had lunch.",
+    "source": "ai-generated",
+    "topic": "present-perfect",
+    "topicVi": "Thì hiện tại hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "was watching",
+    "explanation": "Mốc thời gian cụ thể trong quá khứ (at 8 p.m. last night) → dùng quá khứ tiếp diễn để diễn tả hành động đang diễn ra tại thời điểm đó.",
+    "id": "gr-b1-007",
+    "options": [
+      "watched",
+      "was watching",
+      "am watching",
+      "watch"
+    ],
+    "question": "At 8 p.m. last night, I ___ TV.",
+    "source": "ai-generated",
+    "topic": "past-continuous",
+    "topicVi": "Thì quá khứ tiếp diễn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "was cooking",
+    "explanation": "Sau 'while' là hành động nền kéo dài trong quá khứ → dùng quá khứ tiếp diễn (was cooking); hành động ngắn xen vào dùng quá khứ đơn (rang).",
+    "id": "gr-b1-008",
+    "options": [
+      "cooked",
+      "cooks",
+      "is cooking",
+      "was cooking"
+    ],
+    "question": "While she ___, the phone rang.",
+    "source": "ai-generated",
+    "topic": "past-continuous",
+    "topicVi": "Thì quá khứ tiếp diễn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "were playing",
+    "explanation": "Hành động đang diễn ra (were playing) thì bị một hành động khác xen vào ở quá khứ đơn (started raining).",
+    "id": "gr-b1-009",
+    "options": [
+      "were playing",
+      "played",
+      "are playing",
+      "play"
+    ],
+    "question": "They ___ football when it started raining.",
+    "source": "ai-generated",
+    "topic": "past-continuous",
+    "topicVi": "Thì quá khứ tiếp diễn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "will stay",
+    "explanation": "Câu điều kiện loại 1 (khả năng có thật ở tương lai): If + hiện tại đơn, mệnh đề chính dùng will + động từ nguyên thể.",
+    "id": "gr-b1-010",
+    "options": [
+      "would stay",
+      "stay",
+      "will stay",
+      "stayed"
+    ],
+    "question": "If it rains tomorrow, we ___ at home.",
+    "source": "ai-generated",
+    "topic": "conditional-1",
+    "topicVi": "Câu điều kiện loại 1",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "will pass",
+    "explanation": "Câu điều kiện loại 1 diễn tả điều có thể xảy ra ở tương lai: mệnh đề chính dùng 'will pass'.",
+    "id": "gr-b1-011",
+    "options": [
+      "would pass",
+      "will pass",
+      "pass",
+      "passed"
+    ],
+    "question": "If you study hard, you ___ the exam.",
+    "source": "ai-generated",
+    "topic": "conditional-1",
+    "topicVi": "Câu điều kiện loại 1",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "is",
+    "explanation": "Trong mệnh đề If của câu điều kiện loại 1, dù nói về tương lai vẫn dùng thì hiện tại đơn, không dùng 'will'.",
+    "id": "gr-b1-012",
+    "options": [
+      "will be",
+      "was",
+      "would be",
+      "is"
+    ],
+    "question": "We will go to the beach if the weather ___ nice.",
+    "source": "ai-generated",
+    "topic": "conditional-1",
+    "topicVi": "Câu điều kiện loại 1",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "were",
+    "explanation": "Câu điều kiện loại 2 (giả định trái với hiện tại): If + quá khứ đơn; với 'I' dùng 'were' theo chuẩn ngữ pháp.",
+    "id": "gr-b1-013",
+    "options": [
+      "am",
+      "was",
+      "were",
+      "will be"
+    ],
+    "question": "If I ___ rich, I would travel the world.",
+    "source": "ai-generated",
+    "topic": "conditional-2",
+    "topicVi": "Câu điều kiện loại 2",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "would",
+    "explanation": "Câu điều kiện loại 2: mệnh đề chính dùng would + động từ nguyên thể để diễn tả kết quả tưởng tượng.",
+    "id": "gr-b1-014",
+    "options": [
+      "will",
+      "would",
+      "can",
+      "shall"
+    ],
+    "question": "If she had more time, she ___ learn to play the piano.",
+    "source": "ai-generated",
+    "topic": "conditional-2",
+    "topicVi": "Câu điều kiện loại 2",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "won",
+    "explanation": "Câu điều kiện loại 2 diễn tả tình huống tưởng tượng: mệnh đề If dùng thì quá khứ đơn (won).",
+    "id": "gr-b1-015",
+    "options": [
+      "win",
+      "have won",
+      "won",
+      "will win"
+    ],
+    "question": "What would you do if you ___ a million dollars?",
+    "source": "ai-generated",
+    "topic": "conditional-2",
+    "topicVi": "Câu điều kiện loại 2",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "is spoken",
+    "explanation": "Chủ ngữ 'English' chịu tác động của hành động → câu bị động thì hiện tại đơn: is + phân từ quá khứ (spoken).",
+    "id": "gr-b1-016",
+    "options": [
+      "is spoken",
+      "is speak",
+      "speaks",
+      "spoke"
+    ],
+    "question": "English ___ in many countries.",
+    "source": "ai-generated",
+    "topic": "passive-basic",
+    "topicVi": "Câu bị động cơ bản",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "was built",
+    "explanation": "Có 'last year' → bị động thì quá khứ đơn: was + phân từ quá khứ (built).",
+    "id": "gr-b1-017",
+    "options": [
+      "built",
+      "was built",
+      "is built",
+      "builds"
+    ],
+    "question": "The bridge ___ last year.",
+    "source": "ai-generated",
+    "topic": "passive-basic",
+    "topicVi": "Câu bị động cơ bản",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "was written",
+    "explanation": "Có 'yesterday' và tác nhân 'by the manager' → bị động quá khứ đơn: was + phân từ quá khứ (written).",
+    "id": "gr-b1-018",
+    "options": [
+      "wrote",
+      "is written",
+      "write",
+      "was written"
+    ],
+    "question": "The report ___ by the manager yesterday.",
+    "source": "ai-generated",
+    "topic": "passive-basic",
+    "topicVi": "Câu bị động cơ bản",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "are made",
+    "explanation": "Chủ ngữ số nhiều 'these cars' + thì hiện tại đơn bị động → are + phân từ quá khứ (made).",
+    "id": "gr-b1-019",
+    "options": [
+      "make",
+      "is made",
+      "are made",
+      "made"
+    ],
+    "question": "These cars ___ in Japan.",
+    "source": "ai-generated",
+    "topic": "passive-basic",
+    "topicVi": "Câu bị động cơ bản",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "is cleaned",
+    "explanation": "'Every day' → thì hiện tại đơn; chủ ngữ 'the room' chịu tác động → bị động: is + phân từ quá khứ (cleaned).",
+    "id": "gr-b1-020",
+    "options": [
+      "is cleaned",
+      "cleans",
+      "cleaned",
+      "is clean"
+    ],
+    "question": "The room ___ every day.",
+    "source": "ai-generated",
+    "topic": "passive-basic",
+    "topicVi": "Câu bị động cơ bản",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "have been sent",
+    "explanation": "'Already' + thì hiện tại hoàn thành bị động: have + been + phân từ quá khứ (sent); 'have sent' là chủ động nên sai vì thư không tự gửi được.",
+    "id": "gr-b1-021",
+    "options": [
+      "have sent",
+      "were send",
+      "have been sent",
+      "are sent"
+    ],
+    "question": "The letters ___ already.",
+    "source": "ai-generated",
+    "topic": "passive-basic",
+    "topicVi": "Câu bị động cơ bản",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "who",
+    "explanation": "Đại từ quan hệ thay cho người (the man) và làm chủ ngữ trong mệnh đề → dùng 'who'; 'which' chỉ dùng cho vật.",
+    "id": "gr-b1-022",
+    "options": [
+      "who",
+      "which",
+      "whose",
+      "whom"
+    ],
+    "question": "The man ___ lives next door is a doctor.",
+    "source": "ai-generated",
+    "topic": "relative-clauses",
+    "topicVi": "Mệnh đề quan hệ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "that",
+    "explanation": "Đại từ quan hệ thay cho vật (the book) làm tân ngữ trong mệnh đề → dùng 'that'; 'who' chỉ dùng cho người, 'where' chỉ dùng cho nơi chốn.",
+    "id": "gr-b1-023",
+    "options": [
+      "who",
+      "whose",
+      "that",
+      "where"
+    ],
+    "question": "This is the book ___ I bought yesterday.",
+    "source": "ai-generated",
+    "topic": "relative-clauses",
+    "topicVi": "Mệnh đề quan hệ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "which",
+    "explanation": "Đại từ quan hệ thay cho vật (a shop) và làm chủ ngữ trong mệnh đề → dùng 'which'; 'who' chỉ dùng cho người.",
+    "id": "gr-b1-024",
+    "options": [
+      "who",
+      "which",
+      "whose",
+      "whom"
+    ],
+    "question": "I know a shop ___ sells cheap clothes.",
+    "source": "ai-generated",
+    "topic": "relative-clauses",
+    "topicVi": "Mệnh đề quan hệ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "whose",
+    "explanation": "Cần diễn tả quan hệ sở hữu (cái túi CỦA cô gái) → dùng 'whose'; các đáp án còn lại không thể hiện sở hữu.",
+    "id": "gr-b1-025",
+    "options": [
+      "who",
+      "which",
+      "that",
+      "whose"
+    ],
+    "question": "The girl ___ bag is red is my sister.",
+    "source": "ai-generated",
+    "topic": "relative-clauses",
+    "topicVi": "Mệnh đề quan hệ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "who",
+    "explanation": "Đại từ quan hệ thay cho người (the teacher) và làm chủ ngữ trong mệnh đề → dùng 'who'.",
+    "id": "gr-b1-026",
+    "options": [
+      "which",
+      "who",
+      "whose",
+      "whom"
+    ],
+    "question": "She is the teacher ___ helped me a lot.",
+    "source": "ai-generated",
+    "topic": "relative-clauses",
+    "topicVi": "Mệnh đề quan hệ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "must",
+    "explanation": "Diễn tả sự bắt buộc theo luật → dùng 'must'; 'should' chỉ là lời khuyên nên không đủ mạnh trong tình huống này.",
+    "id": "gr-b1-027",
+    "options": [
+      "may",
+      "should",
+      "might",
+      "must"
+    ],
+    "question": "You ___ wear a helmet when you ride a motorbike. It's the law.",
+    "source": "ai-generated",
+    "topic": "modals",
+    "topicVi": "Động từ khuyết thiếu",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "should",
+    "explanation": "Đưa ra lời khuyên → dùng 'should'; 'must' mang nghĩa bắt buộc, quá mạnh trong tình huống này.",
+    "id": "gr-b1-028",
+    "options": [
+      "must",
+      "should",
+      "may",
+      "might"
+    ],
+    "question": "You look tired. You ___ rest.",
+    "source": "ai-generated",
+    "topic": "modals",
+    "topicVi": "Động từ khuyết thiếu",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "might",
+    "explanation": "Dự đoán một khả năng có thể xảy ra (không chắc chắn) → dùng 'might'; 'must' diễn tả suy luận gần như chắc chắn nên không phù hợp.",
+    "id": "gr-b1-029",
+    "options": [
+      "might",
+      "must",
+      "should",
+      "can"
+    ],
+    "question": "It ___ rain this afternoon. Take an umbrella.",
+    "source": "ai-generated",
+    "topic": "modals",
+    "topicVi": "Động từ khuyết thiếu",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "May",
+    "explanation": "Xin phép một cách lịch sự, trang trọng → dùng 'May I...?'.",
+    "id": "gr-b1-030",
+    "options": [
+      "Must",
+      "Should",
+      "May",
+      "Shall"
+    ],
+    "question": "___ I borrow your pen, please?",
+    "source": "ai-generated",
+    "topic": "modals",
+    "topicVi": "Động từ khuyết thiếu",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "mustn't",
+    "explanation": "Diễn tả điều bị cấm → dùng 'mustn't' (must not); 'don't have to' nghĩa là 'không cần', khác hẳn với 'bị cấm'.",
+    "id": "gr-b1-031",
+    "options": [
+      "don't have to",
+      "mustn't",
+      "shouldn't",
+      "may not"
+    ],
+    "question": "Students ___ cheat in exams.",
+    "source": "ai-generated",
+    "topic": "modals",
+    "topicVi": "Động từ khuyết thiếu",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "she was",
+    "explanation": "Câu trực tiếp ở thì hiện tại đơn → câu gián tiếp phải lùi thì thành quá khứ đơn: she was tired.",
+    "id": "gr-b1-032",
+    "options": [
+      "she is",
+      "she has been",
+      "she was",
+      "she will be"
+    ],
+    "question": "She said, \"I am tired.\" → She said that ___ tired.",
+    "source": "ai-generated",
+    "topic": "reported-speech",
+    "topicVi": "Câu gián tiếp",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "he would",
+    "explanation": "Câu trực tiếp dùng 'will' → câu gián tiếp lùi thành 'would'; 'you' đổi thành 'me' theo người nghe.",
+    "id": "gr-b1-033",
+    "options": [
+      "he will",
+      "he would",
+      "he helps",
+      "he helped"
+    ],
+    "question": "He said, \"I will help you.\" → He said that ___ help me.",
+    "source": "ai-generated",
+    "topic": "reported-speech",
+    "topicVi": "Câu gián tiếp",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "they had gone",
+    "explanation": "Quá khứ đơn → lùi thành quá khứ hoàn thành (had gone); 'last week' đổi thành 'the week before'.",
+    "id": "gr-b1-034",
+    "options": [
+      "they had gone",
+      "they went",
+      "they have gone",
+      "they go"
+    ],
+    "question": "They said, \"We went to Hue last week.\" → They said that ___ to Hue the week before.",
+    "source": "ai-generated",
+    "topic": "reported-speech",
+    "topicVi": "Câu gián tiếp",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "where I",
+    "explanation": "Câu hỏi có từ để hỏi: giữ từ để hỏi, bỏ trợ động từ và đảo về trật tự thường, lùi thì hiện tại đơn → quá khứ đơn: where I lived.",
+    "id": "gr-b1-035",
+    "options": [
+      "where do I",
+      "where I live",
+      "where did I live",
+      "where I"
+    ],
+    "question": "She asked, \"Where do you live?\" → She asked ___ lived.",
+    "source": "ai-generated",
+    "topic": "reported-speech",
+    "topicVi": "Câu gián tiếp",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "easier",
+    "explanation": "Có 'than' → so sánh hơn; tính từ ngắn 'easy' đổi y thành i rồi thêm -er → easier.",
+    "id": "gr-b1-036",
+    "options": [
+      "easy",
+      "more easy",
+      "easier",
+      "easiest"
+    ],
+    "question": "This exercise is ___ than the last one.",
+    "source": "ai-generated",
+    "topic": "comparatives",
+    "topicVi": "So sánh",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "the highest",
+    "explanation": "'In the world' → so sánh nhất; so sánh nhất luôn phải có 'the' đứng trước tính từ.",
+    "id": "gr-b1-037",
+    "options": [
+      "the highest",
+      "highest",
+      "higher",
+      "more high"
+    ],
+    "question": "Mount Everest is ___ mountain in the world.",
+    "source": "ai-generated",
+    "topic": "comparatives",
+    "topicVi": "So sánh",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "turn on",
+    "explanation": "'Turn on' = bật (đèn); 'turn off' là tắt — ngược nghĩa với ngữ cảnh phòng đang tối.",
+    "id": "gr-b1-038",
+    "options": [
+      "turn off",
+      "turn on",
+      "turn up",
+      "turn down"
+    ],
+    "question": "Please ___ the lights. It's too dark.",
+    "source": "ai-generated",
+    "topic": "phrasal-verbs",
+    "topicVi": "Cụm động từ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "give up",
+    "explanation": "'Give up' = từ bỏ (thói quen xấu); 'give in' = nhượng bộ, 'give away' = cho đi — không hợp ngữ cảnh.",
+    "id": "gr-b1-039",
+    "options": [
+      "give in",
+      "give out",
+      "give away",
+      "give up"
+    ],
+    "question": "I need to ___ smoking for my health.",
+    "source": "ai-generated",
+    "topic": "phrasal-verbs",
+    "topicVi": "Cụm động từ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "correctAnswer": "put off",
+    "explanation": "'Put off' = hoãn lại; 'put on' = mặc vào hoặc tổ chức — không hợp với 'until next week'.",
+    "id": "gr-b1-040",
+    "options": [
+      "put on",
+      "put out",
+      "put off",
+      "put up"
+    ],
+    "question": "The meeting was ___ until next week.",
+    "source": "ai-generated",
+    "topic": "phrasal-verbs",
+    "topicVi": "Cụm động từ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "had studied",
+    "explanation": "Câu điều kiện loại 3 (giả định trái với quá khứ): mệnh đề If dùng quá khứ hoàn thành (had + P2), mệnh đề chính dùng would have + P2.",
+    "id": "gr-b2-001",
+    "options": [
+      "studied",
+      "had studied",
+      "would study",
+      "studies"
+    ],
+    "question": "If she ___ harder, she would have passed the exam.",
+    "source": "ai-generated",
+    "topic": "conditional-3",
+    "topicVi": "Câu điều kiện loại 3",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "would have caught",
+    "explanation": "Câu điều kiện loại 3: If + quá khứ hoàn thành thì mệnh đề chính dùng would have + P2 để diễn tả kết quả trái với quá khứ.",
+    "id": "gr-b2-002",
+    "options": [
+      "would catch",
+      "caught",
+      "would have caught",
+      "will catch"
+    ],
+    "question": "If we had left earlier, we ___ the train.",
+    "source": "ai-generated",
+    "topic": "conditional-3",
+    "topicVi": "Câu điều kiện loại 3",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "hadn't ignored",
+    "explanation": "Điều kiện loại 3 dạng phủ định: If + hadn't + P2 ... wouldn't have + P2. 'didn't ignore' là loại 2, không diễn tả sự việc trong quá khứ.",
+    "id": "gr-b2-003",
+    "options": [
+      "hadn't ignored",
+      "didn't ignore",
+      "wouldn't ignore",
+      "doesn't ignore"
+    ],
+    "question": "If he ___ the warning, the accident wouldn't have happened.",
+    "source": "ai-generated",
+    "topic": "conditional-3",
+    "topicVi": "Câu điều kiện loại 3",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "hadn't told",
+    "explanation": "Câu điều kiện loại 3: mệnh đề If phải dùng quá khứ hoàn thành (hadn't told). 'didn't tell' sai thì, 'haven't told' không dùng trong mệnh đề If loại 3.",
+    "id": "gr-b2-004",
+    "options": [
+      "didn't tell",
+      "wouldn't tell",
+      "haven't told",
+      "hadn't told"
+    ],
+    "question": "I wouldn't have believed it if you ___ me.",
+    "source": "ai-generated",
+    "topic": "conditional-3",
+    "topicVi": "Câu điều kiện loại 3",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "wouldn't be",
+    "explanation": "Điều kiện hỗn hợp: If + quá khứ hoàn thành (nguyên nhân ở quá khứ) + would + V nguyên (kết quả ở hiện tại, có 'now').",
+    "id": "gr-b2-005",
+    "options": [
+      "wouldn't have been",
+      "wouldn't be",
+      "aren't",
+      "hadn't been"
+    ],
+    "question": "If you had taken that job, you ___ unemployed now.",
+    "source": "ai-generated",
+    "topic": "conditional-mixed",
+    "topicVi": "Câu điều kiện hỗn hợp",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "would have won",
+    "explanation": "Điều kiện hỗn hợp: If + quá khứ đơn (giả định hiện tại) + would have + P2 (kết quả trong quá khứ, có 'last year').",
+    "id": "gr-b2-006",
+    "options": [
+      "would win",
+      "had won",
+      "would have won",
+      "wins"
+    ],
+    "question": "If she were more confident, she ___ the promotion last year.",
+    "source": "ai-generated",
+    "topic": "conditional-mixed",
+    "topicVi": "Câu điều kiện hỗn hợp",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "had been sent",
+    "explanation": "Bị động quá khứ hoàn thành: had been + P2 — hành động gửi đã hoàn tất trước một mốc trong quá khứ (before the meeting started).",
+    "id": "gr-b2-007",
+    "options": [
+      "had sent",
+      "has sent",
+      "was sending",
+      "had been sent"
+    ],
+    "question": "By the time the meeting started, the report ___ to every member.",
+    "source": "ai-generated",
+    "topic": "passive-advanced",
+    "topicVi": "Câu bị động nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "had been renovated",
+    "explanation": "Bị động quá khứ hoàn thành: had been + P2 — việc sửa nhà diễn ra và xong trước khi bán. 'had renovated' là chủ động, sai nghĩa (nhà không tự sửa).",
+    "id": "gr-b2-008",
+    "options": [
+      "had renovated",
+      "had been renovated",
+      "has renovated",
+      "was renovating"
+    ],
+    "question": "The house ___ for over six months before it was finally sold.",
+    "source": "ai-generated",
+    "topic": "passive-advanced",
+    "topicVi": "Câu bị động nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "told",
+    "explanation": "Động từ hai tân ngữ tell somebody something: bị động với tân ngữ chỉ người — He was told the news. 'said' không đi với tân ngữ chỉ người.",
+    "id": "gr-b2-009",
+    "options": [
+      "told",
+      "said",
+      "spoken",
+      "talked"
+    ],
+    "question": "He was ___ the news by his colleague this morning.",
+    "source": "ai-generated",
+    "topic": "passive-advanced",
+    "topicVi": "Câu bị động nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "were sold out",
+    "explanation": "Bị động quá khứ đơn: were + P2 (vé đã được bán hết). 'sold out' thiếu động từ be, 'had sold' là chủ động quá khứ hoàn thành.",
+    "id": "gr-b2-010",
+    "options": [
+      "sold out",
+      "had sold",
+      "were sold out",
+      "have sold out"
+    ],
+    "question": "All the tickets ___ within an hour of the announcement.",
+    "source": "ai-generated",
+    "topic": "passive-advanced",
+    "topicVi": "Câu bị động nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "whose",
+    "explanation": "whose là sở hữu cách của who/which, thay cho 'the student's essay'. Không dùng whom (tân ngữ) hay which (vật).",
+    "id": "gr-b2-011",
+    "options": [
+      "whom",
+      "whose",
+      "who",
+      "which"
+    ],
+    "question": "That's the student ___ essay won first prize.",
+    "source": "ai-generated",
+    "topic": "relative-advanced",
+    "topicVi": "Mệnh đề quan hệ nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "who",
+    "explanation": "Mệnh đề quan hệ không xác định, đại từ làm chủ ngữ → who. whom chỉ làm tân ngữ, which thay cho vật, whose chỉ sở hữu.",
+    "id": "gr-b2-012",
+    "options": [
+      "whom",
+      "which",
+      "whose",
+      "who"
+    ],
+    "question": "He introduced me to his colleagues, ___ were very friendly.",
+    "source": "ai-generated",
+    "topic": "relative-advanced",
+    "topicVi": "Mệnh đề quan hệ nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "standing",
+    "explanation": "Rút gọn mệnh đề quan hệ chủ động: who is standing → standing (V-ing). 'stood' là P2 mang nghĩa bị động, không hợp ở đây.",
+    "id": "gr-b2-013",
+    "options": [
+      "standing",
+      "stood",
+      "stands",
+      "to stand"
+    ],
+    "question": "The man ___ at the door wants to see you.",
+    "source": "ai-generated",
+    "topic": "relative-advanced",
+    "topicVi": "Mệnh đề quan hệ nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "submitted",
+    "explanation": "Rút gọn mệnh đề quan hệ bị động: which were submitted → submitted (P2). 'submitting' là chủ động, sai nghĩa (báo cáo không tự nộp).",
+    "id": "gr-b2-014",
+    "options": [
+      "submitting",
+      "which submitted",
+      "submitted",
+      "submit"
+    ],
+    "question": "The reports ___ to the board last week contained several errors.",
+    "source": "ai-generated",
+    "topic": "relative-advanced",
+    "topicVi": "Mệnh đề quan hệ nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "came",
+    "explanation": "Câu hỏi gián tiếp: lùi thì hiện tại đơn → quá khứ đơn (come → came), không đảo ngữ và không dùng trợ động từ did.",
+    "id": "gr-b2-015",
+    "options": [
+      "come",
+      "came",
+      "have come",
+      "was come"
+    ],
+    "question": "She asked me where I ___ from.",
+    "source": "ai-generated",
+    "topic": "reported-advanced",
+    "topicVi": "Câu gián tiếp nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "had received",
+    "explanation": "Câu hỏi gián tiếp Yes/No: lùi thì quá khứ đơn → quá khứ hoàn thành (received → had received), kết hợp 'the previous day'.",
+    "id": "gr-b2-016",
+    "options": [
+      "received",
+      "have received",
+      "receive",
+      "had received"
+    ],
+    "question": "He asked me whether I ___ the document the previous day.",
+    "source": "ai-generated",
+    "topic": "reported-advanced",
+    "topicVi": "Câu gián tiếp nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "to remain",
+    "explanation": "Câu mệnh lệnh gián tiếp: told + tân ngữ + to V. 'remain' thiếu to, 'remaining' và 'that remain' sai cấu trúc.",
+    "id": "gr-b2-017",
+    "options": [
+      "to remain",
+      "remain",
+      "remaining",
+      "that remain"
+    ],
+    "question": "The teacher told the students ___ quietly during the test.",
+    "source": "ai-generated",
+    "topic": "reported-advanced",
+    "topicVi": "Câu gián tiếp nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "would help",
+    "explanation": "Lùi thì trong câu tường thuật: will → would, tomorrow → the next day. Giữ nguyên 'will help' là lỗi quên lùi thì rất phổ biến.",
+    "id": "gr-b2-018",
+    "options": [
+      "will help",
+      "helps",
+      "would help",
+      "would have helped"
+    ],
+    "question": "'I will help you tomorrow,' she said. She said she ___ me the next day.",
+    "source": "ai-generated",
+    "topic": "reported-advanced",
+    "topicVi": "Câu gián tiếp nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "must have rained",
+    "explanation": "must have + P2: suy luận chắc chắn về sự việc trong quá khứ (sân ướt → chắc chắn đã mưa). 'must rain' diễn tả hiện tại/tương lai.",
+    "id": "gr-b2-019",
+    "options": [
+      "must rain",
+      "must have rained",
+      "must be raining",
+      "must have rain"
+    ],
+    "question": "The ground is wet. It ___ during the night.",
+    "source": "ai-generated",
+    "topic": "modal-perfect",
+    "topicVi": "Động từ khuyết thiếu hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "should have told",
+    "explanation": "should have + P2: phê bình việc lẽ ra nên làm nhưng đã không làm trong quá khứ. 'should tell' chỉ là lời khuyên chung chung, không nói về quá khứ.",
+    "id": "gr-b2-020",
+    "options": [
+      "should tell",
+      "should be telling",
+      "must tell",
+      "should have told"
+    ],
+    "question": "You ___ me about the change; I was completely surprised.",
+    "source": "ai-generated",
+    "topic": "modal-perfect",
+    "topicVi": "Động từ khuyết thiếu hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "couldn't have stolen",
+    "explanation": "couldn't have + P2: khẳng định điều gì không thể đã xảy ra trong quá khứ. 'couldn't steal' chỉ khả năng chung, không nhấn mạnh quá khứ.",
+    "id": "gr-b2-021",
+    "options": [
+      "couldn't have stolen",
+      "couldn't steal",
+      "shouldn't steal",
+      "mustn't steal"
+    ],
+    "question": "He ___ the money; he was abroad at the time.",
+    "source": "ai-generated",
+    "topic": "modal-perfect",
+    "topicVi": "Động từ khuyết thiếu hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "might have been",
+    "explanation": "might have + P2: phỏng đoán có thể đã xảy ra trong quá khứ. 'might be' là phỏng đoán ở hiện tại, không hợp với ngữ cảnh quá khứ.",
+    "id": "gr-b2-022",
+    "options": [
+      "might be",
+      "must have be",
+      "might have been",
+      "can have been"
+    ],
+    "question": "She didn't answer the phone. She ___ asleep.",
+    "source": "ai-generated",
+    "topic": "modal-perfect",
+    "topicVi": "Động từ khuyết thiếu hoàn thành",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "had been waiting",
+    "explanation": "Quá khứ hoàn thành tiếp diễn: had been + V-ing — nhấn mạnh hành động chờ đợi kéo dài và kết thúc trước một mốc trong quá khứ.",
+    "id": "gr-b2-023",
+    "options": [
+      "had waited",
+      "had been waiting",
+      "have been waiting",
+      "were waiting"
+    ],
+    "question": "By the time we arrived, they ___ for over an hour.",
+    "source": "ai-generated",
+    "topic": "perfect-continuous",
+    "topicVi": "Thì hoàn thành tiếp diễn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "had been learning",
+    "explanation": "had been + V-ing: hành động học kéo dài trước mốc 'moved to London' trong quá khứ. 'has been learning' sai vì mốc thời gian đã ở quá khứ.",
+    "id": "gr-b2-024",
+    "options": [
+      "has been learning",
+      "learned",
+      "learns",
+      "had been learning"
+    ],
+    "question": "She ___ English for three years when she moved to London.",
+    "source": "ai-generated",
+    "topic": "perfect-continuous",
+    "topicVi": "Thì hoàn thành tiếp diễn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "had he been waiting",
+    "explanation": "Câu hỏi với quá khứ hoàn thành tiếp diễn: had + S + been + V-ing — nhấn mạnh khoảng thời gian chờ đợi trước một sự việc quá khứ.",
+    "id": "gr-b2-025",
+    "options": [
+      "had he been waiting",
+      "has he waited",
+      "did he wait",
+      "was he waiting"
+    ],
+    "question": "How long ___ before the manager finally saw him?",
+    "source": "ai-generated",
+    "topic": "perfect-continuous",
+    "topicVi": "Thì hoàn thành tiếp diễn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "have been working",
+    "explanation": "Hiện tại hoàn thành tiếp diễn: have been + V-ing đi với 'since 8 a.m.' — hành động bắt đầu trong quá khứ và còn tiếp diễn đến hiện tại.",
+    "id": "gr-b2-026",
+    "options": [
+      "have worked",
+      "am working",
+      "have been working",
+      "work"
+    ],
+    "question": "I ___ here since 8 a.m., and I'm exhausted.",
+    "source": "ai-generated",
+    "topic": "perfect-continuous",
+    "topicVi": "Thì hoàn thành tiếp diễn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "put off",
+    "explanation": "put off = hoãn lại. put up (dựng lên), put out (dập tắt), put down (đặt xuống) đều không hợp nghĩa với ngữ cảnh hoãn trận đấu.",
+    "id": "gr-b2-027",
+    "options": [
+      "put up",
+      "put off",
+      "put out",
+      "put down"
+    ],
+    "question": "The match was ___ due to heavy rain.",
+    "source": "ai-generated",
+    "topic": "phrasal-verbs-advanced",
+    "topicVi": "Cụm động từ nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "come up with",
+    "explanation": "come up with = nảy ra, nghĩ ra (ý tưởng/giải pháp). come across (tình cờ gặp), come about (xảy ra), come into (thừa hưởng) đều sai nghĩa.",
+    "id": "gr-b2-028",
+    "options": [
+      "come across",
+      "come about",
+      "come into",
+      "come up with"
+    ],
+    "question": "We need to ___ a better solution to this problem.",
+    "source": "ai-generated",
+    "topic": "phrasal-verbs-advanced",
+    "topicVi": "Cụm động từ nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "look down on",
+    "explanation": "look down on = coi thường. look up to (ngưỡng mộ), look after (chăm sóc), look into (điều tra) trái nghĩa hoặc sai ngữ cảnh.",
+    "id": "gr-b2-029",
+    "options": [
+      "look down on",
+      "look up to",
+      "look after",
+      "look into"
+    ],
+    "question": "He tends to ___ people who are less educated than him.",
+    "source": "ai-generated",
+    "topic": "phrasal-verbs-advanced",
+    "topicVi": "Cụm động từ nâng cao",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "correctAnswer": "run out of",
+    "explanation": "run out of = hết, cạn kiệt. run into (tình cờ gặp), run over (cán qua), run across (tình cờ thấy) đều sai nghĩa.",
+    "id": "gr-b2-030",
+    "options": [
+      "run into",
+      "run over",
+      "run out of",
+      "run across"
+    ],
+    "question": "We've ___ coffee. Could you buy some on your way home?",
+    "source": "ai-generated",
+    "topic": "phrasal-verbs-advanced",
+    "topicVi": "Cụm động từ nâng cao",
+    "verified": false
+  }
+]

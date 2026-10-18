@@ -1,0 +1,1343 @@
+[
+  {
+    "id": "dlg-a2-001",
+    "title": "At the Coffee Shop",
+    "titleVi": "Tại quán cà phê",
+    "cefrLevel": "A2",
+    "location": "Quán cà phê phố cổ, sáng thứ 7",
+    "locationVi": "Quán cà phê phố cổ, sáng thứ 7",
+    "characters": [
+      {
+        "name": "David",
+        "role": "Khách hàng",
+        "gender": "male"
+      },
+      {
+        "name": "Sarah",
+        "role": "Nhân viên pha chế",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "David",
+        "textEn": "Good morning! Could I get a cappuccino, please?",
+        "textVi": "Chào buổi sáng! Cho tôi một ly cappuccino nhé?",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Sarah",
+        "textEn": "Of course! Small, medium, or large?",
+        "textVi": "Dạ được ạ! Anh lấy size nhỏ, vừa hay lớn ạ?",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "David",
+        "textEn": "Hmm... medium. Oh wait — what's the difference between a cappuccino and a latte again?",
+        "textVi": "Ừm... size vừa. À khoan — cappuccino với latte khác nhau chỗ nào nhỉ?",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Sarah",
+        "textEn": "Good question! A cappuccino has more foam. A latte has more milk.",
+        "textVi": "Câu hỏi hay đấy ạ! Cappuccino nhiều bọt sữa hơn. Latte thì nhiều sữa hơn.",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "David",
+        "textEn": "Foam... right. You know what, I'll just take the latte. Less confusing.",
+        "textVi": "Bọt sữa... ừ nhỉ. Thôi, tôi lấy latte cho đỡ rối.",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Sarah",
+        "textEn": "No problem! Hot or iced?",
+        "textVi": "Dạ không sao ạ! Anh uống nóng hay đá ạ?",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "David",
+        "textEn": "Iced, please. It's so hot today — I'm melting!",
+        "textVi": "Đá nhé. Hôm nay nóng quá — tôi sắp tan chảy rồi!",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Sarah",
+        "textEn": "Tell me about it! That'll be four dollars fifty.",
+        "textVi": "Anh nói chí phải! Của anh hết 4 đô 50 ạ.",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "David",
+        "textEn": "Here you go. Keep the change — buy yourself something cold!",
+        "textVi": "Gửi em. Khỏi thối lại — mua gì mát mát uống nhé!",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Sarah",
+        "textEn": "Wow, thank you! You're the nicest customer today!",
+        "textVi": "Ôi, cảm ơn anh! Anh là khách dễ thương nhất hôm nay đấy!",
+        "audioUrl": "/audio/dialogues/dlg-a2-001/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Cuối cùng David gọi món gì?",
+        "options": [
+          "Cappuccino nóng",
+          "Latte đá",
+          "Espresso",
+          "Trà đá"
+        ],
+        "correctAnswer": "Latte đá",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 5 David đổi sang latte, dòng 7 anh chọn uống đá."
+      },
+      {
+        "question": "Theo Sarah, cappuccino và latte khác nhau thế nào?",
+        "options": [
+          "Cappuccino nhiều bọt sữa hơn",
+          "Latte nhiều bọt sữa hơn",
+          "Cappuccino nhiều đường hơn",
+          "Hai món giống hệt nhau"
+        ],
+        "correctAnswer": "Cappuccino nhiều bọt sữa hơn",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: 'A cappuccino has more foam. A latte has more milk.'"
+      },
+      {
+        "question": "David phải trả bao nhiêu tiền?",
+        "options": [
+          "4 đô 50",
+          "5 đô",
+          "4 đô",
+          "3 đô 50"
+        ],
+        "correctAnswer": "4 đô 50",
+        "evidenceLineId": "line-8",
+        "explanation": "Dòng 8: 'That'll be four dollars fifty.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-a2-002",
+    "title": "Lost at the Supermarket",
+    "titleVi": "Lạc trong siêu thị",
+    "cefrLevel": "A2",
+    "location": "Siêu thị lớn, chiều chủ nhật",
+    "locationVi": "Siêu thị lớn, chiều chủ nhật",
+    "characters": [
+      {
+        "name": "Tom",
+        "role": "Ông chồng đi chợ hộ vợ",
+        "gender": "male"
+      },
+      {
+        "name": "Anna",
+        "role": "Nhân viên siêu thị",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Tom",
+        "textEn": "Excuse me! Where can I find the milk?",
+        "textVi": "Xin lỗi! Sữa ở đâu vậy ạ?",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Anna",
+        "textEn": "Aisle 5, next to the eggs. Are you looking for anything else?",
+        "textVi": "Dãy 5, cạnh quầy trứng ạ. Anh còn tìm gì nữa không?",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Tom",
+        "textEn": "Yes! My wife wrote 'coriander' on the list. What on earth is that?",
+        "textVi": "Có! Vợ tôi ghi 'rau mùi' trong danh sách. Cái đó là cái gì vậy trời?",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Anna",
+        "textEn": "It's a green herb. You'll find it in the vegetable section, near the spring onions.",
+        "textVi": "Là một loại rau thơm màu xanh ạ. Anh tìm ở khu rau củ, gần hành lá.",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Tom",
+        "textEn": "Ah, I see! And... do you sell 'patience'? Because I'm going to need a lot of it.",
+        "textVi": "À, hiểu rồi! Mà... ở đây có bán 'sự kiên nhẫn' không? Vì tôi sắp cần nhiều lắm đấy.",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Anna",
+        "textEn": "Haha! Sorry, we're out of stock. But try the chocolate aisle — that helps too.",
+        "textVi": "Haha! Tiếc quá, hết hàng rồi ạ. Nhưng anh thử qua dãy sô-cô-la — cái đó cũng hiệu quả lắm.",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Tom",
+        "textEn": "Good idea! Oh no — my wife is calling. She probably knew I'd get lost.",
+        "textVi": "Ý hay đấy! Ôi không — vợ tôi gọi rồi. Chắc cô ấy biết tôi sẽ lạc mà.",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Anna",
+        "textEn": "Don't worry, it happens to everyone. Husbands always get lost in supermarkets!",
+        "textVi": "Đừng lo, ai cũng vậy thôi ạ. Các ông chồng lúc nào cũng lạc trong siêu thị!",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Tom",
+        "textEn": "You're right. Thanks for your help — you saved my marriage today!",
+        "textVi": "Em nói đúng. Cảm ơn em đã giúp — hôm nay em đã cứu vãn hôn nhân của tôi đấy!",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Anna",
+        "textEn": "My pleasure! Good luck with the coriander!",
+        "textVi": "Không có gì ạ! Chúc anh may mắn với rau mùi nhé!",
+        "audioUrl": "/audio/dialogues/dlg-a2-002/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Tom tìm thấy sữa ở đâu?",
+        "options": [
+          "Dãy 5",
+          "Dãy 3",
+          "Khu rau củ",
+          "Quầy thu ngân"
+        ],
+        "correctAnswer": "Dãy 5",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: 'Aisle 5, next to the eggs.'"
+      },
+      {
+        "question": "Rau mùi nằm ở khu nào?",
+        "options": [
+          "Khu rau củ, gần hành lá",
+          "Dãy 5",
+          "Khu đồ đông lạnh",
+          "Quầy bánh mì"
+        ],
+        "correctAnswer": "Khu rau củ, gần hành lá",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: 'in the vegetable section, near the spring onions.'"
+      },
+      {
+        "question": "Anna đùa rằng Tom nên mua gì thay cho 'sự kiên nhẫn'?",
+        "options": [
+          "Sô-cô-la",
+          "Cà phê",
+          "Kem",
+          "Bánh mì"
+        ],
+        "correctAnswer": "Sô-cô-la",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: 'try the chocolate aisle — that helps too.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-a2-003",
+    "title": "Overweight Luggage",
+    "titleVi": "Hành lý quá cân",
+    "cefrLevel": "A2",
+    "location": "Quầy check-in sân bay, sáng sớm",
+    "locationVi": "Quầy check-in sân bay, sáng sớm",
+    "characters": [
+      {
+        "name": "Mike",
+        "role": "Hành khách",
+        "gender": "male"
+      },
+      {
+        "name": "Lisa",
+        "role": "Nhân viên check-in",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Lisa",
+        "textEn": "Good afternoon! Passport and ticket, please.",
+        "textVi": "Chào buổi chiều! Cho tôi xem hộ chiếu và vé ạ.",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Mike",
+        "textEn": "Here you are. I'm so excited — my first trip to Japan!",
+        "textVi": "Đây ạ. Tôi háo hức quá — chuyến đi Nhật đầu tiên của tôi!",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Lisa",
+        "textEn": "Wonderful! Please put your bag on the scale.",
+        "textVi": "Tuyệt vời! Anh đặt vali lên cân giúp tôi.",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Mike",
+        "textEn": "Uh oh... is 35 kilos a problem? The limit is 23, right?",
+        "textVi": "Ồ ồ... 35 ký có vấn đề không? Giới hạn là 23 ký đúng không?",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Lisa",
+        "textEn": "Yes, it's overweight. You'll need to pay extra — or take some things out.",
+        "textVi": "Vâng, thừa cân rồi ạ. Anh phải trả thêm phí — hoặc bỏ bớt đồ ra.",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Mike",
+        "textEn": "Pay extra? No way! Watch this — I'll just wear everything!",
+        "textVi": "Trả thêm? Không đời nào! Xem này — tôi sẽ mặc hết lên người!",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Lisa",
+        "textEn": "Sir... you can't be serious. That's five jackets!",
+        "textVi": "Thưa anh... anh không đùa đấy chứ. Đó là 5 cái áo khoác!",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Mike",
+        "textEn": "It's called fashion, okay? Tokyo fashion week starts early!",
+        "textVi": "Cái này gọi là thời trang, hiểu không? Tuần lễ thời trang Tokyo bắt đầu sớm!",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Lisa",
+        "textEn": "Well... the bag is 22 kilos now. You're good to go!",
+        "textVi": "À... vali còn 22 ký. Anh qua được rồi đấy!",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Mike",
+        "textEn": "See? Problem solved! Now... where's the nearest air conditioning?",
+        "textVi": "Thấy chưa? Xong! Giờ thì... điều hòa gần nhất ở đâu nhỉ?",
+        "audioUrl": "/audio/dialogues/dlg-a2-003/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Vali của Mike lúc đầu nặng bao nhiêu?",
+        "options": [
+          "35 ký",
+          "23 ký",
+          "22 ký",
+          "30 ký"
+        ],
+        "correctAnswer": "35 ký",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: 'is 35 kilos a problem?'"
+      },
+      {
+        "question": "Giới hạn hành lý ký gửi là bao nhiêu?",
+        "options": [
+          "23 ký",
+          "35 ký",
+          "20 ký",
+          "25 ký"
+        ],
+        "correctAnswer": "23 ký",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: 'The limit is 23, right?'"
+      },
+      {
+        "question": "Mike giải quyết hành lý quá cân bằng cách nào?",
+        "options": [
+          "Mặc hết quần áo lên người",
+          "Trả thêm phí",
+          "Bỏ bớt đồ ra",
+          "Mua vali mới"
+        ],
+        "correctAnswer": "Mặc hết quần áo lên người",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: 'I'll just wear everything!'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-b1-001",
+    "title": "The Baby Shark Interview",
+    "titleVi": "Buổi phỏng vấn Baby Shark",
+    "cefrLevel": "B1",
+    "location": "Văn phòng công ty, phòng phỏng vấn",
+    "locationVi": "Văn phòng công ty, phòng phỏng vấn",
+    "characters": [
+      {
+        "name": "Mr. Brown",
+        "role": "Nhà tuyển dụng",
+        "gender": "male"
+      },
+      {
+        "name": "Emma",
+        "role": "Ứng viên",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Mr. Brown",
+        "textEn": "So, Emma, tell me — why do you want to work for our company?",
+        "textVi": "Vậy, Emma, cho tôi biết — tại sao em muốn làm việc cho công ty chúng tôi?",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Emma",
+        "textEn": "Well, I've always admired your eco-friendly products. And honestly, I really need a job that pays the rent!",
+        "textVi": "Dạ, em luôn ngưỡng mộ các sản phẩm thân thiện môi trường của công ty. Và thật lòng mà nói, em rất cần một công việc đủ trả tiền nhà!",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Mr. Brown",
+        "textEn": "Ha! An honest answer — I like that. Now, what would you say are your strengths?",
+        "textVi": "Ha! Trả lời thật thà đấy — tôi thích. Vậy điểm mạnh của em là gì?",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Emma",
+        "textEn": "I'm organized, hardworking, and I never— oh no, that's my phone! I'm SO sorry!",
+        "textVi": "Em ngăn nắp, chăm chỉ, và em không bao giờ— ôi không, điện thoại của em! Em xin lỗi NHIỀU lắm!",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Mr. Brown",
+        "textEn": "Baby Shark? Really? Well... at least it's catchy!",
+        "textVi": "Baby Shark à? Thật sao? Ít ra thì nó cũng bắt tai đấy!",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Emma",
+        "textEn": "My little brother changed my ringtone as a joke. I could kill him right now.",
+        "textVi": "Em trai em đổi nhạc chuông để trêu. Giờ em chỉ muốn cho nó một trận.",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Mr. Brown",
+        "textEn": "Don't worry about it. Actually, that reminds me — we're launching a kids' product line next month!",
+        "textVi": "Đừng lo. Thật ra chuyện này làm tôi nhớ ra — tháng tới công ty ra mắt dòng sản phẩm trẻ em!",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Emma",
+        "textEn": "Really? Well, I DO have experience with kids... unwillingly!",
+        "textVi": "Thật ạ? Em CÓ kinh nghiệm với trẻ con đấy... dù là ngoài ý muốn!",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Mr. Brown",
+        "textEn": "Ha! You know what, Emma? You've got personality. We'll call you next week.",
+        "textVi": "Ha! Em biết không, Emma? Em rất có cá tính. Tuần sau chúng tôi sẽ gọi cho em.",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Emma",
+        "textEn": "Thank you! And I promise — next time, the phone stays at home!",
+        "textVi": "Cảm ơn ạ! Em hứa — lần sau điện thoại ở nhà!",
+        "audioUrl": "/audio/dialogues/dlg-b1-001/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Nhạc chuông điện thoại của Emma là bài gì?",
+        "options": [
+          "Baby Shark",
+          "Happy Birthday",
+          "Let It Go",
+          "Chuông mặc định"
+        ],
+        "correctAnswer": "Baby Shark",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: Mr. Brown hỏi 'Baby Shark? Really?'"
+      },
+      {
+        "question": "Ai đã đổi nhạc chuông của Emma?",
+        "options": [
+          "Em trai cô ấy",
+          "Bạn thân cô ấy",
+          "Mẹ cô ấy",
+          "Tự cô ấy đổi"
+        ],
+        "correctAnswer": "Em trai cô ấy",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: 'My little brother changed my ringtone as a joke.'"
+      },
+      {
+        "question": "Vì sao sự cố này có thể lại giúp Emma?",
+        "options": [
+          "Công ty sắp ra mắt dòng sản phẩm trẻ em",
+          "Sếp cũng thích Baby Shark",
+          "Sếp ghét người nghiêm túc",
+          "Công ty đang tuyển nhân viên trực điện thoại"
+        ],
+        "correctAnswer": "Công ty sắp ra mắt dòng sản phẩm trẻ em",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: 'we're launching a kids' product line next month!'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-b1-002",
+    "title": "The Diablo Pasta",
+    "titleVi": "Món mì Diablo",
+    "cefrLevel": "B1",
+    "location": "Nhà hàng Ý Bella Italia, tối thứ 6",
+    "locationVi": "Nhà hàng Ý Bella Italia, tối thứ 6",
+    "characters": [
+      {
+        "name": "James",
+        "role": "Thực khách",
+        "gender": "male"
+      },
+      {
+        "name": "Maria",
+        "role": "Nhân viên phục vụ",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Maria",
+        "textEn": "Good evening! Welcome to Bella Italia. Have you decided yet?",
+        "textVi": "Chào buổi tối! Chào mừng đến Bella Italia. Anh đã chọn món chưa ạ?",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "James",
+        "textEn": "Yes! I'll have the spaghetti — the spiciest one you've got!",
+        "textVi": "Rồi! Cho tôi mì spaghetti — loại cay nhất quán có!",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Maria",
+        "textEn": "Are you sure? Our 'Diablo' pasta is famous for making grown men cry.",
+        "textVi": "Anh chắc chứ? Món mì 'Diablo' của quán nổi tiếng là làm đàn ông khóc đấy ạ.",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "James",
+        "textEn": "Pfft! I eat chili for breakfast. Bring it on!",
+        "textVi": "Xì! Tôi ăn ớt thay bữa sáng đấy. Cứ mang ra đi!",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Maria",
+        "textEn": "Okay, brave man. One Diablo pasta coming right up!",
+        "textVi": "Được thôi, chàng dũng cảm. Một mì Diablo ra ngay!",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "James",
+        "textEn": "W-water! Please! My mouth is on FIRE!",
+        "textVi": "N-nước! Làm ơn! Miệng tôi đang CHÁY!",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Maria",
+        "textEn": "Here's some water... and some bread. The bread actually helps more than water.",
+        "textVi": "Nước đây ạ... và bánh mì nữa. Thật ra bánh mì hiệu quả hơn nước đấy.",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "James",
+        "textEn": "You were right... I was wrong. So wrong. Can I order a pizza instead? Something... mild?",
+        "textVi": "Em nói đúng... Tôi sai rồi. Sai quá sai. Tôi gọi pizza được không? Món gì đó... nhẹ nhàng thôi?",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Maria",
+        "textEn": "Of course! Our Margherita pizza is very gentle. No fire involved, I promise!",
+        "textVi": "Dạ được! Pizza Margherita của quán rất hiền. Không có lửa gì đâu, em hứa!",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "James",
+        "textEn": "Perfect. And from now on, I'm a mild man. A mild, humble man.",
+        "textVi": "Tuyệt. Và từ giờ, tôi là người đàn ông nhẹ nhàng. Nhẹ nhàng và khiêm tốn.",
+        "audioUrl": "/audio/dialogues/dlg-b1-002/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "James gọi món mì nào?",
+        "options": [
+          "Mì Diablo cay nhất",
+          "Mì carbonara",
+          "Mì hải sản",
+          "Mì chay"
+        ],
+        "correctAnswer": "Mì Diablo cay nhất",
+        "evidenceLineId": "line-5",
+        "explanation": "Dòng 5: 'One Diablo pasta coming right up!'"
+      },
+      {
+        "question": "Maria khuyên dùng gì để đỡ cay?",
+        "options": [
+          "Bánh mì",
+          "Sữa",
+          "Kem",
+          "Nước chanh"
+        ],
+        "correctAnswer": "Bánh mì",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: 'The bread actually helps more than water.'"
+      },
+      {
+        "question": "Cuối cùng James đổi sang món gì?",
+        "options": [
+          "Pizza Margherita",
+          "Mì ý sốt bò",
+          "Salad",
+          "Bít tết"
+        ],
+        "correctAnswer": "Pizza Margherita",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: 'Our Margherita pizza is very gentle.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-b1-003",
+    "title": "The Upside-Down Map",
+    "titleVi": "Tấm bản đồ ngược",
+    "cefrLevel": "B1",
+    "location": "Phố cổ, buổi chiều",
+    "locationVi": "Phố cổ, buổi chiều",
+    "characters": [
+      {
+        "name": "Alex",
+        "role": "Du khách",
+        "gender": "male"
+      },
+      {
+        "name": "Lan",
+        "role": "Người dân địa phương",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Alex",
+        "textEn": "Excuse me! I'm totally lost. Could you help me find the Old Temple?",
+        "textVi": "Xin lỗi! Tôi lạc đường rồi. Bạn giúp tôi tìm Chùa Cổ được không?",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Lan",
+        "textEn": "Sure! You're actually very close. Just go straight, then turn left at the big banyan tree.",
+        "textVi": "Được chứ! Thật ra anh ở rất gần rồi. Cứ đi thẳng, rồi rẽ trái ở cây đa lớn.",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Alex",
+        "textEn": "The big... what tree? Sorry, I don't know trees. I know coffee shops!",
+        "textVi": "Cây... cây gì cơ? Xin lỗi, tôi không rành cây cối. Tôi chỉ rành quán cà phê!",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Lan",
+        "textEn": "Okay! Walk straight until you see the Highlands Coffee, then turn left!",
+        "textVi": "Được rồi! Anh đi thẳng đến khi thấy Highlands Coffee, rồi rẽ trái!",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Alex",
+        "textEn": "Now you're speaking my language! How far is it?",
+        "textVi": "Giờ thì đúng ngôn ngữ của tôi rồi! Còn bao xa?",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Lan",
+        "textEn": "About ten minutes on foot. But... are you holding your map upside down?",
+        "textVi": "Khoảng mười phút đi bộ. Nhưng mà... anh đang cầm bản đồ ngược phải không?",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Alex",
+        "textEn": "What? Oh no... no wonder I've been walking in circles for an hour!",
+        "textVi": "Gì cơ? Ôi không... thảo nào tôi đi vòng vòng cả tiếng đồng hồ!",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Lan",
+        "textEn": "That explains it! Here, let me draw you a simple map. Even upside down, you can't get lost with this!",
+        "textVi": "Thế thì đúng rồi! Để tôi vẽ cho anh bản đồ đơn giản. Dù cầm ngược cũng không lạc được!",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Alex",
+        "textEn": "You're a lifesaver! Can I buy you a coffee to say thanks?",
+        "textVi": "Bạn cứu tôi rồi! Tôi mời bạn cà phê cảm ơn nhé?",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Lan",
+        "textEn": "I'd love to! And don't worry — the temple is worth getting lost for!",
+        "textVi": "Tôi rất sẵn lòng! Đừng lo — ngôi chùa xứng đáng để lạc đường đấy!",
+        "audioUrl": "/audio/dialogues/dlg-b1-003/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Vì sao Alex đi lạc cả tiếng đồng hồ?",
+        "options": [
+          "Cầm bản đồ ngược",
+          "Không biết đọc bản đồ",
+          "Đi nhầm thành phố",
+          "Bản đồ bị rách"
+        ],
+        "correctAnswer": "Cầm bản đồ ngược",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 6-7: cầm bản đồ ngược nên 'walking in circles for an hour'."
+      },
+      {
+        "question": "Lan chỉ đường bằng mốc nào?",
+        "options": [
+          "Quán Highlands Coffee",
+          "Cây đa lớn",
+          "Chợ đêm",
+          "Bến xe buýt"
+        ],
+        "correctAnswer": "Quán Highlands Coffee",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: 'until you see the Highlands Coffee, then turn left!'"
+      },
+      {
+        "question": "Đi bộ đến chùa mất khoảng bao lâu?",
+        "options": [
+          "10 phút",
+          "30 phút",
+          "1 tiếng",
+          "5 phút"
+        ],
+        "correctAnswer": "10 phút",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: 'About ten minutes on foot.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-b1-004",
+    "title": "Doctor Google",
+    "titleVi": "Bác sĩ Google",
+    "cefrLevel": "B1",
+    "location": "Phòng khám đa khoa, sáng thứ 2",
+    "locationVi": "Phòng khám đa khoa, sáng thứ 2",
+    "characters": [
+      {
+        "name": "Dr. Smith",
+        "role": "Bác sĩ",
+        "gender": "male"
+      },
+      {
+        "name": "Mrs. Green",
+        "role": "Bệnh nhân",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Dr. Smith",
+        "textEn": "Good morning, Mrs. Green. What brings you in today?",
+        "textVi": "Chào buổi sáng, bà Green. Hôm nay bà đến vì vấn đề gì?",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Mrs. Green",
+        "textEn": "Doctor, I think I'm dying! I googled my symptoms last night!",
+        "textVi": "Bác sĩ, tôi nghĩ tôi sắp chết! Tối qua tôi tra Google triệu chứng của mình!",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Dr. Smith",
+        "textEn": "Oh dear. And what did Dr. Google say?",
+        "textVi": "Ôi trời. Thế 'bác sĩ Google' nói gì?",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Mrs. Green",
+        "textEn": "It said I have... let me check my notes... seventeen different diseases!",
+        "textVi": "Nó bảo tôi bị... để tôi xem ghi chú... mười bảy bệnh khác nhau!",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Dr. Smith",
+        "textEn": "Seventeen? That's impressive. And what are your actual symptoms?",
+        "textVi": "Mười bảy? Ấn tượng đấy. Thế triệu chứng thực tế của bà là gì?",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Mrs. Green",
+        "textEn": "Well... I sneezed twice yesterday. And my left eye twitched a little.",
+        "textVi": "À... hôm qua tôi hắt hơi hai cái. Và mắt trái hơi giật một chút.",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Dr. Smith",
+        "textEn": "Mrs. Green, I have good news. You're not dying. You have a mild cold — and too much internet.",
+        "textVi": "Bà Green, tôi có tin tốt. Bà không sắp chết đâu. Bà chỉ bị cảm nhẹ — và dùng internet quá nhiều.",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Mrs. Green",
+        "textEn": "Are you sure? Shouldn't we do a blood test? An X-ray? Maybe an MRI?",
+        "textVi": "Chắc không bác sĩ? Không cần xét nghiệm máu? Chụp X-quang? Hay MRI?",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Dr. Smith",
+        "textEn": "My prescription: no Google for one week, lots of water, and one comedy show per day.",
+        "textVi": "Đơn thuốc của tôi: cấm Google một tuần, uống nhiều nước, mỗi ngày xem một chương trình hài.",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Mrs. Green",
+        "textEn": "Hmm... can I at least google whether laughter really is the best medicine?",
+        "textVi": "Ừm... ít ra tôi có thể tra Google xem tiếng cười có thật là liều thuốc tốt nhất không?",
+        "audioUrl": "/audio/dialogues/dlg-b1-004/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Theo Google, bà Green bị bao nhiêu bệnh?",
+        "options": [
+          "17 bệnh",
+          "7 bệnh",
+          "2 bệnh",
+          "1 bệnh"
+        ],
+        "correctAnswer": "17 bệnh",
+        "evidenceLineId": "line-4",
+        "explanation": "Dòng 4: 'seventeen different diseases!'"
+      },
+      {
+        "question": "Triệu chứng thực tế của bà Green là gì?",
+        "options": [
+          "Hắt hơi 2 cái và mắt giật",
+          "Sốt cao và ho",
+          "Đau đầu dữ dội",
+          "Mất ngủ triền miên"
+        ],
+        "correctAnswer": "Hắt hơi 2 cái và mắt giật",
+        "evidenceLineId": "line-6",
+        "explanation": "Dòng 6: 'I sneezed twice yesterday. And my left eye twitched a little.'"
+      },
+      {
+        "question": "'Đơn thuốc' của bác sĩ Smith là gì?",
+        "options": [
+          "Cấm Google 1 tuần, uống nước, xem hài",
+          "Uống thuốc kháng sinh",
+          "Nhập viện theo dõi",
+          "Chụp MRI toàn thân"
+        ],
+        "correctAnswer": "Cấm Google 1 tuần, uống nước, xem hài",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: 'no Google for one week, lots of water, and one comedy show per day.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-b2-001",
+    "title": "The 3 PM Meeting",
+    "titleVi": "Cuộc họp lúc 3 giờ",
+    "cefrLevel": "B2",
+    "location": "Văn phòng công ty, khu pantry",
+    "locationVi": "Văn phòng công ty, khu pantry",
+    "characters": [
+      {
+        "name": "Kevin",
+        "role": "Nhân viên",
+        "gender": "male"
+      },
+      {
+        "name": "Jessica",
+        "role": "Đồng nghiệp",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Kevin",
+        "textEn": "Jess, did you hear? The boss wants to see me at 3 PM. Alone.",
+        "textVi": "Jess, nghe gì chưa? Sếp muốn gặp riêng tôi lúc 3 giờ.",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Jessica",
+        "textEn": "Oh no... that's never a good sign. Last time he did that, Tom got fired!",
+        "textVi": "Ôi không... thế thì chẳng lành đâu. Lần trước ổng làm vậy, Tom bị sa thải đấy!",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Kevin",
+        "textEn": "Fired?! But I've been working so hard! I even fixed the printer yesterday!",
+        "textVi": "Sa thải?! Nhưng tôi làm việc chăm chỉ mà! Hôm qua tôi còn sửa máy in!",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Jessica",
+        "textEn": "The printer? Kevin, everyone knows it's been broken for months. You probably made it worse.",
+        "textVi": "Máy in á? Kevin, ai cũng biết nó hỏng mấy tháng nay rồi. Chắc anh làm nó tệ hơn.",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Kevin",
+        "textEn": "Okay, fair point. But still — three years of loyalty! Should I start packing my desk?",
+        "textVi": "Ừ, cũng đúng. Nhưng mà — ba năm trung thành! Tôi có nên dọn bàn làm việc không?",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Jessica",
+        "textEn": "Don't panic yet. Maybe he just wants to discuss the new project. Breathe!",
+        "textVi": "Đừng hoảng vội. Có khi ổng chỉ muốn bàn dự án mới. Hít thở đi!",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Kevin",
+        "textEn": "Jess! You're not going to believe this!",
+        "textVi": "Jess! Em không tin nổi đâu!",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Jessica",
+        "textEn": "What happened? Are you... still employed?",
+        "textVi": "Sao rồi? Anh... còn việc không?",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Kevin",
+        "textEn": "Not only am I employed — I got PROMOTED! And a raise!",
+        "textVi": "Không những còn việc — tôi được THĂNG CHỨC! Và tăng lương!",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Jessica",
+        "textEn": "What?! Congratulations! So the 'private meeting' was good news after all!",
+        "textVi": "Gì cơ?! Chúc mừng! Vậy 'cuộc gặp riêng' hóa ra là tin tốt!",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Kevin",
+        "textEn": "Yep! Turns out fixing the printer DID matter. The boss called it 'initiative'!",
+        "textVi": "Ừ! Hóa ra sửa máy in CÓ ý nghĩa. Sếp gọi đó là 'tinh thần chủ động'!",
+        "audioUrl": "/audio/dialogues/dlg-b2-001/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Vì sao Kevin tưởng mình sắp bị sa thải?",
+        "options": [
+          "Sếp gọi gặp riêng, như trường hợp của Tom",
+          "Anh đi làm muộn nhiều lần",
+          "Anh làm hỏng máy in",
+          "Công ty đang cắt giảm nhân sự"
+        ],
+        "correctAnswer": "Sếp gọi gặp riêng, như trường hợp của Tom",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 1-2: sếp gọi gặp riêng, 'Last time he did that, Tom got fired!'"
+      },
+      {
+        "question": "Kevin khoe đã 'sửa' cái gì?",
+        "options": [
+          "Máy in",
+          "Máy tính",
+          "Điều hòa",
+          "Máy photocopy"
+        ],
+        "correctAnswer": "Máy in",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: 'I even fixed the printer yesterday!'"
+      },
+      {
+        "question": "Kết quả thực sự của cuộc họp là gì?",
+        "options": [
+          "Được thăng chức và tăng lương",
+          "Bị sa thải",
+          "Bị chuyển phòng ban",
+          "Bị cảnh cáo"
+        ],
+        "correctAnswer": "Được thăng chức và tăng lương",
+        "evidenceLineId": "line-9",
+        "explanation": "Dòng 9: 'I got PROMOTED! And a raise!'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-b2-002",
+    "title": "The 'Cozy' Studio",
+    "titleVi": "Căn studio 'ấm cúng'",
+    "cefrLevel": "B2",
+    "location": "Căn hộ cho thuê, trung tâm thành phố",
+    "locationVi": "Căn hộ cho thuê, trung tâm thành phố",
+    "characters": [
+      {
+        "name": "Mr. Lee",
+        "role": "Chủ nhà",
+        "gender": "male"
+      },
+      {
+        "name": "Anna",
+        "role": "Người đi thuê",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Mr. Lee",
+        "textEn": "And here it is! A charming, cozy studio apartment in the heart of the city!",
+        "textVi": "Và đây! Một căn studio duyên dáng, ấm cúng ngay trung tâm thành phố!",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Anna",
+        "textEn": "Cozy? Mr. Lee, I can touch both walls at the same time!",
+        "textVi": "Ấm cúng? Ông Lee, tôi chạm được cả hai bức tường cùng lúc này!",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Mr. Lee",
+        "textEn": "That's what we call 'efficient living'! Everything within reach — very modern!",
+        "textVi": "Đó gọi là 'sống hiệu quả'! Mọi thứ trong tầm tay — rất hiện đại!",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Anna",
+        "textEn": "And the kitchen? Is that... a microwave on top of a fridge?",
+        "textVi": "Còn bếp? Kia là... lò vi sóng đặt trên tủ lạnh à?",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Mr. Lee",
+        "textEn": "An open-plan kitchen! Very trendy. Young people love this style!",
+        "textVi": "Bếp mở! Rất thời thượng. Giới trẻ mê phong cách này lắm!",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Anna",
+        "textEn": "What about the bedroom? Where do I sleep?",
+        "textVi": "Thế phòng ngủ? Tôi ngủ ở đâu?",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Mr. Lee",
+        "textEn": "See that sofa? It folds out into a bed! Two functions, one price — amazing value!",
+        "textVi": "Thấy ghế sofa kia không? Gập ra thành giường! Hai công năng, một giá — quá hời!",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Anna",
+        "textEn": "And the bathroom? Please tell me there's a bathroom.",
+        "textVi": "Còn phòng tắm? Nói tôi nghe là có phòng tắm đi.",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Mr. Lee",
+        "textEn": "Of course! It's... compact. Let's just say you'll never feel lonely in the shower!",
+        "textVi": "Dĩ nhiên! Nó hơi... nhỏ gọn. Nói đơn giản là tắm không bao giờ thấy cô đơn!",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Anna",
+        "textEn": "Mr. Lee, how much is the rent for this... 'masterpiece'?",
+        "textVi": "Ông Lee, tiền thuê 'kiệt tác' này bao nhiêu?",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Mr. Lee",
+        "textEn": "Only $2,000 a month! In this neighborhood, that's practically charity!",
+        "textVi": "Chỉ 2.000 đô một tháng! Ở khu này thì đúng là làm từ thiện!",
+        "audioUrl": "/audio/dialogues/dlg-b2-002/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Ông Lee gọi căn hộ chật là gì?",
+        "options": [
+          "'Sống hiệu quả' (efficient living)",
+          "'Biệt thự mini'",
+          "'Căn hộ cao cấp'",
+          "'Nhà phố cổ'"
+        ],
+        "correctAnswer": "'Sống hiệu quả' (efficient living)",
+        "evidenceLineId": "line-3",
+        "explanation": "Dòng 3: 'That's what we call efficient living!'"
+      },
+      {
+        "question": "'Phòng ngủ' thực chất là gì?",
+        "options": [
+          "Ghế sofa gập thành giường",
+          "Giường tầng",
+          "Nệm hơi",
+          "Võng"
+        ],
+        "correctAnswer": "Ghế sofa gập thành giường",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: 'It folds out into a bed!'"
+      },
+      {
+        "question": "Giá thuê căn hộ là bao nhiêu?",
+        "options": [
+          "2.000 đô/tháng",
+          "1.000 đô/tháng",
+          "500 đô/tháng",
+          "3.000 đô/tháng"
+        ],
+        "correctAnswer": "2.000 đô/tháng",
+        "evidenceLineId": "line-11",
+        "explanation": "Dòng 11: 'Only $2,000 a month!'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-b2-003",
+    "title": "Gym vs. Spa",
+    "titleVi": "Phòng gym hay spa?",
+    "cefrLevel": "B2",
+    "location": "Phòng gym Iron Paradise, sáng sớm",
+    "locationVi": "Phòng gym Iron Paradise, sáng sớm",
+    "characters": [
+      {
+        "name": "Coach Ray",
+        "role": "Huấn luyện viên",
+        "gender": "male"
+      },
+      {
+        "name": "Chris",
+        "role": "Hội viên mới",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Coach Ray",
+        "textEn": "Welcome to Iron Paradise Gym! Ready to transform your body?",
+        "textVi": "Chào mừng đến phòng gym Thiên Đường Sắt! Sẵn sàng lột xác chưa?",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Chris",
+        "textEn": "Absolutely! Uh... where's the sauna? And do you serve smoothies here?",
+        "textVi": "Chắc chắn! Ừm... phòng xông hơi ở đâu? Ở đây có phục vụ sinh tố không?",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Coach Ray",
+        "textEn": "This is a gym, Chris, not a spa! Let's start with ten push-ups!",
+        "textVi": "Đây là phòng gym, Chris, không phải spa! Bắt đầu với mười cái hít đất nào!",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Chris",
+        "textEn": "Ten?! How about... one? A really good one?",
+        "textVi": "Mười á?! Hay là... một cái? Một cái thật chất lượng?",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Coach Ray",
+        "textEn": "Fine. Show me ONE perfect push-up.",
+        "textVi": "Được. Cho tôi xem MỘT cái hít đất hoàn hảo.",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Chris",
+        "textEn": "Ugh... I... think my arms are broken...",
+        "textVi": "Ư... tôi... nghĩ tay tôi gãy rồi...",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Coach Ray",
+        "textEn": "You lasted four seconds. That's... actually a personal record for day one!",
+        "textVi": "Anh trụ được bốn giây. Đó là... kỷ lục cá nhân ngày đầu đấy!",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Chris",
+        "textEn": "Really? So I'm like... a natural athlete?",
+        "textVi": "Thật không? Vậy tôi kiểu... vận động viên bẩm sinh?",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Coach Ray",
+        "textEn": "Sure, let's go with that. Now — twenty squats! No excuses!",
+        "textVi": "Ừ, cứ cho là vậy. Giờ — hai mươi cái squat! Không lý do!",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Chris",
+        "textEn": "Can I negotiate? How about we start with... walking to the water fountain?",
+        "textVi": "Thương lượng được không? Hay mình bắt đầu bằng... đi bộ ra chỗ uống nước?",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Coach Ray",
+        "textEn": "You know what? That counts as cardio. Baby steps, Chris. Baby steps.",
+        "textVi": "Biết không? Thế cũng tính là cardio đấy. Từng bước nhỏ thôi, Chris. Từng bước nhỏ.",
+        "audioUrl": "/audio/dialogues/dlg-b2-003/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Chris tưởng phòng gym là nơi thế nào?",
+        "options": [
+          "Spa (hỏi phòng xông hơi và sinh tố)",
+          "Nhà hàng",
+          "Quán cà phê",
+          "Thư viện"
+        ],
+        "correctAnswer": "Spa (hỏi phòng xông hơi và sinh tố)",
+        "evidenceLineId": "line-2",
+        "explanation": "Dòng 2: 'where's the sauna? And do you serve smoothies here?'"
+      },
+      {
+        "question": "Chris hít đất trụ được bao lâu?",
+        "options": [
+          "4 giây",
+          "10 giây",
+          "1 phút",
+          "30 giây"
+        ],
+        "correctAnswer": "4 giây",
+        "evidenceLineId": "line-7",
+        "explanation": "Dòng 7: 'You lasted four seconds.'"
+      },
+      {
+        "question": "Cuối cùng huấn luyện viên đồng ý cho Chris làm gì?",
+        "options": [
+          "Đi bộ ra chỗ uống nước",
+          "Về nhà nghỉ",
+          "Tập 20 squat",
+          "Chạy 5km"
+        ],
+        "correctAnswer": "Đi bộ ra chỗ uống nước",
+        "evidenceLineId": "line-11",
+        "explanation": "Dòng 10-11: đi bộ ra chỗ uống nước cũng tính là cardio, 'baby steps'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

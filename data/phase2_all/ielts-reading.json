@@ -1,0 +1,327 @@
+[
+  {
+    "id": "ielts-r-b1-001",
+    "section": "reading",
+    "cefrLevel": "B1",
+    "title": "The Secret Life of Urban Foxes",
+    "passage": [
+      "In many big cities around the world, an unusual animal has become a common neighbour: the red fox. Once found only in forests and the countryside, foxes have moved into towns and cities in countries such as the United Kingdom, Germany and Japan. Scientists believe there are now more than 10,000 foxes living in London alone.",
+      "Foxes are very good at adapting to new places. They are active mainly at night, when the streets are quiet. During the day, they sleep in hidden places such as gardens, parks, or under buildings. At night, they look for food in rubbish bins and gardens. They eat almost anything, from bread and fruit to small animals.",
+      "Life in the city is not easy for foxes, but it has some advantages. There are fewer large wild animals that can hurt them, and food is easy to find. However, city foxes face dangers too. Many are hit by cars, and some people do not like them because they make a lot of noise at night or damage gardens.",
+      "Researchers are studying how city foxes are different from country foxes. City foxes are often bolder and less afraid of people. Some scientists think that after many years, city foxes may even start to look different, with shorter noses and smaller teeth, because they no longer need to hunt large animals.",
+      "Most experts agree that foxes and people can live together peacefully. Simple actions, like keeping rubbish bins closed and not leaving food outside, can reduce problems. For many city people, seeing a fox at night is a special moment — a reminder that wild nature still exists, even in the middle of a busy city."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to the passage, why have foxes moved into cities?",
+        "options": [
+          "Because forests are too cold",
+          "Because they are good at adapting to new places",
+          "Because people feed them every day",
+          "Because there are no cars in cities"
+        ],
+        "correctAnswer": "Because they are good at adapting to new places",
+        "explanationVi": "Đoạn 2: 'Foxes are very good at adapting to new places' — đáp án nằm ở câu đầu đoạn 2."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "There are more than 10,000 foxes living in London.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 1: 'there are now more than 10,000 foxes living in London alone' — thông tin khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "City foxes sleep during the night and hunt during the day.",
+        "correctAnswer": "False",
+        "explanationVi": "Đoạn 2 nói ngược lại: foxes 'are active mainly at night' và 'sleep' vào ban ngày — thông tin mâu thuẫn nên là False."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. Why people dislike foxes",
+          "ii. How city life may change foxes",
+          "iii. What foxes eat at night",
+          "iv. The history of foxes in London"
+        ],
+        "correctAnswer": "ii. How city life may change foxes",
+        "explanationVi": "Đoạn 4 nói về việc foxes thành phố 'bolder', 'less afraid of people' và có thể 'start to look different' — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the writer suggest people should do?",
+        "options": [
+          "Feed foxes every night",
+          "Keep rubbish bins closed",
+          "Build houses for foxes",
+          "Move foxes back to forests"
+        ],
+        "correctAnswer": "Keep rubbish bins closed",
+        "explanationVi": "Đoạn 5: 'keeping rubbish bins closed and not leaving food outside, can reduce problems' — đáp án ở đoạn cuối."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-b1-002",
+    "section": "reading",
+    "cefrLevel": "B1",
+    "title": "How Coffee Changed the World",
+    "passage": [
+      "Every day, people around the world drink more than two billion cups of coffee. It is one of the most popular drinks on the planet, but few people know the interesting story of how coffee was discovered.",
+      "The story begins in Ethiopia, in Africa, more than a thousand years ago. According to an old story, a goat keeper named Kaldi noticed that his goats became very active after eating red berries from a tree. He tried the berries himself and felt full of energy. He took the berries to a group of monks, who made a hot drink from them. They found that the drink helped them stay awake during long evening prayers.",
+      "From Ethiopia, coffee travelled to Yemen, and then to the rest of the Middle East. By the 1500s, coffee houses had opened in cities like Cairo and Istanbul. These coffee houses became important social places where people met to talk, play games, and discuss news and ideas.",
+      "Coffee arrived in Europe in the 1600s. At first, some people were worried about this new dark drink from a foreign land. However, it soon became very popular. Coffee houses opened in London, Paris, and Vienna. Many businessmen and writers did their work in coffee houses, and some historians believe that these places helped new ideas spread across Europe.",
+      "Today, coffee is grown in more than 70 countries, mostly in warm places near the equator. Brazil is the largest producer, followed by Vietnam and Colombia. For millions of farmers, coffee is not just a drink — it is their way of life."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Who first discovered the effect of coffee berries, according to the story?",
+        "options": [
+          "A group of monks",
+          "A goat keeper named Kaldi",
+          "Businessmen in London",
+          "Farmers in Brazil"
+        ],
+        "correctAnswer": "A goat keeper named Kaldi",
+        "explanationVi": "Đoạn 2: 'a goat keeper named Kaldi noticed that his goats became very active after eating red berries' — đáp án ở đoạn 2."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The monks used coffee to stay awake during evening prayers.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2: 'the drink helped them stay awake during long evening prayers' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Coffee houses in the Middle East sold food as well as coffee.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 3 chỉ nói coffee houses là nơi 'talk, play games, and discuss news' — không hề nhắc đến việc bán đồ ăn, nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. Coffee comes to Europe",
+          "ii. How coffee is grown today",
+          "iii. The first coffee drinker",
+          "iv. Coffee houses in the Middle East"
+        ],
+        "correctAnswer": "i. Coffee comes to Europe",
+        "explanationVi": "Đoạn 4 mở đầu 'Coffee arrived in Europe in the 1600s' và kể về coffee houses ở London, Paris, Vienna — khớp tiêu đề i."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Which country is the largest coffee producer today?",
+        "options": [
+          "Vietnam",
+          "Colombia",
+          "Brazil",
+          "Ethiopia"
+        ],
+        "correctAnswer": "Brazil",
+        "explanationVi": "Đoạn 5: 'Brazil is the largest producer, followed by Vietnam and Colombia' — đáp án ở đoạn cuối."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-b2-001",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "The Plastic Problem: Rethinking Our Oceans",
+    "passage": [
+      "Every year, around eight million tonnes of plastic waste enter the world's oceans. To understand the scale of this problem, imagine a truck full of plastic being emptied into the sea every single minute. Scientists warn that if nothing changes, there could be more plastic than fish in the ocean by 2050.",
+      "Most of this plastic comes from land. Rivers carry waste from cities and towns into the sea, and in many developing countries, there are not enough systems to collect and recycle rubbish. Single-use plastics — such as bags, bottles, and food packaging — are the biggest part of the problem because they are used for only a few minutes but can survive in the ocean for hundreds of years.",
+      "The effects on sea life are serious. Sea turtles often mistake plastic bags for jellyfish, one of their favourite foods. Seabirds feed small pieces of plastic to their babies, believing it is food. Even tiny pieces, called microplastics, have been found inside fish, and therefore inside the seafood that humans eat.",
+      "Some countries have started to take action. More than 60 nations have introduced bans or taxes on single-use plastic bags. In 2022, representatives from 175 countries agreed to develop an international treaty to end plastic pollution. However, experts say that laws alone are not enough.",
+      "Researchers argue that the real solution is to change how plastic is designed and used. New materials that break down naturally are being developed, and some companies now collect ocean plastic to make clothes, shoes, and furniture. While these ideas are promising, scientists stress that reducing our use of plastic in the first place remains the most effective step anyone can take."
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What does the writer say about the amount of plastic entering the oceans?",
+        "options": [
+          "It is decreasing thanks to new laws",
+          "It equals one truckload every minute",
+          "It comes mainly from ships",
+          "It will disappear by 2050"
+        ],
+        "correctAnswer": "It equals one truckload every minute",
+        "explanationVi": "Đoạn 1: 'a truck full of plastic being emptied into the sea every single minute' — đáp án ở đoạn 1."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Single-use plastics are dangerous partly because they last so long in the ocean.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2: 'used for only a few minutes but can survive in the ocean for hundreds of years' — khớp với câu hỏi."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Microplastics have been found in drinking water in major cities.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 3 chỉ nói microplastics 'found inside fish' và 'seafood that humans eat' — không nhắc đến nước uống, nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 5 với tiêu đề đúng nhất.",
+        "options": [
+          "i. Punishing countries that pollute",
+          "ii. Designing a future with less plastic",
+          "iii. Why sea turtles eat plastic",
+          "iv. The history of plastic bags"
+        ],
+        "correctAnswer": "ii. Designing a future with less plastic",
+        "explanationVi": "Đoạn 5 bàn về 'change how plastic is designed', 'new materials', 'reducing our use of plastic' — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "According to the passage, what do experts consider the most effective action?",
+        "options": [
+          "Cleaning beaches every week",
+          "Banning all fishing",
+          "Reducing plastic use in the first place",
+          "Developing new sea animals"
+        ],
+        "correctAnswer": "Reducing plastic use in the first place",
+        "explanationVi": "Đoạn 5 câu cuối: 'reducing our use of plastic in the first place remains the most effective step' — đáp án ở cuối bài."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-b2-002",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "The Science of Sleep: Why Your Brain Needs the Night",
+    "passage": [
+      "Humans spend about one third of their lives asleep, yet scientists are only beginning to understand what happens in the brain during those hours. Far from simply 'switching off', the sleeping brain is highly active, performing essential tasks that keep us healthy and able to learn.",
+      "Sleep is divided into repeating cycles of about 90 minutes. Each cycle contains both light sleep and deep sleep, as well as a stage called REM sleep, when most dreaming happens. During deep sleep, the body repairs muscles and strengthens the immune system. During REM sleep, the brain organises memories, moving important information from short-term to long-term storage.",
+      "This memory process explains why sleep is so important for students. In one famous experiment, researchers taught two groups of people a new skill. One group slept for eight hours afterwards, while the other stayed awake. When tested the next day, the sleeping group performed 20% better. The conclusion was clear: the brain continues learning even after we fall asleep.",
+      "Despite this evidence, modern lifestyles often work against good sleep. Artificial light, especially the blue light from phones and computers, tricks the brain into thinking it is still daytime, delaying the release of melatonin, the hormone that makes us feel sleepy. Shift workers and teenagers, who naturally feel sleepy later at night, are particularly affected.",
+      "The good news is that small changes can greatly improve sleep quality. Experts recommend keeping a regular bedtime, avoiding screens for an hour before sleep, and keeping the bedroom cool and dark. As one sleep researcher puts it, 'We would never skip a meal, yet many of us regularly skip sleep — even though the brain needs it just as much.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What happens during REM sleep, according to the passage?",
+        "options": [
+          "Muscles are repaired",
+          "The brain organises memories",
+          "The body stops breathing",
+          "Dreams are forgotten"
+        ],
+        "correctAnswer": "The brain organises memories",
+        "explanationVi": "Đoạn 2: 'During REM sleep, the brain organises memories, moving important information from short-term to long-term storage'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The group that slept performed 20% better than the group that stayed awake.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 3: 'the sleeping group performed 20% better' — khớp hoàn toàn với câu hỏi."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Teenagers need less sleep than adults.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 4 chỉ nói teenagers 'naturally feel sleepy later at night' — không so sánh lượng giấc ngủ cần thiết với người lớn, nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. How modern life damages sleep",
+          "ii. The stages of a sleep cycle",
+          "iii. Tips for better sleep",
+          "iv. Famous sleep experiments"
+        ],
+        "correctAnswer": "i. How modern life damages sleep",
+        "explanationVi": "Đoạn 4 nói về 'modern lifestyles often work against good sleep', ánh sáng xanh từ điện thoại, shift workers — khớp tiêu đề i."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Which of the following does the expert recommend?",
+        "options": [
+          "Sleeping with the light on",
+          "Using phones in bed",
+          "Avoiding screens before sleep",
+          "Skipping breakfast"
+        ],
+        "correctAnswer": "Avoiding screens before sleep",
+        "explanationVi": "Đoạn 5: 'avoiding screens for an hour before sleep' — đáp án ở đoạn cuối."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-r-b2-003",
+    "section": "reading",
+    "cefrLevel": "B2",
+    "title": "Smart Cities: The Future of Urban Living",
+    "passage": [
+      "By 2050, nearly 70% of the world's population is expected to live in cities. This rapid urban growth brings serious challenges: traffic jams, air pollution, and pressure on water and energy supplies. In response, planners around the world are developing the concept of the 'smart city' — an urban area that uses digital technology to manage resources more efficiently.",
+      "At the heart of a smart city is data. Thousands of sensors placed on streets, buildings, and vehicles collect information in real time. In Barcelona, for example, smart sensors in rubbish bins signal when they are full, so collection trucks only visit when necessary, saving fuel and reducing traffic. In Singapore, sensors monitor traffic flow and adjust traffic lights automatically to keep vehicles moving.",
+      "Energy is another key area. Smart grids can balance electricity supply and demand across a whole city, reducing waste. Some buildings are now designed to produce as much energy as they use, through solar panels and smart heating systems that learn the habits of the people inside. Amsterdam has tested street lights that become brighter when someone walks past and dim again afterwards.",
+      "However, the smart city idea also raises concerns. Collecting so much data about citizens' movements creates serious questions about privacy: who owns this information, and how might it be used? There are also worries about inequality. If smart services require expensive smartphones or fast internet, poorer residents could be left behind.",
+      "Despite these challenges, most experts believe smart technology will play an important role in future cities. The key, they argue, is to design systems that serve people rather than control them. As one urban planner explains, 'A truly smart city is not the one with the most sensors, but the one where technology makes everyday life simpler and fairer for everyone.'"
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What is the main purpose of a smart city, according to the passage?",
+        "options": [
+          "To build taller buildings",
+          "To use digital technology to manage resources efficiently",
+          "To ban all private cars",
+          "To attract more tourists"
+        ],
+        "correctAnswer": "To use digital technology to manage resources efficiently",
+        "explanationVi": "Đoạn 1: 'an urban area that uses digital technology to manage resources more efficiently' — đáp án ở đoạn 1."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "In Barcelona, rubbish trucks only collect bins when sensors show they are full.",
+        "correctAnswer": "True",
+        "explanationVi": "Đoạn 2: 'sensors in rubbish bins signal when they are full, so collection trucks only visit when necessary' — khớp hoàn toàn."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Singapore was the first city in the world to use traffic sensors.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Đoạn 2 chỉ nói Singapore dùng sensors để 'monitor traffic flow' — không hề nói là thành phố đầu tiên, nên là Not Given."
+      },
+      {
+        "type": "matching_heading",
+        "question": "Nối đoạn 4 với tiêu đề đúng nhất.",
+        "options": [
+          "i. Energy saving in smart buildings",
+          "ii. Worries about privacy and fairness",
+          "iii. Sensors in Barcelona",
+          "iv. The growth of urban population"
+        ],
+        "correctAnswer": "ii. Worries about privacy and fairness",
+        "explanationVi": "Đoạn 4 nêu 'raises concerns', 'questions about privacy', 'worries about inequality' — khớp tiêu đề ii."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the urban planner say about a truly smart city?",
+        "options": [
+          "It has the most sensors",
+          "It bans all technology",
+          "It makes life simpler and fairer",
+          "It is the biggest city"
+        ],
+        "correctAnswer": "It makes life simpler and fairer",
+        "explanationVi": "Đoạn 5 trích lời: 'technology makes everyday life simpler and fairer for everyone' — đáp án ở cuối bài."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

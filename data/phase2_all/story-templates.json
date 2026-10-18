@@ -1,0 +1,382 @@
+[
+  {
+    "id": "story-a2-001",
+    "title": "Vụ Đột Kích Tủ Lạnh Của Bò LingLing",
+    "cefrLevel": "A2",
+    "slots": 5,
+    "paragraphs": [
+      "Đúng 2 giờ sáng, khi cả nông trại đã ngủ say, Bò LingLing bắt đầu kế hoạch vĩ đại với sự [0] tột bậc. Mục tiêu của Bò là hũ bánh quy bơ trong tủ lạnh nhà bếp.",
+      "Nhón gót đi qua sàn gỗ kẽo kẹt, LingLing trượt chân ngã uỵch vào bao bột mì mở sẵn. Cả người Bò phủ đầy bột trắng, trông vô cùng [1].",
+      "Không hề nản lòng, Bò quyết định [2] với chú mèo Miu Miu bằng một đĩa phô mai béo ngậy. Cả hai cùng nhau cạy tung cánh cửa tủ lạnh, mở ra bữa tiệc [3] lúc rạng đông.",
+      "Bác nông dân thức dậy, nhìn cảnh tượng trước mắt chỉ biết lắc đầu bật cười trước sự [4] của Bò LingLing."
+    ],
+    "questions": [
+      {
+        "question": "LingLing gặp sự cố gì khi lẻn vào nhà bếp?",
+        "options": [
+          "Ngã vào bao bột mì",
+          "Bị chó đuổi",
+          "Ngủ quên giữa đường",
+          "Làm vỡ bát đĩa"
+        ],
+        "correctAnswer": "Ngã vào bao bột mì",
+        "explanation": "Đoạn 2 kể LingLing trượt chân ngã uỵch vào bao bột mì mở sẵn."
+      },
+      {
+        "question": "LingLing đã làm gì để mèo Miu Miu giúp mình?",
+        "options": [
+          "Cho mèo ăn phô mai",
+          "Hát cho mèo nghe",
+          "Dọa nạt mèo",
+          "Chạy trốn khỏi mèo"
+        ],
+        "correctAnswer": "Cho mèo ăn phô mai",
+        "explanation": "Đoạn 3 kể Bò dùng một đĩa phô mai béo ngậy để rủ mèo Miu Miu hợp tác."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-a2-002",
+    "title": "Bò LingLing Học Bơi",
+    "cefrLevel": "A2",
+    "slots": 5,
+    "paragraphs": [
+      "Mùa hè nóng nực, Bò LingLing quyết định học bơi với sự [0] đầy mình. Bò mua một chiếc phao bơi hình con vịt màu vàng thật to.",
+      "Vừa chạm chân xuống nước, LingLing hét toáng lên vì lạnh. Cả nông trại đều nghe thấy tiếng hét [1] của Bò.",
+      "Bác nông dân dạy Bò cách đạp chân. Nhưng thay vì đạp nước, LingLing lại [2] khiến nước bắn tung tóe khắp nơi, ướt hết quần áo của bác.",
+      "Cuối buổi, Bò vẫn chưa biết bơi nhưng đã có một ngày [3] đáng nhớ cùng bài học về sự [4]."
+    ],
+    "questions": [
+      {
+        "question": "LingLing mua phao bơi hình gì?",
+        "options": [
+          "Con vịt màu vàng",
+          "Con cá heo",
+          "Con rùa xanh",
+          "Trái dưa hấu"
+        ],
+        "correctAnswer": "Con vịt màu vàng",
+        "explanation": "Đoạn 1 kể Bò mua một chiếc phao bơi hình con vịt màu vàng thật to."
+      },
+      {
+        "question": "Tại sao bác nông dân bị ướt hết quần áo?",
+        "options": [
+          "Vì LingLing làm nước bắn tung tóe",
+          "Vì trời đổ mưa",
+          "Vì bác nhảy xuống nước",
+          "Vì vòi nước bị vỡ"
+        ],
+        "correctAnswer": "Vì LingLing làm nước bắn tung tóe",
+        "explanation": "Đoạn 3 kể LingLing khiến nước bắn tung tóe khắp nơi, ướt hết quần áo của bác."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-a2-003",
+    "title": "Tiệm Cắt Tóc Kinh Hoàng",
+    "cefrLevel": "A2",
+    "slots": 5,
+    "paragraphs": [
+      "Bò LingLing soi gương và thấy bộ lông của mình rối bù với sự [0] khó tả. Bò quyết định đến tiệm cắt tóc trong làng ngay lập tức.",
+      "Thợ cắt tóc nhìn Bò với ánh mắt [1]. Ông chưa bao giờ cắt tóc cho một con bò sữa trước đây trong đời.",
+      "Nửa tiếng sau, LingLing nhìn vào gương và hét lên. Thay vì kiểu tóc đẹp, đầu Bò giờ trông như một quả [2] bị gặm dở. Bò [3] chạy về nhà trong nước mắt.",
+      "Từ hôm đó, cả làng gọi Bò là 'LingLing đầu [4]' và Bò thề sẽ không bao giờ cắt tóc nữa."
+    ],
+    "questions": [
+      {
+        "question": "Tại sao thợ cắt tóc ngạc nhiên khi thấy LingLing?",
+        "options": [
+          "Vì chưa từng cắt tóc cho bò",
+          "Vì Bò không mang tiền",
+          "Vì tiệm đã đóng cửa",
+          "Vì Bò đến quá muộn"
+        ],
+        "correctAnswer": "Vì chưa từng cắt tóc cho bò",
+        "explanation": "Đoạn 2 kể ông thợ chưa bao giờ cắt tóc cho một con bò sữa trước đây."
+      },
+      {
+        "question": "Kiểu tóc mới của LingLing trông như thế nào?",
+        "options": [
+          "Như quả bị gặm dở",
+          "Rất đẹp và thời trang",
+          "Như siêu sao ca nhạc",
+          "Không thay đổi gì"
+        ],
+        "correctAnswer": "Như quả bị gặm dở",
+        "explanation": "Đoạn 3 kể đầu Bò trông như một quả bị gặm dở khiến Bò hét lên."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-b1-001",
+    "title": "Buổi Phỏng Vấn Xin Việc Của Bò LingLing",
+    "cefrLevel": "B1",
+    "slots": 5,
+    "paragraphs": [
+      "Sau khi xem một video về người thành công, Bò LingLing nộp đơn xin việc vào công ty sữa lớn nhất thành phố với sự [0] chưa từng có. Vị trí ứng tuyển: Giám đốc Sáng tạo.",
+      "Trong buổi phỏng vấn, khi được hỏi về điểm mạnh, LingLing tự tin đáp bằng giọng [1] rằng mình có thể uống hết một xô sữa trong 30 giây — một kỹ năng mà không ứng viên nào có được.",
+      "Nhà tuyển dụng sững sờ vài giây, rồi bật cười và quyết định [2] ngay tại chỗ. Hóa ra công ty đang cần một linh vật quảng cáo, và không ai phù hợp hơn một chú bò có khiếu hài hước [3].",
+      "Từ hôm đó, hình ảnh Bò LingLing xuất hiện trên mọi hộp sữa cùng dòng chữ về sự [4] trong công việc."
+    ],
+    "questions": [
+      {
+        "question": "LingLing ứng tuyển vào vị trí nào?",
+        "options": [
+          "Giám đốc Sáng tạo",
+          "Nhân viên bán hàng",
+          "Kế toán trưởng",
+          "Bảo vệ cổng"
+        ],
+        "correctAnswer": "Giám đốc Sáng tạo",
+        "explanation": "Đoạn 1 kể Bò nộp đơn ứng tuyển vị trí Giám đốc Sáng tạo."
+      },
+      {
+        "question": "Vì sao công ty quyết định nhận LingLing vào làm?",
+        "options": [
+          "Vì cần một linh vật quảng cáo hài hước",
+          "Vì Bò có bằng đại học",
+          "Vì công ty thiếu nhân sự",
+          "Vì Bò năn nỉ quá nhiều"
+        ],
+        "correctAnswer": "Vì cần một linh vật quảng cáo hài hước",
+        "explanation": "Đoạn 3 kể công ty đang cần một linh vật quảng cáo và Bò có khiếu hài hước."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-b1-002",
+    "title": "LingLing Làm Ngôi Sao Mạng",
+    "cefrLevel": "B1",
+    "slots": 5,
+    "paragraphs": [
+      "Thấy mèo hàng xóm nổi tiếng trên mạng, Bò LingLing quyết tâm trở thành ngôi sao với sự [0] bùng cháy. Bò mượn điện thoại của bác nông dân để quay video đầu tay.",
+      "Video đầu tiên ghi lại cảnh LingLing nhảy múa theo nhạc với phong cách [1] không đụng hàng với bất kỳ ai. Chỉ sau một đêm, video đạt một triệu lượt xem.",
+      "Các nhãn hàng kéo đến mời quảng cáo, nhưng Bò chỉ đồng ý [2] cho hãng cỏ tươi hữu cơ, vì theo Bò, đó mới là thứ xứng đáng với đẳng cấp [3] của mình.",
+      "Giờ đây, mỗi buổi sáng Bò đều livestream chào fan bằng sự [4] đặc trưng, và nông trại trở thành điểm check-in nổi tiếng khắp vùng."
+    ],
+    "questions": [
+      {
+        "question": "Video đầu tiên của LingLing có nội dung gì?",
+        "options": [
+          "Bò nhảy múa theo nhạc",
+          "Bò nấu ăn trong bếp",
+          "Bò đọc sách cho fan",
+          "Bò chơi game online"
+        ],
+        "correctAnswer": "Bò nhảy múa theo nhạc",
+        "explanation": "Đoạn 2 kể video đầu tiên ghi lại cảnh LingLing nhảy múa theo nhạc."
+      },
+      {
+        "question": "LingLing chỉ đồng ý quảng cáo cho sản phẩm nào?",
+        "options": [
+          "Cỏ tươi hữu cơ",
+          "Điện thoại mới",
+          "Xe hơi đắt tiền",
+          "Quần áo thời trang"
+        ],
+        "correctAnswer": "Cỏ tươi hữu cơ",
+        "explanation": "Đoạn 3 kể Bò chỉ đồng ý quảng cáo cho hãng cỏ tươi hữu cơ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-b1-003",
+    "title": "Chuyến Du Lịch Bão Táp",
+    "cefrLevel": "B1",
+    "slots": 5,
+    "paragraphs": [
+      "Bò LingLing trúng một chuyến du lịch biển miễn phí và lên đường với sự [0] phơi phới. Đây là lần đầu tiên trong đời Bò được nhìn thấy biển.",
+      "Vừa đặt chân xuống bãi cát, một con sóng lớn ập đến cuốn phăng chiếc mũ rơm của Bò. LingLing đuổi theo với tốc độ [1] khiến du khách hai bên cười ngả nghiêng.",
+      "Chiều hôm đó, Bò tham gia cuộc thi xây lâu đài cát và quyết định [2] một tòa lâu đài hình... chính mình. Ban giám khảo trao ngay giải 'Tác phẩm có sự [3] nhất' cho Bò.",
+      "Chuyến đi kết thúc với làn da cháy nắng và một kỷ niệm về sự [4] mà Bò sẽ kể mãi không chán."
+    ],
+    "questions": [
+      {
+        "question": "Chuyện gì xảy ra khi LingLing vừa đặt chân xuống bãi biển?",
+        "options": [
+          "Sóng cuốn mất mũ rơm",
+          "Bò bị lạc khỏi đoàn",
+          "Bò bị say sóng",
+          "Bò làm mất hành lý"
+        ],
+        "correctAnswer": "Sóng cuốn mất mũ rơm",
+        "explanation": "Đoạn 2 kể một con sóng lớn ập đến cuốn phăng chiếc mũ rơm của Bò."
+      },
+      {
+        "question": "LingLing đã xây lâu đài cát hình gì?",
+        "options": [
+          "Hình chính mình",
+          "Hình con cá lớn",
+          "Hình ngôi nhà",
+          "Hình chiếc ô tô"
+        ],
+        "correctAnswer": "Hình chính mình",
+        "explanation": "Đoạn 3 kể Bò xây một tòa lâu đài cát hình chính mình."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-b1-004",
+    "title": "Quán Cà Phê Của Bò LingLing",
+    "cefrLevel": "B1",
+    "slots": 5,
+    "paragraphs": [
+      "Sau khi uống thử cà phê sữa một lần duy nhất, Bò LingLing nảy ra ý tưởng mở quán cà phê với sự [0] của một doanh nhân thực thụ. Tên quán: 'Bò Sữa Coffee'.",
+      "Ngày khai trương, khách đến nườm nượp vì tò mò. Nhưng khi nếm thử, ai cũng nhăn mặt với vẻ [1]: cà phê của Bò quá ngọt vì Bò cho cả hũ đường vào mỗi ly.",
+      "Thay vì nản chí, LingLing nhanh trí [2] công thức, biến món 'cà phê siêu ngọt' thành đặc sản của quán. Khách kéo đến đông hơn với sự [3] khó tin.",
+      "Cuối tháng, quán lãi to và Bò rút ra bài học về sự [4] trong kinh doanh: đôi khi sai lầm lại chính là điểm đặc biệt."
+    ],
+    "questions": [
+      {
+        "question": "Vì sao cà phê của LingLing quá ngọt?",
+        "options": [
+          "Vì Bò cho cả hũ đường vào mỗi ly",
+          "Vì Bò dùng quá nhiều sữa đặc",
+          "Vì khách thích uống ngọt",
+          "Vì đường đang giảm giá"
+        ],
+        "correctAnswer": "Vì Bò cho cả hũ đường vào mỗi ly",
+        "explanation": "Đoạn 2 kể cà phê quá ngọt vì Bò cho cả hũ đường vào mỗi ly."
+      },
+      {
+        "question": "LingLing đã xử lý sai lầm của mình như thế nào?",
+        "options": [
+          "Biến nó thành đặc sản của quán",
+          "Đóng cửa quán ngay lập tức",
+          "Đổ hết cà phê đi",
+          "Thuê người pha chế mới"
+        ],
+        "correctAnswer": "Biến nó thành đặc sản của quán",
+        "explanation": "Đoạn 3 kể Bò biến món 'cà phê siêu ngọt' thành đặc sản của quán."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-b2-001",
+    "title": "Phi Vụ Điệp Viên Bò",
+    "cefrLevel": "B2",
+    "slots": 5,
+    "paragraphs": [
+      "Khi phát hiện đàn gà trong trang trại liên tục mất trứng một cách bí ẩn, Bò LingLing tự phong mình làm điệp viên với sự [0] của một thám tử chuyên nghiệp. Nhiệm vụ đầu tiên: tìm ra kẻ trộm trứng.",
+      "Đêm đầu tiên rình rập, LingLing hóa trang thành đống rơm với kỹ thuật ngụy trang [1] đến mức chính bác nông dân đi ngang cũng không nhận ra. Tiếc là Bò ngủ quên và bỏ lỡ mọi diễn biến quan trọng.",
+      "Đêm thứ hai, Bò quyết định [2] một cái bẫy bằng những quả trứng giả làm từ đất sét. Kẻ trộm quả nhiên xuất hiện — hóa ra là chú chó Vàng, với vẻ mặt [3] khi bị bắt quả tang tại trận.",
+      "Phi vụ khép lại trong tiếng cười của cả nông trại, và Bò nhận ra một bài học sâu sắc về sự [4]: đôi khi thủ phạm lại chính là người bạn thân nhất."
+    ],
+    "questions": [
+      {
+        "question": "Nhiệm vụ điệp viên đầu tiên của LingLing là gì?",
+        "options": [
+          "Tìm ra kẻ trộm trứng gà",
+          "Bảo vệ nông trại khỏi trộm",
+          "Tìm kho báu bị chôn",
+          "Điều tra mèo hàng xóm"
+        ],
+        "correctAnswer": "Tìm ra kẻ trộm trứng gà",
+        "explanation": "Đoạn 1 kể Bò tự giao nhiệm vụ tìm ra kẻ trộm trứng gà bí ẩn."
+      },
+      {
+        "question": "Kẻ trộm trứng thật sự là ai?",
+        "options": [
+          "Chú chó Vàng",
+          "Mèo Miu Miu",
+          "Con cáo ranh mãnh",
+          "Bác nông dân"
+        ],
+        "correctAnswer": "Chú chó Vàng",
+        "explanation": "Đoạn 3 kể kẻ trộm xuất hiện và hóa ra là chú chó Vàng bị bắt quả tang."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-b2-002",
+    "title": "LingLing Tranh Cử Trưởng Thôn",
+    "cefrLevel": "B2",
+    "slots": 5,
+    "paragraphs": [
+      "Khi chiếc ghế trưởng thôn bỏ trống, Bò LingLing tuyên bố tranh cử với sự [0] khiến cả làng xôn xao bàn tán. Khẩu hiệu tranh cử của Bò: 'Cỏ tươi cho mọi nhà!'",
+      "Trong buổi tranh luận trực tiếp, đối thủ là bác Trâu già công kích Bò thiếu kinh nghiệm quản lý. LingLing đáp trả bằng một bài phát biểu [1] đến mức cả hội trường đứng dậy vỗ tay không ngớt.",
+      "Để ghi điểm tuyệt đối, Bò quyết định [2] một buổi tiệc cỏ miễn phí cho toàn thôn. Dân làng kéo đến đông nghịt, ai cũng ấn tượng trước sự [3] của ứng viên bò sữa.",
+      "Kết quả, LingLing thắng cử với số phiếu áp đảo, mở ra một thời kỳ của sự [4] trong lịch sử ngôi làng nhỏ."
+    ],
+    "questions": [
+      {
+        "question": "Khẩu hiệu tranh cử của LingLing là gì?",
+        "options": [
+          "'Cỏ tươi cho mọi nhà!'",
+          "'Sữa miễn phí mỗi ngày!'",
+          "'Không thuế, không lo!'",
+          "'Vui là chính!'"
+        ],
+        "correctAnswer": "'Cỏ tươi cho mọi nhà!'",
+        "explanation": "Đoạn 1 kể khẩu hiệu tranh cử của Bò là 'Cỏ tươi cho mọi nhà!'."
+      },
+      {
+        "question": "LingLing đã làm gì để ghi điểm với dân làng?",
+        "options": [
+          "Tổ chức tiệc cỏ miễn phí",
+          "Tặng tiền cho mọi nhà",
+          "Hứa xây trường học mới",
+          "Hát tặng dân làng"
+        ],
+        "correctAnswer": "Tổ chức tiệc cỏ miễn phí",
+        "explanation": "Đoạn 3 kể Bò tổ chức một buổi tiệc cỏ miễn phí cho toàn thôn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "story-b2-003",
+    "title": "Bò Du Hành Thời Gian",
+    "cefrLevel": "B2",
+    "slots": 5,
+    "paragraphs": [
+      "Trong một lần dọn kho thóc, Bò LingLing phát hiện một chiếc đồng hồ cổ kỳ lạ. Vừa chạm tay vào, Bò lập tức bị cuốn vào vòng xoáy thời gian với sự [0] không thể diễn tả bằng lời.",
+      "Mở mắt ra, LingLing thấy mình đứng giữa thời tiền sử, đối mặt với một con khủng long bạo chúa có ánh nhìn [1]. Bò sợ đến mức quên cả cách kêu.",
+      "Trong lúc nguy cấp nhất, Bò nảy ra sáng kiến [2] một điệu nhảy kỳ quặc chưa từng thấy. Con khủng long sững lại vài giây, rồi... bật cười với sự [3] hiếm thấy ở loài bò sát cổ đại.",
+      "Trở về hiện tại, không một ai tin câu chuyện của Bò, nhưng LingLing giữ chiếc răng khủng long làm bằng chứng cho sự [4] của mình."
+    ],
+    "questions": [
+      {
+        "question": "LingLing đã du hành về thời đại nào?",
+        "options": [
+          "Thời tiền sử",
+          "Tương lai xa xôi",
+          "Thời trung cổ",
+          "Thời Ai Cập cổ"
+        ],
+        "correctAnswer": "Thời tiền sử",
+        "explanation": "Đoạn 2 kể Bò mở mắt ra và thấy mình đứng giữa thời tiền sử."
+      },
+      {
+        "question": "LingLing đã thoát khỏi con khủng long bằng cách nào?",
+        "options": [
+          "Nhảy điệu kỳ quặc khiến nó bật cười",
+          "Chạy thật nhanh khỏi đó",
+          "Trốn sau tảng đá lớn",
+          "Kêu cứu thật to"
+        ],
+        "correctAnswer": "Nhảy điệu kỳ quặc khiến nó bật cười",
+        "explanation": "Đoạn 3 kể Bò nhảy một điệu kỳ quặc khiến khủng long sững lại rồi bật cười."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]
