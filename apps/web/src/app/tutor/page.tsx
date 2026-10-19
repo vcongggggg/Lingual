@@ -44,7 +44,16 @@ Bạn đang muốn tìm hiểu điều gì hôm nay?`,
   timestamp: 'Vừa xong',
 };
 
-// Simple Markdown Formatter to prevent raw **text** from showing
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// Simple Markdown Formatter to prevent raw **text** from showing and protect against XSS
 function renderSimpleMarkdown(content: string) {
   const lines = content.split('\n');
   return (
@@ -52,8 +61,11 @@ function renderSimpleMarkdown(content: string) {
       {lines.map((line, idx) => {
         if (!line.trim()) return <div key={idx} className="h-1" />;
 
+        // Escape HTML entities FIRST to prevent XSS
+        const escaped = escapeHtml(line);
+
         // Format **bold**
-        const formatted = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        const formatted = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
         if (line.startsWith('* ') || line.startsWith('- ')) {
           return (
