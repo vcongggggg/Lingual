@@ -6,12 +6,26 @@ import { getFormattedDateInTimezone } from '../../../../packages/domain/src/inde
 
 export const stampRouter = Router();
 
+function getAuthUserIdOrFallback(req: Request, res: Response): string | null {
+  const userId = resolveAuthUserId(req);
+  if (userId) {
+    return userId;
+  }
+  if (process.env.NODE_ENV === 'production') {
+    res.status(401).json({ error: 'Unauthorized' });
+    return null;
+  }
+  return 'demo-user-id-001';
+}
+
 /**
  * GET /api/v1/stamps
  * Lấy số dư sổ tem, lịch sử dán tem và trạng thái lượt chấm AI miễn phí trong ngày (theo Asia/Ho_Chi_Minh)
  */
 stampRouter.get('/', async (req: Request, res: Response) => {
-  const userId = resolveAuthUserId(req) || 'demo-user-id-001';
+  const userId = getAuthUserIdOrFallback(req, res);
+  if (!userId) return;
+
   const todayStr = getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh');
 
   const [balance, history, freeUsed] = await Promise.all([
@@ -35,7 +49,9 @@ stampRouter.get('/', async (req: Request, res: Response) => {
  * Server tự xác minh điều kiện hoàn thành mục tiêu ngày trước khi trao tem
  */
 stampRouter.post('/claim-daily-goal', async (req: Request, res: Response) => {
-  const userId = resolveAuthUserId(req) || 'demo-user-id-001';
+  const userId = getAuthUserIdOrFallback(req, res);
+  if (!userId) return;
+
   const todayStr = getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh');
 
   const user = await userRepository.findById(userId);
@@ -77,7 +93,9 @@ stampRouter.post('/claim-daily-goal', async (req: Request, res: Response) => {
  * - Enforce cap tối đa 10 tem
  */
 stampRouter.post('/award', async (req: Request, res: Response) => {
-  const userId = resolveAuthUserId(req) || 'demo-user-id-001';
+  const userId = getAuthUserIdOrFallback(req, res);
+  if (!userId) return;
+
   const { reason, delta = 1 } = req.body;
 
   const validReasons: Record<string, number> = {
@@ -124,7 +142,9 @@ stampRouter.post('/award', async (req: Request, res: Response) => {
  * - Hết tem: báo "Hết tem, mai quay lại" (HTTP 400)
  */
 stampRouter.post('/redeem-writing', async (req: Request, res: Response) => {
-  const userId = resolveAuthUserId(req) || 'demo-user-id-001';
+  const userId = getAuthUserIdOrFallback(req, res);
+  if (!userId) return;
+
   const todayStr = getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh');
 
   const result = await stampRepository.redeemWritingEvaluation(userId, todayStr);
