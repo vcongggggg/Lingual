@@ -62,7 +62,7 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (like mobile apps, curl, or same-origin requests)
-      if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV === 'development') {
+      if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.trycloudflare.com') || process.env.NODE_ENV === 'development') {
         return callback(null, true);
       }
       return callback(new Error(`CORS policy does not allow access from origin: ${origin}`));
