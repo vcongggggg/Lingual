@@ -35,7 +35,7 @@ export function Navbar() {
   const navLinks = [
     { href: '/dashboard', label: 'Lộ trình' },
     { href: '/srs', label: 'Thẻ ghi nhớ' },
-    { href: '/vocabulary', label: '5 Labs' },
+    { href: '/vocabulary', label: 'Từ vựng' },
     { href: '/games', label: 'Game' },
     { href: '/ielts', label: 'Luyện IELTS' },
     { href: '/practice', label: 'Luyện tập' },

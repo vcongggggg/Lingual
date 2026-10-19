@@ -15,8 +15,10 @@ import {
   Clock,
   ArrowRight,
   HelpCircle,
+  ArrowLeft,
+  Check,
+  X,
 } from 'lucide-react';
-import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
 
 interface GameTicket {
@@ -107,6 +109,85 @@ const MATCH_PAIRS = [
   { id: 4, en: 'Achieve', vi: 'Đạt được' },
 ];
 
+const SCRAMBLE_SENTENCES = [
+  {
+    id: 1,
+    words: ['Sustainable', 'development', 'protects', 'our', 'environment', 'for', 'generations'],
+    translation: 'Phát triển bền vững bảo vệ môi trường của chúng ta cho các thế hệ tương lai.',
+  },
+  {
+    id: 2,
+    words: ['Perseverance', 'is', 'essential', 'for', 'mastering', 'English', 'fluency'],
+    translation: 'Lòng kiên trì là thiết yếu để đạt được sự lưu loát trong tiếng Anh.',
+  },
+  {
+    id: 3,
+    words: ['Bilingualism', 'stimulates', 'cognitive', 'flexibility', 'in', 'human', 'brains'],
+    translation: 'Việc biết hai ngôn ngữ kích thích sự linh hoạt nhận thức trong não bộ con người.',
+  },
+];
+
+const TYPING_WORDS = [
+  { id: 1, word: 'PERSEVERANCE', phonetic: '/ˌpɜː.sɪˈvɪə.rəns/', vi: 'Sự kiên trì, lòng bền bỉ' },
+  { id: 2, word: 'RESILIENT', phonetic: '/rɪˈzɪl.jənt/', vi: 'Kiên cường, có khả năng phục hồi' },
+  { id: 3, word: 'SERENDIPITY', phonetic: '/ˌser.ənˈdɪp.ə.ti/', vi: 'Sự may mắn bất ngờ' },
+  { id: 4, word: 'PRAGMATIC', phonetic: '/præɡˈmæt.ɪk/', vi: 'Thực tế, có tính ứng dụng cao' },
+];
+
+const CLOZE_QUESTIONS = [
+  {
+    id: 1,
+    sentence: 'Urban planners designed ______ infrastructure to withstand frequent seasonal floods.',
+    options: ['resilient', 'fragile', 'hasty', 'passive'],
+    correct: 'resilient',
+    explanation: '"Resilient" (kiên cường, có khả năng chống chịu) là tính từ phù hợp nhất với hạ tầng chống lũ.',
+  },
+  {
+    id: 2,
+    sentence: 'Finding this peaceful bookstore in the old town was pure ______ on a rainy afternoon.',
+    options: ['serendipity', 'hazard', 'calamity', 'negligence'],
+    correct: 'serendipity',
+    explanation: '"Pure serendipity" là collocation tự nhiên mang nghĩa sự may mắn tình cờ kỳ diệu.',
+  },
+  {
+    id: 3,
+    sentence: 'We must adopt a ______ approach to solve speaking hesitation without fear of errors.',
+    options: ['pragmatic', 'delusional', 'superficial', 'reckless'],
+    correct: 'pragmatic',
+    explanation: '"Pragmatic approach" nghĩa là hướng tiếp cận thực tiễn, giải quyết vấn đề dựa trên thực tế.',
+  },
+];
+
+const AUDIO_CHALLENGES = [
+  {
+    id: 1,
+    audioText: 'Collaborate',
+    options: [
+      { text: 'Collaborate', vi: 'Hợp tác, cộng tác cùng làm việc', isCorrect: true },
+      { text: 'Corroborate', vi: 'Xác nhận, chứng thực thông tin', isCorrect: false },
+      { text: 'Calibrate', vi: 'Hiệu chỉnh thông số kỹ thuật', isCorrect: false },
+      { text: 'Celebrate', vi: 'Kỷ niệm, ăn mừng thành công', isCorrect: false },
+    ],
+  },
+  {
+    id: 2,
+    audioText: 'Metaphor',
+    options: [
+      { text: 'Metaphor', vi: 'Phép ẩn dụ tu từ trong văn học', isCorrect: true },
+      { text: 'Metamorphosis', vi: 'Sự biến thái, biến đổi hình dạng', isCorrect: false },
+      { text: 'Metropolis', vi: 'Đô thị lớn, thành phố trung tâm', isCorrect: false },
+      { text: 'Metadata', vi: 'Dữ liệu miêu tả cấu trúc thông tin', isCorrect: false },
+    ],
+  },
+];
+
+const FIVE_LETTER_WORDS = [
+  { word: 'SMART', hint: 'Thông minh, sắc sảo và nhạy bén trong tư duy.' },
+  { word: 'BRAVE', hint: 'Dũng cảm, không run sợ trước chướng ngại vật.' },
+  { word: 'LEARN', hint: 'Học tập, tiếp thu kiến thức và kỹ năng mới.' },
+  { word: 'FOCUS', hint: 'Tập trung cao độ vào một mục tiêu duy nhất.' },
+];
+
 const LEADERBOARD_ROWS = [
   { rank: 1, name: 'Minh Trí', badge: 'Quán quân', score: '3.450 XP', gamesPlayed: 48, date: '17/10/2026' },
   { rank: 2, name: 'Thu Thảo', badge: 'Á quân', score: '2.920 XP', gamesPlayed: 39, date: '17/10/2026' },
@@ -117,35 +198,64 @@ const LEADERBOARD_ROWS = [
 
 export default function GamesPage() {
   const [activeTab, setActiveTab] = useState<'hub' | 'play' | 'leaderboard'>('hub');
-  const [selectedEn, setSelectedEn] = useState<string | null>(null);
-  const [selectedVi, setSelectedVi] = useState<string | null>(null);
-  const [matchedIds, setMatchedIds] = useState<number[]>([]);
+  const [currentGameId, setCurrentGameId] = useState<string>('word-match');
+  const [tearingTicketId, setTearingTicketId] = useState<string | null>(null);
+
+  // Chung: Timer & Score
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(60);
   const [gameActive, setGameActive] = useState(false);
-  const [tearingTicketId, setTearingTicketId] = useState<string | null>(null);
 
-  const handlePlayTicket = (ticketId: string) => {
-    if (tearingTicketId) return;
-    setTearingTicketId(ticketId);
-    setTimeout(() => {
-      setActiveTab('play');
-      handleStartGame();
-      setTearingTicketId(null);
-    }, 300);
-  };
+  // 1. Game: Word Match
+  const [selectedEn, setSelectedEn] = useState<string | null>(null);
+  const [selectedVi, setSelectedVi] = useState<string | null>(null);
+  const [matchedIds, setMatchedIds] = useState<number[]>([]);
 
+  // 2. Game: Scramble
+  const [scrambleIdx, setScrambleIdx] = useState(0);
+  const [selectedWords, setSelectedWords] = useState<string[]>([]);
+  const [availableWords, setAvailableWords] = useState<string[]>([]);
+  const [scrambleStatus, setScrambleStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
+
+  // 3. Game: Fast Typing
+  const [typingIdx, setTypingIdx] = useState(0);
+  const [typingInput, setTypingInput] = useState('');
+  const [typingFeedback, setTypingFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
+
+  // 4. Game: Word Fill
+  const [clozeIdx, setClozeIdx] = useState(0);
+  const [selectedClozeOpt, setSelectedClozeOpt] = useState<string | null>(null);
+  const [clozeFeedback, setClozeFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
+
+  // 5. Game: Listening Challenge
+  const [audioIdx, setAudioIdx] = useState(0);
+  const [selectedAudioOpt, setSelectedAudioOpt] = useState<string | null>(null);
+  const [audioFeedback, setAudioFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
+
+  // 6. Game: Word Guess (5-letter)
+  const [guessIdx, setGuessIdx] = useState(0);
+  const [currentGuess, setCurrentGuess] = useState('');
+  const [guessAttempts, setGuessAttempts] = useState<string[]>([]);
+  const [guessStatus, setGuessStatus] = useState<'playing' | 'won' | 'lost'>('playing');
+
+  // URL query handling
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const tab = params.get('tab');
-      if (tab === 'play' || tab === 'leaderboard') {
+      const game = params.get('game');
+      if (game && GAME_TICKETS.some((t) => t.id === game)) {
+        setCurrentGameId(game);
+        setActiveTab('play');
+        handleStartGame(game);
+      } else if (tab === 'play' || tab === 'leaderboard') {
         setActiveTab(tab as any);
-        if (tab === 'play') setGameActive(true);
+        if (tab === 'play') handleStartGame(currentGameId);
       }
     }
   }, []);
 
+  // Timer countdown
   useEffect(() => {
     let interval: any;
     if (gameActive && timer > 0) {
@@ -156,15 +266,87 @@ export default function GamesPage() {
     return () => clearInterval(interval);
   }, [gameActive, timer]);
 
-  const handleStartGame = () => {
-    setMatchedIds([]);
-    setSelectedEn(null);
-    setSelectedVi(null);
+  const handlePlayTicket = (ticketId: string) => {
+    if (tearingTicketId) return;
+    setTearingTicketId(ticketId);
+    setTimeout(() => {
+      setCurrentGameId(ticketId);
+      setActiveTab('play');
+      handleStartGame(ticketId);
+      setTearingTicketId(null);
+    }, 250);
+  };
+
+  const handleStartGame = (gameId = currentGameId) => {
     setScore(0);
     setTimer(60);
     setGameActive(true);
+
+    if (gameId === 'word-match') {
+      setMatchedIds([]);
+      setSelectedEn(null);
+      setSelectedVi(null);
+    } else if (gameId === 'scramble') {
+      setScrambleIdx(0);
+      setupScrambleQuestion(0);
+    } else if (gameId === 'fast-typing') {
+      setTypingIdx(0);
+      setTypingInput('');
+      setTypingFeedback('idle');
+    } else if (gameId === 'word-fill') {
+      setClozeIdx(0);
+      setSelectedClozeOpt(null);
+      setClozeFeedback('idle');
+    } else if (gameId === 'listening-challenge') {
+      setAudioIdx(0);
+      setSelectedAudioOpt(null);
+      setAudioFeedback('idle');
+    } else if (gameId === 'word-guess') {
+      setGuessIdx(0);
+      setCurrentGuess('');
+      setGuessAttempts([]);
+      setGuessStatus('playing');
+    }
   };
 
+  // Scramble helpers
+  const setupScrambleQuestion = (idx: number) => {
+    const q = SCRAMBLE_SENTENCES[idx % SCRAMBLE_SENTENCES.length];
+    const shuffled = [...q.words].sort(() => Math.random() - 0.5);
+    setAvailableWords(shuffled);
+    setSelectedWords([]);
+    setScrambleStatus('idle');
+  };
+
+  const handlePickWord = (word: string, index: number) => {
+    if (scrambleStatus === 'correct') return;
+    setSelectedWords((prev) => [...prev, word]);
+    setAvailableWords((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleRemoveWord = (word: string, index: number) => {
+    if (scrambleStatus === 'correct') return;
+    setSelectedWords((prev) => prev.filter((_, i) => i !== index));
+    setAvailableWords((prev) => [...prev, word]);
+  };
+
+  const handleCheckScramble = () => {
+    const q = SCRAMBLE_SENTENCES[scrambleIdx % SCRAMBLE_SENTENCES.length];
+    if (selectedWords.join(' ') === q.words.join(' ')) {
+      setScrambleStatus('correct');
+      setScore((s) => s + 30);
+    } else {
+      setScrambleStatus('wrong');
+    }
+  };
+
+  const handleNextScramble = () => {
+    const nextIdx = (scrambleIdx + 1) % SCRAMBLE_SENTENCES.length;
+    setScrambleIdx(nextIdx);
+    setupScrambleQuestion(nextIdx);
+  };
+
+  // Word match helpers
   const handleEnClick = (enWord: string) => {
     setSelectedEn(enWord);
     if (selectedVi) checkMatch(enWord, selectedVi);
@@ -184,6 +366,92 @@ export default function GamesPage() {
     setSelectedEn(null);
     setSelectedVi(null);
   };
+
+  // Typing helpers
+  const handleTypingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cur = TYPING_WORDS[typingIdx % TYPING_WORDS.length];
+    if (typingInput.trim().toUpperCase() === cur.word) {
+      setTypingFeedback('correct');
+      setScore((s) => s + 40);
+      setTimeout(() => {
+        const next = (typingIdx + 1) % TYPING_WORDS.length;
+        setTypingIdx(next);
+        setTypingInput('');
+        setTypingFeedback('idle');
+      }, 700);
+    } else {
+      setTypingFeedback('wrong');
+    }
+  };
+
+  // Cloze helpers
+  const handleSelectCloze = (opt: string) => {
+    if (clozeFeedback === 'correct') return;
+    setSelectedClozeOpt(opt);
+    const cur = CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length];
+    if (opt === cur.correct) {
+      setClozeFeedback('correct');
+      setScore((s) => s + 20);
+    } else {
+      setClozeFeedback('wrong');
+    }
+  };
+
+  const handleNextCloze = () => {
+    const next = (clozeIdx + 1) % CLOZE_QUESTIONS.length;
+    setClozeIdx(next);
+    setSelectedClozeOpt(null);
+    setClozeFeedback('idle');
+  };
+
+  // Audio helpers
+  const playSpeech = (text: string) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  };
+
+  const handleSelectAudioOpt = (text: string, isCorrect: boolean) => {
+    if (audioFeedback === 'correct') return;
+    setSelectedAudioOpt(text);
+    if (isCorrect) {
+      setAudioFeedback('correct');
+      setScore((s) => s + 35);
+    } else {
+      setAudioFeedback('wrong');
+    }
+  };
+
+  const handleNextAudio = () => {
+    const next = (audioIdx + 1) % AUDIO_CHALLENGES.length;
+    setAudioIdx(next);
+    setSelectedAudioOpt(null);
+    setAudioFeedback('idle');
+  };
+
+  // Word Guess helpers
+  const handleGuessSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (currentGuess.trim().length !== 5) return;
+    const cur = FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length];
+    const upperGuess = currentGuess.trim().toUpperCase();
+    const newAttempts = [...guessAttempts, upperGuess];
+    setGuessAttempts(newAttempts);
+    setCurrentGuess('');
+
+    if (upperGuess === cur.word) {
+      setGuessStatus('won');
+      setScore((s) => s + 50);
+    } else if (newAttempts.length >= 6) {
+      setGuessStatus('lost');
+    }
+  };
+
+  const currentTicket = GAME_TICKETS.find((t) => t.id === currentGameId) || GAME_TICKETS[0];
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-10 pb-28 sm:pb-20 text-left">
@@ -218,6 +486,7 @@ export default function GamesPage() {
         <div className="pt-6 mt-6 border-t-2 border-ink/15 w-full overflow-x-auto pb-2 scrollbar-none">
           <div className="flex items-center gap-2.5 min-w-max">
             <button
+              type="button"
               onClick={() => setActiveTab('hub')}
               className={`px-4 py-2.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                 activeTab === 'hub'
@@ -228,9 +497,10 @@ export default function GamesPage() {
               Danh sách vé trò chơi
             </button>
             <button
+              type="button"
               onClick={() => {
                 setActiveTab('play');
-                if (!gameActive) handleStartGame();
+                if (!gameActive) handleStartGame(currentGameId);
               }}
               className={`px-4 py-2.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                 activeTab === 'play'
@@ -238,9 +508,10 @@ export default function GamesPage() {
                   : 'bg-card text-ink hover:bg-paper-2'
               }`}
             >
-              Đấu trường Nối từ trực tiếp
+              Đang chơi: {currentTicket.title}
             </button>
             <button
+              type="button"
               onClick={() => setActiveTab('leaderboard')}
               className={`px-4 py-2.5 rounded-xl border-2 border-ink text-xs font-black transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                 activeTab === 'leaderboard'
@@ -272,6 +543,7 @@ export default function GamesPage() {
               return (
                 <div
                   key={ticket.id}
+                  data-testid={`ticket-${ticket.id}`}
                   onClick={() => handlePlayTicket(ticket.id)}
                   className={`ticket-card p-6 flex flex-col justify-between space-y-4 bg-card cursor-pointer select-none relative overflow-visible ${
                     isTearing ? 'animate-ticket-tear pointer-events-none' : ''
@@ -318,6 +590,7 @@ export default function GamesPage() {
                   {/* Nút Đỏ "Xé vé chơi ngay" */}
                   <div className="pt-1">
                     <button
+                      type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         handlePlayTicket(ticket.id);
@@ -325,7 +598,7 @@ export default function GamesPage() {
                       className="w-full btn btn-red text-xs font-black shadow-brutal flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <span>{isTearing ? 'Đang xé vé...' : 'Xé vé chơi ngay'}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5 pointer-events-none" />
                     </button>
                   </div>
                 </div>
@@ -335,23 +608,29 @@ export default function GamesPage() {
         </div>
       )}
 
-      {/* CHẾ ĐỘ 2: ĐẤU TRƯỜNG NỐI TỪ TRỰC TIẾP */}
+      {/* CHẾ ĐỘ 2: ĐẤU TRƯỜNG TRÒ CHƠI ĐANG CHỌN */}
       {activeTab === 'play' && (
         <div className="card-paper p-6 sm:p-10 space-y-6 bg-card shadow-brutal-xl">
+          {/* Header Bảng Đấu Game */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-ink/20 pb-4">
-            <div>
-              <span className="text-xs font-black uppercase tracking-wider text-teal block">
-                Đang chơi: Nối từ siêu tốc
-              </span>
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-black uppercase tracking-wider text-red block font-mono">
+                  ĐANG CHƠI: {currentTicket.title.toUpperCase()}
+                </span>
+                <span className={`text-[10px] font-mono font-black px-2 py-0.5 rounded border ${currentTicket.accentColor}`}>
+                  {currentTicket.badge}
+                </span>
+              </div>
               <h2 className="text-2xl font-black text-ink font-sans">
-                Đấu trường phản xạ từ vựng
+                {currentTicket.englishTitle}
               </h2>
+              <p className="text-xs text-ink-soft">
+                {currentTicket.desc}
+              </p>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="hidden sm:block" title={timer <= 15 ? 'Chạy nhanh kẻo hết giờ!' : 'Tung hứng từ vựng'}>
-                <LingLing reaction={timer <= 15 ? 'angryRun' : 'juggle'} size={52} />
-              </div>
+            <div className="flex items-center gap-3 flex-wrap">
               <span className="font-mono text-sm font-black text-red bg-paper-2 border-2 border-ink rounded-xl px-3 py-1.5 shadow-brutal-sm">
                 Thời gian: {timer}s
               </span>
@@ -359,99 +638,478 @@ export default function GamesPage() {
                 Điểm: {score} XP
               </span>
               <button
-                onClick={handleStartGame}
-                className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-1.5"
+                type="button"
+                onClick={() => handleStartGame(currentGameId)}
+                className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Chơi lại</span>
               </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('hub')}
+                className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer text-ink-muted hover:text-ink"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Đổi game</span>
+              </button>
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm text-ink-soft font-sans">
-            Hướng dẫn: Nhấp chọn một từ tiếng Anh ở cột trái, sau đó chọn nghĩa tiếng Việt tương ứng ở cột phải để hoàn thành cặp từ.
-          </p>
+          {/* GAME 1: WORD MATCH (NỐI TỪ SIÊU TỐC) */}
+          {currentGameId === 'word-match' && (
+            <div className="space-y-6">
+              <p className="text-xs sm:text-sm text-ink-soft font-sans">
+                Hướng dẫn: Nhấp chọn một từ tiếng Anh ở cột trái, sau đó chọn nghĩa tiếng Việt tương ứng ở cột phải để hoàn thành cặp từ.
+              </p>
 
-          {/* Bàn Cờ Thẻ Giấy Nối Từ */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-            {/* Cột Tiếng Anh */}
-            <div className="space-y-3">
-              <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
-                Từ Tiếng Anh:
-              </span>
-              {MATCH_PAIRS.map((p) => {
-                const isMatched = matchedIds.includes(p.id);
-                const isSelected = selectedEn === p.en;
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                <div className="space-y-3">
+                  <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
+                    Từ Tiếng Anh:
+                  </span>
+                  {MATCH_PAIRS.map((p) => {
+                    const isMatched = matchedIds.includes(p.id);
+                    const isSelected = selectedEn === p.en;
+                    return (
+                      <button
+                        key={p.en}
+                        type="button"
+                        disabled={isMatched || !gameActive}
+                        onClick={() => handleEnClick(p.en)}
+                        className={`w-full p-4 rounded-xl border-2 border-ink text-left font-black text-base shadow-brutal-sm transition-all cursor-pointer ${
+                          isMatched
+                            ? 'bg-teal text-white border-teal opacity-60 cursor-not-allowed'
+                            : isSelected
+                            ? 'bg-amber text-ink scale-[1.02] shadow-brutal'
+                            : 'bg-paper hover:bg-paper-2 text-ink'
+                        }`}
+                      >
+                        {p.en} {isMatched && '✓'}
+                      </button>
+                    );
+                  })}
+                </div>
 
-                return (
-                  <button
-                    key={p.en}
-                    disabled={isMatched || !gameActive}
-                    onClick={() => handleEnClick(p.en)}
-                    className={`w-full p-4 rounded-xl border-2 border-ink text-left font-black text-base shadow-brutal-sm transition-all cursor-pointer ${
-                      isMatched
-                        ? 'bg-teal text-white border-teal opacity-60 cursor-not-allowed'
-                        : isSelected
-                        ? 'bg-amber text-ink scale-[1.02] shadow-brutal'
-                        : 'bg-paper hover:bg-paper-2 text-ink'
-                    }`}
-                  >
-                    {p.en} {isMatched && '✓'}
-                  </button>
-                );
-              })}
+                <div className="space-y-3">
+                  <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
+                    Nghĩa Tiếng Việt:
+                  </span>
+                  {MATCH_PAIRS.map((p) => {
+                    const isMatched = matchedIds.includes(p.id);
+                    const isSelected = selectedVi === p.vi;
+                    return (
+                      <button
+                        key={p.vi}
+                        type="button"
+                        disabled={isMatched || !gameActive}
+                        onClick={() => handleViClick(p.vi)}
+                        className={`w-full p-4 rounded-xl border-2 border-ink text-left font-black text-base shadow-brutal-sm transition-all cursor-pointer ${
+                          isMatched
+                            ? 'bg-teal text-white border-teal opacity-60 cursor-not-allowed'
+                            : isSelected
+                            ? 'bg-amber text-ink scale-[1.02] shadow-brutal'
+                            : 'bg-paper hover:bg-paper-2 text-ink'
+                        }`}
+                      >
+                        {p.vi} {isMatched && '✓'}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {matchedIds.length === MATCH_PAIRS.length && (
+                <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl text-center space-y-3 animate-in fade-in duration-200 flex flex-col items-center">
+                  <LingLing reaction="trophy" size={90} animate={true} />
+                  <span className="text-xl font-black text-ink block font-sans">
+                    Tuyệt vời! Bạn đã ghép đúng toàn bộ các cặp từ! (+100 XP)
+                  </span>
+                  <div className="flex justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => handleStartGame('word-match')}
+                      className="btn btn-red text-xs font-black shadow-brutal"
+                    >
+                      Chơi ván tiếp theo
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab('hub')}
+                      className="btn btn-paper text-xs font-black shadow-brutal"
+                    >
+                      Về danh sách vé
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
+          )}
 
-            {/* Cột Tiếng Việt */}
-            <div className="space-y-3">
-              <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
-                Nghĩa Tiếng Việt:
-              </span>
-              {MATCH_PAIRS.map((p) => {
-                const isMatched = matchedIds.includes(p.id);
-                const isSelected = selectedVi === p.vi;
+          {/* GAME 2: SCRAMBLE (XẾP CÂU TRẬT TỰ) */}
+          {currentGameId === 'scramble' && (
+            <div className="space-y-6">
+              <div className="p-4 bg-paper-2 border-2 border-ink rounded-2xl space-y-1">
+                <span className="text-xs font-black uppercase text-amber tracking-wider block">
+                  Câu hỏi #{scrambleIdx + 1} / {SCRAMBLE_SENTENCES.length}
+                </span>
+                <p className="text-base font-bold text-ink font-serif italic">
+                  &ldquo;{SCRAMBLE_SENTENCES[scrambleIdx % SCRAMBLE_SENTENCES.length].translation}&rdquo;
+                </p>
+              </div>
 
-                return (
-                  <button
-                    key={p.vi}
-                    disabled={isMatched || !gameActive}
-                    onClick={() => handleViClick(p.vi)}
-                    className={`w-full p-4 rounded-xl border-2 border-ink text-left font-black text-base shadow-brutal-sm transition-all cursor-pointer ${
-                      isMatched
-                        ? 'bg-teal text-white border-teal opacity-60 cursor-not-allowed'
-                        : isSelected
-                        ? 'bg-amber text-ink scale-[1.02] shadow-brutal'
-                        : 'bg-paper hover:bg-paper-2 text-ink'
-                    }`}
-                  >
-                    {p.vi} {isMatched && '✓'}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+              {/* Khay câu đã ghép */}
+              <div className="space-y-2">
+                <span className="text-xs font-black uppercase text-ink-muted block">
+                  Câu văn của bạn (nhấp vào từ để gỡ bỏ):
+                </span>
+                <div className="min-h-[64px] p-4 bg-paper border-2 border-dashed border-ink rounded-2xl flex flex-wrap gap-2 items-center">
+                  {selectedWords.length === 0 ? (
+                    <span className="text-xs font-mono text-ink-muted">
+                      Nhấp chọn các từ bên dưới theo đúng thứ tự ngữ pháp...
+                    </span>
+                  ) : (
+                    selectedWords.map((word, idx) => (
+                      <button
+                        key={`${word}-${idx}`}
+                        type="button"
+                        onClick={() => handleRemoveWord(word, idx)}
+                        className="px-3 py-1.5 rounded-xl border-2 border-ink bg-amber text-ink font-bold text-sm shadow-brutal-sm hover:bg-red hover:text-white transition-all cursor-pointer"
+                      >
+                        {word} ✕
+                      </button>
+                    ))
+                  )}
+                </div>
+              </div>
 
-          {/* Khi hoàn thành toàn bộ cặp từ */}
-          {matchedIds.length === MATCH_PAIRS.length && (
-            <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl text-center space-y-3 animate-in fade-in duration-200 flex flex-col items-center">
-              <LingLing reaction="trophy" size={90} animate={true} />
-              <span className="text-xl font-black text-ink block font-sans">
-                Tuyệt vời! Bạn đã ghép đúng toàn bộ các cặp từ! (+100 XP)
-              </span>
-              <div className="flex justify-center gap-3">
+              {/* Ngân hàng từ còn lại */}
+              <div className="space-y-2">
+                <span className="text-xs font-black uppercase text-ink-muted block">
+                  Các khối từ vựng khả dụng:
+                </span>
+                <div className="flex flex-wrap gap-2.5 p-4 bg-card border-2 border-ink rounded-2xl min-h-[56px]">
+                  {availableWords.map((word, idx) => (
+                    <button
+                      key={`${word}-${idx}`}
+                      type="button"
+                      onClick={() => handlePickWord(word, idx)}
+                      className="px-3.5 py-1.5 rounded-xl border-2 border-ink bg-paper hover:bg-amber text-ink font-black text-sm shadow-brutal-sm transition-all cursor-pointer"
+                    >
+                      {word}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Nút hành động */}
+              <div className="flex items-center gap-3 pt-2">
                 <button
-                  onClick={handleStartGame}
+                  type="button"
+                  disabled={selectedWords.length === 0 || scrambleStatus === 'correct'}
+                  onClick={handleCheckScramble}
                   className="btn btn-red text-xs font-black shadow-brutal"
                 >
-                  Chơi ván tiếp theo
+                  Kiểm tra câu
                 </button>
                 <button
-                  onClick={() => setActiveTab('hub')}
+                  type="button"
+                  onClick={() => setupScrambleQuestion(scrambleIdx)}
                   className="btn btn-paper text-xs font-black shadow-brutal"
                 >
-                  Về danh sách vé
+                  Xếp lại từ đầu
                 </button>
               </div>
+
+              {/* Phản hồi kết quả */}
+              {scrambleStatus === 'correct' && (
+                <div className="p-4 bg-teal/15 border-2 border-teal rounded-2xl text-teal font-black text-sm flex items-center justify-between">
+                  <span>🎉 Xuất sắc! Bạn đã sắp xếp đúng câu văn! (+30 XP)</span>
+                  <button
+                    type="button"
+                    onClick={handleNextScramble}
+                    className="btn btn-red text-xs font-black shadow-brutal"
+                  >
+                    Câu tiếp theo →
+                  </button>
+                </div>
+              )}
+              {scrambleStatus === 'wrong' && (
+                <div className="p-4 bg-red/15 border-2 border-red rounded-2xl text-red font-black text-sm">
+                  ⚠️ Trật tự câu chưa chính xác. Hãy nhấp gỡ từ và thử lại nhé!
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* GAME 3: FAST TYPING (GÕ PHÍM THẦN TỐC) */}
+          {currentGameId === 'fast-typing' && (
+            <div className="space-y-6">
+              <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl space-y-2 text-center">
+                <span className="text-xs font-mono font-black text-red uppercase tracking-wider block">
+                  TỪ VỰNG #{typingIdx + 1} / {TYPING_WORDS.length}
+                </span>
+                <h3 className="text-3xl font-black text-ink font-serif tracking-wide">
+                  {TYPING_WORDS[typingIdx % TYPING_WORDS.length].word}
+                </h3>
+                <span className="text-sm font-mono text-red block">
+                  {TYPING_WORDS[typingIdx % TYPING_WORDS.length].phonetic}
+                </span>
+                <p className="text-xs font-bold text-ink-soft">
+                  Ý nghĩa: {TYPING_WORDS[typingIdx % TYPING_WORDS.length].vi}
+                </p>
+              </div>
+
+              <form onSubmit={handleTypingSubmit} className="space-y-4 max-w-lg mx-auto">
+                <div className="space-y-1 text-center">
+                  <label htmlFor="typing-input" className="text-xs font-black uppercase text-ink-muted">
+                    Gõ chính xác từ trên vào ô bên dưới và nhấn Enter:
+                  </label>
+                  <input
+                    id="typing-input"
+                    type="text"
+                    value={typingInput}
+                    onChange={(e) => setTypingInput(e.target.value)}
+                    placeholder="Gõ từ vào đây..."
+                    autoFocus
+                    className="w-full text-center text-xl font-mono font-black uppercase tracking-widest p-4 bg-card border-2 border-ink rounded-2xl shadow-brutal focus:outline-none focus:ring-2 focus:ring-red"
+                  />
+                </div>
+
+                <div className="flex justify-center gap-3">
+                  <button type="submit" className="btn btn-red text-sm font-black shadow-brutal">
+                    Xác nhận gõ đúng
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => playSpeech(TYPING_WORDS[typingIdx % TYPING_WORDS.length].word)}
+                    className="btn btn-paper text-sm font-black shadow-brutal flex items-center gap-1.5"
+                  >
+                    <Volume2 className="w-4 h-4 text-teal" /> Nghe phát âm
+                  </button>
+                </div>
+
+                {typingFeedback === 'correct' && (
+                  <div className="p-3 bg-teal/15 border-2 border-teal rounded-xl text-teal font-black text-center text-sm">
+                    ✓ Chính xác! Phản xạ gõ tuyệt vời! (+40 XP)
+                  </div>
+                )}
+                {typingFeedback === 'wrong' && (
+                  <div className="p-3 bg-red/15 border-2 border-red rounded-xl text-red font-black text-center text-sm">
+                    ✗ Chưa đúng chính tả, hãy đối chiếu kỹ từng ký tự và gõ lại!
+                  </div>
+                )}
+              </form>
+            </div>
+          )}
+
+          {/* GAME 4: WORD FILL (ĐIỀN KHUYẾT NGỮ CẢNH) */}
+          {currentGameId === 'word-fill' && (
+            <div className="space-y-6">
+              <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl space-y-3">
+                <span className="text-xs font-black uppercase text-amber tracking-wider block">
+                  Thử thách Điền Khuyết #{clozeIdx + 1} / {CLOZE_QUESTIONS.length}
+                </span>
+                <p className="text-lg font-serif font-black text-ink leading-relaxed">
+                  {CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].sentence}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].options.map((opt) => {
+                  const isSelected = selectedClozeOpt === opt;
+                  const isCorrect = opt === CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].correct;
+                  let btnColor = 'bg-paper hover:bg-paper-2 text-ink';
+                  if (clozeFeedback !== 'idle' && isSelected) {
+                    btnColor = isCorrect ? 'bg-teal text-white border-teal' : 'bg-red text-white border-red';
+                  }
+
+                  return (
+                    <button
+                      key={opt}
+                      type="button"
+                      onClick={() => handleSelectCloze(opt)}
+                      className={`p-4 rounded-xl border-2 border-ink font-mono font-black text-base shadow-brutal-sm text-left transition-all cursor-pointer ${btnColor}`}
+                    >
+                      {opt}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {clozeFeedback !== 'idle' && (
+                <div className="p-4 bg-paper border-2 border-ink rounded-2xl space-y-2">
+                  <p className="text-xs font-bold text-ink">
+                    <strong>Giải thích:</strong> {CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].explanation}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleNextCloze}
+                    className="btn btn-red text-xs font-black shadow-brutal"
+                  >
+                    Câu tiếp theo →
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* GAME 5: LISTENING CHALLENGE (ĐỐ VUI NGHE ÂM) */}
+          {currentGameId === 'listening-challenge' && (
+            <div className="space-y-6 text-center">
+              <div className="p-8 bg-paper-2 border-2 border-ink rounded-2xl space-y-4 max-w-lg mx-auto">
+                <span className="text-xs font-black uppercase text-teal tracking-wider block">
+                  Câu hỏi #{audioIdx + 1} / {AUDIO_CHALLENGES.length}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => playSpeech(AUDIO_CHALLENGES[audioIdx % AUDIO_CHALLENGES.length].audioText)}
+                  className="btn btn-red text-base font-black px-6 py-3 shadow-brutal-md inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <Volume2 className="w-5 h-5" />
+                  <span>Bấm để nghe phát âm</span>
+                </button>
+                <p className="text-xs text-ink-muted">
+                  Nghe kỹ phát âm bản xứ và chọn cặp từ vựng chính xác bên dưới.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                {AUDIO_CHALLENGES[audioIdx % AUDIO_CHALLENGES.length].options.map((opt) => {
+                  const isSelected = selectedAudioOpt === opt.text;
+                  let color = 'bg-card text-ink hover:bg-paper-2';
+                  if (audioFeedback !== 'idle' && isSelected) {
+                    color = opt.isCorrect ? 'bg-teal text-white border-teal' : 'bg-red text-white border-red';
+                  }
+
+                  return (
+                    <button
+                      key={opt.text}
+                      type="button"
+                      onClick={() => handleSelectAudioOpt(opt.text, opt.isCorrect)}
+                      className={`p-4 rounded-xl border-2 border-ink shadow-brutal-sm transition-all cursor-pointer space-y-1 ${color}`}
+                    >
+                      <div className="font-serif font-black text-base">{opt.text}</div>
+                      <div className="text-xs font-medium opacity-90">→ {opt.vi}</div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {audioFeedback !== 'idle' && (
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={handleNextAudio}
+                    className="btn btn-red text-xs font-black shadow-brutal"
+                  >
+                    Thử thách tiếp theo →
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* GAME 6: WORD GUESS (ĐOÁN TỪ 5 CHỮ CÁI) */}
+          {currentGameId === 'word-guess' && (
+            <div className="space-y-6 max-w-md mx-auto text-center">
+              <div className="p-4 bg-paper-2 border-2 border-ink rounded-2xl space-y-1">
+                <span className="text-xs font-mono font-black text-amber uppercase block">
+                  CÂU ĐỐ #{guessIdx + 1} / {FIVE_LETTER_WORDS.length}
+                </span>
+                <p className="text-sm font-bold text-ink font-serif">
+                  Gợi ý: {FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length].hint}
+                </p>
+              </div>
+
+              {/* Bảng các lượt đoán */}
+              <div className="space-y-2">
+                {Array.from({ length: 6 }).map((_, rowIdx) => {
+                  const attempt = guessAttempts[rowIdx] || '';
+                  const targetWord = FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length].word;
+
+                  return (
+                    <div key={rowIdx} className="flex justify-center gap-2">
+                      {Array.from({ length: 5 }).map((__, colIdx) => {
+                        const letter = attempt[colIdx] || '';
+                        let tileBg = 'bg-card border-ink text-ink';
+                        if (attempt) {
+                          if (targetWord[colIdx] === letter) {
+                            tileBg = 'bg-teal text-white border-teal';
+                          } else if (targetWord.includes(letter)) {
+                            tileBg = 'bg-amber text-ink border-ink';
+                          } else {
+                            tileBg = 'bg-ink/20 text-ink-muted border-ink/40';
+                          }
+                        }
+
+                        return (
+                          <div
+                            key={colIdx}
+                            className={`w-12 h-12 border-2 rounded-xl flex items-center justify-center text-xl font-mono font-black shadow-brutal-sm ${tileBg}`}
+                          >
+                            {letter}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Ô nhập dự đoán */}
+              {guessStatus === 'playing' && (
+                <form onSubmit={handleGuessSubmit} className="space-y-3">
+                  <input
+                    type="text"
+                    maxLength={5}
+                    value={currentGuess}
+                    onChange={(e) => setCurrentGuess(e.target.value.toUpperCase())}
+                    placeholder="Nhập 5 chữ cái..."
+                    className="w-full text-center text-xl font-mono font-black uppercase tracking-widest p-3 bg-card border-2 border-ink rounded-xl shadow-brutal focus:outline-none focus:ring-2 focus:ring-amber"
+                  />
+                  <button type="submit" className="btn btn-red text-xs font-black shadow-brutal w-full">
+                    Đoán từ này
+                  </button>
+                </form>
+              )}
+
+              {guessStatus === 'won' && (
+                <div className="p-4 bg-teal/15 border-2 border-teal rounded-2xl text-teal font-black text-sm space-y-2">
+                  <div>🎉 Xuất sắc! Bạn đã đoán đúng từ khóa 5 chữ cái! (+50 XP)</div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const next = (guessIdx + 1) % FIVE_LETTER_WORDS.length;
+                      setGuessIdx(next);
+                      setCurrentGuess('');
+                      setGuessAttempts([]);
+                      setGuessStatus('playing');
+                    }}
+                    className="btn btn-red text-xs font-black shadow-brutal"
+                  >
+                    Đố từ tiếp theo →
+                  </button>
+                </div>
+              )}
+              {guessStatus === 'lost' && (
+                <div className="p-4 bg-red/15 border-2 border-red rounded-2xl text-red font-black text-sm space-y-2">
+                  <div>
+                    Hết lượt! Đáp án chính xác là: <strong>{FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length].word}</strong>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCurrentGuess('');
+                      setGuessAttempts([]);
+                      setGuessStatus('playing');
+                    }}
+                    className="btn btn-paper text-xs font-black shadow-brutal"
+                  >
+                    Thử lại ván này
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -176,7 +176,13 @@ export default function AnalyticsPage() {
 
           <div className="flex flex-col items-center flex-shrink-0">
             <div className="speech-bubble speech-bubble-bottom mb-2 text-xs font-black text-ink">
-              Điểm tổng kết tuần đạt <span className="text-red">{animatedScore}/100</span>! Phong độ đỉnh cao!
+              {loading ? (
+                <span>Đang tổng hợp điểm số từ các bài luyện tập...</span>
+              ) : (
+                <>
+                  Điểm tổng kết tuần đạt <span className="text-red">{animatedScore}/100</span>! Phong độ đỉnh cao!
+                </>
+              )}
             </div>
             <LingLing reaction="flex" size={125} />
           </div>
@@ -195,11 +201,21 @@ export default function AnalyticsPage() {
               <Award className="w-4 h-4" />
             </span>
           </div>
-          <div className="text-4xl font-black text-ink font-mono">
-            {animatedScore}<span className="text-lg font-bold text-ink-muted">/100</span>
+          <div className="text-4xl font-black text-ink font-mono min-h-[44px] flex items-center">
+            {loading ? (
+              <div className="h-9 w-28 bg-ink/10 rounded-lg animate-pulse" />
+            ) : (
+              <>
+                {animatedScore}<span className="text-lg font-bold text-ink-muted">/100</span>
+              </>
+            )}
           </div>
           <span className="text-xs font-bold text-teal block">
-            Trình độ ước tính: Bậc {estimatedCEFR}
+            {loading ? (
+              <span className="inline-block h-3.5 w-36 bg-teal/15 rounded animate-pulse" />
+            ) : (
+              `Trình độ ước tính: Bậc ${estimatedCEFR}`
+            )}
           </span>
         </div>
 
@@ -213,8 +229,12 @@ export default function AnalyticsPage() {
               <Clock className="w-4 h-4" />
             </span>
           </div>
-          <div className="text-4xl font-black text-teal font-mono">
-            {Math.floor(animatedMinutes / 60)}h {animatedMinutes % 60}p
+          <div className="text-4xl font-black text-teal font-mono min-h-[44px] flex items-center">
+            {loading ? (
+              <div className="h-9 w-32 bg-teal/10 rounded-lg animate-pulse" />
+            ) : (
+              `${Math.floor(animatedMinutes / 60)}h ${animatedMinutes % 60}p`
+            )}
           </div>
           <span className="text-xs font-bold text-ink-soft block">
             Tổng số phút tích lũy trên hệ thống
@@ -231,8 +251,12 @@ export default function AnalyticsPage() {
               <Calendar className="w-4 h-4" />
             </span>
           </div>
-          <div className="text-4xl font-black text-ink font-mono">
-            6 / 7 ngày
+          <div className="text-4xl font-black text-ink font-mono min-h-[44px] flex items-center">
+            {loading ? (
+              <div className="h-9 w-24 bg-amber/15 rounded-lg animate-pulse" />
+            ) : (
+              '6 / 7 ngày'
+            )}
           </div>
           <span className="text-xs font-bold text-ink-soft block">
             Đã duy trì lịch học đều đặn trong tuần

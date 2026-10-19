@@ -342,7 +342,11 @@ export function DailyChallenge() {
             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-paper rounded-xl border-2 border-ink text-xs font-mono font-bold text-ink shadow-brutal-sm">
               <Clock className="w-3.5 h-3.5 text-teal" />
               <span>Đổi ngày sau:</span>
-              <span className="text-red font-black">{timeLeftToMidnight || '--:--:--'}</span>
+              {timeLeftToMidnight ? (
+                <span className="text-red font-black">{timeLeftToMidnight}</span>
+              ) : (
+                <span className="inline-block w-16 h-4 bg-ink/10 rounded animate-pulse align-middle" />
+              )}
             </div>
             <span className="text-[10px] text-ink-muted">Múi giờ: Asia/Ho_Chi_Minh</span>
           </div>
