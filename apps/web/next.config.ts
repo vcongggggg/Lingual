@@ -1,13 +1,17 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
-  transpilePackages: [
-    "@linguaflow/ui",
-    "@linguaflow/config",
-    "@linguaflow/contracts",
-    "@linguaflow/domain",
-  ],
+  output: process.platform !== 'win32' || process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
+  outputFileTracingRoot: path.join(__dirname, '../../'),
+  transpilePackages: ['@linguaflow/contracts', '@linguaflow/domain'],
+  images: {
+    unoptimized: true,
+  },
+  devIndicators: {
+    buildActivity: false,
+    appIsrStatus: false,
+  },
 };
 
 export default nextConfig;
-

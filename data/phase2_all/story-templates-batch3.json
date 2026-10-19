@@ -1,0 +1,1802 @@
+[
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-26",
+    "paragraphs": [
+      "Sáng nay trường mở ngày hội, Bò LingLing đến sớm với sự [0] hiếm thấy. Bò mang theo một chiếc chuông cổ đeo lủng lẳng trên cổ.",
+      "Ở gian hàng ném vòng, LingLing ném [1] mà chẳng trúng cái nào. Mấy bạn nhỏ cười bò, nhưng Bò chỉ nhún vai: \"Tại vòng nhỏ quá!\"",
+      "Bò quyết định gỡ gạc ở cuộc thi ăn bánh. LingLing [2] một hơi hết ba cái bánh bao, rồi [3] với vẻ mặt đầy tự hào.",
+      "Cuối ngày, Bò nhận giải \"thí sinh vui vẻ nhất\" và ôm cúp về trong niềm [4] khôn tả."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Một chiếc chuông cổ",
+        "explanation": "Đoạn 1 kể Bò mang theo một chiếc chuông cổ đeo lủng lẳng trên cổ.",
+        "options": [
+          "Một chiếc chuông cổ",
+          "Một chiếc mũ nồi",
+          "Một bó hoa tươi",
+          "Một cái loa phường"
+        ],
+        "question": "LingLing mang theo gì đến ngày hội?"
+      },
+      {
+        "correctAnswer": "Thí sinh vui vẻ nhất",
+        "explanation": "Đoạn 4 kể cuối ngày Bò nhận giải \"thí sinh vui vẻ nhất\".",
+        "options": [
+          "Thí sinh vui vẻ nhất",
+          "Người ăn nhanh nhất",
+          "Vua ném vòng",
+          "Học sinh chăm ngoan"
+        ],
+        "question": "Cuối ngày, Bò nhận được giải gì?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "hừng hực",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "đôi dép",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 1
+      },
+      {
+        "example": "nuốt",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "ợ hơi",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "vinh quang",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Ngày Hội Trường Của Bò LingLing",
+    "titleVi": "Ngày Hội Trường Của Bò LingLing",
+    "topic": "school-fair",
+    "verified": false
+  },
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-27",
+    "paragraphs": [
+      "Chiều gió lồng lộng, Bò LingLing mang diều ra đồng với niềm [0] vô bờ. Chiếc diều của Bò có hình con cá chép đỏ au.",
+      "LingLing chạy thật nhanh, nhưng diều cứ [1] xuống đất. Bò bướng bỉnh không chịu bỏ cuộc.",
+      "Nghe bác nông dân mách nước, Bò [2] ngay rồi [3] khi thấy diều bay vút lên trời cao.",
+      "Chiếc diều bay cao nhất đồng hôm ấy, và Bò về nhà với sự [4] của cả xóm."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Con cá chép đỏ",
+        "explanation": "Đoạn 1 kể chiếc diều của Bò có hình con cá chép đỏ au.",
+        "options": [
+          "Con cá chép đỏ",
+          "Con rồng xanh",
+          "Con bướm vàng",
+          "Con chim ưng"
+        ],
+        "question": "Chiếc diều của LingLing có hình gì?"
+      },
+      {
+        "correctAnswer": "Bác nông dân",
+        "explanation": "Đoạn 3 kể bác nông dân mách nước cho Bò chạy ngược gió.",
+        "options": [
+          "Bác nông dân",
+          "Cô giáo chủ nhiệm",
+          "Mẹ của Bò",
+          "Bạn thỏ trắng"
+        ],
+        "question": "Ai đã mách nước cho Bò cách thả diều?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "phấn khích",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "cắm đầu",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 1
+      },
+      {
+        "example": "làm theo",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "hét toáng lên",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "ngưỡng mộ",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Bò LingLing Thả Diều",
+    "titleVi": "Bò LingLing Thả Diều",
+    "topic": "kite-flying",
+    "verified": false
+  },
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-28",
+    "paragraphs": [
+      "Trời đổ mưa rào, Bò LingLing đứng dưới mái hiên với vẻ [0]. Bò quên mang ô mà bướng bỉnh không chịu vào nhà.",
+      "Mưa càng lúc càng to, LingLing đành [1] một tàu lá chuối to làm ô che đầu. Trông Bò lúc này như một cây nấm di động.",
+      "Bỗng Bò nảy ra ý hay: tắm mưa luôn cho rồi! LingLing [2] giữa sân, rồi [3] theo điệu nhạc của tiếng mưa rơi.",
+      "Mưa tạnh, cầu vồng hiện ra, và Bò cười khì vì ngày mưa [4] hơn Bò tưởng tượng."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Tàu lá chuối",
+        "explanation": "Đoạn 2 kể LingLing lấy một tàu lá chuối to làm ô che đầu.",
+        "options": [
+          "Tàu lá chuối",
+          "Chiếc ô",
+          "Tờ báo cũ",
+          "Mũ bảo hiểm"
+        ],
+        "question": "Bò đã dùng gì để che đầu khi mưa to?"
+      },
+      {
+        "correctAnswer": "Cầu vồng",
+        "explanation": "Đoạn 4 kể mưa tạnh, cầu vồng hiện ra.",
+        "options": [
+          "Cầu vồng",
+          "Đàn chim én",
+          "Máy bay",
+          "Ông trăng"
+        ],
+        "question": "Sau cơn mưa, Bò nhìn thấy gì trên trời?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "buồn thiu",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 0
+      },
+      {
+        "example": "bẻ",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 1
+      },
+      {
+        "example": "nhảy tưng tưng",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "hát nghêu ngao",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "vui nhộn",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Ngày Mưa Của Bò LingLing",
+    "titleVi": "Ngày Mưa Của Bò LingLing",
+    "topic": "rainy-day",
+    "verified": false
+  },
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-29",
+    "paragraphs": [
+      "Đầu phố vừa mở tiệm kem mới, Bò LingLing xếp hàng từ sáng với sự [0]. Bò nghe đồn kem ở đây ngon nhất vùng.",
+      "Đến lượt mình, LingLing gọi một ly kem [1] ba tầng. Cô chủ quán tròn mắt vì chưa thấy ai gọi nhiều đến thế.",
+      "Bò [2] một miếng thật to, rồi [3] vì lạnh buốt cả răng. Nhưng Bò bướng bỉnh vẫn không chịu dừng lại.",
+      "Ăn xong, Bò quyết định xin làm nhân viên thử kem, với mức lương là một thùng kem [4] mỗi ngày."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Ba tầng",
+        "explanation": "Đoạn 2 kể LingLing gọi một ly kem ba tầng.",
+        "options": [
+          "Ba tầng",
+          "Một tầng",
+          "Hai tầng",
+          "Năm tầng"
+        ],
+        "question": "LingLing đã gọi ly kem mấy tầng?"
+      },
+      {
+        "correctAnswer": "Nhân viên thử kem",
+        "explanation": "Đoạn 4 kể Bò quyết định xin làm nhân viên thử kem.",
+        "options": [
+          "Nhân viên thử kem",
+          "Người giao kem",
+          "Thợ làm kem",
+          "Bảo vệ tiệm"
+        ],
+        "question": "Bò xin làm công việc gì ở tiệm kem?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "kiên nhẫn",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "siêu to",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "cắn",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "rùng mình",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "miễn phí",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Tiệm Kem Mới Của Bò LingLing",
+    "titleVi": "Tiệm Kem Mới Của Bò LingLing",
+    "topic": "ice-cream-shop",
+    "verified": false
+  },
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-30",
+    "paragraphs": [
+      "Cuối tuần, Bò LingLing rủ bạn đi picnic với tâm trạng [0]. Bò chuẩn bị một giỏ đồ ăn to đùng.",
+      "Vừa bày bánh ra, một đàn ong bị mùi mật ong [1] tới. Cả nhóm hốt hoảng bỏ chạy tán loạn.",
+      "Chỉ có LingLing bướng bỉnh ở lại giữ đồ ăn. Bò [2] tay lia lịa, rồi [3] khi bị ong đốt vào mũi.",
+      "Mũi Bò sưng vù như quả cà chua, cả nhóm cười lăn vì sự [4] của Bò."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Vì mùi mật ong",
+        "explanation": "Đoạn 2 kể đàn ong bị mùi mật ong dụ tới.",
+        "options": [
+          "Vì mùi mật ong",
+          "Vì mùi hoa thơm",
+          "Vì tiếng nhạc ồn ào",
+          "Vì Bò gọi chúng tới"
+        ],
+        "question": "Vì sao đàn ong bay tới chỗ picnic?"
+      },
+      {
+        "correctAnswer": "Vào mũi",
+        "explanation": "Đoạn 3 kể Bò bị ong đốt vào mũi.",
+        "options": [
+          "Vào mũi",
+          "Vào tai",
+          "Vào chân",
+          "Vào đuôi"
+        ],
+        "question": "Bò bị ong đốt vào chỗ nào?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "phấn khởi",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 0
+      },
+      {
+        "example": "dụ dỗ",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 1
+      },
+      {
+        "example": "vung",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "khóc ré lên",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "gan dạ",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Buổi Picnic Bị Ong Đốt Của Bò LingLing",
+    "titleVi": "Buổi Picnic Bị Ong Đốt Của Bò LingLing",
+    "topic": "picnic",
+    "verified": false
+  },
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-31",
+    "paragraphs": [
+      "Đêm rằm tháng Tám, Bò LingLing đeo mặt nạ [0] đi rước đèn. Trăng tròn vành vạnh, sáng như ban ngày.",
+      "Đoàn rước đèn đi qua, LingLing múa lân với những bước [1] khiến ai cũng trầm trồ. Bò tự hào ưỡn ngực ra oai.",
+      "Đến giờ phá cỗ, Bò [2] một lèo ba cái bánh trung thu, rồi [3] vì no quá không thở nổi.",
+      "Cuối đêm, Bò ước một điều [4] dưới ánh trăng, rồi lăn ra ngủ ngay giữa sân đình."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Đêm rằm tháng Tám",
+        "explanation": "Đoạn 1 kể đêm rằm tháng Tám, Bò đeo mặt nạ đi rước đèn.",
+        "options": [
+          "Đêm rằm tháng Tám",
+          "Đêm giao thừa",
+          "Đêm Giáng sinh",
+          "Đêm Halloween"
+        ],
+        "question": "Đêm hội diễn ra vào thời điểm nào?"
+      },
+      {
+        "correctAnswer": "Ba cái",
+        "explanation": "Đoạn 3 kể Bò ăn một lèo ba cái bánh trung thu.",
+        "options": [
+          "Ba cái",
+          "Một cái",
+          "Năm cái",
+          "Mười cái"
+        ],
+        "question": "Bò đã ăn mấy cái bánh trung thu?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "ngộ nghĩnh",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 0
+      },
+      {
+        "example": "điêu luyện",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "nuốt",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "nằm vật ra",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "thầm kín",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Đêm Hội Trung Thu Của Bò LingLing",
+    "titleVi": "Đêm Hội Trung Thu Của Bò LingLing",
+    "topic": "mid-autumn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-32",
+    "paragraphs": [
+      "Nghe tin siêu thị giảm giá 50%, Bò LingLing phi như bay tới với sự [0]. Hôm nay Bò quyết tâm mua sắm thả ga.",
+      "Vừa vào cửa, LingLing đã ôm một xe đầy [1]. Cô nhân viên nhìn Bò mà toát mồ hôi.",
+      "Đến quầy thanh toán, Bò phát hiện ví mỏng dính. LingLing đành [2] một nửa số hàng, rồi [3] khi nhìn chúng được mang đi cất.",
+      "Ra về với nửa xe hàng, Bò tự an ủi bằng sự [4] rằng tháng sau lại có đợt giảm giá."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "50%",
+        "explanation": "Đoạn 1 kể siêu thị giảm giá 50%.",
+        "options": [
+          "50%",
+          "10%",
+          "30%",
+          "70%"
+        ],
+        "question": "Siêu thị giảm giá bao nhiêu phần trăm?"
+      },
+      {
+        "correctAnswer": "Vì ví mỏng dính",
+        "explanation": "Đoạn 3 kể đến quầy thanh toán, Bò phát hiện ví mỏng dính nên đành trả lại một nửa số hàng.",
+        "options": [
+          "Vì ví mỏng dính",
+          "Vì hàng đã hết hạn",
+          "Vì xe đẩy bị hỏng",
+          "Vì siêu thị đóng cửa"
+        ],
+        "question": "Vì sao Bò phải trả lại một nửa số hàng?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "hừng hực",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "bánh kẹo",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 1
+      },
+      {
+        "example": "trả lại",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "thở dài",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "lạc quan",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Ngày Siêu Thị Giảm Giá Của Bò LingLing",
+    "titleVi": "Ngày Siêu Thị Giảm Giá Của Bò LingLing",
+    "topic": "supermarket-sale",
+    "verified": false
+  },
+  {
+    "cefrLevel": "A2",
+    "id": "tmpl-33",
+    "paragraphs": [
+      "Trường tổ chức cuộc thi vẽ tranh, Bò LingLing đăng ký ngay với niềm [0]. Bò tự tin mình là họa sĩ tài ba.",
+      "Chủ đề năm nay là \"Ước mơ của em\". LingLing vẽ một bãi cỏ [1] với hàng trăm bông hoa đủ màu.",
+      "Nhưng Bò lỡ tay làm đổ cả lọ mực. LingLing [2] trong hoảng loạn, rồi [3] vết mực loang thành một chú bò sữa ngộ nghĩnh.",
+      "Ban giám khảo bật cười và trao giải sáng tạo cho sự [4] của Bò."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Ước mơ của em",
+        "explanation": "Đoạn 2 kể chủ đề năm nay là \"Ước mơ của em\".",
+        "options": [
+          "Ước mơ của em",
+          "Quê hương tôi",
+          "Biển xanh vẫy gọi",
+          "Gia đình của em"
+        ],
+        "question": "Chủ đề cuộc thi vẽ năm nay là gì?"
+      },
+      {
+        "correctAnswer": "Hàng trăm bông hoa đủ màu",
+        "explanation": "Đoạn 2 kể LingLing vẽ một bãi cỏ với hàng trăm bông hoa đủ màu.",
+        "options": [
+          "Hàng trăm bông hoa đủ màu",
+          "Một đàn cừu trắng",
+          "Ngôi nhà gỗ nhỏ",
+          "Dòng sông xanh"
+        ],
+        "question": "Ngoài bãi cỏ, Bò còn vẽ thêm gì?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "tự tin",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "xanh mướt",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "cuống cuồng",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "hô biến",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "nhanh trí",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Cuộc Thi Vẽ Tranh Của Bò LingLing",
+    "titleVi": "Cuộc Thi Vẽ Tranh Của Bò LingLing",
+    "topic": "drawing-contest",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-34",
+    "paragraphs": [
+      "Con đường dẫn vào làng bỗng trở nên đông vui khi cửa hàng sửa xe đạp của Bò LingLing khai trương. Ngay ngày đầu tiên, một vị khách đã mang đến chiếc xe [0] kêu cót két như đang hát cải lương.",
+      "LingLing, với vẻ mặt bướng bỉnh đặc trưng, tuyên bố rằng không có chiếc xe nào là không sửa được, kể cả khi nó chỉ còn mỗi cái khung. Nó vừa làm vừa [1] những bài hát đồng quê mà chỉ bò mới hiểu.",
+      "Điều làm cửa hàng này nổi tiếng là dịch vụ 'sửa nhanh lấy ngay trong mười phút'. Có lần, một bác nông dân đến lấy xe nhưng xe vẫn chưa xong, thế là Bò đành [2] bác uống sữa tươi do chính mình 'sản xuất' để bù đắp thời gian chờ đợi.",
+      "Đến cuối tuần, cửa hàng của Bò đã nhận sửa gần hai mươi chiếc xe. Chủ xe nào cũng hài lòng, vì ngoài tiền công [3], họ còn được tặng kèm một tràng cười sảng khoái. Trước khi ra về, Bò không quên dặn dò: 'Đi xe thì nhớ [4] thắng trước khi qua đường nhé!'"
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Sửa nhanh lấy ngay trong mười phút",
+        "explanation": "Đáp án nằm ở đoạn 3: cửa hàng nổi tiếng với dịch vụ 'sửa nhanh lấy ngay trong mười phút'.",
+        "options": [
+          "Sửa nhanh lấy ngay trong mười phút",
+          "Bán xe đạp mới với giá rẻ",
+          "Dạy sửa xe miễn phí cho trẻ em",
+          "Tặng sữa tươi cho mọi khách hàng"
+        ],
+        "question": "Cửa hàng của Bò LingLing nổi tiếng nhờ dịch vụ gì?"
+      },
+      {
+        "correctAnswer": "Mời bác uống sữa tươi để bù thời gian chờ",
+        "explanation": "Đáp án nằm ở đoạn 3: Bò mời bác uống sữa tươi do chính mình 'sản xuất' để bù đắp thời gian chờ đợi.",
+        "options": [
+          "Bảo bác hôm khác quay lại",
+          "Mời bác uống sữa tươi để bù thời gian chờ",
+          "Giảm một nửa tiền công sửa xe",
+          "Cho bác mượn xe khác đi tạm"
+        ],
+        "question": "Khi xe của bác nông dân chưa sửa xong, Bò đã làm gì?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "xe đạp cộc cạch",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "ngâm nga",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 1
+      },
+      {
+        "example": "nài nỉ",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "rẻ bèo",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 3
+      },
+      {
+        "example": "bóp",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The Bike Repair Shop",
+    "titleVi": "Cửa hàng sửa xe đạp",
+    "topic": "Cửa hàng sửa xe đạp",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-35",
+    "paragraphs": [
+      "Tháng trước, Bò LingLing quyết định thành lập một câu lạc bộ nhiếp ảnh với cái tên rất kêu: 'Ống kính [0]'. Buổi họp đầu tiên chỉ có đúng ba thành viên: Bò, một con gà trống và một chú mèo lười.",
+      "LingLing tự phong mình làm chủ nhiệm với lý do rất thuyết phục: 'Tao có đôi mắt [1] nhất ở đây, nhìn cái gì cũng thấy đẹp'. Mỗi tuần, cả nhóm lại kéo nhau ra cánh đồng để săn những khoảnh khắc hoàng hôn.",
+      "Khó khăn lớn nhất là Bò không bao giờ chịu đứng yên để chụp ảnh. Lần nào bấm máy, nó lại [2] trước ống kính hoặc nháy mắt một cách rất điệu đà. Mèo lười đề nghị phạt nó một ly sữa mỗi lần phá đám, và Bò đồng ý ngay lập tức.",
+      "Sau một tháng, câu lạc bộ đã có hẳn một bộ sưu tập ảnh mang tên 'Mùa gặt'. Điều bất ngờ là bức ảnh đẹp nhất lại do gà trống chụp: Bò đang [3] dưới gốc cây, miệng còn ngậm cọng [4]."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Bò, gà trống và mèo lười",
+        "explanation": "Đáp án nằm ở đoạn 1: buổi họp đầu tiên có Bò, một con gà trống và một chú mèo lười.",
+        "options": [
+          "Bò, gà trống và mèo lười",
+          "Bò, trâu và dê",
+          "Bò, gà mái và chó đốm",
+          "Bò và hai người nông dân"
+        ],
+        "question": "Ba thành viên đầu tiên của câu lạc bộ là những ai?"
+      },
+      {
+        "correctAnswer": "Do gà trống chụp",
+        "explanation": "Đáp án nằm ở đoạn 4: bức ảnh đẹp nhất do gà trống chụp, ghi lại cảnh Bò đang ngủ dưới gốc cây.",
+        "options": [
+          "Do Bò LingLing tự chụp",
+          "Do mèo lười chụp",
+          "Do gà trống chụp",
+          "Do bác nông dân chụp"
+        ],
+        "question": "Bức ảnh đẹp nhất của bộ sưu tập 'Mùa gặt' do ai chụp?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "sữa tươi",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "long lanh",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "lè lưỡi",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "ngáy khò khò",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "cỏ khô",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The Photography Club",
+    "titleVi": "Câu lạc bộ nhiếp ảnh",
+    "topic": "Câu lạc bộ nhiếp ảnh",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-36",
+    "paragraphs": [
+      "Sau nhiều năm tiết kiệm, Bò LingLing mở một homestay nhỏ ngay cạnh cánh đồng cỏ. Tên của nó là 'Nhà nghỉ [0]', còn khẩu hiệu quảng cáo là: 'Ngủ ngon như bò, dậy sớm như gà'.",
+      "Phòng ốc ở đây rất đơn giản nhưng sạch sẽ và ấm cúng. Mỗi sáng, khách được đánh thức bằng tiếng 'mòòò' đầy [1] của chủ nhà, kèm theo một ly sữa nóng hổi đặt ngay trước cửa phòng.",
+      "Điểm đặc biệt khiến ai cũng nhớ mãi là bữa tối. Bò tự tay nấu món cỏ [2] theo công thức gia truyền ba đời, và khách nào ăn hết đĩa sẽ được tặng một chiếc chuông cổ đeo rất kêu.",
+      "Có một vị khách thành phố ở lại cả tuần chỉ vì mê giọng kể chuyện của Bò. Đêm nào Bò cũng kể chuyện cổ tích, mà nhân vật chính lúc nào cũng là một chú bò [3] và [4]."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "'Ngủ ngon như bò, dậy sớm như gà'",
+        "explanation": "Đáp án nằm ở đoạn 1: khẩu hiệu quảng cáo của homestay là 'Ngủ ngon như bò, dậy sớm như gà'.",
+        "options": [
+          "'Ngủ ngon như bò, dậy sớm như gà'",
+          "'Đến là mê, ở là phê'",
+          "'Rẻ nhất vùng, ngon nhất làng'",
+          "'Homestay của bò, niềm vui của bạn'"
+        ],
+        "question": "Khẩu hiệu quảng cáo của homestay là gì?"
+      },
+      {
+        "correctAnswer": "Một chiếc chuông cổ đeo rất kêu",
+        "explanation": "Đáp án nằm ở đoạn 3: khách nào ăn hết đĩa sẽ được tặng một chiếc chuông cổ đeo rất kêu.",
+        "options": [
+          "Một ly sữa nóng hổi",
+          "Một chiếc chuông cổ đeo rất kêu",
+          "Một đêm nghỉ miễn phí",
+          "Một cuốn truyện cổ tích"
+        ],
+        "question": "Khách ăn hết đĩa trong bữa tối được tặng gì?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "bốn vó",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "nhiệt tình",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "xào tỏi",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 2
+      },
+      {
+        "example": "thông minh",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 3
+      },
+      {
+        "example": "tốt bụng",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "LingLing's Homestay",
+    "titleVi": "Homestay của Bò",
+    "topic": "Homestay của Bò",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-37",
+    "paragraphs": [
+      "Con phố nhỏ xôn xao hẳn lên khi tiệm may 'Kim [0]' của Bò LingLing khai trương. Bò tuyên bố sẽ may quần áo đẹp cho tất cả mọi người, từ người cho đến... bò.",
+      "Ngày đầu tiên, một cô gái mang đến tấm vải hoa nhờ may váy dự tiệc. LingLing đo đạc rất [1], vừa đo vừa lẩm bẩm những con số mà chỉ mình nó hiểu.",
+      "Ba ngày sau, chiếc váy hoàn thành nhưng có một vấn đề nhỏ: nó vừa vặn với cô gái, nhưng lại có thêm hai cái [2] ở phía sau lưng. Bò giải thích tỉnh bơ: 'Đó là chỗ để gắn cánh, phòng khi cô muốn bay'.",
+      "Thay vì nổi giận, cô gái bật cười thành tiếng rồi đặt may thêm ba bộ nữa. Từ đó, tiệm may của Bò nổi tiếng khắp vùng với phong cách [3] không đụng hàng, và Bò [4] với đống đơn đặt hàng từ sáng đến tối."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Để gắn cánh, phòng khi cô gái muốn bay",
+        "explanation": "Đáp án nằm ở đoạn 3: Bò giải thích tỉnh bơ rằng đó là chỗ để gắn cánh, phòng khi cô muốn bay.",
+        "options": [
+          "Để gắn cánh, phòng khi cô gái muốn bay",
+          "Để thoáng khí cho mùa hè",
+          "Để treo phụ kiện trang trí",
+          "Để chiếc váy dễ mặc hơn"
+        ],
+        "question": "Bò giải thích hai chi tiết lạ sau lưng chiếc váy dùng để làm gì?"
+      },
+      {
+        "correctAnswer": "Bật cười rồi đặt may thêm ba bộ nữa",
+        "explanation": "Đáp án nằm ở đoạn 4: cô gái bật cười thành tiếng rồi đặt may thêm ba bộ nữa.",
+        "options": [
+          "Nổi giận và đòi tiền lại",
+          "Bật cười rồi đặt may thêm ba bộ nữa",
+          "Mang váy đi sửa ở tiệm khác",
+          "Không bao giờ quay lại tiệm"
+        ],
+        "question": "Phản ứng của cô gái khi nhận chiếc váy lỗi là gì?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "vàng",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "cẩn thận",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "lỗ thủng",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 2
+      },
+      {
+        "example": "độc lạ",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 3
+      },
+      {
+        "example": "quay cuồng",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The New Tailor Shop",
+    "titleVi": "Tiệm may mới mở",
+    "topic": "Tiệm may mới mở",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-38",
+    "paragraphs": [
+      "Sáu giờ sáng mỗi ngày, bãi cỏ ven sông lại rộn ràng tiếng cười vì lớp yoga của Bò LingLing. Học viên đủ mọi lứa tuổi, ai cũng ao ước có một cơ thể [0] như Bò.",
+      "Bài tập đầu tiên là tư thế 'cái cây'. Bò đứng một chân vững như bàn thạch, trong khi các học viên thì [1] như sắp ngã. Bò an ủi: 'Ngã cũng là một cách để gần mặt đất hơn'.",
+      "Giữa buổi, Bò hướng dẫn bài tập thở. Nó hít vào thật sâu, thở ra thật chậm, và tiếng thở của nó [2] đến mức chim chóc cũng phải im lặng lắng nghe.",
+      "Kết thúc buổi tập, mọi người ngồi thiền trong im lặng tuyệt đối. Chỉ có Bò là không thiền được lâu vì bụng nó cứ [3] réo ầm ĩ, và nó đành thú nhận: 'Yoga buổi sáng làm bò [4]!'"
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Sáu giờ sáng, ở bãi cỏ ven sông",
+        "explanation": "Đáp án nằm ở đoạn 1: lớp yoga họp sáu giờ sáng mỗi ngày ở bãi cỏ ven sông.",
+        "options": [
+          "Sáu giờ sáng, ở bãi cỏ ven sông",
+          "Năm giờ chiều, ở sân đình làng",
+          "Bảy giờ tối, trong nhà văn hóa",
+          "Tám giờ sáng, trên sân thượng"
+        ],
+        "question": "Lớp yoga của Bò họp lúc mấy giờ và ở đâu?"
+      },
+      {
+        "correctAnswer": "Vì bụng réo ầm ĩ do đói",
+        "explanation": "Đáp án nằm ở đoạn 4: bụng Bò cứ réo ầm ĩ vì đói nên nó không thiền được lâu.",
+        "options": [
+          "Vì muỗi đốt quá nhiều",
+          "Vì bụng réo ầm ĩ do đói",
+          "Vì có điện thoại gọi đến",
+          "Vì trời đổ mưa bất chợt"
+        ],
+        "question": "Vì sao Bò không ngồi thiền được lâu?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "dẻo dai",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 0
+      },
+      {
+        "example": "lảo đảo",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 1
+      },
+      {
+        "example": "đều đặn",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 2
+      },
+      {
+        "example": "sôi sùng sục",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "đói meo",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "Morning Yoga Class",
+    "titleVi": "Lớp yoga buổi sáng",
+    "topic": "Lớp yoga buổi sáng",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-39",
+    "paragraphs": [
+      "Mùa hè này, bãi biển Đá Nhảy có thêm một đội cứu hộ rất đặc biệt do Bò LingLing đứng đầu. Đồng phục của đội là chiếc áo phao màu [0] in hình bốn cái vó.",
+      "Mỗi sáng, cả đội đều tập bơi và diễn tập cứu người đuối nước. Bò bơi rất giỏi nhờ thân hình [1], nhưng mỗi lần lên bờ nó lại lắc mình làm nước văng tung tóe khắp nơi.",
+      "Một buổi chiều, bỗng có tiếng kêu cứu từ phía xa. Bò [2] xuống nước, bơi nhanh như một chiếc ca nô. Hóa ra 'nạn nhân' chỉ là một chú cua bị mắc kẹt trong chiếc xô nhựa.",
+      "Dù là cứu người hay cứu cua, Bò đều làm việc rất [3]. Cuối mùa hè, đội cứu hộ được tặng bằng khen, và Bò tự hào treo nó ngay cạnh tấm ảnh [4] của mình."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Một chú cua mắc kẹt trong xô nhựa",
+        "explanation": "Đáp án nằm ở đoạn 3: 'nạn nhân' hóa ra chỉ là một chú cua bị mắc kẹt trong chiếc xô nhựa.",
+        "options": [
+          "Một em bé bị sóng cuốn",
+          "Một chú cua mắc kẹt trong xô nhựa",
+          "Một cụ già bị chuột rút",
+          "Một chú chó rơi xuống nước"
+        ],
+        "question": "'Nạn nhân' trong vụ cứu hộ đáng nhớ nhất là ai?"
+      },
+      {
+        "correctAnswer": "Một bằng khen",
+        "explanation": "Đáp án nằm ở đoạn 4: cuối mùa hè, đội cứu hộ được tặng bằng khen.",
+        "options": [
+          "Một chiếc cúp vàng",
+          "Một bằng khen",
+          "Một chuyến du lịch miễn phí",
+          "Một khoản tiền thưởng lớn"
+        ],
+        "question": "Cuối mùa hè, đội cứu hộ nhận được phần thưởng gì?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "đỏ chói",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 0
+      },
+      {
+        "example": "tròn trịa",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "lao vút",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "tận tâm",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 3
+      },
+      {
+        "example": "oai phong",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The Beach Rescue Team",
+    "titleVi": "Đội cứu hộ bãi biển",
+    "topic": "Đội cứu hộ bãi biển",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-40",
+    "paragraphs": [
+      "Trong con hẻm nhỏ có một quán sách cũ tên là 'Góc [0]', chủ quán chính là Bò LingLing. Bò đã sưu tầm sách cũ suốt mười năm, và giờ mở quán để chia sẻ niềm đam mê với mọi người.",
+      "Quán có hơn hai nghìn đầu sách, xếp ngay ngắn trên những kệ gỗ [1]. Khách đến có thể đọc miễn phí, chỉ cần hứa sẽ giữ sách sạch và không gấp mép trang.",
+      "Món 'đặc sản' của quán là những cuốn sách có chữ ký của Bò: một dấu móng [2] in ngay trang đầu tiên. Có người sưu tầm sẵn sàng trả giá cao chỉ để sở hữu chúng.",
+      "Mỗi tối thứ bảy, quán tổ chức đêm đọc sách. Bò đọc truyện cổ tích bằng giọng [3] khiến cả trẻ con lẫn người lớn đều mê mẩn, và ai ra về cũng mang theo một nụ cười [4]."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Giữ sách sạch và không gấp mép trang",
+        "explanation": "Đáp án nằm ở đoạn 2: khách chỉ cần hứa sẽ giữ sách sạch và không gấp mép trang.",
+        "options": [
+          "Mua một ly nước của quán",
+          "Giữ sách sạch và không gấp mép trang",
+          "Đăng ký thẻ thành viên",
+          "Giới thiệu thêm một người bạn"
+        ],
+        "question": "Điều kiện để được đọc sách miễn phí ở quán là gì?"
+      },
+      {
+        "correctAnswer": "Mỗi tối thứ bảy",
+        "explanation": "Đáp án nằm ở đoạn 4: quán tổ chức đêm đọc sách mỗi tối thứ bảy.",
+        "options": [
+          "Mỗi tối thứ bảy",
+          "Mỗi sáng chủ nhật",
+          "Mỗi tối thứ sáu",
+          "Mỗi chiều thứ năm"
+        ],
+        "question": "Đêm đọc sách của quán được tổ chức khi nào?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "tri thức",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "cũ kỹ",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "mực đỏ",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 2
+      },
+      {
+        "example": "trầm ấm",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 3
+      },
+      {
+        "example": "tươi rói",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The Old Bookshop",
+    "titleVi": "Quán sách cũ",
+    "topic": "Quán sách cũ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-41",
+    "paragraphs": [
+      "Trung tâm dạy lái xe 'Vô lăng [0]' vừa khai giảng khóa mới, và thầy giáo chính là Bò LingLing — chú bò duy nhất trong vùng có bằng lái hạng B2.",
+      "Buổi đầu tiên, thầy Bò dạy học viên cách [1] vô lăng đúng tư thế. Nó nhấn mạnh: 'Tay đặt ở vị trí mười giờ mười, như đang ôm một ổ bánh mì tròn'.",
+      "Phần khó nhất là lùi xe vào chuồng. Một anh học viên lùi mãi không vào được, thế là Bò [2] lên nóc xe, chỉ đường bằng tiếng 'mò' to nhỏ khác nhau.",
+      "Sau ba tháng, cả lớp đều thi đỗ. Trong buổi liên hoan, thầy Bò phát biểu đầy [3]: 'Lái xe giỏi không phải là đi nhanh, mà là đi [4] và về nhà an toàn'."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Vị trí mười giờ mười, như ôm ổ bánh mì tròn",
+        "explanation": "Đáp án nằm ở đoạn 2: tay đặt ở vị trí mười giờ mười, như đang ôm một ổ bánh mì tròn.",
+        "options": [
+          "Vị trí mười giờ mười, như ôm ổ bánh mì tròn",
+          "Vị trí mười hai giờ, thẳng đứng",
+          "Vị trí chín giờ kém mười lăm",
+          "Tùy ý, miễn là thoải mái"
+        ],
+        "question": "Thầy Bò dạy học viên đặt tay ở vị trí nào trên vô lăng?"
+      },
+      {
+        "correctAnswer": "Đi cẩn thận và về nhà an toàn",
+        "explanation": "Đáp án nằm ở đoạn 4: lái xe giỏi không phải là đi nhanh, mà là đi cẩn thận và về nhà an toàn.",
+        "options": [
+          "Đi thật nhanh để về sớm",
+          "Đi cẩn thận và về nhà an toàn",
+          "Bấm còi thật to khi qua đường",
+          "Vượt mọi xe khác trên đường"
+        ],
+        "question": "Theo thầy Bò, thế nào là lái xe giỏi?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "vàng",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "cầm",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 1
+      },
+      {
+        "example": "nhảy phóc",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "tự hào",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 3
+      },
+      {
+        "example": "cẩn thận",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The Driving School",
+    "titleVi": "Lớp học lái xe",
+    "topic": "Lớp học lái xe",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-42",
+    "paragraphs": [
+      "Công ty chuyển nhà 'Bốn vó [0]' của Bò LingLing nổi tiếng vì chưa bao giờ làm vỡ đồ của khách. Bí quyết của Bò rất đơn giản: đi chậm, bước chắc, và không bao giờ vội vàng.",
+      "Hôm nay, công ty nhận chuyển một chiếc đàn piano [1] lên tầng năm mà không có thang máy. Bò buộc dây thừng quanh người, rồi [2] kéo từng bậc thang một cách đầy kiêu hãnh.",
+      "Giữa chừng, một chú mèo hàng xóm nhảy lên thùng đồ và nhất quyết không chịu xuống. Bò đành [3] cả mèo lẫn đồ đạc đến nhà mới, hoàn toàn miễn phí.",
+      "Khi mọi thứ đã vào đúng vị trí, chủ nhà mời cả đội ở lại ăn cơm. Bò ăn liền ba bát cơm đầy, rồi [4] một giấc ngon lành ngay trên chiếc sofa vừa kê xong."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Đi chậm, bước chắc, không bao giờ vội vàng",
+        "explanation": "Đáp án nằm ở đoạn 1: bí quyết là đi chậm, bước chắc, và không bao giờ vội vàng.",
+        "options": [
+          "Đi chậm, bước chắc, không bao giờ vội vàng",
+          "Dùng xe tải đời mới nhất",
+          "Bọc đồ bằng ba lớp giấy báo",
+          "Thuê thêm mười nhân viên phụ giúp"
+        ],
+        "question": "Bí quyết chuyển nhà không làm vỡ đồ của Bò là gì?"
+      },
+      {
+        "correctAnswer": "Chở cả mèo lẫn đồ đến nhà mới miễn phí",
+        "explanation": "Đáp án nằm ở đoạn 3: Bò đành chở cả mèo lẫn đồ đạc đến nhà mới, hoàn toàn miễn phí.",
+        "options": [
+          "Đuổi mèo xuống ngay lập tức",
+          "Chở cả mèo lẫn đồ đến nhà mới miễn phí",
+          "Nhốt mèo vào lồng riêng",
+          "Gọi chủ mèo đến đón về"
+        ],
+        "question": "Bò đã xử lý thế nào với chú mèo không chịu xuống khỏi thùng đồ?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "thần tốc",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 0
+      },
+      {
+        "example": "cồng kềnh",
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "slot": 1
+      },
+      {
+        "example": "ì ạch",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "cõng",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "đánh",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The Moving Company",
+    "titleVi": "Công ty chuyển nhà",
+    "topic": "Công ty chuyển nhà",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "tmpl-43",
+    "paragraphs": [
+      "Phòng tập gym 'Cơ bắp [0]' của Bò LingLing vừa khai trương đã đông nghẹt người. Ai cũng tò mò muốn xem một chú bò tập tạ trông như thế nào.",
+      "Huấn luyện viên Bò có phương pháp rất riêng: thay vì đếm 'một, hai, ba', nó đếm bằng tiếng 'mò' với [1] tăng dần. Học viên vừa tập vừa cười nên chẳng ai thấy mệt.",
+      "Bài tập yêu thích của Bò là [2] tạ. Nó nâng một hơi năm mươi ký mà mặt vẫn tỉnh bơ, rồi quay sang hỏi học viên: 'Có ai muốn thử [3] không?'",
+      "Sau một tháng, nhiều học viên đã có cơ bụng sáu múi. Họ rủ nhau chụp ảnh kỷ niệm, và Bò đứng ở giữa, ưỡn ngực đầy [4] như một nhà vô địch thực thụ."
+    ],
+    "questions": [
+      {
+        "correctAnswer": "Đếm bằng tiếng 'mò' với âm lượng tăng dần",
+        "explanation": "Đáp án nằm ở đoạn 2: Bò đếm bằng tiếng 'mò' với âm lượng tăng dần.",
+        "options": [
+          "Đếm 'một, hai, ba' như bình thường",
+          "Đếm bằng tiếng 'mò' với âm lượng tăng dần",
+          "Vỗ tay theo nhịp nhạc",
+          "Dùng còi thổi hiệu lệnh"
+        ],
+        "question": "Bò đếm nhịp tập gym bằng cách nào?"
+      },
+      {
+        "correctAnswer": "Nhiều người đã có cơ bụng sáu múi",
+        "explanation": "Đáp án nằm ở đoạn 4: sau một tháng, nhiều học viên đã có cơ bụng sáu múi.",
+        "options": [
+          "Nhiều người đã có cơ bụng sáu múi",
+          "Ai cũng giảm được năm ký",
+          "Cả lớp bỏ tập vì quá mệt",
+          "Phòng gym phải đóng cửa"
+        ],
+        "question": "Kết quả của các học viên sau một tháng tập là gì?"
+      }
+    ],
+    "slotHints": [
+      {
+        "example": "sữa",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 0
+      },
+      {
+        "example": "âm lượng",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 1
+      },
+      {
+        "example": "cử",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 2
+      },
+      {
+        "example": "thử sức",
+        "pos": "verb",
+        "posVi": "động từ",
+        "slot": 3
+      },
+      {
+        "example": "tự hào",
+        "pos": "noun",
+        "posVi": "danh từ",
+        "slot": 4
+      }
+    ],
+    "slots": 5,
+    "source": "ai-generated",
+    "title": "The New Gym",
+    "titleVi": "Phòng tập gym mới",
+    "topic": "Phòng tập gym mới",
+    "verified": false
+  },
+  {
+    "id": "tmpl-44",
+    "title": "The Museum Heist",
+    "titleVi": "Vụ trộm ở bảo tàng",
+    "cefrLevel": "B2",
+    "topic": "Museum Heist",
+    "slots": 5,
+    "paragraphs": [
+      "Đêm đó, bảo tàng lịch sử thành phố chìm trong bóng tối tĩnh mịch thì còi báo động bất ngờ rú lên inh ỏi. Ông bảo vệ già hớt hải chạy vào sảnh chính và sững sờ: bức tranh sơn dầu nổi tiếng nhất — 'Nàng thơ bên cửa sổ' — đã biến mất khỏi bức tường, chỉ còn lại cái khung gỗ trơ trọi và một [0] bí ẩn nằm chỏng chơ trên sàn đá cẩm thạch. Trong góc phòng, LingLing — chú bò sữa Holstein được thuê làm nhân viên tuần tra ca đêm vì chủ bảo tàng tin rằng bò có khứu giác thính hơn chó — đang ngái ngủ dụi mắt, miệng còn vương vài cọng cỏ khô.",
+      "LingLing hít một hơi thật sâu rồi tuyên bố chắc nịch: 'Kẻ trộm vẫn còn lẩn quẩn trong tòa nhà, vì ta ngửi thấy mùi [1] rất rõ!' Nó lần theo mùi hương qua dãy hành lang dài hun hút, móng guốc gõ lộc cộc trên nền gạch, cho đến khi dừng lại trước phòng trưng bày đồ cổ Ai Cập. Cánh cửa khép hờ, bên trong vang lên những tiếng lách cách đầy khả nghi.",
+      "LingLing lấy đà húc tung cánh cửa và chứng kiến cảnh tượng không thể tin nổi: một chú chuột hamster béo ú đang cố nhét bức tranh khổng lồ vào cái ba lô bé tí, miệng không ngừng lẩm bẩm về kế hoạch [2] của mình. Cuộc rượt đuổi nghẹt thở bắt đầu — chú bò sữa nặng nửa tấn rượt theo con chuột chạy như bay qua các phòng trưng bày, làm đổ nhào hai pho tượng, một tủ kính và cả [3] của ông giám đốc để quên trên bàn làm việc.",
+      "Cuối cùng, tên trộm tí hon bị tóm gọn khi mắc kẹt trong chiếc bình cổ vì cái bụng quá khổ. Hóa ra nó chỉ muốn lấy bức tranh về trang trí cái tổ của mình cho đỡ buồn những đêm mất ngủ. Bảo tàng quyết định không truy tố mà mời nó làm linh vật chính thức, còn LingLing được thưởng một bó cỏ [4] cùng danh hiệu 'Thám tử bốn chân xuất sắc nhất năm' — dù nó vẫn khăng khăng rằng công lao lớn nhất thuộc về cái mũi thần thánh của mình."
+    ],
+    "slotHints": [
+      {
+        "slot": 0,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "muddy hoofprint (dấu móng guốc lấm bùn)"
+      },
+      {
+        "slot": 1,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "suspicious (đáng ngờ, mờ ám)"
+      },
+      {
+        "slot": 2,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "ridiculous (lố bịch, buồn cười)"
+      },
+      {
+        "slot": 3,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "wig (bộ tóc giả)"
+      },
+      {
+        "slot": 4,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "crunchy (giòn tan, nhai rôm rốp)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "LingLing được thuê làm công việc gì ở bảo tàng?",
+        "options": [
+          "Nhân viên tuần tra ca đêm",
+          "Hướng dẫn viên du lịch",
+          "Họa sĩ phục chế tranh",
+          "Nhân viên dọn vệ sinh"
+        ],
+        "correctAnswer": "Nhân viên tuần tra ca đêm",
+        "explanation": "Đoạn 1 cho biết LingLing được thuê làm nhân viên tuần tra ca đêm vì chủ bảo tàng tin rằng bò có khứu giác thính hơn chó."
+      },
+      {
+        "question": "Vì sao tên trộm hamster cuối cùng bị bắt?",
+        "options": [
+          "Bị mắc kẹt trong chiếc bình cổ vì cái bụng quá khổ",
+          "Bị LingLing húc ngã sõng soài",
+          "Tự ra đầu thú vì hối hận",
+          "Bị bảo vệ bắn lưới tóm gọn"
+        ],
+        "correctAnswer": "Bị mắc kẹt trong chiếc bình cổ vì cái bụng quá khổ",
+        "explanation": "Đoạn 4 kể rằng tên trộm tí hon bị tóm gọn khi mắc kẹt trong chiếc bình cổ vì cái bụng quá khổ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "tmpl-45",
+    "title": "The Leaking Laboratory",
+    "titleVi": "Phòng thí nghiệm bị rò rỉ",
+    "cefrLevel": "B2",
+    "topic": "Laboratory Leak",
+    "slots": 5,
+    "paragraphs": [
+      "Sáng thứ Hai, phòng thí nghiệm hóa học của trường đại học náo loạn khi phát hiện một lọ dung dịch màu xanh ngọc bích bị đổ tràn ra bàn, rỉ xuống sàn thành một [0] loang lổ phát sáng lấp lánh. LingLing — chú bò sữa Holstein làm trợ lý phòng thí nghiệm, công việc nó xin được nhờ hứa sẽ không ăn bất cứ thứ gì trong phòng, một lời hứa mà ai cũng biết là chẳng đáng tin chút nào — đứng chết trân bên cạnh cái lọ vỡ, mắt chớp chớp ra vẻ vô tội.",
+      "Điều kỳ lạ bắt đầu xảy ra: những ai chạm vào chất lỏng đều [1] một cách khó hiểu — thầy giáo hóa bỗng nói toàn giọng opera, cô thư ký thì nhảy lò cò khắp hành lang. LingLing, sau khi lén liếm thử một giọt vì 'tò mò khoa học', bắt đầu phát ra tiếng kêu [2] mỗi khi mở miệng, khiến cả phòng thí nghiệm cười bò cả buổi.",
+      "Giáo sư trưởng lập tức ra lệnh phong tỏa khẩn cấp, cả đội mặc đồ bảo hộ kín mít như phi hành gia, còn LingLing bị nhốt riêng trong một cái chuồng tạm bợ dựng bằng [3]. Nó ấm ức rống lên phản đối, cho rằng mình là nạn nhân chứ không phải thủ phạm, và đòi được đối xử như một nhà khoa học thực thụ có học vị hẳn hoi.",
+      "Sau ba ngày nghiên cứu căng thẳng, kết luận được đưa ra: dung dịch chỉ là nước tăng lực pha phẩm màu mà đám sinh viên năm nhất làm đổ từ tuần trước, còn mọi 'triệu chứng kỳ lạ' đều do tâm lý đám đông mà ra. LingLing được thả tự do, nhưng từ đó nó mang biệt danh mới — 'nhà khoa học [4]' — và bị cấm bén mảng đến gần bất kỳ cái lọ nào trong phòng thí nghiệm."
+    ],
+    "slotHints": [
+      {
+        "slot": 0,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "puddle (vũng nước nhỏ)"
+      },
+      {
+        "slot": 1,
+        "pos": "verb",
+        "posVi": "động từ",
+        "example": "transform (biến đổi kỳ lạ)"
+      },
+      {
+        "slot": 2,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "weird (kỳ quặc, khó hiểu)"
+      },
+      {
+        "slot": 3,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "cardboard box (thùng các-tông)"
+      },
+      {
+        "slot": 4,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "reckless (liều lĩnh, bất cẩn)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Vì sao mọi người xuất hiện những 'triệu chứng kỳ lạ' sau khi chạm vào dung dịch?",
+        "options": [
+          "Do tâm lý đám đông, dung dịch chỉ là nước tăng lực pha phẩm màu",
+          "Do hóa chất độc hại thật sự rò rỉ",
+          "Do bị LingLing lây bệnh lạ",
+          "Do cả phòng thiếu ngủ triền miên"
+        ],
+        "correctAnswer": "Do tâm lý đám đông, dung dịch chỉ là nước tăng lực pha phẩm màu",
+        "explanation": "Đoạn 4 kết luận dung dịch chỉ là nước tăng lực pha phẩm màu sinh viên làm đổ từ tuần trước, còn mọi 'triệu chứng kỳ lạ' đều do tâm lý đám đông."
+      },
+      {
+        "question": "Khi lọ dung dịch bị đổ, LingLing đã phản ứng thế nào?",
+        "options": [
+          "Đứng chết trân bên cạnh cái lọ vỡ, mắt chớp chớp ra vẻ vô tội",
+          "Lập tức dọn dẹp sạch sẽ hiện trường",
+          "Hét lên gọi cứu hỏa khẩn cấp",
+          "Ba chân bốn cẳng bỏ chạy khỏi phòng"
+        ],
+        "correctAnswer": "Đứng chết trân bên cạnh cái lọ vỡ, mắt chớp chớp ra vẻ vô tội",
+        "explanation": "Đoạn 1 mô tả LingLing đứng chết trân bên cạnh cái lọ vỡ, mắt chớp chớp ra vẻ vô tội."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "tmpl-46",
+    "title": "The Night Observatory",
+    "titleVi": "Đài thiên văn ban đêm",
+    "cefrLevel": "B2",
+    "topic": "Night Observatory",
+    "slots": 5,
+    "paragraphs": [
+      "Nửa đêm, trên đỉnh đồi ngoại ô, mái vòm của đài thiên văn từ từ mở ra để lộ bầu trời đầy sao lấp lánh như một tấm [0] khổng lồ thêu kim tuyến. LingLing — chú bò sữa Holstein trốn nhà đi 'du lịch bụi' vì chán cảnh ngày nào cũng chỉ quanh quẩn ở đồng cỏ — đã lén trèo lên đài thiên văn từ lúc chập tối, nấp sau chiếc kính viễn vọng lớn nhất với vẻ mặt đầy thám hiểm.",
+      "Khi anh chàng thiên văn học trẻ trực đêm ngáp ngắn ngáp dài điều chỉnh ống kính, LingLing tò mò thò mõm vào thị kính và bỗng rống lên một tiếng [1] khiến cả đài thiên văn giật mình: trên màn hình hiện ra một vật thể bay phát sáng, di chuyển theo đường zíc zắc không thể giải thích được. Cả hai sững sờ nhìn nhau, rồi đồng thanh thì thầm: 'Người ngoài hành tinh!'",
+      "Tin đồn lan nhanh như cháy rừng. Chưa đầy một giờ, đỉnh đồi đã chật kín người hiếu kỳ mang theo [2], ai cũng ngửa cổ lên trời chờ đợi cuộc chạm trán lịch sử với nền văn minh ngoài Trái Đất. LingLing, trong cơn phấn khích tột độ, còn chuẩn bị sẵn một bài diễn văn chào mừng bằng thứ tiếng bò rống mà nó tự tin gọi là 'ngôn ngữ vũ trụ'.",
+      "Nhưng khi vật thể hạ cánh xuống bãi cỏ, mọi người mới vỡ lẽ: đó chỉ là chiếc drone giao bánh pizza bị lạc đường, trên thân còn dán mảnh giấy ghi 'giao hàng [3]'. Đám đông tản đi trong thất vọng tràn trề, chỉ còn LingLing ở lại, sung sướng gặm chiếc pizza rơi vãi và tự phong cho mình danh hiệu 'đại sứ hòa bình [4] đầu tiên của Trái Đất'."
+    ],
+    "slotHints": [
+      {
+        "slot": 0,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "velvet carpet (tấm thảm nhung)"
+      },
+      {
+        "slot": 1,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "terrified (kinh hoàng, hoảng sợ)"
+      },
+      {
+        "slot": 2,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "binoculars (ống nhòm)"
+      },
+      {
+        "slot": 3,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "super-fast (siêu tốc)"
+      },
+      {
+        "slot": 4,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "intergalactic (liên thiên hà)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "'Vật thể bay phát sáng' mà mọi người nhìn thấy thực chất là gì?",
+        "options": [
+          "Chiếc drone giao bánh pizza bị lạc đường",
+          "Tàu vũ trụ của người ngoài hành tinh",
+          "Vệ tinh nhân tạo đang bay qua",
+          "Khí cầu thời tiết của trạm khí tượng"
+        ],
+        "correctAnswer": "Chiếc drone giao bánh pizza bị lạc đường",
+        "explanation": "Đoạn 4 tiết lộ vật thể chỉ là chiếc drone giao bánh pizza bị lạc đường, trên thân còn dán mảnh giấy ghi chú giao hàng."
+      },
+      {
+        "question": "Vì sao LingLing có mặt ở đài thiên văn vào ban đêm?",
+        "options": [
+          "Trốn nhà đi 'du lịch bụi' vì chán cảnh quanh quẩn ở đồng cỏ",
+          "Được mời làm nhà thiên văn học danh dự",
+          "Đi giao bánh pizza cho nhân viên trực đêm",
+          "Bị lạc đường trên đường về chuồng"
+        ],
+        "correctAnswer": "Trốn nhà đi 'du lịch bụi' vì chán cảnh quanh quẩn ở đồng cỏ",
+        "explanation": "Đoạn 1 cho biết LingLing trốn nhà đi 'du lịch bụi' vì chán cảnh ngày nào cũng chỉ quanh quẩn ở đồng cỏ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "tmpl-47",
+    "title": "The Classical Music Festival",
+    "titleVi": "Lễ hội âm nhạc cổ điển",
+    "cefrLevel": "B2",
+    "topic": "Classical Music Festival",
+    "slots": 5,
+    "paragraphs": [
+      "Quảng trường thành phố rực rỡ trong đêm khai mạc lễ hội âm nhạc cổ điển thường niên, hàng nghìn khán giả trong trang phục [0] ngồi chật kín các hàng ghế, nín thở chờ đợi dàn nhạc giao hưởng danh tiếng bước ra. LingLing — chú bò sữa Holstein trà trộn vào ban tổ chức nhờ bộ vest đen may đo vừa khít đến bất ngờ — đang loay hoay ở hậu trường với nhiệm vụ duy nhất: giữ im lặng tuyệt đối trong suốt buổi diễn.",
+      "Nhưng đời không như mơ: đúng vào khoảnh khắc nhạc trưởng giơ đũa lên, chiếc điện thoại trong túi áo vest của LingLing bỗng vang lên một hồi chuông [1], phá tan bầu không khí trang nghiêm. Cả khán phòng quay lại nhìn chằm chằm, còn chú bò chỉ biết cười trừ, mặt đỏ bừng như gấc chín giữa mùa.",
+      "Chưa hết, đến giữa bản giao hưởng số 5 của Beethoven, nghệ sĩ violin chính bỗng lăn đùng ra ngất xỉu vì quá hồi hộp trước đám đông. Trong lúc ban tổ chức cuống cuồng như gà mắc tóc, LingLing bất ngờ bước ra sân khấu, cầm lấy cây đàn violin và tuyên bố sẽ [2] thay cho nghệ sĩ. Khán giả ồ lên kinh ngạc, có người còn vội lấy điện thoại ra quay lại khoảnh khắc lịch sử.",
+      "Điều không ai ngờ đã xảy ra: tiếng đàn của LingLing — dù chệch choạc và đầy những nốt [3] — lại chạm đến trái tim khán giả bằng sự chân thành hiếm có. Đêm đó, báo chí đồng loạt đưa tin về 'hiện tượng âm nhạc [4]', còn LingLing thì ký tặng mỏi cả móng lên những tấm vé cho đám fan hâm mộ cuồng nhiệt vây kín hậu trường."
+    ],
+    "slotHints": [
+      {
+        "slot": 0,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "elegant (lịch lãm, sang trọng)"
+      },
+      {
+        "slot": 1,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "deafening (chói tai, inh ỏi)"
+      },
+      {
+        "slot": 2,
+        "pos": "verb",
+        "posVi": "động từ",
+        "example": "perform (biểu diễn thay)"
+      },
+      {
+        "slot": 3,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "off-key (lạc điệu, chệch nhịp)"
+      },
+      {
+        "slot": 4,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "one-of-a-kind (độc nhất vô nhị)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Vì sao nghệ sĩ violin chính không thể tiếp tục biểu diễn?",
+        "options": [
+          "Ngất xỉu vì quá hồi hộp trước đám đông",
+          "Bị ốm nặng từ mấy ngày trước",
+          "Quên mang đàn violin đến buổi diễn",
+          "Bỏ về giữa chừng vì mâu thuẫn với nhạc trưởng"
+        ],
+        "correctAnswer": "Ngất xỉu vì quá hồi hộp trước đám đông",
+        "explanation": "Đoạn 3 kể rằng nghệ sĩ violin chính lăn đùng ra ngất xỉu vì quá hồi hộp trước đám đông."
+      },
+      {
+        "question": "LingLing đã trà trộn vào ban tổ chức bằng cách nào?",
+        "options": [
+          "Mặc bộ vest đen may đo vừa khít đến bất ngờ",
+          "Giả dạng làm nhạc trưởng dàn nhạc",
+          "Trốn trong thùng đựng đàn contrabass",
+          "Mua vé VIP rồi lẻn vào hậu trường"
+        ],
+        "correctAnswer": "Mặc bộ vest đen may đo vừa khít đến bất ngờ",
+        "explanation": "Đoạn 1 cho biết LingLing trà trộn vào ban tổ chức nhờ bộ vest đen may đo vừa khít đến bất ngờ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "tmpl-48",
+    "title": "The Overnight Train",
+    "titleVi": "Chuyến tàu xuyên đêm",
+    "cefrLevel": "B2",
+    "topic": "Overnight Train",
+    "slots": 5,
+    "paragraphs": [
+      "Chuyến tàu đêm khởi hành lúc 11 giờ, lầm lũi xuyên qua màn sương [0] giăng kín những cánh đồng, mang theo hàng trăm hành khách đang say giấc nồng. LingLing — chú bò sữa Holstein mua vé giường nằm hạng sang bằng số tiền dành dụm cả năm trời — háo hức trèo lên toa số 7, miệng nhai cỏ khô một cách khoan khoái như thể đang đi nghỉ dưỡng ở resort năm sao.",
+      "Nhưng niềm vui chẳng tày gang: khi nhân viên soát vé đến, LingLing mới tá hỏa phát hiện chiếc vé đã biến mất khỏi túi áo, có lẽ rơi đâu đó trong lúc nó mải mê [1] với bà cụ ngồi đối diện. Nó lục tung mọi ngóc ngách, từ gầm giường đến kẽ ghế, mà vẫn không thấy tăm hơi chiếc vé đâu.",
+      "Đúng lúc tuyệt vọng nhất, một hành khách bí ẩn khoác áo choàng đen tiến lại gần, thì thầm rằng ông ta đã nhặt được chiếc vé ở toa ăn và sẽ trả lại với một điều kiện [2]. LingLing nuốt nước bọt đánh ực, gật đầu lia lịa, sẵn sàng đánh đổi bất cứ thứ gì trừ bó cỏ khô yêu quý của mình.",
+      "Hóa ra điều kiện chỉ đơn giản là: kể cho ông ta nghe một câu chuyện thật hay để giết thời gian trong đêm dài đằng đẵng. LingLing bèn kể về cuộc đời mình — một chú bò sữa [3] với ước mơ trở thành thám tử lừng danh — khiến ông lão cười đến chảy nước mắt và còn tặng thêm một suất ăn khuya [4]. Chuyến tàu cứ thế lao đi trong đêm, chở theo tiếng cười giòn tan và một tình bạn kỳ lạ mới chớm nở."
+    ],
+    "slotHints": [
+      {
+        "slot": 0,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "thick (dày đặc, mịt mù)"
+      },
+      {
+        "slot": 1,
+        "pos": "verb",
+        "posVi": "động từ",
+        "example": "gossip (tán gẫu, tám chuyện)"
+      },
+      {
+        "slot": 2,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "peculiar (kỳ quặc, lạ lùng)"
+      },
+      {
+        "slot": 3,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "stubborn (bướng bỉnh, cứng đầu)"
+      },
+      {
+        "slot": 4,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "lavish (thịnh soạn, ê hề)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Vì sao LingLing bị mất vé tàu?",
+        "options": [
+          "Đánh rơi trong lúc mải mê tán gẫu với bà cụ ngồi đối diện",
+          "Bị kẻ trộm móc túi lấy mất",
+          "Để quên vé ở nhà trước khi ra ga",
+          "Vé bị ướt nên không đọc được mã"
+        ],
+        "correctAnswer": "Đánh rơi trong lúc mải mê tán gẫu với bà cụ ngồi đối diện",
+        "explanation": "Đoạn 2 cho biết chiếc vé có lẽ đã rơi trong lúc LingLing mải mê tán gẫu với bà cụ ngồi đối diện."
+      },
+      {
+        "question": "Điều kiện để LingLing lấy lại chiếc vé là gì?",
+        "options": [
+          "Kể một câu chuyện thật hay để giết thời gian trong đêm dài",
+          "Trả cho ông ta một khoản tiền lớn",
+          "Nhường giường nằm hạng sang cho ông ta",
+          "Phụ giúp dọn dẹp toa tàu suốt đêm"
+        ],
+        "correctAnswer": "Kể một câu chuyện thật hay để giết thời gian trong đêm dài",
+        "explanation": "Đoạn 4 tiết lộ điều kiện chỉ đơn giản là kể cho ông lão nghe một câu chuyện thật hay để giết thời gian trong đêm dài."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "tmpl-49",
+    "title": "The Movie Set",
+    "titleVi": "Trại quay phim điện ảnh",
+    "cefrLevel": "B2",
+    "topic": "Movie Set",
+    "slots": 5,
+    "paragraphs": [
+      "Trường quay ngoại ô náo nhiệt như một [0] khổng lồ từ sáng sớm, với hàng chục máy quay, đèn pha sáng choang và cả một đội quân diễn viên quần chúng đang chờ lệnh. LingLing — chú bò sữa Holstein vừa trúng tuyển vai diễn viên đóng thế qua một buổi casting mà ban giám khảo sau này thừa nhận là 'quyết định bốc đồng nhất sự nghiệp' — oai vệ bước vào trường quay trong tiếng vỗ tay lác đác.",
+      "Cảnh quay đầu tiên yêu cầu LingLing phi nước đại qua một cây cầu gỗ đang cháy rực, trong khi phía sau là [1] nổ tung tóe khắp nơi. Đạo diễn hét lên 'Diễn!', nhưng chú bò chỉ đứng yên gặm cỏ, thản nhiên như thể đám cháy chỉ là phông nền trang trí, khiến cả đoàn phim ôm đầu than trời.",
+      "Sau bảy lần quay hỏng liên tiếp, đạo diễn đành thay đổi kịch bản: thay vì chạy qua cầu lửa, LingLing chỉ cần [2] một cách đầy cảm xúc trước ống kính. Không ai ngờ rằng, ánh mắt lim dim đầy 'chiều sâu nội tâm' của chú bò khi đang nhai cỏ lại khiến đạo diễn rơm rớm nước mắt vì xúc động.",
+      "Bộ phim ra mắt và trở thành hiện tượng phòng vé, với cảnh quay của LingLing được giới phê bình ca ngợi là 'khoảnh khắc điện ảnh [3] nhất thập kỷ'. Chú bò nhận tượng vàng cho 'Diễn viên bốn chân xuất sắc', và trong bài phát biểu nhận giải đầy [4], nó chỉ nói đúng một câu: 'Cỏ ở trường quay ngon hơn ở nhà.'"
+    ],
+    "slotHints": [
+      {
+        "slot": 0,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "beehive (tổ ong vỡ trận)"
+      },
+      {
+        "slot": 1,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "fireworks (pháo hoa nổ tung)"
+      },
+      {
+        "slot": 2,
+        "pos": "verb",
+        "posVi": "động từ",
+        "example": "gaze (nhìn xa xăm, đăm chiêu)"
+      },
+      {
+        "slot": 3,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "priceless (vô giá, đắt giá)"
+      },
+      {
+        "slot": 4,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "emotional (xúc động, nghẹn ngào)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Vì sao LingLing quay hỏng cảnh đầu tiên đến bảy lần?",
+        "options": [
+          "Chỉ đứng yên gặm cỏ, không chịu chạy qua cây cầu đang cháy",
+          "Bị ngã nhào khỏi cầu gỗ giữa chừng",
+          "Quên sạch thoại của nhân vật",
+          "Hoảng sợ bỏ chạy vì tiếng nổ quá lớn"
+        ],
+        "correctAnswer": "Chỉ đứng yên gặm cỏ, không chịu chạy qua cây cầu đang cháy",
+        "explanation": "Đoạn 2 kể rằng khi đạo diễn hét 'Diễn!', chú bò chỉ đứng yên gặm cỏ, thản nhiên như thể đám cháy chỉ là phông nền trang trí."
+      },
+      {
+        "question": "Cảnh quay nào của LingLing được giới phê bình ca ngợi?",
+        "options": [
+          "Ánh mắt lim dim đầy 'chiều sâu nội tâm' khi đang nhai cỏ",
+          "Cảnh phi nước đại qua cây cầu gỗ đang cháy",
+          "Cảnh rượt đuổi nghẹt thở bằng xe hơi",
+          "Cảnh khóc nức nở trong mưa"
+        ],
+        "correctAnswer": "Ánh mắt lim dim đầy 'chiều sâu nội tâm' khi đang nhai cỏ",
+        "explanation": "Đoạn 3 mô tả ánh mắt lim dim đầy 'chiều sâu nội tâm' của chú bò khi đang nhai cỏ khiến đạo diễn xúc động, và đoạn 4 nhắc lại cảnh quay này được ca ngợi là 'khoảnh khắc điện ảnh nhất thập kỷ'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "tmpl-50",
+    "title": "The Lazy Composer",
+    "titleVi": "Nhà soạn nhạc lười biếng",
+    "cefrLevel": "B2",
+    "topic": "Lazy Composer",
+    "slots": 5,
+    "paragraphs": [
+      "Trong căn gác xép đầy bụi bặm ở cuối con hẻm nhỏ, LingLing — chú bò sữa Holstein tự xưng là nhà soạn nhạc thiên tài nhưng thực chất cả tuần chỉ nằm dài nhai cỏ và ngắm mây trôi qua [0] — đang đối mặt với cơn ác mộng lớn nhất đời mình: hạn nộp bản giao hưởng mới chỉ còn đúng ba ngày nữa.",
+      "Nhà xuất bản đã gửi đến bức thư tối hậu thư với lời lẽ [1], đe dọa sẽ hủy hợp đồng và đòi lại toàn bộ tiền ứng trước nếu bản nhạc không ra lò kịp tiến độ. LingLing vò đầu bứt tai, đi vòng quanh phòng mấy chục vòng, rồi lại nằm vật ra sàn, than thở rằng cảm hứng của nó đã 'đi nghỉ mát' từ đầu mùa hè và chưa hẹn ngày về.",
+      "Trong cơn tuyệt vọng cùng cực, nó bỗng nảy ra một ý tưởng [2]: ghi âm lại mọi âm thanh trong một ngày của mình — tiếng nhai cỏ rào rạo, tiếng ợ hơi trầm bổng, tiếng móng guốc gõ nhịp trên sàn gỗ — rồi biên soạn thành một bản giao hưởng 'hiện thực'. Nó làm việc thâu đêm suốt sáng, mắt thâm quầng như gấu trúc nhưng tinh thần thì [3] chưa từng thấy.",
+      "Ngày công diễn, khán giả ban đầu ngơ ngác, rồi bật cười, rồi vỗ tay không ngớt trước sự độc đáo táo bạo của tác phẩm. Giới phê bình gọi đó là 'tuyên ngôn âm nhạc [4] của thế kỷ', còn LingLing thì ngay lập tức quay về thói quen cũ: nằm dài trên thảm cỏ, tuyên bố cần 'nghỉ ngơi để ấp ủ kiệt tác tiếp theo'."
+    ],
+    "slotHints": [
+      {
+        "slot": 0,
+        "pos": "noun",
+        "posVi": "danh từ",
+        "example": "window (ô cửa sổ đầy bụi)"
+      },
+      {
+        "slot": 1,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "stern (đanh thép, nghiêm khắc)"
+      },
+      {
+        "slot": 2,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "daring (táo bạo, liều lĩnh)"
+      },
+      {
+        "slot": 3,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "exhilarated (phấn chấn tột độ)"
+      },
+      {
+        "slot": 4,
+        "pos": "adjective",
+        "posVi": "tính từ",
+        "example": "groundbreaking (đột phá, mở đường)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "LingLing đã sáng tác bản giao hưởng mới bằng cách nào?",
+        "options": [
+          "Ghi âm mọi âm thanh trong ngày của mình rồi biên soạn thành nhạc",
+          "Thuê một nhạc sĩ khác viết hộ toàn bộ",
+          "Sao chép lại bản giao hưởng cũ của người khác",
+          "Ngồi thiền chờ cảm hứng tự tìm đến"
+        ],
+        "correctAnswer": "Ghi âm mọi âm thanh trong ngày của mình rồi biên soạn thành nhạc",
+        "explanation": "Đoạn 3 kể LingLing ghi âm mọi âm thanh trong ngày của mình — tiếng nhai cỏ, tiếng ợ hơi, tiếng móng guốc — rồi biên soạn thành bản giao hưởng 'hiện thực'."
+      },
+      {
+        "question": "Nhà xuất bản đe dọa điều gì nếu LingLing không nộp bản nhạc kịp hạn?",
+        "options": [
+          "Hủy hợp đồng và đòi lại toàn bộ tiền ứng trước",
+          "Kiện nó ra tòa án thành phố",
+          "Cấm nó sáng tác nhạc vĩnh viễn",
+          "Thu hồi toàn bộ tác phẩm đã xuất bản"
+        ],
+        "correctAnswer": "Hủy hợp đồng và đòi lại toàn bộ tiền ứng trước",
+        "explanation": "Đoạn 2 cho biết nhà xuất bản đe dọa sẽ hủy hợp đồng và đòi lại toàn bộ tiền ứng trước nếu bản nhạc không ra lò kịp tiến độ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

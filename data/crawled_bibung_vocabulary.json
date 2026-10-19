@@ -1,0 +1,48 @@
+[
+  {
+    "id": "vocab-hello",
+    "targetText": "Hello",
+    "normalizedText": "hello",
+    "translation": "Xin chào",
+    "phoneticUs": "/həˈloʊ/",
+    "phoneticUk": "/həˈləʊ/",
+    "partOfSpeech": "interjection",
+    "cefrLevel": "A1",
+    "category": "Daily Life",
+    "definitionEn": "Used as a greeting or to begin a conversation.",
+    "examples": [
+      {
+        "sentence": "Hello, how are you today?",
+        "translation": "Xin chào, hôm nay bạn thế nào?"
+      }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=500&auto=format&fit=crop&q=80",
+    "tags": [
+      "greetings",
+      "basics"
+    ]
+  },
+  {
+    "id": "vocab-student",
+    "targetText": "Student",
+    "normalizedText": "student",
+    "translation": "Học sinh / Sinh viên",
+    "phoneticUs": "/ˈstuːdənt/",
+    "phoneticUk": "/ˈstjuːdnt/",
+    "partOfSpeech": "noun",
+    "cefrLevel": "A1",
+    "category": "Education",
+    "definitionEn": "A person who is studying at a school, college, or university.",
+    "examples": [
+      {
+        "sentence": "He is an enthusiastic university student.",
+        "translation": "Anh ấy là một sinh viên đại học nhiệt huyết."
+      }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=80",
+    "tags": [
+      "school",
+      "study"
+    ]
+  }
+]

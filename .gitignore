@@ -22,6 +22,7 @@ yarn-error.log*
 # Local-only learning notes & plan specs
 KNOWLEDGE_NOTES.local.md
 *plan*.md
+!MASTER_EXECUTION_PLAN.md
 LANGUAGE_LEARNING_APP_*.md
 
 # OS / editor
@@ -29,3 +30,31 @@ LANGUAGE_LEARNING_APP_*.md
 Thumbs.db
 .vscode/
 !.vscode/extensions.json
+
+# Draft & Scratch assets
+draft/
+scratch/
+
+# Playwright Test Artifacts
+playwright-report/
+test-results/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local runtime data
+apps/api/data/*.json
+!apps/api/data/.gitkeep
+
+# Raw data pipeline caches (keep standardized data)
+data/*
+!data/standardized/
+!data/standardized/**
+!data/phase2_batch2/
+!data/phase2_batch2/**
+!data/phase2_all/
+!data/phase2_all/**
+!data/fb-materials-report.json
+!data/skipped-materials.txt
+

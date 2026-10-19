@@ -1,0 +1,2162 @@
+[
+  {
+    "id": "wrt-001",
+    "prompt": "Some people think that the best way to reduce crime is to give longer prison sentences. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase đề: tội phạm gia tăng, nhiều người cho rằng tăng án tù là giải pháp tốt nhất. Thesis: đồng ý một phần — án nặng có tác dụng răn đe nhưng không giải quyết gốc rễ.",
+      "body1": "Ủng hộ tăng án: (1) Răn đe kẻ có ý định phạm tội, đặc biệt tội nghiêm trọng; (2) Bảo vệ xã hội, cách ly tội phạm nguy hiểm; (3) Mang lại công bằng cho nạn nhân.",
+      "body2": "Hạn chế: (1) Không giải quyết nguyên nhân gốc rễ như nghèo đói, thất nghiệp; (2) Nhà tù quá tải, tốn ngân sách; (3) Cải tạo, giáo dục nghề giúp giảm tái phạm hiệu quả hơn.",
+      "conclusion": "Tóm tắt: án tù dài chỉ là một phần giải pháp, cần kết hợp phòng ngừa và cải tạo."
+    },
+    "keyVocab": [
+      {
+        "word": "deterrent",
+        "meaningVi": "biện pháp răn đe"
+      },
+      {
+        "word": "recidivism",
+        "meaningVi": "sự tái phạm tội"
+      },
+      {
+        "word": "rehabilitate",
+        "meaningVi": "cải tạo, phục hồi nhân phẩm"
+      },
+      {
+        "word": "incarceration",
+        "meaningVi": "sự giam giữ"
+      },
+      {
+        "word": "root cause",
+        "meaningVi": "nguyên nhân gốc rễ"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-002",
+    "prompt": "Some people believe that unpaid community service should be a compulsory part of high school programmes. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: lao động công ích không lương nên bắt buộc ở cấp 3. Thesis: hoàn toàn đồng ý.",
+      "body1": "Lợi ích cho học sinh: (1) Rèn kỹ năng sống, tinh thần trách nhiệm; (2) Hiểu hoàn cảnh khó khăn, biết trân trọng; (3) Đẹp hồ sơ xin học bổng, việc làm.",
+      "body2": "Lợi ích cho xã hội: (1) Nguồn nhân lực tình nguyện dồi dào; (2) Gắn kết cộng đồng; (3) Giảm gánh nặng cho tổ chức từ thiện. Phản biện: tốn thời gian học — đáp: chỉ cần vài giờ/tuần, sắp xếp hợp lý.",
+      "conclusion": "Tóm tắt: lợi ích vượt trội, nên bắt buộc với thời lượng hợp lý."
+    },
+    "keyVocab": [
+      {
+        "word": "compulsory",
+        "meaningVi": "bắt buộc"
+      },
+      {
+        "word": "altruism",
+        "meaningVi": "lòng vị tha"
+      },
+      {
+        "word": "civic responsibility",
+        "meaningVi": "trách nhiệm công dân"
+      },
+      {
+        "word": "well-rounded",
+        "meaningVi": "phát triển toàn diện"
+      },
+      {
+        "word": "volunteerism",
+        "meaningVi": "tinh thần tình nguyện"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-003",
+    "prompt": "Many people think that social media has a negative effect on face-to-face communication. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: mạng xã hội ảnh hưởng tiêu cực đến giao tiếp trực tiếp. Thesis: đồng ý phần lớn.",
+      "body1": "Tác động tiêu cực: (1) Mọi người dán mắt vào điện thoại ngay cả khi gặp nhau; (2) Kỹ năng giao tiếp, đọc ngôn ngữ cơ thể suy giảm; (3) Mối quan hệ trở nên hời hợt, thiếu chiều sâu.",
+      "body2": "Mặt tích cực (phản biện): (1) Giúp duy trì liên lạc với người ở xa; (2) Kết nối lại bạn cũ; (3) Nhưng không thể thay thế giao tiếp trực tiếp về mặt cảm xúc.",
+      "conclusion": "Tóm tắt: mạng xã hội là công cụ tốt nếu dùng điều độ, nhưng đang làm xói mòn giao tiếp thật."
+    },
+    "keyVocab": [
+      {
+        "word": "superficial",
+        "meaningVi": "hời hợt, nông cạn"
+      },
+      {
+        "word": "deteriorate",
+        "meaningVi": "suy giảm, xấu đi"
+      },
+      {
+        "word": "non-verbal cues",
+        "meaningVi": "tín hiệu phi ngôn ngữ"
+      },
+      {
+        "word": "addiction",
+        "meaningVi": "sự nghiện"
+      },
+      {
+        "word": "in moderation",
+        "meaningVi": "điều độ, vừa phải"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-004",
+    "prompt": "Some people think that zoos are cruel and should be closed. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: sở thú tàn nhẫn, nên đóng cửa. Thesis: không đồng ý hoàn toàn — sở thú hiện đại có vai trò quan trọng.",
+      "body1": "Vấn đề của sở thú cũ: (1) Không gian chật hẹp, động vật stress; (2) Mục đích giải trí thuần túy. Thừa nhận quan ngại này là chính đáng.",
+      "body2": "Vai trò tích cực: (1) Bảo tồn loài nguy cấp, nhân giống; (2) Nghiên cứu khoa học; (3) Giáo dục công chúng, khơi dậy ý thức bảo vệ thiên nhiên. Giải pháp: cải thiện điều kiện thay vì đóng cửa.",
+      "conclusion": "Tóm tắt: nên cải tổ sở thú theo chuẩn nhân đạo thay vì xóa bỏ."
+    },
+    "keyVocab": [
+      {
+        "word": "captivity",
+        "meaningVi": "sự giam cầm"
+      },
+      {
+        "word": "endangered species",
+        "meaningVi": "loài nguy cấp"
+      },
+      {
+        "word": "conservation",
+        "meaningVi": "sự bảo tồn"
+      },
+      {
+        "word": "inhumane",
+        "meaningVi": "vô nhân đạo"
+      },
+      {
+        "word": "safari park",
+        "meaningVi": "công viên hoang dã"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-005",
+    "prompt": "Some experts believe that it is better for children to begin learning a foreign language at primary school rather than secondary school. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: nên học ngoại ngữ từ tiểu học thay vì cấp 2. Thesis: hoàn toàn đồng ý.",
+      "body1": "Lợi thế não bộ: (1) Trẻ nhỏ tiếp thu ngôn ngữ tự nhiên, phát âm chuẩn như người bản xứ; (2) Ít ngại ngùng, dám nói; (3) Não bộ linh hoạt, học qua trò chơi hiệu quả.",
+      "body2": "Lợi ích dài hạn: (1) Nền tảng vững cho cấp cao hơn; (2) Mở rộng cơ hội học tập, nghề nghiệp; (3) Tăng hiểu biết văn hóa. Phản biện: áp lực — đáp: học qua chơi, không thi cử nặng.",
+      "conclusion": "Tóm tắt: bắt đầu sớm mang lại lợi thế vượt trội."
+    },
+    "keyVocab": [
+      {
+        "word": "absorb",
+        "meaningVi": "tiếp thu"
+      },
+      {
+        "word": "native-like pronunciation",
+        "meaningVi": "phát âm như người bản xứ"
+      },
+      {
+        "word": "formative years",
+        "meaningVi": "những năm đầu đời quan trọng"
+      },
+      {
+        "word": "bilingual",
+        "meaningVi": "song ngữ"
+      },
+      {
+        "word": "cognitive flexibility",
+        "meaningVi": "sự linh hoạt nhận thức"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-006",
+    "prompt": "Some people think that governments should spend money on railways rather than roads. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: chính phủ nên đầu tư đường sắt thay vì đường bộ. Thesis: đồng ý với đa số trường hợp.",
+      "body1": "Ưu điểm đường sắt: (1) Chở được nhiều người/hàng, giảm ùn tắc; (2) Ít ô nhiễm hơn ô tô cá nhân; (3) An toàn, đúng giờ, chi phí vận hành thấp về lâu dài.",
+      "body2": "Vai trò đường bộ không thể bỏ: (1) Linh hoạt, đến được vùng sâu vùng xa; (2) Vận chuyển chặng cuối; (3) Chi phí đầu tư ban đầu thấp hơn. Kết luận: ưu tiên đường sắt nhưng vẫn cần đường bộ bổ trợ.",
+      "conclusion": "Tóm tắt: đường sắt nên được ưu tiên đầu tư, đường bộ giữ vai trò bổ sung."
+    },
+    "keyVocab": [
+      {
+        "word": "infrastructure",
+        "meaningVi": "cơ sở hạ tầng"
+      },
+      {
+        "word": "congestion",
+        "meaningVi": "sự tắc nghẽn"
+      },
+      {
+        "word": "cost-effective",
+        "meaningVi": "hiệu quả về chi phí"
+      },
+      {
+        "word": "emissions",
+        "meaningVi": "khí thải"
+      },
+      {
+        "word": "allocate",
+        "meaningVi": "phân bổ"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-007",
+    "prompt": "Many people believe that every individual should pay the same tax rate regardless of income. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: mọi người nên đóng cùng một mức thuế bất kể thu nhập. Thesis: không đồng ý — thuế lũy tiến công bằng hơn.",
+      "body1": "Vấn đề của thuế đồng đều: (1) Bất công với người thu nhập thấp — cùng 20% nhưng người nghèo mất phần lớn chi phí sinh hoạt; (2) Làm gia tăng khoảng cách giàu nghèo; (3) Giảm sức mua của đa số dân.",
+      "body2": "Ưu điểm thuế lũy tiến: (1) Người giàu đóng góp tương xứng khả năng; (2) Ngân sách đủ cho y tế, giáo dục công; (3) Ổn định xã hội. Phản biện: thuế suất phẳng đơn giản — đáp: công nghệ hiện nay xử lý dễ dàng.",
+      "conclusion": "Tóm tắt: thuế nên theo khả năng đóng góp để đảm bảo công bằng xã hội."
+    },
+    "keyVocab": [
+      {
+        "word": "flat tax",
+        "meaningVi": "thuế suất phẳng"
+      },
+      {
+        "word": "progressive tax",
+        "meaningVi": "thuế lũy tiến"
+      },
+      {
+        "word": "disposable income",
+        "meaningVi": "thu nhập khả dụng"
+      },
+      {
+        "word": "income inequality",
+        "meaningVi": "bất bình đẳng thu nhập"
+      },
+      {
+        "word": "redistribution",
+        "meaningVi": "sự phân phối lại"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-008",
+    "prompt": "Some people think that the main purpose of schools is to turn children into good citizens and workers, rather than to benefit them as individuals. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: mục đích chính của trường học là tạo công dân tốt chứ không phải vì lợi ích cá nhân. Thesis: đồng ý một phần — cả hai mục đích đều quan trọng.",
+      "body1": "Vai trò xã hội của trường học: (1) Dạy kỷ luật, tôn trọng luật pháp; (2) Đào tạo lực lượng lao động cho nền kinh tế; (3) Truyền giá trị văn hóa chung.",
+      "body2": "Không thể bỏ lợi ích cá nhân: (1) Mỗi trẻ có năng khiếu, đam mê riêng; (2) Giáo dục cá nhân hóa giúp phát huy tối đa tiềm năng; (3) Học sinh hạnh phúc mới cống hiến tốt cho xã hội.",
+      "conclusion": "Tóm tắt: trường học cần cân bằng giữa lợi ích xã hội và phát triển cá nhân."
+    },
+    "keyVocab": [
+      {
+        "word": "upstanding citizen",
+        "meaningVi": "công dân gương mẫu"
+      },
+      {
+        "word": "workforce",
+        "meaningVi": "lực lượng lao động"
+      },
+      {
+        "word": "holistic development",
+        "meaningVi": "phát triển toàn diện"
+      },
+      {
+        "word": "individual potential",
+        "meaningVi": "tiềm năng cá nhân"
+      },
+      {
+        "word": "instil values",
+        "meaningVi": "truyền dạy giá trị"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-009",
+    "prompt": "Some people believe that the only reason for learning a foreign language is to travel or work in a foreign country. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: học ngoại ngữ chỉ để du lịch/làm việc ở nước ngoài. Thesis: không đồng ý — còn nhiều lý do khác.",
+      "body1": "Thừa nhận lý do thực tế: (1) Du lịch, làm việc là động lực phổ biến nhất; (2) Tăng lương, cơ hội thăng tiến rõ rệt.",
+      "body2": "Các lý do khác quan trọng không kém: (1) Tiếp cận tri thức, tài liệu gốc; (2) Hiểu văn hóa, mở rộng tư duy; (3) Rèn trí não, trì hoãn lão hóa; (4) Kết bạn quốc tế ngay tại quê nhà.",
+      "conclusion": "Tóm tắt: du lịch/việc làm chỉ là một trong nhiều lý do chính đáng."
+    },
+    "keyVocab": [
+      {
+        "word": "multilingual",
+        "meaningVi": "đa ngôn ngữ"
+      },
+      {
+        "word": "cognitive benefits",
+        "meaningVi": "lợi ích nhận thức"
+      },
+      {
+        "word": "cultural insight",
+        "meaningVi": "hiểu biết văn hóa"
+      },
+      {
+        "word": "career prospects",
+        "meaningVi": "triển vọng nghề nghiệp"
+      },
+      {
+        "word": "broaden horizons",
+        "meaningVi": "mở rộng tầm nhìn"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-010",
+    "prompt": "Many people think that cultural traditions are destroyed when they are used as money-making attractions aimed at tourists. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: thương mại hóa văn hóa để hút khách du lịch sẽ phá hủy truyền thống. Thesis: đồng ý một phần.",
+      "body1": "Nguy cơ thật: (1) Lễ hội bị rút ngắn, làm màu cho khách chụp ảnh; (2) Làng nghề chạy theo số lượng, mất chất lượng; (3) Thế hệ trẻ hiểu sai giá trị gốc.",
+      "body2": "Mặt tích cực nếu quản lý tốt: (1) Nguồn thu giúp bảo tồn di sản; (2) Tạo việc làm cho cộng đồng địa phương; (3) Lan tỏa văn hóa ra thế giới. Điều kiện: cộng đồng địa phương làm chủ, không biến tướng.",
+      "conclusion": "Tóm tắt: thương mại hóa là con dao hai lưỡi — cần quản lý để bảo tồn thay vì phá hủy."
+    },
+    "keyVocab": [
+      {
+        "word": "commercialisation",
+        "meaningVi": "sự thương mại hóa"
+      },
+      {
+        "word": "authenticity",
+        "meaningVi": "tính nguyên bản"
+      },
+      {
+        "word": "cultural heritage",
+        "meaningVi": "di sản văn hóa"
+      },
+      {
+        "word": "exploitation",
+        "meaningVi": "sự khai thác"
+      },
+      {
+        "word": "sustainable tourism",
+        "meaningVi": "du lịch bền vững"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-011",
+    "prompt": "Some people think that children should be given homework every day. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: trẻ nên có bài tập về nhà mỗi ngày. Thesis: không đồng ý — bài tập cần vừa phải.",
+      "body1": "Lợi ích của bài tập (thừa nhận): (1) Củng cố kiến thức; (2) Rèn tính tự giác. Nhưng bài tập hằng ngày quá tải.",
+      "body2": "Tác hại khi quá nhiều: (1) Stress, mất tuổi thơ; (2) Phụ thuộc phụ huynh, gian lận; (3) Không còn thời gian thể thao, sở thích — ảnh hưởng sức khỏe toàn diện. Giải pháp: bài tập ít nhưng chất lượng, tập trung vào tư duy.",
+      "conclusion": "Tóm tắt: chất lượng hơn số lượng trong bài tập về nhà."
+    },
+    "keyVocab": [
+      {
+        "word": "overburdened",
+        "meaningVi": "quá tải"
+      },
+      {
+        "word": "rote learning",
+        "meaningVi": "học vẹt"
+      },
+      {
+        "word": "well-being",
+        "meaningVi": "sức khỏe toàn diện"
+      },
+      {
+        "word": "counterproductive",
+        "meaningVi": "phản tác dụng"
+      },
+      {
+        "word": "burnout",
+        "meaningVi": "kiệt sức"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-012",
+    "prompt": "Some people believe that women should play the same role as men in military or police forces. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: phụ nữ nên có vai trò như nam giới trong quân đội/cảnh sát. Thesis: hoàn toàn đồng ý — dựa trên năng lực, không giới tính.",
+      "body1": "Bình đẳng cơ hội: (1) Nhiều phụ nữ đủ thể lực, kỷ luật; (2) Mang góc nhìn đa dạng, giỏi xử lý tình huống nhạy cảm; (3) Thực tế nhiều nữ quân nhân xuất sắc.",
+      "body2": "Phản biện thể lực: (1) Tiêu chuẩn tuyển chọn nên giống nhau cho mọi giới — ai đạt thì nhận; (2) Công nghệ hiện đại giảm phụ thuộc sức mạnh cơ bắp; (3) Vai trò đa dạng: tình báo, hậu cần, đàm phán.",
+      "conclusion": "Tóm tắt: tiêu chí duy nhất nên là năng lực."
+    },
+    "keyVocab": [
+      {
+        "word": "gender equality",
+        "meaningVi": "bình đẳng giới"
+      },
+      {
+        "word": "discrimination",
+        "meaningVi": "sự phân biệt đối xử"
+      },
+      {
+        "word": "merit-based",
+        "meaningVi": "dựa trên năng lực"
+      },
+      {
+        "word": "stereotype",
+        "meaningVi": "định kiến"
+      },
+      {
+        "word": "enlist",
+        "meaningVi": "nhập ngũ"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-013",
+    "prompt": "Some people believe that competition is necessary for success in all areas of life. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: cạnh tranh là cần thiết cho thành công mọi lĩnh vực. Thesis: đồng ý một phần.",
+      "body1": "Mặt tích cực của cạnh tranh: (1) Thúc đẩy nỗ lực, sáng tạo; (2) Thị trường cạnh tranh mang lại sản phẩm tốt, giá rẻ; (3) Thể thao cạnh tranh rèn ý chí.",
+      "body2": "Giới hạn: (1) Cạnh tranh quá mức gây stress, gian lận; (2) Nhiều lĩnh vực cần hợp tác hơn (khoa học, y tế, gia đình); (3) Thành công còn nhờ kiên trì, đạo đức, may mắn — không chỉ cạnh tranh.",
+      "conclusion": "Tóm tắt: cạnh tranh lành mạnh tốt, nhưng hợp tác cũng quan trọng không kém."
+    },
+    "keyVocab": [
+      {
+        "word": "cut-throat competition",
+        "meaningVi": "cạnh tranh khốc liệt"
+      },
+      {
+        "word": "collaboration",
+        "meaningVi": "sự hợp tác"
+      },
+      {
+        "word": "drive innovation",
+        "meaningVi": "thúc đẩy đổi mới"
+      },
+      {
+        "word": "detrimental",
+        "meaningVi": "có hại"
+      },
+      {
+        "word": "win-win",
+        "meaningVi": "đôi bên cùng có lợi"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-014",
+    "prompt": "Many people think that home schooling is better than traditional schooling. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: học tại nhà tốt hơn trường truyền thống. Thesis: không đồng ý — trường học vẫn vượt trội với đa số.",
+      "body1": "Ưu điểm học tại nhà (thừa nhận): (1) Linh hoạt thời gian, cá nhân hóa; (2) Tránh bạo lực học đường; (3) Phù hợp trẻ có nhu cầu đặc biệt.",
+      "body2": "Hạn chế lớn: (1) Thiếu tương tác xã hội, kỹ năng mềm; (2) Phụ huynh không đủ chuyên môn mọi môn; (3) Thiếu cơ sở vật chất, hoạt động tập thể; (4) Khó đánh giá khách quan.",
+      "conclusion": "Tóm tắt: học tại nhà chỉ phù hợp trường hợp đặc biệt, trường học vẫn là lựa chọn tốt nhất."
+    },
+    "keyVocab": [
+      {
+        "word": "socialisation",
+        "meaningVi": "sự hòa nhập xã hội"
+      },
+      {
+        "word": "tailored curriculum",
+        "meaningVi": "chương trình cá nhân hóa"
+      },
+      {
+        "word": "peer interaction",
+        "meaningVi": "tương tác bạn bè"
+      },
+      {
+        "word": "accreditation",
+        "meaningVi": "sự công nhận (bằng cấp)"
+      },
+      {
+        "word": "extracurricular",
+        "meaningVi": "ngoại khóa"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-015",
+    "prompt": "Some people think that the government should ban dangerous sports. To what extent do you agree or disagree?",
+    "type": "opinion",
+    "typeVi": "Nêu quan điểm",
+    "outlineVi": {
+      "intro": "Paraphrase: chính phủ nên cấm các môn thể thao nguy hiểm. Thesis: không đồng ý — quản lý thay vì cấm.",
+      "body1": "Lý do muốn cấm (thừa nhận): (1) Tai nạn chết người; (2) Tốn chi phí y tế, cứu hộ; (3) Ảnh hưởng gia đình nạn nhân.",
+      "body2": "Không nên cấm: (1) Quyền tự do cá nhân — người chơi chấp nhận rủi ro; (2) Mang lại lợi ích: rèn luyện, du lịch, kinh tế địa phương; (3) Cấm chỉ đẩy hoạt động chui, nguy hiểm hơn. Giải pháp: quy định an toàn nghiêm ngặt, bảo hiểm bắt buộc.",
+      "conclusion": "Tóm tắt: quản lý chặt thay vì cấm đoán."
+    },
+    "keyVocab": [
+      {
+        "word": "prohibit",
+        "meaningVi": "cấm"
+      },
+      {
+        "word": "adrenaline junkie",
+        "meaningVi": "người mê cảm giác mạnh"
+      },
+      {
+        "word": "informed consent",
+        "meaningVi": "sự đồng ý khi đã hiểu rủi ro"
+      },
+      {
+        "word": "stringent regulations",
+        "meaningVi": "quy định nghiêm ngặt"
+      },
+      {
+        "word": "go underground",
+        "meaningVi": "hoạt động chui"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-016",
+    "prompt": "Some people think that all university students should study whatever they like. Others believe that they should only be allowed to study subjects that will be useful in the future, such as those related to science and technology. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase hai quan điểm: tự do chọn ngành vs chỉ học ngành 'hữu dụng'. Thesis: ủng hộ tự do lựa chọn có định hướng.",
+      "body1": "Quan điểm 1 (tự chọn): (1) Đam mê giúp học tốt, sáng tạo; (2) Xã hội cần đa dạng ngành nghề: nghệ thuật, nhân văn; (3) Ép học ngành không thích gây chán nản, bỏ học.",
+      "body2": "Quan điểm 2 (ngành hữu dụng): (1) Đáp ứng nhu cầu thị trường lao động; (2) Giảm thất nghiệp cử nhân; (3) Phát triển kinh tế quốc gia. Ý kiến cá nhân: cho tự chọn nhưng tăng tư vấn hướng nghiệp.",
+      "conclusion": "Tóm tắt hai mặt + quan điểm: tự do có định hướng là tối ưu."
+    },
+    "keyVocab": [
+      {
+        "word": "pursue one's passion",
+        "meaningVi": "theo đuổi đam mê"
+      },
+      {
+        "word": "labour market demands",
+        "meaningVi": "nhu cầu thị trường lao động"
+      },
+      {
+        "word": "graduate unemployment",
+        "meaningVi": "thất nghiệp cử nhân"
+      },
+      {
+        "word": "career guidance",
+        "meaningVi": "hướng nghiệp"
+      },
+      {
+        "word": "well-rounded society",
+        "meaningVi": "xã hội phát triển toàn diện"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-017",
+    "prompt": "Some people believe that teaching children at home is best for a child's development while others think that it is important for children to go to school. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: dạy con tại nhà vs đến trường. Thesis: trường học tốt hơn với đa số trẻ.",
+      "body1": "Ủng hộ học tại nhà: (1) An toàn, tránh bắt nạt; (2) Tốc độ cá nhân hóa; (3) Gắn kết gia đình.",
+      "body2": "Ủng hộ đến trường: (1) Kỹ năng xã hội qua bạn bè; (2) Giáo viên chuyên môn, cơ sở vật chất; (3) Kỷ luật, tính cạnh tranh lành mạnh. Ý kiến cá nhân: trường học chuẩn bị tốt hơn cho đời thực.",
+      "conclusion": "Tóm tắt + quan điểm: chọn trường học, trừ trường hợp đặc biệt."
+    },
+    "keyVocab": [
+      {
+        "word": "homeschooling",
+        "meaningVi": "học tại nhà"
+      },
+      {
+        "word": "bullying",
+        "meaningVi": "bắt nạt học đường"
+      },
+      {
+        "word": "social skills",
+        "meaningVi": "kỹ năng xã hội"
+      },
+      {
+        "word": "qualified teachers",
+        "meaningVi": "giáo viên có chuyên môn"
+      },
+      {
+        "word": "real-world preparation",
+        "meaningVi": "chuẩn bị cho đời thực"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-018",
+    "prompt": "Some people think that newspapers are the best way to learn news. However, others believe that they can learn news more effectively through other media. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: báo giấy là kênh tin tức tốt nhất vs các phương tiện khác hiệu quả hơn. Thesis: các phương tiện hiện đại vượt trội nhưng báo giấy vẫn có giá trị.",
+      "body1": "Ủng hộ báo giấy: (1) Tin đã kiểm chứng, ít tin giả; (2) Phân tích sâu, không giật tít; (3) Thói quen đọc tập trung.",
+      "body2": "Ủng hộ media khác: (1) Cập nhật tức thì, mọi lúc mọi nơi; (2) Đa dạng góc nhìn, video trực tiếp; (3) Miễn phí, dễ tiếp cận. Ý kiến cá nhân: kết hợp — đọc báo uy tín trên nền tảng số.",
+      "conclusion": "Tóm tắt + quan điểm: nội dung chất lượng quan trọng hơn hình thức."
+    },
+    "keyVocab": [
+      {
+        "word": "print media",
+        "meaningVi": "báo in"
+      },
+      {
+        "word": "misinformation",
+        "meaningVi": "tin sai lệch"
+      },
+      {
+        "word": "in-depth analysis",
+        "meaningVi": "phân tích chuyên sâu"
+      },
+      {
+        "word": "clickbait",
+        "meaningVi": "giật tít câu view"
+      },
+      {
+        "word": "credible sources",
+        "meaningVi": "nguồn tin đáng tin cậy"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-019",
+    "prompt": "Some people believe that studying abroad is beneficial for students, while others think it has many drawbacks. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: du học lợi vs hại. Thesis: lợi ích vượt trội nếu chuẩn bị tốt.",
+      "body1": "Lợi ích: (1) Nền giáo dục tiên tiến, bằng cấp giá trị; (2) Ngoại ngữ, tư duy độc lập; (3) Mạng lưới quốc tế, cơ hội nghề nghiệp.",
+      "body2": "Bất lợi: (1) Chi phí khổng lồ, áp lực tài chính; (2) Sốc văn hóa, cô đơn; (3) Chảy máu chất xám nếu không về nước. Ý kiến cá nhân: lợi ích lớn hơn, cần học bổng và định hướng rõ.",
+      "conclusion": "Tóm tắt + quan điểm: du học đáng đầu tư với kế hoạch rõ ràng."
+    },
+    "keyVocab": [
+      {
+        "word": "broaden one's mind",
+        "meaningVi": "mở mang đầu óc"
+      },
+      {
+        "word": "culture shock",
+        "meaningVi": "sốc văn hóa"
+      },
+      {
+        "word": "brain drain",
+        "meaningVi": "chảy máu chất xám"
+      },
+      {
+        "word": "financial burden",
+        "meaningVi": "gánh nặng tài chính"
+      },
+      {
+        "word": "independence",
+        "meaningVi": "tính tự lập"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-020",
+    "prompt": "Some people think that work is the most important thing in people's lives. Others think that other factors such as family and leisure are more important. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: công việc quan trọng nhất vs gia đình/giải trí quan trọng hơn. Thesis: cân bằng là chìa khóa.",
+      "body1": "Coi trọng công việc: (1) Thu nhập nuôi sống bản thân, gia đình; (2) Khẳng định giá trị, địa vị xã hội; (3) Đam mê nghề nghiệp mang lại ý nghĩa.",
+      "body2": "Coi trọng gia đình/giải trí: (1) Sức khỏe, hạnh phúc tinh thần; (2) Quan hệ gia đình không thể mua bằng tiền; (3) Làm việc quá sức gây kiệt quệ. Ý kiến cá nhân: công việc quan trọng nhưng không đánh đổi sức khỏe và gia đình.",
+      "conclusion": "Tóm tắt + quan điểm: cân bằng công việc - cuộc sống."
+    },
+    "keyVocab": [
+      {
+        "word": "work-life balance",
+        "meaningVi": "cân bằng công việc - cuộc sống"
+      },
+      {
+        "word": "breadwinner",
+        "meaningVi": "trụ cột gia đình"
+      },
+      {
+        "word": "burnout",
+        "meaningVi": "kiệt sức vì công việc"
+      },
+      {
+        "word": "fulfilment",
+        "meaningVi": "sự viên mãn"
+      },
+      {
+        "word": "quality time",
+        "meaningVi": "thời gian chất lượng"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-021",
+    "prompt": "Some people believe that children should be allowed to stay at home and play until they are six or seven years old. Others believe that it is important for young children to go to school as soon as possible. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: trẻ nên ở nhà chơi đến 6-7 tuổi vs đi học sớm. Thesis: đi học sớm với chương trình phù hợp thì tốt hơn.",
+      "body1": "Ủng hộ ở nhà chơi: (1) Tuổi thơ tự nhiên, phát triển sáng tạo qua chơi; (2) Tránh áp lực học sớm; (3) Gắn bó gia đình.",
+      "body2": "Ủng hộ đi học sớm: (1) Giai đoạn vàng phát triển ngôn ngữ, tư duy; (2) Học kỷ luật, hòa nhập; (3) Phát hiện sớm năng khiếu/khó khăn. Ý kiến cá nhân: đi học sớm nhưng chương trình vui chơi, không nhồi nhét.",
+      "conclusion": "Tóm tắt + quan điểm: học sớm qua chơi là tối ưu."
+    },
+    "keyVocab": [
+      {
+        "word": "early childhood",
+        "meaningVi": "thời thơ ấu"
+      },
+      {
+        "word": "play-based learning",
+        "meaningVi": "học qua chơi"
+      },
+      {
+        "word": "golden period",
+        "meaningVi": "giai đoạn vàng"
+      },
+      {
+        "word": "academic pressure",
+        "meaningVi": "áp lực học tập"
+      },
+      {
+        "word": "socialise",
+        "meaningVi": "hòa nhập xã hội"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-022",
+    "prompt": "Some people think that the best way to reduce pollution is to increase the price of fuel. Others believe there are better alternatives. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: tăng giá nhiên liệu để giảm ô nhiễm vs có giải pháp tốt hơn. Thesis: tăng giá chỉ là một phần, cần giải pháp đồng bộ.",
+      "body1": "Ủng hộ tăng giá nhiên liệu: (1) Giảm nhu cầu đi xe cá nhân; (2) Khuyến khích xe điện, giao thông công cộng; (3) Nguồn thu đầu tư môi trường.",
+      "body2": "Giải pháp khác tốt hơn: (1) Tăng giá đánh vào người nghèo nhiều nhất; (2) Đầu tư giao thông công cộng tiện lợi; (3) Quy định khí thải nghiêm, năng lượng tái tạo. Ý kiến cá nhân: kết hợp thuế carbon + đầu tư hạ tầng xanh.",
+      "conclusion": "Tóm tắt + quan điểm: giải pháp tổng hợp hiệu quả và công bằng hơn."
+    },
+    "keyVocab": [
+      {
+        "word": "carbon tax",
+        "meaningVi": "thuế carbon"
+      },
+      {
+        "word": "regressive",
+        "meaningVi": "đánh nặng người nghèo (thuế)"
+      },
+      {
+        "word": "public transport",
+        "meaningVi": "giao thông công cộng"
+      },
+      {
+        "word": "renewable energy",
+        "meaningVi": "năng lượng tái tạo"
+      },
+      {
+        "word": "emission standards",
+        "meaningVi": "tiêu chuẩn khí thải"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-023",
+    "prompt": "Some people believe that music is just a form of entertainment, while others think it has many other functions. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: âm nhạc chỉ để giải trí vs có nhiều chức năng khác. Thesis: âm nhạc vượt xa giải trí.",
+      "body1": "Quan điểm giải trí: (1) Thư giãn sau giờ làm; (2) Ngành công nghiệp tỷ đô; (3) Phần lớn người nghe chỉ để vui.",
+      "body2": "Chức năng khác: (1) Giáo dục: học ngoại ngữ qua bài hát; (2) Trị liệu tâm lý, giảm stress; (3) Gắn kết văn hóa, lưu giữ bản sắc dân tộc; (4) Truyền tải thông điệp xã hội. Ý kiến cá nhân: giải trí là một phần, giá trị sâu hơn mới đáng quý.",
+      "conclusion": "Tóm tắt + quan điểm: âm nhạc đa chức năng."
+    },
+    "keyVocab": [
+      {
+        "word": "music therapy",
+        "meaningVi": "trị liệu bằng âm nhạc"
+      },
+      {
+        "word": "cultural identity",
+        "meaningVi": "bản sắc văn hóa"
+      },
+      {
+        "word": "convey a message",
+        "meaningVi": "truyền tải thông điệp"
+      },
+      {
+        "word": "stress relief",
+        "meaningVi": "giải tỏa căng thẳng"
+      },
+      {
+        "word": "folk songs",
+        "meaningVi": "dân ca"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-024",
+    "prompt": "Some people think that it is better to get advice from old people than from young people. Others believe young people can also give good advice. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: nên nghe lời khuyên người già vs người trẻ cũng cho lời khuyên hay. Thesis: cả hai đều có giá trị tùy lĩnh vực.",
+      "body1": "Nghe người già: (1) Kinh nghiệm sống phong phú; (2) Nhìn xa, tránh sai lầm; (3) Hiểu giá trị truyền thống, gia đình.",
+      "body2": "Nghe người trẻ: (1) Cập nhật công nghệ, xu hướng; (2) Tư duy mới, sáng tạo; (3) Hiểu tâm lý thế hệ mình. Ý kiến cá nhân: việc đời, gia đình hỏi người lớn; công nghệ, sự nghiệp tham khảo người trẻ.",
+      "conclusion": "Tóm tắt + quan điểm: chọn người tư vấn theo lĩnh vực."
+    },
+    "keyVocab": [
+      {
+        "word": "wisdom",
+        "meaningVi": "trí tuệ, sự khôn ngoan"
+      },
+      {
+        "word": "life experience",
+        "meaningVi": "kinh nghiệm sống"
+      },
+      {
+        "word": "up-to-date",
+        "meaningVi": "cập nhật"
+      },
+      {
+        "word": "generation gap",
+        "meaningVi": "khoảng cách thế hệ"
+      },
+      {
+        "word": "perspective",
+        "meaningVi": "góc nhìn"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-025",
+    "prompt": "Some people believe that the best way to learn about life is by listening to the advice of family and friends. Others believe that the best way to learn about life is through personal experience. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: học từ lời khuyên vs trải nghiệm bản thân. Thesis: kết hợp cả hai, nhưng trải nghiệm sâu sắc hơn.",
+      "body1": "Nghe lời khuyên: (1) Tránh sai lầm người khác đã mắc; (2) Tiết kiệm thời gian, tiền bạc; (3) Người thân hiểu mình, lời khuyên chân thành.",
+      "body2": "Trải nghiệm bản thân: (1) Bài học nhớ lâu, thấm thía; (2) Rèn tính độc lập, bản lĩnh; (3) Mỗi người hoàn cảnh khác — lời khuyên chưa chắc phù hợp. Ý kiến cá nhân: lắng nghe để tham khảo, nhưng phải tự trải nghiệm để trưởng thành.",
+      "conclusion": "Tóm tắt + quan điểm: lời khuyên là bản đồ, trải nghiệm là hành trình."
+    },
+    "keyVocab": [
+      {
+        "word": "first-hand experience",
+        "meaningVi": "trải nghiệm trực tiếp"
+      },
+      {
+        "word": "learn the hard way",
+        "meaningVi": "học bằng cách trả giá"
+      },
+      {
+        "word": "take advice with a pinch of salt",
+        "meaningVi": "nghe có chọn lọc"
+      },
+      {
+        "word": "maturity",
+        "meaningVi": "sự trưởng thành"
+      },
+      {
+        "word": "resilience",
+        "meaningVi": "sự kiên cường"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-026",
+    "prompt": "Some people think that robots will take over many jobs in the future. Others think that humans will always be needed. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: robot thay thế việc làm vs con người luôn cần thiết. Thesis: robot thay thế việc lặp lại, con người chuyển sang việc giá trị cao.",
+      "body1": "Robot thay thế: (1) Tự động hóa dây chuyền, lái xe, kế toán cơ bản; (2) Rẻ hơn, chính xác, làm 24/7; (3) Lịch sử: máy móc từng thay thế nhiều nghề.",
+      "body2": "Con người vẫn cần: (1) Sáng tạo, cảm xúc, đạo đức — robot không có; (2) Nghề mới xuất hiện (AI trainer, data...); (3) Chăm sóc sức khỏe, giáo dục cần tương tác người. Ý kiến cá nhân: thích ứng bằng học kỹ năng mới thay vì sợ hãi.",
+      "conclusion": "Tóm tắt + quan điểm: công việc thay đổi chứ không biến mất."
+    },
+    "keyVocab": [
+      {
+        "word": "automation",
+        "meaningVi": "tự động hóa"
+      },
+      {
+        "word": "displace workers",
+        "meaningVi": "thay thế người lao động"
+      },
+      {
+        "word": "upskilling",
+        "meaningVi": "nâng cao kỹ năng"
+      },
+      {
+        "word": "repetitive tasks",
+        "meaningVi": "công việc lặp đi lặp lại"
+      },
+      {
+        "word": "emotional intelligence",
+        "meaningVi": "trí tuệ cảm xúc"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-027",
+    "prompt": "Some people believe that watching television is bad for children. Others believe that it has educational value. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: TV hại trẻ em vs có giá trị giáo dục. Thesis: phụ thuộc nội dung và thời lượng.",
+      "body1": "Tác hại: (1) Ngồi lâu, béo phì, hại mắt; (2) Nội dung bạo lực ảnh hưởng tâm lý; (3) Giảm thời gian đọc sách, vận động.",
+      "body2": "Giá trị giáo dục: (1) Phim tài liệu mở rộng kiến thức; (2) Học ngoại ngữ qua chương trình hay; (3) Tin tức giúp hiểu thế giới. Ý kiến cá nhân: cha mẹ kiểm soát nội dung + giới hạn 1-2 giờ/ngày.",
+      "conclusion": "Tóm tắt + quan điểm: TV là công cụ trung tính — cách dùng quyết định."
+    },
+    "keyVocab": [
+      {
+        "word": "sedentary lifestyle",
+        "meaningVi": "lối sống ít vận động"
+      },
+      {
+        "word": "documentary",
+        "meaningVi": "phim tài liệu"
+      },
+      {
+        "word": "screen time",
+        "meaningVi": "thời gian dùng màn hình"
+      },
+      {
+        "word": "parental control",
+        "meaningVi": "sự kiểm soát của cha mẹ"
+      },
+      {
+        "word": "age-appropriate",
+        "meaningVi": "phù hợp lứa tuổi"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-028",
+    "prompt": "Some people think that advertising is useful for consumers, while others believe it only encourages people to buy things they do not need. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: quảng cáo hữu ích vs chỉ kích thích mua sắm thừa. Thesis: quảng cáo cần thiết nhưng cần quản lý.",
+      "body1": "Hữu ích: (1) Cung cấp thông tin sản phẩm mới; (2) So sánh giá, chất lượng; (3) Tài trợ cho báo chí, nội dung miễn phí.",
+      "body2": "Tiêu cực: (1) Thao túng tâm lý, tạo nhu cầu giả; (2) Quảng cáo sai sự thật; (3) Khuyến khích tiêu dùng lãng phí, nợ nần. Ý kiến cá nhân: cần luật quảng cáo trung thực + người tiêu dùng tỉnh táo.",
+      "conclusion": "Tóm tắt + quan điểm: quảng cáo tốt khi trung thực và có kiểm soát."
+    },
+    "keyVocab": [
+      {
+        "word": "consumerism",
+        "meaningVi": "chủ nghĩa tiêu dùng"
+      },
+      {
+        "word": "misleading ads",
+        "meaningVi": "quảng cáo gây hiểu lầm"
+      },
+      {
+        "word": "impulse buying",
+        "meaningVi": "mua sắm bốc đồng"
+      },
+      {
+        "word": "informed choice",
+        "meaningVi": "lựa chọn sáng suốt"
+      },
+      {
+        "word": "manipulative",
+        "meaningVi": "thao túng"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-029",
+    "prompt": "Some people believe that public libraries will disappear because of the internet, while others think libraries still play an important role. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: thư viện sẽ biến mất vì internet vs vẫn quan trọng. Thesis: thư viện chuyển đổi chứ không biến mất.",
+      "body1": "Nguy cơ biến mất: (1) Sách điện tử tiện lợi, rẻ; (2) Tra cứu Google nhanh hơn; (3) Ngân sách cắt giảm, ít người đến.",
+      "body2": "Vai trò còn lại: (1) Không gian học tập yên tĩnh miễn phí; (2) Phục vụ người nghèo, người già không có internet; (3) Lưu trữ tài liệu quý; (4) Hoạt động cộng đồng. Ý kiến cá nhân: thư viện hiện đại hóa — kết hợp sách giấy và số.",
+      "conclusion": "Tóm tắt + quan điểm: thư viện tiến hóa, không tuyệt chủng."
+    },
+    "keyVocab": [
+      {
+        "word": "digitalisation",
+        "meaningVi": "số hóa"
+      },
+      {
+        "word": "e-books",
+        "meaningVi": "sách điện tử"
+      },
+      {
+        "word": "archive",
+        "meaningVi": "lưu trữ"
+      },
+      {
+        "word": "community hub",
+        "meaningVi": "trung tâm cộng đồng"
+      },
+      {
+        "word": "bridge the digital divide",
+        "meaningVi": "thu hẹp khoảng cách số"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-030",
+    "prompt": "Some people think that living in big cities is good for young people, while others believe small towns or the countryside is better. Discuss both views and give your own opinion.",
+    "type": "discussion",
+    "typeVi": "Thảo luận hai mặt",
+    "outlineVi": {
+      "intro": "Paraphrase: thành phố lớn tốt cho người trẻ vs thị trấn/quê tốt hơn. Thesis: thành phố phù hợp giai đoạn lập nghiệp, quê phù hợp khi ổn định.",
+      "body1": "Ủng hộ thành phố: (1) Nhiều việc làm, lương cao; (2) Giáo dục, y tế, giải trí tốt; (3) Môi trường năng động, cơ hội kết nối.",
+      "body2": "Ủng hộ quê/thị trấn: (1) Chi phí sống thấp, không khí trong lành; (2) Ít stress, gần gia đình; (3) Remote work giúp làm việc từ xa. Ý kiến cá nhân: trẻ nên ra thành phố học hỏi, sau có thể về quê.",
+      "conclusion": "Tóm tắt + quan điểm: chọn nơi sống theo giai đoạn đời."
+    },
+    "keyVocab": [
+      {
+        "word": "career opportunities",
+        "meaningVi": "cơ hội nghề nghiệp"
+      },
+      {
+        "word": "cost of living",
+        "meaningVi": "chi phí sinh hoạt"
+      },
+      {
+        "word": "hustle and bustle",
+        "meaningVi": "sự ồn ào náo nhiệt"
+      },
+      {
+        "word": "remote work",
+        "meaningVi": "làm việc từ xa"
+      },
+      {
+        "word": "pace of life",
+        "meaningVi": "nhịp sống"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-031",
+    "prompt": "In many countries, the number of animals and plants is declining rapidly. What are the causes of this problem, and what measures can be taken to solve it?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: đa dạng sinh học suy giảm nhanh. Thesis: nêu nguyên nhân chính và giải pháp.",
+      "body1": "Nguyên nhân: (1) Phá rừng làm nông nghiệp, đô thị hóa — mất môi trường sống; (2) Ô nhiễm, biến đổi khí hậu; (3) Săn bắt, buôn bán trái phép.",
+      "body2": "Giải pháp: (1) Mở rộng khu bảo tồn, trồng rừng; (2) Luật nghiêm trị săn bắt trái phép; (3) Giáo dục cộng đồng, du lịch sinh thái tạo thu nhập thay thế.",
+      "conclusion": "Tóm tắt nguyên nhân + giải pháp, nhấn mạnh hành động khẩn cấp."
+    },
+    "keyVocab": [
+      {
+        "word": "biodiversity",
+        "meaningVi": "đa dạng sinh học"
+      },
+      {
+        "word": "habitat loss",
+        "meaningVi": "mất môi trường sống"
+      },
+      {
+        "word": "poaching",
+        "meaningVi": "săn bắt trái phép"
+      },
+      {
+        "word": "nature reserve",
+        "meaningVi": "khu bảo tồn thiên nhiên"
+      },
+      {
+        "word": "ecosystem",
+        "meaningVi": "hệ sinh thái"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-032",
+    "prompt": "Traffic congestion is a growing problem in many large cities. What are the causes of this problem, and what solutions can you suggest?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: ùn tắc giao thông ngày càng nghiêm trọng. Thesis: phân tích nguyên nhân và đề xuất giải pháp.",
+      "body1": "Nguyên nhân: (1) Đô thị hóa nhanh, dân số tăng; (2) Phụ thuộc xe cá nhân, giao thông công cộng kém; (3) Quy hoạch kém, đường sá không theo kịp.",
+      "body2": "Giải pháp: (1) Đầu tư metro, xe buýt nhanh; (2) Thu phí vào trung tâm giờ cao điểm; (3) Khuyến khích làm việc từ xa, giờ làm linh hoạt; (4) Quy hoạch đô thị vệ tinh.",
+      "conclusion": "Tóm tắt: cần kết hợp hạ tầng và chính sách."
+    },
+    "keyVocab": [
+      {
+        "word": "gridlock",
+        "meaningVi": "ùn tắc nghiêm trọng"
+      },
+      {
+        "word": "rush hour",
+        "meaningVi": "giờ cao điểm"
+      },
+      {
+        "word": "mass transit",
+        "meaningVi": "giao thông công cộng"
+      },
+      {
+        "word": "congestion charge",
+        "meaningVi": "phí chống ùn tắc"
+      },
+      {
+        "word": "urban sprawl",
+        "meaningVi": "đô thị hóa lan rộng"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-033",
+    "prompt": "Many young people today spend too much time on their smartphones. What are the reasons for this, and how can this problem be solved?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: giới trẻ dành quá nhiều thời gian cho smartphone. Thesis: tìm nguyên nhân và cách khắc phục.",
+      "body1": "Nguyên nhân: (1) Mạng xã hội, game thiết kế gây nghiện; (2) Áp lực đồng trang lứa — sợ bị bỏ lỡ; (3) Thiếu hoạt động thay thế hấp dẫn.",
+      "body2": "Giải pháp: (1) Giáo dục kỹ năng số trong trường học; (2) Cha mẹ làm gương, quy định giờ dùng máy; (3) App quản lý thời gian màn hình; (4) Tạo sân chơi, hoạt động ngoại khóa.",
+      "conclusion": "Tóm tắt: công nghệ không xấu, cần dùng có kỷ luật."
+    },
+    "keyVocab": [
+      {
+        "word": "screen addiction",
+        "meaningVi": "nghiện màn hình"
+      },
+      {
+        "word": "FOMO (fear of missing out)",
+        "meaningVi": "nỗi sợ bị bỏ lỡ"
+      },
+      {
+        "word": "digital literacy",
+        "meaningVi": "kỹ năng số"
+      },
+      {
+        "word": "set boundaries",
+        "meaningVi": "đặt giới hạn"
+      },
+      {
+        "word": "face-to-face interaction",
+        "meaningVi": "tương tác trực tiếp"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-034",
+    "prompt": "Obesity is becoming a serious health problem in many countries. What are the causes, and what measures should governments take?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: béo phì thành vấn đề sức khỏe nghiêm trọng. Thesis: nguyên nhân từ lối sống, chính phủ cần can thiệp.",
+      "body1": "Nguyên nhân: (1) Đồ ăn nhanh rẻ, nhiều đường mỡ; (2) Ít vận động — công việc văn phòng, giải trí màn hình; (3) Thiếu kiến thức dinh dưỡng.",
+      "body2": "Giải pháp chính phủ: (1) Thuế đồ uống có đường; (2) Ghi nhãn dinh dưỡng rõ ràng, cấm quảng cáo đồ ăn nhanh hướng tới trẻ em; (3) Đầu tư công viên, thể thao học đường; (4) Chiến dịch giáo dục dinh dưỡng.",
+      "conclusion": "Tóm tắt: kết hợp chính sách và giáo dục."
+    },
+    "keyVocab": [
+      {
+        "word": "obesity epidemic",
+        "meaningVi": "dịch béo phì"
+      },
+      {
+        "word": "junk food",
+        "meaningVi": "đồ ăn vặt có hại"
+      },
+      {
+        "word": "sugar tax",
+        "meaningVi": "thuế đường"
+      },
+      {
+        "word": "nutritional labelling",
+        "meaningVi": "ghi nhãn dinh dưỡng"
+      },
+      {
+        "word": "sedentary",
+        "meaningVi": "ít vận động"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-035",
+    "prompt": "Many cities suffer from serious air pollution. What are the causes of this problem, and what solutions can be suggested?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: ô nhiễm không khí nghiêm trọng ở nhiều thành phố. Thesis: nêu nguyên nhân và giải pháp khả thi.",
+      "body1": "Nguyên nhân: (1) Khí thải xe cộ — nguồn lớn nhất đô thị; (2) Nhà máy, công trình xây dựng; (3) Đốt rơm rạ, rác thải.",
+      "body2": "Giải pháp: (1) Tiêu chuẩn khí thải nghiêm, kiểm định định kỳ; (2) Phát triển xe điện, giao thông công cộng; (3) Trồng cây xanh, vành đai xanh; (4) Cảnh báo chất lượng không khí theo thời gian thực.",
+      "conclusion": "Tóm tắt: cần hành động đồng bộ từ chính sách đến ý thức."
+    },
+    "keyVocab": [
+      {
+        "word": "smog",
+        "meaningVi": "sương khói ô nhiễm"
+      },
+      {
+        "word": "particulate matter",
+        "meaningVi": "bụi mịn"
+      },
+      {
+        "word": "vehicle emissions",
+        "meaningVi": "khí thải xe cộ"
+      },
+      {
+        "word": "air quality index",
+        "meaningVi": "chỉ số chất lượng không khí"
+      },
+      {
+        "word": "green belt",
+        "meaningVi": "vành đai xanh"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-036",
+    "prompt": "The number of homeless people is increasing in many large cities. What are the causes, and what can be done to solve this problem?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: người vô gia cư gia tăng ở thành phố lớn. Thesis: nguyên nhân kinh tế - xã hội, cần giải pháp hệ thống.",
+      "body1": "Nguyên nhân: (1) Giá nhà tăng nhanh hơn thu nhập; (2) Thất nghiệp, việc làm bấp bênh; (3) Vấn đề tâm thần, nghiện ngập không được hỗ trợ.",
+      "body2": "Giải pháp: (1) Nhà ở xã hội giá rẻ; (2) Chương trình đào tạo nghề, hỗ trợ việc làm; (3) Dịch vụ y tế tâm thần miễn phí; (4) Mô hình 'nhà ở trước' đã thành công ở nhiều nước.",
+      "conclusion": "Tóm tắt: vô gia cư là vấn đề hệ thống, cần giải pháp hệ thống."
+    },
+    "keyVocab": [
+      {
+        "word": "homelessness",
+        "meaningVi": "tình trạng vô gia cư"
+      },
+      {
+        "word": "affordable housing",
+        "meaningVi": "nhà ở giá rẻ"
+      },
+      {
+        "word": "precarious employment",
+        "meaningVi": "việc làm bấp bênh"
+      },
+      {
+        "word": "social safety net",
+        "meaningVi": "lưới an sinh xã hội"
+      },
+      {
+        "word": "housing first",
+        "meaningVi": "mô hình nhà ở trước"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-037",
+    "prompt": "Many students find it difficult to concentrate or pay attention in school. What are the reasons for this, and what can be done to solve the problem?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: học sinh khó tập trung ở trường. Thesis: nguyên nhân từ công nghệ và phương pháp dạy, có cách khắc phục.",
+      "body1": "Nguyên nhân: (1) Điện thoại, mạng xã hội phân tâm; (2) Bài giảng một chiều, nhàm chán; (3) Thiếu ngủ, áp lực thi cử.",
+      "body2": "Giải pháp: (1) Quy định cất điện thoại trong giờ học; (2) Dạy học tương tác: thảo luận, dự án, công nghệ; (3) Giảm tải bài tập, đảm bảo giấc ngủ; (4) Rèn kỹ năng tập trung từ nhỏ.",
+      "conclusion": "Tóm tắt: đổi mới phương pháp + quản lý công nghệ."
+    },
+    "keyVocab": [
+      {
+        "word": "distraction",
+        "meaningVi": "sự phân tâm"
+      },
+      {
+        "word": "attention span",
+        "meaningVi": "khoảng tập trung"
+      },
+      {
+        "word": "interactive teaching",
+        "meaningVi": "dạy học tương tác"
+      },
+      {
+        "word": "rote memorisation",
+        "meaningVi": "học thuộc lòng"
+      },
+      {
+        "word": "mindfulness",
+        "meaningVi": "chánh niệm, tập trung hiện tại"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-038",
+    "prompt": "Food waste is a serious problem in many developed countries. What are the causes, and what solutions can you propose?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: lãng phí thực phẩm nghiêm trọng ở nước phát triển. Thesis: nguyên nhân từ thói quen tiêu dùng, có nhiều giải pháp.",
+      "body1": "Nguyên nhân: (1) Mua sắm quá mức, khuyến mãi kích thích; (2) Hiểu sai nhãn 'hạn sử dụng'; (3) Nhà hàng khẩu phần lớn, siêu thị bỏ hàng xấu mã.",
+      "body2": "Giải pháp: (1) App bán đồ ăn sắp hết hạn giá rẻ; (2) Giáo dục lập kế hoạch bữa ăn; (3) Luật khuyến khích siêu thị tặng thực phẩm thừa; (4) Ủ phân compost từ rác thực phẩm.",
+      "conclusion": "Tóm tắt: thay đổi nhỏ trong thói quen tạo tác động lớn."
+    },
+    "keyVocab": [
+      {
+        "word": "food waste",
+        "meaningVi": "lãng phí thực phẩm"
+      },
+      {
+        "word": "expiry date",
+        "meaningVi": "hạn sử dụng"
+      },
+      {
+        "word": "overbuying",
+        "meaningVi": "mua quá mức"
+      },
+      {
+        "word": "compost",
+        "meaningVi": "ủ phân hữu cơ"
+      },
+      {
+        "word": "food bank",
+        "meaningVi": "ngân hàng thực phẩm"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-039",
+    "prompt": "In many countries, people throw away a lot of plastic waste. What are the causes, and what measures can be taken to reduce it?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: rác thải nhựa tràn lan. Thesis: nguyên nhân từ tiện lợi và giá rẻ, cần giải pháp đa chiều.",
+      "body1": "Nguyên nhân: (1) Nhựa dùng một lần tiện, rẻ; (2) Thiếu hệ thống tái chế hiệu quả; (3) Người dân chưa ý thức phân loại.",
+      "body2": "Giải pháp: (1) Cấm/thuế túi nilon, ống hút nhựa; (2) Khuyến khích đồ tái sử dụng; (3) Đầu tư công nghệ tái chế; (4) Giáo dục từ trường học.",
+      "conclusion": "Tóm tắt: chính sách + thay đổi thói quen."
+    },
+    "keyVocab": [
+      {
+        "word": "single-use plastics",
+        "meaningVi": "nhựa dùng một lần"
+      },
+      {
+        "word": "microplastics",
+        "meaningVi": "vi nhựa"
+      },
+      {
+        "word": "recycling rate",
+        "meaningVi": "tỷ lệ tái chế"
+      },
+      {
+        "word": "biodegradable",
+        "meaningVi": "phân hủy sinh học"
+      },
+      {
+        "word": "plastic levy",
+        "meaningVi": "thuế nhựa"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-040",
+    "prompt": "Cyberbullying is becoming more common among teenagers. What are the causes of this problem, and what can be done to prevent it?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: bắt nạt trên mạng gia tăng ở tuổi teen. Thesis: nguyên nhân từ ẩn danh và thiếu giám sát, cần phòng ngừa đa tầng.",
+      "body1": "Nguyên nhân: (1) Ẩn danh khiến kẻ bắt nạt bạo dạn; (2) Thiếu kiểm soát của cha mẹ, nhà trường; (3) Áp lực bạn bè, văn hóa 'câu like'.",
+      "body2": "Giải pháp: (1) Giáo dục đạo đức số trong trường; (2) Nền tảng mạng xã hội siết kiểm duyệt, nút báo cáo nhanh; (3) Cha mẹ đồng hành, trò chuyện; (4) Luật xử lý nghiêm hành vi nghiêm trọng.",
+      "conclusion": "Tóm tắt: công nghệ + giáo dục + pháp luật."
+    },
+    "keyVocab": [
+      {
+        "word": "cyberbullying",
+        "meaningVi": "bắt nạt trên mạng"
+      },
+      {
+        "word": "anonymity",
+        "meaningVi": "sự ẩn danh"
+      },
+      {
+        "word": "digital ethics",
+        "meaningVi": "đạo đức số"
+      },
+      {
+        "word": "report button",
+        "meaningVi": "nút báo cáo"
+      },
+      {
+        "word": "psychological trauma",
+        "meaningVi": "sang chấn tâm lý"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-041",
+    "prompt": "Many working parents struggle to balance work and family life. What are the causes of this problem, and what solutions can you suggest?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: cha mẹ đi làm khó cân bằng công việc - gia đình. Thesis: nguyên nhân từ áp lực kinh tế và văn hóa làm việc, có giải pháp.",
+      "body1": "Nguyên nhân: (1) Chi phí sinh hoạt cao, cả hai vợ chồng phải làm; (2) Văn hóa làm thêm giờ, sợ mất việc; (3) Thiếu nhà trẻ giá rẻ, ông bà ở xa.",
+      "body2": "Giải pháp: (1) Doanh nghiệp cho làm linh hoạt, remote; (2) Chính phủ hỗ trợ nhà trẻ, nghỉ thai sản cho cả bố; (3) Gia đình chia sẻ việc nhà, đặt giới hạn giờ làm.",
+      "conclusion": "Tóm tắt: cần thay đổi từ chính sách đến văn hóa."
+    },
+    "keyVocab": [
+      {
+        "word": "work-life balance",
+        "meaningVi": "cân bằng công việc - cuộc sống"
+      },
+      {
+        "word": "overtime culture",
+        "meaningVi": "văn hóa làm thêm giờ"
+      },
+      {
+        "word": "flexible working",
+        "meaningVi": "làm việc linh hoạt"
+      },
+      {
+        "word": "childcare",
+        "meaningVi": "chăm sóc trẻ"
+      },
+      {
+        "word": "parental leave",
+        "meaningVi": "nghỉ thai sản/nuôi con"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-042",
+    "prompt": "In some cities, the gap between the rich and the poor is widening. What are the causes, and what measures should be taken?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: khoảng cách giàu nghèo nới rộng ở nhiều thành phố. Thesis: nguyên nhân kinh tế, cần can thiệp chính sách.",
+      "body1": "Nguyên nhân: (1) Toàn cầu hóa, công nghệ thưởng cho lao động chất lượng cao; (2) Giá nhà tăng, người thu nhập thấp bị đẩy ra rìa; (3) Giáo dục chất lượng phân tầng theo thu nhập.",
+      "body2": "Giải pháp: (1) Thuế lũy tiến, an sinh xã hội; (2) Giáo dục công chất lượng đồng đều, học bổng; (3) Lương tối thiểu hợp lý, nhà ở xã hội.",
+      "conclusion": "Tóm tắt: bất bình đẳng quá lớn đe dọa ổn định xã hội."
+    },
+    "keyVocab": [
+      {
+        "word": "income gap",
+        "meaningVi": "khoảng cách thu nhập"
+      },
+      {
+        "word": "gentrification",
+        "meaningVi": "sự quý tộc hóa khu dân cư"
+      },
+      {
+        "word": "social mobility",
+        "meaningVi": "sự di chuyển xã hội (đổi đời)"
+      },
+      {
+        "word": "welfare",
+        "meaningVi": "phúc lợi"
+      },
+      {
+        "word": "equal opportunities",
+        "meaningVi": "cơ hội bình đẳng"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-043",
+    "prompt": "Water shortages are becoming a serious issue in many parts of the world. What are the causes, and what solutions are available?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: thiếu nước nghiêm trọng ở nhiều nơi. Thesis: nguyên nhân tự nhiên và con người, có giải pháp kỹ thuật.",
+      "body1": "Nguyên nhân: (1) Biến đổi khí hậu gây hạn hán; (2) Dân số tăng, nông nghiệp tưới tiêu lãng phí; (3) Ô nhiễm nguồn nước.",
+      "body2": "Giải pháp: (1) Tưới nhỏ giọt, nông nghiệp tiết kiệm nước; (2) Khử mặn nước biển (đắt nhưng hiệu quả); (3) Tái sử dụng nước thải; (4) Giá nước theo bậc thang chống lãng phí.",
+      "conclusion": "Tóm tắt: quản lý thông minh + công nghệ."
+    },
+    "keyVocab": [
+      {
+        "word": "water scarcity",
+        "meaningVi": "khan hiếm nước"
+      },
+      {
+        "word": "drought",
+        "meaningVi": "hạn hán"
+      },
+      {
+        "word": "desalination",
+        "meaningVi": "khử mặn"
+      },
+      {
+        "word": "drip irrigation",
+        "meaningVi": "tưới nhỏ giọt"
+      },
+      {
+        "word": "wastewater recycling",
+        "meaningVi": "tái chế nước thải"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-044",
+    "prompt": "Many elderly people feel lonely and isolated. What are the reasons for this, and what can be done to help them?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: người già cô đơn ngày càng nhiều. Thesis: nguyên nhân xã hội hiện đại, cần giải pháp cộng đồng.",
+      "body1": "Nguyên nhân: (1) Con cái bận rộn, sống xa; (2) Bạn bè qua đời, sức khỏe giảm khó ra ngoài; (3) Xã hội số khiến người già bị bỏ lại.",
+      "body2": "Giải pháp: (1) Câu lạc bộ người cao tuổi, hoạt động cộng đồng; (2) Tình nguyện viên thăm hỏi định kỳ; (3) Dạy công nghệ để gọi video với con cháu; (4) Chính sách chăm sóc tại nhà.",
+      "conclusion": "Tóm tắt: cô đơn tuổi già là vấn đề xã hội, không chỉ gia đình."
+    },
+    "keyVocab": [
+      {
+        "word": "loneliness",
+        "meaningVi": "sự cô đơn"
+      },
+      {
+        "word": "social isolation",
+        "meaningVi": "sự cô lập xã hội"
+      },
+      {
+        "word": "ageing population",
+        "meaningVi": "dân số già hóa"
+      },
+      {
+        "word": "community centre",
+        "meaningVi": "trung tâm cộng đồng"
+      },
+      {
+        "word": "home care",
+        "meaningVi": "chăm sóc tại nhà"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-045",
+    "prompt": "Stress-related illnesses are increasing in modern society. What are the causes, and what solutions can you suggest?",
+    "type": "problem-solution",
+    "typeVi": "Vấn đề - Giải pháp",
+    "outlineVi": {
+      "intro": "Paraphrase: bệnh do stress gia tăng trong xã hội hiện đại. Thesis: nguyên nhân từ nhịp sống, có cách phòng ngừa.",
+      "body1": "Nguyên nhân: (1) Áp lực công việc, deadline, cạnh tranh; (2) Mạng xã hội gây so sánh, lo âu; (3) Thiếu ngủ, ít vận động.",
+      "body2": "Giải pháp: (1) Cân bằng công việc, nghỉ ngơi hợp lý; (2) Thể thao, thiền, chánh niệm; (3) Hạn chế mạng xã hội; (4) Doanh nghiệp quan tâm sức khỏe tinh thần nhân viên; (5) Tìm giúp đỡ chuyên gia khi cần.",
+      "conclusion": "Tóm tắt: stress không tránh được, nhưng quản lý được."
+    },
+    "keyVocab": [
+      {
+        "word": "chronic stress",
+        "meaningVi": "stress mãn tính"
+      },
+      {
+        "word": "mental well-being",
+        "meaningVi": "sức khỏe tinh thần"
+      },
+      {
+        "word": "mindfulness",
+        "meaningVi": "chánh niệm"
+      },
+      {
+        "word": "burnout",
+        "meaningVi": "kiệt sức"
+      },
+      {
+        "word": "seek counselling",
+        "meaningVi": "tìm tư vấn tâm lý"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-046",
+    "prompt": "In some countries, many people now choose to live alone. Why is this the case? Is it a positive or negative development?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: xu hướng sống một mình gia tăng. Thesis: trả lời cả hai câu hỏi — nguyên nhân và đánh giá.",
+      "body1": "Nguyên nhân: (1) Độc lập tài chính, đặc biệt phụ nữ; (2) Kết hôn muộn, ly hôn tăng; (3) Đô thị hóa — việc làm tập trung thành phố, xa gia đình.",
+      "body2": "Đánh giá: mặt tích cực — tự do, phát triển bản thân; mặt tiêu cực — cô đơn, chi phí sinh hoạt cao, ít hỗ trợ lúc khó khăn. Quan điểm: trung tính, phụ thuộc lựa chọn cá nhân nhưng xã hội cần hỗ trợ người sống đơn độc.",
+      "conclusion": "Tóm tắt nguyên nhân + đánh giá cân bằng."
+    },
+    "keyVocab": [
+      {
+        "word": "solo living",
+        "meaningVi": "sống một mình"
+      },
+      {
+        "word": "financial independence",
+        "meaningVi": "độc lập tài chính"
+      },
+      {
+        "word": "delayed marriage",
+        "meaningVi": "kết hôn muộn"
+      },
+      {
+        "word": "social isolation",
+        "meaningVi": "cô lập xã hội"
+      },
+      {
+        "word": "support network",
+        "meaningVi": "mạng lưới hỗ trợ"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-047",
+    "prompt": "Many people move from rural areas to cities in search of a better life. Why do people migrate to cities, and what are the effects of this migration?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: di cư nông thôn - thành thị. Thesis: nêu lý do và tác động hai mặt.",
+      "body1": "Lý do: (1) Việc làm nhiều, lương cao hơn; (2) Giáo dục, y tế tốt hơn cho con cái; (3) Đời sống giải trí, hiện đại hấp dẫn người trẻ.",
+      "body2": "Tác động: tích cực — giảm nghèo, phát triển kinh tế; tiêu cực — thành phố quá tải, khu ổ chuột, nông thôn thiếu lao động trẻ, già hóa. Đánh giá: cần quy hoạch để di cư bền vững.",
+      "conclusion": "Tóm tắt lý do + tác động, kêu gọi quản lý đô thị tốt."
+    },
+    "keyVocab": [
+      {
+        "word": "rural-urban migration",
+        "meaningVi": "di cư nông thôn - thành thị"
+      },
+      {
+        "word": "pull factors",
+        "meaningVi": "yếu tố hút (di cư)"
+      },
+      {
+        "word": "overcrowding",
+        "meaningVi": "quá tải dân số"
+      },
+      {
+        "word": "slums",
+        "meaningVi": "khu ổ chuột"
+      },
+      {
+        "word": "left-behind elderly",
+        "meaningVi": "người già ở lại quê"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-048",
+    "prompt": "Nowadays, more and more people choose to work from home. What are the reasons for this trend, and what are its advantages and disadvantages?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: xu hướng làm việc tại nhà. Thesis: nêu lý do và phân tích ưu - nhược.",
+      "body1": "Lý do: (1) Công nghệ cho phép họp trực tuyến; (2) Covid-19 thay đổi thói quen; (3) Người lao động muốn linh hoạt, tiết kiệm đi lại.",
+      "body2": "Ưu điểm: tiết kiệm thời gian, chi phí; cân bằng cuộc sống. Nhược điểm: cô lập, khó phối hợp nhóm; ranh giới công việc - nghỉ ngơi mờ nhạt; nhà tuyển dụng khó quản lý. Đánh giá: mô hình hybrid là tối ưu.",
+      "conclusion": "Tóm tắt + đề xuất mô hình kết hợp."
+    },
+    "keyVocab": [
+      {
+        "word": "remote work",
+        "meaningVi": "làm việc từ xa"
+      },
+      {
+        "word": "hybrid model",
+        "meaningVi": "mô hình kết hợp"
+      },
+      {
+        "word": "commute",
+        "meaningVi": "đi lại (đi làm)"
+      },
+      {
+        "word": "collaboration",
+        "meaningVi": "sự phối hợp"
+      },
+      {
+        "word": "blurred boundaries",
+        "meaningVi": "ranh giới mờ nhạt"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-049",
+    "prompt": "In many countries, traditional foods are being replaced by international fast food. Why is this happening, and what are the effects on society?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: fast food thay thế món truyền thống. Thesis: nêu nguyên nhân và tác động.",
+      "body1": "Nguyên nhân: (1) Fast food nhanh, rẻ, tiện cho người bận rộn; (2) Quảng cáo mạnh, giới trẻ thích cái mới; (3) Toàn cầu hóa lan tỏa văn hóa ẩm thực Mỹ.",
+      "body2": "Tác động: tiêu cực — béo phì, mất bản sắc ẩm thực, làng nghề mai một; tích cực — đa dạng lựa chọn, việc làm. Đánh giá: nên giữ cân bằng, quảng bá ẩm thực truyền thống.",
+      "conclusion": "Tóm tắt + kêu gọi bảo tồn ẩm thực dân tộc."
+    },
+    "keyVocab": [
+      {
+        "word": "culinary heritage",
+        "meaningVi": "di sản ẩm thực"
+      },
+      {
+        "word": "dietary habits",
+        "meaningVi": "thói quen ăn uống"
+      },
+      {
+        "word": "globalisation",
+        "meaningVi": "toàn cầu hóa"
+      },
+      {
+        "word": "obesity",
+        "meaningVi": "béo phì"
+      },
+      {
+        "word": "fade away",
+        "meaningVi": "mai một dần"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-050",
+    "prompt": "Some people spend a lot of money on weddings and birthday parties. Why do people spend so much, and is this a good thing?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: chi tiêu lớn cho tiệc cưới, sinh nhật. Thesis: nêu lý do và đánh giá.",
+      "body1": "Lý do: (1) Muốn thể hiện địa vị, 'mặt mũi'; (2) Áp lực xã hội — nhà người ta làm to mình cũng phải to; (3) Mạng xã hội khuyến khích khoe khoang.",
+      "body2": "Đánh giá: mặt tốt — kỷ niệm đáng nhớ, gắn kết gia đình; mặt xấu — nợ nần, lãng phí, áp lực cho người thu nhập thấp. Quan điểm: nên tổ chức trong khả năng, ý nghĩa hơn hình thức.",
+      "conclusion": "Tóm tắt + lời khuyên chi tiêu hợp lý."
+    },
+    "keyVocab": [
+      {
+        "word": "extravagant",
+        "meaningVi": "xa hoa, hoang phí"
+      },
+      {
+        "word": "social status",
+        "meaningVi": "địa vị xã hội"
+      },
+      {
+        "word": "peer pressure",
+        "meaningVi": "áp lực đồng trang lứa"
+      },
+      {
+        "word": "show off",
+        "meaningVi": "khoe khoang"
+      },
+      {
+        "word": "within one's means",
+        "meaningVi": "trong khả năng tài chính"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-051",
+    "prompt": "Many young people choose to take a gap year before university. What are the reasons for this, and what are the benefits and drawbacks?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: gap year trước đại học. Thesis: nêu lý do và phân tích lợi - hại.",
+      "body1": "Lý do: (1) Mệt mỏi sau 12 năm học, cần nghỉ ngơi; (2) Chưa rõ ngành học, muốn trải nghiệm; (3) Kiếm tiền, du lịch mở mang.",
+      "body2": "Lợi ích: trưởng thành, định hướng rõ, kỹ năng sống. Bất lợi: dễ lười, mất đà học tập; tốn kém nếu không có kế hoạch; bạn bè đi trước. Đánh giá: tốt nếu có kế hoạch cụ thể.",
+      "conclusion": "Tóm tắt + điều kiện để gap year hiệu quả."
+    },
+    "keyVocab": [
+      {
+        "word": "gap year",
+        "meaningVi": "năm nghỉ giữa cấp"
+      },
+      {
+        "word": "self-discovery",
+        "meaningVi": "khám phá bản thân"
+      },
+      {
+        "word": "maturity",
+        "meaningVi": "sự trưởng thành"
+      },
+      {
+        "word": "lose momentum",
+        "meaningVi": "mất đà"
+      },
+      {
+        "word": "well-planned",
+        "meaningVi": "có kế hoạch tốt"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-052",
+    "prompt": "In recent years, there has been a rise in the number of people learning foreign languages online. Why is this happening, and what are the advantages of online learning?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: học ngoại ngữ online tăng mạnh. Thesis: nêu nguyên nhân và ưu điểm.",
+      "body1": "Nguyên nhân: (1) App, khóa học online rẻ và phong phú; (2) Covid đẩy nhanh số hóa giáo dục; (3) Nhu cầu ngoại ngữ cho công việc tăng.",
+      "body2": "Ưu điểm: (1) Học mọi lúc mọi nơi, theo tốc độ riêng; (2) Chi phí thấp hơn trung tâm; (3) Công nghệ AI chấm phát âm, cá nhân hóa. Nhược điểm ngắn gọn: thiếu tương tác thật, cần tự giác. Đánh giá: xu hướng tất yếu, nên kết hợp học trực tiếp.",
+      "conclusion": "Tóm tắt + xu hướng tương lai."
+    },
+    "keyVocab": [
+      {
+        "word": "e-learning",
+        "meaningVi": "học trực tuyến"
+      },
+      {
+        "word": "self-paced",
+        "meaningVi": "theo tốc độ riêng"
+      },
+      {
+        "word": "personalised learning",
+        "meaningVi": "học cá nhân hóa"
+      },
+      {
+        "word": "accessibility",
+        "meaningVi": "khả năng tiếp cận"
+      },
+      {
+        "word": "inevitable trend",
+        "meaningVi": "xu hướng tất yếu"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-053",
+    "prompt": "More and more couples are choosing not to have children. What are the reasons, and what are the effects on society?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: nhiều cặp vợ chồng không sinh con. Thesis: nêu nguyên nhân và tác động xã hội.",
+      "body1": "Nguyên nhân: (1) Chi phí nuôi con quá cao; (2) Muốn tự do, phát triển sự nghiệp; (3) Lo ngại biến đổi khí hậu, tương lai bất ổn.",
+      "body2": "Tác động: dân số già hóa, thiếu lao động trẻ, áp lực quỹ hưu trí; mặt khác giảm áp lực tài nguyên. Đánh giá: quyền cá nhân cần tôn trọng, nhưng chính phủ nên hỗ trợ gia đình trẻ để cân bằng dân số.",
+      "conclusion": "Tóm tắt + chính sách gợi ý."
+    },
+    "keyVocab": [
+      {
+        "word": "childfree",
+        "meaningVi": "không sinh con (tự nguyện)"
+      },
+      {
+        "word": "birth rate",
+        "meaningVi": "tỷ lệ sinh"
+      },
+      {
+        "word": "ageing population",
+        "meaningVi": "dân số già hóa"
+      },
+      {
+        "word": "pension system",
+        "meaningVi": "hệ thống hưu trí"
+      },
+      {
+        "word": "demographic crisis",
+        "meaningVi": "khủng hoảng dân số"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-054",
+    "prompt": "Many cities are building more parks and green spaces. Why is this happening, and what are the benefits for residents?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: thành phố xây thêm công viên, không gian xanh. Thesis: nêu lý do và lợi ích.",
+      "body1": "Lý do: (1) Nhận thức về ô nhiễm, biến đổi khí hậu; (2) Dân đô thị cần nơi thư giãn; (3) Cây xanh giảm nhiệt đảo đô thị, cải thiện không khí.",
+      "body2": "Lợi ích: sức khỏe thể chất (chạy bộ, thể thao), tinh thần (giảm stress); cộng đồng gắn kết; tăng giá trị bất động sản xung quanh. Đánh giá: đầu tư xanh là đầu tư khôn ngoan.",
+      "conclusion": "Tóm tắt + kêu gọi nhân rộng."
+    },
+    "keyVocab": [
+      {
+        "word": "green spaces",
+        "meaningVi": "không gian xanh"
+      },
+      {
+        "word": "urban heat island",
+        "meaningVi": "đảo nhiệt đô thị"
+      },
+      {
+        "word": "well-being",
+        "meaningVi": "sức khỏe toàn diện"
+      },
+      {
+        "word": "community bonding",
+        "meaningVi": "gắn kết cộng đồng"
+      },
+      {
+        "word": "liveability",
+        "meaningVi": "độ đáng sống"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-055",
+    "prompt": "Nowadays, many people buy second-hand products instead of new ones. Why is this trend growing, and is it positive or negative?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: xu hướng mua đồ second-hand. Thesis: nêu nguyên nhân và đánh giá.",
+      "body1": "Nguyên nhân: (1) Tiết kiệm tiền trong thời kỳ giá cả tăng; (2) Ý thức môi trường — giảm rác thải; (3) Sàn thương mại điện tử mua bán đồ cũ dễ dàng.",
+      "body2": "Đánh giá: tích cực — tiết kiệm, bảo vệ môi trường, đồ vintage độc đáo; tiêu cực — rủi ro hàng kém chất lượng, vệ sinh. Quan điểm: xu hướng tích cực nếu người mua thông thái.",
+      "conclusion": "Tóm tắt + lời khuyên."
+    },
+    "keyVocab": [
+      {
+        "word": "second-hand",
+        "meaningVi": "đồ cũ, đã qua sử dụng"
+      },
+      {
+        "word": "thrift shopping",
+        "meaningVi": "mua sắm tiết kiệm"
+      },
+      {
+        "word": "circular economy",
+        "meaningVi": "kinh tế tuần hoàn"
+      },
+      {
+        "word": "sustainable consumption",
+        "meaningVi": "tiêu dùng bền vững"
+      },
+      {
+        "word": "bargain",
+        "meaningVi": "món hời"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-056",
+    "prompt": "In some countries, the retirement age is being raised. Why is this happening, and what are the effects on society?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: tuổi nghỉ hưu tăng ở nhiều nước. Thesis: nêu nguyên nhân và tác động.",
+      "body1": "Nguyên nhân: (1) Tuổi thọ tăng, dân số già hóa — quỹ hưu trí thâm hụt; (2) Thiếu lao động trẻ; (3) Người già nay khỏe hơn, muốn tiếp tục làm việc.",
+      "body2": "Tác động: tích cực — giảm áp lực ngân sách, tận dụng kinh nghiệm; tiêu cực — ít cơ hội cho người trẻ, người lao động chân tay khó làm đến 65. Đánh giá: cần linh hoạt theo ngành nghề.",
+      "conclusion": "Tóm tắt + đề xuất chính sách linh hoạt."
+    },
+    "keyVocab": [
+      {
+        "word": "retirement age",
+        "meaningVi": "tuổi nghỉ hưu"
+      },
+      {
+        "word": "pension deficit",
+        "meaningVi": "thâm hụt quỹ hưu trí"
+      },
+      {
+        "word": "life expectancy",
+        "meaningVi": "tuổi thọ trung bình"
+      },
+      {
+        "word": "labour shortage",
+        "meaningVi": "thiếu hụt lao động"
+      },
+      {
+        "word": "flexible policy",
+        "meaningVi": "chính sách linh hoạt"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-057",
+    "prompt": "Many students choose to study subjects like art and music even though job prospects are limited. Why do they make this choice, and is it a good decision?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: học nghệ thuật dù việc làm hạn chế. Thesis: nêu lý do và đánh giá.",
+      "body1": "Lý do: (1) Đam mê, tài năng thiên bẩm; (2) Không muốn sống đời công sở nhàm chán; (3) Niềm tin nghệ thuật nuôi dưỡng tâm hồn.",
+      "body2": "Đánh giá: mặt tốt — hạnh phúc, xã hội cần nghệ thuật; mặt xấu — thu nhập bấp bênh, nhiều người phải bỏ nghề. Quan điểm: quyết định tốt nếu có kế hoạch tài chính thực tế và nỗ lực vượt trội.",
+      "conclusion": "Tóm tắt + lời khuyên cân bằng đam mê và thực tế."
+    },
+    "keyVocab": [
+      {
+        "word": "job prospects",
+        "meaningVi": "triển vọng việc làm"
+      },
+      {
+        "word": "follow one's passion",
+        "meaningVi": "theo đuổi đam mê"
+      },
+      {
+        "word": "starving artist",
+        "meaningVi": "nghệ sĩ nghèo (thành ngữ)"
+      },
+      {
+        "word": "financial stability",
+        "meaningVi": "ổn định tài chính"
+      },
+      {
+        "word": "niche market",
+        "meaningVi": "thị trường ngách"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-058",
+    "prompt": "With the rise of social media, many people now get their news from influencers rather than journalists. Why is this happening, and what are the consequences?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: người dân lấy tin từ influencer thay vì nhà báo. Thesis: nêu nguyên nhân và hậu quả.",
+      "body1": "Nguyên nhân: (1) Influencer gần gũi, nói ngôn ngữ đời thường; (2) Tin nhanh, ngắn gọn hợp thói quen lướt; (3) Mất niềm tin vào báo chí chính thống.",
+      "body2": "Hậu quả: tin giả lan nhanh, thiếu kiểm chứng; dư luận bị thao túng; báo chí chất lượng mất nguồn thu. Mặt tích cực nhỏ: đa dạng góc nhìn. Đánh giá: nguy hiểm cho dân chủ, cần giáo dục kiểm chứng tin.",
+      "conclusion": "Tóm tắt + kêu gọi tỉnh táo trước tin tức."
+    },
+    "keyVocab": [
+      {
+        "word": "influencer",
+        "meaningVi": "người có ảnh hưởng"
+      },
+      {
+        "word": "misinformation",
+        "meaningVi": "tin sai lệch"
+      },
+      {
+        "word": "echo chamber",
+        "meaningVi": "bong bóng lọc thông tin"
+      },
+      {
+        "word": "media literacy",
+        "meaningVi": "năng lực hiểu biết truyền thông"
+      },
+      {
+        "word": "fact-checking",
+        "meaningVi": "kiểm chứng sự thật"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-059",
+    "prompt": "In many countries, people are living longer than ever before. Why has life expectancy increased, and what problems does this create for society?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: tuổi thọ tăng kỷ lục. Thesis: nêu nguyên nhân và vấn đề phát sinh.",
+      "body1": "Nguyên nhân: (1) Y học tiến bộ: vaccine, kháng sinh; (2) Dinh dưỡng tốt hơn, vệ sinh cải thiện; (3) Ý thức sức khỏe, ít hút thuốc hơn.",
+      "body2": "Vấn đề: (1) Dân số già hóa — thiếu người chăm sóc; (2) Áp lực quỹ hưu trí, y tế; (3) Thị trường lao động mất cân bằng. Giải pháp gợi ý: tăng tuổi nghỉ hưu linh hoạt, công nghệ chăm sóc người già.",
+      "conclusion": "Tóm tắt: thành tựu y học đi kèm thách thức cần chuẩn bị."
+    },
+    "keyVocab": [
+      {
+        "word": "life expectancy",
+        "meaningVi": "tuổi thọ trung bình"
+      },
+      {
+        "word": "ageing society",
+        "meaningVi": "xã hội già hóa"
+      },
+      {
+        "word": "healthcare burden",
+        "meaningVi": "gánh nặng y tế"
+      },
+      {
+        "word": "dependency ratio",
+        "meaningVi": "tỷ số phụ thuộc"
+      },
+      {
+        "word": "elderly care",
+        "meaningVi": "chăm sóc người cao tuổi"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "wrt-060",
+    "prompt": "More and more people are choosing to live in rented accommodation rather than buying their own homes. What are the reasons, and is this a positive or negative trend?",
+    "type": "two-part",
+    "typeVi": "Câu hỏi hai phần",
+    "outlineVi": {
+      "intro": "Paraphrase: xu hướng thuê nhà thay vì mua. Thesis: nêu nguyên nhân và đánh giá.",
+      "body1": "Nguyên nhân: (1) Giá nhà quá cao so với thu nhập; (2) Linh hoạt chuyển chỗ theo công việc; (3) Không muốn gánh nợ thế chấp 20-30 năm.",
+      "body2": "Đánh giá: tích cực — tự do, không rủi ro nợ; tiêu cực — tiền thuê 'đổ sông đổ bể', thiếu ổn định lâu dài, khó an cư. Quan điểm: hợp lý với người trẻ linh hoạt, nhưng chính phủ cần chính sách nhà ở giá rẻ.",
+      "conclusion": "Tóm tắt + kiến nghị chính sách."
+    },
+    "keyVocab": [
+      {
+        "word": "renting",
+        "meaningVi": "thuê nhà"
+      },
+      {
+        "word": "mortgage",
+        "meaningVi": "thế chấp (vay mua nhà)"
+      },
+      {
+        "word": "housing affordability",
+        "meaningVi": "khả năng chi trả nhà ở"
+      },
+      {
+        "word": "throw money away",
+        "meaningVi": "ném tiền qua cửa sổ"
+      },
+      {
+        "word": "settle down",
+        "meaningVi": "an cư lạc nghiệp"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

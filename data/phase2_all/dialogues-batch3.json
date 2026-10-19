@@ -1,0 +1,3859 @@
+[
+  {
+    "id": "dlg-29",
+    "title": "The Farmer's Market",
+    "titleVi": "Chợ nông sản",
+    "cefrLevel": "A2",
+    "topic": "shopping_food",
+    "topicVi": "Mua sắm thực phẩm",
+    "location": "Morning market, District 4",
+    "locationVi": "Chợ sáng, Quận 4",
+    "characters": [
+      {
+        "name": "Linh",
+        "role": "Khách mua hàng",
+        "gender": "female"
+      },
+      {
+        "name": "Bà Tư",
+        "role": "Người bán rau củ",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Linh",
+        "textEn": "Good morning! Are these mangoes sweet?",
+        "textVi": "Chào buổi sáng! Mấy quả xoài này có ngọt không ạ?",
+        "audioUrl": "/audio/dialogues/dlg-29/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Bà Tư",
+        "textEn": "Very sweet! I picked them yesterday. Try one!",
+        "textVi": "Ngọt lắm con! Cô hái hôm qua đó. Ăn thử đi!",
+        "audioUrl": "/audio/dialogues/dlg-29/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Linh",
+        "textEn": "Mmm... delicious! How much for one kilo?",
+        "textVi": "Mmm... ngon quá! Một ký bao nhiêu ạ?",
+        "audioUrl": "/audio/dialogues/dlg-29/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Bà Tư",
+        "textEn": "Thirty thousand dong. But for you, twenty-five.",
+        "textVi": "Ba mươi nghìn một ký. Nhưng với con thì hai lăm thôi.",
+        "audioUrl": "/audio/dialogues/dlg-29/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Linh",
+        "textEn": "Really? Thank you! I'll take two kilos.",
+        "textVi": "Thật không ạ? Cảm ơn cô! Cho con hai ký.",
+        "audioUrl": "/audio/dialogues/dlg-29/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Bà Tư",
+        "textEn": "Two kilos... that's fifty thousand. Anything else?",
+        "textVi": "Hai ký... là năm chục. Còn lấy gì nữa không?",
+        "audioUrl": "/audio/dialogues/dlg-29/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Linh",
+        "textEn": "Some tomatoes too. Half a kilo, please.",
+        "textVi": "Cho con thêm cà chua nữa. Nửa ký thôi ạ.",
+        "audioUrl": "/audio/dialogues/dlg-29/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Bà Tư",
+        "textEn": "Half a kilo of tomatoes is ten thousand. Total: sixty.",
+        "textVi": "Nửa ký cà chua mười nghìn. Tổng cộng: sáu chục.",
+        "audioUrl": "/audio/dialogues/dlg-29/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Linh",
+        "textEn": "Here's seventy. Keep the change!",
+        "textVi": "Con gửi bảy chục. Cô khỏi thối!",
+        "audioUrl": "/audio/dialogues/dlg-29/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Bà Tư",
+        "textEn": "Oh, you're so kind! Come back next week!",
+        "textVi": "Trời, con tốt quá! Tuần sau ghé nữa nha!",
+        "audioUrl": "/audio/dialogues/dlg-29/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How much does one kilo of mangoes cost Linh?",
+        "options": [
+          "25,000 dong",
+          "30,000 dong",
+          "50,000 dong",
+          "20,000 dong"
+        ],
+        "correctAnswer": "25,000 dong",
+        "evidenceLineId": "line-4",
+        "explanation": "Bà Tư nói ở dòng 4: 'for you, twenty-five' (với con thì hai lăm)."
+      },
+      {
+        "question": "How much does Linh pay in total?",
+        "options": [
+          "60,000 dong",
+          "50,000 dong",
+          "70,000 dong",
+          "10,000 dong"
+        ],
+        "correctAnswer": "70,000 dong",
+        "evidenceLineId": "line-9",
+        "explanation": "Linh trả 70 nghìn ở dòng 9 ('Here's seventy'), dù tổng chỉ 60 nghìn."
+      },
+      {
+        "question": "Why does Linh say 'Keep the change'?",
+        "options": [
+          "She wants to give a tip",
+          "She has no small money",
+          "She forgot her wallet",
+          "She wants a discount"
+        ],
+        "correctAnswer": "She wants to give a tip",
+        "evidenceLineId": "line-9",
+        "explanation": "Câu 'Keep the change!' (khỏi thối) ở dòng 9 nghĩa là Linh muốn boa cho người bán."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-30",
+    "title": "The Toothache",
+    "titleVi": "Cơn đau răng",
+    "cefrLevel": "A2",
+    "topic": "health",
+    "topicVi": "Sức khỏe",
+    "location": "Dental clinic reception",
+    "locationVi": "Quầy lễ tân phòng khám nha khoa",
+    "characters": [
+      {
+        "name": "Nam",
+        "role": "Bệnh nhân",
+        "gender": "male"
+      },
+      {
+        "name": "Yến",
+        "role": "Lễ tân",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Nam",
+        "textEn": "Hello, my tooth really hurts. Can I see a doctor today?",
+        "textVi": "Chào chị, răng em đau quá. Hôm nay em gặp bác sĩ được không ạ?",
+        "audioUrl": "/audio/dialogues/dlg-30/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Yến",
+        "textEn": "Oh no! When did the pain start?",
+        "textVi": "Trời ơi! Đau từ khi nào vậy em?",
+        "audioUrl": "/audio/dialogues/dlg-30/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Nam",
+        "textEn": "Last night. I couldn't sleep at all.",
+        "textVi": "Từ tối qua. Em không ngủ được chút nào.",
+        "audioUrl": "/audio/dialogues/dlg-30/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Yến",
+        "textEn": "That sounds bad. We have a free slot at 3 PM. Is that okay?",
+        "textVi": "Nghe tệ quá. Bên chị còn trống lúc 3 giờ chiều. Em ok không?",
+        "audioUrl": "/audio/dialogues/dlg-30/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Nam",
+        "textEn": "Yes, 3 PM is fine. Do I need to bring anything?",
+        "textVi": "Dạ được. Em có cần mang gì theo không ạ?",
+        "audioUrl": "/audio/dialogues/dlg-30/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Yến",
+        "textEn": "Just your ID card. And don't eat anything two hours before.",
+        "textVi": "Chỉ cần căn cước thôi. Và đừng ăn gì trong 2 tiếng trước khi khám nhé.",
+        "audioUrl": "/audio/dialogues/dlg-30/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Nam",
+        "textEn": "Okay. What's your address?",
+        "textVi": "Dạ. Địa chỉ phòng khám ở đâu ạ?",
+        "audioUrl": "/audio/dialogues/dlg-30/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Yến",
+        "textEn": "Number 45, Le Loi Street. It's near the park.",
+        "textVi": "Số 45 đường Lê Lợi. Gần công viên đó em.",
+        "audioUrl": "/audio/dialogues/dlg-30/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Nam",
+        "textEn": "I know that place. See you at 3!",
+        "textVi": "Em biết chỗ đó. 3 giờ gặp chị nhé!",
+        "audioUrl": "/audio/dialogues/dlg-30/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Yến",
+        "textEn": "See you! And try not to eat anything cold.",
+        "textVi": "Hẹn em! Và nhớ đừng ăn đồ lạnh nhé.",
+        "audioUrl": "/audio/dialogues/dlg-30/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "When did Nam's tooth start hurting?",
+        "options": [
+          "Last night",
+          "This morning",
+          "Two days ago",
+          "Last week"
+        ],
+        "correctAnswer": "Last night",
+        "evidenceLineId": "line-3",
+        "explanation": "Nam nói ở dòng 3: 'Last night. I couldn't sleep at all' (từ tối qua)."
+      },
+      {
+        "question": "What time is Nam's appointment?",
+        "options": [
+          "3 PM",
+          "2 PM",
+          "10 AM",
+          "4 PM"
+        ],
+        "correctAnswer": "3 PM",
+        "evidenceLineId": "line-4",
+        "explanation": "Yến hẹn ở dòng 4: 'a free slot at 3 PM'."
+      },
+      {
+        "question": "What should Nam NOT do before the appointment?",
+        "options": [
+          "Eat anything two hours before",
+          "Bring his ID card",
+          "Come on time",
+          "Call the clinic"
+        ],
+        "correctAnswer": "Eat anything two hours before",
+        "evidenceLineId": "line-6",
+        "explanation": "Yến dặn ở dòng 6: 'don't eat anything two hours before'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-31",
+    "title": "The Lost Keys",
+    "titleVi": "Chùm chìa khóa bị mất",
+    "cefrLevel": "A2",
+    "topic": "daily_life",
+    "topicVi": "Đời sống hàng ngày",
+    "location": "Living room, evening",
+    "locationVi": "Phòng khách, buổi tối",
+    "characters": [
+      {
+        "name": "Hoa",
+        "role": "Vợ",
+        "gender": "female"
+      },
+      {
+        "name": "Tuấn",
+        "role": "Chồng",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Tuấn",
+        "textEn": "Have you seen my keys? I can't find them anywhere!",
+        "textVi": "Em thấy chìa khóa của anh đâu không? Anh tìm khắp nơi rồi!",
+        "audioUrl": "/audio/dialogues/dlg-31/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Hoa",
+        "textEn": "Calm down! When did you last have them?",
+        "textVi": "Bình tĩnh! Lần cuối anh cầm nó là khi nào?",
+        "audioUrl": "/audio/dialogues/dlg-31/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Tuấn",
+        "textEn": "This morning. I opened the front door with them.",
+        "textVi": "Sáng nay. Anh mở cửa chính bằng nó mà.",
+        "audioUrl": "/audio/dialogues/dlg-31/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Hoa",
+        "textEn": "Did you check your jacket pockets?",
+        "textVi": "Anh kiểm tra túi áo khoác chưa?",
+        "audioUrl": "/audio/dialogues/dlg-31/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Tuấn",
+        "textEn": "Yes, twice. And my bag too. Nothing!",
+        "textVi": "Rồi, hai lần. Cả túi xách nữa. Không có!",
+        "audioUrl": "/audio/dialogues/dlg-31/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Hoa",
+        "textEn": "What about the kitchen? You made coffee this morning.",
+        "textVi": "Còn bếp thì sao? Sáng nay anh pha cà phê mà.",
+        "audioUrl": "/audio/dialogues/dlg-31/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Tuấn",
+        "textEn": "Good idea! Let me look... Oh! Here they are, next to the coffee machine!",
+        "textVi": "Ý hay! Để anh xem... Ồ! Đây rồi, cạnh máy pha cà phê!",
+        "audioUrl": "/audio/dialogues/dlg-31/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Hoa",
+        "textEn": "See? I told you to calm down. You always lose things when you rush.",
+        "textVi": "Thấy chưa? Em bảo bình tĩnh mà. Anh cứ vội là lại mất đồ.",
+        "audioUrl": "/audio/dialogues/dlg-31/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Tuấn",
+        "textEn": "You're right. Thank you, my detective!",
+        "textVi": "Em nói đúng. Cảm ơn em, thám tử của anh!",
+        "audioUrl": "/audio/dialogues/dlg-31/line-9.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Where did Tuấn finally find his keys?",
+        "options": [
+          "Next to the coffee machine",
+          "In his jacket pocket",
+          "In his bag",
+          "On the front door"
+        ],
+        "correctAnswer": "Next to the coffee machine",
+        "evidenceLineId": "line-7",
+        "explanation": "Tuấn tìm thấy ở dòng 7: 'next to the coffee machine' (cạnh máy pha cà phê)."
+      },
+      {
+        "question": "When did Tuấn last use his keys?",
+        "options": [
+          "This morning",
+          "Last night",
+          "Yesterday afternoon",
+          "An hour ago"
+        ],
+        "correctAnswer": "This morning",
+        "evidenceLineId": "line-3",
+        "explanation": "Tuấn nói ở dòng 3: 'This morning. I opened the front door with them'."
+      },
+      {
+        "question": "What does Hoa call Tuấn at the end?",
+        "options": [
+          "My detective",
+          "My hero",
+          "My husband",
+          "My friend"
+        ],
+        "correctAnswer": "My detective",
+        "evidenceLineId": "line-9",
+        "explanation": "Tuấn gọi Hoa là 'my detective' (thám tử của anh) ở dòng 9 vì cô đã giúp tìm chìa khóa."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-32",
+    "title": "The New Puppy",
+    "titleVi": "Chú cún con mới",
+    "cefrLevel": "A2",
+    "topic": "pets",
+    "topicVi": "Thú cưng",
+    "location": "Pet shop",
+    "locationVi": "Cửa hàng thú cưng",
+    "characters": [
+      {
+        "name": "Minh",
+        "role": "Khách mua",
+        "gender": "male"
+      },
+      {
+        "name": "Cô Lan",
+        "role": "Chủ cửa hàng",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Minh",
+        "textEn": "Excuse me, I want to buy a puppy. Which one is friendly?",
+        "textVi": "Chị ơi, em muốn mua một chú cún. Con nào hiền ạ?",
+        "audioUrl": "/audio/dialogues/dlg-32/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Cô Lan",
+        "textEn": "This little brown one! His name is Bánh Mì.",
+        "textVi": "Con nâu nhỏ này nè! Tên nó là Bánh Mì.",
+        "audioUrl": "/audio/dialogues/dlg-32/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Minh",
+        "textEn": "Bánh Mì! Ha! How old is he?",
+        "textVi": "Bánh Mì! Ha! Nó mấy tháng rồi ạ?",
+        "audioUrl": "/audio/dialogues/dlg-32/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Cô Lan",
+        "textEn": "Three months old. He loves to play and eat.",
+        "textVi": "Ba tháng tuổi. Nó thích chơi và ăn lắm.",
+        "audioUrl": "/audio/dialogues/dlg-32/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Minh",
+        "textEn": "What does he eat?",
+        "textVi": "Nó ăn gì ạ?",
+        "audioUrl": "/audio/dialogues/dlg-32/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Cô Lan",
+        "textEn": "Puppy food, three times a day. And lots of water.",
+        "textVi": "Thức ăn cho cún con, ngày ba bữa. Và nhiều nước.",
+        "audioUrl": "/audio/dialogues/dlg-32/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Minh",
+        "textEn": "Does he need a big house? I live in an apartment.",
+        "textVi": "Nó có cần nhà to không? Em ở chung cư.",
+        "audioUrl": "/audio/dialogues/dlg-32/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Cô Lan",
+        "textEn": "No, he's small. But take him for a walk every day.",
+        "textVi": "Không, nó nhỏ mà. Nhưng mỗi ngày phải dắt nó đi dạo nhé.",
+        "audioUrl": "/audio/dialogues/dlg-32/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Minh",
+        "textEn": "I can do that! How much is he?",
+        "textVi": "Em làm được! Nó giá bao nhiêu ạ?",
+        "audioUrl": "/audio/dialogues/dlg-32/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Cô Lan",
+        "textEn": "Two million dong, with free food for one month.",
+        "textVi": "Hai triệu, tặng kèm thức ăn một tháng.",
+        "audioUrl": "/audio/dialogues/dlg-32/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Minh",
+        "textEn": "Deal! Bánh Mì, you're coming home with me!",
+        "textVi": "Chốt! Bánh Mì, về nhà với anh nào!",
+        "audioUrl": "/audio/dialogues/dlg-32/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How old is Bánh Mì?",
+        "options": [
+          "Three months old",
+          "Two months old",
+          "Six months old",
+          "One year old"
+        ],
+        "correctAnswer": "Three months old",
+        "evidenceLineId": "line-4",
+        "explanation": "Cô Lan nói ở dòng 4: 'Three months old'."
+      },
+      {
+        "question": "How often should Bánh Mì eat?",
+        "options": [
+          "Three times a day",
+          "Once a day",
+          "Twice a day",
+          "Four times a day"
+        ],
+        "correctAnswer": "Three times a day",
+        "evidenceLineId": "line-6",
+        "explanation": "Cô Lan dặn ở dòng 6: 'three times a day' (ngày ba bữa)."
+      },
+      {
+        "question": "What is free with the puppy?",
+        "options": [
+          "Food for one month",
+          "A dog house",
+          "A leash",
+          "Toys"
+        ],
+        "correctAnswer": "Food for one month",
+        "evidenceLineId": "line-10",
+        "explanation": "Cô Lan nói ở dòng 10: 'with free food for one month'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-33",
+    "title": "Movie Night",
+    "titleVi": "Tối xem phim",
+    "cefrLevel": "A2",
+    "topic": "entertainment",
+    "topicVi": "Giải trí",
+    "location": "Living room, Friday night",
+    "locationVi": "Phòng khách, tối thứ Sáu",
+    "characters": [
+      {
+        "name": "An",
+        "role": "Chị gái",
+        "gender": "female"
+      },
+      {
+        "name": "Bảo",
+        "role": "Em trai",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "An",
+        "textEn": "It's movie night! What do you want to watch?",
+        "textVi": "Tối nay xem phim! Em muốn xem gì?",
+        "audioUrl": "/audio/dialogues/dlg-33/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Bảo",
+        "textEn": "A horror movie! The scary one about the old house!",
+        "textVi": "Phim kinh dị! Phim về ngôi nhà cũ đó!",
+        "audioUrl": "/audio/dialogues/dlg-33/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "An",
+        "textEn": "No way! You cried last time. Remember?",
+        "textVi": "Không đời nào! Lần trước em khóc đó. Nhớ không?",
+        "audioUrl": "/audio/dialogues/dlg-33/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Bảo",
+        "textEn": "That was one year ago! I'm brave now.",
+        "textVi": "Đó là một năm trước! Giờ em dũng cảm rồi.",
+        "audioUrl": "/audio/dialogues/dlg-33/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "An",
+        "textEn": "Hmm... how about a comedy? We can both laugh.",
+        "textVi": "Hmm... xem phim hài thì sao? Cả hai cùng cười.",
+        "audioUrl": "/audio/dialogues/dlg-33/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Bảo",
+        "textEn": "Okay... but it must be really funny.",
+        "textVi": "Thôi được... nhưng phải thật hài nhé.",
+        "audioUrl": "/audio/dialogues/dlg-33/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "An",
+        "textEn": "This one is great! My friends all love it.",
+        "textVi": "Phim này hay lắm! Bạn chị ai cũng thích.",
+        "audioUrl": "/audio/dialogues/dlg-33/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Bảo",
+        "textEn": "How long is it?",
+        "textVi": "Phim dài bao lâu?",
+        "audioUrl": "/audio/dialogues/dlg-33/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "An",
+        "textEn": "One hour and forty minutes. Popcorn's ready!",
+        "textVi": "Một tiếng bốn mươi phút. Bắp rang xong rồi!",
+        "audioUrl": "/audio/dialogues/dlg-33/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Bảo",
+        "textEn": "Yay! Let's start!",
+        "textVi": "Yay! Bắt đầu thôi!",
+        "audioUrl": "/audio/dialogues/dlg-33/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Why doesn't An want to watch a horror movie?",
+        "options": [
+          "Bảo cried last time",
+          "She doesn't like movies",
+          "It's too long",
+          "The TV is broken"
+        ],
+        "correctAnswer": "Bảo cried last time",
+        "evidenceLineId": "line-3",
+        "explanation": "An nói ở dòng 3: 'You cried last time' (lần trước em khóc)."
+      },
+      {
+        "question": "What kind of movie do they finally choose?",
+        "options": [
+          "A comedy",
+          "A horror movie",
+          "An action movie",
+          "A cartoon"
+        ],
+        "correctAnswer": "A comedy",
+        "evidenceLineId": "line-5",
+        "explanation": "An đề xuất ở dòng 5: 'how about a comedy?' và Bảo đồng ý."
+      },
+      {
+        "question": "How long is the movie?",
+        "options": [
+          "One hour and forty minutes",
+          "Two hours",
+          "One hour",
+          "Ninety minutes"
+        ],
+        "correctAnswer": "One hour and forty minutes",
+        "evidenceLineId": "line-9",
+        "explanation": "An nói ở dòng 9: 'One hour and forty minutes'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-34",
+    "title": "The Raincoat",
+    "titleVi": "Chiếc áo mưa",
+    "cefrLevel": "A2",
+    "topic": "shopping",
+    "topicVi": "Mua sắm",
+    "location": "Clothing store",
+    "locationVi": "Cửa hàng quần áo",
+    "characters": [
+      {
+        "name": "Hùng",
+        "role": "Khách hàng",
+        "gender": "male"
+      },
+      {
+        "name": "Mai",
+        "role": "Nhân viên bán hàng",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Hùng",
+        "textEn": "Hi, I need a raincoat. It's raining a lot these days.",
+        "textVi": "Chào chị, tôi cần mua áo mưa. Dạo này mưa nhiều quá.",
+        "audioUrl": "/audio/dialogues/dlg-34/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Mai",
+        "textEn": "Sure! What size do you wear? Medium or large?",
+        "textVi": "Dạ! Anh mặc size gì ạ? M hay L?",
+        "audioUrl": "/audio/dialogues/dlg-34/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Hùng",
+        "textEn": "Large, I think. Can I try this blue one?",
+        "textVi": "Chắc là L. Tôi thử cái màu xanh này được không?",
+        "audioUrl": "/audio/dialogues/dlg-34/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Mai",
+        "textEn": "Of course! The fitting room is over there.",
+        "textVi": "Dạ được! Phòng thử đồ ở đằng kia ạ.",
+        "audioUrl": "/audio/dialogues/dlg-34/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Hùng",
+        "textEn": "It fits well! But is it waterproof?",
+        "textVi": "Vừa lắm! Nhưng nó có chống thấm nước không?",
+        "audioUrl": "/audio/dialogues/dlg-34/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Mai",
+        "textEn": "Yes, 100% waterproof. And it has a hood too.",
+        "textVi": "Dạ có, chống thấm 100%. Có mũ trùm nữa ạ.",
+        "audioUrl": "/audio/dialogues/dlg-34/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Hùng",
+        "textEn": "Great! How much is it?",
+        "textVi": "Tuyệt! Giá bao nhiêu?",
+        "audioUrl": "/audio/dialogues/dlg-34/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Mai",
+        "textEn": "350,000 dong. But today it's on sale — only 280,000.",
+        "textVi": "350 nghìn. Nhưng hôm nay đang sale — chỉ 280 nghìn thôi.",
+        "audioUrl": "/audio/dialogues/dlg-34/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Hùng",
+        "textEn": "That's a good deal! I'll take it.",
+        "textVi": "Giá tốt quá! Tôi lấy.",
+        "audioUrl": "/audio/dialogues/dlg-34/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Mai",
+        "textEn": "Thank you! Stay dry out there!",
+        "textVi": "Cảm ơn anh! Đi đường đừng để ướt nhé!",
+        "audioUrl": "/audio/dialogues/dlg-34/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What size raincoat does Hùng try?",
+        "options": [
+          "Large",
+          "Medium",
+          "Small",
+          "Extra large"
+        ],
+        "correctAnswer": "Large",
+        "evidenceLineId": "line-3",
+        "explanation": "Hùng nói ở dòng 3: 'Large, I think'."
+      },
+      {
+        "question": "How much does Hùng pay?",
+        "options": [
+          "280,000 dong",
+          "350,000 dong",
+          "300,000 dong",
+          "250,000 dong"
+        ],
+        "correctAnswer": "280,000 dong",
+        "evidenceLineId": "line-8",
+        "explanation": "Mai báo giá sale ở dòng 8: 'only 280,000'."
+      },
+      {
+        "question": "What extra feature does the raincoat have?",
+        "options": [
+          "A hood",
+          "Two pockets",
+          "A zipper",
+          "Reflective stripes"
+        ],
+        "correctAnswer": "A hood",
+        "evidenceLineId": "line-6",
+        "explanation": "Mai nói ở dòng 6: 'it has a hood too' (có mũ trùm nữa)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-35",
+    "title": "The Birthday Cake",
+    "titleVi": "Chiếc bánh sinh nhật",
+    "cefrLevel": "A2",
+    "topic": "food",
+    "topicVi": "Ẩm thực",
+    "location": "Bakery",
+    "locationVi": "Tiệm bánh",
+    "characters": [
+      {
+        "name": "Thu",
+        "role": "Khách đặt bánh",
+        "gender": "female"
+      },
+      {
+        "name": "Anh Khoa",
+        "role": "Thợ làm bánh",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Thu",
+        "textEn": "Hello! I need a birthday cake for Saturday.",
+        "textVi": "Chào anh! Em cần đặt bánh sinh nhật cho thứ Bảy.",
+        "audioUrl": "/audio/dialogues/dlg-35/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Anh Khoa",
+        "textEn": "Sure! How many people is it for?",
+        "textVi": "Được! Bánh cho mấy người ăn vậy em?",
+        "audioUrl": "/audio/dialogues/dlg-35/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Thu",
+        "textEn": "About ten people. My mom's birthday.",
+        "textVi": "Khoảng mười người. Sinh nhật mẹ em.",
+        "audioUrl": "/audio/dialogues/dlg-35/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Anh Khoa",
+        "textEn": "Happy birthday to your mom! Chocolate or vanilla?",
+        "textVi": "Chúc mừng sinh nhật mẹ em! Vị sô-cô-la hay va-ni?",
+        "audioUrl": "/audio/dialogues/dlg-35/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Thu",
+        "textEn": "Chocolate. She loves chocolate.",
+        "textVi": "Sô-cô-la ạ. Mẹ em mê sô-cô-la.",
+        "audioUrl": "/audio/dialogues/dlg-35/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Anh Khoa",
+        "textEn": "What should I write on the cake?",
+        "textVi": "Anh viết gì lên bánh?",
+        "audioUrl": "/audio/dialogues/dlg-35/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Thu",
+        "textEn": "'Happy 60th Birthday, Mom!' in pink letters.",
+        "textVi": "'Chúc mừng sinh nhật 60 tuổi, Mẹ!' bằng chữ màu hồng.",
+        "audioUrl": "/audio/dialogues/dlg-35/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Anh Khoa",
+        "textEn": "Beautiful! Pick it up Saturday at 10 AM?",
+        "textVi": "Đẹp đó! Thứ Bảy 10 giờ sáng em ghé lấy nhé?",
+        "audioUrl": "/audio/dialogues/dlg-35/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Thu",
+        "textEn": "Perfect! How much is it?",
+        "textVi": "Tuyệt! Bao nhiêu tiền ạ?",
+        "audioUrl": "/audio/dialogues/dlg-35/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Anh Khoa",
+        "textEn": "400,000 dong. Pay half now, half later.",
+        "textVi": "400 nghìn. Em trả trước một nửa, sau lấy bánh trả nốt.",
+        "audioUrl": "/audio/dialogues/dlg-35/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Whose birthday is the cake for?",
+        "options": [
+          "Thu's mom",
+          "Thu",
+          "Anh Khoa's mom",
+          "Thu's dad"
+        ],
+        "correctAnswer": "Thu's mom",
+        "evidenceLineId": "line-3",
+        "explanation": "Thu nói ở dòng 3: 'My mom's birthday'."
+      },
+      {
+        "question": "What flavor does Thu choose?",
+        "options": [
+          "Chocolate",
+          "Vanilla",
+          "Strawberry",
+          "Coffee"
+        ],
+        "correctAnswer": "Chocolate",
+        "evidenceLineId": "line-5",
+        "explanation": "Thu chọn ở dòng 5: 'Chocolate. She loves chocolate'."
+      },
+      {
+        "question": "When should Thu pick up the cake?",
+        "options": [
+          "Saturday at 10 AM",
+          "Saturday at 4 PM",
+          "Friday at 10 AM",
+          "Sunday morning"
+        ],
+        "correctAnswer": "Saturday at 10 AM",
+        "evidenceLineId": "line-8",
+        "explanation": "Anh Khoa hẹn ở dòng 8: 'Saturday at 10 AM'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-36",
+    "title": "The Bus Card",
+    "titleVi": "Thẻ xe buýt",
+    "cefrLevel": "A2",
+    "topic": "transportation",
+    "topicVi": "Giao thông",
+    "location": "Bus station counter",
+    "locationVi": "Quầy vé bến xe buýt",
+    "characters": [
+      {
+        "name": "Kiên",
+        "role": "Hành khách",
+        "gender": "male"
+      },
+      {
+        "name": "Cô Hạnh",
+        "role": "Nhân viên quầy",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Kiên",
+        "textEn": "Excuse me, my bus card has no money. Can I top it up here?",
+        "textVi": "Cô ơi, thẻ xe buýt của con hết tiền. Con nạp ở đây được không?",
+        "audioUrl": "/audio/dialogues/dlg-36/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Cô Hạnh",
+        "textEn": "Yes! How much do you want to add?",
+        "textVi": "Được! Con muốn nạp bao nhiêu?",
+        "audioUrl": "/audio/dialogues/dlg-36/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Kiên",
+        "textEn": "100,000 dong, please.",
+        "textVi": "100 nghìn ạ.",
+        "audioUrl": "/audio/dialogues/dlg-36/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Cô Hạnh",
+        "textEn": "Okay... done! Your balance is now 105,000.",
+        "textVi": "Xong! Số dư của con bây giờ là 105 nghìn.",
+        "audioUrl": "/audio/dialogues/dlg-36/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Kiên",
+        "textEn": "Wait, why 105,000? I only added 100,000.",
+        "textVi": "Khoan, sao lại 105 nghìn? Con chỉ nạp 100 nghìn mà.",
+        "audioUrl": "/audio/dialogues/dlg-36/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Cô Hạnh",
+        "textEn": "You had 5,000 left on the card. I checked before.",
+        "textVi": "Thẻ con còn dư 5 nghìn. Cô kiểm tra trước khi nạp rồi.",
+        "audioUrl": "/audio/dialogues/dlg-36/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Kiên",
+        "textEn": "Oh right! I forgot. Which bus goes to the museum?",
+        "textVi": "À đúng rồi! Con quên. Xe buýt số mấy đi bảo tàng ạ?",
+        "audioUrl": "/audio/dialogues/dlg-36/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Cô Hạnh",
+        "textEn": "Bus number 8. It stops right outside.",
+        "textVi": "Xe số 8. Đỗ ngay ngoài cửa.",
+        "audioUrl": "/audio/dialogues/dlg-36/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Kiên",
+        "textEn": "Thank you so much!",
+        "textVi": "Con cảm ơn cô nhiều!",
+        "audioUrl": "/audio/dialogues/dlg-36/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Cô Hạnh",
+        "textEn": "You're welcome! Have a nice trip!",
+        "textVi": "Không có gì! Đi chơi vui nhé!",
+        "audioUrl": "/audio/dialogues/dlg-36/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Why is Kiên's balance 105,000?",
+        "options": [
+          "He had 5,000 left before",
+          "The staff gave him a bonus",
+          "He added 105,000",
+          "It's a mistake"
+        ],
+        "correctAnswer": "He had 5,000 left before",
+        "evidenceLineId": "line-6",
+        "explanation": "Cô Hạnh giải thích ở dòng 6: 'You had 5,000 left on the card'."
+      },
+      {
+        "question": "Which bus goes to the museum?",
+        "options": [
+          "Bus number 8",
+          "Bus number 5",
+          "Bus number 10",
+          "Bus number 3"
+        ],
+        "correctAnswer": "Bus number 8",
+        "evidenceLineId": "line-8",
+        "explanation": "Cô Hạnh nói ở dòng 8: 'Bus number 8'."
+      },
+      {
+        "question": "How much did Kiên add to his card?",
+        "options": [
+          "100,000 dong",
+          "105,000 dong",
+          "50,000 dong",
+          "200,000 dong"
+        ],
+        "correctAnswer": "100,000 dong",
+        "evidenceLineId": "line-3",
+        "explanation": "Kiên nói ở dòng 3: '100,000 dong, please'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-37",
+    "title": "The Leaky Faucet",
+    "titleVi": "Vòi nước bị rỉ",
+    "cefrLevel": "A2",
+    "topic": "home",
+    "topicVi": "Nhà cửa",
+    "location": "Phone call with plumber",
+    "locationVi": "Cuộc gọi với thợ sửa ống nước",
+    "characters": [
+      {
+        "name": "Phương",
+        "role": "Chủ nhà",
+        "gender": "female"
+      },
+      {
+        "name": "Chú Ba",
+        "role": "Thợ sửa ống nước",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Phương",
+        "textEn": "Hello, is this the plumbing service?",
+        "textVi": "Alo, đây có phải dịch vụ sửa ống nước không ạ?",
+        "audioUrl": "/audio/dialogues/dlg-37/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Chú Ba",
+        "textEn": "Yes! How can I help you?",
+        "textVi": "Đúng rồi! Tôi giúp gì được cho chị?",
+        "audioUrl": "/audio/dialogues/dlg-37/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Phương",
+        "textEn": "My kitchen faucet is leaking. Drip, drip, all night!",
+        "textVi": "Vòi nước bếp nhà tôi bị rỉ. Tí tách, tí tách suốt đêm!",
+        "audioUrl": "/audio/dialogues/dlg-37/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Chú Ba",
+        "textEn": "That wastes a lot of water! Can I come tomorrow morning?",
+        "textVi": "Tốn nước lắm đó! Sáng mai tôi qua được không?",
+        "audioUrl": "/audio/dialogues/dlg-37/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Phương",
+        "textEn": "Yes, 9 AM works for me. How much will it cost?",
+        "textVi": "Được, 9 giờ sáng tôi rảnh. Sửa hết bao nhiêu ạ?",
+        "audioUrl": "/audio/dialogues/dlg-37/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Chú Ba",
+        "textEn": "Usually around 200,000 dong, parts included.",
+        "textVi": "Thường khoảng 200 nghìn, bao gồm linh kiện.",
+        "audioUrl": "/audio/dialogues/dlg-37/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Phương",
+        "textEn": "Okay. My address is 12 Tran Hung Dao Street.",
+        "textVi": "Dạ. Địa chỉ nhà tôi là 12 Trần Hưng Đạo.",
+        "audioUrl": "/audio/dialogues/dlg-37/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Chú Ba",
+        "textEn": "Got it! Please turn off the main water valve tonight.",
+        "textVi": "Rõ! Tối nay chị khóa van nước chính giúp tôi nhé.",
+        "audioUrl": "/audio/dialogues/dlg-37/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Phương",
+        "textEn": "The main valve? Where is it?",
+        "textVi": "Van nước chính? Nó ở đâu ạ?",
+        "audioUrl": "/audio/dialogues/dlg-37/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Chú Ba",
+        "textEn": "Usually under the kitchen sink. See you tomorrow!",
+        "textVi": "Thường ở dưới bồn rửa bếp. Mai gặp chị!",
+        "audioUrl": "/audio/dialogues/dlg-37/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What is Phương's problem?",
+        "options": [
+          "Her kitchen faucet is leaking",
+          "Her toilet is broken",
+          "Her shower doesn't work",
+          "Her pipe burst"
+        ],
+        "correctAnswer": "Her kitchen faucet is leaking",
+        "evidenceLineId": "line-3",
+        "explanation": "Phương nói ở dòng 3: 'My kitchen faucet is leaking'."
+      },
+      {
+        "question": "When will the plumber come?",
+        "options": [
+          "Tomorrow at 9 AM",
+          "Today at 9 AM",
+          "Tomorrow evening",
+          "Next week"
+        ],
+        "correctAnswer": "Tomorrow at 9 AM",
+        "evidenceLineId": "line-4",
+        "explanation": "Chú Ba hẹn ở dòng 4: 'Can I come tomorrow morning?' và Phương chốt 9 giờ ở dòng 5."
+      },
+      {
+        "question": "What should Phương do tonight?",
+        "options": [
+          "Turn off the main water valve",
+          "Buy a new faucet",
+          "Call again tomorrow",
+          "Leave the water running"
+        ],
+        "correctAnswer": "Turn off the main water valve",
+        "evidenceLineId": "line-8",
+        "explanation": "Chú Ba dặn ở dòng 8: 'turn off the main water valve tonight'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-38",
+    "title": "The Flight Upgrade",
+    "titleVi": "Nâng hạng vé máy bay",
+    "cefrLevel": "B1",
+    "topic": "travel",
+    "topicVi": "Du lịch",
+    "location": "Airport check-in counter",
+    "locationVi": "Quầy làm thủ tục sân bay",
+    "characters": [
+      {
+        "name": "Dũng",
+        "role": "Hành khách",
+        "gender": "male"
+      },
+      {
+        "name": "Emma",
+        "role": "Nhân viên hãng bay",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Dũng",
+        "textEn": "Hi, I'm flying to Singapore. Is my flight on time?",
+        "textVi": "Chào chị, tôi bay đi Singapore. Chuyến bay có đúng giờ không?",
+        "audioUrl": "/audio/dialogues/dlg-38/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Emma",
+        "textEn": "Yes, boarding starts at 2:30. You're in seat 28B, economy.",
+        "textVi": "Dạ đúng giờ, 2 giờ rưỡi lên máy bay. Anh ngồi ghế 28B, hạng phổ thông.",
+        "audioUrl": "/audio/dialogues/dlg-38/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Dũng",
+        "textEn": "Actually... it's a 4-hour flight. Any chance to upgrade to business?",
+        "textVi": "Thật ra... bay 4 tiếng lận. Còn chỗ nâng lên thương gia không?",
+        "audioUrl": "/audio/dialogues/dlg-38/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Emma",
+        "textEn": "Let me check... Yes! One business seat left. It's $150 extra.",
+        "textVi": "Để em xem... Còn! Một ghế thương gia. Phụ thu 150 đô.",
+        "audioUrl": "/audio/dialogues/dlg-38/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Dũng",
+        "textEn": "Hmm, $150... What do I get for that?",
+        "textVi": "Hmm, 150 đô... Tôi được gì với số đó?",
+        "audioUrl": "/audio/dialogues/dlg-38/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Emma",
+        "textEn": "Bigger seat, better food, priority boarding, and lounge access.",
+        "textVi": "Ghế rộng hơn, đồ ăn ngon hơn, ưu tiên lên máy bay và vào phòng chờ.",
+        "audioUrl": "/audio/dialogues/dlg-38/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Dũng",
+        "textEn": "Lounge access? With free coffee?",
+        "textVi": "Vào phòng chờ? Có cà phê miễn phí không?",
+        "audioUrl": "/audio/dialogues/dlg-38/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Emma",
+        "textEn": "Free coffee, free snacks, free Wi-Fi!",
+        "textVi": "Cà phê miễn phí, đồ ăn nhẹ miễn phí, Wi-Fi miễn phí!",
+        "audioUrl": "/audio/dialogues/dlg-38/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Dũng",
+        "textEn": "Sold! Take my money.",
+        "textVi": "Chốt! Lấy tiền của tôi đi.",
+        "audioUrl": "/audio/dialogues/dlg-38/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Emma",
+        "textEn": "Great choice! Here's your new boarding pass — seat 2A.",
+        "textVi": "Lựa chọn sáng suốt! Đây là thẻ lên máy bay mới — ghế 2A.",
+        "audioUrl": "/audio/dialogues/dlg-38/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Dũng",
+        "textEn": "Seat 2A... front row! Thanks, Emma!",
+        "textVi": "Ghế 2A... hàng đầu! Cảm ơn Emma!",
+        "audioUrl": "/audio/dialogues/dlg-38/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How much does the upgrade cost?",
+        "options": [
+          "$150",
+          "$100",
+          "$200",
+          "$50"
+        ],
+        "correctAnswer": "$150",
+        "evidenceLineId": "line-4",
+        "explanation": "Emma báo giá ở dòng 4: 'It's $150 extra'."
+      },
+      {
+        "question": "What convinced Dũng to upgrade?",
+        "options": [
+          "Free coffee in the lounge",
+          "The bigger seat",
+          "Priority boarding",
+          "The better food"
+        ],
+        "correctAnswer": "Free coffee in the lounge",
+        "evidenceLineId": "line-9",
+        "explanation": "Dũng chốt ngay ở dòng 9 sau khi nghe 'Free coffee, free snacks, free Wi-Fi!' ở dòng 8."
+      },
+      {
+        "question": "What is Dũng's new seat?",
+        "options": [
+          "2A",
+          "28B",
+          "1A",
+          "2B"
+        ],
+        "correctAnswer": "2A",
+        "evidenceLineId": "line-10",
+        "explanation": "Emma đưa thẻ mới ở dòng 10: 'seat 2A'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-39",
+    "title": "The Apartment Viewing",
+    "titleVi": "Xem căn hộ",
+    "cefrLevel": "B1",
+    "topic": "housing",
+    "topicVi": "Nhà ở",
+    "location": "Apartment for rent, Binh Thanh",
+    "locationVi": "Căn hộ cho thuê, Bình Thạnh",
+    "characters": [
+      {
+        "name": "Trang",
+        "role": "Người thuê",
+        "gender": "female"
+      },
+      {
+        "name": "Anh Phát",
+        "role": "Môi giới",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Anh Phát",
+        "textEn": "Welcome! This is the apartment. 60 square meters, fully furnished.",
+        "textVi": "Chào em! Đây là căn hộ. 60 mét vuông, nội thất đầy đủ.",
+        "audioUrl": "/audio/dialogues/dlg-39/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Trang",
+        "textEn": "Nice! The living room is bright. Which direction does it face?",
+        "textVi": "Đẹp! Phòng khách sáng quá. Căn này hướng nào anh?",
+        "audioUrl": "/audio/dialogues/dlg-39/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Anh Phát",
+        "textEn": "East. You get morning sun, but no afternoon heat.",
+        "textVi": "Hướng Đông. Sáng có nắng, chiều không bị nóng.",
+        "audioUrl": "/audio/dialogues/dlg-39/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Trang",
+        "textEn": "Perfect. Is the kitchen new?",
+        "textVi": "Tuyệt. Bếp có mới không anh?",
+        "audioUrl": "/audio/dialogues/dlg-39/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Anh Phát",
+        "textEn": "Brand new! Fridge, oven, washing machine — all included.",
+        "textVi": "Mới toanh! Tủ lạnh, lò nướng, máy giặt — đầy đủ hết.",
+        "audioUrl": "/audio/dialogues/dlg-39/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Trang",
+        "textEn": "What about the noise? It's near a main road.",
+        "textVi": "Còn tiếng ồn thì sao? Gần đường lớn quá.",
+        "audioUrl": "/audio/dialogues/dlg-39/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Anh Phát",
+        "textEn": "Good question. The windows are double-glazed. Very quiet inside.",
+        "textVi": "Câu hỏi hay. Cửa kính hai lớp. Trong nhà yên tĩnh lắm.",
+        "audioUrl": "/audio/dialogues/dlg-39/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Trang",
+        "textEn": "Can I see the bedroom?",
+        "textVi": "Em xem phòng ngủ được không?",
+        "audioUrl": "/audio/dialogues/dlg-39/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Anh Phát",
+        "textEn": "Sure! Two bedrooms, both with air conditioning.",
+        "textVi": "Được! Hai phòng ngủ, đều có máy lạnh.",
+        "audioUrl": "/audio/dialogues/dlg-39/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Trang",
+        "textEn": "I like it! What's the rent?",
+        "textVi": "Em thích! Giá thuê bao nhiêu?",
+        "audioUrl": "/audio/dialogues/dlg-39/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Anh Phát",
+        "textEn": "12 million a month, deposit is two months.",
+        "textVi": "12 triệu một tháng, cọc hai tháng.",
+        "audioUrl": "/audio/dialogues/dlg-39/line-11.mp3"
+      },
+      {
+        "id": "line-12",
+        "speaker": "Trang",
+        "textEn": "Hmm, a bit high. Can we talk about the price?",
+        "textVi": "Hmm, hơi cao. Mình thương lượng giá được không anh?",
+        "audioUrl": "/audio/dialogues/dlg-39/line-12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Which direction does the apartment face?",
+        "options": [
+          "East",
+          "West",
+          "South",
+          "North"
+        ],
+        "correctAnswer": "East",
+        "evidenceLineId": "line-3",
+        "explanation": "Anh Phát nói ở dòng 3: 'East. You get morning sun'."
+      },
+      {
+        "question": "Why is the apartment quiet despite being near a main road?",
+        "options": [
+          "The windows are double-glazed",
+          "It's on a high floor",
+          "The road is not busy",
+          "It has thick walls"
+        ],
+        "correctAnswer": "The windows are double-glazed",
+        "evidenceLineId": "line-7",
+        "explanation": "Anh Phát giải thích ở dòng 7: 'The windows are double-glazed'."
+      },
+      {
+        "question": "How much is the deposit?",
+        "options": [
+          "24 million dong",
+          "12 million dong",
+          "6 million dong",
+          "36 million dong"
+        ],
+        "correctAnswer": "24 million dong",
+        "evidenceLineId": "line-11",
+        "explanation": "Tiền thuê 12 triệu/tháng, cọc hai tháng = 24 triệu (dòng 11)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-40",
+    "title": "The Car Rental Scratch",
+    "titleVi": "Vết xước xe thuê",
+    "cefrLevel": "B1",
+    "topic": "travel",
+    "topicVi": "Du lịch",
+    "location": "Car rental return desk",
+    "locationVi": "Quầy trả xe thuê",
+    "characters": [
+      {
+        "name": "Khoa",
+        "role": "Khách thuê xe",
+        "gender": "male"
+      },
+      {
+        "name": "Lisa",
+        "role": "Nhân viên",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Lisa",
+        "textEn": "Welcome back! How was the trip?",
+        "textVi": "Chào anh quay lại! Chuyến đi thế nào?",
+        "audioUrl": "/audio/dialogues/dlg-40/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Khoa",
+        "textEn": "Great! But... I have to tell you something. There's a small scratch on the door.",
+        "textVi": "Tuyệt! Nhưng... tôi phải báo một chuyện. Cửa xe có vết xước nhỏ.",
+        "audioUrl": "/audio/dialogues/dlg-40/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Lisa",
+        "textEn": "Let me take a look... Hmm, yes, I see it. When did this happen?",
+        "textVi": "Để em xem... Ừm, thấy rồi. Chuyện xảy ra khi nào ạ?",
+        "audioUrl": "/audio/dialogues/dlg-40/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Khoa",
+        "textEn": "Yesterday. A motorbike brushed past me in traffic.",
+        "textVi": "Hôm qua. Một xe máy quẹt vào lúc kẹt xe.",
+        "audioUrl": "/audio/dialogues/dlg-40/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Lisa",
+        "textEn": "Did you take photos at the time?",
+        "textVi": "Lúc đó anh có chụp ảnh không?",
+        "audioUrl": "/audio/dialogues/dlg-40/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Khoa",
+        "textEn": "Yes! I took photos right away. Here, look.",
+        "textVi": "Có! Tôi chụp ngay lúc đó. Đây, chị xem.",
+        "audioUrl": "/audio/dialogues/dlg-40/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Lisa",
+        "textEn": "Good thinking! Now, did you buy the extra insurance?",
+        "textVi": "Anh xử lý tốt! Anh có mua bảo hiểm bổ sung không?",
+        "audioUrl": "/audio/dialogues/dlg-40/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Khoa",
+        "textEn": "Yes, the full coverage one. $20 a day.",
+        "textVi": "Có, gói toàn diện. 20 đô một ngày.",
+        "audioUrl": "/audio/dialogues/dlg-40/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Lisa",
+        "textEn": "Perfect! Then you pay nothing. The insurance covers it.",
+        "textVi": "Tuyệt! Vậy anh không phải trả gì. Bảo hiểm chi trả hết.",
+        "audioUrl": "/audio/dialogues/dlg-40/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Khoa",
+        "textEn": "Phew! Best $20 I ever spent.",
+        "textVi": "Phù! 20 đô đáng giá nhất đời tôi.",
+        "audioUrl": "/audio/dialogues/dlg-40/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Lisa",
+        "textEn": "Exactly! Have a safe flight home!",
+        "textVi": "Chuẩn! Chúc anh bay về an toàn!",
+        "audioUrl": "/audio/dialogues/dlg-40/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How did the scratch happen?",
+        "options": [
+          "A motorbike brushed past the car",
+          "Khoa hit a wall",
+          "Someone broke in",
+          "It was already there"
+        ],
+        "correctAnswer": "A motorbike brushed past the car",
+        "evidenceLineId": "line-4",
+        "explanation": "Khoa kể ở dòng 4: 'A motorbike brushed past me in traffic'."
+      },
+      {
+        "question": "Why doesn't Khoa have to pay for the damage?",
+        "options": [
+          "He bought full coverage insurance",
+          "The scratch is too small",
+          "Lisa likes him",
+          "The company was at fault"
+        ],
+        "correctAnswer": "He bought full coverage insurance",
+        "evidenceLineId": "line-9",
+        "explanation": "Lisa xác nhận ở dòng 9: 'The insurance covers it' vì Khoa mua gói toàn diện (dòng 8)."
+      },
+      {
+        "question": "What smart thing did Khoa do after the accident?",
+        "options": [
+          "He took photos right away",
+          "He called the police",
+          "He fixed it himself",
+          "He hid the scratch"
+        ],
+        "correctAnswer": "He took photos right away",
+        "evidenceLineId": "line-6",
+        "explanation": "Khoa nói ở dòng 6: 'I took photos right away'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-41",
+    "title": "The Restaurant Complaint",
+    "titleVi": "Phàn nàn ở nhà hàng",
+    "cefrLevel": "B1",
+    "topic": "food",
+    "topicVi": "Ẩm thực",
+    "location": "Restaurant table",
+    "locationVi": "Bàn ăn trong nhà hàng",
+    "characters": [
+      {
+        "name": "Hương",
+        "role": "Thực khách",
+        "gender": "female"
+      },
+      {
+        "name": "Quản lý Tuấn",
+        "role": "Quản lý nhà hàng",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Hương",
+        "textEn": "Excuse me, could I speak to the manager?",
+        "textVi": "Xin lỗi, tôi gặp quản lý được không?",
+        "audioUrl": "/audio/dialogues/dlg-41/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Quản lý Tuấn",
+        "textEn": "I'm the manager. Is there a problem?",
+        "textVi": "Tôi là quản lý đây. Có vấn đề gì ạ?",
+        "audioUrl": "/audio/dialogues/dlg-41/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Hương",
+        "textEn": "Yes. I ordered the grilled fish 40 minutes ago, and it's still not here.",
+        "textVi": "Có. Tôi gọi cá nướng 40 phút trước mà giờ vẫn chưa có.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Quản lý Tuấn",
+        "textEn": "40 minutes? That's too long. Let me check with the kitchen.",
+        "textVi": "40 phút? Lâu quá. Để tôi kiểm tra với bếp.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Hương",
+        "textEn": "Also, my friend's soup arrived cold.",
+        "textVi": "Với lại, súp của bạn tôi mang ra bị nguội.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Quản lý Tuấn",
+        "textEn": "I sincerely apologize. This is not our usual standard.",
+        "textVi": "Tôi thành thật xin lỗi. Đây không phải chất lượng thường ngày của chúng tôi.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Hương",
+        "textEn": "We're in a hurry. We have movie tickets at 8.",
+        "textVi": "Chúng tôi đang vội. 8 giờ có vé xem phim.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Quản lý Tuấn",
+        "textEn": "I understand. Your fish will be ready in 5 minutes, and dessert is on the house.",
+        "textVi": "Tôi hiểu. Cá của chị 5 phút nữa xong, và tráng miệng nhà hàng mời.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Hương",
+        "textEn": "That's kind of you. Thank you.",
+        "textVi": "Anh chu đáo quá. Cảm ơn.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Quản lý Tuấn",
+        "textEn": "And I'll personally make sure your soup is served hot.",
+        "textVi": "Và tôi sẽ đích thân đảm bảo súp được mang ra nóng hổi.",
+        "audioUrl": "/audio/dialogues/dlg-41/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How long has Hương been waiting for her fish?",
+        "options": [
+          "40 minutes",
+          "30 minutes",
+          "20 minutes",
+          "One hour"
+        ],
+        "correctAnswer": "40 minutes",
+        "evidenceLineId": "line-3",
+        "explanation": "Hương nói ở dòng 3: 'I ordered the grilled fish 40 minutes ago'."
+      },
+      {
+        "question": "Why are Hương and her friend in a hurry?",
+        "options": [
+          "They have movie tickets at 8",
+          "They have a flight to catch",
+          "The restaurant is closing",
+          "They have work tomorrow"
+        ],
+        "correctAnswer": "They have movie tickets at 8",
+        "evidenceLineId": "line-7",
+        "explanation": "Hương giải thích ở dòng 7: 'We have movie tickets at 8'."
+      },
+      {
+        "question": "What does the manager offer as compensation?",
+        "options": [
+          "Free dessert",
+          "A full refund",
+          "A discount voucher",
+          "Free drinks"
+        ],
+        "correctAnswer": "Free dessert",
+        "evidenceLineId": "line-8",
+        "explanation": "Quản lý nói ở dòng 8: 'dessert is on the house' (tráng miệng nhà hàng mời)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-42",
+    "title": "The Stuck Parcel",
+    "titleVi": "Bưu kiện kẹt hải quan",
+    "cefrLevel": "B1",
+    "topic": "shopping",
+    "topicVi": "Mua sắm",
+    "location": "Phone call with courier",
+    "locationVi": "Cuộc gọi với bên giao hàng",
+    "characters": [
+      {
+        "name": "Sơn",
+        "role": "Người nhận hàng",
+        "gender": "male"
+      },
+      {
+        "name": "Ngọc",
+        "role": "Nhân viên giao hàng",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Sơn",
+        "textEn": "Hi, I'm calling about my parcel from Japan. It's been stuck for a week.",
+        "textVi": "Chào chị, tôi hỏi về bưu kiện từ Nhật. Nó kẹt một tuần rồi.",
+        "audioUrl": "/audio/dialogues/dlg-42/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Ngọc",
+        "textEn": "Can I have your tracking number?",
+        "textVi": "Anh cho em xin mã vận đơn?",
+        "audioUrl": "/audio/dialogues/dlg-42/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Sơn",
+        "textEn": "JP88420177. It says 'held at customs'.",
+        "textVi": "JP88420177. Trạng thái ghi 'đang giữ ở hải quan'.",
+        "audioUrl": "/audio/dialogues/dlg-42/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Ngọc",
+        "textEn": "Let me check... Ah, it's a camera lens, right? Worth $300?",
+        "textVi": "Để em xem... À, là ống kính máy ảnh đúng không? Trị giá 300 đô?",
+        "audioUrl": "/audio/dialogues/dlg-42/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Sơn",
+        "textEn": "Yes! It's a birthday gift for my dad.",
+        "textVi": "Đúng! Là quà sinh nhật cho bố tôi.",
+        "audioUrl": "/audio/dialogues/dlg-42/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Ngọc",
+        "textEn": "Items over $100 need an import declaration. Did you fill one out?",
+        "textVi": "Hàng trên 100 đô cần tờ khai nhập khẩu. Anh đã khai chưa?",
+        "audioUrl": "/audio/dialogues/dlg-42/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Sơn",
+        "textEn": "No, nobody told me! How do I do it?",
+        "textVi": "Chưa, không ai nói với tôi! Làm thế nào?",
+        "audioUrl": "/audio/dialogues/dlg-42/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Ngọc",
+        "textEn": "I'll send you a form by email. Fill it in and pay the tax — about $30.",
+        "textVi": "Em gửi mẫu qua email. Anh điền vào và đóng thuế — khoảng 30 đô.",
+        "audioUrl": "/audio/dialogues/dlg-42/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Sơn",
+        "textEn": "$30? Okay, that's fair. How long after I pay?",
+        "textVi": "30 đô? Được, hợp lý. Đóng xong bao lâu thì nhận?",
+        "audioUrl": "/audio/dialogues/dlg-42/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Ngọc",
+        "textEn": "Two to three working days. I'll speed it up for you.",
+        "textVi": "Hai đến ba ngày làm việc. Em sẽ đẩy nhanh cho anh.",
+        "audioUrl": "/audio/dialogues/dlg-42/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Why is Sơn's parcel held at customs?",
+        "options": [
+          "It's worth over $100 and needs a declaration",
+          "The address was wrong",
+          "It was damaged",
+          "It was sent to the wrong country"
+        ],
+        "correctAnswer": "It's worth over $100 and needs a declaration",
+        "evidenceLineId": "line-6",
+        "explanation": "Ngọc giải thích ở dòng 6: 'Items over $100 need an import declaration'."
+      },
+      {
+        "question": "How much tax does Sơn need to pay?",
+        "options": [
+          "About $30",
+          "About $100",
+          "About $300",
+          "Nothing"
+        ],
+        "correctAnswer": "About $30",
+        "evidenceLineId": "line-8",
+        "explanation": "Ngọc nói ở dòng 8: 'pay the tax — about $30'."
+      },
+      {
+        "question": "What is inside the parcel?",
+        "options": [
+          "A camera lens",
+          "A camera",
+          "A phone",
+          "A watch"
+        ],
+        "correctAnswer": "A camera lens",
+        "evidenceLineId": "line-4",
+        "explanation": "Ngọc xác nhận ở dòng 4: 'it's a camera lens, right?'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-43",
+    "title": "The Roommate Chores",
+    "titleVi": "Chia việc nhà",
+    "cefrLevel": "B1",
+    "topic": "daily_life",
+    "topicVi": "Đời sống hàng ngày",
+    "location": "Shared apartment kitchen",
+    "locationVi": "Bếp căn hộ ở ghép",
+    "characters": [
+      {
+        "name": "Vy",
+        "role": "Bạn cùng phòng",
+        "gender": "female"
+      },
+      {
+        "name": "Long",
+        "role": "Bạn cùng phòng",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Vy",
+        "textEn": "Long, we need to talk. The kitchen is a mess again.",
+        "textVi": "Long, mình cần nói chuyện. Bếp lại bừa bộn rồi.",
+        "audioUrl": "/audio/dialogues/dlg-43/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Long",
+        "textEn": "I know, I know. I was going to clean it tonight.",
+        "textVi": "Anh biết, anh biết. Tối nay anh định dọn mà.",
+        "audioUrl": "/audio/dialogues/dlg-43/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Vy",
+        "textEn": "You said that last week too. We need a chore schedule.",
+        "textVi": "Tuần trước anh cũng nói vậy. Mình cần lịch chia việc.",
+        "audioUrl": "/audio/dialogues/dlg-43/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Long",
+        "textEn": "Okay, fair. What do you suggest?",
+        "textVi": "Ừ, công bằng. Em đề xuất đi?",
+        "audioUrl": "/audio/dialogues/dlg-43/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Vy",
+        "textEn": "I'll cook on weekdays. You wash the dishes.",
+        "textVi": "Em nấu ăn các ngày trong tuần. Anh rửa bát.",
+        "audioUrl": "/audio/dialogues/dlg-43/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Long",
+        "textEn": "Deal. And weekends?",
+        "textVi": "Chốt. Còn cuối tuần?",
+        "audioUrl": "/audio/dialogues/dlg-43/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Vy",
+        "textEn": "We take turns. I cook this Saturday, you cook next Saturday.",
+        "textVi": "Mình luân phiên. Thứ Bảy này em nấu, thứ Bảy sau anh nấu.",
+        "audioUrl": "/audio/dialogues/dlg-43/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Long",
+        "textEn": "Hmm... my cooking is terrible. Can I do the cleaning instead?",
+        "textVi": "Hmm... anh nấu dở lắm. Anh làm vệ sinh thay được không?",
+        "audioUrl": "/audio/dialogues/dlg-43/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Vy",
+        "textEn": "Fine! You clean the bathroom and take out the trash.",
+        "textVi": "Được! Anh dọn nhà vệ sinh và đổ rác.",
+        "audioUrl": "/audio/dialogues/dlg-43/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Long",
+        "textEn": "Agreed! Let's write it down and stick it on the fridge.",
+        "textVi": "Đồng ý! Mình viết ra dán lên tủ lạnh nhé.",
+        "audioUrl": "/audio/dialogues/dlg-43/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Vy",
+        "textEn": "Good idea. No more excuses!",
+        "textVi": "Ý hay. Không còn lý do nữa nhé!",
+        "audioUrl": "/audio/dialogues/dlg-43/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What is Vy's main complaint?",
+        "options": [
+          "The kitchen is messy again",
+          "Long never cooks",
+          "The rent is too high",
+          "Long is too noisy"
+        ],
+        "correctAnswer": "The kitchen is messy again",
+        "evidenceLineId": "line-1",
+        "explanation": "Vy nói ở dòng 1: 'The kitchen is a mess again'."
+      },
+      {
+        "question": "What will Long do on weekdays?",
+        "options": [
+          "Wash the dishes",
+          "Cook dinner",
+          "Clean the bathroom",
+          "Take out the trash"
+        ],
+        "correctAnswer": "Wash the dishes",
+        "evidenceLineId": "line-5",
+        "explanation": "Vy phân công ở dòng 5: 'You wash the dishes'."
+      },
+      {
+        "question": "Why doesn't Long want to cook on weekends?",
+        "options": [
+          "His cooking is terrible",
+          "He works on weekends",
+          "He's allergic to cooking",
+          "He doesn't like Vy's food"
+        ],
+        "correctAnswer": "His cooking is terrible",
+        "evidenceLineId": "line-8",
+        "explanation": "Long thừa nhận ở dòng 8: 'my cooking is terrible'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-44",
+    "title": "The Job Offer",
+    "titleVi": "Thương lượng offer",
+    "cefrLevel": "B1",
+    "topic": "work",
+    "topicVi": "Công việc",
+    "location": "HR office",
+    "locationVi": "Văn phòng nhân sự",
+    "characters": [
+      {
+        "name": "Chị Hằng",
+        "role": "Trưởng phòng nhân sự",
+        "gender": "female"
+      },
+      {
+        "name": "Phong",
+        "role": "Ứng viên",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Chị Hằng",
+        "textEn": "Phong, we'd like to offer you the marketing position!",
+        "textVi": "Phong, công ty muốn mời em vào vị trí marketing!",
+        "audioUrl": "/audio/dialogues/dlg-44/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Phong",
+        "textEn": "That's great news! What's the salary?",
+        "textVi": "Tin vui quá! Lương bao nhiêu ạ?",
+        "audioUrl": "/audio/dialogues/dlg-44/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Chị Hằng",
+        "textEn": "18 million a month, plus Tet bonus.",
+        "textVi": "18 triệu một tháng, cộng thưởng Tết.",
+        "audioUrl": "/audio/dialogues/dlg-44/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Phong",
+        "textEn": "Hmm. I was hoping for 22 million. I have 3 years of experience.",
+        "textVi": "Hmm. Em mong khoảng 22 triệu. Em có 3 năm kinh nghiệm.",
+        "audioUrl": "/audio/dialogues/dlg-44/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Chị Hằng",
+        "textEn": "I see. 22 is above our budget... but let me think.",
+        "textVi": "Chị hiểu. 22 thì vượt ngân sách... nhưng để chị xem.",
+        "audioUrl": "/audio/dialogues/dlg-44/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Phong",
+        "textEn": "My current salary is already 19 million.",
+        "textVi": "Lương hiện tại của em đã 19 triệu rồi.",
+        "audioUrl": "/audio/dialogues/dlg-44/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Chị Hằng",
+        "textEn": "Okay, how about 20 million, with a review after 6 months?",
+        "textVi": "Vậy 20 triệu nhé, và đánh giá lại sau 6 tháng?",
+        "audioUrl": "/audio/dialogues/dlg-44/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Phong",
+        "textEn": "And if I perform well?",
+        "textVi": "Và nếu em làm tốt thì sao?",
+        "audioUrl": "/audio/dialogues/dlg-44/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Chị Hằng",
+        "textEn": "Then we raise it to 22. Deal?",
+        "textVi": "Thì nâng lên 22. Chốt nhé?",
+        "audioUrl": "/audio/dialogues/dlg-44/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Phong",
+        "textEn": "Deal! When do I start?",
+        "textVi": "Chốt! Em bắt đầu khi nào?",
+        "audioUrl": "/audio/dialogues/dlg-44/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Chị Hằng",
+        "textEn": "Next Monday. Welcome aboard!",
+        "textVi": "Thứ Hai tuần sau. Chào mừng em!",
+        "audioUrl": "/audio/dialogues/dlg-44/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What salary did Phong originally want?",
+        "options": [
+          "22 million",
+          "20 million",
+          "18 million",
+          "19 million"
+        ],
+        "correctAnswer": "22 million",
+        "evidenceLineId": "line-4",
+        "explanation": "Phong nói ở dòng 4: 'I was hoping for 22 million'."
+      },
+      {
+        "question": "What is Phong's current salary?",
+        "options": [
+          "19 million",
+          "18 million",
+          "20 million",
+          "22 million"
+        ],
+        "correctAnswer": "19 million",
+        "evidenceLineId": "line-6",
+        "explanation": "Phong tiết lộ ở dòng 6: 'My current salary is already 19 million'."
+      },
+      {
+        "question": "What is the final agreement?",
+        "options": [
+          "20 million now, 22 after 6 months if he performs well",
+          "22 million immediately",
+          "18 million fixed",
+          "20 million fixed forever"
+        ],
+        "correctAnswer": "20 million now, 22 after 6 months if he performs well",
+        "evidenceLineId": "line-7",
+        "explanation": "Thỏa thuận ở dòng 7 và 9: 20 triệu, đánh giá sau 6 tháng rồi nâng lên 22."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-45",
+    "title": "The Concert Tickets",
+    "titleVi": "Vé concert",
+    "cefrLevel": "B1",
+    "topic": "entertainment",
+    "topicVi": "Giải trí",
+    "location": "Coffee shop, two friends",
+    "locationVi": "Quán cà phê, hai người bạn",
+    "characters": [
+      {
+        "name": "Quỳnh",
+        "role": "Fan",
+        "gender": "female"
+      },
+      {
+        "name": "Đạt",
+        "role": "Bạn của Quỳnh",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Quỳnh",
+        "textEn": "Did you hear? My favorite band is coming to Hanoi!",
+        "textVi": "Nghe gì chưa? Ban nhạc em thích sắp đến Hà Nội!",
+        "audioUrl": "/audio/dialogues/dlg-45/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Đạt",
+        "textEn": "Really? When?",
+        "textVi": "Thật á? Khi nào?",
+        "audioUrl": "/audio/dialogues/dlg-45/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Quỳnh",
+        "textEn": "December 20th. Tickets go on sale tomorrow at 9 AM.",
+        "textVi": "20 tháng 12. Vé mở bán sáng mai 9 giờ.",
+        "audioUrl": "/audio/dialogues/dlg-45/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Đạt",
+        "textEn": "How much are they?",
+        "textVi": "Vé bao nhiêu?",
+        "audioUrl": "/audio/dialogues/dlg-45/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Quỳnh",
+        "textEn": "Standing tickets are 800k. VIP seats are 2 million.",
+        "textVi": "Vé đứng 800k. Vé VIP 2 triệu.",
+        "audioUrl": "/audio/dialogues/dlg-45/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Đạt",
+        "textEn": "2 million?! That's my whole week's salary!",
+        "textVi": "2 triệu?! Bằng cả tuần lương của anh!",
+        "audioUrl": "/audio/dialogues/dlg-45/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Quỳnh",
+        "textEn": "I know! I'm going for the standing tickets. Want to come?",
+        "textVi": "Em biết! Em mua vé đứng. Anh đi không?",
+        "audioUrl": "/audio/dialogues/dlg-45/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Đạt",
+        "textEn": "Hmm... I've never been to a concert. Is it worth it?",
+        "textVi": "Hmm... anh chưa đi concert bao giờ. Có đáng không?",
+        "audioUrl": "/audio/dialogues/dlg-45/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Quỳnh",
+        "textEn": "Totally! The atmosphere is amazing. You'll love it.",
+        "textVi": "Đáng lắm! Không khí tuyệt vời. Anh sẽ thích.",
+        "audioUrl": "/audio/dialogues/dlg-45/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Đạt",
+        "textEn": "Okay, I'm in! But you have to buy my ticket — I'm slow with apps.",
+        "textVi": "Ok, anh đi! Nhưng em phải mua vé giúp anh — anh dùng app chậm lắm.",
+        "audioUrl": "/audio/dialogues/dlg-45/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Quỳnh",
+        "textEn": "Deal! Set your alarm for 8:55 tomorrow!",
+        "textVi": "Chốt! Đặt báo thức 8 giờ 55 sáng mai nhé!",
+        "audioUrl": "/audio/dialogues/dlg-45/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "When do tickets go on sale?",
+        "options": [
+          "Tomorrow at 9 AM",
+          "Today at 9 AM",
+          "December 20th",
+          "Next week"
+        ],
+        "correctAnswer": "Tomorrow at 9 AM",
+        "evidenceLineId": "line-3",
+        "explanation": "Quỳnh nói ở dòng 3: 'Tickets go on sale tomorrow at 9 AM'."
+      },
+      {
+        "question": "How much are standing tickets?",
+        "options": [
+          "800k",
+          "2 million",
+          "1 million",
+          "500k"
+        ],
+        "correctAnswer": "800k",
+        "evidenceLineId": "line-5",
+        "explanation": "Quỳnh báo giá ở dòng 5: 'Standing tickets are 800k'."
+      },
+      {
+        "question": "Why does Đạt ask Quỳnh to buy his ticket?",
+        "options": [
+          "He's slow with apps",
+          "He has no money",
+          "He's busy tomorrow",
+          "He doesn't want to go"
+        ],
+        "correctAnswer": "He's slow with apps",
+        "evidenceLineId": "line-10",
+        "explanation": "Đạt nói ở dòng 10: 'I'm slow with apps'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-46",
+    "title": "The Language Exchange",
+    "titleVi": "Hẹn trao đổi ngôn ngữ",
+    "cefrLevel": "B1",
+    "topic": "social",
+    "topicVi": "Giao tiếp xã hội",
+    "location": "Language exchange meetup",
+    "locationVi": "Buổi gặp trao đổi ngôn ngữ",
+    "characters": [
+      {
+        "name": "Alex",
+        "role": "Người Mỹ học tiếng Việt",
+        "gender": "male"
+      },
+      {
+        "name": "Ngân",
+        "role": "Người Việt học tiếng Anh",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Alex",
+        "textEn": "Hi! Are you Ngân? I'm Alex from the language exchange group.",
+        "textVi": "Chào! Bạn là Ngân phải không? Mình là Alex từ nhóm trao đổi ngôn ngữ.",
+        "audioUrl": "/audio/dialogues/dlg-46/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Ngân",
+        "textEn": "Yes! Nice to meet you, Alex. Your Vietnamese is good!",
+        "textVi": "Đúng rồi! Rất vui được gặp Alex. Tiếng Việt của bạn tốt đấy!",
+        "audioUrl": "/audio/dialogues/dlg-46/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Alex",
+        "textEn": "Thanks! I've been learning for six months. How long have you studied English?",
+        "textVi": "Cảm ơn! Mình học 6 tháng rồi. Bạn học tiếng Anh bao lâu rồi?",
+        "audioUrl": "/audio/dialogues/dlg-46/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Ngân",
+        "textEn": "About two years. But my speaking is still weak.",
+        "textVi": "Khoảng 2 năm. Nhưng nói vẫn yếu lắm.",
+        "audioUrl": "/audio/dialogues/dlg-46/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Alex",
+        "textEn": "Then let's help each other! 30 minutes English, 30 minutes Vietnamese?",
+        "textVi": "Vậy mình giúp nhau nhé! 30 phút tiếng Anh, 30 phút tiếng Việt?",
+        "audioUrl": "/audio/dialogues/dlg-46/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Ngân",
+        "textEn": "Perfect! How often should we meet?",
+        "textVi": "Tuyệt! Mình gặp nhau mấy lần một tuần?",
+        "audioUrl": "/audio/dialogues/dlg-46/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Alex",
+        "textEn": "Twice a week? Tuesday and Saturday afternoons?",
+        "textVi": "Hai lần một tuần nhé? Chiều thứ Ba và thứ Bảy?",
+        "audioUrl": "/audio/dialogues/dlg-46/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Ngân",
+        "textEn": "Tuesday works, but Saturday I'm busy. How about Sunday?",
+        "textVi": "Thứ Ba được, nhưng thứ Bảy mình bận. Chủ Nhật thì sao?",
+        "audioUrl": "/audio/dialogues/dlg-46/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Alex",
+        "textEn": "Sunday is fine! Same place, 3 PM?",
+        "textVi": "Chủ Nhật ok! Chỗ này, 3 giờ chiều nhé?",
+        "audioUrl": "/audio/dialogues/dlg-46/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Ngân",
+        "textEn": "See you Tuesday! I'll bring my Vietnamese textbook for you.",
+        "textVi": "Hẹn thứ Ba nhé! Mình mang sách tiếng Việt cho bạn.",
+        "audioUrl": "/audio/dialogues/dlg-46/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How will Alex and Ngân split their practice time?",
+        "options": [
+          "30 minutes English, 30 minutes Vietnamese",
+          "One hour English only",
+          "One hour Vietnamese only",
+          "15 minutes each"
+        ],
+        "correctAnswer": "30 minutes English, 30 minutes Vietnamese",
+        "evidenceLineId": "line-5",
+        "explanation": "Alex đề xuất ở dòng 5: '30 minutes English, 30 minutes Vietnamese?'."
+      },
+      {
+        "question": "Which days will they meet?",
+        "options": [
+          "Tuesday and Sunday",
+          "Tuesday and Saturday",
+          "Monday and Friday",
+          "Saturday and Sunday"
+        ],
+        "correctAnswer": "Tuesday and Sunday",
+        "evidenceLineId": "line-8",
+        "explanation": "Ngân đổi thứ Bảy thành Chủ Nhật ở dòng 8, Alex đồng ý ở dòng 9."
+      },
+      {
+        "question": "How long has Alex been learning Vietnamese?",
+        "options": [
+          "Six months",
+          "Two years",
+          "One year",
+          "Three months"
+        ],
+        "correctAnswer": "Six months",
+        "evidenceLineId": "line-3",
+        "explanation": "Alex nói ở dòng 3: 'I've been learning for six months'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-47",
+    "title": "The Gym Membership",
+    "titleVi": "Hủy thẻ gym",
+    "cefrLevel": "B1",
+    "topic": "health",
+    "topicVi": "Sức khỏe",
+    "location": "Gym reception",
+    "locationVi": "Quầy lễ tân phòng gym",
+    "characters": [
+      {
+        "name": "Tùng",
+        "role": "Hội viên",
+        "gender": "male"
+      },
+      {
+        "name": "Linh Chi",
+        "role": "Nhân viên",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Tùng",
+        "textEn": "Hi, I'd like to cancel my gym membership.",
+        "textVi": "Chào chị, tôi muốn hủy thẻ gym.",
+        "audioUrl": "/audio/dialogues/dlg-47/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Linh Chi",
+        "textEn": "Oh! May I ask why? Is something wrong?",
+        "textVi": "Ồ! Em hỏi lý do được không? Có gì không ổn ạ?",
+        "audioUrl": "/audio/dialogues/dlg-47/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Tùng",
+        "textEn": "Nothing wrong. I just moved far away. The gym is 40 minutes from my new place.",
+        "textVi": "Không có gì. Tôi mới chuyển nhà xa. Từ chỗ mới đến đây 40 phút.",
+        "audioUrl": "/audio/dialogues/dlg-47/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Linh Chi",
+        "textEn": "I see. We actually opened a new branch near the airport. Is that closer?",
+        "textVi": "Em hiểu. Bên em mới mở chi nhánh gần sân bay. Gần chỗ anh hơn không?",
+        "audioUrl": "/audio/dialogues/dlg-47/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Tùng",
+        "textEn": "Hmm, that's still 25 minutes away. Not really.",
+        "textVi": "Hmm, vẫn 25 phút. Không gần hơn mấy.",
+        "audioUrl": "/audio/dialogues/dlg-47/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Linh Chi",
+        "textEn": "What if I freeze your membership for 3 months instead? No fee.",
+        "textVi": "Hay em đóng băng thẻ 3 tháng cho anh nhé? Không mất phí.",
+        "audioUrl": "/audio/dialogues/dlg-47/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Tùng",
+        "textEn": "That's nice, but I'll still be far away after 3 months.",
+        "textVi": "Tốt đấy, nhưng 3 tháng sau tôi vẫn ở xa.",
+        "audioUrl": "/audio/dialogues/dlg-47/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Linh Chi",
+        "textEn": "Okay. There's a 200k cancellation fee, just so you know.",
+        "textVi": "Dạ. Có phí hủy 200k, anh lưu ý nhé.",
+        "audioUrl": "/audio/dialogues/dlg-47/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Tùng",
+        "textEn": "200k? Fine. Can I pay by card?",
+        "textVi": "200k? Được. Tôi quẹt thẻ được không?",
+        "audioUrl": "/audio/dialogues/dlg-47/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Linh Chi",
+        "textEn": "Yes. Done! Sorry to see you go. Good luck!",
+        "textVi": "Dạ được. Xong! Tiếc là anh đi. Chúc anh may mắn!",
+        "audioUrl": "/audio/dialogues/dlg-47/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Why does Tùng want to cancel?",
+        "options": [
+          "He moved far away",
+          "The gym is too expensive",
+          "He doesn't like exercise",
+          "The gym is dirty"
+        ],
+        "correctAnswer": "He moved far away",
+        "evidenceLineId": "line-3",
+        "explanation": "Tùng giải thích ở dòng 3: 'I just moved far away'."
+      },
+      {
+        "question": "What alternative does Linh Chi offer first?",
+        "options": [
+          "A new branch near the airport",
+          "A cheaper membership",
+          "A personal trainer",
+          "Free months"
+        ],
+        "correctAnswer": "A new branch near the airport",
+        "evidenceLineId": "line-4",
+        "explanation": "Linh Chi gợi ý ở dòng 4: 'We actually opened a new branch near the airport'."
+      },
+      {
+        "question": "How much is the cancellation fee?",
+        "options": [
+          "200k",
+          "300k",
+          "100k",
+          "Free"
+        ],
+        "correctAnswer": "200k",
+        "evidenceLineId": "line-8",
+        "explanation": "Linh Chi nói ở dòng 8: 'There's a 200k cancellation fee'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-48",
+    "title": "The Insurance Claim",
+    "titleVi": "Bảo hiểm xe đạp",
+    "cefrLevel": "B1",
+    "topic": "daily_life",
+    "topicVi": "Đời sống hàng ngày",
+    "location": "Insurance office",
+    "locationVi": "Văn phòng bảo hiểm",
+    "characters": [
+      {
+        "name": "Bích",
+        "role": "Khách hàng",
+        "gender": "female"
+      },
+      {
+        "name": "Anh Dũng",
+        "role": "Nhân viên bảo hiểm",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Bích",
+        "textEn": "Hello, I need to make a claim. My bicycle was stolen.",
+        "textVi": "Chào anh, tôi cần làm bồi thường. Xe đạp của tôi bị trộm.",
+        "audioUrl": "/audio/dialogues/dlg-48/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Anh Dũng",
+        "textEn": "I'm sorry to hear that. When did it happen?",
+        "textVi": "Tôi rất tiếc. Chuyện xảy ra khi nào?",
+        "audioUrl": "/audio/dialogues/dlg-48/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Bích",
+        "textEn": "Last Saturday. I locked it outside the supermarket.",
+        "textVi": "Thứ Bảy tuần trước. Tôi khóa xe ngoài siêu thị.",
+        "audioUrl": "/audio/dialogues/dlg-48/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Anh Dũng",
+        "textEn": "Did you report it to the police?",
+        "textVi": "Chị đã báo công an chưa?",
+        "audioUrl": "/audio/dialogues/dlg-48/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Bích",
+        "textEn": "Yes, I have the police report right here.",
+        "textVi": "Rồi, tôi có biên bản đây.",
+        "audioUrl": "/audio/dialogues/dlg-48/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Anh Dũng",
+        "textEn": "Great! What's the value of the bicycle?",
+        "textVi": "Tốt! Xe trị giá bao nhiêu?",
+        "audioUrl": "/audio/dialogues/dlg-48/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Bích",
+        "textEn": "I bought it for 8 million dong last year.",
+        "textVi": "Tôi mua 8 triệu năm ngoái.",
+        "audioUrl": "/audio/dialogues/dlg-48/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Anh Dũng",
+        "textEn": "Your policy covers theft up to 10 million. You're fully covered.",
+        "textVi": "Hợp đồng của chị bảo hiểm trộm cắp đến 10 triệu. Chị được bồi thường đủ.",
+        "audioUrl": "/audio/dialogues/dlg-48/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Bích",
+        "textEn": "Really? How long does the process take?",
+        "textVi": "Thật ạ? Thủ tục mất bao lâu?",
+        "audioUrl": "/audio/dialogues/dlg-48/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Anh Dũng",
+        "textEn": "About two weeks. We'll transfer the money to your bank.",
+        "textVi": "Khoảng hai tuần. Bên em chuyển khoản cho chị.",
+        "audioUrl": "/audio/dialogues/dlg-48/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Bích",
+        "textEn": "Thank you! I'll buy a better lock this time.",
+        "textVi": "Cảm ơn! Lần này tôi sẽ mua khóa tốt hơn.",
+        "audioUrl": "/audio/dialogues/dlg-48/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Where was Bích's bicycle stolen?",
+        "options": [
+          "Outside the supermarket",
+          "At her office",
+          "Near her house",
+          "At the park"
+        ],
+        "correctAnswer": "Outside the supermarket",
+        "evidenceLineId": "line-3",
+        "explanation": "Bích kể ở dòng 3: 'I locked it outside the supermarket'."
+      },
+      {
+        "question": "How much was the bicycle worth?",
+        "options": [
+          "8 million dong",
+          "10 million dong",
+          "5 million dong",
+          "12 million dong"
+        ],
+        "correctAnswer": "8 million dong",
+        "evidenceLineId": "line-7",
+        "explanation": "Bích nói ở dòng 7: 'I bought it for 8 million dong'."
+      },
+      {
+        "question": "How long will the claim process take?",
+        "options": [
+          "About two weeks",
+          "One week",
+          "One month",
+          "Three days"
+        ],
+        "correctAnswer": "About two weeks",
+        "evidenceLineId": "line-10",
+        "explanation": "Anh Dũng nói ở dòng 10: 'About two weeks'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-49",
+    "title": "The Salary Review",
+    "titleVi": "Đánh giá lương",
+    "cefrLevel": "B2",
+    "topic": "work",
+    "topicVi": "Công việc",
+    "location": "Manager's office",
+    "locationVi": "Văn phòng quản lý",
+    "characters": [
+      {
+        "name": "Chị Lan",
+        "role": "Quản lý",
+        "gender": "female"
+      },
+      {
+        "name": "Hoàng",
+        "role": "Nhân viên",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Chị Lan",
+        "textEn": "Hoàng, thanks for coming. Let's talk about your annual review.",
+        "textVi": "Hoàng, cảm ơn em đã đến. Mình nói về đánh giá năm nhé.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Hoàng",
+        "textEn": "Sure. I think this year went pretty well.",
+        "textVi": "Dạ. Em nghĩ năm nay khá ổn.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Chị Lan",
+        "textEn": "I agree. Your project finished two weeks early, and the client was very happy.",
+        "textVi": "Chị đồng ý. Dự án của em xong sớm hai tuần, khách hàng rất hài lòng.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Hoàng",
+        "textEn": "Thank you! The team worked really hard.",
+        "textVi": "Cảm ơn chị! Cả team đã cố gắng nhiều.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Chị Lan",
+        "textEn": "There's one area to improve: your reports are often late.",
+        "textVi": "Có một điểm cần cải thiện: báo cáo của em thường nộp trễ.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Hoàng",
+        "textEn": "You're right. I'll set reminders for myself.",
+        "textVi": "Chị nói đúng. Em sẽ tự đặt nhắc nhở.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Chị Lan",
+        "textEn": "Good. Overall, I'm giving you an 'exceeds expectations' rating.",
+        "textVi": "Tốt. Tổng thể, chị đánh giá em 'vượt kỳ vọng'.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Hoàng",
+        "textEn": "That's wonderful! Does that come with a raise?",
+        "textVi": "Tuyệt quá! Có được tăng lương không chị?",
+        "audioUrl": "/audio/dialogues/dlg-49/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Chị Lan",
+        "textEn": "Yes — 10%, starting next month. Well deserved.",
+        "textVi": "Có — 10%, từ tháng sau. Xứng đáng lắm.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Hoàng",
+        "textEn": "Thank you so much! I won't let you down.",
+        "textVi": "Cảm ơn chị nhiều! Em sẽ không làm chị thất vọng.",
+        "audioUrl": "/audio/dialogues/dlg-49/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Chị Lan",
+        "textEn": "I know you won't. Keep up the good work!",
+        "textVi": "Chị biết mà. Tiếp tục phát huy nhé!",
+        "audioUrl": "/audio/dialogues/dlg-49/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What was Hoàng's main achievement this year?",
+        "options": [
+          "His project finished two weeks early",
+          "He learned a new skill",
+          "He helped a colleague",
+          "He saved the company money"
+        ],
+        "correctAnswer": "His project finished two weeks early",
+        "evidenceLineId": "line-3",
+        "explanation": "Chị Lan khen ở dòng 3: 'Your project finished two weeks early'."
+      },
+      {
+        "question": "What does Hoàng need to improve?",
+        "options": [
+          "Submitting reports on time",
+          "His technical skills",
+          "His communication",
+          "His teamwork"
+        ],
+        "correctAnswer": "Submitting reports on time",
+        "evidenceLineId": "line-5",
+        "explanation": "Chị Lan指出 ở dòng 5: 'your reports are often late'."
+      },
+      {
+        "question": "How much raise does Hoàng get?",
+        "options": [
+          "10%",
+          "5%",
+          "15%",
+          "20%"
+        ],
+        "correctAnswer": "10%",
+        "evidenceLineId": "line-9",
+        "explanation": "Chị Lan thông báo ở dòng 9: 'Yes — 10%, starting next month'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-50",
+    "title": "The Team Restructure",
+    "titleVi": "Tái cấu trúc team",
+    "cefrLevel": "B2",
+    "topic": "work",
+    "topicVi": "Công việc",
+    "location": "Meeting room",
+    "locationVi": "Phòng họp",
+    "characters": [
+      {
+        "name": "Anh Quân",
+        "role": "Giám đốc",
+        "gender": "male"
+      },
+      {
+        "name": "Mai Anh",
+        "role": "Trưởng nhóm",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Anh Quân",
+        "textEn": "Mai Anh, I have some news. We're restructuring the teams next month.",
+        "textVi": "Mai Anh, anh có tin mới. Tháng sau công ty tái cấu trúc các team.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Mai Anh",
+        "textEn": "Restructuring? Does that mean layoffs?",
+        "textVi": "Tái cấu trúc? Có nghĩa là sa thải không anh?",
+        "audioUrl": "/audio/dialogues/dlg-50/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Anh Quân",
+        "textEn": "No layoffs. But your team of eight will merge with the design team.",
+        "textVi": "Không sa thải. Nhưng team 8 người của em sẽ sáp nhập với team thiết kế.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Mai Anh",
+        "textEn": "So I'll be managing 15 people? That's a lot.",
+        "textVi": "Vậy em sẽ quản lý 15 người? Nhiều quá.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Anh Quân",
+        "textEn": "You'll have a deputy to help you. We're promoting Linh.",
+        "textVi": "Em sẽ có phó hỗ trợ. Công ty thăng chức cho Linh.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Mai Anh",
+        "textEn": "Linh deserves it. But what about our current projects?",
+        "textVi": "Linh xứng đáng. Còn các dự án hiện tại thì sao?",
+        "audioUrl": "/audio/dialogues/dlg-50/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Anh Quân",
+        "textEn": "They continue as normal. The merger is about collaboration, not cuts.",
+        "textVi": "Vẫn chạy bình thường. Sáp nhập là để hợp tác, không phải cắt giảm.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Mai Anh",
+        "textEn": "When do we tell the team?",
+        "textVi": "Khi nào mình thông báo cho team?",
+        "audioUrl": "/audio/dialogues/dlg-50/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Anh Quân",
+        "textEn": "Next Monday, in the town hall. I want you beside me when I announce it.",
+        "textVi": "Thứ Hai tuần sau, ở buổi town hall. Anh muốn em đứng cạnh anh khi công bố.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Mai Anh",
+        "textEn": "Okay. I'll prepare a Q&A for the team.",
+        "textVi": "Dạ. Em sẽ chuẩn bị Q&A cho team.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Anh Quân",
+        "textEn": "Thank you. Change is hard, but this will make us stronger.",
+        "textVi": "Cảm ơn em. Thay đổi thì khó, nhưng sẽ giúp chúng ta mạnh hơn.",
+        "audioUrl": "/audio/dialogues/dlg-50/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Will anyone be laid off in the restructure?",
+        "options": [
+          "No",
+          "Yes, three people",
+          "Yes, the design team",
+          "It's not decided yet"
+        ],
+        "correctAnswer": "No",
+        "evidenceLineId": "line-3",
+        "explanation": "Anh Quân khẳng định ở dòng 3: 'No layoffs'."
+      },
+      {
+        "question": "Who will become Mai Anh's deputy?",
+        "options": [
+          "Linh",
+          "Quân",
+          "A new hire",
+          "Nobody"
+        ],
+        "correctAnswer": "Linh",
+        "evidenceLineId": "line-5",
+        "explanation": "Anh Quân nói ở dòng 5: 'We're promoting Linh'."
+      },
+      {
+        "question": "When will the team be informed?",
+        "options": [
+          "Next Monday at the town hall",
+          "Tomorrow",
+          "Next month",
+          "Today"
+        ],
+        "correctAnswer": "Next Monday at the town hall",
+        "evidenceLineId": "line-9",
+        "explanation": "Anh Quân hẹn ở dòng 9: 'Next Monday, in the town hall'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-51",
+    "title": "The Thesis Defense",
+    "titleVi": "Bảo vệ luận văn",
+    "cefrLevel": "B2",
+    "topic": "education",
+    "topicVi": "Giáo dục",
+    "location": "University defense room",
+    "locationVi": "Phòng bảo vệ luận văn, đại học",
+    "characters": [
+      {
+        "name": "Thầy Đức",
+        "role": "Chủ tịch hội đồng",
+        "gender": "male"
+      },
+      {
+        "name": "Hạnh",
+        "role": "Sinh viên",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Thầy Đức",
+        "textEn": "Good morning, Hạnh. Please begin your presentation.",
+        "textVi": "Chào buổi sáng, Hạnh. Em bắt đầu thuyết trình đi.",
+        "audioUrl": "/audio/dialogues/dlg-51/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Hạnh",
+        "textEn": "Good morning. My thesis is about air pollution in Hanoi.",
+        "textVi": "Chào buổi sáng ạ. Luận văn của em về ô nhiễm không khí ở Hà Nội.",
+        "audioUrl": "/audio/dialogues/dlg-51/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Thầy Đức",
+        "textEn": "Interesting topic. What was your main finding?",
+        "textVi": "Chủ đề thú vị. Phát hiện chính của em là gì?",
+        "audioUrl": "/audio/dialogues/dlg-51/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Hạnh",
+        "textEn": "Traffic causes 60% of PM2.5, more than factories.",
+        "textVi": "Giao thông gây ra 60% bụi PM2.5, nhiều hơn nhà máy.",
+        "audioUrl": "/audio/dialogues/dlg-51/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Thầy Đức",
+        "textEn": "60%? That's higher than I expected. How did you measure it?",
+        "textVi": "60%? Cao hơn tôi tưởng. Em đo bằng cách nào?",
+        "audioUrl": "/audio/dialogues/dlg-51/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Hạnh",
+        "textEn": "I used data from 12 monitoring stations over two years.",
+        "textVi": "Em dùng dữ liệu từ 12 trạm quan trắc trong hai năm.",
+        "audioUrl": "/audio/dialogues/dlg-51/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Thầy Đức",
+        "textEn": "Solid methodology. But your sample — is it representative?",
+        "textVi": "Phương pháp chắc chắn. Nhưng mẫu của em — có đại diện không?",
+        "audioUrl": "/audio/dialogues/dlg-51/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Hạnh",
+        "textEn": "The stations cover all 12 districts, urban and suburban.",
+        "textVi": "Các trạm phủ đủ 12 quận, cả nội thành và ngoại thành.",
+        "audioUrl": "/audio/dialogues/dlg-51/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Thầy Đức",
+        "textEn": "Good answer. One last question: what's your recommendation?",
+        "textVi": "Trả lời tốt. Câu cuối: khuyến nghị của em là gì?",
+        "audioUrl": "/audio/dialogues/dlg-51/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Hạnh",
+        "textEn": "Limit old motorbikes in the city center by 2030.",
+        "textVi": "Hạn chế xe máy cũ ở trung tâm thành phố trước 2030.",
+        "audioUrl": "/audio/dialogues/dlg-51/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Thầy Đức",
+        "textEn": "Bold proposal! Congratulations, you passed with distinction.",
+        "textVi": "Đề xuất táo bạo! Chúc mừng, em đậu loại xuất sắc.",
+        "audioUrl": "/audio/dialogues/dlg-51/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What is Hạnh's thesis about?",
+        "options": [
+          "Air pollution in Hanoi",
+          "Water pollution",
+          "Traffic jams",
+          "Factory waste"
+        ],
+        "correctAnswer": "Air pollution in Hanoi",
+        "evidenceLineId": "line-2",
+        "explanation": "Hạnh giới thiệu ở dòng 2: 'My thesis is about air pollution in Hanoi'."
+      },
+      {
+        "question": "According to Hạnh's research, what causes most PM2.5?",
+        "options": [
+          "Traffic",
+          "Factories",
+          "Construction",
+          "Cooking"
+        ],
+        "correctAnswer": "Traffic",
+        "evidenceLineId": "line-4",
+        "explanation": "Hạnh nói ở dòng 4: 'Traffic causes 60% of PM2.5, more than factories'."
+      },
+      {
+        "question": "What grade did Hạnh receive?",
+        "options": [
+          "Passed with distinction",
+          "Just passed",
+          "Failed",
+          "Needs revision"
+        ],
+        "correctAnswer": "Passed with distinction",
+        "evidenceLineId": "line-11",
+        "explanation": "Thầy Đức công bố ở dòng 11: 'you passed with distinction'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-52",
+    "title": "The Property Investment",
+    "titleVi": "Đầu tư bất động sản",
+    "cefrLevel": "B2",
+    "topic": "finance",
+    "topicVi": "Tài chính",
+    "location": "Investment advisor's office",
+    "locationVi": "Văn phòng tư vấn đầu tư",
+    "characters": [
+      {
+        "name": "Cô Thu",
+        "role": "Cố vấn đầu tư",
+        "gender": "female"
+      },
+      {
+        "name": "Anh Vinh",
+        "role": "Nhà đầu tư",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Anh Vinh",
+        "textEn": "Cô Thu, I have 3 billion dong. Should I buy an apartment to rent out?",
+        "textVi": "Cô Thu, tôi có 3 tỷ. Có nên mua căn hộ cho thuê không?",
+        "audioUrl": "/audio/dialogues/dlg-52/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Cô Thu",
+        "textEn": "It depends. Where are you thinking of buying?",
+        "textVi": "Tùy ạ. Anh định mua ở đâu?",
+        "audioUrl": "/audio/dialogues/dlg-52/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Anh Vinh",
+        "textEn": "Thu Duc City. Prices are rising fast there.",
+        "textVi": "Thành phố Thủ Đức. Giá ở đó đang tăng nhanh.",
+        "audioUrl": "/audio/dialogues/dlg-52/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Cô Thu",
+        "textEn": "True, but rental yield there is only about 4% a year.",
+        "textVi": "Đúng, nhưng lợi suất cho thuê ở đó chỉ khoảng 4% một năm.",
+        "audioUrl": "/audio/dialogues/dlg-52/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Anh Vinh",
+        "textEn": "Only 4%? My savings account gives 5%!",
+        "textVi": "Chỉ 4%? Gửi tiết kiệm còn được 5%!",
+        "audioUrl": "/audio/dialogues/dlg-52/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Cô Thu",
+        "textEn": "Exactly. But property also gains value over time. Last year prices rose 8%.",
+        "textVi": "Chính xác. Nhưng bất động sản còn tăng giá theo thời gian. Năm ngoái giá tăng 8%.",
+        "audioUrl": "/audio/dialogues/dlg-52/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Anh Vinh",
+        "textEn": "So total return could be 12%? That sounds better.",
+        "textVi": "Vậy tổng lợi nhuận có thể 12%? Nghe ổn hơn.",
+        "audioUrl": "/audio/dialogues/dlg-52/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Cô Thu",
+        "textEn": "In theory. But remember: property is hard to sell quickly.",
+        "textVi": "Về lý thuyết. Nhưng nhớ: bất động sản khó bán nhanh.",
+        "audioUrl": "/audio/dialogues/dlg-52/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Anh Vinh",
+        "textEn": "What would you do with 3 billion?",
+        "textVi": "Cô sẽ làm gì với 3 tỷ?",
+        "audioUrl": "/audio/dialogues/dlg-52/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Cô Thu",
+        "textEn": "I'd split it: half in property, half in a diversified fund.",
+        "textVi": "Tôi sẽ chia đôi: một nửa bất động sản, một nửa quỹ đa dạng.",
+        "audioUrl": "/audio/dialogues/dlg-52/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Anh Vinh",
+        "textEn": "Diversification... wise advice. Let me think about it.",
+        "textVi": "Đa dạng hóa... lời khuyên khôn ngoan. Để tôi suy nghĩ.",
+        "audioUrl": "/audio/dialogues/dlg-52/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What is the rental yield in Thu Duc City?",
+        "options": [
+          "About 4% a year",
+          "About 8% a year",
+          "About 5% a year",
+          "About 12% a year"
+        ],
+        "correctAnswer": "About 4% a year",
+        "evidenceLineId": "line-4",
+        "explanation": "Cô Thu nói ở dòng 4: 'rental yield there is only about 4% a year'."
+      },
+      {
+        "question": "Why does Cô Thu still recommend property despite the low yield?",
+        "options": [
+          "Property also gains value over time",
+          "It's safer than savings",
+          "It has no risk",
+          "It's easy to sell"
+        ],
+        "correctAnswer": "Property also gains value over time",
+        "evidenceLineId": "line-6",
+        "explanation": "Cô Thu giải thích ở dòng 6: 'property also gains value over time'."
+      },
+      {
+        "question": "What does Cô Thu suggest doing with the 3 billion?",
+        "options": [
+          "Split it between property and a fund",
+          "Buy two apartments",
+          "Put it all in savings",
+          "Invest in stocks only"
+        ],
+        "correctAnswer": "Split it between property and a fund",
+        "evidenceLineId": "line-10",
+        "explanation": "Cô Thu khuyên ở dòng 10: 'half in property, half in a diversified fund'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-53",
+    "title": "The Climate Conference",
+    "titleVi": "Hội nghị khí hậu",
+    "cefrLevel": "B2",
+    "topic": "environment",
+    "topicVi": "Môi trường",
+    "location": "Conference hallway",
+    "locationVi": "Hành lang hội nghị",
+    "characters": [
+      {
+        "name": "Dr. Smith",
+        "role": "Nhà khoa học khí hậu",
+        "gender": "male"
+      },
+      {
+        "name": "Chị Ngọc",
+        "role": "Phóng viên",
+        "gender": "female"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Chị Ngọc",
+        "textEn": "Dr. Smith, what's the main message of your speech today?",
+        "textVi": "Tiến sĩ Smith, thông điệp chính trong bài phát biểu hôm nay là gì?",
+        "audioUrl": "/audio/dialogues/dlg-53/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Dr. Smith",
+        "textEn": "That we still have time — but the window is closing fast.",
+        "textVi": "Rằng chúng ta vẫn còn thời gian — nhưng cánh cửa đang khép nhanh.",
+        "audioUrl": "/audio/dialogues/dlg-53/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Chị Ngọc",
+        "textEn": "How fast? What does the data show?",
+        "textVi": "Nhanh cỡ nào? Dữ liệu cho thấy gì?",
+        "audioUrl": "/audio/dialogues/dlg-53/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Dr. Smith",
+        "textEn": "Global temperatures have risen 1.2 degrees since 1900.",
+        "textVi": "Nhiệt độ toàn cầu đã tăng 1,2 độ từ năm 1900.",
+        "audioUrl": "/audio/dialogues/dlg-53/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Chị Ngọc",
+        "textEn": "And Vietnam? How is it affected?",
+        "textVi": "Còn Việt Nam? Chịu ảnh hưởng thế nào?",
+        "audioUrl": "/audio/dialogues/dlg-53/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Dr. Smith",
+        "textEn": "The Mekong Delta could lose 40% of its farmland to saltwater by 2050.",
+        "textVi": "Đồng bằng sông Cửu Long có thể mất 40% đất nông nghiệp do xâm nhập mặn vào 2050.",
+        "audioUrl": "/audio/dialogues/dlg-53/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Chị Ngọc",
+        "textEn": "40%? That's alarming. What can ordinary people do?",
+        "textVi": "40%? Đáng báo động. Người dân thường làm được gì?",
+        "audioUrl": "/audio/dialogues/dlg-53/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Dr. Smith",
+        "textEn": "Reduce waste, use public transport, and vote for green policies.",
+        "textVi": "Giảm rác thải, dùng giao thông công cộng, và bỏ phiếu cho chính sách xanh.",
+        "audioUrl": "/audio/dialogues/dlg-53/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Chị Ngọc",
+        "textEn": "Is there any good news?",
+        "textVi": "Có tin tốt nào không?",
+        "audioUrl": "/audio/dialogues/dlg-53/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Dr. Smith",
+        "textEn": "Yes! Solar power is now cheaper than coal in most countries.",
+        "textVi": "Có! Điện mặt trời giờ rẻ hơn than đá ở hầu hết các nước.",
+        "audioUrl": "/audio/dialogues/dlg-53/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Chị Ngọc",
+        "textEn": "That's hopeful. Thank you for your time!",
+        "textVi": "Thật đáng hy vọng. Cảm ơn ông đã dành thời gian!",
+        "audioUrl": "/audio/dialogues/dlg-53/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How much have global temperatures risen since 1900?",
+        "options": [
+          "1.2 degrees",
+          "2 degrees",
+          "0.5 degrees",
+          "3 degrees"
+        ],
+        "correctAnswer": "1.2 degrees",
+        "evidenceLineId": "line-4",
+        "explanation": "Dr. Smith nói ở dòng 4: 'risen 1.2 degrees since 1900'."
+      },
+      {
+        "question": "What might happen to the Mekong Delta by 2050?",
+        "options": [
+          "It could lose 40% of farmland to saltwater",
+          "It will disappear completely",
+          "It will become a desert",
+          "Nothing will change"
+        ],
+        "correctAnswer": "It could lose 40% of farmland to saltwater",
+        "evidenceLineId": "line-6",
+        "explanation": "Dr. Smith cảnh báo ở dòng 6: 'could lose 40% of its farmland to saltwater by 2050'."
+      },
+      {
+        "question": "What is the good news according to Dr. Smith?",
+        "options": [
+          "Solar power is now cheaper than coal",
+          "Temperatures are falling",
+          "Pollution has stopped",
+          "Everyone recycles now"
+        ],
+        "correctAnswer": "Solar power is now cheaper than coal",
+        "evidenceLineId": "line-10",
+        "explanation": "Dr. Smith nói ở dòng 10: 'Solar power is now cheaper than coal in most countries'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-54",
+    "title": "The Freelance Dispute",
+    "titleVi": "Tranh chấp freelance",
+    "cefrLevel": "B2",
+    "topic": "work",
+    "topicVi": "Công việc",
+    "location": "Video call",
+    "locationVi": "Cuộc gọi video",
+    "characters": [
+      {
+        "name": "Tú",
+        "role": "Freelancer thiết kế",
+        "gender": "female"
+      },
+      {
+        "name": "Mr. James",
+        "role": "Khách hàng",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Tú",
+        "textEn": "Mr. James, I finished the logo design two weeks ago. I haven't been paid yet.",
+        "textVi": "Ông James, tôi đã xong thiết kế logo hai tuần rồi. Tôi vẫn chưa được trả tiền.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Mr. James",
+        "textEn": "Tú, the design wasn't what we discussed. I asked for changes.",
+        "textVi": "Tú, thiết kế không đúng như đã bàn. Tôi đã yêu cầu sửa.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Tú",
+        "textEn": "I made all three rounds of revisions you asked for. Check your email.",
+        "textVi": "Tôi đã sửa đủ ba vòng theo yêu cầu. Ông kiểm tra email đi.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Mr. James",
+        "textEn": "Hmm... let me look. Okay, I see them. But the colors are still wrong.",
+        "textVi": "Hmm... để tôi xem. Ok, tôi thấy rồi. Nhưng màu sắc vẫn sai.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Tú",
+        "textEn": "The contract says three revisions included. Extra revisions cost $50 each.",
+        "textVi": "Hợp đồng ghi bao gồm ba vòng sửa. Sửa thêm mỗi vòng 50 đô.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Mr. James",
+        "textEn": "I didn't read that part carefully. How many extra rounds do I need?",
+        "textVi": "Tôi không đọc kỹ phần đó. Tôi cần thêm mấy vòng nữa?",
+        "audioUrl": "/audio/dialogues/dlg-54/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Tú",
+        "textEn": "Probably one more. So $50 extra, plus the original $500.",
+        "textVi": "Chắc một vòng nữa. Vậy thêm 50 đô, cộng 500 đô gốc.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Mr. James",
+        "textEn": "Fair enough. I'll pay the $500 now and $50 after the final revision.",
+        "textVi": "Hợp lý. Tôi trả 500 đô ngay và 50 đô sau vòng sửa cuối.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Tú",
+        "textEn": "Agreed. I'll send the final files within two days of payment.",
+        "textVi": "Đồng ý. Tôi sẽ gửi file cuối trong hai ngày sau khi nhận tiền.",
+        "audioUrl": "/audio/dialogues/dlg-54/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Mr. James",
+        "textEn": "Deal. And next time, I'll read the contract first!",
+        "textVi": "Chốt. Lần sau tôi sẽ đọc hợp đồng trước!",
+        "audioUrl": "/audio/dialogues/dlg-54/line-10.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How many revision rounds did the original contract include?",
+        "options": [
+          "Three",
+          "Two",
+          "Five",
+          "Unlimited"
+        ],
+        "correctAnswer": "Three",
+        "evidenceLineId": "line-5",
+        "explanation": "Tú nói ở dòng 5: 'The contract says three revisions included'."
+      },
+      {
+        "question": "How much will Mr. James pay in total?",
+        "options": [
+          "$550",
+          "$500",
+          "$600",
+          "$450"
+        ],
+        "correctAnswer": "$550",
+        "evidenceLineId": "line-7",
+        "explanation": "$500 gốc + $50 vòng sửa thêm = $550 (dòng 7-8)."
+      },
+      {
+        "question": "When will Tú send the final files?",
+        "options": [
+          "Within two days of payment",
+          "Immediately",
+          "Next week",
+          "After one month"
+        ],
+        "correctAnswer": "Within two days of payment",
+        "evidenceLineId": "line-9",
+        "explanation": "Tú hứa ở dòng 9: 'within two days of payment'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-55",
+    "title": "The Hospital Bill",
+    "titleVi": "Hóa đơn bệnh viện",
+    "cefrLevel": "B2",
+    "topic": "health",
+    "topicVi": "Sức khỏe",
+    "location": "Hospital billing desk",
+    "locationVi": "Quầy thanh toán bệnh viện",
+    "characters": [
+      {
+        "name": "Bà Nga",
+        "role": "Bệnh nhân",
+        "gender": "female"
+      },
+      {
+        "name": "Anh Tuấn",
+        "role": "Nhân viên thu ngân",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Bà Nga",
+        "textEn": "Excuse me, I think there's a mistake on my bill.",
+        "textVi": "Cháu ơi, cô nghĩ hóa đơn này có nhầm lẫn.",
+        "audioUrl": "/audio/dialogues/dlg-55/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Anh Tuấn",
+        "textEn": "Let me check. What's your patient ID?",
+        "textVi": "Để cháu kiểm tra. Mã bệnh nhân của cô là gì?",
+        "audioUrl": "/audio/dialogues/dlg-55/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Bà Nga",
+        "textEn": "BN-2026-8841. I was here for a blood test only.",
+        "textVi": "BN-2026-8841. Cô chỉ đến xét nghiệm máu thôi.",
+        "audioUrl": "/audio/dialogues/dlg-55/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Anh Tuấn",
+        "textEn": "I see the bill... 2.5 million dong. What's wrong?",
+        "textVi": "Cháu thấy hóa đơn... 2,5 triệu. Có gì sai ạ?",
+        "audioUrl": "/audio/dialogues/dlg-55/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Bà Nga",
+        "textEn": "There's a charge for an X-ray. I never had an X-ray!",
+        "textVi": "Có khoản chụp X-quang. Cô có chụp X-quang bao giờ đâu!",
+        "audioUrl": "/audio/dialogues/dlg-55/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Anh Tuấn",
+        "textEn": "You're right, that's strange. Let me look deeper...",
+        "textVi": "Cô nói đúng, lạ thật. Để cháu xem kỹ...",
+        "audioUrl": "/audio/dialogues/dlg-55/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Anh Tuấn",
+        "textEn": "Ah, I see the problem. The X-ray belongs to patient BN-2026-8842.",
+        "textVi": "À, cháu thấy vấn đề rồi. X-quang này của bệnh nhân BN-2026-8842.",
+        "audioUrl": "/audio/dialogues/dlg-55/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Bà Nga",
+        "textEn": "So it was mixed up with someone else's bill?",
+        "textVi": "Vậy là nhầm với hóa đơn người khác?",
+        "audioUrl": "/audio/dialogues/dlg-55/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Anh Tuấn",
+        "textEn": "Exactly. I'm very sorry. Your real bill is only 800,000 dong.",
+        "textVi": "Đúng vậy. Cháu xin lỗi. Hóa đơn thật của cô chỉ 800 nghìn.",
+        "audioUrl": "/audio/dialogues/dlg-55/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Bà Nga",
+        "textEn": "That's a big difference! Thank you for fixing it.",
+        "textVi": "Chênh lệch lớn quá! Cảm ơn cháu đã sửa.",
+        "audioUrl": "/audio/dialogues/dlg-55/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Anh Tuấn",
+        "textEn": "Of course. Always check your bill carefully!",
+        "textVi": "Dạ. Cô nhớ luôn kiểm tra hóa đơn kỹ nhé!",
+        "audioUrl": "/audio/dialogues/dlg-55/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "What was wrong with Bà Nga's bill?",
+        "options": [
+          "It included an X-ray she never had",
+          "It was double-charged",
+          "Her name was wrong",
+          "The date was wrong"
+        ],
+        "correctAnswer": "It included an X-ray she never had",
+        "evidenceLineId": "line-5",
+        "explanation": "Bà Nga phát hiện ở dòng 5: 'There's a charge for an X-ray. I never had an X-ray!'"
+      },
+      {
+        "question": "What caused the mistake?",
+        "options": [
+          "It was mixed up with patient BN-2026-8842's bill",
+          "The computer crashed",
+          "The doctor ordered it",
+          "Bà Nga forgot"
+        ],
+        "correctAnswer": "It was mixed up with patient BN-2026-8842's bill",
+        "evidenceLineId": "line-7",
+        "explanation": "Anh Tuấn tìm ra ở dòng 7: 'The X-ray belongs to patient BN-2026-8842'."
+      },
+      {
+        "question": "What is Bà Nga's correct bill?",
+        "options": [
+          "800,000 dong",
+          "2.5 million dong",
+          "1.7 million dong",
+          "Free"
+        ],
+        "correctAnswer": "800,000 dong",
+        "evidenceLineId": "line-9",
+        "explanation": "Anh Tuấn sửa ở dòng 9: 'Your real bill is only 800,000 dong'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "dlg-56",
+    "title": "The Acquisition Offer",
+    "titleVi": "Đề nghị mua lại",
+    "cefrLevel": "B2",
+    "topic": "business",
+    "topicVi": "Kinh doanh",
+    "location": "Startup office",
+    "locationVi": "Văn phòng startup",
+    "characters": [
+      {
+        "name": "Chị Vân",
+        "role": "CEO startup",
+        "gender": "female"
+      },
+      {
+        "name": "Mr. David",
+        "role": "Nhà đầu tư",
+        "gender": "male"
+      }
+    ],
+    "lines": [
+      {
+        "id": "line-1",
+        "speaker": "Mr. David",
+        "textEn": "Vân, our fund wants to acquire your company. We're offering $5 million.",
+        "textVi": "Vân, quỹ chúng tôi muốn mua lại công ty em. Giá 5 triệu đô.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-1.mp3"
+      },
+      {
+        "id": "line-2",
+        "speaker": "Chị Vân",
+        "textEn": "$5 million? We have 50,000 users and we're growing 20% a month!",
+        "textVi": "$5 triệu? Bên em có 50 nghìn người dùng và tăng trưởng 20% mỗi tháng!",
+        "audioUrl": "/audio/dialogues/dlg-56/line-2.mp3"
+      },
+      {
+        "id": "line-3",
+        "speaker": "Mr. David",
+        "textEn": "I know. That's why we're interested. But the market is uncertain now.",
+        "textVi": "Tôi biết. Vì vậy chúng tôi mới quan tâm. Nhưng thị trường đang bất ổn.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-3.mp3"
+      },
+      {
+        "id": "line-4",
+        "speaker": "Chị Vân",
+        "textEn": "What's your valuation based on?",
+        "textVi": "Định giá của các anh dựa trên gì?",
+        "audioUrl": "/audio/dialogues/dlg-56/line-4.mp3"
+      },
+      {
+        "id": "line-5",
+        "speaker": "Mr. David",
+        "textEn": "Ten times your annual revenue. That's standard for your stage.",
+        "textVi": "Gấp mười doanh thu năm. Đó là chuẩn cho giai đoạn của em.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-5.mp3"
+      },
+      {
+        "id": "line-6",
+        "speaker": "Chị Vân",
+        "textEn": "Our revenue will double next year. $5 million is too low.",
+        "textVi": "Doanh thu năm sau sẽ gấp đôi. $5 triệu là quá thấp.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-6.mp3"
+      },
+      {
+        "id": "line-7",
+        "speaker": "Mr. David",
+        "textEn": "What number do you have in mind?",
+        "textVi": "Em muốn con số bao nhiêu?",
+        "audioUrl": "/audio/dialogues/dlg-56/line-7.mp3"
+      },
+      {
+        "id": "line-8",
+        "speaker": "Chị Vân",
+        "textEn": "$8 million. And I stay as CEO for two years.",
+        "textVi": "$8 triệu. Và em tiếp tục làm CEO hai năm.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-8.mp3"
+      },
+      {
+        "id": "line-9",
+        "speaker": "Mr. David",
+        "textEn": "$8 million is high... but your growth is impressive. Let me discuss with my partners.",
+        "textVi": "$8 triệu thì cao... nhưng tăng trưởng của em ấn tượng. Để tôi bàn với đối tác.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-9.mp3"
+      },
+      {
+        "id": "line-10",
+        "speaker": "Chị Vân",
+        "textEn": "Take your time. But we have other interested buyers too.",
+        "textVi": "Cứ từ từ. Nhưng bên em cũng có người mua khác quan tâm.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-10.mp3"
+      },
+      {
+        "id": "line-11",
+        "speaker": "Mr. David",
+        "textEn": "Understood. You'll hear from me by Friday.",
+        "textVi": "Hiểu rồi. Thứ Sáu em sẽ có câu trả lời.",
+        "audioUrl": "/audio/dialogues/dlg-56/line-11.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "question": "How much does Mr. David initially offer?",
+        "options": [
+          "$5 million",
+          "$8 million",
+          "$10 million",
+          "$3 million"
+        ],
+        "correctAnswer": "$5 million",
+        "evidenceLineId": "line-1",
+        "explanation": "Mr. David đề nghị ở dòng 1: 'We're offering $5 million'."
+      },
+      {
+        "question": "What is the startup's monthly growth rate?",
+        "options": [
+          "20%",
+          "10%",
+          "50%",
+          "5%"
+        ],
+        "correctAnswer": "20%",
+        "evidenceLineId": "line-2",
+        "explanation": "Chị Vân nói ở dòng 2: 'growing 20% a month'."
+      },
+      {
+        "question": "What are Chị Vân's counter-conditions?",
+        "options": [
+          "$8 million and she stays as CEO for two years",
+          "$10 million cash only",
+          "$5 million but no changes",
+          "She refuses to sell"
+        ],
+        "correctAnswer": "$8 million and she stays as CEO for two years",
+        "evidenceLineId": "line-8",
+        "explanation": "Chị Vân ra giá ở dòng 8: '$8 million. And I stay as CEO for two years'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

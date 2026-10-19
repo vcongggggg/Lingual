@@ -1,0 +1,802 @@
+[
+  {
+    "id": "news-a2-001",
+    "title": "A Robot That Helps at Home",
+    "titleVi": "Robot giúp việc nhà",
+    "cefrLevel": "A2",
+    "topic": "technology",
+    "topicVi": "Công nghệ",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Many old people live alone. Their children live far away and cannot visit every day.",
+        "vi": "Nhiều người già sống một mình. Con cái họ sống xa và không thể đến thăm mỗi ngày."
+      },
+      {
+        "id": "p2",
+        "en": "Engineers in Japan have built a small robot to help these old people. It is about one meter tall and moves on wheels.",
+        "vi": "Các kỹ sư ở Nhật Bản đã chế tạo một robot nhỏ để giúp đỡ những người già này. Nó cao khoảng một mét và di chuyển bằng bánh xe."
+      },
+      {
+        "id": "p3",
+        "en": "The robot can bring water and medicine. It can also make video calls to family members with one simple touch.",
+        "vi": "Robot có thể mang nước và thuốc. Nó cũng có thể gọi video cho người thân chỉ bằng một chạm đơn giản."
+      },
+      {
+        "id": "p4",
+        "en": "It speaks slowly and clearly, so old people can understand easily. At night, it checks if the doors are locked.",
+        "vi": "Nó nói chậm và rõ ràng nên người già có thể hiểu dễ dàng. Ban đêm, nó kiểm tra xem cửa đã khóa chưa."
+      },
+      {
+        "id": "p5",
+        "en": "Some people worry that robots cannot replace human love and care. They say old people need real conversation, not a machine.",
+        "vi": "Một số người lo rằng robot không thể thay thế tình yêu thương và sự chăm sóc của con người. Họ nói người già cần trò chuyện thật, không phải máy móc."
+      },
+      {
+        "id": "p6",
+        "en": "The engineers agree. They say the robot is only a helper. Family love is still the most important thing.",
+        "vi": "Các kỹ sư đồng ý. Họ nói robot chỉ là người trợ giúp. Tình cảm gia đình vẫn là điều quan trọng nhất."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What can the robot do?",
+        "options": [
+          "Bring water and medicine",
+          "Cook dinner",
+          "Drive a car",
+          "Clean the garden"
+        ],
+        "correctAnswer": "Bring water and medicine",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3 nói robot có thể mang nước và thuốc."
+      },
+      {
+        "question": "Why do some people worry about the robot?",
+        "options": [
+          "It is too expensive",
+          "It cannot replace human love and care",
+          "It is too big",
+          "It speaks too fast"
+        ],
+        "correctAnswer": "It cannot replace human love and care",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5 nói một số người lo robot không thay thế được tình cảm con người."
+      },
+      {
+        "question": "What do the engineers say about the robot?",
+        "options": [
+          "It is only a helper",
+          "It will replace families",
+          "It can live alone",
+          "It does not need electricity"
+        ],
+        "correctAnswer": "It is only a helper",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: kỹ sư nói robot chỉ là người trợ giúp."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-a2-002",
+    "title": "The City That Loves Bicycles",
+    "titleVi": "Thành phố yêu xe đạp",
+    "cefrLevel": "A2",
+    "topic": "environment",
+    "topicVi": "Môi trường",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "In the Netherlands, there is a city where bicycles are more popular than cars. Every morning, thousands of people ride to work and school.",
+        "vi": "Ở Hà Lan, có một thành phố nơi xe đạp phổ biến hơn ô tô. Mỗi sáng, hàng nghìn người đạp xe đi làm và đi học."
+      },
+      {
+        "id": "p2",
+        "en": "The city has built special roads only for bicycles. These roads are wide, safe, and painted in bright red color.",
+        "vi": "Thành phố đã xây những con đường riêng chỉ dành cho xe đạp. Những con đường này rộng, an toàn và được sơn màu đỏ tươi."
+      },
+      {
+        "id": "p3",
+        "en": "Because of bicycles, the air in the city is very clean. People say they can smell flowers, not car smoke.",
+        "vi": "Nhờ xe đạp, không khí trong thành phố rất trong lành. Người dân nói họ ngửi thấy mùi hoa chứ không phải khói xe."
+      },
+      {
+        "id": "p4",
+        "en": "Riding a bicycle is also good exercise. Doctors say people who cycle every day are healthier and happier.",
+        "vi": "Đạp xe cũng là cách tập thể dục tốt. Bác sĩ nói những người đạp xe mỗi ngày khỏe mạnh và vui vẻ hơn."
+      },
+      {
+        "id": "p5",
+        "en": "Even children ride bicycles to school alone. Parents are not worried because the roads are very safe.",
+        "vi": "Ngay cả trẻ em cũng tự đạp xe đến trường. Phụ huynh không lo lắng vì đường sá rất an toàn."
+      },
+      {
+        "id": "p6",
+        "en": "Now many other cities around the world want to learn from this city. They are building their own bicycle roads too.",
+        "vi": "Hiện nay nhiều thành phố khác trên thế giới muốn học theo thành phố này. Họ cũng đang xây đường xe đạp riêng."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is special about the bicycle roads?",
+        "options": [
+          "They are only for bicycles",
+          "They are very narrow",
+          "They are made of gold",
+          "They are underground"
+        ],
+        "correctAnswer": "They are only for bicycles",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2 nói thành phố xây đường riêng chỉ dành cho xe đạp."
+      },
+      {
+        "question": "Why is the air clean in the city?",
+        "options": [
+          "Because people ride bicycles",
+          "Because it rains a lot",
+          "Because there are no people",
+          "Because of strong wind"
+        ],
+        "correctAnswer": "Because people ride bicycles",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: nhờ xe đạp nên không khí trong lành."
+      },
+      {
+        "question": "What are other cities doing now?",
+        "options": [
+          "Building their own bicycle roads",
+          "Banning all bicycles",
+          "Closing their roads",
+          "Selling more cars"
+        ],
+        "correctAnswer": "Building their own bicycle roads",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6 nói các thành phố khác cũng đang xây đường xe đạp."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-a2-003",
+    "title": "Street Food Around the World",
+    "titleVi": "Ẩm thực đường phố vòng quanh thế giới",
+    "cefrLevel": "A2",
+    "topic": "culture",
+    "topicVi": "Văn hóa",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "In many countries, the best food is not in expensive restaurants. It is on the street, cooked in small carts by local people.",
+        "vi": "Ở nhiều nước, món ăn ngon nhất không nằm trong nhà hàng đắt tiền. Nó ở trên đường phố, được nấu trong những xe đẩy nhỏ bởi người dân địa phương."
+      },
+      {
+        "id": "p2",
+        "en": "In Thailand, visitors love pad thai — fried noodles with shrimp, peanuts, and lime. It is cheap, hot, and full of flavor.",
+        "vi": "Ở Thái Lan, du khách mê pad thai — mì xào với tôm, đậu phộng và chanh. Món này rẻ, nóng hổi và đậm đà."
+      },
+      {
+        "id": "p3",
+        "en": "In Mexico, tacos are the king of street food. People put meat, onions, and fresh salsa in a soft corn tortilla.",
+        "vi": "Ở Mexico, tacos là vua của ẩm thực đường phố. Người ta cho thịt, hành tây và salsa tươi vào chiếc bánh ngô mềm."
+      },
+      {
+        "id": "p4",
+        "en": "In Vietnam, the smell of pho fills the morning streets of Hanoi. Tourists often say it is the best soup they have ever tasted.",
+        "vi": "Ở Việt Nam, mùi phở thơm ngát khắp phố phường Hà Nội buổi sáng. Du khách thường nói đây là món súp ngon nhất họ từng nếm."
+      },
+      {
+        "id": "p5",
+        "en": "Street food is more than just food. It shows the culture and daily life of local people.",
+        "vi": "Ẩm thực đường phố không chỉ là món ăn. Nó thể hiện văn hóa và đời sống hằng ngày của người dân địa phương."
+      },
+      {
+        "id": "p6",
+        "en": "Next time you travel, skip the big restaurant one evening. Try the small cart on the corner — you may find your new favorite dish.",
+        "vi": "Lần tới đi du lịch, hãy bỏ qua nhà hàng lớn một buổi tối. Thử xe đẩy nhỏ ở góc phố — có thể bạn sẽ tìm ra món khoái khẩu mới."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where is the best food in many countries, according to the article?",
+        "options": [
+          "On the street",
+          "In expensive restaurants",
+          "In supermarkets",
+          "At home"
+        ],
+        "correctAnswer": "On the street",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1 nói món ngon nhất ở trên đường phố."
+      },
+      {
+        "question": "What do people put in tacos?",
+        "options": [
+          "Meat, onions, and salsa",
+          "Rice and fish",
+          "Chocolate and cream",
+          "Noodles and soup"
+        ],
+        "correctAnswer": "Meat, onions, and salsa",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3 liệt kê thịt, hành tây và salsa tươi."
+      },
+      {
+        "question": "What does street food show?",
+        "options": [
+          "The culture and daily life of local people",
+          "The price of gold",
+          "The weather",
+          "Famous actors"
+        ],
+        "correctAnswer": "The culture and daily life of local people",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: ẩm thực đường phố thể hiện văn hóa và đời sống người dân."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-b1-001",
+    "title": "How Trees Talk to Each Other",
+    "titleVi": "Cây cối trò chuyện với nhau như thế nào",
+    "cefrLevel": "B1",
+    "topic": "science",
+    "topicVi": "Khoa học",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Deep in the forest, trees are not as lonely as they look. Scientists have discovered that trees share information through a hidden network under the ground.",
+        "vi": "Sâu trong rừng, cây cối không cô đơn như vẻ ngoài. Các nhà khoa học đã phát hiện cây chia sẻ thông tin qua một mạng lưới ẩn dưới lòng đất."
+      },
+      {
+        "id": "p2",
+        "en": "This network is made of tiny fungi that connect the roots of different trees. Researchers call it the 'wood wide web'.",
+        "vi": "Mạng lưới này được tạo nên từ những sợi nấm nhỏ nối rễ của các cây khác nhau. Các nhà nghiên cứu gọi nó là 'mạng nhện của rừng'."
+      },
+      {
+        "id": "p3",
+        "en": "Through this network, a big old tree can send sugar and nutrients to a young tree growing in the shade. It is like a mother feeding her child.",
+        "vi": "Qua mạng lưới này, một cây cổ thụ có thể gửi đường và chất dinh dưỡng cho cây non đang mọc trong bóng râm. Giống như mẹ nuôi con vậy."
+      },
+      {
+        "id": "p4",
+        "en": "Trees also use the network to warn each other about danger. When insects attack one tree, it sends a chemical signal, and nearby trees start making bitter leaves that insects do not like.",
+        "vi": "Cây cũng dùng mạng lưới để cảnh báo nhau về nguy hiểm. Khi côn trùng tấn công một cây, nó gửi tín hiệu hóa học, và các cây gần đó bắt đầu tạo ra lá đắng mà côn trùng không thích."
+      },
+      {
+        "id": "p5",
+        "en": "Some scientists even think that old trees, called 'mother trees', take care of the whole forest. They help young trees survive their difficult first years.",
+        "vi": "Một số nhà khoa học còn cho rằng những cây cổ thụ, gọi là 'cây mẹ', chăm sóc cả khu rừng. Chúng giúp cây non sống sót qua những năm đầu khó khăn."
+      },
+      {
+        "id": "p6",
+        "en": "This discovery has changed how we see forests. A forest is not just many single trees — it is one big living community.",
+        "vi": "Phát hiện này đã thay đổi cách chúng ta nhìn về rừng. Rừng không chỉ là nhiều cây đơn lẻ — nó là một cộng đồng sống khổng lồ."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What connects the roots of different trees?",
+        "options": [
+          "Tiny fungi",
+          "Long ropes",
+          "Metal wires",
+          "Plastic tubes"
+        ],
+        "correctAnswer": "Tiny fungi",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2 nói mạng lưới được tạo từ những sợi nấm nhỏ nối rễ cây."
+      },
+      {
+        "question": "What do trees do when insects attack?",
+        "options": [
+          "Send a warning signal to nearby trees",
+          "Drop all their leaves",
+          "Run away",
+          "Close their flowers"
+        ],
+        "correctAnswer": "Send a warning signal to nearby trees",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: cây bị tấn công gửi tín hiệu hóa học cảnh báo các cây gần đó."
+      },
+      {
+        "question": "What is the main idea of the article?",
+        "options": [
+          "A forest is one big living community",
+          "Trees never communicate",
+          "Fungi are harmful to trees",
+          "Old trees are useless"
+        ],
+        "correctAnswer": "A forest is one big living community",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6 kết luận rừng là một cộng đồng sống khổng lồ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-b1-002",
+    "title": "Why Sleep Is Good for Your Brain",
+    "titleVi": "Vì sao giấc ngủ tốt cho não bộ",
+    "cefrLevel": "B1",
+    "topic": "health",
+    "topicVi": "Sức khỏe",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Many people sleep less to have more time for work or fun. But scientists say this is a bad idea — sleep is when your brain does its most important work.",
+        "vi": "Nhiều người ngủ ít đi để có thêm thời gian làm việc hay vui chơi. Nhưng các nhà khoa học nói đây là ý tưởng tồi — giấc ngủ là lúc não làm việc quan trọng nhất."
+      },
+      {
+        "id": "p2",
+        "en": "During the day, your brain collects thousands of new pieces of information. At night, while you sleep, it organizes them and moves important memories into long-term storage.",
+        "vi": "Ban ngày, não thu thập hàng nghìn thông tin mới. Ban đêm, khi bạn ngủ, nó sắp xếp chúng và chuyển những ký ức quan trọng vào bộ nhớ dài hạn."
+      },
+      {
+        "id": "p3",
+        "en": "This is why students who sleep well before an exam often remember more than those who stay up all night studying. The brain needs sleep to 'save' what it has learned.",
+        "vi": "Đây là lý do học sinh ngủ đủ trước kỳ thi thường nhớ nhiều hơn những người thức trắng đêm học bài. Não cần giấc ngủ để 'lưu lại' những gì đã học."
+      },
+      {
+        "id": "p4",
+        "en": "Sleep also cleans the brain. Researchers have found that during deep sleep, the brain washes away waste that builds up during the day.",
+        "vi": "Giấc ngủ còn làm sạch não. Các nhà nghiên cứu phát hiện trong giấc ngủ sâu, não rửa trôi những chất thải tích tụ ban ngày."
+      },
+      {
+        "id": "p5",
+        "en": "Lack of sleep affects your mood too. People who do not sleep enough often feel angry, sad, or stressed for no clear reason.",
+        "vi": "Thiếu ngủ cũng ảnh hưởng tâm trạng. Người ngủ không đủ thường cảm thấy bực bội, buồn bã hay căng thẳng mà không rõ lý do."
+      },
+      {
+        "id": "p6",
+        "en": "Experts suggest keeping a regular sleep schedule, even on weekends. Your brain loves routine — going to bed at the same time every night helps it work better.",
+        "vi": "Chuyên gia khuyên nên giữ giờ ngủ đều đặn, kể cả cuối tuần. Não rất thích thói quen — đi ngủ cùng một giờ mỗi tối giúp nó hoạt động tốt hơn."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does the brain do during sleep?",
+        "options": [
+          "Organizes information and stores important memories",
+          "Stops working completely",
+          "Forgets everything",
+          "Only dreams"
+        ],
+        "correctAnswer": "Organizes information and stores important memories",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: ban đêm não sắp xếp thông tin và chuyển ký ức quan trọng vào bộ nhớ dài hạn."
+      },
+      {
+        "question": "Why do well-rested students remember more?",
+        "options": [
+          "The brain needs sleep to save what it learned",
+          "They are luckier",
+          "They study less",
+          "Exams are easier for them"
+        ],
+        "correctAnswer": "The brain needs sleep to save what it learned",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: não cần giấc ngủ để 'lưu lại' những gì đã học."
+      },
+      {
+        "question": "What do experts suggest?",
+        "options": [
+          "Keeping a regular sleep schedule",
+          "Sleeping only on weekends",
+          "Drinking coffee before bed",
+          "Sleeping with loud music"
+        ],
+        "correctAnswer": "Keeping a regular sleep schedule",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6 khuyên giữ giờ ngủ đều đặn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-b1-003",
+    "title": "The Return of Night Trains in Europe",
+    "titleVi": "Sự trở lại của tàu đêm ở châu Âu",
+    "cefrLevel": "B1",
+    "topic": "travel",
+    "topicVi": "Du lịch",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "For many years, night trains in Europe were slowly disappearing. Airlines were cheaper and faster, so fewer people chose the slow train through the night.",
+        "vi": "Trong nhiều năm, tàu đêm ở châu Âu dần biến mất. Hãng bay rẻ và nhanh hơn nên ít người chọn chuyến tàu chậm xuyên đêm."
+      },
+      {
+        "id": "p2",
+        "en": "But now, night trains are coming back. In many European countries, new night routes have opened in recent years, and old ones are busier than ever.",
+        "vi": "Nhưng giờ đây, tàu đêm đang trở lại. Ở nhiều nước châu Âu, các tuyến đêm mới đã mở trong những năm gần đây, và các tuyến cũ đông hơn bao giờ hết."
+      },
+      {
+        "id": "p3",
+        "en": "Why the change? Many travelers want to fly less because airplanes pollute the air. A night train produces far less pollution than a short flight.",
+        "vi": "Vì sao thay đổi? Nhiều du khách muốn bay ít hơn vì máy bay gây ô nhiễm không khí. Tàu đêm thải ra ít khí ô nhiễm hơn nhiều so với chuyến bay ngắn."
+      },
+      {
+        "id": "p4",
+        "en": "Night trains are also comfortable. You fall asleep in one city and wake up in another. There is no stress of airports, long lines, or lost luggage.",
+        "vi": "Tàu đêm cũng rất thoải mái. Bạn ngủ thiếp đi ở một thành phố và thức dậy ở thành phố khác. Không có căng thẳng sân bay, xếp hàng dài hay thất lạc hành lý."
+      },
+      {
+        "id": "p5",
+        "en": "On board, passengers can choose a private cabin with a bed or a cheaper seat. There is often a restaurant car serving dinner and breakfast.",
+        "vi": "Trên tàu, hành khách có thể chọn cabin riêng có giường hoặc ghế rẻ hơn. Thường có toa nhà hàng phục vụ bữa tối và bữa sáng."
+      },
+      {
+        "id": "p6",
+        "en": "Travel experts believe the future of night trains is bright. As more people care about the planet, the slow journey through the night may become the smart way to travel.",
+        "vi": "Các chuyên gia du lịch tin rằng tương lai của tàu đêm rất sáng sủa. Khi ngày càng nhiều người quan tâm đến hành tinh, hành trình chậm xuyên đêm có thể trở thành cách du lịch thông minh."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why did night trains disappear in the past?",
+        "options": [
+          "Airlines were cheaper and faster",
+          "Trains were too fast",
+          "Nobody liked traveling",
+          "Trains caused pollution"
+        ],
+        "correctAnswer": "Airlines were cheaper and faster",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: hãng bay rẻ và nhanh hơn nên ít người chọn tàu đêm."
+      },
+      {
+        "question": "Why are travelers choosing night trains now?",
+        "options": [
+          "They want to fly less to reduce pollution",
+          "Trains are now slower",
+          "Airports are more fun",
+          "Trains are free"
+        ],
+        "correctAnswer": "They want to fly less to reduce pollution",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: du khách muốn bay ít hơn vì máy bay gây ô nhiễm."
+      },
+      {
+        "question": "What is an advantage of night trains mentioned in the article?",
+        "options": [
+          "You sleep in one city and wake up in another",
+          "You arrive faster than by plane",
+          "Tickets are always free",
+          "There is no need to book"
+        ],
+        "correctAnswer": "You sleep in one city and wake up in another",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: ngủ ở thành phố này, thức dậy ở thành phố khác, không căng thẳng sân bay."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-b1-004",
+    "title": "AI in the Classroom",
+    "titleVi": "Trí tuệ nhân tạo trong lớp học",
+    "cefrLevel": "B1",
+    "topic": "technology",
+    "topicVi": "Công nghệ",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "In many schools around the world, teachers are starting to use artificial intelligence as a teaching helper. It does not replace the teacher — it gives them more time for students.",
+        "vi": "Ở nhiều trường học trên thế giới, giáo viên bắt đầu dùng trí tuệ nhân tạo như trợ lý giảng dạy. Nó không thay thế giáo viên — mà giúp họ có thêm thời gian cho học sinh."
+      },
+      {
+        "id": "p2",
+        "en": "AI can create practice exercises in seconds. A teacher only needs to type a topic, and the AI makes ten quiz questions with answers and explanations.",
+        "vi": "AI có thể tạo bài tập luyện trong vài giây. Giáo viên chỉ cần gõ một chủ đề, AI sẽ tạo mười câu trắc nghiệm kèm đáp án và giải thích."
+      },
+      {
+        "id": "p3",
+        "en": "It can also help students learn at their own speed. A fast student gets harder questions, while a student who needs more time gets extra examples and simpler explanations.",
+        "vi": "Nó cũng giúp học sinh học theo tốc độ riêng. Học sinh giỏi nhận câu hỏi khó hơn, còn học sinh cần thêm thời gian sẽ có thêm ví dụ và giải thích đơn giản hơn."
+      },
+      {
+        "id": "p4",
+        "en": "For language learning, AI is especially useful. Students can practice conversation with an AI partner any time, without feeling shy or afraid of mistakes.",
+        "vi": "Với việc học ngôn ngữ, AI đặc biệt hữu ích. Học sinh có thể luyện hội thoại với bạn AI bất cứ lúc nào mà không ngại ngùng hay sợ sai."
+      },
+      {
+        "id": "p5",
+        "en": "However, there are concerns. Some teachers worry that students may depend too much on AI and stop thinking for themselves. Others worry about wrong information.",
+        "vi": "Tuy nhiên, cũng có những lo ngại. Một số giáo viên lo học sinh phụ thuộc quá nhiều vào AI và ngừng tự tư duy. Số khác lo về thông tin sai lệch."
+      },
+      {
+        "id": "p6",
+        "en": "Most experts agree on one thing: AI is a powerful tool, but the teacher's guidance is still the heart of learning. Technology should support education, not control it.",
+        "vi": "Hầu hết chuyên gia đồng ý một điều: AI là công cụ mạnh mẽ, nhưng sự dẫn dắt của giáo viên vẫn là trái tim của việc học. Công nghệ nên hỗ trợ giáo dục, không phải kiểm soát nó."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How does AI help teachers?",
+        "options": [
+          "It creates exercises in seconds and gives them more time for students",
+          "It replaces teachers completely",
+          "It grades students' appearance",
+          "It cleans the classroom"
+        ],
+        "correctAnswer": "It creates exercises in seconds and gives them more time for students",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: AI tạo bài tập trong vài giây; đoạn 1: giúp giáo viên có thêm thời gian cho học sinh."
+      },
+      {
+        "question": "How does AI help students learn languages?",
+        "options": [
+          "They can practice conversation anytime without feeling shy",
+          "It speaks for them in exams",
+          "It writes their homework secretly",
+          "It translates their thoughts"
+        ],
+        "correctAnswer": "They can practice conversation anytime without feeling shy",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: học sinh luyện hội thoại với AI bất cứ lúc nào mà không ngại sai."
+      },
+      {
+        "question": "What do most experts agree on?",
+        "options": [
+          "AI should support education, and teachers are still the heart of learning",
+          "AI should replace all teachers",
+          "Students should not use AI at all",
+          "AI is always correct"
+        ],
+        "correctAnswer": "AI should support education, and teachers are still the heart of learning",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: công nghệ nên hỗ trợ giáo dục, giáo viên vẫn là trái tim của việc học."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-b2-001",
+    "title": "The Ocean's Twilight Zone",
+    "titleVi": "Vùng chạng vạng của đại dương",
+    "cefrLevel": "B2",
+    "topic": "science",
+    "topicVi": "Khoa học",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Between 200 and 1,000 meters below the ocean surface lies a mysterious world that scientists call the 'twilight zone'. Sunlight barely reaches here, and the water is cold and dark.",
+        "vi": "Ở độ sâu 200 đến 1.000 mét dưới mặt biển là một thế giới bí ẩn mà các nhà khoa học gọi là 'vùng chạng vạng'. Ánh nắng hầu như không tới được đây, nước lạnh và tối đen."
+      },
+      {
+        "id": "p2",
+        "en": "Despite the darkness, this zone is full of life. Strange fish with glowing spots on their bodies swim here, using bioluminescence to hunt and to hide from predators.",
+        "vi": "Dù tối tăm, vùng này đầy sự sống. Những loài cá kỳ lạ với đốm sáng trên cơ thể bơi lội ở đây, dùng khả năng phát quang để săn mồi và trốn kẻ thù."
+      },
+      {
+        "id": "p3",
+        "en": "Every night, huge numbers of small sea creatures swim up hundreds of meters to feed near the surface, then return to the deep before sunrise. It is the largest animal migration on Earth, yet few people know about it.",
+        "vi": "Mỗi đêm, vô số sinh vật biển nhỏ bơi lên hàng trăm mét để kiếm ăn gần mặt nước, rồi trở lại vùng sâu trước bình minh. Đây là cuộc di cư động vật lớn nhất Trái Đất, vậy mà ít người biết đến."
+      },
+      {
+        "id": "p4",
+        "en": "Scientists believe the twilight zone plays a key role in fighting climate change. When these creatures feed at the surface and return deep, they carry carbon down with them, keeping it away from the atmosphere.",
+        "vi": "Các nhà khoa học tin rằng vùng chạng vạng đóng vai trò then chốt trong cuộc chiến chống biến đổi khí hậu. Khi sinh vật ăn ở mặt nước rồi lặn sâu, chúng mang carbon xuống đáy, giữ nó tránh xa khí quyển."
+      },
+      {
+        "id": "p5",
+        "en": "However, this hidden world is under threat. Some companies want to catch the small fish here to make animal feed, which could break the ocean's food chain.",
+        "vi": "Tuy nhiên, thế giới ẩn này đang bị đe dọa. Một số công ty muốn đánh bắt cá nhỏ ở đây làm thức ăn chăn nuôi, điều có thể phá vỡ chuỗi thức ăn của đại dương."
+      },
+      {
+        "id": "p6",
+        "en": "Researchers say we must understand this zone before we exploit it. The twilight zone reminds us how little we know about our own planet — most of the ocean is still unexplored.",
+        "vi": "Các nhà nghiên cứu nói chúng ta phải hiểu vùng này trước khi khai thác nó. Vùng chạng vạng nhắc ta rằng ta biết quá ít về chính hành tinh mình — phần lớn đại dương vẫn chưa được khám phá."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where is the ocean's twilight zone?",
+        "options": [
+          "200 to 1,000 meters below the surface",
+          "On the beach",
+          "At the North Pole",
+          "In rivers"
+        ],
+        "correctAnswer": "200 to 1,000 meters below the surface",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: vùng chạng vạng nằm ở độ sâu 200-1000m dưới mặt biển."
+      },
+      {
+        "question": "What do the small sea creatures do every night?",
+        "options": [
+          "Swim up to feed near the surface, then return deep",
+          "Sleep on the ocean floor",
+          "Fly above the water",
+          "Hide in caves forever"
+        ],
+        "correctAnswer": "Swim up to feed near the surface, then return deep",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3 mô tả cuộc di cư mỗi đêm: lên mặt nước kiếm ăn rồi lặn xuống trước bình minh."
+      },
+      {
+        "question": "Why is the twilight zone important for the climate?",
+        "options": [
+          "Its creatures carry carbon down away from the atmosphere",
+          "It produces oxygen for cities",
+          "It stops all storms",
+          "It cools the air directly"
+        ],
+        "correctAnswer": "Its creatures carry carbon down away from the atmosphere",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: sinh vật mang carbon xuống sâu, giữ nó tránh xa khí quyển."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-b2-002",
+    "title": "Cities Fighting Heat With Trees",
+    "titleVi": "Thành phố chống nóng bằng cây xanh",
+    "cefrLevel": "B2",
+    "topic": "environment",
+    "topicVi": "Môi trường",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "As summers get hotter, cities around the world face a serious problem: concrete and asphalt trap heat, making city centers far hotter than the countryside. Scientists call this the 'urban heat island' effect.",
+        "vi": "Khi mùa hè ngày càng nóng, các thành phố trên thế giới đối mặt vấn đề nghiêm trọng: bê tông và nhựa đường giữ nhiệt, khiến trung tâm thành phố nóng hơn nhiều so với nông thôn. Các nhà khoa học gọi đây là hiệu ứng 'đảo nhiệt đô thị'."
+      },
+      {
+        "id": "p2",
+        "en": "The solution may be surprisingly simple: plant more trees. A single large tree can cool the surrounding air like a natural air conditioner, through shade and evaporation.",
+        "vi": "Giải pháp có thể đơn giản đến bất ngờ: trồng thêm cây. Một cây lớn có thể làm mát không khí xung quanh như điều hòa tự nhiên, nhờ bóng râm và sự thoát hơi nước."
+      },
+      {
+        "id": "p3",
+        "en": "Many cities have started ambitious tree-planting programs. Paris is turning grey parking lots into small green spaces, while Singapore — already famous as a 'garden city' — keeps adding green corridors between buildings.",
+        "vi": "Nhiều thành phố đã khởi động chương trình trồng cây đầy tham vọng. Paris biến bãi đậu xe xám xịt thành mảng xanh, còn Singapore — vốn nổi tiếng là 'thành phố vườn' — tiếp tục thêm hành lang xanh giữa các tòa nhà."
+      },
+      {
+        "id": "p4",
+        "en": "Trees do more than cool the air. They filter pollution, reduce flood risk by absorbing rainwater, and give birds and insects a home in the middle of the city.",
+        "vi": "Cây còn làm nhiều hơn là mát không khí. Chúng lọc ô nhiễm, giảm nguy cơ ngập bằng cách hút nước mưa, và cho chim chóc côn trùng nơi trú ngụ giữa lòng thành phố."
+      },
+      {
+        "id": "p5",
+        "en": "There are challenges, though. Young trees need years to grow big enough to give real shade, and they need water — difficult in cities that already face drought.",
+        "vi": "Tuy nhiên cũng có thách thức. Cây non cần nhiều năm mới đủ lớn để tỏa bóng mát thật sự, và chúng cần nước — điều khó khăn ở những thành phố vốn đã thiếu nước."
+      },
+      {
+        "id": "p6",
+        "en": "Urban planners say the key is to start now and choose the right trees for each place. A tree planted today is a gift of cool air for the next generation.",
+        "vi": "Các nhà quy hoạch đô thị nói chìa khóa là bắt đầu ngay và chọn đúng loại cây cho từng nơi. Một cây trồng hôm nay là món quà không khí mát lành cho thế hệ sau."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is the 'urban heat island' effect?",
+        "options": [
+          "City centers are hotter than the countryside because concrete traps heat",
+          "Islands are hotter than cities",
+          "Cities are colder than villages",
+          "Heat disappears in cities"
+        ],
+        "correctAnswer": "City centers are hotter than the countryside because concrete traps heat",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1 giải thích bê tông giữ nhiệt khiến trung tâm thành phố nóng hơn nông thôn."
+      },
+      {
+        "question": "How do trees cool the air?",
+        "options": [
+          "Through shade and evaporation",
+          "By making wind",
+          "By painting streets white",
+          "By blocking the sun completely"
+        ],
+        "correctAnswer": "Through shade and evaporation",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: cây làm mát nhờ bóng râm và sự thoát hơi nước."
+      },
+      {
+        "question": "What is a challenge of planting trees in cities?",
+        "options": [
+          "Young trees need years to grow and need water",
+          "Trees grow too fast",
+          "Nobody likes trees",
+          "Trees are illegal"
+        ],
+        "correctAnswer": "Young trees need years to grow and need water",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: cây non cần nhiều năm mới tỏa bóng và cần nước tưới."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-b2-003",
+    "title": "The Science of Happiness",
+    "titleVi": "Khoa học về hạnh phúc",
+    "cefrLevel": "B2",
+    "topic": "health",
+    "topicVi": "Sức khỏe",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "What makes people truly happy? For a long time, this question belonged to poets and philosophers. Now scientists are studying it too — and their findings are surprising.",
+        "vi": "Điều gì làm con người thật sự hạnh phúc? Từ lâu, câu hỏi này thuộc về thi sĩ và triết gia. Giờ đây các nhà khoa học cũng nghiên cứu nó — và phát hiện của họ thật bất ngờ."
+      },
+      {
+        "id": "p2",
+        "en": "Many people believe money buys happiness. Research suggests it helps — but only up to a point. Once basic needs are met, more money adds little extra joy.",
+        "vi": "Nhiều người tin tiền mua được hạnh phúc. Nghiên cứu cho thấy tiền có giúp — nhưng chỉ đến một mức nào đó. Khi nhu cầu cơ bản đã đủ, thêm tiền không mang lại nhiều niềm vui hơn."
+      },
+      {
+        "id": "p3",
+        "en": "What matters more, according to researchers, is the quality of our relationships. People with close friends and warm family bonds report feeling happier throughout their lives.",
+        "vi": "Điều quan trọng hơn, theo các nhà nghiên cứu, là chất lượng các mối quan hệ. Người có bạn thân và gia đình gắn bó cho biết họ cảm thấy hạnh phúc hơn suốt cuộc đời."
+      },
+      {
+        "id": "p4",
+        "en": "Another key is how we spend our time, not just our money. Experiences — like traveling, learning a skill, or sharing a meal — bring longer-lasting happiness than buying things.",
+        "vi": "Một yếu tố nữa là cách ta dùng thời gian, không chỉ tiền bạc. Trải nghiệm — như du lịch, học kỹ năng mới, hay ăn cùng nhau — mang lại hạnh phúc bền lâu hơn mua sắm đồ đạc."
+      },
+      {
+        "id": "p5",
+        "en": "Helping others also plays a big role. Studies have found that people who volunteer or do small kind acts regularly feel more satisfied with their lives.",
+        "vi": "Giúp đỡ người khác cũng đóng vai trò lớn. Các nghiên cứu thấy rằng người thường xuyên tình nguyện hay làm việc tốt nhỏ cảm thấy hài lòng hơn với cuộc sống."
+      },
+      {
+        "id": "p6",
+        "en": "The good news is that happiness is partly a skill. Like a muscle, it can be trained — through gratitude, strong relationships, and spending time on what truly matters.",
+        "vi": "Tin tốt là hạnh phúc một phần là kỹ năng. Như cơ bắp, nó có thể rèn luyện — qua lòng biết ơn, các mối quan hệ bền chặt, và dành thời gian cho điều thật sự quan trọng."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does research say about money and happiness?",
+        "options": [
+          "It helps only up to a point; extra money adds little joy after basic needs are met",
+          "Money is the only source of happiness",
+          "Poor people are always happier",
+          "Money never matters at all"
+        ],
+        "correctAnswer": "It helps only up to a point; extra money adds little joy after basic needs are met",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: tiền giúp đến một mức nào đó; khi đủ nhu cầu cơ bản, thêm tiền ít niềm vui hơn."
+      },
+      {
+        "question": "What brings longer-lasting happiness than buying things?",
+        "options": [
+          "Experiences like traveling and sharing meals",
+          "Owning more cars",
+          "Working longer hours",
+          "Sleeping all day"
+        ],
+        "correctAnswer": "Experiences like traveling and sharing meals",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: trải nghiệm như du lịch, ăn cùng nhau mang hạnh phúc bền lâu hơn mua sắm."
+      },
+      {
+        "question": "What is the main message of the article?",
+        "options": [
+          "Happiness can be trained like a skill",
+          "Happiness is impossible",
+          "Only rich people are happy",
+          "Happiness needs no effort"
+        ],
+        "correctAnswer": "Happiness can be trained like a skill",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6 kết luận hạnh phúc một phần là kỹ năng có thể rèn luyện."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

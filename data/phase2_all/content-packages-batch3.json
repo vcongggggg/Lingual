@@ -1,0 +1,3703 @@
+[
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Tom",
+     "role": "Bạn học"
+    },
+    {
+     "gender": "female",
+     "name": "Lisa",
+     "role": "Bạn học"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Tom",
+     "textEn": "Lisa! It's match day! Are you ready for the football match this afternoon?",
+     "textVi": "Lisa! Hôm nay là ngày thi đấu! Cậu đã sẵn sàng cho trận đá bóng chiều nay chưa?"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Lisa",
+     "textEn": "Yes! I'm so excited. What time does it start?",
+     "textVi": "Rồi! Mình hào hứng lắm. Mấy giờ bắt đầu?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Tom",
+     "textEn": "It starts at four. We'll play against the Green Team.",
+     "textVi": "4 giờ bắt đầu. Đội mình sẽ đấu với đội Xanh lá."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Lisa",
+     "textEn": "Oh no, they're very strong. We lost to them last month.",
+     "textVi": "Ôi không, họ rất mạnh. Tháng trước đội mình đã thua họ."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Tom",
+     "textEn": "Don't worry. We have a new player. He's really fast.",
+     "textVi": "Đừng lo. Đội mình có cầu thủ mới. Anh ấy chạy rất nhanh."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Lisa",
+     "textEn": "Really? What's his name?",
+     "textVi": "Thật à? Anh ấy tên gì?"
+    },
+    {
+     "id": "line-7",
+     "speaker": "Tom",
+     "textEn": "His name's Peter. He scored three goals yesterday.",
+     "textVi": "Tên là Peter. Hôm qua anh ấy ghi ba bàn."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Lisa",
+     "textEn": "Wow! Can I be the goalkeeper? I'm good at catching!",
+     "textVi": "Ồ! Mình làm thủ môn được không? Mình bắt bóng giỏi lắm!"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Tom",
+     "textEn": "Sorry, but I'm the goalkeeper. You can play in the front.",
+     "textVi": "Xin lỗi, nhưng mình là thủ môn. Cậu chơi tiền đạo nhé."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Lisa",
+     "textEn": "Okay! Let's go! We'll win this time.",
+     "textVi": "Được! Đi thôi! Lần này đội mình sẽ thắng."
+    }
+   ],
+   "location": "Sân bóng khu phố",
+   "title": "Playing Football",
+   "titleVi": "Đá bóng"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "id": "pkg-036",
+  "quiz": [
+   {
+    "correctAnswer": "4 PM",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3, Tom nói: 'It starts at four' — trận đấu bắt đầu lúc 4 giờ.",
+    "options": [
+     "3 PM",
+     "4 PM",
+     "5 PM",
+     "6 PM"
+    ],
+    "question": "What time does the football match start?"
+   },
+   {
+    "correctAnswer": "The Green Team is very strong",
+    "evidenceLineId": "line-4",
+    "explanation": "Dòng 4, Lisa nói đội Xanh lá 'very strong' (rất mạnh) và đội mình đã thua họ tháng trước.",
+    "options": [
+     "The Green Team is very strong",
+     "It will rain in the afternoon",
+     "Tom is the goalkeeper",
+     "Peter is sick"
+    ],
+    "question": "Why does Lisa worry about the match?"
+   },
+   {
+    "correctAnswer": "He's really fast",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5, Tom nói cầu thủ mới 'He's really fast' — anh ấy chạy rất nhanh.",
+    "options": [
+     "He's really fast",
+     "He's the goalkeeper",
+     "He's very tall",
+     "He's from another city"
+    ],
+    "question": "What is special about the new player Peter?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "sports",
+  "topicVi": "Thể thao",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-4",
+    "line-9"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Minh",
+     "role": "Chủ thú cưng"
+    },
+    {
+     "gender": "female",
+     "name": "Dr. Lan",
+     "role": "Bác sĩ thú y"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Minh",
+     "textEn": "Good morning, Doctor. My dog's sick.",
+     "textVi": "Chào buổi sáng, bác sĩ. Chó của tôi bị ốm."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Dr. Lan",
+     "textEn": "Good morning. What's wrong with him?",
+     "textVi": "Chào buổi sáng. Nó bị sao vậy?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Minh",
+     "textEn": "He doesn't want to eat. He just lies on the floor.",
+     "textVi": "Nó không chịu ăn. Nó chỉ nằm trên sàn."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Dr. Lan",
+     "textEn": "How old is he? What's his name?",
+     "textVi": "Nó bao nhiêu tuổi? Tên là gì?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Minh",
+     "textEn": "He's two years old. His name is Lucky.",
+     "textVi": "Nó hai tuổi. Tên là Lucky."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Dr. Lan",
+     "textEn": "Let me check him. Hmm, his temperature's a bit high.",
+     "textVi": "Để tôi kiểm tra. Hmm, nhiệt độ của nó hơi cao."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Minh",
+     "textEn": "Oh no! Is it serious? I don't want him to suffer!",
+     "textVi": "Ôi không! Có nghiêm trọng không? Tôi không muốn nó phải chịu đau!"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Dr. Lan",
+     "textEn": "Don't worry. It's just a small fever. He needs some rest.",
+     "textVi": "Đừng lo. Chỉ là sốt nhẹ. Nó cần nghỉ ngơi."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Minh",
+     "textEn": "Thank you, Doctor. Should he take any medicine? I don't know what to do!",
+     "textVi": "Cảm ơn bác sĩ. Nó có cần uống thuốc không? Tôi không biết phải làm gì!"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Dr. Lan",
+     "textEn": "Yes, take this medicine twice a day. He'll be fine soon.",
+     "textVi": "Có, cho nó uống thuốc này hai lần mỗi ngày. Nó sẽ sớm khỏe thôi."
+    }
+   ],
+   "location": "Phòng khám thú y",
+   "title": "At the Vet",
+   "titleVi": "Ở phòng khám thú y"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-4",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "id": "pkg-037",
+  "quiz": [
+   {
+    "correctAnswer": "He doesn't want to eat",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3, Minh nói: 'He doesn't want to eat' — chú chó không chịu ăn.",
+    "options": [
+     "He doesn't want to eat",
+     "He has a broken leg",
+     "He can't see anything",
+     "He lost his fur"
+    ],
+    "question": "What is wrong with the dog?"
+   },
+   {
+    "correctAnswer": "Lucky",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5, Minh nói: 'His name is Lucky' — chó tên là Lucky.",
+    "options": [
+     "Lucky",
+     "Tommy",
+     "Max",
+     "Buddy"
+    ],
+    "question": "What is the dog's name?"
+   },
+   {
+    "correctAnswer": "Twice a day",
+    "evidenceLineId": "line-10",
+    "explanation": "Dòng 10, bác sĩ nói: 'take this medicine twice a day' — uống thuốc hai lần mỗi ngày.",
+    "options": [
+     "Once a day",
+     "Twice a day",
+     "Three times a day",
+     "Once a week"
+    ],
+    "question": "How often should Lucky take the medicine?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "pets",
+  "topicVi": "Thú cưng",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-8"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Mr. Nam",
+     "role": "Người hàng xóm"
+    },
+    {
+     "gender": "female",
+     "name": "Mrs. Hoa",
+     "role": "Người hàng xóm"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Mr. Nam",
+     "textEn": "Good morning! What beautiful weather we've got today!",
+     "textVi": "Chào buổi sáng! Hôm nay thời tiết đẹp quá!"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mrs. Hoa",
+     "textEn": "Yes! The sun's shining and the sky's so blue.",
+     "textVi": "Đúng vậy! Nắng đang chiếu và bầu trời rất xanh."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Mr. Nam",
+     "textEn": "I love mornings like this. You're going to the market, right?",
+     "textVi": "Tôi thích những buổi sáng như thế này. Bà đi chợ phải không?"
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mrs. Hoa",
+     "textEn": "Yes, I'm going to buy some vegetables. But the clouds are coming.",
+     "textVi": "Ừ, tôi định đi mua ít rau. Nhưng mây đang kéo tới."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Mr. Nam",
+     "textEn": "Oh no. I heard it'll rain this afternoon.",
+     "textVi": "Ôi không. Tôi nghe nói chiều nay sẽ mưa."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mrs. Hoa",
+     "textEn": "Really? I've forgotten my umbrella at home!",
+     "textVi": "Thật à? Tôi quên ô ở nhà!"
+    },
+    {
+     "id": "line-7",
+     "speaker": "Mr. Nam",
+     "textEn": "You can take my umbrella. I've got two.",
+     "textVi": "Bà có thể lấy ô của tôi. Tôi có hai cái."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mrs. Hoa",
+     "textEn": "That's so kind of you. Thank you very much!",
+     "textVi": "Ông thật tốt bụng. Cảm ơn nhiều!"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Mr. Nam",
+     "textEn": "No problem. That's what friends are for.",
+     "textVi": "Không có gì. Bạn bè là để giúp nhau mà."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mrs. Hoa",
+     "textEn": "I'll bring it back tomorrow. See you!",
+     "textVi": "Ngày mai tôi sẽ mang trả. Gặp lại!"
+    }
+   ],
+   "location": "Trước nhà của hai người hàng xóm",
+   "title": "Weather Talk",
+   "titleVi": "Chuyện thời tiết"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-4",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "id": "pkg-038",
+  "quiz": [
+   {
+    "correctAnswer": "Sunny and beautiful",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2, bà Hoa nói: 'The sun's shining and the sky's so blue' — trời nắng đẹp.",
+    "options": [
+     "Sunny and beautiful",
+     "Rainy and cold",
+     "Windy and cloudy",
+     "Hot and dry"
+    ],
+    "question": "What is the weather like in the morning?"
+   },
+   {
+    "correctAnswer": "Her umbrella",
+    "evidenceLineId": "line-6",
+    "explanation": "Dòng 6, bà Hoa nói: 'I've forgotten my umbrella at home!' — bà quên ô ở nhà.",
+    "options": [
+     "Her umbrella",
+     "Her money",
+     "Her phone",
+     "Her shopping bag"
+    ],
+    "question": "What did Mrs. Hoa forget at home?"
+   },
+   {
+    "correctAnswer": "He lends her his umbrella",
+    "evidenceLineId": "line-7",
+    "explanation": "Dòng 7, ông Nam nói: 'You can take my umbrella. I've got two' — ông cho bà mượn ô.",
+    "options": [
+     "He lends her his umbrella",
+     "He drives her to the market",
+     "He buys her vegetables",
+     "He walks with her"
+    ],
+    "question": "What does Mr. Nam do for Mrs. Hoa?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-2",
+    "line-5",
+    "line-8"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "weather",
+  "topicVi": "Thời tiết",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-3",
+    "line-9"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "female",
+     "name": "Anna",
+     "role": "Học sinh"
+    },
+    {
+     "gender": "male",
+     "name": "David",
+     "role": "Học sinh"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Anna",
+     "textEn": "David! The Mid-Autumn Festival's next week!",
+     "textVi": "David! Tuần sau là Tết Trung thu!"
+    },
+    {
+     "id": "line-2",
+     "speaker": "David",
+     "textEn": "Really? I love mooncakes! My grandma's mooncakes are the best.",
+     "textVi": "Thật à? Mình thích bánh trung thu! Bánh của bà mình ngon nhất."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Anna",
+     "textEn": "Do you think she'll make some this year?",
+     "textVi": "Cậu nghĩ năm nay bà có làm không?"
+    },
+    {
+     "id": "line-4",
+     "speaker": "David",
+     "textEn": "Yes, she'll make a lot. She always shares with our neighbors.",
+     "textVi": "Có, bà sẽ làm nhiều. Bà luôn chia cho hàng xóm."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Anna",
+     "textEn": "I bought a star lantern yesterday. It's so big and colorful.",
+     "textVi": "Hôm qua mình mua một chiếc đèn lồng ngôi sao. Nó to và nhiều màu sắc."
+    },
+    {
+     "id": "line-6",
+     "speaker": "David",
+     "textEn": "Can I see it? I'd like to buy one too.",
+     "textVi": "Mình xem được không? Mình cũng muốn mua một cái."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Anna",
+     "textEn": "Of course. Let's go to my house after school.",
+     "textVi": "Được chứ. Tan học qua nhà mình nhé."
+    },
+    {
+     "id": "line-8",
+     "speaker": "David",
+     "textEn": "Great! My mom says we'll watch the lion dance on Saturday.",
+     "textVi": "Tuyệt! Mẹ mình nói thứ Bảy mình sẽ xem múa lân."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Anna",
+     "textEn": "I love the lion dance! It's so fun and loud.",
+     "textVi": "Mình thích múa lân! Rất vui và náo nhiệt."
+    },
+    {
+     "id": "line-10",
+     "speaker": "David",
+     "textEn": "Me too! This festival's going to be wonderful.",
+     "textVi": "Mình cũng vậy! Tết trung thu này sẽ thật tuyệt vời."
+    }
+   ],
+   "location": "Sân trường sau giờ học",
+   "title": "Mid-Autumn Festival",
+   "titleVi": "Tết Trung thu"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-3",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "id": "pkg-039",
+  "quiz": [
+   {
+    "correctAnswer": "Mooncakes",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2, David nói: 'I love mooncakes!' — cậu ấy thích bánh trung thu.",
+    "options": [
+     "Mooncakes",
+     "Fireworks",
+     "Dragon dance",
+     "Candy apples"
+    ],
+    "question": "What does David love about the festival?"
+   },
+   {
+    "correctAnswer": "A star lantern",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5, Anna nói: 'I bought a star lantern yesterday' — cô ấy mua đèn lồng ngôi sao.",
+    "options": [
+     "A star lantern",
+     "A mooncake box",
+     "A new dress",
+     "A paper mask"
+    ],
+    "question": "What did Anna buy yesterday?"
+   },
+   {
+    "correctAnswer": "On Saturday",
+    "evidenceLineId": "line-8",
+    "explanation": "Dòng 8, David nói: 'we'll watch the lion dance on Saturday' — thứ Bảy xem múa lân.",
+    "options": [
+     "On Saturday",
+     "On Sunday",
+     "Next Monday",
+     "Tomorrow morning"
+    ],
+    "question": "When can they watch the lion dance?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-2",
+    "line-5",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "festival",
+  "topicVi": "Lễ hội",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-4",
+    "line-7"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "female",
+     "name": "Linh",
+     "role": "Nhân viên bưu điện"
+    },
+    {
+     "gender": "male",
+     "name": "John",
+     "role": "Khách hàng"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "John",
+     "textEn": "Good morning! I'd like to send this package to Da Nang.",
+     "textVi": "Chào buổi sáng! Tôi muốn gửi gói hàng này đi Đà Nẵng."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Linh",
+     "textEn": "Good morning. What's inside the package?",
+     "textVi": "Chào buổi sáng. Trong gói hàng có gì?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "John",
+     "textEn": "Some books and clothes. They're gifts for my sister.",
+     "textVi": "Một ít sách và quần áo. Là quà cho em gái tôi."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Linh",
+     "textEn": "Okay. How fast do you want it to arrive? We've got express too.",
+     "textVi": "Được. Anh muốn nó đến nhanh cỡ nào? Bên em cũng có gửi nhanh."
+    },
+    {
+     "id": "line-5",
+     "speaker": "John",
+     "textEn": "How long's normal delivery?",
+     "textVi": "Gửi thường thì mất bao lâu?"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Linh",
+     "textEn": "About three days. Express'll take only one day.",
+     "textVi": "Khoảng ba ngày. Gửi nhanh chỉ mất một ngày."
+    },
+    {
+     "id": "line-7",
+     "speaker": "John",
+     "textEn": "I'll take express. How much is it?",
+     "textVi": "Tôi chọn gửi nhanh. Giá bao nhiêu?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Linh",
+     "textEn": "That's fifty thousand dong. Please fill in this form.",
+     "textVi": "Giá năm mươi nghìn đồng. Anh vui lòng điền vào mẫu này."
+    },
+    {
+     "id": "line-9",
+     "speaker": "John",
+     "textEn": "Here you are. Thank you — you're very kind!",
+     "textVi": "Đây ạ. Cảm ơn — chị tốt bụng quá!"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Linh",
+     "textEn": "You're welcome. The package will arrive tomorrow.",
+     "textVi": "Không có gì. Gói hàng sẽ đến vào ngày mai."
+    }
+   ],
+   "location": "Bưu điện",
+   "title": "Sending a Package",
+   "titleVi": "Gửi bưu kiện"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-5",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "id": "pkg-040",
+  "quiz": [
+   {
+    "correctAnswer": "To Da Nang",
+    "evidenceLineId": "line-1",
+    "explanation": "Dòng 1, John nói: 'I'd like to send this package to Da Nang' — gửi đi Đà Nẵng.",
+    "options": [
+     "To Da Nang",
+     "To Hanoi",
+     "To Ho Chi Minh City",
+     "To Hue"
+    ],
+    "question": "Where does John send the package?"
+   },
+   {
+    "correctAnswer": "Books and clothes",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3, John nói: 'Some books and clothes' — sách và quần áo.",
+    "options": [
+     "Books and clothes",
+     "Shoes and hats",
+     "Toys and candy",
+     "Letters and photos"
+    ],
+    "question": "What is inside the package?"
+   },
+   {
+    "correctAnswer": "Fifty thousand dong",
+    "evidenceLineId": "line-8",
+    "explanation": "Dòng 8, Linh nói: 'That's fifty thousand dong' — giá năm mươi nghìn đồng.",
+    "options": [
+     "Fifty thousand dong",
+     "Thirty thousand dong",
+     "Twenty thousand dong",
+     "Sixty thousand dong"
+    ],
+    "question": "How much does the express delivery cost?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "post-office",
+  "topicVi": "Bưu điện",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-2",
+    "line-8"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Nam",
+     "role": "Học sinh"
+    },
+    {
+     "gender": "female",
+     "name": "Mrs. Mai",
+     "role": "Thủ thư"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Nam",
+     "textEn": "Excuse me. I'd like to borrow some books.",
+     "textVi": "Xin lỗi. Em muốn mượn vài cuốn sách."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mrs. Mai",
+     "textEn": "Of course. You've got a library card, right?",
+     "textVi": "Được chứ. Em có thẻ thư viện phải không?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Nam",
+     "textEn": "Yes, I've got it here.",
+     "textVi": "Dạ có, em mang theo đây ạ."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mrs. Mai",
+     "textEn": "Thank you. What's your favorite kind of book?",
+     "textVi": "Cảm ơn. Em thích loại sách nào nhất?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Nam",
+     "textEn": "I like funny stories. What's good here?",
+     "textVi": "Em thích truyện hài. Ở đây có cuốn nào hay?"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mrs. Mai",
+     "textEn": "This one's great. All the students love it.",
+     "textVi": "Cuốn này rất hay. Học sinh nào cũng thích."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Nam",
+     "textEn": "What's the limit? How many books can I borrow?",
+     "textVi": "Giới hạn là bao nhiêu? Em có thể mượn bao nhiêu cuốn?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mrs. Mai",
+     "textEn": "You can borrow three books. You've got two weeks.",
+     "textVi": "Em có thể mượn ba cuốn. Em có hai tuần để đọc."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Nam",
+     "textEn": "Perfect! I'll finish them this weekend.",
+     "textVi": "Tuyệt! Em sẽ đọc xong vào cuối tuần này."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mrs. Mai",
+     "textEn": "Enjoy your reading! Don't forget to return them on time.",
+     "textVi": "Chúc em đọc sách vui! Nhớ trả đúng hạn nhé."
+    }
+   ],
+   "location": "Thư viện trường",
+   "title": "Borrowing Books",
+   "titleVi": "Mượn sách"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-3",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "id": "pkg-041",
+  "quiz": [
+   {
+    "correctAnswer": "Borrow some books",
+    "evidenceLineId": "line-1",
+    "explanation": "Dòng 1, Nam nói: 'I'd like to borrow some books' — em muốn mượn vài cuốn sách.",
+    "options": [
+     "Borrow some books",
+     "Borrow some DVDs",
+     "Use a computer",
+     "Read a newspaper"
+    ],
+    "question": "What does Nam want to do at the library?"
+   },
+   {
+    "correctAnswer": "Funny stories",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5, Nam nói: 'I like funny stories' — em thích truyện hài.",
+    "options": [
+     "Funny stories",
+     "History books",
+     "Science books",
+     "Cooking books"
+    ],
+    "question": "What kind of books does Nam like?"
+   },
+   {
+    "correctAnswer": "Three",
+    "evidenceLineId": "line-8",
+    "explanation": "Dòng 8, cô Mai nói: 'You can borrow three books' — mượn được ba cuốn.",
+    "options": [
+     "Three",
+     "Two",
+     "Five",
+     "Ten"
+    ],
+    "question": "How many books can Nam borrow?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-4",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "library",
+  "topicVi": "Thư viện",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-8"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "female",
+     "name": "Ms. Linh",
+     "role": "Dược sĩ"
+    },
+    {
+     "gender": "male",
+     "name": "Tom",
+     "role": "Khách hàng"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Tom",
+     "textEn": "Hello. I've got a headache and a sore throat.",
+     "textVi": "Chào. Tôi bị đau đầu và đau họng."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Ms. Linh",
+     "textEn": "Hello. You haven't got a fever too, have you?",
+     "textVi": "Chào. Anh không bị sốt nữa chứ?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Tom",
+     "textEn": "A little. I think it's just a small cold.",
+     "textVi": "Hơi sốt. Tôi nghĩ chỉ là cảm lạnh nhẹ."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Ms. Linh",
+     "textEn": "This medicine's good for colds. Take two pills after meals.",
+     "textVi": "Thuốc này tốt cho cảm lạnh. Uống hai viên sau bữa ăn."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Tom",
+     "textEn": "Okay. I've got to take it with water, right?",
+     "textVi": "Được. Tôi phải uống với nước, đúng không?"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Ms. Linh",
+     "textEn": "Yes. It's best with warm water.",
+     "textVi": "Đúng. Uống với nước ấm là tốt nhất."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Tom",
+     "textEn": "What's the dose? How many times a day?",
+     "textVi": "Liều dùng thế nào? Một ngày uống mấy lần?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Ms. Linh",
+     "textEn": "Three times a day — and don't forget to rest!",
+     "textVi": "Ba lần một ngày — và đừng quên nghỉ ngơi!"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Tom",
+     "textEn": "Thank you! How much do I owe you?",
+     "textVi": "Cảm ơn! Tôi phải trả bao nhiêu?"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Ms. Linh",
+     "textEn": "That's thirty thousand dong. Get well soon!",
+     "textVi": "Ba mươi nghìn đồng. Chúc anh mau khỏe!"
+    }
+   ],
+   "location": "Hiệu thuốc",
+   "title": "At the Pharmacy",
+   "titleVi": "Ở hiệu thuốc"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-5",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "id": "pkg-042",
+  "quiz": [
+   {
+    "correctAnswer": "A headache and a sore throat",
+    "evidenceLineId": "line-1",
+    "explanation": "Dòng 1, Tom nói: 'I've got a headache and a sore throat' — đau đầu và đau họng.",
+    "options": [
+     "A headache and a sore throat",
+     "A stomachache",
+     "A toothache",
+     "A backache"
+    ],
+    "question": "What is wrong with Tom?"
+   },
+   {
+    "correctAnswer": "With warm water",
+    "evidenceLineId": "line-6",
+    "explanation": "Dòng 6, dược sĩ nói: 'It's best with warm water' — uống thuốc với nước ấm.",
+    "options": [
+     "With warm water",
+     "With cold milk",
+     "With orange juice",
+     "With hot tea"
+    ],
+    "question": "What should Tom take the medicine with?"
+   },
+   {
+    "correctAnswer": "Thirty thousand dong",
+    "evidenceLineId": "line-10",
+    "explanation": "Dòng 10, dược sĩ nói: 'Thirty thousand dong' — giá ba mươi nghìn đồng.",
+    "options": [
+     "Thirty thousand dong",
+     "Fifty thousand dong",
+     "Twenty thousand dong",
+     "Forty thousand dong"
+    ],
+    "question": "How much is the medicine?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-4",
+    "line-8"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "pharmacy",
+  "topicVi": "Hiệu thuốc",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-4",
+    "line-10"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "A2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Mr. Tuan",
+     "role": "Nhân viên quầy thất lạc"
+    },
+    {
+     "gender": "female",
+     "name": "Emma",
+     "role": "Khách hàng"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Emma",
+     "textEn": "Excuse me. I've lost my wallet this morning.",
+     "textVi": "Xin lỗi. Sáng nay tôi làm mất ví."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mr. Tuan",
+     "textEn": "I'm sorry to hear that. Where did you lose it?",
+     "textVi": "Tôi rất tiếc. Cô làm mất ở đâu?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Emma",
+     "textEn": "Maybe in the food court. That's where I had lunch at twelve.",
+     "textVi": "Có lẽ ở khu ẩm thực. Tôi ăn trưa ở đó lúc mười hai giờ."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mr. Tuan",
+     "textEn": "What does your wallet look like? What's the color?",
+     "textVi": "Ví của cô trông như thế nào? Màu gì?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Emma",
+     "textEn": "It's a small brown wallet. My photo is inside.",
+     "textVi": "Là ví nâu nhỏ. Ảnh của tôi ở trong."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mr. Tuan",
+     "textEn": "Let me check. ... Yes! I think I've found it — is this your wallet?",
+     "textVi": "Để tôi kiểm tra. ... Vâng! Tôi nghĩ đã tìm thấy — đây có phải ví của cô không?"
+    },
+    {
+     "id": "line-7",
+     "speaker": "Emma",
+     "textEn": "Yes, that's mine! Thank you so much!",
+     "textVi": "Đúng rồi, của tôi! Cảm ơn rất nhiều!"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mr. Tuan",
+     "textEn": "Please check your money and cards — everything's there, I hope.",
+     "textVi": "Cô hãy kiểm tra tiền và thẻ — hy vọng mọi thứ còn đủ."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Emma",
+     "textEn": "Everything is here. You're a lifesaver!",
+     "textVi": "Mọi thứ còn đủ. Anh thật tuyệt!"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mr. Tuan",
+     "textEn": "Be careful next time — you don't want to lose it again!",
+     "textVi": "Lần sau cẩn thận nhé — cô không muốn làm mất lần nữa đâu!"
+    }
+   ],
+   "location": "Quầy Lost & Found, trung tâm thương mại",
+   "title": "Lost Wallet",
+   "titleVi": "Đánh rơi ví"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-4",
+    "line-7",
+    "line-10"
+   ]
+  },
+  "id": "pkg-043",
+  "quiz": [
+   {
+    "correctAnswer": "In the food court",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3, Emma nói: 'Maybe in the food court' — có lẽ làm mất ở khu ẩm thực.",
+    "options": [
+     "In the food court",
+     "In the cinema",
+     "In the parking lot",
+     "On the bus"
+    ],
+    "question": "Where did Emma lose her wallet?"
+   },
+   {
+    "correctAnswer": "Small and brown",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5, Emma nói: 'It's a small brown wallet' — ví nâu nhỏ.",
+    "options": [
+     "Small and brown",
+     "Big and black",
+     "Small and red",
+     "Big and blue"
+    ],
+    "question": "What does Emma's wallet look like?"
+   },
+   {
+    "correctAnswer": "Her money and cards",
+    "evidenceLineId": "line-8",
+    "explanation": "Dòng 8, ông Tuấn nói: 'Please check your money and cards' — kiểm tra tiền và thẻ.",
+    "options": [
+     "Her money and cards",
+     "Her phone",
+     "Her ID card",
+     "Her keys"
+    ],
+    "question": "What does Mr. Tuan ask Emma to check?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-5",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "lost-and-found",
+  "topicVi": "Đồ thất lạc",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-2",
+    "line-6"
+   ]
+  }
+ },
+ {
+  "id": "pkg-044",
+  "cefrLevel": "B1",
+  "topic": "healthcare",
+  "topicVi": "Y tế",
+  "dialogue": {
+   "title": "Doctor's Appointment",
+   "titleVi": "Khám bệnh",
+   "location": "Phòng khám đa khoa",
+   "characters": [
+    {
+     "name": "Mr. Brown",
+     "role": "Bệnh nhân",
+     "gender": "male"
+    },
+    {
+     "name": "Dr. Lee",
+     "role": "Bác sĩ",
+     "gender": "female"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Mr. Brown",
+     "textEn": "Hi, Doctor. I've had this terrible headache for three days, and it's not getting better.",
+     "textVi": "Chào bác sĩ. Tôi bị đau đầu kinh khủng suốt ba ngày nay mà không đỡ chút nào."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Dr. Lee",
+     "textEn": "I'm sorry to hear that. How many hours do you sleep at night, on average?",
+     "textVi": "Tôi rất tiếc khi nghe điều đó. Trung bình mỗi đêm anh ngủ mấy tiếng?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Mr. Brown",
+     "textEn": "Well... maybe four or five. My neighbors are renovating their kitchen, you know.",
+     "textVi": "Chà... chắc khoảng bốn hoặc năm tiếng. Hàng xóm của tôi đang sửa bếp, chị biết đấy."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Dr. Lee",
+     "textEn": "Ah, that could be the problem! Loud noise can give you a serious headache.",
+     "textVi": "À, đó có thể là nguyên nhân đấy! Tiếng ồn lớn có thể gây đau đầu nghiêm trọng."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Mr. Brown",
+     "textEn": "Oh no. Do I need medicine, or just... good earplugs?",
+     "textVi": "Ôi không. Tôi cần thuốc, hay chỉ cần... nút bịt tai tốt thôi?"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Dr. Lee",
+     "textEn": "Hmm, let's check your blood pressure first. It's a little bit high.",
+     "textVi": "Hừm, để tôi đo huyết áp của anh trước đã. Nó hơi cao một chút."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Mr. Brown",
+     "textEn": "Really? Honestly, I think I'm just nervous around hospitals.",
+     "textVi": "Thật á? Nói thật thì tôi nghĩ mình chỉ hồi hộp khi ở bệnh viện thôi."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Dr. Lee",
+     "textEn": "That's very common. But let's do a quick blood test to be safe, okay?",
+     "textVi": "Điều đó rất phổ biến. Nhưng để chắc chắn, ta xét nghiệm máu nhanh nhé?"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Mr. Brown",
+     "textEn": "Okay... And Doctor, can I go back to work this afternoon?",
+     "textVi": "Vâng... À bác sĩ, chiều nay tôi quay lại làm việc được không?"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Dr. Lee",
+     "textEn": "Slow down! Rest today, drink lots of water, and come back on Friday.",
+     "textVi": "Từ từ đã! Hôm nay nghỉ ngơi, uống nhiều nước, và thứ Sáu quay lại tái khám."
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "How long has Mr. Brown had a headache?",
+    "options": [
+     "Three days",
+     "One week",
+     "Five hours",
+     "Since Friday"
+    ],
+    "correctAnswer": "Three days",
+    "evidenceLineId": "line-1",
+    "explanation": "Dòng 1: 'for three days' — ông Brown bị đau đầu đã ba ngày."
+   },
+   {
+    "question": "Why is Mr. Brown sleeping badly?",
+    "options": [
+     "He works night shifts",
+     "His neighbors are renovating",
+     "He drinks too much coffee",
+     "His bed is uncomfortable"
+    ],
+    "correctAnswer": "His neighbors are renovating",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3: 'My neighbors are renovating their kitchen' — hàng xóm sửa bếp gây ồn."
+   },
+   {
+    "question": "When must Mr. Brown come back to the clinic?",
+    "options": [
+     "This afternoon",
+     "Tomorrow morning",
+     "On Friday",
+     "Next month"
+    ],
+    "correctAnswer": "On Friday",
+    "evidenceLineId": "line-10",
+    "explanation": "Dòng 10: 'come back on Friday' — bác sĩ hẹn thứ Sáu tái khám."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-2",
+    "line-4",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-5",
+    "line-7",
+    "line-3",
+    "line-9"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-4",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-045",
+  "cefrLevel": "B1",
+  "topic": "banking",
+  "topicVi": "Ngân hàng",
+  "dialogue": {
+   "title": "Opening a Bank Account",
+   "titleVi": "Mở tài khoản ngân hàng",
+   "location": "Ngân hàng First National",
+   "characters": [
+    {
+     "name": "Ms. Green",
+     "role": "Khách hàng",
+     "gender": "female"
+    },
+    {
+     "name": "Mr. Patel",
+     "role": "Nhân viên ngân hàng",
+     "gender": "male"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Mr. Patel",
+     "textEn": "Good morning! How can I help you today?",
+     "textVi": "Chào buổi sáng! Hôm nay tôi có thể giúp gì cho quý khách?"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Ms. Green",
+     "textEn": "Hi, I'd like to open a savings account, please.",
+     "textVi": "Chào anh, tôi muốn mở một tài khoản tiết kiệm."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Mr. Patel",
+     "textEn": "Of course. May I see your ID and proof of address, please?",
+     "textVi": "Dĩ nhiên. Cho tôi xem giấy tờ tùy thân và giấy chứng minh địa chỉ nhé?"
+    },
+    {
+     "id": "line-4",
+     "speaker": "Ms. Green",
+     "textEn": "Sure. Hmm... oh no, I forgot my ID at home! It's on the kitchen table.",
+     "textVi": "Được chứ. Hừm... ôi không, tôi để quên giấy tờ ở nhà mất rồi! Nó nằm trên bàn bếp."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Mr. Patel",
+     "textEn": "No worries, that's actually pretty common. A photo of your ID works too.",
+     "textVi": "Không sao đâu, chuyện đó khá phổ biến đấy. Ảnh chụp giấy tờ cũng được."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Ms. Green",
+     "textEn": "Oh, perfect! I always take photos of everything, just in case.",
+     "textVi": "Ôi, tuyệt! Tôi lúc nào cũng chụp ảnh mọi thứ, phòng khi cần."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Mr. Patel",
+     "textEn": "Smart habit! Now, would you like a debit card with the account?",
+     "textVi": "Thói quen thông minh đấy! Giờ chị có muốn mở thêm thẻ ghi nợ kèm tài khoản không?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Ms. Green",
+     "textEn": "Yes, please. And... is there a monthly fee?",
+     "textVi": "Có chứ. À mà... có phí duy trì hàng tháng không?"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Mr. Patel",
+     "textEn": "No fee if you keep at least two hundred dollars in the account.",
+     "textVi": "Không có phí nếu chị giữ ít nhất hai trăm đô trong tài khoản."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Ms. Green",
+     "textEn": "Great! One more question — can I do everything on my phone?",
+     "textVi": "Tuyệt! Còn một câu hỏi nữa — tôi có thể làm mọi thứ trên điện thoại không?"
+    },
+    {
+     "id": "line-11",
+     "speaker": "Mr. Patel",
+     "textEn": "Absolutely. Our app even lets you deposit checks with the camera.",
+     "textVi": "Chắc chắn rồi. Ứng dụng của chúng tôi còn cho phép nộp séc bằng camera cơ."
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "What did Ms. Green forget at home?",
+    "options": [
+     "Her ID",
+     "Her phone",
+     "Her money",
+     "Her camera"
+    ],
+    "correctAnswer": "Her ID",
+    "evidenceLineId": "line-4",
+    "explanation": "Dòng 4: 'I forgot my ID at home' — chị Green quên giấy tờ tùy thân."
+   },
+   {
+    "question": "How can Ms. Green avoid the monthly fee?",
+    "options": [
+     "Keep at least $200 in the account",
+     "Open two accounts",
+     "Visit the bank monthly",
+     "Pay $200 once"
+    ],
+    "correctAnswer": "Keep at least $200 in the account",
+    "evidenceLineId": "line-9",
+    "explanation": "Dòng 9: 'No fee if you keep at least two hundred dollars' — giữ ít nhất 200 đô thì miễn phí."
+   },
+   {
+    "question": "What can she do with the bank app?",
+    "options": [
+     "Deposit checks with the camera",
+     "Buy coffee for free",
+     "Get a new ID",
+     "Call the bank"
+    ],
+    "correctAnswer": "Deposit checks with the camera",
+    "evidenceLineId": "line-11",
+    "explanation": "Dòng 11: 'lets you deposit checks with the camera' — nộp séc bằng camera."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-5",
+    "line-7",
+    "line-9",
+    "line-11"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-5",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-3",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-046",
+  "cefrLevel": "B1",
+  "topic": "home-repair",
+  "topicVi": "Sửa chữa nhà",
+  "dialogue": {
+   "title": "Fixing the Sink",
+   "titleVi": "Sửa bồn rửa",
+   "location": "Căn hộ của Mrs. Smith",
+   "characters": [
+    {
+     "name": "Mrs. Smith",
+     "role": "Chủ nhà",
+     "gender": "female"
+    },
+    {
+     "name": "Mr. Torres",
+     "role": "Thợ sửa ống nước",
+     "gender": "male"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Mrs. Smith",
+     "textEn": "Thanks for coming so fast! The kitchen sink is completely blocked.",
+     "textVi": "Cảm ơn anh đã đến nhanh! Bồn rửa bếp bị tắc hoàn toàn rồi."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mr. Torres",
+     "textEn": "No problem. Let me take a look. Hmm... when did it start?",
+     "textVi": "Không có gì. Để tôi xem nào. Hừm... nó bắt đầu từ khi nào vậy?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Mrs. Smith",
+     "textEn": "Yesterday. I poured some pasta water down the drain, and... boom.",
+     "textVi": "Hôm qua. Tôi đổ nước luộc mì xuống ống, rồi... bùng."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mr. Torres",
+     "textEn": "Ah, pasta water. The starch makes everything sticky. Classic mistake!",
+     "textVi": "À, nước luộc mì. Tinh bột làm mọi thứ dính lại. Lỗi kinh điển đấy!"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Mrs. Smith",
+     "textEn": "Oh, I always do that! Nobody told me it was bad.",
+     "textVi": "Trời ơi, tôi lúc nào cũng làm vậy! Chẳng ai bảo tôi là nó hại cả."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mr. Torres",
+     "textEn": "Don't worry, you're not the first. Let's see... I need my special tool.",
+     "textVi": "Đừng lo, chị không phải người đầu tiên đâu. Để xem nào... tôi cần dụng cụ đặc biệt."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Mrs. Smith",
+     "textEn": "Is it serious? Will it cost a lot of money?",
+     "textVi": "Có nghiêm trọng không? Có tốn nhiều tiền không?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mr. Torres",
+     "textEn": "Relax! It's just a small clog. About thirty dollars, and twenty minutes.",
+     "textVi": "Yên tâm đi! Chỉ là tắc nhẹ thôi. Khoảng ba mươi đô, và hai mươi phút."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Mrs. Smith",
+     "textEn": "Phew! That's great news. I thought I'd need a new sink!",
+     "textVi": "Phù! Tin tốt quá. Tôi cứ tưởng phải thay bồn mới cơ!"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mr. Torres",
+     "textEn": "Not today! And remember — no more pasta water in the drain, okay?",
+     "textVi": "Hôm nay thì không! Và nhớ nhé — đừng đổ nước luộc mì xuống ống nữa, được không?"
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "What caused the blocked sink?",
+    "options": [
+     "Pasta water",
+     "Coffee grounds",
+     "A broken pipe",
+     "Soap"
+    ],
+    "correctAnswer": "Pasta water",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3: 'I poured some pasta water down the drain' — nước luộc mì gây tắc."
+   },
+   {
+    "question": "How much will the repair cost?",
+    "options": [
+     "About $30",
+     "About $300",
+     "Free",
+     "About $20"
+    ],
+    "correctAnswer": "About $30",
+    "evidenceLineId": "line-8",
+    "explanation": "Dòng 8: 'About thirty dollars' — chi phí khoảng ba mươi đô."
+   },
+   {
+    "question": "How long will the repair take?",
+    "options": [
+     "Twenty minutes",
+     "Two hours",
+     "All day",
+     "One week"
+    ],
+    "correctAnswer": "Twenty minutes",
+    "evidenceLineId": "line-8",
+    "explanation": "Dòng 8: 'and twenty minutes' — sửa trong khoảng hai mươi phút."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-4",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-7",
+    "line-9",
+    "line-5"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-3",
+    "line-8"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-047",
+  "cefrLevel": "B1",
+  "topic": "travel",
+  "topicVi": "Du lịch",
+  "dialogue": {
+   "title": "Renting a Car",
+   "titleVi": "Thuê xe ô tô",
+   "location": "Văn phòng cho thuê xe City Rentals",
+   "characters": [
+    {
+     "name": "Mr. Jackson",
+     "role": "Khách thuê xe",
+     "gender": "male"
+    },
+    {
+     "name": "Ms. Park",
+     "role": "Nhân viên cho thuê xe",
+     "gender": "female"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Ms. Park",
+     "textEn": "Welcome to City Rentals! How long do you need the car for?",
+     "textVi": "Chào mừng đến City Rentals! Anh cần thuê xe trong bao lâu?"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mr. Jackson",
+     "textEn": "Just for the weekend. My wife and I are driving to the mountains.",
+     "textVi": "Chỉ cuối tuần thôi. Vợ tôi và tôi sẽ lái xe lên núi."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Ms. Park",
+     "textEn": "Nice! We have a small SUV that is perfect for mountain roads.",
+     "textVi": "Tuyệt! Chúng tôi có chiếc SUV nhỏ, rất hợp đường núi."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mr. Jackson",
+     "textEn": "Sounds good. How much is it per day?",
+     "textVi": "Nghe được đấy. Giá bao nhiêu một ngày?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Ms. Park",
+     "textEn": "Forty-five dollars a day, plus insurance. The insurance is required.",
+     "textVi": "Bốn mươi lăm đô một ngày, cộng bảo hiểm. Bảo hiểm là bắt buộc."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mr. Jackson",
+     "textEn": "Hmm, can I use my own insurance instead?",
+     "textVi": "Hừm, tôi dùng bảo hiểm của mình được không?"
+    },
+    {
+     "id": "line-7",
+     "speaker": "Ms. Park",
+     "textEn": "Sure, no problem. Just show me the documents. And... do you need GPS?",
+     "textVi": "Được chứ, không sao. Chỉ cần cho tôi xem giấy tờ. Và... anh có cần GPS không?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mr. Jackson",
+     "textEn": "No, thanks. My wife says her phone never gets lost. She says!",
+     "textVi": "Không, cảm ơn. Vợ tôi bảo điện thoại của cô ấy không bao giờ lạc đường. Cô ấy bảo thế đấy!"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Ms. Park",
+     "textEn": "Ha! Okay, the car is full of gas. Please bring it back full, too.",
+     "textVi": "Ha! Được rồi, xe đã đổ đầy xăng. Anh nhớ trả xe đầy xăng nhé."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mr. Jackson",
+     "textEn": "Got it. Full to full. Thanks for your help!",
+     "textVi": "Hiểu rồi. Đổ đầy trả đầy. Cảm ơn chị đã giúp!"
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "How long does Mr. Jackson need the car?",
+    "options": [
+     "For the weekend",
+     "For a week",
+     "For one day",
+     "For a month"
+    ],
+    "correctAnswer": "For the weekend",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2: 'Just for the weekend' — thuê xe cho dịp cuối tuần."
+   },
+   {
+    "question": "How much does the rental cost per day?",
+    "options": [
+     "$45",
+     "$54",
+     "$40",
+     "$65"
+    ],
+    "correctAnswer": "$45",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5: 'Forty-five dollars a day' — bốn mươi lăm đô một ngày."
+   },
+   {
+    "question": "What should he do with the gas?",
+    "options": [
+     "Bring the car back full",
+     "Bring it back empty",
+     "Pay extra for gas",
+     "Refill only half"
+    ],
+    "correctAnswer": "Bring the car back full",
+    "evidenceLineId": "line-9",
+    "explanation": "Dòng 9: 'Please bring it back full, too' — trả xe với bình xăng đầy."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-5",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-4",
+    "line-6",
+    "line-10",
+    "line-1"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-2",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-048",
+  "cefrLevel": "B1",
+  "topic": "fitness",
+  "topicVi": "Thể thao",
+  "dialogue": {
+   "title": "Joining the Gym",
+   "titleVi": "Đăng ký phòng gym",
+   "location": "Phòng gym FitLife",
+   "characters": [
+    {
+     "name": "Mr. David",
+     "role": "Khách hàng mới",
+     "gender": "male"
+    },
+    {
+     "name": "Coach Mia",
+     "role": "Huấn luyện viên",
+     "gender": "female"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Coach Mia",
+     "textEn": "Hi there! Are you here for the free trial class?",
+     "textVi": "Chào anh! Anh đến tham gia buổi tập thử miễn phí phải không?"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mr. David",
+     "textEn": "Actually, I'd like to join the gym. My pants don't fit anymore!",
+     "textVi": "Thật ra tôi muốn đăng ký tập. Quần của tôi không còn vừa nữa!"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Coach Mia",
+     "textEn": "Ha! That's the best motivation. How often can you come?",
+     "textVi": "Ha! Đó là động lực tuyệt nhất. Anh có thể đến tập mấy buổi một tuần?"
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mr. David",
+     "textEn": "Maybe three times a week. After work, around six.",
+     "textVi": "Chắc khoảng ba buổi một tuần. Sau giờ làm, khoảng sáu giờ."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Coach Mia",
+     "textEn": "Perfect. We have yoga classes at six too, if your muscles are sore.",
+     "textVi": "Hoàn hảo. Chúng tôi còn có lớp yoga lúc sáu giờ, nếu cơ bắp của anh bị đau."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mr. David",
+     "textEn": "Yoga? Hmm, I thought yoga was just for flexible people.",
+     "textVi": "Yoga á? Hừm, tôi tưởng yoga chỉ dành cho người dẻo dai."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Coach Mia",
+     "textEn": "Not at all! Beginners are welcome. Even I couldn't touch my toes at first.",
+     "textVi": "Không hề! Người mới bắt đầu đều được chào đón. Hồi đầu ngay cả tôi còn không chạm được vào ngón chân."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mr. David",
+     "textEn": "Okay, you've convinced me. How much is the monthly plan?",
+     "textVi": "Được rồi, chị thuyết phục được tôi rồi. Gói theo tháng bao nhiêu tiền?"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Coach Mia",
+     "textEn": "Thirty-nine dollars a month, and the first week is free.",
+     "textVi": "Ba mươi chín đô một tháng, và tuần đầu tiên miễn phí."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mr. David",
+     "textEn": "Deal! One question — is there a pool? I love swimming.",
+     "textVi": "Chốt! Một câu hỏi — ở đây có bể bơi không? Tôi thích bơi."
+    },
+    {
+     "id": "line-11",
+     "speaker": "Coach Mia",
+     "textEn": "Yes, but it's closed on Mondays for cleaning. Sorry!",
+     "textVi": "Có, nhưng thứ Hai đóng cửa để vệ sinh. Xin lỗi nhé!"
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "Why does Mr. David want to join the gym?",
+    "options": [
+     "His pants don't fit",
+     "His friend joined",
+     "He loves yoga",
+     "He won a coupon"
+    ],
+    "correctAnswer": "His pants don't fit",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2: 'My pants don't fit anymore!' — quần không vừa nên đi tập."
+   },
+   {
+    "question": "How often will he come to the gym?",
+    "options": [
+     "Three times a week",
+     "Every day",
+     "Once a month",
+     "Only on Mondays"
+    ],
+    "correctAnswer": "Three times a week",
+    "evidenceLineId": "line-4",
+    "explanation": "Dòng 4: 'three times a week' — ba buổi một tuần."
+   },
+   {
+    "question": "When is the pool closed?",
+    "options": [
+     "On Mondays",
+     "On Sundays",
+     "At six o'clock",
+     "Never"
+    ],
+    "correctAnswer": "On Mondays",
+    "evidenceLineId": "line-11",
+    "explanation": "Dòng 11: 'it's closed on Mondays for cleaning' — bể bơi đóng cửa thứ Hai."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-7",
+    "line-9",
+    "line-11"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-4",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-049",
+  "cefrLevel": "B1",
+  "topic": "cooking",
+  "topicVi": "Nấu ăn",
+  "dialogue": {
+   "title": "Cooking Class",
+   "titleVi": "Lớp học nấu ăn",
+   "location": "Trường dạy nấu ăn Bella Cucina",
+   "characters": [
+    {
+     "name": "Ms. Anna",
+     "role": "Học viên",
+     "gender": "female"
+    },
+    {
+     "name": "Chef Luca",
+     "role": "Đầu bếp",
+     "gender": "male"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Chef Luca",
+     "textEn": "Welcome, everyone! Today we make pasta — real Italian pasta.",
+     "textVi": "Chào mọi người! Hôm nay chúng ta làm mì Ý — mì Ý đúng chuẩn."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Ms. Anna",
+     "textEn": "Exciting! But... I'm terrible at cooking. I burned water once.",
+     "textVi": "Hấp dẫn quá! Nhưng... tôi nấu ăn dở tệ. Có lần tôi còn làm cháy cả nước."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Chef Luca",
+     "textEn": "Ha! You can't burn water. Well, almost. Let's start with the dough.",
+     "textVi": "Ha! Không ai làm cháy nước được đâu. À, gần như thế. Bắt đầu với bột nhé."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Ms. Anna",
+     "textEn": "Okay. How much flour do I need for two people?",
+     "textVi": "Vâng. Tôi cần bao nhiêu bột cho hai người ăn?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Chef Luca",
+     "textEn": "Two hundred grams. And don't forget the salt — a good pinch.",
+     "textVi": "Hai trăm gram. Và đừng quên muối — một nhúm kha khá."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Ms. Anna",
+     "textEn": "Like this? Hmm, I think I added too much...",
+     "textVi": "Như này ạ? Hừm, hình như tôi cho hơi nhiều..."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Chef Luca",
+     "textEn": "Relax! A little extra salt is fine. Now, knead the dough for ten minutes.",
+     "textVi": "Thư giãn đi! Hơi mặn một chút cũng không sao. Giờ nhào bột mười phút."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Ms. Anna",
+     "textEn": "Ten minutes?! My arms are going to be so tired.",
+     "textVi": "Mười phút á?! Tay tôi sẽ mỏi nhừ mất."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Chef Luca",
+     "textEn": "That's the secret of good pasta — strong arms and patience!",
+     "textVi": "Đó là bí quyết của mì ngon — cánh tay khỏe và sự kiên nhẫn!"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Ms. Anna",
+     "textEn": "Alright, chef. By the way, can I taste it now?",
+     "textVi": "Vâng, đầu bếp. Nhân tiện, tôi nếm thử bây giờ được không?"
+    },
+    {
+     "id": "line-11",
+     "speaker": "Chef Luca",
+     "textEn": "Not yet! First we cook, then we eat. That's the rule.",
+     "textVi": "Chưa được! Trước tiên nấu, rồi mới ăn. Đó là quy tắc."
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "What is Ms. Anna bad at?",
+    "options": [
+     "Cooking",
+     "Swimming",
+     "Dancing",
+     "Driving"
+    ],
+    "correctAnswer": "Cooking",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2: 'I'm terrible at cooking' — Anna nấu ăn rất tệ."
+   },
+   {
+    "question": "How long must she knead the dough?",
+    "options": [
+     "Ten minutes",
+     "Two minutes",
+     "One hour",
+     "Five minutes"
+    ],
+    "correctAnswer": "Ten minutes",
+    "evidenceLineId": "line-7",
+    "explanation": "Dòng 7: 'knead the dough for ten minutes' — nhào bột mười phút."
+   },
+   {
+    "question": "How much flour does she need for two people?",
+    "options": [
+     "200 grams",
+     "100 grams",
+     "500 grams",
+     "1 kilo"
+    ],
+    "correctAnswer": "200 grams",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5: 'Two hundred grams' — hai trăm gram bột."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-2",
+    "line-5",
+    "line-7",
+    "line-11"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-4",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-3",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-050",
+  "cefrLevel": "B1",
+  "topic": "healthcare",
+  "topicVi": "Y tế",
+  "dialogue": {
+   "title": "Toothache",
+   "titleVi": "Đau răng",
+   "location": "Phòng khám nha khoa Bright Smile",
+   "characters": [
+    {
+     "name": "Ms. Brown",
+     "role": "Bệnh nhân",
+     "gender": "female"
+    },
+    {
+     "name": "Dr. Kim",
+     "role": "Nha sĩ",
+     "gender": "male"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Dr. Kim",
+     "textEn": "Hello! So, what's the problem with your tooth?",
+     "textVi": "Xin chào! Răng của chị có vấn đề gì vậy?"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Ms. Brown",
+     "textEn": "It hurts so much when I drink cold water. Like... electricity!",
+     "textVi": "Tôi đau kinh khủng khi uống nước lạnh. Như... bị điện giật ấy!"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Dr. Kim",
+     "textEn": "Ouch, that sounds painful. Open wide, please. Hmm...",
+     "textVi": "Chà, nghe đau thật. Há miệng to ra nào. Hừm..."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Ms. Brown",
+     "textEn": "Is it bad, doctor? Please don't say I need a root canal!",
+     "textVi": "Có nặng không bác sĩ? Xin đừng nói là tôi cần chữa tủy!"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Dr. Kim",
+     "textEn": "Good news — it's just a small cavity. No root canal today!",
+     "textVi": "Tin tốt — chỉ là sâu nhỏ thôi. Hôm nay không cần chữa tủy!"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Ms. Brown",
+     "textEn": "Oh, thank goodness! I was so scared. I hate the dentist's drill.",
+     "textVi": "Ôi, may quá! Tôi sợ muốn chết. Tôi ghét cái máy khoan của nha sĩ."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Dr. Kim",
+     "textEn": "Most people do! But this filling will take only fifteen minutes.",
+     "textVi": "Hầu hết mọi người đều ghét! Nhưng trám răng này chỉ mất mười lăm phút thôi."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Ms. Brown",
+     "textEn": "Okay... Will it hurt?",
+     "textVi": "Được... Có đau không ạ?"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Dr. Kim",
+     "textEn": "I'll use anesthesia, so you'll feel almost nothing. Promise!",
+     "textVi": "Tôi sẽ gây tê, nên chị hầu như không cảm thấy gì. Hứa đấy!"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Ms. Brown",
+     "textEn": "Alright. And after this... can I eat ice cream tonight?",
+     "textVi": "Được rồi. Và sau này... tối nay tôi ăn kem được không?"
+    },
+    {
+     "id": "line-11",
+     "speaker": "Dr. Kim",
+     "textEn": "Ha! No ice cream today. Soft food only — your tooth needs rest.",
+     "textVi": "Ha! Hôm nay không kem nhé. Chỉ ăn đồ mềm thôi — răng của chị cần nghỉ ngơi."
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "When does Ms. Brown's tooth hurt?",
+    "options": [
+     "When she drinks cold water",
+     "When she eats rice",
+     "All the time",
+     "Only at night"
+    ],
+    "correctAnswer": "When she drinks cold water",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2: 'when I drink cold water' — răng đau khi uống nước lạnh."
+   },
+   {
+    "question": "What is the actual problem with her tooth?",
+    "options": [
+     "A small cavity",
+     "A root canal",
+     "A broken tooth",
+     "Gum disease"
+    ],
+    "correctAnswer": "A small cavity",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5: 'it's just a small cavity' — chỉ là sâu răng nhỏ."
+   },
+   {
+    "question": "How long will the filling take?",
+    "options": [
+     "Fifteen minutes",
+     "One hour",
+     "Five minutes",
+     "All day"
+    ],
+    "correctAnswer": "Fifteen minutes",
+    "evidenceLineId": "line-7",
+    "explanation": "Dòng 7: 'only fifteen minutes' — trám răng mất mười lăm phút."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-5",
+    "line-7",
+    "line-9",
+    "line-11"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-4",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-3",
+    "line-5"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-051",
+  "cefrLevel": "B1",
+  "topic": "community",
+  "topicVi": "Cộng đồng",
+  "dialogue": {
+   "title": "Community Garden",
+   "titleVi": "Vườn cộng đồng",
+   "location": "Vườn cộng đồng Green Park",
+   "characters": [
+    {
+     "name": "Mr. Thompson",
+     "role": "Tình nguyện viên mới",
+     "gender": "male"
+    },
+    {
+     "name": "Mrs. Chen",
+     "role": "Điều phối viên",
+     "gender": "female"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Mrs. Chen",
+     "textEn": "Welcome to our community garden! Are you our new volunteer?",
+     "textVi": "Chào mừng đến vườn cộng đồng! Anh là tình nguyện viên mới phải không?"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mr. Thompson",
+     "textEn": "Yes, I am. I just moved here, and I want to meet my neighbors.",
+     "textVi": "Vâng, đúng vậy. Tôi mới chuyển đến đây, và muốn làm quen với hàng xóm."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Mrs. Chen",
+     "textEn": "Wonderful! We meet every Saturday morning at eight. Bring gloves!",
+     "textVi": "Tuyệt vời! Chúng tôi họp mỗi sáng thứ Bảy lúc tám giờ. Nhớ mang găng tay!"
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mr. Thompson",
+     "textEn": "Got it. What do we grow here? Vegetables? Flowers?",
+     "textVi": "Rõ rồi. Ở đây mình trồng gì vậy? Rau? Hoa?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Mrs. Chen",
+     "textEn": "Both! Tomatoes, carrots, and lots of sunflowers. The kids love them.",
+     "textVi": "Cả hai! Cà chua, cà rốt, và rất nhiều hoa hướng dương. Bọn trẻ thích lắm."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mr. Thompson",
+     "textEn": "Nice. I've never gardened before, but I'm a fast learner.",
+     "textVi": "Hay quá. Tôi chưa làm vườn bao giờ, nhưng tôi học nhanh lắm."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Mrs. Chen",
+     "textEn": "Don't worry, we'll teach you. Oh — and we share everything we harvest.",
+     "textVi": "Đừng lo, chúng tôi sẽ dạy anh. À — và chúng ta chia nhau mọi thứ thu hoạch được."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mr. Thompson",
+     "textEn": "Really? That's so kind. Can I take some tomatoes home today?",
+     "textVi": "Thật á? Tốt bụng quá. Hôm nay tôi mang ít cà chua về được không?"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Mrs. Chen",
+     "textEn": "Of course! Take a bag. But next time, bring your own basket.",
+     "textVi": "Dĩ nhiên! Cứ lấy một túi. Nhưng lần sau nhớ mang giỏ của mình nhé."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mr. Thompson",
+     "textEn": "Deal! I'll bring the biggest basket I can find.",
+     "textVi": "Chốt! Tôi sẽ mang cái giỏ to nhất có thể tìm được."
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "When do the volunteers meet?",
+    "options": [
+     "Every Saturday morning",
+     "Every Sunday evening",
+     "Every day",
+     "Once a month"
+    ],
+    "correctAnswer": "Every Saturday morning",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3: 'every Saturday morning at eight' — họp mỗi sáng thứ Bảy."
+   },
+   {
+    "question": "Why did Mr. Thompson join the garden?",
+    "options": [
+     "To meet his neighbors",
+     "To sell vegetables",
+     "To get free food",
+     "To do homework"
+    ],
+    "correctAnswer": "To meet his neighbors",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2: 'I want to meet my neighbors' — muốn làm quen với hàng xóm."
+   },
+   {
+    "question": "What should he bring next time?",
+    "options": [
+     "His own basket",
+     "Money",
+     "Seeds",
+     "A friend"
+    ],
+    "correctAnswer": "His own basket",
+    "evidenceLineId": "line-9",
+    "explanation": "Dòng 9: 'bring your own basket' — lần sau mang giỏ của mình."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-5",
+    "line-7"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-4",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-3",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-052",
+  "cefrLevel": "B1",
+  "topic": "transport",
+  "topicVi": "Giao thông",
+  "dialogue": {
+   "title": "Taxi Ride",
+   "titleVi": "Chuyến taxi",
+   "location": "Trên xe taxi",
+   "characters": [
+    {
+     "name": "Ms. Olivia",
+     "role": "Hành khách",
+     "gender": "female"
+    },
+    {
+     "name": "Mr. Tony",
+     "role": "Tài xế taxi",
+     "gender": "male"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Mr. Tony",
+     "textEn": "Where to, miss? Hop in, hop in!",
+     "textVi": "Đi đâu, cô ơi? Lên xe, lên xe!"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Ms. Olivia",
+     "textEn": "To the airport, please. Terminal two. I'm a bit late.",
+     "textVi": "Ra sân bay ạ. Ga số hai. Tôi hơi trễ rồi."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Mr. Tony",
+     "textEn": "Don't worry, I know a shortcut! I've driven this road for twenty years.",
+     "textVi": "Đừng lo, tôi biết đường tắt! Tôi chạy tuyến này hai mươi năm rồi."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Ms. Olivia",
+     "textEn": "Great. How long will it take?",
+     "textVi": "Tuyệt. Mất bao lâu ạ?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Mr. Tony",
+     "textEn": "About twenty-five minutes. Unless we meet my friend — the traffic jam!",
+     "textVi": "Khoảng hai mươi lăm phút. Trừ khi ta gặp bạn tôi — kẹt xe!"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Ms. Olivia",
+     "textEn": "Ha! I hope we don't meet your friend today.",
+     "textVi": "Ha! Tôi hy vọng hôm nay không gặp bạn của anh."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Mr. Tony",
+     "textEn": "Me too! So, are you flying home or on vacation?",
+     "textVi": "Tôi cũng thế! Cô bay về nhà hay đi nghỉ?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Ms. Olivia",
+     "textEn": "On vacation. Finally! I've been working non-stop for months.",
+     "textVi": "Đi nghỉ. Cuối cùng! Tôi đã làm việc không ngừng nghỉ mấy tháng nay."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Mr. Tony",
+     "textEn": "Good for you! Where are you going? Somewhere warm, I hope.",
+     "textVi": "Tốt cho cô đấy! Cô đi đâu? Hy vọng là chỗ nào đó ấm áp."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Ms. Olivia",
+     "textEn": "To Bali! Sun, beach, and no emails for a whole week.",
+     "textVi": "Đi Bali! Nắng, biển, và không email suốt một tuần."
+    },
+    {
+     "id": "line-11",
+     "speaker": "Mr. Tony",
+     "textEn": "Wow! Can I come with you? Just kidding! We're here — Terminal two.",
+     "textVi": "Wow! Tôi đi cùng được không? Đùa thôi! Đến nơi rồi — Ga số hai."
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "Where is Ms. Olivia going?",
+    "options": [
+     "To the airport",
+     "To the station",
+     "To the hotel",
+     "To the office"
+    ],
+    "correctAnswer": "To the airport",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2: 'To the airport, please' — Olivia đi ra sân bay."
+   },
+   {
+    "question": "How long has Mr. Tony driven this road?",
+    "options": [
+     "Twenty years",
+     "Two years",
+     "Ten years",
+     "Five months"
+    ],
+    "correctAnswer": "Twenty years",
+    "evidenceLineId": "line-3",
+    "explanation": "Dòng 3: 'for twenty years' — tài xế chạy tuyến này hai mươi năm."
+   },
+   {
+    "question": "Where is Ms. Olivia flying to?",
+    "options": [
+     "Bali",
+     "Paris",
+     "Tokyo",
+     "London"
+    ],
+    "correctAnswer": "Bali",
+    "evidenceLineId": "line-10",
+    "explanation": "Dòng 10: 'To Bali!' — Olivia bay đi Bali."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-5",
+    "line-9"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-4",
+    "line-6",
+    "line-8"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-11"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "id": "pkg-053",
+  "cefrLevel": "B1",
+  "topic": "culture",
+  "topicVi": "Văn hóa",
+  "dialogue": {
+   "title": "Museum Visit",
+   "titleVi": "Thăm bảo tàng",
+   "location": "Bảo tàng Lịch sử Quốc gia",
+   "characters": [
+    {
+     "name": "Mr. Wilson",
+     "role": "Du khách",
+     "gender": "male"
+    },
+    {
+     "name": "Ms. Sara",
+     "role": "Hướng dẫn viên",
+     "gender": "female"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Ms. Sara",
+     "textEn": "Welcome to the National History Museum! First time here?",
+     "textVi": "Chào mừng đến Bảo tàng Lịch sử Quốc gia! Lần đầu anh đến đây à?"
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mr. Wilson",
+     "textEn": "Yes! I've always wanted to see the dinosaur bones.",
+     "textVi": "Vâng! Tôi luôn muốn xem xương khủng long."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Ms. Sara",
+     "textEn": "You're in luck — the dinosaur hall is our most popular room.",
+     "textVi": "Anh may mắn đấy — phòng khủng long là phòng nổi tiếng nhất của chúng tôi."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mr. Wilson",
+     "textEn": "Amazing! How old are those bones?",
+     "textVi": "Tuyệt vời! Mấy bộ xương đó bao nhiêu tuổi rồi?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Ms. Sara",
+     "textEn": "About sixty-five million years old. Older than my jokes!",
+     "textVi": "Khoảng sáu mươi lăm triệu năm tuổi. Già hơn cả mấy câu đùa của tôi!"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mr. Wilson",
+     "textEn": "Ha! Do we have time to see everything today?",
+     "textVi": "Ha! Hôm nay mình có đủ thời gian xem hết không?"
+    },
+    {
+     "id": "line-7",
+     "speaker": "Ms. Sara",
+     "textEn": "Hmm, the museum is huge. I'd say pick three rooms you love most.",
+     "textVi": "Hừm, bảo tàng rất lớn. Tôi khuyên anh chọn ba phòng mình thích nhất."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mr. Wilson",
+     "textEn": "Okay — dinosaurs, ancient Egypt, and... the gift shop!",
+     "textVi": "Được — khủng long, Ai Cập cổ đại, và... cửa hàng quà lưu niệm!"
+    },
+    {
+     "id": "line-9",
+     "speaker": "Ms. Sara",
+     "textEn": "Ha! The gift shop is everyone's favorite room. Follow me!",
+     "textVi": "Ha! Cửa hàng quà là phòng yêu thích của mọi người. Đi theo tôi!"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mr. Wilson",
+     "textEn": "One question — can I take photos inside?",
+     "textVi": "Một câu hỏi — tôi có thể chụp ảnh bên trong không?"
+    },
+    {
+     "id": "line-11",
+     "speaker": "Ms. Sara",
+     "textEn": "Yes, but no flash, please. The mummies need their beauty sleep!",
+     "textVi": "Được, nhưng xin đừng dùng đèn flash. Các xác ướp cần giấc ngủ làm đẹp!"
+    }
+   ]
+  },
+  "quiz": [
+   {
+    "question": "What does Mr. Wilson want to see most?",
+    "options": [
+     "Dinosaur bones",
+     "Ancient coins",
+     "Modern art",
+     "Old cars"
+    ],
+    "correctAnswer": "Dinosaur bones",
+    "evidenceLineId": "line-2",
+    "explanation": "Dòng 2: 'I\\'ve always wanted to see the dinosaur bones' — muốn xem xương khủng long."
+   },
+   {
+    "question": "How old are the dinosaur bones?",
+    "options": [
+     "65 million years",
+     "650 years",
+     "6,500 years",
+     "65 years"
+    ],
+    "correctAnswer": "65 million years",
+    "evidenceLineId": "line-5",
+    "explanation": "Dòng 5: 'sixty-five million years old' — sáu mươi lăm triệu năm tuổi."
+   },
+   {
+    "question": "What is NOT allowed inside the museum?",
+    "options": [
+     "Flash photos",
+     "Taking photos",
+     "Buying souvenirs",
+     "Asking questions"
+    ],
+    "correctAnswer": "Flash photos",
+    "evidenceLineId": "line-11",
+    "explanation": "Dòng 11: 'no flash, please' — không được dùng đèn flash."
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-3",
+    "line-5",
+    "line-7",
+    "line-11"
+   ]
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-4",
+    "line-6",
+    "line-10"
+   ]
+  },
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-11"
+   ]
+  },
+  "source": "ai-generated",
+  "verified": false
+ },
+ {
+  "cefrLevel": "B2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "James",
+     "role": "Khách hàng"
+    },
+    {
+     "gender": "female",
+     "name": "Anna",
+     "role": "Nhân viên tổng đài"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "James",
+     "textEn": "Good morning, I'm calling to file a claim for my car, which was damaged in a parking lot yesterday evening.",
+     "textVi": "Chào buổi sáng, tôi gọi để nộp hồ sơ bồi thường cho chiếc xe bị hỏng ở bãi đỗ xe tối hôm qua."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Anna",
+     "textEn": "I'm sorry to hear that. Could you give me your policy number so I can pull up your details?",
+     "textVi": "Rất tiếc khi nghe chuyện đó. Anh có thể cho tôi số hợp đồng bảo hiểm để tôi tra thông tin của anh không?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "James",
+     "textEn": "Sure, it's POL-8821. Someone scraped the rear bumper and didn't leave a note, which really frustrates me.",
+     "textVi": "Được, số là POL-8821. Có người đã làm xước cản sau mà không để lại lời nhắn, việc này khiến tôi rất bực."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Anna",
+     "textEn": "I understand how upsetting that must be. Before we proceed, I'll need you to describe the extent of the damage as accurately as you can.",
+     "textVi": "Tôi hiểu việc đó gây khó chịu thế nào. Trước khi tiếp tục, tôi cần anh mô tả mức độ thiệt hại càng chính xác càng tốt."
+    },
+    {
+     "id": "line-5",
+     "speaker": "James",
+     "textEn": "The bumper is badly scratched and slightly dented. The repair shop estimated it'll cost around four hundred dollars to fix.",
+     "textVi": "Cản xe bị xước nặng và hơi móp. Gara báo giá sửa chữa khoảng bốn trăm đô la."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Anna",
+     "textEn": "Thank you. Please note that your policy has a deductible of one hundred and fifty dollars, which means that amount will be subtracted from your payout.",
+     "textVi": "Cảm ơn anh. Xin lưu ý hợp đồng của anh có mức khấu trừ một trăm năm mươi đô la, nghĩa là số tiền đó sẽ được trừ khỏi khoản bồi thường."
+    },
+    {
+     "id": "line-7",
+     "speaker": "James",
+     "textEn": "That's fine, I was aware of that clause. What happens next, and how long does the whole process usually take?",
+     "textVi": "Không sao, tôi đã biết điều khoản đó. Tiếp theo sẽ thế nào, và toàn bộ quy trình thường mất bao lâu?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Anna",
+     "textEn": "First, I'll send you a claim form by email. Once we receive your photos and the repair estimate, an assessor will review your case within five working days.",
+     "textVi": "Trước tiên, tôi sẽ gửi mẫu đơn yêu cầu bồi thường qua email. Sau khi nhận được ảnh và báo giá sửa chữa, chuyên viên thẩm định sẽ xem xét hồ sơ của anh trong vòng năm ngày làm việc."
+    },
+    {
+     "id": "line-9",
+     "speaker": "James",
+     "textEn": "Sounds good. Should I go ahead and get the repair done, or should I wait until the claim is approved?",
+     "textVi": "Nghe ổn đấy. Tôi nên tiến hành sửa xe luôn, hay đợi đến khi hồ sơ được duyệt?"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Anna",
+     "textEn": "I'd recommend waiting for our written approval. If you start repairs early without authorization, we may not be able to cover the full cost.",
+     "textVi": "Tôi khuyên anh nên chờ phê duyệt bằng văn bản của chúng tôi. Nếu anh sửa trước mà không được cho phép, chúng tôi có thể không chi trả toàn bộ chi phí."
+    }
+   ],
+   "location": "Tổng đài bảo hiểm",
+   "title": "Insurance Claim",
+   "titleVi": "Bồi thường bảo hiểm"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-3",
+    "line-5",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "id": "pkg-054",
+  "quiz": [
+   {
+    "correctAnswer": "The accident happened in a parking lot and the driver left without leaving a note.",
+    "evidenceLineId": "line-3",
+    "explanation": "Ở line-3 James nói 'Someone scraped the rear bumper and didn't leave a note' — có người gây xước xe và không để lại lời nhắn nên anh không biết người đó là ai.",
+    "options": [
+     "The accident happened in a parking lot and the driver left without leaving a note.",
+     "James's car was stolen and later recovered.",
+     "The parking lot cameras were switched off that evening.",
+     "James forgot to write down the other driver's number."
+    ],
+    "question": "Why can't James identify the person responsible for the damage?"
+   },
+   {
+    "correctAnswer": "Around two hundred and fifty dollars.",
+    "evidenceLineId": "line-6",
+    "explanation": "Chi phí sửa là 400 đô (line-5), mức khấu trừ là 150 đô (line-6) nên khoản bồi thường ước tính là 400 − 150 = 250 đô. Đây là câu suy luận cần tính toán.",
+    "options": [
+     "Around two hundred and fifty dollars.",
+     "The full four hundred dollars.",
+     "Only one hundred and fifty dollars.",
+     "Nothing, because the damage is minor."
+    ],
+    "question": "How much will James most likely receive from the insurance company after the deductible?"
+   },
+   {
+    "correctAnswer": "It is risky because the insurer might not cover the full cost.",
+    "evidenceLineId": "line-10",
+    "explanation": "Ở line-10 Anna nói nếu sửa xe trước khi được cho phép, công ty 'may not be able to cover the full cost' — tức là có rủi ro không được chi trả đầy đủ.",
+    "options": [
+     "It is risky because the insurer might not cover the full cost.",
+     "It is required to speed up the claim process.",
+     "It will automatically double the payout.",
+     "It will cancel the deductible."
+    ],
+    "question": "What does Anna imply about starting repairs before the claim is approved?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-2",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "services",
+  "topicVi": "Dịch vụ",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-4",
+    "line-8"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "B2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "David",
+     "role": "Nhân viên marketing"
+    },
+    {
+     "gender": "female",
+     "name": "Sarah",
+     "role": "Giám đốc bộ phận"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "David",
+     "textEn": "Thanks for seeing me today, Sarah. I'd like to discuss my compensation, which I believe no longer reflects the scope of my current responsibilities.",
+     "textVi": "Cảm ơn chị đã gặp tôi hôm nay. Tôi muốn thảo luận về mức lương, mà theo tôi nghĩ đã không còn tương xứng với phạm vi trách nhiệm hiện tại của mình."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Sarah",
+     "textEn": "Of course, David. I appreciate you raising this directly. Tell me what you've accomplished since your last review.",
+     "textVi": "Tất nhiên, David. Tôi trân trọng việc anh thẳng thắn đề cập chuyện này. Anh hãy kể những gì mình đã đạt được kể từ lần đánh giá trước."
+    },
+    {
+     "id": "line-3",
+     "speaker": "David",
+     "textEn": "Over the past year, I've taken on two major clients and increased our team's revenue by thirty percent, which went well beyond my original targets.",
+     "textVi": "Trong năm qua, tôi đã phụ trách hai khách hàng lớn và tăng doanh thu của nhóm lên ba mươi phần trăm, vượt xa chỉ tiêu ban đầu."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Sarah",
+     "textEn": "Those are impressive figures, and I won't deny your contribution. However, you should know the company is facing some budget constraints this quarter.",
+     "textVi": "Đó là những con số ấn tượng, và tôi không phủ nhận đóng góp của anh. Tuy nhiên, anh nên biết công ty đang gặp một số khó khăn về ngân sách trong quý này."
+    },
+    {
+     "id": "line-5",
+     "speaker": "David",
+     "textEn": "I understand the situation, but retaining experienced staff also costs less than hiring and training replacements, which is worth considering.",
+     "textVi": "Tôi hiểu tình hình, nhưng giữ chân nhân viên giàu kinh nghiệm cũng tốn ít chi phí hơn tuyển dụng và đào tạo người mới, điều này đáng để cân nhắc."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Sarah",
+     "textEn": "That's a fair point. What kind of adjustment did you have in mind?",
+     "textVi": "Đó là một ý kiến hợp lý. Anh đang nghĩ đến mức điều chỉnh như thế nào?"
+    },
+    {
+     "id": "line-7",
+     "speaker": "David",
+     "textEn": "Based on industry benchmarks for my role, I'd like to propose a ten percent increase, effective from next month.",
+     "textVi": "Dựa trên mặt bằng ngành cho vị trí của tôi, tôi xin đề xuất tăng mười phần trăm, có hiệu lực từ tháng tới."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Sarah",
+     "textEn": "Ten percent is higher than I can approve on my own. I could support six percent now, with a further review in six months tied to your performance.",
+     "textVi": "Mười phần trăm cao hơn mức tôi có thể tự phê duyệt. Tôi có thể đồng ý sáu phần trăm ngay bây giờ, và đánh giá thêm sau sáu tháng dựa trên hiệu quả công việc của anh."
+    },
+    {
+     "id": "line-9",
+     "speaker": "David",
+     "textEn": "I was hoping for a bit more, but six percent with a clear path to a follow-up review is something I can accept.",
+     "textVi": "Tôi đã hy vọng cao hơn một chút, nhưng sáu phần trăm kèm lộ trình đánh giá tiếp theo rõ ràng là điều tôi có thể chấp nhận."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Sarah",
+     "textEn": "Excellent. I'll put the proposal in writing this week, and let's schedule that follow-up review so your progress is properly documented.",
+     "textVi": "Tuyệt vời. Tôi sẽ gửi đề xuất bằng văn bản trong tuần này, và chúng ta hãy lên lịch buổi đánh giá tiếp theo để tiến độ của anh được ghi nhận đầy đủ."
+    }
+   ],
+   "location": "Phòng họp công ty",
+   "title": "Asking for a Raise",
+   "titleVi": "Xin tăng lương"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-3",
+    "line-6",
+    "line-7"
+   ]
+  },
+  "id": "pkg-055",
+  "quiz": [
+   {
+    "correctAnswer": "Because he brought in two major clients and boosted team revenue by thirty percent.",
+    "evidenceLineId": "line-3",
+    "explanation": "Ở line-3 David nêu bằng chứng cụ thể: phụ trách hai khách hàng lớn và tăng doanh thu nhóm 30%, vượt chỉ tiêu.",
+    "options": [
+     "Because he brought in two major clients and boosted team revenue by thirty percent.",
+     "Because he has worked at the company longer than anyone else.",
+     "Because his colleagues all received raises last month.",
+     "Because he completed an MBA degree last year."
+    ],
+    "question": "Why does David think he deserves a raise?"
+   },
+   {
+    "correctAnswer": "Keeping experienced staff is cheaper than recruiting and training new ones.",
+    "evidenceLineId": "line-5",
+    "explanation": "Ở line-5 David lập luận rằng giữ chân nhân viên giàu kinh nghiệm tốn ít chi phí hơn tuyển và đào tạo người thay thế — đây là lập luận kinh tế để phản biện khó khăn ngân sách.",
+    "options": [
+     "Keeping experienced staff is cheaper than recruiting and training new ones.",
+     "He will leave the company if he doesn't get a raise.",
+     "The budget problems are exaggerated by management.",
+     "Other departments waste more money than his team."
+    ],
+    "question": "What argument does David use to counter the company's budget problems?"
+   },
+   {
+    "correctAnswer": "David accepts a six percent raise now with a performance review in six months.",
+    "evidenceLineId": "line-9",
+    "explanation": "Ở line-9 David chấp nhận mức tăng 6% kèm đánh giá tiếp theo sau sáu tháng, và line-10 Sarah xác nhận sẽ gửi đề xuất bằng văn bản.",
+    "options": [
+     "David accepts a six percent raise now with a performance review in six months.",
+     "Sarah agrees to the full ten percent increase immediately.",
+     "David rejects the offer and decides to resign.",
+     "Sarah promises to decide sometime next year."
+    ],
+    "question": "What is the final outcome of the negotiation?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-1",
+    "line-5",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "work",
+  "topicVi": "Công việc",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-8"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "B2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Tom",
+     "role": "Chủ cửa hàng tạp hóa"
+    },
+    {
+     "gender": "female",
+     "name": "Lisa",
+     "role": "Nhà hoạt động môi trường"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Lisa",
+     "textEn": "Thank you all for coming. Our proposal is simple: banning single-use plastics in this town would drastically reduce the waste choking our rivers.",
+     "textVi": "Cảm ơn mọi người đã đến. Đề xuất của chúng tôi rất đơn giản: cấm đồ nhựa dùng một lần trong thị trấn sẽ giảm mạnh lượng rác đang làm nghẹt sông của chúng ta."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Tom",
+     "textEn": "I respect your passion, Lisa, but as a shop owner, I'm worried this ban would hit small businesses like mine the hardest.",
+     "textVi": "Tôi tôn trọng sự tâm huyết của cô, Lisa, nhưng với tư cách chủ cửa hàng, tôi lo lệnh cấm này sẽ giáng đòn nặng nhất vào các doanh nghiệp nhỏ như của tôi."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Lisa",
+     "textEn": "I understand your concern, Tom. However, studies show that affordable paper and compostable alternatives are already widely available on the market.",
+     "textVi": "Tôi hiểu nỗi lo của anh, Tom. Tuy nhiên, các nghiên cứu cho thấy những lựa chọn thay thế bằng giấy và vật liệu phân hủy sinh học giá rẻ đã rất phổ biến trên thị trường."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Tom",
+     "textEn": "Available, yes, but at triple the price. If my packaging costs soar, I'll have no choice but to pass them on to my customers.",
+     "textVi": "Có sẵn thì đúng, nhưng giá gấp ba lần. Nếu chi phí bao bì của tôi tăng vọt, tôi sẽ buộc phải tính vào giá bán cho khách hàng."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Lisa",
+     "textEn": "That's a short-term view. Once demand grows, prices will fall — that's basic economics. And isn't clean water worth a few extra cents?",
+     "textVi": "Đó là cách nhìn ngắn hạn. Khi nhu cầu tăng, giá sẽ giảm — đó là quy luật kinh tế cơ bản. Và chẳng phải nguồn nước sạch đáng giá hơn vài xu lẻ sao?"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Tom",
+     "textEn": "It's easy to say that when it's not your livelihood on the line. What we need is a gradual phase-out, not an overnight ban.",
+     "textVi": "Nói thì dễ khi kế sinh nhai của cô không bị đe dọa. Điều chúng ta cần là lộ trình loại bỏ dần dần, chứ không phải lệnh cấm qua một đêm."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Lisa",
+     "textEn": "A gradual phase-out sounds reasonable, but history tells us that without firm deadlines, 'gradual' often means 'never'.",
+     "textVi": "Lộ trình dần dần nghe có vẻ hợp lý, nhưng lịch sử cho thấy nếu không có thời hạn cứng, 'dần dần' thường đồng nghĩa với 'không bao giờ'."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Tom",
+     "textEn": "Then let's compromise: a one-year transition period, during which the town subsidizes eco-friendly packaging for small shops.",
+     "textVi": "Vậy thì hãy thỏa hiệp: thời gian chuyển đổi một năm, trong đó thị trấn trợ cấp bao bì thân thiện môi trường cho các cửa hàng nhỏ."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Lisa",
+     "textEn": "That's actually a constructive idea. If the council funds the transition, I can support the one-year timeline.",
+     "textVi": "Đó thực sự là một ý tưởng mang tính xây dựng. Nếu hội đồng tài trợ cho quá trình chuyển đổi, tôi có thể ủng hộ lộ trình một năm."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Tom",
+     "textEn": "Great. It seems we've found common ground — protecting the environment without putting local businesses out of business.",
+     "textVi": "Tuyệt. Có vẻ chúng ta đã tìm được tiếng nói chung — bảo vệ môi trường mà không đẩy các doanh nghiệp địa phương đến chỗ phá sản."
+    }
+   ],
+   "location": "Hội trường cộng đồng",
+   "title": "Plastic Ban Debate",
+   "titleVi": "Tranh luận về lệnh cấm nhựa"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-3",
+    "line-6",
+    "line-9"
+   ]
+  },
+  "id": "pkg-056",
+  "quiz": [
+   {
+    "correctAnswer": "It would raise packaging costs sharply for small businesses like his shop.",
+    "evidenceLineId": "line-4",
+    "explanation": "Ở line-4 Tom nói bao bì thay thế đắt gấp ba lần và anh sẽ buộc phải tăng giá bán — mối lo chính là chi phí cho doanh nghiệp nhỏ.",
+    "options": [
+     "It would raise packaging costs sharply for small businesses like his shop.",
+     "He believes plastic pollution is not a real problem.",
+     "He thinks customers prefer plastic bags.",
+     "He owns a plastic manufacturing factory."
+    ],
+    "question": "What is Tom's main objection to an immediate plastic ban?"
+   },
+   {
+    "correctAnswer": "Because she believes vague timelines usually lead to no real action.",
+    "evidenceLineId": "line-7",
+    "explanation": "Ở line-7 Lisa nói không có thời hạn cứng thì 'gradual' thường nghĩa là 'never' — đây là câu suy luận về thái độ hoài nghi của cô dựa trên kinh nghiệm lịch sử.",
+    "options": [
+     "Because she believes vague timelines usually lead to no real action.",
+     "Because she wants to punish shop owners immediately.",
+     "Because scientists told her plastic is harmless.",
+     "Because the council has unlimited funding."
+    ],
+    "question": "Why does Lisa distrust the idea of a 'gradual phase-out' without a deadline?"
+   },
+   {
+    "correctAnswer": "A one-year transition with town subsidies for eco-friendly packaging.",
+    "evidenceLineId": "line-8",
+    "explanation": "Ở line-8 Tom đề xuất thời gian chuyển đổi một năm kèm trợ cấp của thị trấn, và line-9 Lisa đồng ý với điều kiện hội đồng tài trợ.",
+    "options": [
+     "A one-year transition with town subsidies for eco-friendly packaging.",
+     "A complete ban starting next week with no exceptions.",
+     "No ban at all, only voluntary recycling.",
+     "A ban that applies only to large supermarkets."
+    ],
+    "question": "What compromise do they finally reach?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-1",
+    "line-5",
+    "line-7",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "environment",
+  "topicVi": "Môi trường",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-7"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "B2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "female",
+     "name": "Emma",
+     "role": "Khách hàng"
+    },
+    {
+     "gender": "male",
+     "name": "Ryan",
+     "role": "Nhân viên chăm sóc khách hàng"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Emma",
+     "textEn": "Hello, I'm calling about order number 55421, which arrived this morning with a cracked screen.",
+     "textVi": "Chào anh, tôi gọi về đơn hàng số 55421, sáng nay nhận được thì màn hình đã bị nứt."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Ryan",
+     "textEn": "I'm very sorry about that, Emma. Let me check your order details. Was the outer packaging damaged when you received it?",
+     "textVi": "Tôi rất xin lỗi về việc này, Emma. Để tôi kiểm tra chi tiết đơn hàng. Khi nhận, bao bì bên ngoài có bị hỏng không ạ?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Emma",
+     "textEn": "Actually, the box looked perfectly fine, which makes me think the tablet was defective before it was even shipped.",
+     "textVi": "Thực ra hộp trông hoàn toàn nguyên vẹn, điều này khiến tôi nghĩ chiếc máy tính bảng đã bị lỗi từ trước khi gửi đi."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Ryan",
+     "textEn": "That's helpful information. Could you take a few clear photos of the damage and upload them through the link I'll send you?",
+     "textVi": "Thông tin đó rất hữu ích. Chị có thể chụp vài tấm ảnh rõ nét về chỗ hỏng và tải lên qua đường link tôi sẽ gửi không?"
+    },
+    {
+     "id": "line-5",
+     "speaker": "Emma",
+     "textEn": "Sure, I can do that right away. But honestly, I'd prefer a replacement rather than a repair, since the product is brand new.",
+     "textVi": "Được, tôi làm ngay. Nhưng thật lòng tôi muốn được đổi hàng mới thay vì sửa chữa, vì sản phẩm còn hoàn toàn mới."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Ryan",
+     "textEn": "I completely understand. Under our policy, items damaged on arrival qualify for a free replacement within thirty days of delivery.",
+     "textVi": "Tôi hoàn toàn hiểu. Theo chính sách của chúng tôi, hàng bị hỏng khi nhận được đủ điều kiện đổi mới miễn phí trong vòng ba mươi ngày kể từ ngày giao."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Emma",
+     "textEn": "That's reassuring. How long will the replacement take, and do I need to return the faulty one first?",
+     "textVi": "Nghe vậy tôi yên tâm. Hàng đổi mới mất bao lâu, và tôi có cần gửi trả hàng lỗi trước không?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Ryan",
+     "textEn": "We'll ship the replacement within two working days. Our courier will collect the faulty item at the same time, so you won't have to visit a post office.",
+     "textVi": "Chúng tôi sẽ gửi hàng thay thế trong vòng hai ngày làm việc. Nhân viên giao hàng sẽ thu hồi hàng lỗi cùng lúc, nên chị không cần ra bưu điện."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Emma",
+     "textEn": "Perfect, that couldn't be more convenient. Will I get a tracking number for the new shipment?",
+     "textVi": "Hoàn hảo, không thể tiện hơn. Tôi có nhận được mã vận đơn cho kiện hàng mới không?"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Ryan",
+     "textEn": "Absolutely. I'll email the tracking details shortly, along with a return label for your records. Thanks for your patience, Emma.",
+     "textVi": "Chắc chắn rồi. Tôi sẽ gửi email chi tiết vận đơn ngay, kèm nhãn trả hàng để chị lưu hồ sơ. Cảm ơn chị đã kiên nhẫn, Emma."
+    }
+   ],
+   "location": "Cuộc gọi chăm sóc khách hàng",
+   "title": "Online Shopping Complaint",
+   "titleVi": "Khiếu nại mua hàng online"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-4",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "id": "pkg-057",
+  "quiz": [
+   {
+    "correctAnswer": "Because the outer box was undamaged when it arrived.",
+    "evidenceLineId": "line-3",
+    "explanation": "Ở line-3 Emma nói hộp 'looked perfectly fine' nên cô suy luận máy đã lỗi từ trước khi gửi — đây là suy luận logic từ bằng chứng.",
+    "options": [
+     "Because the outer box was undamaged when it arrived.",
+     "Because the courier admitted dropping the package.",
+     "Because she ordered the wrong model by mistake.",
+     "Because the tablet was a second-hand item."
+    ],
+    "question": "Why does Emma suspect the tablet was defective before shipping?"
+   },
+   {
+    "correctAnswer": "A brand-new replacement unit.",
+    "evidenceLineId": "line-5",
+    "explanation": "Ở line-5 Emma nói rõ muốn 'a replacement rather than a repair' vì sản phẩm còn mới.",
+    "options": [
+     "A brand-new replacement unit.",
+     "A partial refund of fifty percent.",
+     "A discount voucher for her next purchase.",
+     "An extended warranty on the cracked screen."
+    ],
+    "question": "What does Emma prefer instead of having the tablet repaired?"
+   },
+   {
+    "correctAnswer": "It is designed to be convenient, with courier pickup at delivery time.",
+    "evidenceLineId": "line-8",
+    "explanation": "Ở line-8 Ryan nói nhân viên giao hàng sẽ thu hồi hàng lỗi cùng lúc giao hàng mới, khách không cần ra bưu điện — cho thấy quy trình được thiết kế thuận tiện. Đây là câu suy luận.",
+    "options": [
+     "It is designed to be convenient, with courier pickup at delivery time.",
+     "Customers must pay for return shipping themselves.",
+     "Replacements are only offered after a long investigation.",
+     "Faulty items must be returned within 24 hours."
+    ],
+    "question": "What can be inferred about the company's return process?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-2",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "shopping",
+  "topicVi": "Mua sắm",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-8"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "B2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Michael",
+     "role": "Chú rể tương lai"
+    },
+    {
+     "gender": "female",
+     "name": "Sophie",
+     "role": "Cô dâu tương lai"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Sophie",
+     "textEn": "Okay, we have exactly three months left, so we really need to nail down the venue this weekend.",
+     "textVi": "Được rồi, chỉ còn đúng ba tháng nữa, nên cuối tuần này chúng mình thực sự phải chốt địa điểm tổ chức."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Michael",
+     "textEn": "Agreed. The garden venue we visited is beautiful, but it's slightly over budget, which worries me a little.",
+     "textVi": "Đồng ý. Khu vườn chúng mình đã xem rất đẹp, nhưng hơi vượt ngân sách, điều này khiến anh hơi lo."
+    },
+    {
+     "id": "line-3",
+     "speaker": "Sophie",
+     "textEn": "I know, but it's the one place that felt truly special. Maybe we could trim the guest list to make the numbers work?",
+     "textVi": "Em biết, nhưng đó là nơi duy nhất thực sự khiến em cảm thấy đặc biệt. Hay mình cắt bớt danh sách khách mời để vừa ngân sách?"
+    },
+    {
+     "id": "line-4",
+     "speaker": "Michael",
+     "textEn": "That's a sensible compromise. If we limit it to close family and friends, we'd save enough to afford the garden.",
+     "textVi": "Đó là một sự thỏa hiệp hợp lý. Nếu chỉ mời gia đình thân thiết và bạn bè gần gũi, chúng mình sẽ tiết kiệm đủ để thuê khu vườn."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Sophie",
+     "textEn": "Exactly what I was thinking. Besides, a smaller wedding feels more intimate — we'd actually get to talk to everyone.",
+     "textVi": "Đúng ý em. Hơn nữa, đám cưới nhỏ sẽ ấm cúng hơn — chúng mình thực sự có thể trò chuyện với từng người."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Michael",
+     "textEn": "True. Now, what about the photographer? My cousin recommended one whose style is very natural and unposed.",
+     "textVi": "Đúng vậy. Còn nhiếp ảnh gia thì sao? Anh họ anh giới thiệu một người có phong cách rất tự nhiên, không gượng ép."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Sophie",
+     "textEn": "Sounds promising, but let's not rush into it. I'd like to compare at least three portfolios before we sign anything.",
+     "textVi": "Nghe có vẻ ổn, nhưng đừng vội quyết định. Em muốn so sánh ít nhất ba bộ ảnh mẫu trước khi ký hợp đồng."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Michael",
+     "textEn": "Fair enough. And we still haven't decided on the menu — my parents are pushing for a traditional sit-down dinner.",
+     "textVi": "Cũng hợp lý. Và chúng mình vẫn chưa quyết thực đơn — bố mẹ anh đang muốn tiệc tối truyền thống ngồi bàn."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Sophie",
+     "textEn": "A buffet might be more relaxed and cheaper, though. Let's ask the venue what catering options they allow first.",
+     "textVi": "Tiệc buffet có lẽ thoải mái và rẻ hơn. Trước tiên hãy hỏi địa điểm xem họ cho phép những hình thức phục vụ nào."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Michael",
+     "textEn": "Good plan. If we finalize the venue and the guest list this week, everything else will fall into place.",
+     "textVi": "Kế hoạch hay đấy. Nếu tuần này chốt được địa điểm và danh sách khách, mọi việc còn lại sẽ đâu vào đấy."
+    }
+   ],
+   "location": "Quán cà phê",
+   "title": "Wedding Planning",
+   "titleVi": "Lên kế hoạch đám cưới"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-3",
+    "line-6",
+    "line-9"
+   ]
+  },
+  "id": "pkg-058",
+  "quiz": [
+   {
+    "correctAnswer": "By reducing the guest list to close family and friends.",
+    "evidenceLineId": "line-4",
+    "explanation": "Ở line-4 Michael nói nếu giới hạn khách mời là gia đình thân và bạn bè gần gũi thì sẽ tiết kiệm đủ để thuê khu vườn.",
+    "options": [
+     "By reducing the guest list to close family and friends.",
+     "By asking Sophie's parents to pay the difference.",
+     "By choosing a cheaper photographer.",
+     "By postponing the wedding for another year."
+    ],
+    "question": "How do they plan to afford the garden venue?"
+   },
+   {
+    "correctAnswer": "It has an emotional advantage: they can personally talk to every guest.",
+    "evidenceLineId": "line-5",
+    "explanation": "Ở line-5 Sophie nói đám cưới nhỏ 'feels more intimate' và họ sẽ thực sự trò chuyện được với mọi người — đây là suy luận về lợi ích tinh thần, không chỉ tiết kiệm tiền.",
+    "options": [
+     "It has an emotional advantage: they can personally talk to every guest.",
+     "It will disappoint most of their relatives.",
+     "It is only a temporary plan until they save more money.",
+     "It means they cannot hire a photographer."
+    ],
+    "question": "What does Sophie imply about a smaller wedding?"
+   },
+   {
+    "correctAnswer": "Cautious — she wants to compare several portfolios first.",
+    "evidenceLineId": "line-7",
+    "explanation": "Ở line-7 Sophie nói 'let's not rush into it' và muốn so sánh ít nhất ba bộ ảnh mẫu trước khi ký — thái độ thận trọng.",
+    "options": [
+     "Cautious — she wants to compare several portfolios first.",
+     "Enthusiastic — she agrees to hire him immediately.",
+     "Negative — she dislikes his photography style.",
+     "Indifferent — she lets Michael decide everything."
+    ],
+    "question": "What is Sophie's attitude toward hiring Michael's cousin's photographer?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-1",
+    "line-5",
+    "line-7",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "life-events",
+  "topicVi": "Sự kiện đời sống",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-4",
+    "line-9"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "B2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Kevin",
+     "role": "Khách hàng chuyển nhà"
+    },
+    {
+     "gender": "female",
+     "name": "Julia",
+     "role": "Nhân viên công ty chuyển nhà"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Kevin",
+     "textEn": "Hi, I need to hire a van and two movers for next Saturday. I'm moving from a second-floor apartment to a house across town.",
+     "textVi": "Chào chị, tôi cần thuê một xe tải và hai nhân viên chuyển đồ vào thứ Bảy tới. Tôi chuyển từ căn hộ tầng hai sang một ngôi nhà bên kia thành phố."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Julia",
+     "textEn": "No problem, Kevin. Could you give me a rough idea of how much furniture you have, so I can recommend the right van size?",
+     "textVi": "Không vấn đề gì, Kevin. Anh có thể cho tôi biết sơ bộ lượng đồ đạc để tôi tư vấn kích cỡ xe phù hợp không?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Kevin",
+     "textEn": "There's a double bed, a sofa, a dining table with six chairs, and about twenty boxes. I think a medium van should do the trick.",
+     "textVi": "Có một giường đôi, một ghế sofa, một bàn ăn với sáu ghế, và khoảng hai mươi thùng đồ. Tôi nghĩ xe cỡ trung là vừa."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Julia",
+     "textEn": "A medium van sounds about right. Just so you know, our movers won't handle the boxes unless they're properly sealed and labeled.",
+     "textVi": "Xe cỡ trung nghe hợp lý. Anh lưu ý là nhân viên của chúng tôi sẽ không vận chuyển các thùng chưa được dán kín và ghi nhãn đầy đủ."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Kevin",
+     "textEn": "Got it, I'll make sure everything's packed by Friday night. What are your rates, and is there an extra charge for the stairs?",
+     "textVi": "Rõ rồi, tôi sẽ đảm bảo đóng gói xong trước tối thứ Sáu. Giá cước thế nào, và có phụ thu vì cầu thang không?"
+    },
+    {
+     "id": "line-6",
+     "speaker": "Julia",
+     "textEn": "It's eighty dollars per hour for the van and two movers, with a three-hour minimum. Stairs are included at no extra cost.",
+     "textVi": "Giá là tám mươi đô la một giờ cho xe tải và hai nhân viên, tối thiểu ba giờ. Cầu thang được tính miễn phí, không phụ thu."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Kevin",
+     "textEn": "That's reasonable. Do you also offer insurance in case something gets scratched or broken during the move?",
+     "textVi": "Giá hợp lý đấy. Bên chị có bảo hiểm phòng trường hợp đồ bị xước hay vỡ trong lúc chuyển không?"
+    },
+    {
+     "id": "line-8",
+     "speaker": "Julia",
+     "textEn": "Yes, basic coverage is included in the price. It covers up to one thousand dollars, which is usually more than enough for a move like yours.",
+     "textVi": "Có, bảo hiểm cơ bản đã bao gồm trong giá. Mức bảo hiểm tối đa một nghìn đô la, thường là quá đủ cho một lần chuyển như của anh."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Kevin",
+     "textEn": "Excellent. Let's book it then — next Saturday at eight in the morning. Should I pay a deposit now?",
+     "textVi": "Tuyệt vời. Vậy chốt đơn nhé — thứ Bảy tới lúc tám giờ sáng. Tôi có cần đặt cọc ngay không?"
+    },
+    {
+     "id": "line-10",
+     "speaker": "Julia",
+     "textEn": "A fifty-dollar deposit will secure your slot. I'll send you a confirmation email with the payment link right away.",
+     "textVi": "Đặt cọc năm mươi đô la để giữ lịch. Tôi sẽ gửi email xác nhận kèm link thanh toán ngay cho anh."
+    }
+   ],
+   "location": "Văn phòng công ty chuyển nhà",
+   "title": "Moving House",
+   "titleVi": "Chuyển nhà"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-1",
+    "line-3",
+    "line-5",
+    "line-9"
+   ]
+  },
+  "id": "pkg-059",
+  "quiz": [
+   {
+    "correctAnswer": "To recommend a van of the appropriate size.",
+    "evidenceLineId": "line-2",
+    "explanation": "Ở line-2 Julia nói rõ mục đích: 'so I can recommend the right van size' — để tư vấn kích cỡ xe phù hợp.",
+    "options": [
+     "To recommend a van of the appropriate size.",
+     "To calculate the insurance premium for each item.",
+     "To decide how many boxes Kevin needs to buy.",
+     "To check whether Kevin owns the apartment."
+    ],
+    "question": "Why does Julia ask about the amount of furniture?"
+   },
+   {
+    "correctAnswer": "Have all boxes sealed and labeled by Friday night.",
+    "evidenceLineId": "line-4",
+    "explanation": "Ở line-4 Julia yêu cầu thùng phải được dán kín và ghi nhãn, và line-5 Kevin cam kết đóng gói xong trước tối thứ Sáu.",
+    "options": [
+     "Have all boxes sealed and labeled by Friday night.",
+     "Disassemble all the furniture himself.",
+     "Pay the full amount in advance.",
+     "Provide his own van for the move."
+    ],
+    "question": "What must Kevin do before the movers arrive?"
+   },
+   {
+    "correctAnswer": "It will be at least two hundred and forty dollars for three hours.",
+    "evidenceLineId": "line-6",
+    "explanation": "Ở line-6 giá là 80 đô/giờ, tối thiểu 3 giờ → 80 × 3 = 240 đô là chi phí tối thiểu; cầu thang miễn phí nên không cộng thêm. Đây là câu suy luận cần tính toán.",
+    "options": [
+     "It will be at least two hundred and forty dollars for three hours.",
+     "It will cost exactly eighty dollars in total.",
+     "The stairs will add another hundred dollars.",
+     "The deposit covers the entire cost."
+    ],
+    "question": "What can be inferred about the total minimum cost of the move?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-2",
+    "line-6",
+    "line-8",
+    "line-10"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "services",
+  "topicVi": "Dịch vụ",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-4",
+    "line-6"
+   ]
+  }
+ },
+ {
+  "cefrLevel": "B2",
+  "dialogue": {
+   "characters": [
+    {
+     "gender": "male",
+     "name": "Mr. Brown",
+     "role": "Trưởng khu phố"
+    },
+    {
+     "gender": "female",
+     "name": "Mrs. Green",
+     "role": "Cư dân khu phố"
+    }
+   ],
+   "lines": [
+    {
+     "id": "line-1",
+     "speaker": "Mr. Brown",
+     "textEn": "Let's bring this meeting to order. Tonight we're discussing the council's plan to build a new landfill site just two kilometers from our neighborhood.",
+     "textVi": "Chúng ta bắt đầu cuộc họp. Tối nay chúng ta thảo luận về kế hoạch của hội đồng xây bãi rác mới cách khu phố chúng ta chỉ hai cây số."
+    },
+    {
+     "id": "line-2",
+     "speaker": "Mrs. Green",
+     "textEn": "Two kilometers? That's far too close. Has anyone considered the impact on our children's health and the smell in summer?",
+     "textVi": "Hai cây số ư? Gần quá. Có ai nghĩ đến ảnh hưởng tới sức khỏe trẻ em và mùi hôi vào mùa hè chưa?"
+    },
+    {
+     "id": "line-3",
+     "speaker": "Mr. Brown",
+     "textEn": "Those are valid concerns, and you're not alone — over two hundred residents have already signed a petition against the project.",
+     "textVi": "Đó là những lo ngại chính đáng, và bà không đơn độc — hơn hai trăm cư dân đã ký đơn kiến nghị phản đối dự án."
+    },
+    {
+     "id": "line-4",
+     "speaker": "Mrs. Green",
+     "textEn": "Good, but a petition alone won't cut it. We need to show up at the council hearing next Thursday and make our voices heard.",
+     "textVi": "Tốt, nhưng chỉ ký đơn thôi thì chưa đủ. Chúng ta cần đến dự buổi điều trần của hội đồng vào thứ Năm tới và lên tiếng."
+    },
+    {
+     "id": "line-5",
+     "speaker": "Mr. Brown",
+     "textEn": "I agree. However, we should also come prepared with facts — the council will dismiss us if we rely purely on emotion.",
+     "textVi": "Tôi đồng ý. Tuy nhiên, chúng ta cũng nên chuẩn bị số liệu — hội đồng sẽ gạt bỏ ý kiến của ta nếu ta chỉ dựa vào cảm xúc."
+    },
+    {
+     "id": "line-6",
+     "speaker": "Mrs. Green",
+     "textEn": "You're right. I've read that landfills this close to homes can lower property values by up to fifteen percent. That's a powerful argument.",
+     "textVi": "Ông nói đúng. Tôi đã đọc rằng bãi rác gần nhà thế này có thể làm giá trị bất động sản giảm tới mười lăm phần trăm. Đó là một lập luận mạnh."
+    },
+    {
+     "id": "line-7",
+     "speaker": "Mr. Brown",
+     "textEn": "Excellent point. If we present both the health risks and the economic damage, our case will be much harder to ignore.",
+     "textVi": "Ý rất hay. Nếu chúng ta trình bày cả rủi ro sức khỏe lẫn thiệt hại kinh tế, lập luận của chúng ta sẽ khó bị phớt lờ hơn nhiều."
+    },
+    {
+     "id": "line-8",
+     "speaker": "Mrs. Green",
+     "textEn": "Should we also propose an alternative? The old industrial zone north of town seems like a more suitable location.",
+     "textVi": "Chúng ta có nên đề xuất phương án thay thế không? Khu công nghiệp cũ phía bắc thị trấn có vẻ là vị trí phù hợp hơn."
+    },
+    {
+     "id": "line-9",
+     "speaker": "Mr. Brown",
+     "textEn": "That's a smart move. Offering a solution, rather than just saying no, will make us look reasonable and cooperative.",
+     "textVi": "Đó là nước đi khôn ngoan. Đưa ra giải pháp thay vì chỉ phản đối sẽ khiến chúng ta trông hợp lý và có tinh thần hợp tác."
+    },
+    {
+     "id": "line-10",
+     "speaker": "Mrs. Green",
+     "textEn": "Then it's settled. I'll draft our statement tonight, and we'll gather at the community hall at six on Thursday.",
+     "textVi": "Vậy chốt nhé. Tối nay tôi sẽ soạn thảo bản tuyên bố, và thứ Năm chúng ta tập trung tại nhà văn hóa lúc sáu giờ."
+    }
+   ],
+   "location": "Nhà văn hóa khu phố",
+   "title": "Neighborhood Meeting",
+   "titleVi": "Họp khu phố"
+  },
+  "dictation": {
+   "lineIds": [
+    "line-2",
+    "line-3",
+    "line-4",
+    "line-6"
+   ]
+  },
+  "id": "pkg-060",
+  "quiz": [
+   {
+    "correctAnswer": "It is only two kilometers away, raising health and smell concerns.",
+    "evidenceLineId": "line-2",
+    "explanation": "Ở line-2 bà Green lo bãi rác chỉ cách hai cây số, ảnh hưởng sức khỏe trẻ em và mùi hôi mùa hè.",
+    "options": [
+     "It is only two kilometers away, raising health and smell concerns.",
+     "It will be built directly inside the neighborhood park.",
+     "The construction will block the main road for a year.",
+     "The landfill will accept hazardous nuclear waste."
+    ],
+    "question": "Why are residents worried about the landfill location?"
+   },
+   {
+    "correctAnswer": "Because the council will dismiss arguments based purely on emotion.",
+    "evidenceLineId": "line-5",
+    "explanation": "Ở line-5 ông Brown nói hội đồng sẽ gạt bỏ họ nếu chỉ dựa vào cảm xúc — đây là suy luận về chiến lược thuyết phục.",
+    "options": [
+     "Because the council will dismiss arguments based purely on emotion.",
+     "Because the petition signatures are not real.",
+     "Because Mrs. Green asked him to write a speech.",
+     "Because facts are required by law at hearings."
+    ],
+    "question": "Why does Mr. Brown insist on preparing facts for the council hearing?"
+   },
+   {
+    "correctAnswer": "Proposing an alternative location instead of only objecting.",
+    "evidenceLineId": "line-9",
+    "explanation": "Ở line-9 ông Brown nói đưa ra giải pháp (khu công nghiệp cũ phía bắc) thay vì chỉ phản đối sẽ khiến họ trông hợp lý và có tinh thần hợp tác.",
+    "options": [
+     "Proposing an alternative location instead of only objecting.",
+     "Refusing to attend the council hearing.",
+     "Threatening to sue every council member.",
+     "Collecting money to bribe the officials."
+    ],
+    "question": "What strategy makes their opposition stronger, according to Mr. Brown?"
+   }
+  ],
+  "shadowing": {
+   "lineIds": [
+    "line-1",
+    "line-5",
+    "line-7",
+    "line-9"
+   ]
+  },
+  "source": "ai-generated",
+  "topic": "community",
+  "topicVi": "Cộng đồng",
+  "verified": false,
+  "wordOrder": {
+   "lineIds": [
+    "line-5",
+    "line-9"
+   ]
+  }
+ }
+]

@@ -1,85 +1,162 @@
 import { Router } from 'express';
-import { SEED_UNITS } from '../../../../prisma/seed.js';
-import { MOCK_USERS, MOCK_WORD_STATES } from './auth.js';
-import { calculateSM2, updateStreakWithTimezone } from '../../../../packages/domain/src/index.js';
+import { SEED_UNITS } from '../../../../prisma/seed';
+import {
+  calculateSM2,
+  updateStreakWithTimezone,
+  getFormattedDateInTimezone,
+} from '../../../../packages/domain/src/index.js';
+import { prisma } from '../lib/prisma.js';
+import { userRepository } from '../repositories/user.repository.js';
+import { vocabularyRepository } from '../repositories/vocabulary.repository.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const srsRouter = Router();
 
-srsRouter.get('/queue', (req, res) => {
-  const allWords = SEED_UNITS.flatMap((u) => u.lessons.flatMap((l) => l.words));
+srsRouter.get('/queue', async (req, res) => {
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để truy cập SRS queue.' });
+  }
 
-  // Check existing SM-2 states for each word
-  const queue = allWords.map((w, idx) => {
-    const wordId = `w-${idx + 1}`;
-    const existingState = MOCK_WORD_STATES.find((ws) => ws.wordId === wordId);
+  try {
+    // 1. Fetch user states from PostgreSQL
+    const userStates = await vocabularyRepository.getUserWordStates(userId);
+    const stateMap = new Map(userStates.map((s) => [s.wordId, s]));
 
-    return {
-      id: `srs-${idx + 1}`,
-      wordId,
-      targetText: w.targetText,
-      translation: w.translation,
-      phonetic: w.phonetic,
-      imageUrl: (w as any).imageUrl,
-      exampleSentence: w.exampleSentence,
-      exampleTranslation: w.exampleTranslation,
-      cefrLevel: w.cefrLevel || 'A1',
-      interval: existingState?.interval || 1,
-      repetition: existingState?.repetition || 0,
-      efactor: existingState?.efactor || 2.5,
-      dueDate: existingState?.dueDate || new Date().toISOString(),
-    };
-  });
+    // 2. Fetch vocabulary from DB or SEED_UNITS
+    let allWords: any[] = [];
+    const dbVocabs = await prisma.vocabulary.findMany({ take: 100 });
+    if (dbVocabs.length > 0) {
+      allWords = dbVocabs.map((v) => ({
+        id: v.id,
+        wordId: v.id,
+        targetText: v.targetText,
+        translation: v.translation,
+        phonetic: v.phonetic,
+        imageUrl: null,
+        exampleSentence: v.exampleSentence,
+        exampleTranslation: v.exampleTranslation,
+        cefrLevel: v.cefrLevel || 'A1',
+      }));
+    } else {
+      allWords = SEED_UNITS.flatMap((u) => u.lessons.flatMap((l) => l.words)).map((w, idx) => ({
+        id: `vocab-${idx + 1}`,
+        wordId: `vocab-${idx + 1}`,
+        targetText: w.targetText,
+        translation: w.translation,
+        phonetic: w.phonetic,
+        imageUrl: (w as any).imageUrl,
+        exampleSentence: w.exampleSentence,
+        exampleTranslation: w.exampleTranslation,
+        cefrLevel: w.cefrLevel || 'A1',
+      }));
+    }
 
-  // Filter to only show due words (due today or earlier)
-  const now = new Date();
-  const dueQueue = queue.filter((item) => new Date(item.dueDate) <= now);
+    // 3. Build queue with SM-2 states
+    const queue = allWords.map((w) => {
+      const existingState = stateMap.get(w.wordId);
+      return {
+        id: w.id,
+        wordId: w.wordId,
+        targetText: w.targetText,
+        translation: w.translation,
+        phonetic: w.phonetic,
+        imageUrl: w.imageUrl,
+        exampleSentence: w.exampleSentence,
+        exampleTranslation: w.exampleTranslation,
+        cefrLevel: w.cefrLevel,
+        interval: existingState?.interval || 1,
+        repetition: existingState?.repetition || 0,
+        efactor: existingState?.efactor || 2.5,
+        dueDate: existingState?.dueDate ? new Date(existingState.dueDate).toISOString() : new Date().toISOString(),
+      };
+    });
 
-  // Stats
-  const mastered = queue.filter((item) => item.repetition >= 3).length;
-  const learning = queue.filter((item) => item.repetition > 0 && item.repetition < 3).length;
-  const newWords = queue.filter((item) => item.repetition === 0).length;
+    const now = new Date();
+    const dueQueue = queue.filter((item) => new Date(item.dueDate) <= now);
 
-  // Return due queue (limit to 20 per session), or all if none due
-  const sessionQueue = dueQueue.length > 0 ? dueQueue.slice(0, 20) : queue.slice(0, 10);
+    const mastered = queue.filter((item) => item.repetition >= 3).length;
+    const learning = queue.filter((item) => item.repetition > 0 && item.repetition < 3).length;
+    const newWords = queue.filter((item) => item.repetition === 0).length;
 
-  return res.json({
-    queue: sessionQueue,
-    stats: {
-      dueToday: dueQueue.length,
-      learning,
-      mastered,
-      newWords,
-      totalWords: queue.length,
-    },
-  });
+    const sessionQueue = dueQueue.length > 0 ? dueQueue.slice(0, 20) : queue.slice(0, 10);
+
+    return res.json({
+      queue: sessionQueue,
+      stats: {
+        dueToday: dueQueue.length,
+        learning,
+        mastered,
+        newWords,
+        totalWords: queue.length,
+      },
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: 'Lỗi tải danh sách ôn tập SRS' });
+  }
 });
 
-srsRouter.post('/review', (req, res) => {
-  const { wordId, quality, userId = 'demo-user-id-001' } = req.body;
+srsRouter.post('/review', async (req, res) => {
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để ghi nhận ôn tập SRS.' });
+  }
+  const { wordId, quality } = req.body;
 
-  const user = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0];
-  const currentState = MOCK_WORD_STATES.find((ws) => ws.wordId === wordId) || {
-    repetition: 0,
-    interval: 1,
-    efactor: 2.5,
-  };
+  // Validation: Quality score must be an integer between 0 and 5
+  if (typeof quality !== 'number' || quality < 0 || quality > 5 || !Number.isInteger(quality)) {
+    return res.status(400).json({ error: 'Chỉ số quality phải là số nguyên từ 0 đến 5' });
+  }
+
+  let user = await userRepository.findById(userId);
+  if (!user) {
+    user = await userRepository.createUser({
+      id: userId,
+      email: `${userId}@lingual.local`,
+      displayName: 'Learner',
+      role: 'STUDENT' as any,
+    });
+  }
+
+  // Load current word state from PostgreSQL
+  const userStates = await vocabularyRepository.getUserWordStates(user.id);
+  const foundState = userStates.find((ws) => ws.wordId === wordId);
+
+  const currentState = foundState
+    ? {
+        repetition: foundState.repetition,
+        interval: foundState.interval,
+        efactor: foundState.efactor,
+      }
+    : {
+        repetition: 0,
+        interval: 1,
+        efactor: 2.5,
+      };
 
   const sm2Result = calculateSM2(currentState, quality);
 
-  // Persist updated SM-2 state
-  const existingIdx = MOCK_WORD_STATES.findIndex((ws) => ws.wordId === wordId);
-  const updatedState = {
+  // Authoritatively save updated SM-2 state in PostgreSQL
+  await vocabularyRepository.saveWordState({
+    userId: user.id,
     wordId,
     repetition: sm2Result.repetition,
     interval: sm2Result.interval,
     efactor: sm2Result.efactor,
-    dueDate: sm2Result.dueDate.toISOString(),
-  };
-  if (existingIdx >= 0) {
-    MOCK_WORD_STATES[existingIdx] = updatedState;
-  } else {
-    MOCK_WORD_STATES.push(updatedState);
-  }
+    dueDate: sm2Result.dueDate,
+    lastQuality: quality,
+  });
+
+  // Log review in PostgreSQL
+  await vocabularyRepository.saveSrsReviewLog({
+    userId: user.id,
+    wordId,
+    rating: quality,
+    scheduledDays: currentState.interval,
+    elapsedDays: 1,
+    lastInterval: currentState.interval,
+    newInterval: sm2Result.interval,
+  });
 
   const streakResult = updateStreakWithTimezone(
     {
@@ -91,11 +168,14 @@ srsRouter.post('/review', (req, res) => {
     user.timezone
   );
 
-  user.currentStreak = streakResult.currentStreak;
-  user.lastActiveDate = new Date().toISOString().split('T')[0];
-
   const xpEarned = quality >= 3 ? 10 : 2;
-  user.totalXP += xpEarned;
+  const updatedUser = await userRepository.updateStreakAndXP(
+    user.id,
+    streakResult.currentStreak,
+    streakResult.streakFreezes,
+    getFormattedDateInTimezone(new Date(), user.timezone),
+    xpEarned
+  );
 
   return res.json({
     wordId,
@@ -105,28 +185,60 @@ srsRouter.post('/review', (req, res) => {
     nextEFactor: sm2Result.efactor,
     dueDate: sm2Result.dueDate.toISOString(),
     xpEarned,
-    totalXP: user.totalXP,
+    totalXP: updatedUser.totalXP,
   });
 });
 
-srsRouter.post('/add', (req, res) => {
-  const { targetText, translation, phonetic, exampleSentence, cefrLevel = 'B2' } = req.body;
+srsRouter.post('/add', async (req, res) => {
+  const userId = resolveAuthUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Yêu cầu đăng nhập để thêm từ vào SRS.' });
+  }
+  const {
+    targetText,
+    translation,
+    phonetic,
+    exampleSentence,
+    exampleTranslation,
+    imageUrl,
+    cefrLevel = 'B2',
+  } = req.body;
+
   if (!targetText) {
     return res.status(400).json({ success: false, message: 'targetText is required' });
   }
 
-  const wordId = `custom-w-${Date.now()}`;
-  MOCK_WORD_STATES.push({
-    wordId,
-    repetition: 0,
-    interval: 1,
-    efactor: 2.5,
-    dueDate: new Date().toISOString(),
-  });
+  const wordId = `vocab-custom-${Date.now()}`;
+  try {
+    await prisma.vocabulary.create({
+      data: {
+        id: wordId,
+        targetText,
+        translation: translation || targetText,
+        phonetic: phonetic || '',
+        exampleSentence: exampleSentence || null,
+        exampleTranslation: exampleTranslation || null,
+        cefrLevel,
+        partOfSpeech: 'phrase',
+      },
+    });
 
-  return res.json({
-    success: true,
-    message: `Đã thêm từ "${targetText}" vào bộ thẻ SRS Flashcard`,
-    word: { wordId, targetText, translation, phonetic, exampleSentence, cefrLevel },
-  });
+    await vocabularyRepository.saveWordState({
+      userId,
+      wordId,
+      repetition: 0,
+      interval: 1,
+      efactor: 2.5,
+      dueDate: new Date(),
+      lastQuality: 0,
+    });
+
+    return res.json({
+      success: true,
+      message: `Đã thêm từ "${targetText}" vào bộ thẻ SRS Flashcard`,
+      word: { wordId, targetText, translation, phonetic, exampleSentence, cefrLevel },
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: 'Lỗi thêm từ vựng vào SRS' });
+  }
 });

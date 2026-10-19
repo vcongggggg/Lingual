@@ -29,5 +29,5 @@ All commit messages must follow the standard format:
 ## 3. Mandatory Workflow Steps
 1. **Branch**: Create or checkout appropriate feature/fix branch before making major changes.
 2. **Atomic Commits**: Stage and commit logical units of work separately.
-3. **Pre-commit Verification**: Run type check (`tsc`) or build (`pnpm build`) before pushing.
+3. **Pre-commit Verification**: Run safe type check (`pnpm --filter web exec tsc --noEmit` and `pnpm --filter api exec tsc --noEmit`). **Tuyệt đối KHÔNG chạy `next build` / `pnpm build` khi server dev đang chạy** vì sẽ ghi đè `.next` và gây lỗi `Cannot find module './xxx.js'`.
 4. **Clean Merge & Push**: Ensure working directory is clean and pushed up to remote repository.

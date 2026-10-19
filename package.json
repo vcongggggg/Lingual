@@ -4,21 +4,29 @@
   "private": true,
   "packageManager": "pnpm@11.9.0",
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "pnpm --parallel --filter \"./apps/*\" dev",
     "build": "pnpm --recursive --filter \"./apps/*\" build",
     "lint": "pnpm --recursive --filter \"./apps/*\" lint",
-    "test": "pnpm --recursive test"
+    "test": "pnpm --recursive test",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
+    "pentest": "pnpm --filter @linguaflow/api exec tsx ../../scripts/pentest_simulator.ts",
+    "seed:comprehensive": "pnpm --filter @linguaflow/api exec tsx ../../prisma/seed-comprehensive.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
     "argon2": "^0.45.1",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "prisma": "5.22.0"
+    "prisma": "5.22.0",
+    "tsx": "^4.19.2"
   }
 }

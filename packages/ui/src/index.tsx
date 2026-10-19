@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, CheckCircle2, Flame, Zap, Award, Sparkles, RotateCw, Lightbulb, Image as ImageIcon, Bookmark, PlusCircle, Check } from 'lucide-react';
+import {
+  Volume2,
+  CheckCircle2,
+  Flame,
+  Zap,
+  Award,
+  Sparkles,
+  RotateCw,
+  Lightbulb,
+  Image as ImageIcon,
+  Bookmark,
+  PlusCircle,
+  Check,
+  X,
+} from 'lucide-react';
+
+import { springPresets, transitionPresets, useMotionAccessibility } from './motion/index';
+export * from './motion/index';
 
 // ============================================================================
 // WEB SPEECH AUDIO SYNTHESIS HELPER
@@ -16,7 +33,10 @@ export function speakText(text: string, lang: string = 'en-US') {
   }
 }
 
-export const AudioButton: React.FC<{ text: string; className?: string }> = ({ text, className = '' }) => {
+export const AudioButton: React.FC<{ text: string; className?: string }> = ({
+  text,
+  className = '',
+}) => {
   return (
     <button
       type="button"
@@ -24,8 +44,9 @@ export const AudioButton: React.FC<{ text: string; className?: string }> = ({ te
         e.stopPropagation();
         speakText(text);
       }}
-      className={`p-2 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 transition-all active:scale-90 select-none ${className}`}
+      className={`p-2 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 transition-all active:scale-95 select-none ${className}`}
       title="Nghe phát âm tiếng Anh"
+      aria-label={`Nghe phát âm từ: ${text}`}
     >
       <Volume2 className="w-4 h-4" />
     </button>
@@ -91,10 +112,13 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'md',
   icon,
   className = '',
+  disabled,
   ...props
 }) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
+
   const base =
-    'inline-flex items-center justify-center font-bold rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:pointer-events-none select-none';
+    'relative z-30 inline-flex items-center justify-center font-bold rounded-xl transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400';
 
   const variants = {
     primary:
@@ -111,21 +135,43 @@ export const Button: React.FC<ButtonProps> = ({
   const sizes = {
     sm: 'px-3 py-1.5 text-xs gap-1.5',
     md: 'px-5 py-2.5 text-sm gap-2',
-    lg: 'px-7 py-3.5 text-base gap-2.5',
+    lg: 'px-6 py-3 text-base gap-2.5',
   };
 
+  const hoverAnimation =
+    disabled || shouldReduceMotion
+      ? undefined
+      : { scale: 1.015, y: -1, transition: springPresets.smooth };
+
+  const pressAnimation =
+    disabled || shouldReduceMotion
+      ? undefined
+      : { scale: 0.97, transition: springPresets.snappy };
+
   return (
-    <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props}>
+    <motion.button
+      disabled={disabled}
+      whileHover={hoverAnimation}
+      whileTap={pressAnimation}
+      className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
+      {...(props as any)}
+    >
       {icon && <span>{icon}</span>}
       <span>{children}</span>
-    </button>
+    </motion.button>
   );
 };
 
 export const XPBadge: React.FC<{ xp: number }> = ({ xp }) => {
   return (
-    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-extrabold shadow-sm">
-      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold shadow-sm transition-transform hover:scale-105">
+      <motion.div
+        animate={{ scale: [1, 1.18, 1], rotate: [0, 15, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        className="flex items-center justify-center"
+      >
+        <Sparkles className="w-3.5 h-3.5 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
+      </motion.div>
       <span>{xp} XP</span>
     </div>
   );
@@ -133,8 +179,14 @@ export const XPBadge: React.FC<{ xp: number }> = ({ xp }) => {
 
 export const StreakBadge: React.FC<{ streak: number }> = ({ streak }) => {
   return (
-    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-extrabold shadow-sm">
-      <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold shadow-sm transition-transform hover:scale-105">
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], rotate: [-4, 4, -4] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+        className="flex items-center justify-center"
+      >
+        <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500 drop-shadow-[0_0_8px_rgba(245,158,11,0.7)]" />
+      </motion.div>
       <span>{streak} Ngày</span>
     </div>
   );
@@ -151,21 +203,42 @@ export interface CardProps {
   onClick?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className = '', glow = 'none', onClick }) => {
+export const Card: React.FC<CardProps> = ({
+  children,
+  className = '',
+  glow = 'none',
+  onClick,
+}) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
+
   const glowStyles = {
-    none: '',
+    none: 'border-slate-800/80 hover:border-slate-700/80',
     teal: 'shadow-lg shadow-teal-500/10 border-teal-500/30 hover:border-teal-400/50',
     coral: 'shadow-lg shadow-coral-500/10 border-coral-500/30 hover:border-coral-400/50',
     amber: 'shadow-lg shadow-amber-500/10 border-amber-500/30 hover:border-amber-400/50',
   };
 
+  const isInteractive = Boolean(onClick);
+
+  const hoverAnimation =
+    isInteractive && !shouldReduceMotion
+      ? { scale: 1.01, y: -2, transition: springPresets.smooth }
+      : undefined;
+
+  const pressAnimation =
+    isInteractive && !shouldReduceMotion
+      ? { scale: 0.98, transition: springPresets.snappy }
+      : undefined;
+
   return (
-    <div
+    <motion.div
       onClick={onClick}
-      className={`rounded-3xl bg-slate-900/90 border border-slate-800/80 backdrop-blur-xl p-6 transition-all duration-300 ${glowStyles[glow]} ${className}`}
+      whileHover={hoverAnimation}
+      whileTap={pressAnimation}
+      className={`rounded-3xl bg-slate-900/90 border backdrop-blur-xl p-5 sm:p-6 transition-colors duration-300 ${glowStyles[glow]} ${isInteractive ? 'cursor-pointer' : ''} ${className}`}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
@@ -186,12 +259,20 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   label,
   color = 'teal',
 }) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
   const percentage = Math.min(100, Math.max(0, (value / max) * 100));
+  const isComplete = percentage >= 100;
 
   const colors = {
     teal: 'from-teal-400 to-emerald-400',
     coral: 'from-coral-400 to-rose-400',
     amber: 'from-amber-400 to-orange-400',
+  };
+
+  const completeGlow = {
+    teal: 'shadow-md shadow-teal-400/40',
+    coral: 'shadow-md shadow-coral-400/40',
+    amber: 'shadow-md shadow-amber-400/40',
   };
 
   return (
@@ -202,12 +283,20 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           <span className="font-mono text-teal-400">{Math.round(percentage)}%</span>
         </div>
       )}
-      <div className="w-full h-3 rounded-full bg-slate-800 border border-slate-700/50 overflow-hidden p-0.5">
+      <div
+        className={`w-full h-3 rounded-full bg-slate-800 border border-slate-700/50 overflow-hidden p-0.5 transition-shadow duration-300 ${isComplete ? completeGlow[color] : ''}`}
+      >
         <motion.div
           className={`h-full rounded-full bg-gradient-to-r ${colors[color]}`}
           initial={{ width: 0 }}
-          animate={{ width: `${percentage}%` }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          animate={{
+            width: `${percentage}%`,
+            scale: isComplete && !shouldReduceMotion ? [1, 1.02, 1] : 1,
+          }}
+          transition={{
+            width: transitionPresets.normal,
+            scale: isComplete ? { duration: 0.3, times: [0, 0.5, 1] } : undefined,
+          }}
         />
       </div>
     </div>
@@ -241,6 +330,7 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
   partOfSpeech = 'noun',
   onPlayAudio,
 }) => {
+  const { shouldReduceMotion } = useMotionAccessibility();
   const [isFlipped, setIsFlipped] = useState(false);
   const resolvedImage = getWordImage(targetText, imageUrl);
 
@@ -253,12 +343,24 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
     }
   };
 
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <div className="w-full max-w-md mx-auto aspect-[4/5] perspective-1000 cursor-pointer select-none">
       <motion.div
-        onClick={() => setIsFlipped(!isFlipped)}
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        onClick={handleCardClick}
+        animate={{
+          rotateY: shouldReduceMotion ? 0 : isFlipped ? 180 : 0,
+          opacity: shouldReduceMotion ? (isFlipped ? 0.95 : 1) : 1,
+          scale: shouldReduceMotion ? 1 : [1, 1.015, 1],
+        }}
+        transition={{
+          rotateY: { duration: 0.48, ease: [0.16, 1, 0.3, 1] },
+          opacity: { duration: 0.2 },
+          scale: { duration: 0.3 },
+        }}
         style={{ transformStyle: 'preserve-3d' }}
         className="relative w-full h-full rounded-3xl"
       >
@@ -278,6 +380,7 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
               onClick={handleAudioPlay}
               className="p-2.5 rounded-2xl bg-teal-500/15 hover:bg-teal-500/30 border border-teal-500/30 text-teal-300 transition-all active:scale-90"
               title="Phát âm"
+              aria-label={`Phát âm từ ${targetText}`}
             >
               <Volume2 className="w-5 h-5" />
             </button>
@@ -285,7 +388,11 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
 
           {/* Illustration Image */}
           <div className="relative w-44 h-44 rounded-2xl overflow-hidden border border-teal-500/20 shadow-inner bg-slate-950 my-2 z-10 group">
-            <img src={resolvedImage} alt={targetText} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img
+              src={resolvedImage}
+              alt={targetText}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
 
           {/* Main Word */}
@@ -326,6 +433,7 @@ export const SRSFlashcard: React.FC<SRSFlashcardProps> = ({
               type="button"
               onClick={handleAudioPlay}
               className="p-2.5 rounded-2xl bg-amber-500/15 hover:bg-amber-500/30 border border-amber-500/30 text-amber-300 transition-all active:scale-90"
+              aria-label={`Phát âm tiếng Anh của ${targetText}`}
             >
               <Volume2 className="w-5 h-5" />
             </button>
@@ -373,29 +481,48 @@ export interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
-  if (!isOpen) return null;
+  const { shouldReduceMotion } = useMotionAccessibility();
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+      {isOpen && (
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          className="w-full max-w-lg rounded-3xl bg-slate-900 border border-teal-500/30 p-6 space-y-5 shadow-2xl shadow-teal-500/20 max-h-[90vh] overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={transitionPresets.normal}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
         >
-          <div className="flex justify-between items-center border-b border-slate-800 pb-3">
-            <h3 className="text-xl font-display font-bold text-white">{title}</h3>
-            <button
-              onClick={onClose}
-              className="text-slate-400 hover:text-white text-lg font-bold p-1 rounded-lg hover:bg-slate-800 transition-colors"
-            >
-              ✕
-            </button>
-          </div>
-          <div>{children}</div>
+          <motion.div
+            initial={{ scale: shouldReduceMotion ? 1 : 0.96, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: shouldReduceMotion ? 1 : 0.98, opacity: 0 }}
+            transition={springPresets.smooth}
+            className="w-full max-w-lg rounded-3xl bg-slate-900 border border-teal-500/30 p-6 space-y-5 shadow-2xl shadow-teal-500/20 max-h-[90vh] overflow-y-auto"
+          >
+            <div className="flex justify-between items-center border-b border-slate-800 pb-3">
+              <h3 className="text-xl font-display font-bold text-white">{title}</h3>
+              <button
+                onClick={onClose}
+                className="text-slate-400 hover:text-white p-1.5 rounded-xl hover:bg-slate-800 transition-colors"
+                aria-label="Đóng cửa sổ"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div>{children}</div>
+          </motion.div>
         </motion.div>
-      </div>
+      )}
     </AnimatePresence>
   );
 };
@@ -508,4 +635,3 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ title, description, icon
     </div>
   );
 };
-

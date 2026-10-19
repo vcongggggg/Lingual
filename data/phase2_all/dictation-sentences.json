@@ -1,0 +1,952 @@
+[
+  {
+    "id": "dct-001",
+    "textEn": "The children are playing in the garden.",
+    "textVi": "Bọn trẻ đang chơi trong vườn.",
+    "trickyWords": [
+      {
+        "word": "children",
+        "phonetic": "/ˈtʃɪldrən/"
+      },
+      {
+        "word": "garden",
+        "phonetic": "/ˈɡɑːrdən/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-001.mp3"
+  },
+  {
+    "id": "dct-002",
+    "textEn": "She drinks a cup of coffee every morning.",
+    "textVi": "Cô ấy uống một tách cà phê mỗi sáng.",
+    "trickyWords": [
+      {
+        "word": "coffee",
+        "phonetic": "/ˈkɔːfi/"
+      },
+      {
+        "word": "morning",
+        "phonetic": "/ˈmɔːrnɪŋ/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-002.mp3"
+  },
+  {
+    "id": "dct-003",
+    "textEn": "He rides his bicycle to school.",
+    "textVi": "Cậu ấy đạp xe đi học.",
+    "trickyWords": [
+      {
+        "word": "bicycle",
+        "phonetic": "/ˈbaɪsɪkəl/"
+      },
+      {
+        "word": "rides",
+        "phonetic": "/raɪdz/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-003.mp3"
+  },
+  {
+    "id": "dct-004",
+    "textEn": "The weather is beautiful today, isn't it?",
+    "textVi": "Thời tiết hôm nay đẹp quá, phải không?",
+    "trickyWords": [
+      {
+        "word": "weather",
+        "phonetic": "/ˈweðər/"
+      },
+      {
+        "word": "beautiful",
+        "phonetic": "/ˈbjuːtɪfəl/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-004.mp3"
+  },
+  {
+    "id": "dct-005",
+    "textEn": "My mother cooks delicious meals for us.",
+    "textVi": "Mẹ tôi nấu những bữa ăn ngon cho cả nhà.",
+    "trickyWords": [
+      {
+        "word": "delicious",
+        "phonetic": "/dɪˈlɪʃəs/"
+      },
+      {
+        "word": "meals",
+        "phonetic": "/miːlz/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-005.mp3"
+  },
+  {
+    "id": "dct-006",
+    "textEn": "They watched a funny movie last night.",
+    "textVi": "Họ đã xem một bộ phim hài tối qua.",
+    "trickyWords": [
+      {
+        "word": "watched",
+        "phonetic": "/wɑːtʃt/"
+      },
+      {
+        "word": "funny",
+        "phonetic": "/ˈfʌni/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-006.mp3"
+  },
+  {
+    "id": "dct-007",
+    "textEn": "We visited our grandmother last weekend.",
+    "textVi": "Chúng tôi đã thăm bà ngoại cuối tuần trước.",
+    "trickyWords": [
+      {
+        "word": "visited",
+        "phonetic": "/ˈvɪzɪtɪd/"
+      },
+      {
+        "word": "grandmother",
+        "phonetic": "/ˈɡrænmʌðər/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-007.mp3"
+  },
+  {
+    "id": "dct-008",
+    "textEn": "She bought a new dress for the party.",
+    "textVi": "Cô ấy đã mua một chiếc váy mới cho bữa tiệc.",
+    "trickyWords": [
+      {
+        "word": "bought",
+        "phonetic": "/bɔːt/"
+      },
+      {
+        "word": "dress",
+        "phonetic": "/dres/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-008.mp3"
+  },
+  {
+    "id": "dct-009",
+    "textEn": "The train arrives at six o'clock.",
+    "textVi": "Tàu đến lúc sáu giờ.",
+    "trickyWords": [
+      {
+        "word": "train",
+        "phonetic": "/treɪn/"
+      },
+      {
+        "word": "arrives",
+        "phonetic": "/əˈraɪvz/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-009.mp3"
+  },
+  {
+    "id": "dct-010",
+    "textEn": "He is writing a letter to his friend.",
+    "textVi": "Cậu ấy đang viết thư cho bạn mình.",
+    "trickyWords": [
+      {
+        "word": "writing",
+        "phonetic": "/ˈraɪtɪŋ/"
+      },
+      {
+        "word": "friend",
+        "phonetic": "/frend/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-010.mp3"
+  },
+  {
+    "id": "dct-011",
+    "textEn": "We had breakfast together this morning.",
+    "textVi": "Chúng tôi đã ăn sáng cùng nhau sáng nay.",
+    "trickyWords": [
+      {
+        "word": "breakfast",
+        "phonetic": "/ˈbrekfəst/"
+      },
+      {
+        "word": "together",
+        "phonetic": "/təˈɡeðər/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-011.mp3"
+  },
+  {
+    "id": "dct-012",
+    "textEn": "The students are reading interesting books.",
+    "textVi": "Các học sinh đang đọc những cuốn sách thú vị.",
+    "trickyWords": [
+      {
+        "word": "interesting",
+        "phonetic": "/ˈɪntrəstɪŋ/"
+      },
+      {
+        "word": "students",
+        "phonetic": "/ˈstuːdənts/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-012.mp3"
+  },
+  {
+    "id": "dct-013",
+    "textEn": "She wears beautiful clothes every day.",
+    "textVi": "Cô ấy mặc quần áo đẹp mỗi ngày.",
+    "trickyWords": [
+      {
+        "word": "clothes",
+        "phonetic": "/kloʊðz/"
+      },
+      {
+        "word": "beautiful",
+        "phonetic": "/ˈbjuːtɪfəl/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-013.mp3"
+  },
+  {
+    "id": "dct-014",
+    "textEn": "They laughed at the funny joke.",
+    "textVi": "Họ cười ồ lên vì câu chuyện cười hài hước.",
+    "trickyWords": [
+      {
+        "word": "laughed",
+        "phonetic": "/læft/"
+      },
+      {
+        "word": "joke",
+        "phonetic": "/dʒoʊk/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-014.mp3"
+  },
+  {
+    "id": "dct-015",
+    "textEn": "I forgot my umbrella at home.",
+    "textVi": "Tôi để quên ô ở nhà.",
+    "trickyWords": [
+      {
+        "word": "forgot",
+        "phonetic": "/fərˈɡɑːt/"
+      },
+      {
+        "word": "umbrella",
+        "phonetic": "/ʌmˈbrelə/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-015.mp3"
+  },
+  {
+    "id": "dct-016",
+    "textEn": "The dog is barking at the stranger.",
+    "textVi": "Con chó đang sủa người lạ.",
+    "trickyWords": [
+      {
+        "word": "barking",
+        "phonetic": "/ˈbɑːrkɪŋ/"
+      },
+      {
+        "word": "stranger",
+        "phonetic": "/ˈstreɪndʒər/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-016.mp3"
+  },
+  {
+    "id": "dct-017",
+    "textEn": "We walked through the quiet park.",
+    "textVi": "Chúng tôi đi bộ xuyên qua công viên yên tĩnh.",
+    "trickyWords": [
+      {
+        "word": "through",
+        "phonetic": "/θruː/"
+      },
+      {
+        "word": "quiet",
+        "phonetic": "/ˈkwaɪət/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-017.mp3"
+  },
+  {
+    "id": "dct-018",
+    "textEn": "She is afraid of the dark.",
+    "textVi": "Cô ấy sợ bóng tối.",
+    "trickyWords": [
+      {
+        "word": "afraid",
+        "phonetic": "/əˈfreɪd/"
+      },
+      {
+        "word": "dark",
+        "phonetic": "/dɑːrk/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-018.mp3"
+  },
+  {
+    "id": "dct-019",
+    "textEn": "He caught a cold last winter.",
+    "textVi": "Cậu ấy bị cảm lạnh mùa đông năm ngoái.",
+    "trickyWords": [
+      {
+        "word": "caught",
+        "phonetic": "/kɔːt/"
+      },
+      {
+        "word": "cold",
+        "phonetic": "/koʊld/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-019.mp3"
+  },
+  {
+    "id": "dct-020",
+    "textEn": "My father drives me to school.",
+    "textVi": "Bố tôi chở tôi đi học.",
+    "trickyWords": [
+      {
+        "word": "father",
+        "phonetic": "/ˈfɑːðər/"
+      },
+      {
+        "word": "drives",
+        "phonetic": "/draɪvz/"
+      }
+    ],
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-020.mp3"
+  },
+  {
+    "id": "dct-021",
+    "textEn": "I have been learning English for almost three years now.",
+    "textVi": "Tôi đã học tiếng Anh được gần ba năm rồi.",
+    "trickyWords": [
+      {
+        "word": "learning",
+        "phonetic": "/ˈlɜːrnɪŋ/"
+      },
+      {
+        "word": "almost",
+        "phonetic": "/ˈɔːlmoʊst/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-021.mp3"
+  },
+  {
+    "id": "dct-022",
+    "textEn": "She decided to travel abroad during the long summer holiday.",
+    "textVi": "Cô ấy quyết định đi du lịch nước ngoài trong kỳ nghỉ hè dài.",
+    "trickyWords": [
+      {
+        "word": "decided",
+        "phonetic": "/dɪˈsaɪdɪd/"
+      },
+      {
+        "word": "abroad",
+        "phonetic": "/əˈbrɔːd/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-022.mp3"
+  },
+  {
+    "id": "dct-023",
+    "textEn": "The new science museum opens at nine o'clock every morning.",
+    "textVi": "Bảo tàng khoa học mới mở cửa lúc chín giờ mỗi sáng.",
+    "trickyWords": [
+      {
+        "word": "science",
+        "phonetic": "/ˈsaɪəns/"
+      },
+      {
+        "word": "museum",
+        "phonetic": "/mjuːˈziːəm/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-023.mp3"
+  },
+  {
+    "id": "dct-024",
+    "textEn": "We should save enough money before buying a new car.",
+    "textVi": "Chúng ta nên tiết kiệm đủ tiền trước khi mua xe mới.",
+    "trickyWords": [
+      {
+        "word": "enough",
+        "phonetic": "/ɪˈnʌf/"
+      },
+      {
+        "word": "money",
+        "phonetic": "/ˈmʌni/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-024.mp3"
+  },
+  {
+    "id": "dct-025",
+    "textEn": "He was late for work because his bus broke down.",
+    "textVi": "Anh ấy đi làm muộn vì xe buýt bị hỏng.",
+    "trickyWords": [
+      {
+        "word": "because",
+        "phonetic": "/bɪˈkɔːz/"
+      },
+      {
+        "word": "broke",
+        "phonetic": "/broʊk/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-025.mp3"
+  },
+  {
+    "id": "dct-026",
+    "textEn": "My younger sister is very interested in fashion and design.",
+    "textVi": "Em gái tôi rất thích thời trang và thiết kế.",
+    "trickyWords": [
+      {
+        "word": "interested",
+        "phonetic": "/ˈɪntrəstɪd/"
+      },
+      {
+        "word": "fashion",
+        "phonetic": "/ˈfæʃən/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-026.mp3"
+  },
+  {
+    "id": "dct-027",
+    "textEn": "The doctor advised him to exercise for thirty minutes every day.",
+    "textVi": "Bác sĩ khuyên anh ấy tập thể dục ba mươi phút mỗi ngày.",
+    "trickyWords": [
+      {
+        "word": "advised",
+        "phonetic": "/ədˈvaɪzd/"
+      },
+      {
+        "word": "exercise",
+        "phonetic": "/ˈeksərsaɪz/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-027.mp3"
+  },
+  {
+    "id": "dct-028",
+    "textEn": "She borrowed two very interesting novels from the public library.",
+    "textVi": "Cô ấy mượn hai cuốn tiểu thuyết rất thú vị từ thư viện công cộng.",
+    "trickyWords": [
+      {
+        "word": "borrowed",
+        "phonetic": "/ˈbɑːroʊd/"
+      },
+      {
+        "word": "novels",
+        "phonetic": "/ˈnɑːvəlz/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-028.mp3"
+  },
+  {
+    "id": "dct-029",
+    "textEn": "They chose a quiet restaurant near the river for dinner.",
+    "textVi": "Họ chọn một nhà hàng yên tĩnh gần sông để ăn tối.",
+    "trickyWords": [
+      {
+        "word": "chose",
+        "phonetic": "/tʃoʊz/"
+      },
+      {
+        "word": "quiet",
+        "phonetic": "/ˈkwaɪət/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-029.mp3"
+  },
+  {
+    "id": "dct-030",
+    "textEn": "I usually have lunch with my friendly colleagues at noon.",
+    "textVi": "Tôi thường ăn trưa với các đồng nghiệp thân thiện vào buổi trưa.",
+    "trickyWords": [
+      {
+        "word": "usually",
+        "phonetic": "/ˈjuːʒuəli/"
+      },
+      {
+        "word": "colleagues",
+        "phonetic": "/ˈkɑːliːɡz/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-030.mp3"
+  },
+  {
+    "id": "dct-031",
+    "textEn": "The manager praised her excellent performance at the meeting this month.",
+    "textVi": "Người quản lý khen ngợi thành tích xuất sắc của cô ấy trong cuộc họp tháng này.",
+    "trickyWords": [
+      {
+        "word": "praised",
+        "phonetic": "/preɪzd/"
+      },
+      {
+        "word": "excellent",
+        "phonetic": "/ˈeksələnt/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-031.mp3"
+  },
+  {
+    "id": "dct-032",
+    "textEn": "We really enjoyed the delicious seafood at the beach restaurant.",
+    "textVi": "Chúng tôi thực sự thích món hải sản ngon ở nhà hàng bãi biển.",
+    "trickyWords": [
+      {
+        "word": "enjoyed",
+        "phonetic": "/ɪnˈdʒɔɪd/"
+      },
+      {
+        "word": "delicious",
+        "phonetic": "/dɪˈlɪʃəs/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-032.mp3"
+  },
+  {
+    "id": "dct-033",
+    "textEn": "He promised to finish all his homework before dinner tonight.",
+    "textVi": "Cậu ấy hứa sẽ làm hết bài tập về nhà trước bữa tối nay.",
+    "trickyWords": [
+      {
+        "word": "promised",
+        "phonetic": "/ˈprɑːmɪst/"
+      },
+      {
+        "word": "homework",
+        "phonetic": "/ˈhoʊmwɜːrk/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-033.mp3"
+  },
+  {
+    "id": "dct-034",
+    "textEn": "Our flight was delayed for two hours due to the heavy rain.",
+    "textVi": "Chuyến bay của chúng tôi bị hoãn hai tiếng vì mưa lớn.",
+    "trickyWords": [
+      {
+        "word": "delayed",
+        "phonetic": "/dɪˈleɪd/"
+      },
+      {
+        "word": "due",
+        "phonetic": "/duː/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-034.mp3"
+  },
+  {
+    "id": "dct-035",
+    "textEn": "She knitted a warm woolen sweater for her beloved grandmother.",
+    "textVi": "Cô ấy đan một chiếc áo len ấm cho bà ngoại yêu quý.",
+    "trickyWords": [
+      {
+        "word": "knitted",
+        "phonetic": "/ˈnɪtɪd/"
+      },
+      {
+        "word": "sweater",
+        "phonetic": "/ˈswetər/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-035.mp3"
+  },
+  {
+    "id": "dct-036",
+    "textEn": "They discussed the serious problem during the long morning meeting.",
+    "textVi": "Họ thảo luận vấn đề nghiêm trọng trong cuộc họp dài buổi sáng.",
+    "trickyWords": [
+      {
+        "word": "discussed",
+        "phonetic": "/dɪˈskʌst/"
+      },
+      {
+        "word": "serious",
+        "phonetic": "/ˈsɪriəs/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-036.mp3"
+  },
+  {
+    "id": "dct-037",
+    "textEn": "I received a surprising birthday gift from my old friend.",
+    "textVi": "Tôi nhận được một món quà sinh nhật bất ngờ từ người bạn cũ.",
+    "trickyWords": [
+      {
+        "word": "received",
+        "phonetic": "/rɪˈsiːvd/"
+      },
+      {
+        "word": "surprising",
+        "phonetic": "/sərˈpraɪzɪŋ/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-037.mp3"
+  },
+  {
+    "id": "dct-038",
+    "textEn": "The children whispered secrets during the long boring history lesson.",
+    "textVi": "Bọn trẻ thì thầm những bí mật trong tiết học lịch sử dài nhàm chán.",
+    "trickyWords": [
+      {
+        "word": "whispered",
+        "phonetic": "/ˈwɪspərd/"
+      },
+      {
+        "word": "secrets",
+        "phonetic": "/ˈsiːkrəts/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-038.mp3"
+  },
+  {
+    "id": "dct-039",
+    "textEn": "We hired a knowledgeable local guide for our mountain trip.",
+    "textVi": "Chúng tôi thuê một hướng dẫn viên địa phương am hiểu cho chuyến đi núi.",
+    "trickyWords": [
+      {
+        "word": "knowledgeable",
+        "phonetic": "/ˈnɑːlɪdʒəbəl/"
+      },
+      {
+        "word": "guide",
+        "phonetic": "/ɡaɪd/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-039.mp3"
+  },
+  {
+    "id": "dct-040",
+    "textEn": "She successfully passed her very difficult driving test yesterday morning.",
+    "textVi": "Cô ấy đã thi đỗ kỳ thi lái xe rất khó khăn vào sáng hôm qua.",
+    "trickyWords": [
+      {
+        "word": "successfully",
+        "phonetic": "/səkˈsesfəli/"
+      },
+      {
+        "word": "difficult",
+        "phonetic": "/ˈdɪfɪkəlt/"
+      }
+    ],
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-040.mp3"
+  },
+  {
+    "id": "dct-041",
+    "textEn": "The government has recently announced new policies to protect the natural environment.",
+    "textVi": "Chính phủ gần đây đã công bố các chính sách mới để bảo vệ môi trường tự nhiên.",
+    "trickyWords": [
+      {
+        "word": "government",
+        "phonetic": "/ˈɡʌvərnmənt/"
+      },
+      {
+        "word": "environment",
+        "phonetic": "/ɪnˈvaɪrənmənt/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-041.mp3"
+  },
+  {
+    "id": "dct-042",
+    "textEn": "Scientists have recently discovered a promising new treatment for the rare disease.",
+    "textVi": "Các nhà khoa học gần đây đã phát hiện một phương pháp điều trị mới đầy hứa hẹn cho căn bệnh hiếm gặp.",
+    "trickyWords": [
+      {
+        "word": "scientists",
+        "phonetic": "/ˈsaɪəntɪsts/"
+      },
+      {
+        "word": "discovered",
+        "phonetic": "/dɪˈskʌvərd/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-042.mp3"
+  },
+  {
+    "id": "dct-043",
+    "textEn": "His highly controversial speech sparked a heated debate among the entire audience.",
+    "textVi": "Bài phát biểu gây tranh cãi dữ dội của ông ấy đã châm ngòi một cuộc tranh luận nảy lửa trong toàn bộ khán giả.",
+    "trickyWords": [
+      {
+        "word": "controversial",
+        "phonetic": "/ˌkɑːntrəˈvɜːrʃəl/"
+      },
+      {
+        "word": "debate",
+        "phonetic": "/dɪˈbeɪt/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-043.mp3"
+  },
+  {
+    "id": "dct-044",
+    "textEn": "The entire committee unanimously approved the highly ambitious new development plan yesterday.",
+    "textVi": "Toàn bộ ủy ban đã nhất trí thông qua kế hoạch phát triển mới đầy tham vọng vào hôm qua.",
+    "trickyWords": [
+      {
+        "word": "unanimously",
+        "phonetic": "/juːˈnænɪməsli/"
+      },
+      {
+        "word": "ambitious",
+        "phonetic": "/æmˈbɪʃəs/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-044.mp3"
+  },
+  {
+    "id": "dct-045",
+    "textEn": "She unexpectedly inherited her late grandmother's exquisite collection of valuable antique jewelry.",
+    "textVi": "Cô ấy bất ngờ được thừa kế bộ sưu tập đồ trang sức cổ quý giá tinh xảo của người bà quá cố.",
+    "trickyWords": [
+      {
+        "word": "inherited",
+        "phonetic": "/ɪnˈherɪtɪd/"
+      },
+      {
+        "word": "exquisite",
+        "phonetic": "/ɪkˈskwɪzɪt/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-045.mp3"
+  },
+  {
+    "id": "dct-046",
+    "textEn": "The young entrepreneur launched an innovative tech startup in the bustling capital city.",
+    "textVi": "Chàng doanh nhân trẻ đã ra mắt một công ty khởi nghiệp công nghệ sáng tạo tại thủ đô nhộn nhịp.",
+    "trickyWords": [
+      {
+        "word": "entrepreneur",
+        "phonetic": "/ˌɑːntrəprəˈnɜːr/"
+      },
+      {
+        "word": "innovative",
+        "phonetic": "/ˈɪnəveɪtɪv/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-046.mp3"
+  },
+  {
+    "id": "dct-047",
+    "textEn": "Researchers are still investigating the mysterious disappearance of the ancient mountain tribe.",
+    "textVi": "Các nhà nghiên cứu vẫn đang điều tra sự biến mất bí ẩn của bộ tộc miền núi cổ xưa.",
+    "trickyWords": [
+      {
+        "word": "researchers",
+        "phonetic": "/rɪˈsɜːrtʃərz/"
+      },
+      {
+        "word": "mysterious",
+        "phonetic": "/mɪˈstɪriəs/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-047.mp3"
+  },
+  {
+    "id": "dct-048",
+    "textEn": "The renowned orchestra performed a magnificent symphony at the historic downtown concert hall.",
+    "textVi": "Dàn nhạc nổi tiếng đã biểu diễn một bản giao hưởng tráng lệ tại phòng hòa nhạc lịch sử ở trung tâm thành phố.",
+    "trickyWords": [
+      {
+        "word": "orchestra",
+        "phonetic": "/ˈɔːrkɪstrə/"
+      },
+      {
+        "word": "symphony",
+        "phonetic": "/ˈsɪmfəni/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-048.mp3"
+  },
+  {
+    "id": "dct-049",
+    "textEn": "He was finally acquitted of all criminal charges after the lengthy court trial.",
+    "textVi": "Ông ấy cuối cùng đã được tuyên trắng án mọi cáo buộc hình sự sau phiên tòa kéo dài.",
+    "trickyWords": [
+      {
+        "word": "acquitted",
+        "phonetic": "/əˈkwɪtɪd/"
+      },
+      {
+        "word": "charges",
+        "phonetic": "/ˈtʃɑːrdʒɪz/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-049.mp3"
+  },
+  {
+    "id": "dct-050",
+    "textEn": "The talented young architect designed a fully sustainable building with remarkable precision.",
+    "textVi": "Kiến trúc sư trẻ tài năng đã thiết kế một tòa nhà hoàn toàn bền vững với độ chính xác đáng kinh ngạc.",
+    "trickyWords": [
+      {
+        "word": "architect",
+        "phonetic": "/ˈɑːrkɪtekt/"
+      },
+      {
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbəl/"
+      }
+    ],
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false,
+    "audioUrl": "/audio/listening/dictation/dct-050.mp3"
+  }
+]

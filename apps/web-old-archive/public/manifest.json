@@ -1,0 +1,26 @@
+{
+  "name": "LinguaFlow — Học Tiếng Anh & Luyện Thi IELTS",
+  "short_name": "LinguaFlow",
+  "description": "Nền tảng học tiếng Anh & luyện thi IELTS thông minh với 26,500+ từ vựng chuẩn CEFR và phương pháp Spaced Repetition.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#070b14",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/mascot/mascot-happy.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/mascot/mascot-happy.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "learning", "productivity"],
+  "lang": "vi"
+}

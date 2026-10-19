@@ -1,5 +1,6 @@
 packages:
-  - "apps/*"
+  - "apps/api"
+  - "apps/web"
   - "packages/*"
 allowBuilds:
   '@prisma/client': true
@@ -12,3 +13,7 @@ allowBuilds:
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+overrides:
+  nanoid: '>=3.3.18'
+  postcss: '>=8.5.18'
+

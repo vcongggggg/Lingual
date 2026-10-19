@@ -1,0 +1,3632 @@
+[
+  {
+    "id": "unit-21",
+    "order": 21,
+    "cefrLevel": "B1",
+    "title": "Home & Living",
+    "titleVi": "Nhà ở & Sinh hoạt",
+    "description": "Vocabulary for furniture, housework, and renting a home.",
+    "descriptionVi": "Từ vựng về đồ nội thất, việc nhà và thuê nhà.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Around the House",
+        "titleVi": "Quanh ngôi nhà",
+        "words": [
+          {
+            "targetText": "furniture",
+            "translation": "đồ nội thất",
+            "phonetic": "/ˈfɜːrnɪtʃər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The furniture is modern.",
+            "exampleTranslation": "Đồ nội thất rất hiện đại."
+          },
+          {
+            "targetText": "curtain",
+            "translation": "rèm cửa",
+            "phonetic": "/ˈkɜːrtn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Close the curtains at night.",
+            "exampleTranslation": "Đóng rèm cửa vào ban đêm."
+          },
+          {
+            "targetText": "cushion",
+            "translation": "gối tựa",
+            "phonetic": "/ˈkʊʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "There are four cushions on the sofa.",
+            "exampleTranslation": "Có bốn chiếc gối tựa trên sofa."
+          },
+          {
+            "targetText": "rug",
+            "translation": "thảm trải sàn",
+            "phonetic": "/rʌɡ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A colorful rug covers the floor.",
+            "exampleTranslation": "Tấm thảm trải sàn đầy màu sắc phủ kín sàn."
+          },
+          {
+            "targetText": "mirror",
+            "translation": "gương",
+            "phonetic": "/ˈmɪrər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "She looked in the mirror.",
+            "exampleTranslation": "Cô ấy nhìn vào gương."
+          },
+          {
+            "targetText": "carpet",
+            "translation": "thảm",
+            "phonetic": "/ˈkɑːrpɪt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The carpet is soft.",
+            "exampleTranslation": "Tấm thảm rất mềm."
+          },
+          {
+            "targetText": "lamp",
+            "translation": "đèn bàn",
+            "phonetic": "/læmp/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Turn on the lamp.",
+            "exampleTranslation": "Bật đèn bàn lên."
+          },
+          {
+            "targetText": "faucet",
+            "translation": "vòi nước",
+            "phonetic": "/ˈfɔːsɪt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The faucet is leaking.",
+            "exampleTranslation": "Vòi nước đang rỉ."
+          },
+          {
+            "targetText": "drawer",
+            "translation": "ngăn kéo",
+            "phonetic": "/drɔːr/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The keys are in the drawer.",
+            "exampleTranslation": "Chìa khóa ở trong ngăn kéo."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'furniture' nghĩa là gì?",
+            "options": [
+              "thảm trải sàn",
+              "gối tựa",
+              "đồ nội thất",
+              "rèm cửa"
+            ],
+            "correctAnswer": "đồ nội thất",
+            "explanationVi": "'furniture' có nghĩa là 'đồ nội thất'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'curtain' nghĩa là gì?",
+            "options": [
+              "rèm cửa",
+              "thảm trải sàn",
+              "đồ nội thất",
+              "gối tựa"
+            ],
+            "correctAnswer": "rèm cửa",
+            "explanationVi": "'curtain' có nghĩa là 'rèm cửa'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "furniture",
+              "modern.",
+              "is",
+              "The"
+            ],
+            "correctAnswer": "The furniture is modern.",
+            "explanationVi": "Câu đúng: The furniture is modern. (Đồ nội thất rất hiện đại.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Household Chores",
+        "titleVi": "Việc nhà",
+        "words": [
+          {
+            "targetText": "vacuum",
+            "translation": "hút bụi",
+            "phonetic": "/ˈvækjuːm/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "I vacuum the floor weekly.",
+            "exampleTranslation": "Tôi hút bụi sàn nhà hàng tuần."
+          },
+          {
+            "targetText": "mop",
+            "translation": "lau sàn",
+            "phonetic": "/mɑːp/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "She mopped the kitchen.",
+            "exampleTranslation": "Cô ấy đã lau bếp."
+          },
+          {
+            "targetText": "dust",
+            "translation": "lau bụi",
+            "phonetic": "/dʌst/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Dust the shelves, please.",
+            "exampleTranslation": "Vui lòng lau bụi kệ sách."
+          },
+          {
+            "targetText": "laundry",
+            "translation": "giặt giũ",
+            "phonetic": "/ˈlɔːndri/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "I do laundry on Sundays.",
+            "exampleTranslation": "Tôi giặt giũ vào Chủ nhật."
+          },
+          {
+            "targetText": "iron",
+            "translation": "ủi quần áo",
+            "phonetic": "/ˈaɪərn/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "He ironed his shirt.",
+            "exampleTranslation": "Anh ấy đã ủi áo sơ mi."
+          },
+          {
+            "targetText": "sweep",
+            "translation": "quét",
+            "phonetic": "/swiːp/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Sweep the porch.",
+            "exampleTranslation": "Quét hiên nhà đi."
+          },
+          {
+            "targetText": "tidy",
+            "translation": "dọn gọn",
+            "phonetic": "/ˈtaɪdi/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Tidy your room!",
+            "exampleTranslation": "Dọn phòng gọn gàng đi!"
+          },
+          {
+            "targetText": "dishwasher",
+            "translation": "máy rửa bát",
+            "phonetic": "/ˈdɪʃwɑːʃər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Load the dishwasher.",
+            "exampleTranslation": "Xếp bát vào máy rửa đi."
+          },
+          {
+            "targetText": "garbage",
+            "translation": "rác",
+            "phonetic": "/ˈɡɑːrbɪdʒ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Take out the garbage.",
+            "exampleTranslation": "Mang rác ra ngoài đi."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'vacuum' nghĩa là gì?",
+            "options": [
+              "lau bụi",
+              "giặt giũ",
+              "lau sàn",
+              "hút bụi"
+            ],
+            "correctAnswer": "hút bụi",
+            "explanationVi": "'vacuum' có nghĩa là 'hút bụi'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'mop' nghĩa là gì?",
+            "options": [
+              "lau bụi",
+              "giặt giũ",
+              "lau sàn",
+              "hút bụi"
+            ],
+            "correctAnswer": "lau sàn",
+            "explanationVi": "'mop' có nghĩa là 'lau sàn'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "the",
+              "Sweep",
+              "porch."
+            ],
+            "correctAnswer": "Sweep the porch.",
+            "explanationVi": "Câu đúng: Sweep the porch. (Quét hiên nhà đi.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Renting a Home",
+        "titleVi": "Thuê nhà",
+        "words": [
+          {
+            "targetText": "landlord",
+            "translation": "chủ nhà",
+            "phonetic": "/ˈlændlɔːrd/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The landlord fixed the roof.",
+            "exampleTranslation": "Chủ nhà đã sửa mái."
+          },
+          {
+            "targetText": "tenant",
+            "translation": "người thuê nhà",
+            "phonetic": "/ˈtenənt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The tenants pay monthly.",
+            "exampleTranslation": "Người thuê trả tiền hàng tháng."
+          },
+          {
+            "targetText": "lease",
+            "translation": "hợp đồng thuê",
+            "phonetic": "/liːs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "She signed a one-year lease.",
+            "exampleTranslation": "Cô ấy đã ký hợp đồng thuê một năm."
+          },
+          {
+            "targetText": "rent",
+            "translation": "tiền thuê",
+            "phonetic": "/rent/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The rent is due on the 5th.",
+            "exampleTranslation": "Tiền thuê đến hạn vào mùng 5."
+          },
+          {
+            "targetText": "security deposit",
+            "translation": "tiền cọc",
+            "phonetic": "/sɪˈkjʊrəti dɪˈpɑːzɪt/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "The security deposit is $500.",
+            "exampleTranslation": "Tiền cọc là 500 đô."
+          },
+          {
+            "targetText": "utility bill",
+            "translation": "hóa đơn điện nước",
+            "phonetic": "/juːˈtɪləti bɪl/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Utility bills are included.",
+            "exampleTranslation": "Hóa đơn điện nước đã bao gồm."
+          },
+          {
+            "targetText": "furnished",
+            "translation": "có sẵn nội thất",
+            "phonetic": "/ˈfɜːrnɪʃt/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The apartment is fully furnished.",
+            "exampleTranslation": "Căn hộ có đầy đủ nội thất."
+          },
+          {
+            "targetText": "evict",
+            "translation": "đuổi khỏi nhà thuê",
+            "phonetic": "/ɪˈvɪkt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "They were evicted for not paying.",
+            "exampleTranslation": "Họ bị đuổi vì không trả tiền."
+          },
+          {
+            "targetText": "roommate",
+            "translation": "bạn cùng phòng",
+            "phonetic": "/ˈruːmmeɪt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "My roommate is friendly.",
+            "exampleTranslation": "Bạn cùng phòng của tôi thân thiện."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'landlord' nghĩa là gì?",
+            "options": [
+              "người thuê nhà",
+              "chủ nhà",
+              "tiền thuê",
+              "hợp đồng thuê"
+            ],
+            "correctAnswer": "chủ nhà",
+            "explanationVi": "'landlord' có nghĩa là 'chủ nhà'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'tenant' nghĩa là gì?",
+            "options": [
+              "chủ nhà",
+              "tiền thuê",
+              "người thuê nhà",
+              "hợp đồng thuê"
+            ],
+            "correctAnswer": "người thuê nhà",
+            "explanationVi": "'tenant' có nghĩa là 'người thuê nhà'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "pay",
+              "tenants",
+              "monthly.",
+              "The"
+            ],
+            "correctAnswer": "The tenants pay monthly.",
+            "explanationVi": "Câu đúng: The tenants pay monthly. (Người thuê trả tiền hàng tháng.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-22",
+    "order": 22,
+    "cefrLevel": "B1",
+    "title": "Weather & Seasons",
+    "titleVi": "Thời tiết & Mùa",
+    "description": "Vocabulary for weather, seasons, and natural disasters.",
+    "descriptionVi": "Từ vựng về thời tiết, các mùa và thiên tai.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Weather Conditions",
+        "titleVi": "Điều kiện thời tiết",
+        "words": [
+          {
+            "targetText": "drizzle",
+            "translation": "mưa phùn",
+            "phonetic": "/ˈdrɪzl/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A light drizzle started.",
+            "exampleTranslation": "Mưa phùn nhẹ bắt đầu rơi."
+          },
+          {
+            "targetText": "humid",
+            "translation": "ẩm",
+            "phonetic": "/ˈhjuːmɪd/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "Saigon is hot and humid.",
+            "exampleTranslation": "Sài Gòn nóng và ẩm."
+          },
+          {
+            "targetText": "breeze",
+            "translation": "gió nhẹ",
+            "phonetic": "/briːz/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A cool breeze blew.",
+            "exampleTranslation": "Một cơn gió nhẹ mát thổi qua."
+          },
+          {
+            "targetText": "overcast",
+            "translation": "u ám",
+            "phonetic": "/ˈoʊvərkæst/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The sky is overcast today.",
+            "exampleTranslation": "Hôm nay trời u ám."
+          },
+          {
+            "targetText": "frost",
+            "translation": "sương giá",
+            "phonetic": "/frɔːst/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Frost covered the grass.",
+            "exampleTranslation": "Sương giá phủ kín cỏ."
+          },
+          {
+            "targetText": "hail",
+            "translation": "mưa đá",
+            "phonetic": "/heɪl/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Hail damaged the roof.",
+            "exampleTranslation": "Mưa đá làm hỏng mái nhà."
+          },
+          {
+            "targetText": "thunderstorm",
+            "translation": "giông bão",
+            "phonetic": "/ˈθʌndərstɔːrm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A thunderstorm is coming.",
+            "exampleTranslation": "Một cơn giông đang đến."
+          },
+          {
+            "targetText": "rainbow",
+            "translation": "cầu vồng",
+            "phonetic": "/ˈreɪnboʊ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A rainbow appeared after the rain.",
+            "exampleTranslation": "Cầu vồng xuất hiện sau cơn mưa."
+          },
+          {
+            "targetText": "foggy",
+            "translation": "có sương mù",
+            "phonetic": "/ˈfɔːɡi/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "It was too foggy to drive.",
+            "exampleTranslation": "Sương mù quá dày không lái xe được."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'drizzle' nghĩa là gì?",
+            "options": [
+              "mưa phùn",
+              "ẩm",
+              "gió nhẹ",
+              "u ám"
+            ],
+            "correctAnswer": "mưa phùn",
+            "explanationVi": "'drizzle' có nghĩa là 'mưa phùn'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'humid' nghĩa là gì?",
+            "options": [
+              "u ám",
+              "mưa phùn",
+              "ẩm",
+              "gió nhẹ"
+            ],
+            "correctAnswer": "ẩm",
+            "explanationVi": "'humid' có nghĩa là 'ẩm'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "drizzle",
+              "started.",
+              "light",
+              "A"
+            ],
+            "correctAnswer": "A light drizzle started.",
+            "explanationVi": "Câu đúng: A light drizzle started. (Mưa phùn nhẹ bắt đầu rơi.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Seasons & Climate",
+        "titleVi": "Mùa & Khí hậu",
+        "words": [
+          {
+            "targetText": "spring",
+            "translation": "mùa xuân",
+            "phonetic": "/sprɪŋ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Flowers bloom in spring.",
+            "exampleTranslation": "Hoa nở vào mùa xuân."
+          },
+          {
+            "targetText": "autumn",
+            "translation": "mùa thu",
+            "phonetic": "/ˈɔːtəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Leaves fall in autumn.",
+            "exampleTranslation": "Lá rụng vào mùa thu."
+          },
+          {
+            "targetText": "monsoon",
+            "translation": "gió mùa",
+            "phonetic": "/mɑːnˈsuːn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The monsoon brings heavy rain.",
+            "exampleTranslation": "Gió mùa mang mưa lớn."
+          },
+          {
+            "targetText": "heatwave",
+            "translation": "đợt nắng nóng",
+            "phonetic": "/ˈhiːtweɪv/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A heatwave hit the city.",
+            "exampleTranslation": "Đợt nắng nóng ập đến thành phố."
+          },
+          {
+            "targetText": "chilly",
+            "translation": "se lạnh",
+            "phonetic": "/ˈtʃɪli/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The evening was chilly.",
+            "exampleTranslation": "Buổi tối se lạnh."
+          },
+          {
+            "targetText": "scorching",
+            "translation": "nóng như thiêu",
+            "phonetic": "/ˈskɔːrtʃɪŋ/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The scorching sun burned my skin.",
+            "exampleTranslation": "Nắng nóng như thiêu đốt da tôi."
+          },
+          {
+            "targetText": "mild",
+            "translation": "ôn hòa",
+            "phonetic": "/maɪld/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The climate here is mild.",
+            "exampleTranslation": "Khí hậu ở đây ôn hòa."
+          },
+          {
+            "targetText": "blizzard",
+            "translation": "bão tuyết",
+            "phonetic": "/ˈblɪzərd/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The blizzard closed the roads.",
+            "exampleTranslation": "Bão tuyết làm đóng đường."
+          },
+          {
+            "targetText": "typhoon",
+            "translation": "bão nhiệt đới",
+            "phonetic": "/taɪˈfuːn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A typhoon is approaching.",
+            "exampleTranslation": "Một cơn bão nhiệt đới đang đến gần."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'spring' nghĩa là gì?",
+            "options": [
+              "mùa thu",
+              "mùa xuân",
+              "gió mùa",
+              "đợt nắng nóng"
+            ],
+            "correctAnswer": "mùa xuân",
+            "explanationVi": "'spring' có nghĩa là 'mùa xuân'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'autumn' nghĩa là gì?",
+            "options": [
+              "mùa thu",
+              "gió mùa",
+              "đợt nắng nóng",
+              "mùa xuân"
+            ],
+            "correctAnswer": "mùa thu",
+            "explanationVi": "'autumn' có nghĩa là 'mùa thu'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "in",
+              "spring.",
+              "bloom",
+              "Flowers"
+            ],
+            "correctAnswer": "Flowers bloom in spring.",
+            "explanationVi": "Câu đúng: Flowers bloom in spring. (Hoa nở vào mùa xuân.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Forecasting & Disasters",
+        "titleVi": "Dự báo & Thiên tai",
+        "words": [
+          {
+            "targetText": "forecast",
+            "translation": "dự báo thời tiết",
+            "phonetic": "/ˈfɔːrkæst/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The forecast says it will rain.",
+            "exampleTranslation": "Dự báo nói trời sẽ mưa."
+          },
+          {
+            "targetText": "temperature",
+            "translation": "nhiệt độ",
+            "phonetic": "/ˈtemprətʃər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The temperature dropped to 10°C.",
+            "exampleTranslation": "Nhiệt độ giảm còn 10 độ."
+          },
+          {
+            "targetText": "Celsius",
+            "translation": "độ C",
+            "phonetic": "/ˈselsiəs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Water boils at 100 degrees Celsius.",
+            "exampleTranslation": "Nước sôi ở 100 độ C."
+          },
+          {
+            "targetText": "humidity",
+            "translation": "độ ẩm",
+            "phonetic": "/hjuːˈmɪdəti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The humidity is 90% today.",
+            "exampleTranslation": "Độ ẩm hôm nay là 90%."
+          },
+          {
+            "targetText": "landslide",
+            "translation": "sạt lở đất",
+            "phonetic": "/ˈlændslaɪd/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The landslide blocked the road.",
+            "exampleTranslation": "Sạt lở đất chặn đường."
+          },
+          {
+            "targetText": "earthquake",
+            "translation": "động đất",
+            "phonetic": "/ˈɜːrθkweɪk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The earthquake shook the city.",
+            "exampleTranslation": "Động đất làm rung chuyển thành phố."
+          },
+          {
+            "targetText": "tsunami",
+            "translation": "sóng thần",
+            "phonetic": "/tsuːˈnɑːmi/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The tsunami warning was lifted.",
+            "exampleTranslation": "Cảnh báo sóng thần đã được dỡ bỏ."
+          },
+          {
+            "targetText": "evacuate",
+            "translation": "sơ tán",
+            "phonetic": "/ɪˈvækjueɪt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Residents were evacuated.",
+            "exampleTranslation": "Cư dân đã được sơ tán."
+          },
+          {
+            "targetText": "shelter",
+            "translation": "nơi trú ẩn",
+            "phonetic": "/ˈʃeltər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "They took shelter in a school.",
+            "exampleTranslation": "Họ trú ẩn trong một trường học."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'forecast' nghĩa là gì?",
+            "options": [
+              "nhiệt độ",
+              "độ C",
+              "dự báo thời tiết",
+              "độ ẩm"
+            ],
+            "correctAnswer": "dự báo thời tiết",
+            "explanationVi": "'forecast' có nghĩa là 'dự báo thời tiết'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'temperature' nghĩa là gì?",
+            "options": [
+              "nhiệt độ",
+              "dự báo thời tiết",
+              "độ ẩm",
+              "độ C"
+            ],
+            "correctAnswer": "nhiệt độ",
+            "explanationVi": "'temperature' có nghĩa là 'nhiệt độ'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "were",
+              "evacuated.",
+              "Residents"
+            ],
+            "correctAnswer": "Residents were evacuated.",
+            "explanationVi": "Câu đúng: Residents were evacuated. (Cư dân đã được sơ tán.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-23",
+    "order": 23,
+    "cefrLevel": "B1",
+    "title": "Transport & Traffic",
+    "titleVi": "Giao thông & Đi lại",
+    "description": "Vocabulary for roads, public transport, and driving.",
+    "descriptionVi": "Từ vựng về đường sá, giao thông công cộng và lái xe.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "On the Road",
+        "titleVi": "Trên đường",
+        "words": [
+          {
+            "targetText": "traffic jam",
+            "translation": "kẹt xe",
+            "phonetic": "/ˈtræfɪk dʒæm/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "We were stuck in a traffic jam.",
+            "exampleTranslation": "Chúng tôi bị kẹt xe."
+          },
+          {
+            "targetText": "rush hour",
+            "translation": "giờ cao điểm",
+            "phonetic": "/rʌʃ aʊər/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Avoid driving during rush hour.",
+            "exampleTranslation": "Tránh lái xe vào giờ cao điểm."
+          },
+          {
+            "targetText": "pedestrian",
+            "translation": "người đi bộ",
+            "phonetic": "/pəˈdestriən/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Pedestrians must use the crosswalk.",
+            "exampleTranslation": "Người đi bộ phải đi qua vạch sang đường."
+          },
+          {
+            "targetText": "crosswalk",
+            "translation": "vạch sang đường",
+            "phonetic": "/ˈkrɔːswɔːk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Wait at the crosswalk.",
+            "exampleTranslation": "Đợi ở vạch sang đường."
+          },
+          {
+            "targetText": "roundabout",
+            "translation": "vòng xoay",
+            "phonetic": "/ˈraʊndəbaʊt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Take the second exit at the roundabout.",
+            "exampleTranslation": "Rẽ lối thứ hai ở vòng xoay."
+          },
+          {
+            "targetText": "horn",
+            "translation": "còi xe",
+            "phonetic": "/hɔːrn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He honked the horn.",
+            "exampleTranslation": "Anh ấy bấm còi."
+          },
+          {
+            "targetText": "speed limit",
+            "translation": "giới hạn tốc độ",
+            "phonetic": "/spiːd ˈlɪmɪt/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "The speed limit is 60 km/h.",
+            "exampleTranslation": "Giới hạn tốc độ là 60 km/h."
+          },
+          {
+            "targetText": "fine",
+            "translation": "tiền phạt",
+            "phonetic": "/faɪn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He got a fine for speeding.",
+            "exampleTranslation": "Anh ấy bị phạt tiền vì chạy quá tốc độ."
+          },
+          {
+            "targetText": "detour",
+            "translation": "đường vòng",
+            "phonetic": "/ˈdiːtʊr/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "We took a detour around the flood.",
+            "exampleTranslation": "Chúng tôi đi đường vòng tránh lũ."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'traffic jam' nghĩa là gì?",
+            "options": [
+              "người đi bộ",
+              "kẹt xe",
+              "giờ cao điểm",
+              "vạch sang đường"
+            ],
+            "correctAnswer": "kẹt xe",
+            "explanationVi": "'traffic jam' có nghĩa là 'kẹt xe'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'rush hour' nghĩa là gì?",
+            "options": [
+              "giờ cao điểm",
+              "vạch sang đường",
+              "người đi bộ",
+              "kẹt xe"
+            ],
+            "correctAnswer": "giờ cao điểm",
+            "explanationVi": "'rush hour' có nghĩa là 'giờ cao điểm'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "Wait",
+              "the",
+              "crosswalk.",
+              "at"
+            ],
+            "correctAnswer": "Wait at the crosswalk.",
+            "explanationVi": "Câu đúng: Wait at the crosswalk. (Đợi ở vạch sang đường.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Public Transport",
+        "titleVi": "Giao thông công cộng",
+        "words": [
+          {
+            "targetText": "commute",
+            "translation": "đi làm hàng ngày",
+            "phonetic": "/kəˈmjuːt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "She commutes by bus.",
+            "exampleTranslation": "Cô ấy đi làm bằng xe buýt."
+          },
+          {
+            "targetText": "fare",
+            "translation": "tiền vé",
+            "phonetic": "/fer/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The bus fare is 7,000 dong.",
+            "exampleTranslation": "Vé xe buýt là 7.000 đồng."
+          },
+          {
+            "targetText": "subway",
+            "translation": "tàu điện ngầm",
+            "phonetic": "/ˈsʌbweɪ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The subway is fast.",
+            "exampleTranslation": "Tàu điện ngầm rất nhanh."
+          },
+          {
+            "targetText": "platform",
+            "translation": "sân ga",
+            "phonetic": "/ˈplætfɔːrm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The train arrives at platform 2.",
+            "exampleTranslation": "Tàu đến sân ga số 2."
+          },
+          {
+            "targetText": "connecting flight",
+            "translation": "chuyến bay nối",
+            "phonetic": "/kəˈnektɪŋ flaɪt/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "My connecting flight was delayed.",
+            "exampleTranslation": "Chuyến bay nối của tôi bị hoãn."
+          },
+          {
+            "targetText": "ticket inspector",
+            "translation": "nhân viên soát vé",
+            "phonetic": "/ˈtɪkɪt ɪnˈspektər/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "The ticket inspector checked our tickets.",
+            "exampleTranslation": "Nhân viên soát vé kiểm tra vé của chúng tôi."
+          },
+          {
+            "targetText": "peak hours",
+            "translation": "giờ cao điểm",
+            "phonetic": "/piːk aʊərz/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Trains are crowded during peak hours.",
+            "exampleTranslation": "Tàu đông vào giờ cao điểm."
+          },
+          {
+            "targetText": "cancel",
+            "translation": "hủy chuyến",
+            "phonetic": "/ˈkænsl/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "The flight was canceled.",
+            "exampleTranslation": "Chuyến bay bị hủy."
+          },
+          {
+            "targetText": "backpack",
+            "translation": "ba lô",
+            "phonetic": "/ˈbækpæk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He travels with a backpack.",
+            "exampleTranslation": "Anh ấy du lịch với ba lô."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'commute' nghĩa là gì?",
+            "options": [
+              "tiền vé",
+              "đi làm hàng ngày",
+              "sân ga",
+              "tàu điện ngầm"
+            ],
+            "correctAnswer": "đi làm hàng ngày",
+            "explanationVi": "'commute' có nghĩa là 'đi làm hàng ngày'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'fare' nghĩa là gì?",
+            "options": [
+              "tàu điện ngầm",
+              "tiền vé",
+              "sân ga",
+              "đi làm hàng ngày"
+            ],
+            "correctAnswer": "tiền vé",
+            "explanationVi": "'fare' có nghĩa là 'tiền vé'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "by",
+              "bus.",
+              "She",
+              "commutes"
+            ],
+            "correctAnswer": "She commutes by bus.",
+            "explanationVi": "Câu đúng: She commutes by bus. (Cô ấy đi làm bằng xe buýt.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Driving",
+        "titleVi": "Lái xe",
+        "words": [
+          {
+            "targetText": "license",
+            "translation": "bằng lái",
+            "phonetic": "/ˈlaɪsns/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He just got his driver's license.",
+            "exampleTranslation": "Anh ấy vừa lấy bằng lái."
+          },
+          {
+            "targetText": "steer",
+            "translation": "lái vô lăng",
+            "phonetic": "/stɪr/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Steer carefully in the rain.",
+            "exampleTranslation": "Lái cẩn thận khi trời mưa."
+          },
+          {
+            "targetText": "brake",
+            "translation": "phanh",
+            "phonetic": "/breɪk/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Brake slowly on wet roads.",
+            "exampleTranslation": "Phanh từ từ trên đường ướt."
+          },
+          {
+            "targetText": "accelerate",
+            "translation": "tăng tốc",
+            "phonetic": "/əkˈseləreɪt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Don't accelerate near schools.",
+            "exampleTranslation": "Đừng tăng tốc gần trường học."
+          },
+          {
+            "targetText": "reverse",
+            "translation": "lùi xe",
+            "phonetic": "/rɪˈvɜːrs/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Reverse into the parking spot.",
+            "exampleTranslation": "Lùi xe vào chỗ đỗ."
+          },
+          {
+            "targetText": "windshield",
+            "translation": "kính chắn gió",
+            "phonetic": "/ˈwɪndʃiːld/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The windshield is cracked.",
+            "exampleTranslation": "Kính chắn gió bị nứt."
+          },
+          {
+            "targetText": "headlight",
+            "translation": "đèn pha",
+            "phonetic": "/ˈhedlaɪt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Turn on your headlights.",
+            "exampleTranslation": "Bật đèn pha lên."
+          },
+          {
+            "targetText": "flat tire",
+            "translation": "xẹp lốp",
+            "phonetic": "/flæt taɪər/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "We got a flat tire.",
+            "exampleTranslation": "Xe chúng tôi bị xẹp lốp."
+          },
+          {
+            "targetText": "tow truck",
+            "translation": "xe cứu hộ",
+            "phonetic": "/toʊ trʌk/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Call a tow truck.",
+            "exampleTranslation": "Gọi xe cứu hộ đi."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'license' nghĩa là gì?",
+            "options": [
+              "tăng tốc",
+              "lái vô lăng",
+              "phanh",
+              "bằng lái"
+            ],
+            "correctAnswer": "bằng lái",
+            "explanationVi": "'license' có nghĩa là 'bằng lái'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'steer' nghĩa là gì?",
+            "options": [
+              "phanh",
+              "lái vô lăng",
+              "bằng lái",
+              "tăng tốc"
+            ],
+            "correctAnswer": "lái vô lăng",
+            "explanationVi": "'steer' có nghĩa là 'lái vô lăng'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "schools.",
+              "near",
+              "accelerate",
+              "Don't"
+            ],
+            "correctAnswer": "Don't accelerate near schools.",
+            "explanationVi": "Câu đúng: Don't accelerate near schools. (Đừng tăng tốc gần trường học.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-24",
+    "order": 24,
+    "cefrLevel": "B1",
+    "title": "Animals & Pets",
+    "titleVi": "Động vật & Thú cưng",
+    "description": "Vocabulary for pets, wild animals, and animal care.",
+    "descriptionVi": "Từ vựng về thú cưng, động vật hoang dã và chăm sóc động vật.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Pets at Home",
+        "titleVi": "Thú cưng trong nhà",
+        "words": [
+          {
+            "targetText": "pet",
+            "translation": "thú cưng",
+            "phonetic": "/pet/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Dogs are popular pets.",
+            "exampleTranslation": "Chó là thú cưng phổ biến."
+          },
+          {
+            "targetText": "leash",
+            "translation": "dây dắt",
+            "phonetic": "/liːʃ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Keep your dog on a leash.",
+            "exampleTranslation": "Giữ chó bằng dây dắt."
+          },
+          {
+            "targetText": "bark",
+            "translation": "sủa",
+            "phonetic": "/bɑːrk/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "The dog barks at strangers.",
+            "exampleTranslation": "Con chó sủa người lạ."
+          },
+          {
+            "targetText": "purr",
+            "translation": "kêu rừ rừ",
+            "phonetic": "/pɜːr/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "The cat purred happily.",
+            "exampleTranslation": "Con mèo kêu rừ rừ vui vẻ."
+          },
+          {
+            "targetText": "cage",
+            "translation": "lồng",
+            "phonetic": "/keɪdʒ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The bird is in a cage.",
+            "exampleTranslation": "Con chim ở trong lồng."
+          },
+          {
+            "targetText": "litter box",
+            "translation": "khay vệ sinh mèo",
+            "phonetic": "/ˈlɪtər bɑːks/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Clean the litter box daily.",
+            "exampleTranslation": "Dọn khay vệ sinh mèo hàng ngày."
+          },
+          {
+            "targetText": "groom",
+            "translation": "chải chuốt",
+            "phonetic": "/ɡruːm/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "She grooms her poodle weekly.",
+            "exampleTranslation": "Cô ấy chải chuốt cho chó poodle hàng tuần."
+          },
+          {
+            "targetText": "neuter",
+            "translation": "triệt sản",
+            "phonetic": "/ˈnuːtər/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Vets recommend neutering pets.",
+            "exampleTranslation": "Bác sĩ thú y khuyên triệt sản thú cưng."
+          },
+          {
+            "targetText": "vet",
+            "translation": "bác sĩ thú y",
+            "phonetic": "/vet/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Take the cat to the vet.",
+            "exampleTranslation": "Đưa mèo đến bác sĩ thú y."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'pet' nghĩa là gì?",
+            "options": [
+              "sủa",
+              "thú cưng",
+              "dây dắt",
+              "kêu rừ rừ"
+            ],
+            "correctAnswer": "thú cưng",
+            "explanationVi": "'pet' có nghĩa là 'thú cưng'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'leash' nghĩa là gì?",
+            "options": [
+              "dây dắt",
+              "sủa",
+              "thú cưng",
+              "kêu rừ rừ"
+            ],
+            "correctAnswer": "dây dắt",
+            "explanationVi": "'leash' có nghĩa là 'dây dắt'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "popular",
+              "Dogs",
+              "pets.",
+              "are"
+            ],
+            "correctAnswer": "Dogs are popular pets.",
+            "explanationVi": "Câu đúng: Dogs are popular pets. (Chó là thú cưng phổ biến.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Wild Animals",
+        "titleVi": "Động vật hoang dã",
+        "words": [
+          {
+            "targetText": "herd",
+            "translation": "bầy đàn",
+            "phonetic": "/hɜːrd/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A herd of elephants crossed the road.",
+            "exampleTranslation": "Một bầy voi băng qua đường."
+          },
+          {
+            "targetText": "pack",
+            "translation": "bầy sói",
+            "phonetic": "/pæk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Wolves hunt in packs.",
+            "exampleTranslation": "Sói săn theo bầy."
+          },
+          {
+            "targetText": "flock",
+            "translation": "đàn chim",
+            "phonetic": "/flɑːk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A flock of birds flew south.",
+            "exampleTranslation": "Một đàn chim bay về phương nam."
+          },
+          {
+            "targetText": "hibernate",
+            "translation": "ngủ đông",
+            "phonetic": "/ˈhaɪbərneɪt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Bears hibernate in winter.",
+            "exampleTranslation": "Gấu ngủ đông vào mùa đông."
+          },
+          {
+            "targetText": "venomous",
+            "translation": "có nọc độc",
+            "phonetic": "/ˈvenəməs/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "Some snakes are venomous.",
+            "exampleTranslation": "Một số loài rắn có nọc độc."
+          },
+          {
+            "targetText": "camouflage",
+            "translation": "ngụy trang",
+            "phonetic": "/ˈkæməflɑːʒ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The chameleon's camouflage is amazing.",
+            "exampleTranslation": "Khả năng ngụy trang của tắc kè thật tuyệt."
+          },
+          {
+            "targetText": "nocturnal",
+            "translation": "hoạt động về đêm",
+            "phonetic": "/nɑːkˈtɜːrnl/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "Owls are nocturnal.",
+            "exampleTranslation": "Cú mèo hoạt động về đêm."
+          },
+          {
+            "targetText": "graze",
+            "translation": "gặm cỏ",
+            "phonetic": "/ɡreɪz/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Cows graze in the field.",
+            "exampleTranslation": "Bò gặm cỏ trên đồng."
+          },
+          {
+            "targetText": "burrow",
+            "translation": "hang",
+            "phonetic": "/ˈbɜːroʊ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Rabbits live in burrows.",
+            "exampleTranslation": "Thỏ sống trong hang."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'herd' nghĩa là gì?",
+            "options": [
+              "bầy sói",
+              "bầy đàn",
+              "ngủ đông",
+              "đàn chim"
+            ],
+            "correctAnswer": "bầy đàn",
+            "explanationVi": "'herd' có nghĩa là 'bầy đàn'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'pack' nghĩa là gì?",
+            "options": [
+              "bầy đàn",
+              "đàn chim",
+              "ngủ đông",
+              "bầy sói"
+            ],
+            "correctAnswer": "bầy sói",
+            "explanationVi": "'pack' có nghĩa là 'bầy sói'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "nocturnal.",
+              "Owls",
+              "are"
+            ],
+            "correctAnswer": "Owls are nocturnal.",
+            "explanationVi": "Câu đúng: Owls are nocturnal. (Cú mèo hoạt động về đêm.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Caring for Animals",
+        "titleVi": "Chăm sóc động vật",
+        "words": [
+          {
+            "targetText": "stray",
+            "translation": "đi lạc",
+            "phonetic": "/streɪ/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "A stray dog followed me home.",
+            "exampleTranslation": "Một con chó lạc đi theo tôi về nhà."
+          },
+          {
+            "targetText": "adopt",
+            "translation": "nhận nuôi",
+            "phonetic": "/əˈdɑːpt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "They adopted a rescue dog.",
+            "exampleTranslation": "Họ nhận nuôi một con chó cứu hộ."
+          },
+          {
+            "targetText": "breed",
+            "translation": "giống vật nuôi",
+            "phonetic": "/briːd/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "What breed is your dog?",
+            "exampleTranslation": "Chó của bạn giống gì?"
+          },
+          {
+            "targetText": "feed",
+            "translation": "cho ăn",
+            "phonetic": "/fiːd/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Feed the fish twice a day.",
+            "exampleTranslation": "Cho cá ăn hai lần mỗi ngày."
+          },
+          {
+            "targetText": "foster",
+            "translation": "nuôi tạm",
+            "phonetic": "/ˈfɔːstər/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "She fosters kittens.",
+            "exampleTranslation": "Cô ấy nuôi tạm mèo con."
+          },
+          {
+            "targetText": "vaccination",
+            "translation": "tiêm phòng",
+            "phonetic": "/ˌvæksɪˈneɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Pets need yearly vaccinations.",
+            "exampleTranslation": "Thú cưng cần tiêm phòng hàng năm."
+          },
+          {
+            "targetText": "microchip",
+            "translation": "gắn chip",
+            "phonetic": "/ˈmaɪkroʊtʃɪp/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Microchip your pet for safety.",
+            "exampleTranslation": "Gắn chip cho thú cưng để an toàn."
+          },
+          {
+            "targetText": "obedience",
+            "translation": "vâng lời",
+            "phonetic": "/oʊˈbiːdiəns/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The dog learned obedience quickly.",
+            "exampleTranslation": "Con chó học vâng lời rất nhanh."
+          },
+          {
+            "targetText": "wag",
+            "translation": "vẫy đuôi",
+            "phonetic": "/wæɡ/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "The dog wagged its tail.",
+            "exampleTranslation": "Con chó vẫy đuôi."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'stray' nghĩa là gì?",
+            "options": [
+              "nhận nuôi",
+              "đi lạc",
+              "cho ăn",
+              "giống vật nuôi"
+            ],
+            "correctAnswer": "đi lạc",
+            "explanationVi": "'stray' có nghĩa là 'đi lạc'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'adopt' nghĩa là gì?",
+            "options": [
+              "giống vật nuôi",
+              "cho ăn",
+              "nhận nuôi",
+              "đi lạc"
+            ],
+            "correctAnswer": "nhận nuôi",
+            "explanationVi": "'adopt' có nghĩa là 'nhận nuôi'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "fosters",
+              "kittens.",
+              "She"
+            ],
+            "correctAnswer": "She fosters kittens.",
+            "explanationVi": "Câu đúng: She fosters kittens. (Cô ấy nuôi tạm mèo con.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-25",
+    "order": 25,
+    "cefrLevel": "B2",
+    "title": "Economics & Markets",
+    "titleVi": "Kinh tế & Thị trường",
+    "description": "Advanced vocabulary for the economy, markets, and business strategy.",
+    "descriptionVi": "Từ vựng nâng cao về kinh tế, thị trường và chiến lược kinh doanh.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Economy Basics",
+        "titleVi": "Kinh tế cơ bản",
+        "words": [
+          {
+            "targetText": "inflation",
+            "translation": "lạm phát",
+            "phonetic": "/ɪnˈfleɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Inflation rose to 5% this year.",
+            "exampleTranslation": "Lạm phát tăng lên 5% năm nay."
+          },
+          {
+            "targetText": "recession",
+            "translation": "suy thoái",
+            "phonetic": "/rɪˈseʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The country is in a recession.",
+            "exampleTranslation": "Đất nước đang trong suy thoái."
+          },
+          {
+            "targetText": "GDP",
+            "translation": "GDP",
+            "phonetic": "/ˌdʒiːdiːˈpiː/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Vietnam's GDP grew steadily.",
+            "exampleTranslation": "GDP Việt Nam tăng trưởng ổn định."
+          },
+          {
+            "targetText": "unemployment",
+            "translation": "thất nghiệp",
+            "phonetic": "/ˌʌnɪmˈplɔɪmənt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Unemployment fell to 3%.",
+            "exampleTranslation": "Tỉ lệ thất nghiệp giảm còn 3%."
+          },
+          {
+            "targetText": "fiscal",
+            "translation": "tài khóa",
+            "phonetic": "/ˈfɪskl/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The government changed its fiscal policy.",
+            "exampleTranslation": "Chính phủ thay đổi chính sách tài khóa."
+          },
+          {
+            "targetText": "deficit",
+            "translation": "thâm hụt",
+            "phonetic": "/ˈdefɪsɪt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The budget deficit worries economists.",
+            "exampleTranslation": "Thâm hụt ngân sách khiến các nhà kinh tế lo ngại."
+          },
+          {
+            "targetText": "surplus",
+            "translation": "thặng dư",
+            "phonetic": "/ˈsɜːrpləs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The country reported a trade surplus.",
+            "exampleTranslation": "Đất nước báo cáo thặng dư thương mại."
+          },
+          {
+            "targetText": "stimulus",
+            "translation": "gói kích thích",
+            "phonetic": "/ˈstɪmjələs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The stimulus boosted spending.",
+            "exampleTranslation": "Gói kích thích đã thúc đẩy chi tiêu."
+          },
+          {
+            "targetText": "austerity",
+            "translation": "thắt lưng buộc bụng",
+            "phonetic": "/ɔːˈsterəti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Austerity measures cut public spending.",
+            "exampleTranslation": "Các biện pháp thắt lưng buộc bụng cắt giảm chi tiêu công."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'inflation' nghĩa là gì?",
+            "options": [
+              "GDP",
+              "suy thoái",
+              "thất nghiệp",
+              "lạm phát"
+            ],
+            "correctAnswer": "lạm phát",
+            "explanationVi": "'inflation' có nghĩa là 'lạm phát'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'recession' nghĩa là gì?",
+            "options": [
+              "lạm phát",
+              "thất nghiệp",
+              "GDP",
+              "suy thoái"
+            ],
+            "correctAnswer": "suy thoái",
+            "explanationVi": "'recession' có nghĩa là 'suy thoái'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "GDP",
+              "Vietnam's",
+              "steadily.",
+              "grew"
+            ],
+            "correctAnswer": "Vietnam's GDP grew steadily.",
+            "explanationVi": "Câu đúng: Vietnam's GDP grew steadily. (GDP Việt Nam tăng trưởng ổn định.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Markets & Investment",
+        "titleVi": "Thị trường & Đầu tư",
+        "words": [
+          {
+            "targetText": "stock",
+            "translation": "cổ phiếu",
+            "phonetic": "/stɑːk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He bought tech stocks.",
+            "exampleTranslation": "Anh ấy mua cổ phiếu công nghệ."
+          },
+          {
+            "targetText": "equity",
+            "translation": "cổ phần",
+            "phonetic": "/ˈekwɪti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The fund invests in equities.",
+            "exampleTranslation": "Quỹ đầu tư vào cổ phần."
+          },
+          {
+            "targetText": "dividend",
+            "translation": "cổ tức",
+            "phonetic": "/ˈdɪvɪdend/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The company paid a dividend.",
+            "exampleTranslation": "Công ty đã trả cổ tức."
+          },
+          {
+            "targetText": "portfolio",
+            "translation": "danh mục đầu tư",
+            "phonetic": "/pɔːrtˈfoʊlioʊ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Diversify your portfolio.",
+            "exampleTranslation": "Hãy đa dạng hóa danh mục đầu tư."
+          },
+          {
+            "targetText": "volatility",
+            "translation": "biến động",
+            "phonetic": "/ˌvɑːləˈtɪləti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Market volatility scares beginners.",
+            "exampleTranslation": "Biến động thị trường khiến người mới sợ hãi."
+          },
+          {
+            "targetText": "bull market",
+            "translation": "thị trường tăng giá",
+            "phonetic": "/bʊl ˈmɑːrkɪt/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "A bull market means rising prices.",
+            "exampleTranslation": "Thị trường tăng giá nghĩa là giá đang lên."
+          },
+          {
+            "targetText": "bear market",
+            "translation": "thị trường giảm giá",
+            "phonetic": "/ber ˈmɑːrkɪt/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Investors fear a bear market.",
+            "exampleTranslation": "Nhà đầu tư e ngại thị trường giảm giá."
+          },
+          {
+            "targetText": "leverage",
+            "translation": "đòn bẩy tài chính",
+            "phonetic": "/ˈlevərɪdʒ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Leverage can multiply losses.",
+            "exampleTranslation": "Đòn bẩy có thể nhân đôi khoản lỗ."
+          },
+          {
+            "targetText": "diversify",
+            "translation": "đa dạng hóa",
+            "phonetic": "/daɪˈvɜːrsɪfaɪ/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Diversify to reduce risk.",
+            "exampleTranslation": "Đa dạng hóa để giảm rủi ro."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'stock' nghĩa là gì?",
+            "options": [
+              "cổ phiếu",
+              "cổ tức",
+              "danh mục đầu tư",
+              "cổ phần"
+            ],
+            "correctAnswer": "cổ phiếu",
+            "explanationVi": "'stock' có nghĩa là 'cổ phiếu'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'equity' nghĩa là gì?",
+            "options": [
+              "cổ phần",
+              "cổ tức",
+              "cổ phiếu",
+              "danh mục đầu tư"
+            ],
+            "correctAnswer": "cổ phần",
+            "explanationVi": "'equity' có nghĩa là 'cổ phần'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "portfolio.",
+              "Diversify",
+              "your"
+            ],
+            "correctAnswer": "Diversify your portfolio.",
+            "explanationVi": "Câu đúng: Diversify your portfolio. (Hãy đa dạng hóa danh mục đầu tư.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Business Strategy",
+        "titleVi": "Chiến lược kinh doanh",
+        "words": [
+          {
+            "targetText": "merger",
+            "translation": "sáp nhập",
+            "phonetic": "/ˈmɜːrdʒər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The merger created a giant company.",
+            "exampleTranslation": "Vụ sáp nhập tạo ra một tập đoàn khổng lồ."
+          },
+          {
+            "targetText": "acquisition",
+            "translation": "thâu tóm",
+            "phonetic": "/ˌækwɪˈzɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The acquisition cost billions.",
+            "exampleTranslation": "Vụ thâu tóm tốn hàng tỉ đô."
+          },
+          {
+            "targetText": "monopoly",
+            "translation": "độc quyền",
+            "phonetic": "/məˈnɑːpəli/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The monopoly raised prices.",
+            "exampleTranslation": "Công ty độc quyền đã tăng giá."
+          },
+          {
+            "targetText": "startup",
+            "translation": "công ty khởi nghiệp",
+            "phonetic": "/ˈstɑːrtʌp/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The startup raised $10 million.",
+            "exampleTranslation": "Startup đã gọi vốn 10 triệu đô."
+          },
+          {
+            "targetText": "disrupt",
+            "translation": "phá vỡ thị trường",
+            "phonetic": "/dɪsˈrʌpt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "New tech disrupts old industries.",
+            "exampleTranslation": "Công nghệ mới phá vỡ các ngành cũ."
+          },
+          {
+            "targetText": "scalable",
+            "translation": "có thể mở rộng",
+            "phonetic": "/ˈskeɪləbl/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The business model is highly scalable.",
+            "exampleTranslation": "Mô hình kinh doanh rất dễ mở rộng."
+          },
+          {
+            "targetText": "revenue",
+            "translation": "doanh thu",
+            "phonetic": "/ˈrevənjuː/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Revenue doubled this quarter.",
+            "exampleTranslation": "Doanh thu tăng gấp đôi quý này."
+          },
+          {
+            "targetText": "profit margin",
+            "translation": "biên lợi nhuận",
+            "phonetic": "/ˈprɑːfɪt ˈmɑːrdʒɪn/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "A high profit margin is good.",
+            "exampleTranslation": "Biên lợi nhuận cao là tốt."
+          },
+          {
+            "targetText": "stakeholder",
+            "translation": "bên liên quan",
+            "phonetic": "/ˈsteɪkhoʊldər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Stakeholders approved the plan.",
+            "exampleTranslation": "Các bên liên quan đã phê duyệt kế hoạch."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'merger' nghĩa là gì?",
+            "options": [
+              "công ty khởi nghiệp",
+              "độc quyền",
+              "thâu tóm",
+              "sáp nhập"
+            ],
+            "correctAnswer": "sáp nhập",
+            "explanationVi": "'merger' có nghĩa là 'sáp nhập'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'acquisition' nghĩa là gì?",
+            "options": [
+              "thâu tóm",
+              "sáp nhập",
+              "công ty khởi nghiệp",
+              "độc quyền"
+            ],
+            "correctAnswer": "thâu tóm",
+            "explanationVi": "'acquisition' có nghĩa là 'thâu tóm'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "acquisition",
+              "The",
+              "billions.",
+              "cost"
+            ],
+            "correctAnswer": "The acquisition cost billions.",
+            "explanationVi": "Câu đúng: The acquisition cost billions. (Vụ thâu tóm tốn hàng tỉ đô.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-26",
+    "order": 26,
+    "cefrLevel": "B2",
+    "title": "Law & Justice",
+    "titleVi": "Luật pháp & Công lý",
+    "description": "Advanced vocabulary for the legal system, rights, and crime.",
+    "descriptionVi": "Từ vựng nâng cao về hệ thống pháp luật, quyền và tội phạm.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Legal Basics",
+        "titleVi": "Pháp luật cơ bản",
+        "words": [
+          {
+            "targetText": "legislation",
+            "translation": "pháp luật",
+            "phonetic": "/ˌledʒɪˈsleɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "New legislation protects workers.",
+            "exampleTranslation": "Luật mới bảo vệ người lao động."
+          },
+          {
+            "targetText": "constitution",
+            "translation": "hiến pháp",
+            "phonetic": "/ˌkɑːnstɪˈtuːʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The constitution guarantees free speech.",
+            "exampleTranslation": "Hiến pháp đảm bảo tự do ngôn luận."
+          },
+          {
+            "targetText": "verdict",
+            "translation": "phán quyết",
+            "phonetic": "/ˈvɜːrdɪkt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The jury reached a verdict.",
+            "exampleTranslation": "Bồi thẩm đoàn đã đưa ra phán quyết."
+          },
+          {
+            "targetText": "trial",
+            "translation": "phiên tòa",
+            "phonetic": "/ˈtraɪəl/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The trial lasted three weeks.",
+            "exampleTranslation": "Phiên tòa kéo dài ba tuần."
+          },
+          {
+            "targetText": "defendant",
+            "translation": "bị cáo",
+            "phonetic": "/dɪˈfendənt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The defendant pleaded not guilty.",
+            "exampleTranslation": "Bị cáo khai không có tội."
+          },
+          {
+            "targetText": "prosecutor",
+            "translation": "công tố viên",
+            "phonetic": "/ˈprɑːsɪkjuːtər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The prosecutor presented evidence.",
+            "exampleTranslation": "Công tố viên trình bày bằng chứng."
+          },
+          {
+            "targetText": "acquit",
+            "translation": "tuyên trắng án",
+            "phonetic": "/əˈkwɪt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "The court acquitted him.",
+            "exampleTranslation": "Tòa đã tuyên anh ta trắng án."
+          },
+          {
+            "targetText": "convict",
+            "translation": "kết tội",
+            "phonetic": "/kənˈvɪkt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "He was convicted of fraud.",
+            "exampleTranslation": "Anh ta bị kết tội lừa đảo."
+          },
+          {
+            "targetText": "appeal",
+            "translation": "kháng cáo",
+            "phonetic": "/əˈpiːl/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "She appealed the decision.",
+            "exampleTranslation": "Cô ấy đã kháng cáo quyết định."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'legislation' nghĩa là gì?",
+            "options": [
+              "phiên tòa",
+              "hiến pháp",
+              "pháp luật",
+              "phán quyết"
+            ],
+            "correctAnswer": "pháp luật",
+            "explanationVi": "'legislation' có nghĩa là 'pháp luật'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'constitution' nghĩa là gì?",
+            "options": [
+              "hiến pháp",
+              "phán quyết",
+              "phiên tòa",
+              "pháp luật"
+            ],
+            "correctAnswer": "hiến pháp",
+            "explanationVi": "'constitution' có nghĩa là 'hiến pháp'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "legislation",
+              "protects",
+              "New",
+              "workers."
+            ],
+            "correctAnswer": "New legislation protects workers.",
+            "explanationVi": "Câu đúng: New legislation protects workers. (Luật mới bảo vệ người lao động.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Rights & Duties",
+        "titleVi": "Quyền & Nghĩa vụ",
+        "words": [
+          {
+            "targetText": "human rights",
+            "translation": "nhân quyền",
+            "phonetic": "/ˈhjuːmən raɪts/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Human rights must be respected.",
+            "exampleTranslation": "Nhân quyền phải được tôn trọng."
+          },
+          {
+            "targetText": "freedom of speech",
+            "translation": "tự do ngôn luận",
+            "phonetic": "/ˈfriːdəm əv spiːtʃ/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Freedom of speech is vital.",
+            "exampleTranslation": "Tự do ngôn luận rất quan trọng."
+          },
+          {
+            "targetText": "due process",
+            "translation": "thủ tục tố tụng đúng đắn",
+            "phonetic": "/duː ˈprɑːses/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Everyone deserves due process.",
+            "exampleTranslation": "Mọi người đều xứng đáng được xét xử đúng thủ tục."
+          },
+          {
+            "targetText": "discrimination",
+            "translation": "phân biệt đối xử",
+            "phonetic": "/dɪˌskrɪmɪˈneɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The law bans discrimination.",
+            "exampleTranslation": "Luật cấm phân biệt đối xử."
+          },
+          {
+            "targetText": "equality",
+            "translation": "bình đẳng",
+            "phonetic": "/iːˈkwɑːləti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "They fight for gender equality.",
+            "exampleTranslation": "Họ đấu tranh cho bình đẳng giới."
+          },
+          {
+            "targetText": "obligation",
+            "translation": "nghĩa vụ",
+            "phonetic": "/ˌɑːblɪˈɡeɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Paying taxes is an obligation.",
+            "exampleTranslation": "Đóng thuế là nghĩa vụ."
+          },
+          {
+            "targetText": "comply",
+            "translation": "tuân thủ",
+            "phonetic": "/kəmˈplaɪ/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Companies must comply with the law.",
+            "exampleTranslation": "Công ty phải tuân thủ pháp luật."
+          },
+          {
+            "targetText": "violate",
+            "translation": "vi phạm",
+            "phonetic": "/ˈvaɪəleɪt/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "He violated the contract.",
+            "exampleTranslation": "Anh ta đã vi phạm hợp đồng."
+          },
+          {
+            "targetText": "enforce",
+            "translation": "thi hành",
+            "phonetic": "/ɪnˈfɔːrs/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Police enforce traffic laws.",
+            "exampleTranslation": "Cảnh sát thi hành luật giao thông."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'human rights' nghĩa là gì?",
+            "options": [
+              "nhân quyền",
+              "tự do ngôn luận",
+              "thủ tục tố tụng đúng đắn",
+              "phân biệt đối xử"
+            ],
+            "correctAnswer": "nhân quyền",
+            "explanationVi": "'human rights' có nghĩa là 'nhân quyền'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'freedom of speech' nghĩa là gì?",
+            "options": [
+              "thủ tục tố tụng đúng đắn",
+              "phân biệt đối xử",
+              "tự do ngôn luận",
+              "nhân quyền"
+            ],
+            "correctAnswer": "tự do ngôn luận",
+            "explanationVi": "'freedom of speech' có nghĩa là 'tự do ngôn luận'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "process.",
+              "deserves",
+              "due",
+              "Everyone"
+            ],
+            "correctAnswer": "Everyone deserves due process.",
+            "explanationVi": "Câu đúng: Everyone deserves due process. (Mọi người đều xứng đáng được xét xử đúng thủ tục.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Crime & Punishment",
+        "titleVi": "Tội phạm & Hình phạt",
+        "words": [
+          {
+            "targetText": "felony",
+            "translation": "trọng tội",
+            "phonetic": "/ˈfeləni/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Robbery is a felony.",
+            "exampleTranslation": "Cướp là trọng tội."
+          },
+          {
+            "targetText": "misdemeanor",
+            "translation": "khinh tội",
+            "phonetic": "/ˌmɪsdɪˈmiːnər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Speeding is a misdemeanor.",
+            "exampleTranslation": "Chạy quá tốc độ là khinh tội."
+          },
+          {
+            "targetText": "fraud",
+            "translation": "lừa đảo",
+            "phonetic": "/frɔːd/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He was arrested for fraud.",
+            "exampleTranslation": "Anh ta bị bắt vì lừa đảo."
+          },
+          {
+            "targetText": "bribery",
+            "translation": "hối lộ",
+            "phonetic": "/ˈbraɪbəri/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Bribery is a serious crime.",
+            "exampleTranslation": "Hối lộ là tội nghiêm trọng."
+          },
+          {
+            "targetText": "sentence",
+            "translation": "bản án",
+            "phonetic": "/ˈsentəns/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The judge gave a harsh sentence.",
+            "exampleTranslation": "Thẩm phán tuyên bản án nặng."
+          },
+          {
+            "targetText": "parole",
+            "translation": "ân xá có điều kiện",
+            "phonetic": "/pəˈroʊl/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He was released on parole.",
+            "exampleTranslation": "Anh ta được ân xá có điều kiện."
+          },
+          {
+            "targetText": "rehabilitation",
+            "translation": "cải tạo",
+            "phonetic": "/ˌriːhəbɪlɪˈteɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Prisons focus on rehabilitation.",
+            "exampleTranslation": "Nhà tù chú trọng cải tạo."
+          },
+          {
+            "targetText": "deterrent",
+            "translation": "biện pháp răn đe",
+            "phonetic": "/dɪˈterənt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Harsh laws are a deterrent.",
+            "exampleTranslation": "Luật nghiêm là biện pháp răn đe."
+          },
+          {
+            "targetText": "amnesty",
+            "translation": "ân xá",
+            "phonetic": "/ˈæmnəsti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The president granted amnesty.",
+            "exampleTranslation": "Tổng thống đã ban ân xá."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'felony' nghĩa là gì?",
+            "options": [
+              "lừa đảo",
+              "trọng tội",
+              "hối lộ",
+              "khinh tội"
+            ],
+            "correctAnswer": "trọng tội",
+            "explanationVi": "'felony' có nghĩa là 'trọng tội'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'misdemeanor' nghĩa là gì?",
+            "options": [
+              "trọng tội",
+              "khinh tội",
+              "hối lộ",
+              "lừa đảo"
+            ],
+            "correctAnswer": "khinh tội",
+            "explanationVi": "'misdemeanor' có nghĩa là 'khinh tội'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "Robbery",
+              "a",
+              "felony.",
+              "is"
+            ],
+            "correctAnswer": "Robbery is a felony.",
+            "explanationVi": "Câu đúng: Robbery is a felony. (Cướp là trọng tội.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-27",
+    "order": 27,
+    "cefrLevel": "B2",
+    "title": "Medicine & Healthcare",
+    "titleVi": "Y học & Chăm sóc sức khỏe",
+    "description": "Advanced vocabulary for illness, treatment, and public health.",
+    "descriptionVi": "Từ vựng nâng cao về bệnh tật, điều trị và y tế công cộng.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Body & Illness",
+        "titleVi": "Cơ thể & Bệnh tật",
+        "words": [
+          {
+            "targetText": "chronic",
+            "translation": "mãn tính",
+            "phonetic": "/ˈkrɑːnɪk/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "Diabetes is a chronic disease.",
+            "exampleTranslation": "Tiểu đường là bệnh mãn tính."
+          },
+          {
+            "targetText": "acute",
+            "translation": "cấp tính",
+            "phonetic": "/əˈkjuːt/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "He suffered acute pain.",
+            "exampleTranslation": "Anh ấy bị đau cấp tính."
+          },
+          {
+            "targetText": "syndrome",
+            "translation": "hội chứng",
+            "phonetic": "/ˈsɪndroʊm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Down syndrome is genetic.",
+            "exampleTranslation": "Hội chứng Down là do di truyền."
+          },
+          {
+            "targetText": "diagnosis",
+            "translation": "chẩn đoán",
+            "phonetic": "/ˌdaɪəɡˈnoʊsɪs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The diagnosis took a week.",
+            "exampleTranslation": "Chẩn đoán mất một tuần."
+          },
+          {
+            "targetText": "prognosis",
+            "translation": "tiên lượng",
+            "phonetic": "/prɑːɡˈnoʊsɪs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The prognosis is good.",
+            "exampleTranslation": "Tiên lượng bệnh tốt."
+          },
+          {
+            "targetText": "immunity",
+            "translation": "miễn dịch",
+            "phonetic": "/ɪˈmjuːnəti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Vaccines build immunity.",
+            "exampleTranslation": "Vắc-xin tạo miễn dịch."
+          },
+          {
+            "targetText": "allergy",
+            "translation": "dị ứng",
+            "phonetic": "/ˈælərdʒi/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "She has a peanut allergy.",
+            "exampleTranslation": "Cô ấy bị dị ứng đậu phộng."
+          },
+          {
+            "targetText": "infection",
+            "translation": "nhiễm trùng",
+            "phonetic": "/ɪnˈfekʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The wound got an infection.",
+            "exampleTranslation": "Vết thương bị nhiễm trùng."
+          },
+          {
+            "targetText": "inflammation",
+            "translation": "viêm",
+            "phonetic": "/ˌɪnfləˈmeɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Ice reduces inflammation.",
+            "exampleTranslation": "Chườm đá giảm viêm."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'chronic' nghĩa là gì?",
+            "options": [
+              "mãn tính",
+              "cấp tính",
+              "chẩn đoán",
+              "hội chứng"
+            ],
+            "correctAnswer": "mãn tính",
+            "explanationVi": "'chronic' có nghĩa là 'mãn tính'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'acute' nghĩa là gì?",
+            "options": [
+              "mãn tính",
+              "cấp tính",
+              "hội chứng",
+              "chẩn đoán"
+            ],
+            "correctAnswer": "cấp tính",
+            "explanationVi": "'acute' có nghĩa là 'cấp tính'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "Vaccines",
+              "immunity.",
+              "build"
+            ],
+            "correctAnswer": "Vaccines build immunity.",
+            "explanationVi": "Câu đúng: Vaccines build immunity. (Vắc-xin tạo miễn dịch.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Treatment",
+        "titleVi": "Điều trị",
+        "words": [
+          {
+            "targetText": "surgery",
+            "translation": "phẫu thuật",
+            "phonetic": "/ˈsɜːrdʒəri/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He needs heart surgery.",
+            "exampleTranslation": "Anh ấy cần phẫu thuật tim."
+          },
+          {
+            "targetText": "anesthesia",
+            "translation": "gây mê",
+            "phonetic": "/ˌænəsˈθiːʒə/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Anesthesia puts you to sleep.",
+            "exampleTranslation": "Gây mê khiến bạn ngủ."
+          },
+          {
+            "targetText": "dosage",
+            "translation": "liều lượng",
+            "phonetic": "/ˈdoʊsɪdʒ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Follow the dosage on the label.",
+            "exampleTranslation": "Tuân thủ liều lượng trên nhãn."
+          },
+          {
+            "targetText": "side effect",
+            "translation": "tác dụng phụ",
+            "phonetic": "/saɪd ɪˈfekt/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "This drug has no side effects.",
+            "exampleTranslation": "Thuốc này không có tác dụng phụ."
+          },
+          {
+            "targetText": "antibiotic",
+            "translation": "kháng sinh",
+            "phonetic": "/ˌæntibaɪˈɑːtɪk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The doctor prescribed antibiotics.",
+            "exampleTranslation": "Bác sĩ kê đơn kháng sinh."
+          },
+          {
+            "targetText": "therapy",
+            "translation": "trị liệu",
+            "phonetic": "/ˈθerəpi/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Physical therapy helped him walk.",
+            "exampleTranslation": "Vật lý trị liệu giúp anh ấy đi lại."
+          },
+          {
+            "targetText": "transplant",
+            "translation": "ghép tạng",
+            "phonetic": "/trænsˈplænt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He had a kidney transplant.",
+            "exampleTranslation": "Anh ấy được ghép thận."
+          },
+          {
+            "targetText": "vaccine",
+            "translation": "vắc-xin",
+            "phonetic": "/vækˈsiːn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The vaccine is free.",
+            "exampleTranslation": "Vắc-xin miễn phí."
+          },
+          {
+            "targetText": "cure",
+            "translation": "chữa khỏi",
+            "phonetic": "/kjʊr/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Antibiotics cured the infection.",
+            "exampleTranslation": "Kháng sinh đã chữa khỏi nhiễm trùng."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'surgery' nghĩa là gì?",
+            "options": [
+              "liều lượng",
+              "tác dụng phụ",
+              "phẫu thuật",
+              "gây mê"
+            ],
+            "correctAnswer": "phẫu thuật",
+            "explanationVi": "'surgery' có nghĩa là 'phẫu thuật'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'anesthesia' nghĩa là gì?",
+            "options": [
+              "tác dụng phụ",
+              "gây mê",
+              "liều lượng",
+              "phẫu thuật"
+            ],
+            "correctAnswer": "gây mê",
+            "explanationVi": "'anesthesia' có nghĩa là 'gây mê'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "surgery.",
+              "He",
+              "heart",
+              "needs"
+            ],
+            "correctAnswer": "He needs heart surgery.",
+            "explanationVi": "Câu đúng: He needs heart surgery. (Anh ấy cần phẫu thuật tim.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Public Health",
+        "titleVi": "Y tế công cộng",
+        "words": [
+          {
+            "targetText": "epidemic",
+            "translation": "dịch bệnh",
+            "phonetic": "/ˌepɪˈdemɪk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The flu epidemic spread fast.",
+            "exampleTranslation": "Dịch cúm lan nhanh."
+          },
+          {
+            "targetText": "quarantine",
+            "translation": "cách ly",
+            "phonetic": "/ˈkwɔːrəntiːn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Travelers faced quarantine.",
+            "exampleTranslation": "Du khách phải cách ly."
+          },
+          {
+            "targetText": "hygiene",
+            "translation": "vệ sinh",
+            "phonetic": "/ˈhaɪdʒiːn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Good hygiene prevents disease.",
+            "exampleTranslation": "Vệ sinh tốt phòng bệnh."
+          },
+          {
+            "targetText": "sanitation",
+            "translation": "vệ sinh môi trường",
+            "phonetic": "/ˌsænɪˈteɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Sanitation improved the city.",
+            "exampleTranslation": "Vệ sinh môi trường cải thiện thành phố."
+          },
+          {
+            "targetText": "outbreak",
+            "translation": "bùng phát",
+            "phonetic": "/ˈaʊtbreɪk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "They contained the outbreak.",
+            "exampleTranslation": "Họ đã khống chế đợt bùng phát."
+          },
+          {
+            "targetText": "screening",
+            "translation": "sàng lọc",
+            "phonetic": "/ˈskriːnɪŋ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Early screening saves lives.",
+            "exampleTranslation": "Sàng lọc sớm cứu sống người bệnh."
+          },
+          {
+            "targetText": "mortality",
+            "translation": "tỉ lệ tử vong",
+            "phonetic": "/mɔːrˈtæləti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The mortality rate dropped.",
+            "exampleTranslation": "Tỉ lệ tử vong đã giảm."
+          },
+          {
+            "targetText": "pandemic",
+            "translation": "đại dịch",
+            "phonetic": "/pænˈdemɪk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The pandemic changed the world.",
+            "exampleTranslation": "Đại dịch đã thay đổi thế giới."
+          },
+          {
+            "targetText": "ventilator",
+            "translation": "máy thở",
+            "phonetic": "/ˈventɪleɪtər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Hospitals needed more ventilators.",
+            "exampleTranslation": "Bệnh viện cần thêm máy thở."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'epidemic' nghĩa là gì?",
+            "options": [
+              "vệ sinh",
+              "vệ sinh môi trường",
+              "dịch bệnh",
+              "cách ly"
+            ],
+            "correctAnswer": "dịch bệnh",
+            "explanationVi": "'epidemic' có nghĩa là 'dịch bệnh'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'quarantine' nghĩa là gì?",
+            "options": [
+              "cách ly",
+              "vệ sinh môi trường",
+              "dịch bệnh",
+              "vệ sinh"
+            ],
+            "correctAnswer": "cách ly",
+            "explanationVi": "'quarantine' có nghĩa là 'cách ly'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "quarantine.",
+              "Travelers",
+              "faced"
+            ],
+            "correctAnswer": "Travelers faced quarantine.",
+            "explanationVi": "Câu đúng: Travelers faced quarantine. (Du khách phải cách ly.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-28",
+    "order": 28,
+    "cefrLevel": "B2",
+    "title": "Arts & Philosophy",
+    "titleVi": "Nghệ thuật & Triết học",
+    "description": "Advanced vocabulary for visual arts, music, and philosophy.",
+    "descriptionVi": "Từ vựng nâng cao về nghệ thuật thị giác, âm nhạc và triết học.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Visual Arts",
+        "titleVi": "Nghệ thuật thị giác",
+        "words": [
+          {
+            "targetText": "masterpiece",
+            "translation": "kiệt tác",
+            "phonetic": "/ˈmæstərpiːs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The Mona Lisa is a masterpiece.",
+            "exampleTranslation": "Mona Lisa là một kiệt tác."
+          },
+          {
+            "targetText": "brushstroke",
+            "translation": "nét cọ",
+            "phonetic": "/ˈbrʌʃstroʊk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Each brushstroke shows emotion.",
+            "exampleTranslation": "Mỗi nét cọ thể hiện cảm xúc."
+          },
+          {
+            "targetText": "canvas",
+            "translation": "vải vẽ",
+            "phonetic": "/ˈkænvəs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "She painted on a large canvas.",
+            "exampleTranslation": "Cô ấy vẽ trên tấm vải lớn."
+          },
+          {
+            "targetText": "sculpture",
+            "translation": "điêu khắc",
+            "phonetic": "/ˈskʌlptʃər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The sculpture is made of marble.",
+            "exampleTranslation": "Bức tượng làm bằng đá cẩm thạch."
+          },
+          {
+            "targetText": "exhibition",
+            "translation": "triển lãm",
+            "phonetic": "/ˌeksɪˈbɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The exhibition opens on Friday.",
+            "exampleTranslation": "Triển lãm khai mạc vào thứ Sáu."
+          },
+          {
+            "targetText": "portray",
+            "translation": "khắc họa",
+            "phonetic": "/pɔːrˈtreɪ/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "The film portrays real events.",
+            "exampleTranslation": "Bộ phim khắc họa sự kiện có thật."
+          },
+          {
+            "targetText": "abstract",
+            "translation": "trừu tượng",
+            "phonetic": "/æbˈstrækt/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "I love abstract art.",
+            "exampleTranslation": "Tôi yêu nghệ thuật trừu tượng."
+          },
+          {
+            "targetText": "aesthetic",
+            "translation": "thẩm mỹ",
+            "phonetic": "/esˈθetɪk/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The design is very aesthetic.",
+            "exampleTranslation": "Thiết kế rất có tính thẩm mỹ."
+          },
+          {
+            "targetText": "curator",
+            "translation": "người phụ trách triển lãm",
+            "phonetic": "/kjʊˈreɪtər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The curator chose 50 works.",
+            "exampleTranslation": "Người phụ trách đã chọn 50 tác phẩm."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'masterpiece' nghĩa là gì?",
+            "options": [
+              "nét cọ",
+              "điêu khắc",
+              "kiệt tác",
+              "vải vẽ"
+            ],
+            "correctAnswer": "kiệt tác",
+            "explanationVi": "'masterpiece' có nghĩa là 'kiệt tác'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'brushstroke' nghĩa là gì?",
+            "options": [
+              "nét cọ",
+              "kiệt tác",
+              "điêu khắc",
+              "vải vẽ"
+            ],
+            "correctAnswer": "nét cọ",
+            "explanationVi": "'brushstroke' có nghĩa là 'nét cọ'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "shows",
+              "brushstroke",
+              "Each",
+              "emotion."
+            ],
+            "correctAnswer": "Each brushstroke shows emotion.",
+            "explanationVi": "Câu đúng: Each brushstroke shows emotion. (Mỗi nét cọ thể hiện cảm xúc.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Music & Performance",
+        "titleVi": "Âm nhạc & Biểu diễn",
+        "words": [
+          {
+            "targetText": "melody",
+            "translation": "giai điệu",
+            "phonetic": "/ˈmelədi/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The melody is unforgettable.",
+            "exampleTranslation": "Giai điệu khó quên."
+          },
+          {
+            "targetText": "harmony",
+            "translation": "hòa âm",
+            "phonetic": "/ˈhɑːrməni/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Their voices are in perfect harmony.",
+            "exampleTranslation": "Giọng họ hòa quyện hoàn hảo."
+          },
+          {
+            "targetText": "rhythm",
+            "translation": "nhịp điệu",
+            "phonetic": "/ˈrɪðəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The song has a catchy rhythm.",
+            "exampleTranslation": "Bài hát có nhịp điệu bắt tai."
+          },
+          {
+            "targetText": "tempo",
+            "translation": "tốc độ nhạc",
+            "phonetic": "/ˈtempoʊ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The tempo suddenly increased.",
+            "exampleTranslation": "Tốc độ nhạc bỗng tăng nhanh."
+          },
+          {
+            "targetText": "improvisation",
+            "translation": "ứng biến",
+            "phonetic": "/ˌɪmprəvaɪˈzeɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Jazz is full of improvisation.",
+            "exampleTranslation": "Nhạc jazz đầy sự ứng biến."
+          },
+          {
+            "targetText": "encore",
+            "translation": "diễn thêm",
+            "phonetic": "/ˈɑːnkɔːr/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The crowd demanded an encore.",
+            "exampleTranslation": "Khán giả yêu cầu diễn thêm."
+          },
+          {
+            "targetText": "virtuoso",
+            "translation": "nghệ sĩ bậc thầy",
+            "phonetic": "/ˌvɜːrtʃuˈoʊsoʊ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "She is a piano virtuoso.",
+            "exampleTranslation": "Cô ấy là nghệ sĩ piano bậc thầy."
+          },
+          {
+            "targetText": "acoustics",
+            "translation": "âm thanh hội trường",
+            "phonetic": "/əˈkuːstɪks/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The hall has great acoustics.",
+            "exampleTranslation": "Hội trường có âm thanh tuyệt vời."
+          },
+          {
+            "targetText": "repertoire",
+            "translation": "danh mục biểu diễn",
+            "phonetic": "/ˈrepərtwɑːr/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "His repertoire includes 100 songs.",
+            "exampleTranslation": "Danh mục biểu diễn của anh gồm 100 bài."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'melody' nghĩa là gì?",
+            "options": [
+              "nhịp điệu",
+              "tốc độ nhạc",
+              "hòa âm",
+              "giai điệu"
+            ],
+            "correctAnswer": "giai điệu",
+            "explanationVi": "'melody' có nghĩa là 'giai điệu'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'harmony' nghĩa là gì?",
+            "options": [
+              "hòa âm",
+              "nhịp điệu",
+              "tốc độ nhạc",
+              "giai điệu"
+            ],
+            "correctAnswer": "hòa âm",
+            "explanationVi": "'harmony' có nghĩa là 'hòa âm'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "The",
+              "unforgettable.",
+              "melody",
+              "is"
+            ],
+            "correctAnswer": "The melody is unforgettable.",
+            "explanationVi": "Câu đúng: The melody is unforgettable. (Giai điệu khó quên.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Philosophy",
+        "titleVi": "Triết học",
+        "words": [
+          {
+            "targetText": "ethics",
+            "translation": "đạo đức học",
+            "phonetic": "/ˈeθɪks/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Ethics guides our choices.",
+            "exampleTranslation": "Đạo đức học định hướng lựa chọn của ta."
+          },
+          {
+            "targetText": "logic",
+            "translation": "lô-gíc",
+            "phonetic": "/ˈlɑːdʒɪk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "His argument lacks logic.",
+            "exampleTranslation": "Lập luận của anh ta thiếu lô-gíc."
+          },
+          {
+            "targetText": "paradox",
+            "translation": "nghịch lý",
+            "phonetic": "/ˈpærədɑːks/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Time travel is a famous paradox.",
+            "exampleTranslation": "Du hành thời gian là nghịch lý nổi tiếng."
+          },
+          {
+            "targetText": "dilemma",
+            "translation": "tiến thoái lưỡng nan",
+            "phonetic": "/dɪˈlemə/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "She faced a moral dilemma.",
+            "exampleTranslation": "Cô ấy đối mặt với tình huống tiến thoái lưỡng nan về đạo đức."
+          },
+          {
+            "targetText": "existential",
+            "translation": "hiện sinh",
+            "phonetic": "/ˌeɡzɪˈstenʃl/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "He had an existential crisis.",
+            "exampleTranslation": "Anh ấy trải qua khủng hoảng hiện sinh."
+          },
+          {
+            "targetText": "consciousness",
+            "translation": "ý thức",
+            "phonetic": "/ˈkɑːnʃəsnəs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "AI and consciousness fascinate scientists.",
+            "exampleTranslation": "AI và ý thức khiến các nhà khoa học say mê."
+          },
+          {
+            "targetText": "free will",
+            "translation": "ý chí tự do",
+            "phonetic": "/friː wɪl/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Do we have free will?",
+            "exampleTranslation": "Chúng ta có ý chí tự do không?"
+          },
+          {
+            "targetText": "utilitarianism",
+            "translation": "chủ nghĩa công lợi",
+            "phonetic": "/juːˌtɪlɪˈteriənɪzəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Utilitarianism seeks the greatest good.",
+            "exampleTranslation": "Chủ nghĩa công lợi hướng tới lợi ích lớn nhất."
+          },
+          {
+            "targetText": "skepticism",
+            "translation": "hoài nghi",
+            "phonetic": "/ˈskeptɪsɪzəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Healthy skepticism is useful.",
+            "exampleTranslation": "Sự hoài nghi lành mạnh rất hữu ích."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'ethics' nghĩa là gì?",
+            "options": [
+              "nghịch lý",
+              "lô-gíc",
+              "tiến thoái lưỡng nan",
+              "đạo đức học"
+            ],
+            "correctAnswer": "đạo đức học",
+            "explanationVi": "'ethics' có nghĩa là 'đạo đức học'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'logic' nghĩa là gì?",
+            "options": [
+              "tiến thoái lưỡng nan",
+              "nghịch lý",
+              "lô-gíc",
+              "đạo đức học"
+            ],
+            "correctAnswer": "lô-gíc",
+            "explanationVi": "'logic' có nghĩa là 'lô-gíc'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "guides",
+              "choices.",
+              "Ethics",
+              "our"
+            ],
+            "correctAnswer": "Ethics guides our choices.",
+            "explanationVi": "Câu đúng: Ethics guides our choices. (Đạo đức học định hướng lựa chọn của ta.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-29",
+    "order": 29,
+    "cefrLevel": "B2",
+    "title": "Data Science & AI",
+    "titleVi": "Khoa học dữ liệu & AI",
+    "description": "Advanced vocabulary for data, machine learning, and AI in society.",
+    "descriptionVi": "Từ vựng nâng cao về dữ liệu, học máy và AI trong xã hội.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Data Basics",
+        "titleVi": "Dữ liệu cơ bản",
+        "words": [
+          {
+            "targetText": "dataset",
+            "translation": "tập dữ liệu",
+            "phonetic": "/ˈdeɪtəset/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The dataset has a million rows.",
+            "exampleTranslation": "Tập dữ liệu có một triệu dòng."
+          },
+          {
+            "targetText": "algorithm",
+            "translation": "thuật toán",
+            "phonetic": "/ˈælɡərɪðəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The algorithm sorts the data.",
+            "exampleTranslation": "Thuật toán sắp xếp dữ liệu."
+          },
+          {
+            "targetText": "variable",
+            "translation": "biến số",
+            "phonetic": "/ˈveriəbl/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "X is an independent variable.",
+            "exampleTranslation": "X là biến độc lập."
+          },
+          {
+            "targetText": "correlation",
+            "translation": "tương quan",
+            "phonetic": "/ˌkɔːrəˈleɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "There is a correlation between sleep and health.",
+            "exampleTranslation": "Có tương quan giữa giấc ngủ và sức khỏe."
+          },
+          {
+            "targetText": "outlier",
+            "translation": "giá trị ngoại lai",
+            "phonetic": "/ˈaʊtlaɪər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Remove outliers before analysis.",
+            "exampleTranslation": "Loại bỏ giá trị ngoại lai trước khi phân tích."
+          },
+          {
+            "targetText": "sample",
+            "translation": "mẫu",
+            "phonetic": "/ˈsæmpl/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The sample size is 500.",
+            "exampleTranslation": "Cỡ mẫu là 500."
+          },
+          {
+            "targetText": "trend",
+            "translation": "xu hướng",
+            "phonetic": "/trend/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The trend is clearly upward.",
+            "exampleTranslation": "Xu hướng rõ ràng đang tăng."
+          },
+          {
+            "targetText": "cluster",
+            "translation": "cụm dữ liệu",
+            "phonetic": "/ˈklʌstər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The algorithm found three clusters.",
+            "exampleTranslation": "Thuật toán tìm ra ba cụm."
+          },
+          {
+            "targetText": "visualize",
+            "translation": "trực quan hóa",
+            "phonetic": "/ˈvɪʒuəlaɪz/",
+            "partOfSpeech": "verb",
+            "exampleSentence": "Visualize the data with charts.",
+            "exampleTranslation": "Trực quan hóa dữ liệu bằng biểu đồ."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'dataset' nghĩa là gì?",
+            "options": [
+              "tương quan",
+              "tập dữ liệu",
+              "thuật toán",
+              "biến số"
+            ],
+            "correctAnswer": "tập dữ liệu",
+            "explanationVi": "'dataset' có nghĩa là 'tập dữ liệu'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'algorithm' nghĩa là gì?",
+            "options": [
+              "tương quan",
+              "tập dữ liệu",
+              "thuật toán",
+              "biến số"
+            ],
+            "correctAnswer": "thuật toán",
+            "explanationVi": "'algorithm' có nghĩa là 'thuật toán'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "analysis.",
+              "Remove",
+              "outliers",
+              "before"
+            ],
+            "correctAnswer": "Remove outliers before analysis.",
+            "explanationVi": "Câu đúng: Remove outliers before analysis. (Loại bỏ giá trị ngoại lai trước khi phân tích.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Machine Learning",
+        "titleVi": "Học máy",
+        "words": [
+          {
+            "targetText": "neural network",
+            "translation": "mạng nơ-ron",
+            "phonetic": "/ˈnʊrəl ˈnetwɜːrk/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "A neural network learns patterns.",
+            "exampleTranslation": "Mạng nơ-ron học các mẫu."
+          },
+          {
+            "targetText": "training data",
+            "translation": "dữ liệu huấn luyện",
+            "phonetic": "/ˈtreɪnɪŋ ˈdeɪtə/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "More training data improves accuracy.",
+            "exampleTranslation": "Nhiều dữ liệu huấn luyện tăng độ chính xác."
+          },
+          {
+            "targetText": "overfitting",
+            "translation": "quá khớp",
+            "phonetic": "/ˌoʊvərˈfɪtɪŋ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Overfitting hurts real-world performance.",
+            "exampleTranslation": "Quá khớp làm giảm hiệu quả thực tế."
+          },
+          {
+            "targetText": "feature",
+            "translation": "đặc trưng",
+            "phonetic": "/ˈfiːtʃər/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Age is an important feature.",
+            "exampleTranslation": "Tuổi là đặc trưng quan trọng."
+          },
+          {
+            "targetText": "label",
+            "translation": "nhãn",
+            "phonetic": "/ˈleɪbl/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Each image needs a label.",
+            "exampleTranslation": "Mỗi ảnh cần một nhãn."
+          },
+          {
+            "targetText": "accuracy",
+            "translation": "độ chính xác",
+            "phonetic": "/ˈækjərəsi/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The accuracy reached 95%.",
+            "exampleTranslation": "Độ chính xác đạt 95%."
+          },
+          {
+            "targetText": "epoch",
+            "translation": "chu kỳ huấn luyện",
+            "phonetic": "/ˈepɑːk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Train the model for 50 epochs.",
+            "exampleTranslation": "Huấn luyện mô hình trong 50 chu kỳ."
+          },
+          {
+            "targetText": "inference",
+            "translation": "suy luận máy",
+            "phonetic": "/ˈɪnfərəns/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Inference runs on the phone.",
+            "exampleTranslation": "Suy luận chạy trên điện thoại."
+          },
+          {
+            "targetText": "hallucination",
+            "translation": "ảo giác AI",
+            "phonetic": "/həˌluːsɪˈneɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "AI hallucination is a risk.",
+            "exampleTranslation": "Ảo giác AI là một rủi ro."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'neural network' nghĩa là gì?",
+            "options": [
+              "đặc trưng",
+              "mạng nơ-ron",
+              "quá khớp",
+              "dữ liệu huấn luyện"
+            ],
+            "correctAnswer": "mạng nơ-ron",
+            "explanationVi": "'neural network' có nghĩa là 'mạng nơ-ron'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'training data' nghĩa là gì?",
+            "options": [
+              "quá khớp",
+              "dữ liệu huấn luyện",
+              "đặc trưng",
+              "mạng nơ-ron"
+            ],
+            "correctAnswer": "dữ liệu huấn luyện",
+            "explanationVi": "'training data' có nghĩa là 'dữ liệu huấn luyện'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "hurts",
+              "real-world",
+              "performance.",
+              "Overfitting"
+            ],
+            "correctAnswer": "Overfitting hurts real-world performance.",
+            "explanationVi": "Câu đúng: Overfitting hurts real-world performance. (Quá khớp làm giảm hiệu quả thực tế.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "AI & Society",
+        "titleVi": "AI & Xã hội",
+        "words": [
+          {
+            "targetText": "automation",
+            "translation": "tự động hóa",
+            "phonetic": "/ˌɔːtəˈmeɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Automation replaces manual jobs.",
+            "exampleTranslation": "Tự động hóa thay thế việc làm thủ công."
+          },
+          {
+            "targetText": "chatbot",
+            "translation": "chatbot",
+            "phonetic": "/ˈtʃætbɑːt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The chatbot answers customers.",
+            "exampleTranslation": "Chatbot trả lời khách hàng."
+          },
+          {
+            "targetText": "deepfake",
+            "translation": "giả mạo sâu",
+            "phonetic": "/ˈdiːpfeɪk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Deepfakes threaten trust.",
+            "exampleTranslation": "Giả mạo sâu đe dọa lòng tin."
+          },
+          {
+            "targetText": "alignment",
+            "translation": "sự đồng thuận AI",
+            "phonetic": "/əˈlaɪnmənt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "AI alignment ensures safety.",
+            "exampleTranslation": "Sự đồng thuận AI đảm bảo an toàn."
+          },
+          {
+            "targetText": "prompt",
+            "translation": "câu lệnh AI",
+            "phonetic": "/prɑːmpt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "A good prompt gets better answers.",
+            "exampleTranslation": "Câu lệnh tốt cho đáp án hay hơn."
+          },
+          {
+            "targetText": "token",
+            "translation": "token",
+            "phonetic": "/ˈtoʊkən/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The model processes 4000 tokens.",
+            "exampleTranslation": "Mô hình xử lý 4000 token."
+          },
+          {
+            "targetText": "fine-tuning",
+            "translation": "tinh chỉnh",
+            "phonetic": "/ˈfaɪn ˈtuːnɪŋ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Fine-tuning adapts the model.",
+            "exampleTranslation": "Tinh chỉnh giúp mô hình thích ứng."
+          },
+          {
+            "targetText": "benchmark",
+            "translation": "chuẩn đánh giá",
+            "phonetic": "/ˈbentʃmɑːrk/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The model beats all benchmarks.",
+            "exampleTranslation": "Mô hình vượt mọi chuẩn đánh giá."
+          },
+          {
+            "targetText": "superintelligence",
+            "translation": "siêu trí tuệ",
+            "phonetic": "/ˌsuːpərɪnˈtelɪdʒəns/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Superintelligence remains theoretical.",
+            "exampleTranslation": "Siêu trí tuệ vẫn còn là lý thuyết."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'automation' nghĩa là gì?",
+            "options": [
+              "chatbot",
+              "sự đồng thuận AI",
+              "giả mạo sâu",
+              "tự động hóa"
+            ],
+            "correctAnswer": "tự động hóa",
+            "explanationVi": "'automation' có nghĩa là 'tự động hóa'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'chatbot' nghĩa là gì?",
+            "options": [
+              "sự đồng thuận AI",
+              "tự động hóa",
+              "chatbot",
+              "giả mạo sâu"
+            ],
+            "correctAnswer": "chatbot",
+            "explanationVi": "'chatbot' có nghĩa là 'chatbot'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "trust.",
+              "threaten",
+              "Deepfakes"
+            ],
+            "correctAnswer": "Deepfakes threaten trust.",
+            "explanationVi": "Câu đúng: Deepfakes threaten trust. (Giả mạo sâu đe dọa lòng tin.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "unit-30",
+    "order": 30,
+    "cefrLevel": "B2",
+    "title": "Psychology & Society",
+    "titleVi": "Tâm lý học & Xã hội",
+    "description": "Advanced vocabulary for the mind, social issues, and modern life.",
+    "descriptionVi": "Từ vựng nâng cao về tâm trí, vấn đề xã hội và đời sống hiện đại.",
+    "lessons": [
+      {
+        "order": 1,
+        "title": "Mind & Behavior",
+        "titleVi": "Tâm trí & Hành vi",
+        "words": [
+          {
+            "targetText": "cognition",
+            "translation": "nhận thức",
+            "phonetic": "/kɑːɡˈnɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Sleep affects cognition.",
+            "exampleTranslation": "Giấc ngủ ảnh hưởng nhận thức."
+          },
+          {
+            "targetText": "subconscious",
+            "translation": "tiềm thức",
+            "phonetic": "/ˌsʌbˈkɑːnʃəs/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "Habits live in the subconscious.",
+            "exampleTranslation": "Thói quen nằm trong tiềm thức."
+          },
+          {
+            "targetText": "impulse",
+            "translation": "bốc đồng",
+            "phonetic": "/ˈɪmpʌls/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "He bought it on impulse.",
+            "exampleTranslation": "Anh ấy mua nó theo bốc đồng."
+          },
+          {
+            "targetText": "procrastination",
+            "translation": "trì hoãn",
+            "phonetic": "/prəˌkræstɪˈneɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Procrastination ruins deadlines.",
+            "exampleTranslation": "Trì hoãn phá hỏng deadline."
+          },
+          {
+            "targetText": "resilience",
+            "translation": "khả năng phục hồi",
+            "phonetic": "/rɪˈzɪljəns/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Resilience helps us survive.",
+            "exampleTranslation": "Khả năng phục hồi giúp ta vượt qua."
+          },
+          {
+            "targetText": "mindfulness",
+            "translation": "chánh niệm",
+            "phonetic": "/ˈmaɪndflnəs/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Mindfulness reduces stress.",
+            "exampleTranslation": "Chánh niệm giảm căng thẳng."
+          },
+          {
+            "targetText": "empathy",
+            "translation": "thấu cảm",
+            "phonetic": "/ˈempəθi/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Empathy builds strong teams.",
+            "exampleTranslation": "Thấu cảm xây dựng đội ngũ mạnh."
+          },
+          {
+            "targetText": "narcissism",
+            "translation": "ái kỷ",
+            "phonetic": "/ˈnɑːrsɪsɪzəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Narcissism harms relationships.",
+            "exampleTranslation": "Ái kỷ làm hại các mối quan hệ."
+          },
+          {
+            "targetText": "trauma",
+            "translation": "chấn thương tâm lý",
+            "phonetic": "/ˈtraʊmə/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "The accident caused trauma.",
+            "exampleTranslation": "Tai nạn gây chấn thương tâm lý."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'cognition' nghĩa là gì?",
+            "options": [
+              "nhận thức",
+              "trì hoãn",
+              "bốc đồng",
+              "tiềm thức"
+            ],
+            "correctAnswer": "nhận thức",
+            "explanationVi": "'cognition' có nghĩa là 'nhận thức'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'subconscious' nghĩa là gì?",
+            "options": [
+              "nhận thức",
+              "trì hoãn",
+              "bốc đồng",
+              "tiềm thức"
+            ],
+            "correctAnswer": "tiềm thức",
+            "explanationVi": "'subconscious' có nghĩa là 'tiềm thức'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "affects",
+              "cognition.",
+              "Sleep"
+            ],
+            "correctAnswer": "Sleep affects cognition.",
+            "explanationVi": "Câu đúng: Sleep affects cognition. (Giấc ngủ ảnh hưởng nhận thức.)"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "title": "Social Issues",
+        "titleVi": "Vấn đề xã hội",
+        "words": [
+          {
+            "targetText": "inequality",
+            "translation": "bất bình đẳng",
+            "phonetic": "/ˌɪnɪˈkwɑːləti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Inequality is growing worldwide.",
+            "exampleTranslation": "Bất bình đẳng đang gia tăng toàn cầu."
+          },
+          {
+            "targetText": "gentrification",
+            "translation": "quý tộc hóa đô thị",
+            "phonetic": "/ˌdʒentrɪfɪˈkeɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Gentrification raised rents.",
+            "exampleTranslation": "Quý tộc hóa khiến tiền thuê tăng."
+          },
+          {
+            "targetText": "urbanization",
+            "translation": "đô thị hóa",
+            "phonetic": "/ˌɜːrbənəˈzeɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Urbanization brings opportunities.",
+            "exampleTranslation": "Đô thị hóa mang lại cơ hội."
+          },
+          {
+            "targetText": "migration",
+            "translation": "di cư",
+            "phonetic": "/maɪˈɡreɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Migration shapes cultures.",
+            "exampleTranslation": "Di cư định hình văn hóa."
+          },
+          {
+            "targetText": "diversity",
+            "translation": "đa dạng",
+            "phonetic": "/daɪˈvɜːrsəti/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Diversity makes teams stronger.",
+            "exampleTranslation": "Đa dạng khiến đội ngũ mạnh hơn."
+          },
+          {
+            "targetText": "inclusion",
+            "translation": "hòa nhập",
+            "phonetic": "/ɪnˈkluːʒn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Inclusion matters at work.",
+            "exampleTranslation": "Hòa nhập quan trọng nơi làm việc."
+          },
+          {
+            "targetText": "polarization",
+            "translation": "phân cực",
+            "phonetic": "/ˌpoʊlərəˈzeɪʃn/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Political polarization worries many.",
+            "exampleTranslation": "Phân cực chính trị khiến nhiều người lo ngại."
+          },
+          {
+            "targetText": "activism",
+            "translation": "hoạt động xã hội",
+            "phonetic": "/ˈæktɪvɪzəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Youth activism is rising.",
+            "exampleTranslation": "Hoạt động xã hội của giới trẻ đang tăng."
+          },
+          {
+            "targetText": "grassroots",
+            "translation": "quần chúng",
+            "phonetic": "/ˈɡræsruːts/",
+            "partOfSpeech": "adjective",
+            "exampleSentence": "The grassroots movement grew fast.",
+            "exampleTranslation": "Phong trào quần chúng phát triển nhanh."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'inequality' nghĩa là gì?",
+            "options": [
+              "đô thị hóa",
+              "bất bình đẳng",
+              "quý tộc hóa đô thị",
+              "di cư"
+            ],
+            "correctAnswer": "bất bình đẳng",
+            "explanationVi": "'inequality' có nghĩa là 'bất bình đẳng'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'gentrification' nghĩa là gì?",
+            "options": [
+              "quý tộc hóa đô thị",
+              "đô thị hóa",
+              "di cư",
+              "bất bình đẳng"
+            ],
+            "correctAnswer": "quý tộc hóa đô thị",
+            "explanationVi": "'gentrification' có nghĩa là 'quý tộc hóa đô thị'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "raised",
+              "rents.",
+              "Gentrification"
+            ],
+            "correctAnswer": "Gentrification raised rents.",
+            "explanationVi": "Câu đúng: Gentrification raised rents. (Quý tộc hóa khiến tiền thuê tăng.)"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "title": "Modern Life",
+        "titleVi": "Đời sống hiện đại",
+        "words": [
+          {
+            "targetText": "burnout",
+            "translation": "kiệt sức công việc",
+            "phonetic": "/ˈbɜːrnaʊt/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Burnout is common among nurses.",
+            "exampleTranslation": "Kiệt sức phổ biến ở y tá."
+          },
+          {
+            "targetText": "work-life balance",
+            "translation": "cân bằng công việc-cuộc sống",
+            "phonetic": "/wɜːrk laɪf ˈbæləns/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Work-life balance matters more than salary.",
+            "exampleTranslation": "Cân bằng công việc-cuộc sống quan trọng hơn lương."
+          },
+          {
+            "targetText": "digital detox",
+            "translation": "cai nghiện số",
+            "phonetic": "/ˈdɪdʒɪtl ˈdiːtɑːks/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "A digital detox helped her focus.",
+            "exampleTranslation": "Cai nghiện số giúp cô ấy tập trung."
+          },
+          {
+            "targetText": "minimalism",
+            "translation": "tối giản",
+            "phonetic": "/ˈmɪnɪməlɪzəm/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "Minimalism means owning less.",
+            "exampleTranslation": "Tối giản nghĩa là sở hữu ít hơn."
+          },
+          {
+            "targetText": "FOMO",
+            "translation": "sợ bị bỏ lỡ",
+            "phonetic": "/ˈfoʊmoʊ/",
+            "partOfSpeech": "noun",
+            "exampleSentence": "FOMO keeps teens online.",
+            "exampleTranslation": "Nỗi sợ bị bỏ lỡ khiến teen online suốt."
+          },
+          {
+            "targetText": "gig economy",
+            "translation": "kinh tế gig",
+            "phonetic": "/ɡɪɡ ɪˈkɑːnəmi/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "The gig economy offers flexibility.",
+            "exampleTranslation": "Kinh tế gig mang lại linh hoạt."
+          },
+          {
+            "targetText": "remote work",
+            "translation": "làm việc từ xa",
+            "phonetic": "/rɪˈmoʊt wɜːrk/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Remote work saves commuting time.",
+            "exampleTranslation": "Làm việc từ xa tiết kiệm thời gian đi lại."
+          },
+          {
+            "targetText": "side hustle",
+            "translation": "nghề tay trái",
+            "phonetic": "/saɪd ˈhʌsl/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "His side hustle pays well.",
+            "exampleTranslation": "Nghề tay trái của anh ấy thu nhập tốt."
+          },
+          {
+            "targetText": "quiet quitting",
+            "translation": "nghỉ việc thầm lặng",
+            "phonetic": "/ˈkwaɪət ˈkwɪtɪŋ/",
+            "partOfSpeech": "phrase",
+            "exampleSentence": "Quiet quitting reflects burnout.",
+            "exampleTranslation": "Nghỉ việc thầm lặng phản ánh kiệt sức."
+          }
+        ],
+        "exercises": [
+          {
+            "type": "multiple_choice",
+            "question": "'burnout' nghĩa là gì?",
+            "options": [
+              "cai nghiện số",
+              "cân bằng công việc-cuộc sống",
+              "tối giản",
+              "kiệt sức công việc"
+            ],
+            "correctAnswer": "kiệt sức công việc",
+            "explanationVi": "'burnout' có nghĩa là 'kiệt sức công việc'."
+          },
+          {
+            "type": "multiple_choice",
+            "question": "'work-life balance' nghĩa là gì?",
+            "options": [
+              "cai nghiện số",
+              "cân bằng công việc-cuộc sống",
+              "tối giản",
+              "kiệt sức công việc"
+            ],
+            "correctAnswer": "cân bằng công việc-cuộc sống",
+            "explanationVi": "'work-life balance' có nghĩa là 'cân bằng công việc-cuộc sống'."
+          },
+          {
+            "type": "sentence_scramble",
+            "question": "Xếp các từ sau thành câu đúng:",
+            "words": [
+              "less.",
+              "owning",
+              "Minimalism",
+              "means"
+            ],
+            "correctAnswer": "Minimalism means owning less.",
+            "explanationVi": "Câu đúng: Minimalism means owning less. (Tối giản nghĩa là sở hữu ít hơn.)"
+          }
+        ]
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

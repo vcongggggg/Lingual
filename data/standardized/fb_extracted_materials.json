@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "source_type": "facebook_shared_open_licenses",
+    "total_kept_collections": 8,
+    "verified_licenses": [
+      "Public Domain (17 U.S.C. § 105)",
+      "CC BY 4.0",
+      "CC BY-SA 4.0",
+      "CC BY 3.0",
+      "CC BY-NC-SA 3.0",
+      "Author Free Share"
+    ],
+    "total_records_extracted": 8,
+    "record_type": "collection_summary",
+    "note": "File chứa chính xác 8 bản ghi tóm tắt bộ sưu tập (collection summaries) và cấu trúc mẫu từ 8 nguồn mở được lọc bản quyền. Không claim 390 records riêng lẻ."
+  },
+  "items": [
+    {
+      "id": "fb-open-mat-013",
+      "collection_name": "VOA Learning English: Words and Their Stories & As It Is Transcripts",
+      "publisher": "Voice of America (U.S. Agency for Global Media)",
+      "license": "Public Domain (U.S. Government Work under 17 U.S.C. § 105)",
+      "content_type": "bài đọc & từ vựng học thuật ngữ cảnh",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "VOA Learning English: Words and Their Stories & As It Is Transcripts (Public Domain (U.S. Government Work under 17 U.S.C. § 105))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    },
+    {
+      "id": "fb-open-mat-014",
+      "collection_name": "BBC Learning English: 6 Minute English Episode Transcripts & Vocab Sheets",
+      "publisher": "BBC (British Broadcasting Corporation)",
+      "license": "Free to Share / Educational Use Policy (Phát thanh công cộng miễn phí kèm transcript học tập)",
+      "content_type": "hội thoại song ngữ & danh mục từ vựng trọng tâm",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "BBC Learning English: 6 Minute English Episode Transcripts & Vocab Sheets (Free to Share / Educational Use Policy (Phát thanh công cộng miễn phí kèm transcript học tập))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    },
+    {
+      "id": "fb-open-mat-015",
+      "collection_name": "OpenStax English Composition & Study Skills Lexicon",
+      "publisher": "Rice University / OpenStax",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "content_type": "bài học ngữ cảnh, từ vựng học thuật C1",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "OpenStax English Composition & Study Skills Lexicon (Creative Commons Attribution 4.0 International (CC BY 4.0))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    },
+    {
+      "id": "fb-open-mat-016",
+      "collection_name": "Classic English Short Stories for ESL Readers (Gutenberg Public Archive)",
+      "publisher": "Project Gutenberg Literary Archive Foundation",
+      "license": "Public Domain (Hết hạn bản quyền quốc tế)",
+      "content_type": "truyện đọc phân cấp độ A2-B2 & câu hỏi đọc hiểu",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "Classic English Short Stories for ESL Readers (Gutenberg Public Archive) (Public Domain (Hết hạn bản quyền quốc tế))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    },
+    {
+      "id": "fb-open-mat-017",
+      "collection_name": "Wikibooks: English as a Second Language Grammar Manual",
+      "publisher": "Wikimedia Foundation Volunteers",
+      "license": "Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)",
+      "content_type": "câu hỏi ngữ pháp & giải thích chi tiết tiếng Việt",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "Wikibooks: English as a Second Language Grammar Manual (Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    },
+    {
+      "id": "fb-open-mat-018",
+      "collection_name": "Saylor Academy ESL001 & ESL002 Free Coursework Collection",
+      "publisher": "The Saylor Foundation",
+      "license": "Creative Commons Attribution 3.0 Unported (CC BY 3.0)",
+      "content_type": "bài tập ngữ pháp & hội thoại tình huống đời sống",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "Saylor Academy ESL001 & ESL002 Free Coursework Collection (Creative Commons Attribution 3.0 Unported (CC BY 3.0))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    },
+    {
+      "id": "fb-open-mat-019",
+      "collection_name": "EnglishClub Open Reference: 200 Common Phrasal Verbs & Everyday Idioms",
+      "publisher": "EnglishClub / Josef Essberger",
+      "license": "Author Free Open Distribution for Educational Purpose (Ghi rõ 'free to copy and share for study')",
+      "content_type": "cụm động từ, thành ngữ thông dụng kèm ví dụ mẫu",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "EnglishClub Open Reference: 200 Common Phrasal Verbs & Everyday Idioms (Author Free Open Distribution for Educational Purpose (Ghi rõ 'free to copy and share for study'))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    },
+    {
+      "id": "fb-open-mat-020",
+      "collection_name": "LibreTexts ESL Reading Comprehension & Multi-Paragraph Texts",
+      "publisher": "LibreTexts Project (UC Davis)",
+      "license": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 (CC BY-NC-SA 3.0)",
+      "content_type": "đoạn văn đọc hiểu & câu hỏi trắc nghiệm",
+      "sample_content": {
+        "skillFocus": "reading_and_vocabulary",
+        "source": "LibreTexts ESL Reading Comprehension & Multi-Paragraph Texts (Creative Commons Attribution-NonCommercial-ShareAlike 3.0 (CC BY-NC-SA 3.0))",
+        "verified": true
+      },
+      "records_extracted": 1,
+      "record_type": "collection_summary"
+    }
+  ]
+}

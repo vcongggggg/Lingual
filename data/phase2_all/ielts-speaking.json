@@ -1,0 +1,2032 @@
+[
+  {
+    "id": "spk-p1-001",
+    "part": 1,
+    "question": "Where is your hometown?",
+    "topicVi": "Quê quán",
+    "ideasVi": [
+      "Tên thành phố/tỉnh",
+      "Vị trí địa lý",
+      "Điểm nổi bật"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-002",
+    "part": 1,
+    "question": "Do you like living in your hometown?",
+    "topicVi": "Quê quán",
+    "ideasVi": [
+      "Điều thích nhất",
+      "Điều muốn thay đổi",
+      "So với nơi khác"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-003",
+    "part": 1,
+    "question": "What has changed in your hometown in recent years?",
+    "topicVi": "Quê quán",
+    "ideasVi": [
+      "Cơ sở hạ tầng mới",
+      "Cuộc sống người dân",
+      "Cảm nhận cá nhân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-004",
+    "part": 1,
+    "question": "Do you work or are you a student?",
+    "topicVi": "Công việc / Học tập",
+    "ideasVi": [
+      "Nghề nghiệp hiện tại",
+      "Lý do chọn",
+      "Kế hoạch tương lai"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-005",
+    "part": 1,
+    "question": "What do you like most about your job?",
+    "topicVi": "Công việc",
+    "ideasVi": [
+      "Đồng nghiệp",
+      "Môi trường làm việc",
+      "Cơ hội phát triển"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-006",
+    "part": 1,
+    "question": "Is your job very stressful?",
+    "topicVi": "Công việc",
+    "ideasVi": [
+      "Áp lực cụ thể",
+      "Cách giải tỏa",
+      "Cân bằng cuộc sống"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-007",
+    "part": 1,
+    "question": "What subject are you studying?",
+    "topicVi": "Học tập",
+    "ideasVi": [
+      "Chuyên ngành",
+      "Lý do chọn ngành",
+      "Môn yêu thích"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-008",
+    "part": 1,
+    "question": "Do you prefer studying alone or with others?",
+    "topicVi": "Học tập",
+    "ideasVi": [
+      "Ưu điểm học một mình",
+      "Ưu điểm học nhóm",
+      "Thói quen của bản thân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-009",
+    "part": 1,
+    "question": "What do you want to study in the future?",
+    "topicVi": "Học tập",
+    "ideasVi": [
+      "Khóa học mong muốn",
+      "Lý do",
+      "Mục tiêu sau khi học"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-010",
+    "part": 1,
+    "question": "What do you like to do in your free time?",
+    "topicVi": "Sở thích",
+    "ideasVi": [
+      "Hoạt động thường làm",
+      "Từ bao giờ",
+      "Vì sao thích"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-011",
+    "part": 1,
+    "question": "Did your hobbies change when you were a child?",
+    "topicVi": "Sở thích",
+    "ideasVi": [
+      "Sở thích hồi nhỏ",
+      "Sở thích hiện tại",
+      "Lý do thay đổi"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-012",
+    "part": 1,
+    "question": "Do you think hobbies are important?",
+    "topicVi": "Sở thích",
+    "ideasVi": [
+      "Lợi ích sức khỏe tinh thần",
+      "Kết nối bạn bè",
+      "Cân bằng cuộc sống"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-013",
+    "part": 1,
+    "question": "What is your favourite food?",
+    "topicVi": "Ẩm thực",
+    "ideasVi": [
+      "Món ăn cụ thể",
+      "Hương vị",
+      "Ai nấu / ở đâu ăn"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-014",
+    "part": 1,
+    "question": "Do you prefer eating at home or in restaurants?",
+    "topicVi": "Ẩm thực",
+    "ideasVi": [
+      "Ưu điểm ăn nhà",
+      "Ưu điểm ăn ngoài",
+      "Tần suất"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-015",
+    "part": 1,
+    "question": "Can you cook?",
+    "topicVi": "Ẩm thực",
+    "ideasVi": [
+      "Món nấu được",
+      "Ai dạy nấu",
+      "Có thích nấu không"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-016",
+    "part": 1,
+    "question": "What is the weather like in your country?",
+    "topicVi": "Thời tiết",
+    "ideasVi": [
+      "Các mùa",
+      "Nhiệt độ điển hình",
+      "Mùa yêu thích"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-017",
+    "part": 1,
+    "question": "Do you prefer hot or cold weather?",
+    "topicVi": "Thời tiết",
+    "ideasVi": [
+      "Lý do",
+      "Hoạt động phù hợp",
+      "Ảnh hưởng tâm trạng"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-018",
+    "part": 1,
+    "question": "Does the weather affect your mood?",
+    "topicVi": "Thời tiết",
+    "ideasVi": [
+      "Ngày mưa vs nắng",
+      "Cách đối phó",
+      "Ví dụ cụ thể"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-019",
+    "part": 1,
+    "question": "How many people are there in your family?",
+    "topicVi": "Gia đình",
+    "ideasVi": [
+      "Thành viên",
+      "Ai gần gũi nhất",
+      "Truyền thống gia đình"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-020",
+    "part": 1,
+    "question": "Do you spend a lot of time with your family?",
+    "topicVi": "Gia đình",
+    "ideasVi": [
+      "Hoạt động chung",
+      "Bữa cơm gia đình",
+      "Ngày lễ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-021",
+    "part": 1,
+    "question": "What do your parents do?",
+    "topicVi": "Gia đình",
+    "ideasVi": [
+      "Nghề nghiệp",
+      "Ảnh hưởng đến bạn",
+      "Tự hào về họ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-022",
+    "part": 1,
+    "question": "Do you have many friends?",
+    "topicVi": "Bạn bè",
+    "ideasVi": [
+      "Bạn thân vs bạn xã giao",
+      "Gặp nhau khi nào",
+      "Hoạt động chung"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-023",
+    "part": 1,
+    "question": "How do you usually meet new friends?",
+    "topicVi": "Bạn bè",
+    "ideasVi": [
+      "Qua trường lớp/công việc",
+      "Qua sở thích chung",
+      "Qua mạng xã hội"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-024",
+    "part": 1,
+    "question": "What do you and your friends do together?",
+    "topicVi": "Bạn bè",
+    "ideasVi": [
+      "Đi ăn, cà phê",
+      "Du lịch",
+      "Chơi thể thao/game"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-025",
+    "part": 1,
+    "question": "Do you enjoy reading books?",
+    "topicVi": "Đọc sách",
+    "ideasVi": [
+      "Thể loại yêu thích",
+      "Tần suất đọc",
+      "Sách gần đây nhất"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-026",
+    "part": 1,
+    "question": "Do you prefer e-books or paper books?",
+    "topicVi": "Đọc sách",
+    "ideasVi": [
+      "Ưu điểm mỗi loại",
+      "Thói quen của bạn",
+      "Lý do"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-027",
+    "part": 1,
+    "question": "What kind of books did you read as a child?",
+    "topicVi": "Đọc sách",
+    "ideasVi": [
+      "Truyện tranh/cổ tích",
+      "Ai mua cho",
+      "Kỷ niệm"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-028",
+    "part": 1,
+    "question": "What kind of music do you like?",
+    "topicVi": "Âm nhạc",
+    "ideasVi": [
+      "Thể loại",
+      "Ca sĩ/ban nhạc",
+      "Nghe khi nào"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-029",
+    "part": 1,
+    "question": "Do you play any musical instrument?",
+    "topicVi": "Âm nhạc",
+    "ideasVi": [
+      "Nhạc cụ biết chơi",
+      "Học từ bao giờ",
+      "Muốn học thêm"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-030",
+    "part": 1,
+    "question": "Has your taste in music changed over the years?",
+    "topicVi": "Âm nhạc",
+    "ideasVi": [
+      "Trước đây nghe gì",
+      "Bây giờ nghe gì",
+      "Lý do thay đổi"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-031",
+    "part": 1,
+    "question": "Do you like watching movies?",
+    "topicVi": "Phim ảnh",
+    "ideasVi": [
+      "Thể loại yêu thích",
+      "Xem ở rạp hay ở nhà",
+      "Phim gần đây"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-032",
+    "part": 1,
+    "question": "Who is your favourite actor or actress?",
+    "topicVi": "Phim ảnh",
+    "ideasVi": [
+      "Tên diễn viên",
+      "Phim nổi bật",
+      "Vì sao thích"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-033",
+    "part": 1,
+    "question": "Do you prefer Vietnamese or foreign films?",
+    "topicVi": "Phim ảnh",
+    "ideasVi": [
+      "Ưu điểm mỗi loại",
+      "Ví dụ cụ thể",
+      "Lý do"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-034",
+    "part": 1,
+    "question": "Do you like travelling?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Nơi đã đi",
+      "Nơi muốn đi",
+      "Đi với ai"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-035",
+    "part": 1,
+    "question": "What is the most interesting place you have visited?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Tên địa điểm",
+      "Ấn tượng nhất",
+      "Muốn quay lại không"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-036",
+    "part": 1,
+    "question": "Do you prefer travelling alone or with others?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Ưu điểm mỗi cách",
+      "Trải nghiệm của bạn",
+      "Lý do"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-037",
+    "part": 1,
+    "question": "Do you play any sports?",
+    "topicVi": "Thể thao",
+    "ideasVi": [
+      "Môn thể thao",
+      "Chơi từ bao giờ",
+      "Chơi với ai"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-038",
+    "part": 1,
+    "question": "What sports are popular in your country?",
+    "topicVi": "Thể thao",
+    "ideasVi": [
+      "Bóng đá, cầu lông...",
+      "Vì sao phổ biến",
+      "Bạn có theo dõi"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-039",
+    "part": 1,
+    "question": "Do you like watching sports on TV?",
+    "topicVi": "Thể thao",
+    "ideasVi": [
+      "Môn hay xem",
+      "Đội yêu thích",
+      "Cảm xúc khi xem"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-040",
+    "part": 1,
+    "question": "How much time do you spend on your phone every day?",
+    "topicVi": "Công nghệ",
+    "ideasVi": [
+      "Số giờ ước tính",
+      "Dùng làm gì",
+      "Có muốn giảm không"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-041",
+    "part": 1,
+    "question": "What is your favourite app?",
+    "topicVi": "Công nghệ",
+    "ideasVi": [
+      "Tên app",
+      "Dùng để làm gì",
+      "Vì sao thích"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-042",
+    "part": 1,
+    "question": "Do you think technology has changed our lives?",
+    "topicVi": "Công nghệ",
+    "ideasVi": [
+      "Mặt tích cực",
+      "Mặt tiêu cực",
+      "Ví dụ cụ thể"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-043",
+    "part": 1,
+    "question": "Do you use social media?",
+    "topicVi": "Mạng xã hội",
+    "ideasVi": [
+      "Nền tảng dùng",
+      "Mục đích",
+      "Thời gian mỗi ngày"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-044",
+    "part": 1,
+    "question": "What do you usually share on social media?",
+    "topicVi": "Mạng xã hội",
+    "ideasVi": [
+      "Ảnh, suy nghĩ",
+      "Tin tức",
+      "Có hay đăng không"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-045",
+    "part": 1,
+    "question": "Do you think social media is good for young people?",
+    "topicVi": "Mạng xã hội",
+    "ideasVi": [
+      "Lợi ích",
+      "Tác hại",
+      "Quan điểm cá nhân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-046",
+    "part": 1,
+    "question": "Do you like shopping?",
+    "topicVi": "Mua sắm",
+    "ideasVi": [
+      "Mua gì thường xuyên",
+      "Online hay offline",
+      "Tần suất"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-047",
+    "part": 1,
+    "question": "Where do you usually go shopping?",
+    "topicVi": "Mua sắm",
+    "ideasVi": [
+      "Chợ, siêu thị, trung tâm thương mại",
+      "Lý do chọn",
+      "Giá cả"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-048",
+    "part": 1,
+    "question": "Do you prefer shopping online or in stores?",
+    "topicVi": "Mua sắm",
+    "ideasVi": [
+      "Ưu điểm mỗi hình thức",
+      "Trải nghiệm của bạn",
+      "Mặt hàng phù hợp"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-049",
+    "part": 1,
+    "question": "Do you live in a house or an apartment?",
+    "topicVi": "Nhà ở",
+    "ideasVi": [
+      "Loại nhà",
+      "Khu vực",
+      "Sống với ai"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-050",
+    "part": 1,
+    "question": "What is your favourite room in your home?",
+    "topicVi": "Nhà ở",
+    "ideasVi": [
+      "Phòng nào",
+      "Trang trí thế nào",
+      "Làm gì ở đó"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-051",
+    "part": 1,
+    "question": "Would you like to move to a different home?",
+    "topicVi": "Nhà ở",
+    "ideasVi": [
+      "Muốn chuyển đi đâu",
+      "Lý do",
+      "Nhà mơ ước"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-052",
+    "part": 1,
+    "question": "What do you usually do in the morning?",
+    "topicVi": "Sinh hoạt hàng ngày",
+    "ideasVi": [
+      "Giờ dậy",
+      "Thói quen buổi sáng",
+      "Ăn sáng"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-053",
+    "part": 1,
+    "question": "What time do you usually go to bed?",
+    "topicVi": "Sinh hoạt hàng ngày",
+    "ideasVi": [
+      "Giờ ngủ",
+      "Có ngủ đủ không",
+      "Thói quen trước khi ngủ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-054",
+    "part": 1,
+    "question": "Do you think you have a healthy lifestyle?",
+    "topicVi": "Sinh hoạt hàng ngày",
+    "ideasVi": [
+      "Ăn uống, vận động",
+      "Điểm cần cải thiện",
+      "Kế hoạch"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-055",
+    "part": 1,
+    "question": "What is your favourite festival?",
+    "topicVi": "Lễ hội",
+    "ideasVi": [
+      "Tên lễ hội",
+      "Hoạt động đặc trưng",
+      "Vì sao thích"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-056",
+    "part": 1,
+    "question": "How do you celebrate Tet in your family?",
+    "topicVi": "Lễ hội",
+    "ideasVi": [
+      "Chuẩn bị",
+      "Món ăn, phong tục",
+      "Kỷ niệm đáng nhớ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-057",
+    "part": 1,
+    "question": "Do you think festivals are important?",
+    "topicVi": "Lễ hội",
+    "ideasVi": [
+      "Giữ gìn văn hóa",
+      "Gắn kết gia đình",
+      "Nghỉ ngơi"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-058",
+    "part": 1,
+    "question": "Why are you learning English?",
+    "topicVi": "Học tiếng Anh",
+    "ideasVi": [
+      "Mục đích",
+      "Từ bao giờ",
+      "Mục tiêu"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-059",
+    "part": 1,
+    "question": "What is the most difficult part of learning English?",
+    "topicVi": "Học tiếng Anh",
+    "ideasVi": [
+      "Nghe/nói/đọc/viết",
+      "Khó khăn cụ thể",
+      "Cách khắc phục"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p1-060",
+    "part": 1,
+    "question": "How do you practise your English?",
+    "topicVi": "Học tiếng Anh",
+    "ideasVi": [
+      "Xem phim, nghe nhạc",
+      "Nói với bạn bè",
+      "Dùng app"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-001",
+    "part": 2,
+    "question": "Describe a person who has influenced you.",
+    "topicVi": "Người có ảnh hưởng",
+    "cueCard": "Describe a person who has influenced you. You should say: who this person is, how you know them, what influence they have had on you, and explain why they are important to you.",
+    "sampleAnswer": "The person who has influenced me most is my high school English teacher, Ms. Lan. I met her when I was in grade 10, and she taught me for three years. Before meeting her, I found English boring and difficult, but her teaching style completely changed my attitude. She used games, songs and real-life conversations instead of just grammar drills, which made every lesson enjoyable. Thanks to her encouragement, I started watching English movies without subtitles and eventually became confident in speaking. What impresses me most is her patience — she never gave up on weak students. Even now, whenever I face difficulties in learning, I remember her words: 'Mistakes are proof that you are trying.' She truly shaped not only my English ability but also my belief that learning can be fun.",
+    "tipsVi": [
+      "Kể câu chuyện cụ thể thay vì nói chung chung",
+      "Dùng thì quá khứ cho kỷ niệm, hiện tại cho ảnh hưởng",
+      "Kết bài bằng câu trích dẫn hoặc bài học rút ra"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-002",
+    "part": 2,
+    "question": "Describe a teacher you remember well.",
+    "topicVi": "Thầy cô đáng nhớ",
+    "cueCard": "Describe a teacher you remember well. You should say: who they are, what subject they taught, what they were like, and explain why you remember them.",
+    "sampleAnswer": "I would like to talk about Mr. Hung, my maths teacher in secondary school. He was in his forties, always wearing glasses and smiling warmly. Unlike other teachers who focused only on textbooks, he connected maths to everyday life — he once explained percentages using discount sales at the market, which made the whole class laugh and understand instantly. He was strict about homework but incredibly fair, and he stayed after school to help anyone who was struggling. I remember him because he believed in me when I doubted myself. In grade 8, I failed a maths test and wanted to give up, but he told me that failure is just a step towards success. His encouragement helped me pass with high marks the following year, and I have carried his lesson with me ever since.",
+    "tipsVi": [
+      "Miêu tả ngoại hình + tính cách để người nghe hình dung",
+      "Đưa 1-2 kỷ niệm cụ thể",
+      "Giải thích TẠI SAO nhớ (ảnh hưởng lâu dài)"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-003",
+    "part": 2,
+    "question": "Describe a friend you enjoy spending time with.",
+    "topicVi": "Bạn bè",
+    "cueCard": "Describe a friend you enjoy spending time with. You should say: who they are, how you met, what you usually do together, and explain why you enjoy their company.",
+    "sampleAnswer": "My best friend is Minh, whom I met in my first year of university. We were assigned as roommates, and although we are quite different — he is outgoing while I am quieter — we became close very quickly. We usually spend weekends together, either playing badminton, trying new street food stalls, or just talking late into the night about our dreams. What I enjoy most about his company is his positive energy; he can turn even a bad day into something funny. Last year, when I failed an important exam, he stayed up with me, helped me make a study plan, and never once judged me. I think true friendship is rare, and I feel lucky to have someone who understands me so well and always brings out the best in me.",
+    "tipsVi": [
+      "Nêu cách quen nhau + điểm chung/khác biệt",
+      "Kể 1 kỷ niệm thể hiện tình bạn",
+      "Dùng tính từ miêu tả tính cách đa dạng"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-004",
+    "part": 2,
+    "question": "Describe a family member you are close to.",
+    "topicVi": "Người thân trong gia đình",
+    "cueCard": "Describe a family member you are close to. You should say: who they are, what they are like, what you do together, and explain why you are close to them.",
+    "sampleAnswer": "I am closest to my grandmother, who is now 78 years old. She lives with our family in the countryside, and I have known her since I was born. She is a small woman with silver hair, but she is full of energy and has the warmest smile. Every summer, I stay at her house, where she teaches me to cook traditional dishes like banh chung and tells me stories about her youth during difficult times. We also work in her vegetable garden together every morning. I am close to her because she gives me unconditional love and wise advice. When I feel stressed about exams, she always says, 'Health is the greatest wealth,' which reminds me to take care of myself. She is truly the heart of our family.",
+    "tipsVi": [
+      "Miêu tả ngoại hình + tính cách cụ thể",
+      "Kể hoạt động chung thường xuyên",
+      "Nhấn mạnh giá trị tinh thần họ mang lại"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-005",
+    "part": 2,
+    "question": "Describe your hometown.",
+    "topicVi": "Quê hương",
+    "cueCard": "Describe your hometown. You should say: where it is, what it is like, what people do there, and explain how you feel about it.",
+    "sampleAnswer": "My hometown is Hoi An, a small ancient town in central Vietnam, about 30 kilometres from Da Nang. It is famous for its well-preserved old houses, colourful lanterns and the Thu Bon River running through it. Life there is peaceful and slow-paced compared to big cities — in the evenings, people stroll along the river, enjoy street food like cao lau, and tourists take boat rides under the lantern light. Most locals work in tourism, tailoring or fishing. Although I now live in Ho Chi Minh City for work, I feel deeply attached to Hoi An because it holds all my childhood memories. Every Tet, I return home, and the familiar smell of incense and the sound of the river instantly make me feel at peace. It will always be home to me.",
+    "tipsVi": [
+      "Nêu vị trí + đặc trưng nổi bật",
+      "Miêu tả cuộc sống người dân bằng giác quan",
+      "Bày tỏ cảm xúc gắn bó cá nhân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-006",
+    "part": 2,
+    "question": "Describe a place you would like to visit.",
+    "topicVi": "Địa điểm muốn đến",
+    "cueCard": "Describe a place you would like to visit. You should say: where it is, what you know about it, why you want to visit it, and explain what you would do there.",
+    "sampleAnswer": "The place I most want to visit is Japan, particularly Kyoto. I have read a lot about its ancient temples, cherry blossoms and traditional tea houses, and I have watched many documentaries about Japanese culture. I want to visit because I am fascinated by how Japan blends ultramodern technology with centuries-old traditions. If I go there, I would first visit Fushimi Inari shrine with its thousands of red gates, then try an authentic tea ceremony. I would also love to see cherry blossoms in spring and taste real sushi and ramen. Beyond sightseeing, I hope to experience the famous Japanese politeness and discipline firsthand. I am saving money for this trip and plan to go within the next two years. It has been my dream destination since I was a teenager.",
+    "tipsVi": [
+      "Nêu lý do muốn đi (văn hóa, cảnh đẹp...)",
+      "Liệt kê 2-3 hoạt động cụ thể sẽ làm",
+      "Kết bằng kế hoạch/khi nào đi"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-007",
+    "part": 2,
+    "question": "Describe a restaurant you like.",
+    "topicVi": "Nhà hàng yêu thích",
+    "cueCard": "Describe a restaurant you like. You should say: where it is, what kind of food it serves, how often you go there, and explain why you like it.",
+    "sampleAnswer": "My favourite restaurant is a small family-run pho place near my university called Pho Hoa. It is located on a quiet street, about ten minutes' walk from campus, and it has been open for over twenty years. They serve only pho and a few side dishes, but the broth is incredible — rich, fragrant and clearly simmered for hours. I go there at least twice a week, usually with classmates after evening classes. A large bowl costs only 45,000 dong, which is perfect for students. I like it not only for the delicious food but also for the warm atmosphere; the owner remembers regular customers and always asks about our studies. In a city full of fancy restaurants, this humble place feels like a second home to me.",
+    "tipsVi": [
+      "Miêu tả vị trí + món đặc trưng bằng giác quan",
+      "Nêu giá cả, tần suất (thông tin thực tế)",
+      "Giải thích lý do tình cảm, không chỉ món ăn"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-008",
+    "part": 2,
+    "question": "Describe a park or garden you enjoy visiting.",
+    "topicVi": "Công viên / Vườn",
+    "cueCard": "Describe a park or garden you enjoy visiting. You should say: where it is, what it looks like, what people do there, and explain why you enjoy visiting it.",
+    "sampleAnswer": "I love visiting Tao Dan Park in the centre of Ho Chi Minh City. It is one of the largest green spaces downtown, with tall ancient trees, colourful flower beds and winding paths. In the early morning, elderly people practise tai chi, young couples jog, and bird lovers gather with their cages. I usually go there on Sunday mornings to read or simply sit on a bench and watch the world go by. What I enjoy most is the contrast — just outside the park gates is the noisy, dusty traffic, but inside it feels like a peaceful village. The fresh air and birdsong help me clear my mind after a stressful week. In a crowded city with little nature, this park is a precious escape that I truly treasure.",
+    "tipsVi": [
+      "Miêu tả cảnh vật chi tiết (cây, hoa, âm thanh)",
+      "Kể hoạt động của người dân + của bản thân",
+      "Nhấn mạnh sự tương phản với phố xá ồn ào"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-009",
+    "part": 2,
+    "question": "Describe a city you have visited.",
+    "topicVi": "Thành phố đã đến",
+    "cueCard": "Describe a city you have visited. You should say: where it is, when you went there, what you did there, and explain what impressed you most.",
+    "sampleAnswer": "Two years ago, I visited Da Lat, a highland city in southern Vietnam, with my family during summer. Unlike the hot lowlands, Da Lat has cool weather all year round, with pine forests, flower gardens and French colonial villas. During our four-day trip, we visited the Valley of Love, rode cable cars over pine hills, and tried the famous night market with its grilled rice paper and hot soy milk. What impressed me most was the peaceful atmosphere — the air smelled of pine and coffee, and everything moved at a gentle pace. I also loved how creative the city is, with art cafes on every corner. It felt like a small European town hidden in Vietnam. I still remember watching the sunrise over misty hills, and I would love to return one winter.",
+    "tipsVi": [
+      "Nêu thời gian + đi với ai",
+      "Kể 2-3 hoạt động cụ thể",
+      "Nhấn mạnh ấn tượng sâu nhất + kỷ niệm"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-010",
+    "part": 2,
+    "question": "Describe your ideal home.",
+    "topicVi": "Ngôi nhà mơ ước",
+    "cueCard": "Describe your ideal home. You should say: where it would be, what it would look like, what facilities it would have, and explain why it is ideal for you.",
+    "sampleAnswer": "My ideal home would be a two-storey house near the beach in Da Nang, where I could wake up to the sound of waves every morning. It would have large glass windows to let in natural light, a spacious living room with wooden floors, and a small garden where I could grow vegetables and flowers. Inside, I would want a cosy reading corner with a bookshelf full of my favourite novels, and a modern kitchen because I love cooking. The most important facility would be a rooftop terrace where my family could gather for barbecues and watch the sunset. This home is ideal for me because it combines nature, comfort and family togetherness. After living in a cramped city apartment for years, having space to breathe and a view of the sea would make me truly happy.",
+    "tipsVi": [
+      "Miêu tả vị trí + kiến trúc cụ thể",
+      "Liệt kê 2-3 không gian yêu thích",
+      "Giải thích tại sao phù hợp với bản thân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-011",
+    "part": 2,
+    "question": "Describe a gift you received.",
+    "topicVi": "Món quà đáng nhớ",
+    "cueCard": "Describe a gift you received. You should say: what it was, who gave it to you, on what occasion, and explain how you felt about it.",
+    "sampleAnswer": "The most meaningful gift I have ever received was a second-hand guitar from my older brother on my 18th birthday. He had saved money for months from his part-time job to buy it from a music shop, even though it was not brand new. I had mentioned casually that I wanted to learn guitar, and he remembered. When I opened the box, I was speechless — not because of the guitar itself, but because of the thought behind it. He even included a handwritten note saying, 'Play your dreams.' Since then, I have practised every week, and although I am still not very good, playing reminds me of his love. This gift taught me that the value of a present lies in the giver's heart, not its price.",
+    "tipsVi": [
+      "Kể hoàn cảnh nhận quà cụ thể",
+      "Nhấn mạnh ý nghĩa hơn giá trị vật chất",
+      "Kết bằng bài học rút ra"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-012",
+    "part": 2,
+    "question": "Describe a book you enjoyed reading.",
+    "topicVi": "Cuốn sách yêu thích",
+    "cueCard": "Describe a book you enjoyed reading. You should say: what the book is about, when you read it, why you chose it, and explain why you enjoyed it.",
+    "sampleAnswer": "The book I enjoyed most is 'The Alchemist' by Paulo Coelho, which I read last year during summer holiday. It tells the story of Santiago, a young shepherd who travels from Spain to Egypt in search of treasure, but discovers that the real treasure is following his dreams. A friend recommended it to me, saying it would change my perspective on life. I enjoyed it because the writing is simple yet deeply meaningful — every chapter contains wisdom about courage, destiny and listening to your heart. There is a famous line, 'When you want something, all the universe conspires to help you achieve it,' which inspired me during a difficult period. After finishing it, I felt more motivated to pursue my own goals instead of just following the safe path.",
+    "tipsVi": [
+      "Tóm tắt nội dung ngắn gọn",
+      "Trích 1 câu nói ấn tượng",
+      "Nêu ảnh hưởng đến bản thân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-013",
+    "part": 2,
+    "question": "Describe an important object in your home.",
+    "topicVi": "Đồ vật quan trọng",
+    "cueCard": "Describe an important object in your home. You should say: what it is, where you keep it, how you got it, and explain why it is important to you.",
+    "sampleAnswer": "An important object in my home is an old wall clock that hangs in our living room. It belonged to my late grandfather, who bought it in the 1970s, and my father inherited it after he passed away. The clock is made of dark wood with Roman numerals, and although it no longer keeps perfect time, its gentle ticking fills the house with a sense of history. We keep it in the most visible spot, above the family altar. It is important to me because it connects three generations — every time I hear it chime, I think of my grandfather's stories and feel his presence. It reminds our family that time is precious and that we should cherish every moment together. No modern gadget could ever replace it.",
+    "tipsVi": [
+      "Nêu nguồn gốc + vị trí đặt",
+      "Miêu tả chi tiết vật liệu, hình dáng",
+      "Giải thích giá trị tinh thần/tình cảm"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-014",
+    "part": 2,
+    "question": "Describe a photo that means a lot to you.",
+    "topicVi": "Bức ảnh ý nghĩa",
+    "cueCard": "Describe a photo that means a lot to you. You should say: what is in the photo, when and where it was taken, who took it, and explain why it is meaningful to you.",
+    "sampleAnswer": "The photo that means most to me was taken five years ago at my high school graduation. In it, I am wearing the graduation gown, standing between my parents, and all three of us are laughing — my mother is even wiping away tears of joy. My uncle took it just as we hugged after the ceremony. What makes it special is my father's expression; he rarely shows emotion, but in that photo, his pride is unmistakable. That day marked the end of twelve years of hard work, and my parents had sacrificed so much for my education. Whenever I feel discouraged at university, I look at this photo and remember their smiles. It motivates me to keep trying, because I want to make them proud again in the future.",
+    "tipsVi": [
+      "Miêu tả chi tiết nội dung ảnh",
+      "Kể hoàn cảnh chụp",
+      "Giải thích cảm xúc mỗi khi nhìn lại"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-015",
+    "part": 2,
+    "question": "Describe a piece of technology you use often.",
+    "topicVi": "Thiết bị công nghệ",
+    "cueCard": "Describe a piece of technology you use often. You should say: what it is, what you use it for, how long you have used it, and explain why it is useful to you.",
+    "sampleAnswer": "The piece of technology I use most is my smartphone, which I have had for about two years. I use it for almost everything — studying English with apps, video-calling my family, navigating with maps, and even paying for coffee. Before owning it, I had to carry a separate camera, dictionary and notebook everywhere. What makes it truly useful is how it connects me to the world; during the pandemic, online classes on my phone allowed me to continue studying without interruption. However, I am aware of its downsides — I sometimes waste hours scrolling social media. Overall, though, it has made my life far more convenient and productive, and I honestly cannot imagine daily life without it now.",
+    "tipsVi": [
+      "Liệt kê 3-4 công dụng cụ thể",
+      "So sánh trước/sau khi có thiết bị",
+      "Nhắc cả mặt trái để bài sâu hơn"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-016",
+    "part": 2,
+    "question": "Describe a skill you would like to learn.",
+    "topicVi": "Kỹ năng muốn học",
+    "cueCard": "Describe a skill you would like to learn. You should say: what the skill is, why you want to learn it, how you would learn it, and explain how it would benefit you.",
+    "sampleAnswer": "The skill I would most like to learn is playing the piano. I have always admired people who can sit down and fill a room with beautiful music, and I regret not learning as a child. I want to learn it because music is a wonderful stress reliever, and I believe it would make me more patient and disciplined. My plan is to take weekend classes at a local music centre and practise at least thirty minutes every evening using tutorial videos. Although it will take years to play well, I think the journey itself will be rewarding. In the long term, being able to play piano would enrich my life, impress my future children, and give me a creative outlet besides work. It is never too late to start, as the saying goes.",
+    "tipsVi": [
+      "Nêu lý do muốn học (cảm xúc + thực tế)",
+      "Trình bày kế hoạch học cụ thể",
+      "Nói lợi ích dài hạn"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-017",
+    "part": 2,
+    "question": "Describe a memorable meal you had.",
+    "topicVi": "Bữa ăn đáng nhớ",
+    "cueCard": "Describe a memorable meal you had. You should say: where and when it was, who you were with, what you ate, and explain why it was memorable.",
+    "sampleAnswer": "The most memorable meal I had was a Tet Eve dinner with my extended family two years ago. About twenty relatives gathered at my grandparents' house in the countryside, and the table was covered with traditional dishes — banh chung, pickled onions, braised pork and chicken soup. My grandmother had been cooking since early morning, and everyone helped arrange the food while sharing stories from the past year. What made it unforgettable was the atmosphere: laughter, the smell of incense, and children running around excitedly waiting for lucky money. At midnight, we raised our glasses to wish each other health and happiness. In our busy modern lives, such gatherings are rare, which is why that simple home-cooked meal remains the most precious one I have ever had.",
+    "tipsVi": [
+      "Miêu tả không khí bằng nhiều giác quan",
+      "Liệt kê món ăn cụ thể",
+      "Nhấn mạnh yếu tố con người hơn món ăn"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-018",
+    "part": 2,
+    "question": "Describe a journey you took.",
+    "topicVi": "Chuyến đi đáng nhớ",
+    "cueCard": "Describe a journey you took. You should say: where you went, how you travelled, who you went with, and explain what made the journey special.",
+    "sampleAnswer": "Last summer, I took a memorable motorbike journey along the Hai Van Pass with two close friends. We rode from Da Nang to Hue, about 100 kilometres, over two days. The road winds through mountains with the sea on one side — the views were absolutely breathtaking, especially at sunrise when mist covered the valleys. We stopped at small roadside stalls for coffee and chatted with friendly locals. What made the journey special was not just the scenery but the sense of freedom and adventure; we had no fixed schedule and simply followed our curiosity. There were challenges too — my bike broke down once, and we had to push it for two kilometres — but overcoming that together made our friendship stronger. It was the perfect blend of beauty, thrill and companionship.",
+    "tipsVi": [
+      "Nêu phương tiện + lộ trình cụ thể",
+      "Miêu tả cảnh đẹp + thử thách gặp phải",
+      "Kết bằng cảm xúc/bài học"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-019",
+    "part": 2,
+    "question": "Describe a celebration you attended.",
+    "topicVi": "Lễ kỷ niệm đã dự",
+    "cueCard": "Describe a celebration you attended. You should say: what the celebration was, when and where it took place, what people did, and explain why you enjoyed it.",
+    "sampleAnswer": "I would like to talk about my best friend's wedding last December in Hanoi. The ceremony was held at a beautiful garden venue decorated with white flowers and fairy lights, with about 150 guests. In the morning, there was a traditional Vietnamese ceremony where the couple bowed to their ancestors, followed by a modern outdoor party in the evening. People gave heartfelt speeches, the couple performed a sweet first dance, and everyone joined in games and dancing until late at night. I enjoyed it because the atmosphere was full of love and joy — you could see how happy the couple were, and old friends reunited after years apart. It was not just a party but a beautiful reminder of how precious relationships are.",
+    "tipsVi": [
+      "Nêu loại lễ + địa điểm trang trí",
+      "Kể diễn biến theo trình tự",
+      "Bày tỏ cảm xúc chân thành"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-020",
+    "part": 2,
+    "question": "Describe a difficult decision you made.",
+    "topicVi": "Quyết định khó khăn",
+    "cueCard": "Describe a difficult decision you made. You should say: what the decision was, when you made it, what choices you had, and explain why it was difficult.",
+    "sampleAnswer": "The most difficult decision I made was choosing my university major three years ago. I had to choose between studying medicine, which my parents wanted, and studying marketing, which was my true passion. On one hand, medicine offered a stable, respected career and would make my family proud. On the other hand, I knew I would be miserable studying something I did not love for six years. I spent weeks researching, talking to seniors in both fields, and honestly reflecting on my strengths. Finally, I chose marketing, and explaining this to my parents was the hardest conversation of my life. It was difficult because I risked disappointing the people I love most. Fortunately, they eventually supported me, and I have never regretted following my heart.",
+    "tipsVi": [
+      "Nêu rõ 2 lựa chọn đối lập",
+      "Kể quá trình cân nhắc",
+      "Nói kết quả + bài học"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-021",
+    "part": 2,
+    "question": "Describe a time you helped someone.",
+    "topicVi": "Giúp đỡ người khác",
+    "cueCard": "Describe a time you helped someone. You should say: who you helped, what you did, why you helped them, and explain how you felt about it.",
+    "sampleAnswer": "Last year, I helped my neighbour, an elderly woman living alone, after she fell and hurt her leg. For two weeks, I visited her every evening after work — I cooked simple meals, bought groceries, and helped her with cleaning. I also taught her to use video calls so she could talk to her children who live abroad. I helped her because no one else was available, and I remembered how my own grandmother would have wanted someone to care for her. At first, it was tiring after long workdays, but her grateful smile made every effort worthwhile. This experience taught me that helping others does not require grand gestures; small, consistent acts of kindness can mean the world to someone in need. It also made me appreciate my own health and family more.",
+    "tipsVi": [
+      "Kể rõ hoàn cảnh + việc làm cụ thể",
+      "Nêu động cơ giúp đỡ",
+      "Kết bằng bài học/cảm xúc"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-022",
+    "part": 2,
+    "question": "Describe a happy childhood memory.",
+    "topicVi": "Kỷ niệm tuổi thơ",
+    "cueCard": "Describe a happy childhood memory. You should say: what happened, when and where it was, who was with you, and explain why it is a happy memory.",
+    "sampleAnswer": "My happiest childhood memory is flying kites with my father on the dyke near our village every summer afternoon when I was about eight. We would make kites together from bamboo sticks and colourful paper, then run along the green fields until our kite soared high into the blue sky. My father taught me to feel the wind and adjust the string, and when our kite flew highest among the neighbourhood children, we cheered like we had won a prize. Those simple afternoons are precious to me because life was uncomplicated — no phones, no homework stress, just a father and son enjoying nature. Now that I live far away in the city, I miss those moments deeply, and they remind me that happiness often lies in the simplest things.",
+    "tipsVi": [
+      "Miêu tả chi tiết sinh động như đang kể chuyện",
+      "Dùng thì quá khứ + từ nối thời gian",
+      "So sánh với hiện tại để tăng cảm xúc"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-023",
+    "part": 2,
+    "question": "Describe a time you learned something new.",
+    "topicVi": "Học điều mới",
+    "cueCard": "Describe a time you learned something new. You should say: what you learned, how you learned it, how long it took, and explain how you felt about learning it.",
+    "sampleAnswer": "Two years ago, I learned to swim at the age of 22, which was quite late. I had always been afraid of water after a childhood incident, so I enrolled in a beginner's course at a local pool with a patient instructor. The first week was terrifying — I could barely float — but gradually, through daily practice over two months, I learned freestyle and backstroke. What helped most was breaking the skill into small steps and celebrating each tiny progress. When I finally swam 50 metres without stopping, I felt an incredible sense of achievement, as if I had conquered not just the water but my own fear. This experience taught me that it is never too late to learn, and that courage grows each time we face our fears.",
+    "tipsVi": [
+      "Nêu khó khăn ban đầu để tạo kịch tính",
+      "Kể quá trình từng bước",
+      "Nhấn mạnh cảm giác chiến thắng + bài học"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-024",
+    "part": 2,
+    "question": "Describe an interesting conversation you had.",
+    "topicVi": "Cuộc trò chuyện thú vị",
+    "cueCard": "Describe an interesting conversation you had. You should say: who you talked to, what you talked about, where it happened, and explain why it was interesting.",
+    "sampleAnswer": "The most interesting conversation I had was with a 70-year-old war veteran I met on a train to Hanoi last year. We sat opposite each other for six hours, and he shared stories about his youth, the hardships of war, and how Vietnam has transformed since then. What fascinated me was his perspective on happiness — despite losing friends and suffering hardship, he said the secret to a good life is gratitude and forgiveness. He told me, 'Young people chase many things, but peace of mind is the greatest treasure.' I had expected a boring train ride, but instead received a profound life lesson from a stranger. That conversation changed how I view difficulties in my own life and taught me to respect the older generation's wisdom.",
+    "tipsVi": [
+      "Tạo bối cảnh gặp gỡ bất ngờ",
+      "Trích dẫn câu nói đáng nhớ",
+      "Nêu ảnh hưởng đến suy nghĩ của bạn"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-025",
+    "part": 2,
+    "question": "Describe a time you were proud of yourself.",
+    "topicVi": "Tự hào về bản thân",
+    "cueCard": "Describe a time you were proud of yourself. You should say: what you did, why it was challenging, how others reacted, and explain why you felt proud.",
+    "sampleAnswer": "I felt proudest of myself when I passed the IELTS exam with a band score of 7.5 last year. It was challenging because I had only four months to prepare while working full-time, and my starting level was quite low, especially in writing. I created a strict study schedule — waking up at 5am daily to practise — and joined an online study group for motivation. There were moments I wanted to quit, particularly after getting low scores in mock tests. When I finally saw my results, my hands were shaking with joy, and my parents were so proud they told all our relatives. I felt proud not just of the score, but of my discipline and perseverance. It proved to me that with clear goals and consistent effort, I can achieve things that once seemed impossible.",
+    "tipsVi": [
+      "Nêu thử thách cụ thể (thời gian, điểm xuất phát)",
+      "Kể nỗ lực đã bỏ ra",
+      "Nhấn mạnh phẩm chất đạt được hơn kết quả"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-026",
+    "part": 2,
+    "question": "Describe a problem you solved.",
+    "topicVi": "Giải quyết vấn đề",
+    "cueCard": "Describe a problem you solved. You should say: what the problem was, how you solved it, how long it took, and explain how you felt about solving it.",
+    "sampleAnswer": "At my previous job, our team faced a serious problem: customer complaints about late deliveries had doubled in three months. As the team leader, I investigated and found that our warehouse layout was inefficient — staff wasted hours walking between shelves. I proposed reorganising the layout by product category and introducing a simple tracking spreadsheet. It took about three weeks to implement, with some resistance from older staff who disliked change. I patiently explained the benefits and involved them in the process. Within two months, delivery times improved by 40% and complaints dropped sharply. I felt relieved and proud, realising that most problems have solutions if you analyse root causes instead of blaming people. It was a valuable lesson in leadership.",
+    "tipsVi": [
+      "Nêu vấn đề + hậu quả cụ thể",
+      "Trình bày giải pháp theo bước",
+      "Rút ra bài học lãnh đạo/giải quyết vấn đề"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-027",
+    "part": 2,
+    "question": "Describe a festival in your country.",
+    "topicVi": "Lễ hội",
+    "cueCard": "Describe a festival in your country. You should say: what the festival is, when it takes place, what people do during it, and explain why it is important.",
+    "sampleAnswer": "I would like to describe Tet, the Vietnamese Lunar New Year, which usually falls in late January or February. It is the most important festival in Vietnam, lasting about a week. Before Tet, families clean and decorate their houses with peach blossoms and kumquat trees. On New Year's Eve, we gather for a reunion dinner with traditional dishes like banh chung, then children receive lucky money in red envelopes. During the festival, people visit relatives, pagodas and temples to pray for health and prosperity. Tet is important because it strengthens family bonds — even those working far away try to return home. It also marks a fresh start, a time to forgive past mistakes and hope for a better year. For Vietnamese people, Tet is not just a holiday; it is the soul of our culture.",
+    "tipsVi": [
+      "Nêu thời gian + hoạt động theo trình tự",
+      "Miêu tả món ăn, phong tục đặc trưng",
+      "Giải thích ý nghĩa văn hóa sâu sắc"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-028",
+    "part": 2,
+    "question": "Describe a sport you enjoy.",
+    "topicVi": "Môn thể thao yêu thích",
+    "cueCard": "Describe a sport you enjoy. You should say: what the sport is, how you learned it, how often you play it, and explain why you enjoy it.",
+    "sampleAnswer": "The sport I enjoy most is badminton, which I started playing in high school. Initially, I joined the school club just to stay fit, but I quickly fell in love with its speed and strategy. I now play twice a week with colleagues after work at a court near our office. What I enjoy most is how badminton combines physical exercise with mental challenge — you must anticipate your opponent's shots while moving quickly. It is also wonderfully social; our group includes people of different ages, and we often have dinner together after matches. Playing regularly has improved my reflexes, helped me manage work stress, and given me lasting friendships. It proves that the best exercise is the one you genuinely look forward to.",
+    "tipsVi": [
+      "Nêu cách bắt đầu + tần suất hiện tại",
+      "Phân tích yếu tố thể chất + tinh thần",
+      "Nhấn mạnh lợi ích xã hội"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-029",
+    "part": 2,
+    "question": "Describe a hobby you have.",
+    "topicVi": "Sở thích",
+    "cueCard": "Describe a hobby you have. You should say: what the hobby is, how long you have had it, what you do, and explain why you enjoy it.",
+    "sampleAnswer": "My favourite hobby is photography, which I picked up three years ago when I bought my first second-hand camera. Every weekend, I explore different corners of the city — old markets, hidden alleys, riverside sunsets — capturing moments that most people walk past without noticing. I particularly love street photography because each photo tells a human story. This hobby has taught me to observe the world more carefully and appreciate small beauties, like morning light through leaves or an old man's wrinkled smile. I share my best shots on social media and have even sold a few prints at a local fair. Photography gives me creative fulfilment that my office job cannot, and it turns ordinary weekends into little adventures.",
+    "tipsVi": [
+      "Nêu cách bắt đầu + hoạt động cụ thể",
+      "Nói điều hobby dạy cho bạn",
+      "Kết bằng giá trị tinh thần"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-030",
+    "part": 2,
+    "question": "Describe a TV program you like.",
+    "topicVi": "Chương trình TV yêu thích",
+    "cueCard": "Describe a TV program you like. You should say: what the program is about, how often you watch it, who you watch it with, and explain why you like it.",
+    "sampleAnswer": "My favourite TV program is a Vietnamese reality show called '2 Days 1 Night', which I watch every Sunday evening with my family. In each episode, six celebrities travel to different provinces, complete funny challenges and experience local culture and cuisine. I like it because it is genuinely hilarious — the cast's chemistry and unexpected situations always make us laugh after a tiring week. Beyond entertainment, the show introduces beautiful lesser-known destinations across Vietnam, and our family has added several to our travel wishlist. Watching together has also become our weekly ritual; we discuss the funniest moments over dinner. In an age of everyone staring at their own phones, this show gives my family a reason to gather and share joy.",
+    "tipsVi": [
+      "Nêu nội dung + lịch xem",
+      "Nói yếu tố giải trí + giá trị thêm",
+      "Nhấn mạnh gắn kết gia đình"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-031",
+    "part": 2,
+    "question": "Describe a song that is special to you.",
+    "topicVi": "Bài hát đặc biệt",
+    "cueCard": "Describe a song that is special to you. You should say: what the song is, when you first heard it, what it is about, and explain why it is special to you.",
+    "sampleAnswer": "A song that is very special to me is 'See You Again' by Wiz Khalifa and Charlie Puth. I first heard it at my university graduation ceremony four years ago, when our class watched a slideshow of four years together. The song is about friendship, farewells and the hope of meeting again, which perfectly matched our emotions that day — we were excited about the future but sad to part ways. Every time I hear its piano melody now, I am transported back to that hall, seeing my friends' tearful smiles. It reminds me to stay in touch with old friends despite busy lives. Music has a magical power to freeze time, and this song will forever hold the bittersweet memory of youth for me.",
+    "tipsVi": [
+      "Nêu hoàn cảnh nghe lần đầu",
+      "Giải thích nội dung + cảm xúc",
+      "Nói ý nghĩa mỗi khi nghe lại"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-032",
+    "part": 2,
+    "question": "Describe a movie you watched recently.",
+    "topicVi": "Bộ phim đã xem",
+    "cueCard": "Describe a movie you watched recently. You should say: what the movie was about, when and where you watched it, who you watched it with, and explain what you thought of it.",
+    "sampleAnswer": "Recently, I watched the Vietnamese film 'Mai' at the cinema with my sister. It tells the story of a single mother in her thirties who works as a massage therapist and unexpectedly falls in love with a younger musician, facing judgment from society and family. We watched it on a rainy Saturday evening, and the theatre was completely full. I thought it was outstanding — the acting was natural and moving, especially the lead actress's portrayal of a strong yet vulnerable woman. What struck me most was how the film honestly depicts the struggles of single mothers in Vietnam, a topic rarely discussed openly. My sister and I talked about it for hours afterwards. It was not just entertainment but a meaningful reflection on love, prejudice and courage.",
+    "tipsVi": [
+      "Tóm tắt cốt truyện ngắn gọn",
+      "Nêu cảm nhận + diễn xuất",
+      "Nói chủ đề xã hội phim đề cập"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-033",
+    "part": 2,
+    "question": "Describe a website you often visit.",
+    "topicVi": "Website hay dùng",
+    "cueCard": "Describe a website you often visit. You should say: what the website is, what you use it for, how often you visit it, and explain why you find it useful.",
+    "sampleAnswer": "The website I visit most often is YouTube, which I open almost daily. I mainly use it for learning — I follow English teaching channels, cooking tutorials and documentary channels about history and science. Unlike textbooks, videos make complex ideas easy to understand through visuals and real examples. For instance, I learned to cook Thai green curry entirely from a YouTube tutorial, and my IELTS listening improved significantly by watching English vlogs. I find it useful because it offers free, unlimited knowledge on nearly any topic, and I can learn at my own pace by pausing and replaying. Of course, I must be disciplined to avoid wasting time on random entertaining videos. Used wisely, it is like having thousands of teachers available anytime.",
+    "tipsVi": [
+      "Nêu mục đích sử dụng chính",
+      "Đưa 1-2 ví dụ cụ thể đã học được",
+      "Nhắc cả mặt cần kỷ luật"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-034",
+    "part": 2,
+    "question": "Describe a time you tried new food.",
+    "topicVi": "Thử món ăn mới",
+    "cueCard": "Describe a time you tried new food. You should say: what the food was, when and where you tried it, who you were with, and explain how you felt about it.",
+    "sampleAnswer": "Two years ago, during a trip to Thailand with friends, I tried authentic Tom Yum Goong for the first time at a floating market near Bangkok. I had heard it was spicy, but nothing prepared me for the explosion of flavours — sour lemongrass, fiery chilli, fragrant galangal and plump shrimp all in one spoonful. My friends laughed as my face turned red and I reached for coconut water, but after the initial shock, I found myself going back for more. The experience taught me that the best travel memories often come from stepping out of your comfort zone. Since then, I have become much more adventurous with food, and Tom Yum remains one of my favourite dishes. Sometimes, a single meal can change your perspective.",
+    "tipsVi": [
+      "Miêu tả hương vị bằng nhiều tính từ",
+      "Kể phản ứng hài hước của bản thân",
+      "Rút ra bài học về trải nghiệm"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-035",
+    "part": 2,
+    "question": "Describe a person you would like to meet.",
+    "topicVi": "Người muốn gặp",
+    "cueCard": "Describe a person you would like to meet. You should say: who they are, what they are famous for, why you admire them, and explain what you would talk about.",
+    "sampleAnswer": "The person I would most like to meet is Nick Vujicic, the Australian motivational speaker born without arms and legs. He is famous worldwide for his inspiring talks about overcoming adversity and living a fulfilling life despite his disability. I admire him because instead of feeling sorry for himself, he chose to inspire millions — he surfs, plays football and even skydives. His message that 'attitude is altitude' deeply resonates with me whenever I complain about small problems. If I met him, I would ask how he maintains such positivity and what advice he has for young people facing pressure. I would also thank him, because his videos helped me through a difficult period. Meeting him would be a reminder that our limits are often only in our minds.",
+    "tipsVi": [
+      "Nêu thành tựu + lý do ngưỡng mộ",
+      "Trích thông điệp nổi tiếng của họ",
+      "Nêu câu hỏi muốn hỏi khi gặp"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-036",
+    "part": 2,
+    "question": "Describe a job you would like to do.",
+    "topicVi": "Công việc mơ ước",
+    "cueCard": "Describe a job you would like to do. You should say: what the job is, what it involves, why you are interested in it, and explain what skills you would need.",
+    "sampleAnswer": "In the future, I would love to work as a travel blogger. The job involves visiting interesting destinations, writing articles, taking photos and sharing experiences on social media and blogs. I am interested in it because it perfectly combines my three passions: travelling, writing and photography. Unlike a desk job, every week would bring new places, foods and people. To succeed, I would need strong writing skills in both Vietnamese and English, photography and video editing abilities, and good social media marketing knowledge. I know it is competitive and income can be unstable at first, but the freedom and creativity it offers are worth the risk. I have already started a small travel blog as practice, and I hope to turn this dream into reality within five years.",
+    "tipsVi": [
+      "Nêu công việc cụ thể hàng ngày",
+      "Giải thích sự phù hợp với đam mê",
+      "Liệt kê kỹ năng cần + bước chuẩn bị"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-037",
+    "part": 2,
+    "question": "Describe a time you worked in a team.",
+    "topicVi": "Làm việc nhóm",
+    "cueCard": "Describe a time you worked in a team. You should say: what the task was, who was in the team, what your role was, and explain how the teamwork went.",
+    "sampleAnswer": "Last year, I worked in a team of five to organise a charity fundraising event for flood victims in central Vietnam. Our task was to raise 50 million dong within one month through an online campaign and a music night. My role was managing social media promotion, while others handled logistics, sponsors and performers. Initially, we disagreed about the budget, but we learned to listen and compromise. The teamwork went wonderfully — everyone contributed their strengths, and we communicated daily through a group chat. In the end, we raised 75 million dong, far exceeding our goal. This experience taught me that a united team can achieve far more than individuals working alone, and I made lifelong friends in the process.",
+    "tipsVi": [
+      "Nêu nhiệm vụ + vai trò của bạn",
+      "Kể khó khăn + cách giải quyết",
+      "Nhấn mạnh kết quả + bài học teamwork"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-038",
+    "part": 2,
+    "question": "Describe a place where you like to relax.",
+    "topicVi": "Nơi thư giãn",
+    "cueCard": "Describe a place where you like to relax. You should say: where it is, what it is like, what you do there, and explain why it helps you relax.",
+    "sampleAnswer": "My favourite place to relax is a quiet riverside café about fifteen minutes from my apartment. It has bamboo furniture, soft acoustic music and a wooden deck overlooking the Saigon River, with fairy lights glowing in the evening. I usually go there alone on Friday evenings, order a coconut coffee, and read or simply watch boats drift by. What helps me relax is the combination of nature and solitude — the gentle river breeze and the absence of traffic noise melt away my work stress. The owner knows me well and never rushes me to leave. In a hectic city where everyone is always rushing, having this peaceful corner where time seems to slow down is truly precious to me.",
+    "tipsVi": [
+      "Miêu tả không gian chi tiết, thư giãn",
+      "Kể thói quen khi đến đó",
+      "Giải thích yếu tố giúp thư giãn"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-039",
+    "part": 2,
+    "question": "Describe an advertisement you remember.",
+    "topicVi": "Quảng cáo đáng nhớ",
+    "cueCard": "Describe an advertisement you remember. You should say: what product it was for, where you saw it, what happened in it, and explain why you remember it.",
+    "sampleAnswer": "An advertisement I still remember is a Vietnamese milk brand's Tet commercial from a few years ago. I saw it on YouTube before the holiday season. It told the touching story of a young man working far from home who could not afford a bus ticket for Tet, until his mother surprised him by travelling all night to visit him instead, bringing his favourite milk and homemade food. There was almost no dialogue — just warm music and emotional scenes. I remember it because it did not feel like an advertisement at all; it felt like a short film about family love. It made me call my parents immediately. This ad proved that the best marketing touches hearts rather than just promoting products, and I still think of it every Tet.",
+    "tipsVi": [
+      "Kể nội dung như câu chuyện ngắn",
+      "Nêu cảm xúc khi xem",
+      "Nhận xét về nghệ thuật quảng cáo"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p2-040",
+    "part": 2,
+    "question": "Describe a historical building you have visited.",
+    "topicVi": "Di tích lịch sử",
+    "cueCard": "Describe a historical building you have visited. You should say: what and where it is, what it looks like, what you learned about it, and explain why it impressed you.",
+    "sampleAnswer": "I have visited the Imperial Citadel of Thang Long in Hanoi, a UNESCO World Heritage site. It is a vast complex of ancient gates, palaces and archaeological excavations spanning over a thousand years of Vietnamese history. The most striking part is the Kinh Thien Palace foundation with its giant stone dragons, and the underground wartime command bunker from the 1960s. During my visit, I learned that this single site was the political centre of Vietnam for thirteen centuries. What impressed me most was standing where emperors once stood, feeling the weight of history beneath my feet. It made me realise how little I knew about my own country's past and inspired me to learn more. Preserving such places is vital for national identity.",
+    "tipsVi": [
+      "Nêu tên + vị trí + niên đại",
+      "Miêu tả 1-2 điểm nổi bật",
+      "Nói điều học được + cảm xúc"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-001",
+    "part": 3,
+    "question": "Do you think university education is necessary for success?",
+    "topicVi": "Giáo dục đại học",
+    "ideasVi": [
+      "Ví dụ thành công không cần đại học",
+      "Vai trò của bằng cấp",
+      "Quan điểm cá nhân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-002",
+    "part": 3,
+    "question": "How has education changed in your country in recent years?",
+    "topicVi": "Giáo dục",
+    "ideasVi": [
+      "Công nghệ trong lớp học",
+      "Phương pháp dạy mới",
+      "Học online"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-003",
+    "part": 3,
+    "question": "Should students learn practical skills at school?",
+    "topicVi": "Giáo dục",
+    "ideasVi": [
+      "Kỹ năng sống cần thiết",
+      "Chương trình hiện tại thiếu gì",
+      "Ví dụ cụ thể"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-004",
+    "part": 3,
+    "question": "Do you think exams are the best way to test students?",
+    "topicVi": "Giáo dục",
+    "ideasVi": [
+      "Ưu/nhược điểm thi cử",
+      "Cách đánh giá khác",
+      "Áp lực thi cử"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-005",
+    "part": 3,
+    "question": "What qualities make a good teacher?",
+    "topicVi": "Giáo dục",
+    "ideasVi": [
+      "Kiến thức vs kỹ năng truyền đạt",
+      "Sự kiên nhẫn",
+      "Thầy cô đáng nhớ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-006",
+    "part": 3,
+    "question": "How has technology changed the way people work?",
+    "topicVi": "Công nghệ và công việc",
+    "ideasVi": [
+      "Làm việc từ xa",
+      "Tự động hóa",
+      "Kỹ năng mới cần có"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-007",
+    "part": 3,
+    "question": "Do you think artificial intelligence will replace many jobs?",
+    "topicVi": "Trí tuệ nhân tạo",
+    "ideasVi": [
+      "Ngành dễ bị thay thế",
+      "Ngành khó thay thế",
+      "Con người thích nghi thế nào"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-008",
+    "part": 3,
+    "question": "Are people too dependent on their smartphones?",
+    "topicVi": "Điện thoại thông minh",
+    "ideasVi": [
+      "Dấu hiệu lệ thuộc",
+      "Ảnh hưởng giao tiếp",
+      "Cách cân bằng"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-009",
+    "part": 3,
+    "question": "What are the advantages and disadvantages of the internet?",
+    "topicVi": "Internet",
+    "ideasVi": [
+      "Tiếp cận tri thức",
+      "Tin giả, nghiện mạng",
+      "Trẻ em dùng internet"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-010",
+    "part": 3,
+    "question": "Will technology make our lives better in the future?",
+    "topicVi": "Tương lai công nghệ",
+    "ideasVi": [
+      "Y tế, giáo dục",
+      "Rủi ro đạo đức",
+      "Kỳ vọng cá nhân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-011",
+    "part": 3,
+    "question": "What are the biggest environmental problems in your country?",
+    "topicVi": "Môi trường",
+    "ideasVi": [
+      "Ô nhiễm không khí/nước",
+      "Rác thải nhựa",
+      "Biến đổi khí hậu"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-012",
+    "part": 3,
+    "question": "Do you think individuals can help protect the environment?",
+    "topicVi": "Bảo vệ môi trường",
+    "ideasVi": [
+      "Hành động nhỏ hàng ngày",
+      "Vai trò chính phủ",
+      "Ví dụ hiệu quả"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-013",
+    "part": 3,
+    "question": "Should governments spend more money on environmental protection?",
+    "topicVi": "Môi trường",
+    "ideasVi": [
+      "Ưu tiên ngân sách",
+      "Lợi ích lâu dài",
+      "So với phát triển kinh tế"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-014",
+    "part": 3,
+    "question": "How can we encourage people to use public transport?",
+    "topicVi": "Giao thông công cộng",
+    "ideasVi": [
+      "Cải thiện chất lượng",
+      "Giá vé, tiện lợi",
+      "Hạn chế xe cá nhân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-015",
+    "part": 3,
+    "question": "Is climate change the most serious problem in the world today?",
+    "topicVi": "Biến đổi khí hậu",
+    "ideasVi": [
+      "Bằng chứng",
+      "So với vấn đề khác",
+      "Giải pháp"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-016",
+    "part": 3,
+    "question": "What factors are important when choosing a career?",
+    "topicVi": "Chọn nghề nghiệp",
+    "ideasVi": [
+      "Đam mê vs lương",
+      "Ổn định",
+      "Lời khuyên cho người trẻ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-017",
+    "part": 3,
+    "question": "Do you think job satisfaction is more important than salary?",
+    "topicVi": "Công việc",
+    "ideasVi": [
+      "Hạnh phúc vs tiền bạc",
+      "Trải nghiệm bản thân",
+      "Cân bằng"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-018",
+    "part": 3,
+    "question": "How has the job market changed in recent years?",
+    "topicVi": "Thị trường việc làm",
+    "ideasVi": [
+      "Ngành mới nổi",
+      "Cạnh tranh",
+      "Kỹ năng được săn đón"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-019",
+    "part": 3,
+    "question": "Should people change jobs frequently?",
+    "topicVi": "Công việc",
+    "ideasVi": [
+      "Ưu điểm nhảy việc",
+      "Nhược điểm",
+      "Văn hóa công ty"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-020",
+    "part": 3,
+    "question": "What are the benefits of working from home?",
+    "topicVi": "Làm việc từ xa",
+    "ideasVi": [
+      "Tiết kiệm thời gian",
+      "Khó khăn quản lý",
+      "Tương lai"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-021",
+    "part": 3,
+    "question": "How important is it to preserve traditional culture?",
+    "topicVi": "Văn hóa truyền thống",
+    "ideasVi": [
+      "Bản sắc dân tộc",
+      "Cách giới trẻ tiếp cận",
+      "Du lịch văn hóa"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-022",
+    "part": 3,
+    "question": "Do young people in your country respect older people?",
+    "topicVi": "Văn hóa ứng xử",
+    "ideasVi": [
+      "Truyền thống hiếu thảo",
+      "Thay đổi thế hệ",
+      "Ví dụ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-023",
+    "part": 3,
+    "question": "How has family life changed in recent decades?",
+    "topicVi": "Gia đình hiện đại",
+    "ideasVi": [
+      "Gia đình nhỏ vs đông",
+      "Vai trò phụ nữ",
+      "Sống xa quê"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-024",
+    "part": 3,
+    "question": "Should cities preserve old buildings?",
+    "topicVi": "Kiến trúc",
+    "ideasVi": [
+      "Giá trị lịch sử",
+      "Chi phí bảo tồn",
+      "Phát triển đô thị"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-025",
+    "part": 3,
+    "question": "Do you think globalisation is good for local cultures?",
+    "topicVi": "Toàn cầu hóa",
+    "ideasVi": [
+      "Giao lưu văn hóa",
+      "Nguy cơ đồng nhất",
+      "Ví dụ Việt Nam"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-026",
+    "part": 3,
+    "question": "How can people stay healthy in modern life?",
+    "topicVi": "Sức khỏe",
+    "ideasVi": [
+      "Ăn uống, vận động",
+      "Giấc ngủ",
+      "Sức khỏe tinh thần"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-027",
+    "part": 3,
+    "question": "Do you think governments should promote healthy lifestyles?",
+    "topicVi": "Sức khỏe cộng đồng",
+    "ideasVi": [
+      "Chiến dịch, thuế",
+      "Trách nhiệm cá nhân",
+      "Hiệu quả"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-028",
+    "part": 3,
+    "question": "Is mental health as important as physical health?",
+    "topicVi": "Sức khỏe tinh thần",
+    "ideasVi": [
+      "Áp lực hiện đại",
+      "Định kiến xã hội",
+      "Cách chăm sóc"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-029",
+    "part": 3,
+    "question": "Should healthcare be free for everyone?",
+    "topicVi": "Y tế",
+    "ideasVi": [
+      "Quyền con người",
+      "Gánh nặng ngân sách",
+      "Mô hình các nước"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-030",
+    "part": 3,
+    "question": "How has the COVID-19 pandemic changed people's habits?",
+    "topicVi": "Đại dịch",
+    "ideasVi": [
+      "Vệ sinh, khẩu trang",
+      "Làm việc online",
+      "Bài học"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-031",
+    "part": 3,
+    "question": "Do you think newspapers will disappear in the future?",
+    "topicVi": "Báo chí",
+    "ideasVi": [
+      "Báo mạng lên ngôi",
+      "Người già vẫn đọc báo giấy",
+      "Tin giả"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-032",
+    "part": 3,
+    "question": "How does advertising influence people's choices?",
+    "topicVi": "Quảng cáo",
+    "ideasVi": [
+      "Chiêu thức",
+      "Người tiêu dùng thông minh",
+      "Quảng cáo cho trẻ em"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-033",
+    "part": 3,
+    "question": "Should there be limits on what the media can report?",
+    "topicVi": "Truyền thông",
+    "ideasVi": [
+      "Tự do báo chí",
+      "Quyền riêng tư",
+      "Tin giật gân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-034",
+    "part": 3,
+    "question": "Do celebrities have a positive influence on young people?",
+    "topicVi": "Người nổi tiếng",
+    "ideasVi": [
+      "Thần tượng, lối sống",
+      "Scandal",
+      "Trách nhiệm xã hội"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-035",
+    "part": 3,
+    "question": "How has social media changed communication?",
+    "topicVi": "Mạng xã hội",
+    "ideasVi": [
+      "Kết nối xa gần",
+      "Giao tiếp mặt đối mặt giảm",
+      "Thế hệ trẻ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-036",
+    "part": 3,
+    "question": "What are the advantages of living in a big city?",
+    "topicVi": "Sống ở thành phố",
+    "ideasVi": [
+      "Việc làm, tiện ích",
+      "Giải trí",
+      "Cơ hội"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-037",
+    "part": 3,
+    "question": "What problems do big cities face?",
+    "topicVi": "Đô thị",
+    "ideasVi": [
+      "Kẹt xe, ô nhiễm",
+      "Nhà ở đắt đỏ",
+      "Giải pháp"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-038",
+    "part": 3,
+    "question": "Should more people move to the countryside?",
+    "topicVi": "Nông thôn vs thành thị",
+    "ideasVi": [
+      "Chất lượng sống",
+      "Việc làm nông thôn",
+      "Xu hướng"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-039",
+    "part": 3,
+    "question": "How can cities become more liveable?",
+    "topicVi": "Đô thị",
+    "ideasVi": [
+      "Cây xanh, giao thông",
+      "Không gian công cộng",
+      "Ví dụ thành phố tốt"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-040",
+    "part": 3,
+    "question": "Do you think traffic congestion will get worse?",
+    "topicVi": "Giao thông",
+    "ideasVi": [
+      "Nguyên nhân",
+      "Giải pháp công nghệ",
+      "Giao thông công cộng"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-041",
+    "part": 3,
+    "question": "What are the benefits of travelling?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Mở mang kiến thức",
+      "Thư giãn",
+      "Hiểu văn hóa khác"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-042",
+    "part": 3,
+    "question": "Does tourism harm local communities?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Ô nhiễm, đắt đỏ",
+      "Việc làm địa phương",
+      "Du lịch bền vững"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-043",
+    "part": 3,
+    "question": "Should people travel abroad or explore their own country first?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Ưu điểm mỗi loại",
+      "Chi phí",
+      "Quan điểm cá nhân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-044",
+    "part": 3,
+    "question": "How has tourism changed in recent years?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Du lịch tự túc",
+      "Review online",
+      "Ảnh hưởng dịch bệnh"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-045",
+    "part": 3,
+    "question": "What makes a good tourist destination?",
+    "topicVi": "Du lịch",
+    "ideasVi": [
+      "Cảnh đẹp, ẩm thực",
+      "An toàn, giá cả",
+      "Ví dụ Việt Nam"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-046",
+    "part": 3,
+    "question": "Do you think children should help with housework?",
+    "topicVi": "Giáo dục gia đình",
+    "ideasVi": [
+      "Rèn tính tự lập",
+      "Tuổi phù hợp",
+      "Trải nghiệm bản thân"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-047",
+    "part": 3,
+    "question": "How do relationships between parents and children differ from the past?",
+    "topicVi": "Gia đình",
+    "ideasVi": [
+      "Cởi mở hơn",
+      "Khoảng cách thế hệ",
+      "Công nghệ"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-048",
+    "part": 3,
+    "question": "Should grandparents help raise grandchildren?",
+    "topicVi": "Gia đình",
+    "ideasVi": [
+      "Kinh nghiệm",
+      "Xung đột cách nuôi dạy",
+      "Gắn kết"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-049",
+    "part": 3,
+    "question": "Is it better to have a small or large family?",
+    "topicVi": "Gia đình",
+    "ideasVi": [
+      "Chi phí nuôi con",
+      "Tình cảm anh em",
+      "Xu hướng hiện nay"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "spk-p3-050",
+    "part": 3,
+    "question": "How can working parents spend more time with children?",
+    "topicVi": "Gia đình",
+    "ideasVi": [
+      "Sắp xếp thời gian",
+      "Chất lượng vs số lượng",
+      "Vai trò công ty"
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

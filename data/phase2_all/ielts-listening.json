@@ -1,0 +1,637 @@
+[
+  {
+    "cefrLevel": "B1",
+    "id": "ielts-l-b1-001",
+    "questions": [
+      {
+        "correctAnswer": "June 14th to 16th",
+        "explanationVi": "Dòng l4: khách nói 'From Friday the 14th to Sunday the 16th of June'.",
+        "options": [
+          "June 14th to 16th",
+          "June 15th to 17th",
+          "July 14th to 16th",
+          "June 14th to 15th"
+        ],
+        "question": "What dates is the guest staying at the hotel?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "double room",
+        "explanationVi": "Dòng l6: khách chọn 'A double room' vì vợ đi cùng.",
+        "question": "Room type: ___",
+        "type": "completion"
+      },
+      {
+        "correctAnswer": "85 dollars",
+        "explanationVi": "Dòng l7: lễ tân báo giá '85 dollars per night'.",
+        "options": [
+          "58 dollars",
+          "75 dollars",
+          "85 dollars",
+          "95 dollars"
+        ],
+        "question": "How much does the room cost per night?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l9: bữa sáng phục vụ 'from 7 to 9:30', tức kết thúc lúc 9:30 chứ không phải 10 giờ.",
+        "question": "Breakfast is served until 10 o'clock in the morning.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "RB-4471",
+        "explanationVi": "Dòng l12: mã đặt phòng là 'RB-4471'.",
+        "question": "Booking reference: ___",
+        "type": "completion"
+      }
+    ],
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Receptionist",
+        "textEn": "Good morning, Riverside Hotel. How can I help you?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Guest",
+        "textEn": "Good morning. I'd like to book a room for next weekend, please.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Receptionist",
+        "textEn": "Of course. What dates would you like to stay?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Guest",
+        "textEn": "From Friday the 14th to Sunday the 16th of June.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Receptionist",
+        "textEn": "Let me check... Yes, we have rooms available. Would you prefer a single or a double room?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Guest",
+        "textEn": "A double room, please. My wife is coming with me.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Receptionist",
+        "textEn": "A double room with a river view is 85 dollars per night. Is that alright?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Guest",
+        "textEn": "That's fine. Does the price include breakfast?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Receptionist",
+        "textEn": "Yes, breakfast is included, served from 7 to 9:30 in the morning.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Guest",
+        "textEn": "Perfect. Can I have your name for the booking, please?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Guest",
+        "textEn": "Certainly. My name is David Wilson, W-I-L-S-O-N.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Receptionist",
+        "textEn": "Thank you, Mr. Wilson. Your booking reference is RB-4471. We look forward to seeing you.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-001/l12.mp3"
+      }
+    ],
+    "section": "listening",
+    "source": "ai-generated",
+    "title": "Hotel Booking",
+    "titleVi": "Đặt phòng khách sạn",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B1",
+    "id": "ielts-l-b1-002",
+    "questions": [
+      {
+        "correctAnswer": "At the bank",
+        "explanationVi": "Dòng l4: 'Turn left there' — 'there' là chỗ ngân hàng lớn bên phải.",
+        "options": [
+          "At the post office",
+          "At the bank",
+          "At the library",
+          "At the park"
+        ],
+        "question": "Where should the tourist turn left?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "library",
+        "explanationVi": "Dòng l6: 'the museum is opposite the library'.",
+        "question": "The museum is opposite the ___",
+        "type": "completion"
+      },
+      {
+        "correctAnswer": "10 minutes",
+        "explanationVi": "Dòng l8: 'about a 10-minute walk from here'.",
+        "options": [
+          "5 minutes",
+          "10 minutes",
+          "20 minutes",
+          "30 minutes"
+        ],
+        "question": "How long does it take to walk to the museum?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l10: bảo tàng 'closed on Mondays' — đóng cửa thứ Hai.",
+        "question": "The museum is open every day of the week.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "10 am",
+        "explanationVi": "Dòng l10: mở cửa 'from 10 am to 5 pm'.",
+        "question": "Opening hours: ___ to 5 pm",
+        "type": "completion"
+      }
+    ],
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Tourist",
+        "textEn": "Excuse me, could you tell me how to get to the City Museum?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Local",
+        "textEn": "Of course! Go straight ahead along this road for about 200 metres.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Tourist",
+        "textEn": "Straight ahead for 200 metres. Then what?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Local",
+        "textEn": "You'll see a large bank on your right. Turn left there into Park Lane.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Tourist",
+        "textEn": "Turn left at the bank into Park Lane. Got it.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Local",
+        "textEn": "Then walk past the post office and the museum is opposite the library.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Tourist",
+        "textEn": "Is it far from here? I'm a bit tired.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Local",
+        "textEn": "Not at all — it's about a 10-minute walk from here.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Tourist",
+        "textEn": "Great. Is the museum open on Mondays?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Local",
+        "textEn": "No, it's closed on Mondays, but open every other day from 10 am to 5 pm.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Tourist",
+        "textEn": "Thank you very much for your help!",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b1-002/l11.mp3"
+      }
+    ],
+    "section": "listening",
+    "source": "ai-generated",
+    "title": "Asking for Directions",
+    "titleVi": "Hỏi đường",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "id": "ielts-l-b2-001",
+    "questions": [
+      {
+        "correctAnswer": "Seven to nine hours",
+        "explanationVi": "Dòng l2: 'between seven and nine hours of sleep per night'.",
+        "options": [
+          "Five to seven hours",
+          "Seven to nine hours",
+          "Nine to eleven hours",
+          "Six to eight hours"
+        ],
+        "question": "How much sleep do most adults need per night?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "physical recovery",
+        "explanationVi": "Dòng l5: 'the deepest stage is essential for physical recovery'.",
+        "question": "The deepest stage of non-REM sleep is essential for ___",
+        "type": "completion"
+      },
+      {
+        "correctAnswer": "True",
+        "explanationVi": "Dòng l4: 'we experience vivid dreams' trong REM sleep.",
+        "question": "We experience vivid dreams during REM sleep.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "Blue light from screens",
+        "explanationVi": "Dòng l10: 'Exposure to blue light from screens can suppress melatonin production'.",
+        "options": [
+          "Loud noise",
+          "Blue light from screens",
+          "Cold air",
+          "Warm milk"
+        ],
+        "question": "What can suppress the production of melatonin?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "one hour",
+        "explanationVi": "Dòng l11: 'avoiding phones at least one hour before bed'.",
+        "question": "Avoid phones at least ___ before bed",
+        "type": "completion"
+      }
+    ],
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Lecturer",
+        "textEn": "Good afternoon, everyone. Today's lecture is about the science of sleep.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Lecturer",
+        "textEn": "Most adults need between seven and nine hours of sleep per night.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Lecturer",
+        "textEn": "Sleep is divided into two main types: REM sleep and non-REM sleep.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Lecturer",
+        "textEn": "During REM sleep, our brains are highly active and we experience vivid dreams.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Lecturer",
+        "textEn": "Non-REM sleep has three stages, and the deepest stage is essential for physical recovery.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Lecturer",
+        "textEn": "Research shows that lack of sleep affects memory consolidation significantly.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Lecturer",
+        "textEn": "Students who sleep less than six hours often perform worse in exams.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Lecturer",
+        "textEn": "Interestingly, the hormone melatonin regulates our sleep-wake cycle.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Lecturer",
+        "textEn": "Melatonin levels rise in the evening when it gets dark.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Lecturer",
+        "textEn": "Exposure to blue light from screens can suppress melatonin production.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Lecturer",
+        "textEn": "This is why experts recommend avoiding phones at least one hour before bed.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Lecturer",
+        "textEn": "In conclusion, good sleep is as important as diet and exercise for our health.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "speaker": "Lecturer",
+        "textEn": "Next week, we'll discuss the effects of caffeine on sleep quality.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-001/l13.mp3"
+      }
+    ],
+    "section": "listening",
+    "source": "ai-generated",
+    "title": "Lecture: The Science of Sleep",
+    "titleVi": "Bài giảng: Khoa học về giấc ngủ",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "id": "ielts-l-b2-002",
+    "questions": [
+      {
+        "correctAnswer": "6 pm",
+        "explanationVi": "Dòng l2: cuối tuần mở 'from 9 am to 6 pm'.",
+        "options": [
+          "5 pm",
+          "6 pm",
+          "8 pm",
+          "10 pm"
+        ],
+        "question": "What time does the library close on weekends?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "six",
+        "explanationVi": "Dòng l3: 'borrow up to six books at a time'.",
+        "question": "Maximum number of books to borrow: ___",
+        "type": "completion"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l5: sách tham khảo 'cannot be taken out of the library' — không được mang ra ngoài.",
+        "question": "Reference books can be borrowed for one week.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "50 cents",
+        "explanationVi": "Dòng l9: '50 cents for colour'.",
+        "question": "Colour printing costs ___ per page",
+        "type": "completion"
+      },
+      {
+        "correctAnswer": "In the seminar rooms on the ground floor",
+        "explanationVi": "Dòng l7: 'Group discussions should take place in the seminar rooms on the ground floor'.",
+        "options": [
+          "On the third floor",
+          "In the seminar rooms on the ground floor",
+          "At the front desk",
+          "In the reference section"
+        ],
+        "question": "Where should students hold group discussions?",
+        "type": "multiple_choice"
+      }
+    ],
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Librarian",
+        "textEn": "Welcome to the Central Library orientation. I'm Ms. Thompson, the head librarian.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Librarian",
+        "textEn": "The library is open from 8 am to 10 pm on weekdays, and from 9 am to 6 pm on weekends.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Librarian",
+        "textEn": "You can borrow up to six books at a time for a period of three weeks.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Librarian",
+        "textEn": "If you need a book for longer, you can renew it online twice.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Librarian",
+        "textEn": "Please note that reference books and journals cannot be taken out of the library.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Librarian",
+        "textEn": "The quiet study area on the third floor is available for individual work only.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Librarian",
+        "textEn": "Group discussions should take place in the seminar rooms on the ground floor.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Librarian",
+        "textEn": "Free Wi-Fi is available throughout the building; the password is posted at the front desk.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Librarian",
+        "textEn": "Printing costs 10 cents per page for black and white, and 50 cents for colour.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Librarian",
+        "textEn": "If you lose your library card, please report it immediately to avoid fines.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Librarian",
+        "textEn": "A replacement card costs five dollars and takes two days to process.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Librarian",
+        "textEn": "Are there any questions? If not, let's begin the tour of the facilities.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-002/l12.mp3"
+      }
+    ],
+    "section": "listening",
+    "source": "ai-generated",
+    "title": "Library Orientation Talk",
+    "titleVi": "Buổi hướng dẫn thư viện",
+    "verified": false
+  },
+  {
+    "cefrLevel": "B2",
+    "id": "ielts-l-b2-003",
+    "questions": [
+      {
+        "correctAnswer": "80 million",
+        "explanationVi": "Dòng l2: 'over 80 million specimens'.",
+        "options": [
+          "8 million",
+          "80 million",
+          "800 thousand",
+          "18 million"
+        ],
+        "question": "How many specimens does the museum house?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "25-metre-long",
+        "explanationVi": "Dòng l4: 'a 25-metre-long Diplodocus' — nguyên văn trong script.",
+        "question": "The Diplodocus skeleton is ___ long",
+        "type": "completion"
+      },
+      {
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l8: chỉ 'photography without flash is permitted' — cấm dùng flash.",
+        "question": "Visitors are allowed to use flash photography in the galleries.",
+        "type": "true_false_not_given"
+      },
+      {
+        "correctAnswer": "Last year",
+        "explanationVi": "Dòng l6: 'opened just last year'.",
+        "options": [
+          "Two years ago",
+          "Last year",
+          "Last month",
+          "Five years ago"
+        ],
+        "question": "When did the Ocean Life exhibition open?",
+        "type": "multiple_choice"
+      },
+      {
+        "correctAnswer": "90 minutes",
+        "explanationVi": "Dòng l11: 'approximately 90 minutes'.",
+        "question": "The guided tour lasts approximately ___",
+        "type": "completion"
+      }
+    ],
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Guide",
+        "textEn": "Good morning, everyone, and welcome to the Natural History Museum.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Guide",
+        "textEn": "Our museum houses over 80 million specimens collected from around the world.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Guide",
+        "textEn": "We'll begin our tour in the Dinosaur Gallery on the first floor.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Guide",
+        "textEn": "The centrepiece is the skeleton of a 25-metre-long Diplodocus.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Guide",
+        "textEn": "This particular skeleton was discovered in Wyoming in 1898.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Guide",
+        "textEn": "After that, we'll visit the Ocean Life exhibition, which opened just last year.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Guide",
+        "textEn": "There you can see a life-size model of a blue whale suspended from the ceiling.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Guide",
+        "textEn": "Please remember that photography without flash is permitted in all galleries.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Guide",
+        "textEn": "The museum café on the ground floor serves lunch from 11:30 until 2:30.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Guide",
+        "textEn": "Our gift shop offers a 10% discount to all tour members today.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Guide",
+        "textEn": "The tour will last approximately 90 minutes and end at the main entrance.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Guide",
+        "textEn": "Please stay with the group, and feel free to ask questions at any time.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-b2-003/l12.mp3"
+      }
+    ],
+    "section": "listening",
+    "source": "ai-generated",
+    "title": "Guided Tour: Natural History Museum",
+    "titleVi": "Tham quan: Bảo tàng Lịch sử Tự nhiên",
+    "verified": false
+  }
+]

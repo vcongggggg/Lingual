@@ -1,0 +1,764 @@
+[
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈmɔːrnɪŋ/",
+        "word": "morning"
+      }
+    ],
+    "id": "shdw-a2-001",
+    "source": "ai-generated",
+    "textEn": "Every morning brings a brand-new chance to grow.",
+    "textVi": "Mỗi buổi sáng đều mang đến một cơ hội mới để trưởng thành.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-001.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ɪmˈpruːv/",
+        "word": "improve"
+      }
+    ],
+    "id": "shdw-a2-002",
+    "source": "ai-generated",
+    "textEn": "Practice a little every day, and you'll improve fast.",
+    "textVi": "Luyện tập một chút mỗi ngày, bạn sẽ tiến bộ nhanh chóng.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-002.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/əˈfreɪd/",
+        "word": "afraid"
+      }
+    ],
+    "id": "shdw-a2-003",
+    "source": "ai-generated",
+    "textEn": "Don't be afraid to make mistakes when you speak.",
+    "textVi": "Đừng sợ mắc lỗi khi nói.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-003.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/klɪrz/",
+        "word": "clears"
+      }
+    ],
+    "id": "shdw-a2-004",
+    "source": "ai-generated",
+    "textEn": "A short walk in the park clears my busy mind.",
+    "textVi": "Đi dạo một lát trong công viên giúp đầu óc tôi thư giãn.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-004.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈreɪni/",
+        "word": "rainy"
+      }
+    ],
+    "id": "shdw-a2-005",
+    "source": "ai-generated",
+    "textEn": "I love drinking warm tea on cold rainy days.",
+    "textVi": "Tôi thích uống trà nóng vào những ngày mưa lạnh.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-005.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈstreɪndʒərz/",
+        "word": "strangers"
+      },
+      {
+        "phonetic": "/ˈbraɪtn/",
+        "word": "brighten"
+      }
+    ],
+    "id": "shdw-a2-006",
+    "source": "ai-generated",
+    "textEn": "Smiling at strangers can brighten someone's whole day.",
+    "textVi": "Mỉm cười với người lạ có thể làm bừng sáng cả ngày của ai đó.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-006.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/læf/",
+        "word": "laugh"
+      }
+    ],
+    "id": "shdw-a2-007",
+    "source": "ai-generated",
+    "textEn": "My best friend always makes me laugh out loud.",
+    "textVi": "Bạn thân của tôi luôn khiến tôi cười phá lên.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-007.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈoʊpənz/",
+        "word": "opens"
+      }
+    ],
+    "id": "shdw-a2-008",
+    "source": "ai-generated",
+    "textEn": "Reading books opens doors to many new worlds.",
+    "textVi": "Đọc sách mở ra cánh cửa tới nhiều thế giới mới.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-008.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/dʒɔɪ/",
+        "word": "joy"
+      }
+    ],
+    "id": "shdw-a2-009",
+    "source": "ai-generated",
+    "textEn": "Cooking dinner for my family brings me real joy.",
+    "textVi": "Nấu bữa tối cho gia đình mang lại cho tôi niềm vui thật sự.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-009.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/təˈnaɪt/",
+        "word": "tonight"
+      }
+    ],
+    "id": "shdw-a2-010",
+    "source": "ai-generated",
+    "textEn": "Sleep well tonight, and tomorrow will be better.",
+    "textVi": "Ngủ ngon tối nay, ngày mai sẽ tốt đẹp hơn.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-010.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/kaɪnd/",
+        "word": "kind"
+      }
+    ],
+    "id": "shdw-a2-011",
+    "source": "ai-generated",
+    "textEn": "Kind words cost nothing but mean a lot.",
+    "textVi": "Lời tử tế chẳng tốn gì nhưng có ý nghĩa rất lớn.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-011.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈtrævəlɪŋ/",
+        "word": "traveling"
+      }
+    ],
+    "id": "shdw-a2-012",
+    "source": "ai-generated",
+    "textEn": "Traveling teaches us more than any classroom can.",
+    "textVi": "Du lịch dạy chúng ta nhiều hơn bất kỳ lớp học nào.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-012.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/praʊd/",
+        "word": "proud"
+      }
+    ],
+    "id": "shdw-a2-013",
+    "source": "ai-generated",
+    "textEn": "I feel proud every time I finish something hard.",
+    "textVi": "Tôi thấy tự hào mỗi khi hoàn thành việc gì đó khó khăn.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-013.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈenərdʒi/",
+        "word": "energy"
+      }
+    ],
+    "id": "shdw-a2-014",
+    "source": "ai-generated",
+    "textEn": "A healthy breakfast gives you energy for the day.",
+    "textVi": "Bữa sáng lành mạnh tiếp năng lượng cho cả ngày của bạn.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-014.mp3"
+  },
+  {
+    "cefrLevel": "A2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈkɑːnfɪdəns/",
+        "word": "confidence"
+      }
+    ],
+    "id": "shdw-a2-015",
+    "source": "ai-generated",
+    "textEn": "Take a deep breath, and start again with confidence.",
+    "textVi": "Hít thở thật sâu và bắt đầu lại với sự tự tin.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-a2-015.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈnætʃrəl/",
+        "word": "natural"
+      }
+    ],
+    "id": "shdw-b1-001",
+    "source": "ai-generated",
+    "textEn": "The more you practice speaking, the more natural it feels.",
+    "textVi": "Bạn càng luyện nói nhiều, nó càng trở nên tự nhiên.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-001.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ɔːlˈðoʊ/",
+        "word": "although"
+      }
+    ],
+    "id": "shdw-b1-002",
+    "source": "ai-generated",
+    "textEn": "Although I was tired, I kept studying late at night.",
+    "textVi": "Dù đã mệt, tôi vẫn học tới khuya.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-002.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈkʌltʃərz/",
+        "word": "cultures"
+      }
+    ],
+    "id": "shdw-b1-003",
+    "source": "ai-generated",
+    "textEn": "Learning a new language opens your mind to other cultures.",
+    "textVi": "Học ngôn ngữ mới giúp bạn cởi mở hơn với các nền văn hóa khác.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-003.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈdʒɜːrni/",
+        "word": "journey"
+      }
+    ],
+    "id": "shdw-b1-004",
+    "source": "ai-generated",
+    "textEn": "When life gets tough, remember why you started this journey.",
+    "textVi": "Khi cuộc sống trở nên khó khăn, hãy nhớ vì sao bạn bắt đầu hành trình này.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-004.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/əˈbrɔːd/",
+        "word": "abroad"
+      }
+    ],
+    "id": "shdw-b1-005",
+    "source": "ai-generated",
+    "textEn": "I will never forget the day we traveled together abroad.",
+    "textVi": "Tôi sẽ không bao giờ quên ngày chúng ta cùng đi du lịch nước ngoài.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-005.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/rɪˈmɑːrkəbl/",
+        "word": "remarkable"
+      }
+    ],
+    "id": "shdw-b1-006",
+    "source": "ai-generated",
+    "textEn": "Small daily habits can lead to remarkable changes over time.",
+    "textVi": "Những thói quen nhỏ mỗi ngày có thể tạo ra thay đổi đáng kinh ngạc theo thời gian.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-006.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈwɔːrmli/",
+        "word": "warmly"
+      }
+    ],
+    "id": "shdw-b1-007",
+    "source": "ai-generated",
+    "textEn": "She smiled warmly because she knew everything would be fine.",
+    "textVi": "Cô ấy mỉm cười ấm áp vì biết mọi chuyện sẽ ổn thôi.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-007.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/bɪˈliːv/",
+        "word": "believe"
+      }
+    ],
+    "id": "shdw-b1-008",
+    "source": "ai-generated",
+    "textEn": "If you believe in yourself, others will believe in you too.",
+    "textVi": "Nếu bạn tin vào chính mình, người khác cũng sẽ tin bạn.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-008.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈfjuːtʃər/",
+        "word": "future"
+      }
+    ],
+    "id": "shdw-b1-009",
+    "source": "ai-generated",
+    "textEn": "We stayed up late talking about our dreams and future plans.",
+    "textVi": "Chúng tôi thức khuya trò chuyện về ước mơ và kế hoạch tương lai.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-009.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈtekstbʊk/",
+        "word": "textbook"
+      }
+    ],
+    "id": "shdw-b1-010",
+    "source": "ai-generated",
+    "textEn": "Working abroad taught him lessons no textbook could ever give.",
+    "textVi": "Làm việc ở nước ngoài đã dạy anh ấy những bài học mà sách giáo khoa không bao giờ cho được.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-010.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈsʌnset/",
+        "word": "sunset"
+      }
+    ],
+    "id": "shdw-b1-011",
+    "source": "ai-generated",
+    "textEn": "The beach at sunset looked like a painting from heaven.",
+    "textVi": "Bãi biển lúc hoàng hôn đẹp như một bức tranh thiên đường.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-011.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈreɡjələrli/",
+        "word": "regularly"
+      }
+    ],
+    "id": "shdw-b1-012",
+    "source": "ai-generated",
+    "textEn": "Exercise regularly, and your body will thank you every morning.",
+    "textVi": "Tập thể dục đều đặn, cơ thể bạn sẽ biết ơn bạn mỗi sáng.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-012.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈpiːsfl/",
+        "word": "peaceful"
+      }
+    ],
+    "id": "shdw-b1-013",
+    "source": "ai-generated",
+    "textEn": "After the storm passed, the whole city felt peaceful again.",
+    "textVi": "Sau khi cơn bão qua đi, cả thành phố lại bình yên.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-013.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈfaɪnəli/",
+        "word": "finally"
+      }
+    ],
+    "id": "shdw-b1-014",
+    "source": "ai-generated",
+    "textEn": "He saved money for years to finally visit his dream country.",
+    "textVi": "Anh ấy đã dành dụm nhiều năm để cuối cùng được thăm đất nước mơ ước.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-014.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈdʒʌdʒɪŋ/",
+        "word": "judging"
+      }
+    ],
+    "id": "shdw-b1-015",
+    "source": "ai-generated",
+    "textEn": "Good friends listen to your worries without ever judging you.",
+    "textVi": "Bạn tốt lắng nghe nỗi lo của bạn mà không bao giờ phán xét.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-015.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈrerli/",
+        "word": "rarely"
+      }
+    ],
+    "id": "shdw-b1-016",
+    "source": "ai-generated",
+    "textEn": "Success rarely comes to those who give up too easily.",
+    "textVi": "Thành công hiếm khi đến với người dễ dàng bỏ cuộc.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-016.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/dɪˈskʌvərd/",
+        "word": "discovered"
+      }
+    ],
+    "id": "shdw-b1-017",
+    "source": "ai-generated",
+    "textEn": "The old town was full of stories waiting to be discovered.",
+    "textVi": "Phố cổ đầy những câu chuyện chờ được khám phá.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-017.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/trəˈdɪʃənl/",
+        "word": "traditional"
+      }
+    ],
+    "id": "shdw-b1-018",
+    "source": "ai-generated",
+    "textEn": "She learned to cook traditional dishes from her kind grandmother.",
+    "textVi": "Cô ấy học nấu các món truyền thống từ người bà hiền từ.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-018.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/ˈvæljuəbl/",
+        "word": "valuable"
+      },
+      {
+        "phonetic": "/streŋθ/",
+        "word": "strength"
+      }
+    ],
+    "id": "shdw-b1-019",
+    "source": "ai-generated",
+    "textEn": "Every failure taught me something valuable about my own strength.",
+    "textVi": "Mỗi thất bại đều dạy tôi điều quý giá về sức mạnh của chính mình.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-019.mp3"
+  },
+  {
+    "cefrLevel": "B1",
+    "focusWords": [
+      {
+        "phonetic": "/tʃiːks/",
+        "word": "cheeks"
+      }
+    ],
+    "id": "shdw-b1-020",
+    "source": "ai-generated",
+    "textEn": "We laughed together until our cheeks started hurting that evening.",
+    "textVi": "Chúng tôi cười cùng nhau đến mức mỏi cả má tối hôm ấy.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b1-020.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˌpɜːrsəˈvɪrəns/",
+        "word": "perseverance"
+      },
+      {
+        "phonetic": "/ədˈvɜːrsəti/",
+        "word": "adversity"
+      }
+    ],
+    "id": "shdw-b2-001",
+    "source": "ai-generated",
+    "textEn": "Perseverance in the face of adversity defines true character.",
+    "textVi": "Kiên trì trước nghịch cảnh mới định hình nên bản lĩnh thật sự.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-001.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ɪɡˈzɪstɪd/",
+        "word": "existed"
+      }
+    ],
+    "id": "shdw-b2-002",
+    "source": "ai-generated",
+    "textEn": "Traveling alone forces you to discover strengths you never knew existed.",
+    "textVi": "Đi du lịch một mình buộc bạn khám phá những điểm mạnh mà bạn chưa từng biết mình có.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-002.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈempəθi/",
+        "word": "empathy"
+      }
+    ],
+    "id": "shdw-b2-003",
+    "source": "ai-generated",
+    "textEn": "Effective communication in the workplace requires both clarity and empathy.",
+    "textVi": "Giao tiếp hiệu quả nơi công sở đòi hỏi cả sự rõ ràng lẫn lòng thấu cảm.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-003.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/əˈtʃiːvmənts/",
+        "word": "achievements"
+      }
+    ],
+    "id": "shdw-b2-004",
+    "source": "ai-generated",
+    "textEn": "The greatest achievements often begin with a single bold decision.",
+    "textVi": "Những thành tựu vĩ đại thường bắt đầu từ một quyết định táo bạo duy nhất.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-004.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ʌnˈsɜːrtənti/",
+        "word": "uncertainty"
+      }
+    ],
+    "id": "shdw-b2-005",
+    "source": "ai-generated",
+    "textEn": "Learning to embrace uncertainty is essential for personal growth.",
+    "textVi": "Học cách đón nhận sự bất định là điều thiết yếu cho sự trưởng thành cá nhân.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-005.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/dɪˌtɜːrmɪˈneɪʃn/",
+        "word": "determination"
+      }
+    ],
+    "id": "shdw-b2-006",
+    "source": "ai-generated",
+    "textEn": "Her unwavering determination inspired everyone around her to aim higher.",
+    "textVi": "Quyết tâm không lay chuyển của cô ấy đã truyền cảm hứng cho mọi người xung quanh vươn cao hơn.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-006.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˌwelˈbiːɪŋ/",
+        "word": "well-being"
+      }
+    ],
+    "id": "shdw-b2-007",
+    "source": "ai-generated",
+    "textEn": "Balancing work and rest is the key to long-term well-being.",
+    "textVi": "Cân bằng giữa làm việc và nghỉ ngơi là chìa khóa cho sức khỏe lâu dài.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-007.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˌfʌndəˈmentəli/",
+        "word": "fundamentally"
+      }
+    ],
+    "id": "shdw-b2-008",
+    "source": "ai-generated",
+    "textEn": "Technology has fundamentally transformed the way we connect with others.",
+    "textVi": "Công nghệ đã thay đổi căn bản cách chúng ta kết nối với nhau.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-008.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈmjuːtʃuəl/",
+        "word": "mutual"
+      }
+    ],
+    "id": "shdw-b2-009",
+    "source": "ai-generated",
+    "textEn": "True friendship is measured not by time, but by mutual understanding.",
+    "textVi": "Tình bạn thật sự không đo bằng thời gian, mà bằng sự thấu hiểu lẫn nhau.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-009.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈɪnsaɪts/",
+        "word": "insights"
+      }
+    ],
+    "id": "shdw-b2-010",
+    "source": "ai-generated",
+    "textEn": "The conference provided valuable insights into emerging global trends.",
+    "textVi": "Hội nghị đã mang đến những góc nhìn giá trị về các xu hướng toàn cầu mới nổi.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-010.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈdʒenjuɪn/",
+        "word": "genuine"
+      }
+    ],
+    "id": "shdw-b2-011",
+    "source": "ai-generated",
+    "textEn": "Overcoming self-doubt is the first step toward genuine self-confidence.",
+    "textVi": "Vượt qua sự tự nghi ngờ là bước đầu tiên tới sự tự tin đích thực.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-011.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈkjʊriəs/",
+        "word": "curious"
+      }
+    ],
+    "id": "shdw-b2-012",
+    "source": "ai-generated",
+    "textEn": "A curious mind will always find beauty in unfamiliar places.",
+    "textVi": "Một tâm hồn ham học hỏi luôn tìm thấy vẻ đẹp ở những nơi xa lạ.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-012.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/kənˈsɪstənt/",
+        "word": "consistent"
+      }
+    ],
+    "id": "shdw-b2-013",
+    "source": "ai-generated",
+    "textEn": "Consistent effort over months produces results that talent alone cannot.",
+    "textVi": "Nỗ lực bền bỉ suốt nhiều tháng tạo ra kết quả mà tài năng đơn thuần không thể.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-013.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈeɪnʃənt/",
+        "word": "ancient"
+      }
+    ],
+    "id": "shdw-b2-014",
+    "source": "ai-generated",
+    "textEn": "The ancient city revealed layers of history beneath its modern streets.",
+    "textVi": "Thành phố cổ hé lộ nhiều tầng lớp lịch sử bên dưới những con phố hiện đại.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-014.mp3"
+  },
+  {
+    "cefrLevel": "B2",
+    "focusWords": [
+      {
+        "phonetic": "/ˈdɪvɪdendz/",
+        "word": "dividends"
+      }
+    ],
+    "id": "shdw-b2-015",
+    "source": "ai-generated",
+    "textEn": "Investing in your health today pays dividends for decades to come.",
+    "textVi": "Đầu tư vào sức khỏe hôm nay sẽ sinh lời trong nhiều thập kỷ tới.",
+    "verified": false,
+    "audioUrl": "/audio/shadowing/shdw-b2-015.mp3"
+  }
+]

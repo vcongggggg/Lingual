@@ -1,0 +1,891 @@
+[
+  {
+    "id": "ielts-l-006",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "Doctor's Appointment",
+    "titleVi": "Đặt lịch khám bệnh",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Receptionist",
+        "textEn": "Good afternoon, City Medical Center. How may I help you?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Patient",
+        "textEn": "Hello, I'd like to make an appointment with Dr. Chen, please.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Receptionist",
+        "textEn": "Of course. Are you a new or returning patient?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Patient",
+        "textEn": "I'm a new patient. I've been having terrible headaches this week.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Receptionist",
+        "textEn": "I'm sorry to hear that. Dr. Chen has an opening tomorrow at half past nine, or Friday at three.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Patient",
+        "textEn": "Tomorrow at nine thirty would be perfect.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Receptionist",
+        "textEn": "May I have your full name and date of birth, please?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Patient",
+        "textEn": "My name is Daniel Park, and I was born on March the twelfth, 1998.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Receptionist",
+        "textEn": "Thank you, Mr. Park. Please bring your insurance card and arrive fifteen minutes early.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Patient",
+        "textEn": "Do I need to fast before the appointment?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Receptionist",
+        "textEn": "No fasting is required, but please bring a list of any medication you take.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Patient",
+        "textEn": "Got it. Thank you very much for your help.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-006/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What is the patient's main problem?",
+        "options": [
+          "Terrible headaches",
+          "A sore throat",
+          "Back pain",
+          "A broken arm"
+        ],
+        "correctAnswer": "Terrible headaches",
+        "explanationVi": "Dòng l4, bệnh nhân nói 'I've been having terrible headaches this week'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "When is the appointment?",
+        "options": [
+          "Friday at three",
+          "Tomorrow at nine thirty",
+          "Next Monday",
+          "Next week"
+        ],
+        "correctAnswer": "Tomorrow at nine thirty",
+        "explanationVi": "Dòng l5-l6: bệnh nhân chọn lịch 'Tomorrow at nine thirty'."
+      },
+      {
+        "type": "completion",
+        "question": "The patient's name is ___",
+        "correctAnswer": "Daniel Park",
+        "explanationVi": "Dòng l8: 'My name is Daniel Park'."
+      },
+      {
+        "type": "completion",
+        "question": "The patient must arrive ___ early",
+        "correctAnswer": "fifteen minutes",
+        "explanationVi": "Dòng l9: 'arrive fifteen minutes early'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The patient must fast before the appointment.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l11: 'No fasting is required' — thông tin này sai."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-007",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "Job Interview",
+    "titleVi": "Phỏng vấn xin việc",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Interviewer",
+        "textEn": "Good morning, and thank you for coming in today.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Candidate",
+        "textEn": "Good morning! Thank you for having me.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Interviewer",
+        "textEn": "Let's start with your previous job. Why did you leave it?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Candidate",
+        "textEn": "I wanted more responsibility. My last role was quite repetitive.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Interviewer",
+        "textEn": "I see. And what are your greatest strengths?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Candidate",
+        "textEn": "I'm very organized, and I work well under pressure.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Interviewer",
+        "textEn": "This position requires some weekend work. Is that acceptable?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Candidate",
+        "textEn": "Yes, that's fine with me. I'm quite flexible with my schedule.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Interviewer",
+        "textEn": "The starting salary is forty thousand dollars per year. Is that okay?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Candidate",
+        "textEn": "That sounds reasonable. When would I start?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Interviewer",
+        "textEn": "We'd like someone to begin on the first of next month.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Candidate",
+        "textEn": "That works for me. Thank you for this opportunity.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-007/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Why did the candidate leave the last job?",
+        "options": [
+          "Low salary",
+          "Wanted more responsibility",
+          "Moved to another city",
+          "Company closed down"
+        ],
+        "correctAnswer": "Wanted more responsibility",
+        "explanationVi": "Dòng l4: 'I wanted more responsibility'."
+      },
+      {
+        "type": "completion",
+        "question": "The starting salary is ___ dollars per year",
+        "correctAnswer": "forty thousand",
+        "explanationVi": "Dòng l9: 'The starting salary is forty thousand dollars per year'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The candidate refuses to work on weekends.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l8: ứng viên nói 'that's fine with me' — chấp nhận làm cuối tuần."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "When would the candidate start?",
+        "options": [
+          "Next Monday",
+          "The first of next month",
+          "In six months",
+          "Immediately"
+        ],
+        "correctAnswer": "The first of next month",
+        "explanationVi": "Dòng l11: 'begin on the first of next month'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The candidate's greatest weakness is poor time management.",
+        "correctAnswer": "Not Given",
+        "explanationVi": "Script không nhắc gì đến điểm yếu của ứng viên."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-008",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "Flight Delay at the Airport",
+    "titleVi": "Chuyến bay bị hoãn ở sân bay",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Agent",
+        "textEn": "Good evening, how can I help you?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Passenger",
+        "textEn": "Hi, I'm flying to Singapore on flight SQ-618. I'd like to check in.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Agent",
+        "textEn": "May I see your passport, please?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Passenger",
+        "textEn": "Here you go. Is the flight on time?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Agent",
+        "textEn": "I'm afraid there's a two-hour delay due to bad weather.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Passenger",
+        "textEn": "Oh no! What time does it depart now?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Agent",
+        "textEn": "The new departure time is quarter to twelve, from gate B7.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Passenger",
+        "textEn": "Do I need to do anything, or just wait at the gate?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Agent",
+        "textEn": "Just wait at the gate. We'll call boarding thirty minutes before departure.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Passenger",
+        "textEn": "Can I get a meal voucher for the delay?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Agent",
+        "textEn": "Yes, here's a voucher worth twenty dollars for the food court on level two.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Passenger",
+        "textEn": "That's very kind. Thank you for your help.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-008/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Where is the passenger flying to?",
+        "options": [
+          "Tokyo",
+          "Singapore",
+          "Bangkok",
+          "Seoul"
+        ],
+        "correctAnswer": "Singapore",
+        "explanationVi": "Dòng l2: 'I'm flying to Singapore'."
+      },
+      {
+        "type": "completion",
+        "question": "The new departure time is ___",
+        "correctAnswer": "quarter to twelve",
+        "explanationVi": "Dòng l7: 'The new departure time is quarter to twelve'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The delay is caused by a technical problem.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l5: hoãn 'due to bad weather' — do thời tiết, không phải lỗi kỹ thuật."
+      },
+      {
+        "type": "completion",
+        "question": "The meal voucher is worth ___",
+        "correctAnswer": "twenty dollars",
+        "explanationVi": "Dòng l11: 'a voucher worth twenty dollars'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "When will boarding be called?",
+        "options": [
+          "One hour before departure",
+          "Thirty minutes before departure",
+          "At quarter to twelve",
+          "Right now"
+        ],
+        "correctAnswer": "Thirty minutes before departure",
+        "explanationVi": "Dòng l9: 'We'll call boarding thirty minutes before departure'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-009",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Lecture: The History of Money",
+    "titleVi": "Bài giảng: Lịch sử tiền tệ",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Lecturer",
+        "textEn": "Good morning, everyone. Today we'll look at how money came to exist.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Lecturer",
+        "textEn": "Before money, people used barter, trading goods directly, like exchanging wheat for cloth.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Lecturer",
+        "textEn": "The problem with barter was finding someone who wanted exactly what you had.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Lecturer",
+        "textEn": "Around 3000 BC, the Mesopotamians began using silver bars as a standard of value.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Lecturer",
+        "textEn": "The first real coins appeared in Lydia, in modern day Turkey, about 600 BC.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Lecturer",
+        "textEn": "These coins were made of electrum, a natural mixture of gold and silver.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Lecturer",
+        "textEn": "Paper money came much later, invented in China during the Tang Dynasty, around the seventh century.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Lecturer",
+        "textEn": "Interestingly, paper money was first used as a promise to pay, not as money itself.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Lecturer",
+        "textEn": "In 1971, the US dollar left the gold standard, and most currencies became fiat money.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Lecturer",
+        "textEn": "Fiat money has value simply because governments say it does.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Lecturer",
+        "textEn": "Today, digital payments are replacing cash in many countries, especially in Scandinavia.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Lecturer",
+        "textEn": "Cryptocurrencies like Bitcoin represent the latest experiment in what money can be.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "speaker": "Lecturer",
+        "textEn": "Next week, we'll examine how central banks control the money supply. Thank you.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-009/l13.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What was the main problem with barter?",
+        "options": [
+          "It was too slow",
+          "Finding someone who wanted exactly what you had",
+          "Goods were too heavy to carry",
+          "It required writing skills"
+        ],
+        "correctAnswer": "Finding someone who wanted exactly what you had",
+        "explanationVi": "Dòng l3 nêu đúng vấn đề này."
+      },
+      {
+        "type": "completion",
+        "question": "The first coins were made of ___",
+        "correctAnswer": "electrum",
+        "explanationVi": "Dòng l6: 'These coins were made of electrum'."
+      },
+      {
+        "type": "completion",
+        "question": "Paper money was invented in China during the ___",
+        "correctAnswer": "Tang Dynasty",
+        "explanationVi": "Dòng l7: 'invented in China during the Tang Dynasty'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "In 1971, the US dollar left the gold standard.",
+        "correctAnswer": "True",
+        "explanationVi": "Dòng l9 ghi đúng như vậy."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Cash has completely disappeared in Scandinavia.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l11: 'replacing cash' — đang dần thay thế, chưa biến mất hoàn toàn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-010",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Seminar: Artificial Intelligence in Healthcare",
+    "titleVi": "Hội thảo: Trí tuệ nhân tạo trong y tế",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Lecturer",
+        "textEn": "Welcome to today's seminar on artificial intelligence in medicine.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Lecturer",
+        "textEn": "AI is already helping doctors detect diseases earlier than ever before.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Lecturer",
+        "textEn": "For example, deep learning models can now spot lung cancer in X-rays with remarkable accuracy.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Lecturer",
+        "textEn": "One major advantage is speed. An AI system can analyze thousands of scans in a single hour.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Lecturer",
+        "textEn": "However, there are serious concerns about patient privacy and data security.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Lecturer",
+        "textEn": "Hospitals must ensure that sensitive medical records are properly protected.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Lecturer",
+        "textEn": "Another challenge is bias. If training data lacks diversity, the AI may misdiagnose certain groups.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Lecturer",
+        "textEn": "Researchers are working on explainable AI, which can show doctors how it reached a conclusion.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Lecturer",
+        "textEn": "Importantly, experts agree that AI should assist doctors, not replace them.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Lecturer",
+        "textEn": "The human touch, empathy and judgment, remains essential in patient care.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Lecturer",
+        "textEn": "By 2030, analysts predict that most hospitals will use AI tools in daily practice.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Lecturer",
+        "textEn": "In our next session, we'll look at AI applications in drug discovery.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "speaker": "Lecturer",
+        "textEn": "Thank you for your attention.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-010/l13.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What is one major advantage of AI in medicine?",
+        "options": [
+          "Lower hospital costs",
+          "Speed of analyzing scans",
+          "Replacing all doctors",
+          "Free software for everyone"
+        ],
+        "correctAnswer": "Speed of analyzing scans",
+        "explanationVi": "Dòng l4: AI 'can analyze thousands of scans in a single hour' — lợi thế về tốc độ."
+      },
+      {
+        "type": "completion",
+        "question": "AI models can spot ___ in X-rays",
+        "correctAnswer": "lung cancer",
+        "explanationVi": "Dòng l3: 'spot lung cancer in X-rays'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "AI should replace doctors completely.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l9: 'AI should assist doctors, not replace them' — ngược lại."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does 'explainable AI' do?",
+        "options": [
+          "Hides its methods from users",
+          "Shows doctors how it reached a conclusion",
+          "Deletes all patient data",
+          "Translates medical terms"
+        ],
+        "correctAnswer": "Shows doctors how it reached a conclusion",
+        "explanationVi": "Dòng l8 giải thích đúng như vậy."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Most hospitals already use AI tools in daily practice.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l11: đây là dự đoán 'By 2030' — tương lai, chưa phải hiện tại."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-011",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Briefing: Campus Safety for New Students",
+    "titleVi": "Hướng dẫn an toàn khuôn viên cho tân sinh viên",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Officer",
+        "textEn": "Welcome, new students. I'm Officer Rivera from campus security.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Officer",
+        "textEn": "First, always lock your dorm room, even if you're just going down the hall.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Officer",
+        "textEn": "The emergency number on campus is extension 4911, available twenty four hours a day.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Officer",
+        "textEn": "If you feel unsafe walking at night, our SafeRide shuttle runs until 2 AM.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Officer",
+        "textEn": "You can request a pickup by calling the security office or using the campus app.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Officer",
+        "textEn": "Never share your student ID card with anyone. It also works as your library card.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Officer",
+        "textEn": "The library closes at midnight on weekdays and at ten PM on weekends.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Officer",
+        "textEn": "Report any suspicious activity immediately. It's always better to be cautious.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Officer",
+        "textEn": "We also offer free self defense classes every Thursday evening in the sports center.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Officer",
+        "textEn": "Registration for the classes opens on the first of September.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Officer",
+        "textEn": "Finally, sign up for emergency text alerts on the university website.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Officer",
+        "textEn": "Stay safe, and enjoy your time here. Thank you.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-011/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "completion",
+        "question": "The campus emergency number is extension ___",
+        "correctAnswer": "4911",
+        "explanationVi": "Dòng l3: 'extension 4911'."
+      },
+      {
+        "type": "completion",
+        "question": "The SafeRide shuttle runs until ___",
+        "correctAnswer": "2 AM",
+        "explanationVi": "Dòng l4: 'runs until 2 AM'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Students may share their ID cards with close friends.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l6: 'Never share your student ID card with anyone' — cấm tuyệt đối."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "When do the self-defense classes take place?",
+        "options": [
+          "Monday mornings",
+          "Thursday evenings",
+          "Weekend afternoons",
+          "Friday nights"
+        ],
+        "correctAnswer": "Thursday evenings",
+        "explanationVi": "Dòng l9: 'every Thursday evening'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How can students sign up for emergency text alerts?",
+        "options": [
+          "At the security office",
+          "On the university website",
+          "Through the library desk",
+          "By calling 4911"
+        ],
+        "correctAnswer": "On the university website",
+        "explanationVi": "Dòng l11: 'sign up for emergency text alerts on the university website'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-012",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Guided Tour: Royal Botanical Gardens",
+    "titleVi": "Tham quan: Vườn thực vật Hoàng gia",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Guide",
+        "textEn": "Hello everyone, and welcome to the Royal Botanical Gardens.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Guide",
+        "textEn": "Our gardens cover over two hundred acres and house more than ten thousand plant species.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Guide",
+        "textEn": "We'll begin at the Palm House, built in 1848, which contains tropical plants from five continents.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Guide",
+        "textEn": "Next, we'll visit the Desert Garden, home to the world's oldest cactus collection.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Guide",
+        "textEn": "Please do not touch the plants, as many are rare and extremely fragile.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Guide",
+        "textEn": "The Orchid Pavilion is our most photographed spot, especially during the spring festival.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Guide",
+        "textEn": "Lunch is available at the Garden Cafe, which serves only locally grown produce.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Guide",
+        "textEn": "The tour takes approximately ninety minutes, and we'll finish at the main gate.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Guide",
+        "textEn": "If you have questions, please save them for our stops. The paths can be quite narrow.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Guide",
+        "textEn": "Photography is allowed everywhere except inside the Orchid Pavilion.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Guide",
+        "textEn": "Finally, the gift shop offers seeds from our own gardens, perfect for souvenirs.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Guide",
+        "textEn": "Let's get started. Follow me, please!",
+        "audioUrl": "/audio/ielts-listening/ielts-l-012/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "completion",
+        "question": "The gardens cover over ___ acres",
+        "correctAnswer": "two hundred",
+        "explanationVi": "Dòng l2: 'cover over two hundred acres'."
+      },
+      {
+        "type": "completion",
+        "question": "The Palm House was built in ___",
+        "correctAnswer": "1848",
+        "explanationVi": "Dòng l3: 'built in 1848'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Visitors may touch the plants in the Desert Garden.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l5: 'do not touch the plants' — cấm chạm vào cây."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Where is photography NOT allowed?",
+        "options": [
+          "The Palm House",
+          "The Desert Garden",
+          "Inside the Orchid Pavilion",
+          "The Garden Cafe"
+        ],
+        "correctAnswer": "Inside the Orchid Pavilion",
+        "explanationVi": "Dòng l10: 'except inside the Orchid Pavilion'."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The tour lasts the whole day.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng l8: tour chỉ 'approximately ninety minutes', không phải cả ngày."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

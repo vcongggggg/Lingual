@@ -1,0 +1,1526 @@
+[
+  {
+    "id": "ielts-l-013",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "Renting an Apartment",
+    "titleVi": "Thuê căn hộ",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Landlord",
+        "textEn": "Good afternoon! You must be Anna. Welcome to Maple Street Apartments.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Anna",
+        "textEn": "Yes, that's me. Thank you. The building looks lovely from the outside.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Landlord",
+        "textEn": "Let me show you the flat. It's on the third floor, apartment 12.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Anna",
+        "textEn": "Oh, there's a lift, isn't there? I hate climbing stairs.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Landlord",
+        "textEn": "Yes, there's a lift on the right. Here we are. The rent is eight hundred pounds a month.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Anna",
+        "textEn": "Does that include electricity and water?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Landlord",
+        "textEn": "Water is included, but electricity is extra. It usually costs about forty pounds a month.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Anna",
+        "textEn": "I see. And is the flat furnished?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Landlord",
+        "textEn": "Partly. There's a bed, a sofa, and a washing machine. You need your own TV.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Anna",
+        "textEn": "When can I move in?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Landlord",
+        "textEn": "The flat is free from the first of March. You'll need to pay a deposit of one month's rent.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Anna",
+        "textEn": "That's fine. I really like the balcony. I'll take it!",
+        "audioUrl": "/audio/ielts-listening/ielts-l-013/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Which floor is the flat on?",
+        "options": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth"
+        ],
+        "correctAnswer": "Third",
+        "explanationVi": "Chủ nhà nói ở dòng 3: căn hộ ở tầng 3 (third floor)."
+      },
+      {
+        "type": "completion",
+        "question": "The monthly rent is ___ pounds.",
+        "correctAnswer": "eight hundred",
+        "explanationVi": "Dòng 5: tiền thuê là eight hundred pounds một tháng."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What is NOT included in the rent?",
+        "options": [
+          "Water",
+          "A washing machine",
+          "Electricity",
+          "A sofa"
+        ],
+        "correctAnswer": "Electricity",
+        "explanationVi": "Dòng 7: nước đã bao gồm, nhưng điện phải trả thêm."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The tenant must buy her own television.",
+        "correctAnswer": "True",
+        "explanationVi": "Dòng 9: chủ nhà nói cô ấy cần tự mua TV."
+      },
+      {
+        "type": "completion",
+        "question": "The flat is free from the ___ of March.",
+        "correctAnswer": "first",
+        "explanationVi": "Dòng 11: căn hộ trống từ ngày first of March."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-014",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "Buying a Train Ticket",
+    "titleVi": "Mua vé tàu",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Clerk",
+        "textEn": "Good morning. Where are you travelling today?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Tom",
+        "textEn": "London, please. I'd like a return ticket for tomorrow morning.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Clerk",
+        "textEn": "Do you want to travel first class or standard?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Tom",
+        "textEn": "Standard, please. What's the cheapest option?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Clerk",
+        "textEn": "The 8.15 train costs thirty-five pounds return. The fast train at 9.30 is fifty pounds.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Tom",
+        "textEn": "I'll take the 8.15. How long does it take?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Clerk",
+        "textEn": "About two hours and ten minutes. It arrives at ten twenty-five.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Tom",
+        "textEn": "That's fine. Can I pay by card?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Clerk",
+        "textEn": "Of course. Do you want a window seat?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Tom",
+        "textEn": "Yes, please. And is there free Wi-Fi on the train?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Clerk",
+        "textEn": "Yes, there is. Your ticket is ready. Platform four, don't forget.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Tom",
+        "textEn": "Thank you very much. Have a nice day!",
+        "audioUrl": "/audio/ielts-listening/ielts-l-014/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "When is Tom travelling?",
+        "options": [
+          "Today",
+          "Tomorrow morning",
+          "Tomorrow evening",
+          "Next week"
+        ],
+        "correctAnswer": "Tomorrow morning",
+        "explanationVi": "Dòng 2: Tom muốn vé khứ hồi cho sáng mai."
+      },
+      {
+        "type": "completion",
+        "question": "The cheapest return ticket costs ___ pounds.",
+        "correctAnswer": "thirty-five",
+        "explanationVi": "Dòng 5: chuyến 8.15 giá thirty-five pounds khứ hồi."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Which train does Tom choose?",
+        "options": [
+          "7.30",
+          "8.15",
+          "9.30",
+          "10.25"
+        ],
+        "correctAnswer": "8.15",
+        "explanationVi": "Dòng 6: Tom chọn chuyến 8.15."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Tom pays in cash.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 8: Tom hỏi có thể trả bằng thẻ không — không phải tiền mặt."
+      },
+      {
+        "type": "completion",
+        "question": "Tom's train leaves from platform ___.",
+        "correctAnswer": "four",
+        "explanationVi": "Dòng 11: tàu ở sân ga platform four."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-015",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "At the Bank",
+    "titleVi": "Tại ngân hàng",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Clerk",
+        "textEn": "Hello, how can I help you today?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "David",
+        "textEn": "I'd like to open a savings account, please.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Clerk",
+        "textEn": "Certainly. Do you have your passport with you?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "David",
+        "textEn": "Yes, here it is. And my driving licence as well.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Clerk",
+        "textEn": "Thank you. What's your current address?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "David",
+        "textEn": "Flat 5, 22 Baker Street, London.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Clerk",
+        "textEn": "And your phone number?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "David",
+        "textEn": "It's 07700 900461.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Clerk",
+        "textEn": "Do you want a debit card with the account?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "David",
+        "textEn": "Yes, please. How long will it take to arrive?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Clerk",
+        "textEn": "About five working days. You'll get a letter with your PIN first.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "David",
+        "textEn": "Perfect. Thank you for your help!",
+        "audioUrl": "/audio/ielts-listening/ielts-l-015/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What does David want to do?",
+        "options": [
+          "Close an account",
+          "Open a savings account",
+          "Get a loan",
+          "Change his address"
+        ],
+        "correctAnswer": "Open a savings account",
+        "explanationVi": "Dòng 2: David muốn mở tài khoản tiết kiệm."
+      },
+      {
+        "type": "completion",
+        "question": "David shows his ___ and driving licence.",
+        "correctAnswer": "passport",
+        "explanationVi": "Dòng 3-4: nhân viên hỏi passport, David đưa ra."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "David lives in flat 5.",
+        "correctAnswer": "True",
+        "explanationVi": "Dòng 6: địa chỉ của David là Flat 5."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How will David receive his PIN?",
+        "options": [
+          "By email",
+          "By letter",
+          "At the bank",
+          "By phone"
+        ],
+        "correctAnswer": "By letter",
+        "explanationVi": "Dòng 11: anh ấy sẽ nhận thư có mã PIN trước."
+      },
+      {
+        "type": "completion",
+        "question": "The debit card arrives in about ___ working days.",
+        "correctAnswer": "five",
+        "explanationVi": "Dòng 11: thẻ đến sau khoảng five working days."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-016",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "Ordering Food at a Restaurant",
+    "titleVi": "Gọi món ở nhà hàng",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Waiter",
+        "textEn": "Good evening! Here's the menu. Are you ready to order?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Lisa",
+        "textEn": "Yes. I'd like the tomato soup to start, please.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Waiter",
+        "textEn": "And for your main course?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Lisa",
+        "textEn": "The grilled salmon with rice, please.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Waiter",
+        "textEn": "Would you like anything to drink?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Lisa",
+        "textEn": "Just water, thank you. Sparkling water, please.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Waiter",
+        "textEn": "Certainly. The soup will be ready in about ten minutes.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Lisa",
+        "textEn": "Oh, one more thing. I'm allergic to nuts. Is there any in the salmon dish?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Waiter",
+        "textEn": "No, don't worry. It's completely nut-free.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Lisa",
+        "textEn": "Great. And could I have the bill with dessert, please?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Waiter",
+        "textEn": "Of course. Our chocolate cake is very popular today.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Lisa",
+        "textEn": "Sounds perfect. Thank you!",
+        "audioUrl": "/audio/ielts-listening/ielts-l-016/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What does Lisa order to start?",
+        "options": [
+          "Salad",
+          "Tomato soup",
+          "Bread",
+          "Nothing"
+        ],
+        "correctAnswer": "Tomato soup",
+        "explanationVi": "Dòng 2: Lisa gọi súp cà chua khai vị."
+      },
+      {
+        "type": "completion",
+        "question": "Lisa orders ___ water to drink.",
+        "correctAnswer": "Sparkling",
+        "explanationVi": "Dòng 6: cô ấy gọi Sparkling water."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The salmon dish contains nuts.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 9: bồi bàn nói món hoàn toàn không có hạt (nut-free)."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the waiter recommend?",
+        "options": [
+          "Ice cream",
+          "Chocolate cake",
+          "Fruit",
+          "Coffee"
+        ],
+        "correctAnswer": "Chocolate cake",
+        "explanationVi": "Dòng 11: bồi bàn giới thiệu bánh chocolate cake rất được ưa chuộng."
+      },
+      {
+        "type": "completion",
+        "question": "The soup will be ready in about ___ minutes.",
+        "correctAnswer": "ten",
+        "explanationVi": "Dòng 7: súp sẽ xong sau khoảng ten minutes."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-017",
+    "section": "listening",
+    "cefrLevel": "B1",
+    "title": "Registering for an English Course",
+    "titleVi": "Đăng ký khóa học tiếng Anh",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Receptionist",
+        "textEn": "Hello, Bright Language School. How can I help?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Maria",
+        "textEn": "Hi, I'd like to register for an English course.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Receptionist",
+        "textEn": "What level are you? Beginner, intermediate, or advanced?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Maria",
+        "textEn": "Intermediate, I think. I studied English at school for six years.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Receptionist",
+        "textEn": "We have morning classes from nine to twelve, and evening classes from six to nine.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Maria",
+        "textEn": "Evening classes suit me better. I work during the day.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Receptionist",
+        "textEn": "The course lasts twelve weeks and costs four hundred euros.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Maria",
+        "textEn": "Does the price include the course book?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Receptionist",
+        "textEn": "Yes, it does. You'll get the book on your first day.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Maria",
+        "textEn": "When does the next course start?",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Receptionist",
+        "textEn": "On Monday the fifth of October. There are still three places left.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Maria",
+        "textEn": "Wonderful! Please sign me up.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-017/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What level is Maria?",
+        "options": [
+          "Beginner",
+          "Intermediate",
+          "Advanced",
+          "Unknown"
+        ],
+        "correctAnswer": "Intermediate",
+        "explanationVi": "Dòng 4: Maria nói trình độ intermediate."
+      },
+      {
+        "type": "completion",
+        "question": "Maria prefers ___ classes.",
+        "correctAnswer": "Evening",
+        "explanationVi": "Dòng 6: lớp Evening phù hợp với cô ấy hơn vì ban ngày đi làm."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How long is the course?",
+        "options": [
+          "6 weeks",
+          "10 weeks",
+          "12 weeks",
+          "15 weeks"
+        ],
+        "correctAnswer": "12 weeks",
+        "explanationVi": "Dòng 7: khóa học kéo dài twelve weeks."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "The course book costs extra.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 9: giá đã bao gồm sách, không tốn thêm."
+      },
+      {
+        "type": "completion",
+        "question": "There are still ___ places left on the course.",
+        "correctAnswer": "three",
+        "explanationVi": "Dòng 11: vẫn còn three chỗ trống."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-018",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Lecture: The Water Cycle",
+    "titleVi": "Bài giảng: Chu trình nước",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Professor",
+        "textEn": "Today we'll look at the water cycle, one of the most important processes on Earth.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Professor",
+        "textEn": "It begins with evaporation. The sun heats water in oceans, lakes, and rivers, turning it into vapour.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Professor",
+        "textEn": "This warm, moist air rises into the atmosphere and slowly cools down.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Professor",
+        "textEn": "As it cools, condensation occurs. The vapour turns into tiny water droplets, forming clouds.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Professor",
+        "textEn": "When these droplets become too heavy, precipitation follows. Rain or snow falls back to the ground.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Professor",
+        "textEn": "Some of this water flows into rivers and returns to the sea. Some soaks into the soil.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Professor",
+        "textEn": "Water underground is called groundwater. It can stay there for thousands of years.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Professor",
+        "textEn": "Plants also play a role. Through transpiration, they release water vapour from their leaves.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Professor",
+        "textEn": "Interestingly, about ninety-seven percent of Earth's water is salt water in the oceans.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Professor",
+        "textEn": "Only three percent is fresh water, and most of that is frozen in glaciers.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Professor",
+        "textEn": "So the water we drink today may once have fallen as rain on the dinosaurs.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Professor",
+        "textEn": "Next week, we'll examine how climate change is affecting this cycle.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-018/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What starts the water cycle?",
+        "options": [
+          "Rain",
+          "Evaporation",
+          "Clouds",
+          "Rivers"
+        ],
+        "correctAnswer": "Evaporation",
+        "explanationVi": "Dòng 2: chu trình bắt đầu bằng evaporation (bốc hơi)."
+      },
+      {
+        "type": "completion",
+        "question": "Water vapour turns into tiny water ___.",
+        "correctAnswer": "droplets",
+        "explanationVi": "Dòng 4: hơi nước ngưng tụ thành các giọt nước droplets tạo mây."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Most of Earth's water is fresh water.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 9: khoảng 97% là nước mặn, chỉ 3% là nước ngọt."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What will the class study next week?",
+        "options": [
+          "Oceans",
+          "Glaciers",
+          "Climate change and the water cycle",
+          "Dinosaurs"
+        ],
+        "correctAnswer": "Climate change and the water cycle",
+        "explanationVi": "Dòng 12: tuần sau học về biến đổi khí hậu ảnh hưởng chu trình nước."
+      },
+      {
+        "type": "completion",
+        "question": "About ___ percent of Earth's water is salt water.",
+        "correctAnswer": "ninety-seven",
+        "explanationVi": "Dòng 9: khoảng ninety-seven percent là nước mặn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-019",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Lecture: The Industrial Revolution",
+    "titleVi": "Bài giảng: Cách mạng công nghiệp",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Lecturer",
+        "textEn": "The Industrial Revolution began in Britain in the late eighteenth century.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Lecturer",
+        "textEn": "Before this period, most goods were made by hand in small workshops.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Lecturer",
+        "textEn": "The invention of the steam engine changed everything. Factories could now run day and night.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Lecturer",
+        "textEn": "James Watt improved the steam engine in seventeen seventy-six, making it far more efficient.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Lecturer",
+        "textEn": "Textile mills were among the first factories. They produced cloth much faster than hand weavers.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Lecturer",
+        "textEn": "As a result, thousands of people moved from the countryside to the cities to find work.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Lecturer",
+        "textEn": "This rapid growth created serious problems: overcrowded housing and dangerous working conditions.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Lecturer",
+        "textEn": "Children as young as six worked twelve-hour days in the mills.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Lecturer",
+        "textEn": "However, the revolution also brought progress. Railways connected distant towns for the first time.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Lecturer",
+        "textEn": "By eighteen fifty, Britain produced more coal and iron than the rest of the world combined.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Lecturer",
+        "textEn": "The changes spread to Europe and America in the nineteenth century.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Lecturer",
+        "textEn": "In short, this period transformed human society more than any event before it.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-019/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Where did the Industrial Revolution begin?",
+        "options": [
+          "France",
+          "America",
+          "Britain",
+          "Germany"
+        ],
+        "correctAnswer": "Britain",
+        "explanationVi": "Dòng 1: cách mạng công nghiệp bắt đầu ở Britain."
+      },
+      {
+        "type": "completion",
+        "question": "James Watt improved the steam engine in ___.",
+        "correctAnswer": "seventeen seventy-six",
+        "explanationVi": "Dòng 4: James Watt cải tiến động cơ hơi nước năm seventeen seventy-six."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Children worked short days in the mills.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 8: trẻ em làm việc twelve-hour days — ngày dài, không ngắn."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What connected distant towns?",
+        "options": [
+          "Canals",
+          "Railways",
+          "Roads",
+          "Telegraph"
+        ],
+        "correctAnswer": "Railways",
+        "explanationVi": "Dòng 9: đường sắt Railways nối các thị trấn xa xôi."
+      },
+      {
+        "type": "completion",
+        "question": "By eighteen fifty, Britain produced more ___ and iron than the rest of the world.",
+        "correctAnswer": "coal",
+        "explanationVi": "Dòng 10: Anh sản xuất nhiều coal và sắt hơn phần còn lại của thế giới."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-020",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Talk: Recycling and Waste Management",
+    "titleVi": "Thuyết trình: Tái chế và quản lý rác thải",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Officer",
+        "textEn": "Thank you all for coming to today's talk on recycling.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Officer",
+        "textEn": "Every year, the average person throws away about five hundred kilograms of rubbish.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Officer",
+        "textEn": "Nearly half of this could be recycled, but most of it ends up in landfill.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Officer",
+        "textEn": "Landfill sites are filling up fast, and they produce harmful gases.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Officer",
+        "textEn": "The good news is that recycling one aluminium can saves enough energy to run a TV for three hours.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Officer",
+        "textEn": "Glass is another success story. It can be recycled again and again without losing quality.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Officer",
+        "textEn": "However, not everything can go in the recycling bin. Plastic bags often cause problems at recycling plants.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Officer",
+        "textEn": "Food waste is a separate issue. In this city, we collect it every Tuesday in the green bins.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Officer",
+        "textEn": "Composting food waste creates rich soil for parks and gardens.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Officer",
+        "textEn": "Remember the three Rs: reduce, reuse, recycle. Reducing waste is the most important step.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Officer",
+        "textEn": "If everyone recycled just ten percent more, we would save millions of tonnes of waste each year.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Officer",
+        "textEn": "Thank you. I'll now take your questions.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-020/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "completion",
+        "question": "The average person throws away about ___ kilograms of rubbish a year.",
+        "correctAnswer": "five hundred",
+        "explanationVi": "Dòng 2: mỗi người thải khoảng five hundred kilograms rác mỗi năm."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does recycling one aluminium can save?",
+        "options": [
+          "Water",
+          "Enough energy to run a TV for three hours",
+          "Money",
+          "Trees"
+        ],
+        "correctAnswer": "Enough energy to run a TV for three hours",
+        "explanationVi": "Dòng 5: tái chế 1 lon nhôm tiết kiệm đủ điện chạy TV 3 giờ."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Glass loses quality when recycled.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 6: thủy tinh tái chế nhiều lần mà không mất chất lượng."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "When is food waste collected?",
+        "options": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "correctAnswer": "Tuesday",
+        "explanationVi": "Dòng 8: rác thực phẩm được thu mỗi Tuesday."
+      },
+      {
+        "type": "completion",
+        "question": "The three Rs are reduce, reuse, and ___.",
+        "correctAnswer": "recycle",
+        "explanationVi": "Dòng 10: ba chữ R là reduce, reuse, recycle."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-021",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Talk: Sports Centre Orientation",
+    "titleVi": "Hướng dẫn trung tâm thể thao",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Manager",
+        "textEn": "Welcome to Riverside Sports Centre! Let me tell you about our facilities.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Manager",
+        "textEn": "The swimming pool is on the ground floor. It's open from six in the morning until ten at night.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Manager",
+        "textEn": "The gym is on the first floor, with over fifty exercise machines.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Manager",
+        "textEn": "We also have three tennis courts behind the main building.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Manager",
+        "textEn": "Tennis courts must be booked in advance. You can book online or at reception.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Manager",
+        "textEn": "The changing rooms are next to the pool. Please bring your own towel.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Manager",
+        "textEn": "Lockers are free, but you need to bring your own padlock.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Manager",
+        "textEn": "Group classes include yoga, swimming lessons, and aerobics. The full timetable is on our website.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Manager",
+        "textEn": "Members get a ten percent discount on all classes.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Manager",
+        "textEn": "The centre is closed on public holidays, including Christmas Day.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Manager",
+        "textEn": "If you have any medical conditions, please tell our staff before exercising.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Manager",
+        "textEn": "Enjoy your workout, and don't hesitate to ask for help!",
+        "audioUrl": "/audio/ielts-listening/ielts-l-021/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Where is the swimming pool?",
+        "options": [
+          "First floor",
+          "Ground floor",
+          "Second floor",
+          "Basement"
+        ],
+        "correctAnswer": "Ground floor",
+        "explanationVi": "Dòng 2: hồ bơi ở tầng trệt (ground floor)."
+      },
+      {
+        "type": "completion",
+        "question": "The gym has over ___ exercise machines.",
+        "correctAnswer": "fifty",
+        "explanationVi": "Dòng 3: phòng gym có hơn fifty máy tập."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Towels are provided free of charge.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 6: khách phải tự mang khăn (bring your own towel)."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What discount do members get on classes?",
+        "options": [
+          "5%",
+          "10%",
+          "15%",
+          "20%"
+        ],
+        "correctAnswer": "10%",
+        "explanationVi": "Dòng 9: thành viên được giảm ten percent."
+      },
+      {
+        "type": "completion",
+        "question": "Tennis courts must be booked in ___.",
+        "correctAnswer": "advance",
+        "explanationVi": "Dòng 5: sân tennis phải đặt trước (in advance)."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-022",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Lecture: The Human Brain",
+    "titleVi": "Bài giảng: Bộ não con người",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Professor",
+        "textEn": "The human brain weighs about one point four kilograms, yet it controls everything we do.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Professor",
+        "textEn": "It contains roughly eighty-six billion nerve cells, called neurons.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Professor",
+        "textEn": "These neurons communicate through tiny electrical signals.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Professor",
+        "textEn": "The largest part of the brain is the cerebrum, which handles thinking and memory.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Professor",
+        "textEn": "The cerebellum, at the back, controls balance and movement.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Professor",
+        "textEn": "Interestingly, the brain itself feels no pain. It has no pain receptors.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Professor",
+        "textEn": "Your brain uses about twenty percent of the body's total energy.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Professor",
+        "textEn": "Sleep is essential for the brain. During sleep, it organises memories from the day.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Professor",
+        "textEn": "Contrary to popular belief, we use far more than ten percent of our brains.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Professor",
+        "textEn": "Brain scans show that almost all areas are active, even during simple tasks.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Professor",
+        "textEn": "Finally, the brain never stops changing. Learning creates new connections throughout life.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Professor",
+        "textEn": "That's why it's never too late to learn something new.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-022/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "completion",
+        "question": "The human brain weighs about ___ kilograms.",
+        "correctAnswer": "one point four",
+        "explanationVi": "Dòng 1: não người nặng khoảng one point four kilograms."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the cerebellum control?",
+        "options": [
+          "Memory",
+          "Balance and movement",
+          "Vision",
+          "Hearing"
+        ],
+        "correctAnswer": "Balance and movement",
+        "explanationVi": "Dòng 5: tiểu não điều khiển thăng bằng và vận động."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "We use only ten percent of our brains.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 9: trái với niềm tin phổ biến, ta dùng nhiều hơn ten percent rất nhiều."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What happens during sleep?",
+        "options": [
+          "The brain rests completely",
+          "It organises memories",
+          "Neurons stop working",
+          "Energy use doubles"
+        ],
+        "correctAnswer": "It organises memories",
+        "explanationVi": "Dòng 8: khi ngủ, não sắp xếp ký ức trong ngày."
+      },
+      {
+        "type": "completion",
+        "question": "The brain uses about ___ percent of the body's total energy.",
+        "correctAnswer": "twenty",
+        "explanationVi": "Dòng 7: não dùng khoảng twenty percent năng lượng cơ thể."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-023",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Talk: Volunteering Abroad",
+    "titleVi": "Thuyết trình: Tình nguyện ở nước ngoài",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Coordinator",
+        "textEn": "Good evening, everyone. Tonight I'll explain our volunteering programme.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Coordinator",
+        "textEn": "We send volunteers to twelve countries across Asia, Africa, and South America.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Coordinator",
+        "textEn": "The most popular project is teaching English in rural schools in Vietnam.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Coordinator",
+        "textEn": "Volunteers stay with local host families, which is a wonderful cultural experience.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Coordinator",
+        "textEn": "The minimum stay is four weeks, but most people stay for two or three months.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Coordinator",
+        "textEn": "You don't need teaching experience. We provide full training before you leave.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Coordinator",
+        "textEn": "The programme fee is nine hundred dollars, which covers accommodation and meals.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Coordinator",
+        "textEn": "Flights are not included, so you'll need to book those yourself.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Coordinator",
+        "textEn": "All volunteers must be at least eighteen years old.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Coordinator",
+        "textEn": "We also require a basic health check and travel insurance.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Coordinator",
+        "textEn": "Applications for next summer close on the thirty-first of January.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Coordinator",
+        "textEn": "If you're interested, please fill in the form at the back of the room.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-023/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "How many countries does the programme cover?",
+        "options": [
+          "10",
+          "12",
+          "15",
+          "20"
+        ],
+        "correctAnswer": "12",
+        "explanationVi": "Dòng 2: chương trình gửi tình nguyện viên tới twelve countries."
+      },
+      {
+        "type": "completion",
+        "question": "The most popular project is teaching English in ___.",
+        "correctAnswer": "Vietnam",
+        "explanationVi": "Dòng 3: dự án phổ biến nhất là dạy tiếng Anh ở trường nông thôn Vietnam."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Flights are included in the programme fee.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 8: vé máy bay không bao gồm, phải tự đặt."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What is the minimum age for volunteers?",
+        "options": [
+          "16",
+          "18",
+          "21",
+          "25"
+        ],
+        "correctAnswer": "18",
+        "explanationVi": "Dòng 9: tình nguyện viên phải ít nhất eighteen tuổi."
+      },
+      {
+        "type": "completion",
+        "question": "Applications close on the ___ of January.",
+        "correctAnswer": "thirty-first",
+        "explanationVi": "Dòng 11: hạn nộp đơn là ngày thirty-first of January."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "ielts-l-024",
+    "section": "listening",
+    "cefrLevel": "B2",
+    "title": "Lecture: Renewable Energy",
+    "titleVi": "Bài giảng: Năng lượng tái tạo",
+    "script": [
+      {
+        "id": "l1",
+        "speaker": "Lecturer",
+        "textEn": "Today we'll discuss renewable energy sources and their growing importance.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "speaker": "Lecturer",
+        "textEn": "Solar power is the fastest-growing energy source in the world.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "speaker": "Lecturer",
+        "textEn": "The cost of solar panels has fallen by eighty percent in the last ten years.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "speaker": "Lecturer",
+        "textEn": "Wind energy is another major player. A single modern turbine can power fifteen hundred homes.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "speaker": "Lecturer",
+        "textEn": "However, both solar and wind depend on the weather, which makes them unreliable at times.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "speaker": "Lecturer",
+        "textEn": "This is why energy storage is so important. Batteries store extra power for calm or cloudy days.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "speaker": "Lecturer",
+        "textEn": "Hydropower, from dams and rivers, provides steady electricity in many countries.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "speaker": "Lecturer",
+        "textEn": "Norway, for example, gets almost all its electricity from hydropower.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "speaker": "Lecturer",
+        "textEn": "Geothermal energy uses heat from deep inside the Earth. Iceland is a world leader in this field.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "speaker": "Lecturer",
+        "textEn": "The main challenge for all renewables is cost, though prices continue to fall.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "speaker": "Lecturer",
+        "textEn": "Experts predict that renewables will provide half the world's electricity by twenty thirty-five.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "speaker": "Lecturer",
+        "textEn": "Next lecture, we'll look at nuclear energy and its controversies.",
+        "audioUrl": "/audio/ielts-listening/ielts-l-024/l12.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Which is the fastest-growing energy source?",
+        "options": [
+          "Wind",
+          "Solar",
+          "Hydropower",
+          "Geothermal"
+        ],
+        "correctAnswer": "Solar",
+        "explanationVi": "Dòng 2: điện mặt trời là nguồn năng lượng phát triển nhanh nhất."
+      },
+      {
+        "type": "completion",
+        "question": "The cost of solar panels has fallen by ___ percent in ten years.",
+        "correctAnswer": "eighty",
+        "explanationVi": "Dòng 3: giá tấm pin mặt trời giảm eighty percent trong 10 năm."
+      },
+      {
+        "type": "true_false_not_given",
+        "question": "Solar and wind work perfectly in all weather.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 5: cả hai phụ thuộc thời tiết nên đôi khi không ổn định."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What will the next lecture cover?",
+        "options": [
+          "Solar panels",
+          "Nuclear energy",
+          "Batteries",
+          "Wind turbines"
+        ],
+        "correctAnswer": "Nuclear energy",
+        "explanationVi": "Dòng 12: buổi sau học về năng lượng hạt nhân."
+      },
+      {
+        "type": "completion",
+        "question": "A single modern turbine can power ___ homes.",
+        "correctAnswer": "fifteen hundred",
+        "explanationVi": "Dòng 4: một tuabin hiện đại cấp điện cho fifteen hundred hộ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

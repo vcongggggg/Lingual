@@ -1,0 +1,1367 @@
+[
+  {
+    "id": "mnl-001",
+    "title": "A Rainy Day in Saigon",
+    "titleVi": "Một ngày mưa ở Sài Gòn",
+    "cefrLevel": "A2",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "My name is Mai, and I want to tell you about a rainy day in my city.",
+        "audioUrl": "/audio/monologues/mnl-001/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "In Saigon, it rains almost every afternoon in the rainy season.",
+        "audioUrl": "/audio/monologues/mnl-001/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "One day last month, I was walking home from school.",
+        "audioUrl": "/audio/monologues/mnl-001/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "The sky was dark, and the wind was very strong.",
+        "audioUrl": "/audio/monologues/mnl-001/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "Suddenly, it started to rain very hard.",
+        "audioUrl": "/audio/monologues/mnl-001/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "I did not have an umbrella, so I ran to a small coffee shop.",
+        "audioUrl": "/audio/monologues/mnl-001/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "The shop was full of people, all waiting for the rain to stop.",
+        "audioUrl": "/audio/monologues/mnl-001/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "I bought a cup of hot milk tea and sat near the window.",
+        "audioUrl": "/audio/monologues/mnl-001/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "Outside, motorbikes were driving slowly through the water.",
+        "audioUrl": "/audio/monologues/mnl-001/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "Some streets were full of water, almost like small rivers.",
+        "audioUrl": "/audio/monologues/mnl-001/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "A little boy was playing in the rain with his friends.",
+        "audioUrl": "/audio/monologues/mnl-001/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "They were laughing and running, and they did not care about the rain.",
+        "audioUrl": "/audio/monologues/mnl-001/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "After one hour, the rain stopped, and the sun came out.",
+        "audioUrl": "/audio/monologues/mnl-001/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "The streets were wet, but everything looked fresh and clean.",
+        "audioUrl": "/audio/monologues/mnl-001/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "I walked home and felt very happy.",
+        "audioUrl": "/audio/monologues/mnl-001/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "Rainy days in Saigon are noisy and busy, but I love them.",
+        "audioUrl": "/audio/monologues/mnl-001/l16.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "When does it usually rain in Saigon?",
+        "options": [
+          "In the morning",
+          "Every afternoon in the rainy season",
+          "Only at night",
+          "In winter"
+        ],
+        "correctAnswer": "Every afternoon in the rainy season",
+        "explanationVi": "Đáp án nằm ở dòng 2: 'it rains almost every afternoon in the rainy season'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Why did Mai go into the coffee shop?",
+        "options": [
+          "She was hungry",
+          "She wanted to meet friends",
+          "She had no umbrella and it rained hard",
+          "She worked there"
+        ],
+        "correctAnswer": "She had no umbrella and it rained hard",
+        "explanationVi": "Dòng 5-6: 'I did not have an umbrella, so I ran to a small coffee shop.'"
+      },
+      {
+        "type": "true_false",
+        "question": "The little boy was sad because of the rain.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 11-12 nói cậu bé 'laughing and running' — rất vui, không buồn."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How did Mai feel at the end?",
+        "options": [
+          "Tired",
+          "Happy",
+          "Angry",
+          "Bored"
+        ],
+        "correctAnswer": "Happy",
+        "explanationVi": "Dòng 15: 'I walked home and felt very happy.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-002",
+    "title": "My Grandmother's Garden",
+    "titleVi": "Khu vườn của bà tôi",
+    "cefrLevel": "A2",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "My grandmother lives in a small village in the Mekong Delta.",
+        "audioUrl": "/audio/monologues/mnl-002/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "She has a beautiful garden behind her house.",
+        "audioUrl": "/audio/monologues/mnl-002/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "Every morning, she wakes up at five o'clock to work in the garden.",
+        "audioUrl": "/audio/monologues/mnl-002/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "She grows many kinds of vegetables: morning glory, herbs, and beans.",
+        "audioUrl": "/audio/monologues/mnl-002/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "She also has fruit trees: mango, papaya, and banana trees.",
+        "audioUrl": "/audio/monologues/mnl-002/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "I visit her every summer, and I love helping in the garden.",
+        "audioUrl": "/audio/monologues/mnl-002/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "She teaches me how to plant seeds and water the plants.",
+        "audioUrl": "/audio/monologues/mnl-002/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "She says, 'Plants are like children. They need love and care.'",
+        "audioUrl": "/audio/monologues/mnl-002/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "In the afternoon, we pick fresh vegetables for dinner.",
+        "audioUrl": "/audio/monologues/mnl-002/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "My grandmother cooks the best soup with vegetables from her garden.",
+        "audioUrl": "/audio/monologues/mnl-002/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "After dinner, we sit outside and drink tea.",
+        "audioUrl": "/audio/monologues/mnl-002/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "She tells me stories about her life when she was young.",
+        "audioUrl": "/audio/monologues/mnl-002/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "Her garden is not big, but it gives food to our whole family.",
+        "audioUrl": "/audio/monologues/mnl-002/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "She never buys vegetables at the market.",
+        "audioUrl": "/audio/monologues/mnl-002/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "I want to have a garden like hers when I grow up.",
+        "audioUrl": "/audio/monologues/mnl-002/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "Her garden teaches me to be patient and to love nature.",
+        "audioUrl": "/audio/monologues/mnl-002/l16.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Where does the grandmother live?",
+        "options": [
+          "In Hanoi",
+          "In a small village in the Mekong Delta",
+          "In Saigon",
+          "In the mountains"
+        ],
+        "correctAnswer": "In a small village in the Mekong Delta",
+        "explanationVi": "Dòng 1 nói rõ bà sống ở 'a small village in the Mekong Delta'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What time does she start working in the garden?",
+        "options": [
+          "At 5 o'clock",
+          "At 6 o'clock",
+          "At 7 o'clock",
+          "At 8 o'clock"
+        ],
+        "correctAnswer": "At 5 o'clock",
+        "explanationVi": "Dòng 3: 'she wakes up at five o'clock to work in the garden.'"
+      },
+      {
+        "type": "true_false",
+        "question": "The grandmother buys vegetables at the market.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 14: 'She never buys vegetables at the market.'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What does the garden teach the speaker?",
+        "options": [
+          "To be rich",
+          "To be patient and love nature",
+          "To cook fast",
+          "To sell vegetables"
+        ],
+        "correctAnswer": "To be patient and love nature",
+        "explanationVi": "Dòng 16: 'Her garden teaches me to be patient and to love nature.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-003",
+    "title": "The Night Market",
+    "titleVi": "Chợ đêm",
+    "cefrLevel": "A2",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "Last weekend, my friend Lan took me to a night market in Da Lat.",
+        "audioUrl": "/audio/monologues/mnl-003/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "The market opens at five in the evening and closes at midnight.",
+        "audioUrl": "/audio/monologues/mnl-003/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "When we arrived, the market was full of lights and people.",
+        "audioUrl": "/audio/monologues/mnl-003/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "The air smelled of grilled corn, baked sweet potatoes, and hot soy milk.",
+        "audioUrl": "/audio/monologues/mnl-003/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "First, we walked around and looked at the clothes shops.",
+        "audioUrl": "/audio/monologues/mnl-003/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "Lan bought a warm jacket because Da Lat is cold at night.",
+        "audioUrl": "/audio/monologues/mnl-003/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "Then we stopped at a food stall to eat grilled rice paper.",
+        "audioUrl": "/audio/monologues/mnl-003/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "It was hot and crispy, and it cost only fifteen thousand dong.",
+        "audioUrl": "/audio/monologues/mnl-003/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "After eating, we drank hot soy milk to warm our hands.",
+        "audioUrl": "/audio/monologues/mnl-003/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "We met an old woman selling flowers by the road.",
+        "audioUrl": "/audio/monologues/mnl-003/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "She gave us two small roses and wished us a happy evening.",
+        "audioUrl": "/audio/monologues/mnl-003/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "We took many photos of the colorful lights.",
+        "audioUrl": "/audio/monologues/mnl-003/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "At ten o'clock, we were tired, so we walked back to our hotel.",
+        "audioUrl": "/audio/monologues/mnl-003/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "The night market was busy, noisy, and full of delicious food.",
+        "audioUrl": "/audio/monologues/mnl-003/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "I will never forget that wonderful evening in Da Lat.",
+        "audioUrl": "/audio/monologues/mnl-003/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "If you visit Da Lat, you must go to the night market.",
+        "audioUrl": "/audio/monologues/mnl-003/l16.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "When does the night market open?",
+        "options": [
+          "At 5 in the evening",
+          "At 6 in the evening",
+          "At noon",
+          "At midnight"
+        ],
+        "correctAnswer": "At 5 in the evening",
+        "explanationVi": "Dòng 2: 'The market opens at five in the evening and closes at midnight.'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What did Lan buy?",
+        "options": [
+          "A warm jacket",
+          "Grilled corn",
+          "Flowers",
+          "A camera"
+        ],
+        "correctAnswer": "A warm jacket",
+        "explanationVi": "Dòng 6: 'Lan bought a warm jacket because Da Lat is cold at night.'"
+      },
+      {
+        "type": "true_false",
+        "question": "The grilled rice paper was expensive.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 8: 'it cost only fifteen thousand dong' — rất rẻ, không đắt."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Who gave them roses?",
+        "options": [
+          "A young girl",
+          "An old woman selling flowers",
+          "A shop owner",
+          "Lan"
+        ],
+        "correctAnswer": "An old woman selling flowers",
+        "explanationVi": "Dòng 10-11: 'We met an old woman selling flowers by the road.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-004",
+    "title": "The Man Who Planted a Forest",
+    "titleVi": "Người đàn ông trồng rừng",
+    "cefrLevel": "B1",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "Today I want to tell you an amazing true story about a man in India.",
+        "audioUrl": "/audio/monologues/mnl-004/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "His name is Jadav Payeng, and people call him the Forest Man of India.",
+        "audioUrl": "/audio/monologues/mnl-004/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "When he was sixteen years old, he saw something that changed his life.",
+        "audioUrl": "/audio/monologues/mnl-004/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "After a big flood, he found many dead snakes on a river island.",
+        "audioUrl": "/audio/monologues/mnl-004/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "The snakes had died because there were no trees to give them shade.",
+        "audioUrl": "/audio/monologues/mnl-004/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "Jadav decided to plant trees on that empty island.",
+        "audioUrl": "/audio/monologues/mnl-004/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "Every day for more than forty years, he planted trees and took care of them.",
+        "audioUrl": "/audio/monologues/mnl-004/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "At first, people laughed at him and said he was crazy.",
+        "audioUrl": "/audio/monologues/mnl-004/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "But he did not stop. He kept planting, one tree at a time.",
+        "audioUrl": "/audio/monologues/mnl-004/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "Slowly, the empty island turned into a thick green forest.",
+        "audioUrl": "/audio/monologues/mnl-004/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "Today, that forest is bigger than 500 football fields.",
+        "audioUrl": "/audio/monologues/mnl-004/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "Tigers, elephants, deer, and hundreds of birds now live there.",
+        "audioUrl": "/audio/monologues/mnl-004/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "Jadav still lives in a small hut in his forest.",
+        "audioUrl": "/audio/monologues/mnl-004/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "He says he will keep planting trees until his last day.",
+        "audioUrl": "/audio/monologues/mnl-004/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "His story teaches us that one person can change the world.",
+        "audioUrl": "/audio/monologues/mnl-004/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "You do not need to be rich or famous to make a difference.",
+        "audioUrl": "/audio/monologues/mnl-004/l16.mp3"
+      },
+      {
+        "id": "l17",
+        "textEn": "You only need patience, love for nature, and the courage to start.",
+        "audioUrl": "/audio/monologues/mnl-004/l17.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What changed Jadav's life when he was sixteen?",
+        "options": [
+          "He won a prize",
+          "He saw dead snakes on a river island after a flood",
+          "He moved to a new city",
+          "He met a famous scientist"
+        ],
+        "correctAnswer": "He saw dead snakes on a river island after a flood",
+        "explanationVi": "Dòng 3-4: sau trận lũ, anh thấy nhiều rắn chết trên đảo sông."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How long has he been planting trees?",
+        "options": [
+          "Ten years",
+          "Twenty years",
+          "More than forty years",
+          "Five years"
+        ],
+        "correctAnswer": "More than forty years",
+        "explanationVi": "Dòng 7: 'Every day for more than forty years, he planted trees.'"
+      },
+      {
+        "type": "true_false",
+        "question": "People supported Jadav from the very beginning.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 8: 'At first, people laughed at him and said he was crazy.'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What is the main message of the story?",
+        "options": [
+          "Only rich people can help nature",
+          "One person with patience can change the world",
+          "Forests grow by themselves",
+          "India has the biggest forests"
+        ],
+        "correctAnswer": "One person with patience can change the world",
+        "explanationVi": "Dòng 15-17 nêu rõ thông điệp: một người cũng có thể thay đổi thế giới."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-005",
+    "title": "Why We Sleep",
+    "titleVi": "Vì sao chúng ta ngủ",
+    "cefrLevel": "B1",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "We spend about one third of our lives sleeping, but why do we need sleep?",
+        "audioUrl": "/audio/monologues/mnl-005/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "Scientists have studied sleep for many years, and here is what they found.",
+        "audioUrl": "/audio/monologues/mnl-005/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "First, sleep helps our brain save important memories.",
+        "audioUrl": "/audio/monologues/mnl-005/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "During the day, our brain collects a lot of information.",
+        "audioUrl": "/audio/monologues/mnl-005/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "At night, while we sleep, the brain organizes this information.",
+        "audioUrl": "/audio/monologues/mnl-005/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "That is why students remember lessons better after a good night's sleep.",
+        "audioUrl": "/audio/monologues/mnl-005/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "Second, sleep helps our body repair itself.",
+        "audioUrl": "/audio/monologues/mnl-005/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "When we sleep, our muscles grow and our immune system becomes stronger.",
+        "audioUrl": "/audio/monologues/mnl-005/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "People who do not sleep enough get sick more easily.",
+        "audioUrl": "/audio/monologues/mnl-005/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "Third, sleep controls our feelings.",
+        "audioUrl": "/audio/monologues/mnl-005/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "If you sleep badly, you may feel angry or sad for no clear reason.",
+        "audioUrl": "/audio/monologues/mnl-005/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "Most adults need seven to nine hours of sleep every night.",
+        "audioUrl": "/audio/monologues/mnl-005/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "But many people sleep much less because of phones and work stress.",
+        "audioUrl": "/audio/monologues/mnl-005/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "Looking at a phone screen before bed makes it harder to fall asleep.",
+        "audioUrl": "/audio/monologues/mnl-005/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "Experts suggest turning off screens one hour before bedtime.",
+        "audioUrl": "/audio/monologues/mnl-005/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "Reading a book or listening to calm music can help you sleep better.",
+        "audioUrl": "/audio/monologues/mnl-005/l16.mp3"
+      },
+      {
+        "id": "l17",
+        "textEn": "So tonight, put your phone away early and give your brain the rest it needs.",
+        "audioUrl": "/audio/monologues/mnl-005/l17.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "How much of our lives do we spend sleeping?",
+        "options": [
+          "One quarter",
+          "One third",
+          "One half",
+          "Two thirds"
+        ],
+        "correctAnswer": "One third",
+        "explanationVi": "Dòng 1: 'We spend about one third of our lives sleeping.'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Why do students remember lessons better after sleeping well?",
+        "options": [
+          "Because sleep helps the brain organize information",
+          "Because dreams teach lessons",
+          "Because teachers repeat lessons",
+          "Because books are easier at night"
+        ],
+        "correctAnswer": "Because sleep helps the brain organize information",
+        "explanationVi": "Dòng 3-6 giải thích não sắp xếp thông tin khi ngủ."
+      },
+      {
+        "type": "true_false",
+        "question": "Looking at a phone before bed helps you fall asleep faster.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 14: nhìn màn hình điện thoại trước khi ngủ khiến khó ngủ hơn."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What do experts suggest before bedtime?",
+        "options": [
+          "Drinking coffee",
+          "Turning off screens one hour before bed",
+          "Exercising hard",
+          "Watching exciting movies"
+        ],
+        "correctAnswer": "Turning off screens one hour before bed",
+        "explanationVi": "Dòng 15: 'turning off screens one hour before bedtime'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-006",
+    "title": "The Floating Markets of the Mekong",
+    "titleVi": "Chợ nổi miền Tây",
+    "cefrLevel": "B1",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "In the Mekong Delta of Vietnam, there is a special kind of market.",
+        "audioUrl": "/audio/monologues/mnl-006/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "It is called a floating market, because all the shops are on boats.",
+        "audioUrl": "/audio/monologues/mnl-006/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "Every morning before sunrise, hundreds of boats gather on the river.",
+        "audioUrl": "/audio/monologues/mnl-006/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "Each boat sells something different: pineapples, watermelons, vegetables, or fish.",
+        "audioUrl": "/audio/monologues/mnl-006/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "To show what they sell, sellers hang a sample from a tall bamboo pole.",
+        "audioUrl": "/audio/monologues/mnl-006/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "For example, if you see pineapples hanging high, that boat sells pineapples.",
+        "audioUrl": "/audio/monologues/mnl-006/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "Buyers come in small boats and move from seller to seller.",
+        "audioUrl": "/audio/monologues/mnl-006/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "Some boats are like floating restaurants, selling hot noodle soup and coffee.",
+        "audioUrl": "/audio/monologues/mnl-006/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "You can eat breakfast right on the river while watching the sunrise.",
+        "audioUrl": "/audio/monologues/mnl-006/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "The most famous floating markets are Cai Rang and Phong Dien in Can Tho.",
+        "audioUrl": "/audio/monologues/mnl-006/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "In the past, these markets were the main way people traded goods.",
+        "audioUrl": "/audio/monologues/mnl-006/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "Today, roads and supermarkets are more common, so the markets are smaller.",
+        "audioUrl": "/audio/monologues/mnl-006/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "But they are still an important part of local culture and tourism.",
+        "audioUrl": "/audio/monologues/mnl-006/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "Many visitors come to see this unique way of life.",
+        "audioUrl": "/audio/monologues/mnl-006/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "If you wake up early and visit, you will see Vietnam at its most lively.",
+        "audioUrl": "/audio/monologues/mnl-006/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "The floating market is not just a market; it is a living tradition.",
+        "audioUrl": "/audio/monologues/mnl-006/l16.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What is special about a floating market?",
+        "options": [
+          "All the shops are on boats",
+          "It only opens at night",
+          "It sells only fish",
+          "It is underground"
+        ],
+        "correctAnswer": "All the shops are on boats",
+        "explanationVi": "Dòng 2: 'all the shops are on boats'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How do sellers show what they sell?",
+        "options": [
+          "They shout loudly",
+          "They hang a sample from a tall bamboo pole",
+          "They give free food",
+          "They use big signs"
+        ],
+        "correctAnswer": "They hang a sample from a tall bamboo pole",
+        "explanationVi": "Dòng 5: 'sellers hang a sample from a tall bamboo pole.'"
+      },
+      {
+        "type": "true_false",
+        "question": "The floating markets are bigger today than in the past.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 12: ngày nay đường bộ và siêu thị phổ biến hơn nên chợ nhỏ đi."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Why do many visitors come to the floating markets?",
+        "options": [
+          "To buy cheap clothes",
+          "To see this unique way of life",
+          "To swim in the river",
+          "To catch fish"
+        ],
+        "correctAnswer": "To see this unique way of life",
+        "explanationVi": "Dòng 14: 'Many visitors come to see this unique way of life.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-007",
+    "title": "A Letter from the Future",
+    "titleVi": "Bức thư từ tương lai",
+    "cefrLevel": "B1",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "Imagine you receive a letter from yourself, written ten years in the future.",
+        "audioUrl": "/audio/monologues/mnl-007/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "What would it say? This is a popular writing exercise in many schools.",
+        "audioUrl": "/audio/monologues/mnl-007/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "Last year, a teacher in Hanoi asked her students to write such letters.",
+        "audioUrl": "/audio/monologues/mnl-007/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "One student, Nam, wrote something that surprised everyone.",
+        "audioUrl": "/audio/monologues/mnl-007/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "He wrote: 'Dear Nam, I hope you stopped playing games all night.'",
+        "audioUrl": "/audio/monologues/mnl-007/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "'I hope you started learning English seriously, like you promised.'",
+        "audioUrl": "/audio/monologues/mnl-007/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "'Do you remember the English contest you were afraid to join?'",
+        "audioUrl": "/audio/monologues/mnl-007/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "'In my time, you joined it, and you won second prize.'",
+        "audioUrl": "/audio/monologues/mnl-007/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "'That prize gave you the confidence to try many new things.'",
+        "audioUrl": "/audio/monologues/mnl-007/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "When the teacher read the letter, the whole class was quiet.",
+        "audioUrl": "/audio/monologues/mnl-007/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "Nam explained that writing the letter helped him see his goals clearly.",
+        "audioUrl": "/audio/monologues/mnl-007/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "After that day, he really did start studying English every morning.",
+        "audioUrl": "/audio/monologues/mnl-007/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "Six months later, he joined the English contest at his school.",
+        "audioUrl": "/audio/monologues/mnl-007/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "He did not win, but he was proud that he had tried.",
+        "audioUrl": "/audio/monologues/mnl-007/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "The teacher says the exercise works because it connects today with tomorrow.",
+        "audioUrl": "/audio/monologues/mnl-007/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "When you imagine your future self, your present choices become clearer.",
+        "audioUrl": "/audio/monologues/mnl-007/l16.mp3"
+      },
+      {
+        "id": "l17",
+        "textEn": "So why not try it? Write a letter to yourself, ten years from now.",
+        "audioUrl": "/audio/monologues/mnl-007/l17.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "What exercise did the teacher ask students to do?",
+        "options": [
+          "Write a letter from their future self",
+          "Draw a picture of the future",
+          "Interview their parents",
+          "Write a science report"
+        ],
+        "correctAnswer": "Write a letter from their future self",
+        "explanationVi": "Dòng 2-3: bài tập viết thư từ chính mình trong tương lai."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What did Nam's future self say about the English contest?",
+        "options": [
+          "He was afraid to join",
+          "He joined it and won second prize",
+          "He forgot about it",
+          "He lost badly"
+        ],
+        "correctAnswer": "He joined it and won second prize",
+        "explanationVi": "Dòng 8: 'you joined it, and you won second prize.'"
+      },
+      {
+        "type": "true_false",
+        "question": "Nam won the real English contest six months later.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 14: 'He did not win, but he was proud that he had tried.'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Why does the teacher think the exercise works?",
+        "options": [
+          "Because it is fun",
+          "Because it connects today with tomorrow",
+          "Because students like writing",
+          "Because it improves handwriting"
+        ],
+        "correctAnswer": "Because it connects today with tomorrow",
+        "explanationVi": "Dòng 15: 'it connects today with tomorrow'."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-008",
+    "title": "The Psychology of Habits",
+    "titleVi": "Tâm lý học về thói quen",
+    "cefrLevel": "B2",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "Why is it so easy to start a new habit, but so hard to keep it?",
+        "audioUrl": "/audio/monologues/mnl-008/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "Psychologists say the answer lies in how our brains save energy.",
+        "audioUrl": "/audio/monologues/mnl-008/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "The brain loves patterns because patterns require less thinking.",
+        "audioUrl": "/audio/monologues/mnl-008/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "When you repeat an action in the same situation, the brain turns it into a habit.",
+        "audioUrl": "/audio/monologues/mnl-008/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "A habit has three parts: a cue, a routine, and a reward.",
+        "audioUrl": "/audio/monologues/mnl-008/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "The cue is the trigger, like feeling stressed after work.",
+        "audioUrl": "/audio/monologues/mnl-008/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "The routine is what you do, like eating a snack or checking your phone.",
+        "audioUrl": "/audio/monologues/mnl-008/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "The reward is the good feeling you get afterwards.",
+        "audioUrl": "/audio/monologues/mnl-008/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "To build a good habit, experts suggest starting extremely small.",
+        "audioUrl": "/audio/monologues/mnl-008/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "Instead of 'read for one hour', start with 'read one page'.",
+        "audioUrl": "/audio/monologues/mnl-008/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "Small actions are easy, so your brain does not resist them.",
+        "audioUrl": "/audio/monologues/mnl-008/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "Then connect the new habit to something you already do.",
+        "audioUrl": "/audio/monologues/mnl-008/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "For example: 'After I brush my teeth, I will read one page.'",
+        "audioUrl": "/audio/monologues/mnl-008/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "Research shows it takes about two months for a habit to become automatic.",
+        "audioUrl": "/audio/monologues/mnl-008/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "Most people fail because they try to change too much at once.",
+        "audioUrl": "/audio/monologues/mnl-008/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "Remember: you do not need motivation to start; you need a system.",
+        "audioUrl": "/audio/monologues/mnl-008/l16.mp3"
+      },
+      {
+        "id": "l17",
+        "textEn": "Design your environment, start tiny, and let repetition do the rest.",
+        "audioUrl": "/audio/monologues/mnl-008/l17.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Why does the brain love patterns?",
+        "options": [
+          "Because patterns are fun",
+          "Because patterns require less thinking",
+          "Because patterns are new",
+          "Because patterns need more energy"
+        ],
+        "correctAnswer": "Because patterns require less thinking",
+        "explanationVi": "Dòng 3: 'patterns require less thinking'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What are the three parts of a habit?",
+        "options": [
+          "Start, middle, end",
+          "Cue, routine, and reward",
+          "Goal, plan, action",
+          "Think, decide, do"
+        ],
+        "correctAnswer": "Cue, routine, and reward",
+        "explanationVi": "Dòng 5: 'A habit has three parts: a cue, a routine, and a reward.'"
+      },
+      {
+        "type": "true_false",
+        "question": "Experts recommend starting with big changes to build habits faster.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 9 và 15: nên bắt đầu rất nhỏ; thất bại vì thay đổi quá nhiều cùng lúc."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "How long does research say it takes for a habit to become automatic?",
+        "options": [
+          "About two weeks",
+          "About two months",
+          "About one year",
+          "About one week"
+        ],
+        "correctAnswer": "About two months",
+        "explanationVi": "Dòng 14: 'it takes about two months for a habit to become automatic.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-009",
+    "title": "Hoi An: The Trading Port of Asia",
+    "titleVi": "Hội An: Thương cảng của châu Á",
+    "cefrLevel": "B2",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "Four hundred years ago, Hoi An was one of the busiest ports in Asia.",
+        "audioUrl": "/audio/monologues/mnl-009/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "Ships from Japan, China, India, and Europe all stopped here to trade.",
+        "audioUrl": "/audio/monologues/mnl-009/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "Japanese merchants built a beautiful covered bridge, which still stands today.",
+        "audioUrl": "/audio/monologues/mnl-009/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "Chinese traders built assembly halls with colorful dragons and detailed carvings.",
+        "audioUrl": "/audio/monologues/mnl-009/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "The town became a place where many cultures met and mixed together.",
+        "audioUrl": "/audio/monologues/mnl-009/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "Local people learned to cook with new spices from foreign ships.",
+        "audioUrl": "/audio/monologues/mnl-009/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "They also learned new ways of building houses and making clothes.",
+        "audioUrl": "/audio/monologues/mnl-009/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "But in the 1800s, the river became too shallow for large ships.",
+        "audioUrl": "/audio/monologues/mnl-009/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "Trade moved to Da Nang, and Hoi An slowly became quiet.",
+        "audioUrl": "/audio/monologues/mnl-009/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "For almost two hundred years, the town was forgotten by the world.",
+        "audioUrl": "/audio/monologues/mnl-009/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "Ironically, this forgetfulness saved its old buildings from destruction.",
+        "audioUrl": "/audio/monologues/mnl-009/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "While other cities rebuilt with concrete, Hoi An kept its wooden houses.",
+        "audioUrl": "/audio/monologues/mnl-009/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "In 1999, UNESCO recognized Hoi An as a World Heritage Site.",
+        "audioUrl": "/audio/monologues/mnl-009/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "Today, millions of visitors come to walk its lantern-lit streets.",
+        "audioUrl": "/audio/monologues/mnl-009/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "The town that lost its trade found a new life in its own history.",
+        "audioUrl": "/audio/monologues/mnl-009/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "Hoi An teaches us that sometimes, being left behind is a kind of luck.",
+        "audioUrl": "/audio/monologues/mnl-009/l16.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Which countries' ships traded in Hoi An 400 years ago?",
+        "options": [
+          "Only China and Japan",
+          "Japan, China, India, and Europe",
+          "Only European countries",
+          "Only Vietnam and Thailand"
+        ],
+        "correctAnswer": "Japan, China, India, and Europe",
+        "explanationVi": "Dòng 2: 'Ships from Japan, China, India, and Europe all stopped here.'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Why did trade leave Hoi An in the 1800s?",
+        "options": [
+          "Because of a war",
+          "Because the river became too shallow for large ships",
+          "Because of a disease",
+          "Because merchants went bankrupt"
+        ],
+        "correctAnswer": "Because the river became too shallow for large ships",
+        "explanationVi": "Dòng 8: 'the river became too shallow for large ships'."
+      },
+      {
+        "type": "true_false",
+        "question": "Being forgotten helped preserve Hoi An's old buildings.",
+        "correctAnswer": "True",
+        "explanationVi": "Dòng 11: sự lãng quên đã cứu các tòa nhà cổ khỏi bị phá hủy."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "When did UNESCO recognize Hoi An?",
+        "options": [
+          "In 1989",
+          "In 1999",
+          "In 2009",
+          "In 2019"
+        ],
+        "correctAnswer": "In 1999",
+        "explanationVi": "Dòng 13: 'In 1999, UNESCO recognized Hoi An as a World Heritage Site.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "mnl-010",
+    "title": "What AI Cannot Do",
+    "titleVi": "Những điều AI không làm được",
+    "cefrLevel": "B2",
+    "script": [
+      {
+        "id": "l1",
+        "textEn": "Artificial intelligence can now write essays, paint pictures, and even pass exams.",
+        "audioUrl": "/audio/monologues/mnl-010/l1.mp3"
+      },
+      {
+        "id": "l2",
+        "textEn": "Many people worry that AI will replace human workers in every field.",
+        "audioUrl": "/audio/monologues/mnl-010/l2.mp3"
+      },
+      {
+        "id": "l3",
+        "textEn": "But there are important things that AI still cannot do, and may never do well.",
+        "audioUrl": "/audio/monologues/mnl-010/l3.mp3"
+      },
+      {
+        "id": "l4",
+        "textEn": "First, AI does not truly understand meaning; it only predicts patterns in words.",
+        "audioUrl": "/audio/monologues/mnl-010/l4.mp3"
+      },
+      {
+        "id": "l5",
+        "textEn": "It can write a poem about sadness, but it has never felt sad.",
+        "audioUrl": "/audio/monologues/mnl-010/l5.mp3"
+      },
+      {
+        "id": "l6",
+        "textEn": "Second, AI cannot take real responsibility for its decisions.",
+        "audioUrl": "/audio/monologues/mnl-010/l6.mp3"
+      },
+      {
+        "id": "l7",
+        "textEn": "When a doctor makes a difficult choice, she carries the moral weight of it.",
+        "audioUrl": "/audio/monologues/mnl-010/l7.mp3"
+      },
+      {
+        "id": "l8",
+        "textEn": "A machine feels no guilt and learns no wisdom from its mistakes.",
+        "audioUrl": "/audio/monologues/mnl-010/l8.mp3"
+      },
+      {
+        "id": "l9",
+        "textEn": "Third, AI struggles with genuine creativity that breaks all the rules.",
+        "audioUrl": "/audio/monologues/mnl-010/l9.mp3"
+      },
+      {
+        "id": "l10",
+        "textEn": "It mixes existing ideas very well, but revolutionary ideas often come from human rebellion.",
+        "audioUrl": "/audio/monologues/mnl-010/l10.mp3"
+      },
+      {
+        "id": "l11",
+        "textEn": "Think of artists and scientists who were called crazy before they were called geniuses.",
+        "audioUrl": "/audio/monologues/mnl-010/l11.mp3"
+      },
+      {
+        "id": "l12",
+        "textEn": "Finally, AI cannot build deep trust between people.",
+        "audioUrl": "/audio/monologues/mnl-010/l12.mp3"
+      },
+      {
+        "id": "l13",
+        "textEn": "A student remembers a teacher who believed in him, not the software that graded him.",
+        "audioUrl": "/audio/monologues/mnl-010/l13.mp3"
+      },
+      {
+        "id": "l14",
+        "textEn": "This does not mean we should fear or reject AI.",
+        "audioUrl": "/audio/monologues/mnl-010/l14.mp3"
+      },
+      {
+        "id": "l15",
+        "textEn": "It means we should use AI for what it does best: handling routine work.",
+        "audioUrl": "/audio/monologues/mnl-010/l15.mp3"
+      },
+      {
+        "id": "l16",
+        "textEn": "And we should protect what makes us human: empathy, courage, and conscience.",
+        "audioUrl": "/audio/monologues/mnl-010/l16.mp3"
+      },
+      {
+        "id": "l17",
+        "textEn": "The future belongs not to humans or machines alone, but to humans with machines.",
+        "audioUrl": "/audio/monologues/mnl-010/l17.mp3"
+      }
+    ],
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "According to the speaker, why can't AI truly understand meaning?",
+        "options": [
+          "Because it is too slow",
+          "Because it only predicts patterns in words",
+          "Because it has no memory",
+          "Because it cannot read"
+        ],
+        "correctAnswer": "Because it only predicts patterns in words",
+        "explanationVi": "Dòng 4: 'it only predicts patterns in words'."
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What example shows AI cannot take real responsibility?",
+        "options": [
+          "A doctor carrying the moral weight of a difficult choice",
+          "A student using a calculator",
+          "A driver following GPS",
+          "A chef following a recipe"
+        ],
+        "correctAnswer": "A doctor carrying the moral weight of a difficult choice",
+        "explanationVi": "Dòng 7: bác sĩ gánh trách nhiệm đạo đức cho quyết định của mình."
+      },
+      {
+        "type": "true_false",
+        "question": "The speaker believes we should reject AI completely.",
+        "correctAnswer": "False",
+        "explanationVi": "Dòng 14: 'This does not mean we should fear or reject AI.'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "What is the speaker's conclusion about the future?",
+        "options": [
+          "Machines will replace all humans",
+          "Humans should stop using technology",
+          "The future belongs to humans working with machines",
+          "AI will disappear soon"
+        ],
+        "correctAnswer": "The future belongs to humans working with machines",
+        "explanationVi": "Dòng 17: 'The future belongs not to humans or machines alone, but to humans with machines.'"
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

@@ -1,0 +1,1632 @@
+[
+  {
+    "id": "news-011",
+    "cefrLevel": "A2",
+    "topic": "education",
+    "topicVi": "Giáo dục",
+    "title": "Learning English Online",
+    "titleVi": "Học tiếng Anh trực tuyến",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Many busy people want to learn English. They do not have time to go to a language center.",
+        "vi": "Nhiều người bận rộn muốn học tiếng Anh. Họ không có thời gian đến trung tâm ngoại ngữ."
+      },
+      {
+        "id": "p2",
+        "en": "Online learning is a good answer. Students can study at home, in a café, or even on the bus.",
+        "vi": "Học trực tuyến là một giải pháp tốt. Học viên có thể học ở nhà, ở quán cà phê, hay thậm chí trên xe buýt."
+      },
+      {
+        "id": "p3",
+        "en": "There are many free apps and videos. Learners can practice listening, speaking, and new words every day.",
+        "vi": "Có nhiều ứng dụng và video miễn phí. Người học có thể luyện nghe, luyện nói và học từ mới mỗi ngày."
+      },
+      {
+        "id": "p4",
+        "en": "But online learning needs discipline. Nobody reminds you to study, so you must make your own plan.",
+        "vi": "Nhưng học trực tuyến cần tính kỷ luật. Không ai nhắc bạn học, vì vậy bạn phải tự lên kế hoạch."
+      },
+      {
+        "id": "p5",
+        "en": "Experts give one simple tip: study a little every day. Fifteen minutes a day is better than three hours once a week.",
+        "vi": "Các chuyên gia đưa ra một lời khuyên đơn giản: học một chút mỗi ngày. Mười lăm phút mỗi ngày tốt hơn ba tiếng một lần mỗi tuần."
+      },
+      {
+        "id": "p6",
+        "en": "With patience and a good plan, anyone can improve their English online.",
+        "vi": "Với sự kiên nhẫn và một kế hoạch tốt, ai cũng có thể cải thiện tiếng Anh trực tuyến."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where can students study online?",
+        "options": [
+          "At home, in a café, or on the bus",
+          "Only at a language center",
+          "Only in the library",
+          "Only on weekends"
+        ],
+        "correctAnswer": "At home, in a café, or on the bus",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2 liệt kê học ở nhà, quán cà phê và xe buýt."
+      },
+      {
+        "question": "What do experts advise?",
+        "options": [
+          "Study a little every day",
+          "Study three hours once a week",
+          "Study only on weekends",
+          "Never use apps"
+        ],
+        "correctAnswer": "Study a little every day",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: chuyên gia khuyên học một chút mỗi ngày."
+      },
+      {
+        "question": "What does online learning need most?",
+        "options": [
+          "Discipline",
+          "A lot of money",
+          "A big classroom",
+          "A teacher at home"
+        ],
+        "correctAnswer": "Discipline",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4 nói học trực tuyến cần tính kỷ luật."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-012",
+    "cefrLevel": "A2",
+    "topic": "sports",
+    "topicVi": "Thể thao",
+    "title": "Street Football",
+    "titleVi": "Bóng đá đường phố",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "In many Vietnamese cities, children play football on small streets after school. They use two school bags as goalposts.",
+        "vi": "Ở nhiều thành phố Việt Nam, trẻ em chơi bóng đá trên những con phố nhỏ sau giờ học. Chúng dùng hai chiếc cặp làm khung thành."
+      },
+      {
+        "id": "p2",
+        "en": "Street football has simple rules. There is no referee, so players must be fair and honest.",
+        "vi": "Bóng đá đường phố có luật đơn giản. Không có trọng tài, vì vậy cầu thủ phải công bằng và trung thực."
+      },
+      {
+        "id": "p3",
+        "en": "Many famous football players started on the street. They learned quick feet and smart thinking there.",
+        "vi": "Nhiều cầu thủ nổi tiếng bắt đầu từ đường phố. Họ học được đôi chân nhanh nhẹn và tư duy thông minh ở đó."
+      },
+      {
+        "id": "p4",
+        "en": "Playing football is good exercise. It makes the heart strong and helps children make new friends.",
+        "vi": "Chơi bóng đá là bài tập tốt. Nó giúp tim khỏe mạnh và giúp trẻ kết bạn mới."
+      },
+      {
+        "id": "p5",
+        "en": "Parents sometimes worry about cars. So children should play in safe places, far from busy roads.",
+        "vi": "Cha mẹ đôi khi lo lắng về xe cộ. Vì vậy trẻ nên chơi ở nơi an toàn, xa đường đông."
+      },
+      {
+        "id": "p6",
+        "en": "Street football is free and fun. All you need is a ball and some friends.",
+        "vi": "Bóng đá đường phố miễn phí và vui. Bạn chỉ cần một quả bóng và vài người bạn."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What do children use as goalposts?",
+        "options": [
+          "Two school bags",
+          "Two trees",
+          "Two chairs",
+          "Two bottles"
+        ],
+        "correctAnswer": "Two school bags",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1 nói trẻ dùng hai chiếc cặp làm khung thành."
+      },
+      {
+        "question": "Why must street players be fair?",
+        "options": [
+          "There is no referee",
+          "The ball is small",
+          "The street is short",
+          "Parents are watching"
+        ],
+        "correctAnswer": "There is no referee",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: không có trọng tài nên cầu thủ phải công bằng."
+      },
+      {
+        "question": "Where should children play?",
+        "options": [
+          "Far from busy roads",
+          "On the main street",
+          "In the parking lot",
+          "Near the market"
+        ],
+        "correctAnswer": "Far from busy roads",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5 khuyên chơi xa đường đông."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-013",
+    "cefrLevel": "A2",
+    "topic": "culture",
+    "topicVi": "Văn hóa",
+    "title": "The Floating Markets",
+    "titleVi": "Chợ nổi miền Tây",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "In the Mekong Delta, people sell fruit on boats. These boat markets are called floating markets.",
+        "vi": "Ở đồng bằng sông Cửu Long, người ta bán trái cây trên thuyền. Những khu chợ thuyền này gọi là chợ nổi."
+      },
+      {
+        "id": "p2",
+        "en": "Every morning, hundreds of boats come together on the river. Sellers hang their fruit on a tall pole so buyers can see from far away.",
+        "vi": "Mỗi sáng, hàng trăm chiếc thuyền tụ họp trên sông. Người bán treo trái cây lên cây sào cao để người mua nhìn thấy từ xa."
+      },
+      {
+        "id": "p3",
+        "en": "Tourists love visiting floating markets. They can eat hot noodles and drink coffee right on the boat.",
+        "vi": "Du khách rất thích thăm chợ nổi. Họ có thể ăn mì nóng và uống cà phê ngay trên thuyền."
+      },
+      {
+        "id": "p4",
+        "en": "But floating markets are disappearing. Young people prefer working in factories to selling on boats.",
+        "vi": "Nhưng chợ nổi đang dần biến mất. Người trẻ thích làm việc trong nhà máy hơn là bán hàng trên thuyền."
+      },
+      {
+        "id": "p5",
+        "en": "The government wants to protect these markets. They bring tourists and keep old traditions alive.",
+        "vi": "Chính quyền muốn bảo vệ những khu chợ này. Chúng thu hút du khách và giữ gìn truyền thống xưa."
+      },
+      {
+        "id": "p6",
+        "en": "A floating market is not just a market. It is a picture of river life in Vietnam.",
+        "vi": "Chợ nổi không chỉ là khu chợ. Nó là bức tranh về cuộc sống sông nước Việt Nam."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How do sellers show their fruit?",
+        "options": [
+          "Hang it on a tall pole",
+          "Put it in boxes",
+          "Shout loudly",
+          "Give free samples"
+        ],
+        "correctAnswer": "Hang it on a tall pole",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: người bán treo trái cây lên cây sào cao."
+      },
+      {
+        "question": "Why are floating markets disappearing?",
+        "options": [
+          "Young people prefer factory jobs",
+          "There are no tourists",
+          "The river is too small",
+          "Fruit is too expensive"
+        ],
+        "correctAnswer": "Young people prefer factory jobs",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: người trẻ thích làm nhà máy hơn bán trên thuyền."
+      },
+      {
+        "question": "What can tourists do at the market?",
+        "options": [
+          "Eat noodles and drink coffee on the boat",
+          "Swim in the river",
+          "Buy a boat",
+          "Fish with sellers"
+        ],
+        "correctAnswer": "Eat noodles and drink coffee on the boat",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: du khách ăn mì nóng và uống cà phê trên thuyền."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-014",
+    "cefrLevel": "A2",
+    "topic": "animals",
+    "topicVi": "Động vật",
+    "title": "Keeping a Pet",
+    "titleVi": "Nuôi thú cưng",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Many families in Vietnam now keep a pet. Dogs and cats are the most popular.",
+        "vi": "Nhiều gia đình ở Việt Nam hiện nay nuôi thú cưng. Chó và mèo phổ biến nhất."
+      },
+      {
+        "id": "p2",
+        "en": "Pets make people happy. Studies show that playing with a dog can reduce stress.",
+        "vi": "Thú cưng làm con người vui vẻ. Các nghiên cứu cho thấy chơi với chó có thể giảm căng thẳng."
+      },
+      {
+        "id": "p3",
+        "en": "But keeping a pet is a big responsibility. Owners must feed them, keep them clean, and take them to the vet.",
+        "vi": "Nhưng nuôi thú cưng là trách nhiệm lớn. Chủ phải cho chúng ăn, giữ chúng sạch sẽ và đưa đi bác sĩ thú y."
+      },
+      {
+        "id": "p4",
+        "en": "Some people buy expensive pets but later leave them on the street. This is cruel and unfair to the animals.",
+        "vi": "Một số người mua thú cưng đắt tiền nhưng sau đó bỏ chúng ngoài đường. Điều này tàn nhẫn và bất công với con vật."
+      },
+      {
+        "id": "p5",
+        "en": "Animal shelters advise people to adopt, not buy. Many lovely dogs and cats are waiting for a home.",
+        "vi": "Các trạm cứu hộ khuyên mọi người nên nhận nuôi, đừng mua. Nhiều chú chó mèo đáng yêu đang chờ một mái nhà."
+      },
+      {
+        "id": "p6",
+        "en": "A pet is a friend for many years. Think carefully before you bring one home.",
+        "vi": "Thú cưng là người bạn trong nhiều năm. Hãy suy nghĩ kỹ trước khi đưa một bé về nhà."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Which pets are most popular?",
+        "options": [
+          "Dogs and cats",
+          "Birds and fish",
+          "Rabbits and hamsters",
+          "Snakes and lizards"
+        ],
+        "correctAnswer": "Dogs and cats",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: chó và mèo phổ biến nhất."
+      },
+      {
+        "question": "What do animal shelters advise?",
+        "options": [
+          "Adopt, not buy",
+          "Buy expensive pets",
+          "Keep pets outside",
+          "Feed pets once a day"
+        ],
+        "correctAnswer": "Adopt, not buy",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: trạm cứu hộ khuyên nhận nuôi thay vì mua."
+      },
+      {
+        "question": "What must pet owners do?",
+        "options": [
+          "Feed them, keep them clean, visit the vet",
+          "Teach them tricks",
+          "Buy them clothes",
+          "Take them to school"
+        ],
+        "correctAnswer": "Feed them, keep them clean, visit the vet",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3 liệt kê trách nhiệm của chủ nuôi."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-015",
+    "cefrLevel": "A2",
+    "topic": "culture",
+    "topicVi": "Văn hóa",
+    "title": "Tet Holiday",
+    "titleVi": "Ngày Tết Nguyên Đán",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Tet is the most important holiday in Vietnam. It marks the start of the lunar new year.",
+        "vi": "Tết là ngày lễ quan trọng nhất ở Việt Nam. Nó đánh dấu sự bắt đầu của năm mới âm lịch."
+      },
+      {
+        "id": "p2",
+        "en": "Before Tet, families clean and decorate their houses. They buy peach blossoms in the north and apricot blossoms in the south.",
+        "vi": "Trước Tết, các gia đình dọn dẹp và trang trí nhà cửa. Họ mua hoa đào ở miền Bắc và hoa mai ở miền Nam."
+      },
+      {
+        "id": "p3",
+        "en": "On New Year's Eve, families gather for a big dinner. Children receive lucky money in red envelopes.",
+        "vi": "Đêm giao thừa, gia đình quây quần bên mâm cơm lớn. Trẻ em nhận tiền lì xì trong bao đỏ."
+      },
+      {
+        "id": "p4",
+        "en": "Traditional food is very important. Banh chung, a square sticky rice cake, is a symbol of Tet.",
+        "vi": "Món ăn truyền thống rất quan trọng. Bánh chưng, chiếc bánh nếp vuông, là biểu tượng của Tết."
+      },
+      {
+        "id": "p5",
+        "en": "During Tet, people visit relatives and wish each other health and luck. Streets are quiet because most shops are closed.",
+        "vi": "Trong dịp Tết, mọi người thăm họ hàng và chúc nhau sức khỏe, may mắn. Phố xá yên tĩnh vì hầu hết cửa hàng đều đóng cửa."
+      },
+      {
+        "id": "p6",
+        "en": "Tet is a time for family. No matter how far away, Vietnamese people try to come home.",
+        "vi": "Tết là thời gian dành cho gia đình. Dù xa đến đâu, người Việt cũng cố gắng về nhà."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Which flowers do people buy in the north and south?",
+        "options": [
+          "Peach blossoms in the north, apricot in the south",
+          "Roses everywhere",
+          "Apricot in the north, peach in the south",
+          "Only plastic flowers"
+        ],
+        "correctAnswer": "Peach blossoms in the north, apricot in the south",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: miền Bắc hoa đào, miền Nam hoa mai."
+      },
+      {
+        "question": "What do children receive at Tet?",
+        "options": [
+          "Lucky money in red envelopes",
+          "New school bags",
+          "Big cakes",
+          "Toy cars"
+        ],
+        "correctAnswer": "Lucky money in red envelopes",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: trẻ em nhận tiền lì xì trong bao đỏ."
+      },
+      {
+        "question": "What is banh chung?",
+        "options": [
+          "A square sticky rice cake",
+          "A round sweet cake",
+          "A kind of soup",
+          "A fruit salad"
+        ],
+        "correctAnswer": "A square sticky rice cake",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: bánh chưng là bánh nếp vuông, biểu tượng của Tết."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-016",
+    "cefrLevel": "A2",
+    "topic": "nature",
+    "topicVi": "Thiên nhiên",
+    "title": "Four Seasons",
+    "titleVi": "Bốn mùa trong năm",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Many countries have four seasons: spring, summer, autumn, and winter. Each season lasts about three months.",
+        "vi": "Nhiều nước có bốn mùa: xuân, hạ, thu, đông. Mỗi mùa kéo dài khoảng ba tháng."
+      },
+      {
+        "id": "p2",
+        "en": "Spring is warm and flowers bloom. Summer is hot, and children have a long holiday.",
+        "vi": "Mùa xuân ấm áp và hoa nở. Mùa hè nóng nực, trẻ em được nghỉ hè dài."
+      },
+      {
+        "id": "p3",
+        "en": "In autumn, leaves turn yellow and fall. Winter is cold, and it may snow in some places.",
+        "vi": "Mùa thu lá chuyển vàng và rụng. Mùa đông lạnh, một số nơi có thể có tuyết."
+      },
+      {
+        "id": "p4",
+        "en": "Vietnam is different. The south has only two seasons: rainy and dry. The north has four, but winter is short.",
+        "vi": "Việt Nam thì khác. Miền Nam chỉ có hai mùa: mưa và khô. Miền Bắc có bốn mùa nhưng mùa đông ngắn."
+      },
+      {
+        "id": "p5",
+        "en": "Each season has its own beauty. Farmers plant rice in spring and harvest in autumn.",
+        "vi": "Mỗi mùa có vẻ đẹp riêng. Nông dân gieo mạ mùa xuân và gặt lúa mùa thu."
+      },
+      {
+        "id": "p6",
+        "en": "What is your favorite season? Many people love autumn because the weather is cool and comfortable.",
+        "vi": "Mùa yêu thích của bạn là gì? Nhiều người thích mùa thu vì thời tiết mát mẻ dễ chịu."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How long does each season last?",
+        "options": [
+          "About three months",
+          "About one month",
+          "About six months",
+          "About one week"
+        ],
+        "correctAnswer": "About three months",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: mỗi mùa kéo dài khoảng ba tháng."
+      },
+      {
+        "question": "How many seasons does southern Vietnam have?",
+        "options": [
+          "Two: rainy and dry",
+          "Four",
+          "Three",
+          "Only one"
+        ],
+        "correctAnswer": "Two: rainy and dry",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: miền Nam chỉ có mùa mưa và mùa khô."
+      },
+      {
+        "question": "What happens in autumn?",
+        "options": [
+          "Leaves turn yellow and fall",
+          "Flowers bloom",
+          "It snows everywhere",
+          "Children go swimming"
+        ],
+        "correctAnswer": "Leaves turn yellow and fall",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: mùa thu lá vàng và rụng."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-017",
+    "cefrLevel": "B1",
+    "topic": "food",
+    "topicVi": "Ẩm thực",
+    "title": "Vietnamese Coffee Culture",
+    "titleVi": "Văn hóa cà phê Việt Nam",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Vietnam is one of the world's largest coffee exporters, famous for its strong robusta beans.",
+        "vi": "Việt Nam là một trong những nước xuất khẩu cà phê lớn nhất thế giới, nổi tiếng với hạt robusta đậm đà."
+      },
+      {
+        "id": "p2",
+        "en": "But coffee in Vietnam is more than a product. It is a way of life. People can sit for hours with just one small cup.",
+        "vi": "Nhưng cà phê ở Việt Nam không chỉ là sản phẩm. Nó là một lối sống. Người ta có thể ngồi hàng giờ chỉ với một tách nhỏ."
+      },
+      {
+        "id": "p3",
+        "en": "Ca phe sua da, coffee with condensed milk and ice, is the most famous drink. It is sweet, strong, and cheap.",
+        "vi": "Cà phê sữa đá là thức uống nổi tiếng nhất. Nó ngọt, đậm và rẻ."
+      },
+      {
+        "id": "p4",
+        "en": "Egg coffee is another special invention. It was created in Hanoi when milk was rare, using egg yolk instead.",
+        "vi": "Cà phê trứng là một sáng tạo đặc biệt khác. Nó ra đời ở Hà Nội khi sữa còn hiếm, dùng lòng đỏ trứng thay thế."
+      },
+      {
+        "id": "p5",
+        "en": "Sidewalk cafés are everywhere. Friends meet, talk business, or simply watch the street go by.",
+        "vi": "Quán cà phê vỉa hè ở khắp mọi nơi. Bạn bè gặp nhau, bàn công việc, hay đơn giản ngắm phố phường."
+      },
+      {
+        "id": "p6",
+        "en": "For many Vietnamese, the day does not truly start until the first sip of coffee.",
+        "vi": "Với nhiều người Việt, một ngày chỉ thực sự bắt đầu sau ngụm cà phê đầu tiên."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is the most famous Vietnamese coffee drink?",
+        "options": [
+          "Ca phe sua da",
+          "Egg coffee",
+          "Black coffee",
+          "Coconut coffee"
+        ],
+        "correctAnswer": "Ca phe sua da",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: cà phê sữa đá là thức uống nổi tiếng nhất."
+      },
+      {
+        "question": "Why was egg coffee invented?",
+        "options": [
+          "Milk was rare",
+          "Eggs were cheap",
+          "Tourists asked for it",
+          "Coffee was too bitter"
+        ],
+        "correctAnswer": "Milk was rare",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: cà phê trứng ra đời khi sữa còn hiếm."
+      },
+      {
+        "question": "What is Vietnam famous for in coffee?",
+        "options": [
+          "Strong robusta beans and large exports",
+          "The most expensive beans",
+          "Coffee without caffeine",
+          "Instant coffee only"
+        ],
+        "correctAnswer": "Strong robusta beans and large exports",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: Việt Nam nổi tiếng với hạt robusta và xuất khẩu lớn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-018",
+    "cefrLevel": "B1",
+    "topic": "environment",
+    "topicVi": "Môi trường",
+    "title": "Plastic in the Ocean",
+    "titleVi": "Rác nhựa trong đại dương",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Every year, huge amounts of plastic enter the ocean. Bags, bottles, and straws can float for hundreds of years.",
+        "vi": "Mỗi năm, lượng lớn rác nhựa trôi ra đại dương. Túi, chai và ống hút có thể nổi hàng trăm năm."
+      },
+      {
+        "id": "p2",
+        "en": "Sea animals often mistake plastic for food. Turtles eat plastic bags, thinking they are jellyfish.",
+        "vi": "Động vật biển thường nhầm nhựa là thức ăn. Rùa ăn túi nhựa vì tưởng đó là sứa."
+      },
+      {
+        "id": "p3",
+        "en": "Tiny pieces called microplastics are even more dangerous. Fish eat them, and then people eat the fish.",
+        "vi": "Những mảnh nhỏ gọi là vi nhựa còn nguy hiểm hơn. Cá ăn chúng, rồi con người ăn cá."
+      },
+      {
+        "id": "p4",
+        "en": "Scientists say the problem is serious, but not hopeless. Many countries have banned single-use plastic bags.",
+        "vi": "Các nhà khoa học nói vấn đề nghiêm trọng nhưng không vô vọng. Nhiều nước đã cấm túi nhựa dùng một lần."
+      },
+      {
+        "id": "p5",
+        "en": "Everyone can help. Bring your own bag, carry a water bottle, and say no to plastic straws.",
+        "vi": "Ai cũng có thể giúp. Hãy mang túi riêng, bình nước cá nhân và nói không với ống hút nhựa."
+      },
+      {
+        "id": "p6",
+        "en": "Beach clean-up groups are growing in Vietnam. Volunteers collect large amounts of trash every weekend.",
+        "vi": "Các nhóm dọn rác bãi biển đang phát triển ở Việt Nam. Tình nguyện viên thu gom lượng lớn rác mỗi cuối tuần."
+      },
+      {
+        "id": "p7",
+        "en": "The ocean gives us food and air. It is time we protect it in return.",
+        "vi": "Đại dương cho chúng ta thức ăn và không khí. Đã đến lúc chúng ta bảo vệ nó."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why do turtles eat plastic bags?",
+        "options": [
+          "They think the bags are jellyfish",
+          "They like the taste",
+          "They are very hungry",
+          "They play with them"
+        ],
+        "correctAnswer": "They think the bags are jellyfish",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: rùa tưởng túi nhựa là sứa."
+      },
+      {
+        "question": "Why are microplastics dangerous?",
+        "options": [
+          "Fish eat them and people eat the fish",
+          "They are too colorful",
+          "They sink too fast",
+          "They smell bad"
+        ],
+        "correctAnswer": "Fish eat them and people eat the fish",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: cá ăn vi nhựa, con người ăn cá."
+      },
+      {
+        "question": "What can everyone do to help?",
+        "options": [
+          "Bring your own bag and say no to straws",
+          "Stop eating fish",
+          "Never go to the beach",
+          "Burn plastic bags"
+        ],
+        "correctAnswer": "Bring your own bag and say no to straws",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5 liệt kê việc mỗi người có thể làm."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-019",
+    "cefrLevel": "B1",
+    "topic": "travel",
+    "topicVi": "Du lịch",
+    "title": "Traveling Alone",
+    "titleVi": "Du lịch một mình",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "More and more young people are traveling alone. They say solo travel gives them freedom and confidence.",
+        "vi": "Ngày càng nhiều bạn trẻ đi du lịch một mình. Họ nói du lịch một mình mang lại tự do và sự tự tin."
+      },
+      {
+        "id": "p2",
+        "en": "When you travel alone, you make all the decisions. You can wake up late, change plans, or stay longer in a place you love.",
+        "vi": "Khi đi một mình, bạn tự quyết định mọi thứ. Bạn có thể dậy muộn, đổi kế hoạch, hay ở lâu hơn nơi mình thích."
+      },
+      {
+        "id": "p3",
+        "en": "Solo travelers also meet many new people. Hostels and group tours are good places to make friends.",
+        "vi": "Người đi một mình cũng gặp nhiều bạn mới. Ký túc xá du lịch và tour nhóm là nơi tốt để kết bạn."
+      },
+      {
+        "id": "p4",
+        "en": "Safety is the biggest worry, especially for women. Experts advise sharing your location with family and avoiding dark streets at night.",
+        "vi": "An toàn là nỗi lo lớn nhất, đặc biệt với phụ nữ. Chuyên gia khuyên chia sẻ vị trí với gia đình và tránh đường tối ban đêm."
+      },
+      {
+        "id": "p5",
+        "en": "Start with a short trip near home. Once you feel comfortable, you can go further.",
+        "vi": "Hãy bắt đầu bằng chuyến đi ngắn gần nhà. Khi đã quen, bạn có thể đi xa hơn."
+      },
+      {
+        "id": "p6",
+        "en": "Traveling alone is not lonely. It is a chance to meet the most important person: yourself.",
+        "vi": "Đi một mình không cô đơn. Đó là cơ hội gặp người quan trọng nhất: chính mình."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does solo travel give young people?",
+        "options": [
+          "Freedom and confidence",
+          "A lot of money",
+          "Free hotels",
+          "New phones"
+        ],
+        "correctAnswer": "Freedom and confidence",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: du lịch một mình mang lại tự do và tự tin."
+      },
+      {
+        "question": "What safety advice do experts give?",
+        "options": [
+          "Share your location and avoid dark streets",
+          "Never talk to anyone",
+          "Travel only by taxi",
+          "Stay in hotels only"
+        ],
+        "correctAnswer": "Share your location and avoid dark streets",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: chia sẻ vị trí với gia đình, tránh đường tối."
+      },
+      {
+        "question": "Where can solo travelers make friends?",
+        "options": [
+          "Hostels and group tours",
+          "Airports only",
+          "Restaurants only",
+          "On the bus"
+        ],
+        "correctAnswer": "Hostels and group tours",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: ký túc xá và tour nhóm là nơi kết bạn tốt."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-020",
+    "cefrLevel": "B1",
+    "topic": "technology",
+    "topicVi": "Công nghệ",
+    "title": "Electric Cars",
+    "titleVi": "Xe ô tô điện",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Electric cars are becoming common on Vietnamese streets. Their quiet engines surprise many people.",
+        "vi": "Xe ô tô điện đang trở nên phổ biến trên đường phố Việt Nam. Động cơ êm của chúng khiến nhiều người ngạc nhiên."
+      },
+      {
+        "id": "p2",
+        "en": "The biggest advantage is clean air. Electric cars have no exhaust pipe, so they do not release smoke into the city.",
+        "vi": "Ưu điểm lớn nhất là không khí sạch. Xe điện không có ống xả nên không thải khói ra thành phố."
+      },
+      {
+        "id": "p3",
+        "en": "Charging is cheaper than gasoline. Many owners charge their cars at home overnight, like charging a phone.",
+        "vi": "Sạc điện rẻ hơn đổ xăng. Nhiều chủ xe sạc ở nhà qua đêm, giống như sạc điện thoại."
+      },
+      {
+        "id": "p4",
+        "en": "But there are worries too. Charging stations are still few outside big cities, and a full charge takes longer than filling a tank.",
+        "vi": "Nhưng cũng có nỗi lo. Trạm sạc ngoài thành phố lớn còn ít, và sạc đầy mất nhiều thời gian hơn đổ xăng."
+      },
+      {
+        "id": "p5",
+        "en": "Batteries are another question. They last many years, but replacing them is expensive.",
+        "vi": "Pin là câu hỏi khác. Pin dùng được nhiều năm nhưng thay pin mới rất đắt."
+      },
+      {
+        "id": "p6",
+        "en": "Experts believe electric cars will keep growing. As batteries improve and stations spread, more drivers will make the switch.",
+        "vi": "Chuyên gia tin xe điện sẽ tiếp tục phát triển. Khi pin tốt hơn và trạm sạc phủ rộng, nhiều tài xế sẽ chuyển sang xe điện."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is the biggest advantage of electric cars?",
+        "options": [
+          "Clean air, no exhaust smoke",
+          "Very loud engines",
+          "Free parking everywhere",
+          "They never need charging"
+        ],
+        "correctAnswer": "Clean air, no exhaust smoke",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: xe điện không có ống xả, không thải khói."
+      },
+      {
+        "question": "What worries do people have?",
+        "options": [
+          "Few charging stations and slow charging",
+          "Cars are too colorful",
+          "Batteries never run out",
+          "Electricity is free"
+        ],
+        "correctAnswer": "Few charging stations and slow charging",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: trạm sạc còn ít, sạc đầy lâu hơn đổ xăng."
+      },
+      {
+        "question": "How do many owners charge their cars?",
+        "options": [
+          "At home overnight, like a phone",
+          "Only at gas stations",
+          "With solar panels on the roof",
+          "They never charge"
+        ],
+        "correctAnswer": "At home overnight, like a phone",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: nhiều chủ xe sạc ở nhà qua đêm như sạc điện thoại."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-021",
+    "cefrLevel": "B1",
+    "topic": "culture",
+    "topicVi": "Văn hóa",
+    "title": "Traditional Craft Villages",
+    "titleVi": "Làng nghề truyền thống",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Vietnam has hundreds of craft villages. Bat Trang makes pottery, Van Phuc weaves silk, and Dong Ho prints folk paintings.",
+        "vi": "Việt Nam có hàng trăm làng nghề. Bát Tràng làm gốm, Vạn Phúc dệt lụa, Đông Hồ in tranh dân gian."
+      },
+      {
+        "id": "p2",
+        "en": "In these villages, skills pass from parents to children. Some families have made the same product for 300 years.",
+        "vi": "Ở những làng này, nghề truyền từ cha mẹ sang con cái. Có gia đình làm cùng một sản phẩm suốt 300 năm."
+      },
+      {
+        "id": "p3",
+        "en": "But craft villages are in danger. Young people move to cities for factory jobs with higher pay.",
+        "vi": "Nhưng làng nghề đang gặp nguy. Người trẻ lên thành phố làm công nhân vì lương cao hơn."
+      },
+      {
+        "id": "p4",
+        "en": "Tourism is bringing hope. Visitors pay to try making pottery or weaving, and they buy handmade souvenirs.",
+        "vi": "Du lịch đang mang lại hy vọng. Du khách trả tiền để thử làm gốm hay dệt vải, và mua đồ lưu niệm thủ công."
+      },
+      {
+        "id": "p5",
+        "en": "The government is also helping by building roads and advertising these villages online.",
+        "vi": "Chính quyền cũng hỗ trợ bằng cách làm đường và quảng bá các làng nghề trên mạng."
+      },
+      {
+        "id": "p6",
+        "en": "A handmade bowl carries a story. When we buy it, we keep the story alive.",
+        "vi": "Một chiếc bát thủ công mang theo một câu chuyện. Khi mua nó, ta giữ câu chuyện ấy sống mãi."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Which village is famous for pottery?",
+        "options": [
+          "Bat Trang",
+          "Van Phuc",
+          "Dong Ho",
+          "Hoi An"
+        ],
+        "correctAnswer": "Bat Trang",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: Bát Tràng nổi tiếng làm gốm."
+      },
+      {
+        "question": "Why are craft villages in danger?",
+        "options": [
+          "Young people move to cities for factory jobs",
+          "There are no tourists",
+          "The villages are too far",
+          "Nobody likes handmade goods"
+        ],
+        "correctAnswer": "Young people move to cities for factory jobs",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: người trẻ lên thành phố làm công nhân."
+      },
+      {
+        "question": "How does tourism help?",
+        "options": [
+          "Visitors try crafts and buy souvenirs",
+          "Tourists build factories",
+          "Visitors move to villages",
+          "Tourists teach English"
+        ],
+        "correctAnswer": "Visitors try crafts and buy souvenirs",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: du khách thử làm nghề và mua đồ lưu niệm."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-022",
+    "cefrLevel": "B1",
+    "topic": "health",
+    "topicVi": "Sức khỏe",
+    "title": "Morning Running",
+    "titleVi": "Chạy bộ buổi sáng",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "At 5 a.m., parks in Vietnamese cities are full of runners. Morning running has become a national habit.",
+        "vi": "5 giờ sáng, các công viên ở thành phố Việt Nam đầy người chạy bộ. Chạy bộ buổi sáng đã thành thói quen của cả nước."
+      },
+      {
+        "id": "p2",
+        "en": "Running is one of the cheapest sports. You only need a pair of shoes and an open road.",
+        "vi": "Chạy bộ là một trong những môn thể thao rẻ nhất. Bạn chỉ cần một đôi giày và con đường thoáng."
+      },
+      {
+        "id": "p3",
+        "en": "Doctors say running protects the heart, reduces stress, and helps you sleep better. Thirty minutes a day is enough.",
+        "vi": "Bác sĩ nói chạy bộ bảo vệ tim, giảm căng thẳng và giúp ngủ ngon hơn. Ba mươi phút mỗi ngày là đủ."
+      },
+      {
+        "id": "p4",
+        "en": "Beginners should start slowly. Walk and run in turns, then increase the running time each week.",
+        "vi": "Người mới nên bắt đầu chậm. Đi bộ xen kẽ chạy, rồi tăng dần thời gian chạy mỗi tuần."
+      },
+      {
+        "id": "p5",
+        "en": "Running groups make it more fun. Members encourage each other and share breakfast after the run.",
+        "vi": "Nhóm chạy bộ khiến việc này vui hơn. Các thành viên động viên nhau và cùng ăn sáng sau buổi chạy."
+      },
+      {
+        "id": "p6",
+        "en": "You do not need to run fast. The only person you compete with is yesterday's you.",
+        "vi": "Bạn không cần chạy nhanh. Người duy nhất bạn thi đấu cùng là chính bạn của ngày hôm qua."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What are the benefits of running?",
+        "options": [
+          "Protects the heart, reduces stress, better sleep",
+          "Makes you taller",
+          "Gives you free shoes",
+          "Makes you famous"
+        ],
+        "correctAnswer": "Protects the heart, reduces stress, better sleep",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3 liệt kê lợi ích: tim, căng thẳng, giấc ngủ."
+      },
+      {
+        "question": "What should beginners do?",
+        "options": [
+          "Walk and run in turns, increase weekly",
+          "Run a marathon at once",
+          "Run without shoes",
+          "Run only at midnight"
+        ],
+        "correctAnswer": "Walk and run in turns, increase weekly",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: người mới đi bộ xen kẽ chạy, tăng dần mỗi tuần."
+      },
+      {
+        "question": "Why is running cheap?",
+        "options": [
+          "You only need shoes and an open road",
+          "Parks pay you to run",
+          "Shoes are free",
+          "Nobody runs far"
+        ],
+        "correctAnswer": "You only need shoes and an open road",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: chỉ cần giày và đường thoáng."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-023",
+    "cefrLevel": "B1",
+    "topic": "education",
+    "topicVi": "Giáo dục",
+    "title": "Public Libraries",
+    "titleVi": "Thư viện công cộng",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Public libraries are free for everyone. Anyone can walk in, read books, and use the internet.",
+        "vi": "Thư viện công cộng miễn phí cho mọi người. Ai cũng có thể vào đọc sách và dùng internet."
+      },
+      {
+        "id": "p2",
+        "en": "Modern libraries are not silent and boring. They have comics, movies, board games, and study rooms.",
+        "vi": "Thư viện hiện đại không im lặng và nhàm chán. Chúng có truyện tranh, phim, board game và phòng học nhóm."
+      },
+      {
+        "id": "p3",
+        "en": "For poor students, libraries are a lifeline. They offer free textbooks and a quiet place to study.",
+        "vi": "Với học sinh nghèo, thư viện là chiếc phao cứu sinh. Chúng có sách giáo khoa miễn phí và chỗ học yên tĩnh."
+      },
+      {
+        "id": "p4",
+        "en": "Many libraries now lend e-books. Readers can borrow books on their phones without visiting.",
+        "vi": "Nhiều thư viện hiện cho mượn sách điện tử. Bạn đọc có thể mượn sách trên điện thoại mà không cần đến nơi."
+      },
+      {
+        "id": "p5",
+        "en": "Librarians also organize clubs and talks. Children join reading clubs, and adults learn new skills.",
+        "vi": "Thủ thư còn tổ chức câu lạc bộ và buổi nói chuyện. Trẻ em tham gia câu lạc bộ đọc sách, người lớn học kỹ năng mới."
+      },
+      {
+        "id": "p6",
+        "en": "In a world of expensive courses, the library remains the cheapest university.",
+        "vi": "Trong thế giới của những khóa học đắt đỏ, thư viện vẫn là trường đại học rẻ nhất."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Who can use public libraries?",
+        "options": [
+          "Everyone, for free",
+          "Only students",
+          "Only rich people",
+          "Only teachers"
+        ],
+        "correctAnswer": "Everyone, for free",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: thư viện miễn phí cho mọi người."
+      },
+      {
+        "question": "How do libraries help poor students?",
+        "options": [
+          "Free textbooks and a quiet place",
+          "Free meals",
+          "Free bicycles",
+          "Free phones"
+        ],
+        "correctAnswer": "Free textbooks and a quiet place",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: sách giáo khoa miễn phí và chỗ học yên tĩnh."
+      },
+      {
+        "question": "What can readers do with e-books?",
+        "options": [
+          "Borrow books on their phones",
+          "Buy new phones",
+          "Print all books",
+          "Sell old books"
+        ],
+        "correctAnswer": "Borrow books on their phones",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: mượn sách điện tử trên điện thoại."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-024",
+    "cefrLevel": "B1",
+    "topic": "science",
+    "topicVi": "Khoa học",
+    "title": "Where Are the Bees Going?",
+    "titleVi": "Ong đang biến mất đi đâu?",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Bees do a job worth billions: they pollinate fruit, vegetables, and coffee plants. Without bees, much of our food would disappear.",
+        "vi": "Ong làm công việc trị giá hàng tỷ đô: thụ phấn cho cây ăn quả, rau và cà phê. Không có ong, phần lớn thức ăn của ta sẽ biến mất."
+      },
+      {
+        "id": "p2",
+        "en": "But bee numbers are falling around the world. Scientists call it a silent crisis.",
+        "vi": "Nhưng số lượng ong đang giảm trên toàn thế giới. Các nhà khoa học gọi đó là cuộc khủng hoảng thầm lặng."
+      },
+      {
+        "id": "p3",
+        "en": "Pesticides are a main cause. They kill harmful insects, but they also poison bees.",
+        "vi": "Thuốc trừ sâu là nguyên nhân chính. Chúng diệt côn trùng có hại nhưng cũng đầu độc ong."
+      },
+      {
+        "id": "p4",
+        "en": "Climate change makes it worse. Flowers bloom at the wrong time, so bees cannot find food.",
+        "vi": "Biến đổi khí hậu làm mọi thứ tệ hơn. Hoa nở sai thời điểm khiến ong không tìm được thức ăn."
+      },
+      {
+        "id": "p5",
+        "en": "Farmers can help by using fewer chemicals and planting wildflowers near their fields.",
+        "vi": "Nông dân có thể giúp bằng cách dùng ít hóa chất hơn và trồng hoa dại quanh ruộng."
+      },
+      {
+        "id": "p6",
+        "en": "City people can help too. A small flower box on a balcony can feed hundreds of bees.",
+        "vi": "Người thành phố cũng có thể giúp. Một hộp hoa nhỏ trên ban công có thể nuôi hàng trăm con ong."
+      },
+      {
+        "id": "p7",
+        "en": "Saving bees means saving our own dinner.",
+        "vi": "Cứu ong cũng là cứu bữa ăn của chính chúng ta."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What important job do bees do?",
+        "options": [
+          "Pollinate fruit, vegetables, and coffee",
+          "Make honey for bears",
+          "Build houses",
+          "Clean the air"
+        ],
+        "correctAnswer": "Pollinate fruit, vegetables, and coffee",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: ong thụ phấn cho cây ăn quả, rau và cà phê."
+      },
+      {
+        "question": "What is a main cause of bee decline?",
+        "options": [
+          "Pesticides",
+          "Too much rain",
+          "Loud music",
+          "Airplanes"
+        ],
+        "correctAnswer": "Pesticides",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: thuốc trừ sâu là nguyên nhân chính."
+      },
+      {
+        "question": "How can city people help bees?",
+        "options": [
+          "Put a flower box on the balcony",
+          "Keep bees in the bedroom",
+          "Spray more chemicals",
+          "Cut down trees"
+        ],
+        "correctAnswer": "Put a flower box on the balcony",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: hộp hoa trên ban công nuôi được hàng trăm con ong."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-025",
+    "cefrLevel": "B2",
+    "topic": "business",
+    "topicVi": "Kinh tế",
+    "title": "The Sharing Economy",
+    "titleVi": "Kinh tế chia sẻ",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Ten years ago, few people had heard of the sharing economy. Today, millions use ride-hailing apps and homestays every day.",
+        "vi": "Mười năm trước, ít ai nghe nói về kinh tế chia sẻ. Ngày nay, hàng triệu người dùng ứng dụng gọi xe và homestay mỗi ngày."
+      },
+      {
+        "id": "p2",
+        "en": "The idea is simple: use what already exists instead of buying new. A car owner drives passengers; a homeowner rents out a spare room.",
+        "vi": "Ý tưởng rất đơn giản: dùng những gì đã có thay vì mua mới. Chủ xe chở khách; chủ nhà cho thuê phòng trống."
+      },
+      {
+        "id": "p3",
+        "en": "Supporters say sharing saves money and resources. Fewer cars on the road means less traffic and cleaner air.",
+        "vi": "Người ủng hộ nói chia sẻ tiết kiệm tiền và tài nguyên. Ít xe trên đường nghĩa là ít kẹt xe và không khí sạch hơn."
+      },
+      {
+        "id": "p4",
+        "en": "But critics point to problems. Drivers work long hours without health insurance, and traditional taxi drivers lose their jobs.",
+        "vi": "Nhưng người phê bình chỉ ra vấn đề. Tài xế làm việc nhiều giờ mà không có bảo hiểm y tế, còn tài xế taxi truyền thống mất việc."
+      },
+      {
+        "id": "p5",
+        "en": "Safety is another concern. When a stranger enters your car or your home, trust becomes the key question.",
+        "vi": "An toàn là mối lo khác. Khi người lạ bước vào xe hay nhà bạn, niềm tin trở thành câu hỏi then chốt."
+      },
+      {
+        "id": "p6",
+        "en": "Governments are still learning how to regulate this new economy. Rules differ from country to country.",
+        "vi": "Các chính phủ vẫn đang học cách quản lý nền kinh tế mới này. Quy định khác nhau giữa các nước."
+      },
+      {
+        "id": "p7",
+        "en": "The sharing economy is neither purely good nor bad. It is a tool, and how we use it decides its value.",
+        "vi": "Kinh tế chia sẻ không hoàn toàn tốt cũng không hoàn toàn xấu. Nó là một công cụ, và cách ta dùng nó quyết định giá trị của nó."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is the main idea of the sharing economy?",
+        "options": [
+          "Use what already exists instead of buying new",
+          "Buy more cars and houses",
+          "Share money with strangers",
+          "Work for free"
+        ],
+        "correctAnswer": "Use what already exists instead of buying new",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: dùng những gì đã có thay vì mua mới."
+      },
+      {
+        "question": "What problems do critics mention?",
+        "options": [
+          "Drivers lack insurance and taxi drivers lose jobs",
+          "Apps are too expensive",
+          "Cars are too slow",
+          "Homestays are too dirty"
+        ],
+        "correctAnswer": "Drivers lack insurance and taxi drivers lose jobs",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: tài xế thiếu bảo hiểm, taxi truyền thống mất việc."
+      },
+      {
+        "question": "What is the key question about safety?",
+        "options": [
+          "Trust, when a stranger enters your car or home",
+          "The color of the car",
+          "The price of the trip",
+          "The driver's age"
+        ],
+        "correctAnswer": "Trust, when a stranger enters your car or home",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: niềm tin là câu hỏi then chốt khi người lạ vào xe/nhà bạn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-026",
+    "cefrLevel": "B2",
+    "topic": "psychology",
+    "topicVi": "Tâm lý học",
+    "title": "How Memory Works",
+    "titleVi": "Trí nhớ hoạt động như thế nào",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Your brain is not a video camera. Memory is not a recording; it is a reconstruction that changes every time you remember.",
+        "vi": "Não bạn không phải máy quay. Trí nhớ không phải bản ghi; nó là sự tái dựng và thay đổi mỗi lần bạn nhớ lại."
+      },
+      {
+        "id": "p2",
+        "en": "Scientists divide memory into three types: sensory, short-term, and long-term. Only repeated information reaches long-term storage.",
+        "vi": "Các nhà khoa học chia trí nhớ thành ba loại: cảm giác, ngắn hạn và dài hạn. Chỉ thông tin được lặp lại mới vào kho dài hạn."
+      },
+      {
+        "id": "p3",
+        "en": "Sleep plays a surprising role. During deep sleep, the brain replays the day's events and moves them into long-term memory.",
+        "vi": "Giấc ngủ đóng vai trò bất ngờ. Trong giấc ngủ sâu, não phát lại sự kiện trong ngày và chuyển chúng vào trí nhớ dài hạn."
+      },
+      {
+        "id": "p4",
+        "en": "This is why pulling an all-nighter before an exam often fails. A tired brain cannot store new knowledge well.",
+        "vi": "Đó là lý do thức trắng đêm trước kỳ thi thường thất bại. Não mệt mỏi không lưu trữ kiến thức mới tốt được."
+      },
+      {
+        "id": "p5",
+        "en": "Spaced repetition is the most proven study method. Reviewing after one day, one week, and one month beats last-minute cramming.",
+        "vi": "Lặp lại ngắt quãng là phương pháp học được chứng minh nhất. Ôn sau một ngày, một tuần và một tháng hiệu quả hơn học dồn."
+      },
+      {
+        "id": "p6",
+        "en": "Forgetting is also useful. The brain deletes unimportant details to make room for what matters.",
+        "vi": "Quên cũng có ích. Não xóa chi tiết không quan trọng để dành chỗ cho điều quan trọng."
+      },
+      {
+        "id": "p7",
+        "en": "Understanding memory helps us learn smarter, not harder.",
+        "vi": "Hiểu về trí nhớ giúp ta học thông minh hơn, không phải vất vả hơn."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How does the article describe memory?",
+        "options": [
+          "A reconstruction that changes each time",
+          "A perfect video recording",
+          "A computer hard drive",
+          "A photograph album"
+        ],
+        "correctAnswer": "A reconstruction that changes each time",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: trí nhớ là sự tái dựng, thay đổi mỗi lần nhớ lại."
+      },
+      {
+        "question": "What does the brain do during deep sleep?",
+        "options": [
+          "Replays the day and moves events to long-term memory",
+          "Deletes everything",
+          "Stops working",
+          "Dreams only about food"
+        ],
+        "correctAnswer": "Replays the day and moves events to long-term memory",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: ngủ sâu giúp não phát lại và chuyển sự kiện vào trí nhớ dài hạn."
+      },
+      {
+        "question": "What is the most proven study method?",
+        "options": [
+          "Spaced repetition: review after 1 day, 1 week, 1 month",
+          "Cramming the night before",
+          "Reading once quickly",
+          "Copying notes by hand once"
+        ],
+        "correctAnswer": "Spaced repetition: review after 1 day, 1 week, 1 month",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: lặp lại ngắt quãng hiệu quả hơn học dồn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-027",
+    "cefrLevel": "B2",
+    "topic": "society",
+    "topicVi": "Xã hội",
+    "title": "Fast Urbanization",
+    "titleVi": "Đô thị hóa nhanh",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "By 2050, nearly 70 percent of the world's population will live in cities, according to United Nations estimates.",
+        "vi": "Đến năm 2050, gần 70% dân số thế giới sẽ sống ở thành phố, theo ước tính của Liên Hợp Quốc."
+      },
+      {
+        "id": "p2",
+        "en": "Cities attract people with jobs, schools, and hospitals. A young person from a village can change their life in one generation.",
+        "vi": "Thành phố thu hút người dân bằng việc làm, trường học và bệnh viện. Một người trẻ từ làng quê có thể đổi đời chỉ trong một thế hệ."
+      },
+      {
+        "id": "p3",
+        "en": "But fast growth brings pain. Traffic jams steal hours every day, and housing prices push workers to the city edge.",
+        "vi": "Nhưng phát triển nhanh mang lại nỗi đau. Kẹt xe cướp đi hàng giờ mỗi ngày, giá nhà đẩy người lao động ra rìa thành phố."
+      },
+      {
+        "id": "p4",
+        "en": "The environment suffers too. Concrete replaces trees, and rivers turn into drains.",
+        "vi": "Môi trường cũng chịu thiệt. Bê tông thay cây xanh, sông biến thành cống rãnh."
+      },
+      {
+        "id": "p5",
+        "en": "Good planning can reduce the damage. Parks, public transport, and affordable housing make cities livable.",
+        "vi": "Quy hoạch tốt có thể giảm thiệt hại. Công viên, giao thông công cộng và nhà ở giá rẻ giúp thành phố đáng sống."
+      },
+      {
+        "id": "p6",
+        "en": "Some cities are trying new ideas: car-free days, rooftop gardens, and offices near homes.",
+        "vi": "Một số thành phố đang thử ý tưởng mới: ngày không xe hơi, vườn trên mái, văn phòng gần nhà."
+      },
+      {
+        "id": "p7",
+        "en": "Urbanization is unstoppable. The question is not whether cities grow, but how well they grow.",
+        "vi": "Đô thị hóa không thể dừng. Câu hỏi không phải thành phố có phát triển không, mà là phát triển tốt đến đâu."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What do UN estimates say about 2050?",
+        "options": [
+          "Nearly 70% of people will live in cities",
+          "Everyone will live in villages",
+          "Cities will disappear",
+          "Only 10% will live in cities"
+        ],
+        "correctAnswer": "Nearly 70% of people will live in cities",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: gần 70% dân số thế giới sẽ sống ở thành phố vào 2050."
+      },
+      {
+        "question": "What problems does fast growth bring?",
+        "options": [
+          "Traffic jams and high housing prices",
+          "Too many parks",
+          "Too few jobs",
+          "Cleaner air"
+        ],
+        "correctAnswer": "Traffic jams and high housing prices",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: kẹt xe và giá nhà cao đẩy người lao động ra xa."
+      },
+      {
+        "question": "What makes cities livable?",
+        "options": [
+          "Parks, public transport, affordable housing",
+          "More cars",
+          "Taller buildings",
+          "Fewer schools"
+        ],
+        "correctAnswer": "Parks, public transport, affordable housing",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: công viên, giao thông công cộng, nhà giá rẻ."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-028",
+    "cefrLevel": "B2",
+    "topic": "environment",
+    "topicVi": "Môi trường",
+    "title": "The Rise of Solar Power",
+    "titleVi": "Sự lên ngôi của năng lượng mặt trời",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "The price of solar panels has fallen dramatically over the past decade, making sunshine one of the cheapest energy sources.",
+        "vi": "Giá tấm pin mặt trời đã giảm mạnh trong thập kỷ qua, khiến ánh nắng thành một trong những nguồn năng lượng rẻ nhất."
+      },
+      {
+        "id": "p2",
+        "en": "Vietnam has a natural advantage: strong sunshine for most of the year, especially in the central and southern regions.",
+        "vi": "Việt Nam có lợi thế tự nhiên: nắng mạnh hầu hết thời gian trong năm, đặc biệt ở miền Trung và miền Nam."
+      },
+      {
+        "id": "p3",
+        "en": "Rooftop solar is booming. Families install panels, use the electricity, and sell the extra power to the grid.",
+        "vi": "Điện mặt trời mái nhà đang bùng nổ. Các gia đình lắp tấm pin, dùng điện và bán phần dư cho lưới điện."
+      },
+      {
+        "id": "p4",
+        "en": "But solar has a weakness: it stops at night. Batteries can store power, but they are still expensive.",
+        "vi": "Nhưng điện mặt trời có điểm yếu: nó ngừng hoạt động ban đêm. Pin có thể trữ điện nhưng vẫn đắt."
+      },
+      {
+        "id": "p5",
+        "en": "Engineers are working on solutions, from bigger batteries to smart grids that balance supply and demand.",
+        "vi": "Các kỹ sư đang tìm giải pháp, từ pin lớn hơn đến lưới điện thông minh cân bằng cung và cầu."
+      },
+      {
+        "id": "p6",
+        "en": "Experts agree that no single source can power a country. Solar will work together with wind, water, and other sources.",
+        "vi": "Chuyên gia đồng ý không nguồn nào đơn lẻ nuôi nổi cả nước. Điện mặt trời sẽ kết hợp với gió, nước và các nguồn khác."
+      },
+      {
+        "id": "p7",
+        "en": "The sun sends Earth free energy every day. Learning to catch it may be humanity's smartest investment.",
+        "vi": "Mặt trời gửi năng lượng miễn phí cho Trái Đất mỗi ngày. Học cách đón lấy nó có thể là khoản đầu tư thông minh nhất của nhân loại."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is Vietnam's natural advantage for solar?",
+        "options": [
+          "Strong sunshine most of the year",
+          "Very cold winters",
+          "Strong winds at night",
+          "Cheap imported panels"
+        ],
+        "correctAnswer": "Strong sunshine most of the year",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: Việt Nam nắng mạnh hầu hết thời gian trong năm."
+      },
+      {
+        "question": "What is solar power's main weakness?",
+        "options": [
+          "It stops at night and batteries are expensive",
+          "Panels are too heavy",
+          "The sun is too hot",
+          "It only works in winter"
+        ],
+        "correctAnswer": "It stops at night and batteries are expensive",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: ban đêm không có điện, pin trữ điện còn đắt."
+      },
+      {
+        "question": "What do experts say about energy sources?",
+        "options": [
+          "No single source can power a country alone",
+          "Solar alone is enough",
+          "Wind power is useless",
+          "Countries should use only coal"
+        ],
+        "correctAnswer": "No single source can power a country alone",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: không nguồn nào đơn lẻ đủ, cần kết hợp nhiều nguồn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-029",
+    "cefrLevel": "B2",
+    "topic": "psychology",
+    "topicVi": "Tâm lý học",
+    "title": "Does Language Shape Thought?",
+    "titleVi": "Ngôn ngữ có định hình tư duy?",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Do people who speak different languages think differently? This old question still fascinates scientists today.",
+        "vi": "Người nói các ngôn ngữ khác nhau có tư duy khác nhau không? Câu hỏi cũ này vẫn khiến các nhà khoa học say mê."
+      },
+      {
+        "id": "p2",
+        "en": "Some languages have many words for snow, while others have none. Speakers notice most easily what their language names.",
+        "vi": "Có ngôn ngữ có nhiều từ chỉ tuyết, có ngôn ngữ không có từ nào. Người nói dễ nhận ra nhất những gì ngôn ngữ mình gọi tên."
+      },
+      {
+        "id": "p3",
+        "en": "Time is another example. Some cultures describe the future as behind and the past as in front, the opposite of English.",
+        "vi": "Thời gian là ví dụ khác. Có nền văn hóa mô tả tương lai ở phía sau và quá khứ ở phía trước, ngược với tiếng Anh."
+      },
+      {
+        "id": "p4",
+        "en": "Bilingual people offer the best evidence. Studies suggest they may solve problems differently depending on which language they use.",
+        "vi": "Người song ngữ cho bằng chứng tốt nhất. Nghiên cứu cho thấy họ có thể giải quyết vấn đề khác nhau tùy ngôn ngữ đang dùng."
+      },
+      {
+        "id": "p5",
+        "en": "But scientists warn against exaggeration. Language influences thought; it does not imprison it.",
+        "vi": "Nhưng các nhà khoa học cảnh báo đừng phóng đại. Ngôn ngữ ảnh hưởng tư duy, chứ không giam cầm nó."
+      },
+      {
+        "id": "p6",
+        "en": "Learning a new language, then, is not just learning words. It is borrowing a new pair of eyes.",
+        "vi": "Học một ngôn ngữ mới vì thế không chỉ là học từ. Đó là mượn một đôi mắt mới."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does the snow example show?",
+        "options": [
+          "Speakers notice what their language names",
+          "Snow is the same everywhere",
+          "All languages have snow words",
+          "Snow does not exist in warm countries"
+        ],
+        "correctAnswer": "Speakers notice what their language names",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: người nói dễ nhận ra những gì ngôn ngữ mình gọi tên."
+      },
+      {
+        "question": "How do some cultures describe time?",
+        "options": [
+          "Future behind, past in front",
+          "Future in front, past behind",
+          "No past or future",
+          "Time does not exist"
+        ],
+        "correctAnswer": "Future behind, past in front",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: có văn hóa mô tả tương lai ở sau, quá khứ ở trước."
+      },
+      {
+        "question": "What do scientists warn?",
+        "options": [
+          "Language influences thought but does not imprison it",
+          "Language has no effect at all",
+          "Only English shapes thought",
+          "Thought shapes nothing"
+        ],
+        "correctAnswer": "Language influences thought but does not imprison it",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: ngôn ngữ ảnh hưởng tư duy chứ không giam cầm nó."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-030",
+    "cefrLevel": "B2",
+    "topic": "travel",
+    "topicVi": "Du lịch",
+    "title": "Sustainable Tourism",
+    "titleVi": "Du lịch bền vững",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Tourism brings money, but too many tourists can destroy what they came to see. Venice, Barcelona, and Maya Bay have all suffered from overtourism.",
+        "vi": "Du lịch mang lại tiền bạc, nhưng quá nhiều du khách có thể phá hủy chính thứ họ đến xem. Venice, Barcelona và vịnh Maya đều từng chịu cảnh quá tải du lịch."
+      },
+      {
+        "id": "p2",
+        "en": "Coral reefs break under careless feet. Old towns become souvenir shops, and locals can no longer afford to live there.",
+        "vi": "Rạn san hô vỡ dưới những bước chân bất cẩn. Phố cổ thành cửa hàng lưu niệm, người dân không còn đủ tiền sống ở đó."
+      },
+      {
+        "id": "p3",
+        "en": "Sustainable tourism offers another path. Travelers choose eco-hotels, respect local customs, and leave no trash behind.",
+        "vi": "Du lịch bền vững mở ra con đường khác. Du khách chọn khách sạn sinh thái, tôn trọng phong tục địa phương và không xả rác."
+      },
+      {
+        "id": "p4",
+        "en": "Some places now limit visitor numbers. Tourists must book ahead, and part of the fee funds conservation.",
+        "vi": "Một số nơi hiện giới hạn số lượng khách. Du khách phải đặt trước, một phần phí dùng cho bảo tồn."
+      },
+      {
+        "id": "p5",
+        "en": "Local communities should benefit first. When tourism money stays in the village, people protect nature instead of selling it.",
+        "vi": "Cộng đồng địa phương nên được hưởng lợi trước. Khi tiền du lịch ở lại làng, người dân bảo vệ thiên nhiên thay vì bán nó đi."
+      },
+      {
+        "id": "p6",
+        "en": "The best souvenir is a place that remains beautiful after you leave.",
+        "vi": "Món quà lưu niệm đẹp nhất là một nơi chốn vẫn đẹp sau khi bạn rời đi."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Which places suffered from overtourism?",
+        "options": [
+          "Venice, Barcelona, and Maya Bay",
+          "Paris, London, and Rome",
+          "Tokyo, Seoul, and Hanoi",
+          "Sydney, Cairo, and Lima"
+        ],
+        "correctAnswer": "Venice, Barcelona, and Maya Bay",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1 liệt kê Venice, Barcelona và vịnh Maya."
+      },
+      {
+        "question": "What do sustainable travelers do?",
+        "options": [
+          "Choose eco-hotels, respect customs, leave no trash",
+          "Take coral home as souvenirs",
+          "Bargain aggressively everywhere",
+          "Visit as many places as possible in one day"
+        ],
+        "correctAnswer": "Choose eco-hotels, respect customs, leave no trash",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: chọn khách sạn sinh thái, tôn trọng phong tục, không xả rác."
+      },
+      {
+        "question": "How do visitor limits help?",
+        "options": [
+          "Booking fees fund conservation",
+          "They make trips more expensive for fun",
+          "They ban all tourists",
+          "They close all hotels"
+        ],
+        "correctAnswer": "Booking fees fund conservation",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: phải đặt trước, một phần phí dùng cho bảo tồn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

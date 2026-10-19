@@ -43,3 +43,6 @@ export const FEATURE_FLAGS = {
   ANTI_CHEAT_ENABLED: true,
   OFFLINE_PWA_ENABLED: false,
 };
+
+export * from './mascotReactions';
+

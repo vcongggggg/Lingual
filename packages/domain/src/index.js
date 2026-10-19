@@ -10,6 +10,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calculateSM2 = calculateSM2;
 exports.getFormattedDateInTimezone = getFormattedDateInTimezone;
+exports.getFormattedWeekInTimezone = getFormattedWeekInTimezone;
+exports.getYesterdayDateString = getYesterdayDateString;
+exports.getDayDifference = getDayDifference;
 exports.updateStreakWithTimezone = updateStreakWithTimezone;
 exports.calculateLessonXP = calculateLessonXP;
 exports.calculateGameScore = calculateGameScore;
@@ -63,55 +66,132 @@ function getFormattedDateInTimezone(date = new Date(), timezone = 'Asia/Ho_Chi_M
         return date.toISOString().split('T')[0];
     }
 }
+function getFormattedWeekInTimezone(date = new Date(), timezone = 'Asia/Ho_Chi_Minh') {
+    const ymd = getFormattedDateInTimezone(date, timezone);
+    const [y, m, d] = ymd.split('-').map(Number);
+    const target = new Date(Date.UTC(y, m - 1, d));
+    const dayNr = ((target.getUTCDay() + 6) % 7) + 1;
+    target.setUTCDate(target.getUTCDate() - dayNr + 4);
+    const isoYear = target.getUTCFullYear();
+    const firstThursday = new Date(Date.UTC(isoYear, 0, 4));
+    const firstThursdayDayNr = ((firstThursday.getUTCDay() + 6) % 7) + 1;
+    firstThursday.setUTCDate(firstThursday.getUTCDate() - firstThursdayDayNr + 4);
+    const weekNumber = 1 + Math.round(((target.getTime() - firstThursday.getTime()) / 86400000) / 7);
+    const weekStr = weekNumber < 10 ? `0${weekNumber}` : `${weekNumber}`;
+    return `${isoYear}-W${weekStr}`;
+}
+function getYesterdayDateString(ymd) {
+    const [y, m, d] = ymd.split('-').map(Number);
+    const date = new Date(Date.UTC(y, m - 1, d - 1));
+    return date.toISOString().split('T')[0];
+}
+function getDayDifference(lastYmd, todayYmd) {
+    const [y1, m1, d1] = lastYmd.split('-').map(Number);
+    const [y2, m2, d2] = todayYmd.split('-').map(Number);
+    const utc1 = Date.UTC(y1, m1 - 1, d1);
+    const utc2 = Date.UTC(y2, m2 - 1, d2);
+    return Math.round((utc2 - utc1) / 86400000);
+}
 /**
- * Updates user's streak considering timezone and streak freezes.
+ * Updates user's streak considering timezone, leave passes, and streak freezes.
  */
 function updateStreakWithTimezone(state, currentDate = new Date(), timezone = 'Asia/Ho_Chi_Minh') {
     const todayStr = getFormattedDateInTimezone(currentDate, timezone);
+    const currentLeavePasses = state.leavePasses ?? 0;
     if (!state.lastActiveDate) {
         return {
             currentStreak: 1,
             streakFreezes: state.streakFreezes,
+            leavePasses: currentLeavePasses,
             streakMaintained: true,
             freezeUsed: false,
+            leavePassUsed: false,
         };
     }
     if (state.lastActiveDate === todayStr) {
         return {
             currentStreak: state.currentStreak,
             streakFreezes: state.streakFreezes,
+            leavePasses: currentLeavePasses,
             streakMaintained: true,
             freezeUsed: false,
+            leavePassUsed: state.lastLeavePassUsedDate === todayStr,
         };
     }
-    const lastDate = new Date(state.lastActiveDate);
-    const todayDate = new Date(todayStr);
-    const diffDays = Math.floor((todayDate.getTime() - lastDate.getTime()) / (1000 * 3600 * 24));
+    const diffDays = getDayDifference(state.lastActiveDate, todayStr);
     if (diffDays === 1) {
-        // Consecutive day activity!
         return {
             currentStreak: state.currentStreak + 1,
             streakFreezes: state.streakFreezes,
+            leavePasses: currentLeavePasses,
             streakMaintained: true,
             freezeUsed: false,
+            leavePassUsed: false,
         };
     }
-    else if (diffDays === 2 && state.streakFreezes > 0) {
-        // Missed exactly 1 day, but user has Streak Freeze!
-        return {
-            currentStreak: state.currentStreak + 1,
-            streakFreezes: state.streakFreezes - 1,
-            streakMaintained: true,
-            freezeUsed: true,
-        };
+    else if (diffDays === 2) {
+        if (currentLeavePasses > 0) {
+            return {
+                currentStreak: state.currentStreak + 1,
+                streakFreezes: state.streakFreezes,
+                leavePasses: currentLeavePasses - 1,
+                streakMaintained: true,
+                freezeUsed: false,
+                leavePassUsed: true,
+            };
+        }
+        else if (state.streakFreezes >= 1) {
+            return {
+                currentStreak: state.currentStreak + 1,
+                streakFreezes: state.streakFreezes - 1,
+                leavePasses: 0,
+                streakMaintained: true,
+                freezeUsed: true,
+                leavePassUsed: false,
+            };
+        }
+        else {
+            return {
+                currentStreak: 1,
+                streakFreezes: state.streakFreezes,
+                leavePasses: 0,
+                streakMaintained: false,
+                freezeUsed: false,
+                leavePassUsed: false,
+            };
+        }
+    }
+    else if (diffDays > 2) {
+        const missedDays = diffDays - 1;
+        if (state.streakFreezes >= missedDays) {
+            return {
+                currentStreak: state.currentStreak + 1,
+                streakFreezes: state.streakFreezes - missedDays,
+                leavePasses: currentLeavePasses,
+                streakMaintained: true,
+                freezeUsed: true,
+                leavePassUsed: false,
+            };
+        }
+        else {
+            return {
+                currentStreak: 1,
+                streakFreezes: state.streakFreezes,
+                leavePasses: currentLeavePasses,
+                streakMaintained: false,
+                freezeUsed: false,
+                leavePassUsed: false,
+            };
+        }
     }
     else {
-        // Streak broken, reset to 1
         return {
-            currentStreak: 1,
+            currentStreak: state.currentStreak,
             streakFreezes: state.streakFreezes,
-            streakMaintained: false,
+            leavePasses: currentLeavePasses,
+            streakMaintained: true,
             freezeUsed: false,
+            leavePassUsed: false,
         };
     }
 }

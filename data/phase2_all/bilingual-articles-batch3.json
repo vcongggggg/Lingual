@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "news-031",
+    "title": "Houses That Float on Water",
+    "titleVi": "Những ngôi nhà nổi trên mặt nước",
+    "cefrLevel": "A2",
+    "topic": "architecture",
+    "topicVi": "Kiến trúc",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "In many parts of the world, people build their houses on water.",
+        "vi": "Ở nhiều nơi trên thế giới, người ta xây nhà trên mặt nước."
+      },
+      {
+        "id": "p2",
+        "en": "In Vietnam, floating villages on rivers and lakes have existed for hundreds of years.",
+        "vi": "Ở Việt Nam, các làng nổi trên sông hồ đã tồn tại hàng trăm năm."
+      },
+      {
+        "id": "p3",
+        "en": "The houses are made of wood and rest on barrels or bamboo rafts.",
+        "vi": "Những ngôi nhà làm bằng gỗ và nổi trên các thùng phuy hoặc bè tre."
+      },
+      {
+        "id": "p4",
+        "en": "Families cook, sleep, and even grow vegetables on their floating homes.",
+        "vi": "Các gia đình nấu ăn, ngủ, và thậm chí trồng rau ngay trên ngôi nhà nổi của mình."
+      },
+      {
+        "id": "p5",
+        "en": "In the Netherlands, modern floating houses have electricity and the internet.",
+        "vi": "Ở Hà Lan, những ngôi nhà nổi hiện đại có điện và internet."
+      },
+      {
+        "id": "p6",
+        "en": "When the water rises, the houses simply rise with it. They are safe from floods.",
+        "vi": "Khi nước dâng, những ngôi nhà cũng nổi lên theo. Chúng an toàn trước lũ lụt."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What are floating houses in Vietnam made of?",
+        "options": [
+          "Wood",
+          "Stone",
+          "Metal",
+          "Glass"
+        ],
+        "correctAnswer": "Wood",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3 nói nhà làm bằng gỗ (wood), nổi trên thùng phuy hoặc bè tre."
+      },
+      {
+        "question": "What happens when the water rises?",
+        "options": [
+          "The houses sink",
+          "The houses rise with the water",
+          "People leave",
+          "The houses break"
+        ],
+        "correctAnswer": "The houses rise with the water",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: khi nước dâng, nhà cũng nổi lên theo, an toàn trước lũ."
+      },
+      {
+        "question": "Which country has modern floating houses with electricity and the internet?",
+        "options": [
+          "Vietnam",
+          "Thailand",
+          "The Netherlands",
+          "Japan"
+        ],
+        "correctAnswer": "The Netherlands",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: ở Hà Lan, nhà nổi hiện đại có điện và internet."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-032",
+    "title": "How Pop Songs Are Made",
+    "titleVi": "Bài nhạc pop được tạo ra như thế nào",
+    "cefrLevel": "A2",
+    "topic": "music",
+    "topicVi": "Âm nhạc",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Have you ever wondered how your favorite pop song was made?",
+        "vi": "Bạn có bao giờ thắc mắc bài nhạc pop yêu thích của mình được tạo ra như thế nào không?"
+      },
+      {
+        "id": "p2",
+        "en": "Most pop songs start with a simple melody on a piano or guitar.",
+        "vi": "Hầu hết các bài pop bắt đầu từ một giai điệu đơn giản trên piano hoặc guitar."
+      },
+      {
+        "id": "p3",
+        "en": "Then the songwriter adds a beat and writes the words.",
+        "vi": "Sau đó nhạc sĩ thêm nhịp điệu và viết lời."
+      },
+      {
+        "id": "p4",
+        "en": "A good chorus is very important. It is the part everyone sings along to.",
+        "vi": "Điệp khúc hay rất quan trọng. Đó là đoạn mà ai cũng hát theo."
+      },
+      {
+        "id": "p5",
+        "en": "Many songs are finished in a music studio with computers and microphones.",
+        "vi": "Nhiều bài hát được hoàn thiện trong phòng thu với máy tính và micro."
+      },
+      {
+        "id": "p6",
+        "en": "The next time you hear a song, listen for the chorus. You will hear it again and again!",
+        "vi": "Lần tới khi nghe một bài hát, hãy chú ý điệp khúc. Bạn sẽ nghe nó lặp đi lặp lại!"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What do most pop songs start with?",
+        "options": [
+          "A computer",
+          "A simple melody",
+          "A music video",
+          "A concert"
+        ],
+        "correctAnswer": "A simple melody",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: hầu hết bài pop bắt đầu từ một giai điệu đơn giản."
+      },
+      {
+        "question": "What is the chorus?",
+        "options": [
+          "The first part",
+          "The quiet part",
+          "The part everyone sings along to",
+          "The ending"
+        ],
+        "correctAnswer": "The part everyone sings along to",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: điệp khúc là đoạn ai cũng hát theo."
+      },
+      {
+        "question": "Where are many songs finished?",
+        "options": [
+          "In a concert hall",
+          "In a music studio",
+          "In a classroom",
+          "On a bus"
+        ],
+        "correctAnswer": "In a music studio",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: nhiều bài hát được hoàn thiện trong phòng thu."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-033",
+    "title": "Cartoons That Teach Us to Be Kind",
+    "titleVi": "Phim hoạt hình dạy ta lòng tốt",
+    "cefrLevel": "A2",
+    "topic": "film",
+    "topicVi": "Điện ảnh",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Children around the world love watching cartoons.",
+        "vi": "Trẻ em trên khắp thế giới đều thích xem phim hoạt hình."
+      },
+      {
+        "id": "p2",
+        "en": "But cartoons are not only fun. They can also teach important lessons.",
+        "vi": "Nhưng phim hoạt hình không chỉ vui. Chúng còn dạy những bài học quan trọng."
+      },
+      {
+        "id": "p3",
+        "en": "Many cartoons show characters helping their friends.",
+        "vi": "Nhiều phim hoạt hình cho thấy các nhân vật giúp đỡ bạn bè."
+      },
+      {
+        "id": "p4",
+        "en": "When children see kind actions on screen, they learn to be kind in real life.",
+        "vi": "Khi trẻ thấy hành động tốt trên màn hình, chúng học cách tốt bụng ngoài đời thật."
+      },
+      {
+        "id": "p5",
+        "en": "Some cartoons teach children about nature and how to protect it.",
+        "vi": "Một số phim dạy trẻ về thiên nhiên và cách bảo vệ nó."
+      },
+      {
+        "id": "p6",
+        "en": "So the next time you watch a cartoon, look for the lesson inside the story.",
+        "vi": "Vì vậy lần tới khi xem hoạt hình, hãy tìm bài học ẩn trong câu chuyện."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What can cartoons teach besides being fun?",
+        "options": [
+          "Important lessons",
+          "Math",
+          "Cooking",
+          "Sports"
+        ],
+        "correctAnswer": "Important lessons",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: phim hoạt hình còn dạy những bài học quan trọng."
+      },
+      {
+        "question": "What happens when children see kind actions on screen?",
+        "options": [
+          "They get bored",
+          "They learn to be kind in real life",
+          "They fall asleep",
+          "They stop watching"
+        ],
+        "correctAnswer": "They learn to be kind in real life",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: trẻ học cách tốt bụng ngoài đời thật."
+      },
+      {
+        "question": "What do some cartoons teach about?",
+        "options": [
+          "Nature and how to protect it",
+          "Space travel",
+          "Fashion",
+          "Cars"
+        ],
+        "correctAnswer": "Nature and how to protect it",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: một số phim dạy về thiên nhiên và cách bảo vệ nó."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-034",
+    "title": "The Stairs of Rice",
+    "titleVi": "Những bậc thang lúa",
+    "cefrLevel": "A2",
+    "topic": "agriculture",
+    "topicVi": "Nông nghiệp",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "In the mountains of northern Vietnam, farmers grow rice on stairs of land.",
+        "vi": "Trên núi cao phía Bắc Việt Nam, nông dân trồng lúa trên những bậc thang đất."
+      },
+      {
+        "id": "p2",
+        "en": "These are called rice terraces. They look like giant green steps.",
+        "vi": "Chúng được gọi là ruộng bậc thang. Chúng trông như những bậc thang xanh khổng lồ."
+      },
+      {
+        "id": "p3",
+        "en": "Long ago, people cut the terraces into the hills by hand.",
+        "vi": "Từ xa xưa, người ta đã xẻ những thửa ruộng này vào sườn đồi bằng tay."
+      },
+      {
+        "id": "p4",
+        "en": "Water flows down from the top terrace to the bottom one.",
+        "vi": "Nước chảy từ thửa ruộng trên cùng xuống thửa dưới cùng."
+      },
+      {
+        "id": "p5",
+        "en": "In harvest season, the terraces turn golden yellow. It is very beautiful.",
+        "vi": "Vào mùa gặt, ruộng bậc thang chuyển sang màu vàng óng. Rất đẹp."
+      },
+      {
+        "id": "p6",
+        "en": "Many visitors come to see the terraces and take photos every year.",
+        "vi": "Mỗi năm, nhiều du khách đến ngắm ruộng bậc thang và chụp ảnh."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What are rice terraces?",
+        "options": [
+          "Stairs of land for growing rice",
+          "Mountains",
+          "Rivers",
+          "Bridges"
+        ],
+        "correctAnswer": "Stairs of land for growing rice",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: nông dân trồng lúa trên những bậc thang đất."
+      },
+      {
+        "question": "How does water reach the lower terraces?",
+        "options": [
+          "It flows down from the top",
+          "Farmers carry it",
+          "It rains only",
+          "Pipes pump it"
+        ],
+        "correctAnswer": "It flows down from the top",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: nước chảy từ thửa trên cùng xuống thửa dưới."
+      },
+      {
+        "question": "What color are the terraces in harvest season?",
+        "options": [
+          "Green",
+          "Golden yellow",
+          "Blue",
+          "Red"
+        ],
+        "correctAnswer": "Golden yellow",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: mùa gặt, ruộng chuyển màu vàng óng."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-035",
+    "title": "Football Brings the World Together",
+    "titleVi": "Bóng đá gắn kết thế giới",
+    "cefrLevel": "A2",
+    "topic": "sports",
+    "topicVi": "Thể thao",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Football is the most popular sport in the world.",
+        "vi": "Bóng đá là môn thể thao phổ biến nhất thế giới."
+      },
+      {
+        "id": "p2",
+        "en": "Every four years, the World Cup brings billions of people together.",
+        "vi": "Cứ bốn năm một lần, World Cup gắn kết hàng tỷ người lại với nhau."
+      },
+      {
+        "id": "p3",
+        "en": "People cheer for their teams in stadiums, cafes, and living rooms.",
+        "vi": "Mọi người cổ vũ đội của mình ở sân vận động, quán cà phê và phòng khách."
+      },
+      {
+        "id": "p4",
+        "en": "Football is simple: you only need a ball and some space to play.",
+        "vi": "Bóng đá rất đơn giản: bạn chỉ cần một quả bóng và một khoảng trống để chơi."
+      },
+      {
+        "id": "p5",
+        "en": "In many villages, children play football barefoot on dirt fields.",
+        "vi": "Ở nhiều ngôi làng, trẻ em đá bóng chân trần trên sân đất."
+      },
+      {
+        "id": "p6",
+        "en": "The game teaches teamwork. No one can win alone.",
+        "vi": "Môn thể thao này dạy tinh thần đồng đội. Không ai có thể thắng một mình."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How often is the World Cup held?",
+        "options": [
+          "Every year",
+          "Every two years",
+          "Every four years",
+          "Every five years"
+        ],
+        "correctAnswer": "Every four years",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: cứ bốn năm một lần World Cup diễn ra."
+      },
+      {
+        "question": "What do you need to play football?",
+        "options": [
+          "Expensive shoes",
+          "A ball and some space",
+          "A big stadium",
+          "A coach"
+        ],
+        "correctAnswer": "A ball and some space",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: chỉ cần một quả bóng và một khoảng trống."
+      },
+      {
+        "question": "What does football teach?",
+        "options": [
+          "Teamwork",
+          "Swimming",
+          "Cooking",
+          "Driving"
+        ],
+        "correctAnswer": "Teamwork",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: bóng đá dạy tinh thần đồng đội."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-036",
+    "title": "A Cup of Vietnamese Coffee",
+    "titleVi": "Một tách cà phê Việt",
+    "cefrLevel": "A2",
+    "topic": "food",
+    "topicVi": "Ẩm thực",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Vietnam is famous for its strong and sweet coffee.",
+        "vi": "Việt Nam nổi tiếng với cà phê đậm và ngọt."
+      },
+      {
+        "id": "p2",
+        "en": "Vietnamese coffee is made with a small metal filter called a phin.",
+        "vi": "Cà phê Việt được pha bằng một chiếc phin kim loại nhỏ."
+      },
+      {
+        "id": "p3",
+        "en": "Hot water drips slowly through the coffee grounds.",
+        "vi": "Nước nóng nhỏ giọt từ từ qua bột cà phê."
+      },
+      {
+        "id": "p4",
+        "en": "People often add condensed milk to make ca phe sua da.",
+        "vi": "Mọi người thường thêm sữa đặc để thành cà phê sữa đá."
+      },
+      {
+        "id": "p5",
+        "en": "Drinking coffee slowly while watching the street is a daily habit.",
+        "vi": "Nhâm nhi cà phê trong lúc ngắm phố là thói quen mỗi ngày."
+      },
+      {
+        "id": "p6",
+        "en": "For many Vietnamese people, coffee is not just a drink. It is a way of life.",
+        "vi": "Với nhiều người Việt, cà phê không chỉ là thức uống. Nó là một lối sống."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is the metal filter called?",
+        "options": [
+          "A phin",
+          "A cup",
+          "A pot",
+          "A spoon"
+        ],
+        "correctAnswer": "A phin",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: cà phê Việt pha bằng phin kim loại nhỏ."
+      },
+      {
+        "question": "What do people add to make ca phe sua da?",
+        "options": [
+          "Sugar",
+          "Condensed milk",
+          "Ice only",
+          "Tea"
+        ],
+        "correctAnswer": "Condensed milk",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: thêm sữa đặc để thành cà phê sữa đá."
+      },
+      {
+        "question": "What does coffee mean to many Vietnamese people?",
+        "options": [
+          "Just a drink",
+          "A way of life",
+          "A medicine",
+          "A game"
+        ],
+        "correctAnswer": "A way of life",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: với nhiều người Việt, cà phê là một lối sống."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-037",
+    "title": "Our Nearest Neighbor: The Moon",
+    "titleVi": "Người hàng xóm gần nhất: Mặt Trăng",
+    "cefrLevel": "B1",
+    "topic": "space",
+    "topicVi": "Vũ trụ",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "The Moon is Earth's closest neighbor in space, about 384,000 kilometers away.",
+        "vi": "Mặt Trăng là người hàng xóm gần nhất của Trái Đất trong vũ trụ, cách khoảng 384.000 km."
+      },
+      {
+        "id": "p2",
+        "en": "It takes light only 1.3 seconds to travel from the Moon to Earth.",
+        "vi": "Ánh sáng chỉ mất 1,3 giây để đi từ Mặt Trăng tới Trái Đất."
+      },
+      {
+        "id": "p3",
+        "en": "The Moon has no air and no water on its surface.",
+        "vi": "Mặt Trăng không có không khí và không có nước trên bề mặt."
+      },
+      {
+        "id": "p4",
+        "en": "In 1969, astronauts first walked on the Moon. Millions of people watched on TV.",
+        "vi": "Năm 1969, các phi hành gia lần đầu tiên đi bộ trên Mặt Trăng. Hàng triệu người đã xem qua TV."
+      },
+      {
+        "id": "p5",
+        "en": "Scientists now want to build a small station on the Moon.",
+        "vi": "Các nhà khoa học hiện muốn xây một trạm nhỏ trên Mặt Trăng."
+      },
+      {
+        "id": "p6",
+        "en": "From there, future spaceships could travel to Mars more easily.",
+        "vi": "Từ đó, các tàu vũ trụ tương lai có thể bay tới Sao Hỏa dễ dàng hơn."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How far is the Moon from Earth?",
+        "options": [
+          "About 384,000 kilometers",
+          "About 38,400 kilometers",
+          "About 3,840 kilometers",
+          "About 384 kilometers"
+        ],
+        "correctAnswer": "About 384,000 kilometers",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: Mặt Trăng cách Trái Đất khoảng 384.000 km."
+      },
+      {
+        "question": "What does the Moon's surface NOT have?",
+        "options": [
+          "Rocks",
+          "Air and water",
+          "Craters",
+          "Dust"
+        ],
+        "correctAnswer": "Air and water",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: Mặt Trăng không có không khí và nước trên bề mặt."
+      },
+      {
+        "question": "Why do scientists want a station on the Moon?",
+        "options": [
+          "To watch TV",
+          "To make travel to Mars easier",
+          "To grow rice",
+          "To build hotels"
+        ],
+        "correctAnswer": "To make travel to Mars easier",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: từ trạm Mặt Trăng, tàu vũ trụ có thể bay tới Sao Hỏa dễ hơn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-038",
+    "title": "Coral Reefs: Cities Under the Sea",
+    "titleVi": "Rạn san hô: Thành phố dưới biển",
+    "cefrLevel": "B1",
+    "topic": "ocean",
+    "topicVi": "Đại dương",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Coral reefs are like underwater cities full of life.",
+        "vi": "Rạn san hô giống như những thành phố dưới nước đầy sức sống."
+      },
+      {
+        "id": "p2",
+        "en": "Thousands of fish, crabs, and sea turtles live in and around the reefs.",
+        "vi": "Hàng nghìn loài cá, cua và rùa biển sống trong và quanh rạn san hô."
+      },
+      {
+        "id": "p3",
+        "en": "Corals are animals, not plants, though they look like colorful rocks.",
+        "vi": "San hô là động vật, không phải thực vật, dù chúng trông như những tảng đá đầy màu sắc."
+      },
+      {
+        "id": "p4",
+        "en": "Reefs protect coastlines by breaking big waves before they reach the shore.",
+        "vi": "Rạn san hô bảo vệ bờ biển bằng cách chắn sóng lớn trước khi sóng tới bờ."
+      },
+      {
+        "id": "p5",
+        "en": "Rising ocean temperatures are harming corals around the world.",
+        "vi": "Nhiệt độ đại dương tăng đang gây hại cho san hô trên khắp thế giới."
+      },
+      {
+        "id": "p6",
+        "en": "Scientists are working hard to grow new corals and save the reefs.",
+        "vi": "Các nhà khoa học đang nỗ lực trồng san hô mới và cứu các rạn san hô."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What are corals?",
+        "options": [
+          "Plants",
+          "Animals",
+          "Rocks",
+          "Fish"
+        ],
+        "correctAnswer": "Animals",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: san hô là động vật, không phải thực vật."
+      },
+      {
+        "question": "How do reefs protect coastlines?",
+        "options": [
+          "By breaking big waves",
+          "By eating fish",
+          "By making sand",
+          "By moving water"
+        ],
+        "correctAnswer": "By breaking big waves",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: rạn san hô chắn sóng lớn trước khi sóng tới bờ."
+      },
+      {
+        "question": "What is harming corals around the world?",
+        "options": [
+          "Rising ocean temperatures",
+          "Too many boats",
+          "Loud music",
+          "Fishing nets"
+        ],
+        "correctAnswer": "Rising ocean temperatures",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: nhiệt độ đại dương tăng đang gây hại cho san hô."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-039",
+    "title": "Why We Forget Names but Remember Faces",
+    "titleVi": "Vì sao ta quên tên mà nhớ mặt",
+    "cefrLevel": "B1",
+    "topic": "psychology",
+    "topicVi": "Tâm lý",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Have you ever recognized a face but could not remember the name?",
+        "vi": "Bạn có bao giờ nhận ra một gương mặt nhưng không nhớ nổi tên không?"
+      },
+      {
+        "id": "p2",
+        "en": "Scientists say this happens because the brain stores faces and names in different ways.",
+        "vi": "Các nhà khoa học cho biết điều này xảy ra vì não lưu trữ gương mặt và tên theo cách khác nhau."
+      },
+      {
+        "id": "p3",
+        "en": "Faces are stored as pictures, which are easy for the brain to keep.",
+        "vi": "Gương mặt được lưu như hình ảnh, thứ mà não dễ ghi nhớ."
+      },
+      {
+        "id": "p4",
+        "en": "Names are stored as words, which are easier to forget.",
+        "vi": "Tên được lưu như từ ngữ, thứ dễ bị quên hơn."
+      },
+      {
+        "id": "p5",
+        "en": "To remember a name, try repeating it right after you hear it.",
+        "vi": "Để nhớ tên, hãy thử lặp lại ngay sau khi nghe."
+      },
+      {
+        "id": "p6",
+        "en": "Connecting the name to something funny also helps the brain remember.",
+        "vi": "Liên kết cái tên với điều gì đó vui nhộn cũng giúp não ghi nhớ."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why do we forget names but remember faces?",
+        "options": [
+          "The brain stores them in different ways",
+          "Faces are louder",
+          "Names are longer",
+          "We don't care about names"
+        ],
+        "correctAnswer": "The brain stores them in different ways",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: não lưu trữ gương mặt và tên theo cách khác nhau."
+      },
+      {
+        "question": "How are faces stored in the brain?",
+        "options": [
+          "As pictures",
+          "As numbers",
+          "As sounds",
+          "As smells"
+        ],
+        "correctAnswer": "As pictures",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: gương mặt được lưu như hình ảnh."
+      },
+      {
+        "question": "What is one tip for remembering a name?",
+        "options": [
+          "Repeat it right after hearing it",
+          "Write it on your hand",
+          "Ignore it",
+          "Ask someone else"
+        ],
+        "correctAnswer": "Repeat it right after hearing it",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: lặp lại tên ngay sau khi nghe."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-040",
+    "title": "The First Steam Trains",
+    "titleVi": "Những đoàn tàu hơi nước đầu tiên",
+    "cefrLevel": "B1",
+    "topic": "history",
+    "topicVi": "Lịch sử",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Two hundred years ago, traveling was slow. Horses and boats were the fastest transport.",
+        "vi": "Hai trăm năm trước, đi lại rất chậm. Ngựa và thuyền là phương tiện nhanh nhất."
+      },
+      {
+        "id": "p2",
+        "en": "Then engineers built machines that used steam power to pull heavy carts.",
+        "vi": "Rồi các kỹ sư chế tạo máy dùng hơi nước để kéo những toa xe nặng."
+      },
+      {
+        "id": "p3",
+        "en": "In 1825, the first public railway opened in England.",
+        "vi": "Năm 1825, tuyến đường sắt công cộng đầu tiên khai trương ở Anh."
+      },
+      {
+        "id": "p4",
+        "en": "Trains could carry people and goods much faster than horses.",
+        "vi": "Tàu hỏa chở người và hàng hóa nhanh hơn ngựa nhiều."
+      },
+      {
+        "id": "p5",
+        "en": "Soon, railways connected cities across Europe and America.",
+        "vi": "Chẳng bao lâu, đường sắt nối các thành phố khắp châu Âu và châu Mỹ."
+      },
+      {
+        "id": "p6",
+        "en": "The steam train changed how people lived, worked, and traveled forever.",
+        "vi": "Tàu hơi nước đã thay đổi mãi mãi cách con người sống, làm việc và đi lại."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What was the fastest transport 200 years ago?",
+        "options": [
+          "Trains",
+          "Horses and boats",
+          "Cars",
+          "Airplanes"
+        ],
+        "correctAnswer": "Horses and boats",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: ngựa và thuyền là phương tiện nhanh nhất."
+      },
+      {
+        "question": "When did the first public railway open?",
+        "options": [
+          "In 1725",
+          "In 1825",
+          "In 1925",
+          "In 2005"
+        ],
+        "correctAnswer": "In 1825",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: năm 1825, tuyến đường sắt công cộng đầu tiên khai trương ở Anh."
+      },
+      {
+        "question": "How did the steam train change life?",
+        "options": [
+          "It changed how people lived, worked, and traveled",
+          "It made food cheaper only",
+          "It ended all wars",
+          "It stopped the rain"
+        ],
+        "correctAnswer": "It changed how people lived, worked, and traveled",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: tàu hơi nước thay đổi cách con người sống, làm việc và đi lại."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-041",
+    "title": "From Silence to Sound: The First Movies",
+    "titleVi": "Từ câm đến có tiếng: Những bộ phim đầu tiên",
+    "cefrLevel": "B1",
+    "topic": "film",
+    "topicVi": "Điện ảnh",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "The first movies had no sound at all. They are called silent films.",
+        "vi": "Những bộ phim đầu tiên hoàn toàn không có tiếng. Chúng được gọi là phim câm."
+      },
+      {
+        "id": "p2",
+        "en": "Actors used big gestures and funny faces to tell the story.",
+        "vi": "Diễn viên dùng cử chỉ lớn và nét mặt hài hước để kể chuyện."
+      },
+      {
+        "id": "p3",
+        "en": "A piano player in the theater played music during the film.",
+        "vi": "Một người chơi piano trong rạp chơi nhạc suốt bộ phim."
+      },
+      {
+        "id": "p4",
+        "en": "Words appeared on the screen between scenes to explain the story.",
+        "vi": "Chữ hiện lên màn hình giữa các cảnh để giải thích câu chuyện."
+      },
+      {
+        "id": "p5",
+        "en": "In 1927, the first movie with real sound and voices appeared.",
+        "vi": "Năm 1927, bộ phim đầu tiên có âm thanh và lời thoại thật ra đời."
+      },
+      {
+        "id": "p6",
+        "en": "Audiences were amazed. The age of silent films was over.",
+        "vi": "Khán giả kinh ngạc. Kỷ nguyên phim câm đã kết thúc."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What were the first movies like?",
+        "options": [
+          "They had no sound",
+          "They were in color",
+          "They were very long",
+          "They had robots"
+        ],
+        "correctAnswer": "They had no sound",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: những bộ phim đầu tiên hoàn toàn không có tiếng."
+      },
+      {
+        "question": "How did silent films tell the story?",
+        "options": [
+          "With big gestures and funny faces",
+          "With long speeches",
+          "With phone calls",
+          "With songs"
+        ],
+        "correctAnswer": "With big gestures and funny faces",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: diễn viên dùng cử chỉ lớn và nét mặt hài hước."
+      },
+      {
+        "question": "When did the first movie with real sound appear?",
+        "options": [
+          "In 1827",
+          "In 1927",
+          "In 1972",
+          "In 1997"
+        ],
+        "correctAnswer": "In 1927",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: năm 1927, phim đầu tiên có âm thanh thật ra đời."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-042",
+    "title": "Skyscrapers: Cities That Grow Up",
+    "titleVi": "Nhà chọc trời: Thành phố mọc lên cao",
+    "cefrLevel": "B1",
+    "topic": "architecture",
+    "topicVi": "Kiến trúc",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "When cities run out of space, buildings start growing upward.",
+        "vi": "Khi thành phố hết đất, các tòa nhà bắt đầu mọc lên cao."
+      },
+      {
+        "id": "p2",
+        "en": "Strong steel frames make it possible to build hundreds of meters high.",
+        "vi": "Khung thép chắc chắn giúp xây dựng cao hàng trăm mét."
+      },
+      {
+        "id": "p3",
+        "en": "The first skyscraper was built in Chicago in 1885. It had only ten floors.",
+        "vi": "Tòa nhà chọc trời đầu tiên được xây ở Chicago năm 1885. Nó chỉ có mười tầng."
+      },
+      {
+        "id": "p4",
+        "en": "Today, the tallest buildings are over 800 meters high.",
+        "vi": "Ngày nay, những tòa nhà cao nhất vượt quá 800 mét."
+      },
+      {
+        "id": "p5",
+        "en": "Skyscrapers need fast elevators, or people would take hours to reach the top.",
+        "vi": "Nhà chọc trời cần thang máy nhanh, nếu không người ta mất hàng giờ để lên đỉnh."
+      },
+      {
+        "id": "p6",
+        "en": "Living high above the city gives amazing views, but it also brings strong winds.",
+        "vi": "Sống trên cao cho tầm nhìn tuyệt vời, nhưng cũng đón gió mạnh."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why do buildings grow upward?",
+        "options": [
+          "Because cities run out of space",
+          "Because people like stairs",
+          "Because steel is cheap",
+          "Because of the wind"
+        ],
+        "correctAnswer": "Because cities run out of space",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: khi thành phố hết đất, tòa nhà mọc lên cao."
+      },
+      {
+        "question": "Where was the first skyscraper built?",
+        "options": [
+          "In New York",
+          "In Chicago",
+          "In London",
+          "In Tokyo"
+        ],
+        "correctAnswer": "In Chicago",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: tòa nhà chọc trời đầu tiên xây ở Chicago năm 1885."
+      },
+      {
+        "question": "What do skyscrapers need?",
+        "options": [
+          "Fast elevators",
+          "More stairs",
+          "Open windows",
+          "Wooden frames"
+        ],
+        "correctAnswer": "Fast elevators",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: nhà chọc trời cần thang máy nhanh."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-043",
+    "title": "Farms Without Soil",
+    "titleVi": "Trang trại không cần đất",
+    "cefrLevel": "B1",
+    "topic": "agriculture",
+    "topicVi": "Nông nghiệp",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Imagine a farm with no soil, no rain, and no seasons.",
+        "vi": "Hãy tưởng tượng một trang trại không đất, không mưa, không mùa vụ."
+      },
+      {
+        "id": "p2",
+        "en": "This is vertical farming: plants grow in tall buildings under special lights.",
+        "vi": "Đó là nông nghiệp thẳng đứng: cây trồng trong tòa nhà cao dưới ánh đèn đặc biệt."
+      },
+      {
+        "id": "p3",
+        "en": "Roots sit in water mixed with nutrients instead of soil.",
+        "vi": "Rễ cây nằm trong nước pha dưỡng chất thay vì đất."
+      },
+      {
+        "id": "p4",
+        "en": "Vertical farms use up to 95% less water than normal farms.",
+        "vi": "Trang trại thẳng đứng dùng ít hơn tới 95% lượng nước so với trang trại thường."
+      },
+      {
+        "id": "p5",
+        "en": "They can grow food all year, even in winter or in deserts.",
+        "vi": "Chúng trồng rau quanh năm, ngay cả mùa đông hay ở sa mạc."
+      },
+      {
+        "id": "p6",
+        "en": "In the future, cities may grow much of their own food this way.",
+        "vi": "Trong tương lai, các thành phố có thể tự trồng phần lớn thực phẩm theo cách này."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is vertical farming?",
+        "options": [
+          "Plants growing in tall buildings under special lights",
+          "Farms on mountains",
+          "Farms under the sea",
+          "Gardens on the Moon"
+        ],
+        "correctAnswer": "Plants growing in tall buildings under special lights",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: cây trồng trong tòa nhà cao dưới ánh đèn đặc biệt."
+      },
+      {
+        "question": "What do roots sit in instead of soil?",
+        "options": [
+          "Sand",
+          "Water mixed with nutrients",
+          "Air",
+          "Stones"
+        ],
+        "correctAnswer": "Water mixed with nutrients",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: rễ nằm trong nước pha dưỡng chất."
+      },
+      {
+        "question": "How much less water do vertical farms use?",
+        "options": [
+          "Up to 95% less",
+          "Up to 50% less",
+          "Up to 10% less",
+          "The same amount"
+        ],
+        "correctAnswer": "Up to 95% less",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: dùng ít hơn tới 95% lượng nước."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-044",
+    "title": "The Return of Vinyl Records",
+    "titleVi": "Sự trở lại của đĩa than",
+    "cefrLevel": "B1",
+    "topic": "music",
+    "topicVi": "Âm nhạc",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Before phones and streaming, people listened to music on vinyl records.",
+        "vi": "Trước thời điện thoại và nhạc số, người ta nghe nhạc bằng đĩa than."
+      },
+      {
+        "id": "p2",
+        "en": "A vinyl record is a black disc with tiny grooves that make sound.",
+        "vi": "Đĩa than là chiếc đĩa đen với những rãnh nhỏ tạo ra âm thanh."
+      },
+      {
+        "id": "p3",
+        "en": "For many years, few people bought records. CDs and downloads took over.",
+        "vi": "Nhiều năm liền, ít người mua đĩa than. Đĩa CD và nhạc tải về đã thay thế."
+      },
+      {
+        "id": "p4",
+        "en": "But in recent years, vinyl sales have grown again, especially among young people.",
+        "vi": "Nhưng những năm gần đây, doanh số đĩa than tăng trở lại, nhất là ở giới trẻ."
+      },
+      {
+        "id": "p5",
+        "en": "Fans say vinyl sounds warmer and feels more special than a phone screen.",
+        "vi": "Người hâm mộ nói đĩa than nghe ấm hơn và đặc biệt hơn màn hình điện thoại."
+      },
+      {
+        "id": "p6",
+        "en": "Holding a big album cover in your hands is part of the fun.",
+        "vi": "Cầm bìa album lớn trên tay cũng là một phần của niềm vui."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is a vinyl record?",
+        "options": [
+          "A black disc with tiny grooves",
+          "A phone app",
+          "A music video",
+          "A concert ticket"
+        ],
+        "correctAnswer": "A black disc with tiny grooves",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: đĩa than là đĩa đen với rãnh nhỏ tạo âm thanh."
+      },
+      {
+        "question": "What took over from vinyl records?",
+        "options": [
+          "CDs and downloads",
+          "Radios",
+          "Pianos",
+          "Guitars"
+        ],
+        "correctAnswer": "CDs and downloads",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: đĩa CD và nhạc tải về đã thay thế đĩa than."
+      },
+      {
+        "question": "Why do fans like vinyl?",
+        "options": [
+          "It sounds warmer and feels more special",
+          "It is cheaper",
+          "It is lighter",
+          "It never breaks"
+        ],
+        "correctAnswer": "It sounds warmer and feels more special",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: đĩa than nghe ấm hơn và đặc biệt hơn."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-045",
+    "title": "The Telescope That Sees Back in Time",
+    "titleVi": "Kính viễn vọng nhìn ngược thời gian",
+    "cefrLevel": "B2",
+    "topic": "space",
+    "topicVi": "Vũ trụ",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Light from distant stars takes billions of years to reach Earth.",
+        "vi": "Ánh sáng từ các ngôi sao xa xôi mất hàng tỷ năm để tới Trái Đất."
+      },
+      {
+        "id": "p2",
+        "en": "This means telescopes can actually look back in time.",
+        "vi": "Điều này có nghĩa kính viễn vọng thực sự có thể nhìn ngược thời gian."
+      },
+      {
+        "id": "p3",
+        "en": "The James Webb Space Telescope, launched in 2021, is the most powerful telescope ever built.",
+        "vi": "Kính viễn vọng James Webb, phóng năm 2021, là kính mạnh nhất từng được chế tạo."
+      },
+      {
+        "id": "p4",
+        "en": "It observes infrared light, which passes through clouds of space dust.",
+        "vi": "Nó quan sát ánh sáng hồng ngoại, thứ xuyên qua các đám mây bụi vũ trụ."
+      },
+      {
+        "id": "p5",
+        "en": "Webb has already captured images of galaxies formed over 13 billion years ago.",
+        "vi": "Webb đã chụp được hình ảnh các thiên hà hình thành hơn 13 tỷ năm trước."
+      },
+      {
+        "id": "p6",
+        "en": "Each new image helps scientists understand how the universe began.",
+        "vi": "Mỗi hình ảnh mới giúp các nhà khoa học hiểu vũ trụ đã bắt đầu như thế nào."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why can telescopes look back in time?",
+        "options": [
+          "Because light from distant stars takes billions of years to reach Earth",
+          "Because they are very fast",
+          "Because they use mirrors",
+          "Because they are in space"
+        ],
+        "correctAnswer": "Because light from distant stars takes billions of years to reach Earth",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: ánh sáng từ sao xa mất hàng tỷ năm tới Trái Đất."
+      },
+      {
+        "question": "What kind of light does the Webb telescope observe?",
+        "options": [
+          "Infrared light",
+          "Ultraviolet light",
+          "X-rays",
+          "Radio waves"
+        ],
+        "correctAnswer": "Infrared light",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: Webb quan sát ánh sáng hồng ngoại."
+      },
+      {
+        "question": "What have Webb's images helped scientists understand?",
+        "options": [
+          "How the universe began",
+          "How to build rockets",
+          "How to grow plants",
+          "How to predict weather"
+        ],
+        "correctAnswer": "How the universe began",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: mỗi hình ảnh giúp hiểu vũ trụ đã bắt đầu như thế nào."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-046",
+    "title": "Life in the Deepest Ocean",
+    "titleVi": "Sự sống ở đáy đại dương sâu nhất",
+    "cefrLevel": "B2",
+    "topic": "ocean",
+    "topicVi": "Đại dương",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "The deepest part of the ocean, the Mariana Trench, is nearly 11,000 meters deep.",
+        "vi": "Nơi sâu nhất của đại dương, rãnh Mariana, sâu gần 11.000 mét."
+      },
+      {
+        "id": "p2",
+        "en": "No sunlight reaches this depth. The water is near freezing and the pressure is crushing.",
+        "vi": "Không ánh nắng nào tới được độ sâu này. Nước gần đóng băng và áp suất cực lớn."
+      },
+      {
+        "id": "p3",
+        "en": "Yet scientists keep discovering strange creatures living there.",
+        "vi": "Thế nhưng các nhà khoa học liên tục phát hiện những sinh vật kỳ lạ sống ở đó."
+      },
+      {
+        "id": "p4",
+        "en": "Some fish make their own light to attract food in the darkness.",
+        "vi": "Một số loài cá tự tạo ra ánh sáng để thu hút mồi trong bóng tối."
+      },
+      {
+        "id": "p5",
+        "en": "Tiny shrimp-like animals survive by eating food that falls from above.",
+        "vi": "Những loài giáp xác nhỏ sống sót bằng cách ăn thức ăn rơi từ phía trên xuống."
+      },
+      {
+        "id": "p6",
+        "en": "Studying these creatures may teach us how life could exist on other planets.",
+        "vi": "Nghiên cứu các sinh vật này có thể dạy ta sự sống có thể tồn tại trên hành tinh khác như thế nào."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How deep is the Mariana Trench?",
+        "options": [
+          "Nearly 11,000 meters",
+          "Nearly 1,100 meters",
+          "Nearly 110,000 meters",
+          "Nearly 110 meters"
+        ],
+        "correctAnswer": "Nearly 11,000 meters",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: rãnh Mariana sâu gần 11.000 mét."
+      },
+      {
+        "question": "How do some deep-sea fish attract food?",
+        "options": [
+          "By making their own light",
+          "By singing",
+          "By swimming fast",
+          "By hiding"
+        ],
+        "correctAnswer": "By making their own light",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: một số loài cá tự tạo ánh sáng để thu hút mồi."
+      },
+      {
+        "question": "Why do scientists study deep-sea creatures?",
+        "options": [
+          "To learn how life could exist on other planets",
+          "To catch them for food",
+          "To sell them",
+          "To build submarines"
+        ],
+        "correctAnswer": "To learn how life could exist on other planets",
+        "evidenceParagraph": "p6",
+        "explanation": "Đoạn 6: nghiên cứu giúp hiểu sự sống có thể tồn tại trên hành tinh khác."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-047",
+    "title": "The Flow State: When Work Feels Like Play",
+    "titleVi": "Trạng thái dòng chảy: Khi làm việc như chơi",
+    "cefrLevel": "B2",
+    "topic": "psychology",
+    "topicVi": "Tâm lý",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Have you ever been so focused that hours felt like minutes? Psychologists call this the flow state.",
+        "vi": "Bạn có bao giờ tập trung đến mức hàng giờ trôi qua như vài phút? Các nhà tâm lý gọi đó là trạng thái dòng chảy."
+      },
+      {
+        "id": "p2",
+        "en": "Flow happens when a task is challenging but matches your skill level.",
+        "vi": "Dòng chảy xảy ra khi nhiệm vụ đủ khó nhưng vừa với trình độ của bạn."
+      },
+      {
+        "id": "p3",
+        "en": "If the task is too easy, you get bored. If it is too hard, you feel anxious.",
+        "vi": "Nếu việc quá dễ, bạn chán. Nếu quá khó, bạn lo lắng."
+      },
+      {
+        "id": "p4",
+        "en": "During flow, people often lose track of time and forget about distractions.",
+        "vi": "Trong trạng thái dòng chảy, người ta thường quên thời gian và không để ý xung quanh."
+      },
+      {
+        "id": "p5",
+        "en": "Athletes, musicians, and programmers all describe experiencing flow.",
+        "vi": "Vận động viên, nhạc sĩ và lập trình viên đều mô tả trải nghiệm dòng chảy."
+      },
+      {
+        "id": "p6",
+        "en": "To find flow more often, choose tasks that stretch your abilities just enough.",
+        "vi": "Để thường xuyên vào trạng thái dòng chảy, hãy chọn việc vừa đủ thử thách khả năng của bạn."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "When does the flow state happen?",
+        "options": [
+          "When a task matches your skill level",
+          "When you are sleeping",
+          "When you are bored",
+          "When you are eating"
+        ],
+        "correctAnswer": "When a task matches your skill level",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: dòng chảy xảy ra khi nhiệm vụ vừa với trình độ."
+      },
+      {
+        "question": "What happens if a task is too hard?",
+        "options": [
+          "You feel anxious",
+          "You feel happy",
+          "You fall asleep",
+          "You get hungry"
+        ],
+        "correctAnswer": "You feel anxious",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: việc quá khó khiến bạn lo lắng."
+      },
+      {
+        "question": "What do people experience during flow?",
+        "options": [
+          "They lose track of time",
+          "They feel sleepy",
+          "They want to stop",
+          "They feel cold"
+        ],
+        "correctAnswer": "They lose track of time",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: trong dòng chảy, người ta quên thời gian."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-048",
+    "title": "Jazz: The Sound of Freedom",
+    "titleVi": "Jazz: Âm thanh của tự do",
+    "cefrLevel": "B2",
+    "topic": "music",
+    "topicVi": "Âm nhạc",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Jazz was born in New Orleans in the early 1900s, blending African rhythms with European instruments.",
+        "vi": "Nhạc jazz ra đời ở New Orleans đầu những năm 1900, pha trộn nhịp điệu châu Phi với nhạc cụ châu Âu."
+      },
+      {
+        "id": "p2",
+        "en": "Its most special feature is improvisation: musicians create music on the spot.",
+        "vi": "Đặc điểm đặc biệt nhất của jazz là ứng tấu: nhạc sĩ sáng tạo âm nhạc ngay tại chỗ."
+      },
+      {
+        "id": "p3",
+        "en": "No two jazz performances are ever exactly the same.",
+        "vi": "Không hai buổi biểu diễn jazz nào hoàn toàn giống nhau."
+      },
+      {
+        "id": "p4",
+        "en": "Listening to jazz is like hearing a conversation between instruments.",
+        "vi": "Nghe jazz giống như nghe một cuộc trò chuyện giữa các nhạc cụ."
+      },
+      {
+        "id": "p5",
+        "en": "The music spread around the world and influenced pop, rock, and hip-hop.",
+        "vi": "Dòng nhạc này lan khắp thế giới và ảnh hưởng tới pop, rock và hip-hop."
+      },
+      {
+        "id": "p6",
+        "en": "Today, jazz festivals in many countries keep this free spirit alive.",
+        "vi": "Ngày nay, các lễ hội jazz ở nhiều nước giữ cho tinh thần tự do này sống mãi."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Where was jazz born?",
+        "options": [
+          "In New Orleans",
+          "In Paris",
+          "In London",
+          "In Tokyo"
+        ],
+        "correctAnswer": "In New Orleans",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: jazz ra đời ở New Orleans đầu những năm 1900."
+      },
+      {
+        "question": "What is improvisation in jazz?",
+        "options": [
+          "Creating music on the spot",
+          "Playing very loudly",
+          "Copying other songs",
+          "Dancing"
+        ],
+        "correctAnswer": "Creating music on the spot",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: ứng tấu là sáng tạo âm nhạc ngay tại chỗ."
+      },
+      {
+        "question": "What has jazz influenced?",
+        "options": [
+          "Pop, rock, and hip-hop",
+          "Classical ballet",
+          "Opera singing",
+          "Folk dancing"
+        ],
+        "correctAnswer": "Pop, rock, and hip-hop",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: jazz ảnh hưởng tới pop, rock và hip-hop."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-049",
+    "title": "Ancient Rome: The City That Built Roads",
+    "titleVi": "La Mã cổ đại: Thành phố xây đường",
+    "cefrLevel": "B2",
+    "topic": "history",
+    "topicVi": "Lịch sử",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Two thousand years ago, Rome ruled a huge empire across Europe and beyond.",
+        "vi": "Hai nghìn năm trước, La Mã cai trị một đế chế rộng lớn khắp châu Âu và xa hơn."
+      },
+      {
+        "id": "p2",
+        "en": "The Romans built over 80,000 kilometers of roads to connect their empire.",
+        "vi": "Người La Mã đã xây hơn 80.000 km đường để nối liền đế chế."
+      },
+      {
+        "id": "p3",
+        "en": "These roads were so well made that some are still used today.",
+        "vi": "Những con đường này chắc đến mức một số vẫn được dùng đến ngày nay."
+      },
+      {
+        "id": "p4",
+        "en": "Soldiers, traders, and messengers traveled quickly along the roads.",
+        "vi": "Binh lính, thương nhân và người đưa tin di chuyển nhanh chóng trên các con đường."
+      },
+      {
+        "id": "p5",
+        "en": "The saying 'All roads lead to Rome' comes from this road network.",
+        "vi": "Câu nói 'Mọi con đường đều dẫn tới La Mã' bắt nguồn từ mạng lưới đường này."
+      },
+      {
+        "id": "p6",
+        "en": "Modern highways still follow the paths of ancient Roman roads in many places.",
+        "vi": "Nhiều đường cao tốc hiện đại vẫn đi theo lối đường La Mã cổ ở nhiều nơi."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "How many kilometers of roads did the Romans build?",
+        "options": [
+          "Over 80,000 kilometers",
+          "Over 8,000 kilometers",
+          "Over 800 kilometers",
+          "Over 80 kilometers"
+        ],
+        "correctAnswer": "Over 80,000 kilometers",
+        "evidenceParagraph": "p2",
+        "explanation": "Đoạn 2: người La Mã xây hơn 80.000 km đường."
+      },
+      {
+        "question": "Who traveled along Roman roads?",
+        "options": [
+          "Soldiers, traders, and messengers",
+          "Only kings",
+          "Only farmers",
+          "Only children"
+        ],
+        "correctAnswer": "Soldiers, traders, and messengers",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: binh lính, thương nhân và người đưa tin di chuyển trên đường."
+      },
+      {
+        "question": "Where does the saying 'All roads lead to Rome' come from?",
+        "options": [
+          "From the Roman road network",
+          "From a poem",
+          "From a movie",
+          "From a song"
+        ],
+        "correctAnswer": "From the Roman road network",
+        "evidenceParagraph": "p5",
+        "explanation": "Đoạn 5: câu nói bắt nguồn từ mạng lưới đường La Mã."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "news-050",
+    "title": "Green Buildings: Architecture That Breathes",
+    "titleVi": "Tòa nhà xanh: Kiến trúc biết thở",
+    "cefrLevel": "B2",
+    "topic": "architecture",
+    "topicVi": "Kiến trúc",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "en": "Buildings use a large share of the world's energy, mostly for heating and cooling.",
+        "vi": "Các tòa nhà tiêu thụ phần lớn năng lượng thế giới, chủ yếu cho sưởi ấm và làm mát."
+      },
+      {
+        "id": "p2",
+        "en": "Green buildings are designed to use far less energy than normal ones.",
+        "vi": "Tòa nhà xanh được thiết kế để dùng ít năng lượng hơn nhiều so với tòa nhà thường."
+      },
+      {
+        "id": "p3",
+        "en": "Some have gardens on their roofs that keep the building cool in summer.",
+        "vi": "Một số có vườn trên mái giúp tòa nhà mát vào mùa hè."
+      },
+      {
+        "id": "p4",
+        "en": "Special glass windows let in sunlight but block heat.",
+        "vi": "Cửa kính đặc biệt cho ánh sáng vào nhưng chặn nhiệt."
+      },
+      {
+        "id": "p5",
+        "en": "In Singapore, one famous hotel is covered in plants from top to bottom.",
+        "vi": "Ở Singapore, một khách sạn nổi tiếng được phủ cây xanh từ trên xuống dưới."
+      },
+      {
+        "id": "p6",
+        "en": "As cities grow hotter, green buildings may become the new normal.",
+        "vi": "Khi các thành phố ngày càng nóng, tòa nhà xanh có thể trở thành điều bình thường mới."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What do buildings mostly use energy for?",
+        "options": [
+          "Heating and cooling",
+          "Elevators only",
+          "Lighting the streets",
+          "Water pumps"
+        ],
+        "correctAnswer": "Heating and cooling",
+        "evidenceParagraph": "p1",
+        "explanation": "Đoạn 1: tòa nhà dùng năng lượng chủ yếu cho sưởi ấm và làm mát."
+      },
+      {
+        "question": "How do roof gardens help?",
+        "options": [
+          "They keep the building cool in summer",
+          "They grow food for sale",
+          "They attract birds only",
+          "They make the roof heavy"
+        ],
+        "correctAnswer": "They keep the building cool in summer",
+        "evidenceParagraph": "p3",
+        "explanation": "Đoạn 3: vườn trên mái giúp tòa nhà mát vào mùa hè."
+      },
+      {
+        "question": "What do special glass windows do?",
+        "options": [
+          "Let in sunlight but block heat",
+          "Block all light",
+          "Make the room dark",
+          "Break easily"
+        ],
+        "correctAnswer": "Let in sunlight but block heat",
+        "evidenceParagraph": "p4",
+        "explanation": "Đoạn 4: kính đặc biệt cho ánh sáng vào nhưng chặn nhiệt."
+      }
+    ],
+    "source": "ai-generated",
+    "verified": false
+  }
+]

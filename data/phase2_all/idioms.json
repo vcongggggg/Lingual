@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "idm-001",
+    "idiom": "break the ice",
+    "meaningVi": "phá vỡ sự ngượng ngùng, bắt chuyện",
+    "exampleEn": "He told a joke to break the ice.",
+    "exampleVi": "Anh ấy kể một câu đùa để phá vỡ bầu không khí ngượng ngùng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-002",
+    "idiom": "piece of cake",
+    "meaningVi": "dễ như ăn kẹo",
+    "exampleEn": "The exam was a piece of cake.",
+    "exampleVi": "Bài kiểm tra dễ như ăn kẹo.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-003",
+    "idiom": "hit the road",
+    "meaningVi": "lên đường, khởi hành",
+    "exampleEn": "We need to hit the road early.",
+    "exampleVi": "Chúng ta cần lên đường sớm.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-004",
+    "idiom": "under the weather",
+    "meaningVi": "cảm thấy không khỏe",
+    "exampleEn": "She is feeling under the weather today.",
+    "exampleVi": "Hôm nay cô ấy cảm thấy không khỏe.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-005",
+    "idiom": "once in a blue moon",
+    "meaningVi": "hiếm khi, rất ít khi",
+    "exampleEn": "We eat out once in a blue moon.",
+    "exampleVi": "Chúng tôi hiếm khi đi ăn ngoài.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-006",
+    "idiom": "cost an arm and a leg",
+    "meaningVi": "rất đắt đỏ",
+    "exampleEn": "That car cost an arm and a leg.",
+    "exampleVi": "Chiếc xe đó đắt cắt cổ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-007",
+    "idiom": "let the cat out of the bag",
+    "meaningVi": "lỡ miệng tiết lộ bí mật",
+    "exampleEn": "He let the cat out of the bag about the party.",
+    "exampleVi": "Anh ấy lỡ miệng tiết lộ bí mật về bữa tiệc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-008",
+    "idiom": "kill two birds with one stone",
+    "meaningVi": "một công đôi việc",
+    "exampleEn": "Cycling to work kills two birds with one stone.",
+    "exampleVi": "Đạp xe đi làm là một công đôi việc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-009",
+    "idiom": "break a leg",
+    "meaningVi": "chúc may mắn (trước khi biểu diễn)",
+    "exampleEn": "Break a leg on stage tonight!",
+    "exampleVi": "Chúc may mắn trên sân khấu tối nay nhé!",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-010",
+    "idiom": "the ball is in your court",
+    "meaningVi": "đến lượt bạn quyết định",
+    "exampleEn": "I've done my part; the ball is in your court.",
+    "exampleVi": "Tôi đã làm phần của mình, giờ đến lượt bạn quyết định.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-011",
+    "idiom": "on cloud nine",
+    "meaningVi": "vô cùng hạnh phúc",
+    "exampleEn": "She was on cloud nine after the news.",
+    "exampleVi": "Cô ấy hạnh phúc tột độ sau khi nghe tin.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-012",
+    "idiom": "spill the beans",
+    "meaningVi": "tiết lộ bí mật",
+    "exampleEn": "Come on, spill the beans!",
+    "exampleVi": "Thôi nào, kể bí mật ra đi!",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-013",
+    "idiom": "hit the nail on the head",
+    "meaningVi": "nói trúng phóc",
+    "exampleEn": "You hit the nail on the head with that comment.",
+    "exampleVi": "Nhận xét của bạn nói trúng phóc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-014",
+    "idiom": "sit on the fence",
+    "meaningVi": "không đứng về bên nào, lưỡng lự",
+    "exampleEn": "Don't sit on the fence, choose a side.",
+    "exampleVi": "Đừng lưỡng lự nữa, hãy chọn một bên đi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-015",
+    "idiom": "by the book",
+    "meaningVi": "theo đúng quy tắc",
+    "exampleEn": "He does everything by the book.",
+    "exampleVi": "Anh ấy làm mọi thứ đúng quy tắc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-016",
+    "idiom": "cut corners",
+    "meaningVi": "làm ẩu cho nhanh",
+    "exampleEn": "Don't cut corners on safety.",
+    "exampleVi": "Đừng làm ẩu với vấn đề an toàn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-017",
+    "idiom": "get cold feet",
+    "meaningVi": "chùn bước, sợ hãi vào phút chót",
+    "exampleEn": "He got cold feet before the wedding.",
+    "exampleVi": "Anh ấy chùn bước trước ngày cưới.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-018",
+    "idiom": "pull someone's leg",
+    "meaningVi": "trêu đùa ai",
+    "exampleEn": "I'm just pulling your leg!",
+    "exampleVi": "Tôi chỉ trêu bạn thôi!",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-019",
+    "idiom": "a blessing in disguise",
+    "meaningVi": "trong cái rủi có cái may",
+    "exampleEn": "Losing that job was a blessing in disguise.",
+    "exampleVi": "Mất việc đó hóa ra lại là may mắn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-020",
+    "idiom": "bite the bullet",
+    "meaningVi": "cắn răng chịu đựng việc khó",
+    "exampleEn": "I bit the bullet and called the dentist.",
+    "exampleVi": "Tôi cắn răng gọi điện cho nha sĩ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-021",
+    "idiom": "burn the midnight oil",
+    "meaningVi": "thức khuya làm việc",
+    "exampleEn": "She burned the midnight oil before the exam.",
+    "exampleVi": "Cô ấy thức khuya học bài trước kỳ thi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-022",
+    "idiom": "call it a day",
+    "meaningVi": "nghỉ ngơi, kết thúc công việc trong ngày",
+    "exampleEn": "Let's call it a day.",
+    "exampleVi": "Hôm nay nghỉ ở đây thôi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-023",
+    "idiom": "cross the line",
+    "meaningVi": "đi quá giới hạn",
+    "exampleEn": "You really crossed the line this time.",
+    "exampleVi": "Lần này bạn đi quá giới hạn rồi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-024",
+    "idiom": "down to earth",
+    "meaningVi": "giản dị, thực tế",
+    "exampleEn": "Despite fame, she is very down to earth.",
+    "exampleVi": "Dù nổi tiếng, cô ấy rất giản dị.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-025",
+    "idiom": "face the music",
+    "meaningVi": "đối mặt với hậu quả",
+    "exampleEn": "You broke it, now face the music.",
+    "exampleVi": "Bạn làm hỏng rồi, giờ hãy đối mặt đi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-026",
+    "idiom": "get the hang of",
+    "meaningVi": "nắm được cách làm",
+    "exampleEn": "You'll get the hang of it soon.",
+    "exampleVi": "Bạn sẽ sớm nắm được cách làm thôi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-027",
+    "idiom": "go the extra mile",
+    "meaningVi": "nỗ lực hơn mức bình thường",
+    "exampleEn": "She always goes the extra mile for customers.",
+    "exampleVi": "Cô ấy luôn nỗ lực hết mình vì khách hàng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-028",
+    "idiom": "hit the hay",
+    "meaningVi": "đi ngủ",
+    "exampleEn": "I'm tired, let's hit the hay.",
+    "exampleVi": "Tôi mệt rồi, đi ngủ thôi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-029",
+    "idiom": "in hot water",
+    "meaningVi": "gặp rắc rối",
+    "exampleEn": "He is in hot water with his boss.",
+    "exampleVi": "Anh ấy đang gặp rắc rối với sếp.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-030",
+    "idiom": "keep an eye on",
+    "meaningVi": "để mắt tới, trông chừng",
+    "exampleEn": "Keep an eye on the kids, please.",
+    "exampleVi": "Làm ơn trông chừng bọn trẻ giúp tôi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-031",
+    "idiom": "learn the ropes",
+    "meaningVi": "học việc, làm quen công việc mới",
+    "exampleEn": "It took a month to learn the ropes.",
+    "exampleVi": "Mất một tháng để làm quen công việc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-032",
+    "idiom": "miss the boat",
+    "meaningVi": "lỡ cơ hội",
+    "exampleEn": "Apply now or you'll miss the boat.",
+    "exampleVi": "Nộp đơn ngay kẻo lỡ cơ hội.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-033",
+    "idiom": "no pain, no gain",
+    "meaningVi": "có công mài sắt có ngày nên kim",
+    "exampleEn": "Training is hard, but no pain, no gain.",
+    "exampleVi": "Tập luyện vất vả, nhưng có công mới có quả.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-034",
+    "idiom": "on the same page",
+    "meaningVi": "đồng quan điểm",
+    "exampleEn": "Let's make sure we're on the same page.",
+    "exampleVi": "Hãy chắc chắn chúng ta đồng quan điểm.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-035",
+    "idiom": "out of the blue",
+    "meaningVi": "bất ngờ, không báo trước",
+    "exampleEn": "He called me out of the blue.",
+    "exampleVi": "Anh ấy gọi cho tôi một cách bất ngờ.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-036",
+    "idiom": "play it by ear",
+    "meaningVi": "tùy cơ ứng biến",
+    "exampleEn": "We have no plan; we'll play it by ear.",
+    "exampleVi": "Chúng ta không có kế hoạch, cứ tùy cơ ứng biến.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-037",
+    "idiom": "rain cats and dogs",
+    "meaningVi": "mưa như trút nước",
+    "exampleEn": "It's raining cats and dogs outside.",
+    "exampleVi": "Ngoài trời đang mưa như trút nước.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-038",
+    "idiom": "ring a bell",
+    "meaningVi": "nghe quen quen",
+    "exampleEn": "His name rings a bell.",
+    "exampleVi": "Tên anh ấy nghe quen quen.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-039",
+    "idiom": "see eye to eye",
+    "meaningVi": "đồng ý với nhau",
+    "exampleEn": "They don't see eye to eye on money.",
+    "exampleVi": "Họ không đồng ý với nhau về tiền bạc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-040",
+    "idiom": "take a rain check",
+    "meaningVi": "hẹn dịp khác",
+    "exampleEn": "I'll take a rain check on dinner.",
+    "exampleVi": "Tôi xin hẹn bữa tối dịp khác nhé.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-041",
+    "idiom": "through thick and thin",
+    "meaningVi": "qua mọi gian khó",
+    "exampleEn": "They stayed together through thick and thin.",
+    "exampleVi": "Họ ở bên nhau qua mọi gian khó.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-042",
+    "idiom": "up in the air",
+    "meaningVi": "chưa chắc chắn",
+    "exampleEn": "Our plans are still up in the air.",
+    "exampleVi": "Kế hoạch của chúng ta vẫn chưa chắc chắn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-043",
+    "idiom": "a dime a dozen",
+    "meaningVi": "rất phổ biến, không hiếm",
+    "exampleEn": "Tourist souvenirs are a dime a dozen here.",
+    "exampleVi": "Đồ lưu niệm ở đây nhiều vô kể.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-044",
+    "idiom": "beat around the bush",
+    "meaningVi": "nói vòng vo",
+    "exampleEn": "Stop beating around the bush!",
+    "exampleVi": "Đừng nói vòng vo nữa!",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-045",
+    "idiom": "best of both worlds",
+    "meaningVi": "được hưởng cả hai điều tốt",
+    "exampleEn": "Working from home gives me the best of both worlds.",
+    "exampleVi": "Làm việc tại nhà cho tôi được cả hai điều tốt.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-046",
+    "idiom": "bite off more than you can chew",
+    "meaningVi": "ôm đồm quá sức",
+    "exampleEn": "He bit off more than he could chew with three jobs.",
+    "exampleVi": "Anh ấy ôm đồm ba công việc quá sức.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-047",
+    "idiom": "butterflies in my stomach",
+    "meaningVi": "cảm giác hồi hộp",
+    "exampleEn": "I had butterflies in my stomach before the interview.",
+    "exampleVi": "Tôi hồi hộp trước buổi phỏng vấn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-048",
+    "idiom": "caught red-handed",
+    "meaningVi": "bị bắt quả tang",
+    "exampleEn": "The thief was caught red-handed.",
+    "exampleVi": "Tên trộm bị bắt quả tang.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-049",
+    "idiom": "cry over spilled milk",
+    "meaningVi": "khóc lóc chuyện đã rồi (vô ích)",
+    "exampleEn": "It's done; no use crying over spilled milk.",
+    "exampleVi": "Mọi chuyện đã rồi, khóc lóc cũng vô ích.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-050",
+    "idiom": "do my best",
+    "meaningVi": "cố gắng hết sức",
+    "exampleEn": "I'll do my best to help you.",
+    "exampleVi": "Tôi sẽ cố gắng hết sức giúp bạn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-051",
+    "idiom": "every cloud has a silver lining",
+    "meaningVi": "trong rủi có may",
+    "exampleEn": "He lost his job, but every cloud has a silver lining.",
+    "exampleVi": "Anh ấy mất việc, nhưng trong rủi có may.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-052",
+    "idiom": "fish out of water",
+    "meaningVi": "cảm thấy lạc lõng",
+    "exampleEn": "I felt like a fish out of water at the party.",
+    "exampleVi": "Tôi thấy lạc lõng trong bữa tiệc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-053",
+    "idiom": "get back on track",
+    "meaningVi": "trở lại đúng hướng",
+    "exampleEn": "Let's get back on track after the break.",
+    "exampleVi": "Nghỉ xong chúng ta trở lại đúng hướng nhé.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-054",
+    "idiom": "give it a shot",
+    "meaningVi": "thử xem sao",
+    "exampleEn": "I've never cooked, but I'll give it a shot.",
+    "exampleVi": "Tôi chưa nấu ăn bao giờ, nhưng sẽ thử xem sao.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-055",
+    "idiom": "hit rock bottom",
+    "meaningVi": "chạm đáy, rơi vào tình trạng tệ nhất",
+    "exampleEn": "After losing everything, he hit rock bottom.",
+    "exampleVi": "Sau khi mất tất cả, anh ấy chạm đáy.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-056",
+    "idiom": "in the nick of time",
+    "meaningVi": "vừa kịp lúc",
+    "exampleEn": "We arrived in the nick of time.",
+    "exampleVi": "Chúng tôi đến vừa kịp lúc.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-057",
+    "idiom": "jump on the bandwagon",
+    "meaningVi": "chạy theo xu hướng",
+    "exampleEn": "Everyone is jumping on the bandwagon.",
+    "exampleVi": "Ai cũng đang chạy theo xu hướng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-058",
+    "idiom": "keep your chin up",
+    "meaningVi": "lạc quan lên, đừng nản",
+    "exampleEn": "Keep your chin up, things will improve.",
+    "exampleVi": "Lạc quan lên, mọi chuyện sẽ tốt hơn.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-059",
+    "idiom": "let sleeping dogs lie",
+    "meaningVi": "đừng khơi lại chuyện cũ",
+    "exampleEn": "Don't mention it; let sleeping dogs lie.",
+    "exampleVi": "Đừng nhắc lại, chuyện cũ bỏ qua đi.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-060",
+    "idiom": "make a long story short",
+    "meaningVi": "nói ngắn gọn lại",
+    "exampleEn": "To make a long story short, we won.",
+    "exampleVi": "Nói ngắn gọn là chúng tôi đã thắng.",
+    "cefrLevel": "A2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-061",
+    "idiom": "barking up the wrong tree",
+    "meaningVi": "trách nhầm người, hiểu sai vấn đề",
+    "exampleEn": "You're barking up the wrong tree blaming me.",
+    "exampleVi": "Bạn trách nhầm người rồi khi đổ lỗi cho tôi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-062",
+    "idiom": "beat the clock",
+    "meaningVi": "chạy đua với thời gian",
+    "exampleEn": "We beat the clock and finished early.",
+    "exampleVi": "Chúng tôi chạy đua với thời gian và xong sớm.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-063",
+    "idiom": "bent out of shape",
+    "meaningVi": "tức giận, bực mình",
+    "exampleEn": "He got bent out of shape over a joke.",
+    "exampleVi": "Anh ấy tức giận chỉ vì một câu đùa.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-064",
+    "idiom": "bite the dust",
+    "meaningVi": "thất bại, sụp đổ",
+    "exampleEn": "Another startup bit the dust.",
+    "exampleVi": "Một startup nữa lại thất bại.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-065",
+    "idiom": "blow off steam",
+    "meaningVi": "xả stress, giải tỏa",
+    "exampleEn": "He plays football to blow off steam.",
+    "exampleVi": "Anh ấy đá bóng để xả stress.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-066",
+    "idiom": "break new ground",
+    "meaningVi": "tiên phong, mở đường",
+    "exampleEn": "This research breaks new ground.",
+    "exampleVi": "Nghiên cứu này mang tính tiên phong.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-067",
+    "idiom": "bring home the bacon",
+    "meaningVi": "kiếm tiền nuôi gia đình",
+    "exampleEn": "She works hard to bring home the bacon.",
+    "exampleVi": "Cô ấy làm việc chăm chỉ để nuôi gia đình.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-068",
+    "idiom": "burn bridges",
+    "meaningVi": "cắt đứt quan hệ",
+    "exampleEn": "Don't burn bridges with old colleagues.",
+    "exampleVi": "Đừng cắt đứt quan hệ với đồng nghiệp cũ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-069",
+    "idiom": "call the shots",
+    "meaningVi": "nắm quyền quyết định",
+    "exampleEn": "She calls the shots in this team.",
+    "exampleVi": "Cô ấy là người quyết định trong nhóm này.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-070",
+    "idiom": "can't judge a book by its cover",
+    "meaningVi": "đừng đánh giá qua vẻ bề ngoài",
+    "exampleEn": "He looks tough, but you can't judge a book by its cover.",
+    "exampleVi": "Anh ấy trông dữ dằn, nhưng đừng đánh giá qua vẻ ngoài.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-071",
+    "idiom": "caught between a rock and a hard place",
+    "meaningVi": "tiến thoái lưỡng nan",
+    "exampleEn": "I'm caught between a rock and a hard place.",
+    "exampleVi": "Tôi đang tiến thoái lưỡng nan.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-072",
+    "idiom": "come rain or shine",
+    "meaningVi": "dù thế nào đi nữa",
+    "exampleEn": "The match goes on, come rain or shine.",
+    "exampleVi": "Trận đấu vẫn diễn ra dù thế nào đi nữa.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-073",
+    "idiom": "cut to the chase",
+    "meaningVi": "đi thẳng vào vấn đề",
+    "exampleEn": "Let's cut to the chase: what's the price?",
+    "exampleVi": "Đi thẳng vào vấn đề: giá bao nhiêu?",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-074",
+    "idiom": "devil's advocate",
+    "meaningVi": "người đóng vai phản biện",
+    "exampleEn": "Let me play devil's advocate for a moment.",
+    "exampleVi": "Để tôi đóng vai phản biện một chút.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-075",
+    "idiom": "draw the line",
+    "meaningVi": "đặt ra giới hạn",
+    "exampleEn": "I draw the line at working weekends.",
+    "exampleVi": "Tôi đặt giới hạn là không làm cuối tuần.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-076",
+    "idiom": "drop the ball",
+    "meaningVi": "mắc sai lầm, bỏ lỡ",
+    "exampleEn": "We dropped the ball on that order.",
+    "exampleVi": "Chúng ta đã mắc sai lầm với đơn hàng đó.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-077",
+    "idiom": "easier said than done",
+    "meaningVi": "nói dễ hơn làm",
+    "exampleEn": "Quitting smoking is easier said than done.",
+    "exampleVi": "Bỏ thuốc lá nói dễ hơn làm.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-078",
+    "idiom": "eat humble pie",
+    "meaningVi": "nuốt giận nhận sai",
+    "exampleEn": "He had to eat humble pie after the mistake.",
+    "exampleVi": "Anh ấy phải nuốt giận nhận sai sau lỗi lầm.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-079",
+    "idiom": "eleventh hour",
+    "meaningVi": "vào phút chót",
+    "exampleEn": "They finished at the eleventh hour.",
+    "exampleVi": "Họ hoàn thành vào phút chót.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-080",
+    "idiom": "get a taste of your own medicine",
+    "meaningVi": "gậy ông đập lưng ông",
+    "exampleEn": "He got a taste of his own medicine.",
+    "exampleVi": "Anh ta bị gậy ông đập lưng ông.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-081",
+    "idiom": "get your act together",
+    "meaningVi": "chấn chỉnh lại bản thân",
+    "exampleEn": "You need to get your act together.",
+    "exampleVi": "Bạn cần chấn chỉnh lại bản thân.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-082",
+    "idiom": "give someone the cold shoulder",
+    "meaningVi": "lạnh nhạt, phớt lờ ai",
+    "exampleEn": "She gave him the cold shoulder.",
+    "exampleVi": "Cô ấy lạnh nhạt với anh ta.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-083",
+    "idiom": "go back to the drawing board",
+    "meaningVi": "làm lại từ đầu",
+    "exampleEn": "The plan failed; back to the drawing board.",
+    "exampleVi": "Kế hoạch thất bại, phải làm lại từ đầu.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-084",
+    "idiom": "go down in flames",
+    "meaningVi": "thất bại thảm hại",
+    "exampleEn": "The movie went down in flames.",
+    "exampleVi": "Bộ phim thất bại thảm hại.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-085",
+    "idiom": "hang in there",
+    "meaningVi": "cố gắng lên, đừng bỏ cuộc",
+    "exampleEn": "Hang in there, exams end soon.",
+    "exampleVi": "Cố lên, kỳ thi sắp kết thúc rồi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-086",
+    "idiom": "have a whale of a time",
+    "meaningVi": "vui hết sảy",
+    "exampleEn": "We had a whale of a time in Da Lat.",
+    "exampleVi": "Chúng tôi đã có thời gian tuyệt vời ở Đà Lạt.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-087",
+    "idiom": "hit the jackpot",
+    "meaningVi": "trúng lớn, gặp may lớn",
+    "exampleEn": "He hit the jackpot with that investment.",
+    "exampleVi": "Anh ấy trúng lớn với khoản đầu tư đó.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-088",
+    "idiom": "hold your horses",
+    "meaningVi": "bình tĩnh, đừng vội",
+    "exampleEn": "Hold your horses, let me finish.",
+    "exampleVi": "Bình tĩnh nào, để tôi nói xong đã.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-089",
+    "idiom": "in the same boat",
+    "meaningVi": "cùng cảnh ngộ",
+    "exampleEn": "We're all in the same boat here.",
+    "exampleVi": "Chúng ta đều cùng cảnh ngộ ở đây.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-090",
+    "idiom": "keep your eyes peeled",
+    "meaningVi": "mở to mắt quan sát",
+    "exampleEn": "Keep your eyes peeled for the bus.",
+    "exampleVi": "Nhớ để mắt tìm xe buýt nhé.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-091",
+    "idiom": "kick the bucket",
+    "meaningVi": "chết (cách nói thông tục)",
+    "exampleEn": "The old man kicked the bucket.",
+    "exampleVi": "Ông cụ đã qua đời.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-092",
+    "idiom": "know the ropes",
+    "meaningVi": "rành rẽ, thành thạo",
+    "exampleEn": "She knows the ropes after ten years.",
+    "exampleVi": "Sau mười năm, cô ấy rất rành rẽ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-093",
+    "idiom": "leave no stone unturned",
+    "meaningVi": "làm mọi cách có thể",
+    "exampleEn": "We left no stone unturned to find him.",
+    "exampleVi": "Chúng tôi đã làm mọi cách để tìm anh ấy.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-094",
+    "idiom": "like two peas in a pod",
+    "meaningVi": "giống nhau như hai giọt nước",
+    "exampleEn": "The twins are like two peas in a pod.",
+    "exampleVi": "Hai chị em sinh đôi giống nhau như hai giọt nước.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-095",
+    "idiom": "short and sweet",
+    "meaningVi": "ngắn gọn súc tích",
+    "exampleEn": "Keep your speech short and sweet.",
+    "exampleVi": "Hãy giữ bài phát biểu ngắn gọn súc tích.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-096",
+    "idiom": "make ends meet",
+    "meaningVi": "xoay xở đủ sống",
+    "exampleEn": "It's hard to make ends meet these days.",
+    "exampleVi": "Dạo này xoay xở đủ sống thật khó.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-097",
+    "idiom": "not my cup of tea",
+    "meaningVi": "không phải gu của tôi",
+    "exampleEn": "Horror films are not my cup of tea.",
+    "exampleVi": "Phim kinh dị không phải gu của tôi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-098",
+    "idiom": "off the hook",
+    "meaningVi": "thoát tội, thoát việc",
+    "exampleEn": "He got off the hook with a warning.",
+    "exampleVi": "Anh ta thoát tội chỉ với một lời cảnh cáo.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-099",
+    "idiom": "on thin ice",
+    "meaningVi": "đang trong tình thế nguy hiểm",
+    "exampleEn": "You're on thin ice with the boss.",
+    "exampleVi": "Bạn đang ở tình thế nguy hiểm với sếp.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-100",
+    "idiom": "pass with flying colors",
+    "meaningVi": "đỗ với điểm cao",
+    "exampleEn": "She passed with flying colors.",
+    "exampleVi": "Cô ấy đỗ với điểm số xuất sắc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-101",
+    "idiom": "penny for your thoughts",
+    "meaningVi": "bạn đang nghĩ gì thế",
+    "exampleEn": "You look sad. A penny for your thoughts?",
+    "exampleVi": "Trông bạn buồn thế. Đang nghĩ gì vậy?",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-102",
+    "idiom": "piece of the pie",
+    "meaningVi": "phần được chia",
+    "exampleEn": "Everyone wants a piece of the pie.",
+    "exampleVi": "Ai cũng muốn có một phần.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-103",
+    "idiom": "pull the plug",
+    "meaningVi": "dừng lại, chấm dứt",
+    "exampleEn": "They pulled the plug on the project.",
+    "exampleVi": "Họ đã dừng dự án.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-104",
+    "idiom": "put all your eggs in one basket",
+    "meaningVi": "dồn hết vào một chỗ (rủi ro)",
+    "exampleEn": "Don't put all your eggs in one basket.",
+    "exampleVi": "Đừng dồn hết trứng vào một giỏ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-105",
+    "idiom": "rain on someone's parade",
+    "meaningVi": "phá đám, làm mất vui",
+    "exampleEn": "Don't rain on my parade!",
+    "exampleVi": "Đừng phá đám tôi!",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-106",
+    "idiom": "read between the lines",
+    "meaningVi": "đọc ra ẩn ý",
+    "exampleEn": "Read between the lines of his email.",
+    "exampleVi": "Hãy đọc ra ẩn ý trong email của anh ta.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-107",
+    "idiom": "rule of thumb",
+    "meaningVi": "nguyên tắc chung, kinh nghiệm",
+    "exampleEn": "As a rule of thumb, save 10% of income.",
+    "exampleVi": "Theo nguyên tắc chung, hãy tiết kiệm 10% thu nhập.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-108",
+    "idiom": "save face",
+    "meaningVi": "giữ thể diện",
+    "exampleEn": "He lied to save face.",
+    "exampleVi": "Anh ta nói dối để giữ thể diện.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-109",
+    "idiom": "see the light",
+    "meaningVi": "nhận ra sự thật, giác ngộ",
+    "exampleEn": "She finally saw the light.",
+    "exampleVi": "Cuối cùng cô ấy cũng nhận ra sự thật.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-110",
+    "idiom": "shot in the dark",
+    "meaningVi": "đoán mò",
+    "exampleEn": "My answer was just a shot in the dark.",
+    "exampleVi": "Câu trả lời của tôi chỉ là đoán mò.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-111",
+    "idiom": "sit tight",
+    "meaningVi": "kiên nhẫn chờ đợi",
+    "exampleEn": "Sit tight, help is coming.",
+    "exampleVi": "Cứ chờ đấy, trợ giúp đang đến.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-112",
+    "idiom": "speak of the devil",
+    "meaningVi": "nhắc Tào Tháo, Tào Tháo đến",
+    "exampleEn": "Speak of the devil, here he comes!",
+    "exampleVi": "Nhắc Tào Tháo, Tào Tháo đến ngay!",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-113",
+    "idiom": "steal someone's thunder",
+    "meaningVi": "cướp công, cướp sự chú ý của ai",
+    "exampleEn": "She stole my thunder with her news.",
+    "exampleVi": "Cô ấy cướp sự chú ý của tôi bằng tin của mình.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-114",
+    "idiom": "take with a grain of salt",
+    "meaningVi": "đừng tin tuyệt đối",
+    "exampleEn": "Take his promises with a grain of salt.",
+    "exampleVi": "Đừng tin tuyệt đối lời hứa của anh ta.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-115",
+    "idiom": "the elephant in the room",
+    "meaningVi": "vấn đề ai cũng biết mà né tránh",
+    "exampleEn": "Let's address the elephant in the room.",
+    "exampleVi": "Hãy đối mặt với vấn đề ai cũng né tránh.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-116",
+    "idiom": "the last straw",
+    "meaningVi": "giọt nước tràn ly",
+    "exampleEn": "His rudeness was the last straw.",
+    "exampleVi": "Sự thô lỗ của anh ta là giọt nước tràn ly.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-117",
+    "idiom": "thick as thieves",
+    "meaningVi": "thân thiết như hình với bóng",
+    "exampleEn": "They're as thick as thieves.",
+    "exampleVi": "Họ thân nhau như hình với bóng.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-118",
+    "idiom": "throw in the towel",
+    "meaningVi": "bỏ cuộc",
+    "exampleEn": "After three failures, he threw in the towel.",
+    "exampleVi": "Sau ba lần thất bại, anh ấy bỏ cuộc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-119",
+    "idiom": "tip of the iceberg",
+    "meaningVi": "phần nổi của tảng băng (vấn đề lớn hơn)",
+    "exampleEn": "This is just the tip of the iceberg.",
+    "exampleVi": "Đây mới chỉ là phần nổi của tảng băng.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-120",
+    "idiom": "under your nose",
+    "meaningVi": "ngay trước mắt mà không nhận ra",
+    "exampleEn": "The keys were under your nose all along.",
+    "exampleVi": "Chìa khóa ở ngay trước mắt bạn nãy giờ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-121",
+    "idiom": "walk on eggshells",
+    "meaningVi": "cẩn thận từng li từng tí",
+    "exampleEn": "We walked on eggshells around him.",
+    "exampleVi": "Chúng tôi phải cẩn thận từng li với anh ta.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-122",
+    "idiom": "wild goose chase",
+    "meaningVi": "việc làm vô ích, mất công",
+    "exampleEn": "The search was a wild goose chase.",
+    "exampleVi": "Cuộc tìm kiếm chỉ là công cốc.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-123",
+    "idiom": "work like a dog",
+    "meaningVi": "làm việc cật lực",
+    "exampleEn": "He works like a dog to pay debts.",
+    "exampleVi": "Anh ấy làm việc cật lực để trả nợ.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-124",
+    "idiom": "worth its weight in gold",
+    "meaningVi": "rất quý giá",
+    "exampleEn": "Good advice is worth its weight in gold.",
+    "exampleVi": "Lời khuyên tốt quý như vàng.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-125",
+    "idiom": "a hot potato",
+    "meaningVi": "vấn đề nhạy cảm, khó xử",
+    "exampleEn": "The topic is a political hot potato.",
+    "exampleVi": "Chủ đề này là vấn đề chính trị nhạy cảm.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-126",
+    "idiom": "back to square one",
+    "meaningVi": "trở về vạch xuất phát",
+    "exampleEn": "The deal fell through; back to square one.",
+    "exampleVi": "Thỏa thuận đổ bể, lại về vạch xuất phát.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-127",
+    "idiom": "benefit of the doubt",
+    "meaningVi": "cho hưởng sự nghi ngờ có lợi",
+    "exampleEn": "Give him the benefit of the doubt.",
+    "exampleVi": "Hãy cho anh ấy được hưởng sự nghi ngờ có lợi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-128",
+    "idiom": "bite the hand that feeds you",
+    "meaningVi": "ăn cháo đá bát",
+    "exampleEn": "Don't bite the hand that feeds you.",
+    "exampleVi": "Đừng ăn cháo đá bát.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-129",
+    "idiom": "blood is thicker than water",
+    "meaningVi": "một giọt máu đào hơn ao nước lã",
+    "exampleEn": "He chose family; blood is thicker than water.",
+    "exampleVi": "Anh ấy chọn gia đình; máu mủ vẫn hơn.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-130",
+    "idiom": "born with a silver spoon",
+    "meaningVi": "sinh ra trong nhung lụa",
+    "exampleEn": "She was born with a silver spoon in her mouth.",
+    "exampleVi": "Cô ấy sinh ra trong nhung lụa.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-131",
+    "idiom": "bread and butter",
+    "meaningVi": "kế sinh nhai",
+    "exampleEn": "Teaching is his bread and butter.",
+    "exampleVi": "Dạy học là kế sinh nhai của anh ấy.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-132",
+    "idiom": "bring to light",
+    "meaningVi": "phơi bày, làm sáng tỏ",
+    "exampleEn": "The report brought new facts to light.",
+    "exampleVi": "Báo cáo đã phơi bày những sự thật mới.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-133",
+    "idiom": "get the ball rolling",
+    "meaningVi": "khởi động, bắt đầu",
+    "exampleEn": "Let's get the ball rolling on this project.",
+    "exampleVi": "Bắt đầu triển khai dự án này thôi.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-134",
+    "idiom": "by hook or by crook",
+    "meaningVi": "bằng mọi giá",
+    "exampleEn": "He'll win by hook or by crook.",
+    "exampleVi": "Anh ta sẽ thắng bằng mọi giá.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-135",
+    "idiom": "the early bird catches the worm",
+    "meaningVi": "chim sớm bắt được sâu (ai nhanh thì được)",
+    "exampleEn": "Apply early; the early bird catches the worm.",
+    "exampleVi": "Nộp sớm đi; ai nhanh thì được.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-136",
+    "idiom": "count your blessings",
+    "meaningVi": "biết ơn những gì mình có",
+    "exampleEn": "Count your blessings instead of complaining.",
+    "exampleVi": "Hãy biết ơn những gì mình có thay vì than phiền.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-137",
+    "idiom": "break a sweat",
+    "meaningVi": "phải nỗ lực, đổ mồ hôi",
+    "exampleEn": "He didn't even break a sweat in the match.",
+    "exampleVi": "Anh ấy chẳng tốn chút sức nào trong trận đấu.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-138",
+    "idiom": "a fly on the wall",
+    "meaningVi": "người quan sát thầm lặng",
+    "exampleEn": "I'd love to be a fly on the wall in that meeting.",
+    "exampleVi": "Tôi muốn được chứng kiến thầm lặng cuộc họp đó.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-139",
+    "idiom": "a blessing and a curse",
+    "meaningVi": "vừa là phúc vừa là họa",
+    "exampleEn": "Fame is a blessing and a curse.",
+    "exampleVi": "Danh tiếng vừa là phúc vừa là họa.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-140",
+    "idiom": "down the drain",
+    "meaningVi": "đổ sông đổ bể, mất trắng",
+    "exampleEn": "All our effort went down the drain.",
+    "exampleVi": "Mọi nỗ lực đổ sông đổ bể.",
+    "cefrLevel": "B1",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-141",
+    "idiom": "a bitter pill to swallow",
+    "meaningVi": "sự thật khó chấp nhận",
+    "exampleEn": "The defeat was a bitter pill to swallow.",
+    "exampleVi": "Thất bại là sự thật khó nuốt trôi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-142",
+    "idiom": "a chip on your shoulder",
+    "meaningVi": "nỗi ấm ức mang trong lòng",
+    "exampleEn": "He has a chip on his shoulder about school.",
+    "exampleVi": "Anh ấy mang nỗi ấm ức về chuyện trường lớp.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-143",
+    "idiom": "a double-edged sword",
+    "meaningVi": "con dao hai lưỡi",
+    "exampleEn": "Social media is a double-edged sword.",
+    "exampleVi": "Mạng xã hội là con dao hai lưỡi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-144",
+    "idiom": "a house of cards",
+    "meaningVi": "thứ mong manh, dễ sụp đổ",
+    "exampleEn": "Their plan was a house of cards.",
+    "exampleVi": "Kế hoạch của họ mong manh dễ sụp.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-145",
+    "idiom": "a leopard can't change its spots",
+    "meaningVi": "giang sơn dễ đổi, bản tính khó dời",
+    "exampleEn": "He cheated again; a leopard can't change its spots.",
+    "exampleVi": "Anh ta lại lừa dối; bản tính khó đổi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-146",
+    "idiom": "a wolf in sheep's clothing",
+    "meaningVi": "sói đội lốt cừu",
+    "exampleEn": "Beware of that wolf in sheep's clothing.",
+    "exampleVi": "Hãy cẩn thận với kẻ sói đội lốt cừu đó.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-147",
+    "idiom": "add fuel to the fire",
+    "meaningVi": "đổ thêm dầu vào lửa",
+    "exampleEn": "His comment added fuel to the fire.",
+    "exampleVi": "Bình luận của anh ta đổ thêm dầu vào lửa.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-148",
+    "idiom": "at the drop of a hat",
+    "meaningVi": "ngay lập tức, không chần chừ",
+    "exampleEn": "She'd travel at the drop of a hat.",
+    "exampleVi": "Cô ấy sẵn sàng đi du lịch ngay lập tức.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-149",
+    "idiom": "bark is worse than bite",
+    "meaningVi": "khẩu xà tâm phật (nói dữ nhưng hiền)",
+    "exampleEn": "Don't fear him; his bark is worse than his bite.",
+    "exampleVi": "Đừng sợ anh ta; anh ta khẩu xà tâm phật.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-150",
+    "idiom": "beat a dead horse",
+    "meaningVi": "làm việc vô ích, nói mãi chuyện cũ",
+    "exampleEn": "Stop beating a dead horse.",
+    "exampleVi": "Đừng nói mãi chuyện cũ nữa.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-151",
+    "idiom": "between the devil and the deep blue sea",
+    "meaningVi": "tiến thoái lưỡng nan",
+    "exampleEn": "He was between the devil and the deep blue sea.",
+    "exampleVi": "Anh ta tiến thoái lưỡng nan.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-152",
+    "idiom": "break the bank",
+    "meaningVi": "tốn quá nhiều tiền",
+    "exampleEn": "The wedding won't break the bank.",
+    "exampleVi": "Đám cưới sẽ không tốn quá nhiều tiền.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-153",
+    "idiom": "burn the candle at both ends",
+    "meaningVi": "làm việc quá sức, không nghỉ ngơi",
+    "exampleEn": "She's burning the candle at both ends.",
+    "exampleVi": "Cô ấy đang làm việc quá sức.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-154",
+    "idiom": "by the skin of your teeth",
+    "meaningVi": "suýt soát, vừa đủ qua",
+    "exampleEn": "He passed by the skin of his teeth.",
+    "exampleVi": "Anh ấy đỗ một cách suýt soát.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-155",
+    "idiom": "cast pearls before swine",
+    "meaningVi": "đàn gảy tai trâu (cho điều quý giá cho kẻ không biết trân trọng)",
+    "exampleEn": "Explaining art to him is casting pearls before swine.",
+    "exampleVi": "Giải thích nghệ thuật cho anh ta như đàn gảy tai trâu.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-156",
+    "idiom": "cry wolf",
+    "meaningVi": "kêu cứu giả, báo động giả",
+    "exampleEn": "He cried wolf so often that no one believed him.",
+    "exampleVi": "Anh ta báo động giả nhiều đến nỗi không ai tin nữa.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-157",
+    "idiom": "cut from the same cloth",
+    "meaningVi": "cùng một giuộc, giống nhau",
+    "exampleEn": "Those two are cut from the same cloth.",
+    "exampleVi": "Hai người đó cùng một giuộc.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-158",
+    "idiom": "dark horse",
+    "meaningVi": "ngựa ô (người ít được chú ý nhưng bất ngờ thành công)",
+    "exampleEn": "She was the dark horse of the competition.",
+    "exampleVi": "Cô ấy là ngựa ô của cuộc thi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-159",
+    "idiom": "dead ringer",
+    "meaningVi": "giống hệt nhau",
+    "exampleEn": "He's a dead ringer for his father.",
+    "exampleVi": "Anh ấy giống hệt cha mình.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-160",
+    "idiom": "diamond in the rough",
+    "meaningVi": "ngọc thô (người có tiềm năng chưa được mài giũa)",
+    "exampleEn": "He's a diamond in the rough.",
+    "exampleVi": "Anh ấy là viên ngọc thô đầy tiềm năng.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-161",
+    "idiom": "don't count your chickens before they hatch",
+    "meaningVi": "đừng đếm cua trong lỗ",
+    "exampleEn": "Don't count your chickens before they hatch.",
+    "exampleVi": "Đừng vội mừng khi việc chưa xong.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-162",
+    "idiom": "down the rabbit hole",
+    "meaningVi": "sa vào mê cung phức tạp",
+    "exampleEn": "Research led me down the rabbit hole.",
+    "exampleVi": "Nghiên cứu đưa tôi sa vào mê cung phức tạp.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-163",
+    "idiom": "draw a blank",
+    "meaningVi": "không nhớ ra gì",
+    "exampleEn": "I drew a blank on his name.",
+    "exampleVi": "Tôi không nhớ ra tên anh ta.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-164",
+    "idiom": "eager beaver",
+    "meaningVi": "người siêng năng, hăng hái",
+    "exampleEn": "The new intern is a real eager beaver.",
+    "exampleVi": "Thực tập sinh mới rất hăng hái.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-165",
+    "idiom": "egg on your face",
+    "meaningVi": "bẽ mặt, xấu hổ",
+    "exampleEn": "He had egg on his face after the error.",
+    "exampleVi": "Anh ta bẽ mặt sau sai lầm đó.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-166",
+    "idiom": "every dog has its day",
+    "meaningVi": "ai rồi cũng có lúc vinh quang",
+    "exampleEn": "Keep trying; every dog has its day.",
+    "exampleVi": "Cứ cố gắng; ai rồi cũng có lúc thành công.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-167",
+    "idiom": "fall through the cracks",
+    "meaningVi": "bị bỏ sót, bị lãng quên",
+    "exampleEn": "Some cases fall through the cracks.",
+    "exampleVi": "Một số vụ việc bị bỏ sót.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-168",
+    "idiom": "fiddle while Rome burns",
+    "meaningVi": "thản nhiên khi tình thế nguy cấp",
+    "exampleEn": "He fiddles while Rome burns.",
+    "exampleVi": "Anh ta thản nhiên trong lúc nguy cấp.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-169",
+    "idiom": "fly by the seat of your pants",
+    "meaningVi": "ứng biến không có kế hoạch",
+    "exampleEn": "We flew by the seat of our pants.",
+    "exampleVi": "Chúng tôi ứng biến không có kế hoạch.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-170",
+    "idiom": "fool's errand",
+    "meaningVi": "việc làm ngớ ngẩn, vô ích",
+    "exampleEn": "It was a fool's errand from the start.",
+    "exampleVi": "Đó là việc vô ích ngay từ đầu.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-171",
+    "idiom": "get off on the wrong foot",
+    "meaningVi": "khởi đầu không suôn sẻ",
+    "exampleEn": "We got off on the wrong foot.",
+    "exampleVi": "Chúng tôi đã có khởi đầu không suôn sẻ.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-172",
+    "idiom": "go against the grain",
+    "meaningVi": "đi ngược lại số đông",
+    "exampleEn": "He went against the grain and succeeded.",
+    "exampleVi": "Anh ấy đi ngược số đông và đã thành công.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-173",
+    "idiom": "go cold turkey",
+    "meaningVi": "cai đột ngột, bỏ hẳn ngay",
+    "exampleEn": "He went cold turkey on cigarettes.",
+    "exampleVi": "Anh ấy bỏ thuốc lá đột ngột.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-174",
+    "idiom": "golden parachute",
+    "meaningVi": "gói đền bù hậu hĩnh khi nghỉ việc",
+    "exampleEn": "The CEO left with a golden parachute.",
+    "exampleVi": "Giám đốc ra đi với gói đền bù hậu hĩnh.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-175",
+    "idiom": "hand to mouth",
+    "meaningVi": "sống chật vật từng bữa",
+    "exampleEn": "They live hand to mouth.",
+    "exampleVi": "Họ sống chật vật từng bữa.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-176",
+    "idiom": "have a bone to pick",
+    "meaningVi": "có chuyện cần nói rõ với ai",
+    "exampleEn": "I have a bone to pick with you.",
+    "exampleVi": "Tôi có chuyện cần nói rõ với bạn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-177",
+    "idiom": "have bigger fish to fry",
+    "meaningVi": "có việc quan trọng hơn cần làm",
+    "exampleEn": "I can't argue; I have bigger fish to fry.",
+    "exampleVi": "Tôi không rảnh cãi nhau; tôi còn việc quan trọng hơn.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-178",
+    "idiom": "have your cake and eat it too",
+    "meaningVi": "muốn được cả hai điều mâu thuẫn",
+    "exampleEn": "You can't have your cake and eat it too.",
+    "exampleVi": "Bạn không thể muốn được cả hai.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-179",
+    "idiom": "head in the clouds",
+    "meaningVi": "mơ mộng viển vông",
+    "exampleEn": "Stop with your head in the clouds.",
+    "exampleVi": "Đừng mơ mộng viển vông nữa.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-180",
+    "idiom": "hear it on the grapevine",
+    "meaningVi": "nghe tin đồn, nghe phong thanh",
+    "exampleEn": "I heard it on the grapevine that she's leaving.",
+    "exampleVi": "Tôi nghe phong thanh rằng cô ấy sắp nghỉ.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-181",
+    "idiom": "hit the ground running",
+    "meaningVi": "bắt đầu đầy năng lượng",
+    "exampleEn": "She hit the ground running in the new job.",
+    "exampleVi": "Cô ấy bắt đầu công việc mới đầy năng lượng.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-182",
+    "idiom": "hold water",
+    "meaningVi": "có lý, đứng vững (lập luận)",
+    "exampleEn": "His argument doesn't hold water.",
+    "exampleVi": "Lập luận của anh ta không đứng vững.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-183",
+    "idiom": "in the driver's seat",
+    "meaningVi": "nắm quyền kiểm soát",
+    "exampleEn": "After the merger, they are in the driver's seat.",
+    "exampleVi": "Sau sáp nhập, họ nắm quyền kiểm soát.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-184",
+    "idiom": "ivory tower",
+    "meaningVi": "tháp ngà (xa rời thực tế)",
+    "exampleEn": "Professors in ivory towers ignore reality.",
+    "exampleVi": "Các giáo sư trong tháp ngà phớt lờ thực tế.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-185",
+    "idiom": "jump the gun",
+    "meaningVi": "vội vàng hành động trước",
+    "exampleEn": "He jumped the gun and announced early.",
+    "exampleVi": "Anh ta vội vàng công bố sớm.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-186",
+    "idiom": "keep your cards close to your chest",
+    "meaningVi": "giữ kín kế hoạch, không tiết lộ",
+    "exampleEn": "In business, keep your cards close to your chest.",
+    "exampleVi": "Trong kinh doanh, đừng tiết lộ kế hoạch.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-187",
+    "idiom": "kick up a fuss",
+    "meaningVi": "làm ầm lên, phản đối dữ dội",
+    "exampleEn": "They kicked up a fuss about the fees.",
+    "exampleVi": "Họ làm ầm lên về khoản phí.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-188",
+    "idiom": "kill the goose that lays the golden eggs",
+    "meaningVi": "giết gà đẻ trứng vàng (phá nguồn lợi lâu dài)",
+    "exampleEn": "Overfishing kills the goose that lays the golden eggs.",
+    "exampleVi": "Đánh bắt quá mức như giết gà đẻ trứng vàng.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-189",
+    "idiom": "knee-jerk reaction",
+    "meaningVi": "phản ứng vội vàng, thiếu suy nghĩ",
+    "exampleEn": "His reply was a knee-jerk reaction.",
+    "exampleVi": "Câu trả lời của anh ta là phản ứng vội vàng.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-190",
+    "idiom": "knock on wood",
+    "meaningVi": "trộm vía (nói để cầu may)",
+    "exampleEn": "Knock on wood, we've had no accidents.",
+    "exampleVi": "Trộm vía, chúng ta chưa gặp tai nạn nào.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-191",
+    "idiom": "lay down the law",
+    "meaningVi": "ra luật, đặt quy định nghiêm",
+    "exampleEn": "The coach laid down the law.",
+    "exampleVi": "Huấn luyện viên đã ra quy định nghiêm.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-192",
+    "idiom": "let bygones be bygones",
+    "meaningVi": "chuyện cũ bỏ qua",
+    "exampleEn": "Let's let bygones be bygones.",
+    "exampleVi": "Chuyện cũ bỏ qua đi.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-193",
+    "idiom": "light at the end of the tunnel",
+    "meaningVi": "tia hy vọng cuối đường hầm",
+    "exampleEn": "There's light at the end of the tunnel.",
+    "exampleVi": "Đã thấy tia hy vọng cuối đường hầm.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-194",
+    "idiom": "like pulling teeth",
+    "meaningVi": "khó khăn vô cùng (như nhổ răng)",
+    "exampleEn": "Getting him to talk is like pulling teeth.",
+    "exampleVi": "Bắt anh ta nói chuyện khó như nhổ răng.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-195",
+    "idiom": "lose face",
+    "meaningVi": "mất mặt, mất thể diện",
+    "exampleEn": "He didn't want to lose face.",
+    "exampleVi": "Anh ta không muốn mất mặt.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-196",
+    "idiom": "make a mountain out of a molehill",
+    "meaningVi": "chuyện bé xé ra to",
+    "exampleEn": "You're making a mountain out of a molehill.",
+    "exampleVi": "Bạn đang chuyện bé xé ra to.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-197",
+    "idiom": "a fly in the ointment",
+    "meaningVi": "hạt sạn trong bát cơm (điểm trừ nhỏ)",
+    "exampleEn": "The price is the only fly in the ointment.",
+    "exampleVi": "Giá cả là điểm trừ duy nhất.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-198",
+    "idiom": "silver lining",
+    "meaningVi": "mặt tích cực trong chuyện xấu",
+    "exampleEn": "Every crisis has a silver lining.",
+    "exampleVi": "Mỗi khủng hoảng đều có mặt tích cực.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-199",
+    "idiom": "spill the tea",
+    "meaningVi": "buôn chuyện, tiết lộ tin hot (lóng)",
+    "exampleEn": "Spill the tea! What happened?",
+    "exampleVi": "Kể đi! Chuyện gì đã xảy ra?",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  },
+  {
+    "id": "idm-200",
+    "idiom": "the pot calling the kettle black",
+    "meaningVi": "chó chê mèo lắm lông (kẻ có tật lại chê người)",
+    "exampleEn": "Him calling me lazy is the pot calling the kettle black.",
+    "exampleVi": "Anh ta chê tôi lười đúng là chó chê mèo lắm lông.",
+    "cefrLevel": "B2",
+    "source": "ai-generated",
+    "verified": false
+  }
+]

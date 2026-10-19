@@ -1,0 +1,576 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #FAF5EA;
+  --paper-2: #F1E9D6;
+  --card: #FFFDF6;
+  --ink: #211A13;
+  --ink-soft: #6B5F4E;
+  --ink-muted: #8F8270;
+  --red: #D64027;
+  --red-dark: #A82E1C;
+  --teal: #0F766E;
+  --teal-dark: #0D655E;
+  --amber: #F2A93B;
+  --amber-soft: #FDF3E3;
+  --line: 2px solid var(--ink);
+  --ease-paper: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-stamp: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--paper);
+  background-image: radial-gradient(#211a1314 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Nút bấm Brutalist Sổ Tay */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 12px 22px;
+  border: var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #fff;
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  user-select: none;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.btn:active {
+  transform: translate(3px, 3px) scale(0.96);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.btn-red {
+  background-color: var(--red);
+  color: #fff;
+}
+.btn-red:hover {
+  background-color: var(--red-dark);
+}
+
+.btn-ink {
+  background-color: var(--ink);
+  color: #fff;
+}
+
+.btn-paper {
+  background-color: var(--paper-2);
+  color: var(--ink);
+}
+
+.btn-teal {
+  background-color: var(--teal);
+  color: #fff;
+}
+
+/* Thẻ giấy (Paper Card) */
+.card-paper {
+  background-color: var(--card);
+  border: var(--line);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 24px;
+  transition: transform 0.18s var(--ease-paper), box-shadow 0.18s var(--ease-paper);
+}
+
+.card-paper:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 9px 0 var(--ink);
+}
+
+.card-paper-tilt-1 {
+  transform: rotate(-1.5deg);
+}
+
+.card-paper-tilt-2 {
+  transform: rotate(2deg);
+}
+
+/* Băng dính trang trí (Tape) */
+.tape-strip {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 100px;
+  height: 24px;
+  background-color: #f2a93b99;
+  border-left: 2px dashed #211a1355;
+  border-right: 2px dashed #211a1355;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Con dấu mực đỏ (Red Stamp) */
+.stamp-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #faf5eaee;
+  transform: rotate(-12deg);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Bong bóng thoại LingLing */
+.speech-bubble {
+  position: relative;
+  background-color: var(--card);
+  border: var(--line);
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background-color: var(--card);
+  border-left: var(--line);
+  border-top: var(--line);
+}
+
+.speech-bubble-bottom::after {
+  bottom: -8px;
+  left: 24px;
+  transform: rotate(-135deg);
+}
+
+.speech-bubble-top::after {
+  top: -8px;
+  right: 28px;
+  transform: rotate(45deg);
+}
+
+/* Floating animation cho linh vật */
+@keyframes mascot-bob {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.animate-mascot {
+  animation: mascot-bob 3.4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 18px rgba(33, 26, 19, 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-mascot {
+    animation: none;
+  }
+}
+
+/* Dải chạy chữ Ticker */
+.ticker-container {
+  border-top: var(--line);
+  border-bottom: var(--line);
+  background-color: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 14px 0;
+}
+
+/* Giấy kẻ dòng (Lined Paper) */
+.lined-paper {
+  background-color: var(--card);
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    #211a1318 31px,
+    #211a1318 32px
+  );
+  line-height: 32px;
+}
+
+/* Băng dính 2 góc thẻ thư viện */
+.tape-corner-tl {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 55px;
+  height: 20px;
+  background-color: #f2a93b99;
+  border-left: 2px dashed #211a1355;
+  border-right: 2px dashed #211a1355;
+  transform: rotate(-35deg);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.tape-corner-tr {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 55px;
+  height: 20px;
+  background-color: #f2a93b99;
+  border-left: 2px dashed #211a1355;
+  border-right: 2px dashed #211a1355;
+  transform: rotate(35deg);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Giấy note vàng dán (Sticky note) */
+.sticky-note-yellow {
+  background-color: #FEF08A;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  position: relative;
+}
+
+.sticky-note-yellow::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 60px;
+  height: 18px;
+  background-color: #ffffff88;
+  border-left: 1px dashed #211a1344;
+  border-right: 1px dashed #211a1344;
+}
+
+/* Vạch tiến độ mực */
+.ink-progress-track {
+  background-color: var(--paper-2);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  height: 12px;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 2px rgba(33, 26, 19, 0.15);
+}
+
+.ink-progress-fill {
+  background-color: var(--ink);
+  height: 100%;
+  transition: width 0.25s ease-out;
+}
+
+/* Cassette player styling */
+.cassette-player {
+  background-color: #F3EBDD;
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.cassette-window {
+  background-color: #FAF5EA;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: inset 2px 2px 0 rgba(33, 26, 19, 0.15);
+}
+
+.cassette-spool {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background-color: #FFFDF6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* Ẩn dev tools overlay / indicator tránh đè lên nội dung trên mobile */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay],
+div[data-nextjs-route-announcer] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   MICRO-INTERACTIONS PHONG CÁCH SỔ TAY GIẤY (PAPER CRAFT MICRO-INTERACTIONS)
+   ========================================================================== */
+
+/* 1. 3D Perspective & Flip */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* 2. Con Dấu Đóng Xuống (Stamp Slam) */
+@keyframes stamp-slam {
+  0% {
+    opacity: 0;
+    transform: scale(2.4) rotate(14deg);
+  }
+  70% {
+    opacity: 0.95;
+    transform: scale(0.92) rotate(-10deg);
+  }
+  85% {
+    transform: scale(1.04) rotate(-7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@keyframes stamp-shake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1.5px); }
+  40% { transform: translate(2px, -1.5px); }
+  60% { transform: translate(-1.5px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+.animate-stamp-slam {
+  animation: stamp-slam 250ms var(--ease-stamp) forwards;
+}
+
+.animate-stamp-shake {
+  animation: stamp-shake 220ms ease-in-out;
+}
+
+/* 3. Flashcard Thẻ Bay (Card Throw) */
+@keyframes card-fly-right {
+  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(130%) rotate(16deg); opacity: 0; }
+}
+
+@keyframes card-fly-left {
+  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(-130%) rotate(-16deg); opacity: 0; }
+}
+
+@keyframes card-emerge {
+  0% { transform: scale(0.94); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-card-fly-right {
+  animation: card-fly-right 300ms ease-out forwards;
+}
+
+.animate-card-fly-left {
+  animation: card-fly-left 300ms ease-out forwards;
+}
+
+.animate-card-emerge {
+  animation: card-emerge 250ms var(--ease-paper) forwards;
+}
+
+/* 4. Tin Nhắn Chat LingLing & Typing Dots */
+@keyframes message-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message-slide {
+  animation: message-slide-in 200ms var(--ease-paper) forwards;
+}
+
+@keyframes ink-drop-pulse {
+  0%, 80%, 100% {
+    transform: scale(0.65);
+    opacity: 0.35;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.animate-ink-dot-1 {
+  animation: ink-drop-pulse 1.2s infinite ease-in-out 0ms;
+}
+.animate-ink-dot-2 {
+  animation: ink-drop-pulse 1.2s infinite ease-in-out 180ms;
+}
+.animate-ink-dot-3 {
+  animation: ink-drop-pulse 1.2s infinite ease-in-out 360ms;
+}
+
+/* 5. Cassette Tape Reel Rotation */
+@keyframes tape-spool-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spool-spin {
+  animation: tape-spool-spin 3s linear infinite;
+}
+
+/* 6. Biểu Đồ Analytics Mọc Cột */
+@keyframes bar-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.origin-bottom {
+  transform-origin: bottom;
+}
+
+.animate-bar-grow {
+  animation: bar-grow 320ms var(--ease-paper) forwards;
+}
+
+/* 7. Vé Trò Chơi Răng Cưa & Xé Đôi */
+.ticket-card {
+  position: relative;
+  background-color: var(--card);
+  border: var(--line);
+  border-radius: 16px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.2s var(--ease-paper), box-shadow 0.2s var(--ease-paper);
+}
+
+.ticket-card:hover {
+  transform: translateY(-4px) rotate(1deg);
+  box-shadow: 6px 8px 0 var(--ink);
+}
+
+.ticket-notch-l, .ticket-notch-r {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: var(--paper);
+  border: var(--line);
+  border-radius: 50%;
+  z-index: 5;
+}
+.ticket-notch-l {
+  left: -10px;
+}
+.ticket-notch-r {
+  right: -10px;
+}
+
+@keyframes ticket-tear-anim {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.96) rotate(-2deg); opacity: 0.7; }
+  100% { transform: scale(0.85) translateY(10px); opacity: 0; }
+}
+
+.animate-ticket-tear {
+  animation: ticket-tear-anim 300ms ease-out forwards;
+}
+
+/* 8. Bài Viết Nộp Vào Phong Bì */
+@keyframes paper-to-envelope {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-24px) scale(0.82);
+    opacity: 0;
+  }
+}
+
+.animate-paper-envelope {
+  animation: paper-to-envelope 400ms var(--ease-paper) forwards;
+}
+
+/* 9. Nấc Slider Haptic Wiggle */
+@keyframes notch-snap-wiggle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08) rotate(1deg); }
+}
+
+.animate-notch-snap {
+  animation: notch-snap-wiggle 180ms ease-out;
+}
+
+/* 10. Chuyển Route / Page Entry */
+@keyframes page-entry-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-entry {
+  animation: page-entry-fade 200ms var(--ease-paper) forwards;
+}
+
+/* 11. Hỗ Trợ Tôn Trọng Người Dùng Bật Giảm Chuyển Động */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:hover, .btn:active, .card-paper:hover, .ticket-card:hover {
+    transform: none !important;
+  }
+}
+
+

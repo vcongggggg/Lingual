@@ -6,7 +6,13 @@ import { z } from 'zod';
 
 export const RegisterSchema = z.object({
   email: z.string().email('Email không hợp lệ'),
-  password: z.string().min(6, 'Mật khẩu phải từ 6 ký tự trở lên'),
+  password: z
+    .string()
+    .min(8, 'Mật khẩu phải từ 8 ký tự trở lên')
+    .regex(/[A-Z]/, 'Mật khẩu phải chứa ít nhất 1 chữ cái in hoa')
+    .regex(/[a-z]/, 'Mật khẩu phải chứa ít nhất 1 chữ cái in thường')
+    .regex(/[0-9]/, 'Mật khẩu phải chứa ít nhất 1 chữ số')
+    .regex(/[^A-Za-z0-9]/, 'Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt (!@#$%^&*)'),
   displayName: z.string().min(2, 'Tên hiển thị quá ngắn'),
   interfaceLocale: z.string().default('vi'),
   timezone: z.string().default('Asia/Ho_Chi_Minh'),

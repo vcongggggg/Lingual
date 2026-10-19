@@ -128,10 +128,10 @@ async function retrieveRagDetails(query: string): Promise<{ textContext: string;
 }
 
 /**
- * SSE Streaming Endpoint (Server-Sent Events)
- * POST /api/v1/chatbot/stream
+ * SSE Streaming Endpoint Handler (Server-Sent Events)
+ * Supports both POST /api/v1/chatbot/stream and POST /api/v1/chatbot/chat
  */
-chatbotRouter.post('/stream', async (req: Request, res: Response) => {
+const sseStreamHandler = async (req: Request, res: Response) => {
   // Set SSE Headers
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
@@ -271,19 +271,30 @@ ${
     if (ragContext) {
       fallbackText = `Xin chào! LingLing đã tra cứu được dữ liệu thực tế trong hệ thống **Lingual** cho bạn:\n\n${ragContext}\n\n💡 *Mẹo từ LingLing*: Bạn có thể lưu từ vựng này vào bộ thẻ **SRS Flashcard** bên dưới để ôn tập hàng ngày nhé!`;
     } else if (message.toLowerCase().includes('ielts')) {
-      fallbackText = `Chào bạn! **LingLing** rất sẵn lòng đồng hành cùng bạn luyện thi IELTS trên Lingual! 🚀\n\nỨng dụng Lingual hiện hỗ trợ:\n• **Reading**: Bài đọc 2 cột chuẩn thi thật.\n• **Listening**: Trình phát audio + transcript.\n• **Writing**: AI Chấm bài 4 tiêu chí (Task Achievement, Coherence, Lexical, Grammar).\n• **Mock Test**: Thi thử áp lực thời gian.\n\nBạn muốn LingLing hướng dẫn kỹ năng nào trước?`;
+      fallbackText = `Chào bạn! **LingLing** rất sẵn lòng đồng hành cùng bạn luyện thi IELTS trên Lingual! 🚀\n\nỨng dụng Lingual hiện hỗ trợ:\n• **Reading**: Bài đọc 2 cột chuẩn thi thật.\n• **Listening**: Trình phát audio + transcript.\n• **Writing**: Đánh giá bài viết theo 4 tiêu chí Band Descriptor.\n• **Mock Test**: Thi thử áp lực thời gian.\n\nBạn muốn LingLing hướng dẫn kỹ năng nào trước?`;
     } else {
       fallbackText = `Chào bạn! Tôi là **LingLing** 🤖 - Trợ lý AI của Lingual. 🌟\n\nTôi có thể giúp bạn giải thích từ vựng, ngữ pháp, bài học và luyện thi IELTS. Bạn cần tôi hỗ trợ nội dung gì hôm nay?`;
     }
 
     return streamFallbackTokens(fallbackText);
   }
-});
+};
+
+chatbotRouter.post('/stream', sseStreamHandler);
 
 /**
- * Legacy JSON Endpoint POST /api/v1/chatbot/chat
+ * Endpoint POST /api/v1/chatbot/chat
+ * Supports both SSE streaming (when Accept: text/event-stream or stream: true) and legacy JSON response
  */
 chatbotRouter.post('/chat', async (req: Request, res: Response) => {
+  if (
+    req.headers.accept?.includes('text/event-stream') ||
+    req.body?.stream === true ||
+    req.query?.stream === 'true'
+  ) {
+    return sseStreamHandler(req, res);
+  }
+
   try {
     const { message = '' } = req.body;
     const { textContext: ragContext, refs: ragRefs } = await retrieveRagDetails(message);
