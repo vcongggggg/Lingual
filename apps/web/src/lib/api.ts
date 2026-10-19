@@ -1,5 +1,15 @@
 // API Client for Lingual Web App connecting to Lingual Production API
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
+export function getApiBase(): string {
+  if (process.env.NEXT_PUBLIC_API_URL && process.env.NEXT_PUBLIC_API_URL.trim() !== '') {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  if (typeof window !== 'undefined') {
+    return '/api/v1';
+  }
+  return 'http://localhost:4000/api/v1';
+}
+
+const API_BASE = getApiBase();
 
 export function getAuthToken(): string | null {
   if (typeof window === 'undefined') return null;
@@ -36,7 +46,8 @@ async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise
     headers.set('Authorization', `Bearer ${token}`);
   }
 
-  const url = `${API_BASE}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
+  const base = getApiBase();
+  const url = `${base}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
 
   const res = await fetch(url, {
     credentials: 'include',

@@ -303,7 +303,7 @@ export default function GamesPage() {
           }
 
           // Game 5: Listening Challenge (8 items with 4 options each)
-          const validAudio = poolItems.slice(18, 28).map((target: any, idx: number) => {
+          const validAudio = poolItems.slice(18, 26).map((target: any, idx: number) => {
             const distractors = poolItems.filter((it: any) => it.id !== target.id).slice(0, 3);
             const rawOpts = [
               { text: target.targetText.trim(), vi: target.translation.trim(), isCorrect: true },
