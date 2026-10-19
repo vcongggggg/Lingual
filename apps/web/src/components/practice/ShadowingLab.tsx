@@ -20,9 +20,10 @@ import {
 } from 'lucide-react';
 import { LingLing } from '../ui/LingLing';
 import { StampSlam } from '../ui/StampSlam';
+import { api } from '../../lib/api';
 
 export interface ShadowingPrompt {
-  id: number;
+  id: number | string;
   sentence: string;
   vietnamese: string;
   phoneticsNote: string;
@@ -67,6 +68,7 @@ interface WordEvaluation {
 }
 
 export function ShadowingLab() {
+  const [prompts, setPrompts] = useState<ShadowingPrompt[]>(SHADOWING_PROMPTS);
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const [isPlayingModel, setIsPlayingModel] = useState<boolean>(false);
   const [isRecording, setIsRecording] = useState<boolean>(false);
@@ -83,9 +85,35 @@ export function ShadowingLab() {
   const [manualInputText, setManualInputText] = useState<string>('');
 
   const recognitionRef = useRef<any>(null);
-  const prompt = SHADOWING_PROMPTS[currentIdx];
+  const prompt = prompts[currentIdx] || prompts[0] || SHADOWING_PROMPTS[0];
 
-  // 1. Kiểm tra hỗ trợ Web Speech API
+  // 1. Tải câu luyện nói từ database thật
+  useEffect(() => {
+    let isMounted = true;
+    api.getShadowingSentences({ limit: 20, random: true })
+      .then((res) => {
+        if (!isMounted || !res?.items || res.items.length === 0) return;
+        const mapped: ShadowingPrompt[] = res.items.map((item: any, idx: number) => ({
+          id: item.id || `shdw-${idx}`,
+          sentence: item.textEn || item.sentence,
+          vietnamese: item.textVi || item.vietnamese || '',
+          phoneticsNote: item.phonetic || `Trình độ ${item.cefrLevel || 'B1'} · Phát âm chuẩn từng từ`,
+          level: item.cefrLevel || 'B1',
+        })).filter((p) => Boolean(p.sentence));
+
+        if (mapped.length > 0) {
+          setPrompts(mapped);
+        }
+      })
+      .catch((err) => {
+        console.warn('Failed to load shadowing sentences from API, using fallback:', err);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // 2. Kiểm tra hỗ trợ Web Speech API
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hasSpeechRec = Boolean(
@@ -223,7 +251,7 @@ export function ShadowingLab() {
   };
 
   const handleNextPrompt = () => {
-    const next = (currentIdx + 1) % SHADOWING_PROMPTS.length;
+    const next = (currentIdx + 1) % prompts.length;
     setCurrentIdx(next);
     setSpokenTranscript('');
     setEvalResult(null);
@@ -278,7 +306,7 @@ export function ShadowingLab() {
 
         <div className="flex items-center gap-2">
           <span className="px-3 py-1.5 bg-paper rounded-xl border border-ink text-xs font-mono font-black text-ink shadow-brutal-sm">
-            CÂU {currentIdx + 1} / {SHADOWING_PROMPTS.length}
+            CÂU {currentIdx + 1} / {prompts.length}
           </span>
           <span className="stamp-badge border border-teal text-teal text-xs font-black px-2 py-1">
             {prompt.level}

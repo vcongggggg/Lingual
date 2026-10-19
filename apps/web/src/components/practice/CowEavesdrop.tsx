@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { LingLing } from '../ui/LingLing';
 import { StampSlam } from '../ui/StampSlam';
+import { api } from '../../lib/api';
 
 interface DialogueLine {
   id: string;
@@ -250,6 +251,7 @@ const DIALOGUE_SCENARIOS: DialogueScenario[] = [
 ];
 
 export function CowEavesdrop() {
+  const [scenarios, setScenarios] = useState<DialogueScenario[]>(DIALOGUE_SCENARIOS);
   const [scenarioIdx, setScenarioIdx] = useState<number>(0);
   const [isPlayingFull, setIsPlayingFull] = useState<boolean>(false);
   const [activeLineId, setActiveLineId] = useState<string | null>(null);
@@ -259,7 +261,41 @@ export function CowEavesdrop() {
   const [hasSubmittedQuiz, setHasSubmittedQuiz] = useState<boolean>(false);
   const [showTranscript, setShowTranscript] = useState<boolean>(false);
 
-  const scenario = DIALOGUE_SCENARIOS[scenarioIdx];
+  useEffect(() => {
+    let isMounted = true;
+    async function loadDialogues() {
+      try {
+        const res = await api.getDialogues({ limit: 10, random: true });
+        if (isMounted && res?.items && res.items.length > 0) {
+          const mapped: DialogueScenario[] = res.items
+            .map((item: any, idx: number) => ({
+              id: item.id || `dlg-${idx}`,
+              title: item.title || 'Đoạn đối thoại',
+              location: item.location || 'Cuộc trò chuyện thường nhật',
+              characters: typeof item.characters === 'string'
+                ? item.characters
+                : (Array.isArray(item.characters) ? item.characters.join(', ') : 'Nhân vật A & B'),
+              contextDesc: item.contextDesc || item.topicVi || item.topic || 'Lắng nghe kỹ để trả lời câu hỏi.',
+              lines: Array.isArray(item.lines) ? item.lines : [],
+              questions: Array.isArray(item.questions) ? item.questions : [],
+            }))
+            .filter((s) => s.lines.length > 0 && s.questions.length > 0);
+
+          if (mapped.length > 0) {
+            setScenarios(mapped);
+          }
+        }
+      } catch (err) {
+        console.warn('Fallback to local dialogue scenarios:', err);
+      }
+    }
+    loadDialogues();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const scenario = scenarios[scenarioIdx] || scenarios[0];
 
   // Phát âm một dòng đơn bằng Web Speech Synthesis
   const speakLine = (line: DialogueLine, onComplete?: () => void) => {
@@ -332,16 +368,17 @@ export function CowEavesdrop() {
     setUserAnswers({});
     setHasSubmittedQuiz(false);
     setShowTranscript(false);
-    setScenarioIdx((prev) => (prev + 1) % DIALOGUE_SCENARIOS.length);
+    setScenarioIdx((prev) => (prev + 1) % scenarios.length);
   };
 
   // Tính điểm
-  const correctCount = scenario.questions.filter(
+  const correctCount = (scenario?.questions || []).filter(
     (q) => userAnswers[q.id] && q.options.find((o) => o.id === userAnswers[q.id])?.isCorrect
   ).length;
 
-  const scorePercent = Math.round((correctCount / scenario.questions.length) * 100);
-  const isAllAnswered = scenario.questions.every((q) => userAnswers[q.id]);
+  const totalQuestions = scenario?.questions?.length || 1;
+  const scorePercent = Math.round((correctCount / totalQuestions) * 100);
+  const isAllAnswered = (scenario?.questions || []).every((q) => userAnswers[q.id]);
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 text-left select-none pb-20">
@@ -365,7 +402,7 @@ export function CowEavesdrop() {
           className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
         >
           <Shuffle className="w-3.5 h-3.5 text-red" />
-          <span>Đổi đoạn đối thoại khác ({scenarioIdx + 1}/{DIALOGUE_SCENARIOS.length})</span>
+          <span>Đổi đoạn đối thoại khác ({scenarioIdx + 1}/{scenarios.length})</span>
         </button>
       </div>
 

@@ -54,6 +54,18 @@ async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise
   return data as T;
 }
 
+function toQueryString(params?: Record<string, any>): string {
+  if (!params) return '';
+  const searchParams = new URLSearchParams();
+  for (const [key, val] of Object.entries(params)) {
+    if (val !== undefined && val !== null && val !== '') {
+      searchParams.append(key, String(val));
+    }
+  }
+  const str = searchParams.toString();
+  return str ? `?${str}` : '';
+}
+
 export const api = {
   // 1. Health check
   getHealth: () => fetchApi<{ status: string; version: string; database: string }>('/health'),
@@ -222,5 +234,134 @@ export const api = {
       lastLeavePassGrantWeek: string | null;
       streakFreezes: number;
     }>('/user/streak'),
+
+  // Phase 2: Dynamic Content Endpoints
+  getGrammarQuestions: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/grammar-questions${toQueryString(params)}`),
+  getGrammarQuestionById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/grammar-questions/${id}`),
+
+  getDialogues: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/dialogues${toQueryString(params)}`),
+  getDialogueById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/dialogues/${id}`),
+
+  getStoryTemplates: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/story-templates${toQueryString(params)}`),
+  getStoryTemplateById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/story-templates/${id}`),
+
+  getContentPackages: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/packages${toQueryString(params)}`),
+  getContentPackageById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/packages/${id}`),
+
+  getArticles: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/articles${toQueryString(params)}`),
+  getArticleById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/articles/${id}`),
+
+  getStories: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/stories${toQueryString(params)}`),
+  getStoryById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/stories/${id}`),
+
+  getIeltsReading: (params?: { cefrLevel?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/ielts-reading${toQueryString(params)}`),
+  getIeltsReadingById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/ielts-reading/${id}`),
+
+  getIeltsListening: (params?: { cefrLevel?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/ielts-listening${toQueryString(params)}`),
+  getIeltsListeningById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/ielts-listening/${id}`),
+
+  getIeltsSpeaking: (params?: { limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/ielts-speaking${toQueryString(params)}`),
+  getIeltsSpeakingById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/ielts-speaking/${id}`),
+
+  getIeltsWriting: (params?: { limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/ielts-writing${toQueryString(params)}`),
+  getIeltsWritingById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/ielts-writing/${id}`),
+
+  getContentUnits: (params?: { cefrLevel?: string; limit?: number }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/units${toQueryString(params)}`),
+  getContentUnitById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/units/${id}`),
+
+  getDiaryPrompts: (params?: { cefrLevel?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/diary-prompts${toQueryString(params)}`),
+  getDiaryPromptById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/diary-prompts/${id}`),
+
+  getShadowingSentences: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/shadowing${toQueryString(params)}`),
+  getShadowingSentenceById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/shadowing/${id}`),
+
+  getDictationSentences: (params?: { cefrLevel?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/dictation${toQueryString(params)}`),
+  getDictationSentenceById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/dictation/${id}`),
+
+  getListeningMonologues: (params?: { cefrLevel?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/monologues${toQueryString(params)}`),
+  getListeningMonologueById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/monologues/${id}`),
+
+  getIdioms: (params?: { cefrLevel?: string; search?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/idioms${toQueryString(params)}`),
+  getIdiomById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/idioms/${id}`),
+
+  getPhrasalVerbs: (params?: { cefrLevel?: string; search?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/phrasal-verbs${toQueryString(params)}`),
+  getPhrasalVerbById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/phrasal-verbs/${id}`),
+
+  getCollocations: (params?: { cefrLevel?: string; search?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/collocations${toQueryString(params)}`),
+  getCollocationById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/collocations/${id}`),
+
+  getSynonyms: (params?: { cefrLevel?: string; search?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/synonyms${toQueryString(params)}`),
+  getSynonymById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/synonyms/${id}`),
+
+  getMinimalPairs: (params?: { limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/minimal-pairs${toQueryString(params)}`),
+  getMinimalPairById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/minimal-pairs/${id}`),
+
+  getTongueTwisters: (params?: { limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/tongue-twisters${toQueryString(params)}`),
+  getTongueTwisterById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/tongue-twisters/${id}`),
+
+  getProverbs: (params?: { limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/proverbs${toQueryString(params)}`),
+  getProverbById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/proverbs/${id}`),
+
+  getGameWordPools: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/game-pools${toQueryString(params)}`),
+  getGameWordPoolById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/game-pools/${id}`),
+
+  getGrammarExplanations: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/grammar-explanations${toQueryString(params)}`),
+  getGrammarExplanationById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/grammar-explanations/${id}`),
+
+  getDailyVocabQuestions: (params?: { cefrLevel?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/vocab-questions${toQueryString(params)}`),
+  getDailyVocabQuestionById: (id: string) =>
+    fetchApi<{ item: any }>(`/content/vocab-questions/${id}`),
+
+  getPhrases: (params?: { category?: 'situational' | 'business' | 'travel'; cefrLevel?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number; category?: string }>(`/content/phrases${toQueryString(params)}`),
 };
 

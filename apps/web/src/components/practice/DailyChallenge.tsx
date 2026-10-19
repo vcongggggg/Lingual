@@ -124,6 +124,8 @@ const DAILY_QUESTIONS: DailyQuestion[] = [
 ];
 
 export function DailyChallenge() {
+  const [questions, setQuestions] = useState<DailyQuestion[]>(DAILY_QUESTIONS);
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState<boolean>(true);
   const [todayVN, setTodayVN] = useState<string>('');
   const [formattedDateVN, setFormattedDateVN] = useState<string>('');
   const [isOpened, setIsOpened] = useState<boolean>(false);
@@ -141,6 +143,52 @@ export function DailyChallenge() {
   const [awardingStamp, setAwardingStamp] = useState<boolean>(false);
   const [showStampSlam, setShowStampSlam] = useState<boolean>(false);
   const [timeLeftToMidnight, setTimeLeftToMidnight] = useState<string>('');
+
+  // 0. Tải 5 câu hỏi ngẫu nhiên từ API /api/v1/content/grammar-questions
+  useEffect(() => {
+    let isMounted = true;
+    api.getGrammarQuestions({ random: true, limit: 5 })
+      .then((res) => {
+        if (!isMounted || !res?.items || res.items.length === 0) return;
+        const mapped: DailyQuestion[] = res.items.map((item: any, idx: number) => {
+          let opts: string[] = [];
+          try {
+            opts = typeof item.optionsJson === 'string' ? JSON.parse(item.optionsJson) : (item.optionsJson || []);
+          } catch {
+            opts = [item.correctAnswer || 'A', 'B', 'C', 'D'];
+          }
+          return {
+            id: idx + 1,
+            type: 'grammar' as const,
+            typeLabel: `${idx + 1}. Thử thách Ngữ pháp (${item.cefrLevel || 'B1-B2'})`,
+            question: item.question,
+            subPrompt: item.topic ? `Chủ đề: ${item.topic}` : undefined,
+            targetWord: undefined,
+            options: opts.map((opt: string, optIdx: number) => {
+              const optLetter = String.fromCharCode(97 + optIdx);
+              return {
+                id: optLetter,
+                text: opt,
+                isCorrect: opt.trim().toLowerCase() === String(item.correctAnswer || '').trim().toLowerCase(),
+              };
+            }),
+            explanation: item.explanation || 'Hãy lưu ý cấu trúc câu và sự hòa hợp thì/ngữ cảnh.',
+            teacherNote: item.hint ? `💡 Gợi ý: ${item.hint}` : '💡 Hãy chú ý ngữ cảnh và cấu trúc câu tương ứng.',
+          };
+        });
+        setQuestions(mapped);
+      })
+      .catch((err) => {
+        console.warn('Fallback to hardcoded daily questions due to API error:', err);
+      })
+      .finally(() => {
+        if (isMounted) setIsLoadingQuestions(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // 1. Khởi tạo ngày theo chuẩn Asia/Ho_Chi_Minh
   useEffect(() => {
@@ -215,7 +263,7 @@ export function DailyChallenge() {
     window.speechSynthesis.speak(u);
   };
 
-  const currentQ = DAILY_QUESTIONS[currentIdx];
+  const currentQ = questions[currentIdx] || questions[0];
 
   const handleSelectOption = (optId: string) => {
     if (hasCheckedCurrent || isCompletedToday) return;
@@ -229,7 +277,7 @@ export function DailyChallenge() {
   };
 
   const handleNextOrFinish = async () => {
-    if (currentIdx < DAILY_QUESTIONS.length - 1) {
+    if (currentIdx < questions.length - 1) {
       setCurrentIdx((prev) => prev + 1);
       setSelectedOptionId(null);
       setHasCheckedCurrent(false);
@@ -237,7 +285,7 @@ export function DailyChallenge() {
       // Hoàn thành cả 5 câu!
       const finalAnswers = { ...userAnswers, [currentQ.id]: selectedOptionId || '' };
       let correctCount = 0;
-      DAILY_QUESTIONS.forEach((q) => {
+      questions.forEach((q) => {
         const chosenId = finalAnswers[q.id];
         const opt = q.options.find((o) => o.id === chosenId);
         if (opt?.isCorrect) correctCount++;
@@ -245,7 +293,7 @@ export function DailyChallenge() {
 
       const record = {
         score: correctCount,
-        total: DAILY_QUESTIONS.length,
+        total: questions.length,
         completedAt: new Date().toISOString(),
       };
 
@@ -346,7 +394,7 @@ export function DailyChallenge() {
           <div className="flex items-center justify-between border-b-2 border-ink pb-4">
             <div className="flex items-center gap-2">
               <span className="px-3 py-1 bg-red text-white text-xs font-black rounded-lg border border-ink shadow-brutal-sm">
-                CÂU {currentIdx + 1} / {DAILY_QUESTIONS.length}
+                CÂU {currentIdx + 1} / {questions.length}
               </span>
               <span className="text-xs font-bold text-teal hidden sm:inline">
                 {currentQ.typeLabel}
@@ -355,7 +403,7 @@ export function DailyChallenge() {
 
             {/* Vạch tiến độ */}
             <div className="flex items-center gap-1.5">
-              {DAILY_QUESTIONS.map((q, idx) => (
+              {questions.map((q, idx) => (
                 <div
                   key={q.id}
                   className={`w-6 sm:w-8 h-2.5 rounded-full border border-ink transition-all ${
