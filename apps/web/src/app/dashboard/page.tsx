@@ -18,19 +18,55 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = getAuthToken();
-    if (!token) {
-      // Cho phép xem demo dashboard nếu chưa đăng nhập, hoặc redirect sang login
-      setUser({ displayName: 'Học viên', currentStreak: 3, totalXP: 120 });
-      setLoading(false);
-      return;
+    let isMounted = true;
+
+    async function checkAuthAndLoadDashboard() {
+      try {
+        const meRes = await api.getMe();
+        if (!isMounted) return;
+
+        if (!meRes || !meRes.user) {
+          router.replace('/login');
+          return;
+        }
+
+        setUser(meRes.user);
+
+        // Tải dữ liệu SRS queue cho học viên đã đăng nhập
+        try {
+          const srsRes = await api.getSrsQueue();
+          if (isMounted && srsRes?.stats) {
+            setSrsStats(srsRes.stats);
+          }
+        } catch {
+          // Giữ stats mặc định nếu srs queue gặp lỗi
+        }
+        setLoading(false);
+      } catch (err) {
+        // Chưa có phiên đăng nhập hợp lệ -> chuyển hướng ngay về /login
+        if (isMounted) {
+          router.replace('/login');
+        }
+      }
     }
 
-    Promise.all([
-      api.getMe().then((res) => setUser(res.user)).catch(() => null),
-      api.getSrsQueue().then((res) => setSrsStats(res.stats)).catch(() => null),
-    ]).finally(() => setLoading(false));
-  }, []);
+    checkAuthAndLoadDashboard();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [router]);
+
+  if (loading || !user) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 space-y-4">
+        <LingLing reaction="studying" size={80} />
+        <div className="text-sm font-black font-mono text-ink animate-pulse">
+          Đang xác thực thông tin học viên...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 text-left space-y-10">

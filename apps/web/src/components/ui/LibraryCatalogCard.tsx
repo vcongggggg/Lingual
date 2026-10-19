@@ -103,7 +103,8 @@ export function LibraryCatalogCard({
 
   return (
     <div
-      className={`relative bg-[#FAF5EB] border-2 border-ink rounded-2xl shadow-brutal-lg overflow-hidden flex flex-col justify-between select-none ${className}`}
+      data-testid="word-card"
+      className={`word-card relative bg-[#FAF5EB] border-2 border-ink rounded-2xl shadow-brutal-lg overflow-hidden flex flex-col justify-between select-none ${className}`}
       style={{
         backgroundImage: 'radial-gradient(circle, #211A13 0.6px, transparent 0.6px)',
         backgroundSize: '20px 20px',
@@ -127,6 +128,7 @@ export function LibraryCatalogCard({
             Âm chuẩn toàn phiếu:
           </span>
           <button
+            type="button"
             onClick={() => playAudio(word.targetText, 'US')}
             className="px-2.5 py-1 rounded-lg border-2 border-ink bg-card hover:bg-amber text-[11px] font-mono font-black text-ink shadow-brutal-sm flex items-center gap-1 transition-transform active:translate-y-0.5 cursor-pointer"
             title="Phát âm tiếng Anh - Mỹ (US)"
@@ -135,6 +137,7 @@ export function LibraryCatalogCard({
             <span>US</span>
           </button>
           <button
+            type="button"
             onClick={() => playAudio(word.targetText, 'UK')}
             className="px-2.5 py-1 rounded-lg border-2 border-ink bg-card hover:bg-teal/20 text-[11px] font-mono font-black text-ink shadow-brutal-sm flex items-center gap-1 transition-transform active:translate-y-0.5 cursor-pointer"
             title="Phát âm tiếng Anh - Anh (UK)"
@@ -180,7 +183,11 @@ export function LibraryCatalogCard({
         </div>
 
         {/* Hệ thống 4 Tab Sổ Tay Phiếu Thư Viện */}
-        <div className="flex items-center gap-1.5 border-b-2 border-ink pt-1 overflow-x-auto pb-0">
+        <div
+          className="flex items-center gap-1.5 border-b-2 border-ink pt-1 overflow-x-auto pb-0 relative z-20"
+          role="tablist"
+          aria-label="Các mục thông tin từ vựng"
+        >
           {[
             { id: 'definition', label: '1. Định nghĩa', icon: BookOpen },
             { id: 'collocations', label: '2. Cụm từ đi kèm', icon: Layers },
@@ -192,22 +199,40 @@ export function LibraryCatalogCard({
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`px-3 py-2 text-xs font-black font-sans transition-all flex items-center gap-1.5 rounded-t-lg border-t-2 border-l-2 border-r-2 border-ink -mb-[2px] cursor-pointer ${
+                type="button"
+                role="tab"
+                id={`tab-${word.id}-${tab.id}`}
+                aria-controls={`panel-${word.id}-${tab.id}`}
+                aria-selected={isActive}
+                data-tab={tab.id}
+                data-testid={`tab-${tab.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveTab(tab.id as 'definition' | 'collocations' | 'synonyms' | 'examples');
+                }}
+                className={`relative z-20 px-3 py-2 text-xs font-black font-sans transition-all flex items-center gap-1.5 rounded-t-lg border-t-2 border-l-2 border-r-2 border-ink -mb-[2px] cursor-pointer ${
                   isActive
-                    ? 'bg-paper text-red shadow-[0_-2px_0_#211A13]'
+                    ? 'bg-paper text-red shadow-[0_-2px_0_#211A13] border-b-2 border-paper font-black'
                     : 'bg-[#EFE5D0] text-ink-muted hover:text-ink hover:bg-paper/70'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5" />
-                <span>{tab.label}</span>
+                <Icon className="w-3.5 h-3.5 pointer-events-none" />
+                <span className="pointer-events-none">{tab.label}</span>
               </button>
             );
           })}
         </div>
 
         {/* Nội dung Tab */}
-        <div className="min-h-[140px] p-4 bg-paper border-2 border-ink rounded-b-xl rounded-tr-xl shadow-brutal-sm space-y-3">
+        <div
+          role="tabpanel"
+          id={`panel-${word.id}-${activeTab}`}
+          aria-labelledby={`tab-${word.id}-${activeTab}`}
+          data-testid={`panel-${activeTab}`}
+          data-tabpanel={activeTab}
+          className="min-h-[140px] p-4 bg-paper border-2 border-ink rounded-b-xl rounded-tr-xl shadow-brutal-sm space-y-3 relative z-10"
+        >
           {/* TAB 1: ĐỊNH NGHĨA */}
           {activeTab === 'definition' && (
             <div className="space-y-3">
