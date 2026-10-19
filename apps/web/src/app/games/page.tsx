@@ -18,8 +18,10 @@ import {
   ArrowLeft,
   Check,
   X,
+  Database,
 } from 'lucide-react';
 import { LingLing } from '../../components/ui/LingLing';
+import { api } from '../../lib/api';
 
 interface GameTicket {
   id: string;
@@ -206,10 +208,23 @@ export default function GamesPage() {
   const [timer, setTimer] = useState(60);
   const [gameActive, setGameActive] = useState(false);
 
+  // Dynamic Game Data from Live DB (with hardcoded fallbacks)
+  const [matchPairs, setMatchPairs] = useState<{ id: string | number; en: string; vi: string }[]>(MATCH_PAIRS);
+  const [shuffledViList, setShuffledViList] = useState<{ id: string | number; vi: string }[]>(
+    MATCH_PAIRS.map((p) => ({ id: p.id, vi: p.vi }))
+  );
+  const [scrambleSentences, setScrambleSentences] = useState<{ id: string | number; words: string[]; translation: string }[]>(SCRAMBLE_SENTENCES);
+  const [typingWords, setTypingWords] = useState<{ id: string | number; word: string; phonetic: string; vi: string }[]>(TYPING_WORDS);
+  const [clozeQuestions, setClozeQuestions] = useState<{ id: string | number; sentence: string; options: string[]; correct: string; explanation: string }[]>(CLOZE_QUESTIONS);
+  const [audioChallenges, setAudioChallenges] = useState<{ id: string | number; audioText: string; options: { text: string; vi: string; isCorrect: boolean }[] }[]>(AUDIO_CHALLENGES);
+  const [guessWords, setGuessWords] = useState<{ word: string; hint: string }[]>(FIVE_LETTER_WORDS);
+  const [isLoadingGameData, setIsLoadingGameData] = useState<boolean>(true);
+  const [dataLoadedCount, setDataLoadedCount] = useState<number>(0);
+
   // 1. Game: Word Match
   const [selectedEn, setSelectedEn] = useState<string | null>(null);
   const [selectedVi, setSelectedVi] = useState<string | null>(null);
-  const [matchedIds, setMatchedIds] = useState<number[]>([]);
+  const [matchedIds, setMatchedIds] = useState<(number | string)[]>([]);
 
   // 2. Game: Scramble
   const [scrambleIdx, setScrambleIdx] = useState(0);
@@ -237,6 +252,158 @@ export default function GamesPage() {
   const [currentGuess, setCurrentGuess] = useState('');
   const [guessAttempts, setGuessAttempts] = useState<string[]>([]);
   const [guessStatus, setGuessStatus] = useState<'playing' | 'won' | 'lost'>('playing');
+
+  // Load dynamic game pools & sentences from Live API (DB) with graceful fallback
+  useEffect(() => {
+    let isMounted = true;
+    async function loadGamesContent() {
+      setIsLoadingGameData(true);
+      try {
+        const [gamePoolsRes, dictationRes, vocabQuestionsRes] = await Promise.allSettled([
+          api.getGamePools({ limit: 100, random: true }),
+          api.getDictationSentences({ limit: 25, random: true }),
+          api.getDailyVocabQuestions({ limit: 20, random: true }),
+        ]);
+
+        if (!isMounted) return;
+
+        let totalItemsLoaded = 0;
+
+        // 1. Process Game Pools for Game 1 (word-match), Game 3 (fast-typing), Game 5 (listening), Game 6 (word-guess)
+        if (gamePoolsRes.status === 'fulfilled' && gamePoolsRes.value?.items?.length > 0) {
+          const poolItems = gamePoolsRes.value.items;
+          totalItemsLoaded += poolItems.length;
+
+          // Game 1: Word Match (8 pairs)
+          const validMatch = poolItems
+            .filter((it: any) => it.targetText && it.translation)
+            .slice(0, 8)
+            .map((it: any, idx: number) => ({
+              id: it.id || idx + 1,
+              en: it.targetText.trim(),
+              vi: it.translation.trim(),
+            }));
+          if (validMatch.length >= 4) {
+            setMatchPairs(validMatch);
+            setShuffledViList([...validMatch].map((p) => ({ id: p.id, vi: p.vi })).sort(() => Math.random() - 0.5));
+          }
+
+          // Game 3: Fast Typing (10 words with IPA and meaning)
+          const validTyping = poolItems
+            .filter((it: any) => it.targetText && it.translation)
+            .slice(8, 18)
+            .map((it: any, idx: number) => ({
+              id: it.id || idx + 1,
+              word: it.targetText.trim().toUpperCase(),
+              phonetic: it.phonetic || '/.../',
+              vi: it.translation.trim(),
+            }));
+          if (validTyping.length >= 4) {
+            setTypingWords(validTyping);
+          }
+
+          // Game 5: Listening Challenge (8 items with 4 options each)
+          const validAudio = poolItems.slice(18, 28).map((target: any, idx: number) => {
+            const distractors = poolItems.filter((it: any) => it.id !== target.id).slice(0, 3);
+            const rawOpts = [
+              { text: target.targetText.trim(), vi: target.translation.trim(), isCorrect: true },
+              ...distractors.map((d: any) => ({
+                text: d.targetText.trim(),
+                vi: d.translation.trim(),
+                isCorrect: false,
+              })),
+            ];
+            return {
+              id: target.id || idx + 1,
+              audioText: target.targetText.trim(),
+              options: rawOpts.sort(() => Math.random() - 0.5),
+            };
+          });
+          if (validAudio.length >= 4) {
+            setAudioChallenges(validAudio);
+          }
+
+          // Game 6: Word Guess (5-letter words from game-pools)
+          const validFiveLetter = poolItems
+            .filter(
+              (it: any) =>
+                it.targetText &&
+                it.targetText.trim().length === 5 &&
+                /^[a-zA-Z]+$/.test(it.targetText.trim())
+            )
+            .slice(0, 15)
+            .map((it: any) => ({
+              word: it.targetText.trim().toUpperCase(),
+              hint: `${it.translation.trim()}${it.exampleSentence ? ` — "${it.exampleSentence.trim()}"` : ''}`,
+            }));
+          if (validFiveLetter.length >= 4) {
+            setGuessWords(validFiveLetter);
+          }
+        }
+
+        // 2. Process Dictation for Game 2 (scramble)
+        if (dictationRes.status === 'fulfilled' && dictationRes.value?.items?.length > 0) {
+          const dictItems = dictationRes.value.items;
+          totalItemsLoaded += dictItems.length;
+
+          const validScramble = dictItems
+            .map((it: any, idx: number) => {
+              const rawEn = (it.textEn || '').trim();
+              const rawVi = (it.textVi || '').trim();
+              const words = rawEn
+                .replace(/[.,!?;:"]/g, '')
+                .split(/\s+/)
+                .filter((w: string) => w.length > 0);
+              return {
+                id: it.id || idx + 1,
+                words,
+                translation: rawVi,
+              };
+            })
+            .filter((it: any) => it.words.length >= 4 && it.words.length <= 12)
+            .slice(0, 12);
+
+          if (validScramble.length >= 3) {
+            setScrambleSentences(validScramble);
+            setupScrambleQuestion(0, validScramble);
+          }
+        }
+
+        // 3. Process Vocab Questions for Game 4 (word-fill)
+        if (vocabQuestionsRes.status === 'fulfilled' && vocabQuestionsRes.value?.items?.length > 0) {
+          const vqItems = vocabQuestionsRes.value.items;
+          totalItemsLoaded += vqItems.length;
+
+          const validCloze = vqItems
+            .filter((it: any) => it.question && Array.isArray(it.options) && it.options.length >= 2 && it.correctAnswer)
+            .slice(0, 12)
+            .map((it: any, idx: number) => ({
+              id: it.id || idx + 1,
+              sentence: it.question,
+              options: it.options,
+              correct: it.correctAnswer,
+              explanation: it.explanation || `Đáp án chính xác là "${it.correctAnswer}".`,
+            }));
+
+          if (validCloze.length >= 3) {
+            setClozeQuestions(validCloze);
+          }
+        }
+
+        setDataLoadedCount(totalItemsLoaded);
+      } catch (err) {
+        console.warn('Game pools API fetch warning, keeping fallbacks:', err);
+      } finally {
+        if (isMounted) setIsLoadingGameData(false);
+      }
+    }
+
+    loadGamesContent();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // URL query handling
   useEffect(() => {
@@ -286,6 +453,7 @@ export default function GamesPage() {
       setMatchedIds([]);
       setSelectedEn(null);
       setSelectedVi(null);
+      setShuffledViList([...matchPairs].map((p) => ({ id: p.id, vi: p.vi })).sort(() => Math.random() - 0.5));
     } else if (gameId === 'scramble') {
       setScrambleIdx(0);
       setupScrambleQuestion(0);
@@ -310,8 +478,13 @@ export default function GamesPage() {
   };
 
   // Scramble helpers
-  const setupScrambleQuestion = (idx: number) => {
-    const q = SCRAMBLE_SENTENCES[idx % SCRAMBLE_SENTENCES.length];
+  const setupScrambleQuestion = (
+    idx: number,
+    customList?: { id: string | number; words: string[]; translation: string }[]
+  ) => {
+    const list = customList || scrambleSentences;
+    if (!list || list.length === 0) return;
+    const q = list[idx % list.length];
     const shuffled = [...q.words].sort(() => Math.random() - 0.5);
     setAvailableWords(shuffled);
     setSelectedWords([]);
@@ -331,7 +504,7 @@ export default function GamesPage() {
   };
 
   const handleCheckScramble = () => {
-    const q = SCRAMBLE_SENTENCES[scrambleIdx % SCRAMBLE_SENTENCES.length];
+    const q = scrambleSentences[scrambleIdx % scrambleSentences.length];
     if (selectedWords.join(' ') === q.words.join(' ')) {
       setScrambleStatus('correct');
       setScore((s) => s + 30);
@@ -341,7 +514,7 @@ export default function GamesPage() {
   };
 
   const handleNextScramble = () => {
-    const nextIdx = (scrambleIdx + 1) % SCRAMBLE_SENTENCES.length;
+    const nextIdx = (scrambleIdx + 1) % scrambleSentences.length;
     setScrambleIdx(nextIdx);
     setupScrambleQuestion(nextIdx);
   };
@@ -358,7 +531,7 @@ export default function GamesPage() {
   };
 
   const checkMatch = (en: string, vi: string) => {
-    const pair = MATCH_PAIRS.find((p) => p.en === en && p.vi === vi);
+    const pair = matchPairs.find((p) => p.en === en && p.vi === vi);
     if (pair) {
       setMatchedIds((prev) => [...prev, pair.id]);
       setScore((s) => s + 25);
@@ -370,12 +543,12 @@ export default function GamesPage() {
   // Typing helpers
   const handleTypingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const cur = TYPING_WORDS[typingIdx % TYPING_WORDS.length];
+    const cur = typingWords[typingIdx % typingWords.length];
     if (typingInput.trim().toUpperCase() === cur.word) {
       setTypingFeedback('correct');
       setScore((s) => s + 40);
       setTimeout(() => {
-        const next = (typingIdx + 1) % TYPING_WORDS.length;
+        const next = (typingIdx + 1) % typingWords.length;
         setTypingIdx(next);
         setTypingInput('');
         setTypingFeedback('idle');
@@ -389,7 +562,7 @@ export default function GamesPage() {
   const handleSelectCloze = (opt: string) => {
     if (clozeFeedback === 'correct') return;
     setSelectedClozeOpt(opt);
-    const cur = CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length];
+    const cur = clozeQuestions[clozeIdx % clozeQuestions.length];
     if (opt === cur.correct) {
       setClozeFeedback('correct');
       setScore((s) => s + 20);
@@ -399,7 +572,7 @@ export default function GamesPage() {
   };
 
   const handleNextCloze = () => {
-    const next = (clozeIdx + 1) % CLOZE_QUESTIONS.length;
+    const next = (clozeIdx + 1) % clozeQuestions.length;
     setClozeIdx(next);
     setSelectedClozeOpt(null);
     setClozeFeedback('idle');
@@ -427,7 +600,7 @@ export default function GamesPage() {
   };
 
   const handleNextAudio = () => {
-    const next = (audioIdx + 1) % AUDIO_CHALLENGES.length;
+    const next = (audioIdx + 1) % audioChallenges.length;
     setAudioIdx(next);
     setSelectedAudioOpt(null);
     setAudioFeedback('idle');
@@ -437,7 +610,7 @@ export default function GamesPage() {
   const handleGuessSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (currentGuess.trim().length !== 5) return;
-    const cur = FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length];
+    const cur = guessWords[guessIdx % guessWords.length];
     const upperGuess = currentGuess.trim().toUpperCase();
     const newAttempts = [...guessAttempts, upperGuess];
     setGuessAttempts(newAttempts);
@@ -614,12 +787,16 @@ export default function GamesPage() {
           {/* Header Bảng Đấu Game */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-ink/20 pb-4">
             <div className="space-y-1">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-xs font-black uppercase tracking-wider text-red block font-mono">
                   ĐANG CHƠI: {currentTicket.title.toUpperCase()}
                 </span>
                 <span className={`text-[10px] font-mono font-black px-2 py-0.5 rounded border ${currentTicket.accentColor}`}>
                   {currentTicket.badge}
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-teal/15 text-teal border border-teal/30">
+                  <Database className="w-3 h-3" />
+                  {isLoadingGameData ? 'Đang nạp từ DB...' : `Live DB: ${dataLoadedCount} items`}
                 </span>
               </div>
               <h2 className="text-2xl font-black text-ink font-sans">
@@ -659,16 +836,21 @@ export default function GamesPage() {
           {/* GAME 1: WORD MATCH (NỐI TỪ SIÊU TỐC) */}
           {currentGameId === 'word-match' && (
             <div className="space-y-6">
-              <p className="text-xs sm:text-sm text-ink-soft font-sans">
-                Hướng dẫn: Nhấp chọn một từ tiếng Anh ở cột trái, sau đó chọn nghĩa tiếng Việt tương ứng ở cột phải để hoàn thành cặp từ.
-              </p>
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <p className="text-xs sm:text-sm text-ink-soft font-sans">
+                  Hướng dẫn: Nhấp chọn một từ tiếng Anh ở cột trái, sau đó chọn nghĩa tiếng Việt tương ứng ở cột phải để hoàn thành cặp từ.
+                </p>
+                <span className="text-xs font-mono font-bold text-teal bg-teal/10 px-2 py-0.5 rounded border border-teal/20">
+                  {matchedIds.length} / {matchPairs.length} cặp đã ghép
+                </span>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                 <div className="space-y-3">
                   <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
                     Từ Tiếng Anh:
                   </span>
-                  {MATCH_PAIRS.map((p) => {
+                  {matchPairs.map((p) => {
                     const isMatched = matchedIds.includes(p.id);
                     const isSelected = selectedEn === p.en;
                     return (
@@ -695,12 +877,12 @@ export default function GamesPage() {
                   <span className="text-xs font-black uppercase tracking-wider text-ink-muted block">
                     Nghĩa Tiếng Việt:
                   </span>
-                  {MATCH_PAIRS.map((p) => {
+                  {shuffledViList.map((p) => {
                     const isMatched = matchedIds.includes(p.id);
                     const isSelected = selectedVi === p.vi;
                     return (
                       <button
-                        key={p.vi}
+                        key={`${p.id}-${p.vi}`}
                         type="button"
                         disabled={isMatched || !gameActive}
                         onClick={() => handleViClick(p.vi)}
@@ -719,7 +901,7 @@ export default function GamesPage() {
                 </div>
               </div>
 
-              {matchedIds.length === MATCH_PAIRS.length && (
+              {matchedIds.length === matchPairs.length && (
                 <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl text-center space-y-3 animate-in fade-in duration-200 flex flex-col items-center">
                   <LingLing reaction="trophy" size={90} animate={true} />
                   <span className="text-xl font-black text-ink block font-sans">
@@ -751,10 +933,10 @@ export default function GamesPage() {
             <div className="space-y-6">
               <div className="p-4 bg-paper-2 border-2 border-ink rounded-2xl space-y-1">
                 <span className="text-xs font-black uppercase text-amber tracking-wider block">
-                  Câu hỏi #{scrambleIdx + 1} / {SCRAMBLE_SENTENCES.length}
+                  Câu hỏi #{scrambleIdx + 1} / {scrambleSentences.length}
                 </span>
                 <p className="text-base font-bold text-ink font-serif italic">
-                  &ldquo;{SCRAMBLE_SENTENCES[scrambleIdx % SCRAMBLE_SENTENCES.length].translation}&rdquo;
+                  &ldquo;{scrambleSentences[scrambleIdx % scrambleSentences.length]?.translation}&rdquo;
                 </p>
               </div>
 
@@ -847,16 +1029,16 @@ export default function GamesPage() {
             <div className="space-y-6">
               <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl space-y-2 text-center">
                 <span className="text-xs font-mono font-black text-red uppercase tracking-wider block">
-                  TỪ VỰNG #{typingIdx + 1} / {TYPING_WORDS.length}
+                  TỪ VỰNG #{typingIdx + 1} / {typingWords.length}
                 </span>
                 <h3 className="text-3xl font-black text-ink font-serif tracking-wide">
-                  {TYPING_WORDS[typingIdx % TYPING_WORDS.length].word}
+                  {typingWords[typingIdx % typingWords.length]?.word}
                 </h3>
                 <span className="text-sm font-mono text-red block">
-                  {TYPING_WORDS[typingIdx % TYPING_WORDS.length].phonetic}
+                  {typingWords[typingIdx % typingWords.length]?.phonetic}
                 </span>
                 <p className="text-xs font-bold text-ink-soft">
-                  Ý nghĩa: {TYPING_WORDS[typingIdx % TYPING_WORDS.length].vi}
+                  Ý nghĩa: {typingWords[typingIdx % typingWords.length]?.vi}
                 </p>
               </div>
 
@@ -882,7 +1064,7 @@ export default function GamesPage() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => playSpeech(TYPING_WORDS[typingIdx % TYPING_WORDS.length].word)}
+                    onClick={() => playSpeech(typingWords[typingIdx % typingWords.length]?.word || '')}
                     className="btn btn-paper text-sm font-black shadow-brutal flex items-center gap-1.5"
                   >
                     <Volume2 className="w-4 h-4 text-teal" /> Nghe phát âm
@@ -908,17 +1090,17 @@ export default function GamesPage() {
             <div className="space-y-6">
               <div className="p-6 bg-paper-2 border-2 border-ink rounded-2xl space-y-3">
                 <span className="text-xs font-black uppercase text-amber tracking-wider block">
-                  Thử thách Điền Khuyết #{clozeIdx + 1} / {CLOZE_QUESTIONS.length}
+                  Thử thách Điền Khuyết #{clozeIdx + 1} / {clozeQuestions.length}
                 </span>
                 <p className="text-lg font-serif font-black text-ink leading-relaxed">
-                  {CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].sentence}
+                  {clozeQuestions[clozeIdx % clozeQuestions.length]?.sentence}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].options.map((opt) => {
+                {clozeQuestions[clozeIdx % clozeQuestions.length]?.options.map((opt) => {
                   const isSelected = selectedClozeOpt === opt;
-                  const isCorrect = opt === CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].correct;
+                  const isCorrect = opt === clozeQuestions[clozeIdx % clozeQuestions.length]?.correct;
                   let btnColor = 'bg-paper hover:bg-paper-2 text-ink';
                   if (clozeFeedback !== 'idle' && isSelected) {
                     btnColor = isCorrect ? 'bg-teal text-white border-teal' : 'bg-red text-white border-red';
@@ -940,7 +1122,7 @@ export default function GamesPage() {
               {clozeFeedback !== 'idle' && (
                 <div className="p-4 bg-paper border-2 border-ink rounded-2xl space-y-2">
                   <p className="text-xs font-bold text-ink">
-                    <strong>Giải thích:</strong> {CLOZE_QUESTIONS[clozeIdx % CLOZE_QUESTIONS.length].explanation}
+                    <strong>Giải thích:</strong> {clozeQuestions[clozeIdx % clozeQuestions.length]?.explanation}
                   </p>
                   <button
                     type="button"
@@ -959,11 +1141,11 @@ export default function GamesPage() {
             <div className="space-y-6 text-center">
               <div className="p-8 bg-paper-2 border-2 border-ink rounded-2xl space-y-4 max-w-lg mx-auto">
                 <span className="text-xs font-black uppercase text-teal tracking-wider block">
-                  Câu hỏi #{audioIdx + 1} / {AUDIO_CHALLENGES.length}
+                  Câu hỏi #{audioIdx + 1} / {audioChallenges.length}
                 </span>
                 <button
                   type="button"
-                  onClick={() => playSpeech(AUDIO_CHALLENGES[audioIdx % AUDIO_CHALLENGES.length].audioText)}
+                  onClick={() => playSpeech(audioChallenges[audioIdx % audioChallenges.length]?.audioText || '')}
                   className="btn btn-red text-base font-black px-6 py-3 shadow-brutal-md inline-flex items-center gap-2 cursor-pointer"
                 >
                   <Volume2 className="w-5 h-5" />
@@ -975,7 +1157,7 @@ export default function GamesPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-                {AUDIO_CHALLENGES[audioIdx % AUDIO_CHALLENGES.length].options.map((opt) => {
+                {audioChallenges[audioIdx % audioChallenges.length]?.options.map((opt) => {
                   const isSelected = selectedAudioOpt === opt.text;
                   let color = 'bg-card text-ink hover:bg-paper-2';
                   if (audioFeedback !== 'idle' && isSelected) {
@@ -1015,10 +1197,10 @@ export default function GamesPage() {
             <div className="space-y-6 max-w-md mx-auto text-center">
               <div className="p-4 bg-paper-2 border-2 border-ink rounded-2xl space-y-1">
                 <span className="text-xs font-mono font-black text-amber uppercase block">
-                  CÂU ĐỐ #{guessIdx + 1} / {FIVE_LETTER_WORDS.length}
+                  CÂU ĐỐ #{guessIdx + 1} / {guessWords.length}
                 </span>
                 <p className="text-sm font-bold text-ink font-serif">
-                  Gợi ý: {FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length].hint}
+                  Gợi ý: {guessWords[guessIdx % guessWords.length]?.hint}
                 </p>
               </div>
 
@@ -1026,7 +1208,7 @@ export default function GamesPage() {
               <div className="space-y-2">
                 {Array.from({ length: 6 }).map((_, rowIdx) => {
                   const attempt = guessAttempts[rowIdx] || '';
-                  const targetWord = FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length].word;
+                  const targetWord = guessWords[guessIdx % guessWords.length]?.word || '';
 
                   return (
                     <div key={rowIdx} className="flex justify-center gap-2">
@@ -1080,7 +1262,7 @@ export default function GamesPage() {
                   <button
                     type="button"
                     onClick={() => {
-                      const next = (guessIdx + 1) % FIVE_LETTER_WORDS.length;
+                      const next = (guessIdx + 1) % guessWords.length;
                       setGuessIdx(next);
                       setCurrentGuess('');
                       setGuessAttempts([]);
@@ -1095,7 +1277,7 @@ export default function GamesPage() {
               {guessStatus === 'lost' && (
                 <div className="p-4 bg-red/15 border-2 border-red rounded-2xl text-red font-black text-sm space-y-2">
                   <div>
-                    Hết lượt! Đáp án chính xác là: <strong>{FIVE_LETTER_WORDS[guessIdx % FIVE_LETTER_WORDS.length].word}</strong>
+                    Hết lượt! Đáp án chính xác là: <strong>{guessWords[guessIdx % guessWords.length]?.word}</strong>
                   </div>
                   <button
                     type="button"
@@ -1106,7 +1288,6 @@ export default function GamesPage() {
                     }}
                     className="btn btn-paper text-xs font-black shadow-brutal"
                   >
-                    Thử lại ván này
                   </button>
                 </div>
               )}

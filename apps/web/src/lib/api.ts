@@ -346,6 +346,8 @@ export const api = {
   getProverbById: (id: string) =>
     fetchApi<{ item: any }>(`/content/proverbs/${id}`),
 
+  getGamePools: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+    fetchApi<{ items: any[]; total: number }>(`/content/game-pools${toQueryString(params)}`),
   getGameWordPools: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
     fetchApi<{ items: any[]; total: number }>(`/content/game-pools${toQueryString(params)}`),
   getGameWordPoolById: (id: string) =>
