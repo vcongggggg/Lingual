@@ -21,10 +21,16 @@ export function resolveAuthUserId(req: Request): string | null {
     return (req as any).user.id;
   }
 
-  // 2. Parse Bearer Authorization header
+  // 2. Parse Bearer Authorization header or httpOnly cookie
+  let token: string | undefined;
   const authHeader = req.headers.authorization;
   if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.split(' ')[1];
+    token = authHeader.split(' ')[1];
+  } else if (req.cookies && req.cookies.access_token) {
+    token = req.cookies.access_token;
+  }
+
+  if (token) {
     try {
       const payload = jwt.verify(token, JWT_SECRET) as any;
       const id = payload?.userId || payload?.sub || payload?.id;
@@ -59,9 +65,15 @@ export function resolveAuthUser(req: Request): ResolvedUser | null {
     };
   }
 
+  let token: string | undefined;
   const authHeader = req.headers.authorization;
   if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.split(' ')[1];
+    token = authHeader.split(' ')[1];
+  } else if (req.cookies && req.cookies.access_token) {
+    token = req.cookies.access_token;
+  }
+
+  if (token) {
     try {
       const payload = jwt.verify(token, JWT_SECRET) as any;
       if (payload?.userId) {
