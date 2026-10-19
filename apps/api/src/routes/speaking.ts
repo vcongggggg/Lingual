@@ -38,16 +38,20 @@ interface UserSpeakingAttempt {
   submittedAt: string;
 }
 
-const attemptsStore: Map<string, UserSpeakingAttempt[]> = new Map();
+import { redis } from '../lib/redis.js';
+import { resolveAuthUser } from '../lib/authUtil.js';
 
-// Idempotency cache: key -> timestamp
-const idempotencyCache = new Map<string, { timestamp: number; result: any }>();
-
-// Daily XP tracker: userId:YYYY-MM-DD -> totalXP
-const dailyXPTracker = new Map<string, number>();
 const DAILY_SPEAKING_XP_CAP = 200;
 
-import { resolveAuthUser } from '../lib/authUtil.js';
+function getSecondsUntilMidnightAsiaHoChiMinh(): number {
+  const now = new Date();
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const vnTime = new Date(utc + 3600000 * 7);
+  const midnightVn = new Date(vnTime);
+  midnightVn.setHours(24, 0, 0, 0);
+  const seconds = Math.floor((midnightVn.getTime() - vnTime.getTime()) / 1000);
+  return Math.max(60, seconds);
+}
 
 // 1. GET /prompts
 speakingRouter.get('/prompts', async (req, res) => {
@@ -138,17 +142,20 @@ speakingRouter.post('/attempts', async (req, res) => {
     return res.status(400).json({ error: 'Duration cannot be negative.' });
   }
 
-  // Idempotency check (5s window)
+  // Idempotency check via Redis (24h TTL)
   const normText = transcript.trim().toLowerCase();
-  const idempotencyKey = `${user.id}:${promptId}:${normText}`;
+  const idempotencyKey = `speaking:idempotency:${user.id}:${promptId}:${normText}`;
   const now = Date.now();
-  const cached = idempotencyCache.get(idempotencyKey);
+  const cachedStr = await redis.get(idempotencyKey);
 
-  if (cached && now - cached.timestamp < 5000) {
-    return res.status(200).json({
-      ...cached.result,
-      idempotentDuplicate: true,
-    });
+  if (cachedStr) {
+    try {
+      const cached = JSON.parse(cachedStr);
+      return res.status(200).json({
+        ...cached.result,
+        idempotentDuplicate: true,
+      });
+    } catch {}
   }
 
   // Authoritative Evaluation
@@ -166,11 +173,16 @@ speakingRouter.post('/attempts', async (req, res) => {
     true
   );
 
-  // Daily XP cap enforcement
-  const todayKey = `${user.id}:${new Date().toISOString().split('T')[0]}`;
-  const currentDailyXP = dailyXPTracker.get(todayKey) || 0;
+  // Daily XP cap enforcement via Redis (TTL until midnight Asia/Ho_Chi_Minh)
+  const todayDateStr = getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh');
+  const todayKey = `speaking:daily_xp:${user.id}:${todayDateStr}`;
+  const currentDailyXPStr = await redis.get(todayKey);
+  const currentDailyXP = currentDailyXPStr ? parseInt(currentDailyXPStr, 10) : 0;
   const allowableXP = Math.max(0, Math.min(calculatedXP, DAILY_SPEAKING_XP_CAP - currentDailyXP));
-  dailyXPTracker.set(todayKey, currentDailyXP + allowableXP);
+  if (allowableXP > 0) {
+    await redis.incrby(todayKey, allowableXP);
+    await redis.expire(todayKey, getSecondsUntilMidnightAsiaHoChiMinh());
+  }
 
   // Authoritative Streak update
   const userProfile = (await userRepository.findById(user.id)) || (await userRepository.findById('demo-user-id-001'));
@@ -242,9 +254,8 @@ speakingRouter.post('/attempts', async (req, res) => {
     suggestionsJson: JSON.stringify(feedback.vocabularySuggestions || []),
   });
 
-  const userAttempts = attemptsStore.get(user.id) || [];
-  userAttempts.unshift(attemptRecord);
-  attemptsStore.set(user.id, userAttempts);
+  // Store in Redis list for quick retrieval across restarts
+  await redis.lpush(`speaking:attempts:${user.id}`, JSON.stringify(attemptRecord));
 
   // SRS bridge suggestions
   const srsSuggestions = feedback.vocabularySuggestions.map((v) => v.word);
@@ -259,8 +270,8 @@ speakingRouter.post('/attempts', async (req, res) => {
     wordCount: attemptRecord.wordCount,
   };
 
-  // Cache for idempotency
-  idempotencyCache.set(idempotencyKey, { timestamp: now, result });
+  // Cache for idempotency in Redis (24h TTL)
+  await redis.set(idempotencyKey, JSON.stringify({ timestamp: now, result }), 'EX', 86400);
 
   res.status(201).json(result);
 });
@@ -271,33 +282,47 @@ speakingRouter.get('/history', async (req, res) => {
   if (!user) {
     return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem lịch sử.' });
   }
-  const repoAttempts = await speakingRepository.getUserAttempts(user.id);
-  const userAttempts = attemptsStore.get(user.id) || [];
-  res.json({ attempts: userAttempts.length > 0 ? userAttempts : repoAttempts });
+  const rawAttempts = await redis.lrange(`speaking:attempts:${user.id}`, 0, -1);
+  let userAttempts: UserSpeakingAttempt[] = [];
+  if (rawAttempts && rawAttempts.length > 0) {
+    userAttempts = rawAttempts.map((s) => JSON.parse(s));
+  } else {
+    const repoAttempts = await speakingRepository.getUserAttempts(user.id);
+    userAttempts = repoAttempts as any[];
+  }
+  res.json({ attempts: userAttempts });
 });
 
 // 6. GET /stats
-speakingRouter.get('/stats', (req, res) => {
+speakingRouter.get('/stats', async (req, res) => {
   const user = resolveAuthUser(req);
   if (!user) {
     return res.status(401).json({ error: 'Yêu cầu đăng nhập để xem thống kê.' });
   }
-  const userAttempts = attemptsStore.get(user.id) || [];
+
+  const rawAttempts = await redis.lrange(`speaking:attempts:${user.id}`, 0, -1);
+  let userAttempts: any[] = [];
+  if (rawAttempts && rawAttempts.length > 0) {
+    userAttempts = rawAttempts.map((s) => JSON.parse(s));
+  } else {
+    const repoAttempts = await speakingRepository.getUserAttempts(user.id);
+    userAttempts = repoAttempts as any[];
+  }
 
   const totalAttempts = userAttempts.length;
-  const totalDurationSeconds = userAttempts.reduce((sum, a) => sum + a.durationSeconds, 0);
-  const totalXP = userAttempts.reduce((sum, a) => sum + a.xpAwarded, 0);
+  const totalDurationSeconds = userAttempts.reduce((sum, a) => sum + (a.durationSeconds || Math.round((a.durationMs || 0) / 1000)), 0);
+  const totalXP = userAttempts.reduce((sum, a) => sum + (a.xpAwarded || 0), 0);
 
   const averageScore = totalAttempts > 0
-    ? Math.round(userAttempts.reduce((sum, a) => sum + a.overallScore, 0) / totalAttempts)
+    ? Math.round(userAttempts.reduce((sum, a) => sum + (a.overallScore || a.score || 0), 0) / totalAttempts)
     : 75;
 
   const averagePronunciation = totalAttempts > 0
-    ? Math.round(userAttempts.reduce((sum, a) => sum + a.pronunciationScore, 0) / totalAttempts)
+    ? Math.round(userAttempts.reduce((sum, a) => sum + (a.pronunciationScore || 0), 0) / totalAttempts)
     : 78;
 
   const averageFluency = totalAttempts > 0
-    ? Math.round(userAttempts.reduce((sum, a) => sum + a.fluencyScore, 0) / totalAttempts)
+    ? Math.round(userAttempts.reduce((sum, a) => sum + (a.fluencyScore || 0), 0) / totalAttempts)
     : 72;
 
   res.json({
@@ -308,7 +333,7 @@ speakingRouter.get('/stats', (req, res) => {
       averageScore,
       averagePronunciation,
       averageFluency,
-      topGrade: totalAttempts > 0 ? userAttempts[0].grade : 'Good',
+      topGrade: totalAttempts > 0 ? (userAttempts[0].grade || 'Good') : 'Good',
     },
   });
 });

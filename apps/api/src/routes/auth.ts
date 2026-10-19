@@ -38,13 +38,15 @@ authRouter.post('/register', authLimiter, async (req, res) => {
       timezone,
     });
 
-    const token = jwt.sign({ userId: newUser.id, role: newUser.role }, JWT_SECRET, { expiresIn: '15m' });
+    const token = jwt.sign({ userId: newUser.id, role: newUser.role }, JWT_SECRET, { expiresIn: '7d' });
 
+    const isProd = process.env.NODE_ENV === 'production';
     res.cookie('access_token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
-      maxAge: 15 * 60 * 1000, // 15 phút
+      secure: isProd,
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
+      path: '/',
     });
 
     const { passwordHash: _, ...userWithoutPassword } = newUser;
@@ -94,14 +96,15 @@ authRouter.post('/login', authLimiter, async (req, res) => {
     // Login successful: reset failed attempt record
     delete FAILED_LOGIN_ATTEMPTS[normalizedEmail];
 
-    const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '15m' });
+    const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
 
     const isProd = process.env.NODE_ENV === 'production';
     res.cookie('access_token', token, {
       httpOnly: true,
       secure: isProd,
-      sameSite: isProd ? 'none' : 'lax',
-      maxAge: 15 * 60 * 1000,
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
+      path: '/',
     });
 
     const { passwordHash: _, ...userWithoutPassword } = user;
@@ -112,7 +115,13 @@ authRouter.post('/login', authLimiter, async (req, res) => {
 });
 
 authRouter.post('/logout', (req, res) => {
-  res.clearCookie('access_token');
+  const isProd = process.env.NODE_ENV === 'production';
+  res.clearCookie('access_token', {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: 'lax',
+    path: '/',
+  });
   return res.json({ message: 'Đăng xuất thành công, session đã bị hủy.' });
 });
 

@@ -3,19 +3,25 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v
 
 export function getAuthToken(): string | null {
   if (typeof window === 'undefined') return null;
+  // Priority 1: Read token from cookie
+  const cookieMatch = document.cookie.match(/(?:^|;\s*)access_token=([^;]*)/);
+  if (cookieMatch && cookieMatch[1]) {
+    return decodeURIComponent(cookieMatch[1]);
+  }
+  // Fallback if legacy token exists
   return localStorage.getItem('lingual_token');
 }
 
-export function setAuthToken(token: string): void {
+export function setAuthToken(_token?: string): void {
   if (typeof window === 'undefined') return;
-  localStorage.setItem('lingual_token', token);
-  document.cookie = `access_token=${token}; path=/; max-age=604800; SameSite=Lax`;
+  // Strictly prevent storing token in localStorage to mitigate XSS
+  localStorage.removeItem('lingual_token');
 }
 
 export function removeAuthToken(): void {
   if (typeof window === 'undefined') return;
   localStorage.removeItem('lingual_token');
-  document.cookie = 'access_token=; path=/; max-age=0';
+  document.cookie = 'access_token=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 }
 
 async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
@@ -33,6 +39,7 @@ async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise
   const url = `${API_BASE}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
 
   const res = await fetch(url, {
+    credentials: 'include',
     ...options,
     headers,
   });
@@ -66,7 +73,13 @@ export const api = {
 
   getMe: () => fetchApi<{ user: any }>('/auth/me'),
 
-  logout: () => fetchApi<{ message: string }>('/auth/logout', { method: 'POST' }),
+  logout: async () => {
+    try {
+      return await fetchApi<{ message: string }>('/auth/logout', { method: 'POST' });
+    } finally {
+      removeAuthToken();
+    }
+  },
 
   // 3. SRS
   getSrsQueue: () => fetchApi<{ queue: any[]; stats: { dueToday: number; learning: number; mastered: number; newWords: number; totalWords: number } }>('/srs/queue'),
