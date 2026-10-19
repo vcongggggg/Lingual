@@ -3,9 +3,34 @@ import '../styles/globals.css';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pebble-implosion-art.ngrok-free.dev';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Lingual — Học tiếng Anh mỗi ngày, nhớ lâu thật sự',
   description: 'Nền tảng học tiếng Anh sổ tay giấy kết hợp ôn tập thông minh, 5 Kỹ Năng và luyện thi IELTS chuẩn hóa.',
+  openGraph: {
+    title: 'Lingual — Học tiếng Anh mỗi ngày, nhớ lâu thật sự',
+    description: 'Nền tảng học tiếng Anh sổ tay giấy kết hợp ôn tập thông minh, 5 Kỹ Năng và luyện thi IELTS chuẩn hóa.',
+    url: siteUrl,
+    siteName: 'Lingual',
+    locale: 'vi_VN',
+    type: 'website',
+    images: [
+      {
+        url: '/mascot/cow_gen_heart.png',
+        width: 1200,
+        height: 630,
+        alt: 'Lingual - Học tiếng Anh mỗi ngày cùng Linh Vật Bò Sữa',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Lingual — Học tiếng Anh mỗi ngày, nhớ lâu thật sự',
+    description: 'Nền tảng học tiếng Anh sổ tay giấy kết hợp ôn tập thông minh, 5 Kỹ Năng và luyện thi IELTS chuẩn hóa.',
+    images: ['/mascot/cow_gen_heart.png'],
+  },
 };
 
 export const viewport: Viewport = {
