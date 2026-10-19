@@ -12,6 +12,20 @@ const nextConfig: NextConfig = {
     buildActivity: false,
     appIsrStatus: false,
   },
+  async redirects() {
+    return [
+      {
+        source: '/toeic',
+        destination: '/exam-practice/toeic',
+        permanent: false,
+      },
+      {
+        source: '/exam',
+        destination: '/exam-practice',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

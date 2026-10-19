@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   ArrowLeft,
   ShieldCheck,
@@ -113,38 +114,69 @@ const SAMPLE_LOGS: AuditLogRecord[] = [
 ];
 
 export default function AdminAuditLogPage() {
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const [logs, setLogs] = useState<AuditLogRecord[]>(SAMPLE_LOGS);
   const [selectedFilter, setSelectedFilter] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedLogId, setExpandedLogId] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchLogs() {
+    let isMounted = true;
+
+    async function checkAuthAndFetchLogs() {
       try {
-        const res = await api.getAuditLogs();
-        if (res && res.auditLogs && res.auditLogs.length > 0) {
-          // Map real DB audit logs to view records
-          const mapped: AuditLogRecord[] = res.auditLogs.map((item: any, idx: number) => ({
-            id: item.id || `LOG-${9000 + idx}`,
-            action: item.action || 'system.event',
-            actionLabel: item.action?.replace('.', ' ') || 'Sự kiện hệ thống',
-            actor: item.actor || item.userId || 'Admin',
-            resourceType: item.resourceType || 'Resource',
-            resourceId: item.resourceId || 'ID-001',
-            timestamp: item.createdAt ? new Date(item.createdAt).toISOString().replace('T', ' ').slice(0, 19) : '2026-10-17 12:00:00',
-            status: 'SUCCESS',
-            details: item.details || `Hoạt động ghi nhận trên ${item.resourceType || 'hệ thống'}`,
-            beforeState: item.beforeState ? JSON.stringify(item.beforeState) : undefined,
-            afterState: item.afterState ? JSON.stringify(item.afterState) : undefined,
-          }));
-          setLogs(mapped);
+        const meRes = await api.getMe();
+        if (!isMounted) return;
+
+        if (!meRes || !meRes.user) {
+          router.replace('/login');
+          return;
+        }
+
+        setUser(meRes.user);
+
+        try {
+          const res = await api.getAuditLogs();
+          if (isMounted && res && res.auditLogs && res.auditLogs.length > 0) {
+            // Map real DB audit logs to view records
+            const mapped: AuditLogRecord[] = res.auditLogs.map((item: any, idx: number) => ({
+              id: item.id || `LOG-${9000 + idx}`,
+              action: item.action || 'system.event',
+              actionLabel: item.action?.replace('.', ' ') || 'Sự kiện hệ thống',
+              actor: item.actor || item.userId || 'Admin',
+              resourceType: item.resourceType || 'Resource',
+              resourceId: item.resourceId || 'ID-001',
+              timestamp: item.createdAt ? new Date(item.createdAt).toISOString().replace('T', ' ').slice(0, 19) : '2026-10-17 12:00:00',
+              status: 'SUCCESS',
+              details: item.details || `Hoạt động ghi nhận trên ${item.resourceType || 'hệ thống'}`,
+              beforeState: item.beforeState ? JSON.stringify(item.beforeState) : undefined,
+              afterState: item.afterState ? JSON.stringify(item.afterState) : undefined,
+            }));
+            setLogs(mapped);
+          }
+        } catch {
+          // Fallback to sample ledger entries if api error
+        }
+
+        if (isMounted) {
+          setLoading(false);
         }
       } catch (err) {
-        // Fallback to sample ledger entries if unauthenticated
+        // Chưa đăng nhập -> chuyển hướng về /login
+        if (isMounted) {
+          router.replace('/login');
+        }
       }
     }
-    fetchLogs();
-  }, []);
+
+    checkAuthAndFetchLogs();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [router]);
 
   const filterOptions = [
     { key: 'ALL', label: 'Tất cả nhật ký' },
@@ -165,6 +197,17 @@ export default function AdminAuditLogPage() {
       log.details.toLowerCase().includes(q);
     return matchesFilter && matchesSearch;
   });
+
+  if (loading || !user) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 space-y-4">
+        <LingLing reaction="studying" size={80} />
+        <div className="text-sm font-black font-mono text-ink animate-pulse">
+          Đang xác thực quyền truy cập nhật ký...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-8 pb-28 sm:pb-20 text-left">
