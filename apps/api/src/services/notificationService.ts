@@ -173,6 +173,24 @@ export class NotificationService {
         },
       });
 
+      // Phase 3: Gửi Web Push nếu ngoài Quiet Hours và user có thiết bị đăng ký
+      if (!this.isQuietHours(pref.quietStart, pref.quietEnd)) {
+        import('./pushNotificationService.js')
+          .then(({ pushNotificationService }) => {
+            pushNotificationService
+              .sendPushToUser(userId, {
+                title,
+                body,
+                deepLink: deepLink || undefined,
+                tag: dedupeKey || undefined,
+              })
+              .catch((err) => {
+                console.warn('[PushNotification] Lỗi gửi push background:', err?.message || err);
+              });
+          })
+          .catch(() => {});
+      }
+
       return created;
     } catch (err: any) {
       // Bắt lỗi trùng unique key (Prisma P2002) -> Chống spam trùng lặp

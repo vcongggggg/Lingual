@@ -69,6 +69,7 @@ model User {
   stampLedgers         StampLedger[]
   notifications          Notification[]
   notificationPreference NotificationPreference?
+  pushSubscriptions      PushSubscription[]
 
   @@map("users")
 }
@@ -1599,5 +1600,23 @@ model NotificationPreference {
   updatedAt      DateTime @updatedAt
 
   @@map("notification_preferences")
+}
+
+// ==========================================
+// WEB PUSH NOTIFICATION (PHASE 3)
+// ==========================================
+
+model PushSubscription {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("push_subscriptions")
 }
 

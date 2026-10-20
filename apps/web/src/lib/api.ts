@@ -460,5 +460,20 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(data),
     }),
+
+  // 15. Web Push (Phase 3)
+  getVapidPublicKey: () => fetchApi<{ publicKey: string }>('/push/public-key'),
+  subscribePush: (data: { endpoint: string; keys: { p256dh: string; auth: string }; userAgent?: string }) =>
+    fetchApi<{ success: boolean; subscription: any }>('/push/subscribe', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  unsubscribePush: (endpoint: string) =>
+    fetchApi<{ success: boolean; result: any }>('/push/unsubscribe', {
+      method: 'DELETE',
+      body: JSON.stringify({ endpoint }),
+    }),
+  getPushStatus: () => fetchApi<{ success: boolean; count: number; hasSubscriptions: boolean }>('/push/status'),
+  sendTestPush: () => fetchApi<{ success: boolean; result: any }>('/push/test', { method: 'POST' }),
 };
 

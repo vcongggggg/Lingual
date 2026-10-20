@@ -20,9 +20,21 @@ import {
   Award,
   Compass,
   AlertTriangle,
+  Radio,
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
+
+function urlBase64ToUint8Array(base64String: string) {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
 
 export default function SettingsPage() {
   const [insightsEnabled, setInsightsEnabled] = useState<boolean>(true);
@@ -40,6 +52,12 @@ export default function SettingsPage() {
   const [achievement, setAchievement] = useState<boolean>(true);
   const [quietStart, setQuietStart] = useState<string>('22:00');
   const [quietEnd, setQuietEnd] = useState<string>('07:00');
+
+  // Web Push State (Phase 3)
+  const [isPushSupported, setIsPushSupported] = useState<boolean>(false);
+  const [pushSubscribed, setPushSubscribed] = useState<boolean>(false);
+  const [pushLoading, setPushLoading] = useState<boolean>(false);
+  const [pushMessage, setPushMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const [loading, setLoading] = useState<boolean>(true);
   const [savingPrivacy, setSavingPrivacy] = useState<boolean>(false);
@@ -147,6 +165,117 @@ export default function SettingsPage() {
     } finally {
       setSavingNotif(false);
       setTimeout(() => setNotifSaveMessage(null), 3000);
+    }
+  };
+
+  // Khởi tạo kiểm tra hỗ trợ Push trên browser
+  useEffect(() => {
+    if (
+      typeof window !== 'undefined' &&
+      'serviceWorker' in navigator &&
+      'PushManager' in window &&
+      'Notification' in window
+    ) {
+      setIsPushSupported(true);
+      navigator.serviceWorker.ready
+        .then((reg) => {
+          reg.pushManager.getSubscription().then((sub) => {
+            setPushSubscribed(Boolean(sub));
+          });
+        })
+        .catch(() => {});
+    }
+  }, []);
+
+  const handleSubscribePush = async () => {
+    setPushLoading(true);
+    setPushMessage(null);
+    try {
+      if (!isPushSupported) {
+        throw new Error('Trình duyệt của bạn không hỗ trợ Web Push.');
+      }
+
+      // 1. Đăng ký Service Worker
+      const reg = await navigator.serviceWorker.register('/sw.js');
+      await navigator.serviceWorker.ready;
+
+      // 2. Lấy Public Key từ backend
+      const { publicKey } = await api.getVapidPublicKey();
+      if (!publicKey) {
+        throw new Error('Không lấy được VAPID public key từ server.');
+      }
+
+      // 3. Yêu cầu quyền Notification
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        throw new Error('Quyền thông báo bị từ chối. Vui lòng bật lại trong cài đặt trình duyệt.');
+      }
+
+      // 4. Đăng ký Push với browser PushManager
+      const applicationServerKey = urlBase64ToUint8Array(publicKey);
+      const subscription = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey,
+      });
+
+      // 5. Gửi lên backend
+      const subJson = subscription.toJSON();
+      if (!subJson.endpoint || !subJson.keys?.p256dh || !subJson.keys?.auth) {
+        throw new Error('Dữ liệu khóa Push không hợp lệ.');
+      }
+
+      await api.subscribePush({
+        endpoint: subJson.endpoint,
+        keys: {
+          p256dh: subJson.keys.p256dh,
+          auth: subJson.keys.auth,
+        },
+        userAgent: navigator.userAgent,
+      });
+
+      setPushSubscribed(true);
+      setPushMessage({ type: 'success', text: 'Đã bật thông báo đẩy thành công trên thiết bị này!' });
+    } catch (err: any) {
+      console.error('Lỗi đăng ký Push:', err);
+      setPushMessage({ type: 'error', text: err.message || 'Lỗi khi kích hoạt thông báo đẩy.' });
+    } finally {
+      setPushLoading(false);
+      setTimeout(() => setPushMessage(null), 5000);
+    }
+  };
+
+  const handleUnsubscribePush = async () => {
+    setPushLoading(true);
+    setPushMessage(null);
+    try {
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.getSubscription();
+      if (sub) {
+        await api.unsubscribePush(sub.endpoint).catch(() => {});
+        await sub.unsubscribe();
+      }
+      setPushSubscribed(false);
+      setPushMessage({ type: 'success', text: 'Đã tắt thông báo đẩy trên thiết bị này.' });
+    } catch (err: any) {
+      console.error('Lỗi hủy Push:', err);
+      setPushMessage({ type: 'error', text: err.message || 'Lỗi khi tắt thông báo đẩy.' });
+    } finally {
+      setPushLoading(false);
+      setTimeout(() => setPushMessage(null), 5000);
+    }
+  };
+
+  const handleSendTestPush = async () => {
+    setPushLoading(true);
+    setPushMessage(null);
+    try {
+      await api.sendTestPush();
+      setPushMessage({ type: 'success', text: 'Đã gửi thông báo đẩy thử nghiệm! Hãy kiểm tra màn hình của bạn.' });
+    } catch (err: any) {
+      setPushMessage({ type: 'error', text: err.message || 'Không thể gửi thông báo thử nghiệm.' });
+    } finally {
+      setPushLoading(false);
+      setTimeout(() => setPushMessage(null), 5000);
     }
   };
 
@@ -442,6 +571,95 @@ export default function SettingsPage() {
                   />
                 </div>
               </div>
+            </div>
+
+            {/* Thông Báo Đẩy Trình Duyệt (Web Push - Phase 3) */}
+            <div className="p-4 sm:p-5 bg-paper-2 border-2 border-ink rounded-2xl space-y-4 shadow-brutal-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl border border-ink bg-card flex items-center justify-center text-blue shadow-brutal-sm">
+                    <Radio className="w-5 h-5 text-ink" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs sm:text-sm font-black text-ink block">
+                        Thông Báo Đẩy Trình Duyệt (Web Push)
+                      </span>
+                      {isPushSupported ? (
+                        pushSubscribed ? (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-green-500/15 text-green-800 border border-green-600">
+                            Đang Bật
+                          </span>
+                        ) : (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-paper text-ink-muted border border-ink/40">
+                            Chưa Bật
+                          </span>
+                        )
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-red/10 text-red border border-red/40">
+                          Không hỗ trợ
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-[11px] text-ink-muted">
+                      Nhận thông báo bài học và lời nhắc Bò LingLing ngay trên màn hình thiết bị
+                    </span>
+                  </div>
+                </div>
+
+                {/* Nút hành động Bật / Tắt (chỉ hiện khi browser hỗ trợ) */}
+                {isPushSupported && (
+                  <div className="flex items-center gap-2">
+                    {pushSubscribed ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={handleSendTestPush}
+                          disabled={pushLoading}
+                          className="px-3 py-1.5 bg-card border-2 border-ink rounded-xl text-xs font-black text-ink hover:bg-paper active:translate-y-0.5 shadow-brutal-sm transition"
+                        >
+                          Gửi Thử Push
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleUnsubscribePush}
+                          disabled={pushLoading}
+                          className="px-3 py-1.5 bg-red/10 border-2 border-red text-red rounded-xl text-xs font-black hover:bg-red/20 active:translate-y-0.5 shadow-brutal-sm transition"
+                        >
+                          Tắt Đẩy
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={handleSubscribePush}
+                        disabled={pushLoading}
+                        className="px-4 py-1.5 bg-primary text-white border-2 border-ink rounded-xl text-xs font-black hover:bg-primary-dark active:translate-y-0.5 shadow-brutal-sm transition"
+                      >
+                        {pushLoading ? 'Đang kích hoạt...' : 'Bật Thông Báo Đẩy'}
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Thông báo kết quả Push */}
+              {pushMessage && (
+                <div
+                  className={`p-3 border-2 rounded-xl text-xs font-bold flex items-center gap-2 ${
+                    pushMessage.type === 'success'
+                      ? 'bg-green-500/15 border-green-600 text-green-800'
+                      : 'bg-red/15 border-red text-red'
+                  }`}
+                >
+                  {pushMessage.type === 'success' ? (
+                    <Check className="w-4 h-4 shrink-0" />
+                  ) : (
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                  )}
+                  <span>{pushMessage.text}</span>
+                </div>
+              )}
             </div>
           </div>
         ) : (
