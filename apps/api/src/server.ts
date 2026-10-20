@@ -33,7 +33,13 @@ import { pushRouter } from './routes/push.js';
 import { notificationTriggerEngine } from './services/notificationTriggerEngine.js';
 import { checkDatabaseConnection, isDatabaseConnected, isDatabaseAvailable } from './lib/prisma.js';
 
+// Load .env robustly from multiple possible execution directories
 dotenv.config();
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+dotenv.config({ path: path.resolve(process.cwd(), 'apps/api/.env') });
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+
 validateEnvironment();
 
 // Initialize Persistent Database Connection on startup

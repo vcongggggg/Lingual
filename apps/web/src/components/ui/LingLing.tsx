@@ -3,12 +3,12 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { MASCOT_REGISTRY, MascotPose } from '../mascot';
+import { MASCOT_REGISTRY, MascotPose, getMascotUrl } from '../mascot';
 
 export type LingLingReaction = MascotPose;
 
 export interface LingLingProps {
-  reaction?: LingLingReaction;
+  reaction?: LingLingReaction | string;
   bubbleText?: string;
   bubblePosition?: 'top' | 'right' | 'bottom' | 'left';
   size?: number;
@@ -24,7 +24,7 @@ export function LingLing({
   animate = true,
   className = '',
 }: LingLingProps) {
-  const imageSrc = MASCOT_REGISTRY[reaction] || MASCOT_REGISTRY.studying;
+  const imageSrc = getMascotUrl(reaction);
 
   return (
     <div className={`relative inline-flex items-center justify-center select-none ${className}`}>

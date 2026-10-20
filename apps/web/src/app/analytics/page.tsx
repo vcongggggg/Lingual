@@ -21,6 +21,7 @@ import { StampSlam } from '../../components/ui/StampSlam';
 import { useCountUp } from '../../lib/useCountUp';
 import { CowInsightsSection } from '../../components/analytics/CowInsightsSection';
 import { CowWeeklyReportCard } from '../../components/analytics/CowWeeklyReportCard';
+import { ErrorBoundary } from '../../components/common/ErrorBoundary';
 
 interface SkillScore {
   key: string;
@@ -393,11 +394,15 @@ export default function AnalyticsPage() {
 
       {/* BÁO CÁO BÒ HÀNG TUẦN & KẾ HOẠCH 7 NGÀY (V2 LLM GEMINI) */}
       <div id="bao-cao-bo">
-        <CowWeeklyReportCard />
+        <ErrorBoundary fallbackTitle="Không thể tải Báo cáo Bò Hàng Tuần">
+          <CowWeeklyReportCard />
+        </ErrorBoundary>
       </div>
 
       {/* GÓC NHÌN CỦA BÒ LINGLING - AI PHÂN TÍCH HÀNH VI (V1 RULE-BASED) */}
-      <CowInsightsSection />
+      <ErrorBoundary fallbackTitle="Không thể tải Góc nhìn của Bò LingLing">
+        <CowInsightsSection />
+      </ErrorBoundary>
 
       {/* ĐIỂM TỪNG KỸ NĂNG VẼ KIỂU MỰC TAY (HAND-DRAWN INK BARS) */}
       <div className="space-y-4">

@@ -126,7 +126,18 @@ export default function TutorPage() {
     const text = (textToSend || inputText).trim();
     if (!text || isSending) return;
 
-    // Kiểm tra key trước khi gửi
+    // 1. Thêm bubble tin nhắn người dùng và xóa ô nhập ngay lập tức (Item 6)
+    const userMsg: ChatMessage = {
+      id: `msg-${Date.now()}`,
+      sender: 'user',
+      text,
+      timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+    };
+
+    setMessages((prev) => [...prev, userMsg]);
+    setInputText('');
+
+    // 2. Kiểm tra trạng thái AI (nếu chưa kết nối thì trả lời cảnh báo minh bạch)
     if (aiStatus && !aiStatus.aiConnected) {
       const blockedMsg: ChatMessage = {
         id: `blocked-${Date.now()}`,
@@ -139,15 +150,6 @@ export default function TutorPage() {
       return;
     }
 
-    const userMsg: ChatMessage = {
-      id: `msg-${Date.now()}`,
-      sender: 'user',
-      text,
-      timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
-    };
-
-    setMessages((prev) => [...prev, userMsg]);
-    setInputText('');
     setIsSending(true);
 
     // Chuẩn bị lịch sử hội thoại gần nhất
@@ -309,10 +311,10 @@ export default function TutorPage() {
                   isAssistant ? 'justify-start' : 'justify-end'
                 }`}
               >
-                {/* Avatar Bò LingLing cho tin nhắn trợ lý với crossfade transition */}
+                {/* Avatar Bò LingLing cho tin nhắn trợ lý với crossfade transition (Item 7: size 32, animate false) */}
                 {isAssistant && (
-                  <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center flex-shrink-0 shadow-brutal-sm overflow-hidden p-1 transition-opacity duration-300 ease-in-out">
-                    <LingLing reaction={msg.mood || 'studying'} size={40} />
+                  <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center flex-shrink-0 shadow-brutal-sm overflow-hidden p-0.5 transition-opacity duration-300 ease-in-out">
+                    <LingLing reaction={msg.mood || 'studying'} size={32} animate={false} />
                   </div>
                 )}
 
@@ -387,11 +389,11 @@ export default function TutorPage() {
             );
           })}
 
-          {/* Typing Indicator: 3 chấm mực nhấp nháy + Bò thinking crossfade */}
+          {/* Typing Indicator: 3 chấm mực nhấp nháy + Bò thinking */}
           {isSending && (
             <div className="flex items-center gap-3 animate-message-slide">
-              <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center p-1 shadow-brutal-sm transition-opacity duration-300">
-                <LingLing reaction="thinking" size={40} />
+              <div className="w-10 h-10 rounded-full border-2 border-ink bg-card flex items-center justify-center p-0.5 shadow-brutal-sm transition-opacity duration-300">
+                <LingLing reaction="thinking" size={32} animate={false} />
               </div>
               <div className="lined-paper py-3 px-4 rounded-2xl border-2 border-ink flex items-center gap-2.5 text-xs font-bold text-ink italic shadow-brutal-sm">
                 <span>LingLing đang lật sổ tra cứu dữ liệu...</span>
@@ -407,12 +409,12 @@ export default function TutorPage() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Cụm Gợi Ý Nhanh Dạng Tag Giấy */}
-        <div className="space-y-3 pt-4 border-t-2 border-ink/15">
+        {/* Cụm Gợi Ý Nhanh Dạng Tag Giấy (Item 7: overflow-x-auto, min-w-0, scrollbar-none) */}
+        <div className="space-y-3 pt-4 border-t-2 border-ink/15 w-full min-w-0 max-w-full overflow-hidden">
           <span className="text-[11px] font-black uppercase tracking-wider text-ink-muted block">
             Gợi ý chủ đề hỏi Bò LingLing:
           </span>
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none w-full min-w-0 max-w-full">
             {QUICK_SUGGESTIONS.map((sug, idx) => (
               <button
                 key={idx}

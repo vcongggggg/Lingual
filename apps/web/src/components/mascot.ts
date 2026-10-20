@@ -52,7 +52,7 @@ export const MASCOT_REGISTRY = {
   stopwatch: '/mascot/cow_gen_stopwatch.png',
   juggle: '/mascot/cow_gen_juggle.png',
 
-  // Legacy compatibility aliases
+  // Legacy compatibility & mood aliases
   greet: '/mascot/cow_greet_heart.png',
   salute: '/mascot/cow_salute.png',
   wink: '/mascot/cow_wink_kiss.png',
@@ -60,13 +60,30 @@ export const MASCOT_REGISTRY = {
   cry: '/mascot/cow_gen_tear.png',
   run: '/mascot/cow_angry_run.png',
   bubble: '/mascot/lingling_waving_bubble.png',
+  shy: '/mascot/cow_shy_apologetic.png',
+  apologetic: '/mascot/cow_shy_apologetic.png',
+  shy_apologetic: '/mascot/cow_shy_apologetic.png',
+  sad: '/mascot/cow_crying_upset.png',
+  angry: '/mascot/cow_angry_hands_hips.png',
+  annoyed: '/mascot/cow_angry_hands_hips.png',
+  happy: '/mascot/cow_gen_party.png',
+  celebrate: '/mascot/cow_gen_party.png',
+  confused: '/mascot/cow_gen_facepalm.png',
 } as const;
 
 export type MascotPose = keyof typeof MASCOT_REGISTRY;
 
 export function getMascotUrl(pose: MascotPose | string): string {
+  if (!pose) return MASCOT_REGISTRY.studying;
   if (pose in MASCOT_REGISTRY) {
-    return MASCOT_REGISTRY[pose as MascotPose];
+    return (MASCOT_REGISTRY as any)[pose];
+  }
+  // Try case-insensitive and snake/camel-case stripped matching
+  const cleaned = pose.replace(/[-_]/g, '').toLowerCase();
+  for (const [key, value] of Object.entries(MASCOT_REGISTRY)) {
+    if (key.toLowerCase() === cleaned || key.replace(/[-_]/g, '').toLowerCase() === cleaned) {
+      return value;
+    }
   }
   return MASCOT_REGISTRY.studying;
 }

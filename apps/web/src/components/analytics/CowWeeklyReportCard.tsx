@@ -666,6 +666,81 @@ export function CowWeeklyReportCard() {
           </div>
         </div>
       )}
+
+      {/* MODAL GIẢI THÍCH CHỈ SỐ BẤT THƯỜNG / ĐIỂM YẾU TỪ BÒ LINGLING */}
+      {showAnomalyModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-card border-2 border-ink rounded-3xl max-w-lg w-full p-6 shadow-brutal space-y-4 relative max-h-[85vh] flex flex-col">
+            <button
+              onClick={() => setShowAnomalyModal(false)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full border-2 border-ink bg-paper-2 hover:bg-paper-2/80 flex items-center justify-center text-ink cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#FFF9C4] border-2 border-ink flex items-center justify-center text-xl">
+                🐮
+              </div>
+              <div>
+                <span className="text-[10px] font-black uppercase text-ink-muted">AI Phân Tích Bất Thường</span>
+                <h3 className="text-lg font-black text-ink">Bò LingLing Giải Thích Điểm Yếu</h3>
+              </div>
+            </div>
+
+            <div className="space-y-4 py-2 flex-1 overflow-y-auto">
+              {loadingAnomaly ? (
+                <div className="py-10 flex flex-col items-center justify-center gap-3">
+                  <div className="w-8 h-8 border-4 border-yellow border-t-ink rounded-full animate-spin" />
+                  <p className="text-xs font-bold text-ink-muted">Bò LingLing đang đối chiếu nhật ký học tập để tìm nguyên nhân...</p>
+                </div>
+              ) : anomalyExplanation ? (
+                <div className="space-y-3.5">
+                  <div className="p-3 bg-paper-2 border-2 border-ink rounded-2xl flex items-center justify-between">
+                    <span className="text-xs font-black text-ink">Chỉ số phân tích:</span>
+                    <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-red text-white border border-ink">
+                      {anomalyExplanation.metricLabel || selectedMetric}
+                    </span>
+                  </div>
+
+                  <div className="bg-[#FFF4E5] border-2 border-ink rounded-2xl p-4 space-y-2">
+                    <h4 className="text-xs font-black uppercase text-amber-900 flex items-center gap-1.5">
+                      <AlertTriangle className="w-4 h-4 text-amber-700" />
+                      <span>Nguyên nhân sụt giảm / điểm yếu:</span>
+                    </h4>
+                    <p className="text-xs text-ink leading-relaxed font-medium">
+                      {anomalyExplanation.explanation}
+                    </p>
+                  </div>
+
+                  <div className="bg-[#F0FDF4] border-2 border-ink rounded-2xl p-4 space-y-2">
+                    <h4 className="text-xs font-black uppercase text-green-900 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-green-700" />
+                      <span>Lời khuyên khắc phục từ Bò:</span>
+                    </h4>
+                    <p className="text-xs text-ink leading-relaxed font-medium">
+                      {anomalyExplanation.recommendation}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-4 bg-paper-2 border-2 border-dashed border-ink/40 rounded-2xl text-center text-xs font-bold text-ink-muted">
+                  Không tìm thấy dữ liệu bất thường đáng ngại cho chỉ số này. Bạn vẫn đang học tập ổn định!
+                </div>
+              )}
+            </div>
+
+            <div className="pt-2 border-t border-ink/15 flex justify-end">
+              <button
+                onClick={() => setShowAnomalyModal(false)}
+                className="btn btn-ink text-xs font-black px-4 py-2 cursor-pointer"
+              >
+                Đã hiểu, cảm ơn Bò 🐮
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -14,12 +14,26 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const token = getAuthToken();
-    if (token) {
-      api.getMe()
-        .then((res) => setCurrentUser(res.user))
-        .catch(() => removeAuthToken());
-    }
+    let isMounted = true;
+    api.getMe()
+      .then((res) => {
+        if (isMounted) {
+          if (res?.user) {
+            setCurrentUser(res.user);
+          } else {
+            setCurrentUser(null);
+          }
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setCurrentUser(null);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, [pathname]);
 
   const handleLogout = async () => {

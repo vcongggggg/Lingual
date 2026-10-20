@@ -14,6 +14,7 @@ import {
   Compass,
   ExternalLink,
   Info,
+  X,
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../ui/LingLing';
@@ -107,6 +108,34 @@ export function CowInsightsSection() {
   const [loading, setLoading] = useState(true);
   const [selectedWord, setSelectedWord] = useState<any | null>(null);
 
+  // Anomaly explanation state
+  const [anomalyModalOpen, setAnomalyModalOpen] = useState(false);
+  const [anomalyLoading, setAnomalyLoading] = useState(false);
+  const [selectedMetric, setSelectedMetric] = useState<string>('listening');
+  const [anomalyExplanation, setAnomalyExplanation] = useState<{
+    metricKey: string;
+    metricLabel: string;
+    explanation: string;
+    recommendation: string;
+  } | null>(null);
+
+  const handleExplainAnomaly = async (metricKey: string, metricValue?: number) => {
+    setSelectedMetric(metricKey);
+    setAnomalyModalOpen(true);
+    setAnomalyLoading(true);
+    setAnomalyExplanation(null);
+    try {
+      const res = await api.explainAnomaly(metricKey, metricValue);
+      if (res?.explanation) {
+        setAnomalyExplanation(res.explanation);
+      }
+    } catch (err) {
+      console.error('Lỗi khi gọi explainAnomaly:', err);
+    } finally {
+      setAnomalyLoading(false);
+    }
+  };
+
   useEffect(() => {
     let isMounted = true;
     async function fetchInsights() {
@@ -132,7 +161,7 @@ export function CowInsightsSection() {
   }, []);
 
   // Nếu tính năng bị tắt trong cài đặt Privacy -> Ẩn hoàn toàn UI
-  if (!loading && (!data || data.enabled === false || data.status === 'disabled')) {
+  if (!loading && data && (data.enabled === false || data.status === 'disabled')) {
     return null;
   }
 
@@ -148,7 +177,38 @@ export function CowInsightsSection() {
     );
   }
 
-  if (!data) return null;
+  // Nếu không tải được phân tích (Item 3) -> Hiển thị empty state thân thiện
+  if (!data) {
+    return (
+      <section className="space-y-4 pt-2">
+        <div className="card-paper p-6 sm:p-8 bg-card border-2 border-ink rounded-3xl shadow-brutal text-center space-y-3">
+          <div className="w-12 h-12 mx-auto rounded-2xl bg-[#FFF9C4] border-2 border-ink flex items-center justify-center text-2xl shadow-brutal-sm">
+            🐮
+          </div>
+          <h3 className="text-base sm:text-lg font-black text-ink">
+            Không tải được phân tích từ Bò LingLing
+          </h3>
+          <p className="text-xs text-ink-muted max-w-md mx-auto">
+            Không thể kết nối đến hệ thống phân tích hành vi học tập lúc này. Hãy kiểm tra kết nối mạng hoặc thử tải lại.
+          </p>
+          <div className="pt-2">
+            <button
+              onClick={() => {
+                setLoading(true);
+                api.getInsightsSummary()
+                  .then(setData)
+                  .catch(() => {})
+                  .finally(() => setLoading(false));
+              }}
+              className="btn btn-paper text-xs font-black px-4 py-2 inline-flex items-center gap-1.5 cursor-pointer shadow-brutal-sm"
+            >
+              <span>Thử tải lại</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const { goldenHours, weaknessRadar, forgottenWords, dropoffWarning, curriculumAdaptation } = data;
 
@@ -239,6 +299,13 @@ export function CowInsightsSection() {
                     <span>Làm thử thách giữ streak ngay</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
+
+                  <button
+                    onClick={() => handleExplainAnomaly('dropoffRisk', dropoffWarning.dropPercent || 30)}
+                    className="inline-flex items-center gap-1.5 text-xs font-black px-3 py-1.5 bg-paper-2 hover:bg-[#EAE0CB] text-ink rounded-xl border border-ink shadow-brutal-sm transition-all cursor-pointer"
+                  >
+                    <span>Giải thích nguyên nhân 🔍</span>
+                  </button>
                 </div>
               )}
             </div>
@@ -300,7 +367,7 @@ export function CowInsightsSection() {
               </div>
 
               {/* Hourly breakdown preview */}
-              {goldenHours.hourlyBreakdown && goldenHours.hourlyBreakdown.length > 0 && (
+              {goldenHours.hourlyBreakdown && Array.isArray(goldenHours.hourlyBreakdown) && goldenHours.hourlyBreakdown.length > 0 && (
                 <div className="space-y-1.5 pt-1">
                   <span className="text-[11px] font-bold text-ink-muted block uppercase tracking-wider">
                     Hiệu suất ghi nhớ theo mốc giờ
@@ -337,78 +404,127 @@ export function CowInsightsSection() {
         )}
 
         {/* 2. RADAR ĐIỂM YẾU & BÀI LUYỆN ĐỀ XUẤT */}
-        {weaknessRadar && (
-          <div className="card-paper p-5 sm:p-6 bg-card border-2 border-ink rounded-3xl shadow-brutal-md space-y-4 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-xl border-2 border-ink bg-[#FFCDD2] flex items-center justify-center text-ink shadow-brutal-sm">
-                    <TrendingDown className="w-4 h-4 text-red" />
+        {weaknessRadar && (() => {
+          const radarItems = Array.isArray(weaknessRadar?.radarData) && weaknessRadar.radarData.length > 0
+            ? weaknessRadar.radarData
+            : [
+                {
+                  skill: 'vocabulary',
+                  score: weaknessRadar?.scores?.vocabulary ?? (weaknessRadar as any)?.skills?.vocabulary ?? 75,
+                  labelVi: 'Từ vựng',
+                  fullMark: 100,
+                },
+                {
+                  skill: 'listening',
+                  score: weaknessRadar?.scores?.listening ?? (weaknessRadar as any)?.skills?.listening ?? 68,
+                  labelVi: 'Kỹ năng Nghe',
+                  fullMark: 100,
+                },
+                {
+                  skill: 'speaking',
+                  score: weaknessRadar?.scores?.speaking ?? (weaknessRadar as any)?.skills?.speaking ?? 65,
+                  labelVi: 'Kỹ năng Nói',
+                  fullMark: 100,
+                },
+                {
+                  skill: 'reading',
+                  score: weaknessRadar?.scores?.reading ?? (weaknessRadar as any)?.skills?.reading ?? 80,
+                  labelVi: 'Kỹ năng Đọc',
+                  fullMark: 100,
+                },
+                {
+                  skill: 'writing',
+                  score: weaknessRadar?.scores?.writing ?? (weaknessRadar as any)?.skills?.writing ?? 70,
+                  labelVi: 'Kỹ năng Viết',
+                  fullMark: 100,
+                },
+              ];
+          const weakestSkillKey = weaknessRadar?.weakestSkill || 'listening';
+          const weakestSkillLabel = weaknessRadar?.weakestSkillNameVi || weakestLabel(weakestSkillKey);
+          const weakestScoreVal = weaknessRadar?.weakestScore ?? (weaknessRadar?.scores?.[weakestSkillKey] ?? 68);
+
+          return (
+            <div className="card-paper p-5 sm:p-6 bg-card border-2 border-ink rounded-3xl shadow-brutal-md space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl border-2 border-ink bg-[#FFCDD2] flex items-center justify-center text-ink shadow-brutal-sm">
+                      <TrendingDown className="w-4 h-4 text-red" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-black text-ink font-sans">
+                      Kỹ Năng Cần Khắc Phục
+                    </h3>
                   </div>
-                  <h3 className="text-base sm:text-lg font-black text-ink font-sans">
-                    Kỹ Năng Cần Khắc Phục
-                  </h3>
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {weaknessRadar.isComputed ? (
+                      <span className="text-xs font-black px-2 py-0.5 rounded-full bg-red text-white border border-ink">
+                        {weakestSkillLabel} ({weakestScoreVal}/100)
+                      </span>
+                    ) : (
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#FFF9C4] border border-ink/40 text-ink-muted">
+                        Gợi ý mặc định
+                      </span>
+                    )}
+
+                    <button
+                      onClick={() => handleExplainAnomaly(weakestSkillKey, weakestScoreVal)}
+                      className="inline-flex items-center gap-1 text-[11px] font-black px-2.5 py-0.5 rounded-full bg-[#FFF2B2] hover:bg-[#FFE57F] text-ink border border-ink shadow-brutal-sm transition-all cursor-pointer"
+                    >
+                      <span>Giải thích 🐮</span>
+                    </button>
+                  </div>
                 </div>
-                {weaknessRadar.isComputed ? (
-                  <span className="text-xs font-black px-2 py-0.5 rounded-full bg-red text-white border border-ink">
-                    {weakestLabel(weaknessRadar.weakestSkill)} ({weaknessRadar.weakestScore}/100)
-                  </span>
-                ) : (
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#FFF9C4] border border-ink/40 text-ink-muted">
-                    Gợi ý mặc định
-                  </span>
+
+                {/* Progress bars cho 5 kỹ năng (đã guard hoàn toàn) */}
+                <div className="space-y-2 bg-paper-2 border-2 border-ink rounded-2xl p-3.5">
+                  {radarItems.map((item) => {
+                    const isWeakest = (item.skill || '').toLowerCase() === (weakestSkillKey || '').toLowerCase();
+                    return (
+                      <div key={item.skill} className="space-y-1">
+                        <div className="flex justify-between text-xs font-bold">
+                          <span className={`flex items-center gap-1.5 ${isWeakest ? 'text-red font-black' : 'text-ink'}`}>
+                            {item.labelVi}
+                            {isWeakest && <span className="text-[10px] bg-red/10 px-1.5 py-0.2 rounded text-red border border-red/30">Ưu tiên</span>}
+                          </span>
+                          <span className="font-mono text-ink-muted">{item.score}/100</span>
+                        </div>
+                        <div className="h-2 w-full bg-card border border-ink rounded-full overflow-hidden">
+                          <div
+                            className={`h-full transition-all duration-500 rounded-full ${
+                              isWeakest ? 'bg-red' : 'bg-ink'
+                            }`}
+                            style={{ width: `${Math.max(5, item.score)}%` }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="bg-[#FFF8E7] border border-ink rounded-xl p-3 text-xs text-ink leading-relaxed">
+                  <span className="font-black text-red">Mách nước: </span>
+                  {weaknessRadar.recommendedAction}
+                </div>
+
+                {!weaknessRadar.isComputed && (
+                  <p className="text-[11px] font-medium text-ink-muted bg-paper-1/60 p-2 rounded-lg border border-dashed border-ink/30">
+                    Gợi ý mặc định — bạn chưa hoàn thành đủ bài học các kỹ năng, điểm số 5 kỹ năng hiện là mức tham chiếu ban đầu.
+                  </p>
                 )}
               </div>
 
-              {/* Progress bars cho 5 kỹ năng */}
-              <div className="space-y-2 bg-paper-2 border-2 border-ink rounded-2xl p-3.5">
-                {weaknessRadar.radarData.map((item) => {
-                  const isWeakest = item.skill.toLowerCase() === weaknessRadar.weakestSkill.toLowerCase();
-                  return (
-                    <div key={item.skill} className="space-y-1">
-                      <div className="flex justify-between text-xs font-bold">
-                        <span className={`flex items-center gap-1.5 ${isWeakest ? 'text-red font-black' : 'text-ink'}`}>
-                          {item.labelVi}
-                          {isWeakest && <span className="text-[10px] bg-red/10 px-1.5 py-0.2 rounded text-red border border-red/30">Ưu tiên</span>}
-                        </span>
-                        <span className="font-mono text-ink-muted">{item.score}/100</span>
-                      </div>
-                      <div className="h-2 w-full bg-card border border-ink rounded-full overflow-hidden">
-                        <div
-                          className={`h-full transition-all duration-500 rounded-full ${
-                            isWeakest ? 'bg-red' : 'bg-ink'
-                          }`}
-                          style={{ width: `${Math.max(5, item.score)}%` }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="pt-2">
+                <Link
+                  href={weaknessRadar.actionUrl || '/practice'}
+                  className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red hover:bg-[#D9381E] text-white border-2 border-ink rounded-xl text-xs font-black shadow-brutal-sm hover:-translate-y-0.5 transition-all"
+                >
+                  <span>Luyện ngay kỹ năng {weakestSkillLabel} ⚡</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
-
-              <div className="bg-[#FFF8E7] border border-ink rounded-xl p-3 text-xs text-ink leading-relaxed">
-                <span className="font-black text-red">Mách nước: </span>
-                {weaknessRadar.recommendedAction}
-              </div>
-
-              {!weaknessRadar.isComputed && (
-                <p className="text-[11px] font-medium text-ink-muted bg-paper-1/60 p-2 rounded-lg border border-dashed border-ink/30">
-                  Gợi ý mặc định — bạn chưa hoàn thành đủ bài học các kỹ năng, điểm số 5 kỹ năng hiện là mức tham chiếu ban đầu.
-                </p>
-              )}
             </div>
-
-            <div className="pt-2">
-              <Link
-                href={weaknessRadar.actionUrl || '/practice'}
-                className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-red hover:bg-[#D9381E] text-white border-2 border-ink rounded-xl text-xs font-black shadow-brutal-sm hover:-translate-y-0.5 transition-all"
-              >
-                <span>Luyện ngay kỹ năng {weaknessRadar.weakestSkillNameVi} ⚡</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* 3. SỔ TAY TỪ HAY QUÊN */}
         {forgottenWords && (
@@ -440,9 +556,9 @@ export function CowInsightsSection() {
                   : 'Bạn chưa có từ vựng nào bị quên trong hệ thống SRS. Dưới đây là các từ vựng tiêu biểu gợi ý để bạn rèn luyện:'}
               </p>
 
-              {/* Chips list */}
+              {/* Chips list (đã guard Array) */}
               <div className="flex flex-wrap gap-2">
-                {forgottenWords.map((w) => (
+                {Array.isArray(forgottenWords) && forgottenWords.map((w) => (
                   <button
                     key={w.id}
                     onClick={() =>
@@ -526,13 +642,13 @@ export function CowInsightsSection() {
                   <div className="flex justify-between text-xs font-bold">
                     <span className="text-ink-soft">Tiến độ Unit</span>
                     <span className="font-mono text-ink">
-                      {curriculumAdaptation.completedLessonsCount}/{curriculumAdaptation.totalLessonsCount} bài ({curriculumAdaptation.completionPercent}%)
+                      {curriculumAdaptation.completedLessonsCount || 0}/{curriculumAdaptation.totalLessonsCount || 1} bài ({curriculumAdaptation.completionPercent || 0}%)
                     </span>
                   </div>
                   <div className="h-2.5 w-full bg-card border border-ink rounded-full overflow-hidden">
                     <div
                       className="h-full bg-blue rounded-full transition-all duration-500"
-                      style={{ width: `${Math.max(4, curriculumAdaptation.completionPercent)}%` }}
+                      style={{ width: `${Math.max(4, curriculumAdaptation.completionPercent || 0)}%` }}
                     />
                   </div>
                 </div>
@@ -562,6 +678,81 @@ export function CowInsightsSection() {
         onClose={() => setSelectedWord(null)}
         word={selectedWord}
       />
+
+      {/* MODAL GIẢI THÍCH BẤT THƯỜNG / ĐIỂM YẾU TỪ BÒ LINGLING */}
+      {anomalyModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-card border-2 border-ink rounded-3xl max-w-lg w-full p-6 shadow-brutal space-y-4 relative max-h-[85vh] flex flex-col">
+            <button
+              onClick={() => setAnomalyModalOpen(false)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full border-2 border-ink bg-paper-2 hover:bg-paper-2/80 flex items-center justify-center text-ink cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#FFF9C4] border-2 border-ink flex items-center justify-center text-xl">
+                🐮
+              </div>
+              <div>
+                <span className="text-[10px] font-black uppercase text-ink-muted">AI Phân Tích Bất Thường</span>
+                <h3 className="text-lg font-black text-ink">Bò LingLing Giải Thích Điểm Yếu</h3>
+              </div>
+            </div>
+
+            <div className="space-y-4 py-2 flex-1 overflow-y-auto">
+              {anomalyLoading ? (
+                <div className="py-10 flex flex-col items-center justify-center gap-3">
+                  <div className="w-8 h-8 border-4 border-yellow border-t-ink rounded-full animate-spin" />
+                  <p className="text-xs font-bold text-ink-muted">Bò LingLing đang đối chiếu nhật ký học tập...</p>
+                </div>
+              ) : anomalyExplanation ? (
+                <div className="space-y-3.5">
+                  <div className="p-3 bg-paper-2 border-2 border-ink rounded-2xl flex items-center justify-between">
+                    <span className="text-xs font-black text-ink">Chỉ số:</span>
+                    <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-red text-white border border-ink">
+                      {anomalyExplanation.metricLabel || selectedMetric}
+                    </span>
+                  </div>
+
+                  <div className="bg-[#FFF4E5] border-2 border-ink rounded-2xl p-4 space-y-2">
+                    <h4 className="text-xs font-black uppercase text-amber-900 flex items-center gap-1.5">
+                      <AlertTriangle className="w-4 h-4 text-amber-700" />
+                      <span>Nguyên nhân:</span>
+                    </h4>
+                    <p className="text-xs text-ink leading-relaxed font-medium">
+                      {anomalyExplanation.explanation}
+                    </p>
+                  </div>
+
+                  <div className="bg-[#F0FDF4] border-2 border-ink rounded-2xl p-4 space-y-2">
+                    <h4 className="text-xs font-black uppercase text-green-900 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-green-700" />
+                      <span>Lời khuyên khắc phục:</span>
+                    </h4>
+                    <p className="text-xs text-ink leading-relaxed font-medium">
+                      {anomalyExplanation.recommendation}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-4 bg-paper-2 border-2 border-dashed border-ink/40 rounded-2xl text-center text-xs font-bold text-ink-muted">
+                  Không tìm thấy nguyên nhân bất thường đáng ngại. Bạn đang học tập tốt!
+                </div>
+              )}
+            </div>
+
+            <div className="pt-2 border-t border-ink/15 flex justify-end">
+              <button
+                onClick={() => setAnomalyModalOpen(false)}
+                className="btn btn-ink text-xs font-black px-4 py-2 cursor-pointer"
+              >
+                Đã hiểu, cảm ơn Bò 🐮
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
