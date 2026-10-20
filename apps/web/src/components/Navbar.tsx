@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Flame, User as UserIcon, LogOut, Menu, X, BookOpen, Layers, Sparkles, GraduationCap } from 'lucide-react';
+import { Flame, User as UserIcon, LogOut, Menu, X, BookOpen, Layers, Sparkles, GraduationCap, Settings } from 'lucide-react';
 import { api, getAuthToken, removeAuthToken } from '../lib/api';
 
 export function Navbar() {
@@ -92,6 +92,15 @@ export function Navbar() {
                 <span>{currentUser.displayName}</span>
               </Link>
 
+              {/* Settings button */}
+              <Link
+                href="/settings"
+                className="w-9 h-9 rounded-xl border-2 border-ink bg-card hover:bg-paper-2 flex items-center justify-center text-ink hover:text-red shadow-brutal-sm transition-all cursor-pointer"
+                title="Cài đặt"
+              >
+                <Settings className="w-4 h-4" />
+              </Link>
+
               {/* Logout button */}
               <button
                 onClick={handleLogout}
@@ -144,17 +153,26 @@ export function Navbar() {
           ))}
           <div className="pt-2 border-t border-ink/20 flex flex-col gap-2">
             {currentUser ? (
-              <div className="flex items-center justify-between p-2">
-                <span className="text-sm font-black text-ink">{currentUser.displayName}</span>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    handleLogout();
-                  }}
-                  className="text-xs font-bold text-red flex items-center gap-1 cursor-pointer"
+              <div className="space-y-2">
+                <div className="flex items-center justify-between p-2">
+                  <span className="text-sm font-black text-ink">{currentUser.displayName}</span>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      handleLogout();
+                    }}
+                    className="text-xs font-bold text-red flex items-center gap-1 cursor-pointer"
+                  >
+                    <LogOut className="w-3.5 h-3.5" /> Đăng xuất
+                  </button>
+                </div>
+                <Link
+                  href="/settings"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-2 text-xs font-bold text-ink border border-ink/40 bg-card rounded-xl flex items-center gap-2"
                 >
-                  <LogOut className="w-3.5 h-3.5" /> Đăng xuất
-                </button>
+                  <Settings className="w-3.5 h-3.5" /> Cài đặt & Quyền riêng tư
+                </Link>
               </div>
             ) : (
               <>

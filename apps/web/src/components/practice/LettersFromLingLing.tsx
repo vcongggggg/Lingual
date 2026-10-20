@@ -136,33 +136,64 @@ export function LettersFromLingLing() {
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [submittingReview, setSubmittingReview] = useState<boolean>(false);
   const [showStamp, setShowStamp] = useState<boolean>(false);
+  const [isFromForgottenWords, setIsFromForgottenWords] = useState<boolean>(false);
   const [todayVN, setTodayVN] = useState<string>('');
 
-  // 1. Tải SRS Review Queue từ API
+  // 1. Tải từ vựng: ƯU TIÊN lấy từ danh sách từ hay quên của AI Insights trước!
   useEffect(() => {
-    const fetchSrsQueue = async () => {
+    const fetchWords = async () => {
       try {
         setLoading(true);
         const vnDate = getFormattedDateInTimezone(new Date(), 'Asia/Ho_Chi_Minh');
         setTodayVN(vnDate);
 
+        // 1. ƯU TIÊN: Lấy danh sách từ hay quên từ AI Insights
+        let prioritized: SrsWordItem[] = [];
+        try {
+          const fwRes = await api.getForgottenWords(6);
+          if (fwRes && fwRes.enabled && Array.isArray(fwRes.items) && fwRes.items.length > 0) {
+            prioritized = fwRes.items
+              .map((fw: any) => ({
+                id: fw.wordId || fw.id,
+                targetText: (fw.targetText || '').toLowerCase().trim(),
+                translation: fw.translation || 'Nghĩa từ vựng',
+                phonetic: fw.phonetic,
+                partOfSpeech: fw.partOfSpeech,
+              }))
+              .filter((w: SrsWordItem) => w.targetText.length > 0);
+          }
+        } catch {
+          // Bỏ qua nếu insights tắt
+        }
+
+        if (prioritized.length >= 2) {
+          setQueueWords(prioritized);
+          setIsFromForgottenWords(true);
+          return;
+        }
+
+        // 2. Nếu không đủ từ hay quên: Lấy từ SRS Queue thông thường
         const res = await api.getSrsQueue();
         if (res && res.queue && Array.isArray(res.queue) && res.queue.length > 0) {
-          // Lấy các từ vựng từ queue thật
-          const mapped: SrsWordItem[] = res.queue.map((item: any) => ({
-            id: item.wordId || item.id || `srs-${Math.random()}`,
-            targetText: (item.targetText || item.word?.targetText || item.frontText || '').toLowerCase().trim(),
-            translation: item.translation || item.word?.translation || item.backText || 'Nghĩa từ vựng',
-            phonetic: item.phonetic || item.word?.phoneticUs,
-          })).filter((w) => w.targetText.length > 0);
+          const mapped: SrsWordItem[] = res.queue
+            .map((item: any) => ({
+              id: item.wordId || item.id || `srs-${Math.random()}`,
+              targetText: (item.targetText || item.word?.targetText || item.frontText || '').toLowerCase().trim(),
+              translation: item.translation || item.word?.translation || item.backText || 'Nghĩa từ vựng',
+              phonetic: item.phonetic || item.word?.phoneticUs,
+            }))
+            .filter((w) => w.targetText.length > 0);
 
           if (mapped.length >= 2) {
-            setQueueWords(mapped);
+            setQueueWords(prioritized.length > 0 ? [...prioritized, ...mapped] : mapped);
+            if (prioritized.length > 0) setIsFromForgottenWords(true);
             return;
           }
         }
-        // Fallback tự nhiên nếu queue rỗng hoặc chưa học từ mới
-        setQueueWords(FALLBACK_WORDS);
+
+        // 3. Fallback tự nhiên nếu queue rỗng
+        setQueueWords(prioritized.length > 0 ? [...prioritized, ...FALLBACK_WORDS] : FALLBACK_WORDS);
+        if (prioritized.length > 0) setIsFromForgottenWords(true);
       } catch (e) {
         setQueueWords(FALLBACK_WORDS);
       } finally {
@@ -170,7 +201,7 @@ export function LettersFromLingLing() {
       }
     };
 
-    fetchSrsQueue();
+    fetchWords();
   }, []);
 
   const template = LETTER_TEMPLATES[templateIdx];

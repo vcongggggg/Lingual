@@ -19,6 +19,7 @@ import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
 import { useCountUp } from '../../lib/useCountUp';
+import { CowInsightsSection } from '../../components/analytics/CowInsightsSection';
 
 interface SkillScore {
   key: string;
@@ -388,6 +389,9 @@ export default function AnalyticsPage() {
           </div>
         </div>
       </div>
+
+      {/* GÓC NHÌN CỦA BÒ LINGLING - AI PHÂN TÍCH HÀNH VI (V1 RULE-BASED) */}
+      <CowInsightsSection />
 
       {/* ĐIỂM TỪNG KỸ NĂNG VẼ KIỂU MỰC TAY (HAND-DRAWN INK BARS) */}
       <div className="space-y-4">

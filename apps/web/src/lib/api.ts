@@ -376,5 +376,20 @@ export const api = {
 
   getPhrases: (params?: { category?: 'situational' | 'business' | 'travel'; cefrLevel?: string; limit?: number; random?: boolean }) =>
     fetchApi<{ items: any[]; total: number; category?: string }>(`/content/phrases${toQueryString(params)}`),
+
+  // 12. AI Learning Insights (Rule-based V1)
+  getInsightsSummary: () => fetchApi<any>('/insights/summary'),
+  getGoldenHours: () => fetchApi<any>('/insights/golden-hours'),
+  getWeaknessRadar: () => fetchApi<any>('/insights/weakness-radar'),
+  getForgottenWords: (limit?: number) =>
+    fetchApi<{ enabled: boolean; items: any[]; total: number }>(`/insights/forgotten-words${toQueryString({ limit })}`),
+  getDropoffWarning: () => fetchApi<any>('/insights/dropoff-warning'),
+  getCurriculumAdaptation: () => fetchApi<any>('/insights/curriculum-adaptation'),
+  getInsightsPreferences: () => fetchApi<{ enabled: boolean; userId: string }>('/insights/preferences'),
+  setInsightsPreferences: (enabled: boolean) =>
+    fetchApi<{ success: boolean; enabled: boolean; userId: string }>('/insights/preferences', {
+      method: 'POST',
+      body: JSON.stringify({ enabled }),
+    }),
 };
 

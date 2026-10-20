@@ -144,46 +144,98 @@ export function DailyChallenge() {
   const [showStampSlam, setShowStampSlam] = useState<boolean>(false);
   const [timeLeftToMidnight, setTimeLeftToMidnight] = useState<string>('');
 
-  // 0. Tải 5 câu hỏi ngẫu nhiên từ API /api/v1/content/grammar-questions
+  // 0. Tải câu hỏi: ƯU TIÊN lấy từ danh sách từ hay quên của AI Insights trước!
   useEffect(() => {
     let isMounted = true;
-    api.getGrammarQuestions({ random: true, limit: 5 })
-      .then((res) => {
-        if (!isMounted || !res?.items || res.items.length === 0) return;
-        const mapped: DailyQuestion[] = res.items.map((item: any, idx: number) => {
-          let opts: string[] = [];
-          try {
-            opts = typeof item.optionsJson === 'string' ? JSON.parse(item.optionsJson) : (item.optionsJson || []);
-          } catch {
-            opts = [item.correctAnswer || 'A', 'B', 'C', 'D'];
-          }
-          return {
-            id: idx + 1,
-            type: 'grammar' as const,
-            typeLabel: `${idx + 1}. Thử thách Ngữ pháp (${item.cefrLevel || 'B1-B2'})`,
-            question: item.question,
-            subPrompt: item.topic ? `Chủ đề: ${item.topic}` : undefined,
-            targetWord: undefined,
-            options: opts.map((opt: string, optIdx: number) => {
-              const optLetter = String.fromCharCode(97 + optIdx);
+
+    async function loadDailyQuestions() {
+      try {
+        let prioritizedQuestions: DailyQuestion[] = [];
+
+        // 1. ƯU TIÊN: Gọi api.getForgottenWords() từ phân hệ AI Insights
+        try {
+          const fwRes = await api.getForgottenWords(5);
+          if (fwRes && fwRes.enabled && Array.isArray(fwRes.items) && fwRes.items.length > 0) {
+            const fwQuestions: DailyQuestion[] = fwRes.items.map((fw: any, idx: number) => {
+              const wrongOpts = [
+                'Ý nghĩa trái ngược trong ngữ cảnh học thuật',
+                'Hành động ngẫu nhiên không có chủ đích',
+                'Trạng thái mơ hồ trong giao tiếp hằng ngày',
+              ];
+              const allOpts = [
+                { id: 'a', text: fw.translation || 'Nghĩa từ vựng', isCorrect: true },
+                { id: 'b', text: wrongOpts[0], isCorrect: false },
+                { id: 'c', text: wrongOpts[1], isCorrect: false },
+                { id: 'd', text: wrongOpts[2], isCorrect: false },
+              ].sort(() => 0.5 - Math.random());
+
               return {
-                id: optLetter,
-                text: opt,
-                isCorrect: opt.trim().toLowerCase() === String(item.correctAnswer || '').trim().toLowerCase(),
+                id: idx + 1,
+                type: 'vocab_mcq' as const,
+                typeLabel: `${idx + 1}. Ôn tập Từ Hay Quên 🎯 (${fw.cefrLevel || 'B1'})`,
+                question: `Từ vựng "${fw.targetText}" bạn đã từng quên ${fw.lapses || 2} lần trong các bài ôn tập. Nghĩa tiếng Việt chuẩn xác nhất là gì?`,
+                subPrompt: `${fw.targetText} ${fw.phonetic || ''} (${fw.partOfSpeech || 'từ vựng'})`,
+                targetWord: fw.targetText,
+                options: allOpts,
+                explanation: `Từ "${fw.targetText}" nghĩa là: ${fw.translation}. ${fw.exampleSentence ? `Ví dụ: "${fw.exampleSentence}"` : ''}`,
+                teacherNote: `💡 Lời khuyên Bò LingLing: Từ này nằm trong danh sách hay quên của bạn (quên ${fw.lapses || 2} lần). Hãy ghi nhớ kỹ nhé!`,
               };
-            }),
-            explanation: item.explanation || 'Hãy lưu ý cấu trúc câu và sự hòa hợp thì/ngữ cảnh.',
-            teacherNote: item.hint ? `💡 Gợi ý: ${item.hint}` : '💡 Hãy chú ý ngữ cảnh và cấu trúc câu tương ứng.',
-          };
-        });
-        setQuestions(mapped);
-      })
-      .catch((err) => {
-        console.warn('Fallback to hardcoded daily questions due to API error:', err);
-      })
-      .finally(() => {
+            });
+            prioritizedQuestions.push(...fwQuestions);
+          }
+        } catch {
+          // Bỏ qua nếu insights tắt hoặc offline
+        }
+
+        // 2. Nếu chưa đủ 5 câu: Lấy tiếp từ Grammar Questions hoặc Fallback
+        const needed = Math.max(0, 5 - prioritizedQuestions.length);
+        if (needed > 0) {
+          try {
+            const res = await api.getGrammarQuestions({ random: true, limit: needed });
+            if (res?.items && res.items.length > 0) {
+              const mappedGrammar = res.items.map((item: any, gIdx: number) => {
+                const qNum = prioritizedQuestions.length + gIdx + 1;
+                let opts: string[] = [];
+                try {
+                  opts = typeof item.optionsJson === 'string' ? JSON.parse(item.optionsJson) : (item.optionsJson || []);
+                } catch {
+                  opts = [item.correctAnswer || 'A', 'B', 'C', 'D'];
+                }
+                return {
+                  id: qNum,
+                  type: 'grammar' as const,
+                  typeLabel: `${qNum}. Thử thách Ngữ pháp (${item.cefrLevel || 'B1-B2'})`,
+                  question: item.question,
+                  subPrompt: item.topic ? `Chủ đề: ${item.topic}` : undefined,
+                  targetWord: undefined,
+                  options: opts.map((opt: string, optIdx: number) => {
+                    const optLetter = String.fromCharCode(97 + optIdx);
+                    return {
+                      id: optLetter,
+                      text: opt,
+                      isCorrect: opt.trim().toLowerCase() === String(item.correctAnswer || '').trim().toLowerCase(),
+                    };
+                  }),
+                  explanation: item.explanation || 'Hãy lưu ý cấu trúc câu và sự hòa hợp thì/ngữ cảnh.',
+                  teacherNote: item.hint ? `💡 Gợi ý: ${item.hint}` : '💡 Hãy chú ý ngữ cảnh và cấu trúc câu tương ứng.',
+                };
+              });
+              prioritizedQuestions.push(...mappedGrammar);
+            }
+          } catch {}
+        }
+
+        if (prioritizedQuestions.length >= 2 && isMounted) {
+          setQuestions(prioritizedQuestions);
+        }
+      } catch (err) {
+        console.warn('Fallback to default daily questions:', err);
+      } finally {
         if (isMounted) setIsLoadingQuestions(false);
-      });
+      }
+    }
+
+    loadDailyQuestions();
 
     return () => {
       isMounted = false;
