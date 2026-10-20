@@ -164,26 +164,41 @@ export class GeminiInsightsService {
 
     // 3. Nếu không forceNew, kiểm tra xem tuần này đã có báo cáo chưa
     if (!forceNew) {
-      const existing: any[] = await prisma.$queryRawUnsafe(
-        `SELECT * FROM cow_weekly_reports WHERE user_id = $1 AND week_number = $2 ORDER BY generated_at DESC LIMIT 1`,
-        userId,
-        currentWeek
-      );
+      const row = await prisma.cowWeeklyReport.findFirst({
+        where: {
+          userId,
+          weekNumber: currentWeek,
+        },
+        orderBy: {
+          generatedAt: 'desc',
+        },
+      });
 
-      if (existing && existing.length > 0) {
-        const row = existing[0];
+      if (row) {
         return {
           id: row.id,
-          userId: row.user_id,
-          weekNumber: row.week_number,
+          userId: row.userId,
+          weekNumber: row.weekNumber,
           title: row.title,
           summary: row.summary,
-          progressPoints: typeof row.progress_points === 'string' ? JSON.parse(row.progress_points) : row.progress_points,
-          weaknesses: typeof row.weaknesses === 'string' ? JSON.parse(row.weaknesses) : row.weaknesses,
-          actionPlan: typeof row.action_plan === 'string' ? JSON.parse(row.action_plan) : row.action_plan,
-          rawMetricsJson: row.raw_metrics_json,
-          generatedAt: row.generated_at?.toISOString?.() || row.generated_at,
-          createdAt: row.created_at?.toISOString?.() || row.created_at,
+          progressPoints: Array.isArray(row.progressPoints)
+            ? (row.progressPoints as string[])
+            : typeof row.progressPoints === 'string'
+            ? JSON.parse(row.progressPoints)
+            : [],
+          weaknesses: Array.isArray(row.weaknesses)
+            ? (row.weaknesses as string[])
+            : typeof row.weaknesses === 'string'
+            ? JSON.parse(row.weaknesses)
+            : [],
+          actionPlan: Array.isArray(row.actionPlan)
+            ? (row.actionPlan as string[])
+            : typeof row.actionPlan === 'string'
+            ? JSON.parse(row.actionPlan)
+            : [],
+          rawMetricsJson: row.rawMetricsJson,
+          generatedAt: row.generatedAt.toISOString(),
+          createdAt: row.createdAt.toISOString(),
         };
       }
     }
@@ -268,22 +283,21 @@ Hãy viết Báo cáo Bò hàng tuần cho học viên này.`;
     const now = new Date();
 
     // 7. Lưu vào DB cow_weekly_reports
-    await prisma.$executeRawUnsafe(
-      `INSERT INTO cow_weekly_reports (
-        id, user_id, week_number, title, summary, progress_points, weaknesses, action_plan, raw_metrics_json, generated_at, created_at
-      ) VALUES ($1, $2, $3, $4, $5, $6::jsonb, $7::jsonb, $8::jsonb, $9::jsonb, $10, $11)`,
-      reportId,
-      userId,
-      currentWeek,
-      parsed.title || `Báo cáo Bò Tuần ${currentWeek}`,
-      parsed.summary || '',
-      JSON.stringify(parsed.progressPoints || []),
-      JSON.stringify(parsed.weaknesses || []),
-      JSON.stringify(parsed.actionPlan || []),
-      JSON.stringify(aggregatedSnapshot),
-      now,
-      now
-    );
+    await prisma.cowWeeklyReport.create({
+      data: {
+        id: reportId,
+        userId,
+        weekNumber: currentWeek,
+        title: parsed.title || `Báo cáo Bò Tuần ${currentWeek}`,
+        summary: parsed.summary || '',
+        progressPoints: parsed.progressPoints || [],
+        weaknesses: parsed.weaknesses || [],
+        actionPlan: parsed.actionPlan || [],
+        rawMetricsJson: aggregatedSnapshot,
+        generatedAt: now,
+        createdAt: now,
+      },
+    });
 
     return {
       id: reportId,
@@ -308,28 +322,39 @@ Hãy viết Báo cáo Bò hàng tuần cho học viên này.`;
       return null;
     }
 
-    const rows: any[] = await prisma.$queryRawUnsafe(
-      `SELECT * FROM cow_weekly_reports WHERE user_id = $1 ORDER BY generated_at DESC LIMIT 1`,
-      userId
-    );
+    const row = await prisma.cowWeeklyReport.findFirst({
+      where: { userId },
+      orderBy: { generatedAt: 'desc' },
+    });
 
-    if (!rows || rows.length === 0) {
+    if (!row) {
       return null;
     }
 
-    const row = rows[0];
     return {
       id: row.id,
-      userId: row.user_id,
-      weekNumber: row.week_number,
+      userId: row.userId,
+      weekNumber: row.weekNumber,
       title: row.title,
       summary: row.summary,
-      progressPoints: typeof row.progress_points === 'string' ? JSON.parse(row.progress_points) : row.progress_points,
-      weaknesses: typeof row.weaknesses === 'string' ? JSON.parse(row.weaknesses) : row.weaknesses,
-      actionPlan: typeof row.action_plan === 'string' ? JSON.parse(row.action_plan) : row.action_plan,
-      rawMetricsJson: row.raw_metrics_json,
-      generatedAt: row.generated_at?.toISOString?.() || row.generated_at,
-      createdAt: row.created_at?.toISOString?.() || row.created_at,
+      progressPoints: Array.isArray(row.progressPoints)
+        ? (row.progressPoints as string[])
+        : typeof row.progressPoints === 'string'
+        ? JSON.parse(row.progressPoints)
+        : [],
+      weaknesses: Array.isArray(row.weaknesses)
+        ? (row.weaknesses as string[])
+        : typeof row.weaknesses === 'string'
+        ? JSON.parse(row.weaknesses)
+        : [],
+      actionPlan: Array.isArray(row.actionPlan)
+        ? (row.actionPlan as string[])
+        : typeof row.actionPlan === 'string'
+        ? JSON.parse(row.actionPlan)
+        : [],
+      rawMetricsJson: row.rawMetricsJson,
+      generatedAt: row.generatedAt.toISOString(),
+      createdAt: row.createdAt.toISOString(),
     };
   }
 
@@ -341,24 +366,36 @@ Hãy viết Báo cáo Bò hàng tuần cho học viên này.`;
       return [];
     }
 
-    const rows: any[] = await prisma.$queryRawUnsafe(
-      `SELECT * FROM cow_weekly_reports WHERE user_id = $1 ORDER BY generated_at DESC LIMIT $2`,
-      userId,
-      limit
-    );
+    const rows = await prisma.cowWeeklyReport.findMany({
+      where: { userId },
+      orderBy: { generatedAt: 'desc' },
+      take: limit,
+    });
 
-    return (rows || []).map((row) => ({
+    return rows.map((row) => ({
       id: row.id,
-      userId: row.user_id,
-      weekNumber: row.week_number,
+      userId: row.userId,
+      weekNumber: row.weekNumber,
       title: row.title,
       summary: row.summary,
-      progressPoints: typeof row.progress_points === 'string' ? JSON.parse(row.progress_points) : row.progress_points,
-      weaknesses: typeof row.weaknesses === 'string' ? JSON.parse(row.weaknesses) : row.weaknesses,
-      actionPlan: typeof row.action_plan === 'string' ? JSON.parse(row.action_plan) : row.action_plan,
-      rawMetricsJson: row.raw_metrics_json,
-      generatedAt: row.generated_at?.toISOString?.() || row.generated_at,
-      createdAt: row.created_at?.toISOString?.() || row.created_at,
+      progressPoints: Array.isArray(row.progressPoints)
+        ? (row.progressPoints as string[])
+        : typeof row.progressPoints === 'string'
+        ? JSON.parse(row.progressPoints)
+        : [],
+      weaknesses: Array.isArray(row.weaknesses)
+        ? (row.weaknesses as string[])
+        : typeof row.weaknesses === 'string'
+        ? JSON.parse(row.weaknesses)
+        : [],
+      actionPlan: Array.isArray(row.actionPlan)
+        ? (row.actionPlan as string[])
+        : typeof row.actionPlan === 'string'
+        ? JSON.parse(row.actionPlan)
+        : [],
+      rawMetricsJson: row.rawMetricsJson,
+      generatedAt: row.generatedAt.toISOString(),
+      createdAt: row.createdAt.toISOString(),
     }));
   }
 
@@ -457,19 +494,17 @@ Hãy giải thích nguyên nhân chỉ số "${metricLabel}" bị giảm.`;
 
     // Nếu không forceNew, xem đã có plan lưu trong DB chưa
     if (!forceNew) {
-      const existing: any[] = await prisma.$queryRawUnsafe(
-        `SELECT * FROM cow_study_plans WHERE user_id = $1 LIMIT 1`,
-        userId
-      );
+      const row = await prisma.cowStudyPlan.findUnique({
+        where: { userId },
+      });
 
-      if (existing && existing.length > 0) {
-        const row = existing[0];
-        const planData = typeof row.plan_data === 'string' ? JSON.parse(row.plan_data) : row.plan_data;
+      if (row) {
+        const planData: any = typeof row.planData === 'string' ? JSON.parse(row.planData) : row.planData;
         return {
           goal: row.goal,
-          goalLabel: planData.goalLabel || row.goal,
-          days: planData.days || [],
-          updatedAt: row.updated_at?.toISOString?.() || row.updated_at,
+          goalLabel: planData?.goalLabel || row.goal,
+          days: planData?.days || [],
+          updatedAt: row.updatedAt.toISOString(),
         };
       }
     }
@@ -618,20 +653,22 @@ Hãy lập Kế hoạch 7 ngày cá nhân hóa tối ưu cho người học này
     const now = new Date();
 
     // Lưu vào bảng cow_study_plans (Upsert)
-    await prisma.$executeRawUnsafe(
-      `INSERT INTO cow_study_plans (id, user_id, goal, plan_data, updated_at, created_at)
-       VALUES ($1, $2, $3, $4::jsonb, $5, $6)
-       ON CONFLICT (user_id) DO UPDATE
-       SET goal = EXCLUDED.goal,
-           plan_data = EXCLUDED.plan_data,
-           updated_at = EXCLUDED.updated_at`,
-      planId,
-      userId,
-      goal,
-      JSON.stringify(parsed),
-      now,
-      now
-    );
+    await prisma.cowStudyPlan.upsert({
+      where: { userId },
+      create: {
+        id: planId,
+        userId,
+        goal,
+        planData: parsed,
+        createdAt: now,
+        updatedAt: now,
+      },
+      update: {
+        goal,
+        planData: parsed,
+        updatedAt: now,
+      },
+    });
 
     return {
       goal,
@@ -649,22 +686,20 @@ Hãy lập Kế hoạch 7 ngày cá nhân hóa tối ưu cho người học này
       return null;
     }
 
-    const rows: any[] = await prisma.$queryRawUnsafe(
-      `SELECT * FROM cow_study_plans WHERE user_id = $1 LIMIT 1`,
-      userId
-    );
+    const row = await prisma.cowStudyPlan.findUnique({
+      where: { userId },
+    });
 
-    if (!rows || rows.length === 0) {
+    if (!row) {
       return null;
     }
 
-    const row = rows[0];
-    const planData = typeof row.plan_data === 'string' ? JSON.parse(row.plan_data) : row.plan_data;
+    const planData: any = typeof row.planData === 'string' ? JSON.parse(row.planData) : row.planData;
     return {
       goal: row.goal,
-      goalLabel: planData.goalLabel || row.goal,
-      days: planData.days || [],
-      updatedAt: row.updated_at?.toISOString?.() || row.updated_at,
+      goalLabel: planData?.goalLabel || row.goal,
+      days: planData?.days || [],
+      updatedAt: row.updatedAt.toISOString(),
     };
   }
 
@@ -691,12 +726,13 @@ Hãy lập Kế hoạch 7 ngày cá nhân hóa tối ưu cho người học này
     }
 
     const now = new Date();
-    await prisma.$executeRawUnsafe(
-      `UPDATE cow_study_plans SET plan_data = $1::jsonb, updated_at = $2 WHERE user_id = $3`,
-      JSON.stringify(existing),
-      now,
-      userId
-    );
+    await prisma.cowStudyPlan.update({
+      where: { userId },
+      data: {
+        planData: existing as any,
+        updatedAt: now,
+      },
+    });
 
     existing.updatedAt = now.toISOString();
     return existing;

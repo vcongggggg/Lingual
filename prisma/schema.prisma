@@ -70,6 +70,8 @@ model User {
   notifications          Notification[]
   notificationPreference NotificationPreference?
   pushSubscriptions      PushSubscription[]
+  cowWeeklyReports       CowWeeklyReport[]
+  cowStudyPlan           CowStudyPlan?
 
   @@map("users")
 }
@@ -1619,4 +1621,40 @@ model PushSubscription {
   @@index([userId])
   @@map("push_subscriptions")
 }
+
+// ==========================================
+// AI INSIGHTS V2 (COW WEEKLY REPORT & STUDY PLAN)
+// ==========================================
+
+model CowWeeklyReport {
+  id             String   @id @default(uuid())
+  userId         String   @map("user_id")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  weekNumber     String   @map("week_number")
+  title          String
+  summary        String
+  progressPoints Json     @default("[]") @map("progress_points")
+  weaknesses     Json     @default("[]") @map("weaknesses")
+  actionPlan     Json     @default("[]") @map("action_plan")
+  rawMetricsJson Json?    @map("raw_metrics_json")
+  generatedAt    DateTime @default(now()) @map("generated_at")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@index([userId, generatedAt(sort: Desc)])
+  @@index([userId, weekNumber])
+  @@map("cow_weekly_reports")
+}
+
+model CowStudyPlan {
+  id        String   @id @default(uuid())
+  userId    String   @unique @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal      String
+  planData  Json     @map("plan_data")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("cow_study_plans")
+}
+
 
