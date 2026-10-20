@@ -20,6 +20,7 @@ import {
   LibraryCatalogCard,
   LibraryWordData,
 } from '../../components/ui/LibraryCatalogCard';
+import { WordLookupDrawer } from '../../components/ui/WordLookupDrawer';
 
 const CEFR_LEVELS = ['Tất cả', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const PARTS_OF_SPEECH = [
@@ -357,6 +358,7 @@ export default function DictionaryPage() {
   const [drawerPulled, setDrawerPulled] = useState(true);
   const [activeDrawerSection, setActiveDrawerSection] = useState<'ALL' | 'AF' | 'GL' | 'MR' | 'SZ'>('ALL');
   const [isPulling, setIsPulling] = useState(false);
+  const [selectedLookupWord, setSelectedLookupWord] = useState<LibraryWordData | null>(null);
 
   const handlePullDrawer = (section: 'ALL' | 'AF' | 'GL' | 'MR' | 'SZ') => {
     setActiveDrawerSection(section);
@@ -496,6 +498,7 @@ export default function DictionaryPage() {
         <LibraryCatalogCard
           word={featuredWord}
           onAddToDeck={handleAddToDeck}
+          onWordClick={(w) => setSelectedLookupWord(w)}
           isAdded={addedWords[featuredWord.id]}
         />
       </div>
@@ -651,6 +654,7 @@ export default function DictionaryPage() {
                       key={w.id}
                       word={w}
                       onAddToDeck={handleAddToDeck}
+                      onWordClick={(wordItem) => setSelectedLookupWord(wordItem)}
                       isAdded={addedWords[w.id]}
                     />
                   ))}
@@ -660,6 +664,13 @@ export default function DictionaryPage() {
           );
         })()}
       </div>
+
+      {/* Ngăn kéo Tra từ điển Chi tiết (Popup tra từ) */}
+      <WordLookupDrawer
+        isOpen={!!selectedLookupWord}
+        onClose={() => setSelectedLookupWord(null)}
+        word={selectedLookupWord}
+      />
     </div>
   );
 }

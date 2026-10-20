@@ -24,6 +24,7 @@ import {
   Check,
   Plus
 } from 'lucide-react';
+import { WordLookupDrawer } from '../../components/ui/WordLookupDrawer';
 
 interface ChapterLevel {
   id: string;
@@ -279,6 +280,7 @@ const TABS = [
 export default function VocabularyHubPage() {
   const [activeTab, setActiveTab] = useState('cefr');
   const [searchQuery, setSearchQuery] = useState('');
+  const [lookupWord, setLookupWord] = useState<string | null>(null);
 
   const filteredChapters = CHAPTERS.filter((chap) => {
     return (
@@ -444,9 +446,17 @@ export default function VocabularyHubPage() {
                     </div>
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {chap.sampleWords.map((w) => (
-                        <span key={w} className="text-[11px] font-mono font-bold bg-card/80 border border-ink/40 px-1.5 py-0.5 rounded text-ink">
-                          {w}
-                        </span>
+                        <button
+                          key={w}
+                          type="button"
+                          onClick={() => setLookupWord(w)}
+                          data-testid={`word-chip-${w.toLowerCase()}`}
+                          className="text-[11px] font-mono font-bold bg-card/90 hover:bg-amber/40 hover:border-ink hover:scale-105 active:scale-95 transition-all border border-ink/40 px-2 py-0.5 rounded text-ink cursor-pointer flex items-center gap-1 shadow-sm"
+                          title={`Nhấn để tra từ "${w}"`}
+                        >
+                          <span>{w}</span>
+                          <span className="text-[9px] text-ink-muted">🔍</span>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -515,9 +525,17 @@ export default function VocabularyHubPage() {
                     </div>
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {exam.sampleWords.map((w) => (
-                        <span key={w} className="text-[11px] font-mono font-bold bg-card border border-ink/30 px-1.5 py-0.5 rounded text-ink">
-                          {w}
-                        </span>
+                        <button
+                          key={w}
+                          type="button"
+                          onClick={() => setLookupWord(w)}
+                          data-testid={`word-chip-${w.toLowerCase()}`}
+                          className="text-[11px] font-mono font-bold bg-card hover:bg-amber/40 hover:border-ink hover:scale-105 active:scale-95 transition-all border border-ink/30 px-2 py-0.5 rounded text-ink cursor-pointer flex items-center gap-1 shadow-sm"
+                          title={`Nhấn để tra từ "${w}"`}
+                        >
+                          <span>{w}</span>
+                          <span className="text-[9px] text-ink-muted">🔍</span>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -589,9 +607,17 @@ export default function VocabularyHubPage() {
                     </div>
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {top.sampleWords.map((w) => (
-                        <span key={w} className="text-[11px] font-mono font-bold bg-card border border-ink/30 px-1.5 py-0.5 rounded text-ink">
-                          {w}
-                        </span>
+                        <button
+                          key={w}
+                          type="button"
+                          onClick={() => setLookupWord(w)}
+                          data-testid={`word-chip-${w.toLowerCase()}`}
+                          className="text-[11px] font-mono font-bold bg-card hover:bg-amber/40 hover:border-ink hover:scale-105 active:scale-95 transition-all border border-ink/30 px-2 py-0.5 rounded text-ink cursor-pointer flex items-center gap-1 shadow-sm"
+                          title={`Nhấn để tra từ "${w}"`}
+                        >
+                          <span>{w}</span>
+                          <span className="text-[9px] text-ink-muted">🔍</span>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -675,7 +701,15 @@ export default function VocabularyHubPage() {
                 >
                   <div className="space-y-1.5">
                     <div className="flex items-center gap-2">
-                      <h4 className="text-lg font-black text-ink font-serif">{item.word}</h4>
+                      <h4
+                        onClick={() => setLookupWord(item.word)}
+                        data-testid={`word-title-${item.word.toLowerCase()}`}
+                        className="text-lg font-black text-ink font-serif cursor-pointer hover:text-red hover:underline transition-colors flex items-center gap-1.5"
+                        title={`Nhấn để tra từ "${item.word}"`}
+                      >
+                        <span>{item.word}</span>
+                        <span className="text-xs text-ink-muted">🔍</span>
+                      </h4>
                       <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded border border-ink bg-paper">
                         {item.pos}
                       </span>
@@ -701,6 +735,13 @@ export default function VocabularyHubPage() {
           </div>
         </div>
       )}
+
+      {/* Ngăn kéo Tra từ điển Chi tiết (Popup tra từ) */}
+      <WordLookupDrawer
+        isOpen={!!lookupWord}
+        onClose={() => setLookupWord(null)}
+        word={lookupWord}
+      />
     </div>
   );
 }

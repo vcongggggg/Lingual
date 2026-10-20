@@ -40,6 +40,7 @@ export interface LibraryWordData {
 export interface LibraryCatalogCardProps {
   word: LibraryWordData;
   onAddToDeck?: (word: LibraryWordData) => void;
+  onWordClick?: (word: LibraryWordData) => void;
   isAdded?: boolean;
   className?: string;
 }
@@ -47,6 +48,7 @@ export interface LibraryCatalogCardProps {
 export function LibraryCatalogCard({
   word,
   onAddToDeck,
+  onWordClick,
   isAdded = false,
   className = '',
 }: LibraryCatalogCardProps) {
@@ -120,6 +122,21 @@ export function LibraryCatalogCard({
           <span className="text-[10px] font-mono px-2 py-0.5 rounded border border-ink/40 bg-paper text-ink-muted">
             {callNumber}
           </span>
+          {onWordClick && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onWordClick(word);
+              }}
+              data-testid={`lookup-btn-${word.targetText.toLowerCase()}`}
+              className="px-2 py-0.5 rounded border border-ink bg-amber/40 hover:bg-amber text-[10px] font-mono font-black text-ink shadow-brutal-sm flex items-center gap-1 transition-all cursor-pointer"
+              title="Mở ngăn kéo tra từ"
+            >
+              <span>Tra từ</span>
+              <span>🗄️</span>
+            </button>
+          )}
         </div>
 
         {/* Nút Audio US / UK dùng chung toàn phiếu */}
@@ -153,7 +170,19 @@ export function LibraryCatalogCard({
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b-2 border-ink/15 pb-4">
           <div>
             <div className="flex items-center gap-3 flex-wrap">
-              <h3 className="text-3xl font-black text-ink font-serif tracking-tight">
+              <h3
+                onClick={(e) => {
+                  if (onWordClick) {
+                    e.stopPropagation();
+                    onWordClick(word);
+                  }
+                }}
+                data-testid={`word-title-${word.targetText.toLowerCase()}`}
+                className={`text-3xl font-black text-ink font-serif tracking-tight ${
+                  onWordClick ? 'cursor-pointer hover:text-red hover:underline transition-colors' : ''
+                }`}
+                title={onWordClick ? 'Nhấn để mở ngăn kéo tra từ' : undefined}
+              >
                 {word.targetText}
               </h3>
               <div className="flex items-center gap-1.5">
