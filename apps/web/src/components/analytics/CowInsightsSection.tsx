@@ -35,6 +35,7 @@ interface GoldenHours {
   hourlyBreakdown: HourlyData[];
   recommendationText: string;
   isBaseline: boolean;
+  isComputed?: boolean;
 }
 
 interface WeaknessRadar {
@@ -45,6 +46,7 @@ interface WeaknessRadar {
   recommendedAction: string;
   actionUrl: string;
   radarData: Array<{ skill: string; score: number; labelVi: string; fullMark: number }>;
+  isComputed?: boolean;
 }
 
 interface ForgottenWord {
@@ -60,6 +62,7 @@ interface ForgottenWord {
   lapses: number;
   failureCount: number;
   lastReviewedAt: string;
+  isComputed?: boolean;
 }
 
 interface DropoffWarning {
@@ -70,6 +73,7 @@ interface DropoffWarning {
   linglingMessage: string;
   mascotReaction: 'annoyed' | 'proud' | 'celebrate';
   encouragementTitle: string;
+  isComputed?: boolean;
 }
 
 interface CurriculumAdaptation {
@@ -82,12 +86,15 @@ interface CurriculumAdaptation {
   completionPercent: number;
   reason: string;
   actionUrl: string;
+  isComputed?: boolean;
 }
 
 interface InsightsSummary {
   enabled: boolean;
   status: 'active' | 'disabled';
   generatedAt?: string;
+  isComputed?: boolean;
+  forgottenWordsComputed?: boolean;
   goldenHours?: GoldenHours;
   weaknessRadar?: WeaknessRadar;
   forgottenWords?: ForgottenWord[];
@@ -150,15 +157,30 @@ export function CowInsightsSection() {
       {/* Header của mục Góc nhìn của Bò */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-ink/15 pb-3">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 bg-[#FFF2B2] border-2 border-ink rounded-full text-xs font-black uppercase tracking-wider text-ink shadow-brutal-sm">
-            <Sparkles className="w-3.5 h-3.5 text-red" />
-            <span>AI Phân Tích Hành Vi V1</span>
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 bg-[#FFF2B2] border-2 border-ink rounded-full text-xs font-black uppercase tracking-wider text-ink shadow-brutal-sm">
+              <Sparkles className="w-3.5 h-3.5 text-red" />
+              <span>AI Phân Tích Hành Vi V1</span>
+            </div>
+            {data.isComputed ? (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black bg-green-500/15 text-green-800 border border-green-600">
+                <CheckCircle2 className="w-3 h-3" />
+                Dữ liệu thật
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black bg-[#FFF9C4] text-ink border border-ink/40">
+                <Info className="w-3 h-3 text-ink-muted" />
+                Gợi ý mặc định
+              </span>
+            )}
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-ink font-sans flex items-center gap-2">
             Góc nhìn của Bò LingLing 🐮
           </h2>
           <p className="text-xs sm:text-sm text-ink-soft">
-            Mách nước thời gian học hiệu quả, điểm yếu kỹ năng và từ vựng hay quên dựa trên dữ liệu thật của bạn.
+            {data.isComputed
+              ? 'Mách nước thời gian học hiệu quả, điểm yếu kỹ năng và từ vựng hay quên dựa trên dữ liệu thật của bạn.'
+              : 'Gợi ý mặc định — bạn chưa có đủ dữ liệu, học thêm để Bò phân tích chính xác hơn.'}
           </p>
         </div>
 
@@ -239,9 +261,15 @@ export function CowInsightsSection() {
                     Giờ Vàng Học Tập
                   </h3>
                 </div>
-                <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-paper-2 border border-ink text-ink">
-                  SRS Retention
-                </span>
+                {goldenHours.isComputed ? (
+                  <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-paper-2 border border-ink text-ink">
+                    SRS Retention
+                  </span>
+                ) : (
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#FFF9C4] border border-ink/40 text-ink-muted">
+                    Gợi ý mặc định
+                  </span>
+                )}
               </div>
 
               <div className="bg-paper-2 border-2 border-ink rounded-2xl p-4 space-y-2">
@@ -263,6 +291,12 @@ export function CowInsightsSection() {
                 <p className="text-xs text-ink-soft leading-relaxed pt-1">
                   {goldenHours.recommendationText}
                 </p>
+
+                {!goldenHours.isComputed && (
+                  <p className="text-[11px] font-medium text-ink-muted bg-paper-1/60 p-2 rounded-lg border border-dashed border-ink/30 mt-1">
+                    Gợi ý mặc định — bạn chưa có đủ lượt ôn tập SRS, hãy ôn thêm để Bò phân tích khung giờ vàng chính xác hơn.
+                  </p>
+                )}
               </div>
 
               {/* Hourly breakdown preview */}
@@ -315,9 +349,15 @@ export function CowInsightsSection() {
                     Kỹ Năng Cần Khắc Phục
                   </h3>
                 </div>
-                <span className="text-xs font-black px-2 py-0.5 rounded-full bg-red text-white border border-ink">
-                  {weakestLabel(weaknessRadar.weakestSkill)} ({weaknessRadar.weakestScore}/100)
-                </span>
+                {weaknessRadar.isComputed ? (
+                  <span className="text-xs font-black px-2 py-0.5 rounded-full bg-red text-white border border-ink">
+                    {weakestLabel(weaknessRadar.weakestSkill)} ({weaknessRadar.weakestScore}/100)
+                  </span>
+                ) : (
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#FFF9C4] border border-ink/40 text-ink-muted">
+                    Gợi ý mặc định
+                  </span>
+                )}
               </div>
 
               {/* Progress bars cho 5 kỹ năng */}
@@ -350,6 +390,12 @@ export function CowInsightsSection() {
                 <span className="font-black text-red">Mách nước: </span>
                 {weaknessRadar.recommendedAction}
               </div>
+
+              {!weaknessRadar.isComputed && (
+                <p className="text-[11px] font-medium text-ink-muted bg-paper-1/60 p-2 rounded-lg border border-dashed border-ink/30">
+                  Gợi ý mặc định — bạn chưa hoàn thành đủ bài học các kỹ năng, điểm số 5 kỹ năng hiện là mức tham chiếu ban đầu.
+                </p>
+              )}
             </div>
 
             <div className="pt-2">
@@ -377,13 +423,21 @@ export function CowInsightsSection() {
                     Sổ Tay Từ Hay Quên
                   </h3>
                 </div>
-                <span className="text-xs font-bold text-ink-muted">
-                  {forgottenWords.length} từ cần củng cố
-                </span>
+                {forgottenWords[0]?.isComputed !== false ? (
+                  <span className="text-xs font-bold text-ink-muted">
+                    {forgottenWords.length} từ cần củng cố
+                  </span>
+                ) : (
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#FFF9C4] border border-ink/40 text-ink-muted">
+                    Từ vựng mẫu
+                  </span>
+                )}
               </div>
 
               <p className="text-xs text-ink-soft">
-                Các từ vựng có số lần quên lặp lại (lapses &ge; 2). Bấm vào từ để xem chi tiết và phát âm:
+                {forgottenWords[0]?.isComputed !== false
+                  ? 'Các từ vựng có số lần quên lặp lại (lapses ≥ 2). Bấm vào từ để xem chi tiết và phát âm:'
+                  : 'Bạn chưa có từ vựng nào bị quên trong hệ thống SRS. Dưới đây là các từ vựng tiêu biểu gợi ý để bạn rèn luyện:'}
               </p>
 
               {/* Chips list */}
@@ -415,7 +469,9 @@ export function CowInsightsSection() {
               <div className="bg-paper-2 border border-dashed border-ink/40 rounded-xl p-3 text-xs text-ink-muted flex items-center gap-2">
                 <Info className="w-4 h-4 flex-shrink-0 text-ink-muted" />
                 <span>
-                  Hệ thống Daily Challenge và Bản tin từ Bò tự động ưu tiên đưa các từ này vào bài luyện tập hàng ngày.
+                  {forgottenWords[0]?.isComputed !== false
+                    ? 'Hệ thống Daily Challenge và Bản tin từ Bò tự động ưu tiên đưa các từ này vào bài luyện tập hàng ngày.'
+                    : 'Gợi ý mặc định — sau khi bạn ôn tập SRS, các từ bạn hay ấn "Quên" sẽ xuất hiện tại đây.'}
                 </span>
               </div>
             </div>
@@ -445,9 +501,15 @@ export function CowInsightsSection() {
                     Lộ Trình Thích Ứng
                   </h3>
                 </div>
-                <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-paper-2 border border-ink text-ink">
-                  Đề xuất kế tiếp
-                </span>
+                {curriculumAdaptation.isComputed ? (
+                  <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-paper-2 border border-ink text-ink">
+                    Đề xuất kế tiếp
+                  </span>
+                ) : (
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#FFF9C4] border border-ink/40 text-ink-muted">
+                    Gợi ý mặc định
+                  </span>
+                )}
               </div>
 
               <div className="bg-paper-2 border-2 border-ink rounded-2xl p-4 space-y-2.5">

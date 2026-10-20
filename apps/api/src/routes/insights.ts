@@ -109,7 +109,8 @@ insightsRouter.get('/forgotten-words', async (req: Request, res: Response) => {
     }
     const limit = Number(req.query.limit) || 10;
     const items = await aiInsightsService.getFrequentlyForgottenWords(userId, limit);
-    res.json({ enabled: true, items, total: items.length });
+    const isComputed = items.length > 0 && items[0].isComputed !== false;
+    res.json({ enabled: true, items, total: items.length, isComputed });
   } catch (err: any) {
     res.status(500).json({ error: err.message || 'Lỗi khi lấy danh sách từ hay quên' });
   }

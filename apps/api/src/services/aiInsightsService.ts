@@ -47,6 +47,7 @@ export interface GoldenHoursResult {
   hourlyBreakdown: { hour: number; label: string; total: number; retention: number }[];
   recommendationText: string;
   isBaseline?: boolean;
+  isComputed: boolean;
 }
 
 export interface WeaknessRadarResult {
@@ -57,6 +58,13 @@ export interface WeaknessRadarResult {
     reading: number;
     writing: number;
   };
+  skillsComputed?: {
+    vocabulary: boolean;
+    listening: boolean;
+    speaking: boolean;
+    reading: boolean;
+    writing: boolean;
+  };
   weakestSkill: 'vocabulary' | 'listening' | 'speaking' | 'reading' | 'writing';
   weakestSkillScore: number;
   recommendation: {
@@ -66,6 +74,7 @@ export interface WeaknessRadarResult {
     actionUrl: string;
     reason: string;
   };
+  isComputed: boolean;
 }
 
 export interface ForgottenWordItem {
@@ -81,6 +90,7 @@ export interface ForgottenWordItem {
   lapses: number;
   failureCount: number;
   lastReviewedAt: string | null;
+  isComputed: boolean;
 }
 
 export interface DropoffWarningResult {
@@ -93,6 +103,7 @@ export interface DropoffWarningResult {
   mascotReaction: 'annoyed' | 'studying' | 'proud' | 'curious';
   mascotTitle: string;
   mascotMessage: string;
+  isComputed: boolean;
 }
 
 export interface CurriculumAdaptationResult {
@@ -105,15 +116,18 @@ export interface CurriculumAdaptationResult {
   completionPercent: number;
   reason: string;
   actionUrl: string;
+  isComputed: boolean;
 }
 
 export interface FullInsightsSummary {
   enabled: boolean;
   status: 'active' | 'disabled';
   generatedAt: string;
+  isComputed: boolean;
   goldenHours?: GoldenHoursResult;
   weaknessRadar?: WeaknessRadarResult;
   forgottenWords?: ForgottenWordItem[];
+  forgottenWordsComputed?: boolean;
   dropoffWarning?: DropoffWarningResult;
   curriculumAdaptation?: CurriculumAdaptationResult;
   message?: string;
@@ -215,6 +229,7 @@ export class AiInsightsService {
         hourlyBreakdown,
         recommendationText: `Khung giờ vàng của bạn là ${startStr} – ${endStr}. Tỷ lệ nhớ từ đạt ${maxRetention >= 0 ? maxRetention : 92}%. Bò LingLing khuyên bạn nên duy trì phiên ôn tập SRS cố định trong khung giờ này!`,
         isBaseline: false,
+        isComputed: true,
       };
     }
 
@@ -232,6 +247,7 @@ export class AiInsightsService {
       ],
       recommendationText: 'Dựa trên nhịp sinh học não bộ và đề xuất từ Bò LingLing, khung giờ 20:00 – 21:00 buổi tối là thời điểm vàng để ôn tập SRS trước khi nghỉ ngơi.',
       isBaseline: true,
+      isComputed: false,
     };
   }
 
@@ -350,11 +366,33 @@ export class AiInsightsService {
       },
     };
 
+    const skillsComputed = {
+      vocabulary: wordStates.length > 0,
+      speaking: speakingAttempts.length > 0,
+      reading: readingAttempts.length > 0,
+      writing: writingAttempts.length > 0,
+      listening: listeningSessions.length > 0,
+    };
+
+    const hasRealData =
+      skillsComputed.vocabulary ||
+      skillsComputed.speaking ||
+      skillsComputed.reading ||
+      skillsComputed.writing ||
+      skillsComputed.listening;
+
+    const recommendation = recommendationsMap[weakestSkill];
+    if (!hasRealData) {
+      recommendation.reason = 'Gợi ý mặc định — bạn chưa có đủ dữ liệu luyện tập, học thêm để Bò phân tích chính xác hơn.';
+    }
+
     return {
       skills,
+      skillsComputed,
       weakestSkill,
       weakestSkillScore: lowestVal,
-      recommendation: recommendationsMap[weakestSkill],
+      recommendation,
+      isComputed: hasRealData,
     };
   }
 
@@ -424,6 +462,7 @@ export class AiInsightsService {
         lapses: data.count,
         failureCount: data.count,
         lastReviewedAt: data.lastReviewed.toISOString(),
+        isComputed: true,
       }))
       .sort((a, b) => b.failureCount - a.failureCount)
       .slice(0, limit);
@@ -451,6 +490,7 @@ export class AiInsightsService {
             lapses: Math.max(2, uw.lapses),
             failureCount: Math.max(2, uw.lapses),
             lastReviewedAt: uw.updatedAt.toISOString(),
+            isComputed: true,
           });
         }
       }
@@ -472,6 +512,7 @@ export class AiInsightsService {
           lapses: 3,
           failureCount: 3,
           lastReviewedAt: new Date().toISOString(),
+          isComputed: false,
         },
         {
           id: 'forgotten-fallback-2',
@@ -486,6 +527,7 @@ export class AiInsightsService {
           lapses: 2,
           failureCount: 2,
           lastReviewedAt: new Date().toISOString(),
+          isComputed: false,
         },
         {
           id: 'forgotten-fallback-3',
@@ -500,6 +542,7 @@ export class AiInsightsService {
           lapses: 2,
           failureCount: 2,
           lastReviewedAt: new Date().toISOString(),
+          isComputed: false,
         },
       ];
     }
@@ -562,6 +605,8 @@ export class AiInsightsService {
       dropPercent = Math.round(((prevCount - recentCount) / prevCount) * 100);
     }
 
+    const isComputed = currentStreak > 0 || recentCount > 0 || prevCount > 0;
+
     if (isStreakAtRisk) {
       return {
         hasWarning: true,
@@ -573,6 +618,7 @@ export class AiInsightsService {
         mascotReaction: 'annoyed',
         mascotTitle: 'Bò LingLing gõ móng cảnh báo!',
         mascotMessage: `Này bạn ơi! Đã tích lũy chuỗi ${currentStreak} ngày học liên tiếp rồi, hôm nay chưa thấy bạn mở sổ tay đâu đấy! Đừng để ngọn lửa streak bị dập tắt uổng phí nha, vào học 5 phút ngay không Bò dỗi đó!`,
+        isComputed,
       };
     }
 
@@ -587,6 +633,7 @@ export class AiInsightsService {
         mascotReaction: 'annoyed',
         mascotTitle: 'Bò LingLing nhắc nhở nhịp độ!',
         mascotMessage: `Ủa alo? Tần suất học tuần này của bạn tụt hơn ${dropPercent}% so với tuần trước rồi kìa! Tính bỏ cuộc để Bò ăn cỏ một mình sao? Mau dậy làm 1 ván game hoặc đọc 1 bài nhanh nào!`,
+        isComputed,
       };
     }
 
@@ -600,6 +647,7 @@ export class AiInsightsService {
       mascotReaction: 'proud',
       mascotTitle: 'Bò LingLing khen ngợi!',
       mascotMessage: `Tuyệt vời lắm! Bạn đang duy trì phong độ rèn luyện rất ổn định. Cứ kiên trì từng trang sổ tay thế này thì sớm muộn tiếng Anh cũng ngấm sâu vào máu thôi!`,
+      isComputed,
     };
   }
 
@@ -628,6 +676,7 @@ export class AiInsightsService {
         completionPercent: 0,
         reason: 'Hãy bắt đầu với Unit 1 để xây dựng nền tảng từ vựng cơ bản đầu tiên.',
         actionUrl: '/curriculum',
+        isComputed: false,
       };
     }
 
@@ -636,6 +685,7 @@ export class AiInsightsService {
       select: { lessonId: true },
     });
     const completedLessonIds = new Set(progressRecords.map((p) => p.lessonId));
+    const hasProgress = progressRecords.length > 0;
 
     // Find first unit that is not 100% completed
     for (const u of units) {
@@ -654,6 +704,7 @@ export class AiInsightsService {
           completionPercent: percent,
           reason: `Unit "${u.title}" đang hoàn thành ${percent}%. Hoàn tất các bài học còn lại trong Unit này sẽ giúp củng cố kiến thức ngữ pháp và vốn từ trọng điểm.`,
           actionUrl: `/curriculum`,
+          isComputed: hasProgress,
         };
       }
     }
@@ -670,6 +721,7 @@ export class AiInsightsService {
       completionPercent: 100,
       reason: `Bạn đã hoàn tất xuất sắc các bài học! Hãy ôn tập lại Unit "${firstUnit.title}" để giữ vững độ nhạy bén.`,
       actionUrl: '/curriculum',
+      isComputed: hasProgress,
     };
   }
 
@@ -683,6 +735,7 @@ export class AiInsightsService {
         enabled: false,
         status: 'disabled',
         generatedAt: new Date().toISOString(),
+        isComputed: false,
         message: 'Tính năng phân tích hành vi học tập đang bị tắt theo cài đặt quyền riêng tư của bạn.',
       };
     }
@@ -695,13 +748,27 @@ export class AiInsightsService {
       this.getCurriculumAdaptation(userId),
     ]);
 
+    const hasAnyComputed = Boolean(
+      goldenHours.isComputed ||
+      weaknessRadar.isComputed ||
+      (forgottenWords && forgottenWords.length > 0 && forgottenWords[0].isComputed) ||
+      dropoffWarning.isComputed ||
+      curriculumAdaptation.isComputed
+    );
+
+    const forgottenWordsComputed = Boolean(
+      forgottenWords && forgottenWords.length > 0 && forgottenWords[0].isComputed
+    );
+
     return {
       enabled: true,
       status: 'active',
       generatedAt: new Date().toISOString(),
+      isComputed: hasAnyComputed,
       goldenHours,
       weaknessRadar,
       forgottenWords,
+      forgottenWordsComputed,
       dropoffWarning,
       curriculumAdaptation,
     };
