@@ -197,12 +197,21 @@ export const api = {
   lookupDictionaryWord: (word: string) => fetchApi<any>(`/dictionary/lookup/${encodeURIComponent(word)}`),
   toggleDictionaryBookmark: (wordId: string) => fetchApi<any>(`/dictionary/bookmark/${wordId}`, { method: 'POST' }),
 
-  // 9. Tutor LingLing
-  sendTutorMessage: (message: string, context?: any) =>
-    fetchApi<{ reply: string; usedRag?: boolean; refs?: any[]; suggestedActions?: any[] }>('/tutor/chat', {
+  // 9. Tutor LingLing R2.0 (Gemini LLM)
+  sendTutorMessage: (message: string, history?: { role: 'user' | 'assistant'; text: string }[]) =>
+    fetchApi<{
+      reply: string;
+      mood?: string;
+      usedRag?: boolean;
+      grounding?: any;
+      aiConnected?: boolean;
+      suggestedActions?: any[];
+      error?: string;
+    }>('/tutor/chat', {
       method: 'POST',
-      body: JSON.stringify({ message, locale: 'vi', customContext: context }),
+      body: JSON.stringify({ message, history }),
     }),
+  getTutorStatus: () => fetchApi<{ aiConnected: boolean; model: string; message: string }>('/tutor/status'),
   getTutorContext: () => fetchApi<{ context: any }>('/tutor/context'),
   getTutorPlan: () => fetchApi<{ plan: any }>('/tutor/plan'),
 

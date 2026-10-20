@@ -1,6 +1,8 @@
 import { Router, Request, Response } from 'express';
-import { learningTutorService } from '../services/tutor';
-import { adaptiveLearningService } from '../services/adaptiveLearning';
+import { learningTutorService } from '../services/tutor.js';
+import { adaptiveLearningService } from '../services/adaptiveLearning.js';
+import { geminiChatService } from '../services/geminiChatService.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 import { generateTutorResponse } from '@linguaflow/domain';
 
 export const tutorRouter = Router();
@@ -41,11 +43,25 @@ tutorRouter.get('/context', (req: Request, res: Response) => {
 });
 
 /**
+ * GET /status
+ * Kiểm tra trạng thái kết nối Gemini AI R2.0
+ */
+tutorRouter.get('/status', (req: Request, res: Response) => {
+  const hasKey = Boolean(process.env.GEMINI_API_KEY);
+  res.json({
+    aiConnected: hasKey,
+    model: process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite',
+    message: hasKey ? 'Đã kết nối Gemini AI R2.0' : 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
+  });
+});
+
+/**
  * POST /chat
- * Sends a query to the AI Tutor engine.
+ * Gửi tin nhắn đến Chatbot LingLing R2.0 (Gemini LLM + Persona + Grounding thật)
  */
 tutorRouter.post('/chat', rateLimitMiddleware, async (req: Request, res: Response) => {
-  const { message, locale = 'vi', userId = 'u-demo-1', customContext } = req.body;
+  const { message, history = [] } = req.body;
+  const userId = resolveAuthUserId(req) || req.body.userId || 'u-demo-1';
 
   if (!message || typeof message !== 'string') {
     return res.status(400).json({ error: 'Bad Request', message: 'Message content is required.' });
@@ -58,11 +74,23 @@ tutorRouter.post('/chat', rateLimitMiddleware, async (req: Request, res: Respons
     });
   }
 
+  // Kiểm tra key theo quy định: thiếu key -> báo rõ chưa kết nối AI, KHÔNG giả lập AI
+  if (!process.env.GEMINI_API_KEY) {
+    return res.status(503).json({
+      error: 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
+      aiConnected: false,
+      reply: 'Chưa kết nối AI: Máy chủ chưa cấu hình GEMINI_API_KEY. Vui lòng liên hệ quản trị viên.',
+    });
+  }
+
   try {
-    const result = await learningTutorService.chat(userId, message.trim(), locale, customContext);
+    const result = await geminiChatService.chat(userId, message.trim(), history);
     res.json(result);
   } catch (err: any) {
-    res.status(500).json({ error: 'Internal Server Error', message: err.message });
+    res.status(500).json({
+      error: err.message || 'Lỗi khi kết nối với AI LingLing',
+      aiConnected: false,
+    });
   }
 });
 
