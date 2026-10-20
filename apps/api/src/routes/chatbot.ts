@@ -1,11 +1,10 @@
 import { Router, Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
+import { geminiChatService } from '../services/geminiChatService.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 const prisma = new PrismaClient();
 export const chatbotRouter = Router();
-
-const OLLAMA_API_URL = process.env.OLLAMA_URL || 'http://localhost:11434/api/chat';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'qwen2.5:7b';
 
 export interface RagRef {
   type: 'vocab' | 'ielts' | 'lesson';
@@ -14,6 +13,22 @@ export interface RagRef {
   subtitle?: string;
   data: any;
 }
+
+/**
+ * GET /api/v1/chatbot/status
+ * Kiểm tra trạng thái AI Gemini cho chatbot
+ */
+chatbotRouter.get('/status', (req: Request, res: Response) => {
+  const hasKey = Boolean(process.env.GEMINI_API_KEY);
+  res.json({
+    aiConnected: hasKey,
+    provider: 'gemini',
+    model: process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite',
+    message: hasKey
+      ? 'Đã kết nối Gemini AI R2.0 cho Chatbot'
+      : 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
+  });
+});
 
 /**
  * Extract meaningful keywords from user message for RAG lookup
@@ -128,155 +143,78 @@ async function retrieveRagDetails(query: string): Promise<{ textContext: string;
 }
 
 /**
- * SSE Streaming Endpoint Handler (Server-Sent Events)
- * Supports both POST /api/v1/chatbot/stream and POST /api/v1/chatbot/chat
+ * SSE Streaming Endpoint Handler
+ * Sử dụng Gemini LLM API thật, không dùng Ollama
  */
 const sseStreamHandler = async (req: Request, res: Response) => {
-  // Set SSE Headers
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
 
-  const { message = '', history = [], contextPage = '' } = req.body;
+  const { message = '', history = [] } = req.body;
+  const userId = resolveAuthUserId(req) || req.body.userId || 'u-demo-1';
 
   if (!message.trim()) {
     res.write(`event: error\ndata: ${JSON.stringify({ error: 'Message cannot be empty' })}\n\n`);
     return res.end();
   }
 
-  // 1. Retrieve RAG Context & Structured Refs
-  const { textContext: ragContext, refs: ragRefs } = await retrieveRagDetails(message);
+  // Kiểm tra GEMINI_API_KEY: thiếu key -> báo rõ chưa kết nối AI, KHÔNG lén fallback sang Ollama
+  if (!process.env.GEMINI_API_KEY) {
+    res.write(
+      `event: error\ndata: ${JSON.stringify({
+        error: 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
+        provider: 'gemini',
+        aiConnected: false,
+      })}\n\n`
+    );
+    return res.end();
+  }
 
-  // 2. Prepare System Prompt
-  const systemPrompt = `Bạn là LingLing - Trợ lý AI học tiếng Anh & Luyện thi IELTS thân thiện, thông minh của ứng dụng Lingual.
-Hãy trả lời người dùng một cách tự nhiên, ngắn gọn, súc tích và khích lệ.
+  try {
+    const { refs: ragRefs } = await retrieveRagDetails(message);
 
-${
-  contextPage ? `[NGỮ CẢNH TRANG HIỆN TẠI]: Người dùng đang mở trang: ${contextPage}\n` : ''
-}${
-    ragContext
-      ? `[DƯỚI ĐÂY LÀ DỮ LIỆU THỰC TẾ TRA CỨU TỪ CƠ SỞ DỮ LIỆU LINGUAL]:\n${ragContext}\n\nHãy ưu tiên dùng thông tin này để trả lời chính xác, không tự bịa từ vựng hay đề thi không có trong ứng dụng.`
-      : 'Trả lời đúng trọng tâm bằng tiếng Việt và giải thích từ vựng tiếng Anh.'
-  }`;
+    // Chuyển history sang định dạng { role, text }
+    const formattedHistory = history.slice(-6).map((h: any) => ({
+      role: (h.sender === 'user' || h.role === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
+      text: h.text || h.content || '',
+    }));
 
-  const messages = [
-    { role: 'system', content: systemPrompt },
-    ...history.slice(-4).map((h: any) => ({
-      role: h.sender === 'user' ? 'user' : 'assistant',
-      content: h.text,
-    })),
-    { role: 'user', content: message },
-  ];
+    const result = await geminiChatService.chat(userId, message.trim(), formattedHistory);
 
-  let firstTokenReceived = false;
-  let usedOllama = false;
-
-  // Function to stream string token by token as SSE fallback
-  const streamFallbackTokens = async (text: string) => {
+    // Gửi metadata trước
     res.write(
       `event: metadata\ndata: ${JSON.stringify({
-        usedOllama: false,
-        ragApplied: Boolean(ragContext),
+        provider: 'gemini',
+        model: result.model,
+        responseTimeMs: result.responseTimeMs,
+        mood: result.mood,
+        usedGemini: true,
+        usedRag: result.usedRag,
+        grounding: result.grounding,
         ragRefs,
       })}\n\n`
     );
 
-    // Stream token by token (words)
-    const words = text.split(' ');
+    // Stream token theo từ ngữ
+    const words = result.reply.split(' ');
     for (let i = 0; i < words.length; i++) {
       const chunk = (i === 0 ? '' : ' ') + words[i];
       res.write(`event: token\ndata: ${JSON.stringify({ token: chunk })}\n\n`);
-      await new Promise((resolve) => setTimeout(resolve, 30));
+      await new Promise((resolve) => setTimeout(resolve, 20));
     }
 
     res.write(`event: done\ndata: {}\n\n`);
     res.end();
-  };
-
-  // 3. Connect to Ollama API with Stream
-  try {
-    const controller = new AbortController();
-    // 3.5s timeout for FIRST TOKEN ONLY
-    const firstTokenTimer = setTimeout(() => {
-      if (!firstTokenReceived) {
-        controller.abort();
-      }
-    }, 3500);
-
-    const ollamaRes = await fetch(OLLAMA_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: OLLAMA_MODEL,
-        messages,
-        stream: true,
-      }),
-      signal: controller.signal,
-    });
-
-    if (!ollamaRes.ok || !ollamaRes.body) {
-      clearTimeout(firstTokenTimer);
-      throw new Error('Ollama response not OK');
-    }
-
-    const reader = ollamaRes.body.getReader();
-    const decoder = new TextDecoder('utf-8');
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      const chunkStr = decoder.decode(value, { stream: true });
-      const lines = chunkStr.split('\n').filter((l) => l.trim() !== '');
-
-      for (const line of lines) {
-        try {
-          const parsed = JSON.parse(line);
-          const token = parsed.message?.content || parsed.response || '';
-
-          if (token) {
-            if (!firstTokenReceived) {
-              firstTokenReceived = true;
-              usedOllama = true;
-              clearTimeout(firstTokenTimer);
-              // Send metadata event first
-              res.write(
-                `event: metadata\ndata: ${JSON.stringify({
-                  usedOllama: true,
-                  ragApplied: Boolean(ragContext),
-                  ragRefs,
-                })}\n\n`
-              );
-            }
-            res.write(`event: token\ndata: ${JSON.stringify({ token })}\n\n`);
-          }
-        } catch {
-          // Continue parsing remaining JSON lines
-        }
-      }
-    }
-
-    clearTimeout(firstTokenTimer);
-
-    if (firstTokenReceived) {
-      res.write(`event: done\ndata: {}\n\n`);
-      return res.end();
-    } else {
-      throw new Error('No token received from Ollama in time');
-    }
-  } catch (err) {
-    console.log('Ollama stream not available / timed out. Executing LingLing RAG Fallback Stream.');
-
-    let fallbackText = '';
-    if (ragContext) {
-      fallbackText = `Xin chào! LingLing đã tra cứu được dữ liệu thực tế trong hệ thống **Lingual** cho bạn:\n\n${ragContext}\n\n💡 *Mẹo từ LingLing*: Bạn có thể lưu từ vựng này vào bộ thẻ **SRS Flashcard** bên dưới để ôn tập hàng ngày nhé!`;
-    } else if (message.toLowerCase().includes('ielts')) {
-      fallbackText = `Chào bạn! **LingLing** rất sẵn lòng đồng hành cùng bạn luyện thi IELTS trên Lingual! 🚀\n\nỨng dụng Lingual hiện hỗ trợ:\n• **Reading**: Bài đọc 2 cột chuẩn thi thật.\n• **Listening**: Trình phát audio + transcript.\n• **Writing**: Đánh giá bài viết theo 4 tiêu chí Band Descriptor.\n• **Mock Test**: Thi thử áp lực thời gian.\n\nBạn muốn LingLing hướng dẫn kỹ năng nào trước?`;
-    } else {
-      fallbackText = `Chào bạn! Tôi là **LingLing** 🤖 - Trợ lý AI của Lingual. 🌟\n\nTôi có thể giúp bạn giải thích từ vựng, ngữ pháp, bài học và luyện thi IELTS. Bạn cần tôi hỗ trợ nội dung gì hôm nay?`;
-    }
-
-    return streamFallbackTokens(fallbackText);
+  } catch (err: any) {
+    res.write(
+      `event: error\ndata: ${JSON.stringify({
+        error: err.message || 'Chưa kết nối AI: Lỗi khi gọi Gemini API.',
+        provider: 'gemini',
+        aiConnected: false,
+      })}\n\n`
+    );
+    res.end();
   }
 };
 
@@ -284,7 +222,7 @@ chatbotRouter.post('/stream', sseStreamHandler);
 
 /**
  * Endpoint POST /api/v1/chatbot/chat
- * Supports both SSE streaming (when Accept: text/event-stream or stream: true) and legacy JSON response
+ * Hỗ trợ cả SSE Streaming lẫn JSON response qua Gemini LLM API thật
  */
 chatbotRouter.post('/chat', async (req: Request, res: Response) => {
   if (
@@ -295,21 +233,58 @@ chatbotRouter.post('/chat', async (req: Request, res: Response) => {
     return sseStreamHandler(req, res);
   }
 
+  const { message = '', history = [] } = req.body;
+  const userId = resolveAuthUserId(req) || req.body.userId || 'u-demo-1';
+
+  if (!message.trim()) {
+    return res.status(400).json({ success: false, message: 'Message cannot be empty' });
+  }
+
+  // Kiểm tra key theo quy định: thiếu key -> báo rõ chưa kết nối AI
+  if (!process.env.GEMINI_API_KEY) {
+    return res.status(503).json({
+      success: false,
+      error: 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
+      aiConnected: false,
+      provider: 'gemini',
+      botReply: 'Chưa kết nối AI: Máy chủ chưa cấu hình GEMINI_API_KEY. Vui lòng liên hệ quản trị viên.',
+    });
+  }
+
   try {
-    const { message = '' } = req.body;
-    const { textContext: ragContext, refs: ragRefs } = await retrieveRagDetails(message);
+    const { refs: ragRefs } = await retrieveRagDetails(message);
+
+    const formattedHistory = history.slice(-6).map((h: any) => ({
+      role: (h.sender === 'user' || h.role === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
+      text: h.text || h.content || '',
+    }));
+
+    const result = await geminiChatService.chat(userId, message.trim(), formattedHistory);
 
     return res.json({
       success: true,
-      botReply: ragContext
-        ? `Thông tin từ Lingual DB:\n\n${ragContext}`
-        : 'Xin chào! Tôi là LingLing, trợ lý AI của Lingual.',
-      ragContextApplied: Boolean(ragContext),
+      provider: 'gemini',
+      model: result.model,
+      responseTimeMs: result.responseTimeMs,
+      botReply: result.reply,
+      mood: result.mood,
+      usedGemini: true,
+      ragContextApplied: result.usedRag,
       ragRefs,
-      usedOllama: false,
+      grounding: result.grounding,
+      suggestedActions: result.suggestedActions,
+      aiConnected: true,
     });
   } catch (error: any) {
-    return res.status(500).json({ success: false, message: error.message });
+    return res.status(503).json({
+      success: false,
+      error: error.message || 'Chưa kết nối AI: Lỗi khi kết nối với Gemini AI.',
+      provider: 'gemini',
+      aiConnected: false,
+      botReply: error.message?.startsWith('Chưa kết nối AI')
+        ? error.message
+        : `Chưa kết nối AI: ${error.message || 'Lỗi kết nối Gemini API.'}`,
+    });
   }
 });
 
@@ -319,8 +294,8 @@ chatbotRouter.post('/chat', async (req: Request, res: Response) => {
  */
 chatbotRouter.get('/history', async (req: Request, res: Response) => {
   try {
-    const { userId } = req.query;
-    if (!userId || typeof userId !== 'string') {
+    const userId = resolveAuthUserId(req) || (req.query.userId as string);
+    if (!userId) {
       return res.status(400).json({ success: false, message: 'userId required' });
     }
 
@@ -343,7 +318,8 @@ chatbotRouter.get('/history', async (req: Request, res: Response) => {
       sender: m.role === 'user' ? 'user' : 'bot',
       text: m.content,
       timestamp: new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      usedOllama: m.sourceType === 'llm',
+      usedGemini: m.sourceType === 'llm',
+      provider: 'gemini',
       ragApplied: m.sourceType === 'rag',
       ragRefs: m.ragRefs ? JSON.parse(m.ragRefs) : undefined,
     }));
@@ -360,7 +336,8 @@ chatbotRouter.get('/history', async (req: Request, res: Response) => {
  */
 chatbotRouter.post('/sync', async (req: Request, res: Response) => {
   try {
-    const { userId, messages = [] } = req.body;
+    const { messages = [] } = req.body;
+    const userId = resolveAuthUserId(req) || req.body.userId;
     if (!userId || !Array.isArray(messages)) {
       return res.status(400).json({ success: false, message: 'userId and messages array required' });
     }
@@ -386,7 +363,7 @@ chatbotRouter.post('/sync', async (req: Request, res: Response) => {
         sessionId: session.id,
         role: m.sender === 'user' ? 'user' : 'assistant',
         content: m.text || '',
-        sourceType: m.usedOllama ? 'llm' : m.ragApplied ? 'rag' : 'fallback',
+        sourceType: (m.usedGemini || m.provider === 'gemini') ? 'llm' : m.ragApplied ? 'rag' : 'fallback',
         ragRefs: m.ragRefs ? JSON.stringify(m.ragRefs) : null,
       })),
     });

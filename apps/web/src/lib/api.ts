@@ -205,13 +205,16 @@ export const api = {
       usedRag?: boolean;
       grounding?: any;
       aiConnected?: boolean;
+      provider?: 'gemini';
+      model?: string;
+      responseTimeMs?: number;
       suggestedActions?: any[];
       error?: string;
     }>('/tutor/chat', {
       method: 'POST',
       body: JSON.stringify({ message, history }),
     }),
-  getTutorStatus: () => fetchApi<{ aiConnected: boolean; model: string; message: string }>('/tutor/status'),
+  getTutorStatus: () => fetchApi<{ aiConnected: boolean; provider?: string; model: string; message: string }>('/tutor/status'),
   getTutorContext: () => fetchApi<{ context: any }>('/tutor/context'),
   getTutorPlan: () => fetchApi<{ plan: any }>('/tutor/plan'),
 

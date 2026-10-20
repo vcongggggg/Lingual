@@ -50,6 +50,7 @@ tutorRouter.get('/status', (req: Request, res: Response) => {
   const hasKey = Boolean(process.env.GEMINI_API_KEY);
   res.json({
     aiConnected: hasKey,
+    provider: 'gemini',
     model: process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite',
     message: hasKey ? 'Đã kết nối Gemini AI R2.0' : 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
   });
@@ -74,11 +75,12 @@ tutorRouter.post('/chat', rateLimitMiddleware, async (req: Request, res: Respons
     });
   }
 
-  // Kiểm tra key theo quy định: thiếu key -> báo rõ chưa kết nối AI, KHÔNG giả lập AI
+  // Kiểm tra key theo quy định: thiếu key -> báo rõ chưa kết nối AI, KHÔNG giả lập AI, KHÔNG fallback Ollama
   if (!process.env.GEMINI_API_KEY) {
     return res.status(503).json({
       error: 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
       aiConnected: false,
+      provider: 'gemini',
       reply: 'Chưa kết nối AI: Máy chủ chưa cấu hình GEMINI_API_KEY. Vui lòng liên hệ quản trị viên.',
     });
   }
@@ -87,9 +89,13 @@ tutorRouter.post('/chat', rateLimitMiddleware, async (req: Request, res: Respons
     const result = await geminiChatService.chat(userId, message.trim(), history);
     res.json(result);
   } catch (err: any) {
-    res.status(500).json({
-      error: err.message || 'Lỗi khi kết nối với AI LingLing',
+    res.status(503).json({
+      error: err.message || 'Chưa kết nối AI: Lỗi khi kết nối với Gemini AI LingLing.',
       aiConnected: false,
+      provider: 'gemini',
+      reply: err.message?.startsWith('Chưa kết nối AI')
+        ? err.message
+        : `Chưa kết nối AI: ${err.message || 'Lỗi kết nối Gemini API.'}`,
     });
   }
 });

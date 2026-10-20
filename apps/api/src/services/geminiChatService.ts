@@ -31,6 +31,9 @@ export interface ChatReplyResult {
   usedRag: boolean;
   grounding: GroundingData;
   aiConnected: boolean;
+  provider: 'gemini';
+  model: string;
+  responseTimeMs: number;
   suggestedActions?: { title: string; url: string }[];
 }
 
@@ -177,9 +180,11 @@ HÃY THAM CHIẾU CHÍNH XÁC CÁC SỐ LIỆU NÀY KHI TRẢ LỜI ĐỂ GIẢN
     });
 
     // 5. Gọi Gemini API với fallback model list
+    const startTime = Date.now();
     const models = this.getModelList();
     let lastError: any = null;
     let rawText = '';
+    let usedModel = models[0] || 'gemini-3.5-flash-lite';
 
     for (const model of models) {
       try {
@@ -200,7 +205,10 @@ HÃY THAM CHIẾU CHÍNH XÁC CÁC SỐ LIỆU NÀY KHI TRẢ LỜI ĐỂ GIẢN
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
         const response = await fetch(url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': apiKey,
+          },
           body: JSON.stringify(requestBody),
           signal: controller.signal,
         });
@@ -222,6 +230,7 @@ HÃY THAM CHIẾU CHÍNH XÁC CÁC SỐ LIỆU NÀY KHI TRẢ LỜI ĐỂ GIẢN
         }
 
         rawText = text;
+        usedModel = model;
         break;
       } catch (err: any) {
         lastError = err;
@@ -229,8 +238,10 @@ HÃY THAM CHIẾU CHÍNH XÁC CÁC SỐ LIỆU NÀY KHI TRẢ LỜI ĐỂ GIẢN
     }
 
     if (!rawText) {
-      throw lastError || new Error('Không thể kết nối đến AI Gemini.');
+      throw new Error('Chưa kết nối AI: ' + (lastError?.message || 'Không thể kết nối đến AI Gemini sau khi thử các model.'));
     }
+
+    const responseTimeMs = Date.now() - startTime;
 
     // 6. Tách [MOOD: <mood_name>] từ phản hồi
     let mood = 'speaking';
@@ -264,6 +275,9 @@ HÃY THAM CHIẾU CHÍNH XÁC CÁC SỐ LIỆU NÀY KHI TRẢ LỜI ĐỂ GIẢN
       usedRag: true,
       grounding,
       aiConnected: true,
+      provider: 'gemini',
+      model: usedModel,
+      responseTimeMs,
       suggestedActions,
     };
   }

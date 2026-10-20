@@ -26,6 +26,8 @@ interface ChatMessage {
   text: string;
   timestamp: string;
   mood?: MascotPose;
+  provider?: string;
+  responseTimeMs?: number;
   grounding?: {
     currentStreak: number;
     goldenHour: string;
@@ -196,6 +198,8 @@ export default function TutorPage() {
         mood: validMood,
         text: replyText,
         timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+        provider: res.provider || 'gemini',
+        responseTimeMs: res.responseTimeMs,
         grounding: res.grounding,
         suggestedActions: res.suggestedActions,
       };
@@ -321,8 +325,13 @@ export default function TutorPage() {
                   }`}
                 >
                   <div className="flex items-center justify-between gap-4 border-b border-ink/15 pb-2 text-[10px] font-black uppercase tracking-wider">
-                    <span className={isAssistant ? 'text-teal' : 'text-paper-2'}>
-                      {isAssistant ? 'Trợ lý Bò LingLing 🐮' : 'Bạn'}
+                    <span className={isAssistant ? 'text-teal flex items-center gap-1.5' : 'text-paper-2'}>
+                      <span>{isAssistant ? 'Trợ lý Bò LingLing 🐮' : 'Bạn'}</span>
+                      {isAssistant && msg.provider === 'gemini' && (
+                        <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-green-500/15 text-green-700 border border-green-500/30 font-sans tracking-normal lowercase">
+                          gemini{msg.responseTimeMs ? ` (${msg.responseTimeMs}ms)` : ''}
+                        </span>
+                      )}
                     </span>
                     <span className={isAssistant ? 'text-ink-muted' : 'text-paper-2/70'}>
                       {msg.timestamp}
