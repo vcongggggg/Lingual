@@ -28,7 +28,7 @@ export async function isDatabaseAvailable(): Promise<boolean> {
   }
   lastCheckTime = now;
   try {
-    const timeout = new Promise<never>((_, reject) => setTimeout(() => reject(new Error('timeout')), 300));
+    const timeout = new Promise<never>((_, reject) => setTimeout(() => reject(new Error('timeout')), 2000));
     await Promise.race([prisma.$queryRaw`SELECT 1`, timeout]);
     dbConnected = true;
     return true;

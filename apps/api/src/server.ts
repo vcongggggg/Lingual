@@ -27,7 +27,7 @@ import { speakingRouter } from './routes/speaking.js';
 import { tutorRouter } from './routes/tutor.js';
 import { stampRouter } from './routes/stamp.js';
 import { contentRouter } from './routes/content.js';
-import { checkDatabaseConnection, isDatabaseConnected } from './lib/prisma.js';
+import { checkDatabaseConnection, isDatabaseConnected, isDatabaseAvailable } from './lib/prisma.js';
 
 dotenv.config();
 validateEnvironment();
@@ -90,11 +90,12 @@ try {
   }
 } catch {}
 
-const healthHandler = (req: express.Request, res: express.Response) => {
+const healthHandler = async (req: express.Request, res: express.Response) => {
+  const isDbLive = await isDatabaseAvailable();
   res.json({
     status: 'ok',
     version: apiVersion,
-    database: isDatabaseConnected() ? 'connected' : 'disconnected',
+    database: isDbLive ? 'connected' : 'disconnected',
     environment: process.env.NODE_ENV || 'development',
     service: 'Lingual Backend API',
     timestamp: new Date().toISOString(),
