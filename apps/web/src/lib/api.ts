@@ -104,6 +104,26 @@ export const api = {
     }
   },
 
+  // Google OAuth 2.0
+  getGoogleAuthStatus: () =>
+    fetchApi<{ configured: boolean; isConfigured?: boolean; clientId: string | null; redirectUri?: string; message?: string }>(
+      '/auth/google/status'
+    ),
+  getGoogleAuthUrl: (locale?: string) =>
+    fetchApi<{ configured: boolean; isConfigured?: boolean; url?: string; redirectUri?: string }>(
+      `/auth/google/url${toQueryString({ locale })}`
+    ),
+  verifyGoogleIdToken: (idToken: string) =>
+    fetchApi<{ user: any; accessToken: string }>('/auth/google/verify-token', {
+      method: 'POST',
+      body: JSON.stringify({ idToken }),
+    }),
+  loginWithGoogleDev: (payload: { email: string; name?: string; avatarUrl?: string; googleId?: string }) =>
+    fetchApi<{ user: any; accessToken: string }>('/auth/google/dev-login', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
   // 3. SRS
   getSrsQueue: () => fetchApi<{ queue: any[]; stats: { dueToday: number; learning: number; mastered: number; newWords: number; totalWords: number } }>('/srs/queue'),
 

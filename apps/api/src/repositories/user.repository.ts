@@ -502,6 +502,43 @@ export class UserRepository {
     }
   }
 
+  public async linkGoogleAccount(
+    userId: string,
+    googleId: string,
+    avatarUrl?: string | null
+  ): Promise<UserEntity | null> {
+    const updateData: any = { googleId };
+    if (avatarUrl) {
+      updateData.avatarUrl = avatarUrl;
+    }
+
+    if (await isDatabaseAvailable()) {
+      try {
+        const updated = await prisma.user.update({
+          where: { id: userId },
+          data: updateData,
+        });
+        const norm = this.normalizeUser(updated);
+        this.inMemoryUsers[userId] = norm;
+        this.save();
+        return norm;
+      } catch (err) {
+        console.warn('[UserRepository] Failed to link Google account in DB:', err);
+      }
+    }
+
+    if (this.inMemoryUsers[userId]) {
+      this.inMemoryUsers[userId].googleId = googleId;
+      if (avatarUrl) {
+        this.inMemoryUsers[userId].avatarUrl = avatarUrl;
+      }
+      this.inMemoryUsers[userId].updatedAt = new Date();
+      this.save();
+      return this.inMemoryUsers[userId];
+    }
+    return null;
+  }
+
   public async getAllUsers(): Promise<Omit<UserEntity, 'passwordHash'>[]> {
     try {
       const users = await prisma.user.findMany({

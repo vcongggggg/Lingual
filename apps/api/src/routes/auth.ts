@@ -129,28 +129,90 @@ authRouter.post('/logout', (req, res) => {
 // GOOGLE OAUTH 2.0 ENDPOINTS
 // ============================================================================
 
-const getGoogleConfig = () => ({
-  clientId: process.env.GOOGLE_CLIENT_ID || '',
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-  callbackUrl: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:4000/api/auth/google/callback',
-  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+const getGoogleConfig = () => {
+  const clientId = process.env.GOOGLE_CLIENT_ID || '';
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET || '';
+  const redirectUri =
+    process.env.GOOGLE_REDIRECT_URI ||
+    process.env.GOOGLE_CALLBACK_URL ||
+    'http://localhost:4000/api/v1/auth/google/callback';
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+  const isConfigured = Boolean(clientId && clientSecret);
+
+  return {
+    clientId,
+    clientSecret,
+    redirectUri,
+    frontendUrl,
+    isConfigured,
+  };
+};
+
+// 0. Check Google OAuth Configuration Status
+authRouter.get('/google/status', (req, res) => {
+  const { isConfigured, clientId, redirectUri } = getGoogleConfig();
+  return res.json({
+    configured: isConfigured,
+    isConfigured,
+    clientId: isConfigured ? clientId : null,
+    redirectUri,
+    message: isConfigured
+      ? 'Google OAuth 2.0 đã được cấu hình sẵn sàng.'
+      : 'Google OAuth chưa được cấu hình (thiếu GOOGLE_CLIENT_ID hoặc GOOGLE_CLIENT_SECRET trong env).',
+  });
 });
 
-// 1. Get Google OAuth URL or Configuration Status
-authRouter.get('/google/url', (req, res) => {
-  const { clientId, callbackUrl } = getGoogleConfig();
+// 1. Direct initiate route: Redirects user straight to Google Consent Screen
+authRouter.get('/google', (req, res) => {
+  const { isConfigured, clientId, redirectUri, frontendUrl } = getGoogleConfig();
   const locale = (req.query.locale as string) || 'vi';
 
-  if (!clientId) {
-    return res.json({
+  if (!isConfigured) {
+    if (req.accepts('html') && !req.accepts('json')) {
+      return res.redirect(`${frontendUrl}/login?error=GoogleAuthConfigMissing`);
+    }
+    return res.status(503).json({
+      configured: false,
       isConfigured: false,
-      message: 'Google OAuth chưa được cấu hình Client ID.',
+      error: 'Google OAuth chưa được cấu hình (thiếu GOOGLE_CLIENT_ID hoặc GOOGLE_CLIENT_SECRET trong env).',
     });
   }
 
   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
   const options = {
-    redirect_uri: callbackUrl,
+    redirect_uri: redirectUri,
+    client_id: clientId,
+    access_type: 'offline',
+    response_type: 'code',
+    prompt: 'select_account',
+    scope: [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email',
+      'openid',
+    ].join(' '),
+    state: JSON.stringify({ locale }),
+  };
+
+  const qs = new URLSearchParams(options);
+  return res.redirect(`${rootUrl}?${qs.toString()}`);
+});
+
+// 2. Get Google OAuth URL or Configuration Status
+authRouter.get('/google/url', (req, res) => {
+  const { isConfigured, clientId, redirectUri } = getGoogleConfig();
+  const locale = (req.query.locale as string) || 'vi';
+
+  if (!isConfigured) {
+    return res.status(503).json({
+      configured: false,
+      isConfigured: false,
+      error: 'Google OAuth chưa được cấu hình (thiếu GOOGLE_CLIENT_ID hoặc GOOGLE_CLIENT_SECRET trong env).',
+    });
+  }
+
+  const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
+  const options = {
+    redirect_uri: redirectUri,
     client_id: clientId,
     access_type: 'offline',
     response_type: 'code',
@@ -165,14 +227,16 @@ authRouter.get('/google/url', (req, res) => {
 
   const qs = new URLSearchParams(options);
   return res.json({
+    configured: true,
     isConfigured: true,
     url: `${rootUrl}?${qs.toString()}`,
+    redirectUri,
   });
 });
 
-// 2. Google OAuth Callback (Receives auth code from Google)
+// 3. Google OAuth Callback (Receives auth code from Google)
 authRouter.get('/google/callback', async (req, res) => {
-  const { clientId, clientSecret, callbackUrl, frontendUrl } = getGoogleConfig();
+  const { isConfigured, clientId, clientSecret, redirectUri, frontendUrl } = getGoogleConfig();
   const code = req.query.code as string;
   const stateStr = req.query.state as string;
   let locale = 'vi';
@@ -183,8 +247,16 @@ authRouter.get('/google/callback', async (req, res) => {
     }
   } catch {}
 
+  if (!isConfigured) {
+    return res.redirect(`${frontendUrl}/login?error=GoogleAuthConfigMissing`);
+  }
+
+  if (req.query.error) {
+    return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent(req.query.error as string)}`);
+  }
+
   if (!code) {
-    return res.redirect(`${frontendUrl}/${locale}/login?error=GoogleAuthFailed`);
+    return res.redirect(`${frontendUrl}/login?error=GoogleAuthFailed`);
   }
 
   try {
@@ -195,7 +267,7 @@ authRouter.get('/google/callback', async (req, res) => {
         code,
         client_id: clientId,
         client_secret: clientSecret,
-        redirect_uri: callbackUrl,
+        redirect_uri: redirectUri,
         grant_type: 'authorization_code',
       }),
     });
@@ -203,7 +275,7 @@ authRouter.get('/google/callback', async (req, res) => {
     const tokenData = (await tokenResponse.json()) as any;
     if (!tokenResponse.ok || !tokenData.access_token) {
       console.error('Google token exchange error:', tokenData);
-      return res.redirect(`${frontendUrl}/${locale}/login?error=TokenExchangeFailed`);
+      return res.redirect(`${frontendUrl}/login?error=TokenExchangeFailed`);
     }
 
     const userinfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
@@ -212,19 +284,29 @@ authRouter.get('/google/callback', async (req, res) => {
     const googleProfile = (await userinfoRes.json()) as any;
 
     if (!googleProfile.email) {
-      return res.redirect(`${frontendUrl}/${locale}/login?error=NoEmailFromGoogle`);
+      return res.redirect(`${frontendUrl}/login?error=NoEmailFromGoogle`);
     }
 
-    let user = await userRepository.findByEmail(googleProfile.email);
+    const normalizedEmail = googleProfile.email.toLowerCase();
+    let user = await userRepository.findByEmail(normalizedEmail);
 
-    if (!user) {
+    if (user) {
+      // Liên kết tài khoản nếu đã tồn tại bằng email (giữ nguyên passwordHash)
+      if (!user.googleId || !user.avatarUrl) {
+        await userRepository.linkGoogleAccount(
+          user.id,
+          user.googleId || googleProfile.sub,
+          user.avatarUrl || googleProfile.picture || null
+        );
+      }
+    } else {
       user = await userRepository.createUser({
         id: `google-user-${Date.now()}`,
-        email: googleProfile.email,
+        email: normalizedEmail,
         googleId: googleProfile.sub,
         avatarUrl: googleProfile.picture || null,
         authProvider: 'google',
-        displayName: googleProfile.name || googleProfile.email.split('@')[0],
+        displayName: googleProfile.name || normalizedEmail.split('@')[0],
         role: 'STUDENT' as any,
         interfaceLocale: locale,
         timezone: 'Asia/Ho_Chi_Minh',
@@ -238,6 +320,7 @@ authRouter.get('/google/callback', async (req, res) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: '/',
     });
 
     const userPayload = {
@@ -251,17 +334,17 @@ authRouter.get('/google/callback', async (req, res) => {
     };
 
     return res.redirect(
-      `${frontendUrl}/${locale}/auth/callback?token=${token}&user=${encodeURIComponent(
+      `${frontendUrl}/auth/callback?token=${token}&user=${encodeURIComponent(
         JSON.stringify(userPayload)
       )}`
     );
   } catch (err: any) {
     console.error('Error during Google callback:', err);
-    return res.redirect(`${frontendUrl}/${locale}/login?error=ServerError`);
+    return res.redirect(`${frontendUrl}/login?error=ServerError`);
   }
 });
 
-// 3. Dev Google Login / Simulator (Blocked in Production)
+// 4. Dev Google Login / Simulator (Blocked in Production)
 authRouter.post('/google/dev-login', async (req, res) => {
   if (process.env.NODE_ENV === 'production') {
     return res.status(404).json({ error: 'Endpoint không tồn tại' });
@@ -276,7 +359,15 @@ authRouter.post('/google/dev-login', async (req, res) => {
     const normalizedEmail = email.toLowerCase();
     let user = await userRepository.findByEmail(normalizedEmail);
 
-    if (!user) {
+    if (user) {
+      if (!user.googleId || !user.avatarUrl) {
+        await userRepository.linkGoogleAccount(
+          user.id,
+          user.googleId || googleId || `gid-${Date.now()}`,
+          user.avatarUrl || avatarUrl || null
+        );
+      }
+    } else {
       user = await userRepository.createUser({
         id: `google-dev-${Date.now()}`,
         email: normalizedEmail,
@@ -299,6 +390,7 @@ authRouter.post('/google/dev-login', async (req, res) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: '/',
     });
 
     const { passwordHash: _, ...userWithoutPassword } = user;
@@ -308,8 +400,17 @@ authRouter.post('/google/dev-login', async (req, res) => {
   }
 });
 
-// 4. Verify Google ID Token
+// 5. Verify Google ID Token (Client-side One-tap or Google SDK)
 authRouter.post('/google/verify-token', async (req, res) => {
+  const { isConfigured, clientId } = getGoogleConfig();
+  if (!isConfigured) {
+    return res.status(503).json({
+      configured: false,
+      isConfigured: false,
+      error: 'Google OAuth chưa được cấu hình trên máy chủ (thiếu GOOGLE_CLIENT_ID hoặc GOOGLE_CLIENT_SECRET).',
+    });
+  }
+
   try {
     const { idToken } = req.body;
     if (!idToken) {
@@ -323,15 +424,29 @@ authRouter.post('/google/verify-token', async (req, res) => {
       return res.status(401).json({ error: 'Token Google không hợp lệ hoặc đã hết hạn' });
     }
 
-    let user = await userRepository.findByEmail(tokenInfo.email);
-    if (!user) {
+    // Audience verification
+    if (tokenInfo.aud && clientId && tokenInfo.aud !== clientId) {
+      return res.status(401).json({ error: 'Token Google không khớp với Client ID của ứng dụng' });
+    }
+
+    const normalizedEmail = tokenInfo.email.toLowerCase();
+    let user = await userRepository.findByEmail(normalizedEmail);
+    if (user) {
+      if (!user.googleId || !user.avatarUrl) {
+        await userRepository.linkGoogleAccount(
+          user.id,
+          user.googleId || tokenInfo.sub,
+          user.avatarUrl || tokenInfo.picture || null
+        );
+      }
+    } else {
       user = await userRepository.createUser({
         id: `google-user-${Date.now()}`,
-        email: tokenInfo.email,
+        email: normalizedEmail,
         googleId: tokenInfo.sub,
         avatarUrl: tokenInfo.picture || null,
         authProvider: 'google',
-        displayName: tokenInfo.name || tokenInfo.email.split('@')[0],
+        displayName: tokenInfo.name || normalizedEmail.split('@')[0],
         role: 'STUDENT' as any,
         interfaceLocale: 'vi',
         timezone: 'Asia/Ho_Chi_Minh',
@@ -345,12 +460,13 @@ authRouter.post('/google/verify-token', async (req, res) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: '/',
     });
 
     const { passwordHash: _, ...userWithoutPassword } = user;
     return res.json({ user: userWithoutPassword, accessToken: token });
-  } catch (err) {
-    return res.status(500).json({ error: 'Lỗi xác thực Google ID Token' });
+  } catch (err: any) {
+    return res.status(500).json({ error: 'Lỗi xác thực Google ID Token: ' + (err.message || 'Unknown') });
   }
 });
 

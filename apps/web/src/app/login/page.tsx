@@ -7,6 +7,7 @@ import { Input } from '../../components/ui/Input';
 import { Button } from '../../components/ui/Button';
 import { LingLing } from '../../components/ui/LingLing';
 import { api, setAuthToken } from '../../lib/api';
+import { GoogleLoginButton } from '../../components/auth/GoogleLoginButton';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -84,6 +85,21 @@ export default function LoginPage() {
             {loading ? 'Đang mở sổ tay...' : 'Vào Học Ngay →'}
           </Button>
         </form>
+
+        {/* Divider */}
+        <div className="relative my-5">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t-2 border-dashed border-ink/20" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-card px-3 text-[11px] font-black text-ink-muted">
+              hoặc
+            </span>
+          </div>
+        </div>
+
+        {/* Google OAuth Login Button */}
+        <GoogleLoginButton mode="login" />
 
         <div className="mt-6 pt-5 border-t-2 border-ink/15 text-center text-xs font-bold text-ink-soft">
           Chưa có tài khoản Lingual?{' '}
