@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Flame, User as UserIcon, LogOut, Menu, X, BookOpen, Layers, Sparkles, GraduationCap, Settings } from 'lucide-react';
+import { Flame, User as UserIcon, LogOut, Menu, X, BookOpen, Layers, Sparkles, GraduationCap, Settings, Bell } from 'lucide-react';
 import { api, getAuthToken, removeAuthToken } from '../lib/api';
+import { NotificationBell } from './notifications/NotificationBell';
 
 export function Navbar() {
   const pathname = usePathname();
@@ -92,6 +93,9 @@ export function Navbar() {
                 <span>{currentUser.displayName}</span>
               </Link>
 
+              {/* Notification Bell */}
+              <NotificationBell />
+
               {/* Settings button */}
               <Link
                 href="/settings"
@@ -166,6 +170,13 @@ export function Navbar() {
                     <LogOut className="w-3.5 h-3.5" /> Đăng xuất
                   </button>
                 </div>
+                <Link
+                  href="/notifications"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-2 text-xs font-bold text-ink border border-ink/40 bg-card rounded-xl flex items-center gap-2"
+                >
+                  <Bell className="w-3.5 h-3.5" /> Thông báo
+                </Link>
                 <Link
                   href="/settings"
                   onClick={() => setMobileMenuOpen(false)}

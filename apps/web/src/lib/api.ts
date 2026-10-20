@@ -441,5 +441,24 @@ export const api = {
     method: 'PATCH',
     body: JSON.stringify({ taskId, completed }),
   }),
+
+  // 14. Notifications System (Phase 1)
+  getNotifications: (params?: { unreadOnly?: boolean; limit?: number; cursor?: string }) =>
+    fetchApi<{ notifications: any[]; nextCursor: string | null; total: number }>(`/notifications${toQueryString(params)}`),
+  getNotificationUnreadCount: () => fetchApi<{ count: number }>('/notifications/unread-count'),
+  markNotificationAsRead: (id: string) => fetchApi<{ success: boolean; notification: any }>(`/notifications/${id}/read`, { method: 'PATCH' }),
+  markAllNotificationsAsRead: () => fetchApi<{ success: boolean; count: number }>('/notifications/read-all', { method: 'POST' }),
+  deleteNotification: (id: string) => fetchApi<{ success: boolean }>(`/notifications/${id}`, { method: 'DELETE' }),
+  getNotificationPreferences: () => fetchApi<{ preferences: any }>('/notifications/preferences'),
+  updateNotificationPreferences: (data: any) =>
+    fetchApi<{ success: boolean; preferences: any }>('/notifications/preferences', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+  triggerDevNotification: (data: any) =>
+    fetchApi<{ success: boolean; notification: any; message?: string }>('/notifications/_trigger', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
 };
 

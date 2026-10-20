@@ -67,6 +67,8 @@ model User {
   srsReviewLogs        SrsReviewLog[]
   questProgress        UserQuestProgress[]
   stampLedgers         StampLedger[]
+  notifications          Notification[]
+  notificationPreference NotificationPreference?
 
   @@map("users")
 }
@@ -1546,3 +1548,56 @@ model IeltsWritingTopic {
   @@index([type])
   @@map("ielts_writing_topics")
 }
+
+// ==========================================
+// NOTIFICATION SYSTEM (PHASE 1)
+// ==========================================
+
+enum NotificationType {
+  SRS_DUE
+  STREAK_AT_RISK
+  GOLDEN_HOUR
+  WEAK_SKILL
+  FORGETFUL_WORDS
+  WEEKLY_REPORT
+  ACHIEVEMENT
+  SYSTEM
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  title     String
+  body      String
+  deepLink  String?
+  isRead    Boolean          @default(false)
+  readAt    DateTime?
+  dedupeKey String?
+  metadata  Json?
+  createdAt DateTime         @default(now())
+
+  @@unique([userId, type, dedupeKey])
+  @@index([userId, isRead, createdAt])
+  @@map("notifications")
+}
+
+model NotificationPreference {
+  userId         String   @id
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enabled        Boolean  @default(true)
+  srsDue         Boolean  @default(true)
+  streakRisk     Boolean  @default(true)
+  goldenHour     Boolean  @default(true)
+  weakSkill      Boolean  @default(true)
+  forgetfulWords Boolean  @default(true)
+  weekly         Boolean  @default(true)
+  achievement    Boolean  @default(true)
+  quietStart     String   @default("22:00")
+  quietEnd       String   @default("07:00")
+  updatedAt      DateTime @updatedAt
+
+  @@map("notification_preferences")
+}
+
