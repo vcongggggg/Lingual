@@ -29,6 +29,7 @@ import { stampRouter } from './routes/stamp.js';
 import { contentRouter } from './routes/content.js';
 import { insightsRouter } from './routes/insights.js';
 import { notificationsRouter } from './routes/notifications.js';
+import { notificationTriggerEngine } from './services/notificationTriggerEngine.js';
 import { checkDatabaseConnection, isDatabaseConnected, isDatabaseAvailable } from './lib/prisma.js';
 
 dotenv.config();
@@ -142,6 +143,11 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 app.listen(PORT, () => {
   console.log(`🚀 Lingual Security Hardened API running on http://localhost:${PORT}`);
+  try {
+    notificationTriggerEngine.initNotificationCronJobs();
+  } catch (err) {
+    console.error('Không thể khởi chạy Notification Trigger Engine:', err);
+  }
 });
 
 export default app;

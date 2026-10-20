@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
 import { notificationService } from '../services/notificationService.js';
+import { notificationTriggerEngine } from '../services/notificationTriggerEngine.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
 import { NotificationType } from '@prisma/client';
 
@@ -189,5 +190,64 @@ notificationsRouter.post('/_trigger', async (req: Request, res: Response) => {
     res.status(201).json({ success: true, notification });
   } catch (err: any) {
     res.status(500).json({ error: err.message || 'Lỗi khi kích hoạt thông báo thử nghiệm' });
+  }
+});
+
+/**
+ * POST /api/v1/notifications/_trigger-engine
+ * DEV ONLY: Kích hoạt Trigger Engine cho từng loại thông báo:
+ * SRS_DUE, STREAK_AT_RISK, GOLDEN_HOUR, WEAK_SKILL, WEEKLY_REPORT, ACHIEVEMENT
+ */
+notificationsRouter.post('/_trigger-engine', async (req: Request, res: Response) => {
+  if (process.env.NODE_ENV === 'production') {
+    return res.status(403).json({ error: 'Endpoint này chỉ khả dụng trong môi trường phát triển (DEV).' });
+  }
+
+  try {
+    const authUserId = (req as any).authUserId;
+    const { trigger, userId, force, ignoreHourCheck, achievement, weekNumber, title } = req.body;
+    const targetUserId = userId || authUserId;
+
+    let result: any = null;
+
+    switch (trigger) {
+      case 'SRS_DUE':
+        result = await notificationTriggerEngine.triggerSrsDue(targetUserId, { force: Boolean(force) });
+        break;
+      case 'STREAK_AT_RISK':
+        result = await notificationTriggerEngine.triggerStreakAtRisk(targetUserId, { force: Boolean(force) });
+        break;
+      case 'GOLDEN_HOUR':
+        result = await notificationTriggerEngine.triggerGoldenHour(targetUserId, {
+          force: Boolean(force),
+          ignoreHourCheck: ignoreHourCheck !== false,
+        });
+        break;
+      case 'WEAK_SKILL':
+        result = await notificationTriggerEngine.triggerWeakSkill(targetUserId, { force: Boolean(force) });
+        break;
+      case 'WEEKLY_REPORT':
+        result = await notificationTriggerEngine.triggerWeeklyReport(targetUserId, {
+          force: Boolean(force),
+          weekNumber,
+          title,
+        });
+        break;
+      case 'ACHIEVEMENT':
+        result = await notificationTriggerEngine.triggerAchievement(
+          targetUserId,
+          achievement || { id: 'achieve-test', name: 'Chiến Binh Kiên Trì' },
+          { force: Boolean(force) }
+        );
+        break;
+      default:
+        return res.status(400).json({
+          error: `Loại trigger không hợp lệ: ${trigger}. Chọn: SRS_DUE, STREAK_AT_RISK, GOLDEN_HOUR, WEAK_SKILL, WEEKLY_REPORT, ACHIEVEMENT.`,
+        });
+    }
+
+    res.json({ success: true, trigger, result });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || 'Lỗi khi kích hoạt Trigger Engine' });
   }
 });
