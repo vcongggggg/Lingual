@@ -543,20 +543,24 @@ div[data-nextjs-route-announcer] {
   animation: notch-snap-wiggle 180ms ease-out;
 }
 
-/* 10. Chuyển Route / Page Entry */
+/* 10. Chuyển Route / Page Entry (Paper Fade & Lift Transition) */
 @keyframes page-entry-fade {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(14px);
   }
-  to {
+  60% {
+    opacity: 0.85;
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 .animate-page-entry {
-  animation: page-entry-fade 200ms var(--ease-paper) forwards;
+  animation: page-entry-fade 350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
 }
 
 /* 11. Hỗ Trợ Tôn Trọng Người Dùng Bật Giảm Chuyển Động */

@@ -34,6 +34,8 @@ export function Navbar() {
 
   const navLinks = [
     { href: '/dashboard', label: 'Lộ trình' },
+    { href: '/daily', label: 'Thử thách ngày' },
+    { href: '/letters', label: 'Bản tin' },
     { href: '/srs', label: 'Thẻ ghi nhớ' },
     { href: '/vocabulary', label: 'Từ vựng' },
     { href: '/games', label: 'Game' },
