@@ -20,6 +20,7 @@ import { LingLing } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
 import { useCountUp } from '../../lib/useCountUp';
 import { CowInsightsSection } from '../../components/analytics/CowInsightsSection';
+import { CowWeeklyReportCard } from '../../components/analytics/CowWeeklyReportCard';
 
 interface SkillScore {
   key: string;
@@ -388,6 +389,11 @@ export default function AnalyticsPage() {
             })}
           </div>
         </div>
+      </div>
+
+      {/* BÁO CÁO BÒ HÀNG TUẦN & KẾ HOẠCH 7 NGÀY (V2 LLM GEMINI) */}
+      <div id="bao-cao-bo">
+        <CowWeeklyReportCard />
       </div>
 
       {/* GÓC NHÌN CỦA BÒ LINGLING - AI PHÂN TÍCH HÀNH VI (V1 RULE-BASED) */}

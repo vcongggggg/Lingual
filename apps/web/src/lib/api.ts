@@ -411,5 +411,26 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ enabled }),
     }),
+
+  // 13. AI Learning Insights V2 (Gemini LLM)
+  getWeeklyReportLatest: () => fetchApi<{ enabled: boolean; status?: string; report: any }>('/insights/v2/weekly-report/latest'),
+  getWeeklyReportHistory: (limit?: number) => fetchApi<{ enabled: boolean; status?: string; reports: any[] }>(`/insights/v2/weekly-report/history${toQueryString({ limit })}`),
+  generateWeeklyReport: (forceNew?: boolean) => fetchApi<{ success: boolean; enabled: boolean; report: any; error?: string; aiConnected?: boolean }>('/insights/v2/weekly-report/generate', {
+    method: 'POST',
+    body: JSON.stringify({ forceNew }),
+  }),
+  explainAnomaly: (metricKey: string, metricValue?: number) => fetchApi<{ success: boolean; enabled: boolean; explanation: any; error?: string; aiConnected?: boolean }>('/insights/v2/anomaly/explain', {
+    method: 'POST',
+    body: JSON.stringify({ metricKey, metricValue }),
+  }),
+  getStudyPlan: () => fetchApi<{ enabled: boolean; status?: string; plan: any }>('/insights/v2/study-plan'),
+  generateStudyPlan: (goal: string, forceNew?: boolean) => fetchApi<{ success: boolean; enabled: boolean; plan: any; error?: string; aiConnected?: boolean }>('/insights/v2/study-plan/generate', {
+    method: 'POST',
+    body: JSON.stringify({ goal, forceNew }),
+  }),
+  toggleStudyPlanTask: (taskId: string, completed: boolean) => fetchApi<{ success: boolean; plan: any }>('/insights/v2/study-plan/toggle-task', {
+    method: 'PATCH',
+    body: JSON.stringify({ taskId, completed }),
+  }),
 };
 
