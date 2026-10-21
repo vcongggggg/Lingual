@@ -4,9 +4,11 @@ import re
 import sys
 import psycopg2
 
-sys.stdout.reconfigure(encoding='utf-8')
+try:
+    from db_helper import get_database_url
+except ImportError:
+    from scripts.db_helper import get_database_url
 
-DB_URL = 'postgresql://postgres:HIgb8WOzsluowBEjq5BA_BNtuEIy6bbk@localhost:5432/linguaflow_db'
 RESULTS_DIR = r'C:\Mod\muse-data-exchange\results'
 
 def normalize(text):
@@ -55,7 +57,7 @@ def main():
     
     # 3. Lay du lieu hien tai trong sentence_bank (PostgreSQL)
     print(f'[3] Dang load du lieu existing tu bang sentence_bank...')
-    conn = psycopg2.connect(DB_URL)
+    conn = psycopg2.connect(get_database_url())
     cur = conn.cursor()
     cur.execute('SELECT id, en, vi FROM sentence_bank')
     existing_rows = cur.fetchall()

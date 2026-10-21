@@ -62,6 +62,9 @@ Sao chép tệp mẫu và cập nhật các biến môi trường:
 cp .env.example .env
 ```
 
+> [!NOTE]
+> Các tiện ích kiểm thử và nạp dữ liệu trong thư mục `scripts/` sử dụng biến môi trường `DATABASE_URL` (hoặc `DB_PASSWORD`) từ `.env` hoặc từ shell session. Tuyệt đối không hardcode thông tin nhạy cảm vào mã nguồn.
+
 ### 3. Khởi tạo Cơ sở dữ liệu
 ```bash
 # Khởi chạy PostgreSQL và Redis nội bộ

@@ -2,13 +2,14 @@ import json
 import sys
 import psycopg2
 
-sys.stdout.reconfigure(encoding='utf-8')
-
-DB_URL = 'postgresql://postgres:HIgb8WOzsluowBEjq5BA_BNtuEIy6bbk@localhost:5432/linguaflow_db'
+try:
+    from db_helper import get_database_url
+except ImportError:
+    from scripts.db_helper import get_database_url
 
 def verify():
     print('=== [VERIFICATION OF WAVE 1 IMPORT] ===')
-    conn = psycopg2.connect(DB_URL)
+    conn = psycopg2.connect(get_database_url())
     cur = conn.cursor()
     
     # 1. SentenceBank

@@ -5,15 +5,16 @@ import time
 import psycopg2
 from psycopg2.extras import execute_batch
 
-sys.stdout.reconfigure(encoding='utf-8')
-
-DB_URL = 'postgresql://postgres:HIgb8WOzsluowBEjq5BA_BNtuEIy6bbk@localhost:5432/linguaflow_db'
+try:
+    from db_helper import get_database_url
+except ImportError:
+    from scripts.db_helper import get_database_url
 
 def main():
     print('=== [LINGUAFLOW WAVE 1 DATA IMPORT] ===')
     start_time = time.time()
     
-    conn = psycopg2.connect(DB_URL)
+    conn = psycopg2.connect(get_database_url())
     conn.autocommit = False
     cur = conn.cursor()
     

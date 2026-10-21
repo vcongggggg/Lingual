@@ -8,9 +8,11 @@ import psycopg2
 from psycopg2.extras import execute_batch
 from collections import defaultdict
 
-sys.stdout.reconfigure(encoding='utf-8')
+try:
+    from db_helper import get_database_url
+except ImportError:
+    from scripts.db_helper import get_database_url
 
-DB_URL = 'postgresql://postgres:HIgb8WOzsluowBEjq5BA_BNtuEIy6bbk@localhost:5432/linguaflow_db'
 RESULTS_DIR = r'C:\Mod\muse-data-exchange\results'
 
 def normalize(text):
@@ -45,7 +47,7 @@ def main():
     print(f'[2] Tong so ban ghi doc tu 35 files: {total_file_records} (Khop manifest 170.221)')
     
     # 3. Ket noi DB va lay thong tin hien tai
-    conn = psycopg2.connect(DB_URL)
+    conn = psycopg2.connect(get_database_url())
     conn.autocommit = False
     cur = conn.cursor()
     

@@ -73,7 +73,12 @@ print(f'Matched word-sentence slots: {matched_word_slots}')
 print(f'Unmatched word-sentence slots: {unmatched_word_slots}')
 
 import psycopg2
-conn = psycopg2.connect('postgresql://postgres:HIgb8WOzsluowBEjq5BA_BNtuEIy6bbk@localhost:5432/linguaflow_db')
+try:
+    from db_helper import get_database_url
+except ImportError:
+    from scripts.db_helper import get_database_url
+
+conn = psycopg2.connect(get_database_url())
 cur = conn.cursor()
 cur.execute('SELECT id, lower(trim("targetText")) FROM vocabularies')
 db_vocab = {}

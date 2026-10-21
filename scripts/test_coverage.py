@@ -6,9 +6,11 @@ import uuid
 import psycopg2
 from collections import defaultdict
 
-sys.stdout.reconfigure(encoding='utf-8')
+try:
+    from db_helper import get_database_url
+except ImportError:
+    from scripts.db_helper import get_database_url
 
-DB_URL = 'postgresql://postgres:HIgb8WOzsluowBEjq5BA_BNtuEIy6bbk@localhost:5432/linguaflow_db'
 RESULTS_DIR = r'C:\Mod\muse-data-exchange\results'
 
 def normalize(text):
@@ -18,7 +20,7 @@ def normalize(text):
     return re.sub(r'\s+', ' ', text)
 
 def test_coverage():
-    conn = psycopg2.connect(DB_URL)
+    conn = psycopg2.connect(get_database_url())
     cur = conn.cursor()
     
     # 1. Lay vocab chua co link
