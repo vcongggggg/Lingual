@@ -32,7 +32,7 @@ interface AuditLogRecord {
   afterState?: string;
 }
 
-const ALLOWED_ADMIN_ROLES = ['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'];
+const ALLOWED_AUDIT_LOG_ROLES = ['ADMIN', 'SUPER_ADMIN'];
 
 export default function AdminAuditLogPage() {
   const router = useRouter();
@@ -59,7 +59,7 @@ export default function AdminAuditLogPage() {
         }
 
         const currentUser = meRes.user;
-        if (!currentUser.role || !ALLOWED_ADMIN_ROLES.includes(currentUser.role)) {
+        if (!currentUser.role || !ALLOWED_AUDIT_LOG_ROLES.includes(currentUser.role)) {
           if (isMounted) {
             setIsAuthorized(false);
             setAuthError('Bạn không có quyền truy cập nhật ký kiểm toán. Đang chuyển hướng về Bảng điều khiển...');
