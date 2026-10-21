@@ -808,7 +808,7 @@ export default function SettingsPage() {
         <div className="space-y-3 text-sm text-ink-muted leading-relaxed">
           <div className="p-3 bg-paper-2 border border-ink/20 rounded-xl">
             <span className="font-bold text-ink block">Ngân hàng câu ví dụ song ngữ:</span>
-            <span>Câu ví dụ: Tatoeba (CC BY 2.0 FR)</span>
+            <span>Câu ví dụ: Tatoeba (CC BY 2.0 FR) | TED2020 (OPUS) - TED Talks, CC BY-NC-ND 4.0, sử dụng phi thương mại cho mục đích học tập</span>
           </div>
           <div className="p-3 bg-paper-2 border border-ink/20 rounded-xl">
             <span className="font-bold text-ink block">Hội thoại & Luyện nghe:</span>

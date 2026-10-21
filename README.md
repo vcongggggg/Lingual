@@ -124,7 +124,7 @@ pnpm --filter @linguaflow/api test
 ## 📜 Giấy Phép, Nguồn Dữ Liệu & Ghi Công (Attribution)
 
 - Dự án phát triển phục vụ học phần và đồ án công nghệ Lingual / LinguaFlow.
-- **Câu ví dụ:** Tatoeba ([CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/))
+- **Câu ví dụ:** Tatoeba ([CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/)), TED2020 (OPUS) - TED Talks, CC BY-NC-ND 4.0, sử dụng phi thương mại cho mục đích học tập
 - **Hội thoại & Luyện nghe:** VOA Learning English (Public Domain)
 - **Truyện song ngữ & Văn học:** Project Gutenberg (Public Domain)
 
