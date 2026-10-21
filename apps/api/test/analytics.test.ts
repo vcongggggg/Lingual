@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
@@ -6,6 +8,10 @@ import { analyticsRouter } from '../src/routes/analytics.js';
 function createTestApp() {
   const app = express();
   app.use(express.json());
+  app.use((req, _res, next) => {
+    (req as any).user = { id: 'demo-user-id-001', email: 'learner@linguaflow.com', role: 'STUDENT' };
+    next();
+  });
   app.use('/api/v1/analytics', analyticsRouter);
   return app;
 }

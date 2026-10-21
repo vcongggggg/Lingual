@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
@@ -6,6 +8,17 @@ import { communityRouter } from '../src/routes/community.js';
 function createTestApp() {
   const app = express();
   app.use(express.json());
+  app.use((req, _res, next) => {
+    if (!req.headers.authorization) {
+      const targetId =
+        (req.body as any)?.userId ||
+        (req.query as any)?.userId ||
+        (req.query as any)?.viewerId ||
+        'demo-user-id-001';
+      (req as any).user = { id: String(targetId), email: 'learner@linguaflow.com', role: 'STUDENT' };
+    }
+    next();
+  });
   app.use('/api/v1/community', communityRouter);
   return app;
 }
