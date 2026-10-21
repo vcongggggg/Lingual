@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Compass,
@@ -125,14 +125,19 @@ const MASCOT_MESSAGES: Record<number, { text: string; pose: LingLingReaction }> 
   3: { text: 'Sắp tới thế giới B1 với ẩm thực & mua sắm! 🍜', pose: 'thinking' },
   4: { text: 'B1+ công sở & đàm phán, kiến thức siêu giá trị! 💼', pose: 'proud' },
   5: { text: 'B2 độc lập, tự tin du lịch & giao lưu năm châu! ✈️', pose: 'thumbsup' },
-  6: { text: 'Tuyệt đỉnh! Bạn đã hoàn thành toàn bộ hành trình! 🏆🎉', pose: 'party' },
+  6: { text: 'Nâng cao kỹ năng với học thuật & giao tiếp chuyên sâu! 📚', pose: 'studying' },
+  7: { text: 'Khám phá văn hóa & đời sống xã hội đa dạng! 🌍', pose: 'storyteller' },
+  8: { text: 'Rèn luyện sức khỏe, dinh dưỡng & lối sống lành mạnh! 🏃', pose: 'flex' },
+  9: { text: 'Công nghệ số & truyền thông hiện đại! 💻', pose: 'coolSerious' },
+  10: { text: 'Chặng 10: Văn hóa toàn cầu & bảo vệ môi trường! 🌿', pose: 'celebrate' },
+  11: { text: 'Tuyệt đỉnh! Bạn đã hoàn thành toàn bộ hành trình! 🏆🎉', pose: 'party' },
 };
 
 function CurriculumRoadmapContent() {
   const [units, setUnits] = useState<UnitNode[]>(DEFAULT_UNITS);
   const [pathD, setPathD] = useState<string>('');
-  const [pathLength, setPathLength] = useState<number>(0); // Khởi tạo an toàn là 0 (chỉ kích hoạt GSAP khi pathD đã tính xong)
-  const [activeUnitIndex, setActiveUnitIndex] = useState<number>(2); // Mặc định Unit 2 đang học dở
+  const [pathLength, setPathLength] = useState<number>(0);
+  const [activeUnitIndex, setActiveUnitIndex] = useState<number>(2);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [revealedUnits, setRevealedUnits] = useState<Set<number>>(new Set([1, 2]));
   const [isReducedMotion, setIsReducedMotion] = useState<boolean>(false);
@@ -254,7 +259,7 @@ function CurriculumRoadmapContent() {
   };
 
   // Cập nhật path khi mount, resize hoặc đổi units
-  useLayoutEffect(() => {
+  useEffect(() => {
     calculateThreadPath();
     const handleResize = () => calculateThreadPath();
     window.addEventListener('resize', handleResize);
@@ -279,118 +284,116 @@ function CurriculumRoadmapContent() {
     }
   }, [pathD]);
 
-  // Thiết lập Scrollytelling bằng GSAP + ScrollTrigger (scrub: true, KHÔNG pin)
+  // Thiết lập Scrollytelling bằng GSAP + ScrollTrigger với gsap.context (an toàn với SSR & re-renders)
   useEffect(() => {
     if (typeof window === 'undefined' || isReducedMotion) return;
     // Guard tuyệt đối: KHÔNG chạy khi pathD rỗng hoặc pathLength <= 0 để tránh ném InvalidStateError getPointAtLength
     if (!containerRef.current || !pathRef.current || !pathD || pathLength <= 0) return;
 
-    const triggers: ScrollTrigger[] = [];
     const path = pathRef.current;
+    let fallbackTimer: NodeJS.Timeout;
 
-    try {
-      gsap.set(path, {
-        strokeDasharray: pathLength,
-        strokeDashoffset: pathLength,
-      });
+    // Dùng gsap.context để quản lý scope và cleanup triệt để mọi ScrollTrigger và tweens
+    const ctx = gsap.context(() => {
+      try {
+        gsap.set(path, {
+          strokeDasharray: pathLength,
+          strokeDashoffset: pathLength,
+        });
 
-      // 1. Chỉ đỏ vẽ dần theo vị trí scroll (scrub: true) + Bò LingLing di chuyển bám sát sợi chỉ
-      const scrubTrigger = ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: 'top 40%',
-        end: 'bottom 85%',
-        scrub: 0.6,
-        onUpdate: (self) => {
-          try {
-            const progress = Math.max(0, Math.min(1, self.progress));
-            setScrollProgress(Math.round(progress * 100));
+        // 1. Chỉ đỏ vẽ dần theo vị trí scroll (scrub: 0.6) + Bò LingLing di chuyển bám sát sợi chỉ
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: 'top 40%',
+          end: 'bottom 85%',
+          scrub: 0.6,
+          onUpdate: (self) => {
+            try {
+              const progress = Math.max(0, Math.min(1, self.progress));
+              setScrollProgress(Math.round(progress * 100));
 
-            // Vẽ dần nét chỉ
-            if (path && pathLength > 0) {
-              const offset = pathLength * (1 - progress);
-              path.style.strokeDashoffset = `${offset}`;
-            }
+              // Vẽ dần nét chỉ
+              if (path && pathLength > 0) {
+                const offset = pathLength * (1 - progress);
+                path.style.strokeDashoffset = `${offset}`;
+              }
 
-            // Di chuyển bò LingLing an toàn tuyệt đối theo getPointAtLength
-            if (travelerRef.current && path && pathLength > 0) {
-              const dAttr = path.getAttribute('d');
-              if (dAttr && dAttr.trim().length > 5) {
-                const distance = Math.max(0, Math.min(progress * pathLength, pathLength));
-                const pt = path.getPointAtLength(distance);
-                if (pt && typeof pt.x === 'number' && typeof pt.y === 'number' && !isNaN(pt.x) && !isNaN(pt.y)) {
-                  travelerRef.current.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
+              // Di chuyển bò LingLing an toàn tuyệt đối theo getPointAtLength
+              if (travelerRef.current && path && pathLength > 0) {
+                const dAttr = path.getAttribute('d');
+                if (dAttr && dAttr.trim().length > 5) {
+                  const distance = Math.max(0, Math.min(progress * pathLength, pathLength));
+                  const pt = path.getPointAtLength(distance);
+                  if (pt && typeof pt.x === 'number' && typeof pt.y === 'number' && !isNaN(pt.x) && !isNaN(pt.y)) {
+                    travelerRef.current.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
+                  }
                 }
               }
-            }
 
-            // Cập nhật stage hiển thị trên Hộ Chiếu Hành Trình theo số lượng units thực tế
-            const totalUnits = Math.max(1, units.length);
-            if (progress >= 0.98) {
-              setActiveUnitIndex(totalUnits + 1); // Destination
-            } else {
-              const calculatedIdx = Math.min(totalUnits, Math.floor(progress * totalUnits) + 1);
-              setActiveUnitIndex(calculatedIdx);
+              // Cập nhật stage hiển thị trên Hộ Chiếu Hành Trình theo số lượng units thực tế
+              const totalUnits = Math.max(1, units.length);
+              if (progress >= 0.98) {
+                setActiveUnitIndex(totalUnits + 1); // Destination
+              } else {
+                const calculatedIdx = Math.min(totalUnits, Math.floor(progress * totalUnits) + 1);
+                setActiveUnitIndex(calculatedIdx);
+              }
+            } catch (onUpdateErr) {
+              // Phòng vệ an toàn nếu SVG path đang recalculate
             }
-          } catch (onUpdateErr) {
-            // Phòng vệ an toàn nếu SVG path đang recalculate
+          },
+        });
+
+        // 2. Reveal các card chặng khi đi vào viewport (trượt nhẹ + hiện dần) + đóng dấu
+        cardRefs.current.forEach((card, idx) => {
+          if (!card) return;
+          const unitOrder = idx + 1;
+
+          try {
+            // GSAP chủ động set opacity ban đầu và trượt lên khi vào màn hình
+            gsap.set(card, { opacity: 0, y: 35 });
+
+            ScrollTrigger.create({
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+              onEnter: () => {
+                gsap.to(card, {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.7,
+                  ease: 'power2.out',
+                });
+                setRevealedUnits((prev) => new Set(prev).add(unitOrder));
+              },
+            });
+          } catch (cardTriggerErr) {
+            // Fallback an toàn: nếu ScrollTrigger lỗi, hiện card ngay
+            if (card) {
+              card.style.opacity = '1';
+              card.style.transform = 'none';
+            }
           }
-        },
-      });
-      triggers.push(scrubTrigger);
+        });
+      } catch (gsapInitErr) {
+        console.warn('GSAP ScrollTrigger context setup failed safely:', gsapInitErr);
+      }
 
-      // 2. Reveal các card chặng khi đi vào viewport (trượt nhẹ + hiện dần) + đóng dấu
-      cardRefs.current.forEach((card, idx) => {
-        if (!card) return;
-        const unitOrder = idx + 1;
-
-        try {
-          gsap.set(card, { opacity: 0, y: 35 });
-
-          const cardTrigger = ScrollTrigger.create({
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-            onEnter: () => {
-              gsap.to(card, {
-                opacity: 1,
-                y: 0,
-                duration: 0.7,
-                ease: 'power2.out',
-              });
-              setRevealedUnits((prev) => new Set(prev).add(unitOrder));
-            },
-          });
-          triggers.push(cardTrigger);
-        } catch (cardTriggerErr) {
-          // Fallback an toàn: nếu ScrollTrigger lỗi, hiện card ngay
-          if (card) {
+      // Cơ chế an toàn (Fallback): sau 800ms tự động reveal mọi card nếu ScrollTrigger chưa bắn
+      fallbackTimer = setTimeout(() => {
+        cardRefs.current.forEach((card, idx) => {
+          if (card && card.style.opacity === '0') {
             card.style.opacity = '1';
             card.style.transform = 'none';
+            setRevealedUnits((prev) => new Set(prev).add(idx + 1));
           }
-        }
-      });
-    } catch (gsapInitErr) {
-      console.warn('GSAP ScrollTrigger setup failed safely:', gsapInitErr);
-    }
-
-    // Cơ chế an toàn (Fallback): sau 1200ms tự động reveal mọi card nếu ScrollTrigger chưa bắn
-    const fallbackTimer = setTimeout(() => {
-      cardRefs.current.forEach((card, idx) => {
-        if (card && card.style.opacity === '0') {
-          card.style.opacity = '1';
-          card.style.transform = 'none';
-          setRevealedUnits((prev) => new Set(prev).add(idx + 1));
-        }
-      });
-    }, 1200);
+        });
+      }, 800);
+    }, containerRef);
 
     return () => {
-      clearTimeout(fallbackTimer);
-      triggers.forEach((t) => {
-        try {
-          t.kill();
-        } catch {}
-      });
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+      ctx.revert(); // Triệt tiêu 100% ScrollTrigger và listener khi re-render
     };
   }, [pathD, pathLength, isReducedMotion, units]);
 
@@ -521,8 +524,8 @@ function CurriculumRoadmapContent() {
                     isEven ? 'md:items-start md:pr-12' : 'md:items-end md:pl-12'
                   }`}
                   style={{
-                    opacity: isReducedMotion ? 1 : 0,
-                    transform: isReducedMotion ? 'none' : 'translateY(35px)',
+                    opacity: 1,
+                    transform: 'none',
                   }}
                 >
                   {/* Điểm Neo Node Tròn (Anchor để SVG nối chỉ đỏ xuyên qua) */}
@@ -740,7 +743,7 @@ function CurriculumRoadmapContent() {
 
             {(() => {
               const displayStage = Math.max(1, Math.min(units.length, activeUnitIndex));
-              const currentUnit = units[activeUnitIndex - 1] || units[0];
+              const currentUnit = units[displayStage - 1] || units[0];
               const unitSubtitle = currentUnit?.title?.includes(':')
                 ? currentUnit.title.split(':')[1]?.trim()
                 : currentUnit?.title || 'Đang khám phá';
