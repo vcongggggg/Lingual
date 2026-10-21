@@ -166,6 +166,11 @@ model Vocabulary {
   synonymsJson       String?  @default("[]")
   antonymsJson       String?  @default("[]")
   frequencyRank      Int?
+  meaningEn          String?  @map("meaning_en")
+  meaningViSource    String?  @map("meaning_vi_source")
+  source             String?
+  license            String?
+  wordFamilyJson     String?  @default("[]") @map("word_family_json")
   category           String   @default("general")
   status             String   @default("published")
   createdBy          String?
