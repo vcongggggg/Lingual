@@ -1,0 +1,3 @@
+-- AlterTable idioms
+ALTER TABLE "idioms" ADD COLUMN IF NOT EXISTS "meaningEn" TEXT;
+ALTER TABLE "idioms" ADD COLUMN IF NOT EXISTS "license" TEXT DEFAULT 'CC BY-SA';
