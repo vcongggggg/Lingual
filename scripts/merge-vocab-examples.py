@@ -10,6 +10,11 @@ import sys
 import json
 import psycopg2
 
+try:
+    from db_helper import get_database_url
+except ImportError:
+    from scripts.db_helper import get_database_url
+
 if sys.platform == "win32":
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -77,7 +82,7 @@ def run_merge():
     # 2. Update PostgreSQL Database directly to refresh live vocabularies
     db_updated = 0
     try:
-        db_url = "postgresql://postgres:postgrespassword@localhost:5432/linguaflow_db"
+        db_url = get_database_url()
         conn = psycopg2.connect(db_url)
         cur = conn.cursor()
 
