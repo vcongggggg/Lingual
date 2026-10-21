@@ -393,8 +393,14 @@ div[data-nextjs-route-announcer] {
 }
 
 @keyframes card-emerge {
-  0% { transform: scale(0.94); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: translate(16px, 10px) rotate(4deg) scale(0.95);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
 }
 
 .animate-card-fly-right {
@@ -406,7 +412,7 @@ div[data-nextjs-route-announcer] {
 }
 
 .animate-card-emerge {
-  animation: card-emerge 250ms var(--ease-paper) forwards;
+  animation: card-emerge 380ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)) forwards;
 }
 
 /* 4. Tin Nhắn Chat LingLing & Typing Dots */
@@ -618,10 +624,16 @@ div[data-nextjs-route-announcer] {
 }
 
 /* 14. Flashcard 3D Flip & Draw-Forward Animations */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
 .flashcard-preserve-3d {
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transition: transform 500ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1));
+  will-change: transform;
 }
 
 .flashcard-flipped {

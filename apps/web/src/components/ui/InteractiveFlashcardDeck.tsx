@@ -91,8 +91,8 @@ export const InteractiveFlashcardDeck: React.FC = () => {
       setDeck((prev) => prev.slice(1));
       setThrowDir(null);
       setIsEmerged(true);
-      setTimeout(() => setIsEmerged(false), 250);
-    }, 350);
+      setTimeout(() => setIsEmerged(false), 380);
+    }, 300);
   };
 
   const handleReset = () => {
@@ -101,7 +101,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
     setIsFlipped(false);
     setThrowDir(null);
     setIsEmerged(true);
-    setTimeout(() => setIsEmerged(false), 250);
+    setTimeout(() => setIsEmerged(false), 380);
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -174,8 +174,8 @@ export const InteractiveFlashcardDeck: React.FC = () => {
     const dx = currentDxRef.current;
     const absDx = Math.abs(dx);
 
-    // 1. Phân biệt tap vs kéo: di chuyển < 10px khi thả = tap -> lật thẻ 3D
-    if (absDx < 10) {
+    // 1. Phân biệt tap vs kéo: di chuyển < 16px khi thả = tap -> lật thẻ 3D
+    if (absDx < 16) {
       if (cardWrapperRef.current) {
         cardWrapperRef.current.style.transform = '';
         cardWrapperRef.current.style.transition = '';
@@ -205,7 +205,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
       return;
     }
 
-    // 3. Nếu không (|dx| trong khoảng [10, 100]) -> nảy về vị trí cũ (transition 250ms với easing paper)
+    // 3. Nếu không (|dx| trong khoảng [16, 100]) -> nảy về vị trí cũ (transition 250ms với easing paper)
     if (cardWrapperRef.current) {
       cardWrapperRef.current.style.transition = 'transform 250ms var(--ease-paper)';
       cardWrapperRef.current.style.transform = 'translateX(0px) rotate(0deg)';
@@ -295,12 +295,10 @@ export const InteractiveFlashcardDeck: React.FC = () => {
           <div
             className="absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal p-4 pointer-events-none"
             style={{
-              transform: throwDir !== null
-                ? 'translate(16px, 8px) rotate(4deg) scale(0.95)'
-                : 'translate(-16px, 14px) rotate(-5.5deg) scale(0.90)',
-              transition: 'transform 350ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)), opacity 350ms ease',
+              transform: 'translate(-16px, 14px) rotate(-5.5deg) scale(0.90)',
+              transition: 'transform 380ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)), opacity 380ms ease',
               zIndex: 10,
-              opacity: throwDir !== null ? 0.95 : 0.8,
+              opacity: 0.8,
             }}
           >
             <span className="text-[10px] font-black uppercase tracking-wider text-ink/60">
@@ -310,15 +308,13 @@ export const InteractiveFlashcardDeck: React.FC = () => {
           </div>
         )}
 
-        {/* Layer 2 (middle card) - Lồi cạnh phải 16px, hạ xuống 8px, xoay 4deg */}
+        {/* Layer 2 (middle card) - Lồi cạnh phải 16px, hạ xuống 10px, xoay 4deg */}
         {next1 && (
           <div
             className="absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal p-5 pointer-events-none"
             style={{
-              transform: throwDir !== null
-                ? 'translate(0px, 0px) rotate(0deg) scale(1)'
-                : 'translate(16px, 8px) rotate(4deg) scale(0.95)',
-              transition: 'transform 350ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)), opacity 350ms ease',
+              transform: 'translate(16px, 10px) rotate(4deg) scale(0.95)',
+              transition: 'transform 380ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)), opacity 380ms ease',
               zIndex: 20,
               opacity: 1,
             }}
@@ -338,8 +334,12 @@ export const InteractiveFlashcardDeck: React.FC = () => {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerCancel}
-          style={{ touchAction: 'none' }}
-          className={`absolute inset-0 z-30 select-none cursor-grab active:cursor-grabbing ${
+          style={{
+            touchAction: 'none',
+            perspective: '1000px',
+            WebkitPerspective: '1000px',
+          }}
+          className={`absolute inset-0 z-30 select-none cursor-grab active:cursor-grabbing perspective-1000 ${
             throwDir === 'right'
               ? 'animate-card-fly-right pointer-events-none'
               : throwDir === 'left'
@@ -376,7 +376,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
             className={`w-full h-full flashcard-preserve-3d ${
               isFlipped ? 'flashcard-flipped' : ''
             }`}
-            style={{ transformOrigin: 'center center' }}
+            style={{ transformOrigin: 'center center', willChange: 'transform' }}
           >
             {/* Card Front */}
             <div className="flashcard-face absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between">
