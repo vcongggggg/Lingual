@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
+import { Reveal } from '../../components/ui/Reveal';
 
 const BANDS = [5.5, 6.0, 6.5, 7.0, 7.5, 8.0];
 
@@ -176,137 +177,146 @@ export default function IeltsHubPage() {
       {/* 3 Stat Cards Số Liệu Thật Từ API dạng Card Giấy */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
         {/* Card 1: Mục tiêu đặt ra */}
-        <div className="card-paper p-5 sm:p-6 space-y-2 relative">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-black uppercase tracking-wider text-ink-muted">
-              Mục tiêu đặt ra
-            </span>
-            <div className="w-8 h-8 rounded-full border border-ink bg-paper-2 flex items-center justify-center text-red">
-              <Target className="w-4 h-4" />
+        <Reveal delayMs={0}>
+          <div className="card-paper p-5 sm:p-6 space-y-2 relative h-full">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-ink-muted">
+                Mục tiêu đặt ra
+              </span>
+              <div className="w-8 h-8 rounded-full border border-ink bg-paper-2 flex items-center justify-center text-red">
+                <Target className="w-4 h-4" />
+              </div>
             </div>
+            <div className="text-3xl font-black text-ink font-mono">
+              Band {targetBand}
+            </div>
+            <span className="text-xs font-bold text-ink-soft block">
+              Mục tiêu học viên chọn trên phiếu
+            </span>
           </div>
-          <div className="text-3xl font-black text-ink font-mono">
-            Band {targetBand}
-          </div>
-          <span className="text-xs font-bold text-ink-soft block">
-            Mục tiêu học viên chọn trên phiếu
-          </span>
-        </div>
+        </Reveal>
 
         {/* Card 2: Trình độ ước tính hiện tại */}
-        <div className="card-paper p-5 sm:p-6 space-y-2 relative">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-black uppercase tracking-wider text-ink-muted">
-              Trình độ hiện tại
-            </span>
-            <div className="w-8 h-8 rounded-full border border-ink bg-paper-2 flex items-center justify-center text-teal">
-              <TrendingUp className="w-4 h-4" />
+        <Reveal delayMs={70}>
+          <div className="card-paper p-5 sm:p-6 space-y-2 relative h-full">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-ink-muted">
+                Trình độ hiện tại
+              </span>
+              <div className="w-8 h-8 rounded-full border border-ink bg-paper-2 flex items-center justify-center text-teal">
+                <TrendingUp className="w-4 h-4" />
+              </div>
             </div>
+            <div className="text-3xl font-black text-teal font-mono">
+              Band {currentEstimatedBand.toFixed(1)}
+            </div>
+            <span className="text-xs font-bold text-ink-soft block">
+              Ước tính từ dữ liệu luyện tập
+            </span>
           </div>
-          <div className="text-3xl font-black text-teal font-mono">
-            Band {currentEstimatedBand.toFixed(1)}
-          </div>
-          <span className="text-xs font-bold text-ink-soft block">
-            Ước tính từ dữ liệu luyện tập
-          </span>
-        </div>
+        </Reveal>
 
         {/* Card 3: Số bài luyện hoàn thành */}
-        <div className="card-paper p-5 sm:p-6 space-y-2 relative">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-black uppercase tracking-wider text-ink-muted">
-              Bài luyện hoàn thành
-            </span>
-            <div className="w-8 h-8 rounded-full border border-ink bg-paper-2 flex items-center justify-center text-amber">
-              <Award className="w-4 h-4" />
+        <Reveal delayMs={140}>
+          <div className="card-paper p-5 sm:p-6 space-y-2 relative h-full">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-ink-muted">
+                Bài luyện hoàn thành
+              </span>
+              <div className="w-8 h-8 rounded-full border border-ink bg-paper-2 flex items-center justify-center text-amber">
+                <Award className="w-4 h-4" />
+              </div>
             </div>
+            <div className="text-3xl font-black text-ink font-mono">
+              {completedLessonsCount} bài
+            </div>
+            <span className="text-xs font-bold text-ink-soft block">
+              Đã hoàn thành trên hệ thống
+            </span>
           </div>
-          <div className="text-3xl font-black text-ink font-mono">
-            {completedLessonsCount} bài
-          </div>
-          <span className="text-xs font-bold text-ink-soft block">
-            Đã hoàn thành trên hệ thống
-          </span>
-        </div>
+        </Reveal>
       </div>
 
       {/* Lộ trình Tăng Band Banner Cầu Nối */}
-      <div className="bg-paper-2 border-2 border-ink rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-brutal-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-card border-2 border-ink flex items-center justify-center text-ink flex-shrink-0">
-            <TrendingUp className="w-5 h-5 text-red" />
+      <Reveal delayMs={60}>
+        <div className="bg-paper-2 border-2 border-ink rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-brutal-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-card border-2 border-ink flex items-center justify-center text-ink flex-shrink-0">
+              <TrendingUp className="w-5 h-5 text-red" />
+            </div>
+            <div>
+              <h3 className="text-base font-black text-ink">Bản đồ hành trình tăng Band</h3>
+              <p className="text-xs text-ink-soft">
+                Xem chi tiết 3 chặng đường từ nền tảng 5.5 đến bứt phá 7.5+
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-base font-black text-ink">Bản đồ hành trình tăng Band</h3>
-            <p className="text-xs text-ink-soft">
-              Xem chi tiết 3 chặng đường từ nền tảng 5.5 đến bứt phá 7.5+
-            </p>
-          </div>
+          <Link
+            href="/ielts/roadmap"
+            className="btn btn-ink text-xs font-black flex items-center gap-2 self-start sm:self-auto"
+          >
+            <span>Xem bản đồ hành trình</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
-        <Link
-          href="/ielts/roadmap"
-          className="btn btn-ink text-xs font-black flex items-center gap-2 self-start sm:self-auto"
-        >
-          <span>Xem bản đồ hành trình</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
-      </div>
+      </Reveal>
 
       {/* 4 Thẻ Kỹ Năng dạng Card Giấy Mực */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+        <Reveal className="flex items-center justify-between">
           <h2 className="text-xl sm:text-2xl font-black text-ink tracking-tight font-sans">
             Rèn luyện theo 4 kỹ năng
           </h2>
           <span className="text-xs font-bold text-ink-muted">Chuẩn format đề thi</span>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skills.map((skill) => {
+          {skills.map((skill, idx) => {
             const Icon = skill.icon;
             return (
-              <div
-                key={skill.id}
-                className="card-paper p-6 sm:p-8 flex flex-col justify-between space-y-5 hover:-translate-y-1 transition-all"
-              >
-                <div className="space-y-4">
-                  {/* Header: Icon trong vòng tròn mực + Badge stamp */}
-                  <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-full border-2 border-ink bg-card flex items-center justify-center text-ink shadow-brutal-sm">
-                      <Icon className="w-6 h-6" />
+              <Reveal key={skill.id} delayMs={idx * 60}>
+                <div
+                  className="card-paper p-6 sm:p-8 flex flex-col justify-between space-y-5 hover:-translate-y-1 transition-all h-full"
+                >
+                  <div className="space-y-4">
+                    {/* Header: Icon trong vòng tròn mực + Badge stamp */}
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 rounded-full border-2 border-ink bg-card flex items-center justify-center text-ink shadow-brutal-sm">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <span
+                        className={`text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full border ${skill.tagColor}`}
+                      >
+                        {skill.badge}
+                      </span>
                     </div>
-                    <span
-                      className={`text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full border ${skill.tagColor}`}
+
+                    {/* Tiêu đề tiếng Việt trước + Subtitle tiếng Anh nhỏ */}
+                    <div className="space-y-1">
+                      <h3 className="text-2xl font-black text-ink tracking-tight font-sans">
+                        {skill.title}
+                      </h3>
+                      <span className="text-xs font-mono font-bold text-ink-muted uppercase tracking-wider block">
+                        {skill.subtitle}
+                      </span>
+                    </div>
+
+                    <p className="text-sm text-ink-soft leading-relaxed font-sans">
+                      {skill.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t-2 border-ink/15">
+                    <Link
+                      href={skill.href}
+                      className="inline-flex items-center gap-2 text-sm font-black text-red hover:underline group"
                     >
-                      {skill.badge}
-                    </span>
+                      <span>Bắt đầu luyện tập</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
                   </div>
-
-                  {/* Tiêu đề tiếng Việt trước + Subtitle tiếng Anh nhỏ */}
-                  <div className="space-y-1">
-                    <h3 className="text-2xl font-black text-ink tracking-tight font-sans">
-                      {skill.title}
-                    </h3>
-                    <span className="text-xs font-mono font-bold text-ink-muted uppercase tracking-wider block">
-                      {skill.subtitle}
-                    </span>
-                  </div>
-
-                  <p className="text-sm text-ink-soft leading-relaxed font-sans">
-                    {skill.desc}
-                  </p>
                 </div>
-
-                <div className="pt-2 border-t-2 border-ink/15">
-                  <Link
-                    href={skill.href}
-                    className="inline-flex items-center gap-2 text-sm font-black text-red hover:underline group"
-                  >
-                    <span>Bắt đầu luyện tập</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>

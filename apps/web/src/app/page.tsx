@@ -8,6 +8,7 @@ import { StreakCard } from '../components/ui/StreakCard';
 import { LingLing } from '../components/ui/LingLing';
 import { InteractiveFlashcardDeck } from '../components/ui/InteractiveFlashcardDeck';
 import { StampSlam } from '../components/ui/StampSlam';
+import { Reveal } from '../components/ui/Reveal';
 
 export default function HomePage() {
   return (
@@ -115,87 +116,97 @@ export default function HomePage() {
 
       {/* 3. 3 TÍNH NĂNG CỐT LÕI */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20 text-left">
-        <div className="mb-12">
+        <Reveal className="mb-12">
           <h2 className="text-3xl sm:text-4xl font-black text-ink tracking-tight mb-3">
             Mọi thứ bạn cần, gói trong một sổ tay.
           </h2>
           <p className="text-base text-ink-soft max-w-2xl leading-relaxed">
             Không lan man. Mỗi tính năng phục vụ một việc duy nhất: giúp bạn học xong bài hôm nay và quay lại vào ngày mai.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Thẻ ghi nhớ thông minh */}
-          <div className="bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-7 hover:-translate-x-1 hover:-translate-y-1 transition-transform flex flex-col justify-between">
-            <div>
-              <span className="text-sm font-black text-red tracking-widest block mb-3">01</span>
-              <h3 className="text-2xl font-black text-ink mb-2">Thẻ ghi nhớ thông minh</h3>
-              <p className="text-sm text-ink-soft leading-relaxed">
-                Hệ thống tính đúng ngày bạn sắp quên một từ và nhắc ôn trước khi điều đó xảy ra. Ôn ít, nhớ lâu.
-              </p>
+          <Reveal delayMs={0}>
+            <div className="h-full bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-7 hover:-translate-x-1 hover:-translate-y-1 transition-transform flex flex-col justify-between">
+              <div>
+                <span className="text-sm font-black text-red tracking-widest block mb-3">01</span>
+                <h3 className="text-2xl font-black text-ink mb-2">Thẻ ghi nhớ thông minh</h3>
+                <p className="text-sm text-ink-soft leading-relaxed">
+                  Hệ thống tính đúng ngày bạn sắp quên một từ và nhắc ôn trước khi điều đó xảy ra. Ôn ít, nhớ lâu.
+                </p>
+              </div>
+              <Link href="/srs" className="inline-flex items-center gap-1 font-black text-sm text-ink hover:text-red mt-6 border-b-2 border-amber w-fit">
+                Mở bộ thẻ →
+              </Link>
             </div>
-            <Link href="/srs" className="inline-flex items-center gap-1 font-black text-sm text-ink hover:text-red mt-6 border-b-2 border-amber w-fit">
-              Mở bộ thẻ →
-            </Link>
-          </div>
+          </Reveal>
 
           {/* Card 2: Trò chơi tốc độ */}
-          <div className="bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-7 hover:-translate-x-1 hover:-translate-y-1 transition-transform flex flex-col justify-between">
-            <div>
-              <span className="text-sm font-black text-red tracking-widest block mb-3">02</span>
-              <h3 className="text-2xl font-black text-ink mb-2">Trò chơi tốc độ</h3>
-              <p className="text-sm text-ink-soft leading-relaxed">
-                Sáu trò chơi tốc độ — nối từ, xếp câu, gõ nhanh, điền từ — biến mười phút rảnh thành một trận đấu phản xạ.
-              </p>
+          <Reveal delayMs={90}>
+            <div className="h-full bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-7 hover:-translate-x-1 hover:-translate-y-1 transition-transform flex flex-col justify-between">
+              <div>
+                <span className="text-sm font-black text-red tracking-widest block mb-3">02</span>
+                <h3 className="text-2xl font-black text-ink mb-2">Trò chơi tốc độ</h3>
+                <p className="text-sm text-ink-soft leading-relaxed">
+                  Sáu trò chơi tốc độ — nối từ, xếp câu, gõ nhanh, điền từ — biến mười phút rảnh thành một trận đấu phản xạ.
+                </p>
+              </div>
+              <Link href="/games" className="inline-flex items-center gap-1 font-black text-sm text-ink hover:text-red mt-6 border-b-2 border-amber w-fit">
+                Chơi game →
+              </Link>
             </div>
-            <Link href="/games" className="inline-flex items-center gap-1 font-black text-sm text-ink hover:text-red mt-6 border-b-2 border-amber w-fit">
-              Chơi game →
-            </Link>
-          </div>
+          </Reveal>
 
           {/* Card 3: IELTS */}
-          <div className="bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-7 hover:-translate-x-1 hover:-translate-y-1 transition-transform flex flex-col justify-between">
-            <div>
-              <span className="text-sm font-black text-red tracking-widest block mb-3">03</span>
-              <h3 className="text-2xl font-black text-ink mb-2">Luyện thi IELTS</h3>
-              <p className="text-sm text-ink-soft leading-relaxed">
-                Đề đọc–nghe theo kỹ năng, chấm điểm theo thang band chuẩn quốc tế, và bài thi thử bấm giờ như phòng thi thật.
-              </p>
+          <Reveal delayMs={180}>
+            <div className="h-full bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-7 hover:-translate-x-1 hover:-translate-y-1 transition-transform flex flex-col justify-between">
+              <div>
+                <span className="text-sm font-black text-red tracking-widest block mb-3">03</span>
+                <h3 className="text-2xl font-black text-ink mb-2">Luyện thi IELTS</h3>
+                <p className="text-sm text-ink-soft leading-relaxed">
+                  Đề đọc–nghe theo kỹ năng, chấm điểm theo thang band chuẩn quốc tế, và bài thi thử bấm giờ như phòng thi thật.
+                </p>
+              </div>
+              <Link href="/ielts" className="inline-flex items-center gap-1 font-black text-sm text-ink hover:text-red mt-6 border-b-2 border-amber w-fit">
+                Vào phòng thi →
+              </Link>
             </div>
-            <Link href="/ielts" className="inline-flex items-center gap-1 font-black text-sm text-ink hover:text-red mt-6 border-b-2 border-amber w-fit">
-              Vào phòng thi →
-            </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* 4. DẢI STREAK STRIP */}
       <section className="w-full">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <StreakCard currentStreak={5} streakFreezes={1} completedDays={[0, 1, 2, 3, 4]} todayIndex={4} />
+          <Reveal delayMs={60}>
+            <StreakCard currentStreak={5} streakFreezes={1} completedDays={[0, 1, 2, 3, 4]} todayIndex={4} />
+          </Reveal>
         </div>
       </section>
 
       {/* 5. CTA BOX */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-        <div className="relative bg-card border-2 border-ink rounded-3xl shadow-brutal-2xl p-8 sm:p-14 text-center overflow-hidden">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight mb-4">
-            Sẵn sàng cho ngày đầu tiên?
-          </h2>
-          <p className="text-base sm:text-lg text-ink-soft max-w-lg mx-auto mb-8 leading-relaxed">
-            Không cần thẻ tín dụng. Không quảng cáo phiền phức. Chỉ có bài học đầu tiên đang chờ đón bạn.
-          </p>
-          <Link href="/register">
-            <Button variant="ink" size="lg" className="px-8 py-4 text-base">
-              Tạo tài khoản miễn phí →
-            </Button>
-          </Link>
+        <Reveal delayMs={60}>
+          <div className="relative bg-card border-2 border-ink rounded-3xl shadow-brutal-2xl p-8 sm:p-14 text-center overflow-hidden">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight mb-4">
+              Sẵn sàng cho ngày đầu tiên?
+            </h2>
+            <p className="text-base sm:text-lg text-ink-soft max-w-lg mx-auto mb-8 leading-relaxed">
+              Không cần thẻ tín dụng. Không quảng cáo phiền phức. Chỉ có bài học đầu tiên đang chờ đón bạn.
+            </p>
+            <Link href="/register">
+              <Button variant="ink" size="lg" className="px-8 py-4 text-base">
+                Tạo tài khoản miễn phí →
+              </Button>
+            </Link>
 
-          {/* Mascot LingLing chỉ tay tới lượt bạn ở góc phải CTA */}
-          <div className="absolute -bottom-2 right-4 sm:right-10 w-24 sm:w-28 rotate-6 animate-mascot">
-            <LingLing reaction="pointYou" size={112} />
+            {/* Mascot LingLing chỉ tay tới lượt bạn ở góc phải CTA */}
+            <div className="absolute -bottom-2 right-4 sm:right-10 w-24 sm:w-28 rotate-6 animate-mascot">
+              <LingLing reaction="pointYou" size={112} />
+            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

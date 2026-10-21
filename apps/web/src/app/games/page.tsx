@@ -21,6 +21,7 @@ import {
   Database,
 } from 'lucide-react';
 import { LingLing } from '../../components/ui/LingLing';
+import { Reveal } from '../../components/ui/Reveal';
 import { api } from '../../lib/api';
 
 interface GameTicket {
@@ -709,72 +710,73 @@ export default function GamesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {GAME_TICKETS.map((ticket) => {
+            {GAME_TICKETS.map((ticket, idx) => {
               const Icon = ticket.icon;
               const isTearing = tearingTicketId === ticket.id;
 
               return (
-                <div
-                  key={ticket.id}
-                  data-testid={`ticket-${ticket.id}`}
-                  onClick={() => handlePlayTicket(ticket.id)}
-                  className={`ticket-card p-6 flex flex-col justify-between space-y-4 bg-card cursor-pointer select-none relative overflow-visible ${
-                    isTearing ? 'animate-ticket-tear pointer-events-none' : ''
-                  }`}
-                >
-                  {/* Hai rãnh răng cưa bấm vé bên cạnh mép giấy */}
-                  <div className="ticket-notch-l" />
-                  <div className="ticket-notch-r" />
+                <Reveal key={ticket.id} delayMs={idx * 60}>
+                  <div
+                    data-testid={`ticket-${ticket.id}`}
+                    onClick={() => handlePlayTicket(ticket.id)}
+                    className={`ticket-card p-6 flex flex-col justify-between space-y-4 bg-card cursor-pointer select-none relative overflow-visible h-full ${
+                      isTearing ? 'animate-ticket-tear pointer-events-none' : ''
+                    }`}
+                  >
+                    {/* Hai rãnh răng cưa bấm vé bên cạnh mép giấy */}
+                    <div className="ticket-notch-l" />
+                    <div className="ticket-notch-r" />
 
-                  {/* Cuống vé: Header + Code */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between border-b-2 border-dashed border-ink/20 pb-2.5">
-                      <span className="font-mono text-[10px] font-black uppercase tracking-wider text-ink-muted">
-                        {ticket.ticketCode}
-                      </span>
-                      {/* XP Thưởng Dạng Stamp Con Dấu Mực */}
-                      <span className="font-mono text-xs font-black px-2.5 py-0.5 rounded border-2 border-red bg-red/10 text-red -rotate-2 shadow-brutal-sm">
-                        {ticket.xpReward}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl border-2 border-ink bg-paper-2 flex items-center justify-center text-ink shadow-brutal-sm flex-shrink-0">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-black text-ink font-sans leading-tight">
-                          {ticket.title}
-                        </h3>
-                        <span className="text-[11px] font-mono font-bold text-ink-muted block">
-                          {ticket.englishTitle}
+                    {/* Cuống vé: Header + Code */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between border-b-2 border-dashed border-ink/20 pb-2.5">
+                        <span className="font-mono text-[10px] font-black uppercase tracking-wider text-ink-muted">
+                          {ticket.ticketCode}
+                        </span>
+                        {/* XP Thưởng Dạng Stamp Con Dấu Mực */}
+                        <span className="font-mono text-xs font-black px-2.5 py-0.5 rounded border-2 border-red bg-red/10 text-red -rotate-2 shadow-brutal-sm">
+                          {ticket.xpReward}
                         </span>
                       </div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl border-2 border-ink bg-paper-2 flex items-center justify-center text-ink shadow-brutal-sm flex-shrink-0">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-black text-ink font-sans leading-tight">
+                            {ticket.title}
+                          </h3>
+                          <span className="text-[11px] font-mono font-bold text-ink-muted block">
+                            {ticket.englishTitle}
+                          </span>
+                        </div>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-ink-soft leading-relaxed font-sans">
+                        {ticket.desc}
+                      </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-ink-soft leading-relaxed font-sans">
-                      {ticket.desc}
-                    </p>
-                  </div>
+                    {/* Đường răng cưa xé vé */}
+                    <div className="border-t-2 border-dashed border-ink/25 my-1" />
 
-                  {/* Đường răng cưa xé vé */}
-                  <div className="border-t-2 border-dashed border-ink/25 my-1" />
-
-                  {/* Nút Đỏ "Xé vé chơi ngay" */}
-                  <div className="pt-1">
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handlePlayTicket(ticket.id);
-                      }}
-                      className="w-full btn btn-red text-xs font-black shadow-brutal flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <span>{isTearing ? 'Đang xé vé...' : 'Xé vé chơi ngay'}</span>
-                      <ArrowRight className="w-3.5 h-3.5 pointer-events-none" />
-                    </button>
+                    {/* Nút Đỏ "Xé vé chơi ngay" */}
+                    <div className="pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePlayTicket(ticket.id);
+                        }}
+                        className="w-full btn btn-red text-xs font-black shadow-brutal flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        <span>{isTearing ? 'Đang xé vé...' : 'Xé vé chơi ngay'}</span>
+                        <ArrowRight className="w-3.5 h-3.5 pointer-events-none" />
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               );
             })}
           </div>

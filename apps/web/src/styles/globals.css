@@ -579,6 +579,11 @@ div[data-nextjs-route-announcer] {
   .ticker-marquee {
     animation: none !important;
   }
+  .scroll-reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* 12. Nút Bấm Kích Cỡ Nhỏ (Button Small) */
@@ -631,6 +636,21 @@ div[data-nextjs-route-announcer] {
 .flashcard-face-back {
   transform: rotateY(180deg);
 }
+
+/* 15. Hiệu Ứng Scroll-Reveal (Cuộn Trang Xuất Hiện Nội Dung) */
+.scroll-reveal-init {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-visible {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: opacity 600ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)),
+              transform 600ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1));
+}
+
 
 
 

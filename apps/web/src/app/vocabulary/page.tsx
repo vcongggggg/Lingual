@@ -25,6 +25,7 @@ import {
   Plus
 } from 'lucide-react';
 import { WordLookupDrawer } from '../../components/ui/WordLookupDrawer';
+import { Reveal } from '../../components/ui/Reveal';
 
 interface ChapterLevel {
   id: string;
@@ -416,69 +417,70 @@ export default function VocabularyHubPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredChapters.map((chap) => (
-              <div
-                key={chap.id}
-                className="card-paper p-6 sm:p-7 flex flex-col justify-between hover:-translate-y-1 transition-all relative overflow-hidden group bg-card shadow-brutal"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-start justify-between border-b-2 border-ink/15 pb-4">
-                    <div>
-                      <span className="text-[11px] font-mono uppercase tracking-widest text-ink-muted block">
-                        {chap.chapterRoman}
+            {filteredChapters.map((chap, idx) => (
+              <Reveal key={chap.id} delayMs={idx * 60}>
+                <div
+                  className="card-paper p-6 sm:p-7 flex flex-col justify-between hover:-translate-y-1 transition-all relative overflow-hidden group bg-card shadow-brutal h-full"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-start justify-between border-b-2 border-ink/15 pb-4">
+                      <div>
+                        <span className="text-[11px] font-mono uppercase tracking-widest text-ink-muted block">
+                          {chap.chapterRoman}
+                        </span>
+                        <h3 className="text-2xl font-black text-ink group-hover:text-red transition-colors">
+                          {chap.chapterTitle}
+                        </h3>
+                      </div>
+
+                      <span className="font-serif text-5xl font-black text-ink/80 select-none tracking-tight">
+                        {chap.levelCode}
                       </span>
-                      <h3 className="text-2xl font-black text-ink group-hover:text-red transition-colors">
-                        {chap.chapterTitle}
-                      </h3>
                     </div>
 
-                    <span className="font-serif text-5xl font-black text-ink/80 select-none tracking-tight">
+                    <div className={`p-4 bg-gradient-to-br ${chap.colorScheme} border-2 border-ink rounded-xl shadow-brutal-sm space-y-2`}>
+                      <div className="flex items-center justify-between text-xs font-black text-ink">
+                        <span>{chap.wordsCount} từ cốt lõi</span>
+                        <span className="px-2 py-0.5 bg-card border border-ink rounded-md text-[10px]">
+                          {chap.lessonsCount} bài học
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {chap.sampleWords.map((w) => (
+                          <button
+                            key={w}
+                            type="button"
+                            onClick={() => setLookupWord(w)}
+                            data-testid={`word-chip-${w.toLowerCase()}`}
+                            className="text-[11px] font-mono font-bold bg-card/90 hover:bg-amber/40 hover:border-ink hover:scale-105 active:scale-95 transition-all border border-ink/40 px-2 py-0.5 rounded text-ink cursor-pointer flex items-center gap-1 shadow-sm"
+                            title={`Nhấn để tra từ "${w}"`}
+                          >
+                            <span>{w}</span>
+                            <span className="text-[9px] text-ink-muted">🔍</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-ink-soft leading-relaxed font-medium">
+                      {chap.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-ink/15 flex items-center justify-between">
+                    <span className="stamp-badge w-9 h-9 text-[10px] font-black border-2 border-teal text-teal bg-card">
                       {chap.levelCode}
                     </span>
+
+                    <Link
+                      href="/vocabulary/practice"
+                      className="text-sm font-black text-red hover:underline flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                    >
+                      Vào học ngay →
+                    </Link>
                   </div>
-
-                  <div className={`p-4 bg-gradient-to-br ${chap.colorScheme} border-2 border-ink rounded-xl shadow-brutal-sm space-y-2`}>
-                    <div className="flex items-center justify-between text-xs font-black text-ink">
-                      <span>{chap.wordsCount} từ cốt lõi</span>
-                      <span className="px-2 py-0.5 bg-card border border-ink rounded-md text-[10px]">
-                        {chap.lessonsCount} bài học
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {chap.sampleWords.map((w) => (
-                        <button
-                          key={w}
-                          type="button"
-                          onClick={() => setLookupWord(w)}
-                          data-testid={`word-chip-${w.toLowerCase()}`}
-                          className="text-[11px] font-mono font-bold bg-card/90 hover:bg-amber/40 hover:border-ink hover:scale-105 active:scale-95 transition-all border border-ink/40 px-2 py-0.5 rounded text-ink cursor-pointer flex items-center gap-1 shadow-sm"
-                          title={`Nhấn để tra từ "${w}"`}
-                        >
-                          <span>{w}</span>
-                          <span className="text-[9px] text-ink-muted">🔍</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-ink-soft leading-relaxed font-medium">
-                    {chap.description}
-                  </p>
                 </div>
-
-                <div className="pt-4 mt-4 border-t border-ink/15 flex items-center justify-between">
-                  <span className="stamp-badge w-9 h-9 text-[10px] font-black border-2 border-teal text-teal bg-card">
-                    {chap.levelCode}
-                  </span>
-
-                  <Link
-                    href="/vocabulary/practice"
-                    className="text-sm font-black text-red hover:underline flex items-center gap-1 group-hover:translate-x-1 transition-transform"
-                  >
-                    Vào học ngay →
-                  </Link>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
