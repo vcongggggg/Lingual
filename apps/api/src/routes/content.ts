@@ -946,3 +946,52 @@ contentRouter.get('/phrases/travel', async (req: Request, res: Response) => {
     res.status(400).json({ error: err.message });
   }
 });
+
+// 27. /sentence-bank
+contentRouter.get('/sentence-bank', async (req: Request, res: Response) => {
+  try {
+    const q = contentQuerySchema.parse(req.query);
+    const where: any = {};
+    if (q.search) {
+      where.OR = [
+        { en: { contains: q.search, mode: 'insensitive' } },
+        { vi: { contains: q.search, mode: 'insensitive' } },
+      ];
+    }
+    const { items, total } = await fetchWithFilter<any>(prisma.sentenceBank, where, q.limit, q.random);
+    res.json({ items, total });
+  } catch (err: any) {
+    res.status(400).json({ error: err.message || 'Lỗi khi tải sentence bank' });
+  }
+});
+
+// Alias: /sentences
+contentRouter.get('/sentences', async (req: Request, res: Response) => {
+  try {
+    const q = contentQuerySchema.parse(req.query);
+    const where: any = {};
+    if (q.search) {
+      where.OR = [
+        { en: { contains: q.search, mode: 'insensitive' } },
+        { vi: { contains: q.search, mode: 'insensitive' } },
+      ];
+    }
+    const { items, total } = await fetchWithFilter<any>(prisma.sentenceBank, where, q.limit, q.random);
+    res.json({ items, total });
+  } catch (err: any) {
+    res.status(400).json({ error: err.message || 'Lỗi khi tải sentences' });
+  }
+});
+
+// 28. /word-sentence-links
+contentRouter.get('/word-sentence-links', async (req: Request, res: Response) => {
+  try {
+    const q = contentQuerySchema.parse(req.query);
+    const where: any = {};
+    const { items, total } = await fetchWithFilter<any>(prisma.wordSentenceLink, where, q.limit, q.random);
+    res.json({ items, total });
+  } catch (err: any) {
+    res.status(400).json({ error: err.message || 'Lỗi khi tải word sentence links' });
+  }
+});
+

@@ -135,9 +135,43 @@ app.use('/api/v1/chatbot', chatbotRouter);
 app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/stamps', stampRouter);
 app.use('/api/v1/content', contentRouter);
+app.use('/api/v1/stories', (req, res, next) => {
+  req.url = '/stories' + req.url;
+  contentRouter(req, res, next);
+});
+app.use('/api/v1/dialogues', (req, res, next) => {
+  req.url = '/dialogues' + req.url;
+  contentRouter(req, res, next);
+});
+app.use('/api/v1/sentences', (req, res, next) => {
+  req.url = '/sentences' + req.url;
+  contentRouter(req, res, next);
+});
+app.use('/api/v1/sentence-bank', (req, res, next) => {
+  req.url = '/sentence-bank' + req.url;
+  contentRouter(req, res, next);
+});
+app.use('/api/v1/word-sentence-links', (req, res, next) => {
+  req.url = '/word-sentence-links' + req.url;
+  contentRouter(req, res, next);
+});
+app.use('/api/v1/articles', (req, res, next) => {
+  req.url = '/articles' + req.url;
+  contentRouter(req, res, next);
+});
 app.use('/api/v1/insights', insightsRouter);
 app.use('/api/v1/notifications', notificationsRouter);
 app.use('/api/v1/push', pushRouter);
+
+// OWASP A05: Catch-all 404 handler for API routes (NEVER return HTML for API requests)
+app.use('/api', (req: express.Request, res: express.Response) => {
+  res.status(404).json({
+    error: 'API endpoint not found',
+    path: req.originalUrl,
+    method: req.method,
+    status: 404,
+  });
+});
 
 
 // OWASP A05: Generic Production Error Handler (Never leak stack traces)
