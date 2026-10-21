@@ -61,9 +61,9 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-paper border-b-2 border-ink">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-[72px] flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[76px] flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 font-black text-2xl tracking-tight text-ink group select-none">
+        <Link href="/" className="flex items-center gap-2.5 font-black text-2xl tracking-tight text-ink group select-none shrink-0 mr-2 lg:mr-6">
           <span className="w-9 h-9 bg-red text-white border-2 border-ink rounded-xl flex items-center justify-center font-black text-xl shadow-brutal-sm group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
             L
           </span>
@@ -71,7 +71,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-extrabold text-ink">
+        <nav className="hidden md:flex items-center gap-3.5 lg:gap-5 xl:gap-6 text-sm font-extrabold text-ink whitespace-nowrap">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
@@ -89,7 +89,7 @@ export function Navbar() {
         </nav>
 
         {/* User Status / CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-3 shrink-0">
           {currentUser ? (
             <div className="flex items-center gap-3">
               {/* Streak Badge */}
@@ -132,13 +132,13 @@ export function Navbar() {
             <div className="flex items-center gap-2.5">
               <Link
                 href="/login"
-                className="px-4 py-2 text-sm font-black text-ink hover:text-red transition-colors"
+                className="px-3.5 py-1.5 text-sm font-black text-ink hover:text-red transition-colors inline-flex items-center shrink-0"
               >
                 Đăng nhập
               </Link>
               <Link
                 href="/register"
-                className="btn btn-red text-sm font-black py-2.5 px-5"
+                className="btn btn-red btn-sm text-sm font-black inline-flex items-center shrink-0"
               >
                 Bắt đầu học →
               </Link>

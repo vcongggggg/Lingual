@@ -67,6 +67,8 @@ export const InteractiveFlashcardDeck: React.FC = () => {
   const [throwDir, setThrowDir] = useState<'left' | 'right' | null>(null);
   const [isEmerged, setIsEmerged] = useState(false);
 
+  const [isFlipping, setIsFlipping] = useState(false);
+
   // Direct DOM refs for 60fps drag without re-renders
   const cardWrapperRef = useRef<HTMLDivElement>(null);
   const leftHintRef = useRef<HTMLDivElement>(null);
@@ -81,7 +83,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
   const resetTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleThrow = (direction: 'left' | 'right') => {
-    if (throwDir !== null || deck.length === 0) return;
+    if (throwDir !== null || isFlipping || deck.length === 0) return;
     setThrowDir(direction);
     setIsFlipped(false);
 
@@ -90,7 +92,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
       setThrowDir(null);
       setIsEmerged(true);
       setTimeout(() => setIsEmerged(false), 250);
-    }, 280);
+    }, 350);
   };
 
   const handleReset = () => {
@@ -103,7 +105,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (throwDir !== null || deck.length === 0) return;
+    if (throwDir !== null || isFlipping || deck.length === 0) return;
     if (e.button !== 0 && e.pointerType === 'mouse') return;
 
     if (resetTimerRef.current) {
@@ -172,7 +174,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
     const dx = currentDxRef.current;
     const absDx = Math.abs(dx);
 
-    // 1. Phân biệt tap vs kéo: di chuyển < 10px khi thả = tap -> lật thẻ 3D như cũ
+    // 1. Phân biệt tap vs kéo: di chuyển < 10px khi thả = tap -> lật thẻ 3D
     if (absDx < 10) {
       if (cardWrapperRef.current) {
         cardWrapperRef.current.style.transform = '';
@@ -180,7 +182,14 @@ export const InteractiveFlashcardDeck: React.FC = () => {
       }
       if (leftHintRef.current) leftHintRef.current.style.opacity = '0';
       if (rightHintRef.current) rightHintRef.current.style.opacity = '0';
-      setIsFlipped((prev) => !prev);
+
+      if (!isFlipping && throwDir === null) {
+        setIsFlipping(true);
+        setIsFlipped((prev) => !prev);
+        setTimeout(() => {
+          setIsFlipping(false);
+        }, 520);
+      }
       return;
     }
 
@@ -261,34 +270,37 @@ export const InteractiveFlashcardDeck: React.FC = () => {
       {/* Navigation Arrows ‹ › floating on left & right */}
       <button
         onClick={() => handleThrow('left')}
-        disabled={throwDir !== null}
+        disabled={throwDir !== null || isFlipping}
         aria-label="Chưa thuộc (ném trái)"
         title="Chưa thuộc (‹)"
-        className="absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-lg flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+        className="absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-lg flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
       >
         ‹
       </button>
 
       <button
         onClick={() => handleThrow('right')}
-        disabled={throwDir !== null}
+        disabled={throwDir !== null || isFlipping}
         aria-label="Thuộc rồi (ném phải)"
         title="Thuộc rồi (›)"
-        className="absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-lg flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+        className="absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-lg flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
       >
         ›
       </button>
 
       {/* 3D Stack Container */}
       <div className="relative w-[280px] sm:w-[320px] h-[240px] sm:h-[260px] perspective-1000">
-        {/* Layer 3 (deepest card) */}
+        {/* Layer 3 (deepest card) - Lồi cạnh trái 16px, hạ xuống 14px, xoay -5.5deg */}
         {next2 && (
           <div
-            className="absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal p-4 pointer-events-none transition-transform duration-300"
+            className="absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal p-4 pointer-events-none"
             style={{
-              transform: 'translate(10px, 12px) rotate(3deg) scale(0.92)',
+              transform: throwDir !== null
+                ? 'translate(16px, 8px) rotate(4deg) scale(0.95)'
+                : 'translate(-16px, 14px) rotate(-5.5deg) scale(0.90)',
+              transition: 'transform 350ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)), opacity 350ms ease',
               zIndex: 10,
-              opacity: 0.75,
+              opacity: throwDir !== null ? 0.95 : 0.8,
             }}
           >
             <span className="text-[10px] font-black uppercase tracking-wider text-ink/60">
@@ -298,14 +310,17 @@ export const InteractiveFlashcardDeck: React.FC = () => {
           </div>
         )}
 
-        {/* Layer 2 (middle card) */}
+        {/* Layer 2 (middle card) - Lồi cạnh phải 16px, hạ xuống 8px, xoay 4deg */}
         {next1 && (
           <div
-            className="absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal p-5 pointer-events-none transition-transform duration-300"
+            className="absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal p-5 pointer-events-none"
             style={{
-              transform: 'translate(5px, 6px) rotate(-2.5deg) scale(0.96)',
+              transform: throwDir !== null
+                ? 'translate(0px, 0px) rotate(0deg) scale(1)'
+                : 'translate(16px, 8px) rotate(4deg) scale(0.95)',
+              transition: 'transform 350ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1)), opacity 350ms ease',
               zIndex: 20,
-              opacity: 0.9,
+              opacity: 1,
             }}
           >
             <span className="text-[10px] font-black uppercase tracking-wider bg-paper-2 border border-ink/40 rounded-full px-2 py-0.5 text-ink/80">
@@ -358,13 +373,13 @@ export const InteractiveFlashcardDeck: React.FC = () => {
 
           {/* 3D Flipper Container */}
           <div
-            className={`w-full h-full preserve-3d transition-transform duration-300 ${
-              isFlipped ? 'rotate-y-180' : ''
+            className={`w-full h-full flashcard-preserve-3d ${
+              isFlipped ? 'flashcard-flipped' : ''
             }`}
             style={{ transformOrigin: 'center center' }}
           >
             {/* Card Front */}
-            <div className="backface-hidden absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between">
+            <div className="flashcard-face absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="inline-block text-[10px] sm:text-[11px] font-black uppercase tracking-wider bg-paper-2 border border-ink rounded-full px-2.5 py-0.5">
@@ -389,7 +404,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
             </div>
 
             {/* Card Back (Flipped) */}
-            <div className="backface-hidden rotate-y-180 absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between">
+            <div className="flashcard-face flashcard-face-back absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between">
               <div>
                 <div className="text-[10px] uppercase font-black tracking-widest text-teal mb-1">
                   Ý NGHĨA & VÍ DỤ
@@ -416,8 +431,8 @@ export const InteractiveFlashcardDeck: React.FC = () => {
       <div className="flex items-center justify-center gap-3 mt-4 w-full px-2">
         <button
           onClick={() => handleThrow('left')}
-          disabled={throwDir !== null}
-          className="flex-1 py-2 px-3 bg-paper border-2 border-red text-red rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer"
+          disabled={throwDir !== null || isFlipping}
+          className="flex-1 py-2 px-3 bg-paper border-2 border-red text-red rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span>✕</span>
           <span>Chưa thuộc</span>
@@ -425,8 +440,8 @@ export const InteractiveFlashcardDeck: React.FC = () => {
 
         <button
           onClick={() => handleThrow('right')}
-          disabled={throwDir !== null}
-          className="flex-1 py-2 px-3 bg-teal text-white border-2 border-ink rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer"
+          disabled={throwDir !== null || isFlipping}
+          className="flex-1 py-2 px-3 bg-teal text-white border-2 border-ink rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span>✓</span>
           <span>Thuộc rồi</span>

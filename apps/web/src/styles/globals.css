@@ -576,6 +576,61 @@ div[data-nextjs-route-announcer] {
   .btn:hover, .btn:active, .card-paper:hover, .ticket-card:hover {
     transform: none !important;
   }
+  .ticker-marquee {
+    animation: none !important;
+  }
 }
+
+/* 12. Nút Bấm Kích Cỡ Nhỏ (Button Small) */
+.btn-sm {
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding: 0 16px !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+}
+
+/* 13. Dải Ticker Marquee Chạy Chữ Vòng Lặp Tuần Hoàn Liên Tục */
+@keyframes ticker-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.ticker-marquee {
+  display: inline-flex;
+  width: max-content;
+  will-change: transform;
+  animation: ticker-marquee 28s linear infinite;
+}
+
+.ticker-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* 14. Flashcard 3D Flip & Draw-Forward Animations */
+.flashcard-preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 500ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1));
+}
+
+.flashcard-flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flashcard-face-back {
+  transform: rotateY(180deg);
+}
+
 
 

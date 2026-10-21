@@ -95,17 +95,21 @@ export default function HomePage() {
 
       {/* 2. DẢI TICKER CHẠY CHỮ */}
       <div className="border-y-2 border-ink bg-ink text-paper py-3.5 overflow-hidden whitespace-nowrap select-none font-bold text-sm tracking-wider">
-        <div className="inline-flex gap-8 animate-none">
-          <span>Hello <span className="text-amber">✦</span> Xin chào</span>
-          <span>Perseverance <span className="text-amber">✦</span> Sự kiên trì</span>
-          <span>Journey <span className="text-amber">✦</span> Hành trình</span>
-          <span>Knowledge <span className="text-amber">✦</span> Kiến thức</span>
-          <span>Bridge <span className="text-amber">✦</span> Cây cầu</span>
-          <span>Hello <span className="text-amber">✦</span> Xin chào</span>
-          <span>Perseverance <span className="text-amber">✦</span> Sự kiên trì</span>
-          <span>Journey <span className="text-amber">✦</span> Hành trình</span>
-          <span>Knowledge <span className="text-amber">✦</span> Kiến thức</span>
-          <span>Bridge <span className="text-amber">✦</span> Cây cầu</span>
+        <div className="ticker-marquee">
+          <div className="inline-flex items-center gap-8 pr-8">
+            <span>Hello <span className="text-amber">✦</span> Xin chào</span>
+            <span>Perseverance <span className="text-amber">✦</span> Sự kiên trì</span>
+            <span>Journey <span className="text-amber">✦</span> Hành trình</span>
+            <span>Knowledge <span className="text-amber">✦</span> Kiến thức</span>
+            <span>Bridge <span className="text-amber">✦</span> Cây cầu</span>
+          </div>
+          <div className="inline-flex items-center gap-8 pr-8" aria-hidden="true">
+            <span>Hello <span className="text-amber">✦</span> Xin chào</span>
+            <span>Perseverance <span className="text-amber">✦</span> Sự kiên trì</span>
+            <span>Journey <span className="text-amber">✦</span> Hành trình</span>
+            <span>Knowledge <span className="text-amber">✦</span> Kiến thức</span>
+            <span>Bridge <span className="text-amber">✦</span> Cây cầu</span>
+          </div>
         </div>
       </div>
 
