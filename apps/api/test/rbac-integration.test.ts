@@ -61,6 +61,47 @@ async function testGuard(
   });
 }
 
+async function testGuardWithCookie(
+  role: Role,
+  requiredRoles: Role[] | undefined,
+  options?: { customToken?: string; useHeaderCookie?: boolean; bearerToken?: string }
+): Promise<{ status: number; error?: string }> {
+  return new Promise((resolve) => {
+    const token = options?.customToken !== undefined
+      ? options.customToken
+      : generateToken(`user-${role.toLowerCase()}-001`, role);
+
+    const headers: Record<string, string> = {};
+    if (options?.bearerToken) {
+      headers.authorization = `Bearer ${options.bearerToken}`;
+    }
+    if (options?.useHeaderCookie) {
+      headers.cookie = `access_token=${token}`;
+    }
+
+    const req: any = {
+      headers,
+      cookies: options?.useHeaderCookie ? undefined : (token ? { access_token: token } : {}),
+    };
+    const res: any = {
+      statusCode: 200,
+      status(code: number) {
+        this.statusCode = code;
+        return this;
+      },
+      json(data: any) {
+        resolve({ status: this.statusCode, error: data.error });
+      },
+    };
+    const next = () => {
+      resolve({ status: 200 });
+    };
+
+    const guardMiddleware = rolesGuard(requiredRoles);
+    guardMiddleware(req as AuthenticatedRequest, res, next);
+  });
+}
+
 async function runRBACIntegrationTests() {
   await seedTestUsers();
   console.log('🧪 Running Comprehensive 5-Role RBAC Integration Tests...\n');
@@ -142,11 +183,66 @@ async function runRBACIntegrationTests() {
     failures++;
   }
 
+  // TEST 9: COOKIE AUTH: Request with valid cookie but wrong role (STUDENT -> Admin endpoint) -> MUST get 403 Forbidden (NOT 401)
+  const t9 = await testGuardWithCookie('STUDENT', ['ADMIN', 'SUPER_ADMIN']);
+  if (t9.status === 403) {
+    console.log('✅ TEST 9 PASSED: Valid cookie with wrong role (STUDENT) got 403 Forbidden (not 401).');
+  } else {
+    console.error(`❌ TEST 9 FAILED: Expected 403, got ${t9.status}`);
+    failures++;
+  }
+
+  // TEST 10: COOKIE AUTH: Request with valid cookie and matching role (ADMIN -> Admin endpoint) -> MUST get 200 OK
+  const t10 = await testGuardWithCookie('ADMIN', ['ADMIN', 'SUPER_ADMIN']);
+  if (t10.status === 200) {
+    console.log('✅ TEST 10 PASSED: Valid cookie with matching role (ADMIN) passed guard (200 OK).');
+  } else {
+    console.error(`❌ TEST 10 FAILED: Expected 200, got ${t10.status}`);
+    failures++;
+  }
+
+  // TEST 11: COOKIE HEADER AUTH: Request with raw header cookie (SUPER_ADMIN -> SuperAdmin endpoint) -> MUST get 200 OK
+  const t11 = await testGuardWithCookie('SUPER_ADMIN', ['SUPER_ADMIN'], { useHeaderCookie: true });
+  if (t11.status === 200) {
+    console.log('✅ TEST 11 PASSED: Valid raw cookie header with matching role (SUPER_ADMIN) passed guard (200 OK).');
+  } else {
+    console.error(`❌ TEST 11 FAILED: Expected 200, got ${t11.status}`);
+    failures++;
+  }
+
+  // TEST 12: INVALID COOKIE: Forged or corrupted cookie token -> MUST get 401 Unauthorized
+  const t12 = await testGuardWithCookie('STUDENT', ['STUDENT'], { customToken: 'invalid.forged.token' });
+  if (t12.status === 401) {
+    console.log('✅ TEST 12 PASSED: Forged/corrupted cookie token rejected with 401 Unauthorized.');
+  } else {
+    console.error(`❌ TEST 12 FAILED: Expected 401, got ${t12.status}`);
+    failures++;
+  }
+
+  // TEST 13: NO AUTH: Request missing both Bearer header and cookie -> MUST get 401 Unauthorized
+  const t13 = await testGuardWithCookie('STUDENT', ['STUDENT'], { customToken: '' });
+  if (t13.status === 401) {
+    console.log('✅ TEST 13 PASSED: Request with no token/cookie rejected with 401 Unauthorized.');
+  } else {
+    console.error(`❌ TEST 13 FAILED: Expected 401, got ${t13.status}`);
+    failures++;
+  }
+
+  // TEST 14: PRECEDENCE: Bearer header takes precedence over cookie (Bearer ADMIN vs Cookie STUDENT) -> 200 OK
+  const adminToken = generateToken('user-admin-001', 'ADMIN');
+  const t14 = await testGuardWithCookie('STUDENT', ['ADMIN', 'SUPER_ADMIN'], { bearerToken: adminToken });
+  if (t14.status === 200) {
+    console.log('✅ TEST 14 PASSED: Bearer token takes precedence over cookie token.');
+  } else {
+    console.error(`❌ TEST 14 FAILED: Expected 200, got ${t14.status}`);
+    failures++;
+  }
+
   if (failures > 0) {
     console.error(`\n❌ ${failures} Integration Test(s) FAILED.`);
     process.exit(1);
   } else {
-    console.log('\n🎉 ALL 8 RBAC Integration Tests PASSED successfully!');
+    console.log('\n🎉 ALL 14 RBAC Integration Tests PASSED successfully!');
   }
 }
 

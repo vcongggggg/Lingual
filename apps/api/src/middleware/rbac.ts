@@ -47,12 +47,23 @@ export function Roles(...roles: Role[]) {
  */
 export function rolesGuard(requiredRoles?: Role[]) {
   return async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+    let token: string | undefined;
     const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    } else if (req.cookies && req.cookies.access_token) {
+      token = req.cookies.access_token;
+    } else if (req.headers.cookie) {
+      const match = req.headers.cookie.match(/(?:^|;\s*)access_token=([^;]+)/);
+      if (match) {
+        token = decodeURIComponent(match[1]);
+      }
+    }
+
+    if (!token) {
       return res.status(401).json({ error: 'Truy cập bị từ chối: Chưa cung cấp Token đăng nhập' });
     }
 
-    const token = authHeader.split(' ')[1];
     try {
       const payload = jwt.verify(token, JWT_SECRET) as any;
       const userId = payload.userId || payload.sub;
