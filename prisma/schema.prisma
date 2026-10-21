@@ -1567,6 +1567,45 @@ model IeltsWritingTopic {
   @@map("ielts_writing_topics")
 }
 
+model IeltsWritingModel {
+  id               String   @id
+  task             Int      // 1: Academic Task 1 | 2: Task 2 Essay
+  topic            String
+  chartType        String?  @map("chart_type")
+  chartDescription String?  @map("chart_description") @db.Text
+  prompt           String   @db.Text
+  modelAnswer      String   @map("model_answer") @db.Text
+  keyVocabJson     String   @default("[]") @map("key_vocab_json")
+  examinerNotesVi  String?  @map("examiner_notes_vi") @db.Text
+  bandEstimate     Float    @default(8.0) @map("band_estimate")
+  source           String   @default("authored")
+  license          String?  @default("n/a (original)")
+  verified         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+
+  @@index([task])
+  @@index([topic])
+  @@map("ielts_writing_models")
+}
+
+model IeltsSpeakingModel {
+  id               String   @id
+  topic            String
+  cueCard          String   @map("cue_card") @db.Text
+  modelAnswerPart2 String   @map("model_answer_part2") @db.Text
+  part3Json        String   @default("[]") @map("part3_json")
+  keyVocabJson     String   @default("[]") @map("key_vocab_json")
+  notesVi          String?  @map("notes_vi") @db.Text
+  bandEstimate     Float    @default(8.0) @map("band_estimate")
+  source           String   @default("authored")
+  license          String?  @default("n/a (original)")
+  verified         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+
+  @@index([topic])
+  @@map("ielts_speaking_models")
+}
+
 // ==========================================
 // NOTIFICATION SYSTEM (PHASE 1)
 // ==========================================
