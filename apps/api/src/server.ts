@@ -106,7 +106,7 @@ const healthHandler = async (req: express.Request, res: express.Response) => {
     status: 'ok',
     version: apiVersion,
     database: isDbLive ? 'connected' : 'disconnected',
-    environment: process.env.NODE_ENV || 'development',
+    environment: process.env.NODE_ENV || 'production',
     service: 'Lingual Backend API',
     timestamp: new Date().toISOString(),
   });
