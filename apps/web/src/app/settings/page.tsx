@@ -798,6 +798,28 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
+
+      {/* SECTION 4: NGUỒN DỮ LIỆU & GHI CÔNG (CREDITS) */}
+      <div className="card-paper p-6 sm:p-8 bg-card border-2 border-ink rounded-3xl shadow-brutal-md space-y-4">
+        <h2 className="text-xl sm:text-2xl font-black text-ink font-sans border-b-2 border-ink/15 pb-4 flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-teal" />
+          Nguồn Dữ Liệu & Ghi Công (Credits)
+        </h2>
+        <div className="space-y-3 text-sm text-ink-muted leading-relaxed">
+          <div className="p-3 bg-paper-2 border border-ink/20 rounded-xl">
+            <span className="font-bold text-ink block">Ngân hàng câu ví dụ song ngữ:</span>
+            <span>Câu ví dụ: Tatoeba (CC BY 2.0 FR)</span>
+          </div>
+          <div className="p-3 bg-paper-2 border border-ink/20 rounded-xl">
+            <span className="font-bold text-ink block">Hội thoại & Luyện nghe:</span>
+            <span>VOA Learning English (Let's Learn English series - Public Domain)</span>
+          </div>
+          <div className="p-3 bg-paper-2 border border-ink/20 rounded-xl">
+            <span className="font-bold text-ink block">Truyện đọc cổ điển:</span>
+            <span>Project Gutenberg (Public Domain)</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

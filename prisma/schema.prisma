@@ -172,6 +172,7 @@ model Vocabulary {
   userStates    UserWordState[]
   srsReviewLogs SrsReviewLog[]
   bookmarks     UserBookmark[]
+  sentenceLinks WordSentenceLink[]
 
   @@map("vocabularies")
 }
@@ -1655,6 +1656,41 @@ model CowStudyPlan {
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("cow_study_plans")
+}
+
+// ==========================================
+// SENTENCE BANK & WORD LINKS (WAVE 1)
+// ==========================================
+
+model SentenceBank {
+  id        String   @id @default(uuid())
+  en        String
+  enId      Int?     @map("en_id")
+  vi        String
+  viId      Int?     @map("vi_id")
+  source    String   @default("tatoeba")
+  license   String   @default("CC BY 2.0 FR")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  wordLinks WordSentenceLink[]
+
+  @@index([en])
+  @@index([enId])
+  @@map("sentence_bank")
+}
+
+model WordSentenceLink {
+  id             String       @id @default(uuid())
+  vocabularyId   String       @map("vocabulary_id")
+  vocabulary     Vocabulary   @relation(fields: [vocabularyId], references: [id], onDelete: Cascade)
+  sentenceBankId String       @map("sentence_bank_id")
+  sentenceBank   SentenceBank @relation(fields: [sentenceBankId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now()) @map("created_at")
+
+  @@unique([vocabularyId, sentenceBankId])
+  @@index([vocabularyId])
+  @@index([sentenceBankId])
+  @@map("word_sentence_links")
 }
 
 

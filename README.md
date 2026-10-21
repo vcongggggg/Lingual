@@ -121,7 +121,10 @@ pnpm --filter @linguaflow/api test
 
 ---
 
-## 📜 Giấy Phép & Bản Quyền
+## 📜 Giấy Phép, Nguồn Dữ Liệu & Ghi Công (Attribution)
 
-Dự án phát triển phục vụ học phần và đồ án công nghệ Lingual / LinguaFlow.
-Mọi quyền sở hữu trí tuệ thuộc về nhóm phát triển.
+- Dự án phát triển phục vụ học phần và đồ án công nghệ Lingual / LinguaFlow.
+- **Câu ví dụ:** Tatoeba ([CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/))
+- **Hội thoại & Luyện nghe:** VOA Learning English (Public Domain)
+- **Truyện song ngữ & Văn học:** Project Gutenberg (Public Domain)
+
