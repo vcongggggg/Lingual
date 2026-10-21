@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { Roles, rolesGuard, AuthenticatedRequest } from '../middleware/rbac.js';
 import { auditLogInterceptor } from '../middleware/auditLog.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { configRepository } from '../repositories/config.repository.js';
 import { prisma } from '../lib/prisma.js';
 import { Role } from '../../../../packages/domain/src/index.js';
 
@@ -139,23 +140,110 @@ adminRouter.get(
 );
 
 /**
+ * GET /api/v1/admin/config
+ * Access: SUPER_ADMIN ONLY (Retrieve all system configurations)
+ */
+adminRouter.get(
+  '/config',
+  Roles('SUPER_ADMIN'),
+  rolesGuard(['SUPER_ADMIN']),
+  async (req: AuthenticatedRequest, res) => {
+    const configs = await configRepository.getAllConfigs();
+    return res.json({ configs });
+  }
+);
+
+/**
+ * GET /api/v1/admin/config/:key
+ * Access: SUPER_ADMIN ONLY (Retrieve specific configuration by key)
+ */
+adminRouter.get(
+  '/config/:key',
+  Roles('SUPER_ADMIN'),
+  rolesGuard(['SUPER_ADMIN']),
+  async (req: AuthenticatedRequest, res) => {
+    const { key } = req.params;
+    const value = await configRepository.getConfig(key);
+    if (value === null || value === undefined) {
+      return res.status(404).json({ error: `Không tìm thấy cấu hình với key '${key}'` });
+    }
+    return res.json({ key, value });
+  }
+);
+
+/**
  * POST /api/v1/admin/config
- * Access: SUPER_ADMIN ONLY (System configuration / feature flags)
+ * Access: SUPER_ADMIN ONLY (Upsert system configuration / feature flags)
  */
 adminRouter.post(
   '/config',
   Roles('SUPER_ADMIN'),
   rolesGuard(['SUPER_ADMIN']),
   auditLogInterceptor('system.config.update', 'SystemConfig'),
-  (req: AuthenticatedRequest, res) => {
+  async (req: AuthenticatedRequest, res) => {
+    const updater = req.user?.id || 'admin';
+    const body = req.body || {};
+
+    const beforeState: Record<string, any> = {};
+    const afterState: Record<string, any> = {};
+
+    if (body.key && body.value !== undefined) {
+      // Single key-value pair format: { key: "feature_x", value: true }
+      const { before, after } = await configRepository.setConfig(body.key, body.value, updater);
+      beforeState[body.key] = before;
+      afterState[body.key] = after;
+    } else if (typeof body === 'object' && Object.keys(body).length > 0) {
+      // Key-value dictionary format: { feature_x: true, timeout: 5000 }
+      for (const [k, v] of Object.entries(body)) {
+        const { before, after } = await configRepository.setConfig(k, v, updater);
+        beforeState[k] = before;
+        afterState[k] = after;
+      }
+    } else {
+      return res.status(400).json({ error: 'Dữ liệu cấu hình không hợp lệ' });
+    }
+
     req.auditMeta = {
       action: 'system.config.update',
       resourceType: 'SystemConfig',
-      resourceId: 'global',
-      beforeState: null,
-      afterState: req.body,
+      resourceId: Object.keys(afterState).length === 1 ? Object.keys(afterState)[0] : 'global',
+      beforeState,
+      afterState,
     };
 
-    return res.json({ message: 'Cập nhật cấu hình hệ thống thành công', config: req.body });
+    return res.json({
+      message: 'Cập nhật cấu hình hệ thống thành công',
+      config: afterState,
+    });
+  }
+);
+
+/**
+ * DELETE /api/v1/admin/config/:key
+ * Access: SUPER_ADMIN ONLY (Delete a system configuration)
+ */
+adminRouter.delete(
+  '/config/:key',
+  Roles('SUPER_ADMIN'),
+  rolesGuard(['SUPER_ADMIN']),
+  auditLogInterceptor('system.config.delete', 'SystemConfig'),
+  async (req: AuthenticatedRequest, res) => {
+    const { key } = req.params;
+    const before = await configRepository.getConfig(key);
+    if (before === null || before === undefined) {
+      return res.status(404).json({ error: `Không tìm thấy cấu hình với key '${key}'` });
+    }
+
+    await configRepository.deleteConfig(key);
+
+    req.auditMeta = {
+      action: 'system.config.delete',
+      resourceType: 'SystemConfig',
+      resourceId: key,
+      beforeState: { [key]: before },
+      afterState: null,
+    };
+
+    return res.json({ message: `Đã xóa cấu hình '${key}' thành công` });
   }
 );
