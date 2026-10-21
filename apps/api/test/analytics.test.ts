@@ -3,17 +3,22 @@ process.env.NODE_ENV = 'test';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
+import jwt from 'jsonwebtoken';
 import { analyticsRouter } from '../src/routes/analytics.js';
+import { JWT_SECRET } from '../src/middleware/rbac.js';
 
 function createTestApp() {
   const app = express();
   app.use(express.json());
-  app.use((req, _res, next) => {
-    (req as any).user = { id: 'demo-user-id-001', email: 'learner@linguaflow.com', role: 'STUDENT' };
-    next();
-  });
   app.use('/api/v1/analytics', analyticsRouter);
   return app;
+}
+
+function fetchAuthed(url: string, init?: RequestInit, userId: string = 'demo-user-id-001') {
+  const headers = new Headers(init?.headers);
+  const token = jwt.sign({ userId, email: `${userId}@linguaflow.com`, role: 'STUDENT' }, JWT_SECRET);
+  headers.set('Authorization', `Bearer ${token}`);
+  return fetch(url, { ...init, headers });
 }
 
 test('Analytics API - GET /overview returns comprehensive metrics', async () => {
@@ -22,7 +27,7 @@ test('Analytics API - GET /overview returns comprehensive metrics', async () => 
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/analytics/overview`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/overview`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(body.overallScore > 0);
@@ -43,7 +48,7 @@ test('Analytics API - GET /skills returns skill performance list', async () => {
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/analytics/skills`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/skills`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.skills));
@@ -61,25 +66,25 @@ test('Analytics API - GET /trends returns 7d, 30d, 90d points and rejects invali
 
   try {
     // 7d
-    const res7 = await fetch(`http://localhost:${port}/api/v1/analytics/trends?period=7d`);
+    const res7 = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/trends?period=7d`);
     assert.equal(res7.status, 200);
     const body7 = await res7.json();
     assert.equal(body7.points.length, 7);
 
     // 30d
-    const res30 = await fetch(`http://localhost:${port}/api/v1/analytics/trends?period=30d`);
+    const res30 = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/trends?period=30d`);
     assert.equal(res30.status, 200);
     const body30 = await res30.json();
     assert.equal(body30.points.length, 30);
 
     // 90d
-    const res90 = await fetch(`http://localhost:${port}/api/v1/analytics/trends?period=90d`);
+    const res90 = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/trends?period=90d`);
     assert.equal(res90.status, 200);
     const body90 = await res90.json();
     assert.equal(body90.points.length, 90);
 
     // Invalid period
-    const resInvalid = await fetch(`http://localhost:${port}/api/v1/analytics/trends?period=year`);
+    const resInvalid = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/trends?period=year`);
     assert.equal(resInvalid.status, 400);
   } finally {
     server.close();
@@ -92,7 +97,7 @@ test('Analytics API - GET /heatmap returns 365 days entries', async () => {
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/analytics/heatmap`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/heatmap`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.heatmap));
@@ -108,7 +113,7 @@ test('Analytics API - GET /weaknesses returns detected weaknesses', async () => 
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/analytics/weaknesses`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/weaknesses`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.weaknesses));
@@ -123,13 +128,13 @@ test('Analytics API - GET /recommendations returns prioritized suggestions', asy
   const port = (server.address() as any).port;
 
   try {
-    const resVi = await fetch(`http://localhost:${port}/api/v1/analytics/recommendations?locale=vi`);
+    const resVi = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/recommendations?locale=vi`);
     assert.equal(resVi.status, 200);
     const bodyVi = await resVi.json();
     assert.ok(Array.isArray(bodyVi.recommendations));
     assert.ok(bodyVi.recommendations.length > 0);
 
-    const resEn = await fetch(`http://localhost:${port}/api/v1/analytics/recommendations?locale=en`);
+    const resEn = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/recommendations?locale=en`);
     assert.equal(resEn.status, 200);
     const bodyEn = await resEn.json();
     assert.ok(bodyEn.recommendations.length > 0);
@@ -145,13 +150,13 @@ test('Analytics API - Learning Goal Lifecycle (GET, POST, PUT, DELETE)', async (
 
   try {
     // 1. GET goals
-    const getRes = await fetch(`http://localhost:${port}/api/v1/analytics/goals`);
+    const getRes = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals`);
     assert.equal(getRes.status, 200);
     const getBody = await getRes.json();
     assert.ok(Array.isArray(getBody.goals));
 
     // 2. POST goal (valid)
-    const postRes = await fetch(`http://localhost:${port}/api/v1/analytics/goals`, {
+    const postRes = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -167,7 +172,7 @@ test('Analytics API - Learning Goal Lifecycle (GET, POST, PUT, DELETE)', async (
     const createdId = postBody.goal.id;
 
     // 3. POST goal (invalid type rejection)
-    const badTypeRes = await fetch(`http://localhost:${port}/api/v1/analytics/goals`, {
+    const badTypeRes = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type: 'invalid_type', target: 20 }),
@@ -175,7 +180,7 @@ test('Analytics API - Learning Goal Lifecycle (GET, POST, PUT, DELETE)', async (
     assert.equal(badTypeRes.status, 400);
 
     // 4. POST goal (invalid target rejection)
-    const badTargetRes = await fetch(`http://localhost:${port}/api/v1/analytics/goals`, {
+    const badTargetRes = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type: 'daily_minutes', target: -10 }),
@@ -183,7 +188,7 @@ test('Analytics API - Learning Goal Lifecycle (GET, POST, PUT, DELETE)', async (
     assert.equal(badTargetRes.status, 400);
 
     // 5. PUT goal update
-    const putRes = await fetch(`http://localhost:${port}/api/v1/analytics/goals/${createdId}`, {
+    const putRes = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals/${createdId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ current: 45 }),
@@ -194,7 +199,7 @@ test('Analytics API - Learning Goal Lifecycle (GET, POST, PUT, DELETE)', async (
     assert.equal(putBody.goal.completed, true);
 
     // 6. PUT goal 404 for non-existent id
-    const put404 = await fetch(`http://localhost:${port}/api/v1/analytics/goals/non-existent-goal`, {
+    const put404 = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals/non-existent-goal`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ current: 10 }),
@@ -202,13 +207,13 @@ test('Analytics API - Learning Goal Lifecycle (GET, POST, PUT, DELETE)', async (
     assert.equal(put404.status, 404);
 
     // 7. DELETE goal
-    const delRes = await fetch(`http://localhost:${port}/api/v1/analytics/goals/${createdId}`, {
+    const delRes = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals/${createdId}`, {
       method: 'DELETE',
     });
     assert.equal(delRes.status, 200);
 
     // 8. DELETE goal 404 for non-existent id
-    const del404 = await fetch(`http://localhost:${port}/api/v1/analytics/goals/non-existent-goal`, {
+    const del404 = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/goals/non-existent-goal`, {
       method: 'DELETE',
     });
     assert.equal(del404.status, 404);
@@ -223,7 +228,7 @@ test('Analytics API - GET /report/weekly returns structured weekly summary', asy
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/analytics/report/weekly`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/analytics/report/weekly`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(body.report.minutesStudied > 0);

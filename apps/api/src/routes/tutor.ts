@@ -61,7 +61,7 @@ tutorRouter.get('/status', (req: Request, res: Response) => {
  * Gửi tin nhắn đến Chatbot LingLing R2.0 (Gemini LLM + Persona + Grounding thật)
  */
 tutorRouter.post('/chat', rateLimitMiddleware, async (req: Request, res: Response) => {
-  const { message, history = [], locale = 'vi', customContext } = req.body;
+  const { message, history = [] } = req.body;
   const userId = resolveAuthUserId(req) || req.body.userId || 'u-demo-1';
 
   if (!message || typeof message !== 'string') {
@@ -75,41 +75,29 @@ tutorRouter.post('/chat', rateLimitMiddleware, async (req: Request, res: Respons
     });
   }
 
-  // 1. Trong môi trường test tự động (CI / test suite): sử dụng LearningTutorService deterministic
-  if (process.env.NODE_ENV === 'test') {
-    try {
-      const result = await learningTutorService.chat(userId, message.trim(), locale, customContext);
-      return res.json(result);
-    } catch (err: any) {
-      return res.status(500).json({ error: 'Internal Server Error', message: err.message });
-    }
+  // Kiểm tra key theo quy định: thiếu key -> báo rõ chưa kết nối AI, KHÔNG giả lập AI, KHÔNG fallback Ollama
+  if (!process.env.GEMINI_API_KEY) {
+    return res.status(503).json({
+      error: 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
+      aiConnected: false,
+      provider: 'gemini',
+      reply: 'Chưa kết nối AI: Máy chủ chưa cấu hình GEMINI_API_KEY. Vui lòng liên hệ quản trị viên.',
+    });
   }
 
-  // 2. Khi có GEMINI_API_KEY: phục vụ Chatbot LingLing R2.0 (Gemini LLM)
-  if (process.env.GEMINI_API_KEY) {
-    try {
-      const result = await geminiChatService.chat(userId, message.trim(), history);
-      return res.json(result);
-    } catch (err: any) {
-      return res.status(503).json({
-        error: err.message || 'Chưa kết nối AI: Lỗi khi kết nối với Gemini AI LingLing.',
-        aiConnected: false,
-        provider: 'gemini',
-        reply: err.message?.startsWith('Chưa kết nối AI')
-          ? err.message
-          : `Chưa kết nối AI: ${err.message || 'Lỗi kết nối Gemini API.'}`,
-      });
-    }
+  try {
+    const result = await geminiChatService.chat(userId, message.trim(), history);
+    res.json(result);
+  } catch (err: any) {
+    res.status(503).json({
+      error: err.message || 'Chưa kết nối AI: Lỗi khi kết nối với Gemini AI LingLing.',
+      aiConnected: false,
+      provider: 'gemini',
+      reply: err.message?.startsWith('Chưa kết nối AI')
+        ? err.message
+        : `Chưa kết nối AI: ${err.message || 'Lỗi kết nối Gemini API.'}`,
+    });
   }
-
-  // 3. Trong development / production khi chưa cấu hình GEMINI_API_KEY:
-  // Tuân thủ quy định: thiếu key -> báo rõ chưa kết nối AI, KHÔNG giả lập AI, KHÔNG fallback Ollama
-  return res.status(503).json({
-    error: 'Chưa kết nối AI: Thiếu GEMINI_API_KEY trong cấu hình server.',
-    aiConnected: false,
-    provider: 'gemini',
-    reply: 'Chưa kết nối AI: Máy chủ chưa cấu hình GEMINI_API_KEY. Vui lòng liên hệ quản trị viên.',
-  });
 });
 
 /**

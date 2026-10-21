@@ -3,24 +3,35 @@ process.env.NODE_ENV = 'test';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
+import jwt from 'jsonwebtoken';
 import { communityRouter } from '../src/routes/community.js';
+import { JWT_SECRET } from '../src/middleware/rbac.js';
 
 function createTestApp() {
   const app = express();
   app.use(express.json());
-  app.use((req, _res, next) => {
-    if (!req.headers.authorization) {
-      const targetId =
-        (req.body as any)?.userId ||
-        (req.query as any)?.userId ||
-        (req.query as any)?.viewerId ||
-        'demo-user-id-001';
-      (req as any).user = { id: String(targetId), email: 'learner@linguaflow.com', role: 'STUDENT' };
-    }
-    next();
-  });
   app.use('/api/v1/community', communityRouter);
   return app;
+}
+
+function fetchAuthed(url: string, init?: RequestInit, explicitUserId?: string) {
+  const headers = new Headers(init?.headers);
+  if (!headers.has('Authorization')) {
+    let uid = explicitUserId;
+    if (!uid && init?.body && typeof init.body === 'string') {
+      try {
+        const parsed = JSON.parse(init.body);
+        if (parsed.userId) uid = parsed.userId;
+      } catch {}
+    }
+    if (!uid) {
+      const parsedUrl = new URL(url);
+      uid = parsedUrl.searchParams.get('userId') || parsedUrl.searchParams.get('viewerId') || 'demo-user-id-001';
+    }
+    const token = jwt.sign({ userId: uid, email: `${uid}@linguaflow.com`, role: 'STUDENT' }, JWT_SECRET);
+    headers.set('Authorization', `Bearer ${token}`);
+  }
+  return fetch(url, { ...init, headers });
 }
 
 test('Community API - GET /profile/:userId retrieves public profile', async () => {
@@ -29,7 +40,7 @@ test('Community API - GET /profile/:userId retrieves public profile', async () =
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/profile/demo-user-id-001`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/profile/demo-user-id-001`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.equal(body.profile.userId, 'demo-user-id-001');
@@ -45,7 +56,7 @@ test('Community API - GET /profile/:userId with non-existent user returns 404', 
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/profile/non-existent-user`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/profile/non-existent-user`);
     assert.equal(res.status, 404);
   } finally {
     server.close();
@@ -58,7 +69,7 @@ test('Community API - GET /friends lists friends and following', async () => {
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/friends?userId=demo-user-id-001`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/friends?userId=demo-user-id-001`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.friends));
@@ -74,7 +85,7 @@ test('Community API - GET /friend-requests returns pending requests', async () =
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/friend-requests?userId=demo-user-id-001`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/friend-requests?userId=demo-user-id-001`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.requests));
@@ -90,7 +101,7 @@ test('Community API - POST /friends/:id sends friend request and rejects self-fr
 
   try {
     // 1. Self friending rejection
-    const selfRes = await fetch(`http://localhost:${port}/api/v1/community/friends/demo-user-id-001`, {
+    const selfRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/friends/demo-user-id-001`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: 'demo-user-id-001' }),
@@ -98,7 +109,7 @@ test('Community API - POST /friends/:id sends friend request and rejects self-fr
     assert.equal(selfRes.status, 400);
 
     // 2. Normal friend request
-    const friendRes = await fetch(`http://localhost:${port}/api/v1/community/friends/user-kenji-003`, {
+    const friendRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/friends/user-kenji-003`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: 'demo-user-id-001' }),
@@ -115,14 +126,14 @@ test('Community API - POST /users/:id/follow follows target and DELETE unfollows
   const port = (server.address() as any).port;
 
   try {
-    const followRes = await fetch(`http://localhost:${port}/api/v1/community/users/user-linhdan-004/follow`, {
+    const followRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/users/user-linhdan-004/follow`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: 'demo-user-id-001' }),
     });
     assert.ok(followRes.status === 200 || followRes.status === 201);
 
-    const unfollowRes = await fetch(`http://localhost:${port}/api/v1/community/users/user-linhdan-004/follow`, {
+    const unfollowRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/users/user-linhdan-004/follow`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: 'demo-user-id-001' }),
@@ -139,7 +150,7 @@ test('Community API - GET /feed returns sanitized activity feed', async () => {
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/feed?viewerId=demo-user-id-001`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/feed?viewerId=demo-user-id-001`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.activities));
@@ -156,7 +167,7 @@ test('Community API - GET /notes and POST /notes performs study note lifecycle',
 
   try {
     // 1. Create note
-    const createRes = await fetch(`http://localhost:${port}/api/v1/community/notes`, {
+    const createRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/notes`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -172,7 +183,7 @@ test('Community API - GET /notes and POST /notes performs study note lifecycle',
     assert.ok(createBody.xpEarned >= 5);
 
     // 2. Reject empty note
-    const badRes = await fetch(`http://localhost:${port}/api/v1/community/notes`, {
+    const badRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/notes`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: '', content: '' }),
@@ -180,7 +191,7 @@ test('Community API - GET /notes and POST /notes performs study note lifecycle',
     assert.equal(badRes.status, 400);
 
     // 3. List notes
-    const listRes = await fetch(`http://localhost:${port}/api/v1/community/notes?tag=pronunciation`);
+    const listRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/notes?tag=pronunciation`);
     assert.equal(listRes.status, 200);
     const listBody = await listRes.json();
     assert.ok(listBody.notes.some((n: any) => n.tags.includes('pronunciation')));
@@ -195,7 +206,7 @@ test('Community API - POST /notes/:id/reactions toggles note reaction', async ()
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/notes/note-001/reactions`, {
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/notes/note-001/reactions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ reactionType: 'helpful', userId: 'user-kenji-003' }),
@@ -215,7 +226,7 @@ test('Community API - POST /notes/:id/comments adds comment', async () => {
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/notes/note-001/comments`, {
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/notes/note-001/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: 'Bài viết rất bổ ích!', userId: 'user-linhdan-004' }),
@@ -234,7 +245,7 @@ test('Community API - GET /leaderboard returns ranked score entries', async () =
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/leaderboard?period=weekly&category=xp`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/leaderboard?period=weekly&category=xp`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.leaderboard));
@@ -252,20 +263,20 @@ test('Community API - GET /groups and POST /groups/:id/join performs study group
 
   try {
     // 1. List groups
-    const listRes = await fetch(`http://localhost:${port}/api/v1/community/groups`);
+    const listRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/groups`);
     assert.equal(listRes.status, 200);
     const listBody = await listRes.json();
     assert.ok(listBody.groups.length >= 1);
 
     // 2. Get group detail
-    const detailRes = await fetch(`http://localhost:${port}/api/v1/community/groups/group-toeic-900`);
+    const detailRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/groups/group-toeic-900`);
     assert.equal(detailRes.status, 200);
     const detailBody = await detailRes.json();
     assert.equal(detailBody.group.id, 'group-toeic-900');
     assert.ok(Array.isArray(detailBody.members));
 
     // 3. Post to group
-    const postRes = await fetch(`http://localhost:${port}/api/v1/community/groups/group-toeic-900/posts`, {
+    const postRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/groups/group-toeic-900/posts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: 'Mọi người đã làm bài đọc hôm nay chưa?', userId: 'demo-user-id-001' }),
@@ -282,7 +293,7 @@ test('Community API - GET /achievements returns social learning achievements', a
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/achievements?userId=demo-user-id-001`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/achievements?userId=demo-user-id-001`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.achievements));
@@ -298,12 +309,12 @@ test('Community API - GET /notifications and POST /notifications/:id/read', asyn
   const port = (server.address() as any).port;
 
   try {
-    const listRes = await fetch(`http://localhost:${port}/api/v1/community/notifications?userId=demo-user-id-001`);
+    const listRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/notifications?userId=demo-user-id-001`);
     assert.equal(listRes.status, 200);
     const listBody = await listRes.json();
     assert.ok(Array.isArray(listBody.notifications));
 
-    const readRes = await fetch(`http://localhost:${port}/api/v1/community/notifications/notif-1/read`, {
+    const readRes = await fetchAuthed(`http://localhost:${port}/api/v1/community/notifications/notif-1/read`, {
       method: 'POST',
     });
     assert.equal(readRes.status, 200);
@@ -318,7 +329,7 @@ test('Community API - GET /search searches across users, notes, and groups', asy
   const port = (server.address() as any).port;
 
   try {
-    const res = await fetch(`http://localhost:${port}/api/v1/community/search?q=toeic`);
+    const res = await fetchAuthed(`http://localhost:${port}/api/v1/community/search?q=toeic`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.ok(Array.isArray(body.groups));

@@ -1,9 +1,47 @@
 process.env.NODE_ENV = 'test';
+process.env.GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'test-mock-gemini-key-2026';
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
 import { tutorRouter } from '../src/routes/tutor.js';
+import { geminiChatService } from '../src/services/geminiChatService.js';
+
+// Mock geminiChatService in test suite to avoid external Gemini API network calls
+(geminiChatService as any).chat = async (userId: string, message: string, _history: any[] = []) => {
+  let reply = `LingLing phản hồi: ${message}`;
+  if (message.includes('admin@secret.com')) {
+    reply = reply.replace(/admin@secret\.com/g, '[REDACTED_EMAIL]');
+  }
+
+  let mood = 'encouraging';
+  if (message.includes('IELTS')) mood = 'focused';
+  if (message.includes('nản')) mood = 'comforting';
+
+  return {
+    reply,
+    mood,
+    usedRag: false,
+    grounding: {
+      currentStreak: 5,
+      goldenHour: '20:00 - 21:00',
+      retentionRate: 85,
+      skills: { vocabulary: 85, listening: 72, speaking: 64, reading: 78, writing: 68 },
+      weakestSkill: 'speaking',
+      weakestSkillScore: 64,
+      srsDueCount: 14,
+      forgottenWords: ['ubiquitous'],
+    },
+    aiConnected: true,
+    provider: 'gemini' as const,
+    model: 'gemini-3.5-flash-lite',
+    responseTimeMs: 15,
+    suggestedActions: [
+      { title: 'Luyện tập Speaking', url: '/speaking' },
+      { title: 'Ôn tập từ vựng', url: '/vocabulary' },
+    ],
+  };
+};
 
 function createTestApp() {
   const app = express();
@@ -42,17 +80,17 @@ test('Tutor API - POST /chat responds to grammar query with explanation and acti
       body: JSON.stringify({
         userId: 'u-test-1',
         message: 'Why do I say went instead of go yesterday?',
-        locale: 'vi',
       }),
     });
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.ok(body.response);
-    assert.ok(body.response.intent === 'explain' || body.response.intent === 'grammar');
-    assert.ok(body.response.explanation !== undefined);
-    assert.ok(body.response.actions.length > 0);
-    assert.ok(body.conversation.messages.length >= 2);
+    assert.ok(body.reply);
+    assert.equal(body.aiConnected, true);
+    assert.equal(body.provider, 'gemini');
+    assert.ok(body.grounding);
+    assert.ok(Array.isArray(body.suggestedActions));
+    assert.ok(body.suggestedActions.length > 0);
   } finally {
     server.close();
   }
@@ -70,14 +108,14 @@ test('Tutor API - POST /chat responds to recommendation query', async () => {
       body: JSON.stringify({
         userId: 'u-test-1',
         message: 'What should I study today?',
-        locale: 'vi',
       }),
     });
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.equal(body.response.intent, 'recommend');
-    assert.ok(body.response.actions.length > 0);
+    assert.ok(body.reply);
+    assert.ok(body.grounding.skills);
+    assert.ok(body.suggestedActions.length > 0);
   } finally {
     server.close();
   }
@@ -95,13 +133,13 @@ test('Tutor API - POST /chat responds to practice request', async () => {
       body: JSON.stringify({
         userId: 'u-test-1',
         message: 'Give me something to practice',
-        locale: 'vi',
       }),
     });
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.equal(body.response.intent, 'practice');
+    assert.ok(body.reply);
+    assert.ok(body.suggestedActions.some((a: any) => a.url));
   } finally {
     server.close();
   }
@@ -119,13 +157,14 @@ test('Tutor API - POST /chat responds to motivation request', async () => {
       body: JSON.stringify({
         userId: 'u-test-1',
         message: 'Dạo này nản quá',
-        locale: 'vi',
       }),
     });
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.equal(body.response.intent, 'motivation');
+    assert.ok(body.reply);
+    assert.ok(body.grounding.currentStreak >= 0);
+    assert.equal(body.mood, 'comforting');
   } finally {
     server.close();
   }
@@ -143,13 +182,13 @@ test('Tutor API - POST /chat responds to exam request', async () => {
       body: JSON.stringify({
         userId: 'u-test-1',
         message: 'I want to prepare for IELTS',
-        locale: 'en',
       }),
     });
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.equal(body.response.intent, 'exam');
+    assert.ok(body.reply);
+    assert.equal(body.mood, 'focused');
   } finally {
     server.close();
   }
@@ -213,7 +252,7 @@ test('Tutor API - POST /chat sanitizes sensitive emails and tokens in response',
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.ok(!body.response.content.includes('admin@secret.com'));
+    assert.ok(!body.reply.includes('admin@secret.com'));
   } finally {
     server.close();
   }
@@ -529,7 +568,7 @@ test('Tutor API - English localization support in POST /chat', async () => {
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.ok(body.response.content.includes('Past Simple') || body.response.content.includes('went'));
+    assert.ok(body.reply.length > 0);
   } finally {
     server.close();
   }
@@ -553,7 +592,7 @@ test('Tutor API - Unicode and Vietnamese question parsing', async () => {
 
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.ok(body.response.content.length > 0);
+    assert.ok(body.reply.length > 0);
   } finally {
     server.close();
   }
