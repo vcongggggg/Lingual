@@ -6,9 +6,21 @@ const prisma = new PrismaClient();
 async function seedAdmin() {
   console.log('🌱 Starting SUPER_ADMIN seed...');
 
-  const superAdminEmail = process.env.SUPER_ADMIN_EMAIL || 'superadmin@lingual.com';
-  const superAdminPassword = process.env.SUPER_ADMIN_PASSWORD || 'SuperAdmin@123456';
-  const superAdminName = process.env.SUPER_ADMIN_NAME || 'Lingual Super Admin';
+  const superAdminEmail = process.env.SUPER_ADMIN_EMAIL?.trim();
+  const superAdminPassword = process.env.SUPER_ADMIN_PASSWORD?.trim();
+  const superAdminName = process.env.SUPER_ADMIN_NAME?.trim() || 'Lingual Super Admin';
+
+  if (!superAdminEmail) {
+    throw new Error('FATAL: SUPER_ADMIN_EMAIL environment variable is missing or empty.');
+  }
+
+  if (!superAdminPassword) {
+    throw new Error('FATAL: SUPER_ADMIN_PASSWORD environment variable is missing or empty.');
+  }
+
+  if (superAdminPassword.length < 8) {
+    throw new Error('FATAL: SUPER_ADMIN_PASSWORD must be at least 8 characters long for security.');
+  }
 
   const passwordHash = await argon2.hash(superAdminPassword);
 
@@ -16,6 +28,8 @@ async function seedAdmin() {
     where: { email: superAdminEmail },
     update: {
       role: Role.SUPER_ADMIN,
+      displayName: superAdminName,
+      passwordHash,
     },
     create: {
       email: superAdminEmail,
@@ -38,7 +52,7 @@ async function seedAdmin() {
 
 seedAdmin()
   .catch((e) => {
-    console.error('❌ Error seeding SUPER_ADMIN:', e);
+    console.error('❌ Error seeding SUPER_ADMIN:', e.message || e);
     process.exit(1);
   })
   .finally(async () => {

@@ -220,10 +220,12 @@ async function runDoDTests() {
     console.log('📋 [BÀI TEST 3] Tạo Audit Log (SuperAdmin thao tác) -> Restart Server -> GET /admin/audit-logs -> Log còn đó');
     console.log('-----------------------------------------------------------------');
 
-    console.log('3.1. Đăng nhập bằng tài khoản SUPER_ADMIN (superadmin@lingual.com)...');
+    const saEmail = process.env.SUPER_ADMIN_EMAIL || process.env.ADMIN_EMAIL || 'admin@lingual.com';
+    const saPassword = process.env.SUPER_ADMIN_PASSWORD || process.env.ADMIN_PASSWORD || '123456';
+    console.log(`3.1. Đăng nhập bằng tài khoản Quản trị (${saEmail})...`);
     const superAdminLoginRes = await request(`${BASE_URL}/api/v1/auth/login`, { method: 'POST' }, {
-      email: 'superadmin@lingual.com',
-      password: 'Admin@123456',
+      email: saEmail,
+      password: saPassword,
     });
     console.log(`     Output status: ${superAdminLoginRes.status}`);
     if (superAdminLoginRes.status !== 200 || !superAdminLoginRes.data.accessToken) {

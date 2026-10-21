@@ -621,24 +621,25 @@ export const SEED_UNITS = [
 export async function seedDatabase() {
   console.log('🌱 Starting Lingual database seed...');
 
-  // 1. Seed Users for all 5 roles
-  console.log('👤 Seeding default users for all 5 roles...');
+  // 1. Seed Users for roles
+  console.log('👤 Seeding default users...');
   const defaultPasswordHash = await argon2.hash('123456');
-  const adminPasswordHash = await argon2.hash('Admin@123456');
+  const adminPasswordHash = process.env.ADMIN_PASSWORD
+    ? await argon2.hash(process.env.ADMIN_PASSWORD)
+    : defaultPasswordHash;
 
-  const defaultUsers = [
-    {
-      id: 'super-admin-001',
-      email: process.env.SUPER_ADMIN_EMAIL || 'superadmin@lingual.com',
-      passwordHash: adminPasswordHash,
-      displayName: 'Lingual Super Admin',
-      role: Role.SUPER_ADMIN,
-      totalXP: 1000,
-      currentStreak: 10,
-    },
+  const defaultUsers: Array<{
+    id: string;
+    email: string;
+    passwordHash: string;
+    displayName: string;
+    role: Role;
+    totalXP: number;
+    currentStreak: number;
+  }> = [
     {
       id: 'admin-user-001',
-      email: 'admin@lingual.com',
+      email: process.env.ADMIN_EMAIL || 'admin@lingual.com',
       passwordHash: adminPasswordHash,
       displayName: 'Lingual Admin',
       role: Role.ADMIN,
@@ -673,6 +674,22 @@ export async function seedDatabase() {
       currentStreak: 3,
     },
   ];
+
+  // SUPER_ADMIN chỉ được khởi tạo nếu có biến môi trường SUPER_ADMIN_EMAIL & SUPER_ADMIN_PASSWORD
+  if (process.env.SUPER_ADMIN_EMAIL?.trim() && process.env.SUPER_ADMIN_PASSWORD?.trim()) {
+    const saPasswordHash = await argon2.hash(process.env.SUPER_ADMIN_PASSWORD.trim());
+    defaultUsers.unshift({
+      id: 'super-admin-001',
+      email: process.env.SUPER_ADMIN_EMAIL.trim(),
+      passwordHash: saPasswordHash,
+      displayName: process.env.SUPER_ADMIN_NAME?.trim() || 'Lingual Super Admin',
+      role: Role.SUPER_ADMIN,
+      totalXP: 1000,
+      currentStreak: 10,
+    });
+  } else {
+    console.log('ℹ️ Bỏ qua tạo SUPER_ADMIN trong seed.ts (chưa có SUPER_ADMIN_EMAIL & SUPER_ADMIN_PASSWORD). Hãy dùng prisma/seed-admin.ts với biến môi trường đầy đủ.');
+  }
 
   for (const u of defaultUsers) {
     await prisma.user.upsert({

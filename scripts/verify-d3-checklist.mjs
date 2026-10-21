@@ -587,10 +587,12 @@ async function main() {
 
     // G.2: audit logs còn sau restart
     console.log('\n--- G.2: Audit logs còn sau restart ---');
-    console.log('Đăng nhập SuperAdmin (superadmin@lingual.com)...');
+    const saEmail = process.env.SUPER_ADMIN_EMAIL || process.env.ADMIN_EMAIL || 'admin@lingual.com';
+    const saPassword = process.env.SUPER_ADMIN_PASSWORD || process.env.ADMIN_PASSWORD || '123456';
+    console.log(`Đăng nhập Quản trị viên (${saEmail})...`);
     const saLogin = await request(`${BASE_URL}/api/v1/auth/login`, { method: 'POST' }, {
-      email: 'superadmin@lingual.com',
-      password: 'Admin@123456',
+      email: saEmail,
+      password: saPassword,
     });
     const saToken = saLogin.data?.accessToken;
 

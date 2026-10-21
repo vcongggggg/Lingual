@@ -65,15 +65,25 @@ cp .env.example .env
 > [!NOTE]
 > Các tiện ích kiểm thử và nạp dữ liệu trong thư mục `scripts/` sử dụng biến môi trường `DATABASE_URL` (hoặc `DB_PASSWORD`) từ `.env` hoặc từ shell session. Tuyệt đối không hardcode thông tin nhạy cảm vào mã nguồn.
 
-### 3. Khởi tạo Cơ sở dữ liệu
+### 3. Khởi tạo Cơ sở dữ liệu & Quản trị viên
 ```bash
 # Khởi chạy PostgreSQL và Redis nội bộ
 docker compose up -d postgres redis
 
-# Chạy Prisma migration và seed dữ liệu mẫu
+# Chạy Prisma migration và seed dữ liệu giáo trình / bài tập mẫu
 pnpm exec prisma db push
 pnpm exec prisma db seed
+
+# Khởi tạo tài khoản Quản trị tối cao (Bắt buộc cung cấp biến môi trường):
+# Linux/macOS:
+SUPER_ADMIN_EMAIL="admin@yourdomain.com" SUPER_ADMIN_PASSWORD="YourStrongPassword123" pnpm exec tsx prisma/seed-admin.ts
+# Windows PowerShell:
+$env:SUPER_ADMIN_EMAIL="admin@yourdomain.com"; $env:SUPER_ADMIN_PASSWORD="YourStrongPassword123"; pnpm exec tsx prisma/seed-admin.ts
 ```
+
+> [!IMPORTANT]
+> Script `prisma/seed-admin.ts` tuân thủ nguyên tắc bảo mật fail-fast: bắt buộc phải có `SUPER_ADMIN_EMAIL` và `SUPER_ADMIN_PASSWORD` (tối thiểu 8 ký tự). Nếu thiếu biến môi trường, hệ thống sẽ dừng ngay lập tức và tuyệt đối không tạo tài khoản với thông tin đăng nhập mặc định.
+
 
 ### 4. Khởi chạy Ứng dụng
 ```bash
