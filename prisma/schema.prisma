@@ -1219,33 +1219,39 @@ model BilingualStory {
 }
 
 model IeltsReadingPassage {
-  id            String   @id
-  section       String   @default("reading")
-  cefrLevel     String   @default("B1")
-  title         String
-  passageJson   String   @default("[]")
-  questionsJson String   @default("[]")
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  createdAt     DateTime @default(now())
+  id             String   @id
+  section        String   @default("reading")
+  cefrLevel      String   @default("B1")
+  difficultyBand String?  @map("difficulty_band")
+  title          String
+  passageJson    String   @default("[]")
+  questionsJson  String   @default("[]")
+  source         String   @default("ai-generated")
+  license        String?  @default("n/a (original)")
+  verified       Boolean  @default(false)
+  createdAt      DateTime @default(now())
 
   @@index([cefrLevel])
+  @@index([difficultyBand])
   @@map("ielts_reading_passages")
 }
 
 model IeltsListeningSection {
-  id            String   @id
-  section       String   @default("listening")
-  cefrLevel     String   @default("B1")
-  title         String
-  titleVi       String?
-  scriptJson    String   @default("[]")
-  questionsJson String   @default("[]")
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  createdAt     DateTime @default(now())
+  id             String   @id
+  section        String   @default("listening")
+  cefrLevel      String   @default("B1")
+  difficultyBand String?  @map("difficulty_band")
+  title          String
+  titleVi        String?
+  scriptJson     String   @default("[]")
+  questionsJson  String   @default("[]")
+  source         String   @default("ai-generated")
+  license        String?  @default("n/a (original)")
+  verified       Boolean  @default(false)
+  createdAt      DateTime @default(now())
 
   @@index([cefrLevel])
+  @@index([difficultyBand])
   @@map("ielts_listening_sections")
 }
 
