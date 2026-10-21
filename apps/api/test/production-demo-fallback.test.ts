@@ -63,4 +63,41 @@ describe('Production Demo-User Fallback Elimination Audit', () => {
       process.env.NODE_ENV = originalEnv;
     }
   });
+
+  it('strictly returns null in strict mode even in development when unauthenticated', () => {
+    const originalEnv = process.env.NODE_ENV;
+    try {
+      process.env.NODE_ENV = 'development';
+
+      const mockReq: any = {
+        headers: {},
+        body: { userId: 'user-alice-002' },
+        query: { userId: 'user-alice-002' },
+      };
+
+      const resolved = resolveAuthUserId(mockReq, { strict: true });
+      assert.strictEqual(resolved, null, 'Strict mode must refuse client-supplied userId and unauthenticated requests');
+    } finally {
+      process.env.NODE_ENV = originalEnv;
+    }
+  });
+
+  it('never trusts query.userId or body.userId without token even in non-strict mode', () => {
+    const originalEnv = process.env.NODE_ENV;
+    try {
+      process.env.NODE_ENV = 'development';
+
+      const mockReq: any = {
+        headers: {},
+        body: { userId: 'user-alice-002' },
+        query: { userId: 'user-alice-002' },
+      };
+
+      const resolved = resolveAuthUserId(mockReq);
+      assert.strictEqual(resolved, 'demo-user-id-001', 'Must not impersonate user-alice-002 from body or query');
+    } finally {
+      process.env.NODE_ENV = originalEnv;
+    }
+  });
 });
+

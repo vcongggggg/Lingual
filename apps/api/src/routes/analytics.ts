@@ -4,20 +4,22 @@
 
 import { Router, Request, Response } from 'express';
 import { learningAnalyticsService } from '../services/learningAnalytics.js';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const analyticsRouter = Router();
 
-// Helper to resolve authenticated user securely
-function resolveUserId(req: Request): string {
-  // @ts-ignore
-  if (req.user?.id) return req.user.id;
-  // @ts-ignore
-  if (req.user?.userId) return req.user.userId;
-  const headerUser = req.headers['x-user-id'] as string;
-  if (headerUser && typeof headerUser === 'string') return headerUser;
-  const queryUser = req.query.userId as string;
-  if (queryUser && typeof queryUser === 'string') return queryUser;
-  return 'demo-user-id-001';
+// Middleware: Strictly verify authentication token for all analytics endpoints
+analyticsRouter.use((req: Request, res: Response, next) => {
+  const userId = resolveAuthUserId(req, { strict: true });
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để truy cập số liệu phân tích học tập.' });
+  }
+  (req as any).authenticatedUserId = userId;
+  next();
+});
+
+function getAuthUserId(req: Request): string {
+  return (req as any).authenticatedUserId;
 }
 
 /**
@@ -26,7 +28,7 @@ function resolveUserId(req: Request): string {
  */
 analyticsRouter.get('/overview', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const overview = learningAnalyticsService.getOverview(userId);
     res.json(overview);
   } catch (err: any) {
@@ -40,7 +42,7 @@ analyticsRouter.get('/overview', (req: Request, res: Response) => {
  */
 analyticsRouter.get('/skills', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const skills = learningAnalyticsService.getSkillsPerformance(userId);
     res.json({ skills });
   } catch (err: any) {
@@ -54,7 +56,7 @@ analyticsRouter.get('/skills', (req: Request, res: Response) => {
  */
 analyticsRouter.get('/trends', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const period = (req.query.period as string) || '7d';
     if (!['7d', '30d', '90d'].includes(period)) {
       return res.status(400).json({ error: 'Invalid period. Supported: 7d, 30d, 90d' });
@@ -72,7 +74,7 @@ analyticsRouter.get('/trends', (req: Request, res: Response) => {
  */
 analyticsRouter.get('/heatmap', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const heatmap = learningAnalyticsService.getHeatmap(userId);
     res.json({ heatmap });
   } catch (err: any) {
@@ -86,7 +88,7 @@ analyticsRouter.get('/heatmap', (req: Request, res: Response) => {
  */
 analyticsRouter.get('/weaknesses', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const weaknesses = learningAnalyticsService.getWeaknesses(userId);
     res.json({ weaknesses });
   } catch (err: any) {
@@ -100,7 +102,7 @@ analyticsRouter.get('/weaknesses', (req: Request, res: Response) => {
  */
 analyticsRouter.get('/recommendations', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const locale = (req.query.locale as string) || 'vi';
     const recommendations = learningAnalyticsService.getRecommendations(userId, locale);
     res.json({ recommendations });
@@ -115,7 +117,7 @@ analyticsRouter.get('/recommendations', (req: Request, res: Response) => {
  */
 analyticsRouter.get('/goals', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const goals = learningAnalyticsService.getGoals(userId);
     res.json({ goals });
   } catch (err: any) {
@@ -129,7 +131,7 @@ analyticsRouter.get('/goals', (req: Request, res: Response) => {
  */
 analyticsRouter.post('/goals', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const { type, target, endDate } = req.body;
 
     const validTypes = [
@@ -164,7 +166,7 @@ analyticsRouter.post('/goals', (req: Request, res: Response) => {
  */
 analyticsRouter.put('/goals/:id', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const goalId = req.params.id;
     const { current, target, completed } = req.body;
 
@@ -185,7 +187,7 @@ analyticsRouter.put('/goals/:id', (req: Request, res: Response) => {
  */
 analyticsRouter.delete('/goals/:id', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const goalId = req.params.id;
 
     const success = learningAnalyticsService.deleteGoal(userId, goalId);
@@ -205,7 +207,7 @@ analyticsRouter.delete('/goals/:id', (req: Request, res: Response) => {
  */
 analyticsRouter.get('/report/weekly', (req: Request, res: Response) => {
   try {
-    const userId = resolveUserId(req);
+    const userId = getAuthUserId(req);
     const report = learningAnalyticsService.getWeeklyReport(userId);
     res.json({ report });
   } catch (err: any) {

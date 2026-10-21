@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { resolveAuthUserId } from '../lib/authUtil.js';
 import { communityRepository } from '../repositories/index.js';
 import {
   SocialProfile,
@@ -470,7 +471,7 @@ communityRouter.get('/profile/:userId', (req, res) => {
   }
 
   // Enforce privacy: if private and not owner, return minimal placeholder
-  const requesterId = (req.query.viewerId as string) || 'demo-user-id-001';
+  const requesterId = resolveAuthUserId(req) || 'guest';
   if (profile.privacy.profileVisibility === 'private' && requesterId !== profile.userId) {
     return res.json({
       profile: {
@@ -492,7 +493,10 @@ communityRouter.get('/profile/:userId', (req, res) => {
  * List friends and followings
  */
 communityRouter.get('/friends', (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req, { strict: true });
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để xem danh sách bạn bè.' });
+  }
 
   // Get accepted friends
   const friendIds = COMMUNITY_FRIENDSHIPS.filter(
@@ -513,7 +517,10 @@ communityRouter.get('/friends', (req, res) => {
  * List pending friend requests
  */
 communityRouter.get('/friend-requests', (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req, { strict: true });
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để xem lời mời kết bạn.' });
+  }
   const pendingFriendships = COMMUNITY_FRIENDSHIPS.filter(
     (f) => f.addresseeId === userId && f.status === 'pending'
   );
@@ -537,7 +544,10 @@ communityRouter.get('/friend-requests', (req, res) => {
  * Send friend request
  */
 communityRouter.post('/friends/:targetUserId', (req, res) => {
-  const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để gửi lời mời kết bạn.' });
+  }
   const targetId = req.params.targetUserId;
 
   if (currentUserId === targetId) {
@@ -572,7 +582,10 @@ communityRouter.post('/friends/:targetUserId', (req, res) => {
  * Accept friend request
  */
 communityRouter.post('/friends/:targetUserId/accept', (req, res) => {
-  const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để chấp nhận kết bạn.' });
+  }
   const targetId = req.params.targetUserId;
 
   const friendship = COMMUNITY_FRIENDSHIPS.find(
@@ -594,7 +607,10 @@ communityRouter.post('/friends/:targetUserId/accept', (req, res) => {
  * Reject friend request
  */
 communityRouter.post('/friends/:targetUserId/reject', (req, res) => {
-  const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để từ chối kết bạn.' });
+  }
   const targetId = req.params.targetUserId;
 
   const idx = COMMUNITY_FRIENDSHIPS.findIndex(
@@ -613,7 +629,10 @@ communityRouter.post('/friends/:targetUserId/reject', (req, res) => {
  * Follow a user
  */
 communityRouter.post('/users/:targetUserId/follow', (req, res) => {
-  const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để theo dõi người dùng.' });
+  }
   const targetId = req.params.targetUserId;
 
   if (currentUserId === targetId) {
@@ -634,7 +653,10 @@ communityRouter.post('/users/:targetUserId/follow', (req, res) => {
  * Unfollow a user
  */
 communityRouter.delete('/users/:targetUserId/follow', (req, res) => {
-  const currentUserId = (req.body.userId as string) || 'demo-user-id-001';
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để hủy theo dõi.' });
+  }
   const targetId = req.params.targetUserId;
 
   const idx = COMMUNITY_FOLLOWS.findIndex((f) => f.followerId === currentUserId && f.followingId === targetId);
@@ -649,7 +671,7 @@ communityRouter.delete('/users/:targetUserId/follow', (req, res) => {
  * Activity feed (sanitized and newest first)
  */
 communityRouter.get('/feed', (req, res) => {
-  const viewerId = (req.query.viewerId as string) || 'demo-user-id-001';
+  const viewerId = resolveAuthUserId(req) || 'guest';
 
   // Filter activities visible to viewer
   const visible = COMMUNITY_ACTIVITIES.filter((act) => {
@@ -730,7 +752,12 @@ communityRouter.get('/notes/:noteId', (req, res) => {
  * Create study note
  */
 communityRouter.post('/notes', async (req, res) => {
-  const { title, content, tags = [], visibility = 'public', userId = 'demo-user-id-001' } = req.body;
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để tạo ghi chú học tập.' });
+  }
+
+  const { title, content, tags = [], visibility = 'public' } = req.body;
 
   const validation = validateStudyNoteContent(title, content, tags);
   if (!validation.valid) {
@@ -738,7 +765,31 @@ communityRouter.post('/notes', async (req, res) => {
   }
 
   const normalized = normalizeStudyNote(title, content, tags, visibility);
-  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === currentUserId) || {
+    userId: currentUserId,
+    username: currentUserId,
+    displayName: 'Người Dùng',
+    avatarUrl: '',
+    targetLanguage: 'English',
+    level: 'B1' as any,
+    totalXP: 0,
+    currentStreak: 1,
+    totalLearningDays: 1,
+    vocabularyLearned: 0,
+    listeningSessions: 0,
+    writingSubmissions: 0,
+    readingCompleted: 0,
+    examsCompleted: 0,
+    privacy: {
+      profileVisibility: 'public' as any,
+      activityVisibility: 'public' as any,
+      allowFriendRequests: true,
+      allowGroupInvites: true,
+      showOnLeaderboard: true,
+      showAchievements: true,
+    },
+    createdAt: new Date().toISOString(),
+  };
 
   const newNote: StudyNote = {
     id: `note-${Date.now()}`,
@@ -791,7 +842,12 @@ communityRouter.post('/notes', async (req, res) => {
  * Toggle reaction on a study note
  */
 communityRouter.post('/notes/:noteId/reactions', (req, res) => {
-  const { reactionType = 'helpful', userId = 'demo-user-id-001' } = req.body;
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để tương tác ghi chú.' });
+  }
+  const { reactionType = 'helpful' } = req.body;
+  const userId = currentUserId;
   const note = COMMUNITY_STUDY_NOTES.find((n) => n.id === req.params.noteId);
 
   if (!note) {
@@ -827,7 +883,12 @@ communityRouter.post('/notes/:noteId/reactions', (req, res) => {
  * Add comment to a study note
  */
 communityRouter.post('/notes/:noteId/comments', (req, res) => {
-  const { content, userId = 'demo-user-id-001' } = req.body;
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để bình luận ghi chú.' });
+  }
+
+  const { content } = req.body;
   const note = COMMUNITY_STUDY_NOTES.find((n) => n.id === req.params.noteId);
 
   if (!note) {
@@ -837,7 +898,31 @@ communityRouter.post('/notes/:noteId/comments', (req, res) => {
     return res.status(400).json({ error: 'Nội dung bình luận không được để trống.' });
   }
 
-  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === currentUserId) || {
+    userId: currentUserId,
+    username: currentUserId,
+    displayName: 'Người Dùng',
+    avatarUrl: '',
+    targetLanguage: 'English',
+    level: 'B1' as any,
+    totalXP: 0,
+    currentStreak: 1,
+    totalLearningDays: 1,
+    vocabularyLearned: 0,
+    listeningSessions: 0,
+    writingSubmissions: 0,
+    readingCompleted: 0,
+    examsCompleted: 0,
+    privacy: {
+      profileVisibility: 'public' as any,
+      activityVisibility: 'public' as any,
+      allowFriendRequests: true,
+      allowGroupInvites: true,
+      showOnLeaderboard: true,
+      showAchievements: true,
+    },
+    createdAt: new Date().toISOString(),
+  };
   const newComment: StudyNoteComment = {
     id: `c-${Date.now()}`,
     noteId: note.id,
@@ -920,7 +1005,10 @@ communityRouter.get('/groups/:groupId', (req, res) => {
  * Join a study group
  */
 communityRouter.post('/groups/:groupId/join', (req, res) => {
-  const userId = (req.body.userId as string) || 'demo-user-id-001';
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để tham gia nhóm học tập.' });
+  }
   const group = SEED_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
 
   if (!group) {
@@ -928,13 +1016,17 @@ communityRouter.post('/groups/:groupId/join', (req, res) => {
   }
 
   const currentMembers = COMMUNITY_GROUP_MEMBERS.filter((m) => m.groupId === group.id).map((m) => m.userId);
-  const canJoin = canJoinGroup(group, userId, currentMembers);
+  const canJoin = canJoinGroup(group, currentUserId, currentMembers);
 
   if (!canJoin.allowed) {
     return res.status(400).json({ error: canJoin.reason });
   }
 
-  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === currentUserId) || {
+    userId: currentUserId,
+    displayName: 'Người Dùng',
+    avatarUrl: '',
+  };
   const newMember: StudyGroupMember = {
     groupId: group.id,
     userId: user.userId,
@@ -956,7 +1048,11 @@ communityRouter.post('/groups/:groupId/join', (req, res) => {
  * Post to study group
  */
 communityRouter.post('/groups/:groupId/posts', (req, res) => {
-  const { content, userId = 'demo-user-id-001' } = req.body;
+  const currentUserId = resolveAuthUserId(req, { strict: true });
+  if (!currentUserId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để đăng bài thảo luận.' });
+  }
+  const { content } = req.body;
   const group = SEED_STUDY_GROUPS.find((g) => g.id === req.params.groupId);
 
   if (!group) {
@@ -966,7 +1062,11 @@ communityRouter.post('/groups/:groupId/posts', (req, res) => {
     return res.status(400).json({ error: 'Nội dung thảo luận không được để trống.' });
   }
 
-  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
+  const user = SEED_PROFILES.find((p) => p.userId === currentUserId) || {
+    userId: currentUserId,
+    displayName: 'Người Dùng',
+    avatarUrl: '',
+  };
   const newPost: GroupPost = {
     id: `post-${Date.now()}`,
     groupId: group.id,
@@ -987,8 +1087,15 @@ communityRouter.post('/groups/:groupId/posts', (req, res) => {
  * List all achievements with current user progress
  */
 communityRouter.get('/achievements', (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
-  const user = SEED_PROFILES.find((p) => p.userId === userId) || SEED_PROFILES[0];
+  const userId = resolveAuthUserId(req, { strict: true });
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để xem tiến độ thành tích.' });
+  }
+  const user = SEED_PROFILES.find((p) => p.userId === userId) || {
+    userId,
+    currentStreak: 0,
+    totalXP: 0,
+  };
 
   const userStats = {
     notesCount: COMMUNITY_STUDY_NOTES.filter((n) => n.userId === user.userId).length,
@@ -1022,7 +1129,10 @@ communityRouter.get('/achievements', (req, res) => {
  * List notifications
  */
 communityRouter.get('/notifications', (req, res) => {
-  const userId = (req.query.userId as string) || 'demo-user-id-001';
+  const userId = resolveAuthUserId(req, { strict: true });
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để xem thông báo.' });
+  }
   const notifs = COMMUNITY_NOTIFICATIONS.filter((n) => n.userId === userId);
   const unreadCount = notifs.filter((n) => !n.isRead).length;
 
@@ -1034,7 +1144,11 @@ communityRouter.get('/notifications', (req, res) => {
  * Mark notification as read
  */
 communityRouter.post('/notifications/:id/read', (req, res) => {
-  const notif = COMMUNITY_NOTIFICATIONS.find((n) => n.id === req.params.id);
+  const userId = resolveAuthUserId(req, { strict: true });
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Yêu cầu đăng nhập để cập nhật thông báo.' });
+  }
+  const notif = COMMUNITY_NOTIFICATIONS.find((n) => n.id === req.params.id && n.userId === userId);
   if (notif) {
     notif.isRead = true;
   }

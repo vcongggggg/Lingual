@@ -11,11 +11,11 @@ export interface ResolvedUser {
 /**
  * Resolves the user ID safely across environments:
  * 1. Express req.user (if populated by middleware/guard)
- * 2. Bearer JWT token in Authorization header
- * 3. In non-production (development/test): falls back to explicit userId or 'demo-user-id-001'
- * 4. In production (NODE_ENV === 'production'): STRICTLY returns null if no valid token is present
+ * 2. Bearer JWT token in Authorization header or httpOnly cookie
+ * 3. In non-production (development/test): falls back to 'demo-user-id-001' (never trust client-supplied userId)
+ * 4. In production (NODE_ENV === 'production') or when options.strict is true: STRICTLY returns null if no valid token is present
  */
-export function resolveAuthUserId(req: Request): string | null {
+export function resolveAuthUserId(req: Request, options?: { strict?: boolean }): string | null {
   // 1. Authenticated req.user
   if ((req as any).user?.id) {
     return (req as any).user.id;
@@ -36,27 +36,26 @@ export function resolveAuthUserId(req: Request): string | null {
       const id = payload?.userId || payload?.sub || payload?.id;
       if (id) return id;
     } catch {
-      // In non-production only, accept mock test tokens
-      if (process.env.NODE_ENV !== 'production' && token) {
+      // In non-production only, accept mock test tokens if not strict
+      if (process.env.NODE_ENV !== 'production' && token && !options?.strict) {
         return `user-${token.slice(0, 8)}`;
       }
     }
   }
 
-  // 3. In non-production environments (test/development), allow explicit param or fallback
-  if (process.env.NODE_ENV !== 'production') {
-    const explicit = (req.body?.userId as string) || (req.query?.userId as string);
-    return explicit || 'demo-user-id-001';
+  // If strict mode is requested or in production, reject unauthenticated requests
+  if (options?.strict || process.env.NODE_ENV === 'production') {
+    return null;
   }
 
-  // 4. In production: strictly refuse fallback without valid token
-  return null;
+  // 3. In non-production environments (test/development), allow default demo fallback (never trust explicit client userId)
+  return 'demo-user-id-001';
 }
 
 /**
  * Resolves user object for routes requiring id, email, and role.
  */
-export function resolveAuthUser(req: Request): ResolvedUser | null {
+export function resolveAuthUser(req: Request, options?: { strict?: boolean }): ResolvedUser | null {
   if ((req as any).user && (req as any).user.id) {
     return {
       id: (req as any).user.id,
@@ -84,15 +83,15 @@ export function resolveAuthUser(req: Request): ResolvedUser | null {
         };
       }
     } catch {
-      if (process.env.NODE_ENV !== 'production' && token) {
+      if (process.env.NODE_ENV !== 'production' && token && !options?.strict) {
         return { id: `user-${token.slice(0, 8)}`, email: 'learner@linguaflow.com', role: 'STUDENT' };
       }
     }
   }
 
-  if (process.env.NODE_ENV !== 'production') {
-    return { id: 'demo-user-id-001', email: 'demo@linguaflow.com', role: 'STUDENT' };
+  if (options?.strict || process.env.NODE_ENV === 'production') {
+    return null;
   }
 
-  return null;
+  return { id: 'demo-user-id-001', email: 'demo@linguaflow.com', role: 'STUDENT' };
 }
