@@ -22,6 +22,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { api } from '../../lib/api';
 import { LingLing, LingLingReaction } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
+import { RoadmapErrorBoundary } from '../../components/ui/RoadmapErrorBoundary';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -127,10 +128,10 @@ const MASCOT_MESSAGES: Record<number, { text: string; pose: LingLingReaction }> 
   6: { text: 'Tuyệt đỉnh! Bạn đã hoàn thành toàn bộ hành trình! 🏆🎉', pose: 'party' },
 };
 
-export default function CurriculumRoadmapPage() {
+function CurriculumRoadmapContent() {
   const [units, setUnits] = useState<UnitNode[]>(DEFAULT_UNITS);
   const [pathD, setPathD] = useState<string>('');
-  const [pathLength, setPathLength] = useState<number>(1000);
+  const [pathLength, setPathLength] = useState<number>(0); // Khởi tạo an toàn là 0 (chỉ kích hoạt GSAP khi pathD đã tính xong)
   const [activeUnitIndex, setActiveUnitIndex] = useState<number>(2); // Mặc định Unit 2 đang học dở
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [revealedUnits, setRevealedUnits] = useState<Set<number>>(new Set([1, 2]));
@@ -169,6 +170,13 @@ export default function CurriculumRoadmapPage() {
             };
           });
           setUnits(mapped);
+
+          // ScrollTrigger refresh an toàn sau khi DOM render units thật
+          setTimeout(() => {
+            try {
+              ScrollTrigger.refresh();
+            } catch {}
+          }, 150);
         }
       } catch {}
     }
@@ -187,54 +195,62 @@ export default function CurriculumRoadmapPage() {
 
   // Tính toán tọa độ Sợi chỉ đỏ SVG (Red Thread Path) nối chuẩn qua tâm các node
   const calculateThreadPath = () => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const containerRect = container.getBoundingClientRect();
-    const isMobile = window.innerWidth < 768;
+    try {
+      if (!containerRef.current) return;
+      const container = containerRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const isMobile = window.innerWidth < 768;
 
-    const anchors = container.querySelectorAll<HTMLElement>('.journey-node-anchor');
-    if (anchors.length === 0) return;
+      const anchors = container.querySelectorAll<HTMLElement>('.journey-node-anchor');
+      if (anchors.length === 0) return;
 
-    const points: { x: number; y: number }[] = [];
+      const points: { x: number; y: number }[] = [];
 
-    // Điểm bắt đầu ở phía trên node đầu tiên
-    const firstAnchorRect = anchors[0].getBoundingClientRect();
-    const startX = isMobile
-      ? firstAnchorRect.left - containerRect.left + firstAnchorRect.width / 2
-      : containerRect.width / 2;
-    points.push({ x: startX, y: 10 });
+      // Điểm bắt đầu ở phía trên node đầu tiên
+      const firstAnchorRect = anchors[0].getBoundingClientRect();
+      const startX = isMobile
+        ? firstAnchorRect.left - containerRect.left + firstAnchorRect.width / 2
+        : containerRect.width / 2;
+      points.push({ x: startX, y: 10 });
 
-    anchors.forEach((anchor) => {
-      const rect = anchor.getBoundingClientRect();
-      points.push({
-        x: rect.left - containerRect.left + rect.width / 2,
-        y: rect.top - containerRect.top + rect.height / 2,
+      anchors.forEach((anchor) => {
+        const rect = anchor.getBoundingClientRect();
+        points.push({
+          x: rect.left - containerRect.left + rect.width / 2,
+          y: rect.top - containerRect.top + rect.height / 2,
+        });
       });
-    });
 
-    // Điểm kết thúc ở card đích
-    const finishEl = container.querySelector<HTMLElement>('#destination-anchor');
-    if (finishEl) {
-      const finishRect = finishEl.getBoundingClientRect();
-      points.push({
-        x: finishRect.left - containerRect.left + finishRect.width / 2,
-        y: finishRect.top - containerRect.top + finishRect.height / 2,
-      });
-    } else {
-      const last = points[points.length - 1];
-      points.push({ x: last.x, y: last.y + 160 });
+      // Điểm kết thúc ở card đích
+      const finishEl = container.querySelector<HTMLElement>('#destination-anchor');
+      if (finishEl) {
+        const finishRect = finishEl.getBoundingClientRect();
+        points.push({
+          x: finishRect.left - containerRect.left + finishRect.width / 2,
+          y: finishRect.top - containerRect.top + finishRect.height / 2,
+        });
+      } else {
+        const last = points[points.length - 1];
+        if (last) {
+          points.push({ x: last.x, y: last.y + 160 });
+        }
+      }
+
+      if (points.length < 2) return;
+
+      // Vẽ đường cong Bezier bậc ba mượt mà như đường chỉ thêu
+      let d = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+      for (let i = 0; i < points.length - 1; i++) {
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const dy = (p2.y - p1.y) * 0.52;
+        d += ` C ${p1.x.toFixed(1)} ${(p1.y + dy).toFixed(1)}, ${p2.x.toFixed(1)} ${(p2.y - dy).toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+      }
+
+      setPathD(d);
+    } catch (err) {
+      console.warn('calculateThreadPath failed safely:', err);
     }
-
-    // Vẽ đường cong Bezier bậc ba mượt mà như đường chỉ thêu
-    let d = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
-    for (let i = 0; i < points.length - 1; i++) {
-      const p1 = points[i];
-      const p2 = points[i + 1];
-      const dy = (p2.y - p1.y) * 0.52;
-      d += ` C ${p1.x.toFixed(1)} ${(p1.y + dy).toFixed(1)}, ${p2.x.toFixed(1)} ${(p2.y - dy).toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
-    }
-
-    setPathD(d);
   };
 
   // Cập nhật path khi mount, resize hoặc đổi units
@@ -249,12 +265,16 @@ export default function CurriculumRoadmapPage() {
     };
   }, [units]);
 
-  // Cập nhật độ dài đường path sau khi setPathD
+  // Cập nhật độ dài đường path sau khi setPathD (chỉ set khi pathD hợp lệ)
   useEffect(() => {
-    if (pathRef.current) {
-      const len = pathRef.current.getTotalLength();
-      if (len > 0) {
-        setPathLength(len);
+    if (pathRef.current && pathD) {
+      try {
+        const len = pathRef.current.getTotalLength();
+        if (typeof len === 'number' && !isNaN(len) && len > 0) {
+          setPathLength(len);
+        }
+      } catch (err) {
+        console.warn('getTotalLength failed safely:', err);
       }
     }
   }, [pathD]);
@@ -262,77 +282,117 @@ export default function CurriculumRoadmapPage() {
   // Thiết lập Scrollytelling bằng GSAP + ScrollTrigger (scrub: true, KHÔNG pin)
   useEffect(() => {
     if (typeof window === 'undefined' || isReducedMotion) return;
-    if (!containerRef.current || !pathRef.current || pathLength <= 0) return;
+    // Guard tuyệt đối: KHÔNG chạy khi pathD rỗng hoặc pathLength <= 0 để tránh ném InvalidStateError getPointAtLength
+    if (!containerRef.current || !pathRef.current || !pathD || pathLength <= 0) return;
 
-    // Reset ScrollTriggers cũ nếu có
     const triggers: ScrollTrigger[] = [];
-
     const path = pathRef.current;
-    gsap.set(path, {
-      strokeDasharray: pathLength,
-      strokeDashoffset: pathLength,
-    });
 
-    // 1. Chỉ đỏ vẽ dần theo vị trí scroll (scrub: true) + Bò LingLing di chuyển bám sát sợi chỉ
-    const scrubTrigger = ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: 'top 40%',
-      end: 'bottom 85%',
-      scrub: 0.6,
-      onUpdate: (self) => {
-        const progress = Math.max(0, Math.min(1, self.progress));
-        setScrollProgress(Math.round(progress * 100));
+    try {
+      gsap.set(path, {
+        strokeDasharray: pathLength,
+        strokeDashoffset: pathLength,
+      });
 
-        // Vẽ dần nét chỉ
-        const offset = pathLength * (1 - progress);
-        path.style.strokeDashoffset = `${offset}`;
+      // 1. Chỉ đỏ vẽ dần theo vị trí scroll (scrub: true) + Bò LingLing di chuyển bám sát sợi chỉ
+      const scrubTrigger = ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top 40%',
+        end: 'bottom 85%',
+        scrub: 0.6,
+        onUpdate: (self) => {
+          try {
+            const progress = Math.max(0, Math.min(1, self.progress));
+            setScrollProgress(Math.round(progress * 100));
 
-        // Di chuyển bò LingLing chính xác theo getPointAtLength của sợi chỉ
-        if (travelerRef.current && path) {
-          const distance = progress * pathLength;
-          const pt = path.getPointAtLength(Math.min(distance, pathLength));
-          travelerRef.current.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
-        }
+            // Vẽ dần nét chỉ
+            if (path && pathLength > 0) {
+              const offset = pathLength * (1 - progress);
+              path.style.strokeDashoffset = `${offset}`;
+            }
 
-        // Cập nhật stage hiển thị trên Hộ Chiếu Hành Trình
-        if (progress < 0.2) setActiveUnitIndex(1);
-        else if (progress < 0.45) setActiveUnitIndex(2);
-        else if (progress < 0.65) setActiveUnitIndex(3);
-        else if (progress < 0.85) setActiveUnitIndex(4);
-        else if (progress < 0.98) setActiveUnitIndex(5);
-        else setActiveUnitIndex(6); // Destination
-      },
-    });
-    triggers.push(scrubTrigger);
+            // Di chuyển bò LingLing an toàn tuyệt đối theo getPointAtLength
+            if (travelerRef.current && path && pathLength > 0) {
+              const dAttr = path.getAttribute('d');
+              if (dAttr && dAttr.trim().length > 5) {
+                const distance = Math.max(0, Math.min(progress * pathLength, pathLength));
+                const pt = path.getPointAtLength(distance);
+                if (pt && typeof pt.x === 'number' && typeof pt.y === 'number' && !isNaN(pt.x) && !isNaN(pt.y)) {
+                  travelerRef.current.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
+                }
+              }
+            }
 
-    // 2. Reveal các card chặng khi đi vào viewport (trượt nhẹ + hiện dần) + đóng dấu
-    cardRefs.current.forEach((card, idx) => {
-      if (!card) return;
-      const unitOrder = idx + 1;
-
-      gsap.set(card, { opacity: 0, y: 35 });
-
-      const cardTrigger = ScrollTrigger.create({
-        trigger: card,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-        onEnter: () => {
-          gsap.to(card, {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power2.out',
-          });
-          setRevealedUnits((prev) => new Set(prev).add(unitOrder));
+            // Cập nhật stage hiển thị trên Hộ Chiếu Hành Trình theo số lượng units thực tế
+            const totalUnits = Math.max(1, units.length);
+            if (progress >= 0.98) {
+              setActiveUnitIndex(totalUnits + 1); // Destination
+            } else {
+              const calculatedIdx = Math.min(totalUnits, Math.floor(progress * totalUnits) + 1);
+              setActiveUnitIndex(calculatedIdx);
+            }
+          } catch (onUpdateErr) {
+            // Phòng vệ an toàn nếu SVG path đang recalculate
+          }
         },
       });
-      triggers.push(cardTrigger);
-    });
+      triggers.push(scrubTrigger);
+
+      // 2. Reveal các card chặng khi đi vào viewport (trượt nhẹ + hiện dần) + đóng dấu
+      cardRefs.current.forEach((card, idx) => {
+        if (!card) return;
+        const unitOrder = idx + 1;
+
+        try {
+          gsap.set(card, { opacity: 0, y: 35 });
+
+          const cardTrigger = ScrollTrigger.create({
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            onEnter: () => {
+              gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: 'power2.out',
+              });
+              setRevealedUnits((prev) => new Set(prev).add(unitOrder));
+            },
+          });
+          triggers.push(cardTrigger);
+        } catch (cardTriggerErr) {
+          // Fallback an toàn: nếu ScrollTrigger lỗi, hiện card ngay
+          if (card) {
+            card.style.opacity = '1';
+            card.style.transform = 'none';
+          }
+        }
+      });
+    } catch (gsapInitErr) {
+      console.warn('GSAP ScrollTrigger setup failed safely:', gsapInitErr);
+    }
+
+    // Cơ chế an toàn (Fallback): sau 1200ms tự động reveal mọi card nếu ScrollTrigger chưa bắn
+    const fallbackTimer = setTimeout(() => {
+      cardRefs.current.forEach((card, idx) => {
+        if (card && card.style.opacity === '0') {
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+          setRevealedUnits((prev) => new Set(prev).add(idx + 1));
+        }
+      });
+    }, 1200);
 
     return () => {
-      triggers.forEach((t) => t.kill());
+      clearTimeout(fallbackTimer);
+      triggers.forEach((t) => {
+        try {
+          t.kill();
+        } catch {}
+      });
     };
-  }, [pathD, pathLength, isReducedMotion]);
+  }, [pathD, pathLength, isReducedMotion, units]);
 
   // Cuộn mượt tới chặng mong muốn
   const scrollToUnit = (order: number) => {
@@ -342,7 +402,10 @@ export default function CurriculumRoadmapPage() {
     }
   };
 
-  const currentMascotMsg = MASCOT_MESSAGES[activeUnitIndex] || MASCOT_MESSAGES[2];
+  const currentMascotMsg = MASCOT_MESSAGES[activeUnitIndex] || MASCOT_MESSAGES[2] || {
+    text: 'Cùng khám phá hành trình tiếng Anh nào! 🔥',
+    pose: 'pointYou' as LingLingReaction,
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-10 pb-32 text-left relative">
@@ -675,9 +738,19 @@ export default function CurriculumRoadmapPage() {
               <span>Hộ Chiếu Hành Trình</span>
             </div>
 
-            <h4 className="text-lg font-black text-ink mb-1 font-sans">
-              Chặng {Math.min(5, activeUnitIndex)}/5 · {activeUnitIndex === 6 ? 'Đã về đích' : units[activeUnitIndex - 1]?.title.split(':')[1] || 'Đang khám phá'}
-            </h4>
+            {(() => {
+              const displayStage = Math.max(1, Math.min(units.length, activeUnitIndex));
+              const currentUnit = units[activeUnitIndex - 1] || units[0];
+              const unitSubtitle = currentUnit?.title?.includes(':')
+                ? currentUnit.title.split(':')[1]?.trim()
+                : currentUnit?.title || 'Đang khám phá';
+
+              return (
+                <h4 className="text-lg font-black text-ink mb-1 font-sans">
+                  Chặng {displayStage}/{units.length} · {activeUnitIndex > units.length ? 'Đã về đích' : unitSubtitle}
+                </h4>
+              );
+            })()}
 
             <p className="text-xs text-ink-soft mb-4">
               Dấu mốc theo bước chân cuộn trang của bạn.
@@ -697,7 +770,7 @@ export default function CurriculumRoadmapPage() {
               </div>
             </div>
 
-            {/* 5 Ô DẤU VISA TÍCH DẦN THEO SCROLL */}
+            {/* Ô DẤU VISA TÍCH DẦN THEO SCROLL */}
             <div className="space-y-2 border-t border-ink/15 pt-4">
               <span className="text-[10px] font-black uppercase tracking-wider text-ink-muted block mb-2">
                 Dấu thị thực các chặng:
@@ -705,6 +778,7 @@ export default function CurriculumRoadmapPage() {
 
               <div className="grid grid-cols-5 gap-2">
                 {units.map((u) => {
+                  if (!u || typeof u.order !== 'number') return null;
                   const isPassed = activeUnitIndex >= u.order;
                   const isCurrent = activeUnitIndex === u.order;
                   const isCompletedInDb = u.status === 'COMPLETED';
@@ -713,7 +787,7 @@ export default function CurriculumRoadmapPage() {
                     <button
                       key={u.order}
                       onClick={() => scrollToUnit(u.order)}
-                      title={`Cuộn đến ${u.title}`}
+                      title={`Cuộn đến ${u.title || `Unit ${u.order}`}`}
                       className={`aspect-square rounded-xl border-2 flex flex-col items-center justify-center p-1 transition-all ${
                         isCurrent
                           ? 'border-red bg-red/10 text-red font-black scale-105 shadow-brutal-sm'
@@ -749,16 +823,30 @@ export default function CurriculumRoadmapPage() {
             </div>
 
             {/* Nút cuộn nhanh tới chặng đang học dở */}
-            <button
-              onClick={() => scrollToUnit(2)}
-              className="w-full mt-4 btn btn-red text-xs font-black shadow-brutal py-2 flex items-center justify-center gap-1.5"
-            >
-              <MapPin className="w-3.5 h-3.5" />
-              <span>Chuyển tới chặng đang học</span>
-            </button>
+            {(() => {
+              const inProgressUnit = units.find((u) => u.status === 'IN_PROGRESS') || units[0];
+              const targetOrder = inProgressUnit?.order || 1;
+              return (
+                <button
+                  onClick={() => scrollToUnit(targetOrder)}
+                  className="w-full mt-4 btn btn-red text-xs font-black shadow-brutal py-2 flex items-center justify-center gap-1.5"
+                >
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Chuyển tới chặng đang học</span>
+                </button>
+              );
+            })()}
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CurriculumRoadmapPage() {
+  return (
+    <RoadmapErrorBoundary fallbackTitle="Lộ trình học tập Sổ tay tạm thời chưa tải xong">
+      <CurriculumRoadmapContent />
+    </RoadmapErrorBoundary>
   );
 }
