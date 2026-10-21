@@ -25,6 +25,7 @@ model User {
   authProvider     String   @default("local")               // "local" | "google"
   displayName      String
   role             Role     @default(STUDENT)
+  isActive         Boolean  @default(true)
   interfaceLocale  String   @default("vi")                  // UI locale (independent of learning language)
   timezone         String   @default("Asia/Ho_Chi_Minh")   // User timezone for streak & SRS
   dailyGoalMinutes Int      @default(15)

@@ -38,6 +38,9 @@ userRouter.get('/profile', async (req, res) => {
   if (!user) {
     return res.status(404).json({ error: 'Không tìm thấy người dùng' });
   }
+  if (user.isActive === false) {
+    return res.status(403).json({ error: 'Tài khoản của bạn đã bị vô hiệu hóa hoặc tạm khóa. Vui lòng liên hệ quản trị viên.' });
+  }
 
   const { passwordHash: _, ...userWithoutPassword } = user;
   return res.json({
@@ -59,6 +62,9 @@ userRouter.get('/progress', async (req, res) => {
   const user = await resolveUser(userId);
   if (!user) {
     return res.status(404).json({ error: 'Không tìm thấy người dùng' });
+  }
+  if (user.isActive === false) {
+    return res.status(403).json({ error: 'Tài khoản của bạn đã bị vô hiệu hóa hoặc tạm khóa. Vui lòng liên hệ quản trị viên.' });
   }
 
   const userProgress = await prisma.userLessonProgress.findMany({

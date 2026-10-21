@@ -95,21 +95,28 @@ adminRouter.post(
   auditLogInterceptor('user.status.toggle', 'User'),
   async (req: AuthenticatedRequest, res) => {
     const { userId } = req.params;
-    const user = await userRepository.findById(userId);
+    const existingUser = await userRepository.findById(userId);
 
-    if (!user) {
+    if (!existingUser) {
       return res.status(404).json({ error: 'Không tìm thấy người dùng' });
+    }
+
+    const beforeActive = existingUser.isActive !== false;
+    const updatedUser = await userRepository.toggleUserStatus(userId);
+
+    if (!updatedUser) {
+      return res.status(500).json({ error: 'Không thể cập nhật trạng thái người dùng' });
     }
 
     req.auditMeta = {
       action: 'user.status.toggle',
       resourceType: 'User',
       resourceId: userId,
-      beforeState: { id: user.id },
-      afterState: { id: user.id, statusToggled: true },
+      beforeState: { id: existingUser.id, isActive: beforeActive },
+      afterState: { id: updatedUser.id, isActive: updatedUser.isActive },
     };
 
-    const { passwordHash: _, ...safeUser } = user;
+    const { passwordHash: _, ...safeUser } = updatedUser;
     return res.json({ message: 'Thay đổi trạng thái tài khoản thành công', user: safeUser });
   }
 );

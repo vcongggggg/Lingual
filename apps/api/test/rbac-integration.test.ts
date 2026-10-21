@@ -238,11 +238,56 @@ async function runRBACIntegrationTests() {
     failures++;
   }
 
+  // TEST 15: ACCOUNT LOCKOUT/DEACTIVATION ENFORCEMENT: Deactivated user (isActive=false) -> 403 Forbidden
+  const deactivatedUserId = 'user-deactivated-test-001';
+  await prisma.user.upsert({
+    where: { id: deactivatedUserId },
+    update: { isActive: false, role: 'STUDENT' },
+    create: {
+      id: deactivatedUserId,
+      email: 'deactivated@lingual.test',
+      displayName: 'Deactivated User',
+      role: 'STUDENT',
+      isActive: false,
+    },
+  });
+  const deactToken = generateToken(deactivatedUserId, 'STUDENT');
+  const t15: any = await new Promise((resolve) => {
+    const req: any = { headers: { authorization: `Bearer ${deactToken}` } };
+    const res: any = {
+      statusCode: 200,
+      status(code: number) { this.statusCode = code; return this; },
+      json(data: any) { resolve({ status: this.statusCode, error: data.error }); },
+    };
+    const guard = rolesGuard(['STUDENT']);
+    guard(req as AuthenticatedRequest, res, () => resolve({ status: 200 }));
+  });
+  if (t15.status === 403 && t15.error?.includes('vô hiệu hóa hoặc tạm khóa')) {
+    console.log('✅ TEST 15 PASSED: Deactivated user (isActive=false) blocked with 403 Forbidden.');
+  } else {
+    console.error(`❌ TEST 15 FAILED: Expected 403 with lockout error, got status ${t15.status}, error: ${t15.error}`);
+    failures++;
+  }
+
+  // TEST 16: TOGGLE STATUS FUNCTIONALITY: userRepository.toggleUserStatus flips isActive in DB
+  const { userRepository } = await import('../src/repositories/user.repository.js');
+  const toggledOff = await userRepository.toggleUserStatus(deactivatedUserId);
+  const toggledOn = await userRepository.toggleUserStatus(deactivatedUserId);
+  if (toggledOff?.isActive === true && toggledOn?.isActive === false) {
+    console.log('✅ TEST 16 PASSED: toggleUserStatus successfully flips isActive in DB and memory.');
+  } else {
+    console.error(`❌ TEST 16 FAILED: Toggle states expected [true, false], got [${toggledOff?.isActive}, ${toggledOn?.isActive}]`);
+    failures++;
+  }
+
+  // Cleanup test user
+  await prisma.user.delete({ where: { id: deactivatedUserId } }).catch(() => {});
+
   if (failures > 0) {
     console.error(`\n❌ ${failures} Integration Test(s) FAILED.`);
     process.exit(1);
   } else {
-    console.log('\n🎉 ALL 14 RBAC Integration Tests PASSED successfully!');
+    console.log('\n🎉 ALL 16 RBAC Integration Tests PASSED successfully!');
   }
 }
 

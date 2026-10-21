@@ -93,6 +93,13 @@ authRouter.post('/login', authLimiter, async (req, res) => {
       });
     }
 
+    // Enforce account active status (OWASP A07 / Account Disabled)
+    if (user.isActive === false) {
+      return res.status(403).json({
+        error: 'Tài khoản của bạn đã bị vô hiệu hóa hoặc tạm khóa. Vui lòng liên hệ quản trị viên.',
+      });
+    }
+
     // Login successful: reset failed attempt record
     delete FAILED_LOGIN_ATTEMPTS[normalizedEmail];
 
@@ -291,6 +298,10 @@ authRouter.get('/google/callback', async (req, res) => {
     let user = await userRepository.findByEmail(normalizedEmail);
 
     if (user) {
+      if (user.isActive === false) {
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        return res.redirect(`${frontendUrl}/login?error=account_disabled`);
+      }
       // Liên kết tài khoản nếu đã tồn tại bằng email (giữ nguyên passwordHash)
       if (!user.googleId || !user.avatarUrl) {
         await userRepository.linkGoogleAccount(
@@ -360,6 +371,11 @@ authRouter.post('/google/dev-login', async (req, res) => {
     let user = await userRepository.findByEmail(normalizedEmail);
 
     if (user) {
+      if (user.isActive === false) {
+        return res.status(403).json({
+          error: 'Tài khoản của bạn đã bị vô hiệu hóa hoặc tạm khóa. Vui lòng liên hệ quản trị viên.',
+        });
+      }
       if (!user.googleId || !user.avatarUrl) {
         await userRepository.linkGoogleAccount(
           user.id,
@@ -432,6 +448,11 @@ authRouter.post('/google/verify-token', async (req, res) => {
     const normalizedEmail = tokenInfo.email.toLowerCase();
     let user = await userRepository.findByEmail(normalizedEmail);
     if (user) {
+      if (user.isActive === false) {
+        return res.status(403).json({
+          error: 'Tài khoản của bạn đã bị vô hiệu hóa hoặc tạm khóa. Vui lòng liên hệ quản trị viên.',
+        });
+      }
       if (!user.googleId || !user.avatarUrl) {
         await userRepository.linkGoogleAccount(
           user.id,

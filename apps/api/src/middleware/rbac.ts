@@ -74,6 +74,12 @@ export function rolesGuard(requiredRoles?: Role[]) {
         return res.status(401).json({ error: 'Truy cập bị từ chối: Người dùng không tồn tại' });
       }
 
+      if (dbUser.isActive === false) {
+        return res.status(403).json({
+          error: 'Truy cập bị từ chối: Tài khoản của bạn đã bị vô hiệu hóa hoặc tạm khóa.',
+        });
+      }
+
       const role: Role = dbUser.role;
       if (!role) {
         return res.status(403).json({ error: 'Truy cập bị từ chối: Không tìm thấy Role hợp lệ' });

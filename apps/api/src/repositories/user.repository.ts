@@ -16,6 +16,7 @@ export interface UserEntity {
   passwordHash?: string | null;
   displayName: string;
   role: Role;
+  isActive?: boolean;
   interfaceLocale: string;
   timezone: string;
   dailyGoalMinutes: number;
@@ -95,6 +96,7 @@ export class UserRepository {
   private normalizeUser(user: any): UserEntity {
     return {
       ...user,
+      isActive: user.isActive !== undefined ? Boolean(user.isActive) : true,
       leavePasses: user.leavePasses ?? user.leave_passes ?? 0,
       leave_passes: user.leavePasses ?? user.leave_passes ?? 0,
       lastLeavePassGrantWeek: user.lastLeavePassGrantWeek ?? null,
@@ -179,6 +181,7 @@ export class UserRepository {
     passwordHash?: string | null;
     displayName: string;
     role?: Role;
+    isActive?: boolean;
     interfaceLocale?: string;
     timezone?: string;
     googleId?: string | null;
@@ -192,6 +195,7 @@ export class UserRepository {
       passwordHash: data.passwordHash || null,
       displayName: data.displayName,
       role: data.role || ('STUDENT' as Role),
+      isActive: data.isActive !== undefined ? data.isActive : true,
       interfaceLocale: data.interfaceLocale || 'vi',
       timezone: data.timezone || 'Asia/Ho_Chi_Minh',
       dailyGoalMinutes: 15,
@@ -219,6 +223,7 @@ export class UserRepository {
             passwordHash: newUser.passwordHash,
             displayName: newUser.displayName,
             role: newUser.role as any,
+            isActive: newUser.isActive !== undefined ? newUser.isActive : true,
             interfaceLocale: newUser.interfaceLocale,
             timezone: newUser.timezone,
             dailyGoalMinutes: newUser.dailyGoalMinutes,
@@ -537,6 +542,33 @@ export class UserRepository {
       return this.inMemoryUsers[userId];
     }
     return null;
+  }
+
+  public async toggleUserStatus(userId: string): Promise<UserEntity | null> {
+    const user = await this.findById(userId);
+    if (!user) return null;
+    const nextStatus = user.isActive === false ? true : false;
+
+    if (await isDatabaseAvailable()) {
+      try {
+        const updated = await prisma.user.update({
+          where: { id: userId },
+          data: { isActive: nextStatus },
+        });
+        const norm = this.normalizeUser(updated);
+        this.inMemoryUsers[userId] = norm;
+        this.save();
+        return norm;
+      } catch (err) {
+        console.error('[UserRepository] Failed to toggle user status in DB:', err);
+      }
+    }
+
+    user.isActive = nextStatus;
+    user.updatedAt = new Date();
+    this.inMemoryUsers[userId] = user;
+    this.save();
+    return user;
   }
 
   public async getAllUsers(): Promise<Omit<UserEntity, 'passwordHash'>[]> {
