@@ -12,6 +12,10 @@ coverage/
 .env.*
 !.env.example
 
+# Certificates & Private Keys
+*.pem
+*.key
+
 # Logs
 *.log
 npm-debug.log*
