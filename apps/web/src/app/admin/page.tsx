@@ -38,9 +38,13 @@ interface UnitItem {
   lessons: LessonItem[];
 }
 
+const ALLOWED_ADMIN_ROLES = ['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'];
+
 export default function AdminContentPage() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
   const [units, setUnits] = useState<UnitItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -71,49 +75,33 @@ export default function AdminContentPage() {
           return;
         }
 
-        setUser(meRes.user);
+        const currentUser = meRes.user;
+        if (!currentUser.role || !ALLOWED_ADMIN_ROLES.includes(currentUser.role)) {
+          if (isMounted) {
+            setIsAuthorized(false);
+            setAuthError('Bạn không có quyền truy cập trang quản trị. Đang chuyển hướng về Bảng điều khiển...');
+            router.replace('/dashboard');
+          }
+          return;
+        }
+
+        setUser(currentUser);
+        setIsAuthorized(true);
 
         try {
           const res = await api.getCurriculumUnits();
           if (isMounted) {
-            if (res && res.units && res.units.length > 0) {
+            if (res && res.units && Array.isArray(res.units)) {
               setUnits(res.units);
             } else {
-              // Dữ liệu mẫu chuẩn sổ quản lý giáo trình
-              setUnits([
-                {
-                  order: 1,
-                  title: 'Unit 1: Chào hỏi & Làm quen cơ bản',
-                  description: 'Các mẫu câu chào hỏi thường ngày, giới thiệu tên, nghề nghiệp và quốc tịch.',
-                  lessons: [
-                    { order: 1, title: 'Bài 1: Chào hỏi thường ngày (Greetings)', description: 'Hello, Good morning, How are you doing', isPublished: true, totalWords: 15 },
-                    { order: 2, title: 'Bài 2: Giới thiệu nghề nghiệp (Occupations)', description: 'Teacher, Engineer, Doctor, Student', isPublished: true, totalWords: 18 },
-                    { order: 3, title: 'Bài 3: Quốc gia & Quốc tịch (Countries)', description: 'Vietnam, United Kingdom, American, Japanese', isPublished: false, totalWords: 20 },
-                  ],
-                },
-                {
-                  order: 2,
-                  title: 'Unit 2: Cuộc sống hàng ngày & Gia đình',
-                  description: 'Mô tả nề nếp sinh hoạt mỗi ngày, các thành viên trong gia đình và nhà cửa.',
-                  lessons: [
-                    { order: 1, title: 'Bài 1: Nếp sinh hoạt buổi sáng (Morning Routine)', description: 'Wake up, brush teeth, have breakfast', isPublished: true, totalWords: 22 },
-                    { order: 2, title: 'Bài 2: Cây gia phả gia đình (Family Tree)', description: 'Parents, siblings, grandparents, cousins', isPublished: true, totalWords: 16 },
-                  ],
-                },
-                {
-                  order: 3,
-                  title: 'Unit 3: Mua sắm & Ăn uống nhà hàng',
-                  description: 'Từ vựng gọi món, hỏi giá tiền và các loại đồ uống thực phẩm.',
-                  lessons: [
-                    { order: 1, title: 'Bài 1: Thực đơn nhà hàng (Restaurant Menu)', description: 'Appetizer, main course, dessert, beverage', isPublished: true, totalWords: 25 },
-                    { order: 2, title: 'Bài 2: Hỏi giá & Mặc cả (Shopping & Prices)', description: 'How much does it cost, discount, receipt', isPublished: false, totalWords: 14 },
-                  ],
-                },
-              ]);
+              setUnits([]);
             }
           }
         } catch (err) {
           console.error('Error loading curriculum units:', err);
+          if (isMounted) {
+            setUnits([]);
+          }
         }
 
         if (isMounted) {
@@ -165,12 +153,12 @@ export default function AdminContentPage() {
 
   const totalLessons = units.reduce((acc, u) => acc + (u.lessons?.length || 0), 0);
 
-  if (loading || !user) {
+  if (loading || !user || !isAuthorized) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 space-y-4">
-        <LingLing reaction="studying" size={80} />
-        <div className="text-sm font-black font-mono text-ink animate-pulse">
-          Đang xác thực quyền quản trị...
+        <LingLing reaction={authError ? "crying" : "studying"} size={80} />
+        <div className="text-sm font-black font-mono text-ink animate-pulse text-center max-w-md">
+          {authError || 'Đang xác thực quyền quản trị...'}
         </div>
       </div>
     );

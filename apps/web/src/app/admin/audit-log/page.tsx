@@ -32,92 +32,15 @@ interface AuditLogRecord {
   afterState?: string;
 }
 
-const SAMPLE_LOGS: AuditLogRecord[] = [
-  {
-    id: 'LOG-8821',
-    action: 'lesson.publish',
-    actionLabel: 'Xuất bản bài học',
-    actor: 'Admin (GV. Nguyễn An)',
-    resourceType: 'Lesson',
-    resourceId: 'LES-004: Morning Routine',
-    timestamp: '2026-10-17 22:45:10',
-    status: 'SUCCESS',
-    details: 'Chuyển trạng thái bài học từ Bản nháp sang Đã xuất bản.',
-    beforeState: 'status: "draft", isPublished: false',
-    afterState: 'status: "published", isPublished: true',
-  },
-  {
-    id: 'LOG-8820',
-    action: 'vocabulary.add',
-    actionLabel: 'Thêm từ vựng mới',
-    actor: 'Editor (Trần Mai)',
-    resourceType: 'DictionaryWord',
-    resourceId: 'WORD-9921: serendipity',
-    timestamp: '2026-10-17 21:30:05',
-    status: 'SUCCESS',
-    details: 'Thêm từ vựng mới kèm định nghĩa tiếng Việt và câu ví dụ vào Unit 3.',
-    beforeState: 'null',
-    afterState: 'word: "serendipity", cefr: "C1", pos: "noun"',
-  },
-  {
-    id: 'LOG-8819',
-    action: 'ielts_question.update',
-    actionLabel: 'Cập nhật đề thi',
-    actor: 'Admin (GV. Nguyễn An)',
-    resourceType: 'IeltsQuestion',
-    resourceId: 'QUE-774: Cam 18 Reading',
-    timestamp: '2026-10-17 19:15:22',
-    status: 'SUCCESS',
-    details: 'Sửa lỗi chính tả phần giải thích đáp án câu số 14 đoạn văn 2.',
-    beforeState: 'explanation: "Look at paragraph 2 line 3..."',
-    afterState: 'explanation: "Look at paragraph 2 lines 3-4..."',
-  },
-  {
-    id: 'LOG-8818',
-    action: 'system.config.update',
-    actionLabel: 'Cập nhật cấu hình',
-    actor: 'Security Architect (Lê Tuấn)',
-    resourceType: 'SystemConfig',
-    resourceId: 'CFG-AUTH-RATE-LIMIT',
-    timestamp: '2026-10-17 16:02:40',
-    status: 'SUCCESS',
-    details: 'Điều chỉnh giới hạn số lần yêu cầu xác thực API lên 60 req/min.',
-    beforeState: 'maxRequests: 30',
-    afterState: 'maxRequests: 60',
-  },
-  {
-    id: 'LOG-8817',
-    action: 'lesson.create_draft',
-    actionLabel: 'Tạo bản nháp bài học',
-    actor: 'Editor (Trần Mai)',
-    resourceType: 'Lesson',
-    resourceId: 'LES-005: Shopping & Prices',
-    timestamp: '2026-10-17 14:10:15',
-    status: 'SUCCESS',
-    details: 'Tạo đề cương bài học mới thuộc Unit 3.',
-    beforeState: 'null',
-    afterState: 'title: "Hỏi giá & Mặc cả (Shopping & Prices)"',
-  },
-  {
-    id: 'LOG-8816',
-    action: 'user.role.update',
-    actionLabel: 'Cấp quyền giáo viên',
-    actor: 'SuperAdmin (Vũ Công)',
-    resourceType: 'User',
-    resourceId: 'USR-309: nguyenan@lingual.edu',
-    timestamp: '2026-10-17 10:05:00',
-    status: 'SUCCESS',
-    details: 'Nâng cấp quyền tài khoản từ học viên lên Biên tập viên nội dung.',
-    beforeState: 'role: "STUDENT"',
-    afterState: 'role: "CONTENT_EDITOR"',
-  },
-];
+const ALLOWED_ADMIN_ROLES = ['CONTENT_REVIEWER', 'ADMIN', 'SUPER_ADMIN'];
 
 export default function AdminAuditLogPage() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [logs, setLogs] = useState<AuditLogRecord[]>(SAMPLE_LOGS);
+  const [logs, setLogs] = useState<AuditLogRecord[]>([]);
   const [selectedFilter, setSelectedFilter] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedLogId, setExpandedLogId] = useState<string | null>(null);
@@ -135,29 +58,47 @@ export default function AdminAuditLogPage() {
           return;
         }
 
-        setUser(meRes.user);
+        const currentUser = meRes.user;
+        if (!currentUser.role || !ALLOWED_ADMIN_ROLES.includes(currentUser.role)) {
+          if (isMounted) {
+            setIsAuthorized(false);
+            setAuthError('Bạn không có quyền truy cập nhật ký kiểm toán. Đang chuyển hướng về Bảng điều khiển...');
+            router.replace('/dashboard');
+          }
+          return;
+        }
+
+        setUser(currentUser);
+        setIsAuthorized(true);
 
         try {
           const res = await api.getAuditLogs();
-          if (isMounted && res && res.auditLogs && res.auditLogs.length > 0) {
-            // Map real DB audit logs to view records
-            const mapped: AuditLogRecord[] = res.auditLogs.map((item: any, idx: number) => ({
-              id: item.id || `LOG-${9000 + idx}`,
-              action: item.action || 'system.event',
-              actionLabel: item.action?.replace('.', ' ') || 'Sự kiện hệ thống',
-              actor: item.actor || item.userId || 'Admin',
-              resourceType: item.resourceType || 'Resource',
-              resourceId: item.resourceId || 'ID-001',
-              timestamp: item.createdAt ? new Date(item.createdAt).toISOString().replace('T', ' ').slice(0, 19) : '2026-10-17 12:00:00',
-              status: 'SUCCESS',
-              details: item.details || `Hoạt động ghi nhận trên ${item.resourceType || 'hệ thống'}`,
-              beforeState: item.beforeState ? JSON.stringify(item.beforeState) : undefined,
-              afterState: item.afterState ? JSON.stringify(item.afterState) : undefined,
-            }));
-            setLogs(mapped);
+          if (isMounted) {
+            if (res && res.auditLogs && Array.isArray(res.auditLogs)) {
+              // Map real DB audit logs to view records
+              const mapped: AuditLogRecord[] = res.auditLogs.map((item: any, idx: number) => ({
+                id: item.id || `LOG-${9000 + idx}`,
+                action: item.action || 'system.event',
+                actionLabel: item.action?.replace('.', ' ') || 'Sự kiện hệ thống',
+                actor: item.actor || item.userId || 'Admin',
+                resourceType: item.resourceType || 'Resource',
+                resourceId: item.resourceId || 'ID-001',
+                timestamp: item.createdAt ? new Date(item.createdAt).toISOString().replace('T', ' ').slice(0, 19) : '2026-10-17 12:00:00',
+                status: 'SUCCESS',
+                details: item.details || `Hoạt động ghi nhận trên ${item.resourceType || 'hệ thống'}`,
+                beforeState: item.beforeState ? JSON.stringify(item.beforeState) : undefined,
+                afterState: item.afterState ? JSON.stringify(item.afterState) : undefined,
+              }));
+              setLogs(mapped);
+            } else {
+              setLogs([]);
+            }
           }
-        } catch {
-          // Fallback to sample ledger entries if api error
+        } catch (err) {
+          console.error('Error fetching audit logs:', err);
+          if (isMounted) {
+            setLogs([]);
+          }
         }
 
         if (isMounted) {
@@ -198,12 +139,12 @@ export default function AdminAuditLogPage() {
     return matchesFilter && matchesSearch;
   });
 
-  if (loading || !user) {
+  if (loading || !user || !isAuthorized) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 space-y-4">
-        <LingLing reaction="studying" size={80} />
-        <div className="text-sm font-black font-mono text-ink animate-pulse">
-          Đang xác thực quyền truy cập nhật ký...
+        <LingLing reaction={authError ? "crying" : "studying"} size={80} />
+        <div className="text-sm font-black font-mono text-ink animate-pulse text-center max-w-md">
+          {authError || 'Đang xác thực quyền truy cập nhật ký...'}
         </div>
       </div>
     );
@@ -298,78 +239,84 @@ export default function AdminAuditLogPage() {
         </div>
 
         <div className="space-y-3">
-          {filteredLogs.map((log) => {
-            const isExpanded = expandedLogId === log.id;
-            return (
-              <div
-                key={log.id}
-                className="bg-card border-2 border-ink rounded-2xl p-4 sm:p-5 shadow-brutal-sm hover:shadow-brutal transition-all"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="space-y-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs font-black text-ink bg-paper-2 px-2 py-0.5 rounded border border-ink/20">
-                        {log.timestamp}
-                      </span>
-                      <span className="text-[11px] font-mono font-bold text-ink-muted">
-                        [{log.id}]
-                      </span>
-                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-teal/15 text-teal border border-teal/30">
-                        {log.actionLabel}
-                      </span>
+          {filteredLogs.length === 0 ? (
+            <div className="card-paper p-12 text-center text-ink-muted text-sm font-bold bg-card border-2 border-ink rounded-2xl shadow-brutal-sm">
+              Không có bản ghi nhật ký kiểm toán nào được tìm thấy.
+            </div>
+          ) : (
+            filteredLogs.map((log) => {
+              const isExpanded = expandedLogId === log.id;
+              return (
+                <div
+                  key={log.id}
+                  className="bg-card border-2 border-ink rounded-2xl p-4 sm:p-5 shadow-brutal-sm hover:shadow-brutal transition-all"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="space-y-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-xs font-black text-ink bg-paper-2 px-2 py-0.5 rounded border border-ink/20">
+                          {log.timestamp}
+                        </span>
+                        <span className="text-[11px] font-mono font-bold text-ink-muted">
+                          [{log.id}]
+                        </span>
+                        <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-teal/15 text-teal border border-teal/30">
+                          {log.actionLabel}
+                        </span>
+                      </div>
+
+                      <div className="text-xs sm:text-sm font-black text-ink">
+                        {log.details}
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-ink-soft">
+                        <span className="flex items-center gap-1 font-bold text-ink">
+                          <User className="w-3.5 h-3.5 text-red" />
+                          {log.actor}
+                        </span>
+                        <span>·</span>
+                        <span className="font-mono text-xs text-ink-muted">
+                          Tài nguyên: <strong className="text-ink">{log.resourceId}</strong>
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="text-xs sm:text-sm font-black text-ink">
-                      {log.details}
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-ink-soft">
-                      <span className="flex items-center gap-1 font-bold text-ink">
-                        <User className="w-3.5 h-3.5 text-red" />
-                        {log.actor}
-                      </span>
-                      <span>·</span>
-                      <span className="font-mono text-xs text-ink-muted">
-                        Tài nguyên: <strong className="text-ink">{log.resourceId}</strong>
-                      </span>
+                    <div className="flex items-center gap-2 self-end sm:self-auto flex-shrink-0">
+                      <button
+                        onClick={() => setExpandedLogId(isExpanded ? null : log.id)}
+                        className="text-xs font-black px-3 py-1.5 rounded-lg border border-ink bg-paper hover:bg-paper-2 transition-colors cursor-pointer"
+                      >
+                        {isExpanded ? 'Thu gọn' : 'Xem chi tiết trước/sau'}
+                      </button>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 self-end sm:self-auto flex-shrink-0">
-                    <button
-                      onClick={() => setExpandedLogId(isExpanded ? null : log.id)}
-                      className="text-xs font-black px-3 py-1.5 rounded-lg border border-ink bg-paper hover:bg-paper-2 transition-colors cursor-pointer"
-                    >
-                      {isExpanded ? 'Thu gọn' : 'Xem chi tiết trước/sau'}
-                    </button>
-                  </div>
+                  {/* Khối Trước / Sau khi mở rộng (Before/After State) */}
+                  {isExpanded && (
+                    <div className="mt-4 pt-4 border-t-2 border-ink/15 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs animate-in fade-in duration-150">
+                      <div className="p-3 bg-paper border border-ink/20 rounded-xl space-y-1">
+                        <span className="text-[10px] font-black uppercase text-amber block">
+                          Trạng thái trước (Before State):
+                        </span>
+                        <pre className="font-mono text-[11px] text-ink-soft overflow-x-auto whitespace-pre-wrap">
+                          {log.beforeState || 'null'}
+                        </pre>
+                      </div>
+
+                      <div className="p-3 bg-paper border border-ink/20 rounded-xl space-y-1">
+                        <span className="text-[10px] font-black uppercase text-teal block">
+                          Trạng thái sau (After State):
+                        </span>
+                        <pre className="font-mono text-[11px] text-ink overflow-x-auto whitespace-pre-wrap font-bold">
+                          {log.afterState || 'null'}
+                        </pre>
+                      </div>
+                    </div>
+                  )}
                 </div>
-
-                {/* Khối Trước / Sau khi mở rộng (Before/After State) */}
-                {isExpanded && (
-                  <div className="mt-4 pt-4 border-t-2 border-ink/15 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs animate-in fade-in duration-150">
-                    <div className="p-3 bg-paper border border-ink/20 rounded-xl space-y-1">
-                      <span className="text-[10px] font-black uppercase text-amber block">
-                        Trạng thái trước (Before State):
-                      </span>
-                      <pre className="font-mono text-[11px] text-ink-soft overflow-x-auto whitespace-pre-wrap">
-                        {log.beforeState || 'null'}
-                      </pre>
-                    </div>
-
-                    <div className="p-3 bg-paper border border-ink/20 rounded-xl space-y-1">
-                      <span className="text-[10px] font-black uppercase text-teal block">
-                        Trạng thái sau (After State):
-                      </span>
-                      <pre className="font-mono text-[11px] text-ink overflow-x-auto whitespace-pre-wrap font-bold">
-                        {log.afterState || 'null'}
-                      </pre>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
       </div>
     </div>
