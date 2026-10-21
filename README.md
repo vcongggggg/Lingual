@@ -82,7 +82,9 @@ $env:SUPER_ADMIN_EMAIL="admin@yourdomain.com"; $env:SUPER_ADMIN_PASSWORD="YourSt
 ```
 
 > [!IMPORTANT]
-> Script `prisma/seed-admin.ts` tuân thủ nguyên tắc bảo mật fail-fast: bắt buộc phải có `SUPER_ADMIN_EMAIL` và `SUPER_ADMIN_PASSWORD` (tối thiểu 8 ký tự). Nếu thiếu biến môi trường, hệ thống sẽ dừng ngay lập tức và tuyệt đối không tạo tài khoản với thông tin đăng nhập mặc định.
+> **Chính Sách Bảo Mật Tài Khoản Mặc Định (Zero Default Password Policy):**
+> - **SUPER_ADMIN & ADMIN:** Script `prisma/seed-admin.ts` và `prisma/seed.ts` không bao giờ sử dụng mật khẩu mặc định hardcode. Bắt buộc cấu hình `SUPER_ADMIN_PASSWORD` và `ADMIN_PASSWORD` (tối thiểu 8 ký tự). Nếu thiếu, hệ thống sẽ bỏ qua hoặc fail-fast cảnh báo để bảo vệ hệ thống.
+> - **Tài khoản nhà phát triển (Dev Accounts):** Các tài khoản mẫu (`editor`, `reviewer`, `demo student`) trong `prisma/seed.ts` chỉ được nạp khi có cờ opt-in rõ ràng `ALLOW_DEV_SEED=true` trong môi trường phát triển nội bộ. Mặc định cờ này bị TẮT để loại bỏ hoàn toàn nguy cơ rò rỉ tài khoản mẫu.
 
 
 ### 4. Khởi chạy Ứng dụng

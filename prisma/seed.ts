@@ -621,13 +621,8 @@ export const SEED_UNITS = [
 export async function seedDatabase() {
   console.log('🌱 Starting Lingual database seed...');
 
-  // 1. Seed Users for roles
+  // 1. Seed Users for roles (Hardened Zero-Default Password Policy)
   console.log('👤 Seeding default users...');
-  const defaultPasswordHash = await argon2.hash('123456');
-  const adminPasswordHash = process.env.ADMIN_PASSWORD
-    ? await argon2.hash(process.env.ADMIN_PASSWORD)
-    : defaultPasswordHash;
-
   const defaultUsers: Array<{
     id: string;
     email: string;
@@ -636,59 +631,82 @@ export async function seedDatabase() {
     role: Role;
     totalXP: number;
     currentStreak: number;
-  }> = [
-    {
+  }> = [];
+
+  // 1.1 SUPER_ADMIN: chỉ được khởi tạo nếu có biến môi trường SUPER_ADMIN_EMAIL & SUPER_ADMIN_PASSWORD
+  if (process.env.SUPER_ADMIN_EMAIL?.trim() && process.env.SUPER_ADMIN_PASSWORD?.trim()) {
+    if (process.env.SUPER_ADMIN_PASSWORD.trim().length >= 8) {
+      const saPasswordHash = await argon2.hash(process.env.SUPER_ADMIN_PASSWORD.trim());
+      defaultUsers.push({
+        id: 'super-admin-001',
+        email: process.env.SUPER_ADMIN_EMAIL.trim(),
+        passwordHash: saPasswordHash,
+        displayName: process.env.SUPER_ADMIN_NAME?.trim() || 'Lingual Super Admin',
+        role: Role.SUPER_ADMIN,
+        totalXP: 1000,
+        currentStreak: 10,
+      });
+      console.log('✅ Đã cấu hình khởi tạo tài khoản SUPER_ADMIN từ biến môi trường.');
+    } else {
+      console.warn('⚠️ SUPER_ADMIN_PASSWORD phải có ít nhất 8 ký tự. Bỏ qua tạo tài khoản SUPER_ADMIN.');
+    }
+  } else {
+    console.log('ℹ️ Bỏ qua tạo SUPER_ADMIN trong seed.ts (chưa có SUPER_ADMIN_EMAIL & SUPER_ADMIN_PASSWORD). Hãy cấu hình trong file .env.');
+  }
+
+  // 1.2 ADMIN: Không bao giờ dùng mật khẩu mặc định '123456'
+  const adminPassword = process.env.ADMIN_PASSWORD?.trim();
+  if (adminPassword && adminPassword.length >= 8) {
+    const adminPasswordHash = await argon2.hash(adminPassword);
+    defaultUsers.push({
       id: 'admin-user-001',
-      email: process.env.ADMIN_EMAIL || 'admin@lingual.com',
+      email: process.env.ADMIN_EMAIL?.trim() || 'admin@lingual.com',
       passwordHash: adminPasswordHash,
       displayName: 'Lingual Admin',
       role: Role.ADMIN,
       totalXP: 500,
       currentStreak: 5,
-    },
-    {
-      id: 'editor-user-001',
-      email: 'editor@lingual.com',
-      passwordHash: defaultPasswordHash,
-      displayName: 'Lingual Content Editor',
-      role: Role.CONTENT_EDITOR,
-      totalXP: 300,
-      currentStreak: 4,
-    },
-    {
-      id: 'reviewer-user-001',
-      email: 'reviewer@lingual.com',
-      passwordHash: defaultPasswordHash,
-      displayName: 'Lingual Content Reviewer',
-      role: Role.CONTENT_REVIEWER,
-      totalXP: 300,
-      currentStreak: 4,
-    },
-    {
-      id: 'demo-user-id-001',
-      email: 'demo@linguaflow.com',
-      passwordHash: defaultPasswordHash,
-      displayName: 'Học Viên Demo',
-      role: Role.STUDENT,
-      totalXP: 150,
-      currentStreak: 3,
-    },
-  ];
-
-  // SUPER_ADMIN chỉ được khởi tạo nếu có biến môi trường SUPER_ADMIN_EMAIL & SUPER_ADMIN_PASSWORD
-  if (process.env.SUPER_ADMIN_EMAIL?.trim() && process.env.SUPER_ADMIN_PASSWORD?.trim()) {
-    const saPasswordHash = await argon2.hash(process.env.SUPER_ADMIN_PASSWORD.trim());
-    defaultUsers.unshift({
-      id: 'super-admin-001',
-      email: process.env.SUPER_ADMIN_EMAIL.trim(),
-      passwordHash: saPasswordHash,
-      displayName: process.env.SUPER_ADMIN_NAME?.trim() || 'Lingual Super Admin',
-      role: Role.SUPER_ADMIN,
-      totalXP: 1000,
-      currentStreak: 10,
     });
+    console.log('✅ Đã cấu hình khởi tạo tài khoản ADMIN từ biến môi trường.');
   } else {
-    console.log('ℹ️ Bỏ qua tạo SUPER_ADMIN trong seed.ts (chưa có SUPER_ADMIN_EMAIL & SUPER_ADMIN_PASSWORD). Hãy dùng prisma/seed-admin.ts với biến môi trường đầy đủ.');
+    console.log('ℹ️ Bỏ qua tạo tài khoản ADMIN trong seed.ts (ADMIN_PASSWORD chưa được cấu hình hoặc ngắn hơn 8 ký tự). Đảm bảo chính sách Zero Default Password.');
+  }
+
+  // 1.3 DEV ACCOUNTS (editor, reviewer, student): Chỉ khởi tạo khi có cờ opt-in rõ ràng ALLOW_DEV_SEED=true
+  if (process.env.ALLOW_DEV_SEED === 'true') {
+    const devPasswordHash = await argon2.hash('123456');
+    defaultUsers.push(
+      {
+        id: 'editor-user-001',
+        email: 'editor@lingual.com',
+        passwordHash: devPasswordHash,
+        displayName: 'Lingual Content Editor',
+        role: Role.CONTENT_EDITOR,
+        totalXP: 300,
+        currentStreak: 4,
+      },
+      {
+        id: 'reviewer-user-001',
+        email: 'reviewer@lingual.com',
+        passwordHash: devPasswordHash,
+        displayName: 'Lingual Content Reviewer',
+        role: Role.CONTENT_REVIEWER,
+        totalXP: 300,
+        currentStreak: 4,
+      },
+      {
+        id: 'demo-user-id-001',
+        email: 'demo@linguaflow.com',
+        passwordHash: devPasswordHash,
+        displayName: 'Học Viên Demo',
+        role: Role.STUDENT,
+        totalXP: 150,
+        currentStreak: 3,
+      }
+    );
+    console.log('✅ ALLOW_DEV_SEED=true: Đã khởi tạo 3 tài khoản dev (editor, reviewer, demo student).');
+  } else {
+    console.log('ℹ️ Bỏ qua seed tài khoản dev (ALLOW_DEV_SEED !== "true"). Để kích hoạt trong môi trường dev, đặt ALLOW_DEV_SEED=true trong file .env');
   }
 
   for (const u of defaultUsers) {
@@ -714,7 +732,7 @@ export async function seedDatabase() {
       },
     });
   }
-  console.log(`✅ Seeded ${defaultUsers.length} users covering all 5 roles (SUPER_ADMIN, ADMIN, CONTENT_EDITOR, CONTENT_REVIEWER, STUDENT)`);
+  console.log(`✅ Hoàn tất xử lý người dùng seed: Đã đồng bộ ${defaultUsers.length} tài khoản hợp lệ.`);
 
 
   // 2. Seed Achievements
