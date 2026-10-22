@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
         destination: '/exam-practice',
         permanent: false,
       },
+      {
+        source: '/practice/cow-eavesdrop',
+        destination: '/practice?view=eavesdrop',
+        permanent: false,
+      },
     ];
   },
 };

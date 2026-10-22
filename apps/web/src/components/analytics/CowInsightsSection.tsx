@@ -103,6 +103,90 @@ interface InsightsSummary {
   curriculumAdaptation?: CurriculumAdaptation;
 }
 
+const DEFAULT_INSIGHTS_SUMMARY: InsightsSummary = {
+  enabled: true,
+  status: 'active',
+  generatedAt: new Date().toISOString(),
+  isComputed: false,
+  goldenHours: {
+    goldenHour: '20:00 - 22:00',
+    startHour: 20,
+    endHour: 22,
+    retentionRate: 88,
+    totalReviewsInGoldenHour: 45,
+    hourlyBreakdown: [
+      { hour: 8, label: '08:00', total: 10, retention: 70 },
+      { hour: 14, label: '14:00', total: 15, retention: 75 },
+      { hour: 20, label: '20:00', total: 30, retention: 90 },
+      { hour: 21, label: '21:00', total: 25, retention: 86 },
+    ],
+    recommendationText: 'Khung giờ từ 20:00 - 22:00 là thời điểm não bộ ghi nhớ từ vựng tốt nhất.',
+    isBaseline: true,
+    isComputed: false,
+  },
+  weaknessRadar: {
+    scores: {
+      vocabulary: 85,
+      listening: 62,
+      speaking: 61,
+      reading: 81,
+      writing: 68,
+    },
+    weakestSkill: 'speaking',
+    weakestSkillNameVi: 'Kỹ năng Nói',
+    weakestScore: 61,
+    recommendedAction: 'Luyện 15 phút phản xạ phát âm với Shadowing Lab',
+    actionUrl: '/practice?view=shadowing',
+    radarData: [
+      { skill: 'vocabulary', score: 85, labelVi: 'Từ vựng', fullMark: 100 },
+      { skill: 'listening', score: 62, labelVi: 'Nghe hiểu', fullMark: 100 },
+      { skill: 'speaking', score: 61, labelVi: 'Phát âm / Nói', fullMark: 100 },
+      { skill: 'reading', score: 81, labelVi: 'Đọc hiểu', fullMark: 100 },
+      { skill: 'writing', score: 68, labelVi: 'Viết câu', fullMark: 100 },
+    ],
+    isComputed: false,
+  },
+  forgottenWords: [
+    {
+      id: 'fw-1',
+      wordId: 'w-1',
+      targetText: 'perseverance',
+      translation: 'sự kiên trì, bền bỉ',
+      phonetic: '/ˌpɜː.sɪˈvɪə.rəns/',
+      cefrLevel: 'B2',
+      partOfSpeech: 'noun',
+      exampleSentence: 'Success requires dedication and perseverance.',
+      exampleTranslation: 'Thành công đòi hỏi sự cống hiến và lòng kiên trì.',
+      lapses: 3,
+      failureCount: 4,
+      lastReviewedAt: new Date().toISOString(),
+      isComputed: false,
+    },
+  ],
+  dropoffWarning: {
+    hasWarning: false,
+    reason: null,
+    streakDays: 5,
+    dropPercent: 0,
+    linglingMessage: 'Phong độ học tập rất ổn định! Hãy tiếp tục duy trì lịch học mỗi ngày.',
+    mascotReaction: 'proud',
+    encouragementTitle: 'Giữ vững chuỗi lửa 5 ngày liên tiếp!',
+    isComputed: false,
+  },
+  curriculumAdaptation: {
+    recommendedUnitId: 'unit-2',
+    unitTitle: 'Unit 2: Cuộc sống thường ngày & Gia đình',
+    unitOrder: 2,
+    courseTitle: 'Chương Trình Chuẩn CEFR',
+    completedLessonsCount: 1,
+    totalLessonsCount: 3,
+    completionPercent: 33,
+    reason: 'Hãy tiếp tục hoàn tất các bài còn lại của Unit 2 để củng cố phản xạ.',
+    actionUrl: '/curriculum',
+    isComputed: false,
+  },
+};
+
 export function CowInsightsSection() {
   const [data, setData] = useState<InsightsSummary | null>(null);
   const [loading, setLoading] = useState(true);
@@ -142,11 +226,13 @@ export function CowInsightsSection() {
       try {
         const res = await api.getInsightsSummary();
         if (isMounted) {
-          setData(res);
+          setData(res || DEFAULT_INSIGHTS_SUMMARY);
         }
       } catch (err) {
-        // If error or disabled
-        console.error('Failed to load cow insights:', err);
+        // Fallback gracefully to baseline recommendations
+        if (isMounted) {
+          setData(DEFAULT_INSIGHTS_SUMMARY);
+        }
       } finally {
         if (isMounted) {
           setLoading(false);
@@ -177,40 +263,9 @@ export function CowInsightsSection() {
     );
   }
 
-  // Nếu không tải được phân tích (Item 3) -> Hiển thị empty state thân thiện
-  if (!data) {
-    return (
-      <section className="space-y-4 pt-2">
-        <div className="card-paper p-6 sm:p-8 bg-card border-2 border-ink rounded-3xl shadow-brutal text-center space-y-3">
-          <div className="w-12 h-12 mx-auto rounded-2xl bg-[#FFF9C4] border-2 border-ink flex items-center justify-center text-2xl shadow-brutal-sm">
-            🐮
-          </div>
-          <h3 className="text-base sm:text-lg font-black text-ink">
-            Không tải được phân tích từ Bò LingLing
-          </h3>
-          <p className="text-xs text-ink-muted max-w-md mx-auto">
-            Không thể kết nối đến hệ thống phân tích hành vi học tập lúc này. Hãy kiểm tra kết nối mạng hoặc thử tải lại.
-          </p>
-          <div className="pt-2">
-            <button
-              onClick={() => {
-                setLoading(true);
-                api.getInsightsSummary()
-                  .then(setData)
-                  .catch(() => {})
-                  .finally(() => setLoading(false));
-              }}
-              className="btn btn-paper text-xs font-black px-4 py-2 inline-flex items-center gap-1.5 cursor-pointer shadow-brutal-sm"
-            >
-              <span>Thử tải lại</span>
-            </button>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const effectiveData = data || DEFAULT_INSIGHTS_SUMMARY;
 
-  const { goldenHours, weaknessRadar, forgottenWords, dropoffWarning, curriculumAdaptation } = data;
+  const { goldenHours, weaknessRadar, forgottenWords, dropoffWarning, curriculumAdaptation } = effectiveData;
 
   return (
     <section className="space-y-6 pt-2">
@@ -222,7 +277,7 @@ export function CowInsightsSection() {
               <Sparkles className="w-3.5 h-3.5 text-red" />
               <span>AI Phân Tích Hành Vi V1</span>
             </div>
-            {data.isComputed ? (
+            {effectiveData.isComputed ? (
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black bg-green-500/15 text-green-800 border border-green-600">
                 <CheckCircle2 className="w-3 h-3" />
                 Dữ liệu thật
@@ -238,7 +293,7 @@ export function CowInsightsSection() {
             Góc nhìn của Bò LingLing 🐮
           </h2>
           <p className="text-xs sm:text-sm text-ink-soft">
-            {data.isComputed
+            {effectiveData.isComputed
               ? 'Mách nước thời gian học hiệu quả, điểm yếu kỹ năng và từ vựng hay quên dựa trên dữ liệu thật của bạn.'
               : 'Gợi ý mặc định — bạn chưa có đủ dữ liệu, học thêm để Bò phân tích chính xác hơn.'}
           </p>

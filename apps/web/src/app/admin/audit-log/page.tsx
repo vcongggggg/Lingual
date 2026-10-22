@@ -15,7 +15,7 @@ import {
   AlertTriangle,
   Lock,
 } from 'lucide-react';
-import { api } from '../../../lib/api';
+import { api, getAuthToken } from '../../../lib/api';
 import { LingLing } from '../../../components/ui/LingLing';
 
 interface AuditLogRecord {
@@ -47,14 +47,33 @@ export default function AdminAuditLogPage() {
 
   useEffect(() => {
     let isMounted = true;
+    const timeoutId = setTimeout(() => {
+      if (isMounted && !isAuthorized) {
+        window.location.replace('/login');
+      }
+    }, 2500);
 
     async function checkAuthAndFetchLogs() {
       try {
-        const meRes = await api.getMe();
+        const token = getAuthToken();
+        const hasCookie = typeof document !== 'undefined' && document.cookie.includes('access_token');
+        if (!token && !hasCookie) {
+          if (isMounted) {
+            window.location.replace('/login');
+          }
+          return;
+        }
+
+        const mePromise = api.getMe();
+        const timeoutPromise = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Auth check timeout')), 2200)
+        );
+
+        const meRes = await Promise.race([mePromise, timeoutPromise]) as any;
         if (!isMounted) return;
 
         if (!meRes || !meRes.user) {
-          router.replace('/login');
+          window.location.replace('/login');
           return;
         }
 
@@ -63,11 +82,14 @@ export default function AdminAuditLogPage() {
           if (isMounted) {
             setIsAuthorized(false);
             setAuthError('Bạn không có quyền truy cập nhật ký kiểm toán. Đang chuyển hướng về Bảng điều khiển...');
-            router.replace('/dashboard');
+            setTimeout(() => {
+              window.location.replace('/dashboard');
+            }, 1000);
           }
           return;
         }
 
+        clearTimeout(timeoutId);
         setUser(currentUser);
         setIsAuthorized(true);
 
@@ -105,9 +127,9 @@ export default function AdminAuditLogPage() {
           setLoading(false);
         }
       } catch (err) {
-        // Chưa đăng nhập -> chuyển hướng về /login
+        // Chưa đăng nhập hoặc timeout -> chuyển hướng về /login
         if (isMounted) {
-          router.replace('/login');
+          window.location.replace('/login');
         }
       }
     }
@@ -116,8 +138,9 @@ export default function AdminAuditLogPage() {
 
     return () => {
       isMounted = false;
+      clearTimeout(timeoutId);
     };
-  }, [router]);
+  }, [router, isAuthorized]);
 
   const filterOptions = [
     { key: 'ALL', label: 'Tất cả nhật ký' },

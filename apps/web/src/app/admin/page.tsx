@@ -17,7 +17,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import { api } from '../../lib/api';
+import { api, getAuthToken } from '../../lib/api';
 import { Modal } from '../../components/ui/Modal';
 import { LingLing } from '../../components/ui/LingLing';
 
@@ -64,14 +64,33 @@ export default function AdminContentPage() {
 
   useEffect(() => {
     let isMounted = true;
+    const timeoutId = setTimeout(() => {
+      if (isMounted && !isAuthorized) {
+        window.location.replace('/login');
+      }
+    }, 2500);
 
     async function checkAuthAndLoadData() {
       try {
-        const meRes = await api.getMe();
+        const token = getAuthToken();
+        const hasCookie = typeof document !== 'undefined' && document.cookie.includes('access_token');
+        if (!token && !hasCookie) {
+          if (isMounted) {
+            window.location.replace('/login');
+          }
+          return;
+        }
+
+        const mePromise = api.getMe();
+        const timeoutPromise = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Auth check timeout')), 2200)
+        );
+
+        const meRes = await Promise.race([mePromise, timeoutPromise]) as any;
         if (!isMounted) return;
 
         if (!meRes || !meRes.user) {
-          router.replace('/login');
+          window.location.replace('/login');
           return;
         }
 
@@ -80,11 +99,14 @@ export default function AdminContentPage() {
           if (isMounted) {
             setIsAuthorized(false);
             setAuthError('Bạn không có quyền truy cập trang quản trị. Đang chuyển hướng về Bảng điều khiển...');
-            router.replace('/dashboard');
+            setTimeout(() => {
+              window.location.replace('/dashboard');
+            }, 1000);
           }
           return;
         }
 
+        clearTimeout(timeoutId);
         setUser(currentUser);
         setIsAuthorized(true);
 
@@ -108,9 +130,9 @@ export default function AdminContentPage() {
           setLoading(false);
         }
       } catch (err) {
-        // Chưa có phiên đăng nhập hợp lệ -> chuyển hướng ngay về /login
+        // Chưa có phiên đăng nhập hợp lệ hoặc timeout -> chuyển hướng ngay về /login
         if (isMounted) {
-          router.replace('/login');
+          window.location.replace('/login');
         }
       }
     }
@@ -119,8 +141,9 @@ export default function AdminContentPage() {
 
     return () => {
       isMounted = false;
+      clearTimeout(timeoutId);
     };
-  }, [router]);
+  }, [router, isAuthorized]);
 
   const handleSaveWord = (e: React.FormEvent) => {
     e.preventDefault();

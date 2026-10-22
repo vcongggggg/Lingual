@@ -70,8 +70,8 @@ export default function HomePage() {
           {/* Cột phải: Visual Bộ Thẻ Tương Tác & LingLing Mascot */}
           <div className="lg:col-span-5 relative select-none flex items-center justify-center max-w-full overflow-visible mx-auto w-full pt-4 sm:pt-0">
             <div className="relative w-full max-w-[360px] sm:max-w-[400px] flex flex-col items-center">
-              {/* Linh vật LingLing trao tim yêu thích */}
-              <div className="absolute -top-10 -right-2 sm:-top-12 sm:right-0 z-40 w-20 sm:w-24 pointer-events-none animate-mascot">
+              {/* Linh vật LingLing trao tim yêu thích (căn chỉnh không đè badge đếm thẻ) */}
+              <div className="absolute -top-12 -right-4 sm:-top-14 sm:-right-6 z-40 w-20 sm:w-24 pointer-events-none animate-mascot">
                 <LingLing reaction="heart" size={96} />
               </div>
 
@@ -186,7 +186,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. CTA BOX */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <Reveal delayMs={60}>
           <div className="relative bg-card border-2 border-ink rounded-3xl shadow-brutal-2xl p-8 sm:p-14 text-center overflow-hidden">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight mb-4">

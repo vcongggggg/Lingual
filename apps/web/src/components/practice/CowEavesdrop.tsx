@@ -63,7 +63,7 @@ const DIALOGUE_SCENARIOS: DialogueScenario[] = [
     title: 'Cuộc Hẹn Phỏng Vấn Bí Mật Tại Quán Cà Phê',
     location: 'Góc khuất quán cà phê phố cổ, 10 giờ sáng',
     characters: 'David (Giám đốc dự án) & Sarah (Ứng viên cao cấp)',
-    contextDesc: 'Bò LingLing đang nấp sau chậu cây cảnh, giỏng tai nghe lén cuộc phỏng vấn cơ hội việc làm bảo mật cao...',
+    contextDesc: 'Bò LingLing đang nấp sau chậu cây cảnh, dỏng tai nghe lén cuộc phỏng vấn cơ hội việc làm bảo mật cao...',
     lines: [
       {
         id: 'line-1',
@@ -387,7 +387,7 @@ export function CowEavesdrop() {
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-red/15 border border-red rounded-full text-xs font-black uppercase text-red tracking-wider">
             <Ear className="w-3.5 h-3.5" />
-            <span>Phòng Nghe Lén · Bò Đọc Trộm (Eavesdrop Quiz)</span>
+            <span>Phòng Nghe Lén · Bò Đọc Trộm</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black text-ink font-serif">
             Bò Nghe Lén · Thám Tử Hóng Hớt
@@ -468,7 +468,7 @@ export function CowEavesdrop() {
             className="btn btn-paper text-xs font-bold text-ink-soft flex items-center gap-1.5 cursor-pointer"
           >
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>{showTranscript ? 'Ẩn lời thoại' : 'Xem lời thoại (Transcript)'}</span>
+            <span>{showTranscript ? 'Ẩn bản gỡ băng' : 'Xem bản gỡ băng (Lời thoại)'}</span>
           </button>
         </div>
 

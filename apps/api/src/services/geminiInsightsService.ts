@@ -243,7 +243,12 @@ ${JSON.stringify(aggregatedSnapshot, null, 2)}
 
 Hãy viết Báo cáo Bò hàng tuần cho học viên này.`;
 
-    const rawResponse = await this.callGemini(prompt, systemInstruction);
+    let rawResponse = '';
+    try {
+      rawResponse = await this.callGemini(prompt, systemInstruction);
+    } catch (err: any) {
+      console.warn('Gemini call failed for weekly report, using rule-based report fallback:', err?.message);
+    }
 
     // 6. Parse JSON an toàn
     let cleaned = rawResponse.trim();
@@ -565,7 +570,12 @@ ${JSON.stringify(context, null, 2)}
 
 Hãy lập Kế hoạch 7 ngày cá nhân hóa tối ưu cho người học này.`;
 
-    const rawResponse = await this.callGemini(prompt, systemInstruction);
+    let rawResponse = '';
+    try {
+      rawResponse = await this.callGemini(prompt, systemInstruction);
+    } catch (err: any) {
+      console.warn('Gemini call failed for study plan, using rule-based plan fallback:', err?.message);
+    }
 
     let cleaned = rawResponse.trim();
     if (cleaned.startsWith('```json')) {

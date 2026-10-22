@@ -226,13 +226,13 @@ function CurriculumRoadmapContent() {
         });
       });
 
-      // Điểm kết thúc ở card đích
+      // Điểm kết thúc ở card đích (tiếp giáp viền trên để nét chỉ đỏ không đâm xuyên tiêu đề)
       const finishEl = container.querySelector<HTMLElement>('#destination-anchor');
       if (finishEl) {
         const finishRect = finishEl.getBoundingClientRect();
         points.push({
           x: finishRect.left - containerRect.left + finishRect.width / 2,
-          y: finishRect.top - containerRect.top + finishRect.height / 2,
+          y: finishRect.top - containerRect.top + 16,
         });
       } else {
         const last = points[points.length - 1];
@@ -326,6 +326,7 @@ function CurriculumRoadmapContent() {
                   const pt = path.getPointAtLength(distance);
                   if (pt && typeof pt.x === 'number' && typeof pt.y === 'number' && !isNaN(pt.x) && !isNaN(pt.y)) {
                     travelerRef.current.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
+                    travelerRef.current.style.opacity = progress >= 0.95 ? '0' : '1';
                   }
                 }
               }
@@ -587,7 +588,7 @@ function CurriculumRoadmapContent() {
 
                           {isInProgress && (
                             <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded border-2 border-red text-red bg-red/10 rotate-1 animate-pulse">
-                              ĐANG HỌC DỞ
+                              ĐANG HỌC TIẾP
                             </span>
                           )}
 
@@ -678,55 +679,111 @@ function CurriculumRoadmapContent() {
             id="destination-anchor"
             className="mt-32 pt-8 border-t-2 border-dashed border-ink/30 relative"
           >
-            <div className="bg-card border-4 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-visible text-center space-y-6">
-              {/* Con dấu lớn HOÀN THÀNH */}
-              <div className="absolute -top-7 right-6 sm:right-10 z-20 pointer-events-none">
-                <StampSlam
-                  text="HOÀN THÀNH"
-                  subtext="XUẤT SẮC"
-                  variant="circle"
-                  color="teal"
-                  size="md"
-                  delayMs={isReducedMotion ? 0 : 300}
-                />
-              </div>
+            {(() => {
+              const allCompleted = units.length > 0 && units.every((u) => u.status === 'COMPLETED');
 
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-soft border border-ink rounded-full text-xs font-black uppercase tracking-wider text-ink">
-                <Flag className="w-3.5 h-3.5 text-red" />
-                <span>Đích Đến Cuối Cùng Của Giáo Trình</span>
-              </div>
+              if (allCompleted) {
+                return (
+                  <div className="bg-card border-4 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-visible text-center space-y-6">
+                    {/* Con dấu lớn HOÀN THÀNH */}
+                    <div className="absolute -top-7 right-6 sm:right-10 z-20 pointer-events-none">
+                      <StampSlam
+                        text="HOÀN THÀNH"
+                        subtext="XUẤT SẮC"
+                        variant="circle"
+                        color="teal"
+                        size="md"
+                        delayMs={isReducedMotion ? 0 : 300}
+                      />
+                    </div>
 
-              <h3 className="text-2xl sm:text-3xl font-black text-ink tracking-tight font-sans">
-                Chúc mừng bạn đã chinh phục toàn bộ Lộ trình Lingual!
-              </h3>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-soft border border-ink rounded-full text-xs font-black uppercase tracking-wider text-ink">
+                      <Flag className="w-3.5 h-3.5 text-red" />
+                      <span>Đích Đến Cuối Cùng Của Giáo Trình</span>
+                    </div>
 
-              <p className="text-xs sm:text-sm text-ink-soft max-w-xl mx-auto leading-relaxed">
-                Từ chặng A1 khởi đầu đến B2 giao lưu tự tin, bạn đã xây dựng nền tảng vững chắc với 15 bài học ngữ cảnh thực tế và hàng trăm cụm từ thực dụng.
-              </p>
+                    <h3 className="text-2xl sm:text-3xl font-black text-ink tracking-tight font-sans">
+                      Chúc mừng bạn đã chinh phục toàn bộ Lộ trình LinguaFlow!
+                    </h3>
 
-              {/* Bò celebrating */}
-              <div className="flex justify-center py-2">
-                <LingLing reaction="party" size={120} animate={!isReducedMotion} />
-              </div>
+                    <p className="text-xs sm:text-sm text-ink-soft max-w-xl mx-auto leading-relaxed">
+                      Từ chặng A1 khởi đầu đến B2 giao lưu tự tin, bạn đã xây dựng nền tảng vững chắc với các bài học ngữ cảnh thực tế và hàng trăm cụm từ thực dụng.
+                    </p>
 
-              {/* CTA Bắt đầu học */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  href="/listening/practice"
-                  className="btn btn-red text-sm font-black shadow-brutal-lg px-8 py-3.5 flex items-center gap-2"
-                >
-                  <Play className="w-4 h-4 fill-white" />
-                  <span>Bắt đầu bài học chặng 2 ngay hôm nay</span>
-                </Link>
+                    <div className="flex justify-center py-2">
+                      <LingLing reaction="party" size={120} animate={!isReducedMotion} />
+                    </div>
 
-                <Link
-                  href="/dashboard"
-                  className="btn btn-outline text-sm font-black shadow-brutal px-6 py-3.5"
-                >
-                  <span>Quay về Dashboard</span>
-                </Link>
-              </div>
-            </div>
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                      <Link
+                        href="/practice"
+                        className="btn btn-red text-sm font-black shadow-brutal-lg px-8 py-3.5 flex items-center gap-2"
+                      >
+                        <Play className="w-4 h-4 fill-white" />
+                        <span>Ôn tập các kỹ năng nâng cao</span>
+                      </Link>
+
+                      <Link
+                        href="/dashboard"
+                        className="btn btn-outline text-sm font-black shadow-brutal px-6 py-3.5"
+                      >
+                        <span>Quay về Dashboard</span>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <div className="bg-card border-4 border-ink rounded-3xl p-6 sm:p-10 shadow-brutal-xl relative overflow-visible text-center space-y-6">
+                  {/* Con dấu mục tiêu khát vọng */}
+                  <div className="absolute -top-7 right-6 sm:right-10 z-20 pointer-events-none">
+                    <StampSlam
+                      text="MỤC TIÊU"
+                      subtext="CHINH PHỤC"
+                      variant="circle"
+                      color="teal"
+                      size="md"
+                      delayMs={isReducedMotion ? 0 : 300}
+                    />
+                  </div>
+
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-soft border border-ink rounded-full text-xs font-black uppercase tracking-wider text-ink">
+                    <Flag className="w-3.5 h-3.5 text-red" />
+                    <span>Lộ Trình Toàn Diện 5 Bậc Tiếng Anh</span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-black text-ink tracking-tight font-sans">
+                    Sẵn sàng chinh phục toàn bộ Lộ trình LinguaFlow!
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-ink-soft max-w-xl mx-auto leading-relaxed">
+                    Từ chặng A1 khởi đầu đến B2 giao lưu tự tin, mỗi bài học hoàn thành đưa bạn gần hơn đến mục tiêu thông thạo tiếng Anh. Hãy duy trì nhịp độ rèn luyện mỗi ngày cùng Bò LingLing nhé!
+                  </p>
+
+                  <div className="flex justify-center py-2">
+                    <LingLing reaction="pointYou" size={120} animate={!isReducedMotion} />
+                  </div>
+
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <Link
+                      href="/practice"
+                      className="btn btn-red text-sm font-black shadow-brutal-lg px-8 py-3.5 flex items-center gap-2"
+                    >
+                      <Play className="w-4 h-4 fill-white" />
+                      <span>Tiếp tục học chặng tiếp theo ngay</span>
+                    </Link>
+
+                    <Link
+                      href="/dashboard"
+                      className="btn btn-outline text-sm font-black shadow-brutal px-6 py-3.5"
+                    >
+                      <span>Quay về Dashboard</span>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
 
@@ -821,11 +878,11 @@ function CurriculumRoadmapContent() {
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-red animate-pulse" />
-                <span>Unit 2: Đang học dở (Bài 2/3)</span>
+                <span>Unit 2: Đang học tiếp (Bài 2/3)</span>
               </div>
             </div>
 
-            {/* Nút cuộn nhanh tới chặng đang học dở */}
+            {/* Nút cuộn nhanh tới chặng đang học tiếp */}
             {(() => {
               const inProgressUnit = units.find((u) => u.status === 'IN_PROGRESS') || units[0];
               const targetOrder = inProgressUnit?.order || 1;

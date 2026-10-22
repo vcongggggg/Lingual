@@ -182,13 +182,13 @@ export const InteractiveFlashcardDeck: React.FC = () => {
       {/* Tape strip decor top */}
       <div className="tape-strip" />
 
-      {/* Navigation Arrows ‹ › floating on left & right */}
+      {/* Navigation Arrows ‹ › floating on left & right (Touch target 44px) */}
       <button
         onClick={() => handleThrow('left')}
         disabled={isThrowing || isFlipping}
         aria-label="Chưa thuộc (ném trái)"
         title="Chưa thuộc (‹)"
-        className="absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-lg flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        className="absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-50 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-xl flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
       >
         ‹
       </button>
@@ -198,7 +198,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
         disabled={isThrowing || isFlipping}
         aria-label="Thuộc rồi (ném phải)"
         title="Thuộc rồi (›)"
-        className="absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-lg flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        className="absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-50 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-paper-2 border-2 border-ink text-ink font-black text-xl flex items-center justify-center shadow-brutal-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
       >
         ›
       </button>
@@ -300,7 +300,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
                     <span className="inline-block text-[10px] sm:text-[11px] font-black uppercase tracking-wider bg-paper-2 border border-ink rounded-full px-2.5 py-0.5">
                       {current.tag}
                     </span>
-                    <span className="text-[10px] font-bold text-ink-muted">
+                    <span className="text-[10px] sm:text-[11px] font-black text-ink bg-paper-2 border-2 border-ink rounded-full px-2.5 py-0.5 shadow-brutal-sm z-30">
                       {deck.length} thẻ còn
                     </span>
                   </div>
@@ -343,12 +343,12 @@ export const InteractiveFlashcardDeck: React.FC = () => {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Action Buttons: Chưa thuộc vs Thuộc rồi */}
+      {/* Bottom Action Buttons: Chưa thuộc vs Thuộc rồi (Touch target 44px) */}
       <div className="flex items-center justify-center gap-3 mt-4 w-full px-2">
         <button
           onClick={() => handleThrow('left')}
           disabled={isThrowing || isFlipping}
-          className="flex-1 py-2 px-3 bg-paper border-2 border-red text-red rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 min-h-[44px] py-2.5 px-3 bg-paper border-2 border-red text-red rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span>✕</span>
           <span>Chưa thuộc</span>
@@ -357,7 +357,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
         <button
           onClick={() => handleThrow('right')}
           disabled={isThrowing || isFlipping}
-          className="flex-1 py-2 px-3 bg-teal text-white border-2 border-ink rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 min-h-[44px] py-2.5 px-3 bg-teal text-white border-2 border-ink rounded-xl font-black text-xs uppercase tracking-wider shadow-brutal-sm hover:-translate-y-0.5 active:translate-y-0.5 transition-transform flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span>✓</span>
           <span>Thuộc rồi</span>

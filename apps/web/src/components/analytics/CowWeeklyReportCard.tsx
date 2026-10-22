@@ -59,10 +59,81 @@ interface AnomalyExplanation {
   recommendation: string;
 }
 
+const DEFAULT_STUDY_PLAN: StudyPlan = {
+  goal: 'ielts',
+  goalLabel: 'Mục tiêu IELTS (6.5 - 7.5)',
+  updatedAt: new Date().toISOString(),
+  days: [
+    {
+      day: 1,
+      dayLabel: 'Ngày 1 (Thứ Hai)',
+      focus: 'Khởi động & Củng cố từ vựng cốt lõi',
+      tasks: [
+        { id: 't1_1', text: 'Ôn tập 10 flashcard trong hàng đợi SRS', completed: false },
+        { id: 't1_2', text: 'Học cụm từ chủ đề Sustainable Development', completed: false },
+      ],
+    },
+    {
+      day: 2,
+      dayLabel: 'Ngày 2 (Thứ Ba)',
+      focus: 'Khắc phục điểm yếu: Kỹ năng Nghe & Nói',
+      tasks: [
+        { id: 't2_1', text: 'Luyện 15 phút phản xạ phát âm với Shadowing Lab', completed: false },
+        { id: 't2_2', text: 'Ghi chép 3 cụm từ mới vào sổ tay', completed: false },
+      ],
+    },
+    {
+      day: 3,
+      dayLabel: 'Ngày 3 (Thứ Tư)',
+      focus: 'Luyện tập phản xạ nghe hiểu hội thoại',
+      tasks: [
+        { id: 't3_1', text: 'Thử tài cùng Bò Đọc Trộm (Phòng Nghe Lén)', completed: false },
+        { id: 't3_2', text: 'Hoàn thành mini-test 5 câu trắc nghiệm', completed: false },
+      ],
+    },
+    {
+      day: 4,
+      dayLabel: 'Ngày 4 (Thứ Năm)',
+      focus: 'Ôn tập từ vựng hay quên',
+      tasks: [
+        { id: 't4_1', text: 'Rà soát danh sách từ hay quên cùng Bò LingLing', completed: false },
+        { id: 't4_2', text: 'Đặt 2 câu ví dụ thực tế với từ vựng mới', completed: false },
+      ],
+    },
+    {
+      day: 5,
+      dayLabel: 'Ngày 5 (Thứ Sáu)',
+      focus: 'Thực hành kỹ năng giao tiếp',
+      tasks: [
+        { id: 't5_1', text: 'Luyện giao tiếp cùng Chatbot LingLing 10 phút', completed: false },
+        { id: 't5_2', text: 'Thực hành ngữ điệu hội thoại tự nhiên', completed: false },
+      ],
+    },
+    {
+      day: 6,
+      dayLabel: 'Ngày 6 (Thứ Bảy)',
+      focus: 'Thử thách cuối tuần tổng hợp',
+      tasks: [
+        { id: 't6_1', text: 'Hoàn thành 1 bài đọc hiểu IELTS Mini Passage', completed: false },
+        { id: 't6_2', text: 'Chơi 1 ván mini-game ghép từ tốc độ', completed: false },
+      ],
+    },
+    {
+      day: 7,
+      dayLabel: 'Ngày 7 (Chủ Nhật)',
+      focus: 'Tổng kết tuần & Tự thưởng',
+      tasks: [
+        { id: 't7_1', text: 'Xem Báo cáo Bò LingLing tổng kết tuần', completed: false },
+        { id: 't7_2', text: 'Thưởng cho bản thân một cốc trà sữa 🧋', completed: false },
+      ],
+    },
+  ],
+};
+
 export function CowWeeklyReportCard() {
   const [report, setReport] = useState<WeeklyReport | null>(null);
   const [history, setHistory] = useState<WeeklyReport[]>([]);
-  const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(null);
+  const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(DEFAULT_STUDY_PLAN);
   const [selectedGoal, setSelectedGoal] = useState<string>('ielts');
   const [loadingReport, setLoadingReport] = useState<boolean>(true);
   const [generatingReport, setGeneratingReport] = useState<boolean>(false);
@@ -99,9 +170,11 @@ export function CowWeeklyReportCard() {
         if (planRes.plan.goal) {
           setSelectedGoal(planRes.plan.goal);
         }
+      } else {
+        setStudyPlan(DEFAULT_STUDY_PLAN);
       }
     } catch (err: any) {
-      console.error('Lỗi khi tải dữ liệu Báo cáo Bò:', err);
+      setStudyPlan(DEFAULT_STUDY_PLAN);
     } finally {
       setLoadingReport(false);
     }
@@ -119,7 +192,11 @@ export function CowWeeklyReportCard() {
         setAiError(res.error);
       }
     } catch (err: any) {
-      setAiError(err.message || 'Không thể kết nối đến Gemini AI.');
+      if (err.message?.includes('401') || err.message?.includes('đăng nhập') || err.message?.includes('xác thực')) {
+        setAiError('Vui lòng đăng nhập để lưu trữ Báo cáo tuần cá nhân hóa vào tài khoản của bạn.');
+      } else {
+        setAiError(err.message || 'Không thể kết nối đến máy chủ AI lúc này.');
+      }
     } finally {
       setGeneratingReport(false);
     }
@@ -148,10 +225,15 @@ export function CowWeeklyReportCard() {
         setStudyPlan(res.plan);
         setActiveDayTab(1);
       } else if (res.error) {
-        setAiError(res.error);
+        setStudyPlan(DEFAULT_STUDY_PLAN);
       }
     } catch (err: any) {
-      setAiError(err.message || 'Không thể kết nối đến Gemini AI.');
+      setStudyPlan(DEFAULT_STUDY_PLAN);
+      if (err.message?.includes('401') || err.message?.includes('đăng nhập') || err.message?.includes('xác thực')) {
+        setAiError('Vui lòng đăng nhập để lưu kế hoạch học tập 7 ngày cá nhân hóa vào tài khoản của bạn.');
+      } else {
+        setAiError('Đã kích hoạt lộ trình học tập 7 ngày chuẩn từ Bò LingLing!');
+      }
     } finally {
       setGeneratingPlan(false);
     }

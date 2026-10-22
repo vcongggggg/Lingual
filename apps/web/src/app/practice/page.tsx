@@ -65,7 +65,7 @@ const PASSAGE_BOARDS: PassageBoard[] = [
   {
     id: 'pb-1',
     title: 'Phát triển Đô thị Bền vững & Môi trường',
-    topic: 'IELTS Writing & Reading Task 2',
+    topic: 'IELTS Writing Task 2 & Reading',
     level: 'B2 – C1',
     collocations: [
       {
@@ -476,12 +476,12 @@ export default function PracticeHubPage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
-      const m = urlParams.get('mode');
+      const m = urlParams.get('mode') || urlParams.get('view');
       if (m === 'daily') setActiveMode('daily_challenge');
       else if (m === 'letters') setActiveMode('letters_from_cow');
       else if (m === 'shadowing') setActiveMode('shadowing_lab');
       else if (m === 'story') setActiveMode('cow_tale');
-      else if (m === 'eavesdrop') setActiveMode('cow_eavesdrop');
+      else if (m === 'eavesdrop' || m === 'cow_eavesdrop') setActiveMode('cow_eavesdrop');
     }
   }, []);
 
@@ -763,8 +763,8 @@ export default function PracticeHubPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-6 pb-28 text-left select-none">
-      {/* HEADER & THANH CHUYỂN 4 MODE GIẤY */}
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-6 pb-16 sm:pb-12 text-left select-none">
+      {/* HEADER & THANH CHUYỂN 9 MODE GIẤY */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b-2 border-ink pb-4">
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-xs font-bold text-ink-muted">
@@ -783,11 +783,11 @@ export default function PracticeHubPage() {
             GÓC LUYỆN TẬP ĐẶC BIỆT
           </h1>
           <p className="text-xs sm:text-sm text-ink-soft">
-            Chữ mực trên nền giấy — 4 Phương pháp học tập trực quan không áp đặt
+            Chữ mực trên nền giấy — 9 Hoạt động học tập trực quan không áp đặt
           </p>
         </div>
 
-        {/* 4 Tab Mode Luyện Tập */}
+        {/* 9 Tab Mode Luyện Tập */}
         <div className="flex items-center gap-1.5 p-1.5 rounded-xl border-2 border-ink bg-paper-2 shadow-brutal-sm overflow-x-auto scrollbar-none flex-wrap">
           <button
             onClick={() => setActiveMode('collocation')}

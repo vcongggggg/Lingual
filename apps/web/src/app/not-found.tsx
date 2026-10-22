@@ -26,7 +26,7 @@ export default function NotFound() {
         <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-paper-2 border-2 border-ink rounded-full text-[11px] font-mono font-black uppercase tracking-wider text-red shadow-brutal-sm">
           <span>PHIẾU THẤT LẠC MỤC LỤC</span>
           <span className="text-ink">•</span>
-          <span>MÃ LỖI: #404-NOT-FOUND</span>
+          <span>MÃ LỖI: #404-KHÔNG-TÌM-THẤY-TRANG</span>
         </div>
 
         {/* Mã lỗi số lớn kiểu chữ in mộc */}
@@ -51,7 +51,7 @@ export default function NotFound() {
 
         {/* Lời giải thích mộc mạc phong cách sổ tay */}
         <p className="text-sm sm:text-base text-ink-soft leading-relaxed font-sans max-w-md mx-auto">
-          Có vẻ như trang sổ tay bạn đang tìm kiếm đã bị di dời, đổi tên hoặc chưa từng tồn tại trong giáo trình Lingual. Đừng lo, LingLing sẽ dẫn bạn trở về đúng lộ trình học tập!
+          Có vẻ như trang sổ tay bạn đang tìm kiếm đã bị di dời, đổi tên hoặc chưa từng tồn tại trong giáo trình LinguaFlow. Đừng lo, LingLing sẽ dẫn bạn trở về đúng lộ trình học tập!
         </p>
 
         {/* Các nút điều hướng hành động */}
@@ -74,7 +74,7 @@ export default function NotFound() {
               className="w-full sm:w-auto flex items-center justify-center gap-2 shadow-brutal"
             >
               <Home className="w-4 h-4 text-teal" />
-              <span>Bảng tổng quan</span>
+              <span>Bàn học (Dashboard)</span>
             </Button>
           </Link>
 
@@ -92,7 +92,7 @@ export default function NotFound() {
 
         {/* Dòng ghi chú chân trang phong cách thư viện */}
         <div className="pt-4 border-t-2 border-ink/10 text-[11px] font-mono font-bold text-ink-muted">
-          Lingual Library Archive • Hệ thống sổ tay học tiếng Anh tương tác
+          LinguaFlow Library Archive • Hệ thống sổ tay học tiếng Anh tương tác
         </div>
       </div>
     </div>

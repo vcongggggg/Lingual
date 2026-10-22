@@ -5,24 +5,27 @@ import { resolveAuthUserId } from '../lib/authUtil.js';
 
 export const insightsRouter = Router();
 
-// Middleware: Bắt buộc xác thực người dùng cho toàn bộ phân hệ /api/v1/insights/*
+// Middleware: Xác thực người dùng (Cho phép GET đọc số liệu baseline nếu là khách)
 insightsRouter.use((req: Request, res: Response, next) => {
   const authHeader = req.headers.authorization;
   const cookieToken = req.cookies?.access_token;
-  if (!authHeader && !cookieToken) {
-    return res.status(401).json({
-      error: 'Yêu cầu xác thực: Vui lòng cung cấp Bearer token hoặc cookie đăng nhập để truy cập phân tích hành vi học tập.',
-    });
-  }
   const userId = resolveAuthUserId(req);
-  if (!userId) {
-    return res.status(401).json({
-      error: 'Token đăng nhập không hợp lệ hoặc đã hết hạn.',
-    });
+
+  if (userId) {
+    (req as any).authUserId = userId;
+    return next();
   }
-  // Attach resolved userId to request
-  (req as any).authUserId = userId;
-  next();
+
+  // Nếu là thao tác đọc (GET) chưa đăng nhập -> Cung cấp dữ liệu baseline mẫu cho khách
+  if (req.method === 'GET') {
+    (req as any).authUserId = 'guest';
+    return next();
+  }
+
+  // Đối với các thao tác thay đổi dữ liệu (POST, PATCH) -> Bắt buộc phải đăng nhập
+  return res.status(401).json({
+    error: 'Yêu cầu xác thực: Vui lòng đăng nhập để lưu trữ và thay đổi kế hoạch học tập cá nhân.',
+  });
 });
 
 /**
