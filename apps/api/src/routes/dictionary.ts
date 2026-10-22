@@ -172,9 +172,63 @@ dictionaryRouter.get('/search', async (req, res) => {
       }
     }
 
-    filtered = [...exactMatches, ...prefixMatches, ...includeMatches, ...meaningMatches];
+    let dbMatches: any[] = [];
+    try {
+      const dbRows = await prisma.vocabulary.findMany({
+        where: {
+          OR: [
+            { targetText: { contains: queryStr, mode: 'insensitive' } },
+            { translation: { contains: queryStr, mode: 'insensitive' } },
+          ],
+        },
+        take: 100,
+      });
 
-    if (filtered.length < 3 && /^[a-zA-Z\s-]+$/.test(queryStr)) {
+      dbMatches = dbRows.map((r) => ({
+        id: r.id,
+        targetText: r.targetText,
+        translation: r.translation,
+        phonetic: r.phoneticUs || r.phonetic || '',
+        partOfSpeech: r.partOfSpeech || 'noun',
+        cefrLevel: r.cefrLevel || 'B1',
+        exampleSentence: r.exampleSentence || '',
+        exampleTranslation: r.exampleTranslation || '',
+        unitTitle: `Chủ đề: ${r.category || 'General'}`,
+        lessonTitle: 'Kho Từ Vựng 11.170 Từ',
+      }));
+    } catch (e) {
+      console.warn('DB vocabulary search fallback:', e);
+    }
+
+    const seenTexts = new Set<string>();
+    const combined: any[] = [];
+
+    // Prioritize DB matches (exact matches first)
+    const exactDb = dbMatches.filter((m) => m.targetText.toLowerCase() === searchTerm);
+    const otherDb = dbMatches.filter((m) => m.targetText.toLowerCase() !== searchTerm);
+
+    for (const dm of [...exactDb, ...otherDb]) {
+      const k = dm.targetText.toLowerCase().trim();
+      if (!seenTexts.has(k)) {
+        seenTexts.add(k);
+        combined.push(dm);
+      }
+    }
+
+    // Merge static matches
+    for (const sm of [...exactMatches, ...prefixMatches, ...includeMatches, ...meaningMatches]) {
+      const k = sm.targetText.toLowerCase().trim();
+      if (!seenTexts.has(k)) {
+        seenTexts.add(k);
+        combined.push(sm);
+      }
+    }
+
+    filtered = combined;
+
+    const hasExactMatch = filtered.some((w) => w.targetText.toLowerCase() === queryStr.toLowerCase());
+
+    if (!hasExactMatch && filtered.length < 3 && /^[a-zA-Z\s-]+$/.test(queryStr)) {
       try {
         const liveDefinitions = await RealDictionaryService.lookupWord(queryStr);
         if (liveDefinitions && liveDefinitions.length > 0) {
@@ -248,7 +302,34 @@ dictionaryRouter.get('/lookup/:word', async (req, res) => {
 
   try {
     const cleanWord = word.toLowerCase().trim();
-    const localMatch = EXACT_LOOKUP_MAP.get(cleanWord) || null;
+    let localMatch: any = null;
+
+    try {
+      const dbWord = await prisma.vocabulary.findFirst({
+        where: { targetText: { equals: cleanWord, mode: 'insensitive' } },
+      });
+      if (dbWord) {
+        localMatch = {
+          id: dbWord.id,
+          targetText: dbWord.targetText,
+          translation: dbWord.translation,
+          phonetic: dbWord.phoneticUs || dbWord.phonetic || '',
+          partOfSpeech: dbWord.partOfSpeech || 'noun',
+          cefrLevel: dbWord.cefrLevel || 'B1',
+          exampleSentence: dbWord.exampleSentence || '',
+          exampleTranslation: dbWord.exampleTranslation || '',
+          unitTitle: `Chủ đề: ${dbWord.category || 'General'}`,
+          lessonTitle: 'Kho Từ Vựng 11.170 Từ',
+        };
+      }
+    } catch (e) {
+      console.warn('DB lookup error:', e);
+    }
+
+    if (!localMatch) {
+      localMatch = EXACT_LOOKUP_MAP.get(cleanWord) || null;
+    }
+
     const liveResults = await RealDictionaryService.lookupWord(word);
 
     let isBookmarked = false;

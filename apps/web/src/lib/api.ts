@@ -141,6 +141,28 @@ export const api = {
 
   // 4. Vocabulary
   getVocabularies: (limit = 100) => fetchApi<{ vocabularies: any[] }>(`/vocabulary?limit=${limit}`),
+  searchVocabulary: (params?: {
+    q?: string;
+    cefr?: string;
+    category?: string;
+    partOfSpeech?: string;
+    page?: number;
+    limit?: number;
+  }) => {
+    const qp = new URLSearchParams();
+    if (params?.q) qp.append('q', params.q);
+    if (params?.cefr && params.cefr !== 'all') qp.append('cefr', params.cefr);
+    if (params?.category && params.category !== 'all') qp.append('category', params.category);
+    if (params?.partOfSpeech && params.partOfSpeech !== 'all') qp.append('partOfSpeech', params.partOfSpeech);
+    if (params?.page) qp.append('page', params.page.toString());
+    if (params?.limit) qp.append('limit', params.limit.toString());
+    return fetchApi<{
+      words: any[];
+      pagination: { page: number; limit: number; total: number; totalPages: number };
+    }>(`/vocabulary/search?${qp.toString()}`);
+  },
+  getVocabularyWord: (wordId: string) =>
+    fetchApi<{ word: any }>(`/vocabulary/word/${encodeURIComponent(wordId)}`),
 
   // 5. IELTS
   getIeltsRoadmap: () => fetchApi<{ success: boolean; tracks: any[] }>('/ielts/roadmap'),
