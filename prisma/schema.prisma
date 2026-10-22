@@ -1232,6 +1232,9 @@ model IeltsReadingPassage {
   cefrLevel      String   @default("B1")
   difficultyBand String?  @map("difficulty_band")
   title          String
+  module         String?
+  notes          String?  @db.Text
+  sourceUrl      String?  @map("source_url")
   passageJson    String   @default("[]")
   questionsJson  String   @default("[]")
   source         String   @default("ai-generated")
