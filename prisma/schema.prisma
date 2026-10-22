@@ -1142,6 +1142,9 @@ model DialogueScenario {
   linesJson     String   @default("[]")
   questionsJson String   @default("[]")
   cefrLevel     String   @default("B1")
+  level         String?
+  speakers      String?
+  viSummary     String?  @map("vi_summary")
   skillFocus    String   @default("listening")
   source        String   @default("ai-generated")
   verified      Boolean  @default(false)
