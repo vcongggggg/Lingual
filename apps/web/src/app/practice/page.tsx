@@ -65,7 +65,7 @@ const PASSAGE_BOARDS: PassageBoard[] = [
   {
     id: 'pb-1',
     title: 'Phát triển Đô thị Bền vững & Môi trường',
-    topic: 'IELTS Writing Task 2 & Reading',
+    topic: 'Luyện IELTS Writing (Task 2)',
     level: 'B2 – C1',
     collocations: [
       {
@@ -896,7 +896,7 @@ export default function PracticeHubPage() {
             }`}
           >
             <Ear className="w-3.5 h-3.5 text-white" />
-            <span>9. Bò đọc trộm</span>
+            <span>9. Bò nghe lén</span>
           </button>
         </div>
       </div>
@@ -1176,7 +1176,7 @@ export default function PracticeHubPage() {
                     <div className="flex items-center gap-2">
                       <Pin className="w-5 h-5 text-red" />
                       <span className="text-sm font-black uppercase tracking-wider text-ink font-mono">
-                        BẢNG TỔNG HỢP CỤM TỪ (NOTICE BOARD)
+                        BẢNG TỔNG HỢP CỤM TỪ
                       </span>
                     </div>
                     <span className="text-[11px] font-mono font-bold text-ink-muted">

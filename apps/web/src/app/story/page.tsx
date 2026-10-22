@@ -27,7 +27,7 @@ export default function StoryPage() {
             href="/eavesdrop"
             className="px-3 py-1 bg-paper-2 border border-ink rounded-lg text-xs font-bold text-ink hover:text-red transition-colors"
           >
-            Bò đọc trộm (Nghe lén) →
+            Bò nghe lén →
           </Link>
         </div>
       </div>

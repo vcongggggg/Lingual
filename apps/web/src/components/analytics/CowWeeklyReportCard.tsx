@@ -466,10 +466,10 @@ export function CowWeeklyReportCard() {
               <button
                 onClick={() => handleGenerateReport(false)}
                 disabled={generatingReport}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-yellow hover:bg-yellow-deep border-2 border-ink rounded-xl text-xs font-black text-ink shadow-brutal transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-yellow hover:bg-yellow-deep border-2 border-ink rounded-xl text-xs font-black text-ink shadow-brutal transition-all cursor-pointer"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>Chấm điểm & Sinh Báo Cáo Ngay</span>
+                <span>Chấm điểm & Tạo Báo Cáo Ngay</span>
               </button>
             </div>
           </div>
@@ -509,7 +509,7 @@ export function CowWeeklyReportCard() {
             <button
               onClick={handleGeneratePlan}
               disabled={generatingPlan}
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-blue hover:bg-blue-600 text-white disabled:opacity-60 border-2 border-ink rounded-xl text-xs font-black shadow-brutal-sm transition-all"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-teal hover:bg-teal-dark text-white disabled:opacity-60 border-2 border-ink rounded-xl text-xs font-black shadow-brutal-sm hover:translate-y-[-1px] transition-all cursor-pointer"
             >
               <Target className={`w-4 h-4 ${generatingPlan ? 'animate-spin' : ''}`} />
               <span>{generatingPlan ? 'Đang lập kế hoạch...' : 'Lập kế hoạch mới'}</span>
@@ -620,7 +620,7 @@ export function CowWeeklyReportCard() {
         ) : (
           <div className="py-8 text-center space-y-2">
             <p className="text-xs font-bold text-ink-muted">
-              Bấm nút "Lập kế hoạch mới" bên trên để Bò LingLing sinh lộ trình 7 ngày cá nhân hóa cho bạn!
+              Bấm nút "Lập kế hoạch mới" bên trên để Bò LingLing thiết lập lộ trình 7 ngày cá nhân hóa cho bạn!
             </p>
           </div>
         )}
