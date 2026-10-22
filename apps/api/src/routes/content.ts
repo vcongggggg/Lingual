@@ -8,6 +8,8 @@ export const contentRouter = Router();
 const contentQuerySchema = z.object({
   cefrLevel: z.string().optional(),
   topic: z.string().optional(),
+  page: z.preprocess((v) => (v !== undefined ? Number(v) : 1), z.number().int().min(1).default(1)),
+  pageSize: z.preprocess((v) => (v !== undefined ? Number(v) : undefined), z.number().int().min(1).max(100).optional()),
   limit: z.preprocess((v) => (v !== undefined ? Number(v) : 20), z.number().int().min(1).max(100).default(20)),
   random: z.preprocess((v) => v === 'true' || v === true || v === '1', z.boolean().default(false)),
   category: z.string().optional(),
@@ -28,30 +30,37 @@ async function fetchWithFilter<T>(
   where: Record<string, any>,
   limit: number,
   random: boolean,
-  orderBy?: any
-): Promise<{ items: T[]; total: number }> {
+  orderBy?: any,
+  page: number = 1
+): Promise<{ items: T[]; total: number; page: number; totalPages: number }> {
   const total = await modelDelegate.count({ where });
-  if (total === 0) return { items: [], total: 0 };
+  const safePage = Math.max(1, page || 1);
+  const totalPages = Math.ceil(total / limit) || 1;
+  if (total === 0) return { items: [], total: 0, page: safePage, totalPages: 0 };
+
+  const skip = (safePage - 1) * limit;
 
   if (random && total > limit) {
     const idRecords = await modelDelegate.findMany({
       where,
       select: { id: true },
+      orderBy: orderBy || { id: 'asc' },
     });
     const shuffled = idRecords.sort(() => 0.5 - Math.random());
-    const pickedIds = shuffled.slice(0, limit).map((r: { id: any }) => r.id);
+    const pickedIds = shuffled.slice(skip, skip + limit).map((r: { id: any }) => r.id);
     const items = await modelDelegate.findMany({
       where: { id: { in: pickedIds } },
     });
-    return { items, total };
+    return { items, total, page: safePage, totalPages };
   }
 
   const items = await modelDelegate.findMany({
     where,
+    skip,
     take: limit,
-    ...(orderBy ? { orderBy } : {}),
+    orderBy: orderBy || { id: 'asc' },
   });
-  return { items, total };
+  return { items, total, page: safePage, totalPages };
 }
 
 // 1. /grammar-questions
@@ -91,13 +100,21 @@ contentRouter.get('/dialogues', async (req: Request, res: Response) => {
     if (q.cefrLevel) where.cefrLevel = q.cefrLevel.toUpperCase();
     if (q.topic) where.topic = { contains: q.topic, mode: 'insensitive' };
 
-    const { items, total } = await fetchWithFilter<any>(prisma.dialogueScenario, where, q.limit, q.random);
+    const effectiveLimit = q.pageSize || q.limit;
+    const { items, total, page, totalPages } = await fetchWithFilter<any>(
+      prisma.dialogueScenario,
+      where,
+      effectiveLimit,
+      q.random,
+      undefined,
+      q.page
+    );
     const formatted = items.map((item: any) => ({
       ...item,
       lines: safeParseJson(item.linesJson, []),
       questions: safeParseJson(item.questionsJson, []),
     }));
-    res.json({ items: formatted, total });
+    res.json({ items: formatted, total, page, totalPages });
   } catch (err: any) {
     res.status(400).json({ error: err.message || 'Lỗi khi tải hội thoại' });
   }
@@ -336,12 +353,20 @@ contentRouter.get('/ielts-speaking', async (req: Request, res: Response) => {
     const q = contentQuerySchema.parse(req.query);
     const where: any = {};
 
-    const { items, total } = await fetchWithFilter<any>(prisma.ieltsSpeakingTopic, where, q.limit, q.random);
+    const effectiveLimit = q.pageSize || q.limit;
+    const { items, total, page, totalPages } = await fetchWithFilter<any>(
+      prisma.ieltsSpeakingTopic,
+      where,
+      effectiveLimit,
+      q.random,
+      undefined,
+      q.page
+    );
     const formatted = items.map((item: any) => ({
       ...item,
       ideas: safeParseJson(item.ideasJson, []),
     }));
-    res.json({ items: formatted, total });
+    res.json({ items: formatted, total, page, totalPages });
   } catch (err: any) {
     res.status(400).json({ error: err.message || 'Lỗi khi tải chủ đề nói IELTS' });
   }

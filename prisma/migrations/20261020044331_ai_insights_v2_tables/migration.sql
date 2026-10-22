@@ -1,5 +1,5 @@
 -- AlterTable
-ALTER TABLE "notification_preferences" ALTER COLUMN "updatedAt" DROP DEFAULT;
+ALTER TABLE IF EXISTS "notification_preferences" ALTER COLUMN "updatedAt" DROP DEFAULT;
 
 -- CreateTable
 CREATE TABLE "cow_weekly_reports" (
