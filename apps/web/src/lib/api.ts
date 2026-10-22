@@ -157,6 +157,16 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(data),
     }),
+  getIeltsWritingModels: (task?: number) =>
+    fetchApi<{ success: boolean; count: number; models: any[] }>(
+      task ? `/ielts/writing-models?task=${task}` : '/ielts/writing-models'
+    ),
+  getIeltsWritingModelDetail: (id: string) =>
+    fetchApi<{ success: boolean; model: any }>(`/ielts/writing-models/${id}`),
+  getIeltsSpeakingModels: () =>
+    fetchApi<{ success: boolean; count: number; models: any[] }>('/ielts/speaking-models'),
+  getIeltsSpeakingModelDetail: (id: string) =>
+    fetchApi<{ success: boolean; model: any }>(`/ielts/speaking-models/${id}`),
 
   // 6. Analytics
   getAnalyticsOverview: () => fetchApi<{

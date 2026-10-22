@@ -12,6 +12,7 @@ import {
   Award,
   TrendingUp,
   GraduationCap,
+  Mic,
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { LingLing } from '../../components/ui/LingLing';
@@ -92,12 +93,22 @@ export default function IeltsHubPage() {
     {
       id: 'writing',
       title: 'Viết',
-      subtitle: 'Writing Evaluator',
-      desc: 'Viết bài luận Task 1 & Task 2 trên giấy kẻ dòng, nhận chấm điểm theo 4 tiêu chí Band Descriptor.',
+      subtitle: 'Writing Evaluator & Models',
+      desc: 'Tuyển tập 60 bài mẫu Band 8.0 Task 1 & Task 2 kèm phòng luyện viết bài chấm điểm AI theo 4 tiêu chí.',
       icon: FileText,
-      badge: 'Chấm 4 tiêu chí',
-      href: '/ielts/practice/writing',
+      badge: '60 Bài mẫu 8.0',
+      href: '/ielts-writing',
       tagColor: 'text-amber border-amber/40 bg-amber/10',
+    },
+    {
+      id: 'speaking',
+      title: 'Nói',
+      subtitle: 'Speaking Models 8.0',
+      desc: 'Tuyển tập 60 bộ đề Cue Card Part 2 & thảo luận Part 3 kèm bài mẫu band 8.0 và mẹo giám khảo.',
+      icon: Mic,
+      badge: '60 Bộ đề mẫu 8.0',
+      href: '/ielts-speaking',
+      tagColor: 'text-teal border-teal/40 bg-teal/10',
     },
     {
       id: 'mock-test',

@@ -577,3 +577,209 @@ ieltsRouter.delete(
   }
 );
 
+/**
+ * ============================================================================
+ * IELTS BAND 8.0 WRITING & SPEAKING MODELS (DATA WIRING PHASE 1)
+ * ============================================================================
+ */
+
+/**
+ * GET /api/v1/ielts/writing-models
+ * List 60 IELTS Writing band 8.0 model essays (filter by ?task=1 or ?task=2)
+ */
+ieltsRouter.get('/writing-models', async (req: Request, res: Response) => {
+  try {
+    const { task } = req.query;
+    const where: any = {};
+
+    if (task !== undefined && task !== null && task !== '') {
+      const taskNum = parseInt(task as string, 10);
+      if (!isNaN(taskNum) && (taskNum === 1 || taskNum === 2)) {
+        where.task = taskNum;
+      }
+    }
+
+    const rows = await prisma.ieltsWritingModel.findMany({
+      where,
+      orderBy: [{ task: 'asc' }, { id: 'asc' }],
+    });
+
+    const models = rows.map((row) => {
+      let keyVocab: any[] = [];
+      try {
+        keyVocab = JSON.parse(row.keyVocabJson || '[]');
+      } catch {
+        keyVocab = [];
+      }
+      return {
+        ...row,
+        keyVocab,
+      };
+    });
+
+    return res.json({
+      success: true,
+      count: models.length,
+      total: models.length,
+      models,
+      writingModels: models,
+      data: models,
+    });
+  } catch (error: any) {
+    console.error('Error fetching writing models:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Lỗi truy vấn bài mẫu IELTS Writing',
+    });
+  }
+});
+
+/**
+ * GET /api/v1/ielts/writing-models/:id
+ * Get single IELTS Writing model detail
+ */
+ieltsRouter.get('/writing-models/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const row = await prisma.ieltsWritingModel.findUnique({
+      where: { id },
+    });
+
+    if (!row) {
+      return res.status(404).json({
+        success: false,
+        error: 'Không tìm thấy bài mẫu IELTS Writing',
+      });
+    }
+
+    let keyVocab: any[] = [];
+    try {
+      keyVocab = JSON.parse(row.keyVocabJson || '[]');
+    } catch {
+      keyVocab = [];
+    }
+
+    const model = {
+      ...row,
+      keyVocab,
+    };
+
+    return res.json({
+      success: true,
+      model,
+      writingModel: model,
+      data: model,
+    });
+  } catch (error: any) {
+    console.error(`Error fetching writing model ${id}:`, error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Lỗi truy vấn chi tiết bài mẫu IELTS Writing',
+    });
+  }
+});
+
+/**
+ * GET /api/v1/ielts/speaking-models
+ * List 60 IELTS Speaking band 8.0 model sets (Part 2 cue card & Part 3 discussion)
+ */
+ieltsRouter.get('/speaking-models', async (req: Request, res: Response) => {
+  try {
+    const rows = await prisma.ieltsSpeakingModel.findMany({
+      orderBy: { id: 'asc' },
+    });
+
+    const models = rows.map((row) => {
+      let part3: any[] = [];
+      let keyVocab: any[] = [];
+      try {
+        part3 = JSON.parse(row.part3Json || '[]');
+      } catch {
+        part3 = [];
+      }
+      try {
+        keyVocab = JSON.parse(row.keyVocabJson || '[]');
+      } catch {
+        keyVocab = [];
+      }
+      return {
+        ...row,
+        part3,
+        part3Questions: part3,
+        keyVocab,
+      };
+    });
+
+    return res.json({
+      success: true,
+      count: models.length,
+      total: models.length,
+      models,
+      speakingModels: models,
+      data: models,
+    });
+  } catch (error: any) {
+    console.error('Error fetching speaking models:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Lỗi truy vấn bộ đề mẫu IELTS Speaking',
+    });
+  }
+});
+
+/**
+ * GET /api/v1/ielts/speaking-models/:id
+ * Get single IELTS Speaking model set detail
+ */
+ieltsRouter.get('/speaking-models/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const row = await prisma.ieltsSpeakingModel.findUnique({
+      where: { id },
+    });
+
+    if (!row) {
+      return res.status(404).json({
+        success: false,
+        error: 'Không tìm thấy bộ đề mẫu IELTS Speaking',
+      });
+    }
+
+    let part3: any[] = [];
+    let keyVocab: any[] = [];
+    try {
+      part3 = JSON.parse(row.part3Json || '[]');
+    } catch {
+      part3 = [];
+    }
+    try {
+      keyVocab = JSON.parse(row.keyVocabJson || '[]');
+    } catch {
+      keyVocab = [];
+    }
+
+    const model = {
+      ...row,
+      part3,
+      part3Questions: part3,
+      keyVocab,
+    };
+
+    return res.json({
+      success: true,
+      model,
+      speakingModel: model,
+      data: model,
+    });
+  } catch (error: any) {
+    console.error(`Error fetching speaking model ${id}:`, error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Lỗi truy vấn chi tiết bộ đề mẫu IELTS Speaking',
+    });
+  }
+});
+
+
