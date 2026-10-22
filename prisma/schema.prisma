@@ -1282,6 +1282,8 @@ model DiaryPrompt {
   cefrLevel    String   @default("A2")
   prompt       String
   promptVi     String?
+  theme        String?
+  hintVi       String?  @map("hint_vi")
   keywordsJson String   @default("[]")
   minSentences Int      @default(3)
   source       String   @default("ai-generated")
@@ -1539,14 +1541,16 @@ model TravelPhrase {
 }
 
 model IeltsSpeakingTopic {
-  id        String   @id
-  part      Int      @default(1)
-  question  String
-  topicVi   String?
-  ideasJson String   @default("[]")
-  source    String   @default("ai-generated")
-  verified  Boolean  @default(false)
-  createdAt DateTime @default(now())
+  id                String   @id
+  part              Int      @default(1)
+  question          String
+  topicVi           String?
+  ideasJson         String   @default("[]")
+  topic             String?
+  followUpQuestions String?  @map("follow_up_questions")
+  source            String   @default("ai-generated")
+  verified          Boolean  @default(false)
+  createdAt         DateTime @default(now())
 
   @@index([part])
   @@map("ielts_speaking_topics")
@@ -1557,6 +1561,7 @@ model IeltsWritingTopic {
   prompt       String   @db.Text
   type         String   @default("opinion")
   typeVi       String?
+  bandRange    String?  @map("band_range")
   outlineJson  String   @default("{}")
   keyVocabJson String   @default("[]")
   source       String   @default("ai-generated")
