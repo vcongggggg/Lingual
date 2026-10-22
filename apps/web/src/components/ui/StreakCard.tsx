@@ -135,7 +135,7 @@ export function StreakCard({
             {resolvedStreak > 0 ? 'Chuỗi ngày học là tài sản quý báu.' : 'Chuỗi học đã dừng — Bắt đầu lại ngay hôm nay!'}
           </h3>
           <p className="text-xs md:text-sm text-white/90 leading-relaxed max-w-xl mb-4 font-sans">
-            Mỗi tuần bạn được cấp <strong>1 phiếu nghỉ phép 🔖</strong> (tự động làm mới vào 00:00 thứ Hai theo giờ Việt Nam). Nếu bận quên học 1 ngày, máy chủ sẽ tự động dùng phiếu để giữ chuỗi cho bạn mà không lo bị đứt đoạn.
+            Mỗi tuần bạn có <strong>1 phiếu nghỉ phép 🔖</strong> (làm mới vào 00:00 thứ Hai). Nếu chẳng may bận rộn một ngày, hệ thống sẽ tự động dùng phiếu để bảo vệ chuỗi học tập, giúp bạn luôn an tâm giữ vững nhịp rèn luyện.
           </p>
 
           {/* Hàng 7 ngày trong tuần */}

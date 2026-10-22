@@ -311,7 +311,7 @@ export function CowWeeklyReportCard() {
                 </span>
               </div>
               <h2 className="text-xl sm:text-2xl font-black text-ink font-sans tracking-tight">
-                Báo Cáo Bò Hàng Tuần
+                Báo cáo Tuần từ Bò LingLing
               </h2>
             </div>
           </div>
@@ -332,7 +332,7 @@ export function CowWeeklyReportCard() {
               className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-yellow hover:bg-yellow-deep disabled:opacity-60 border-2 border-ink rounded-xl text-xs font-black text-ink shadow-brutal-sm hover:translate-y-[-1px] transition-all"
             >
               <RefreshCw className={`w-4 h-4 ${generatingReport ? 'animate-spin' : ''}`} />
-              <span>{generatingReport ? 'Đang chấm điểm...' : 'Sinh báo cáo mới 🐮'}</span>
+              <span>{generatingReport ? 'Đang chấm điểm...' : 'Tạo báo cáo mới 🐮'}</span>
             </button>
           </div>
         </div>
@@ -482,7 +482,7 @@ export function CowWeeklyReportCard() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-green-500/15 text-green-700 border border-green-500/30">
-                Interactive Checklist
+                Nhiệm vụ tương tác 7 ngày
               </span>
               <span className="text-xs font-bold text-ink-muted">
                 {studyPlan ? studyPlan.goalLabel : 'Kế hoạch học tập 7 ngày'}

@@ -303,10 +303,10 @@ export function Navbar() {
           )}
         </div>
 
-        {/* Mobile menu button (hiển thị dưới lg: <1024px) */}
+        {/* Mobile menu button (hiển thị dưới lg: <1024px, chuẩn touch target 44px) */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden w-10 h-10 border-2 border-ink bg-card rounded-xl flex items-center justify-center shadow-brutal-sm text-ink cursor-pointer"
+          className="lg:hidden w-11 h-11 min-w-[44px] min-h-[44px] border-2 border-ink bg-card rounded-xl flex items-center justify-center shadow-brutal-sm text-ink cursor-pointer"
           aria-label="Menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5 stroke-[2.5]" /> : <Menu className="w-5 h-5 stroke-[2.5]" />}

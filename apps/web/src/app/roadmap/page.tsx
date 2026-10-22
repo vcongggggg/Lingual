@@ -421,7 +421,7 @@ function CurriculumRoadmapContent() {
         <div className="space-y-3 max-w-xl pl-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-paper-2 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-teal">
             <Compass className="w-3.5 h-3.5" />
-            <span>Hành Trình Cuộn · Scrollytelling</span>
+            <span>Hành Trình Cuộn Tương Tác</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black text-ink tracking-tight font-sans">
