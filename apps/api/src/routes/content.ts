@@ -14,6 +14,7 @@ const contentQuerySchema = z.object({
   random: z.preprocess((v) => v === 'true' || v === true || v === '1', z.boolean().default(false)),
   category: z.string().optional(),
   search: z.string().optional(),
+  contentType: z.string().optional(),
 });
 
 function safeParseJson<T>(raw: string | null | undefined, fallback: T): T {
@@ -1019,4 +1020,83 @@ contentRouter.get('/word-sentence-links', async (req: Request, res: Response) =>
     res.status(400).json({ error: err.message || 'Lỗi khi tải word sentence links' });
   }
 });
+
+// 29. /lexis-questions
+contentRouter.get('/lexis-questions', async (req: Request, res: Response) => {
+  try {
+    const q = contentQuerySchema.parse(req.query);
+    const where: any = {};
+    if (q.contentType) where.contentType = q.contentType;
+    if (q.cefrLevel) where.cefrLevel = q.cefrLevel.toUpperCase();
+    if (q.topic) where.topic = { contains: q.topic, mode: 'insensitive' };
+    if (q.search) {
+      where.OR = [
+        { prompt: { contains: q.search, mode: 'insensitive' } },
+        { correctAnswer: { contains: q.search, mode: 'insensitive' } },
+        { topic: { contains: q.search, mode: 'insensitive' } },
+      ];
+    }
+    const { items, total } = await fetchWithFilter<any>(prisma.lexisQuestion, where, q.limit, q.random);
+    const formatted = items.map((item: any) => ({
+      ...item,
+      options: Array.isArray(item.optionsJson)
+        ? item.optionsJson
+        : typeof item.optionsJson === 'string'
+        ? safeParseJson(item.optionsJson, [])
+        : item.optionsJson || [],
+    }));
+    res.json({ items: formatted, total });
+  } catch (err: any) {
+    res.status(400).json({ error: err.message || 'Lỗi khi tải lexis questions' });
+  }
+});
+
+contentRouter.get('/lexis-questions/:id', async (req: Request, res: Response) => {
+  try {
+    const item = await prisma.lexisQuestion.findUnique({ where: { id: req.params.id } });
+    if (!item) return res.status(404).json({ error: 'Không tìm thấy câu hỏi từ vựng' });
+    const formatted = {
+      ...item,
+      options: Array.isArray(item.optionsJson)
+        ? item.optionsJson
+        : typeof item.optionsJson === 'string'
+        ? safeParseJson(item.optionsJson, [])
+        : item.optionsJson || [],
+    };
+    res.json({ item: formatted });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// 30. /study-guides
+contentRouter.get('/study-guides', async (req: Request, res: Response) => {
+  try {
+    const q = contentQuerySchema.parse(req.query);
+    const where: any = {};
+    if (q.category) where.category = q.category;
+    if (q.search) {
+      where.OR = [
+        { title: { contains: q.search, mode: 'insensitive' } },
+        { contentEn: { contains: q.search, mode: 'insensitive' } },
+        { contentVi: { contains: q.search, mode: 'insensitive' } },
+      ];
+    }
+    const { items, total } = await fetchWithFilter<any>(prisma.studyGuide, where, q.limit, q.random);
+    res.json({ items, total });
+  } catch (err: any) {
+    res.status(400).json({ error: err.message || 'Lỗi khi tải study guides' });
+  }
+});
+
+contentRouter.get('/study-guides/:id', async (req: Request, res: Response) => {
+  try {
+    const item = await prisma.studyGuide.findUnique({ where: { id: req.params.id } });
+    if (!item) return res.status(404).json({ error: 'Không tìm thấy tài liệu hướng dẫn' });
+    res.json({ item });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 

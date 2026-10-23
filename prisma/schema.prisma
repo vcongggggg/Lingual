@@ -171,6 +171,7 @@ model Vocabulary {
   source             String?
   license            String?
   wordFamilyJson     String?  @default("[]") @map("word_family_json")
+  wordFormsJson      Json?
   category           String   @default("general")
   status             String   @default("published")
   createdBy          String?
@@ -1229,6 +1230,7 @@ model BilingualStory {
 model IeltsReadingPassage {
   id             String   @id
   section        String   @default("reading")
+  track          String   @default("academic")
   cefrLevel      String   @default("B1")
   difficultyBand String?  @map("difficulty_band")
   title          String
@@ -1453,6 +1455,7 @@ model GrammarExplanation {
   topicVi            String?
   cefrLevel          String   @default("A2")
   ruleVi             String   @db.Text
+  ruleEn             String?  @db.Text
   examplesJson       String   @default("[]")
   commonMistakesJson String   @default("[]")
   source             String   @default("ai-generated")
@@ -1564,6 +1567,7 @@ model IeltsSpeakingTopic {
 
 model IeltsWritingTopic {
   id           String   @id
+  track        String   @default("academic")
   prompt       String   @db.Text
   type         String   @default("opinion")
   typeVi       String?
@@ -1615,6 +1619,37 @@ model IeltsSpeakingModel {
 
   @@index([topic])
   @@map("ielts_speaking_models")
+}
+
+model LexisQuestion {
+  id            String   @id @default(cuid())
+  contentType   String   // collocation|phrasal_verb|idiom|vocabulary
+  topic         String?
+  topicVi       String?
+  prompt        String   @db.Text
+  optionsJson   Json?
+  correctAnswer String
+  explanationEn String?  @db.Text
+  explanationVi String?  @db.Text
+  cefrLevel     String   @default("B1")
+  sourceRef     String?
+  createdAt     DateTime @default(now())
+
+  @@index([contentType, cefrLevel])
+  @@map("lexis_questions")
+}
+
+model StudyGuide {
+  id        String   @id @default(cuid())
+  title     String
+  category  String   // band-descriptor|exam-tip|how-to
+  contentEn String?  @db.Text
+  contentVi String?  @db.Text
+  sourceRef String?
+  createdAt DateTime @default(now())
+
+  @@index([category])
+  @@map("study_guides")
 }
 
 // ==========================================
