@@ -510,5 +510,21 @@ export const api = {
     }),
   getPushStatus: () => fetchApi<{ success: boolean; count: number; hasSubscriptions: boolean }>('/push/status'),
   sendTestPush: () => fetchApi<{ success: boolean; result: any }>('/push/test', { method: 'POST' }),
+
+  // 16. Placement Test
+  getPlacementLatest: () => fetchApi<{ attempt: any }>('/placement/latest'),
+  getPlacementQuestions: () => fetchApi<{ totalQuestions: number; estimatedMinutes: number; questions: any[] }>('/placement/questions'),
+  submitPlacementTest: (data: { answers: Record<string, string>; questionIds: string[] }) =>
+    fetchApi<{
+      attemptId: string;
+      level: string;
+      bandEstimate: string;
+      sectionScores: any;
+      weakTopics: string[];
+      disclaimer: string;
+    }>('/placement/submit', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
 };
 

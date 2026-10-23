@@ -30,6 +30,7 @@ import { contentRouter } from './routes/content.js';
 import { insightsRouter } from './routes/insights.js';
 import { notificationsRouter } from './routes/notifications.js';
 import { pushRouter } from './routes/push.js';
+import { placementRouter } from './routes/placement.js';
 import { notificationTriggerEngine } from './services/notificationTriggerEngine.js';
 import { checkDatabaseConnection, isDatabaseConnected, isDatabaseAvailable } from './lib/prisma.js';
 
@@ -135,6 +136,7 @@ app.use('/api/v1/chatbot', chatbotRouter);
 app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/stamps', stampRouter);
 app.use('/api/v1/content', contentRouter);
+app.use('/api/v1/placement', placementRouter);
 app.use('/api/v1/stories', (req, res, next) => {
   req.url = '/stories' + req.url;
   contentRouter(req, res, next);

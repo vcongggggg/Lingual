@@ -73,8 +73,25 @@ model User {
   pushSubscriptions      PushSubscription[]
   cowWeeklyReports       CowWeeklyReport[]
   cowStudyPlan           CowStudyPlan?
+  cefrLevel              String?
+  placementAttempts      PlacementAttempt[]
 
   @@map("users")
+}
+
+model PlacementAttempt {
+  id                 String   @id @default(uuid())
+  userId             String
+  takenAt            DateTime @default(now())
+  level              String
+  bandEstimate       String
+  sectionScoresJson  String
+  answersJson        String
+  questionIdsJson    String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("placement_attempts")
 }
 
 model Session {
