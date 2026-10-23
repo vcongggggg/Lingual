@@ -132,6 +132,7 @@ before(async () => {
       quiz: [
         { question: 'Where did the story take place?', options: ['In the mountains', 'On the beach', 'Underground', 'In space'], correctAnswer: 'In the mountains' },
         { question: 'What whispered secrets?', options: ['The wind', 'The trees', 'The birds', 'The stones'], correctAnswer: 'The wind' },
+        { question: 'What kind of secrets were they?', options: ['Ancient secrets', 'Modern news', 'Future plans', 'Funny jokes'], correctAnswer: 'Ancient secrets' },
       ],
     },
   ];
@@ -139,7 +140,10 @@ before(async () => {
   for (const s of storyFixtures) {
     await prisma.bilingualStory.upsert({
       where: { id: s.id },
-      update: {},
+      update: {
+        pagesJson: JSON.stringify(s.pages),
+        quizJson: JSON.stringify(s.quiz),
+      },
       create: {
         id: s.id,
         title: s.title,
@@ -393,7 +397,9 @@ test('Placement API - Reading questions do not affect CEFR level determination',
     // Run A: Answer 100% reading correctly, B1 for grammar/vocab
     const ansAllReading: Record<string, string> = {};
     for (const q of questions) {
-      if (q.cefrLevel === 'B2') {
+      if (q.section === 'reading') {
+        ansAllReading[q.id] = correctMap[q.id];
+      } else if (q.cefrLevel === 'B2') {
         ansAllReading[q.id] = 'WRONG';
       } else {
         ansAllReading[q.id] = correctMap[q.id];
