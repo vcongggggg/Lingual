@@ -113,7 +113,7 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
       }
     }
 
-    // --- Profile 1: Khá (B2 level, 5/5 Listening correct) ---
+    // --- Profile 1: Khá (B2 level, 5/5 Listening correct -> tier B2+) ---
     const answersKha: Record<string, string> = {};
     for (const q of questions) {
       answersKha[q.id] = correctAnswersMap[q.id];
@@ -125,8 +125,8 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     });
     assert.equal(subKhaRes.status, 200);
     const subKha = await subKhaRes.json();
-    assert.equal(subKha.level, 'B2', 'Profile Khá level must be B2');
-    assert.equal(subKha.bandEstimate, '6.0 - 6.5', 'B2 with strong listening gets 6.0 - 6.5');
+    assert.equal(subKha.level, 'B2+', 'Profile Khá with strong listening achieves tier B2+');
+    assert.equal(subKha.bandEstimate, '~7.0', 'B2 with strong listening gets ~7.0');
     assert.equal(subKha.sectionScores.listening.correct, 5);
     assert.equal(subKha.sectionScores.listening.total, 5);
     assert.equal(subKha.sectionScores.listening.audioPlayCount, 2);
@@ -155,6 +155,7 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     assert.equal(subTBRes.status, 200);
     const subTB = await subTBRes.json();
     assert.equal(subTB.level, 'B1', 'Profile Trung bình level must be B1');
+    assert.equal(subTB.bandEstimate, '5.0 - 5.5', 'B1 must map to band 5.0 - 5.5');
     assert.equal(subTB.sectionScores.listening.correct, 3);
     assert.equal(subTB.sectionScores.listening.total, 5);
 
@@ -179,6 +180,7 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     assert.equal(subYeuRes.status, 200);
     const subYeu = await subYeuRes.json();
     assert.equal(subYeu.level, 'A2', 'Profile Yếu level must be A2');
+    assert.equal(subYeu.bandEstimate, '3.5 - 4.0', 'A2 must map to band 3.5 - 4.0');
     assert.equal(subYeu.sectionScores.listening.correct, 1);
     assert.equal(subYeu.sectionScores.listening.total, 5);
     assert.equal(subYeu.sectionScores.listening.audioPlayCount, 3);
@@ -196,3 +198,123 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     server.close();
   }
 });
+
+test('Placement API - band table conforms strictly to spec (B1 5.0 - 5.5, B2 6.0 - 6.5, B2+ ~7.0)', () => {
+  assert.equal(BAND_ESTIMATES.A1, '2.0 - 3.0');
+  assert.equal(BAND_ESTIMATES.A2, '3.5 - 4.0');
+  assert.equal(BAND_ESTIMATES.B1, '5.0 - 5.5');
+  assert.equal(BAND_ESTIMATES.B2, '6.0 - 6.5');
+  assert.equal(BAND_ESTIMATES['B2+'], '~7.0');
+});
+
+test('Placement API - Reading questions do not affect CEFR level determination', async () => {
+  const app = createTestApp();
+  const server = app.listen(0);
+  const port = (server.address() as any).port;
+
+  try {
+    const qRes = await fetch(`http://localhost:${port}/api/v1/placement/questions`);
+    const qData = await qRes.json();
+    const questions: any[] = qData.questions;
+
+    const correctMap: Record<string, string> = {
+      'list-cam11-t1-l4-q1': 'conservation',
+      'list-cam11-t1-l4-q2': 'food',
+      'list-cam11-t1-l4-q3': 'surface',
+      'list-cam11-t1-l4-q4': 'oxygen',
+      'list-cam11-t1-l4-q5': 'mammals',
+    };
+    for (const q of questions) {
+      if (q.id.startsWith('list-')) continue;
+      if (q.id.startsWith('colloc-')) {
+        const item = await prisma.collocation.findUnique({ where: { id: q.id.replace('colloc-', '') } });
+        correctMap[q.id] = item?.meaningVi || '';
+      } else if (q.id.startsWith('idiom-')) {
+        const item = await prisma.idiom.findUnique({ where: { id: q.id.replace('idiom-', '') } });
+        correctMap[q.id] = item?.meaningEn || '';
+      } else if (q.id.startsWith('story-')) {
+        const parts = q.id.split('-');
+        const storyId = parts.slice(1, -1).join('-');
+        const qIdx = parseInt(parts[parts.length - 1].replace('q', ''), 10) - 1;
+        const item = await prisma.bilingualStory.findUnique({ where: { id: storyId } });
+        const quiz = JSON.parse(item?.quizJson || '[]');
+        correctMap[q.id] = quiz[qIdx]?.correctAnswer || '';
+      } else {
+        const item = await prisma.grammarQuestion.findUnique({ where: { id: q.id } });
+        correctMap[q.id] = item?.correctAnswer || '';
+      }
+    }
+
+    // Run A: Answer 100% reading correctly, B1 for grammar/vocab
+    const ansAllReading: Record<string, string> = {};
+    for (const q of questions) {
+      if (q.cefrLevel === 'B2') {
+        ansAllReading[q.id] = 'WRONG';
+      } else {
+        ansAllReading[q.id] = correctMap[q.id];
+      }
+    }
+    const resA = await fetch(`http://localhost:${port}/api/v1/placement/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers: ansAllReading, questionIds: questions.map((q) => q.id), audioPlayCount: 1 }),
+    });
+    const dataA = await resA.json();
+
+    // Run B: Answer 0% reading correctly, same B1 for grammar/vocab
+    const ansNoReading: Record<string, string> = { ...ansAllReading };
+    for (const q of questions) {
+      if (q.section === 'reading') {
+        ansNoReading[q.id] = 'DEFINITELY_WRONG_ANSWER';
+      }
+    }
+    const resB = await fetch(`http://localhost:${port}/api/v1/placement/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers: ansNoReading, questionIds: questions.map((q) => q.id), audioPlayCount: 1 }),
+    });
+    const dataB = await resB.json();
+
+    // Both MUST result in CEFR level B1 (reading accuracy 100% vs 0% has ZERO effect on CEFR level)
+    assert.equal(dataA.level, 'B1');
+    assert.equal(dataB.level, 'B1');
+    assert.equal(dataA.sectionScores.reading.correct, 5);
+    assert.equal(dataB.sectionScores.reading.correct, 0);
+  } finally {
+    server.close();
+  }
+});
+
+test('Placement API - returns 401 Unauthorized when missing authentication', async () => {
+  const unauthApp = express();
+  unauthApp.use(express.json());
+  unauthApp.use('/api/v1/placement', placementRouter);
+
+  const server = unauthApp.listen(0);
+  const port = (server.address() as any).port;
+
+  const originalEnv = process.env.NODE_ENV;
+  try {
+    process.env.NODE_ENV = 'production';
+
+    // 1. GET /questions without auth header -> 401
+    const qRes = await fetch(`http://localhost:${port}/api/v1/placement/questions`);
+    assert.equal(qRes.status, 401);
+
+    // 2. POST /submit without auth header -> 401
+    const sRes = await fetch(`http://localhost:${port}/api/v1/placement/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers: {} }),
+    });
+    assert.equal(sRes.status, 401);
+
+    // 3. GET /latest without auth header -> 401
+    const lRes = await fetch(`http://localhost:${port}/api/v1/placement/latest`);
+    assert.equal(lRes.status, 401);
+  } finally {
+    process.env.NODE_ENV = originalEnv;
+    server.close();
+  }
+});
+

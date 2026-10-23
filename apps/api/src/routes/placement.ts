@@ -8,8 +8,9 @@ export const placementRouter = Router();
 export const BAND_ESTIMATES: Record<string, string> = {
   A1: '2.0 - 3.0',
   A2: '3.5 - 4.0',
-  B1: '4.5 - 5.0',
-  B2: '5.5 - 6.5',
+  B1: '5.0 - 5.5',
+  B2: '6.0 - 6.5',
+  'B2+': '~7.0',
 };
 
 export const PLACEMENT_DISCLAIMER =
@@ -32,22 +33,6 @@ export interface PlacementQuestionClient {
 }
 
 /**
- * Helper to ensure user exists before saving attempt
- */
-async function ensureUserExists(userId: string) {
-  let user = await userRepository.findById(userId);
-  if (!user) {
-    user = await userRepository.createUser({
-      id: userId,
-      email: `${userId}@lingual.local`,
-      displayName: 'Learner',
-      role: 'STUDENT' as any,
-    });
-  }
-  return user;
-}
-
-/**
  * GET /api/v1/placement/latest
  * Return latest placement attempt for current user
  */
@@ -56,6 +41,11 @@ placementRouter.get('/latest', async (req: Request, res: Response) => {
     const userId = resolveAuthUserId(req);
     if (!userId) {
       return res.status(401).json({ error: 'Yêu cầu đăng nhập.' });
+    }
+
+    const user = await userRepository.findById(userId);
+    if (!user) {
+      return res.status(401).json({ error: 'Người dùng không tồn tại hoặc chưa đăng nhập hợp lệ.' });
     }
 
     const attempt = await prisma.placementAttempt.findFirst({
@@ -99,6 +89,16 @@ placementRouter.get('/latest', async (req: Request, res: Response) => {
  */
 placementRouter.get('/questions', async (req: Request, res: Response) => {
   try {
+    const userId = resolveAuthUserId(req);
+    if (!userId) {
+      return res.status(401).json({ error: 'Yêu cầu đăng nhập để truy cập bài kiểm tra.' });
+    }
+
+    const user = await userRepository.findById(userId);
+    if (!user) {
+      return res.status(401).json({ error: 'Người dùng không tồn tại hoặc chưa đăng nhập hợp lệ.' });
+    }
+
     const questions: PlacementQuestionClient[] = [];
 
     // 1. GRAMMAR (12 questions)
@@ -336,7 +336,10 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Dữ liệu câu trả lời không hợp lệ.' });
     }
 
-    await ensureUserExists(userId);
+    const user = await userRepository.findById(userId);
+    if (!user) {
+      return res.status(401).json({ error: 'Người dùng không tồn tại hoặc chưa đăng nhập hợp lệ.' });
+    }
 
     // Track statistics
     const levelStats: Record<string, { correct: number; total: number }> = {
@@ -411,11 +414,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
           } catch {}
           if (quiz[qIdx]) {
             const isCorrect = userAns === (quiz[qIdx].correctAnswer || '').trim().toLowerCase();
-            const lvl = record.cefrLevel || 'A2';
-            if (levelStats[lvl]) {
-              levelStats[lvl].total += 1;
-              if (isCorrect) levelStats[lvl].correct += 1;
-            }
+            // Reading questions do NOT factor into CEFR level determination (levelStats)
             sectionStats.reading.total += 1;
             if (isCorrect) sectionStats.reading.correct += 1;
           }
@@ -457,12 +456,23 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
     // Incorporate listening into band estimate precision if listening completed
     if (sectionStats.listening.total > 0) {
       const listenAcc = (sectionStats.listening.correct / sectionStats.listening.total) * 100;
-      if (determinedLevel === 'B2' && listenAcc >= 80) {
-        bandEstimate = '6.0 - 6.5';
-      } else if (determinedLevel === 'B2' && listenAcc < 40) {
-        bandEstimate = '5.5';
-      } else if (determinedLevel === 'B1' && listenAcc >= 80) {
-        bandEstimate = '5.0';
+      if (determinedLevel === 'B2') {
+        if (listenAcc >= 80) {
+          determinedLevel = 'B2+';
+          bandEstimate = BAND_ESTIMATES['B2+'] || '~7.0';
+        } else if (listenAcc < 40) {
+          bandEstimate = '5.5 - 6.0';
+        } else {
+          bandEstimate = '6.0 - 6.5';
+        }
+      } else if (determinedLevel === 'B1') {
+        if (listenAcc >= 80) {
+          bandEstimate = '5.5';
+        } else if (listenAcc < 40) {
+          bandEstimate = '5.0';
+        } else {
+          bandEstimate = '5.0 - 5.5';
+        }
       }
     }
 
