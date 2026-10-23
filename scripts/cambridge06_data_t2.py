@@ -1,215 +1,34 @@
 r"""
 Module: cambridge06_data_t2.py
-Defines mapped data for Cambridge IELTS 06 - Test 2 (Academic)
-Includes:
-- 4 Listening Sections (40 questions)
-- 3 Reading Passages (40 questions)
-- 2 Writing Topics & 2 Writing Models
-- 3 Speaking Topics
+Description: Lightweight loader for Cambridge IELTS 06 - Test 2 (Academic).
+Content literals are decoupled into external JSON outside the repository:
+  C:\Mod\muse-data-exchange\book-corpus-mapped\cambridge-ielts-06\cam06-academic-test-2-data.json
 """
 
 import json
-import re
+import os
+from pathlib import Path
 
-def clean_text_artifacts(text: str) -> str:
-    if not text:
-        return ""
-    text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
-    text = re.sub(r"(?:www\.)?TopSage(?:\.com)?", "", text, flags=re.IGNORECASE)
-    text = re.sub(r"大家网", "", text)
-    text = re.sub(r"^##\s*(?:SECTION|TEST)\s*\d*.*$", "", text, flags=re.MULTILINE | re.IGNORECASE)
-    lines = [line.strip() for line in text.split("\n")]
-    lines = [l for l in lines if l]
-    return "\n\n".join(lines)
+BASE_MAPPED_DIR = Path(os.environ.get("BOOK_CORPUS_MAPPED_DIR", r"C:\Mod\muse-data-exchange\book-corpus-mapped"))
+DATA_FILE = BASE_MAPPED_DIR / "cambridge-ielts-06" / "cam06-academic-test-2-data.json"
 
-APOSTROPHE_FIXES = {
-    r"\blo'ts\b": "lots",
-    r"\badvertisemen'ts\b": "advertisements",
-    r"\bstree'ts\b": "streets",
-    r"\borgutnen'ts\b": "arguments",
-    r"\bargumen'ts\b": "arguments",
-    r"\bcoun'try\b": "country",
-    r"\bcoun'tries\b": "countries",
-    r"\baspec'ts\b": "aspects",
-    r"\bagains't\b": "against",
-    r"\bac'tually\b": "actually",
-    r"\bsocie'ty\b": "society",
-    r"\bbetter'to\b": "better to",
-    r"\bno't\b": "not",
-    r"\bthe'ir\b": "their"
-}
+def _load_test_data():
+    if not DATA_FILE.exists():
+        raise FileNotFoundError(f"Missing mapped test data file: {DATA_FILE}")
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-def normalize_ocr_apostrophes(text: str) -> str:
-    if not text:
-        return ""
-    res = text
-    for pat, repl in APOSTROPHE_FIXES.items():
-        res = re.sub(pat, repl, res, flags=re.IGNORECASE)
-    return res
+_DATA = _load_test_data()
 
-def build_test_2(raw_md_text: str, official_keys: dict):
-    lines = raw_md_text.split("\n")
-    l_keys = official_keys["listening"]
-    r_keys = official_keys["reading"]
+OFFICIAL_LISTENING_KEYS = {int(k): v for k, v in _DATA["official_keys"]["listening"].items()}
+OFFICIAL_READING_KEYS = {int(k): v for k, v in _DATA["official_keys"]["reading"].items()}
 
-    # --- 1. LISTENING ---
-    s1_script_raw = "\n".join(lines[3574:3642]).strip()
-    s2_script_raw = "\n".join(lines[3642:3678]).strip()
-    s3_script_raw = "\n".join(lines[3678:3882]).strip()
-    s4_script_raw = "\n".join(lines[3882:3902]).strip()
-
-    q_s1 = [
-        {"questionNumber": 1, "type": "notes_completion", "question": "Children's Art and Craft Workshops: Adults must accompany children under 1 ......................................... .", "options": [], "correctAnswer": l_keys[1], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 1, Answer Key page 153"},
-        {"questionNumber": 2, "type": "notes_completion", "question": "Workshops held in: Winter House, 2 ......................................... Street", "options": [], "correctAnswer": l_keys[2], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 2, Answer Key page 153"},
-        {"questionNumber": 3, "type": "notes_completion", "question": "Security device: must push the 3 ......................................... to open door", "options": [], "correctAnswer": l_keys[3], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 3, Answer Key page 153"},
-        {"questionNumber": 4, "type": "notes_completion", "question": "Should leave car behind the 4 ......................................... .", "options": [], "correctAnswer": l_keys[4], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 4, Answer Key page 153"},
-        {"questionNumber": 5, "type": "notes_completion", "question": "Book workshop by phoning the 5 ......................................... on 200763.", "options": [], "correctAnswer": l_keys[5], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 5, Answer Key page 153"},
-        {"questionNumber": 6, "type": "table_completion", "question": "Workshop 16/11: 'Building 6 .........................................'", "options": [], "correctAnswer": l_keys[6], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 6, Answer Key page 153"},
-        {"questionNumber": 7, "type": "table_completion", "question": "Workshop 16/11 Clothing: 7 .........................................", "options": [], "correctAnswer": l_keys[7], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 7, Answer Key page 153"},
-        {"questionNumber": 8, "type": "table_completion", "question": "Workshop 16/11 Please bring: 8 .........................................", "options": [], "correctAnswer": l_keys[8], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 8, Answer Key page 153"},
-        {"questionNumber": 9, "type": "table_completion", "question": "Workshop 23/11 Title: 9 .........................................", "options": [], "correctAnswer": l_keys[9], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 9, Answer Key page 153"},
-        {"questionNumber": 10, "type": "table_completion", "question": "Workshop 23/11 Please bring: 10 .........................................", "options": [], "correctAnswer": l_keys[10], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 1, Question 10, Answer Key page 153"}
-    ]
-
-    attraction_opts = ["A a science museum", "B a theme park", "C a climbing wall", "D a mining museum", "E an aquarium", "F a castle", "G a zoo"]
-    q_s2 = [
-        {"questionNumber": 11, "type": "sentence_completion", "question": "Local services depart from 11 ......................................... railway station.", "options": [], "correctAnswer": l_keys[11], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 11, Answer Key page 153"},
-        {"questionNumber": 12, "type": "sentence_completion", "question": "National services depart from the 12 ......................................... railway station.", "options": [], "correctAnswer": l_keys[12], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 12, Answer Key page 153"},
-        {"questionNumber": 13, "type": "sentence_completion", "question": "Trains for London depart every 13 ......................................... each day during the week.", "options": [], "correctAnswer": l_keys[13], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 13, Answer Key page 153"},
-        {"questionNumber": 14, "type": "sentence_completion", "question": "The price of a first class ticket includes 14 ......................................... .", "options": [], "correctAnswer": l_keys[14], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 14, Answer Key page 153"},
-        {"questionNumber": 15, "type": "table_completion", "question": "Special ticket: travel after 15 ......................................... and at weekends.", "options": [], "correctAnswer": l_keys[15], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 15, Answer Key page 153"},
-        {"questionNumber": 16, "type": "table_completion", "question": "16 ......................................... ticket: buy at least six days ahead.", "options": [], "correctAnswer": l_keys[16], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 16, Answer Key page 153"},
-        {"questionNumber": 17, "type": "table_completion", "question": "Advance ticket: limited numbers, 17 ......................................... essential.", "options": [], "correctAnswer": l_keys[17], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 17, Answer Key page 153"},
-        {"questionNumber": 18, "type": "multiple_choice", "question": "Which THREE attractions can you visit at present by train from Trebirch? (Question 18)", "options": attraction_opts, "correctAnswer": l_keys[18], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 18, Answer Key page 153"},
-        {"questionNumber": 19, "type": "multiple_choice", "question": "Which THREE attractions can you visit at present by train from Trebirch? (Question 19)", "options": attraction_opts, "correctAnswer": l_keys[19], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 19, Answer Key page 153"},
-        {"questionNumber": 20, "type": "multiple_choice", "question": "Which THREE attractions can you visit at present by train from Trebirch? (Question 20)", "options": attraction_opts, "correctAnswer": l_keys[20], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 2, Question 20, Answer Key page 153"}
-    ]
-
-    q_s3 = [
-        {"questionNumber": 21, "type": "table_completion", "question": "Investigate suitable data analysis software: Read IT 21 .........................................", "options": [], "correctAnswer": l_keys[21], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 21, Answer Key page 153"},
-        {"questionNumber": 22, "type": "table_completion", "question": "Spoken to Jane Prince, Head of the 22 .........................................", "options": [], "correctAnswer": l_keys[22], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 22, Answer Key page 153"},
-        {"questionNumber": 23, "type": "table_completion", "question": "Prepare a 23 ......................................... for survey", "options": [], "correctAnswer": l_keys[23], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 23, Answer Key page 153"},
-        {"questionNumber": 24, "type": "table_completion", "question": "Add questions in section three on 24 .........................................", "options": [], "correctAnswer": l_keys[24], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 24, Answer Key page 153"},
-        {"questionNumber": 25, "type": "table_completion", "question": "Couldn't find Ericsson's essays on managing the 25 .........................................", "options": [], "correctAnswer": l_keys[25], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 25, Answer Key page 153"},
-        {"questionNumber": 26, "type": "table_completion", "question": "Do further work on Chapter 1 (Give the title: Context 26 .........................................)", "options": [], "correctAnswer": l_keys[26], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 26, Answer Key page 153"},
-        {"questionNumber": 27, "type": "table_completion", "question": "Add statistics on the 27 ......................................... in various zones", "options": [], "correctAnswer": l_keys[27], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 27, Answer Key page 153"},
-        {"questionNumber": 28, "type": "table_completion", "question": "Include more references to works dated after 28 .........................................", "options": [], "correctAnswer": l_keys[28], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 28, Answer Key page 153"},
-        {"questionNumber": 29, "type": "table_completion", "question": "Finish dissertation revisions by the 29 .........................................", "options": [], "correctAnswer": l_keys[29], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 29, Answer Key page 153"},
-        {"questionNumber": 30, "type": "table_completion", "question": "Prepare list of main sections for Chapter 2 before starting the 30 .........................................", "options": [], "correctAnswer": l_keys[30], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 3, Question 30, Answer Key page 153"}
-    ]
-
-    q_s4 = [
-        {"questionNumber": 31, "type": "multiple_choice", "question": "Some photographs of a horse running showed (Question 31)", "options": ["A all feet off the ground.", "B at least one foot on the ground.", "C two feet off the ground."], "correctAnswer": l_keys[31], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 31, Answer Key page 153"},
-        {"questionNumber": 32, "type": "multiple_choice", "question": "The Scotsman employed by Edison (Question 32)", "options": ["A designed a system to use the technology Edison had invented.", "B used available technology to make a new system.", "C was already an expert in motion picture technology."], "correctAnswer": l_keys[32], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 32, Answer Key page 153"},
-        {"questionNumber": 33, "type": "multiple_choice", "question": "One major problem with the first system was that (Question 33)", "options": ["A only one person could be filmed.", "B people could only see very short films.", "C the camera was very heavy."], "correctAnswer": l_keys[33], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 33, Answer Key page 153"},
-        {"questionNumber": 34, "type": "multiple_choice", "question": "Rival systems started to appear in Europe after people had (Question 34)", "options": ["A been told about the American system.", "B seen the American system.", "C used the American system."], "correctAnswer": l_keys[34], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 34, Answer Key page 153"},
-        {"questionNumber": 35, "type": "multiple_choice", "question": "In 1895, a famous new system was developed by (Question 35)", "options": ["A a French team working alone.", "B a French and German team working together.", "C a German team who invented the word 'cinema'."], "correctAnswer": l_keys[35], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 35, Answer Key page 153"},
-        {"questionNumber": 36, "type": "multiple_choice", "question": "Longer films were not made at the time because of problems involving (Question 36)", "options": ["A the subject matter.", "B the camera.", "C the film projector."], "correctAnswer": l_keys[36], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 36, Answer Key page 153"},
-        {"questionNumber": 37, "type": "multiple_choice", "question": "The 'Lantham Loop' invention relied on (Question 37)", "options": ["A removing tension between the film reels.", "B adding three more film reels to the system.", "C making one of the film reels more effective."], "correctAnswer": l_keys[37], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 37, Answer Key page 153"},
-        {"questionNumber": 38, "type": "sentence_completion", "question": "The first motion picture was called The 38 ......................................... .", "options": [], "correctAnswer": l_keys[38], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 38, Answer Key page 153"},
-        {"questionNumber": 39, "type": "sentence_completion", "question": "39 ......................................... were used for the first time on film in 1926.", "options": [], "correctAnswer": l_keys[39], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 39, Answer Key page 153"},
-        {"questionNumber": 40, "type": "sentence_completion", "question": "Subtitles were added to The Lights of New York because of its 40 ......................................... .", "options": [], "correctAnswer": l_keys[40], "sourceRef": "Cambridge IELTS 6, Test 2, Listening Section 4, Question 40, Answer Key page 153"}
-    ]
-
-    listening_sections = [
-        {"id": "cam06-academic-t2-l1", "section": 1, "track": "academic", "cefrLevel": "B1", "difficultyBand": "5.5", "title": "Test 2 Listening Section 1: Children's Art and Craft Workshops", "titleVi": "Bài nghe 2 Phần 1: Các lớp hội họa và thủ công cho trẻ em", "scriptJson": json.dumps([{"speaker": "Parent & Coordinator", "textEn": clean_text_artifacts(s1_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s1, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/listening/section-1"},
-        {"id": "cam06-academic-t2-l2", "section": 2, "track": "academic", "cefrLevel": "B2", "difficultyBand": "6.0", "title": "Test 2 Listening Section 2: Regional Train Services and Tourist Attractions", "titleVi": "Bài nghe 2 Phần 2: Dịch vụ tàu hỏa khu vực và các điểm tham quan", "scriptJson": json.dumps([{"speaker": "Information Officer", "textEn": clean_text_artifacts(s2_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s2, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/listening/section-2"},
-        {"id": "cam06-academic-t2-l3", "section": 3, "track": "academic", "cefrLevel": "B2", "difficultyBand": "6.5", "title": "Test 2 Listening Section 3: Education Dissertation Tutorial Consultation", "titleVi": "Bài nghe 2 Phần 3: Hướng dẫn luận văn thạc sĩ giáo dục", "scriptJson": json.dumps([{"speaker": "Tutor & Sandy", "textEn": clean_text_artifacts(s3_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s3, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/listening/section-3"},
-        {"id": "cam06-academic-t2-l4", "section": 4, "track": "academic", "cefrLevel": "C1", "difficultyBand": "7.5", "title": "Test 2 Listening Section 4: History and Development of Moving Pictures", "titleVi": "Bài nghe 2 Phần 4: Lịch sử và sự phát triển của điện ảnh", "scriptJson": json.dumps([{"speaker": "Lecturer", "textEn": clean_text_artifacts(s4_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s4, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/listening/section-4"}
-    ]
-
-    # --- 2. READING ---
-    p1_paras = [clean_text_artifacts(l) for l in lines[880:923] if l.strip() and not l.startswith("##")]
-    p2_paras = [clean_text_artifacts(l) for l in lines[975:1002] if l.strip() and not l.startswith("##")]
-    p3_paras = [clean_text_artifacts(l) for l in lines[1055:1077] if l.strip() and not l.startswith("##")]
-
-    p1_headings = [
-        "i A solution for the more compact cities",
-        "ii The benefits of working together in cities",
-        "iii Higher incomes need not mean more cars",
-        "iv Economic and social significance of tourism",
-        "v The impact of telecommunications on population distribution",
-        "vi Increases in travelling time",
-        "vii Responding to arguments against public transport"
-    ]
-    q_p1 = [
-        {"questionNumber": 1, "type": "matching_headings", "question": "Choose the correct heading for Paragraph A from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[1], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 1, Answer Key page 154"},
-        {"questionNumber": 2, "type": "matching_headings", "question": "Choose the correct heading for Paragraph B from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[2], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 2, Answer Key page 154"},
-        {"questionNumber": 3, "type": "matching_headings", "question": "Choose the correct heading for Paragraph C from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[3], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 3, Answer Key page 154"},
-        {"questionNumber": 4, "type": "matching_headings", "question": "Choose the correct heading for Paragraph D from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[4], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 4, Answer Key page 154"},
-        {"questionNumber": 5, "type": "matching_headings", "question": "Choose the correct heading for Paragraph E from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[5], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 5, Answer Key page 154"},
-        {"questionNumber": 6, "type": "true_false_not_given", "question": "The ISTP study examined public transport systems in both developed and developing countries.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[6], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 6, Answer Key page 154"},
-        {"questionNumber": 7, "type": "true_false_not_given", "question": "Efficient public transport systems correlate with higher city prosperity.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[7], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 7, Answer Key page 154"},
-        {"questionNumber": 8, "type": "true_false_not_given", "question": "Car manufacturers actively lobbied against urban rail investment programs.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[8], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 8, Answer Key page 154"},
-        {"questionNumber": 9, "type": "true_false_not_given", "question": "Perth is presented as an exemplar of efficient public transit integration.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[9], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 9, Answer Key page 154"},
-        {"questionNumber": 10, "type": "true_false_not_given", "question": "Portland successfully redirected suburban transport funds into inner-city light rail.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[10], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 10, Answer Key page 154"},
-        {"questionNumber": 11, "type": "matching_features", "question": "Which city is cited as adopting an integrated light-rail corridor: Question 11", "options": ["A Melbourne", "B Houston", "C Zurich", "D Strasbourg", "E Toronto", "F Portland"], "correctAnswer": r_keys[11], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 11, Answer Key page 154"},
-        {"questionNumber": 12, "type": "matching_features", "question": "Which city is cited as demonstrating high economic wealth despite low car dependency: Question 12", "options": ["A Melbourne", "B Houston", "C Zurich", "D Strasbourg", "E Toronto", "F Portland"], "correctAnswer": r_keys[12], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 12, Answer Key page 154"},
-        {"questionNumber": 13, "type": "matching_features", "question": "Which city developed an extensive tram network prioritizing public streetcars over private traffic: Question 13", "options": ["A Melbourne", "B Houston", "C Zurich", "D Strasbourg", "E Toronto", "F Portland"], "correctAnswer": r_keys[13], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 1, Question 13, Answer Key page 154"}
-    ]
-
-    p2_words = ["A cost", "B falling", "C technology", "D developing", "E increase", "F financial", "G medical", "H nutrition", "I health", "J mental", "K independent", "L education", "M biological", "N lifestyle"]
-    q_p2 = [
-        {"questionNumber": 14, "type": "summary_completion", "question": "Medical records show that disability rates among elderly Americans are 14 ......................................... .", "options": p2_words, "correctAnswer": r_keys[14], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 14, Answer Key page 154"},
-        {"questionNumber": 15, "type": "summary_completion", "question": "This positive trend indicates improvements in general 15 ......................................... among older cohorts.", "options": p2_words, "correctAnswer": r_keys[15], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 15, Answer Key page 154"},
-        {"questionNumber": 16, "type": "summary_completion", "question": "Consequently, government expenditure on 16 ......................................... assistance may decrease.", "options": p2_words, "correctAnswer": r_keys[16], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 16, Answer Key page 154"},
-        {"questionNumber": 17, "type": "summary_completion", "question": "Researchers suggest that aging is not solely governed by fixed 17 ......................................... limitations.", "options": p2_words, "correctAnswer": r_keys[17], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 17, Answer Key page 154"},
-        {"questionNumber": 18, "type": "summary_completion", "question": "Regular intellectual stimulation preserves 18 ......................................... functioning in senior years.", "options": p2_words, "correctAnswer": r_keys[18], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 18, Answer Key page 154"},
-        {"questionNumber": 19, "type": "summary_completion", "question": "Preventive habits and healthy 19 ......................................... choices substantially delay physical decline.", "options": p2_words, "correctAnswer": r_keys[19], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 19, Answer Key page 154"},
-        {"questionNumber": 20, "type": "summary_completion", "question": "Assistive devices empower seniors to remain socially 20 ......................................... for longer.", "options": p2_words, "correctAnswer": r_keys[20], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 20, Answer Key page 154"},
-        {"questionNumber": 21, "type": "summary_completion", "question": "Better early-life conditions and 21 ......................................... interventions lower lifetime chronic disease risks.", "options": p2_words, "correctAnswer": r_keys[21], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 21, Answer Key page 154"},
-        {"questionNumber": 22, "type": "summary_completion", "question": "This reduces the overall financial 22 ......................................... on future healthcare budgets.", "options": p2_words, "correctAnswer": r_keys[22], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 22, Answer Key page 154"},
-        {"questionNumber": 23, "type": "matching_features", "question": "Match researcher finding: correlation between cognitive activity and preserved neuron connections (Question 23)", "options": ["A Kenneth Manton", "B James Fries", "C Eileen Crimmins", "D David Snowdon", "E Marion Diamond", "F Thomas Perls", "G Seeman", "H Bergman"], "correctAnswer": r_keys[23], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 23, Answer Key page 154"},
-        {"questionNumber": 24, "type": "matching_features", "question": "Match researcher finding: structural changes in enriched animal brain tissue (Question 24)", "options": ["A Kenneth Manton", "B James Fries", "C Eileen Crimmins", "D David Snowdon", "E Marion Diamond", "F Thomas Perls", "G Seeman", "H Bergman"], "correctAnswer": r_keys[24], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 24, Answer Key page 154"},
-        {"questionNumber": 25, "type": "matching_features", "question": "Match researcher finding: cardiovascular improvements through moderate regular exercise (Question 25)", "options": ["A Kenneth Manton", "B James Fries", "C Eileen Crimmins", "D David Snowdon", "E Marion Diamond", "F Thomas Perls", "G Seeman", "H Bergman"], "correctAnswer": r_keys[25], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 25, Answer Key page 154"},
-        {"questionNumber": 26, "type": "matching_features", "question": "Match researcher finding: disability postponement exceeding life expectancy increases (Question 26)", "options": ["A Kenneth Manton", "B James Fries", "C Eileen Crimmins", "D David Snowdon", "E Marion Diamond", "F Thomas Perls", "G Seeman", "H Bergman"], "correctAnswer": r_keys[26], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 2, Question 26, Answer Key page 154"}
-    ]
-
-    p3_opts = ["A fingers and toes", "B early tally systems", "C body parts", "D mechanical pebbles", "E vocal rhythm", "F agricultural surpluses", "G decimal calculation"]
-    q_p3 = [
-        {"questionNumber": 27, "type": "multiple_choice", "question": "In early human cultures, counting words were initially developed for (Question 27)", "options": ["A trading grain stocks.", "B essential concrete quantities.", "C celestial tracking.", "D musical rhythms."], "correctAnswer": r_keys[27], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 27, Answer Key page 154"},
-        {"questionNumber": 28, "type": "matching_features", "question": "Early hunter-gatherers recorded tally counts using (Question 28)", "options": p3_opts, "correctAnswer": r_keys[28], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 28, Answer Key page 154"},
-        {"questionNumber": 29, "type": "matching_features", "question": "Anatomical bases for counting systems commonly relied on (Question 29)", "options": p3_opts, "correctAnswer": r_keys[29], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 29, Answer Key page 154"},
-        {"questionNumber": 30, "type": "matching_features", "question": "Advanced indigenous groups expanded counting by pointing to distinct (Question 30)", "options": p3_opts, "correctAnswer": r_keys[30], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 30, Answer Key page 154"},
-        {"questionNumber": 31, "type": "matching_features", "question": "Base-10 numeracy systems emerged primarily through the ubiquity of (Question 31)", "options": p3_opts, "correctAnswer": r_keys[31], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 31, Answer Key page 154"},
-        {"questionNumber": 32, "type": "true_false_not_given", "question": "Certain indigenous Australian tribes possess no distinct words for numbers beyond two.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[32], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 32, Answer Key page 154"},
-        {"questionNumber": 33, "type": "true_false_not_given", "question": "The concept of zero was discovered simultaneously by all major ancient civilisations.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[33], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 33, Answer Key page 154"},
-        {"questionNumber": 34, "type": "true_false_not_given", "question": "Body-counting systems in New Guinea followed a fixed sequential order.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[34], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 34, Answer Key page 154"},
-        {"questionNumber": 35, "type": "true_false_not_given", "question": "Roman numerals were better suited for complex multiplication than Hindu-Arabic numerals.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[35], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 35, Answer Key page 154"},
-        {"questionNumber": 36, "type": "true_false_not_given", "question": "The Babylonians utilised a base-60 mathematical system for astronomical calculations.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[36], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 36, Answer Key page 154"},
-        {"questionNumber": 37, "type": "true_false_not_given", "question": "Pebble arrangements served as pre-computational counting tools in classical antiquity.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[37], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 37, Answer Key page 154"},
-        {"questionNumber": 38, "type": "true_false_not_given", "question": "Abstract mathematical thinking developed independently of commercial record-keeping.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[38], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 38, Answer Key page 154"},
-        {"questionNumber": 39, "type": "true_false_not_given", "question": "Positional notation represents one of humanity's most transformative mathematical innovations.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[39], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 39, Answer Key page 154"},
-        {"questionNumber": 40, "type": "true_false_not_given", "question": "Modern mathematicians predict that base-10 will eventually be replaced by base-12.", "options": ["TRUE", "FALSE", "NOT GIVEN"], "correctAnswer": r_keys[40], "sourceRef": "Cambridge IELTS 6, Test 2, Reading Passage 3, Question 40, Answer Key page 154"}
-    ]
-
-    reading_passages = [
-        {"id": "cam06-academic-t2-r1", "section": "1", "track": "academic", "cefrLevel": "B2", "difficultyBand": "6.5", "title": "Test 2 Reading Passage 1: Advantages of Public Transport", "module": "academic", "notes": "Comparative transport study investigating urban public transit efficiency, city density, auto-dependency, and sustainable light-rail investments across world cities.", "sourceUrl": "https://www.cambridgeenglish.org/exams-and-tests/ielts/", "passageJson": json.dumps(p1_paras, ensure_ascii=False), "questionsJson": json.dumps(q_p1, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice test material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/reading/passage-1"},
-        {"id": "cam06-academic-t2-r2", "section": "2", "track": "academic", "cefrLevel": "C1", "difficultyBand": "7.0", "title": "Test 2 Reading Passage 2: Greying Population Stays in the Pink", "module": "academic", "notes": "Demographic and gerontological analysis of falling disability rates among aging Americans, cognitive enrichment, and proactive healthcare management.", "sourceUrl": "https://www.cambridgeenglish.org/exams-and-tests/ielts/", "passageJson": json.dumps(p2_paras, ensure_ascii=False), "questionsJson": json.dumps(q_p2, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice test material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/reading/passage-2"},
-        {"id": "cam06-academic-t2-r3", "section": "3", "track": "academic", "cefrLevel": "C1", "difficultyBand": "7.5", "title": "Test 2 Reading Passage 3: Numeration", "module": "academic", "notes": "Historical and anthropological exploration of numerical concepts, tally sticks, body counting systems, and the genesis of decimal positional mathematics.", "sourceUrl": "https://www.cambridgeenglish.org/exams-and-tests/ielts/", "passageJson": json.dumps(p3_paras, ensure_ascii=False), "questionsJson": json.dumps(q_p3, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice test material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/reading/passage-3"}
-    ]
-
-    # --- 3. WRITING TOPICS & MODELS ---
-    writing_topics = [
-        {"id": "cam06-academic-t2-w1", "track": "academic", "prompt": "You should spend about 20 minutes on this task.\n\nThe table below gives information about the average distance in miles travelled per person per year by different modes of travel in England between 1985 and 2000.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.", "type": "report", "typeVi": "Báo cáo số liệu bảng biểu (Table Analysis)", "bandRange": "6.0-9.0", "outlineJson": json.dumps({"introduction": "Paraphrase prompt: table illustrates average yearly travel mileage per person across transport modes in England (1985 vs 2000).", "overview": "Highlight significant growth in total mileage, dominated by personal car travel, alongside marked declines in walking and local buses.", "body1": "Report major increases: car travel (from 3,199 to 4,806 miles), long-distance buses (54 to 124), train travel (289 to 366).", "body2": "Report decreases: walking (255 to 237), cycling (51 to 41), local bus journeys (429 to 274)."}, ensure_ascii=False), "keyVocabJson": json.dumps(["average mileage", "predominant mode", "exponential growth", "marked decline", "long-distance commuting"], ensure_ascii=False), "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/writing/task-1"},
-        {"id": "cam06-academic-t2-w2", "track": "academic", "prompt": "You should spend about 40 minutes on this task.\n\nWrite about the following topic:\n\nSuccessful sports professionals can earn a great deal more money than people in other important professions. Some people think this is fully justified while others think it is unfair.\n\nDiscuss both these views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words.", "type": "discussion_essay", "typeVi": "Bài luận thảo luận hai luồng quan điểm (Discuss Both Views)", "bandRange": "6.0-9.0", "outlineJson": json.dumps({"introduction": "Introduce debate over multi-million athlete earnings versus essential societal vocations like surgeons and educators.", "body1": "Arguments criticizing disparity: essential societal contribution of doctors and teachers versus commercial sport entertainment.", "body2": "Arguments justifying remuneration: intense global competition, brevity of athletic careers, astronomical media revenue generated.", "conclusion": "State personal perspective: earnings reflect commercial demand, though societal appreciation should value essential professions."}, ensure_ascii=False), "keyVocabJson": json.dumps(["sports professionals", "astronomical remuneration", "societal contribution", "commercial entertainment", "career longevity"], ensure_ascii=False), "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/writing/task-2"}
-    ]
-
-    t2_wm1_essay = clean_text_artifacts(normalize_ocr_apostrophes("\n\n".join([l.strip() for l in lines[4943:4951] if l.strip()])))
-    t2_wm1_comment = "This answer does not introduce the information in the table, nor does it report it accurately. The figures are misinterpreted as representing the number of people rather than the average number of miles travelled per person per year. Consequently the information about the increase in total travel is simply not mentioned, so not all key information is covered. There is an attempt to summarise trends in the figures, but the reader cannot get a clear overall picture of the information because of the fundamental confusion. Nevertheless, the information is organised and the writing flows quite well because of good use of referencing and other connectors. The strong feature is the range of vocabulary used with flexibility, though grammatical errors in passive voice and tense remain."
-
-    t2_wm2_essay = clean_text_artifacts(normalize_ocr_apostrophes("\n\n".join([l.strip() for l in lines[4955:4967] if l.strip()])))
-
-    writing_models = [
-        {"id": "cam06-academic-t2-wm1", "task": 1, "track": "academic", "topic": "Average distance travelled by mode of travel in England (1985-2000)", "chartType": "table", "chartDescription": "Table illustrating average miles travelled per person per year across various transportation modes in 1985 and 2000.", "prompt": "The table below gives information about the average distance in miles travelled per person per year by different modes of travel in England between 1985 and 2000. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "modelAnswer": t2_wm1_essay, "keyVocabJson": json.dumps(["mode of travel", "decrease in public transportation", "preferred by people", "significant increase", "rapidly increased"], ensure_ascii=False), "examinerNotesVi": t2_wm1_comment, "bandEstimate": 6.0, "source": "cambridge-ielts-06-scan", "license": "Official candidate sample answer (Band 6) with examiner comments from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/writing/sample-answer-task-1"},
-        {"id": "cam06-academic-t2-wm2", "task": 2, "track": "academic", "topic": "Salaries of sports professionals vs essential professions", "chartType": None, "chartDescription": None, "prompt": "Successful sports professionals can earn a great deal more money than people in other important professions. Some people think this is fully justified while others think it is unfair. Discuss both these views and give your own opinion.", "modelAnswer": t2_wm2_essay, "keyVocabJson": json.dumps(["media attention", "extravagant lifestyles", "super salaries", "contribution to society", "public popularity", "skills and dedication"], ensure_ascii=False), "examinerNotesVi": "Bài mẫu chuẩn Band 9 của giám khảo Cambridge. Phân tích sắc sảo cả hai mặt của vấn đề thù lao thể thao thương mại so với cống hiến xã hội, lập luận mạch lạc và vốn từ vựng học thuật đỉnh cao.", "bandEstimate": 9.0, "source": "cambridge-ielts-06-scan", "license": "Official examiner model answer from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/writing/sample-answer-task-2"}
-    ]
-
-    # --- 4. SPEAKING ---
-    speaking_topics = [
-        {"id": "cam06-academic-t2-sp1", "part": 1, "track": "academic", "topic": "Musical Instruments", "topicVi": "Nhạc cụ", "question": "Which instrument do you like listening to most? [Why?]\nHave you ever learned to play a musical instrument? [Which one?]\nDo you think children should learn to play a musical instrument at school? [Why/Why not?]\nHow easy would it be to learn to play an instrument without a teacher? [Why?]", "ideasJson": json.dumps(["Preference for acoustic or classical instruments such as piano or acoustic guitar", "Childhood lessons fostering patience, fine motor coordination, and artistic discipline", "School curriculum incorporating music to enhance cognitive development and emotional intelligence", "Challenges of self-learning without feedback on technique, finger posture, and rhythm"], ensure_ascii=False), "followUpQuestions": "Why is music education valued across diverse school systems?\nHow has digital software changed how people learn instruments?", "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/speaking/part-1"},
-        {"id": "cam06-academic-t2-sp2", "part": 2, "track": "academic", "topic": "Describe something healthy you enjoy doing", "topicVi": "Miêu tả một hoạt động lành mạnh mà bạn yêu thích", "question": "Describe something healthy you enjoy doing.\nYou should say:\n- what you do\n- where you do it\n- who you do it with\nand explain why you think doing this is healthy.", "ideasJson": json.dumps(["Specific physical or mental wellness activity: jogging, swimming, yoga, or hiking", "Geographic location: local lakeside park, community swimming complex, or home studio", "Social dimension: exercising solo for mindfulness vs participating with family or peers", "Health benefits: cardiovascular endurance, stress mitigation, endorphin release, and posture improvement"], ensure_ascii=False), "followUpQuestions": "How do you maintain consistency when work schedule becomes demanding?", "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/speaking/part-2"},
-        {"id": "cam06-academic-t2-sp3", "part": 3, "track": "academic", "topic": "Keeping Fit and Modern Lifestyles", "topicVi": "Giữ gìn vóc dáng và Lối sống hiện đại", "question": "What do most people do to keep fit in your country?\nHow important is it for people to do some regular physical exercise?\nWhy do some people think that modern lifestyles are not healthy?\nWhy do some people choose to lead unhealthy lives?\nShould individuals or governments be responsible for making people's lifestyle healthy?\nWhat could be done to encourage people to live in a healthy way?", "ideasJson": json.dumps(["Popular health trends: commercial gyms, outdoor park workout stations, and morning walking", "Sedentary white-collar desk jobs, ultra-processed fast food, and screen addiction", "Cognitive dissonance: immediate gratification versus long-term health consequences", "Balanced responsibility: state public health campaigns and infrastructure vs individual accountability"], ensure_ascii=False), "followUpQuestions": "How effective are sugar taxes in reducing lifestyle-related diseases?", "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-2/speaking/part-3"}
-    ]
-
-    return listening_sections, reading_passages, writing_topics, writing_models, speaking_topics
+def build_test_2(raw_md_text: str = "", official_keys: dict = None):
+    data = _load_test_data()
+    return (
+        data["listening_sections"],
+        data["reading_passages"],
+        data["writing_topics"],
+        data["writing_models"],
+        data["speaking_topics"]
+    )

@@ -1,225 +1,34 @@
 r"""
 Module: cambridge06_data_t4.py
-Defines mapped data for Cambridge IELTS 06 - Test 4 (Academic)
-Includes:
-- 4 Listening Sections (40 questions)
-- 3 Reading Passages (40 questions)
-- 2 Writing Topics & 2 Writing Models
-- 3 Speaking Topics
+Description: Lightweight loader for Cambridge IELTS 06 - Test 4 (Academic).
+Content literals are decoupled into external JSON outside the repository:
+  C:\Mod\muse-data-exchange\book-corpus-mapped\cambridge-ielts-06\cam06-academic-test-4-data.json
 """
 
 import json
-import re
+import os
+from pathlib import Path
 
-def clean_text_artifacts(text: str) -> str:
-    if not text:
-        return ""
-    text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
-    text = re.sub(r"(?:www\.)?TopSage(?:\.com)?", "", text, flags=re.IGNORECASE)
-    text = re.sub(r"大家网", "", text)
-    text = re.sub(r"^##\s*(?:SECTION|TEST)\s*\d*.*$", "", text, flags=re.MULTILINE | re.IGNORECASE)
-    lines = [line.strip() for line in text.split("\n")]
-    lines = [l for l in lines if l]
-    return "\n\n".join(lines)
+BASE_MAPPED_DIR = Path(os.environ.get("BOOK_CORPUS_MAPPED_DIR", r"C:\Mod\muse-data-exchange\book-corpus-mapped"))
+DATA_FILE = BASE_MAPPED_DIR / "cambridge-ielts-06" / "cam06-academic-test-4-data.json"
 
-APOSTROPHE_FIXES = {
-    r"\blo'ts\b": "lots",
-    r"\badvertisemen'ts\b": "advertisements",
-    r"\bstree'ts\b": "streets",
-    r"\borgutnen'ts\b": "arguments",
-    r"\bargumen'ts\b": "arguments",
-    r"\bcoun'try\b": "country",
-    r"\bcoun'tries\b": "countries",
-    r"\baspec'ts\b": "aspects",
-    r"\bagains't\b": "against",
-    r"\bac'tually\b": "actually",
-    r"\bsocie'ty\b": "society",
-    r"\bbetter'to\b": "better to",
-    r"\bno't\b": "not",
-    r"\bthe'ir\b": "their"
-}
+def _load_test_data():
+    if not DATA_FILE.exists():
+        raise FileNotFoundError(f"Missing mapped test data file: {DATA_FILE}")
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-def normalize_ocr_apostrophes(text: str) -> str:
-    if not text:
-        return ""
-    res = text
-    for pat, repl in APOSTROPHE_FIXES.items():
-        res = re.sub(pat, repl, res, flags=re.IGNORECASE)
-    return res
+_DATA = _load_test_data()
 
-def build_test_4(raw_md_text: str, official_keys: dict):
-    lines = raw_md_text.split("\n")
-    l_keys = official_keys["listening"]
-    r_keys = official_keys["reading"]
+OFFICIAL_LISTENING_KEYS = {int(k): v for k, v in _DATA["official_keys"]["listening"].items()}
+OFFICIAL_READING_KEYS = {int(k): v for k, v in _DATA["official_keys"]["reading"].items()}
 
-    # --- 1. LISTENING ---
-    s1_script_raw = "\n".join(lines[4197:4249]).strip()
-    s2_script_raw = "\n".join(lines[4249:4261]).strip()
-    s3_script_raw = "\n".join(lines[4261:4304]).strip()
-    s4_script_raw = "\n".join(lines[4304:4338]).strip()
-
-    q_s1 = [
-        {"questionNumber": 1, "type": "notes_completion", "question": "Conference Registration: Total delegate registration fee is 1 £ ......................................... .", "options": [], "correctAnswer": l_keys[1], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 1, Answer Key page 157"},
-        {"questionNumber": 2, "type": "notes_completion", "question": "Payment method: Delegates must pay in advance by 2 ......................................... .", "options": [], "correctAnswer": l_keys[2], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 2, Answer Key page 157"},
-        {"questionNumber": 3, "type": "notes_completion", "question": "Accommodation on-site: Conference centre basic single room costs 3 £ ......................................... per night.", "options": [], "correctAnswer": l_keys[3], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 3, Answer Key page 157"},
-        {"questionNumber": 4, "type": "notes_completion", "question": "Accommodation off-site: Guest house bed-and-breakfast costs 4 £ ......................................... per night.", "options": [], "correctAnswer": l_keys[4], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 4, Answer Key page 157"},
-        {"questionNumber": 5, "type": "notes_completion", "question": "Distance from centre: The guest house is approximately a 5 ......................................... walk.", "options": [], "correctAnswer": l_keys[5], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 5, Answer Key page 157"},
-        {"questionNumber": 6, "type": "notes_completion", "question": "Booking details and application forms are enclosed in the official 6 ......................................... .", "options": [], "correctAnswer": l_keys[6], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 6, Answer Key page 157"},
-        {"questionNumber": 7, "type": "notes_completion", "question": "Location: The conference complex is located on 7 ......................................... Park Road.", "options": [], "correctAnswer": l_keys[7], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 7, Answer Key page 157"},
-        {"questionNumber": 8, "type": "notes_completion", "question": "Landmark: Situated at the end of the road directly adjacent to the town 8 ......................................... .", "options": [], "correctAnswer": l_keys[8], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 8, Answer Key page 157"},
-        {"questionNumber": 9, "type": "notes_completion", "question": "Taxi fare: A taxi ride from the central railway station costs approximately 9 £ ......................................... .", "options": [], "correctAnswer": l_keys[9], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 9, Answer Key page 157"},
-        {"questionNumber": 10, "type": "notes_completion", "question": "Bus transit: Catch the direct shuttle service bus number 10 ......................................... from the station.", "options": [], "correctAnswer": l_keys[10], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 1, Question 10, Answer Key page 157"}
-    ]
-
-    q_s2 = [
-        {"questionNumber": 11, "type": "multiple_choice", "question": "The company's internal restructuring created project teams organized primarily by (Question 11)", "options": ["A regional geography.", "B seniority ranking.", "C product category.", "D specialized customer service functions."], "correctAnswer": l_keys[11], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 11, Answer Key page 157"},
-        {"questionNumber": 12, "type": "multiple_choice", "question": "How often do cross-departmental team review meetings take place? (Question 12)", "options": ["A weekly", "B fortnightly", "C monthly"], "correctAnswer": l_keys[12], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 12, Answer Key page 157"},
-        {"questionNumber": 13, "type": "multiple_choice", "question": "Staff training vouchers can be redeemed for courses covering (Question 13)", "options": ["A technical engineering.", "B overseas marketing.", "C health and safety management."], "correctAnswer": l_keys[13], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 13, Answer Key page 157"},
-        {"questionNumber": 14, "type": "sentence_completion", "question": "Corporate finance: Consultation available regarding payroll deductions and employment 14 ......................................... .", "options": [], "correctAnswer": l_keys[14], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 14, Answer Key page 157"},
-        {"questionNumber": 15, "type": "sentence_completion", "question": "Facility access: Smart badges must be scanned at checkpoint 15 ......................................... .", "options": [], "correctAnswer": l_keys[15], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 15, Answer Key page 157"},
-        {"questionNumber": 16, "type": "table_completion", "question": "Human Resources Office is located on the building's 16 ......................................... .", "options": [], "correctAnswer": l_keys[16], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 16, Answer Key page 157"},
-        {"questionNumber": 17, "type": "table_completion", "question": "Occupational health seminars are held in 17 ......................................... .", "options": [], "correctAnswer": l_keys[17], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 17, Answer Key page 157"},
-        {"questionNumber": 18, "type": "table_completion", "question": "Mandatory compliance module: Certification in 18 ......................................... .", "options": [], "correctAnswer": l_keys[18], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 18, Answer Key page 157"},
-        {"questionNumber": 19, "type": "table_completion", "question": "Annual general staff briefings take place inside the 19 ......................................... .", "options": [], "correctAnswer": l_keys[19], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 19, Answer Key page 157"},
-        {"questionNumber": 20, "type": "table_completion", "question": "Departmental feedback should be submitted directly to nominated 20 ......................................... .", "options": [], "correctAnswer": l_keys[20], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 2, Question 20, Answer Key page 157"}
-    ]
-
-    lib_features = ["A borrowing journals", "B automated returns", "C audiovisual media", "D research study carrels", "E inter-library loans", "F photocopying services", "G digital scanning"]
-    q_s3 = [
-        {"questionNumber": 21, "type": "notes_completion", "question": "School of Education Libraries: Level 1 houses non-circulating 21 ......................................... collections.", "options": [], "correctAnswer": l_keys[21], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 21, Answer Key page 157"},
-        {"questionNumber": 22, "type": "notes_completion", "question": "Level 2 holds undergraduate curriculum 22 ......................................... on open reserve.", "options": [], "correctAnswer": l_keys[22], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 22, Answer Key page 157"},
-        {"questionNumber": 23, "type": "notes_completion", "question": "East wing contains pedagogical material for 23 ......................................... schools.", "options": [], "correctAnswer": l_keys[23], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 23, Answer Key page 157"},
-        {"questionNumber": 24, "type": "notes_completion", "question": "West wing stores teaching aids tailored for 24 ......................................... classrooms.", "options": [], "correctAnswer": l_keys[24], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 24, Answer Key page 157"},
-        {"questionNumber": 25, "type": "notes_completion", "question": "Study carrels with computer sockets are located towards the 25 ......................................... of the floor.", "options": [], "correctAnswer": l_keys[25], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 25, Answer Key page 157"},
-        {"questionNumber": 26, "type": "notes_completion", "question": "Borrowing rules: Automated fines accrue daily on 26 ......................................... .", "options": [], "correctAnswer": l_keys[26], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 26, Answer Key page 157"},
-        {"questionNumber": 27, "type": "notes_completion", "question": "Standard inter-library requests take up to 27 ......................................... to arrive.", "options": [], "correctAnswer": l_keys[27], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 27, Answer Key page 157"},
-        {"questionNumber": 28, "type": "multiple_choice", "question": "Which THREE services can students access without prior booking? (Question 28)", "options": lib_features, "correctAnswer": l_keys[28], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 28, Answer Key page 157"},
-        {"questionNumber": 29, "type": "multiple_choice", "question": "Which THREE services can students access without prior booking? (Question 29)", "options": lib_features, "correctAnswer": l_keys[29], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 29, Answer Key page 157"},
-        {"questionNumber": 30, "type": "multiple_choice", "question": "Which THREE services can students access without prior booking? (Question 30)", "options": lib_features, "correctAnswer": l_keys[30], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 3, Question 30, Answer Key page 157"}
-    ]
-
-    q_s4 = [
-        {"questionNumber": 31, "type": "multiple_choice", "question": "The Asiatic lion population in Gujarat is unique because (Question 31)", "options": ["A it represents the last wild population outside Africa.", "B they inhabit temperate mountain ecosystems.", "C their genetics show zero diversity."], "correctAnswer": l_keys[31], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 31, Answer Key page 157"},
-        {"questionNumber": 32, "type": "multiple_choice", "question": "Compared to African lions, male Asiatic lions generally have (Question 32)", "options": ["A a sparser mane exposing their ears.", "B a noticeably longer tail tuft.", "C a darker coat coloration."], "correctAnswer": l_keys[32], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 32, Answer Key page 157"},
-        {"questionNumber": 33, "type": "multiple_choice", "question": "A distinct morphological feature of Asiatic lions is (Question 33)", "options": ["A larger skull dimensions.", "B a longitudinal fold of skin along the belly.", "C prominent canine teeth."], "correctAnswer": l_keys[33], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 33, Answer Key page 157"},
-        {"questionNumber": 34, "type": "multiple_choice", "question": "Prides of Asiatic lions differ socially because (Question 34)", "options": ["A males and females hunt together constantly.", "B females defend larger territorial borders.", "C adult males only join females for mating or large kills."], "correctAnswer": l_keys[34], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 34, Answer Key page 157"},
-        {"questionNumber": 35, "type": "notes_completion", "question": "Gir Sanctuary: Total conservation territory covers approximately 35 ......................................... square kilometres.", "options": [], "correctAnswer": l_keys[35], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 35, Answer Key page 157"},
-        {"questionNumber": 36, "type": "notes_completion", "question": "Threats: Extreme genetic uniformity leaves the entire population susceptible to epidemic 36 ......................................... .", "options": [], "correctAnswer": l_keys[36], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 36, Answer Key page 157"},
-        {"questionNumber": 37, "type": "notes_completion", "question": "History: The species was saved from extinction in 1900 by a local 37 ......................................... who banned hunting.", "options": [], "correctAnswer": l_keys[37], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 37, Answer Key page 157"},
-        {"questionNumber": 38, "type": "notes_completion", "question": "Ecology: Livestock owned by forest-dwelling Maldhari pastoralists constitutes a major part of the lion 38 ......................................... .", "options": [], "correctAnswer": l_keys[38], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 38, Answer Key page 157"},
-        {"questionNumber": 39, "type": "notes_completion", "question": "Human co-existence: Forest guards report that healthy lions rarely 39 ......................................... unless provoked.", "options": [], "correctAnswer": l_keys[39], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 39, Answer Key page 157"},
-        {"questionNumber": 40, "type": "notes_completion", "question": "Conservation future: Long-term survival requires visionary environmental 40 ......................................... and translocation to a second sanctuary.", "options": [], "correctAnswer": l_keys[40], "sourceRef": "Cambridge IELTS 6, Test 4, Listening Section 4, Question 40, Answer Key page 157"}
-    ]
-
-    listening_sections = [
-        {"id": "cam06-academic-t4-l1", "section": 1, "track": "academic", "cefrLevel": "B1", "difficultyBand": "5.5", "title": "Test 4 Listening Section 1: Conference Registration and Accommodation Enquiry", "titleVi": "Bài nghe 4 Phần 1: Đăng ký hội nghị và tư vấn chỗ ở", "scriptJson": json.dumps([{"speaker": "Delegate & Clerk", "textEn": clean_text_artifacts(s1_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s1, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/listening/section-1"},
-        {"id": "cam06-academic-t4-l2", "section": 2, "track": "academic", "cefrLevel": "B2", "difficultyBand": "6.0", "title": "Test 4 Listening Section 2: Corporate Team Structure and Health & Safety Briefing", "titleVi": "Bài nghe 4 Phần 2: Cơ cấu nhóm doanh nghiệp và phổ biến an toàn lao động", "scriptJson": json.dumps([{"speaker": "Company Manager", "textEn": clean_text_artifacts(s2_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s2, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/listening/section-2"},
-        {"id": "cam06-academic-t4-l3", "section": 3, "track": "academic", "cefrLevel": "B2", "difficultyBand": "6.5", "title": "Test 4 Listening Section 3: School of Education Library Services Orientation", "titleVi": "Bài nghe 4 Phần 3: Hướng dẫn sử dụng thư viện khoa giáo dục", "scriptJson": json.dumps([{"speaker": "Librarian & Trainee", "textEn": clean_text_artifacts(s3_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s3, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/listening/section-3"},
-        {"id": "cam06-academic-t4-l4", "section": 4, "track": "academic", "cefrLevel": "C1", "difficultyBand": "7.5", "title": "Test 4 Listening Section 4: Conservation and Ecology of Asiatic Lions in Gir Sanctuary", "titleVi": "Bài nghe 4 Phần 4: Bảo tồn và sinh thái loài sư tử châu Á tại khu bảo tồn Gir", "scriptJson": json.dumps([{"speaker": "Zoologist", "textEn": clean_text_artifacts(s4_script_raw)}], ensure_ascii=False), "questionsJson": json.dumps(q_s4, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/listening/section-4"}
-    ]
-
-    # --- 2. READING ---
-    p1_paras = [clean_text_artifacts(l) for l in lines[2050:2095] if l.strip() and not l.startswith("##")]
-    p2_paras = [clean_text_artifacts(l) for l in lines[2120:2145] if l.strip() and not l.startswith("##")]
-    p3_paras = [clean_text_artifacts(l) for l in lines[2220:2260] if l.strip() and not l.startswith("##")]
-
-    p1_headings = [
-        "i Financial rewards motivate aggressive marketing strategies",
-        "ii Doctors resist promotional inducements from pharmaceuticals",
-        "iii Expanding pharmaceutical sales forces overwhelm medical practices",
-        "iv Ethical concerns over clinical trials funded by drug companies",
-        "v Escalating expenditure on pharmaceutical promotion campaigns",
-        "vi Subtle promotional gifts blur professional medical objectivity",
-        "vii Free medicine samples dictate long-term patient prescription habits",
-        "viii Global regulation curbing multi-national advertising abuses",
-        "ix Sales representatives leverage personal relationships with physicians",
-        "x Questionable marketing tactics undermine patient welfare"
-    ]
-    q_p1 = [
-        {"questionNumber": 1, "type": "matching_headings", "question": "Choose the correct heading for Paragraph A from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[1], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 1, Answer Key page 158"},
-        {"questionNumber": 2, "type": "matching_headings", "question": "Choose the correct heading for Paragraph B from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[2], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 2, Answer Key page 158"},
-        {"questionNumber": 3, "type": "matching_headings", "question": "Choose the correct heading for Paragraph C from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[3], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 3, Answer Key page 158"},
-        {"questionNumber": 4, "type": "matching_headings", "question": "Choose the correct heading for Paragraph D from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[4], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 4, Answer Key page 158"},
-        {"questionNumber": 5, "type": "matching_headings", "question": "Choose the correct heading for Paragraph E from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[5], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 5, Answer Key page 158"},
-        {"questionNumber": 6, "type": "matching_headings", "question": "Choose the correct heading for Paragraph F from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[6], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 6, Answer Key page 158"},
-        {"questionNumber": 7, "type": "matching_headings", "question": "Choose the correct heading for Paragraph G from the list of headings below.", "options": p1_headings, "correctAnswer": r_keys[7], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 7, Answer Key page 158"},
-        {"questionNumber": 8, "type": "yes_no_not_given", "question": "Sales representatives earn substantial sales commissions based on local pharmacy prescriptions.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[8], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 8, Answer Key page 158"},
-        {"questionNumber": 9, "type": "yes_no_not_given", "question": "Physicians frequently admit that marketing gifts influence their clinical choices.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[9], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 9, Answer Key page 158"},
-        {"questionNumber": 10, "type": "yes_no_not_given", "question": "Providing free drug samples reduces healthcare expenses for low-income patients in the long term.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[10], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 10, Answer Key page 158"},
-        {"questionNumber": 11, "type": "yes_no_not_given", "question": "Pharmaceutical companies spend significantly more on marketing than on laboratory drug discovery.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[11], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 11, Answer Key page 158"},
-        {"questionNumber": 12, "type": "yes_no_not_given", "question": "Federal regulations strictly prohibit doctors from attending drug company dinners.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[12], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 12, Answer Key page 158"},
-        {"questionNumber": 13, "type": "yes_no_not_given", "question": "Brand loyalty developed through sample starter packs persists even after cheaper generic equivalents emerge.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[13], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 1, Question 13, Answer Key page 158"}
-    ]
-
-    q_p2 = [
-        {"questionNumber": 14, "type": "multiple_choice", "question": "Research in developing nations consistently reveals that infant mortality falls when (Question 14)", "options": ["A clean tap water is piped into villages.", "B mothers attain basic functional literacy.", "C local hospital beds increase.", "D fathers obtain formal manufacturing jobs."], "correctAnswer": r_keys[14], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 14, Answer Key page 158"},
-        {"questionNumber": 15, "type": "multiple_choice", "question": "The ongoing longitudinal study in Nicaragua examined the impact of (Question 15)", "options": ["A maternal nutritional supplements.", "B mandatory infant vaccination programs.", "C subsidized housing construction.", "D state-sponsored primary education for girls."], "correctAnswer": r_keys[15], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 15, Answer Key page 158"},
-        {"questionNumber": 16, "type": "multiple_choice", "question": "Researchers noted that literate mothers in rural areas are more likely to (Question 16)", "options": ["A move their households into urban industrial zones.", "B rely exclusively on modern commercial pharmaceuticals.", "C comprehend and follow oral medical instructions accurately.", "D abandon traditional domestic responsibilities."], "correctAnswer": r_keys[16], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 16, Answer Key page 158"},
-        {"questionNumber": 17, "type": "multiple_choice", "question": "The primary cognitive benefit imparted by childhood literacy acquisition is (Question 17)", "options": ["A improved mathematical arithmetic.", "B rapid foreign language fluency.", "C enhanced critical reasoning and autonomous problem-solving.", "D increased deference to authority figures."], "correctAnswer": r_keys[17], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 17, Answer Key page 158"},
-        {"questionNumber": 18, "type": "multiple_choice", "question": "Economic analysis indicates that female literacy programs represent (Question 18)", "options": ["A an inefficient drain on limited state funds.", "B a cost-effective public health investment.", "C a temporary substitute for hospital construction.", "D an obstacle to agricultural workforce mobilization."], "correctAnswer": r_keys[18], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 18, Answer Key page 158"},
-        {"questionNumber": 19, "type": "yes_no_not_given", "question": "Illiterate mothers demonstrated lower emotional attachment to newborn infants.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[19], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 19, Answer Key page 158"},
-        {"questionNumber": 20, "type": "yes_no_not_given", "question": "The maternal health improvements were solely attributable to higher household income.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[20], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 20, Answer Key page 158"},
-        {"questionNumber": 21, "type": "yes_no_not_given", "question": "Literate mothers showed greater willingness to question medical personnel when diagnosis was unclear.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[21], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 21, Answer Key page 158"},
-        {"questionNumber": 22, "type": "yes_no_not_given", "question": "Children of educated mothers achieve higher attendance rates throughout primary school.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[22], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 22, Answer Key page 158"},
-        {"questionNumber": 23, "type": "yes_no_not_given", "question": "Nicaraguan fathers actively discouraged daughters from completing primary schooling.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[23], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 23, Answer Key page 158"},
-        {"questionNumber": 24, "type": "yes_no_not_given", "question": "Public radio campaigns proved equally effective as classroom literacy in reducing infant diarrhea.", "options": ["YES", "NO", "NOT GIVEN"], "correctAnswer": r_keys[24], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 24, Answer Key page 158"},
-        {"questionNumber": 25, "type": "multiple_choice", "question": "Which TWO factors explain the superior health outcomes observed among children of literate mothers? (Question 25)", "options": ["A Genetic predisposition", "B Better maternal diet during pregnancy", "C Prompt recognition of severe pediatric symptoms", "D Higher father earnings", "E Proactive utilization of preventive health clinics"], "correctAnswer": r_keys[25], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 25, Answer Key page 158"},
-        {"questionNumber": 26, "type": "multiple_choice", "question": "Which TWO factors explain the superior health outcomes observed among children of literate mothers? (Question 26)", "options": ["A Genetic predisposition", "B Better maternal diet during pregnancy", "C Prompt recognition of severe pediatric symptoms", "D Higher father earnings", "E Proactive utilization of preventive health clinics"], "correctAnswer": r_keys[26], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 2, Question 26, Answer Key page 158"}
-    ]
-
-    p3_headings = [
-        "i Disagreements among teaching staff concerning disciplinary sanctions",
-        "ii Long-term psychological consequences suffered by bullying targets",
-        "iii Misleading institutional assumptions regarding the absence of harassment",
-        "iv Widespread prevalence of pupil intimidation across educational sectors",
-        "v Comprehensive multi-tier intervention models pioneered in Scandinavia",
-        "vi Identifying the personality profiles of habitual adolescent bullies",
-        "vii Practical classroom strategies for building inclusive peer communities"
-    ]
-    q_p3 = [
-        {"questionNumber": 27, "type": "matching_headings", "question": "Choose the correct heading for Section A from the list of headings below.", "options": p3_headings, "correctAnswer": r_keys[27], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 27, Answer Key page 158"},
-        {"questionNumber": 28, "type": "matching_headings", "question": "Choose the correct heading for Section B from the list of headings below.", "options": p3_headings, "correctAnswer": r_keys[28], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 28, Answer Key page 158"},
-        {"questionNumber": 29, "type": "matching_headings", "question": "Choose the correct heading for Section C from the list of headings below.", "options": p3_headings, "correctAnswer": r_keys[29], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 29, Answer Key page 158"},
-        {"questionNumber": 30, "type": "matching_headings", "question": "Choose the correct heading for Section D from the list of headings below.", "options": p3_headings, "correctAnswer": r_keys[30], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 30, Answer Key page 158"},
-        {"questionNumber": 31, "type": "multiple_choice", "question": "A recent survey found that in British secondary schools (Question 31)", "options": ["A bullying incidents are declining rapidly.", "B a substantial proportion of pupils experience regular intimidation.", "C physical violence occurs more often than verbal taunting.", "D teachers handle bullying cases with uniform effectiveness."], "correctAnswer": r_keys[31], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 31, Answer Key page 158"},
-        {"questionNumber": 32, "type": "multiple_choice", "question": "Children who are bullied (Question 32)", "options": ["A typically provoke their aggressors intentionally.", "B recover completely once they leave school.", "C confide immediately in their classroom teachers.", "D often suffer enduring anxiety and impaired self-esteem."], "correctAnswer": r_keys[32], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 32, Answer Key page 158"},
-        {"questionNumber": 33, "type": "multiple_choice", "question": "The writer thinks that the declaration 'There is no bullying at this school' (Question 33)", "options": ["A represents an achievable goal for modern education.", "B reflects commendable disciplinary vigilance.", "C demonstrates successful headteacher management.", "D reveals dangerous institutional blindness and denial."], "correctAnswer": r_keys[33], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 33, Answer Key page 158"},
-        {"questionNumber": 34, "type": "multiple_choice", "question": "What were the findings of research carried out in Norway? (Question 34)", "options": ["A Anti-bullying nationwide initiatives achieved dramatic reductions in victimization.", "B School punishments worsened delinquent conduct.", "C Bullying was primarily confined to impoverished urban areas.", "D Parent involvement produced zero measurable benefit."], "correctAnswer": r_keys[34], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 34, Answer Key page 158"},
-        {"questionNumber": 35, "type": "sentence_completion", "question": "Anti-bullying campaign steps: The school leadership must articulate a clear institutional 35 ......................................... .", "options": [], "correctAnswer": r_keys[35], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 35, Answer Key page 158"},
-        {"questionNumber": 36, "type": "sentence_completion", "question": "Teachers should issue 36 ......................................... detailing acceptable playground behaviors.", "options": [], "correctAnswer": r_keys[36], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 36, Answer Key page 158"},
-        {"questionNumber": 37, "type": "sentence_completion", "question": "Social skills and conflict resolution training should be woven into the standard 37 ......................................... .", "options": [], "correctAnswer": r_keys[37], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 37, Answer Key page 158"},
-        {"questionNumber": 38, "type": "sentence_completion", "question": "Schools should establish secure channels where 38 ......................................... can seek psychological counseling.", "options": [], "correctAnswer": r_keys[38], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 38, Answer Key page 158"},
-        {"questionNumber": 39, "type": "sentence_completion", "question": "Supervisors must differentiate hostile physical bullying from harmless 39 ......................................... among peers.", "options": [], "correctAnswer": r_keys[39], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 39, Answer Key page 158"},
-        {"questionNumber": 40, "type": "multiple_choice", "question": "Which of the following is the most suitable title for Reading Passage 3? (Question 40)", "options": ["A The Decline of Traditional School Discipline", "B Adolescent Psychology in Modern Britain", "C Comparing European School Systems", "D Tackling the Challenge of Bullying in Schools"], "correctAnswer": r_keys[40], "sourceRef": "Cambridge IELTS 6, Test 4, Reading Passage 3, Question 40, Answer Key page 158"}
-    ]
-
-    reading_passages = [
-        {"id": "cam06-academic-t4-r1", "section": "1", "track": "academic", "cefrLevel": "B2", "difficultyBand": "6.5", "title": "Test 4 Reading Passage 1: Doctoring Sales", "module": "academic", "notes": "Critical investigative report on pharmaceutical marketing strategies, representative interactions with doctors, sample starter packs, and corporate promotional budgets.", "sourceUrl": "https://www.cambridgeenglish.org/exams-and-tests/ielts/", "passageJson": json.dumps(p1_paras, ensure_ascii=False), "questionsJson": json.dumps(q_p1, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice test material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/reading/passage-1"},
-        {"id": "cam06-academic-t4-r2", "section": "2", "track": "academic", "cefrLevel": "C1", "difficultyBand": "7.0", "title": "Test 4 Reading Passage 2: Do Literate Women Make Better Mothers?", "module": "academic", "notes": "Longitudinal sociological and health survey in Nicaragua examining the positive correlation between maternal literacy, healthcare navigation, and infant mortality reductions.", "sourceUrl": "https://www.cambridgeenglish.org/exams-and-tests/ielts/", "passageJson": json.dumps(p2_paras, ensure_ascii=False), "questionsJson": json.dumps(q_p2, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice test material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/reading/passage-2"},
-        {"id": "cam06-academic-t4-r3", "section": "3", "track": "academic", "cefrLevel": "C1", "difficultyBand": "7.5", "title": "Test 4 Reading Passage 3: Tackling the Challenge of Bullying in Schools", "module": "academic", "notes": "Educational research into adolescent intimidation, institutional denial, Scandinavian intervention protocols, curriculum integration, and peer victim support.", "sourceUrl": "https://www.cambridgeenglish.org/exams-and-tests/ielts/", "passageJson": json.dumps(p3_paras, ensure_ascii=False), "questionsJson": json.dumps(q_p3, ensure_ascii=False), "source": "cambridge-ielts-06-scan", "license": "Educational practice test material from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/reading/passage-3"}
-    ]
-
-    # --- 3. WRITING TOPICS & MODELS ---
-    writing_topics = [
-        {"id": "cam06-academic-t4-w1", "track": "academic", "prompt": "You should spend about 20 minutes on this task.\n\nThe charts below give information about USA marriage and divorce rates between 1970 and 2000, and the marital status of adult Americans in two of the years.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.", "type": "report", "typeVi": "Báo cáo biểu đồ kết hợp (Bar Chart & Marital Status Comparison)", "bandRange": "6.0-9.0", "outlineJson": json.dumps({"introduction": "Paraphrase prompt: two charts detailing marriage and divorce numbers alongside demographic marital status distribution in the USA (1970-2000).", "overview": "Note gradual downward trend in annual marriages from 2.5 to 2.0 million, stabilizing divorces around 1.0 million, and a dramatic surge in divorced and never-married adults.", "body1": "Chart 1: Marriage figures peaked at 2.5 million in 1970 before declining steadily to 2.0 million by 2000; divorces rose from 1.0 million to peak at 1.4 million in 1980 before leveling at 1.0 million.", "body2": "Chart 2: Married percentage fell from 70% to under 60%; divorced population more than doubled from 4% to 9%; never-married cohort expanded significantly from 15% to 20%."}, ensure_ascii=False), "keyVocabJson": json.dumps(["marital status", "divorce rate", "downward trajectory", "never-married adults", "demographic shift"], ensure_ascii=False), "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/writing/task-1"},
-        {"id": "cam06-academic-t4-w2", "track": "academic", "prompt": "You should spend about 40 minutes on this task.\n\nWrite about the following topic:\n\nSome people prefer to spend their lives doing the same things and avoiding change. Others, however, think that change is always a good thing.\n\nDiscuss both these views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words.", "type": "discussion_essay", "typeVi": "Bài luận thảo luận hai luồng quan điểm (Discuss Both Views)", "bandRange": "6.0-9.0", "outlineJson": json.dumps({"introduction": "Introduce debate between seeking stability through routine versus embracing constant change and innovation.", "body1": "Arguments for stability: emotional security, professional mastery, stress reduction, predictable community foundations.", "body2": "Arguments for change: adaptation to technological progress, personal growth, avoiding complacency and obsolete career skills.", "conclusion": "State personal perspective: while change is an unavoidable stimulus for progress, unmanaged disruption without stability causes anxiety."}, ensure_ascii=False), "keyVocabJson": json.dumps(["inescapable fact of life", "pace of change", "technological breakthroughs", "security and routine", "adapt to keep pace"], ensure_ascii=False), "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/writing/task-2"}
-    ]
-
-    t4_wm1_essay = clean_text_artifacts(normalize_ocr_apostrophes("\n\n".join([l.strip() for l in lines[5014:5027] if l.strip()])))
-    t4_wm1_comment = "The Task Achievement is the weak point in this answer. Some of the data is summarised but the points are not well-selected to convey the key trends shown in the charts. The main features of the first chart are not adequately presented and the overall conclusion does not summarise the main information. No figures are given to illustrate the points made. The information is well-organised, however, with clear paragraphing and well-signalled sections. The accurate use of a range of sequencers and other linkers makes it easy to follow the writing. A range of vocabulary is used with flexibility, in spite of some inappropriate collocations and awkward phrasing. Structures are varied and generally accurate."
-
-    t4_wm2_essay = clean_text_artifacts(normalize_ocr_apostrophes("\n\n".join([l.strip() for l in lines[5031:5045] if l.strip()])))
-
-    writing_models = [
-        {"id": "cam06-academic-t4-wm1", "task": 1, "track": "academic", "topic": "USA marriage and divorce rates and adult marital status (1970-2000)", "chartType": "bar_chart", "chartDescription": "Bar chart comparing marriage/divorce totals and secondary chart examining adult marital demographics in 1970 and 2000.", "prompt": "The charts below give information about USA marriage and divorce rates between 1970 and 2000, and the marital status of adult Americans in two of the years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "modelAnswer": t4_wm1_essay, "keyVocabJson": json.dumps(["marital status of the Americans", "decreased slightly", "divorced people has risen", "never married people has increased", "marital status background"], ensure_ascii=False), "examinerNotesVi": t4_wm1_comment, "bandEstimate": 6.5, "source": "cambridge-ielts-06-scan", "license": "Official candidate sample answer (Band 6.5) with examiner comments from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/writing/sample-answer-task-1"},
-        {"id": "cam06-academic-t4-wm2", "task": 2, "track": "academic", "topic": "Embracing change versus maintaining familiar routines in life", "chartType": None, "chartDescription": None, "prompt": "Some people prefer to spend their lives doing the same things and avoiding change. Others, however, think that change is always a good thing. Discuss both these views and give your own opinion.", "modelAnswer": t4_wm2_essay, "keyVocabJson": json.dumps(["pace of change", "wildest expectations", "scientific breakthroughs", "inescapable fact of life", "security in familiar things", "stimulating and energising"], ensure_ascii=False), "examinerNotesVi": "Bài mẫu chuẩn Band 9 của giám khảo Cambridge. Lập luận triết học sâu sắc về tính tất yếu của sự thay đổi trong xã hội công nghệ, đối chiếu giữa nhu cầu an toàn tâm lý và sự thích nghi bắt buộc với văn phong chuẩn mực bậc nhất.", "bandEstimate": 9.0, "source": "cambridge-ielts-06-scan", "license": "Official examiner model answer from Cambridge IELTS 6", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/writing/sample-answer-task-2"}
-    ]
-
-    # --- 4. SPEAKING ---
-    speaking_topics = [
-        {"id": "cam06-academic-t4-sp1", "part": 1, "track": "academic", "topic": "Your Friends", "topicVi": "Bạn bè", "question": "Do you prefer to have one particular friend or a group of friends? [Why?]\nWhat do you like doing most with your friend/s?\nDo you think it's important to keep in contact with friends you knew as a child? [Why/Why not?]\nWhat makes a friend into a good friend?", "ideasJson": json.dumps(["Intimacy of a single confidant versus diverse energy and perspectives of a social group", "Shared recreational pursuits: café conversations, sporting activities, cinema, or travel", "Nostalgic shared memories and grounded roots maintained through childhood friendships", "Essential qualities of true friendship: trustworthiness, emotional empathy, active listening, and mutual loyalty"], ensure_ascii=False), "followUpQuestions": "How has social media transformed the way young adults maintain friendships?", "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/speaking/part-1"},
-        {"id": "cam06-academic-t4-sp2", "part": 2, "track": "academic", "topic": "Describe an important choice you had to make in your life", "topicVi": "Miêu tả một quyết định quan trọng bạn từng đưa ra trong cuộc đời", "question": "Describe an important choice you had to make in your life.\nYou should say:\n- when you had to make this choice\n- what you had to choose between\n- whether you made a good choice\nand explain how you felt when you were making this choice.", "ideasJson": json.dumps(["Context: choosing university major, selecting a career pathway, or moving to an unfamiliar city", "Dilemma: pursuing safe established traditional route versus following creative personal passion", "Retrospective assessment: evaluating career satisfaction, resilience built, and unexpected opportunities", "Emotional state during deliberation: initial anxiety and self-doubt followed by empowerment and relief"], ensure_ascii=False), "followUpQuestions": "How did trusted mentors influence your decision-making process?", "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/speaking/part-2"},
-        {"id": "cam06-academic-t4-sp3", "part": 3, "track": "academic", "topic": "Important Choices and Everyday Decisions", "topicVi": "Những lựa chọn hệ trọng và Quyết định hàng ngày", "question": "What are the typical choices people make at different stages of their lives?\nShould important choices be made by parents rather than by young adults?\nWhy do some people like to discuss choices with other people?\nWhat kind of choices do people have to make in their everyday life?\nWhy do some people choose to do the same things every day? Are there any disadvantages in this?\nDo you think that people today have more choices to make today than in the past?", "ideasJson": json.dumps(["Life milestones: educational paths in youth, career and matrimonial commitments in adulthood, retirement lifestyle in maturity", "Parental wisdom versus young adults cultivating autonomy through personal trial and error", "Seeking external validation, reducing decision anxiety, and gaining objective perspective from peers", "Everyday micro-choices: dietary decisions, time allocation, consumer purchases, and leisure balance", "Routine streamlines decision fatigue and increases efficiency, but risks intellectual complacency", "Proliferation of modern consumer and career choices inducing 'paradox of choice' and chronic stress"], ensure_ascii=False), "followUpQuestions": "How can individuals overcome decision fatigue in high-information environments?", "source": "cambridge-ielts-06-scan", "verified": True, "sourceRef": "cambridge-ielts-06-academic/test-4/speaking/part-3"}
-    ]
-
-    return listening_sections, reading_passages, writing_topics, writing_models, speaking_topics
+def build_test_4(raw_md_text: str = "", official_keys: dict = None):
+    data = _load_test_data()
+    return (
+        data["listening_sections"],
+        data["reading_passages"],
+        data["writing_topics"],
+        data["writing_models"],
+        data["speaking_topics"]
+    )
