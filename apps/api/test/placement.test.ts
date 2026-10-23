@@ -16,6 +16,7 @@ function createTestApp(userId: string = 'demo-user-id-001') {
 }
 
 before(async () => {
+  // 1. User fixture
   await prisma.user.upsert({
     where: { id: 'demo-user-id-001' },
     update: {},
@@ -24,6 +25,150 @@ before(async () => {
       email: 'placement-test@linguaflow.com',
       displayName: 'Placement Learner',
       role: 'STUDENT',
+    },
+  });
+
+  // 2. Grammar Question fixtures (12 required: 3 A1, 3 A2, 3 B1, 3 B2)
+  const grammarFixtures = [
+    { id: 'gq-fix-a1-1', cefrLevel: 'A1', question: 'I ___ a student.', options: ['am', 'is', 'are', 'be'], correct: 'am', topic: 'Present Simple' },
+    { id: 'gq-fix-a1-2', cefrLevel: 'A1', question: 'She ___ two cats.', options: ['has', 'have', 'having', 'is'], correct: 'has', topic: 'Present Simple' },
+    { id: 'gq-fix-a1-3', cefrLevel: 'A1', question: 'They ___ in London.', options: ['live', 'lives', 'living', 'are live'], correct: 'live', topic: 'Present Simple' },
+    { id: 'gq-fix-a2-1', cefrLevel: 'A2', question: 'Yesterday, I ___ to school.', options: ['went', 'go', 'goes', 'going'], correct: 'went', topic: 'Past Simple' },
+    { id: 'gq-fix-a2-2', cefrLevel: 'A2', question: 'She ___ TV last night.', options: ['watched', 'watch', 'watches', 'watching'], correct: 'watched', topic: 'Past Simple' },
+    { id: 'gq-fix-a2-3', cefrLevel: 'A2', question: 'We ___ dinner at 7 PM yesterday.', options: ['ate', 'eat', 'eats', 'eating'], correct: 'ate', topic: 'Past Simple' },
+    { id: 'gq-fix-b1-1', cefrLevel: 'B1', question: 'If it rains tomorrow, we ___ at home.', options: ['will stay', 'stay', 'stayed', 'would stay'], correct: 'will stay', topic: 'First Conditional' },
+    { id: 'gq-fix-b1-2', cefrLevel: 'B1', question: 'I have lived here ___ 2010.', options: ['since', 'for', 'in', 'at'], correct: 'since', topic: 'Present Perfect' },
+    { id: 'gq-fix-b1-3', cefrLevel: 'B1', question: 'He is interested ___ learning languages.', options: ['in', 'at', 'on', 'with'], correct: 'in', topic: 'Prepositions' },
+    { id: 'gq-fix-b2-1', cefrLevel: 'B2', question: 'Had I known, I ___ differently.', options: ['would have acted', 'will act', 'acted', 'had acted'], correct: 'would have acted', topic: 'conditional inversion' },
+    { id: 'gq-fix-b2-2', cefrLevel: 'B2', question: 'Seldom ___ such dedication.', options: ['have I seen', 'I have seen', 'I saw', 'did I saw'], correct: 'have I seen', topic: 'negative inversion' },
+    { id: 'gq-fix-b2-3', cefrLevel: 'B2', question: 'It is essential that he ___ on time.', options: ['be', 'is', 'was', 'being'], correct: 'be', topic: 'subjunctive mood' },
+  ];
+
+  for (const g of grammarFixtures) {
+    await prisma.grammarQuestion.upsert({
+      where: { id: g.id },
+      update: {},
+      create: {
+        id: g.id,
+        question: g.question,
+        optionsJson: JSON.stringify(g.options),
+        correctAnswer: g.correct,
+        cefrLevel: g.cefrLevel,
+        topic: g.topic,
+        topicVi: g.topic,
+      },
+    });
+  }
+
+  // 3. Collocation fixtures (at least 4 for each of A2, B1, B2 to supply distractors)
+  const collocFixtures = [
+    { id: 'col-fix-a2-1', colloc: 'make a decision', meaningVi: 'đưa ra quyết định', lvl: 'A2' },
+    { id: 'col-fix-a2-2', colloc: 'take a photo', meaningVi: 'chụp ảnh', lvl: 'A2' },
+    { id: 'col-fix-a2-3', colloc: 'do homework', meaningVi: 'làm bài tập', lvl: 'A2' },
+    { id: 'col-fix-a2-4', colloc: 'have breakfast', meaningVi: 'ăn sáng', lvl: 'A2' },
+    { id: 'col-fix-b1-1', colloc: 'catch attention', meaningVi: 'thu hút sự chú ý', lvl: 'B1' },
+    { id: 'col-fix-b1-2', colloc: 'keep in touch', meaningVi: 'giữ liên lạc', lvl: 'B1' },
+    { id: 'col-fix-b1-3', colloc: 'pay attention', meaningVi: 'chú ý', lvl: 'B1' },
+    { id: 'col-fix-b1-4', colloc: 'break a promise', meaningVi: 'thất hứa', lvl: 'B1' },
+    { id: 'col-fix-b2-1', colloc: 'cast doubt on', meaningVi: 'gieo rắc nghi ngờ', lvl: 'B2' },
+    { id: 'col-fix-b2-2', colloc: 'pose a threat', meaningVi: 'gây ra mối đe dọa', lvl: 'B2' },
+    { id: 'col-fix-b2-3', colloc: 'shed light on', meaningVi: 'làm sáng tỏ', lvl: 'B2' },
+    { id: 'col-fix-b2-4', colloc: 'pave the way', meaningVi: 'mở đường cho', lvl: 'B2' },
+  ];
+
+  for (const c of collocFixtures) {
+    await prisma.collocation.upsert({
+      where: { id: c.id },
+      update: {},
+      create: {
+        id: c.id,
+        collocation: c.colloc,
+        meaningVi: c.meaningVi,
+        cefrLevel: c.lvl,
+      },
+    });
+  }
+
+  // 4. Idiom fixtures (at least 4 B2 with valid meaningEn to supply distractors)
+  const idiomFixtures = [
+    { id: 'idm-fix-b2-1', idiom: 'bite the bullet', meaningVi: 'cắn răng chịu đựng', meaningEn: 'face a difficult situation with courage' },
+    { id: 'idm-fix-b2-2', idiom: 'break the ice', meaningVi: 'phá vỡ sự ngại ngùng', meaningEn: 'make people feel more comfortable' },
+    { id: 'idm-fix-b2-3', idiom: 'burn the midnight oil', meaningVi: 'thức khuya học/làm việc', meaningEn: 'work late into the night' },
+    { id: 'idm-fix-b2-4', idiom: 'hit the nail on the head', meaningVi: 'nói trúng phóc', meaningEn: 'describe exactly what is causing a situation' },
+  ];
+
+  for (const i of idiomFixtures) {
+    await prisma.idiom.upsert({
+      where: { id: i.id },
+      update: {},
+      create: {
+        id: i.id,
+        idiom: i.idiom,
+        meaningVi: i.meaningVi,
+        meaningEn: i.meaningEn,
+        cefrLevel: 'B2',
+      },
+    });
+  }
+
+  // 5. Bilingual Story fixtures (2 stories: story 1 with 3 questions, story 2 with 2 questions)
+  const storyFixtures = [
+    {
+      id: 'story-fix-1',
+      title: 'The Forest Journey',
+      cefrLevel: 'A2',
+      pages: [{ order: 1, en: 'Once upon a time, a young traveler entered a magical green forest.' }],
+      quiz: [
+        { question: 'Where did the traveler go?', options: ['Forest', 'Desert', 'City', 'Ocean'], correctAnswer: 'Forest' },
+        { question: 'What color was the forest?', options: ['Green', 'Red', 'Blue', 'Yellow'], correctAnswer: 'Green' },
+        { question: 'Who was the traveler?', options: ['Young traveler', 'Old king', 'Merchant', 'Sailor'], correctAnswer: 'Young traveler' },
+      ],
+    },
+    {
+      id: 'story-fix-2',
+      title: 'The Mountain Echo',
+      cefrLevel: 'B1',
+      pages: [{ order: 1, en: 'High up in the mountains, the wind whispered ancient secrets.' }],
+      quiz: [
+        { question: 'Where did the story take place?', options: ['In the mountains', 'On the beach', 'Underground', 'In space'], correctAnswer: 'In the mountains' },
+        { question: 'What whispered secrets?', options: ['The wind', 'The trees', 'The birds', 'The stones'], correctAnswer: 'The wind' },
+      ],
+    },
+  ];
+
+  for (const s of storyFixtures) {
+    await prisma.bilingualStory.upsert({
+      where: { id: s.id },
+      update: {},
+      create: {
+        id: s.id,
+        title: s.title,
+        cefrLevel: s.cefrLevel,
+        pagesJson: JSON.stringify(s.pages),
+        quizJson: JSON.stringify(s.quiz),
+      },
+    });
+  }
+
+  // 6. IELTS Listening Section fixture (cam11-academic-t1-l4 with 5 questions)
+  const listeningQuestions = [
+    { questionNumber: 31, question: 'Biodiversity hotspots: important for locating targets for 31 ....................', options: [], correctAnswer: 'conservation', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 31' },
+    { questionNumber: 32, question: 'found that ocean hotspots: were not always rich in 32 ....................', options: [], correctAnswer: 'food', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 32' },
+    { questionNumber: 33, question: 'had higher temperatures at the 33 ....................', options: [], correctAnswer: 'surface', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 33' },
+    { questionNumber: 34, question: 'had sufficient 34 .................... in the water', options: [], correctAnswer: 'oxygen', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 34' },
+    { questionNumber: 35, question: 'Lisa Ballance, 2007: looked for hotspots for marine 35 ....................', options: [], correctAnswer: 'mammals', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 35' },
+  ];
+
+  await prisma.ieltsListeningSection.upsert({
+    where: { id: 'cam11-academic-t1-l4' },
+    update: {},
+    create: {
+      id: 'cam11-academic-t1-l4',
+      section: 'listening',
+      cefrLevel: 'B2',
+      difficultyBand: '6.5',
+      title: 'Ocean Biodiversity',
+      questionsJson: JSON.stringify(listeningQuestions),
     },
   });
 });
