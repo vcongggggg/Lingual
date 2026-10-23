@@ -15,15 +15,20 @@ export const BAND_ESTIMATES: Record<string, string> = {
 export const PLACEMENT_DISCLAIMER =
   'Kết quả bài kiểm tra chỉ mang tính chất ước lượng trình độ đầu vào trên hệ thống LinguaFlow.';
 
+export const LISTENING_NOTE =
+  'Phần Nghe dùng giọng máy tạm thời, sẽ thay bằng audio thật khi có';
+
 export interface PlacementQuestionClient {
   id: string;
-  section: 'grammar' | 'vocab' | 'reading';
+  section: 'grammar' | 'vocab' | 'reading' | 'listening';
   cefrLevel: string;
   question: string;
   options: string[];
   passage?: string;
   passageTitle?: string;
   topic?: string;
+  audioUrl?: string;
+  sourceRef?: string;
 }
 
 /**
@@ -74,6 +79,7 @@ placementRouter.get('/latest', async (req: Request, res: Response) => {
         level: attempt.level,
         bandEstimate: attempt.bandEstimate,
         sectionScores,
+        listeningNote: LISTENING_NOTE,
         disclaimer: PLACEMENT_DISCLAIMER,
       },
     });
@@ -85,10 +91,11 @@ placementRouter.get('/latest', async (req: Request, res: Response) => {
 
 /**
  * GET /api/v1/placement/questions
- * Draw 25 placement questions:
+ * Draw 30 placement questions (P0.5 with Listening):
  * - 12 Grammar: 3 A1, 3 A2, 3 B1, 3 B2 (khó)
  * - 8 Vocab & Collocations: 2 A2, 2 B1, 2 B2, 2 B2 Idioms
  * - 5 Reading mini: 2 passages (3 from passage 1, 2 from passage 2)
+ * - 5 Listening: Cambridge 11 Test 1 Section 4 (Ocean Biodiversity monologue)
  */
 placementRouter.get('/questions', async (req: Request, res: Response) => {
   try {
@@ -151,7 +158,6 @@ placementRouter.get('/questions', async (req: Request, res: Response) => {
     }
 
     // 2. VOCABULARY & COLLOCATIONS (8 questions: 2 A2, 2 B1, 2 B2, 2 B2 Idioms)
-    // Helper to fetch collocations and build 4 options
     const fetchCollocQuestions = async (lvl: string, count: number) => {
       const items: any[] = await prisma.$queryRaw`
         SELECT id, collocation, "meaningVi", "cefrLevel"
@@ -263,9 +269,44 @@ placementRouter.get('/questions', async (req: Request, res: Response) => {
       }
     }
 
+    // 4. LISTENING (5 questions from Cambridge 11 Test 1 Section 4 monologue)
+    const listeningSection = await prisma.ieltsListeningSection.findUnique({
+      where: { id: 'cam11-academic-t1-l4' },
+    });
+    if (listeningSection && listeningSection.questionsJson) {
+      let lQuestions: any[] = [];
+      try {
+        lQuestions = JSON.parse(listeningSection.questionsJson);
+      } catch {}
+
+      const listeningDistractors = [
+        ['conservation', 'tourism', 'commercial fishing', 'industrialization'],
+        ['food', 'minerals', 'coral species', 'deep trenches'],
+        ['surface', 'seabed', 'coastal shore', 'ocean trenches'],
+        ['oxygen', 'carbon dioxide', 'salt minerals', 'nitrogen'],
+        ['mammals', 'birds', 'microorganisms', 'reptiles'],
+      ];
+
+      for (let i = 0; i < Math.min(5, lQuestions.length); i++) {
+        const lq = lQuestions[i];
+        const opts = [...listeningDistractors[i]];
+        opts.sort(() => Math.random() - 0.5);
+        questions.push({
+          id: `list-cam11-t1-l4-q${i + 1}`,
+          section: 'listening',
+          cefrLevel: 'B2',
+          question: `[Nghe bài giảng] ${lq.question}`,
+          options: opts,
+          audioUrl: '/audio/placement/cam11_t1_s4_ocean_biodiversity.mp3',
+          sourceRef: lq.sourceRef || 'Cambridge IELTS 11, Test 1, Listening Section 4',
+        });
+      }
+    }
+
     return res.json({
       totalQuestions: questions.length,
-      estimatedMinutes: 15,
+      estimatedMinutes: 20,
+      listeningNote: LISTENING_NOTE,
       questions,
     });
   } catch (error: any) {
@@ -278,8 +319,8 @@ placementRouter.get('/questions', async (req: Request, res: Response) => {
  * POST /api/v1/placement/submit
  * Server-side grading of placement test:
  * - 100% server verified against DB records
- * - Rule: level = highest level with accuracy >= 60% and >= 5 questions taken
- * - bandEstimate mapped from table
+ * - Rule: level = highest level with accuracy >= 60% and >= 5 questions taken (determined by Grammar + Vocab)
+ * - Listening score tracked and factored into bandEstimate
  * - 3 weakest grammar topics (from the 50 theory topics)
  * - Save PlacementAttempt and update User.cefrLevel
  */
@@ -290,7 +331,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       return res.status(401).json({ error: 'Yêu cầu đăng nhập để nộp bài kiểm tra.' });
     }
 
-    const { answers, questionIds } = req.body;
+    const { answers, questionIds, audioPlayCount } = req.body;
     if (!answers || typeof answers !== 'object') {
       return res.status(400).json({ error: 'Dữ liệu câu trả lời không hợp lệ.' });
     }
@@ -305,10 +346,11 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       B2: { correct: 0, total: 0 },
     };
 
-    const sectionStats: Record<string, { correct: number; total: number }> = {
+    const sectionStats: Record<string, { correct: number; total: number; audioPlayCount?: number }> = {
       grammar: { correct: 0, total: 0 },
       vocab: { correct: 0, total: 0 },
       reading: { correct: 0, total: 0 },
+      listening: { correct: 0, total: 0, audioPlayCount: Number(audioPlayCount) || 1 },
     };
 
     const grammarMistakesByTopic: Record<string, number> = {};
@@ -316,15 +358,24 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       ? questionIds
       : Object.keys(answers);
 
+    // Known listening answers for Cambridge 11 Test 1 Section 4
+    const listeningAnswers = ['conservation', 'food', 'surface', 'oxygen', 'mammals'];
+
     // Grade each question from DB
     for (const qId of questionList) {
-      const userAns = (answers[qId] || '').trim();
+      const userAns = (answers[qId] || '').trim().toLowerCase();
 
-      if (qId.startsWith('colloc-')) {
+      if (qId.startsWith('list-cam11-t1-l4-q')) {
+        const qIndex = parseInt(qId.replace('list-cam11-t1-l4-q', ''), 10) - 1;
+        const expected = (listeningAnswers[qIndex] || '').toLowerCase();
+        const isCorrect = userAns === expected || (expected === 'food' && userAns === 'foods') || (expected === 'oxygen' && userAns === 'o2');
+        sectionStats.listening.total += 1;
+        if (isCorrect) sectionStats.listening.correct += 1;
+      } else if (qId.startsWith('colloc-')) {
         const rawId = qId.replace('colloc-', '');
         const record = await prisma.collocation.findUnique({ where: { id: rawId } });
         if (record) {
-          const isCorrect = userAns.toLowerCase() === record.meaningVi.trim().toLowerCase();
+          const isCorrect = userAns === record.meaningVi.trim().toLowerCase();
           const lvl = record.cefrLevel || 'A2';
           if (levelStats[lvl]) {
             levelStats[lvl].total += 1;
@@ -337,7 +388,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
         const rawId = qId.replace('idiom-', '');
         const record = await prisma.idiom.findUnique({ where: { id: rawId } });
         if (record && record.meaningEn) {
-          const isCorrect = userAns.toLowerCase() === record.meaningEn.trim().toLowerCase();
+          const isCorrect = userAns === record.meaningEn.trim().toLowerCase();
           const lvl = record.cefrLevel || 'B2';
           if (levelStats[lvl]) {
             levelStats[lvl].total += 1;
@@ -347,7 +398,6 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
           if (isCorrect) sectionStats.vocab.correct += 1;
         }
       } else if (qId.startsWith('story-')) {
-        // e.g. story-story-01-q1
         const parts = qId.split('-');
         const storyId = parts.slice(1, -1).join('-');
         const qIdxStr = parts[parts.length - 1].replace('q', '');
@@ -360,7 +410,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
             quiz = JSON.parse(record.quizJson);
           } catch {}
           if (quiz[qIdx]) {
-            const isCorrect = userAns.toLowerCase() === (quiz[qIdx].correctAnswer || '').trim().toLowerCase();
+            const isCorrect = userAns === (quiz[qIdx].correctAnswer || '').trim().toLowerCase();
             const lvl = record.cefrLevel || 'A2';
             if (levelStats[lvl]) {
               levelStats[lvl].total += 1;
@@ -374,7 +424,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
         // GrammarQuestion by ID
         const record = await prisma.grammarQuestion.findUnique({ where: { id: qId } });
         if (record) {
-          const isCorrect = userAns.toLowerCase() === record.correctAnswer.trim().toLowerCase();
+          const isCorrect = userAns === record.correctAnswer.trim().toLowerCase();
           const lvl = record.cefrLevel || 'A2';
           if (levelStats[lvl]) {
             levelStats[lvl].total += 1;
@@ -390,7 +440,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       }
     }
 
-    // Determine level: highest level with accuracy >= 60% and total questions >= 5
+    // Determine level: highest level with accuracy >= 60% and total questions >= 5 (based on Grammar + Vocab)
     let determinedLevel = 'A1';
     for (const lvl of ['B2', 'B1', 'A2']) {
       const stat = levelStats[lvl];
@@ -403,7 +453,18 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       }
     }
 
-    const bandEstimate = BAND_ESTIMATES[determinedLevel] || '2.0 - 3.0';
+    let bandEstimate = BAND_ESTIMATES[determinedLevel] || '2.0 - 3.0';
+    // Incorporate listening into band estimate precision if listening completed
+    if (sectionStats.listening.total > 0) {
+      const listenAcc = (sectionStats.listening.correct / sectionStats.listening.total) * 100;
+      if (determinedLevel === 'B2' && listenAcc >= 80) {
+        bandEstimate = '6.0 - 6.5';
+      } else if (determinedLevel === 'B2' && listenAcc < 40) {
+        bandEstimate = '5.5';
+      } else if (determinedLevel === 'B1' && listenAcc >= 80) {
+        bandEstimate = '5.0';
+      }
+    }
 
     // Identify 3 weakest grammar topics (filter against the 50 theory topics in grammar_explanations)
     const validTheoryTopics = await prisma.grammarExplanation.findMany({
@@ -418,15 +479,22 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
 
     let weakTopics = sortedMistakes.slice(0, 3).map(([topic]) => topic);
     if (weakTopics.length < 3) {
-      // Backfill with top relevant topics for the user's determined level
       const fallbackTopics = validTheoryTopics
         .map((t) => t.topic)
         .filter((t) => !weakTopics.includes(t));
       weakTopics = [...weakTopics, ...fallbackTopics.slice(0, 3 - weakTopics.length)];
     }
 
-    const totalQuestionsCount = sectionStats.grammar.total + sectionStats.vocab.total + sectionStats.reading.total;
-    const totalCorrectCount = sectionStats.grammar.correct + sectionStats.vocab.correct + sectionStats.reading.correct;
+    const totalQuestionsCount =
+      sectionStats.grammar.total +
+      sectionStats.vocab.total +
+      sectionStats.reading.total +
+      sectionStats.listening.total;
+    const totalCorrectCount =
+      sectionStats.grammar.correct +
+      sectionStats.vocab.correct +
+      sectionStats.reading.correct +
+      sectionStats.listening.correct;
 
     const overallScores = {
       ...sectionStats,
@@ -463,6 +531,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       bandEstimate,
       sectionScores: overallScores,
       weakTopics,
+      listeningNote: LISTENING_NOTE,
       disclaimer: PLACEMENT_DISCLAIMER,
     });
   } catch (error: any) {

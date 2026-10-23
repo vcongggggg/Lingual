@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { api } from '../../lib/api';
@@ -9,25 +9,29 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock,
-  HelpCircle,
   RotateCcw,
-  Sparkles,
   ArrowRight,
   AlertCircle,
   Award,
   Layers,
   Home,
+  Headphones,
+  Play,
+  Pause,
+  Volume2,
 } from 'lucide-react';
 
 interface QuestionItem {
   id: string;
-  section: 'grammar' | 'vocab' | 'reading';
+  section: 'grammar' | 'vocab' | 'reading' | 'listening';
   cefrLevel: string;
   question: string;
   options: string[];
   passage?: string;
   passageTitle?: string;
   topic?: string;
+  audioUrl?: string;
+  sourceRef?: string;
 }
 
 interface PlacementResult {
@@ -38,9 +42,11 @@ interface PlacementResult {
     grammar: { correct: number; total: number };
     vocab: { correct: number; total: number };
     reading: { correct: number; total: number };
+    listening?: { correct: number; total: number; audioPlayCount?: number };
     total: { correct: number; total: number; percentage: number };
   };
   weakTopics: string[];
+  listeningNote?: string;
   disclaimer: string;
 }
 
@@ -57,6 +63,13 @@ export default function PlacementPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+  // Audio Player State for Listening section
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioPlayCount, setAudioPlayCount] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
   // Fetch previous attempt on load
   useEffect(() => {
     async function loadLatest() {
@@ -72,6 +85,27 @@ export default function PlacementPage() {
     loadLatest();
   }, []);
 
+  // Audio time update
+  const onTimeUpdate = () => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+      setDuration(audioRef.current.duration || 0);
+    }
+  };
+
+  const togglePlayAudio = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+        setAudioPlayCount((prev) => prev + 1);
+      }).catch((e) => console.error('Audio play error:', e));
+    }
+  };
+
   // Start test
   const handleStartTest = async () => {
     setLoading(true);
@@ -83,6 +117,7 @@ export default function PlacementPage() {
         setCurrentIndex(0);
         setAnswers({});
         setSelectedOption(null);
+        setAudioPlayCount(0);
         setState('testing');
       } else {
         setErrorMsg('Không thể tải bộ câu hỏi. Vui lòng thử lại sau.');
@@ -108,10 +143,15 @@ export default function PlacementPage() {
     setAnswers(newAnswers);
     setSelectedOption(null);
 
+    // If moving away from listening, pause audio
+    if (audioRef.current && isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      // Last question completed -> submit test
       await handleSubmitTest(newAnswers);
     }
   };
@@ -135,7 +175,6 @@ export default function PlacementPage() {
 
   const currentQ = questions[currentIndex];
 
-  // Helper labels
   const getSectionLabel = (sec: string) => {
     switch (sec) {
       case 'grammar':
@@ -143,10 +182,18 @@ export default function PlacementPage() {
       case 'vocab':
         return 'Từ vựng & Cụm từ';
       case 'reading':
-        return 'Đọc hiểu';
+        return 'Đọc hiểu mini';
+      case 'listening':
+        return 'Nghe hiểu (Section 4)';
       default:
         return 'Tổng hợp';
     }
+  };
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
   return (
@@ -192,7 +239,7 @@ export default function PlacementPage() {
                 Sổ Tay Đánh Giá Trình Độ (Placement Test)
               </h1>
               <p style={{ fontSize: '0.875rem', color: '#64748B', margin: '2px 0 0' }}>
-                LinguaFlow Diagnostic • Phiên bản P0
+                LinguaFlow Diagnostic • Phiên bản P0.5 (Ngữ pháp + Từ vựng + Đọc + Nghe)
               </p>
             </div>
           </div>
@@ -260,14 +307,14 @@ export default function PlacementPage() {
                     border: '1px solid #BFDBFE',
                   }}
                 >
-                  Kiểm tra đầu vào tự động
+                  Kiểm tra 4 kỹ năng chuẩn hóa
                 </span>
                 <h2 style={{ fontSize: '1.6rem', fontWeight: 800, margin: '14px 0 10px', color: '#0F172A' }}>
                   Xác định trình độ tiếng Anh chuẩn CEFR & Ước tính IELTS
                 </h2>
                 <p style={{ fontSize: '0.95rem', color: '#475569', lineHeight: 1.6, margin: '0 0 20px' }}>
                   Bài kiểm tra được thiết kế theo thang bậc từ dễ đến khó (A1 → B2), rút ngẫu nhiên từ kho dữ liệu
-                  chính thức để phản ánh chính xác điểm mạnh và chủ điểm ngữ pháp cần rèn luyện.
+                  chính thức bao gồm cả phần Đọc mini và bài giảng Nghe học thuật Section 4.
                 </p>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '12px', marginBottom: '24px' }}>
@@ -281,10 +328,10 @@ export default function PlacementPage() {
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#3B82F6' }}>
                       <Layers size={18} />
-                      <span style={{ fontWeight: 700, fontSize: '1.1rem' }}>25 câu</span>
+                      <span style={{ fontWeight: 700, fontSize: '1.1rem' }}>30 câu</span>
                     </div>
                     <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '4px' }}>
-                      12 Ngữ pháp • 8 Từ vựng • 5 Đọc
+                      12 NP • 8 TV • 5 Đọc • 5 Nghe
                     </div>
                   </div>
 
@@ -298,10 +345,10 @@ export default function PlacementPage() {
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#D97706' }}>
                       <Clock size={18} />
-                      <span style={{ fontWeight: 700, fontSize: '1.1rem' }}>~15 phút</span>
+                      <span style={{ fontWeight: 700, fontSize: '1.1rem' }}>~20 phút</span>
                     </div>
                     <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '4px' }}>
-                      Không bấm giờ từng câu
+                      Tự do theo nhịp học
                     </div>
                   </div>
 
@@ -335,7 +382,7 @@ export default function PlacementPage() {
                     lineHeight: 1.5,
                   }}
                 >
-                  <b>Lưu ý khi làm bài:</b> Bạn sẽ làm 1 câu/màn hình và không được quay lại sửa câu đã chọn. Hãy chọn đáp án theo trực giác tự nhiên nhất!
+                  <b>Lưu ý khi làm bài:</b> Bạn sẽ làm 1 câu/màn hình và không được quay lại sửa câu đã chọn. Phần Nghe có audio bài giảng và hỗ trợ nghe lại nếu cần!
                 </div>
 
                 <button
@@ -386,7 +433,7 @@ export default function PlacementPage() {
                   LingLing
                 </div>
                 <div style={{ fontSize: '0.75rem', color: '#64748B' }}>
-                  Cùng bạn thử sức nhé!
+                  Đồng hành cùng bạn!
                 </div>
               </div>
             </div>
@@ -475,20 +522,24 @@ export default function PlacementPage() {
                         ? '#EFF6FF'
                         : currentQ.section === 'vocab'
                         ? '#FEF3C7'
-                        : '#ECFDF5',
+                        : currentQ.section === 'reading'
+                        ? '#ECFDF5'
+                        : '#F5F3FF',
                     color:
                       currentQ.section === 'grammar'
                         ? '#1D4ED8'
                         : currentQ.section === 'vocab'
                         ? '#92400E'
-                        : '#065F46',
+                        : currentQ.section === 'reading'
+                        ? '#065F46'
+                        : '#6D28D9',
                     padding: '4px 10px',
                     borderRadius: '6px',
                     fontSize: '0.8rem',
                     fontWeight: 600,
                   }}
                 >
-                  Phần: {getSectionLabel(currentQ.section)}
+                  {getSectionLabel(currentQ.section)}
                 </span>
               </div>
 
@@ -504,6 +555,89 @@ export default function PlacementPage() {
                 />
               </div>
             </div>
+
+            {/* LISTENING SECTION AUDIO PLAYER */}
+            {currentQ.section === 'listening' && currentQ.audioUrl && (
+              <div
+                style={{
+                  backgroundColor: '#FAF5FF',
+                  border: '1px solid #E9D5FF',
+                  borderRadius: '10px',
+                  padding: '16px 20px',
+                  marginBottom: '20px',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#6B21A8', fontWeight: 700 }}>
+                    <Headphones size={20} />
+                    <span>Bài giảng học thuật: Ocean Biodiversity (Section 4)</span>
+                  </div>
+                  <span style={{ fontSize: '0.75rem', color: '#7E22CE', backgroundColor: '#F3E8FF', padding: '2px 8px', borderRadius: '4px' }}>
+                    Số lần nghe: {audioPlayCount}
+                  </span>
+                </div>
+
+                <audio
+                  ref={audioRef}
+                  src={currentQ.audioUrl}
+                  onTimeUpdate={onTimeUpdate}
+                  onEnded={() => setIsPlaying(false)}
+                />
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                  <button
+                    onClick={togglePlayAudio}
+                    style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '50%',
+                      backgroundColor: '#7C3AED',
+                      color: '#FFFFFF',
+                      border: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      boxShadow: '2px 2px 0px #C084FC',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {isPlaying ? <Pause size={20} /> : <Play size={20} style={{ marginLeft: '2px' }} />}
+                  </button>
+
+                  <div style={{ flexGrow: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#6B21A8', marginBottom: '4px' }}>
+                      <span>{formatTime(currentTime)}</span>
+                      <span>{formatTime(duration || 277)}</span>
+                    </div>
+                    <div
+                      style={{
+                        height: '6px',
+                        backgroundColor: '#E9D5FF',
+                        borderRadius: '3px',
+                        overflow: 'hidden',
+                        cursor: 'pointer',
+                      }}
+                      onClick={(e) => {
+                        if (audioRef.current && duration > 0) {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          const pos = (e.clientX - rect.left) / rect.width;
+                          audioRef.current.currentTime = pos * duration;
+                        }
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
+                          backgroundColor: '#7C3AED',
+                          height: '100%',
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Mini Reading Passage (if applicable) */}
             {currentQ.section === 'reading' && currentQ.passage && (
@@ -648,12 +782,12 @@ export default function PlacementPage() {
               Hệ thống đang chấm điểm bài làm của bạn...
             </h2>
             <p style={{ fontSize: '0.9rem', color: '#64748B' }}>
-              Đang phân tích độ chính xác theo nấc thang CEFR và tổng hợp chủ điểm ngữ pháp cần củng cố.
+              Đang phân tích độ chính xác theo nấc thang CEFR và tổng hợp 4 kỹ năng.
             </p>
           </div>
         )}
 
-        {/* ---------------- STATE 4: RESULT SCREEN (P0 Scope) ---------------- */}
+        {/* ---------------- STATE 4: RESULT SCREEN ---------------- */}
         {state === 'result' && result && (
           <div
             style={{
@@ -681,7 +815,7 @@ export default function PlacementPage() {
                 }}
               >
                 <CheckCircle2 size={16} />
-                Hoàn thành bài kiểm tra đầu vào
+                Hoàn thành bài kiểm tra 4 kỹ năng
               </div>
               <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>
                 Kết Quả Đánh Giá Năng Lực
@@ -733,7 +867,7 @@ export default function PlacementPage() {
                   Band {result.bandEstimate}
                 </div>
                 <div style={{ fontSize: '0.8rem', color: '#78350F' }}>
-                  Dựa trên tương quan thang chuẩn
+                  Đã kết hợp độ chính xác phần Nghe
                 </div>
               </div>
 
@@ -758,39 +892,60 @@ export default function PlacementPage() {
               </div>
             </div>
 
-            {/* Section Breakdown */}
+            {/* Section Breakdown (4 sections) */}
             <div
               style={{
                 backgroundColor: '#F8FAFC',
                 border: '1px solid #E2E8F0',
                 borderRadius: '8px',
                 padding: '16px 20px',
-                marginBottom: '24px',
+                marginBottom: '20px',
               }}
             >
               <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#334155', marginBottom: '12px' }}>
                 Chi tiết điểm từng kỹ năng:
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', textAlign: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px', textAlign: 'center' }}>
                 <div style={{ backgroundColor: '#FFFFFF', padding: '10px', borderRadius: '6px', border: '1px solid #E2E8F0' }}>
-                  <div style={{ fontSize: '0.8rem', color: '#64748B' }}>Ngữ pháp</div>
+                  <div style={{ fontSize: '0.775rem', color: '#64748B' }}>Ngữ pháp</div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#1E293B', marginTop: '2px' }}>
                     {result.sectionScores.grammar.correct} / {result.sectionScores.grammar.total}
                   </div>
                 </div>
                 <div style={{ backgroundColor: '#FFFFFF', padding: '10px', borderRadius: '6px', border: '1px solid #E2E8F0' }}>
-                  <div style={{ fontSize: '0.8rem', color: '#64748B' }}>Từ vựng & Cụm</div>
+                  <div style={{ fontSize: '0.775rem', color: '#64748B' }}>Từ vựng & Cụm</div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#1E293B', marginTop: '2px' }}>
                     {result.sectionScores.vocab.correct} / {result.sectionScores.vocab.total}
                   </div>
                 </div>
                 <div style={{ backgroundColor: '#FFFFFF', padding: '10px', borderRadius: '6px', border: '1px solid #E2E8F0' }}>
-                  <div style={{ fontSize: '0.8rem', color: '#64748B' }}>Đọc hiểu</div>
+                  <div style={{ fontSize: '0.775rem', color: '#64748B' }}>Đọc hiểu</div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#1E293B', marginTop: '2px' }}>
                     {result.sectionScores.reading.correct} / {result.sectionScores.reading.total}
                   </div>
                 </div>
+                <div style={{ backgroundColor: '#FAF5FF', padding: '10px', borderRadius: '6px', border: '1px solid #E9D5FF' }}>
+                  <div style={{ fontSize: '0.775rem', color: '#7E22CE' }}>Nghe hiểu</div>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#6B21A8', marginTop: '2px' }}>
+                    {result.sectionScores.listening ? `${result.sectionScores.listening.correct} / ${result.sectionScores.listening.total}` : 'N/A'}
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {/* Listening note banner */}
+            <div
+              style={{
+                backgroundColor: '#F5F3FF',
+                border: '1px solid #DDD6FE',
+                borderRadius: '8px',
+                padding: '10px 14px',
+                fontSize: '0.8rem',
+                color: '#6D28D9',
+                marginBottom: '20px',
+              }}
+            >
+              🎧 <b>Ghi chú phần Nghe:</b> {result.listeningNote || 'Phần Nghe dùng giọng máy tạm thời, sẽ thay bằng audio thật khi có.'}
             </div>
 
             {/* Weak Topics to Focus On */}

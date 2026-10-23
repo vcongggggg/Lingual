@@ -62,3 +62,7 @@ data/*
 !data/fb-materials-report.json
 !data/skipped-materials.txt
 
+# Derived book audio containment
+apps/web/public/audio/placement/
+
+
