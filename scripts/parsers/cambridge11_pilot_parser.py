@@ -759,7 +759,7 @@ def parse_test1() -> Dict[str, Any]:
             "type": "map_labeling",
             "question": "18 Black Barn",
             "options": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
-            "correctAnswer": "E",
+            "correctAnswer": "H",
             "sourceRef": "Cambridge IELTS 11, Test 1, Listening Question 18, Answer Key page 124"
         },
         {
