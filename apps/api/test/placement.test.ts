@@ -1,8 +1,14 @@
-import test, { before } from 'node:test';
+import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
 import { placementRouter, BAND_ESTIMATES, PLACEMENT_DISCLAIMER, LISTENING_NOTE } from '../src/routes/placement.js';
 import { prisma } from '../src/lib/prisma.js';
+
+async function cleanupGrammarFixtures() {
+  await prisma.grammarQuestion.deleteMany({
+    where: { id: { startsWith: 'gq-fix-' } },
+  });
+}
 
 function createTestApp(userId: string = 'demo-user-id-001') {
   const app = express();
@@ -16,6 +22,9 @@ function createTestApp(userId: string = 'demo-user-id-001') {
 }
 
 before(async () => {
+  // 0. Clean any leftover fixtures
+  await cleanupGrammarFixtures();
+
   // 1. User fixture
   await prisma.user.upsert({
     where: { id: 'demo-user-id-001' },
@@ -467,5 +476,9 @@ test('Placement API - returns 401 Unauthorized when missing authentication', asy
     process.env.NODE_ENV = originalEnv;
     server.close();
   }
+});
+
+after(async () => {
+  await cleanupGrammarFixtures();
 });
 

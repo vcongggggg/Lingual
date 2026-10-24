@@ -474,6 +474,53 @@ export default function PlacementPage() {
                     </span>
                   </div>
                 </div>
+                <button
+                  id="btn-view-latest-result"
+                  onClick={() => {
+                    let scores = {
+                      grammar: { correct: 0, total: 12 },
+                      vocab: { correct: 0, total: 8 },
+                      reading: { correct: 0, total: 5 },
+                      listening: { correct: 0, total: 5 },
+                      total: { correct: 0, total: 30, percentage: 0 },
+                    };
+                    let weak: string[] = [];
+                    try {
+                      if (latestAttempt.overallScoresJson) {
+                        scores = typeof latestAttempt.overallScoresJson === 'string'
+                          ? JSON.parse(latestAttempt.overallScoresJson)
+                          : latestAttempt.overallScoresJson;
+                      }
+                      if (latestAttempt.weakTopicsJson) {
+                        weak = Array.isArray(latestAttempt.weakTopicsJson)
+                          ? latestAttempt.weakTopicsJson
+                          : JSON.parse(latestAttempt.weakTopicsJson);
+                      }
+                    } catch {}
+                    setResult({
+                      attemptId: latestAttempt.id,
+                      level: latestAttempt.level,
+                      bandEstimate: latestAttempt.bandEstimate,
+                      sectionScores: scores,
+                      weakTopics: weak,
+                      listeningNote: 'Phần Nghe dùng giọng máy tạm thời, sẽ thay bằng audio thật khi có.',
+                      disclaimer: 'Kết quả bài kiểm tra chỉ mang tính chất ước lượng trình độ đầu vào trên hệ thống LinguaFlow và tham chiếu tương đối theo chuẩn CEFR / IELTS, không thay thế chứng chỉ khảo thí chính thức.',
+                    });
+                    setState('result');
+                  }}
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #CBD5E1',
+                    borderRadius: '6px',
+                    padding: '6px 12px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    color: '#1E293B',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Xem chi tiết kết quả
+                </button>
               </div>
             )}
           </div>
@@ -948,7 +995,7 @@ export default function PlacementPage() {
               🎧 <b>Ghi chú phần Nghe:</b> {result.listeningNote || 'Phần Nghe dùng giọng máy tạm thời, sẽ thay bằng audio thật khi có.'}
             </div>
 
-            {/* Weak Topics to Focus On */}
+            {/* Weak Topics to Focus On - Deep link directly to grammar explanation */}
             {result.weakTopics && result.weakTopics.length > 0 && (
               <div
                 style={{
@@ -959,16 +1006,61 @@ export default function PlacementPage() {
                   marginBottom: '24px',
                 }}
               >
-                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#C2410C', marginBottom: '8px' }}>
-                  🎯 3 Chủ điểm ngữ pháp khuyên học bổ trợ:
+                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#C2410C', marginBottom: '10px' }}>
+                  🎯 3 Chủ điểm ngữ pháp khuyên học bổ trợ (Bấm để xem lý thuyết):
                 </div>
-                <ul style={{ margin: 0, paddingLeft: '20px', color: '#9A3412', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {result.weakTopics.map((top, idx) => (
-                    <li key={`weak-${idx}`}>
-                      <b>{top}</b>
-                    </li>
+                    <Link
+                      key={`weak-${idx}`}
+                      href={`/grammar?topic=${encodeURIComponent(top)}`}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '10px 14px',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #FDBA74',
+                        borderRadius: '6px',
+                        color: '#9A3412',
+                        textDecoration: 'none',
+                        transition: 'all 0.15s ease',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '22px',
+                            height: '22px',
+                            backgroundColor: '#FFEDD5',
+                            borderRadius: '50%',
+                            fontSize: '0.75rem',
+                            fontWeight: 700,
+                            color: '#C2410C',
+                          }}
+                        >
+                          {idx + 1}
+                        </span>
+                        <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>{top}</span>
+                      </div>
+                      <span
+                        style={{
+                          fontSize: '0.8rem',
+                          color: '#EA580C',
+                          fontWeight: 600,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                        }}
+                      >
+                        Học lý thuyết <ChevronRight size={14} />
+                      </span>
+                    </Link>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
 

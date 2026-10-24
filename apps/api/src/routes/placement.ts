@@ -361,8 +361,18 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       ? questionIds
       : Object.keys(answers);
 
-    // Known listening answers for Cambridge 11 Test 1 Section 4
-    const listeningAnswers = ['conservation', 'food', 'surface', 'oxygen', 'mammals'];
+    // Read listening answers from DB (ielts_listening_sections cam11-academic-t1-l4)
+    let dbListeningQuestions: any[] = [];
+    const listeningRecord = await prisma.ieltsListeningSection.findUnique({
+      where: { id: 'cam11-academic-t1-l4' },
+    });
+    if (listeningRecord && listeningRecord.questionsJson) {
+      try {
+        dbListeningQuestions = JSON.parse(listeningRecord.questionsJson);
+      } catch (err) {
+        console.error('Failed to parse listening questionsJson:', err);
+      }
+    }
 
     // Grade each question from DB
     for (const qId of questionList) {
@@ -370,8 +380,15 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
 
       if (qId.startsWith('list-cam11-t1-l4-q')) {
         const qIndex = parseInt(qId.replace('list-cam11-t1-l4-q', ''), 10) - 1;
-        const expected = (listeningAnswers[qIndex] || '').toLowerCase();
-        const isCorrect = userAns === expected || (expected === 'food' && userAns === 'foods') || (expected === 'oxygen' && userAns === 'o2');
+        const targetQ = dbListeningQuestions[qIndex];
+        const rawExpected = (targetQ && targetQ.correctAnswer) ? String(targetQ.correctAnswer) : '';
+        const acceptableAnswers = rawExpected
+          .split('/')
+          .map((a: string) => a.trim().toLowerCase())
+          .filter(Boolean);
+        const isCorrect = acceptableAnswers.includes(userAns) ||
+          (acceptableAnswers.includes('food') && userAns === 'foods') ||
+          (acceptableAnswers.includes('oxygen') && userAns === 'o2');
         sectionStats.listening.total += 1;
         if (isCorrect) sectionStats.listening.correct += 1;
       } else if (qId.startsWith('colloc-')) {

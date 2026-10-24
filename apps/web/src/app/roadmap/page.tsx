@@ -141,6 +141,13 @@ function CurriculumRoadmapContent() {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [revealedUnits, setRevealedUnits] = useState<Set<number>>(new Set([1, 2]));
   const [isReducedMotion, setIsReducedMotion] = useState<boolean>(false);
+  const [placementData, setPlacementData] = useState<{
+    level: string;
+    bandEstimate: string;
+    weakTopics: string[];
+    suggestedUnitOrder: number;
+    takenAt?: string;
+  } | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -187,6 +194,82 @@ function CurriculumRoadmapContent() {
     }
     loadUnits();
   }, []);
+
+  // Tải kết quả Placement Test để cá nhân hóa lộ trình
+  useEffect(() => {
+    async function loadPlacement() {
+      try {
+        const res = await api.getPlacementLatest();
+        if (res && res.attempt) {
+          const lvl = res.attempt.level || 'A1';
+          let weak: string[] = [];
+          try {
+            if (res.attempt.weakTopicsJson) {
+              weak = Array.isArray(res.attempt.weakTopicsJson)
+                ? res.attempt.weakTopicsJson
+                : JSON.parse(res.attempt.weakTopicsJson);
+            }
+          } catch {}
+
+          let suggestedOrder = 1;
+          if (lvl === 'A2') suggestedOrder = 2;
+          else if (lvl === 'B1') suggestedOrder = 3;
+          else if (lvl === 'B1+') suggestedOrder = 4;
+          else if (lvl === 'B2' || lvl === 'B2+') suggestedOrder = 5;
+
+          setPlacementData({
+            level: lvl,
+            bandEstimate: res.attempt.bandEstimate || '2.0 - 3.0',
+            weakTopics: weak.slice(0, 3),
+            suggestedUnitOrder: suggestedOrder,
+            takenAt: res.attempt.takenAt,
+          });
+
+          setActiveUnitIndex(suggestedOrder);
+        }
+      } catch (err) {
+        // Not yet taken placement test
+      }
+    }
+    loadPlacement();
+  }, []);
+
+  // Tự động điều chỉnh trạng thái các Unit theo cấp độ placement của học viên
+  useEffect(() => {
+    if (!placementData) return;
+    const targetOrder = placementData.suggestedUnitOrder;
+    setUnits((prev) =>
+      prev.map((u) => {
+        if (u.order < targetOrder) {
+          return {
+            ...u,
+            status: 'COMPLETED',
+            completedLessons: u.totalLessons,
+            lessons: u.lessons.map((l) => ({ ...l, completed: true })),
+          };
+        } else if (u.order === targetOrder) {
+          return {
+            ...u,
+            status: 'IN_PROGRESS',
+            completedLessons: 0,
+            lessons: u.lessons.map((l, lIdx) => ({ ...l, completed: lIdx === 0 })),
+          };
+        } else {
+          return {
+            ...u,
+            status: 'LOCKED',
+            completedLessons: 0,
+            lessons: u.lessons.map((l) => ({ ...l, completed: false })),
+          };
+        }
+      })
+    );
+    setRevealedUnits((prev) => {
+      const next = new Set(prev);
+      for (let i = 1; i <= targetOrder; i++) next.add(i);
+      return next;
+    });
+  }, [placementData]);
 
   // Kiểm tra prefers-reduced-motion
   useEffect(() => {
@@ -442,6 +525,100 @@ function CurriculumRoadmapContent() {
           <LingLing reaction={currentMascotMsg.pose} size={105} animate={!isReducedMotion} />
         </div>
       </div>
+
+      {/* 1.5 Personalized Roadmap Banner based on Placement Test */}
+      {placementData ? (
+        <div
+          id="personalized-roadmap-banner"
+          className="bg-card border-2 border-ink rounded-3xl p-6 sm:p-7 shadow-brutal-xl mb-12 relative overflow-hidden"
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-ink/15 pb-5 mb-5">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 border border-ink rounded-full text-xs font-black uppercase tracking-wider text-amber-900">
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                <span>Lộ trình cá nhân hóa theo Placement Test</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black text-ink tracking-tight font-sans">
+                Mốc xuất phát đề xuất: Unit {placementData.suggestedUnitOrder} ({placementData.level})
+              </h2>
+              <p className="text-xs sm:text-sm text-ink-soft leading-relaxed max-w-xl font-sans">
+                Dựa trên kết quả bài kiểm tra gần nhất, hệ thống xác định trình độ của bạn là <strong>{placementData.level}</strong> (IELTS Band ước lượng: ~{placementData.bandEstimate}). Các chặng trước mốc này đã được công nhận hoàn thành để bạn tập trung ngay vào nội dung phù hợp nhất!
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 flex-wrap">
+              <button
+                onClick={() => scrollToUnit(placementData.suggestedUnitOrder)}
+                className="btn-brutal px-5 py-3 rounded-2xl bg-ink text-white font-black text-xs sm:text-sm flex items-center gap-2 shadow-brutal cursor-pointer"
+              >
+                <span>Nhảy tới Unit {placementData.suggestedUnitOrder}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <Link
+                href="/placement"
+                className="btn-brutal px-4 py-3 rounded-2xl bg-paper border-2 border-ink text-ink font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-brutal text-decoration-none"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>Thi lại</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Weak Topics Quick Action */}
+          {placementData.weakTopics && placementData.weakTopics.length > 0 && (
+            <div>
+              <div className="text-xs font-black uppercase tracking-wider text-red mb-3 flex items-center gap-2 font-sans">
+                <Flag className="w-3.5 h-3.5 text-red" />
+                <span>3 Chủ điểm ngữ pháp khuyên học bổ trợ song song lộ trình:</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {placementData.weakTopics.map((top, idx) => (
+                  <Link
+                    key={`roadmap-weak-${idx}`}
+                    href={`/grammar?topic=${encodeURIComponent(top)}`}
+                    className="p-3 bg-paper border-2 border-ink rounded-2xl shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center justify-between group text-decoration-none"
+                  >
+                    <div className="flex items-center gap-2 truncate">
+                      <span className="w-5 h-5 rounded-full bg-red/10 text-red font-mono font-black text-[10px] flex items-center justify-center flex-shrink-0">
+                        {idx + 1}
+                      </span>
+                      <span className="text-xs font-bold text-ink truncate group-hover:text-red transition-colors font-sans">
+                        {top}
+                      </span>
+                    </div>
+                    <ArrowRight className="w-3.5 h-3.5 text-ink-muted group-hover:text-red transition-colors flex-shrink-0" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div
+          id="untested-placement-banner"
+          className="bg-card border-2 border-ink rounded-3xl p-5 sm:p-6 shadow-brutal-xl mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+        >
+          <div className="space-y-1">
+            <div className="text-xs font-black uppercase tracking-wider text-teal flex items-center gap-1.5 font-sans">
+              <Navigation className="w-3.5 h-3.5" />
+              <span>Chưa xác định trình độ chuẩn</span>
+            </div>
+            <h3 className="text-base sm:text-lg font-black text-ink font-sans">
+              Làm bài kiểm tra năng lực để cá nhân hóa lộ trình học
+            </h3>
+            <p className="text-xs text-ink-soft max-w-lg font-sans">
+              Bài Placement Test 20 phút (Ngữ pháp, Từ vựng, Đọc hiểu & Nghe) giúp hệ thống tự động xác định mốc xuất phát lý tưởng nhất cho bạn.
+            </p>
+          </div>
+          <Link
+            href="/placement"
+            className="btn-brutal px-5 py-3 rounded-2xl bg-teal text-white font-black text-xs sm:text-sm flex items-center gap-2 shadow-brutal whitespace-nowrap self-start sm:self-auto text-decoration-none"
+          >
+            <span>Làm bài kiểm tra (20p)</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      )}
 
       {/* 2. Layout chính: Timeline hành trình + Hộ chiếu sticky */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
