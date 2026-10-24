@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 // 1. Read POSTGRES_PASSWORD from .env
-const envPath = path.resolve(__dirname, '../.env');
+const envPath = path.resolve(__dirname, '../../.env');
 const envContent = fs.readFileSync(envPath, 'utf-8');
 const passMatch = envContent.match(/^POSTGRES_PASSWORD=(.*)$/m);
 if (!passMatch) {
@@ -69,13 +69,13 @@ async function main() {
   console.log('[3/4] Executing Full Seeding Pipeline (Phase 1 + Phase 2)...');
   const seedScripts = [
     { name: 'Phase 1 Master Seed (Vocab Bulk 5113, Units, IELTS Tracks)', file: 'prisma/seed.ts' },
-    { name: 'Phase 2 Catch-up (Grammar, Dialogues, Stories, etc.)', file: 'scripts/seed_catchup.ts' },
-    { name: 'Phase 2 Batch 2 (Grammar, Shadowing, Idioms, Diary)', file: 'scripts/seed_phase2_batch2.ts' },
-    { name: 'Phase 2 Batch 4B (Content Packages, Articles, Idioms)', file: 'scripts/seed_phase2_batch4b.ts' },
-    { name: 'Phase 2 Batch 4C (IELTS Reading/Listening, Diary, Shadowing)', file: 'scripts/seed_phase2_batch4c.ts' },
-    { name: 'Phase 2 Batch 5A (Grammar Batch 3, Vocab C1/C2, Dialogues)', file: 'scripts/seed_phase2_batch5a.ts' },
-    { name: 'Phase 2 Batch 5B (Dialogues, Content Packages, Articles)', file: 'scripts/seed_phase2_batch5b.ts' },
-    { name: 'Phase 2 Batch 5C (IELTS Speaking/Writing, Stories, Articles)', file: 'scripts/seed_phase2_batch5c.ts' },
+    { name: 'Phase 2 Catch-up (Grammar, Dialogues, Stories, etc.)', file: 'scripts/seeds/seed_catchup.ts' },
+    { name: 'Phase 2 Batch 2 (Grammar, Shadowing, Idioms, Diary)', file: 'scripts/seeds/seed_phase2_batch2.ts' },
+    { name: 'Phase 2 Batch 4B (Content Packages, Articles, Idioms)', file: 'scripts/seeds/seed_phase2_batch4b.ts' },
+    { name: 'Phase 2 Batch 4C (IELTS Reading/Listening, Diary, Shadowing)', file: 'scripts/seeds/seed_phase2_batch4c.ts' },
+    { name: 'Phase 2 Batch 5A (Grammar Batch 3, Vocab C1/C2, Dialogues)', file: 'scripts/seeds/seed_phase2_batch5a.ts' },
+    { name: 'Phase 2 Batch 5B (Dialogues, Content Packages, Articles)', file: 'scripts/seeds/seed_phase2_batch5b.ts' },
+    { name: 'Phase 2 Batch 5C (IELTS Speaking/Writing, Stories, Articles)', file: 'scripts/seeds/seed_phase2_batch5c.ts' },
   ];
 
   const seedStart = Date.now();

@@ -18,6 +18,7 @@ from datetime import datetime
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8')
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "loaders"))
 
 # Import official keys directly from the lightweight loader (which loads the external JSON)
 from cambridge09_data_t1 import OFFICIAL_LISTENING_KEYS, OFFICIAL_READING_KEYS

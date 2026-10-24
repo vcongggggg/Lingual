@@ -2,51 +2,59 @@
 
 Thư mục `scripts/` chứa toàn bộ các công cụ vận hành, nạp dữ liệu (data ingestion), kiểm thử bảo mật và đối soát chất lượng dữ liệu của dự án LinguaFlow.
 
+Thư mục đã được tái cấu trúc thành các module chuyên biệt, giữ thư mục gốc tinh gọn tuyệt đối (chỉ còn `db_helper.py` và `README.md`).
+
 ---
 
 ## 1. Cấu Trúc Tổng Thể
 
 ```
 scripts/
-├── cambridge*_data_t*.py          # [CORE] Lightweight data loaders cho Cambridge IELTS
-├── import_cambridge*.py           # [CORE] Script nạp dữ liệu IELTS Cambridge vào PostgreSQL
-├── db_verify_cambridge*.py        # [CORE] Script kiểm thử & đối soát độc lập phía Database
-├── db_helper.py                   # [CORE] Module kết nối DB bảo mật & lấy DATABASE_URL
-├── pentest_simulator.ts           # [CORE] Bộ kiểm thử bảo mật API & Web (chạy qua pnpm pentest)
-├── seed_*.ts                      # [CORE] Seeding data mẫu phục vụ môi trường dev & staging
-├── test_clean_db_migrate_seed.ts  # [CORE] Kiểm thử deploy & migrate tự động trên DB trắng
+├── corpus/                        # [IELTS CORPUS] Quản lý dữ liệu Cambridge IELTS
+│   ├── loaders/                   # Lightweight loaders (cambridgeXX_data_tY.py, 0 literal sách)
+│   ├── importers/                 # Script nạp dữ liệu vào 5 bảng PostgreSQL (import_cambridge*.py)
+│   ├── verifiers/                 # SELECT-only đối soát số lượng và đáp án (db_verify_*, verify_*)
+│   └── helpers/                   # Công cụ hỗ trợ patch, parity check, migration columns
 │
-├── parsers/                       # Các parser chuyên biệt trích xuất cấu trúc văn bản
+├── database/                      # [DATABASE] Công cụ bảo trì & kiểm thử database
+│   ├── db_summary.ts              # Báo cáo tổng quan số lượng tất cả bảng trong DB
+│   ├── db_verify.ts               # Kiểm tra phân bổ CEFR, audio, examples của từ vựng
+│   └── test_clean_db_migrate_seed.ts # Kiểm thử migrate & seed tự động trên DB trắng
+│
+├── seeds/                         # [DATABASE SEEDING] Bộ seeding toàn diện cho dev & staging
+│   ├── seed_catchup.ts            # Grammar, dialogues, stories, sentence bank
+│   ├── seed_comprehensive_database.ts # Master comprehensive database seeder
+│   ├── seed_notifications_for_tour.ts # Sample notifications phục vụ tour onboarding
+│   └── seed_phase2_batch*.ts      # Các batch seed Phase 2 (2, 4B, 4C, 5A, 5B, 5C)
+│
+├── security/                      # [BẢO MẬT] Kiểm thử an toàn thông tin & xoay credentials
+│   ├── pentest_simulator.ts       # Giả lập pentest API & Web (SQLi, IDOR, Rate-limit, XSS)
+│   ├── rotate_postgres_password.py# Tự động xoay mật khẩu PostgreSQL an toàn
+│   └── rotate_secrets.ts          # Xoay JWT secret, Session secret & API keys
+│
 ├── qa/                            # [QA & AUDIT] Các bài test route, checklist kiểm thử DoD
+│   ├── check_ci_status.py         # Kiểm tra trạng thái GitHub Actions CI runs
 │   ├── qa_*_test.ts               # Test chuyên sâu từng route (reading, speaking, tutor...)
 │   └── verify-*.mjs               # Checklist kiểm thử tính năng và giao diện
 │
-└── archive/                       # [LƯU TRỮ LỊCH SỬ] Các script tạm thời từ các task trước
-    ├── task_receipts/             # Các script gửi báo cáo task_done cũ (send_*.py)
-    ├── screenshots/               # Script Playwright chụp màn hình UI (capture-*.mjs)
-    ├── crawlers/                  # Các bộ crawl dữ liệu nội dung từ web
-    ├── media_and_assets/          # Script tải và xử lý audio, mascot, cow assets
-    ├── one_off_audits/            # Các script audit và fix lỗi cục bộ trong quá khứ
-    └── legacy_imports/            # Các batch import dữ liệu từ Phase 1 và Phase 2
+├── parsers/                       # Các parser trích xuất cấu trúc văn bản
+│
+├── archive/                       # [LƯU TRỮ LỊCH SỬ] Các script hoàn tất từ các task trước
+│   ├── task_receipts/             # Biên lai nghiệm thu task cũ (send_*.py)
+│   ├── screenshots/               # Script Playwright chụp màn hình UI
+│   ├── crawlers/                  # Các bộ crawl dữ liệu từ web
+│   ├── media_and_assets/          # Script tải và xử lý audio, mascot assets
+│   ├── one_off_audits/            # Các script audit và fix lỗi cục bộ
+│   └── legacy_imports/            # Các batch import dữ liệu từ Phase 1 và Phase 2
+│
+├── db_helper.py                   # [CORE] Module kết nối DB bảo mật & lấy DATABASE_URL
+└── README.md                      # Hướng dẫn kiến trúc thư mục scripts
 ```
 
 ---
 
-## 2. Các Script Cốt Lõi Tại Thư Mục Gốc
-
-| Tệp / Nhóm Tệp | Mô Tả Chức Năng |
-| :--- | :--- |
-| `cambridge{XX}_data_t{Y}.py` | Lightweight loader đọc JSON ngoài repo (`C:\Mod\muse-data-exchange\book-corpus-mapped\`) cho từng Test. Đảm bảo 0 literal sách trong repo. |
-| `import_cambridge{XX}_*.py` | Import dữ liệu IELTS vào 5 bảng PostgreSQL (`ielts_reading_passages`, `ielts_listening_sections`, `ielts_writing_topics`, `ielts_writing_models`, `ielts_speaking_topics`). |
-| `db_verify_cambridge{XX}_*.py`| Độc lập SELECT-only đối soát số lượng bản ghi và đáp án vs Answer Key in gốc. |
-| `db_helper.py` | Quản lý credentials tập trung cho mọi script Python truy vấn PostgreSQL. |
-| `pentest_simulator.ts` | Giả lập tấn công khai thác bảo mật (SQLi, IDOR, Rate-limit, XSS, Broken Auth). |
-| `seed_*.ts` | Nạp dữ liệu seed chuẩn hóa cho ngữ pháp, idioms, shadowing, hội thoại. |
-
----
-
-## 3. Quy Tắc Bảo Mật & Kỹ Thuật Khi Viết Script Mới
+## 2. Quy Tắc Bảo Mật & Kỹ Thuật Khi Viết Script Mới
 
 1. **Tuyệt đối không nhúng text sách vào mã nguồn:** Mọi nội dung IELTS Cambridge phải được nạp từ file JSON bên ngoài repository (`C:\Mod\muse-data-exchange`).
 2. **Không commit mật khẩu trần:** Sử dụng `db_helper.py` để kết nối PostgreSQL thay vì hardcode password.
-3. **Phân loại script sau khi xong:** Script dùng một lần (one-off) phục vụ nhiệm vụ tạm thời nên được lưu trữ vào `scripts/archive/` để giữ thư mục gốc luôn tinh gọn và dễ bảo trì.
+3. **Tuân thủ đúng thư mục chức năng:** Không lưu script bừa bãi ở thư mục gốc `scripts/`. Hãy đặt vào đúng thư mục con: `corpus/`, `database/`, `seeds/`, `security/`, `qa/`, hoặc `archive/`.

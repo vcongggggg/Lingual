@@ -11,7 +11,7 @@
     "test": "pnpm --recursive test",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "prisma db seed",
-    "pentest": "pnpm --filter @linguaflow/api exec tsx ../../scripts/pentest_simulator.ts",
+    "pentest": "pnpm --filter @linguaflow/api exec tsx ../../scripts/security/pentest_simulator.ts",
     "seed:comprehensive": "pnpm --filter @linguaflow/api exec tsx ../../prisma/seed-comprehensive.ts"
   },
   "prisma": {
