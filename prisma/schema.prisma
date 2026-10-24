@@ -1467,6 +1467,23 @@ model GameWordPool {
   @@map("game_word_pools")
 }
 
+model GameQuestion {
+  id        String   @id
+  gameType  String   @map("game_type")
+  prompt    String   @db.Text
+  choices   Json?
+  answer    String   @db.Text
+  level     String   @default("A2")
+  source    String   @default("script-derived")
+  sourceRef String?  @map("source_ref")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([gameType])
+  @@index([level])
+  @@map("game_questions")
+}
+
 model GrammarExplanation {
   id                 String   @id
   topic              String
