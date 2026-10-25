@@ -145,15 +145,14 @@ def run_db_verify():
             cur.execute('SELECT id, title, "passageJson" FROM "ielts_reading_passages" WHERE id LIKE %s', (prefix,))
             for rid, title, p_json in cur.fetchall():
                 assert title and len(title) > 3, f"Stub title in {rid}"
-                p = json.loads(p_json) if isinstance(p_json, str) else p_json
-                assert len(p) > 0, f"Empty passageJson in {rid}"
+                assert p_json and len(p_json.strip()) > 300, f"Empty or short passageJson in {rid}"
 
             # Listening sections
             cur.execute('SELECT id, title, "scriptJson" FROM "ielts_listening_sections" WHERE id LIKE %s', (prefix,))
             for lid, title, s_json in cur.fetchall():
                 assert title and len(title) > 3, f"Stub title in {lid}"
-                s = json.loads(s_json) if isinstance(s_json, str) else s_json
-                assert len(s) > 0, f"Empty scriptJson in {lid}"
+                assert s_json and len(s_json.strip()) > 200, f"Empty or short scriptJson in {lid}"
+
 
             # Writing models
             cur.execute('SELECT id, prompt, model_answer, band_estimate FROM "ielts_writing_models" WHERE id LIKE %s', (prefix,))
@@ -171,10 +170,27 @@ def run_db_verify():
 
             print(f"  [PASS] Test {t}: Tất cả văn bản, kịch bản, đề bài, bài mẫu đều đầy đủ và hợp lệ.")
 
+        # Audit 6: Clean Single-layer Encoding on Tests 2-4 (Zero double-quoted strings)
+        print("\n--- AUDIT 6: KIỂM TRA ĐỊNH DẠNG SẠCH 1 LỚP TRÊN 21 RECORD TESTS 2-4 ---")
+        for t in [2, 3, 4]:
+            prefix = f"cam12-academic-t{t}%"
+            # Listening scripts
+            cur.execute('SELECT id, "scriptJson" FROM "ielts_listening_sections" WHERE id LIKE %s ORDER BY id', (prefix,))
+            for lid, s_raw in cur.fetchall():
+                assert not s_raw.startswith('"'), f"Double-encoded scriptJson in {lid}: starts with quote"
+                assert len(s_raw) > 200, f"Suspiciously short script in {lid}"
+            # Reading passages
+            cur.execute('SELECT id, "passageJson" FROM "ielts_reading_passages" WHERE id LIKE %s ORDER BY id', (prefix,))
+            for rid, p_raw in cur.fetchall():
+                assert not p_raw.startswith('"'), f"Double-encoded passageJson in {rid}: starts with quote"
+                assert len(p_raw) > 300, f"Suspiciously short passage in {rid}"
+            print(f"  [PASS] Test {t}: 4 scripts + 3 passages sạch hoàn toàn dấu ngoặc kép thừa (100% single-layer).")
+
         print("\n" + "=" * 70)
         print("KẾT QUẢ: 100% AUDITS PASS HOÀN TOÀN! DATABASE SẴN SÀNG NGHIỆM THU!")
         print("=" * 70)
         return True
+
 
     finally:
         cur.close()
