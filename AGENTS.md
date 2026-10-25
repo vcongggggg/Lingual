@@ -15,3 +15,11 @@
 ## 2. QUY TẮC ĐỊNH DẠNG (BẮT BUỘC)
 - **TUYỆT ĐỐI KHÔNG dùng cú pháp LaTeX / MathJax** (như `$ ... $`, `$$ ... $$`, `\text{...}`).
 - Trình bày dạng plain text, in đậm, markdown tables hoặc code blocks rõ ràng.
+
+## 3. QUY TẮC CẤM GỌI TOOL MẠNG NGOÀI & ZERO MODAL APPROVAL (QUAN TRỌNG)
+- **TUYỆT ĐỐI KHÔNG gọi các tool duyệt web bên ngoài** (`read_url_content`, `browser_subagent`, `search_web`).
+- **Lý do:** Gọi tool mạng bên ngoài sẽ bị IDE kích hoạt popup bảo mật xin cấp quyền (permission prompt) hoặc bị firewall/Cloudflare chặn HTTP 403, khiến agent bị treo cứng vô thời hạn khi người dùng không ngồi trực laptop.
+- **Quy chuẩn khai thác dữ liệu:**
+  - 100% ngữ liệu sách Cambridge IELTS (reading, listening, writing, speaking, answer keys) BẮT BUỘC đọc và trích xuất trực tiếp từ kho scan nội bộ tại:
+    `C:\Mod\muse-data-exchange\book-corpus\`
+  - Nếu văn bản OCR bị dính chữ hoặc lỗi khoảng trắng, tự dùng regex Python làm sạch, tuyệt đối không lên mạng cào lại web.
