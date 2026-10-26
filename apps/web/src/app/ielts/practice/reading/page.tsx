@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../../../lib/api';
 import { TeacherExplanationPanel } from '../../../../components/ui/TeacherExplanationPanel';
+import { QuestionImage } from '../../../../components/common/QuestionImage';
 
 export default function IeltsReadingPracticePage() {
   const [questionsList, setQuestionsList] = useState<any[]>([]);
@@ -270,6 +271,7 @@ Water from aqueducts fed three critical destinations: public fountains (lacus) f
                     }`}
                   >
                     <div className="space-y-2.5">
+                      <QuestionImage imageRef={q.imageRef} alt={`Reading Question Diagram`} />
                       <p className="text-sm font-black text-ink leading-snug font-sans">
                         {q.prompt}
                       </p>

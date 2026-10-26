@@ -23,11 +23,13 @@ import { LingLing } from '../ui/LingLing';
 import { StampSlam } from '../ui/StampSlam';
 import { api } from '../../lib/api';
 import { getFormattedDateInTimezone } from '@linguaflow/domain';
+import { QuestionImage } from '../common/QuestionImage';
 
 export interface DailyQuestion {
   id: number;
   type: 'vocab_mcq' | 'listening_vocab' | 'grammar';
   typeLabel: string;
+  imageRef?: string | null;
   question: string;
   subPrompt?: string;
   targetWord?: string;
@@ -476,6 +478,7 @@ export function DailyChallenge() {
 
           {/* Khung Câu Hỏi */}
           <div className="space-y-4">
+            <QuestionImage imageRef={currentQ.imageRef} alt="Minh họa câu hỏi" />
             <div className="space-y-1.5">
               <span className="text-xs font-mono font-bold text-ink-muted uppercase">
                 Yêu cầu câu hỏi:

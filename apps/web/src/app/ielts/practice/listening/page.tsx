@@ -17,6 +17,7 @@ import {
 import { api } from '../../../../lib/api';
 import { LingLing } from '../../../../components/ui/LingLing';
 import { TeacherExplanationPanel } from '../../../../components/ui/TeacherExplanationPanel';
+import { QuestionImage } from '../../../../components/common/QuestionImage';
 
 export default function IeltsListeningPracticePage() {
   const [questionsList, setQuestionsList] = useState<any[]>([]);
@@ -352,6 +353,7 @@ export default function IeltsListeningPracticePage() {
                 }`}
               >
                 <div className="space-y-3">
+                  <QuestionImage imageRef={q.imageRef} alt={`Listening Question ${qIdx + 1} Diagram`} />
                   <h3 className="text-base font-black text-ink leading-snug font-sans">
                     {q.prompt}
                   </h3>

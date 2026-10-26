@@ -31,6 +31,7 @@ import { insightsRouter } from './routes/insights.js';
 import { notificationsRouter } from './routes/notifications.js';
 import { pushRouter } from './routes/push.js';
 import { placementRouter } from './routes/placement.js';
+import { questionImageRouter } from './routes/questionImage.js';
 import { notificationTriggerEngine } from './services/notificationTriggerEngine.js';
 import { checkDatabaseConnection, isDatabaseConnected, isDatabaseAvailable } from './lib/prisma.js';
 
@@ -164,6 +165,8 @@ app.use('/api/v1/articles', (req, res, next) => {
 app.use('/api/v1/insights', insightsRouter);
 app.use('/api/v1/notifications', notificationsRouter);
 app.use('/api/v1/push', pushRouter);
+app.use('/api/v1/question-image', questionImageRouter);
+app.use('/api/question-image', questionImageRouter);
 
 // OWASP A05: Catch-all 404 handler for API routes (NEVER return HTML for API requests)
 app.use('/api', (req: express.Request, res: express.Response) => {

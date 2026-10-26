@@ -1123,6 +1123,7 @@ model GrammarQuestion {
   skillFocus    String   @default("grammar")
   source        String   @default("ai-generated")
   verified      Boolean  @default(false)
+  imageRef      String?
   createdAt     DateTime @default(now())
 
   @@index([cefrLevel])

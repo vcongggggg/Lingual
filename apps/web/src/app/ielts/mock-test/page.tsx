@@ -16,6 +16,7 @@ import {
 import { api } from '../../../lib/api';
 import { LingLing } from '../../../components/ui/LingLing';
 import { StampSlam } from '../../../components/ui/StampSlam';
+import { QuestionImage } from '../../../components/common/QuestionImage';
 
 export default function IeltsMockTestPage() {
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
@@ -316,6 +317,7 @@ export default function IeltsMockTestPage() {
               </div>
 
               {/* Đề bài câu hỏi */}
+              <QuestionImage imageRef={q.imageRef} alt={`Mock Test Question ${q.id} Diagram`} />
               <p className="text-base font-black text-ink leading-snug font-sans">
                 {q.prompt}
               </p>
