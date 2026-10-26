@@ -70,7 +70,7 @@ export function validateImageRequest(fileParam: unknown, assetsDir = getQuestion
 
 const handleGetImage = (req: Request, res: Response) => {
   const validation = validateImageRequest(req.query.file);
-  if (!validation.ok) {
+  if (validation.ok === false) {
     res.status(validation.status).json({ error: validation.error, status: validation.status });
     return;
   }
