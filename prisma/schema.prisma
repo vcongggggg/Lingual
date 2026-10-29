@@ -1112,19 +1112,26 @@ model StampLedger {
 // ============================================================================
 
 model GrammarQuestion {
-  id            String   @id
-  question      String
-  optionsJson   String   // JSON string array of options
-  correctAnswer String
-  explanationVi String?
-  cefrLevel     String   @default("A2")
-  topic         String?
-  topicVi       String?
-  skillFocus    String   @default("grammar")
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  imageRef      String?
-  createdAt     DateTime @default(now())
+  id             String   @id
+  question       String
+  optionsJson    String   // JSON string array of options
+  correctAnswer  String?
+  explanationVi  String?
+  cefrLevel      String   @default("A2")
+  topic          String?
+  topicVi        String?
+  skillFocus     String   @default("grammar")
+  source         String   @default("ai-generated")
+  verified       Boolean  @default(false)
+  imageRef       String?
+  questionNumber Int?
+  type           String?
+  sourceRef      String?
+  gapReason      String?
+  derived        Boolean? @default(false)
+  keyTypo        String?
+  weakMatch      Boolean? @default(false)
+  createdAt      DateTime @default(now())
 
   @@index([cefrLevel])
   @@map("grammar_questions")
