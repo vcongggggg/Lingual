@@ -1,1851 +1,1859 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
-}
-
-enum Role {
-  STUDENT
-  CONTENT_EDITOR
-  CONTENT_REVIEWER
-  ADMIN
-  SUPER_ADMIN
-}
-
-model User {
-  id               String   @id @default(uuid())
-  email            String   @unique
-  passwordHash     String?
-  googleId         String?  @unique
-  avatarUrl        String?
-  authProvider     String   @default("local")               // "local" | "google"
-  displayName      String
-  role             Role     @default(STUDENT)
-  isActive         Boolean  @default(true)
-  interfaceLocale  String   @default("vi")                  // UI locale (independent of learning language)
-  timezone         String   @default("Asia/Ho_Chi_Minh")   // User timezone for streak & SRS
-  dailyGoalMinutes Int      @default(15)
-  totalXP          Int      @default(0)
-  currentStreak    Int      @default(0)
-  streakFreezes    Int      @default(1)                     // Number of streak freezes available
-  lastActiveDate   String?                                  // Formatted YYYY-MM-DD in user's timezone
-  leavePasses             Int      @default(0) @map("leave_passes") // Weekly leave passes (1 max, resets Monday)
-  lastLeavePassGrantWeek  String?                                  // YYYY-Www in Asia/Ho_Chi_Minh
-  lastLeavePassUsedDate   String?                                  // YYYY-MM-DD when pass was last consumed
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-
-  sessions         Session[]
-  wordStates       UserWordState[]
-  lessonProgress   UserLessonProgress[]
-  gameSessions     GameSession[]
-  gameStats        UserGameStat[]
-  userAchievements UserAchievement[]
-  attempts         AttemptSession[]
-  ieltsAttempts    IeltsMockAttempt[]
-  ieltsWritings    IeltsWritingSubmission[]
-  chatSessions     ChatSession[]
-  writingAttempts  WritingAttempt[]
-  speakingAttempts SpeakingAttempt[]
-  readingAttempts  ReadingAttempt[]
-  examAttempts     ExamAttempt[]
-  communityProfile CommunityProfile?
-  studyNotes       StudyNote[]
-  goals            LearningGoal[]
-  activityLogs     DailyActivityLog[]
-  folders          VocabularyFolder[]
-  bookmarks        UserBookmark[]
-
-  // Phân hệ bổ sung 2026
-  readingProgress      ReadingUserProgress[]
-  tutorSnapshots       TutorContextSnapshot[]
-  adaptivePlans        AdaptiveLearningPlan[]
-  tutorRecommendations TutorRecommendation[]
-  srsReviewLogs        SrsReviewLog[]
-  questProgress        UserQuestProgress[]
-  stampLedgers         StampLedger[]
-  notifications          Notification[]
-  notificationPreference NotificationPreference?
-  pushSubscriptions      PushSubscription[]
-  cowWeeklyReports       CowWeeklyReport[]
-  cowStudyPlan           CowStudyPlan?
-  cefrLevel              String?
-  placementAttempts      PlacementAttempt[]
-
-  @@map("users")
-}
-
-model PlacementAttempt {
-  id                 String   @id @default(uuid())
-  userId             String
-  takenAt            DateTime @default(now())
-  level              String
-  bandEstimate       String
-  sectionScoresJson  String
-  answersJson        String
-  questionIdsJson    String
-  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@map("placement_attempts")
-}
-
-model Session {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  tokenHash String
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-
-  @@map("sessions")
-}
-
-model Course {
-  id                 String   @id @default(uuid())
-  sourceLanguageCode String   @default("vi")
-  targetLanguageCode String   @default("en")
-  cefrLevel          String   @default("A1")
-  title              String
-  description        String
-  units              Unit[]
-
-  @@map("courses")
-}
-
-model Unit {
-  id          String   @id @default(uuid())
-  courseId    String?
-  course      Course?  @relation(fields: [courseId], references: [id], onDelete: SetNull)
-  title       String
-  description String
-  order       Int
-  iconName    String   @default("book")
-  lessons     Lesson[]
-
-  @@map("units")
-}
-
-model Lesson {
-  id          String         @id @default(uuid())
-  unitId      String
-  unit        Unit           @relation(fields: [unitId], references: [id], onDelete: Cascade)
-  title       String
-  description String
-  order       Int
-  xpReward    Int            @default(20)
-  status      String         @default("published") // "draft" | "review" | "published"
-  createdBy   String?
-  exercises   QuizExercise[]
-  words       Vocabulary[]
-  progress    UserLessonProgress[]
-
-  @@map("lessons")
-}
-
-model QuizExercise {
-  id            String   @id @default(uuid())
-  lessonId      String
-  lesson        Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
-  type          String   // "multiple_choice", "scramble", "fill_blank", "typing"
-  prompt        String
-  optionsJson   String   // JSON string array of options
-  correctAnswer String
-  explanation   String?
-  status        String   @default("published")
-  createdBy     String?
-
-  @@map("quiz_exercises")
-}
-
-model Vocabulary {
-  id                 String   @id @default(uuid())
-  lessonId           String?
-  lesson             Lesson?  @relation(fields: [lessonId], references: [id], onDelete: SetNull)
-  subTopicId         String?
-  subTopic           SubTopic? @relation(fields: [subTopicId], references: [id], onDelete: SetNull)
-  cefrLevel          String   @default("A1")
-  targetText         String
-  translation        String
-  phonetic           String?
-  phoneticUs         String?
-  phoneticUk         String?
-  partOfSpeech       String?
-  audioUrl           String?
-  exampleAudioUrl    String?
-  exampleSentence    String?
-  exampleTranslation String?
-  collocationsJson   String?  @default("[]")
-  synonymsJson       String?  @default("[]")
-  antonymsJson       String?  @default("[]")
-  frequencyRank      Int?
-  meaningEn          String?  @map("meaning_en")
-  meaningViSource    String?  @map("meaning_vi_source")
-  source             String?
-  license            String?
-  wordFamilyJson     String?  @default("[]") @map("word_family_json")
-  wordFormsJson      Json?
-  category           String   @default("general")
-  status             String   @default("published")
-  createdBy          String?
-
-  userStates    UserWordState[]
-  srsReviewLogs SrsReviewLog[]
-  bookmarks     UserBookmark[]
-  sentenceLinks WordSentenceLink[]
-
-  @@map("vocabularies")
-}
-
-model UserWordState {
-  id          String     @id @default(uuid())
-  userId      String
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  wordId      String
-  word        Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
-  repetition  Int        @default(0)
-  interval    Int        @default(1)
-  efactor     Float      @default(2.5)
-  stability   Float      @default(2.0)
-  difficulty  Float      @default(5.0)
-  state       String     @default("review")
-  lapses      Int        @default(0)
-  dueDate     DateTime   @default(now())
-  lastQuality Int        @default(0)
-  updatedAt   DateTime   @updatedAt
-
-  @@unique([userId, wordId])
-  @@map("user_word_states")
-}
-
-model UserLessonProgress {
-  id          String   @id @default(uuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  lessonId    String
-  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
-  completed   Boolean  @default(false)
-  bestScore   Int      @default(0)
-  completedAt DateTime @default(now())
-
-  @@unique([userId, lessonId])
-  @@map("user_lesson_progress")
-}
-
-model AttemptSession {
-  id          String   @id @default(uuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  sourceType  String   // "lesson", "game", "srs"
-  sourceId    String
-  startedAt   DateTime @default(now())
-  completedAt DateTime?
-
-  @@map("attempt_sessions")
-}
-
-model GameSession {
-  id              String   @id @default(uuid())
-  attemptId       String   @unique
-  userId          String
-  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  gameType        String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz", "lingo_wordle", "sound_reflex"
-  score           Int
-  accuracy        Float
-  xpEarned        Int
-  durationSeconds Int
-  comboMax        Int      @default(1)
-  metadataJson    String?
-  createdAt       DateTime @default(now())
-
-  @@index([userId])
-  @@index([gameType, score])
-  @@map("game_sessions")
-}
-
-model UserGameStat {
-  id               String   @id @default(uuid())
-  userId           String
-  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  gameType         String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz", "lingo_wordle", "sound_reflex"
-  highScore        Int      @default(0)
-  totalGamesPlayed Int      @default(0)
-  totalWins        Int      @default(0)
-  totalXpEarned    Int      @default(0)
-  avgAccuracy      Float    @default(0.0)
-  lastPlayedAt     DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-
-  @@unique([userId, gameType])
-  @@index([gameType, highScore])
-  @@map("user_game_stats")
-}
-
-model Achievement {
-  id          String   @id @default(uuid())
-  code        String   @unique
-  nameKey     String   // i18n translation key
-  icon        String
-  xpBonus     Int      @default(50)
-
-  userAchievements UserAchievement[]
-
-  @@map("achievements")
-}
-
-model UserAchievement {
-  id            String      @id @default(uuid())
-  userId        String
-  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  achievementId String
-  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
-  unlockedAt    DateTime    @default(now())
-
-  @@unique([userId, achievementId])
-  @@map("user_achievements")
-}
-
-// ============================================================================
-// IELTS EXAM PREP MODULE MODELS
-// ============================================================================
-
-model IeltsTrack {
-  id           String   @id @default(uuid())
-  targetBand   Float    @default(6.5) // e.g. 5.5, 6.5, 7.5
-  type         String   @default("academic") // "academic" | "general"
-  description  String
-  createdAt    DateTime @default(now())
-
-  @@map("ielts_tracks")
-}
-
-model IeltsQuestion {
-  id          String   @id @default(uuid())
-  title       String
-  skill       String   // "listening" | "reading" | "writing" | "speaking"
-  type        String   // "academic" | "general"
-  part        String   // e.g. "section_1", "passage_1", "task_1", "task_2"
-  targetBand  Float    @default(6.0) // 5.0, 6.0, 7.0+
-  passageText String?  // Reading passage content
-  audioUrl    String?  // Listening audio URL
-  prompt      String?  // Writing or Speaking prompt
-  content     String   // JSON string containing question set, choices, correct answers, explanation
-  status      String   @default("published") // "draft" | "review" | "published"
-  createdBy   String?
-
-  createdAt   DateTime @default(now())
-
-  @@map("ielts_questions")
-}
-
-model AuditLog {
-  id           String   @id @default(uuid())
-  actorId      String
-  action       String   // e.g. "user.role.update", "lesson.publish", "vocab.delete"
-  resourceType String
-  resourceId   String
-  beforeState  Json?
-  afterState   Json?
-  createdAt    DateTime @default(now())
-
-  @@index([actorId])
-  @@index([action])
-  @@index([createdAt])
-  @@map("audit_logs")
-}
-
-model IeltsMockAttempt {
-  id           String   @id @default(uuid())
-  userId       String
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type         String   @default("academic")
-  startedAt    DateTime @default(now())
-  submittedAt  DateTime @default(now())
-  durationSec  Int      @default(0)
-  rawScoreJson String   // JSON of raw scores per skill {listening: 32, reading: 30}
-  bandScoreJson String  // JSON of band scores per skill {listening: 7.5, reading: 7.0, overall: 7.5}
-
-  writings     IeltsWritingSubmission[]
-
-  @@map("ielts_mock_attempts")
-}
-
-model IeltsWritingSubmission {
-  id            String           @id @default(uuid())
-  userId        String
-  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attemptId     String?
-  attempt       IeltsMockAttempt? @relation(fields: [attemptId], references: [id], onDelete: SetNull)
-  taskType      String           // "task_1" | "task_2"
-  prompt        String
-  essayText     String
-  wordCount     Int
-  overallBand   Float
-  taskAchieveBand Float
-  coherenceBand   Float
-  lexicalBand     Float
-  grammarBand     Float
-  feedbackJson  String           // JSON of detailed comments per criteria + suggestions
-  createdAt     DateTime         @default(now())
-
-  @@map("ielts_writing_submissions")
-}
-
-model ChatSession {
-  id        String        @id @default(uuid())
-  userId    String
-  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt DateTime      @default(now())
-  messages  ChatMessage[]
-
-  @@map("chat_sessions")
-}
-
-model ChatMessage {
-  id           String      @id @default(uuid())
-  sessionId    String
-  session      ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-  role         String      // "user" | "assistant"
-  content      String
-  sourceType   String?     // "llm" | "rag" | "fallback"
-  ragRefs      String?     // JSON string of Vocabulary/IeltsQuestion/Lesson references used
-  pageContext  String?     // route at time of message
-  createdAt    DateTime    @default(now())
-
-  @@map("chat_messages")
-}
-
-// ============================================================================
-// LAB 13: WRITING LAB PERSISTENCE MODELS
-// ============================================================================
-
-model WritingAttempt {
-  id         String   @id @default(uuid())
-  userId     String
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  promptId   String
-  mode       String   // "see-write" | "guided" | "free"
-  content    String
-  wordCount  Int
-  score      Int
-  xpAwarded  Int      @default(0)
-  durationMs Int      @default(0)
-  createdAt  DateTime @default(now())
-
-  @@index([userId, createdAt])
-  @@map("writing_attempts")
-}
-
-// ============================================================================
-// LAB 14: READING LAB PERSISTENCE MODELS
-// ============================================================================
-
-model ReadingAttempt {
-  id                 String   @id @default(uuid())
-  userId             String
-  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  articleId          String
-  readingTimeSeconds Int
-  wpm                Int
-  score              Int
-  accuracy           Float
-  xpAwarded          Int      @default(0)
-  answersJson        String   // JSON string of question responses
-  createdAt          DateTime @default(now())
-
-  @@index([userId, createdAt])
-  @@map("reading_attempts")
-}
-
-// ============================================================================
-// LAB 15: STANDARDIZED EXAM PRACTICE PERSISTENCE MODELS
-// ============================================================================
-
-model ExamAttempt {
-  id             String   @id @default(uuid())
-  userId         String
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  examId         String
-  status         String   @default("active") // "active" | "completed" | "expired"
-  startedAt      DateTime @default(now())
-  expiresAt      DateTime
-  submittedAt    DateTime?
-  elapsedSeconds Int      @default(0)
-  answersJson    String   @default("[]") // JSON string of selected answers
-  resultJson     String?  // JSON string of evaluated results
-  createdAt      DateTime @default(now())
-
-  @@index([userId, status])
-  @@map("exam_attempts")
-}
-
-// ============================================================================
-// LAB 16: COMMUNITY & SOCIAL LEARNING PERSISTENCE MODELS
-// ============================================================================
-
-model CommunityProfile {
-  id             String   @id @default(uuid())
-  userId         String   @unique
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  bio            String   @default("")
-  avatar         String   @default("mascot-scholar")
-  targetLanguage String   @default("en")
-  currentLevel   String   @default("B1 Intermediate")
-  visibility     String   @default("public") // "public" | "friends_only" | "private"
-  badgesJson     String   @default("[]")
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  @@map("community_profiles")
-}
-
-model Friendship {
-  id          String   @id @default(uuid())
-  requesterId String
-  addresseeId String
-  status      String   @default("accepted") // "pending" | "accepted" | "blocked"
-  createdAt   DateTime @default(now())
-
-  @@unique([requesterId, addresseeId])
-  @@index([requesterId])
-  @@index([addresseeId])
-  @@map("friendships")
-}
-
-model StudyNote {
-  id         String        @id @default(uuid())
-  authorId   String
-  author     User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  title      String
-  content    String
-  tagsJson   String        @default("[]")
-  likesCount Int           @default(0)
-  isPublic   Boolean       @default(true)
-  createdAt  DateTime      @default(now())
-  updatedAt  DateTime      @updatedAt
-  comments   NoteComment[]
-  reactions  NoteReaction[]
-
-  @@index([authorId, createdAt])
-  @@map("study_notes")
-}
-
-model NoteComment {
-  id        String    @id @default(uuid())
-  noteId    String
-  note      StudyNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
-  authorId  String
-  content   String
-  createdAt DateTime  @default(now())
-
-  @@index([noteId])
-  @@map("note_comments")
-}
-
-model NoteReaction {
-  id        String    @id @default(uuid())
-  noteId    String
-  note      StudyNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
-  userId    String
-  type      String    // "like" | "celebrate" | "insightful" | "helpful"
-  createdAt DateTime  @default(now())
-
-  @@unique([noteId, userId, type])
-  @@map("note_reactions")
-}
-
-model StudyGroup {
-  id             String        @id @default(uuid())
-  name           String
-  description    String
-  targetLanguage String        @default("en")
-  level          String        @default("Intermediate")
-  ownerId        String
-  isPrivate      Boolean       @default(false)
-  createdAt      DateTime      @default(now())
-  members        GroupMember[]
-
-  @@map("study_groups")
-}
-
-model GroupMember {
-  id       String     @id @default(uuid())
-  groupId  String
-  group    StudyGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
-  userId   String
-  role     String     @default("member") // "owner" | "admin" | "member"
-  joinedAt DateTime   @default(now())
-
-  @@unique([groupId, userId])
-  @@index([userId])
-  @@map("group_members")
-}
-
-// ============================================================================
-// LAB 17: LEARNING ANALYTICS & GOALS PERSISTENCE MODELS
-// ============================================================================
-
-model LearningGoal {
-  id                 String   @id @default(uuid())
-  userId             String
-  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  targetDailyMinutes Int      @default(30)
-  targetWeeklyXP     Int      @default(500)
-  targetSkill        String   @default("all")
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-
-  @@index([userId])
-  @@map("learning_goals")
-}
-
-model DailyActivityLog {
-  id               String   @id @default(uuid())
-  userId           String
-  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  date             String   // Formatted YYYY-MM-DD
-  activeMinutes    Int      @default(0)
-  xpEarned         Int      @default(0)
-  lessonsCompleted Int      @default(0)
-  reviewsCompleted Int      @default(0)
-  createdAt        DateTime @default(now())
-
-  @@unique([userId, date])
-  @@index([userId, date])
-  @@map("daily_activity_logs")
-}
-
-// ============================================================================
-// LAB 18: SPEAKING LAB PERSISTENCE MODELS
-// ============================================================================
-
-model SpeakingAttempt {
-  id                  String   @id @default(uuid())
-  userId              String
-  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  promptId            String
-  mode                String   // "repetition" | "shadowing" | "picture" | "guided" | "situation" | "pronunciation" | "free"
-  transcript          String
-  durationMs          Int      @default(0)
-  score               Int
-  pronunciationScore  Int
-  fluencyScore        Int
-  xpAwarded           Int      @default(0)
-  createdAt           DateTime @default(now())
-
-  @@index([userId, createdAt])
-  @@map("speaking_attempts")
-}
-
-// ============================================================================
-// LAB 12: VOCABULARY FOLDERS PERSISTENCE MODELS
-// ============================================================================
-
-model VocabularyFolder {
-  id        String             @id @default(uuid())
-  userId    String
-  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  name      String
-  color     String             @default("blue")
-  icon      String             @default("folder")
-  createdAt DateTime           @default(now())
-  items     FolderVocabulary[]
-
-  @@index([userId])
-  @@map("vocabulary_folders")
-}
-
-model FolderVocabulary {
-  id       String           @id @default(uuid())
-  folderId String
-  folder   VocabularyFolder @relation(fields: [folderId], references: [id], onDelete: Cascade)
-  wordId   String
-  addedAt  DateTime         @default(now())
-
-  @@unique([folderId, wordId])
-  @@index([folderId])
-  @@map("folder_vocabularies")
-}
-
-model UserBookmark {
-  id        String     @id @default(uuid())
-  userId    String
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  wordId    String
-  word      Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
-  createdAt DateTime   @default(now())
-
-  @@unique([userId, wordId])
-  @@index([userId])
-  @@index([wordId])
-  @@map("user_bookmarks")
-}
-
-// ============================================================================
-// LAB 14: READING LAB PERSISTENCE MODELS
-// ============================================================================
-
-model ReadingArticle {
-  id               String                @id @default(uuid())
-  title            String
-  subtitle         String
-  level            String                // "A1" | "A2" | "B1" | "B2" | "C1"
-  topic            String                // "Daily Life", "Technology", etc.
-  author           String                @default("LinguaFlow Editorial")
-  estimatedMinutes Int                   @default(3)
-  wordCount        Int                   @default(150)
-  coverImage       String?
-  status           String                @default("published")
-  createdBy        String?
-  createdAt        DateTime              @default(now())
-  updatedAt        DateTime              @updatedAt
-
-  paragraphs       ReadingParagraph[]
-  questions        ReadingQuestion[]
-  userProgress     ReadingUserProgress[]
-
-  @@map("reading_articles")
-}
-
-model ReadingParagraph {
-  id         String         @id @default(uuid())
-  articleId  String
-  article    ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  order      Int
-  english    String         @db.Text
-  vietnamese String         @db.Text
-  audioUrl   String?
-
-  @@index([articleId, order])
-  @@map("reading_paragraphs")
-}
-
-model ReadingQuestion {
-  id               String         @id @default(uuid())
-  articleId        String
-  article          ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  order            Int
-  type             String         // "main-idea", "factual", "inference", "vocabulary", "true-false"
-  question         String
-  optionsJson      String         // JSON array of strings
-  correctAnswer    String
-  explanation      String         @db.Text
-  difficulty       String         @default("A1")
-  relatedParagraph Int?
-
-  @@index([articleId, order])
-  @@map("reading_questions")
-}
-
-model ReadingUserProgress {
-  id               String         @id @default(uuid())
-  userId           String
-  user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  articleId        String
-  article          ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  currentParagraph Int            @default(0)
-  scrollProgress   Float          @default(0)
-  completed        Boolean        @default(false)
-  updatedAt        DateTime       @updatedAt
-
-  @@unique([userId, articleId])
-  @@map("reading_user_progress")
-}
-
-// ============================================================================
-// LAB 13: WRITING LAB PERSISTENCE MODELS
-// ============================================================================
-
-model WritingPrompt {
-  id             String               @id @default(uuid())
-  mode           String               // "see-write" | "guided" | "free"
-  difficulty     String               // "A1" | "A2" | "B1" | "B2" | "C1"
-  title          String
-  instruction    String               @db.Text
-  imageHint      String?
-  scenario       String?              @db.Text
-  targetWords    String               @default("[]")
-  targetGrammar  String?
-  sampleAnswer   String?              @db.Text
-  category       String               @default("General")
-  minWords       Int                  @default(10)
-  maxWords       Int                  @default(100)
-  status         String               @default("published")
-  createdBy      String?
-  createdAt      DateTime             @default(now())
-
-  guidedSteps    GuidedWritingStep[]
-
-  @@map("writing_prompts")
-}
-
-model GuidedWritingStep {
-  id           String        @id @default(uuid())
-  promptId     String
-  prompt       WritingPrompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
-  stepNumber   Int
-  question     String
-  hint         String?
-  samplePhrase String?
-
-  @@index([promptId, stepNumber])
-  @@map("guided_writing_steps")
-}
-
-model WritingFeedbackReport {
-  id                        String   @id @default(uuid())
-  attemptId                 String   @unique
-  overallScore              Int
-  grammarScore              Int
-  vocabularyScore           Int
-  naturalnessScore          Int
-  relevanceScore            Int
-  completenessScore         Int
-  grade                     String
-  correctionsJson           String   @default("[]")
-  strengthsJson             String   @default("[]")
-  suggestionsJson           String   @default("[]")
-  vocabularySuggestionsJson String   @default("[]")
-  createdAt                 DateTime @default(now())
-
-  @@map("writing_feedback_reports")
-}
-
-// ============================================================================
-// LAB 18: SPEAKING LAB PERSISTENCE MODELS
-// ============================================================================
-
-model SpeakingPrompt {
-  id              String   @id @default(uuid())
-  title           String
-  description     String   @db.Text
-  mode            String   // "pronunciation" | "repetition" | "shadowing" | "guided" | "picture" | "situation" | "free"
-  difficulty      String   @default("A1")
-  cefr            String   @default("A1")
-  topic           String   @default("Daily Life")
-  targetWords     String   @default("[]")
-  targetPhrases   String   @default("[]")
-  sampleAnswer    String?  @db.Text
-  audioSampleUrl  String?
-  durationSeconds Int      @default(30)
-  minWords        Int      @default(5)
-  maxWords        Int      @default(50)
-  tags            String   @default("[]")
-  imagePrompt     String?
-  scenario        String?  @db.Text
-  stepsJson       String?
-  status          String   @default("published")
-  createdBy       String?
-  createdAt       DateTime @default(now())
-
-  @@map("speaking_prompts")
-}
-
-model SpeakingPhonemeFeedback {
-  id                 String   @id @default(uuid())
-  attemptId          String   @unique
-  phonemesJson       String   @default("[]")
-  pronunciationScore Int
-  fluencyScore       Int
-  grammarScore       Int
-  vocabularyScore    Int
-  coherenceScore     Int
-  audioRecordingUrl  String?
-  suggestionsJson    String   @default("[]")
-  createdAt          DateTime @default(now())
-
-  @@map("speaking_phoneme_feedbacks")
-}
-
-// ============================================================================
-// LAB 15: STANDARDIZED EXAMS PERSISTENCE MODELS
-// ============================================================================
-
-model StandardizedExam {
-  id              String        @id @default(uuid())
-  code            String        @unique // e.g. "toeic-test-01", "vstep-b2-01"
-  title           String
-  type            String        // "toeic" | "vstep" | "ielts" | "toefl"
-  difficulty      String        @default("Intermediate")
-  durationMinutes Int           @default(120)
-  totalQuestions  Int           @default(200)
-  passingScore    Int           @default(600)
-  instructions    String?       @db.Text
-  status          String        @default("published")
-  createdAt       DateTime      @default(now())
-
-  sections        ExamSection[]
-
-  @@map("standardized_exams")
-}
-
-model ExamSection {
-  id              String           @id @default(uuid())
-  examId          String
-  exam            StandardizedExam @relation(fields: [examId], references: [id], onDelete: Cascade)
-  sectionType     String           // "listening" | "reading" | "writing" | "speaking"
-  partNumber      Int
-  title           String
-  instructions    String?          @db.Text
-  audioUrl        String?
-  passageText     String?          @db.Text
-  totalQuestions  Int
-  order           Int
-
-  questions       ExamQuestion[]
-
-  @@index([examId, order])
-  @@map("exam_sections")
-}
-
-model ExamQuestion {
-  id             String      @id @default(uuid())
-  sectionId      String
-  section        ExamSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-  questionNumber Int
-  order          Int
-  questionText   String?     @db.Text
-  passageText    String?     @db.Text
-  audioUrl       String?
-  imageUrl       String?
-  optionsJson    String
-  correctAnswer  String
-  explanation    String?     @db.Text
-  points         Int         @default(5)
-
-  @@index([sectionId, order])
-  @@map("exam_questions")
-}
-
-// ============================================================================
-// AI TUTOR & ADAPTIVE LEARNING ENGINE PERSISTENCE MODELS
-// ============================================================================
-
-model TutorContextSnapshot {
-  id              String   @id @default(uuid())
-  userId          String
-  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  cefrEstimate    String   @default("B2")
-  overallScore    Int      @default(75)
-  weaknesses      String   @default("[]")
-  skillScoresJson String   @default("{}")
-  updatedAt       DateTime @updatedAt
-
-  @@index([userId])
-  @@map("tutor_context_snapshots")
-}
-
-model AdaptiveLearningPlan {
-  id          String             @id @default(uuid())
-  userId      String
-  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  planName    String
-  startDate   DateTime           @default(now())
-  endDate     DateTime
-  daysCount   Int                @default(7)
-  status      String             @default("active")
-  createdAt   DateTime           @default(now())
-
-  items       AdaptivePlanItem[]
-
-  @@index([userId, status])
-  @@map("adaptive_learning_plans")
-}
-
-model AdaptivePlanItem {
-  id               String               @id @default(uuid())
-  planId           String
-  plan             AdaptiveLearningPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
-  dayNumber        Int
-  order            Int
-  skill            String
-  title            String
-  focusTopic       String
-  estimatedMinutes Int                  @default(15)
-  targetDrillUrl   String
-  completed        Boolean              @default(false)
-  completedAt      DateTime?
-  score            Int?
-
-  @@index([planId, dayNumber])
-  @@map("adaptive_plan_items")
-}
-
-model TutorRecommendation {
-  id          String   @id @default(uuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  skill       String
-  title       String
-  description String   @db.Text
-  priority    String   @default("medium")
-  actionUrl   String
-  reason      String
-  isDismissed Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  @@index([userId, isDismissed])
-  @@map("tutor_recommendations")
-}
-
-// ============================================================================
-// VOCABULARY MAJOR TOPICS & ENHANCED SRS 2.0 MODELS
-// ============================================================================
-
-model MajorTopic {
-  id            String     @id @default(uuid())
-  title         String
-  levelBadge    String     @default("Standard")
-  categoryGroup String     @default("cefr")
-  description   String     @db.Text
-  coverImage    String?
-  order         Int        @default(0)
-  createdAt     DateTime   @default(now())
-
-  subTopics     SubTopic[]
-
-  @@map("major_topics")
-}
-
-model SubTopic {
-  id           String       @id @default(uuid())
-  majorTopicId String
-  majorTopic   MajorTopic   @relation(fields: [majorTopicId], references: [id], onDelete: Cascade)
-  title        String
-  coverImage   String?
-  order        Int          @default(0)
-
-  words        Vocabulary[]
-
-  @@index([majorTopicId, order])
-  @@map("sub_topics")
-}
-
-model SrsReviewLog {
-  id             String     @id @default(uuid())
-  userId         String
-  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  wordId         String
-  word           Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
-  reviewedAt     DateTime   @default(now())
-  rating         Int
-  scheduledDays  Int
-  elapsedDays    Int
-  lastInterval   Int
-  newInterval    Int
-  responseTimeMs Int        @default(0)
-
-  @@index([userId, wordId])
-  @@index([reviewedAt])
-  @@map("srs_review_logs")
-}
-
-// ============================================================================
-// GAMIFICATION: DAILY QUESTS & WEEKLY LEAGUES
-// ============================================================================
-
-model DailyQuest {
-  id          String              @id @default(uuid())
-  date        String
-  questType   String
-  title       String
-  targetCount Int
-  xpReward    Int                 @default(20)
-
-  userProgress UserQuestProgress[]
-
-  @@index([date])
-  @@map("daily_quests")
-}
-
-model UserQuestProgress {
-  id           String     @id @default(uuid())
-  userId       String
-  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  questId      String
-  quest        DailyQuest @relation(fields: [questId], references: [id], onDelete: Cascade)
-  currentCount Int        @default(0)
-  isClaimed    Boolean    @default(false)
-  claimedAt    DateTime?
-
-  @@unique([userId, questId])
-  @@map("user_quest_progress")
-}
-
-model WeeklyLeague {
-  id         String   @id @default(uuid())
-  tier       String
-  weekNumber Int
-  year       Int
-  userId     String
-  weeklyXP   Int      @default(0)
-  rank       Int      @default(1)
-  updatedAt  DateTime @updatedAt
-
-  @@unique([tier, weekNumber, year, userId])
-  @@index([tier, weekNumber, year, rank])
-  @@map("weekly_leagues")
-}
-
-// ============================================================================
-// GAMIFICATION: SỔ TEM (STAMP LEDGER - APPEND ONLY)
-// ============================================================================
-
-model StampLedger {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  delta     Int      // +1 (mục tiêu ngày / điểm tuyệt đối), +2 (streak 7 ngày), -1 (AI writing)
-  reason    String   // "DAILY_GOAL" | "PERFECT_SCORE" | "STREAK_7_DAYS" | "AI_WRITING_EVALUATION"
-  createdAt DateTime @default(now())
-
-  @@index([userId, createdAt])
-  @@map("stamp_ledgers")
-}
-
-// ============================================================================
-// DATA PHASE 2: CONTENT REPOSITORIES (GRAMMAR, SHADOWING, DIALOGUES, STORIES)
-// ============================================================================
-
-model GrammarQuestion {
-  id             String   @id
-  question       String
-  optionsJson    String   // JSON string array of options
-  correctAnswer  String?
-  explanationVi  String?
-  cefrLevel      String   @default("A2")
-  topic          String?
-  topicVi        String?
-  skillFocus     String   @default("grammar")
-  source         String   @default("ai-generated")
-  verified       Boolean  @default(false)
-  imageRef       String?
-  questionNumber Int?
-  type           String?
-  sourceRef      String?
-  gapReason      String?
-  derived        Boolean? @default(false)
-  keyTypo        String?
-  weakMatch      Boolean? @default(false)
-  createdAt      DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("grammar_questions")
-}
-
-model ShadowingSentence {
-  id         String   @id
-  textEn     String
-  textVi     String
-  phonetic   String?
-  audioUrl   String?
-  cefrLevel  String   @default("A2")
-  topic      String?
-  focusWords String?  @default("[]")
-  skillFocus String   @default("speaking")
-  source     String   @default("ai-generated")
-  verified   Boolean  @default(false)
-  createdAt  DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("shadowing_sentences")
-}
-
-model DialogueScenario {
-  id            String   @id
-  title         String
-  titleVi       String?
-  topic         String?
-  topicVi       String?
-  location      String?
-  locationVi    String?
-  characters    String?
-  contextDesc   String?
-  linesJson     String   @default("[]")
-  questionsJson String   @default("[]")
-  cefrLevel     String   @default("B1")
-  level         String?
-  speakers      String?
-  viSummary     String?  @map("vi_summary")
-  skillFocus    String   @default("listening")
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  createdAt     DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("dialogue_scenarios")
-}
-
-model StoryTemplate {
-  id                String   @id
-  title             String
-  titleVi           String?
-  mascotReaction    String   @default("storyteller")
-  paragraphsJson    String   @default("[]")
-  slotsJson         String   @default("[]")
-  slotHintsJson     String   @default("[]")
-  quizQuestionsJson String   @default("[]")
-  cefrLevel         String   @default("B1")
-  topic             String?
-  skillFocus        String   @default("reading")
-  source            String   @default("ai-generated")
-  verified          Boolean  @default(false)
-  createdAt         DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("story_templates")
-}
-
-model ContentPackage {
-  id            String   @id
-  topic         String?
-  topicVi       String?
-  cefrLevel     String   @default("A2")
-  dialogueJson  String   @default("{}")
-  dictationJson String   @default("{}")
-  shadowingJson String   @default("{}")
-  wordOrderJson String   @default("[]")
-  quizJson      String   @default("[]")
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  createdAt     DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("content_packages")
-}
-
-model BilingualArticle {
-  id             String   @id
-  title          String
-  titleVi        String?
-  cefrLevel      String   @default("A2")
-  topic          String?
-  topicVi        String?
-  paragraphsJson String   @default("[]")
-  quizJson       String   @default("[]")
-  source         String   @default("ai-generated")
-  verified       Boolean  @default(false)
-  createdAt      DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("bilingual_articles")
-}
-
-model BilingualStory {
-  id         String   @id
-  title      String
-  titleVi    String?
-  cefrLevel  String   @default("A2")
-  topic      String?
-  topicVi    String?
-  pagesJson  String   @default("[]")
-  quizJson   String   @default("[]")
-  source     String   @default("ai-generated")
-  verified   Boolean  @default(false)
-  createdAt  DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("bilingual_stories")
-}
-
-model IeltsReadingPassage {
-  id             String   @id
-  section        String   @default("reading")
-  track          String   @default("academic")
-  cefrLevel      String   @default("B1")
-  difficultyBand String?  @map("difficulty_band")
-  title          String
-  module         String?
-  notes          String?  @db.Text
-  sourceUrl      String?  @map("source_url")
-  passageJson    String   @default("[]")
-  questionsJson  String   @default("[]")
-  source         String   @default("ai-generated")
-  license        String?  @default("n/a (original)")
-  verified       Boolean  @default(false)
-  createdAt      DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@index([difficultyBand])
-  @@map("ielts_reading_passages")
-}
-
-model IeltsListeningSection {
-  id             String   @id
-  section        String   @default("listening")
-  track          String   @default("academic")
-  cefrLevel      String   @default("B1")
-  difficultyBand String?  @map("difficulty_band")
-  title          String
-  titleVi        String?
-  scriptJson     String   @default("[]")
-  questionsJson  String   @default("[]")
-  source         String   @default("ai-generated")
-  license        String?  @default("n/a (original)")
-  verified       Boolean  @default(false)
-  createdAt      DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@index([difficultyBand])
-  @@map("ielts_listening_sections")
-}
-
-model CurriculumUnit {
-  id            String   @id
-  order         Int
-  cefrLevel     String   @default("B1")
-  title         String
-  titleVi       String?
-  description   String
-  descriptionVi String?
-  lessonsJson   String   @default("[]")
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  createdAt     DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("curriculum_units")
-}
-
-model DiaryPrompt {
-  id           String   @id
-  cefrLevel    String   @default("A2")
-  prompt       String
-  promptVi     String?
-  theme        String?
-  hintVi       String?  @map("hint_vi")
-  keywordsJson String   @default("[]")
-  minSentences Int      @default(3)
-  source       String   @default("ai-generated")
-  verified     Boolean  @default(false)
-  createdAt    DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("diary_prompts")
-}
-
-model DailyVocabQuestion {
-  id            String   @id
-  type          String   @default("en_to_vi")
-  cefrLevel     String   @default("A2")
-  question      String
-  optionsJson   String   @default("[]")
-  correctAnswer String
-  explanation   String?
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  createdAt     DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("daily_vocab_questions")
-}
-
-model Idiom {
-  id          String   @id
-  idiom       String
-  meaningVi   String
-  meaningEn   String?
-  exampleEn   String?
-  exampleVi   String?
-  cefrLevel   String   @default("B2")
-  source      String   @default("ai-generated")
-  license     String?  @default("CC BY-SA")
-  verified    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("idioms")
-}
-
-model PhrasalVerb {
-  id         String   @id
-  verb       String
-  meaningVi  String
-  exampleEn  String?
-  exampleVi  String?
-  separable  Boolean  @default(false)
-  cefrLevel  String   @default("B1")
-  source     String   @default("ai-generated")
-  verified   Boolean  @default(false)
-  createdAt  DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("phrasal_verbs")
-}
-
-model Collocation {
-  id          String   @id
-  collocation String
-  type        String   @default("verb+noun")
-  meaningVi   String
-  exampleEn   String?
-  exampleVi   String?
-  cefrLevel   String   @default("B1")
-  source      String   @default("ai-generated")
-  verified    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("collocations")
-}
-
-model SynonymAntonym {
-  id           String   @id
-  word         String
-  meaningVi    String
-  synonymsJson String   @default("[]")
-  antonymsJson String   @default("[]")
-  exampleEn    String?
-  exampleVi    String?
-  cefrLevel    String   @default("B1")
-  source       String   @default("ai-generated")
-  verified     Boolean  @default(false)
-  createdAt    DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("synonyms_antonyms")
-}
-
-model MinimalPair {
-  id           String   @id
-  word1        String
-  word2        String
-  phonetic1    String?
-  phonetic2    String?
-  differenceVi String?
-  exampleEn    String?
-  exampleVi    String?
-  audioUrl1    String?
-  audioUrl2    String?
-  source       String   @default("ai-generated")
-  verified     Boolean  @default(false)
-  createdAt    DateTime @default(now())
-
-  @@map("minimal_pairs")
-}
-
-model TongueTwister {
-  id          String   @id
-  text        String
-  difficulty  String   @default("easy")
-  focusSounds String?
-  guideVi     String?
-  audioUrl    String?
-  source      String   @default("ai-generated")
-  verified    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  @@map("tongue_twisters")
-}
-
-model Proverb {
-  id                   String   @id
-  proverb              String
-  meaningVi            String
-  vietnameseEquivalent String?
-  exampleEn            String?
-  exampleVi            String?
-  source               String   @default("ai-generated")
-  verified             Boolean  @default(false)
-  createdAt            DateTime @default(now())
-
-  @@map("proverbs")
-}
-
-model GameWordPool {
-  id                 String   @id
-  targetText         String
-  translation        String
-  phonetic           String?
-  topic              String
-  topicVi            String?
-  cefrLevel          String   @default("A1")
-  exampleSentence    String?
-  exampleTranslation String?
-  source             String   @default("ai-generated")
-  verified           Boolean  @default(false)
-  createdAt          DateTime @default(now())
-
-  @@index([topic])
-  @@index([cefrLevel])
-  @@map("game_word_pools")
-}
-
-model GameQuestion {
-  id        String   @id
-  gameType  String   @map("game_type")
-  prompt    String   @db.Text
-  choices   Json?
-  answer    String   @db.Text
-  level     String   @default("A2")
-  source    String   @default("script-derived")
-  sourceRef String?  @map("source_ref")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([gameType])
-  @@index([level])
-  @@map("game_questions")
-}
-
-model GrammarExplanation {
-  id                 String   @id
-  topic              String
-  topicVi            String?
-  cefrLevel          String   @default("A2")
-  ruleVi             String   @db.Text
-  ruleEn             String?  @db.Text
-  examplesJson       String   @default("[]")
-  commonMistakesJson String   @default("[]")
-  source             String   @default("ai-generated")
-  verified           Boolean  @default(false)
-  createdAt          DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("grammar_explanations")
-}
-
-model ListeningMonologue {
-  id            String   @id
-  title         String
-  titleVi       String?
-  cefrLevel     String   @default("A2")
-  scriptJson    String   @default("[]")
-  questionsJson String   @default("[]")
-  source        String   @default("ai-generated")
-  verified      Boolean  @default(false)
-  createdAt     DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("listening_monologues")
-}
-
-model DictationSentence {
-  id              String   @id
-  textEn          String
-  textVi          String
-  trickyWordsJson String   @default("[]")
-  audioUrl        String?
-  cefrLevel       String   @default("A2")
-  source          String   @default("ai-generated")
-  verified        Boolean  @default(false)
-  createdAt       DateTime @default(now())
-
-  @@index([cefrLevel])
-  @@map("dictation_sentences")
-}
-
-model SituationalPhrase {
-  id          String   @id
-  situation   String
-  situationVi String?
-  en          String
-  vi          String
-  audioUrl    String?
-  cefrLevel   String   @default("A2")
-  source      String   @default("ai-generated")
-  verified    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  @@index([situation])
-  @@index([cefrLevel])
-  @@map("situational_phrases")
-}
-
-model BusinessPhrase {
-  id         String   @id
-  category   String
-  categoryVi String?
-  en         String
-  vi         String
-  exampleEn  String?
-  audioUrl   String?
-  cefrLevel  String   @default("B2")
-  source     String   @default("ai-generated")
-  verified   Boolean  @default(false)
-  createdAt  DateTime @default(now())
-
-  @@index([category])
-  @@index([cefrLevel])
-  @@map("business_phrases")
-}
-
-model TravelPhrase {
-  id         String   @id
-  category   String
-  categoryVi String?
-  en         String
-  vi         String
-  exampleEn  String?
-  audioUrl   String?
-  cefrLevel  String   @default("A2")
-  source     String   @default("ai-generated")
-  verified   Boolean  @default(false)
-  createdAt  DateTime @default(now())
-
-  @@index([category])
-  @@index([cefrLevel])
-  @@map("travel_phrases")
-}
-
-model IeltsSpeakingTopic {
-  id                String   @id
-  part              Int      @default(1)
-  track             String   @default("academic")
-  question          String
-  topicVi           String?
-  ideasJson         String   @default("[]")
-  topic             String?
-  followUpQuestions String?  @map("follow_up_questions")
-  source            String   @default("ai-generated")
-  verified          Boolean  @default(false)
-  createdAt         DateTime @default(now())
-
-  @@index([part])
-  @@map("ielts_speaking_topics")
-}
-
-model IeltsWritingTopic {
-  id           String   @id
-  track        String   @default("academic")
-  prompt       String   @db.Text
-  type         String   @default("opinion")
-  typeVi       String?
-  bandRange    String?  @map("band_range")
-  outlineJson  String   @default("{}")
-  keyVocabJson String   @default("[]")
-  source       String   @default("ai-generated")
-  verified     Boolean  @default(false)
-  createdAt    DateTime @default(now())
-
-  @@index([type])
-  @@map("ielts_writing_topics")
-}
-
-model IeltsWritingModel {
-  id               String   @id
-  task             Int      // 1: Academic Task 1 | 2: Task 2 Essay
-  track            String   @default("academic")
-  topic            String
-  chartType        String?  @map("chart_type")
-  chartDescription String?  @map("chart_description") @db.Text
-  prompt           String   @db.Text
-  modelAnswer      String   @map("model_answer") @db.Text
-  keyVocabJson     String   @default("[]") @map("key_vocab_json")
-  examinerNotesVi  String?  @map("examiner_notes_vi") @db.Text
-  bandEstimate     Float    @default(8.0) @map("band_estimate")
-  source           String   @default("authored")
-  license          String?  @default("n/a (original)")
-  verified         Boolean  @default(true)
-  createdAt        DateTime @default(now())
-
-  @@index([task])
-  @@index([topic])
-  @@map("ielts_writing_models")
-}
-
-model IeltsSpeakingModel {
-  id               String   @id
-  topic            String
-  cueCard          String   @map("cue_card") @db.Text
-  modelAnswerPart2 String   @map("model_answer_part2") @db.Text
-  part3Json        String   @default("[]") @map("part3_json")
-  keyVocabJson     String   @default("[]") @map("key_vocab_json")
-  notesVi          String?  @map("notes_vi") @db.Text
-  bandEstimate     Float    @default(8.0) @map("band_estimate")
-  source           String   @default("authored")
-  license          String?  @default("n/a (original)")
-  verified         Boolean  @default(true)
-  createdAt        DateTime @default(now())
-
-  @@index([topic])
-  @@map("ielts_speaking_models")
-}
-
-model LexisQuestion {
-  id            String   @id @default(cuid())
-  contentType   String   // collocation|phrasal_verb|idiom|vocabulary
-  topic         String?
-  topicVi       String?
-  prompt        String   @db.Text
-  optionsJson   Json?
-  correctAnswer String
-  explanationEn String?  @db.Text
-  explanationVi String?  @db.Text
-  cefrLevel     String   @default("B1")
-  sourceRef     String?
-  createdAt     DateTime @default(now())
-
-  @@index([contentType, cefrLevel])
-  @@map("lexis_questions")
-}
-
-model StudyGuide {
-  id        String   @id @default(cuid())
-  title     String
-  category  String   // band-descriptor|exam-tip|how-to
-  contentEn String?  @db.Text
-  contentVi String?  @db.Text
-  sourceRef String?
-  createdAt DateTime @default(now())
-
-  @@index([category])
-  @@map("study_guides")
-}
-
-// ==========================================
-// NOTIFICATION SYSTEM (PHASE 1)
-// ==========================================
-
-enum NotificationType {
-  SRS_DUE
-  STREAK_AT_RISK
-  GOLDEN_HOUR
-  WEAK_SKILL
-  FORGETFUL_WORDS
-  WEEKLY_REPORT
-  ACHIEVEMENT
-  SYSTEM
-}
-
-model Notification {
-  id        String           @id @default(uuid())
-  userId    String
-  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type      NotificationType
-  title     String
-  body      String
-  deepLink  String?
-  isRead    Boolean          @default(false)
-  readAt    DateTime?
-  dedupeKey String?
-  metadata  Json?
-  createdAt DateTime         @default(now())
-
-  @@unique([userId, type, dedupeKey])
-  @@index([userId, isRead, createdAt])
-  @@map("notifications")
-}
-
-model NotificationPreference {
-  userId         String   @id
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  enabled        Boolean  @default(true)
-  srsDue         Boolean  @default(true)
-  streakRisk     Boolean  @default(true)
-  goldenHour     Boolean  @default(true)
-  weakSkill      Boolean  @default(true)
-  forgetfulWords Boolean  @default(true)
-  weekly         Boolean  @default(true)
-  achievement    Boolean  @default(true)
-  quietStart     String   @default("22:00")
-  quietEnd       String   @default("07:00")
-  updatedAt      DateTime @updatedAt
-
-  @@map("notification_preferences")
-}
-
-// ==========================================
-// WEB PUSH NOTIFICATION (PHASE 3)
-// ==========================================
-
-model PushSubscription {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  endpoint  String   @unique
-  p256dh    String
-  auth      String
-  userAgent String?
-  createdAt DateTime @default(now())
-
-  @@index([userId])
-  @@map("push_subscriptions")
-}
-
-// ==========================================
-// AI INSIGHTS V2 (COW WEEKLY REPORT & STUDY PLAN)
-// ==========================================
-
-model CowWeeklyReport {
-  id             String   @id @default(uuid())
-  userId         String   @map("user_id")
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  weekNumber     String   @map("week_number")
-  title          String
-  summary        String
-  progressPoints Json     @default("[]") @map("progress_points")
-  weaknesses     Json     @default("[]") @map("weaknesses")
-  actionPlan     Json     @default("[]") @map("action_plan")
-  rawMetricsJson Json?    @map("raw_metrics_json")
-  generatedAt    DateTime @default(now()) @map("generated_at")
-  createdAt      DateTime @default(now()) @map("created_at")
-
-  @@index([userId, generatedAt(sort: Desc)])
-  @@index([userId, weekNumber])
-  @@map("cow_weekly_reports")
-}
-
-model CowStudyPlan {
-  id        String   @id @default(uuid())
-  userId    String   @unique @map("user_id")
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  goal      String
-  planData  Json     @map("plan_data")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  createdAt DateTime @default(now()) @map("created_at")
-
-  @@map("cow_study_plans")
-}
-
-// ==========================================
-// SENTENCE BANK & WORD LINKS (WAVE 1)
-// ==========================================
-
-model SentenceBank {
-  id        String   @id @default(uuid())
-  en        String
-  enId      Int?     @map("en_id")
-  vi        String
-  viId      Int?     @map("vi_id")
-  source    String   @default("tatoeba")
-  license   String   @default("CC BY 2.0 FR")
-  createdAt DateTime @default(now()) @map("created_at")
-
-  wordLinks WordSentenceLink[]
-
-  @@index([en])
-  @@index([enId])
-  @@map("sentence_bank")
-}
-
-model WordSentenceLink {
-  id             String       @id @default(uuid())
-  vocabularyId   String       @map("vocabulary_id")
-  vocabulary     Vocabulary   @relation(fields: [vocabularyId], references: [id], onDelete: Cascade)
-  sentenceBankId String       @map("sentence_bank_id")
-  sentenceBank   SentenceBank @relation(fields: [sentenceBankId], references: [id], onDelete: Cascade)
-  createdAt      DateTime     @default(now()) @map("created_at")
-
-  @@unique([vocabularyId, sentenceBankId])
-  @@index([vocabularyId])
-  @@index([sentenceBankId])
-  @@map("word_sentence_links")
-}
-
-model SystemConfig {
-  key       String   @id
-  value     Json
-  updatedBy String?  @map("updated_by")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@map("system_configs")
-}
-
-
-
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+enum Role {
+  STUDENT
+  CONTENT_EDITOR
+  CONTENT_REVIEWER
+  ADMIN
+  SUPER_ADMIN
+}
+
+model User {
+  id               String   @id @default(uuid())
+  email            String   @unique
+  passwordHash     String?
+  googleId         String?  @unique
+  avatarUrl        String?
+  authProvider     String   @default("local")               // "local" | "google"
+  displayName      String
+  role             Role     @default(STUDENT)
+  isActive         Boolean  @default(true)
+  interfaceLocale  String   @default("vi")                  // UI locale (independent of learning language)
+  timezone         String   @default("Asia/Ho_Chi_Minh")   // User timezone for streak & SRS
+  dailyGoalMinutes Int      @default(15)
+  totalXP          Int      @default(0)
+  currentStreak    Int      @default(0)
+  streakFreezes    Int      @default(1)                     // Number of streak freezes available
+  lastActiveDate   String?                                  // Formatted YYYY-MM-DD in user's timezone
+  leavePasses             Int      @default(0) @map("leave_passes") // Weekly leave passes (1 max, resets Monday)
+  lastLeavePassGrantWeek  String?                                  // YYYY-Www in Asia/Ho_Chi_Minh
+  lastLeavePassUsedDate   String?                                  // YYYY-MM-DD when pass was last consumed
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  sessions         Session[]
+  wordStates       UserWordState[]
+  lessonProgress   UserLessonProgress[]
+  gameSessions     GameSession[]
+  gameStats        UserGameStat[]
+  userAchievements UserAchievement[]
+  attempts         AttemptSession[]
+  ieltsAttempts    IeltsMockAttempt[]
+  ieltsWritings    IeltsWritingSubmission[]
+  chatSessions     ChatSession[]
+  writingAttempts  WritingAttempt[]
+  speakingAttempts SpeakingAttempt[]
+  readingAttempts  ReadingAttempt[]
+  examAttempts     ExamAttempt[]
+  communityProfile CommunityProfile?
+  studyNotes       StudyNote[]
+  goals            LearningGoal[]
+  activityLogs     DailyActivityLog[]
+  folders          VocabularyFolder[]
+  bookmarks        UserBookmark[]
+
+  // Phân hệ bổ sung 2026
+  readingProgress      ReadingUserProgress[]
+  tutorSnapshots       TutorContextSnapshot[]
+  adaptivePlans        AdaptiveLearningPlan[]
+  tutorRecommendations TutorRecommendation[]
+  srsReviewLogs        SrsReviewLog[]
+  questProgress        UserQuestProgress[]
+  stampLedgers         StampLedger[]
+  notifications          Notification[]
+  notificationPreference NotificationPreference?
+  pushSubscriptions      PushSubscription[]
+  cowWeeklyReports       CowWeeklyReport[]
+  cowStudyPlan           CowStudyPlan?
+  cefrLevel              String?
+  placementAttempts      PlacementAttempt[]
+
+  @@map("users")
+}
+
+model PlacementAttempt {
+  id                 String   @id @default(uuid())
+  userId             String
+  takenAt            DateTime @default(now())
+  level              String
+  bandEstimate       String
+  sectionScoresJson  String
+  answersJson        String
+  questionIdsJson    String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("placement_attempts")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("sessions")
+}
+
+model Course {
+  id                 String   @id @default(uuid())
+  sourceLanguageCode String   @default("vi")
+  targetLanguageCode String   @default("en")
+  cefrLevel          String   @default("A1")
+  title              String
+  description        String
+  units              Unit[]
+
+  @@map("courses")
+}
+
+model Unit {
+  id          String   @id @default(uuid())
+  courseId    String?
+  course      Course?  @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  title       String
+  description String
+  order       Int
+  iconName    String   @default("book")
+  lessons     Lesson[]
+
+  @@map("units")
+}
+
+model Lesson {
+  id          String         @id @default(uuid())
+  unitId      String
+  unit        Unit           @relation(fields: [unitId], references: [id], onDelete: Cascade)
+  title       String
+  description String
+  order       Int
+  xpReward    Int            @default(20)
+  status      String         @default("published") // "draft" | "review" | "published"
+  createdBy   String?
+  exercises   QuizExercise[]
+  words       Vocabulary[]
+  progress    UserLessonProgress[]
+
+  @@map("lessons")
+}
+
+model QuizExercise {
+  id            String   @id @default(uuid())
+  lessonId      String
+  lesson        Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  type          String   // "multiple_choice", "scramble", "fill_blank", "typing"
+  prompt        String
+  optionsJson   String   // JSON string array of options
+  correctAnswer String
+  explanation   String?
+  status        String   @default("published")
+  createdBy     String?
+
+  @@map("quiz_exercises")
+}
+
+model Vocabulary {
+  id                 String   @id @default(uuid())
+  lessonId           String?
+  lesson             Lesson?  @relation(fields: [lessonId], references: [id], onDelete: SetNull)
+  subTopicId         String?
+  subTopic           SubTopic? @relation(fields: [subTopicId], references: [id], onDelete: SetNull)
+  cefrLevel          String   @default("A1")
+  targetText         String
+  translation        String?
+  phonetic           String?
+  phoneticUs         String?
+  phoneticUk         String?
+  partOfSpeech       String?
+  audioUrl           String?
+  exampleAudioUrl    String?
+  exampleSentence    String?
+  exampleTranslation String?
+  collocationsJson   String?  @default("[]")
+  synonymsJson       String?  @default("[]")
+  antonymsJson       String?  @default("[]")
+  frequencyRank      Int?
+  meaningEn          String?  @map("meaning_en")
+  meaningViSource    String?  @map("meaning_vi_source")
+  source             String?
+  sourceRef          String?
+  license            String?
+  wordFamilyJson     String?  @default("[]") @map("word_family_json")
+  wordFormsJson      Json?
+  category           String   @default("general")
+  status             String   @default("published")
+  createdBy          String?
+
+  userStates    UserWordState[]
+  srsReviewLogs SrsReviewLog[]
+  bookmarks     UserBookmark[]
+  sentenceLinks WordSentenceLink[]
+
+  @@map("vocabularies")
+}
+
+model UserWordState {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wordId      String
+  word        Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  repetition  Int        @default(0)
+  interval    Int        @default(1)
+  efactor     Float      @default(2.5)
+  stability   Float      @default(2.0)
+  difficulty  Float      @default(5.0)
+  state       String     @default("review")
+  lapses      Int        @default(0)
+  dueDate     DateTime   @default(now())
+  lastQuality Int        @default(0)
+  updatedAt   DateTime   @updatedAt
+
+  @@unique([userId, wordId])
+  @@map("user_word_states")
+}
+
+model UserLessonProgress {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId    String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  completed   Boolean  @default(false)
+  bestScore   Int      @default(0)
+  completedAt DateTime @default(now())
+
+  @@unique([userId, lessonId])
+  @@map("user_lesson_progress")
+}
+
+model AttemptSession {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceType  String   // "lesson", "game", "srs"
+  sourceId    String
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+
+  @@map("attempt_sessions")
+}
+
+model GameSession {
+  id              String   @id @default(uuid())
+  attemptId       String   @unique
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gameType        String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz", "lingo_wordle", "sound_reflex"
+  score           Int
+  accuracy        Float
+  xpEarned        Int
+  durationSeconds Int
+  comboMax        Int      @default(1)
+  metadataJson    String?
+  createdAt       DateTime @default(now())
+
+  @@index([userId])
+  @@index([gameType, score])
+  @@map("game_sessions")
+}
+
+model UserGameStat {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gameType         String   // "word_match", "sentence_scramble", "typing_race", "fill_blitz", "lingo_wordle", "sound_reflex"
+  highScore        Int      @default(0)
+  totalGamesPlayed Int      @default(0)
+  totalWins        Int      @default(0)
+  totalXpEarned    Int      @default(0)
+  avgAccuracy      Float    @default(0.0)
+  lastPlayedAt     DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([userId, gameType])
+  @@index([gameType, highScore])
+  @@map("user_game_stats")
+}
+
+model Achievement {
+  id          String   @id @default(uuid())
+  code        String   @unique
+  nameKey     String   // i18n translation key
+  icon        String
+  xpBonus     Int      @default(50)
+
+  userAchievements UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  unlockedAt    DateTime    @default(now())
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+// ============================================================================
+// IELTS EXAM PREP MODULE MODELS
+// ============================================================================
+
+model IeltsTrack {
+  id           String   @id @default(uuid())
+  targetBand   Float    @default(6.5) // e.g. 5.5, 6.5, 7.5
+  type         String   @default("academic") // "academic" | "general"
+  description  String
+  createdAt    DateTime @default(now())
+
+  @@map("ielts_tracks")
+}
+
+model IeltsQuestion {
+  id          String   @id @default(uuid())
+  title       String
+  skill       String   // "listening" | "reading" | "writing" | "speaking"
+  type        String   // "academic" | "general"
+  part        String   // e.g. "section_1", "passage_1", "task_1", "task_2"
+  targetBand  Float    @default(6.0) // 5.0, 6.0, 7.0+
+  passageText String?  // Reading passage content
+  audioUrl    String?  // Listening audio URL
+  prompt      String?  // Writing or Speaking prompt
+  content     String   // JSON string containing question set, choices, correct answers, explanation
+  status      String   @default("published") // "draft" | "review" | "published"
+  createdBy   String?
+
+  createdAt   DateTime @default(now())
+
+  @@map("ielts_questions")
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  actorId      String
+  action       String   // e.g. "user.role.update", "lesson.publish", "vocab.delete"
+  resourceType String
+  resourceId   String
+  beforeState  Json?
+  afterState   Json?
+  createdAt    DateTime @default(now())
+
+  @@index([actorId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model IeltsMockAttempt {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type         String   @default("academic")
+  startedAt    DateTime @default(now())
+  submittedAt  DateTime @default(now())
+  durationSec  Int      @default(0)
+  rawScoreJson String   // JSON of raw scores per skill {listening: 32, reading: 30}
+  bandScoreJson String  // JSON of band scores per skill {listening: 7.5, reading: 7.0, overall: 7.5}
+
+  writings     IeltsWritingSubmission[]
+
+  @@map("ielts_mock_attempts")
+}
+
+model IeltsWritingSubmission {
+  id            String           @id @default(uuid())
+  userId        String
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  attemptId     String?
+  attempt       IeltsMockAttempt? @relation(fields: [attemptId], references: [id], onDelete: SetNull)
+  taskType      String           // "task_1" | "task_2"
+  prompt        String
+  essayText     String
+  wordCount     Int
+  overallBand   Float
+  taskAchieveBand Float
+  coherenceBand   Float
+  lexicalBand     Float
+  grammarBand     Float
+  feedbackJson  String           // JSON of detailed comments per criteria + suggestions
+  createdAt     DateTime         @default(now())
+
+  @@map("ielts_writing_submissions")
+}
+
+model ChatSession {
+  id        String        @id @default(uuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+  messages  ChatMessage[]
+
+  @@map("chat_sessions")
+}
+
+model ChatMessage {
+  id           String      @id @default(uuid())
+  sessionId    String
+  session      ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role         String      // "user" | "assistant"
+  content      String
+  sourceType   String?     // "llm" | "rag" | "fallback"
+  ragRefs      String?     // JSON string of Vocabulary/IeltsQuestion/Lesson references used
+  pageContext  String?     // route at time of message
+  createdAt    DateTime    @default(now())
+
+  @@map("chat_messages")
+}
+
+// ============================================================================
+// LAB 13: WRITING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model WritingAttempt {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  promptId   String
+  mode       String   // "see-write" | "guided" | "free"
+  content    String
+  wordCount  Int
+  score      Int
+  xpAwarded  Int      @default(0)
+  durationMs Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("writing_attempts")
+}
+
+// ============================================================================
+// LAB 14: READING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model ReadingAttempt {
+  id                 String   @id @default(uuid())
+  userId             String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  articleId          String
+  readingTimeSeconds Int
+  wpm                Int
+  score              Int
+  accuracy           Float
+  xpAwarded          Int      @default(0)
+  answersJson        String   // JSON string of question responses
+  createdAt          DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("reading_attempts")
+}
+
+// ============================================================================
+// LAB 15: STANDARDIZED EXAM PRACTICE PERSISTENCE MODELS
+// ============================================================================
+
+model ExamAttempt {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  examId         String
+  status         String   @default("active") // "active" | "completed" | "expired"
+  startedAt      DateTime @default(now())
+  expiresAt      DateTime
+  submittedAt    DateTime?
+  elapsedSeconds Int      @default(0)
+  answersJson    String   @default("[]") // JSON string of selected answers
+  resultJson     String?  // JSON string of evaluated results
+  createdAt      DateTime @default(now())
+
+  @@index([userId, status])
+  @@map("exam_attempts")
+}
+
+// ============================================================================
+// LAB 16: COMMUNITY & SOCIAL LEARNING PERSISTENCE MODELS
+// ============================================================================
+
+model CommunityProfile {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio            String   @default("")
+  avatar         String   @default("mascot-scholar")
+  targetLanguage String   @default("en")
+  currentLevel   String   @default("B1 Intermediate")
+  visibility     String   @default("public") // "public" | "friends_only" | "private"
+  badgesJson     String   @default("[]")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("community_profiles")
+}
+
+model Friendship {
+  id          String   @id @default(uuid())
+  requesterId String
+  addresseeId String
+  status      String   @default("accepted") // "pending" | "accepted" | "blocked"
+  createdAt   DateTime @default(now())
+
+  @@unique([requesterId, addresseeId])
+  @@index([requesterId])
+  @@index([addresseeId])
+  @@map("friendships")
+}
+
+model StudyNote {
+  id         String        @id @default(uuid())
+  authorId   String
+  author     User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  title      String
+  content    String
+  tagsJson   String        @default("[]")
+  likesCount Int           @default(0)
+  isPublic   Boolean       @default(true)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  comments   NoteComment[]
+  reactions  NoteReaction[]
+
+  @@index([authorId, createdAt])
+  @@map("study_notes")
+}
+
+model NoteComment {
+  id        String    @id @default(uuid())
+  noteId    String
+  note      StudyNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  authorId  String
+  content   String
+  createdAt DateTime  @default(now())
+
+  @@index([noteId])
+  @@map("note_comments")
+}
+
+model NoteReaction {
+  id        String    @id @default(uuid())
+  noteId    String
+  note      StudyNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  userId    String
+  type      String    // "like" | "celebrate" | "insightful" | "helpful"
+  createdAt DateTime  @default(now())
+
+  @@unique([noteId, userId, type])
+  @@map("note_reactions")
+}
+
+model StudyGroup {
+  id             String        @id @default(uuid())
+  name           String
+  description    String
+  targetLanguage String        @default("en")
+  level          String        @default("Intermediate")
+  ownerId        String
+  isPrivate      Boolean       @default(false)
+  createdAt      DateTime      @default(now())
+  members        GroupMember[]
+
+  @@map("study_groups")
+}
+
+model GroupMember {
+  id       String     @id @default(uuid())
+  groupId  String
+  group    StudyGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  userId   String
+  role     String     @default("member") // "owner" | "admin" | "member"
+  joinedAt DateTime   @default(now())
+
+  @@unique([groupId, userId])
+  @@index([userId])
+  @@map("group_members")
+}
+
+// ============================================================================
+// LAB 17: LEARNING ANALYTICS & GOALS PERSISTENCE MODELS
+// ============================================================================
+
+model LearningGoal {
+  id                 String   @id @default(uuid())
+  userId             String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetDailyMinutes Int      @default(30)
+  targetWeeklyXP     Int      @default(500)
+  targetSkill        String   @default("all")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([userId])
+  @@map("learning_goals")
+}
+
+model DailyActivityLog {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date             String   // Formatted YYYY-MM-DD
+  activeMinutes    Int      @default(0)
+  xpEarned         Int      @default(0)
+  lessonsCompleted Int      @default(0)
+  reviewsCompleted Int      @default(0)
+  createdAt        DateTime @default(now())
+
+  @@unique([userId, date])
+  @@index([userId, date])
+  @@map("daily_activity_logs")
+}
+
+// ============================================================================
+// LAB 18: SPEAKING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model SpeakingAttempt {
+  id                  String   @id @default(uuid())
+  userId              String
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  promptId            String
+  mode                String   // "repetition" | "shadowing" | "picture" | "guided" | "situation" | "pronunciation" | "free"
+  transcript          String
+  durationMs          Int      @default(0)
+  score               Int
+  pronunciationScore  Int
+  fluencyScore        Int
+  xpAwarded           Int      @default(0)
+  createdAt           DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("speaking_attempts")
+}
+
+// ============================================================================
+// LAB 12: VOCABULARY FOLDERS PERSISTENCE MODELS
+// ============================================================================
+
+model VocabularyFolder {
+  id        String             @id @default(uuid())
+  userId    String
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  color     String             @default("blue")
+  icon      String             @default("folder")
+  createdAt DateTime           @default(now())
+  items     FolderVocabulary[]
+
+  @@index([userId])
+  @@map("vocabulary_folders")
+}
+
+model FolderVocabulary {
+  id       String           @id @default(uuid())
+  folderId String
+  folder   VocabularyFolder @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  wordId   String
+  addedAt  DateTime         @default(now())
+
+  @@unique([folderId, wordId])
+  @@index([folderId])
+  @@map("folder_vocabularies")
+}
+
+model UserBookmark {
+  id        String     @id @default(uuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wordId    String
+  word      Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  createdAt DateTime   @default(now())
+
+  @@unique([userId, wordId])
+  @@index([userId])
+  @@index([wordId])
+  @@map("user_bookmarks")
+}
+
+// ============================================================================
+// LAB 14: READING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model ReadingArticle {
+  id               String                @id @default(uuid())
+  title            String
+  subtitle         String
+  level            String                // "A1" | "A2" | "B1" | "B2" | "C1"
+  topic            String                // "Daily Life", "Technology", etc.
+  author           String                @default("LinguaFlow Editorial")
+  estimatedMinutes Int                   @default(3)
+  wordCount        Int                   @default(150)
+  coverImage       String?
+  status           String                @default("published")
+  createdBy        String?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  paragraphs       ReadingParagraph[]
+  questions        ReadingQuestion[]
+  userProgress     ReadingUserProgress[]
+
+  @@map("reading_articles")
+}
+
+model ReadingParagraph {
+  id         String         @id @default(uuid())
+  articleId  String
+  article    ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  order      Int
+  english    String         @db.Text
+  vietnamese String         @db.Text
+  audioUrl   String?
+
+  @@index([articleId, order])
+  @@map("reading_paragraphs")
+}
+
+model ReadingQuestion {
+  id               String         @id @default(uuid())
+  articleId        String
+  article          ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  order            Int
+  type             String         // "main-idea", "factual", "inference", "vocabulary", "true-false"
+  question         String
+  optionsJson      String         // JSON array of strings
+  correctAnswer    String
+  explanation      String         @db.Text
+  difficulty       String         @default("A1")
+  relatedParagraph Int?
+
+  @@index([articleId, order])
+  @@map("reading_questions")
+}
+
+model ReadingUserProgress {
+  id               String         @id @default(uuid())
+  userId           String
+  user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  articleId        String
+  article          ReadingArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  currentParagraph Int            @default(0)
+  scrollProgress   Float          @default(0)
+  completed        Boolean        @default(false)
+  updatedAt        DateTime       @updatedAt
+
+  @@unique([userId, articleId])
+  @@map("reading_user_progress")
+}
+
+// ============================================================================
+// LAB 13: WRITING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model WritingPrompt {
+  id             String               @id @default(uuid())
+  mode           String               // "see-write" | "guided" | "free"
+  difficulty     String               // "A1" | "A2" | "B1" | "B2" | "C1"
+  title          String
+  instruction    String               @db.Text
+  imageHint      String?
+  scenario       String?              @db.Text
+  targetWords    String               @default("[]")
+  targetGrammar  String?
+  sampleAnswer   String?              @db.Text
+  category       String               @default("General")
+  minWords       Int                  @default(10)
+  maxWords       Int                  @default(100)
+  status         String               @default("published")
+  createdBy      String?
+  createdAt      DateTime             @default(now())
+
+  guidedSteps    GuidedWritingStep[]
+
+  @@map("writing_prompts")
+}
+
+model GuidedWritingStep {
+  id           String        @id @default(uuid())
+  promptId     String
+  prompt       WritingPrompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  stepNumber   Int
+  question     String
+  hint         String?
+  samplePhrase String?
+
+  @@index([promptId, stepNumber])
+  @@map("guided_writing_steps")
+}
+
+model WritingFeedbackReport {
+  id                        String   @id @default(uuid())
+  attemptId                 String   @unique
+  overallScore              Int
+  grammarScore              Int
+  vocabularyScore           Int
+  naturalnessScore          Int
+  relevanceScore            Int
+  completenessScore         Int
+  grade                     String
+  correctionsJson           String   @default("[]")
+  strengthsJson             String   @default("[]")
+  suggestionsJson           String   @default("[]")
+  vocabularySuggestionsJson String   @default("[]")
+  createdAt                 DateTime @default(now())
+
+  @@map("writing_feedback_reports")
+}
+
+// ============================================================================
+// LAB 18: SPEAKING LAB PERSISTENCE MODELS
+// ============================================================================
+
+model SpeakingPrompt {
+  id              String   @id @default(uuid())
+  title           String
+  description     String   @db.Text
+  mode            String   // "pronunciation" | "repetition" | "shadowing" | "guided" | "picture" | "situation" | "free"
+  difficulty      String   @default("A1")
+  cefr            String   @default("A1")
+  topic           String   @default("Daily Life")
+  targetWords     String   @default("[]")
+  targetPhrases   String   @default("[]")
+  sampleAnswer    String?  @db.Text
+  audioSampleUrl  String?
+  durationSeconds Int      @default(30)
+  minWords        Int      @default(5)
+  maxWords        Int      @default(50)
+  tags            String   @default("[]")
+  imagePrompt     String?
+  scenario        String?  @db.Text
+  stepsJson       String?
+  status          String   @default("published")
+  createdBy       String?
+  createdAt       DateTime @default(now())
+
+  @@map("speaking_prompts")
+}
+
+model SpeakingPhonemeFeedback {
+  id                 String   @id @default(uuid())
+  attemptId          String   @unique
+  phonemesJson       String   @default("[]")
+  pronunciationScore Int
+  fluencyScore       Int
+  grammarScore       Int
+  vocabularyScore    Int
+  coherenceScore     Int
+  audioRecordingUrl  String?
+  suggestionsJson    String   @default("[]")
+  createdAt          DateTime @default(now())
+
+  @@map("speaking_phoneme_feedbacks")
+}
+
+// ============================================================================
+// LAB 15: STANDARDIZED EXAMS PERSISTENCE MODELS
+// ============================================================================
+
+model StandardizedExam {
+  id              String        @id @default(uuid())
+  code            String        @unique // e.g. "toeic-test-01", "vstep-b2-01"
+  title           String
+  type            String        // "toeic" | "vstep" | "ielts" | "toefl"
+  difficulty      String        @default("Intermediate")
+  durationMinutes Int           @default(120)
+  totalQuestions  Int           @default(200)
+  passingScore    Int           @default(600)
+  instructions    String?       @db.Text
+  status          String        @default("published")
+  createdAt       DateTime      @default(now())
+
+  sections        ExamSection[]
+
+  @@map("standardized_exams")
+}
+
+model ExamSection {
+  id              String           @id @default(uuid())
+  examId          String
+  exam            StandardizedExam @relation(fields: [examId], references: [id], onDelete: Cascade)
+  sectionType     String           // "listening" | "reading" | "writing" | "speaking"
+  partNumber      Int
+  title           String
+  instructions    String?          @db.Text
+  audioUrl        String?
+  passageText     String?          @db.Text
+  totalQuestions  Int
+  order           Int
+
+  questions       ExamQuestion[]
+
+  @@index([examId, order])
+  @@map("exam_sections")
+}
+
+model ExamQuestion {
+  id             String      @id @default(uuid())
+  sectionId      String
+  section        ExamSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  questionNumber Int
+  order          Int
+  questionText   String?     @db.Text
+  passageText    String?     @db.Text
+  audioUrl       String?
+  imageUrl       String?
+  optionsJson    String
+  correctAnswer  String
+  explanation    String?     @db.Text
+  points         Int         @default(5)
+
+  @@index([sectionId, order])
+  @@map("exam_questions")
+}
+
+// ============================================================================
+// AI TUTOR & ADAPTIVE LEARNING ENGINE PERSISTENCE MODELS
+// ============================================================================
+
+model TutorContextSnapshot {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cefrEstimate    String   @default("B2")
+  overallScore    Int      @default(75)
+  weaknesses      String   @default("[]")
+  skillScoresJson String   @default("{}")
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@map("tutor_context_snapshots")
+}
+
+model AdaptiveLearningPlan {
+  id          String             @id @default(uuid())
+  userId      String
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planName    String
+  startDate   DateTime           @default(now())
+  endDate     DateTime
+  daysCount   Int                @default(7)
+  status      String             @default("active")
+  createdAt   DateTime           @default(now())
+
+  items       AdaptivePlanItem[]
+
+  @@index([userId, status])
+  @@map("adaptive_learning_plans")
+}
+
+model AdaptivePlanItem {
+  id               String               @id @default(uuid())
+  planId           String
+  plan             AdaptiveLearningPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  dayNumber        Int
+  order            Int
+  skill            String
+  title            String
+  focusTopic       String
+  estimatedMinutes Int                  @default(15)
+  targetDrillUrl   String
+  completed        Boolean              @default(false)
+  completedAt      DateTime?
+  score            Int?
+
+  @@index([planId, dayNumber])
+  @@map("adaptive_plan_items")
+}
+
+model TutorRecommendation {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill       String
+  title       String
+  description String   @db.Text
+  priority    String   @default("medium")
+  actionUrl   String
+  reason      String
+  isDismissed Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([userId, isDismissed])
+  @@map("tutor_recommendations")
+}
+
+// ============================================================================
+// VOCABULARY MAJOR TOPICS & ENHANCED SRS 2.0 MODELS
+// ============================================================================
+
+model MajorTopic {
+  id            String     @id @default(uuid())
+  title         String
+  levelBadge    String     @default("Standard")
+  categoryGroup String     @default("cefr")
+  description   String     @db.Text
+  coverImage    String?
+  order         Int        @default(0)
+  createdAt     DateTime   @default(now())
+
+  subTopics     SubTopic[]
+
+  @@map("major_topics")
+}
+
+model SubTopic {
+  id           String       @id @default(uuid())
+  majorTopicId String
+  majorTopic   MajorTopic   @relation(fields: [majorTopicId], references: [id], onDelete: Cascade)
+  title        String
+  coverImage   String?
+  order        Int          @default(0)
+
+  words        Vocabulary[]
+
+  @@index([majorTopicId, order])
+  @@map("sub_topics")
+}
+
+model SrsReviewLog {
+  id             String     @id @default(uuid())
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wordId         String
+  word           Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  reviewedAt     DateTime   @default(now())
+  rating         Int
+  scheduledDays  Int
+  elapsedDays    Int
+  lastInterval   Int
+  newInterval    Int
+  responseTimeMs Int        @default(0)
+
+  @@index([userId, wordId])
+  @@index([reviewedAt])
+  @@map("srs_review_logs")
+}
+
+// ============================================================================
+// GAMIFICATION: DAILY QUESTS & WEEKLY LEAGUES
+// ============================================================================
+
+model DailyQuest {
+  id          String              @id @default(uuid())
+  date        String
+  questType   String
+  title       String
+  targetCount Int
+  xpReward    Int                 @default(20)
+
+  userProgress UserQuestProgress[]
+
+  @@index([date])
+  @@map("daily_quests")
+}
+
+model UserQuestProgress {
+  id           String     @id @default(uuid())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questId      String
+  quest        DailyQuest @relation(fields: [questId], references: [id], onDelete: Cascade)
+  currentCount Int        @default(0)
+  isClaimed    Boolean    @default(false)
+  claimedAt    DateTime?
+
+  @@unique([userId, questId])
+  @@map("user_quest_progress")
+}
+
+model WeeklyLeague {
+  id         String   @id @default(uuid())
+  tier       String
+  weekNumber Int
+  year       Int
+  userId     String
+  weeklyXP   Int      @default(0)
+  rank       Int      @default(1)
+  updatedAt  DateTime @updatedAt
+
+  @@unique([tier, weekNumber, year, userId])
+  @@index([tier, weekNumber, year, rank])
+  @@map("weekly_leagues")
+}
+
+// ============================================================================
+// GAMIFICATION: SỔ TEM (STAMP LEDGER - APPEND ONLY)
+// ============================================================================
+
+model StampLedger {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  delta     Int      // +1 (mục tiêu ngày / điểm tuyệt đối), +2 (streak 7 ngày), -1 (AI writing)
+  reason    String   // "DAILY_GOAL" | "PERFECT_SCORE" | "STREAK_7_DAYS" | "AI_WRITING_EVALUATION"
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("stamp_ledgers")
+}
+
+// ============================================================================
+// DATA PHASE 2: CONTENT REPOSITORIES (GRAMMAR, SHADOWING, DIALOGUES, STORIES)
+// ============================================================================
+
+model GrammarQuestion {
+  id             String   @id
+  question       String
+  optionsJson    String   // JSON string array of options
+  correctAnswer  String?
+  explanationVi  String?
+  cefrLevel      String   @default("A2")
+  topic          String?
+  topicVi        String?
+  skillFocus     String   @default("grammar")
+  source         String   @default("ai-generated")
+  verified       Boolean  @default(false)
+  imageRef       String?
+  questionNumber Int?
+  type           String?
+  sourceRef      String?
+  gapReason      String?
+  derived        Boolean? @default(false)
+  keyTypo        String?
+  weakMatch      Boolean? @default(false)
+  createdAt      DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("grammar_questions")
+}
+
+model ShadowingSentence {
+  id         String   @id
+  textEn     String
+  textVi     String
+  phonetic   String?
+  audioUrl   String?
+  cefrLevel  String   @default("A2")
+  topic      String?
+  focusWords String?  @default("[]")
+  skillFocus String   @default("speaking")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("shadowing_sentences")
+}
+
+model DialogueScenario {
+  id            String   @id
+  title         String
+  titleVi       String?
+  topic         String?
+  topicVi       String?
+  location      String?
+  locationVi    String?
+  characters    String?
+  contextDesc   String?
+  linesJson     String   @default("[]")
+  questionsJson String   @default("[]")
+  cefrLevel     String   @default("B1")
+  level         String?
+  speakers      String?
+  viSummary     String?  @map("vi_summary")
+  skillFocus    String   @default("listening")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("dialogue_scenarios")
+}
+
+model StoryTemplate {
+  id                String   @id
+  title             String
+  titleVi           String?
+  mascotReaction    String   @default("storyteller")
+  paragraphsJson    String   @default("[]")
+  slotsJson         String   @default("[]")
+  slotHintsJson     String   @default("[]")
+  quizQuestionsJson String   @default("[]")
+  cefrLevel         String   @default("B1")
+  topic             String?
+  skillFocus        String   @default("reading")
+  source            String   @default("ai-generated")
+  verified          Boolean  @default(false)
+  createdAt         DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("story_templates")
+}
+
+model ContentPackage {
+  id            String   @id
+  topic         String?
+  topicVi       String?
+  cefrLevel     String   @default("A2")
+  dialogueJson  String   @default("{}")
+  dictationJson String   @default("{}")
+  shadowingJson String   @default("{}")
+  wordOrderJson String   @default("[]")
+  quizJson      String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("content_packages")
+}
+
+model BilingualArticle {
+  id             String   @id
+  title          String
+  titleVi        String?
+  cefrLevel      String   @default("A2")
+  topic          String?
+  topicVi        String?
+  paragraphsJson String   @default("[]")
+  quizJson       String   @default("[]")
+  source         String   @default("ai-generated")
+  verified       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("bilingual_articles")
+}
+
+model BilingualStory {
+  id         String   @id
+  title      String
+  titleVi    String?
+  cefrLevel  String   @default("A2")
+  topic      String?
+  topicVi    String?
+  pagesJson  String   @default("[]")
+  quizJson   String   @default("[]")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("bilingual_stories")
+}
+
+model IeltsReadingPassage {
+  id             String   @id
+  section        String   @default("reading")
+  track          String   @default("academic")
+  cefrLevel      String   @default("B1")
+  difficultyBand String?  @map("difficulty_band")
+  title          String
+  module         String?
+  notes          String?  @db.Text
+  sourceUrl      String?  @map("source_url")
+  passageJson    String   @default("[]")
+  questionsJson  String   @default("[]")
+  source         String   @default("ai-generated")
+  license        String?  @default("n/a (original)")
+  verified       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@index([difficultyBand])
+  @@map("ielts_reading_passages")
+}
+
+model IeltsListeningSection {
+  id             String   @id
+  section        String   @default("listening")
+  track          String   @default("academic")
+  cefrLevel      String   @default("B1")
+  difficultyBand String?  @map("difficulty_band")
+  title          String
+  titleVi        String?
+  scriptJson     String   @default("[]")
+  questionsJson  String   @default("[]")
+  source         String   @default("ai-generated")
+  license        String?  @default("n/a (original)")
+  verified       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@index([difficultyBand])
+  @@map("ielts_listening_sections")
+}
+
+model CurriculumUnit {
+  id            String   @id
+  order         Int
+  cefrLevel     String   @default("B1")
+  title         String
+  titleVi       String?
+  description   String
+  descriptionVi String?
+  lessonsJson   String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("curriculum_units")
+}
+
+model DiaryPrompt {
+  id           String   @id
+  cefrLevel    String   @default("A2")
+  prompt       String
+  promptVi     String?
+  theme        String?
+  hintVi       String?  @map("hint_vi")
+  keywordsJson String   @default("[]")
+  minSentences Int      @default(3)
+  source       String   @default("ai-generated")
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("diary_prompts")
+}
+
+model DailyVocabQuestion {
+  id            String   @id
+  type          String   @default("en_to_vi")
+  cefrLevel     String   @default("A2")
+  question      String
+  optionsJson   String   @default("[]")
+  correctAnswer String
+  explanation   String?
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("daily_vocab_questions")
+}
+
+model Idiom {
+  id          String   @id
+  idiom       String
+  meaningVi   String
+  meaningEn   String?
+  exampleEn   String?
+  exampleVi   String?
+  cefrLevel   String   @default("B2")
+  source      String   @default("ai-generated")
+  license     String?  @default("CC BY-SA")
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("idioms")
+}
+
+model PhrasalVerb {
+  id         String   @id
+  verb       String
+  meaningVi  String
+  exampleEn  String?
+  exampleVi  String?
+  separable  Boolean  @default(false)
+  cefrLevel  String   @default("B1")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("phrasal_verbs")
+}
+
+model Collocation {
+  id          String   @id
+  collocation String
+  type        String   @default("verb+noun")
+  meaningVi   String?
+  meaningEn   String?
+  exampleEn   String?
+  exampleVi   String?
+  cefrLevel   String   @default("B1")
+  source      String   @default("ai-generated")
+  sourceRef   String?
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("collocations")
+}
+
+model SynonymAntonym {
+  id           String   @id
+  word         String
+  meaningVi    String
+  synonymsJson String   @default("[]")
+  antonymsJson String   @default("[]")
+  exampleEn    String?
+  exampleVi    String?
+  cefrLevel    String   @default("B1")
+  source       String   @default("ai-generated")
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("synonyms_antonyms")
+}
+
+model MinimalPair {
+  id           String   @id
+  word1        String
+  word2        String
+  phonetic1    String?
+  phonetic2    String?
+  differenceVi String?
+  exampleEn    String?
+  exampleVi    String?
+  audioUrl1    String?
+  audioUrl2    String?
+  source       String   @default("ai-generated")
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@map("minimal_pairs")
+}
+
+model TongueTwister {
+  id          String   @id
+  text        String
+  difficulty  String   @default("easy")
+  focusSounds String?
+  guideVi     String?
+  audioUrl    String?
+  source      String   @default("ai-generated")
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@map("tongue_twisters")
+}
+
+model Proverb {
+  id                   String   @id
+  proverb              String
+  meaningVi            String
+  vietnameseEquivalent String?
+  exampleEn            String?
+  exampleVi            String?
+  source               String   @default("ai-generated")
+  verified             Boolean  @default(false)
+  createdAt            DateTime @default(now())
+
+  @@map("proverbs")
+}
+
+model GameWordPool {
+  id                 String   @id
+  targetText         String
+  translation        String
+  phonetic           String?
+  topic              String
+  topicVi            String?
+  cefrLevel          String   @default("A1")
+  exampleSentence    String?
+  exampleTranslation String?
+  source             String   @default("ai-generated")
+  verified           Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  @@index([topic])
+  @@index([cefrLevel])
+  @@map("game_word_pools")
+}
+
+model GameQuestion {
+  id        String   @id
+  gameType  String   @map("game_type")
+  prompt    String   @db.Text
+  choices   Json?
+  answer    String   @db.Text
+  level     String   @default("A2")
+  source    String   @default("script-derived")
+  sourceRef String?  @map("source_ref")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([gameType])
+  @@index([level])
+  @@map("game_questions")
+}
+
+model GrammarExplanation {
+  id                 String   @id
+  topic              String
+  topicVi            String?
+  cefrLevel          String   @default("A2")
+  ruleVi             String   @db.Text
+  ruleEn             String?  @db.Text
+  examplesJson       String   @default("[]")
+  commonMistakesJson String   @default("[]")
+  source             String   @default("ai-generated")
+  verified           Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("grammar_explanations")
+}
+
+model ListeningMonologue {
+  id            String   @id
+  title         String
+  titleVi       String?
+  cefrLevel     String   @default("A2")
+  scriptJson    String   @default("[]")
+  questionsJson String   @default("[]")
+  source        String   @default("ai-generated")
+  verified      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("listening_monologues")
+}
+
+model DictationSentence {
+  id              String   @id
+  textEn          String
+  textVi          String
+  trickyWordsJson String   @default("[]")
+  audioUrl        String?
+  cefrLevel       String   @default("A2")
+  source          String   @default("ai-generated")
+  verified        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  @@index([cefrLevel])
+  @@map("dictation_sentences")
+}
+
+model SituationalPhrase {
+  id          String   @id
+  situation   String
+  situationVi String?
+  en          String
+  vi          String
+  audioUrl    String?
+  cefrLevel   String   @default("A2")
+  source      String   @default("ai-generated")
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([situation])
+  @@index([cefrLevel])
+  @@map("situational_phrases")
+}
+
+model BusinessPhrase {
+  id         String   @id
+  category   String
+  categoryVi String?
+  en         String
+  vi         String
+  exampleEn  String?
+  audioUrl   String?
+  cefrLevel  String   @default("B2")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([category])
+  @@index([cefrLevel])
+  @@map("business_phrases")
+}
+
+model TravelPhrase {
+  id         String   @id
+  category   String
+  categoryVi String?
+  en         String
+  vi         String
+  exampleEn  String?
+  audioUrl   String?
+  cefrLevel  String   @default("A2")
+  source     String   @default("ai-generated")
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([category])
+  @@index([cefrLevel])
+  @@map("travel_phrases")
+}
+
+model IeltsSpeakingTopic {
+  id                String   @id
+  part              Int      @default(1)
+  track             String   @default("academic")
+  question          String
+  topicVi           String?
+  ideasJson         String   @default("[]")
+  topic             String?
+  followUpQuestions String?  @map("follow_up_questions")
+  source            String   @default("ai-generated")
+  verified          Boolean  @default(false)
+  createdAt         DateTime @default(now())
+
+  @@index([part])
+  @@map("ielts_speaking_topics")
+}
+
+model IeltsWritingTopic {
+  id           String   @id
+  track        String   @default("academic")
+  prompt       String   @db.Text
+  type         String   @default("opinion")
+  typeVi       String?
+  bandRange    String?  @map("band_range")
+  outlineJson  String   @default("{}")
+  keyVocabJson String   @default("[]")
+  source       String   @default("ai-generated")
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([type])
+  @@map("ielts_writing_topics")
+}
+
+model IeltsWritingModel {
+  id               String   @id
+  task             Int      // 1: Academic Task 1 | 2: Task 2 Essay
+  track            String   @default("academic")
+  topic            String
+  chartType        String?  @map("chart_type")
+  chartDescription String?  @map("chart_description") @db.Text
+  prompt           String   @db.Text
+  modelAnswer      String   @map("model_answer") @db.Text
+  keyVocabJson     String   @default("[]") @map("key_vocab_json")
+  examinerNotesVi  String?  @map("examiner_notes_vi") @db.Text
+  bandEstimate     Float    @default(8.0) @map("band_estimate")
+  source           String   @default("authored")
+  license          String?  @default("n/a (original)")
+  verified         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+
+  @@index([task])
+  @@index([topic])
+  @@map("ielts_writing_models")
+}
+
+model IeltsSpeakingModel {
+  id               String   @id
+  topic            String
+  cueCard          String   @map("cue_card") @db.Text
+  modelAnswerPart2 String   @map("model_answer_part2") @db.Text
+  part3Json        String   @default("[]") @map("part3_json")
+  keyVocabJson     String   @default("[]") @map("key_vocab_json")
+  notesVi          String?  @map("notes_vi") @db.Text
+  bandEstimate     Float    @default(8.0) @map("band_estimate")
+  source           String   @default("authored")
+  license          String?  @default("n/a (original)")
+  verified         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+
+  @@index([topic])
+  @@map("ielts_speaking_models")
+}
+
+model LexisQuestion {
+  id            String   @id @default(cuid())
+  contentType   String   // collocation|phrasal_verb|idiom|vocabulary
+  topic         String?
+  topicVi       String?
+  prompt        String   @db.Text
+  optionsJson   Json?
+  correctAnswer String?
+  explanationEn String?  @db.Text
+  explanationVi String?  @db.Text
+  cefrLevel     String   @default("B1")
+  sourceRef     String?
+  questionNumber Int?
+  type          String?
+  gapReason     String?
+  scriptJson    String?
+  note          String?
+  createdAt     DateTime @default(now())
+
+  @@index([contentType, cefrLevel])
+  @@map("lexis_questions")
+}
+
+model StudyGuide {
+  id        String   @id @default(cuid())
+  title     String
+  category  String   // band-descriptor|exam-tip|how-to
+  contentEn String?  @db.Text
+  contentVi String?  @db.Text
+  sourceRef String?
+  createdAt DateTime @default(now())
+
+  @@index([category])
+  @@map("study_guides")
+}
+
+// ==========================================
+// NOTIFICATION SYSTEM (PHASE 1)
+// ==========================================
+
+enum NotificationType {
+  SRS_DUE
+  STREAK_AT_RISK
+  GOLDEN_HOUR
+  WEAK_SKILL
+  FORGETFUL_WORDS
+  WEEKLY_REPORT
+  ACHIEVEMENT
+  SYSTEM
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  title     String
+  body      String
+  deepLink  String?
+  isRead    Boolean          @default(false)
+  readAt    DateTime?
+  dedupeKey String?
+  metadata  Json?
+  createdAt DateTime         @default(now())
+
+  @@unique([userId, type, dedupeKey])
+  @@index([userId, isRead, createdAt])
+  @@map("notifications")
+}
+
+model NotificationPreference {
+  userId         String   @id
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enabled        Boolean  @default(true)
+  srsDue         Boolean  @default(true)
+  streakRisk     Boolean  @default(true)
+  goldenHour     Boolean  @default(true)
+  weakSkill      Boolean  @default(true)
+  forgetfulWords Boolean  @default(true)
+  weekly         Boolean  @default(true)
+  achievement    Boolean  @default(true)
+  quietStart     String   @default("22:00")
+  quietEnd       String   @default("07:00")
+  updatedAt      DateTime @updatedAt
+
+  @@map("notification_preferences")
+}
+
+// ==========================================
+// WEB PUSH NOTIFICATION (PHASE 3)
+// ==========================================
+
+model PushSubscription {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("push_subscriptions")
+}
+
+// ==========================================
+// AI INSIGHTS V2 (COW WEEKLY REPORT & STUDY PLAN)
+// ==========================================
+
+model CowWeeklyReport {
+  id             String   @id @default(uuid())
+  userId         String   @map("user_id")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  weekNumber     String   @map("week_number")
+  title          String
+  summary        String
+  progressPoints Json     @default("[]") @map("progress_points")
+  weaknesses     Json     @default("[]") @map("weaknesses")
+  actionPlan     Json     @default("[]") @map("action_plan")
+  rawMetricsJson Json?    @map("raw_metrics_json")
+  generatedAt    DateTime @default(now()) @map("generated_at")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@index([userId, generatedAt(sort: Desc)])
+  @@index([userId, weekNumber])
+  @@map("cow_weekly_reports")
+}
+
+model CowStudyPlan {
+  id        String   @id @default(uuid())
+  userId    String   @unique @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal      String
+  planData  Json     @map("plan_data")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("cow_study_plans")
+}
+
+// ==========================================
+// SENTENCE BANK & WORD LINKS (WAVE 1)
+// ==========================================
+
+model SentenceBank {
+  id        String   @id @default(uuid())
+  en        String
+  enId      Int?     @map("en_id")
+  vi        String
+  viId      Int?     @map("vi_id")
+  source    String   @default("tatoeba")
+  license   String   @default("CC BY 2.0 FR")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  wordLinks WordSentenceLink[]
+
+  @@index([en])
+  @@index([enId])
+  @@map("sentence_bank")
+}
+
+model WordSentenceLink {
+  id             String       @id @default(uuid())
+  vocabularyId   String       @map("vocabulary_id")
+  vocabulary     Vocabulary   @relation(fields: [vocabularyId], references: [id], onDelete: Cascade)
+  sentenceBankId String       @map("sentence_bank_id")
+  sentenceBank   SentenceBank @relation(fields: [sentenceBankId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now()) @map("created_at")
+
+  @@unique([vocabularyId, sentenceBankId])
+  @@index([vocabularyId])
+  @@index([sentenceBankId])
+  @@map("word_sentence_links")
+}
+
+model SystemConfig {
+  key       String   @id
+  value     Json
+  updatedBy String?  @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("system_configs")
+}
+
+
+
