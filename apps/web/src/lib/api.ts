@@ -314,7 +314,7 @@ export const api = {
     }>('/user/streak'),
 
   // Phase 2: Dynamic Content Endpoints
-  getGrammarQuestions: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean }) =>
+  getGrammarQuestions: (params?: { cefrLevel?: string; topic?: string; limit?: number; random?: boolean; hasExplanation?: boolean; withExplanation?: boolean }) =>
     fetchApi<{ items: any[]; total: number }>(`/content/grammar-questions${toQueryString(params)}`),
   getGrammarQuestionById: (id: string) =>
     fetchApi<{ item: any }>(`/content/grammar-questions/${id}`),

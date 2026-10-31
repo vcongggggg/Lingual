@@ -15,6 +15,8 @@ const contentQuerySchema = z.object({
   category: z.string().optional(),
   search: z.string().optional(),
   contentType: z.string().optional(),
+  hasExplanation: z.preprocess((v) => v === 'true' || v === true || v === '1', z.boolean().optional()),
+  withExplanation: z.preprocess((v) => v === 'true' || v === true || v === '1', z.boolean().optional()),
 });
 
 function safeParseJson<T>(raw: string | null | undefined, fallback: T): T {
@@ -71,11 +73,15 @@ contentRouter.get('/grammar-questions', async (req: Request, res: Response) => {
     const where: any = {};
     if (q.cefrLevel) where.cefrLevel = q.cefrLevel.toUpperCase();
     if (q.topic) where.topic = { contains: q.topic, mode: 'insensitive' };
+    if (q.hasExplanation || q.withExplanation) {
+      where.explanationVi = { not: null };
+    }
 
     const { items, total } = await fetchWithFilter<any>(prisma.grammarQuestion, where, q.limit, q.random);
     const formatted = items.map((item: any) => ({
       ...item,
       options: safeParseJson(item.optionsJson, []),
+      explanationVi: item.explanationVi || (item.correctAnswer ? `Đáp án chính xác: "${item.correctAnswer}". Củng cố kiến thức chủ điểm ${item.topic || 'ngữ pháp'}.` : 'Xem lại lý thuyết ngữ pháp liên quan.'),
     }));
     res.json({ items: formatted, total });
   } catch (err: any) {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { api } from '@/lib/api';
 import {
   ArrowLeft,
   Volume2,
@@ -155,121 +156,23 @@ const PASSAGE_BOARDS: PassageBoard[] = [
 /* =========================================================================
    DỮ LIỆU THỰC: 5 CÂU BÀI KIỂM TRA (KHOANH LỖI SAI)
    ========================================================================= */
-interface ErrorQuestion {
+interface GrammarPracticeQuestion {
   id: string;
-  sourceExam: string;
-  prompt: string;
-  segments: {
-    id: string;
-    text: string;
-    isError: boolean;
-  }[];
-  options: {
+  question: string;
+  options: string[];
+  correctAnswer?: string;
+  explanationVi?: string;
+  cefrLevel?: string;
+  topic?: string;
+  sourceRef?: string;
+  optionsDetail?: {
     id: string;
     text: string;
     isCorrect: boolean;
   }[];
-  teacherAdvice: string;
-  memoryTip: string;
+  teacherAdvice?: string;
+  memoryTip?: string;
 }
-
-const ERROR_QUESTIONS: ErrorQuestion[] = [
-  {
-    id: 'err-1',
-    sourceExam: 'Đề thi THPTQG & Tốt nghiệp Chuẩn B2',
-    prompt: 'Chạm vào 1 chỗ sai trong câu kiểm tra bên dưới, sau đó chọn mẩu giấy sửa đúng nhất:',
-    segments: [
-      { id: 's1', text: 'Despite of', isError: true },
-      { id: 's2', text: 'the heavy torrential rain,', isError: false },
-      { id: 's3', text: 'all students arrived', isError: false },
-      { id: 's4', text: 'on time for the examination.', isError: false },
-    ],
-    options: [
-      { id: 'opt-a', text: 'Despite', isCorrect: true },
-      { id: 'opt-b', text: 'Although of', isCorrect: false },
-      { id: 'opt-c', text: 'In spite', isCorrect: false },
-    ],
-    teacherAdvice:
-      'Quy tắc ngữ pháp: "Despite" bản thân nó đã là một giới từ, theo sau là Danh từ hoặc V-ing (KHÔNG bao giờ có "of"). Chỉ có cụm "In spite of" mới đi với "of".',
-    memoryTip: 'Mẹo nhớ nhanh: "Despite" đứng một mình — "In spite" phải có "of" đi cùng!',
-  },
-  {
-    id: 'err-2',
-    sourceExam: 'TOEIC Part 5 Grammar Master',
-    prompt: 'Chạm vào 1 chỗ sai trong câu kiểm tra bên dưới, sau đó chọn mẩu giấy sửa đúng nhất:',
-    segments: [
-      { id: 's1', text: 'The number of', isError: false },
-      { id: 's2', text: 'international applicants', isError: false },
-      { id: 's3', text: 'have increased', isError: true },
-      { id: 's4', text: 'drastically this semester.', isError: false },
-    ],
-    options: [
-      { id: 'opt-a', text: 'has increased', isCorrect: true },
-      { id: 'opt-b', text: 'had been increased', isCorrect: false },
-      { id: 'opt-c', text: 'are increasing', isCorrect: false },
-    ],
-    teacherAdvice:
-      'Hòa hợp chủ vị: Khi chủ ngữ là "The number of + Danh từ số nhiều", động từ PHẢI chia ở ngôi thứ 3 số ít ("has increased"). Ngược lại, "A number of + N số nhiều" mới chia động từ số nhiều.',
-    memoryTip: 'Mẹo nhớ nhanh: "The number" là số lượng duy nhất (chia SỐ ÍT) — "A number" là nhiều người (chia SỐ NHIỀU).',
-  },
-  {
-    id: 'err-3',
-    sourceExam: 'IELTS Academic Writing & Speaking Foundation',
-    prompt: 'Chạm vào 1 chỗ sai trong câu kiểm tra bên dưới, sau đó chọn mẩu giấy sửa đúng nhất:',
-    segments: [
-      { id: 's1', text: 'We are truly looking forward', isError: false },
-      { id: 's2', text: 'to meet', isError: true },
-      { id: 's3', text: 'the visiting professor', isError: false },
-      { id: 's4', text: 'at the university colloquium.', isError: false },
-    ],
-    options: [
-      { id: 'opt-a', text: 'to meeting', isCorrect: true },
-      { id: 'opt-b', text: 'for meet', isCorrect: false },
-      { id: 'opt-c', text: 'to be meet', isCorrect: false },
-    ],
-    teacherAdvice:
-      'Cấu trúc cố định: "Look forward to + V-ING / Noun". Từ "to" ở đây là GIỚI TỪ, không phải to-infinitive, nên động từ theo sau bắt buộc phải thêm đuôi -ing.',
-    memoryTip: 'Mẹo nhớ nhanh: Sau cụm "look forward to" luôn là V-ING háo hức mong chờ!',
-  },
-  {
-    id: 'err-4',
-    sourceExam: 'Đề thi Học sinh giỏi & Chuyên Anh',
-    prompt: 'Chạm vào 1 chỗ sai trong câu kiểm tra bên dưới, sau đó chọn mẩu giấy sửa đúng nhất:',
-    segments: [
-      { id: 's1', text: 'Hardly had the scientist', isError: false },
-      { id: 's2', text: 'completed the experiment', isError: false },
-      { id: 's3', text: 'than', isError: true },
-      { id: 's4', text: 'the power went out completely.', isError: false },
-    ],
-    options: [
-      { id: 'opt-a', text: 'when', isCorrect: true },
-      { id: 'opt-b', text: 'then', isCorrect: false },
-      { id: 'opt-c', text: 'as', isCorrect: false },
-    ],
-    teacherAdvice:
-      'Cấu trúc đảo ngữ chỉ thời gian: "Hardly / Scarcely + had + S + V3/ed + WHEN + S + V2/ed" (Vừa mới... thì...). Cặp liên từ đi với "than" chỉ dùng cho "No sooner... than".',
-    memoryTip: 'Mẹo nhớ nhanh: "Hardly" đi với "WHEN" — "No sooner" mới đi với "THAN"!',
-  },
-  {
-    id: 'err-5',
-    sourceExam: 'IELTS Academic Reading & Writing Grammar Check',
-    prompt: 'Chạm vào 1 chỗ sai trong câu kiểm tra bên dưới, sau đó chọn mẩu giấy sửa đúng nhất:',
-    segments: [
-      { id: 's1', text: 'Modern economic expansion', isError: false },
-      { id: 's2', text: 'must be coordinated with', isError: false },
-      { id: 's3', text: 'environment protection', isError: true },
-      { id: 's4', text: 'for our future generations.', isError: false },
-    ],
-    options: [
-      { id: 'opt-a', text: 'environmental protection', isCorrect: true },
-      { id: 'opt-b', text: 'environmentally protect', isCorrect: false },
-      { id: 'opt-c', text: 'protective environment', isCorrect: false },
-    ],
-    teacherAdvice:
-      'Trật tự từ loại: Trước danh từ "protection" (sự bảo vệ), ta cần một TÍNH TỪ "environmental" để bổ nghĩa thành cụm danh từ chuẩn xác: "environmental protection" (bảo vệ môi trường).',
-    memoryTip: 'Mẹo nhớ nhanh: Bổ nghĩa cho danh từ, hãy dùng Tính từ (adj + noun)!',
-  },
-];
 
 /* =========================================================================
    DỮ LIỆU THỰC: TRUYỆN SONG NGỮ 8 TRANG + 4 CÂU QUIZ (FEATURE 2)
@@ -548,36 +451,41 @@ export default function PracticeHubPage() {
   };
 
   /* -------------------------------------------------------------
-     STATE CHO MODE 2: KHOANH LỖI SAI
+     STATE CHO MODE 2: LUYỆN NGỮ PHÁP (NỐI API THẬT)
      ------------------------------------------------------------- */
+  const [grammarQuestions, setGrammarQuestions] = useState<GrammarPracticeQuestion[]>([]);
+  const [loadingGrammar, setLoadingGrammar] = useState(false);
   const [questionIdx, setQuestionIdx] = useState(0);
-  const currentQuestion = ERROR_QUESTIONS[questionIdx];
-  const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>(null);
-  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
+  const currentQuestion = grammarQuestions[questionIdx] || null;
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [submittedAnswer, setSubmittedAnswer] = useState<{
     isSuccess: boolean;
     hasChecked: boolean;
   } | null>(null);
 
-  const handleTouchSegment = (segId: string) => {
-    if (submittedAnswer?.hasChecked) return;
-    if (selectedSegmentId === segId) {
-      setSelectedSegmentId(null);
-      setSelectedOptionId(null);
-    } else {
-      setSelectedSegmentId(segId);
-      setSelectedOptionId(null);
+  // Tự động tải 10 câu hỏi ngữ pháp từ API thật
+  useEffect(() => {
+    if (activeMode === 'error_hunt' && grammarQuestions.length === 0 && !loadingGrammar) {
+      setLoadingGrammar(true);
+      api.getGrammarQuestions({ limit: 10, random: true, hasExplanation: true })
+        .then((res: any) => {
+          if (res && res.items && res.items.length > 0) {
+            setGrammarQuestions(res.items);
+            setQuestionIdx(0);
+          }
+        })
+        .catch((err: any) => console.error('Error fetching grammar questions:', err))
+        .finally(() => setLoadingGrammar(false));
     }
-  };
+  }, [activeMode, grammarQuestions.length, loadingGrammar]);
 
-  const handleSelectOption = (optId: string) => {
-    if (submittedAnswer?.hasChecked) return;
-    setSelectedOptionId(optId);
+  const handleSelectOption = (opt: string) => {
+    if (submittedAnswer?.hasChecked || !currentQuestion) return;
+    setSelectedOption(opt);
 
-    const chosenSeg = currentQuestion.segments.find((s) => s.id === selectedSegmentId);
-    const chosenOpt = currentQuestion.options.find((o) => o.id === optId);
-
-    const isSuccess = Boolean(chosenSeg?.isError && chosenOpt?.isCorrect);
+    const isSuccess = currentQuestion.correctAnswer
+      ? opt.trim().toLowerCase() === currentQuestion.correctAnswer.trim().toLowerCase()
+      : true;
 
     setSubmittedAnswer({
       isSuccess,
@@ -586,16 +494,26 @@ export default function PracticeHubPage() {
   };
 
   const handleNextErrorQuestion = () => {
-    const next = (questionIdx + 1) % ERROR_QUESTIONS.length;
-    setQuestionIdx(next);
-    setSelectedSegmentId(null);
-    setSelectedOptionId(null);
+    if (questionIdx + 1 < grammarQuestions.length) {
+      setQuestionIdx((prev) => prev + 1);
+    } else {
+      // Sang phiên mới 10 câu
+      setLoadingGrammar(true);
+      api.getGrammarQuestions({ limit: 10, random: true, hasExplanation: true })
+        .then((res: any) => {
+          if (res && res.items && res.items.length > 0) {
+            setGrammarQuestions(res.items);
+            setQuestionIdx(0);
+          }
+        })
+        .finally(() => setLoadingGrammar(false));
+    }
+    setSelectedOption(null);
     setSubmittedAnswer(null);
   };
 
   const handleRetryErrorQuestion = () => {
-    setSelectedSegmentId(null);
-    setSelectedOptionId(null);
+    setSelectedOption(null);
     setSubmittedAnswer(null);
   };
 
@@ -1311,203 +1229,210 @@ export default function PracticeHubPage() {
       )}
 
       {/* ===================================================================
-          MODE 2: KHOANH LỖI SAI (TOUCH TO CIRCLE ERROR EXAM PAPER)
+          MODE 2: LUYỆN NGỮ PHÁP (NỐI API THẬT — 10 CÂU MỖI PHIÊN)
           =================================================================== */}
       {activeMode === 'error_hunt' && (
         <div className="space-y-6 animate-message-slide">
-          <div className="flex items-center justify-between border-b-2 border-ink pb-3">
-            <div>
-              <span className="text-xs font-mono font-black text-red uppercase block">
-                BÀI KIỂM TRA NGỮ PHÁP & DỤNG TỪ — CÂU {questionIdx + 1}/{ERROR_QUESTIONS.length}
-              </span>
-              <span className="text-xs font-bold text-ink-muted">
-                Nguồn: {currentQuestion.sourceExam}
+          {loadingGrammar && grammarQuestions.length === 0 ? (
+            <div className="p-12 text-center bg-card border-2 border-ink rounded-2xl shadow-brutal space-y-3">
+              <span className="text-sm font-mono font-bold text-ink-muted">
+                Đang tải ngân hàng câu hỏi ngữ pháp từ máy chủ...
               </span>
             </div>
+          ) : currentQuestion ? (
+            <>
+              <div className="flex items-center justify-between border-b-2 border-ink pb-3 flex-wrap gap-2">
+                <div>
+                  <span className="text-xs font-mono font-black text-red uppercase block">
+                    BÀI KIỂM TRA NGỮ PHÁP & DỤNG TỪ — CÂU {questionIdx + 1}/{grammarQuestions.length}
+                  </span>
+                  <span className="text-xs font-bold text-ink-muted">
+                    Chủ điểm: {currentQuestion.topic || currentQuestion.sourceRef || 'Ngữ pháp chuẩn CEFR'} ({currentQuestion.cefrLevel || 'B1'})
+                  </span>
+                </div>
 
-            <span className="text-xs font-mono font-black px-2.5 py-1 rounded border border-ink bg-paper-2 text-ink">
-              Mã đề: #ERR-80{questionIdx + 1}
-            </span>
-          </div>
-
-          <div className="relative bg-[#FAF6ED] border-2 border-ink rounded-2xl shadow-brutal-lg overflow-hidden">
-            <div className="absolute top-0 bottom-0 left-8 sm:left-12 w-0.5 bg-red/40 pointer-events-none" />
-
-            <div className="p-6 sm:p-8 pl-12 sm:pl-16 space-y-6">
-              <div className="space-y-1">
-                <span className="text-[11px] font-black uppercase text-ink-muted tracking-wider block">
-                  Hướng dẫn bài thi:
-                </span>
-                <p className="text-xs sm:text-sm font-bold text-ink">
-                  {currentQuestion.prompt}
-                </p>
-              </div>
-
-              <div className="lined-paper p-5 sm:p-6 rounded-xl border-2 border-ink space-y-3 bg-paper">
-                <span className="text-[10px] font-mono font-black text-ink-muted block uppercase">
-                  Câu hỏi #{questionIdx + 1}:
-                </span>
-
-                <div className="text-lg sm:text-xl font-serif text-ink leading-loose flex items-center flex-wrap gap-2">
-                  {currentQuestion.segments.map((seg) => {
-                    const isCircled = selectedSegmentId === seg.id;
-
-                    return (
-                      <button
-                        key={seg.id}
-                        onClick={() => handleTouchSegment(seg.id)}
-                        className={`relative cursor-pointer transition-all duration-150 inline-block px-2 py-1 rounded-lg ${
-                          isCircled
-                            ? 'border-2 border-red rounded-full text-red font-black shadow-[0_0_0_2px_rgba(214,64,39,0.2)] scale-105'
-                            : 'hover:bg-paper-2 border border-transparent'
-                        }`}
-                        title="Chạm để khoanh tròn vị trí này"
-                      >
-                        {seg.text}
-                        {isCircled && (
-                          <span className="absolute -top-3 -right-2 text-[10px] font-mono font-black px-1.5 py-0.2 rounded-full bg-red text-white">
-                            Khoanh
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono font-black px-2.5 py-1 rounded border border-ink bg-paper-2 text-ink">
+                    Mã câu: #{currentQuestion.id}
+                  </span>
                 </div>
               </div>
 
-              {selectedSegmentId && !submittedAnswer?.hasChecked && (
-                <div className="space-y-3 animate-message-slide">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-black uppercase tracking-wider text-ink">
-                      Chọn cách sửa trong 3 mẩu giấy đáp án dưới đây:
+              <div className="relative bg-[#FAF6ED] border-2 border-ink rounded-2xl shadow-brutal-lg overflow-hidden">
+                <div className="absolute top-0 bottom-0 left-8 sm:left-12 w-0.5 bg-red/40 pointer-events-none" />
+
+                <div className="p-6 sm:p-8 pl-12 sm:pl-16 space-y-6">
+                  <div className="space-y-1">
+                    <span className="text-[11px] font-black uppercase text-ink-muted tracking-wider block">
+                      Yêu cầu bài tập:
                     </span>
-                    <span className="text-[11px] font-mono text-red font-bold">
-                      (Bấm 1 mẩu giấy để nộp bài)
-                    </span>
+                    <p className="text-xs sm:text-sm font-bold text-ink">
+                      Đọc kỹ câu văn sau và chọn đáp án chính xác nhất để hoàn thiện cấu trúc ngữ pháp:
+                    </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {currentQuestion.options.map((opt, oIdx) => (
-                      <button
-                        key={opt.id}
-                        onClick={() => handleSelectOption(opt.id)}
-                        className="p-4 bg-paper hover:bg-paper-2 border-2 border-ink rounded-xl shadow-brutal-sm hover:-translate-y-1 transition-all text-left space-y-1.5 cursor-pointer"
-                        style={{
-                          transform: `rotate(${oIdx === 0 ? '-1deg' : oIdx === 1 ? '0.5deg' : '-0.5deg'})`,
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-mono font-black text-red uppercase">
-                            MẨU GIẤY #{String.fromCharCode(65 + oIdx)}
-                          </span>
-                          <span className="text-xs">✂️</span>
-                        </div>
-                        <p className="text-base font-black text-ink font-serif">
-                          {opt.text}
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+                  <div className="lined-paper p-5 sm:p-6 rounded-xl border-2 border-ink space-y-3 bg-paper">
+                    <span className="text-[10px] font-mono font-black text-ink-muted block uppercase">
+                      Câu hỏi #{questionIdx + 1}:
+                    </span>
 
-              {submittedAnswer?.hasChecked && (
-                <div className="space-y-4 animate-message-slide">
-                  {submittedAnswer.isSuccess ? (
-                    <div className="p-5 bg-teal/10 border-2 border-teal rounded-xl space-y-4">
-                      <div className="flex items-center justify-between flex-wrap gap-3">
-                        <div className="flex items-center gap-3">
-                          <CheckCircle2 className="w-6 h-6 text-teal flex-shrink-0" />
-                          <div>
-                            <h4 className="text-base font-black text-ink font-serif">
-                              Chính xác! Bạn đã khoanh đúng vị trí và chọn đúng cách sửa.
-                            </h4>
-                            <p className="text-xs text-teal font-bold font-sans">
-                              {currentQuestion.teacherAdvice}
-                            </p>
-                          </div>
-                        </div>
-
-                        <StampSlam
-                          text="BẮT ĐƯỢC LỖI"
-                          variant="badge"
-                          color="teal"
-                          size="md"
-                        />
-                      </div>
-
-                      <div className="pt-2 flex items-center justify-between border-t border-teal/30">
-                        <LingLing
-                          reaction="proud"
-                          size={54}
-                          bubbleText="Bắt lỗi quá chuẩn! Giữ vững phong độ nhé."
-                        />
-                        <button
-                          onClick={handleNextErrorQuestion}
-                          className="btn btn-ink text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer"
-                        >
-                          <span>Câu tiếp theo →</span>
-                        </button>
-                      </div>
+                    <div className="text-lg sm:text-xl font-serif text-ink leading-relaxed">
+                      {currentQuestion.question}
                     </div>
-                  ) : (
-                    <div className="p-5 bg-paper-2 border-2 border-red rounded-xl space-y-4">
-                      <div className="flex items-start gap-3">
-                        <XCircle className="w-6 h-6 text-red flex-shrink-0 mt-0.5" />
-                        <div className="space-y-2">
-                          <h4 className="text-base font-black text-red font-serif">
-                            Chưa chính xác! Xem lời cô giáo dặn ở lề vở:
-                          </h4>
+                  </div>
 
-                          <div className="p-3 bg-paper rounded-lg border border-ink/20 space-y-1">
-                            <span className="text-[11px] font-black uppercase text-red font-mono block">
-                              ① Lời cô giáo dặn:
-                            </span>
-                            <p className="text-xs sm:text-sm font-bold text-ink leading-relaxed">
-                              {currentQuestion.teacherAdvice}
+                  {/* 4 Mẩu giấy đáp án */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-black uppercase tracking-wider text-ink">
+                        Chọn 1 trong các mẩu giấy đáp án bên dưới:
+                      </span>
+                      {!submittedAnswer?.hasChecked && (
+                        <span className="text-[11px] font-mono text-red font-bold">
+                          (Bấm 1 mẩu giấy để nộp bài)
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {(currentQuestion.options || []).map((opt: string, oIdx: number) => {
+                        const isSelected = selectedOption === opt;
+                        const isCorrectOpt = currentQuestion.correctAnswer && opt.trim().toLowerCase() === currentQuestion.correctAnswer.trim().toLowerCase();
+
+                        let optStyle = "bg-paper hover:bg-paper-2 border-2 border-ink";
+                        if (submittedAnswer?.hasChecked) {
+                          if (isCorrectOpt) {
+                            optStyle = "bg-teal/20 border-2 border-teal text-teal-900 ring-2 ring-teal shadow-brutal-sm";
+                          } else if (isSelected) {
+                            optStyle = "bg-red/10 border-2 border-red text-red shadow-none";
+                          } else {
+                            optStyle = "bg-paper/60 border border-ink/30 opacity-60";
+                          }
+                        } else if (isSelected) {
+                          optStyle = "bg-paper-2 border-2 border-red shadow-brutal";
+                        }
+
+                        return (
+                          <button
+                            key={`opt-${oIdx}`}
+                            onClick={() => handleSelectOption(opt)}
+                            disabled={submittedAnswer?.hasChecked}
+                            className={`p-4 rounded-xl text-left space-y-1.5 transition-all cursor-pointer ${optStyle}`}
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="text-[10px] font-mono font-black text-red uppercase">
+                                MẨU GIẤY #{String.fromCharCode(65 + oIdx)}
+                              </span>
+                              <span className="text-xs">✂️</span>
+                            </div>
+                            <p className="text-base font-black text-ink font-serif">
+                              {opt}
                             </p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Phản hồi sau khi nộp */}
+                  {submittedAnswer?.hasChecked && (
+                    <div className="space-y-4 animate-message-slide">
+                      {submittedAnswer.isSuccess ? (
+                        <div className="p-5 bg-teal/10 border-2 border-teal rounded-xl space-y-4">
+                          <div className="flex items-center justify-between flex-wrap gap-3">
+                            <div className="flex items-center gap-3">
+                              <CheckCircle2 className="w-6 h-6 text-teal flex-shrink-0" />
+                              <div>
+                                <h4 className="text-base font-black text-ink font-serif">
+                                  Chính xác! Bạn đã chọn đúng đáp án.
+                                </h4>
+                                {currentQuestion.explanationVi && (
+                                  <p className="text-xs text-teal font-bold font-sans mt-1">
+                                    💡 {currentQuestion.explanationVi}
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+
+                            <StampSlam
+                              text="CHÍNH XÁC"
+                              variant="badge"
+                              color="teal"
+                              size="md"
+                            />
                           </div>
 
-                          <div className="p-3 bg-amber/20 rounded-lg border border-ink/30 space-y-1">
-                            <span className="text-[11px] font-black uppercase text-ink font-mono block">
-                              ② Mẹo ghi nhớ bỏ túi:
-                            </span>
-                            <p className="text-xs sm:text-sm font-black text-red font-serif">
-                              {currentQuestion.memoryTip}
-                            </p>
+                          <div className="pt-2 flex items-center justify-between border-t border-teal/30">
+                            <LingLing
+                              reaction="proud"
+                              size={54}
+                              bubbleText="Xuất sắc! Nắm vững quy tắc ngữ pháp rồi đó."
+                            />
+                            <button
+                              onClick={handleNextErrorQuestion}
+                              className="btn btn-ink text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer"
+                            >
+                              <span>{questionIdx + 1 < grammarQuestions.length ? 'Câu tiếp theo →' : 'Hoàn thành phiên luyện (10 câu) 🔄'}</span>
+                            </button>
                           </div>
                         </div>
-                      </div>
+                      ) : (
+                        <div className="p-5 bg-paper-2 border-2 border-red rounded-xl space-y-4">
+                          <div className="flex items-start gap-3">
+                            <XCircle className="w-6 h-6 text-red flex-shrink-0 mt-0.5" />
+                            <div className="space-y-2 flex-1">
+                              <h4 className="text-base font-black text-red font-serif">
+                                Chưa chính xác! Đáp án đúng là: <strong className="underline font-sans">{currentQuestion.correctAnswer}</strong>
+                              </h4>
 
-                      <div className="pt-2 flex items-center justify-between border-t border-ink/20">
-                        <LingLing
-                          reaction="thinking"
-                          size={54}
-                          bubbleText="Đừng buồn nhé, đọc kỹ mẹo ghi nhớ để không lặp lại lỗi!"
-                        />
+                              {currentQuestion.explanationVi && (
+                                <div className="p-3 bg-paper rounded-lg border border-ink/20 space-y-1">
+                                  <span className="text-[11px] font-black uppercase text-red font-mono block">
+                                    💡 Giải thích chi tiết từ cô giáo:
+                                  </span>
+                                  <p className="text-xs sm:text-sm font-bold text-ink leading-relaxed">
+                                    {currentQuestion.explanationVi}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
 
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={handleRetryErrorQuestion}
-                            className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer"
-                          >
-                            <RotateCcw className="w-3.5 h-3.5" />
-                            <span>Thử lại câu này</span>
-                          </button>
-                          <button
-                            onClick={handleNextErrorQuestion}
-                            className="btn btn-ink text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer"
-                          >
-                            <span>Bỏ qua & Qua câu sau →</span>
-                          </button>
+                          <div className="pt-2 flex items-center justify-between border-t border-ink/20">
+                            <LingLing
+                              reaction="thinking"
+                              size={54}
+                              bubbleText="Đừng nản nhé! Xem kỹ giải thích tiếng Việt để nhớ sâu hơn."
+                            />
+
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={handleRetryErrorQuestion}
+                                className="btn btn-paper text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer"
+                              >
+                                <RotateCcw className="w-3.5 h-3.5" />
+                                <span>Thử lại câu này</span>
+                              </button>
+                              <button
+                                onClick={handleNextErrorQuestion}
+                                className="btn btn-ink text-xs font-black shadow-brutal flex items-center gap-1.5 cursor-pointer"
+                              >
+                                <span>{questionIdx + 1 < grammarQuestions.length ? 'Bỏ qua & Qua câu sau →' : 'Hoàn tất phiên luyện 🔄'}</span>
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   )}
                 </div>
-              )}
+              </div>
+            </>
+          ) : (
+            <div className="p-8 text-center bg-card border-2 border-ink rounded-2xl shadow-brutal">
+              <p className="text-sm font-bold text-ink">Không tìm thấy câu hỏi ngữ pháp. Vui lòng thử lại sau.</p>
             </div>
-          </div>
+          )}
         </div>
       )}
 
