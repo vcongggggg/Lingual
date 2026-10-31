@@ -632,21 +632,25 @@ div[data-nextjs-route-announcer] {
 .flashcard-preserve-3d {
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transition: transform 500ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1));
+  transition: transform 550ms var(--ease-paper, cubic-bezier(0.2, 0.8, 0.2, 1));
+  transform: rotateY(0deg);
   will-change: transform;
 }
 
 .flashcard-flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) !important;
 }
 
 .flashcard-face {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform: rotateY(0deg) translateZ(1px);
+  -webkit-transform: rotateY(0deg) translateZ(1px);
 }
 
 .flashcard-face-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px) !important;
+  -webkit-transform: rotateY(180deg) translateZ(1px) !important;
 }
 
 /* 15. Hiệu Ứng Scroll-Reveal (Cuộn Trang Xuất Hiện Nội Dung) */

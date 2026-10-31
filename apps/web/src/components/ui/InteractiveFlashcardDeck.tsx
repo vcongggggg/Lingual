@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { LingLing } from './LingLing';
 
@@ -102,6 +102,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
   const [throwDir, setThrowDir] = useState<'left' | 'right'>('right');
   const [isThrowing, setIsThrowing] = useState(false);
   const [isFlipping, setIsFlipping] = useState(false);
+  const isDraggingRef = useRef(false);
 
   // Motion values for smooth 60fps drag & hint reactivity without component re-renders
   const x = useMotionValue(0);
@@ -143,11 +144,15 @@ export const InteractiveFlashcardDeck: React.FC = () => {
   const handleDragEnd = (_e: any, info: { offset: { x: number }; velocity: { x: number } }) => {
     const dx = info.offset.x;
     const vx = info.velocity.x;
+    setTimeout(() => {
+      isDraggingRef.current = false;
+    }, 100);
+
     if (dx > 100 || vx > 500) {
       handleThrow('right');
     } else if (dx < -100 || vx < -500) {
       handleThrow('left');
-    } else if (Math.abs(dx) < 16) {
+    } else if (Math.abs(dx) < 20) {
       handleCardTap();
     }
   };
@@ -252,17 +257,27 @@ export const InteractiveFlashcardDeck: React.FC = () => {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.65}
+            onDragStart={() => {
+              isDraggingRef.current = true;
+            }}
             onDragEnd={handleDragEnd}
-            onTap={handleCardTap}
+            onTap={() => {
+              if (isDraggingRef.current) return;
+              handleCardTap();
+            }}
+            onClick={() => {
+              if (isDraggingRef.current) return;
+              handleCardTap();
+            }}
             style={{
               x,
               rotate: cardRotate,
               touchAction: 'none',
-              perspective: '1000px',
-              WebkitPerspective: '1000px',
+              transformStyle: 'preserve-3d',
+              WebkitTransformStyle: 'preserve-3d',
               zIndex: 30,
             }}
-            className="absolute inset-0 select-none cursor-grab active:cursor-grabbing perspective-1000"
+            className="absolute inset-0 select-none cursor-pointer perspective-1000"
           >
             {/* Hint Overlay: Kéo phải -> Viền xanh "THUỘC RỒI" */}
             <motion.div
@@ -286,15 +301,31 @@ export const InteractiveFlashcardDeck: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* 3D Flipper Container - GIỮ NGUYÊN 100% CƠ CHẾ CSS 3D */}
-            <div
-              className={`w-full h-full flashcard-preserve-3d ${
-                isFlipped ? 'flashcard-flipped' : ''
-              }`}
-              style={{ transformOrigin: 'center center', willChange: 'transform' }}
+            {/* 3D Flipper Container - 60fps Hardware-Accelerated 3D Flip */}
+            <motion.div
+              animate={{ rotateY: isFlipped ? 180 : 0 }}
+              transition={{
+                duration: 0.55,
+                ease: [0.2, 0.8, 0.2, 1],
+              }}
+              className="w-full h-full relative flashcard-preserve-3d"
+              style={{
+                transformStyle: 'preserve-3d',
+                WebkitTransformStyle: 'preserve-3d',
+                transformOrigin: 'center center',
+                willChange: 'transform',
+              }}
             >
               {/* Card Front */}
-              <div className="flashcard-face absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between">
+              <div
+                className="flashcard-face absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between"
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(0deg) translateZ(1px)',
+                  WebkitTransform: 'rotateY(0deg) translateZ(1px)',
+                }}
+              >
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="inline-block text-[10px] sm:text-[11px] font-black uppercase tracking-wider bg-paper-2 border border-ink rounded-full px-2.5 py-0.5">
@@ -312,14 +343,22 @@ export const InteractiveFlashcardDeck: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-amber-700 bg-amber-50/60 rounded py-1">
+                <div className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-amber-700 bg-amber-50/60 rounded py-1 cursor-pointer hover:bg-amber-100/70 transition-colors">
                   <span>↻</span>
                   <span>Chạm thẻ để lật 3D xem nghĩa</span>
                 </div>
               </div>
 
               {/* Card Back (Flipped) */}
-              <div className="flashcard-face flashcard-face-back absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between">
+              <div
+                className="flashcard-face flashcard-face-back absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between"
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg) translateZ(1px)',
+                  WebkitTransform: 'rotateY(180deg) translateZ(1px)',
+                }}
+              >
                 <div>
                   <div className="text-[10px] uppercase font-black tracking-widest text-teal mb-1">
                     Ý NGHĨA & VÍ DỤ
@@ -333,12 +372,12 @@ export const InteractiveFlashcardDeck: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-ink-muted">
+                <div className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-ink-muted cursor-pointer hover:text-ink transition-colors">
                   <span>↺</span>
                   <span>Chạm để lật lại mặt trước</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>
