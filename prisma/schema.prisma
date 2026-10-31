@@ -1288,6 +1288,9 @@ model IeltsListeningSection {
   source         String   @default("ai-generated")
   license        String?  @default("n/a (original)")
   verified       Boolean  @default(false)
+  audioUrl       String?  @map("audio_url")
+  audioStartSec  Int?     @map("audio_start_sec")
+  audioEndSec    Int?     @map("audio_end_sec")
   createdAt      DateTime @default(now())
 
   @@index([cefrLevel])
