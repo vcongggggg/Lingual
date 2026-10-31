@@ -1,4 +1,27 @@
 
+export interface AchievementItem {
+  id: string;
+  code: string;
+  nameKey: string;
+  icon: string;
+  xpBonus: number;
+  nameVi: string;
+  descriptionVi: string;
+  unlocked: boolean;
+  unlockedAt: string | null;
+  progress: {
+    current: number;
+    target: number;
+    percent: number;
+  };
+}
+
+export interface AchievementSummary {
+  unlockedCount: number;
+  totalCount: number;
+  bonusXpEarned: number;
+}
+
 export interface StudyTemplateItem {
   id: string;
   type: string;
@@ -565,5 +588,10 @@ export const api = {
   },
   getStudyTemplateById: (id: string) =>
     fetchApi<{ success: boolean; data: StudyTemplateItem }>(`/study-templates/${id}`),
+
+  // 18. Achievements (Notebook Style)
+  getAchievements: () => fetchApi<{ achievements: AchievementItem[] }>('/achievements'),
+  getAchievementSummary: () => fetchApi<AchievementSummary>('/achievements/summary'),
+  evaluateAchievements: () => fetchApi<{ success: boolean; newlyUnlockedCount: number; newlyUnlocked: any[] }>('/achievements/evaluate', { method: 'POST' }),
 };
 
