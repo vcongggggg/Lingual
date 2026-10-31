@@ -8,6 +8,9 @@ async function cleanupGrammarFixtures() {
   await prisma.grammarQuestion.deleteMany({
     where: { id: { startsWith: 'gq-fix-' } },
   });
+  await prisma.grammarExplanation.deleteMany({
+    where: { id: { startsWith: 'gexp-fix-' } },
+  });
 }
 
 function createTestApp(userId: string = 'demo-user-id-001') {
@@ -184,6 +187,27 @@ before(async () => {
       questionsJson: JSON.stringify(listeningQuestions),
     },
   });
+
+  // 7. Grammar Explanation fixtures (ensure DB has theory topics during tests)
+  const explanationFixtures = [
+    { id: 'gexp-fix-1', topic: 'Present Simple', ruleVi: 'Thì hiện tại đơn diễn tả sự thật hiển nhiên.' },
+    { id: 'gexp-fix-2', topic: 'Past Simple', ruleVi: 'Thì quá khứ đơn diễn tả hành động đã kết thúc.' },
+    { id: 'gexp-fix-3', topic: 'First Conditional', ruleVi: 'Câu điều kiện loại 1 diễn tả khả năng có thể xảy ra.' },
+    { id: 'gexp-fix-4', topic: 'Present Perfect', ruleVi: 'Thì hiện tại hoàn thành diễn tả hành động bắt đầu từ quá khứ.' },
+  ];
+
+  for (const exp of explanationFixtures) {
+    await prisma.grammarExplanation.upsert({
+      where: { id: exp.id },
+      update: {},
+      create: {
+        id: exp.id,
+        topic: exp.topic,
+        topicVi: exp.topic,
+        ruleVi: exp.ruleVi,
+      },
+    });
+  }
 });
 
 test('Placement API P0.5 - GET /questions returns 30 questions with 4 sections including Listening', async () => {

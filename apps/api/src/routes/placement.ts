@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
 import { userRepository } from '../repositories/user.repository.js';
-import { getMurphySuggestions } from '../lib/murphyStudyGuideMap.js';
+import { getMurphySuggestions, MURPHY_STUDY_GUIDE_MAP } from '../lib/murphyStudyGuideMap.js';
 
 export const placementRouter = Router();
 
@@ -520,7 +520,11 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       select: { topic: true },
       distinct: ['topic'],
     });
-    const validTopicSet = new Set(validTheoryTopics.map((t) => t.topic));
+    let validTopicNames = validTheoryTopics.map((t) => t.topic);
+    if (validTopicNames.length === 0) {
+      validTopicNames = Object.keys(MURPHY_STUDY_GUIDE_MAP);
+    }
+    const validTopicSet = new Set(validTopicNames);
 
     const sortedMistakes = Object.entries(grammarMistakesByTopic)
       .filter(([topic]) => validTopicSet.has(topic))
@@ -528,8 +532,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
 
     let weakTopics = sortedMistakes.slice(0, 3).map(([topic]) => topic);
     if (weakTopics.length < 3) {
-      const fallbackTopics = validTheoryTopics
-        .map((t) => t.topic)
+      const fallbackTopics = validTopicNames
         .filter((t) => !weakTopics.includes(t));
       weakTopics = [...weakTopics, ...fallbackTopics.slice(0, 3 - weakTopics.length)];
     }
