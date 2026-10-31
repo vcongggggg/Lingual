@@ -5,6 +5,7 @@ import { prisma } from '../lib/prisma.js';
 import { userRepository } from '../repositories/user.repository.js';
 import { JWT_SECRET } from '../middleware/rbac.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
+import { achievementService } from '../services/achievementService.js';
 
 export const userRouter = Router();
 
@@ -42,10 +43,11 @@ userRouter.get('/profile', async (req, res) => {
     return res.status(403).json({ error: 'Tài khoản của bạn đã bị vô hiệu hóa hoặc tạm khóa. Vui lòng liên hệ quản trị viên.' });
   }
 
+  const userAchievements = await achievementService.getUserAchievements(user.id);
   const { passwordHash: _, ...userWithoutPassword } = user;
   return res.json({
     user: userWithoutPassword,
-    achievements: SEED_ACHIEVEMENTS,
+    achievements: userAchievements,
   });
 });
 

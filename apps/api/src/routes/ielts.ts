@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
+import { achievementService } from '../services/achievementService.js';
 import { JWT_SECRET } from '../middleware/rbac.js';
 import { SEED_IELTS_TRACKS, SEED_IELTS_QUESTIONS } from '../../../../prisma/seed-ielts.js';
 import {
@@ -319,6 +320,10 @@ ieltsRouter.post('/mock-test/submit', async (req: Request, res: Response) => {
             overall: attempt.overallBand,
           }),
         },
+      });
+      // Trigger Achievement evaluation (Idempotent background hook)
+      achievementService.evaluate(userId).catch((err) => {
+        console.error('[Achievements] Evaluation failed post-IELTS mock:', err);
       });
     } catch (err) {
       console.warn('Could not persist ieltsMockAttempt in DB:', err);

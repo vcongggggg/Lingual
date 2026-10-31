@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { MASTER_EXAMS } from './examData.js';
 import { examRepository, userRepository } from '../repositories/index.js';
+import { achievementService } from '../services/achievementService.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
 import {
   createExamAttempt,
@@ -204,6 +205,11 @@ examsRouter.post('/attempts/:attemptId/submit', async (req, res) => {
     getFormattedDateInTimezone(new Date(), user?.timezone || 'Asia/Ho_Chi_Minh'),
     evaluationResult.xpAwarded
   );
+
+  // Trigger Achievement evaluation (Idempotent background hook)
+  achievementService.evaluate(attempt.userId).catch((err) => {
+    console.error('[Achievements] Evaluation failed post-exam:', err);
+  });
 
   return res.status(200).json({
     attempt,

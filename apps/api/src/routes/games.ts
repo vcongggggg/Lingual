@@ -15,6 +15,7 @@ import {
   BACKEND_WORDLE_LIST,
 } from '../data/universalVocabulary.js';
 import { gameRepository } from '../repositories/game.repository.js';
+import { achievementService } from '../services/achievementService.js';
 import { userRepository } from '../repositories/user.repository.js';
 import { stampRepository } from '../repositories/stamp.repository.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
@@ -260,6 +261,11 @@ gamesRouter.post('/submit', async (req, res) => {
     xpEarned: scoring.xpEarned,
     durationSeconds: validDuration,
     comboMax: Number(comboMax) || 1,
+  });
+
+  // Trigger Achievement evaluation (Idempotent background hook)
+  achievementService.evaluate(user.id).catch((err) => {
+    console.error('[Achievements] Evaluation failed post-game:', err);
   });
 
   return res.json({

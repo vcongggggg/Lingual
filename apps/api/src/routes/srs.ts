@@ -9,6 +9,7 @@ import { prisma } from '../lib/prisma.js';
 import { userRepository } from '../repositories/user.repository.js';
 import { vocabularyRepository } from '../repositories/vocabulary.repository.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
+import { achievementService } from '../services/achievementService.js';
 
 export const srsRouter = Router();
 
@@ -176,6 +177,11 @@ srsRouter.post('/review', async (req, res) => {
     getFormattedDateInTimezone(new Date(), user.timezone),
     xpEarned
   );
+
+  // Trigger Achievement evaluation (Idempotent background hook)
+  achievementService.evaluate(user.id).catch((err) => {
+    console.error('[Achievements] Evaluation failed post-SRS:', err);
+  });
 
   return res.json({
     wordId,
