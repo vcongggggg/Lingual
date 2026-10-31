@@ -20,6 +20,7 @@ import {
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { api } from '../../lib/api';
+import { getMurphySuggestionForTopic } from '../../lib/murphyStudyGuideMap';
 import { LingLing, LingLingReaction } from '../../components/ui/LingLing';
 import { StampSlam } from '../../components/ui/StampSlam';
 import { RoadmapErrorBoundary } from '../../components/ui/RoadmapErrorBoundary';
@@ -564,31 +565,49 @@ function CurriculumRoadmapContent() {
             </div>
           </div>
 
-          {/* Weak Topics Quick Action */}
+          {/* Weak Topics Quick Action with Raymond Murphy Recommendations */}
           {placementData.weakTopics && placementData.weakTopics.length > 0 && (
             <div>
-              <div className="text-xs font-black uppercase tracking-wider text-red mb-3 flex items-center gap-2 font-sans">
-                <Flag className="w-3.5 h-3.5 text-red" />
-                <span>3 Chủ điểm ngữ pháp khuyên học bổ trợ song song lộ trình:</span>
+              <div className="text-xs font-black uppercase tracking-wider text-red mb-3 flex items-center justify-between gap-2 font-sans">
+                <div className="flex items-center gap-2">
+                  <Flag className="w-3.5 h-3.5 text-red" />
+                  <span>3 Chủ điểm ngữ pháp khuyên học bổ trợ (Murphy G5 Study Guide):</span>
+                </div>
+                <span className="text-[10px] font-mono font-bold text-ink-muted bg-paper-2 px-2 py-0.5 rounded border border-ink/20">
+                  English Grammar in Use 5th Ed.
+                </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {placementData.weakTopics.map((top, idx) => (
-                  <Link
-                    key={`roadmap-weak-${idx}`}
-                    href={`/grammar?topic=${encodeURIComponent(top)}`}
-                    className="p-3 bg-paper border-2 border-ink rounded-2xl shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center justify-between group text-decoration-none"
-                  >
-                    <div className="flex items-center gap-2 truncate">
-                      <span className="w-5 h-5 rounded-full bg-red/10 text-red font-mono font-black text-[10px] flex items-center justify-center flex-shrink-0">
-                        {idx + 1}
-                      </span>
-                      <span className="text-xs font-bold text-ink truncate group-hover:text-red transition-colors font-sans">
-                        {top}
-                      </span>
-                    </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-ink-muted group-hover:text-red transition-colors flex-shrink-0" />
-                  </Link>
-                ))}
+                {placementData.weakTopics.map((top, idx) => {
+                  const murphy = getMurphySuggestionForTopic(top);
+                  const linkUrl = murphy ? murphy.deepLink : `/grammar?topic=${encodeURIComponent(top)}`;
+
+                  return (
+                    <Link
+                      key={`roadmap-weak-${idx}`}
+                      href={linkUrl}
+                      className="p-3 bg-paper border-2 border-ink rounded-2xl shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex flex-col justify-between group text-decoration-none"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2 truncate">
+                          <span className="w-5 h-5 rounded-full bg-red/10 text-red font-mono font-black text-[10px] flex items-center justify-center flex-shrink-0">
+                            {idx + 1}
+                          </span>
+                          <span className="text-xs font-bold text-ink truncate group-hover:text-red transition-colors font-sans">
+                            {top}
+                          </span>
+                        </div>
+                        <ArrowRight className="w-3.5 h-3.5 text-ink-muted group-hover:text-red transition-colors flex-shrink-0" />
+                      </div>
+                      {murphy && (
+                        <div className="mt-2 pt-1.5 border-t border-ink/10 flex items-center gap-1.5 text-[10px] font-mono font-bold text-teal truncate">
+                          <BookOpen className="w-3 h-3 flex-shrink-0" />
+                          <span className="truncate">Unit {murphy.unitNumber}: {murphy.unitTitle}</span>
+                        </div>
+                      )}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           )}

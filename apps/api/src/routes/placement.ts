@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { resolveAuthUserId } from '../lib/authUtil.js';
 import { userRepository } from '../repositories/user.repository.js';
+import { getMurphySuggestions } from '../lib/murphyStudyGuideMap.js';
 
 export const placementRouter = Router();
 
@@ -57,10 +58,18 @@ placementRouter.get('/latest', async (req: Request, res: Response) => {
       return res.json({ attempt: null });
     }
 
-    let sectionScores = {};
+    let sectionScores: any = {};
     try {
       sectionScores = JSON.parse(attempt.sectionScoresJson);
     } catch {}
+
+    const weakTopics: string[] = Array.isArray(sectionScores.weakTopics)
+      ? sectionScores.weakTopics
+      : [];
+
+    const murphySuggestions = Array.isArray(sectionScores.murphySuggestions) && sectionScores.murphySuggestions.length > 0
+      ? sectionScores.murphySuggestions
+      : getMurphySuggestions(weakTopics);
 
     return res.json({
       attempt: {
@@ -69,6 +78,8 @@ placementRouter.get('/latest', async (req: Request, res: Response) => {
         level: attempt.level,
         bandEstimate: attempt.bandEstimate,
         sectionScores,
+        weakTopics,
+        murphySuggestions,
         listeningNote: LISTENING_NOTE,
         disclaimer: PLACEMENT_DISCLAIMER,
       },
@@ -534,6 +545,8 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       sectionStats.reading.correct +
       sectionStats.listening.correct;
 
+    const murphySuggestions = getMurphySuggestions(weakTopics);
+
     const overallScores = {
       ...sectionStats,
       total: {
@@ -542,6 +555,8 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
         percentage: totalQuestionsCount > 0 ? Math.round((totalCorrectCount / totalQuestionsCount) * 100) : 0,
       },
       levelStats,
+      weakTopics,
+      murphySuggestions,
     };
 
     // Save PlacementAttempt
@@ -569,6 +584,7 @@ placementRouter.post('/submit', async (req: Request, res: Response) => {
       bandEstimate,
       sectionScores: overallScores,
       weakTopics,
+      murphySuggestions,
       listeningNote: LISTENING_NOTE,
       disclaimer: PLACEMENT_DISCLAIMER,
     });

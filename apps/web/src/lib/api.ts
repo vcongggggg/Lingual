@@ -1,4 +1,7 @@
 // API Client for Lingual Web App connecting to Lingual Production API
+import type { MurphySuggestion } from './murphyStudyGuideMap';
+
+export type { MurphySuggestion };
 export function getApiBase(): string {
   if (process.env.NEXT_PUBLIC_API_URL && process.env.NEXT_PUBLIC_API_URL.trim() !== '') {
     return process.env.NEXT_PUBLIC_API_URL;
@@ -514,13 +517,15 @@ export const api = {
   // 16. Placement Test
   getPlacementLatest: () => fetchApi<{ attempt: any }>('/placement/latest'),
   getPlacementQuestions: () => fetchApi<{ totalQuestions: number; estimatedMinutes: number; questions: any[] }>('/placement/questions'),
-  submitPlacementTest: (data: { answers: Record<string, string>; questionIds: string[] }) =>
+  submitPlacementTest: (data: { answers: Record<string, string>; questionIds: string[]; audioPlayCount?: number }) =>
     fetchApi<{
       attemptId: string;
       level: string;
       bandEstimate: string;
       sectionScores: any;
       weakTopics: string[];
+      murphySuggestions?: MurphySuggestion[];
+      listeningNote?: string;
       disclaimer: string;
     }>('/placement/submit', {
       method: 'POST',

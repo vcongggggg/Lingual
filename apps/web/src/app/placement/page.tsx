@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { api } from '../../lib/api';
+import { getMurphySuggestionForTopic, getMurphySuggestions, type MurphySuggestion } from '../../lib/murphyStudyGuideMap';
 import {
   BookOpen,
   CheckCircle2,
@@ -46,6 +47,7 @@ interface PlacementResult {
     total: { correct: number; total: number; percentage: number };
   };
   weakTopics: string[];
+  murphySuggestions?: MurphySuggestion[];
   listeningNote?: string;
   disclaimer: string;
 }
@@ -164,7 +166,10 @@ export default function PlacementPage() {
         answers: finalAnswers,
         questionIds: qIds,
       });
-      setResult(res);
+      setResult({
+        ...res,
+        murphySuggestions: res.murphySuggestions || getMurphySuggestions(res.weakTopics || []),
+      });
       setState('result');
     } catch (err: any) {
       console.error(err);
@@ -497,12 +502,21 @@ export default function PlacementPage() {
                           : JSON.parse(latestAttempt.weakTopicsJson);
                       }
                     } catch {}
+                    let murphySugs: MurphySuggestion[] = [];
+                    try {
+                      if (latestAttempt.murphySuggestions && Array.isArray(latestAttempt.murphySuggestions)) {
+                        murphySugs = latestAttempt.murphySuggestions;
+                      } else if (weak.length > 0) {
+                        murphySugs = getMurphySuggestions(weak);
+                      }
+                    } catch {}
                     setResult({
                       attemptId: latestAttempt.id,
                       level: latestAttempt.level,
                       bandEstimate: latestAttempt.bandEstimate,
                       sectionScores: scores,
                       weakTopics: weak,
+                      murphySuggestions: murphySugs,
                       listeningNote: 'Phần Nghe dùng giọng máy tạm thời, sẽ thay bằng audio thật khi có.',
                       disclaimer: 'Kết quả bài kiểm tra chỉ mang tính chất ước lượng trình độ đầu vào trên hệ thống LinguaFlow và tham chiếu tương đối theo chuẩn CEFR / IELTS, không thay thế chứng chỉ khảo thí chính thức.',
                     });
@@ -995,71 +1009,115 @@ export default function PlacementPage() {
               🎧 <b>Ghi chú phần Nghe:</b> {result.listeningNote || 'Phần Nghe dùng giọng máy tạm thời, sẽ thay bằng audio thật khi có.'}
             </div>
 
-            {/* Weak Topics to Focus On - Deep link directly to grammar explanation */}
+            {/* Weak Topics to Focus On - Deep link directly to grammar explanation & Raymond Murphy Study Guide */}
             {result.weakTopics && result.weakTopics.length > 0 && (
               <div
                 style={{
                   backgroundColor: '#FFF7ED',
                   border: '1px solid #FED7AA',
-                  borderRadius: '8px',
-                  padding: '16px 20px',
+                  borderRadius: '10px',
+                  padding: '18px 20px',
                   marginBottom: '24px',
                 }}
               >
-                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#C2410C', marginBottom: '10px' }}>
-                  🎯 3 Chủ điểm ngữ pháp khuyên học bổ trợ (Bấm để xem lý thuyết):
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '12px' }}>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#C2410C' }}>
+                    🎯 3 Chủ điểm ngữ pháp khuyên học bổ trợ (Raymond Murphy G5 Study Guide):
+                  </div>
+                  <span
+                    style={{
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      backgroundColor: '#FFEDD5',
+                      color: '#9A3412',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      border: '1px solid #FDBA74',
+                    }}
+                  >
+                    English Grammar in Use 5th Edition
+                  </span>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {result.weakTopics.map((top, idx) => (
-                    <Link
-                      key={`weak-${idx}`}
-                      href={`/grammar?topic=${encodeURIComponent(top)}`}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '10px 14px',
-                        backgroundColor: '#FFFFFF',
-                        border: '1px solid #FDBA74',
-                        borderRadius: '6px',
-                        color: '#9A3412',
-                        textDecoration: 'none',
-                        transition: 'all 0.15s ease',
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '22px',
-                            height: '22px',
-                            backgroundColor: '#FFEDD5',
-                            borderRadius: '50%',
-                            fontSize: '0.75rem',
-                            fontWeight: 700,
-                            color: '#C2410C',
-                          }}
-                        >
-                          {idx + 1}
-                        </span>
-                        <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>{top}</span>
-                      </div>
-                      <span
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {result.weakTopics.map((top, idx) => {
+                    const murphy = result.murphySuggestions?.find((m) => m.topic === top) || getMurphySuggestionForTopic(top);
+                    const linkUrl = murphy ? murphy.deepLink : `/grammar?topic=${encodeURIComponent(top)}`;
+
+                    return (
+                      <Link
+                        key={`weak-${idx}`}
+                        href={linkUrl}
                         style={{
-                          fontSize: '0.8rem',
-                          color: '#EA580C',
-                          fontWeight: 600,
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '4px',
+                          justifyContent: 'space-between',
+                          padding: '12px 16px',
+                          backgroundColor: '#FFFFFF',
+                          border: '1.5px solid #FDBA74',
+                          borderRadius: '8px',
+                          color: '#9A3412',
+                          textDecoration: 'none',
+                          transition: 'all 0.15s ease',
+                          gap: '12px',
                         }}
                       >
-                        Học lý thuyết <ChevronRight size={14} />
-                      </span>
-                    </Link>
-                  ))}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: 0 }}>
+                          <span
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: '24px',
+                              height: '24px',
+                              backgroundColor: '#FFEDD5',
+                              borderRadius: '50%',
+                              fontSize: '0.75rem',
+                              fontWeight: 800,
+                              color: '#C2410C',
+                              flexShrink: 0,
+                            }}
+                          >
+                            {idx + 1}
+                          </span>
+                          <div style={{ minWidth: 0 }}>
+                            <div style={{ fontWeight: 800, fontSize: '0.925rem', color: '#1E293B' }}>{top}</div>
+                            {murphy && (
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '3px', flexWrap: 'wrap' }}>
+                                <span
+                                  style={{
+                                    fontSize: '0.75rem',
+                                    fontWeight: 700,
+                                    color: '#0F766E',
+                                    backgroundColor: '#CCFBF1',
+                                    padding: '1px 6px',
+                                    borderRadius: '4px',
+                                  }}
+                                >
+                                  📖 Unit {murphy.unitNumber}: {murphy.unitTitle}
+                                </span>
+                                <span style={{ fontSize: '0.725rem', color: '#64748B' }}>
+                                  ({murphy.studyGuideCategory})
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        <span
+                          style={{
+                            fontSize: '0.8rem',
+                            color: '#EA580C',
+                            fontWeight: 700,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            flexShrink: 0,
+                          }}
+                        >
+                          Học lý thuyết <ChevronRight size={14} />
+                        </span>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}

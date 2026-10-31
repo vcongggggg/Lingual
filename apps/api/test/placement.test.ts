@@ -291,6 +291,18 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     assert.equal(subKha.sectionScores.total.total, 30);
     assert.equal(subKha.listeningNote, LISTENING_NOTE);
     assert.equal(subKha.disclaimer, PLACEMENT_DISCLAIMER);
+    // Raymond Murphy G5 assertions for Profile Kha
+    assert.ok(Array.isArray(subKha.weakTopics), 'subKha must have weakTopics');
+    assert.equal(subKha.weakTopics.length, 3, 'subKha must have 3 weakTopics');
+    assert.ok(Array.isArray(subKha.murphySuggestions), 'subKha must include murphySuggestions');
+    assert.equal(subKha.murphySuggestions.length, 3, 'subKha must have 3 murphySuggestions');
+    for (const sug of subKha.murphySuggestions) {
+      assert.ok(typeof sug.unitNumber === 'number', 'unitNumber must be number');
+      assert.ok(sug.unitNumber > 0 && sug.unitNumber <= 145, 'unitNumber must be between 1 and 145');
+      assert.ok(typeof sug.unitTitle === 'string' && sug.unitTitle.length > 0, 'unitTitle must be valid');
+      assert.ok(typeof sug.studyGuideCategory === 'string' && sug.studyGuideCategory.length > 0, 'studyGuideCategory must be valid');
+      assert.equal(sug.deepLink, `/grammar?topic=${encodeURIComponent(sug.topic)}&unit=${sug.unitNumber}`, 'deepLink must be valid');
+    }
 
     // --- Profile 2: Trung bình (B1 level, 3/5 Listening correct) ---
     const answersTB: Record<string, string> = {};
@@ -316,6 +328,18 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     assert.equal(subTB.bandEstimate, '5.0 - 5.5', 'B1 must map to band 5.0 - 5.5');
     assert.equal(subTB.sectionScores.listening.correct, 3);
     assert.equal(subTB.sectionScores.listening.total, 5);
+    // Raymond Murphy G5 assertions for Profile Trung Binh
+    assert.ok(Array.isArray(subTB.weakTopics), 'subTB must have weakTopics');
+    assert.equal(subTB.weakTopics.length, 3, 'subTB must have 3 weakTopics');
+    assert.ok(Array.isArray(subTB.murphySuggestions), 'subTB must include murphySuggestions');
+    assert.equal(subTB.murphySuggestions.length, 3, 'subTB must have 3 murphySuggestions');
+    for (const sug of subTB.murphySuggestions) {
+      assert.ok(typeof sug.unitNumber === 'number', 'unitNumber must be number');
+      assert.ok(sug.unitNumber > 0 && sug.unitNumber <= 145, 'unitNumber must be between 1 and 145');
+      assert.ok(typeof sug.unitTitle === 'string' && sug.unitTitle.length > 0, 'unitTitle must be valid');
+      assert.ok(typeof sug.studyGuideCategory === 'string' && sug.studyGuideCategory.length > 0, 'studyGuideCategory must be valid');
+      assert.equal(sug.deepLink, `/grammar?topic=${encodeURIComponent(sug.topic)}&unit=${sug.unitNumber}`, 'deepLink must be valid');
+    }
 
     // --- Profile 3: Yếu (A2 level, 1/5 Listening correct) ---
     const answersYeu: Record<string, string> = {};
@@ -342,6 +366,18 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     assert.equal(subYeu.sectionScores.listening.correct, 1);
     assert.equal(subYeu.sectionScores.listening.total, 5);
     assert.equal(subYeu.sectionScores.listening.audioPlayCount, 3);
+    // Raymond Murphy G5 assertions for Profile Yeu
+    assert.ok(Array.isArray(subYeu.weakTopics), 'subYeu must have weakTopics');
+    assert.equal(subYeu.weakTopics.length, 3, 'subYeu must have 3 weakTopics');
+    assert.ok(Array.isArray(subYeu.murphySuggestions), 'subYeu must include murphySuggestions');
+    assert.equal(subYeu.murphySuggestions.length, 3, 'subYeu must have 3 murphySuggestions');
+    for (const sug of subYeu.murphySuggestions) {
+      assert.ok(typeof sug.unitNumber === 'number', 'unitNumber must be number');
+      assert.ok(sug.unitNumber > 0 && sug.unitNumber <= 145, 'unitNumber must be between 1 and 145');
+      assert.ok(typeof sug.unitTitle === 'string' && sug.unitTitle.length > 0, 'unitTitle must be valid');
+      assert.ok(typeof sug.studyGuideCategory === 'string' && sug.studyGuideCategory.length > 0, 'studyGuideCategory must be valid');
+      assert.equal(sug.deepLink, `/grammar?topic=${encodeURIComponent(sug.topic)}&unit=${sug.unitNumber}`, 'deepLink must be valid');
+    }
 
     // Verify DB record
     const latest = await prisma.placementAttempt.findFirst({
@@ -352,6 +388,16 @@ test('Placement API P0.5 - POST /submit grades 30 questions for 3 profiles with 
     const savedScores = JSON.parse(latest.sectionScoresJson);
     assert.ok(savedScores.listening, 'sectionScoresJson must include listening');
     assert.equal(savedScores.total.total, 30);
+    assert.ok(Array.isArray(savedScores.murphySuggestions), 'savedScores must include murphySuggestions');
+    assert.equal(savedScores.murphySuggestions.length, 3);
+
+    // Verify GET /latest returns murphySuggestions
+    const latestRes = await fetch(`http://localhost:${port}/api/v1/placement/latest`);
+    assert.equal(latestRes.status, 200);
+    const latestData = await latestRes.json();
+    assert.ok(latestData.attempt);
+    assert.ok(Array.isArray(latestData.attempt.murphySuggestions), 'latest attempt must have murphySuggestions');
+    assert.equal(latestData.attempt.murphySuggestions.length, 3);
   } finally {
     server.close();
   }

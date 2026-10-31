@@ -16,6 +16,7 @@ import {
   Compass,
 } from 'lucide-react';
 import { api } from '../../lib/api';
+import { getMurphySuggestionForTopic } from '../../lib/murphyStudyGuideMap';
 
 interface ExampleItem {
   en: string;
@@ -298,6 +299,30 @@ function GrammarContent() {
                     </div>
                   )}
                 </div>
+                  {(() => {
+                    const murphy = getMurphySuggestionForTopic(selectedTopic.topic);
+                    if (!murphy) return null;
+                    return (
+                      <div
+                        style={{
+                          marginTop: '10px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          backgroundColor: '#CCFBF1',
+                          border: '1px solid #5EEAD4',
+                          padding: '4px 12px',
+                          borderRadius: '6px',
+                          fontSize: '0.825rem',
+                          color: '#0F766E',
+                          fontWeight: 600,
+                        }}
+                      >
+                        <BookOpen size={15} />
+                        <span>Raymond Murphy (G5): <b>Unit {murphy.unitNumber}</b> — {murphy.unitTitle} ({murphy.studyGuideCategory})</span>
+                      </div>
+                    );
+                  })()}
 
                 {/* Rule Section */}
                 <div
