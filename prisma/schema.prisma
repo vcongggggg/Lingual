@@ -1860,3 +1860,18 @@ model SystemConfig {
 
 
 
+
+
+model StudyTemplate {
+  id            String   @id
+  type          String   @unique
+  titleVi       String   @map("title_vi")
+  titleEn       String   @map("title_en")
+  descriptionVi String   @map("description_vi") @db.Text
+  structure     Json
+  source        String   @default("authored")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("study_templates")
+}

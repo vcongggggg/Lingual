@@ -1,3 +1,21 @@
+
+export interface StudyTemplateItem {
+  id: string;
+  type: string;
+  titleVi: string;
+  titleEn: string;
+  descriptionVi: string;
+  structure: {
+    fields?: string[];
+    steps?: string[];
+    config?: Record<string, any>;
+    [key: string]: any;
+  };
+  source: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // API Client for Lingual Web App connecting to Lingual Production API
 import type { MurphySuggestion } from './murphyStudyGuideMap';
 
@@ -531,5 +549,21 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(data),
     }),
+
+  // 17. Study Templates (Notebook Style)
+  getStudyTemplates: (params?: { type?: string; search?: string; source?: string; page?: number; limit?: number }) => {
+    const query = new URLSearchParams();
+    if (params?.type) query.set('type', params.type);
+    if (params?.search) query.set('search', params.search);
+    if (params?.source) query.set('source', params.source);
+    if (params?.page) query.set('page', String(params.page));
+    if (params?.limit) query.set('limit', String(params.limit));
+    const qs = query.toString();
+    return fetchApi<{ success: boolean; data: StudyTemplateItem[]; total: number; page: number; limit: number; totalPages: number }>(
+      `/study-templates${qs ? `?${qs}` : ''}`
+    );
+  },
+  getStudyTemplateById: (id: string) =>
+    fetchApi<{ success: boolean; data: StudyTemplateItem }>(`/study-templates/${id}`),
 };
 
