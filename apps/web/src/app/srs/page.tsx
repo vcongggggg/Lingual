@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
   Volume2,
   RotateCw,
@@ -30,6 +31,14 @@ export default function SrsPage() {
   const [queue, setQueue] = useState<any[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const lastFlipTimeRef = useRef(0);
+
+  const handleCardFlip = (targetState?: boolean) => {
+    const now = Date.now();
+    if (now - lastFlipTimeRef.current < 450) return;
+    lastFlipTimeRef.current = now;
+    setIsFlipped((prev) => (targetState !== undefined ? targetState : !prev));
+  };
   const [loading, setLoading] = useState(true);
   const [sessionCompleted, setSessionCompleted] = useState(false);
   const [reviewedCount, setReviewedCount] = useState(0);
@@ -237,7 +246,7 @@ export default function SrsPage() {
       </div>
 
       {/* THẺ TỪ VẼ NHƯ "THẺ THƯ VIỆN" GIẤY CÓ DÁN BĂNG KEO 2 GÓC VỚI HIỆU ỨNG LẬT 3D */}
-      <div className="relative pt-3 select-none perspective-1000">
+      <div className="relative pt-3 select-none perspective-1000" style={{ perspective: "1200px" }}>
         {/* Băng dính 2 góc trên (Tape corners) */}
         <div className="tape-corner-tl" />
         <div className="tape-corner-tr" />
@@ -252,11 +261,20 @@ export default function SrsPage() {
             : 'border-2 border-ink shadow-brutal hover:shadow-brutal-xl';
 
           return (
-            <div
-              onClick={() => setIsFlipped(!isFlipped)}
-              className={`relative w-full min-h-[390px] sm:min-h-[430px] cursor-pointer flashcard-preserve-3d ${
-                isFlipped ? 'flashcard-flipped' : ''
-              }`}
+            <motion.div
+              animate={{ rotateY: isFlipped ? 180 : 0 }}
+              transition={{
+                duration: 0.55,
+                ease: [0.2, 0.8, 0.2, 1],
+              }}
+              onClick={() => handleCardFlip()}
+              className="relative w-full min-h-[390px] sm:min-h-[430px] cursor-pointer flashcard-preserve-3d"
+              style={{
+                transformStyle: 'preserve-3d',
+                WebkitTransformStyle: 'preserve-3d',
+                transformOrigin: 'center center',
+                willChange: 'transform',
+              }}
             >
               {/* Hiệu ứng con dấu ĐÃ ÔN đóng xuống khi vừa đánh giá */}
               {stamped && (
@@ -276,6 +294,12 @@ export default function SrsPage() {
                 className={`flashcard-face absolute inset-0 w-full h-full p-6 sm:p-10 rounded-2xl flex flex-col justify-between bg-card ${cardBorderClass} ${
                   isFlipped ? 'pointer-events-none' : 'pointer-events-auto'
                 }`}
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(0deg) translateZ(1px)',
+                  WebkitTransform: 'rotateY(0deg) translateZ(1px)',
+                }}
               >
                 {/* Header thẻ thư viện */}
                 <div className="flex items-center justify-between border-b-2 border-ink/20 pb-4">
@@ -314,7 +338,7 @@ export default function SrsPage() {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setIsFlipped(true);
+                      handleCardFlip(true);
                     }}
                     className="flex items-center gap-1.5 text-xs font-black text-red hover:underline cursor-pointer"
                   >
@@ -365,6 +389,12 @@ export default function SrsPage() {
                 className={`flashcard-face flashcard-face-back absolute inset-0 w-full h-full p-6 sm:p-10 rounded-2xl flex flex-col justify-between bg-paper-2 ${cardBorderClass} ${
                   !isFlipped ? 'pointer-events-none' : 'pointer-events-auto'
                 }`}
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg) translateZ(1px)',
+                  WebkitTransform: 'rotateY(180deg) translateZ(1px)',
+                }}
               >
                 {/* Header thẻ thư viện */}
                 <div className="flex items-center justify-between border-b-2 border-ink/20 pb-4">
@@ -403,7 +433,7 @@ export default function SrsPage() {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setIsFlipped(false);
+                      handleCardFlip(false);
                     }}
                     className="flex items-center gap-1.5 text-xs font-black text-red hover:underline cursor-pointer"
                   >
@@ -458,7 +488,7 @@ export default function SrsPage() {
                   <span>HỆ THỐNG THẺ GHI NHỚ LINGUAL</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })()}
       </div>
