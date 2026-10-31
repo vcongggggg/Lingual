@@ -23,6 +23,24 @@ describe('Achievement System Backend Test Suite (lingual-achievement-001)', () =
   let baseUrl: string;
 
   before(async () => {
+    // 0. Seed catalog 16 huy hiệu chuẩn nếu chưa có trong DB (đặc biệt cho CI database trắng)
+    for (const ach of CATALOG_ACHIEVEMENTS) {
+      await prisma.achievement.upsert({
+        where: { code: ach.code },
+        update: {},
+        create: {
+          code: ach.code,
+          nameKey: ach.nameKey,
+          descriptionKey: ach.descriptionKey,
+          category: ach.category,
+          icon: ach.icon,
+          xpBonus: ach.xpBonus,
+          targetValue: ach.targetValue,
+          triggerType: ach.triggerType,
+        },
+      });
+    }
+
     // 1. Khởi tạo test user
     await userRepository.createUser({
       id: testUserId,
@@ -52,6 +70,7 @@ describe('Achievement System Backend Test Suite (lingual-achievement-001)', () =
       await prisma.userGameStat.deleteMany({ where: { userId: testUserId } });
       await prisma.srsReviewLog.deleteMany({ where: { userId: testUserId } });
       await prisma.user.delete({ where: { id: testUserId } });
+      await prisma.vocabulary.deleteMany({ where: { targetText: 'hello' } });
     } catch (e) {
       // Ignore cleanup error
     }
@@ -83,8 +102,9 @@ describe('Achievement System Backend Test Suite (lingual-achievement-001)', () =
     if (!sampleVocab) {
       sampleVocab = await prisma.vocabulary.create({
         data: {
-          word: 'hello',
-          meaningVi: 'xin chào',
+          targetText: 'hello',
+          translation: 'xin chào',
+          cefrLevel: 'A1',
         },
       });
     }

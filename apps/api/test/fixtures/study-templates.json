@@ -1,0 +1,817 @@
+[
+  {
+    "id": "tpl-003-001",
+    "type": "flashcard",
+    "title_vi": "Thẻ từ vựng",
+    "title_en": "Flashcards",
+    "description_vi": "Người học lật thẻ hai mặt để ghi nhớ từ vựng: nhìn mặt trước, đoán nghĩa rồi kiểm tra mặt sau. Phù hợp với việc học hàng ngày và ôn tập nhanh.",
+    "structure": {
+      "fields": [
+        "front",
+        "back",
+        "hint",
+        "example_sentence"
+      ],
+      "steps": [
+        "Xem mặt trước của thẻ",
+        "Đoán nghĩa của từ trước khi lật",
+        "Lật thẻ để kiểm tra đáp án",
+        "Tự đánh giá đúng hoặc sai"
+      ],
+      "config": {
+        "seconds_per_card": 10,
+        "shuffle": true,
+        "show_hint_after": 2
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-002",
+    "type": "multiple_choice",
+    "title_vi": "Trắc nghiệm",
+    "title_en": "Multiple Choice",
+    "description_vi": "Người học chọn đáp án đúng trong số các lựa chọn cho mỗi câu hỏi từ vựng. Bài tập này rèn khả năng nhận biết nghĩa và phân biệt các từ gần giống nhau.",
+    "structure": {
+      "fields": [
+        "question",
+        "options",
+        "correct_index",
+        "explanation"
+      ],
+      "steps": [
+        "Đọc kỹ câu hỏi và các lựa chọn",
+        "Loại trừ các đáp án chắc chắn sai",
+        "Chọn đáp án đúng nhất",
+        "Xem giải thích sau khi trả lời"
+      ],
+      "config": {
+        "options_per_question": 4,
+        "shuffle_options": true,
+        "show_explanation": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-003",
+    "type": "fill_blank",
+    "title_vi": "Điền từ còn thiếu",
+    "title_en": "Fill in the Blank",
+    "description_vi": "Người học điền từ đúng vào chỗ trống trong câu. Bài tập rèn chính tả, dạng từ và khả năng dùng từ đúng ngữ cảnh.",
+    "structure": {
+      "fields": [
+        "sentence",
+        "blank_index",
+        "answer",
+        "hint"
+      ],
+      "steps": [
+        "Đọc câu và hiểu ngữ cảnh",
+        "Đoán từ cần điền dựa vào gợi ý ngữ pháp",
+        "Gõ từ vào chỗ trống",
+        "Kiểm tra đáp án và xem câu mẫu"
+      ],
+      "config": {
+        "case_sensitive": false,
+        "allow_hint": true,
+        "max_attempts": 3
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-004",
+    "type": "matching",
+    "title_vi": "Nối cặp",
+    "title_en": "Matching Pairs",
+    "description_vi": "Người học nối từ với nghĩa hoặc hình ảnh tương ứng bằng cách kéo thả hoặc chạm. Rèn tốc độ nhận biết và khả năng ghi nhớ liên kết từ - nghĩa.",
+    "structure": {
+      "fields": [
+        "left_item",
+        "right_item",
+        "pairs"
+      ],
+      "steps": [
+        "Quan sát hai cột các mục cần nối",
+        "Nối từng cặp từ - nghĩa tương ứng",
+        "Hoàn thành toàn bộ cặp trong thời gian giới hạn",
+        "Xem lại các cặp đã nối sai"
+      ],
+      "config": {
+        "time_limit_seconds": 60,
+        "pairs_per_round": 6,
+        "penalize_wrong": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-005",
+    "type": "dictation",
+    "title_vi": "Nghe chép chính tả",
+    "title_en": "Dictation",
+    "description_vi": "Người học nghe đoạn audio và gõ lại chính xác những gì nghe được. Bài tập rèn kỹ năng nghe chi tiết và chính tả.",
+    "structure": {
+      "fields": [
+        "audio_url",
+        "transcript",
+        "speed"
+      ],
+      "steps": [
+        "Nghe đoạn audio lần đầu để nắm ý chính",
+        "Nghe lại từng câu và gõ những gì nghe được",
+        "Nghe lần cuối để rà soát lại bài chép",
+        "So sánh với bản gốc và sửa lỗi"
+      ],
+      "config": {
+        "plays_allowed": 3,
+        "playback_speeds": [
+          1.0,
+          0.75,
+          0.5
+        ],
+        "auto_check": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-006",
+    "type": "spelling",
+    "title_vi": "Luyện chính tả",
+    "title_en": "Spelling Practice",
+    "description_vi": "Người học nghe phát âm hoặc nhìn nghĩa của từ rồi gõ đúng chính tả. Giúp ghi nhớ mặt chữ và tránh lỗi viết sai phổ biến.",
+    "structure": {
+      "fields": [
+        "word",
+        "pronunciation_url",
+        "meaning_vi",
+        "hint"
+      ],
+      "steps": [
+        "Nghe phát âm của từ hoặc đọc nghĩa gợi ý",
+        "Gõ chính tả của từ vào ô trống",
+        "Xác nhận đáp án của mình",
+        "Luyện lại các từ đã viết sai"
+      ],
+      "config": {
+        "reveal_letters": 1,
+        "max_attempts": 3,
+        "case_sensitive": false
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-007",
+    "type": "sentence_build",
+    "title_vi": "Ghép câu",
+    "title_en": "Sentence Builder",
+    "description_vi": "Người học sắp xếp các từ cho sẵn thành câu hoàn chỉnh đúng ngữ pháp. Rèn tư duy cấu trúc câu và trật tự từ trong tiếng Anh.",
+    "structure": {
+      "fields": [
+        "word_tiles",
+        "correct_order",
+        "translation_vi"
+      ],
+      "steps": [
+        "Đọc các mảnh từ được cho",
+        "Xác định chủ ngữ, động từ và các thành phần câu",
+        "Kéo thả các mảnh từ theo đúng thứ tự",
+        "Nghe và đọc lại câu hoàn chỉnh"
+      ],
+      "config": {
+        "shuffle_tiles": true,
+        "extra_distractor_tiles": 2,
+        "show_translation": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-008",
+    "type": "word_family",
+    "title_vi": "Họ từ",
+    "title_en": "Word Family",
+    "description_vi": "Người học học các dạng từ liên quan của cùng một gốc từ như danh từ, động từ, tính từ. Giúp mở rộng vốn từ nhanh theo nhóm và dùng đúng loại từ.",
+    "structure": {
+      "fields": [
+        "root_word",
+        "derivatives",
+        "pos_tags",
+        "examples"
+      ],
+      "steps": [
+        "Xem từ gốc và nghĩa của nó",
+        "Học từng dạng từ phái sinh kèm loại từ",
+        "Đặt câu với mỗi dạng từ",
+        "Làm bài kiểm tra chọn đúng loại từ"
+      ],
+      "config": {
+        "derivatives_per_root": 4,
+        "include_pos_quiz": true,
+        "show_examples": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-009",
+    "type": "collocation",
+    "title_vi": "Cụm từ kết hợp",
+    "title_en": "Collocations",
+    "description_vi": "Người học học các cụm từ thường đi cùng nhau, ví dụ động từ + danh từ. Rèn khả năng diễn đạt tự nhiên như người bản ngữ.",
+    "structure": {
+      "fields": [
+        "headword",
+        "collocates",
+        "example_sentences",
+        "pattern"
+      ],
+      "steps": [
+        "Xem từ chính và các từ thường đi kèm",
+        "Học nghĩa của từng cụm từ kết hợp",
+        "Đặt câu với cụm từ mới học",
+        "Hoàn thành bài điền cụm từ còn thiếu"
+      ],
+      "config": {
+        "collocates_per_word": 5,
+        "show_pattern": true,
+        "quiz_mode": "fill_blank"
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-010",
+    "type": "pronunciation_drill",
+    "title_vi": "Luyện phát âm",
+    "title_en": "Pronunciation Drill",
+    "description_vi": "Người học nghe mẫu phát âm chuẩn rồi đọc theo, ứng dụng chấm điểm độ chính xác. Rèn phát âm, trọng âm và ngữ điệu.",
+    "structure": {
+      "fields": [
+        "word",
+        "phonetic",
+        "audio_url",
+        "syllables"
+      ],
+      "steps": [
+        "Nghe mẫu phát âm chuẩn",
+        "Quan sát phiên âm và trọng âm của từ",
+        "Đọc to theo mẫu nhiều lần",
+        "Ghi âm và so sánh với mẫu"
+      ],
+      "config": {
+        "target_reps": 5,
+        "show_phonetic": true,
+        "auto_score": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-011",
+    "type": "cloze_paragraph",
+    "title_vi": "Điền từ vào đoạn văn",
+    "title_en": "Cloze Paragraph",
+    "description_vi": "Người học đọc một đoạn văn có nhiều chỗ trống và điền từ thích hợp vào từng chỗ. Rèn khả năng đoán từ theo ngữ cảnh và hiểu văn bản.",
+    "structure": {
+      "fields": [
+        "paragraph",
+        "blanks",
+        "word_bank",
+        "answers"
+      ],
+      "steps": [
+        "Đọc toàn bộ đoạn văn để nắm ý chính",
+        "Xác định loại từ cần điền ở mỗi chỗ trống",
+        "Chọn từ phù hợp từ ngân hàng từ cho sẵn",
+        "Đọc lại đoạn văn hoàn chỉnh để kiểm tra mạch văn"
+      ],
+      "config": {
+        "blanks_per_paragraph": 8,
+        "use_word_bank": true,
+        "show_answers_after": 2
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-012",
+    "type": "odd_one_out",
+    "title_vi": "Tìm từ khác loại",
+    "title_en": "Odd One Out",
+    "description_vi": "Người học tìm từ không cùng nhóm trong một danh sách, dựa trên nghĩa, loại từ hoặc chủ đề. Rèn khả năng phân loại và tư duy từ vựng.",
+    "structure": {
+      "fields": [
+        "word_list",
+        "odd_word",
+        "reason"
+      ],
+      "steps": [
+        "Đọc kỹ tất cả các từ trong danh sách",
+        "Tìm điểm chung của đa số các từ",
+        "Chọn từ không thuộc nhóm",
+        "Giải thích lý do lựa chọn của mình"
+      ],
+      "config": {
+        "words_per_set": 4,
+        "require_reason": false,
+        "time_limit_seconds": 30
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-013",
+    "type": "categorize",
+    "title_vi": "Phân loại từ",
+    "title_en": "Categorize Words",
+    "description_vi": "Người học kéo thả các từ vào đúng nhóm chủ đề hoặc loại từ. Giúp hệ thống hóa vốn từ theo chủ đề và ghi nhớ lâu hơn.",
+    "structure": {
+      "fields": [
+        "words",
+        "categories",
+        "correct_mapping"
+      ],
+      "steps": [
+        "Xem các nhóm chủ đề được cho",
+        "Đọc từng từ và xác định nhóm phù hợp",
+        "Kéo thả từ vào đúng nhóm",
+        "Kiểm tra và sửa các từ xếp sai"
+      ],
+      "config": {
+        "categories_per_round": 3,
+        "words_per_round": 12,
+        "time_limit_seconds": 90
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-014",
+    "type": "synonym_ladder",
+    "title_vi": "Thang từ đồng nghĩa",
+    "title_en": "Synonym Ladder",
+    "description_vi": "Người học sắp xếp các từ đồng nghĩa theo thang độ mạnh nhẹ của sắc thái nghĩa. Rèn khả năng cảm nhận sắc thái và dùng từ chính xác.",
+    "structure": {
+      "fields": [
+        "word_set",
+        "ordered_ladder",
+        "context_note"
+      ],
+      "steps": [
+        "Xem nhóm các từ đồng nghĩa",
+        "So sánh sắc thái nghĩa của từng từ",
+        "Xếp các từ theo thang từ nhẹ đến mạnh",
+        "Đặt câu minh họa cho từng mức độ"
+      ],
+      "config": {
+        "words_per_ladder": 5,
+        "show_context_note": true,
+        "quiz_mode": "order"
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-015",
+    "type": "antonym_pair",
+    "title_vi": "Cặp từ trái nghĩa",
+    "title_en": "Antonym Pairs",
+    "description_vi": "Người học học từ theo cặp trái nghĩa để ghi nhớ song song hai mặt nghĩa. Cách học này giúp nhớ nhanh và phân biệt rõ nghĩa của từ.",
+    "structure": {
+      "fields": [
+        "word",
+        "antonym",
+        "meaning_vi",
+        "example_pair"
+      ],
+      "steps": [
+        "Xem từ mới và nghĩa của nó",
+        "Học từ trái nghĩa tương ứng",
+        "So sánh câu ví dụ của hai từ",
+        "Tự kiểm tra bằng cách che một mặt của cặp từ"
+      ],
+      "config": {
+        "pairs_per_session": 10,
+        "show_example_pair": true,
+        "quiz_both_directions": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-016",
+    "type": "translation_drill",
+    "title_vi": "Luyện dịch",
+    "title_en": "Translation Drill",
+    "description_vi": "Người học dịch câu hoặc cụm từ qua lại giữa tiếng Việt và tiếng Anh. Rèn khả năng chuyển đổi ngôn ngữ nhanh và nắm cấu trúc câu.",
+    "structure": {
+      "fields": [
+        "source_text",
+        "target_text",
+        "direction",
+        "hint"
+      ],
+      "steps": [
+        "Đọc câu gốc và hiểu ý nghĩa",
+        "Dịch câu sang ngôn ngữ đích",
+        "So sánh với bản dịch mẫu",
+        "Ghi chú các cấu trúc dịch hay"
+      ],
+      "config": {
+        "direction": "both",
+        "max_attempts": 2,
+        "show_sample_translation": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-017",
+    "type": "listening_choice",
+    "title_vi": "Nghe chọn đáp án",
+    "title_en": "Listening Choice",
+    "description_vi": "Người học nghe một từ hoặc câu rồi chọn đáp án đúng trong các lựa chọn. Rèn khả năng nghe phân biệt âm và từ vựng qua âm thanh.",
+    "structure": {
+      "fields": [
+        "audio_url",
+        "options",
+        "correct_index",
+        "transcript"
+      ],
+      "steps": [
+        "Nghe đoạn audio cẩn thận",
+        "Nghe lại nếu chưa chắc chắn",
+        "Chọn đáp án đúng trong các lựa chọn",
+        "Xem bản ghi và nghe lại để củng cố"
+      ],
+      "config": {
+        "plays_allowed": 3,
+        "options_per_question": 4,
+        "show_transcript_after": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-018",
+    "type": "timed_sprint",
+    "title_vi": "Chạy nước rút",
+    "title_en": "Timed Sprint",
+    "description_vi": "Người học trả lời càng nhiều câu hỏi từ vựng càng tốt trong thời gian giới hạn. Bài tập rèn tốc độ phản xạ và khả năng nhớ nhanh dưới áp lực.",
+    "structure": {
+      "fields": [
+        "question_pool",
+        "duration_seconds",
+        "score"
+      ],
+      "steps": [
+        "Đọc nhanh câu hỏi hiện ra",
+        "Trả lời ngay không chần chừ",
+        "Tiếp tục với câu tiếp theo",
+        "Xem điểm và các câu đã sai sau khi hết giờ"
+      ],
+      "config": {
+        "duration_seconds": 60,
+        "skip_allowed": true,
+        "streak_bonus": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-019",
+    "type": "memory_match",
+    "title_vi": "Trí nhớ lật thẻ",
+    "title_en": "Memory Match Game",
+    "description_vi": "Người học lật các thẻ úp để tìm cặp từ - nghĩa giống nhau, ghi nhớ vị trí các thẻ. Vừa chơi vừa ôn từ vựng, rèn trí nhớ ngắn hạn.",
+    "structure": {
+      "fields": [
+        "cards",
+        "pairs",
+        "grid_size"
+      ],
+      "steps": [
+        "Quan sát bàn cờ các thẻ úp",
+        "Lật hai thẻ bất kỳ để tìm cặp trùng",
+        "Ghi nhớ vị trí các thẻ đã lật",
+        "Tìm hết tất cả các cặp trong ít lượt nhất"
+      ],
+      "config": {
+        "grid_size": "4x4",
+        "time_limit_seconds": 120,
+        "moves_counted": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-020",
+    "type": "crossword",
+    "title_vi": "Ô chữ",
+    "title_en": "Crossword Puzzle",
+    "description_vi": "Người học giải ô chữ bằng cách điền từ đúng vào các ô ngang dọc theo gợi ý. Rèn chính tả, vốn từ và tư duy liên kết nghĩa.",
+    "structure": {
+      "fields": [
+        "grid",
+        "clues_across",
+        "clues_down",
+        "answers"
+      ],
+      "steps": [
+        "Đọc gợi ý của các ô ngang và ô dọc",
+        "Điền từ chắc chắn nhất trước",
+        "Dùng các chữ cái giao nhau để suy luận",
+        "Hoàn thành toàn bộ ô chữ"
+      ],
+      "config": {
+        "grid_size": 10,
+        "reveal_letter_cost": 5,
+        "check_word_button": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-021",
+    "type": "hangman",
+    "title_vi": "Đoán chữ",
+    "title_en": "Hangman",
+    "description_vi": "Người học đoán từng chữ cái để tìm ra từ bí mật trước khi hình vẽ hoàn thành. Trò chơi rèn chính tả và khả năng suy luận từ vựng.",
+    "structure": {
+      "fields": [
+        "secret_word",
+        "hint",
+        "meaning_vi",
+        "max_wrong_guesses"
+      ],
+      "steps": [
+        "Xem gợi ý và số chữ cái của từ bí mật",
+        "Đoán từng chữ cái một",
+        "Theo dõi các chữ đã đoán đúng và sai",
+        "Đoán cả từ khi đã đủ manh mối"
+      ],
+      "config": {
+        "max_wrong_guesses": 6,
+        "show_hint": true,
+        "letter_bank": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-022",
+    "type": "word_snake",
+    "title_vi": "Rắn từ",
+    "title_en": "Word Snake",
+    "description_vi": "Người học nối các từ sao cho chữ cái cuối của từ trước là chữ cái đầu của từ sau. Trò chơi rèn vốn từ và phản xạ nghĩ từ nhanh.",
+    "structure": {
+      "fields": [
+        "start_word",
+        "word_chain",
+        "min_chain_length"
+      ],
+      "steps": [
+        "Xem từ bắt đầu của chuỗi",
+        "Nghĩ từ mới bắt đầu bằng chữ cái cuối của từ trước",
+        "Nhập từ và kiểm tra tính hợp lệ",
+        "Kéo dài chuỗi càng dài càng tốt"
+      ],
+      "config": {
+        "min_chain_length": 5,
+        "time_limit_seconds": 60,
+        "no_repeat_words": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-023",
+    "type": "error_correction",
+    "title_vi": "Sửa lỗi",
+    "title_en": "Error Correction",
+    "description_vi": "Người học tìm và sửa lỗi sai trong câu, thường là lỗi dùng từ hoặc dạng từ. Rèn khả năng nhận biết lỗi và dùng từ chính xác.",
+    "structure": {
+      "fields": [
+        "sentence",
+        "error_span",
+        "correction",
+        "explanation"
+      ],
+      "steps": [
+        "Đọc câu và tìm chỗ sai",
+        "Xác định loại lỗi: chính tả, dạng từ hay dùng từ",
+        "Sửa lỗi thành dạng đúng",
+        "Đọc giải thích vì sao đó là lỗi"
+      ],
+      "config": {
+        "error_types": [
+          "spelling",
+          "word_form",
+          "word_choice"
+        ],
+        "show_explanation": true,
+        "max_attempts": 2
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-024",
+    "type": "picture_word",
+    "title_vi": "Từ vựng qua hình ảnh",
+    "title_en": "Picture Word",
+    "description_vi": "Người học nhìn hình ảnh minh họa và gọi tên hoặc chọn từ tiếng Anh tương ứng. Cách học trực quan giúp ghi nhớ từ lâu và tự nhiên.",
+    "structure": {
+      "fields": [
+        "image_url",
+        "word",
+        "meaning_vi",
+        "options"
+      ],
+      "steps": [
+        "Quan sát kỹ hình ảnh minh họa",
+        "Gọi tên sự vật trong hình bằng tiếng Anh",
+        "Chọn hoặc gõ từ đúng",
+        "Nghe phát âm và đọc lại từ mới"
+      ],
+      "config": {
+        "mode": "name_the_picture",
+        "options_per_question": 4,
+        "show_word_after": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-025",
+    "type": "timed_recall",
+    "title_vi": "Nhớ nhanh có giờ",
+    "title_en": "Timed Recall",
+    "description_vi": "Người học xem nghĩa tiếng Việt rồi phải gõ từ tiếng Anh trong vài giây. Rèn tốc độ truy xuất từ vựng từ trí nhớ dưới áp lực thời gian.",
+    "structure": {
+      "fields": [
+        "prompt_vi",
+        "answer_en",
+        "time_per_item"
+      ],
+      "steps": [
+        "Đọc nghĩa tiếng Việt hiện ra",
+        "Nhớ lại từ tiếng Anh tương ứng càng nhanh càng tốt",
+        "Gõ từ trước khi hết giờ",
+        "Xem lại các từ không nhớ kịp"
+      ],
+      "config": {
+        "time_per_item_seconds": 8,
+        "case_sensitive": false,
+        "streak_bonus": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-026",
+    "type": "leitner_review",
+    "title_vi": "Ôn tập Leitner",
+    "title_en": "Leitner Review",
+    "description_vi": "Người học ôn từ theo phương pháp hộp Leitner: từ nhớ đúng tiến lên hộp cao hơn, từ sai quay về hộp đầu. Lịch ôn thông minh giúp chống quên hiệu quả.",
+    "structure": {
+      "fields": [
+        "card",
+        "box_level",
+        "next_review_date",
+        "front",
+        "back"
+      ],
+      "steps": [
+        "Xem mặt trước của thẻ đến kỳ ôn",
+        "Trả lời trước khi lật thẻ kiểm tra",
+        "Tự đánh giá nhớ đúng hay sai",
+        "Thẻ đúng lên hộp cao hơn, thẻ sai quay về hộp một"
+      ],
+      "config": {
+        "box_count": 5,
+        "review_intervals_days": [
+          1,
+          3,
+          7,
+          14,
+          30
+        ],
+        "daily_new_cards": 10
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-027",
+    "type": "dialogue_use",
+    "title_vi": "Dùng từ trong hội thoại",
+    "title_en": "Dialogue Practice",
+    "description_vi": "Người học dùng từ mới học trong các đoạn hội thoại mẫu hoặc tự tạo hội thoại. Rèn khả năng vận dụng từ vựng vào giao tiếp thực tế.",
+    "structure": {
+      "fields": [
+        "dialogue",
+        "target_words",
+        "roles",
+        "audio_url"
+      ],
+      "steps": [
+        "Đọc đoạn hội thoại mẫu",
+        "Chú ý các từ mới được gạch chân",
+        "Đóng vai và đọc to hội thoại",
+        "Tự tạo hội thoại mới dùng các từ đã học"
+      ],
+      "config": {
+        "roles_per_dialogue": 2,
+        "highlight_target_words": true,
+        "record_own_voice": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-028",
+    "type": "essay_use",
+    "title_vi": "Dùng từ trong bài viết",
+    "title_en": "Essay Writing",
+    "description_vi": "Người học viết đoạn văn hoặc bài luận có sử dụng các từ vựng mục tiêu. Rèn kỹ năng viết và khả năng dùng từ đúng ngữ cảnh học thuật.",
+    "structure": {
+      "fields": [
+        "prompt",
+        "target_words",
+        "min_words",
+        "sample_essay"
+      ],
+      "steps": [
+        "Đọc đề bài và danh sách từ cần dùng",
+        "Lập dàn ý cho bài viết",
+        "Viết bài và cố gắng dùng đủ các từ mục tiêu",
+        "Kiểm tra lại và sửa lỗi dùng từ"
+      ],
+      "config": {
+        "min_words": 150,
+        "required_target_words": 5,
+        "show_sample_essay": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-029",
+    "type": "peer_quiz",
+    "title_vi": "Đố vui cùng bạn",
+    "title_en": "Peer Quiz",
+    "description_vi": "Người học tạo câu hỏi từ vựng để đố bạn bè hoặc trả lời câu hỏi của bạn. Học qua tương tác xã hội giúp tăng động lực và ghi nhớ sâu.",
+    "structure": {
+      "fields": [
+        "quiz_questions",
+        "creator",
+        "opponent",
+        "score"
+      ],
+      "steps": [
+        "Tạo câu hỏi từ vựng từ các từ đã học",
+        "Gửi thử thách cho bạn bè",
+        "Trả lời câu hỏi của bạn trong thời gian giới hạn",
+        "Xem bảng điểm và ôn lại các câu sai"
+      ],
+      "config": {
+        "questions_per_quiz": 10,
+        "time_per_question_seconds": 15,
+        "rematch_allowed": true
+      }
+    },
+    "source": "authored"
+  },
+  {
+    "id": "tpl-003-030",
+    "type": "shadowing",
+    "title_vi": "Nhại theo",
+    "title_en": "Shadowing",
+    "description_vi": "Người học nghe audio của người bản ngữ và đọc nhại theo gần như đồng thời. Kỹ thuật này rèn phát âm, ngữ điệu và phản xạ nói tự nhiên.",
+    "structure": {
+      "fields": [
+        "audio_url",
+        "transcript",
+        "segment_length",
+        "target_words"
+      ],
+      "steps": [
+        "Nghe đoạn audio mẫu một lần",
+        "Nghe lại và đọc nhại theo gần như đồng thời",
+        "Lặp lại nhiều lần cho đến khi trôi chảy",
+        "Ghi âm bản nhại và so sánh với mẫu"
+      ],
+      "config": {
+        "segment_seconds": 10,
+        "repeat_target": 5,
+        "show_transcript": true
+      }
+    },
+    "source": "authored"
+  }
+]

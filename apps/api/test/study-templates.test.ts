@@ -1,7 +1,14 @@
-import test from 'node:test';
+import test, { before } from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { prisma } from '../src/lib/prisma.js';
 import { studyTemplateRouter } from '../src/routes/studyTemplates.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 function createTestApp() {
   const app = express();
@@ -9,6 +16,35 @@ function createTestApp() {
   app.use('/api/v1/study-templates', studyTemplateRouter);
   return app;
 }
+
+before(async () => {
+  const fixturesPath = join(__dirname, 'fixtures', 'study-templates.json');
+  const rawData = readFileSync(fixturesPath, 'utf-8');
+  const templates = JSON.parse(rawData);
+
+  for (const t of templates) {
+    await prisma.studyTemplate.upsert({
+      where: { id: t.id },
+      update: {
+        type: t.type,
+        titleVi: t.title_vi,
+        titleEn: t.title_en,
+        descriptionVi: t.description_vi,
+        structure: t.structure,
+        source: t.source || 'authored',
+      },
+      create: {
+        id: t.id,
+        type: t.type,
+        titleVi: t.title_vi,
+        titleEn: t.title_en,
+        descriptionVi: t.description_vi,
+        structure: t.structure,
+        source: t.source || 'authored',
+      },
+    });
+  }
+});
 
 test('Study Templates API - GET / returns list and total >= 30', async () => {
   const app = createTestApp();

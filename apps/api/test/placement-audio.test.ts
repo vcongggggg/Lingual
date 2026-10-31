@@ -1,4 +1,4 @@
-import test from 'node:test';
+import test, { before } from 'node:test';
 import assert from 'node:assert/strict';
 import express from 'express';
 import { placementRouter } from '../src/routes/placement.js';
@@ -40,6 +40,47 @@ function createTestApp(userId: string = 'demo-user-id-001') {
   app.use('/api/v1/placement', placementRouter);
   return app;
 }
+
+before(async () => {
+  const listeningQuestions = [
+    { questionNumber: 31, question: 'Biodiversity hotspots: important for locating targets for 31 ....................', options: [], correctAnswer: 'conservation', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 31' },
+    { questionNumber: 32, question: 'found that ocean hotspots: were not always rich in 32 ....................', options: [], correctAnswer: 'food', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 32' },
+    { questionNumber: 33, question: 'had higher temperatures at the 33 ....................', options: [], correctAnswer: 'surface', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 33' },
+    { questionNumber: 34, question: 'had sufficient 34 .................... in the water', options: [], correctAnswer: 'oxygen', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 34' },
+    { questionNumber: 35, question: 'Lisa Ballance, 2007: looked for hotspots for marine 35 ....................', options: [], correctAnswer: 'mammals', sourceRef: 'Cambridge IELTS 11, Test 1, Listening Question 35' },
+  ];
+
+  await prisma.ieltsListeningSection.upsert({
+    where: { id: 'cam11-academic-t1-l4' },
+    update: {
+      audioUrl: '/audio/placement/cam11_t1_s4_ocean_biodiversity.mp3',
+      audioStartSec: 0,
+      audioEndSec: 236,
+      scriptJson: JSON.stringify({
+        speaker: 'Lecturer',
+        context: 'Marine biology lecture on ocean biodiversity hotspots',
+        content: 'Good morning everyone. Today we will explore ocean biodiversity hotspots...',
+      }),
+      questionsJson: JSON.stringify(listeningQuestions),
+    },
+    create: {
+      id: 'cam11-academic-t1-l4',
+      section: 'listening',
+      cefrLevel: 'B2',
+      difficultyBand: '6.5',
+      title: 'Ocean Biodiversity',
+      audioUrl: '/audio/placement/cam11_t1_s4_ocean_biodiversity.mp3',
+      audioStartSec: 0,
+      audioEndSec: 236,
+      scriptJson: JSON.stringify({
+        speaker: 'Lecturer',
+        context: 'Marine biology lecture on ocean biodiversity hotspots',
+        content: 'Good morning everyone. Today we will explore ocean biodiversity hotspots...',
+      }),
+      questionsJson: JSON.stringify(listeningQuestions),
+    },
+  });
+});
 
 test('Placement Audio DoD 1: Mode Determination conforms strictly to 3 spec cases', () => {
   // Case (a): Section có audioUrl VÀ có start/end hợp lệ -> REAL_AUDIO_SEGMENT
@@ -141,4 +182,3 @@ test('Placement Audio DoD 3: DB Record cam11-academic-t1-l4 has valid audio_url 
   assert.equal(section.audioEndSec, 236);
   assert.ok(section.scriptJson, 'Phải có scriptJson bài giảng');
 });
-

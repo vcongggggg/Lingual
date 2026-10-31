@@ -177,13 +177,31 @@ before(async () => {
 
   await prisma.ieltsListeningSection.upsert({
     where: { id: 'cam11-academic-t1-l4' },
-    update: {},
+    update: {
+      audioUrl: '/audio/placement/cam11_t1_s4_ocean_biodiversity.mp3',
+      audioStartSec: 0,
+      audioEndSec: 236,
+      scriptJson: JSON.stringify({
+        speaker: 'Lecturer',
+        context: 'Marine biology lecture on ocean biodiversity hotspots',
+        content: 'Good morning everyone. Today we will explore ocean biodiversity hotspots...',
+      }),
+      questionsJson: JSON.stringify(listeningQuestions),
+    },
     create: {
       id: 'cam11-academic-t1-l4',
       section: 'listening',
       cefrLevel: 'B2',
       difficultyBand: '6.5',
       title: 'Ocean Biodiversity',
+      audioUrl: '/audio/placement/cam11_t1_s4_ocean_biodiversity.mp3',
+      audioStartSec: 0,
+      audioEndSec: 236,
+      scriptJson: JSON.stringify({
+        speaker: 'Lecturer',
+        context: 'Marine biology lecture on ocean biodiversity hotspots',
+        content: 'Good morning everyone. Today we will explore ocean biodiversity hotspots...',
+      }),
       questionsJson: JSON.stringify(listeningQuestions),
     },
   });
