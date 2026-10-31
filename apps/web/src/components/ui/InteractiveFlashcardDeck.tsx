@@ -103,6 +103,7 @@ export const InteractiveFlashcardDeck: React.FC = () => {
   const [isThrowing, setIsThrowing] = useState(false);
   const [isFlipping, setIsFlipping] = useState(false);
   const isDraggingRef = useRef(false);
+  const lastFlipTimeRef = useRef(0);
 
   // Motion values for smooth 60fps drag & hint reactivity without component re-renders
   const x = useMotionValue(0);
@@ -133,7 +134,13 @@ export const InteractiveFlashcardDeck: React.FC = () => {
   };
 
   const handleCardTap = () => {
-    if (isFlipping || isThrowing) return;
+    const now = Date.now();
+    // Synchronous time-lock: strictly prevent double/rapid triggers that cause jitter
+    if (now - lastFlipTimeRef.current < 500) return;
+    if (isThrowing) return;
+
+    lastFlipTimeRef.current = now;
+    x.set(0); // Reset any sub-pixel drag displacement to prevent rotation wobble
     setIsFlipping(true);
     setIsFlipped((prev) => !prev);
     setTimeout(() => {
@@ -146,14 +153,12 @@ export const InteractiveFlashcardDeck: React.FC = () => {
     const vx = info.velocity.x;
     setTimeout(() => {
       isDraggingRef.current = false;
-    }, 100);
+    }, 80);
 
     if (dx > 100 || vx > 500) {
       handleThrow('right');
     } else if (dx < -100 || vx < -500) {
       handleThrow('left');
-    } else if (Math.abs(dx) < 20) {
-      handleCardTap();
     }
   };
 
@@ -318,7 +323,9 @@ export const InteractiveFlashcardDeck: React.FC = () => {
             >
               {/* Card Front */}
               <div
-                className="flashcard-face absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between"
+                className={`flashcard-face absolute inset-0 bg-card border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between ${
+                  isFlipped ? 'pointer-events-none' : 'pointer-events-auto'
+                }`}
                 style={{
                   backfaceVisibility: 'hidden',
                   WebkitBackfaceVisibility: 'hidden',
@@ -343,7 +350,13 @@ export const InteractiveFlashcardDeck: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-amber-700 bg-amber-50/60 rounded py-1 cursor-pointer hover:bg-amber-100/70 transition-colors">
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCardTap();
+                  }}
+                  className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-amber-700 bg-amber-50/60 rounded py-1 cursor-pointer hover:bg-amber-100/70 active:scale-98 transition-all select-none"
+                >
                   <span>↻</span>
                   <span>Chạm thẻ để lật 3D xem nghĩa</span>
                 </div>
@@ -351,7 +364,9 @@ export const InteractiveFlashcardDeck: React.FC = () => {
 
               {/* Card Back (Flipped) */}
               <div
-                className="flashcard-face flashcard-face-back absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between"
+                className={`flashcard-face flashcard-face-back absolute inset-0 bg-paper-2 border-2 border-ink rounded-2xl shadow-brutal-lg p-5 sm:p-6 text-center flex flex-col justify-between ${
+                  isFlipped ? 'pointer-events-auto' : 'pointer-events-none'
+                }`}
                 style={{
                   backfaceVisibility: 'hidden',
                   WebkitBackfaceVisibility: 'hidden',
@@ -372,7 +387,13 @@ export const InteractiveFlashcardDeck: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-ink-muted cursor-pointer hover:text-ink transition-colors">
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCardTap();
+                  }}
+                  className="border-t border-dashed border-ink/20 pt-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-ink-muted cursor-pointer hover:text-ink active:scale-98 transition-all select-none"
+                >
                   <span>↺</span>
                   <span>Chạm để lật lại mặt trước</span>
                 </div>
