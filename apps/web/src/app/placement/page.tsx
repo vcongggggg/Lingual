@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { api } from '../../lib/api';
+import { ListeningAudioPlayer } from '../../components/common/ListeningAudioPlayer';
 import { getMurphySuggestionForTopic, getMurphySuggestions, type MurphySuggestion } from '../../lib/murphyStudyGuideMap';
 import {
   BookOpen,
@@ -31,7 +32,10 @@ interface QuestionItem {
   passage?: string;
   passageTitle?: string;
   topic?: string;
-  audioUrl?: string;
+  audioUrl?: string | null;
+  audioStartSec?: number | null;
+  audioEndSec?: number | null;
+  audioscript?: string | null;
   sourceRef?: string;
 }
 
@@ -65,12 +69,8 @@ export default function PlacementPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // Audio Player State for Listening section
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  // Audio Player State for Listening section (tracked for result analytics)
   const [audioPlayCount, setAudioPlayCount] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
 
   // Fetch previous attempt on load
   useEffect(() => {
@@ -87,28 +87,7 @@ export default function PlacementPage() {
     loadLatest();
   }, []);
 
-  // Audio time update
-  const onTimeUpdate = () => {
-    if (audioRef.current) {
-      setCurrentTime(audioRef.current.currentTime);
-      setDuration(audioRef.current.duration || 0);
-    }
-  };
-
-  const togglePlayAudio = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-        setAudioPlayCount((prev) => prev + 1);
-      }).catch((e) => console.error('Audio play error:', e));
-    }
-  };
-
-  // Start test
+// Start test
   const handleStartTest = async () => {
     setLoading(true);
     setErrorMsg(null);
@@ -145,11 +124,7 @@ export default function PlacementPage() {
     setAnswers(newAnswers);
     setSelectedOption(null);
 
-    // If moving away from listening, pause audio
-    if (audioRef.current && isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+
 
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex(currentIndex + 1);
@@ -618,86 +593,17 @@ export default function PlacementPage() {
             </div>
 
             {/* LISTENING SECTION AUDIO PLAYER */}
-            {currentQ.section === 'listening' && currentQ.audioUrl && (
-              <div
-                style={{
-                  backgroundColor: '#FAF5FF',
-                  border: '1px solid #E9D5FF',
-                  borderRadius: '10px',
-                  padding: '16px 20px',
-                  marginBottom: '20px',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#6B21A8', fontWeight: 700 }}>
-                    <Headphones size={20} />
-                    <span>Bài giảng học thuật: Ocean Biodiversity (Section 4)</span>
-                  </div>
-                  <span style={{ fontSize: '0.75rem', color: '#7E22CE', backgroundColor: '#F3E8FF', padding: '2px 8px', borderRadius: '4px' }}>
-                    Số lần nghe: {audioPlayCount}
-                  </span>
-                </div>
-
-                <audio
-                  ref={audioRef}
-                  src={currentQ.audioUrl}
-                  onTimeUpdate={onTimeUpdate}
-                  onEnded={() => setIsPlaying(false)}
-                />
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                  <button
-                    onClick={togglePlayAudio}
-                    style={{
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '50%',
-                      backgroundColor: '#7C3AED',
-                      color: '#FFFFFF',
-                      border: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      boxShadow: '2px 2px 0px #C084FC',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {isPlaying ? <Pause size={20} /> : <Play size={20} style={{ marginLeft: '2px' }} />}
-                  </button>
-
-                  <div style={{ flexGrow: 1 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#6B21A8', marginBottom: '4px' }}>
-                      <span>{formatTime(currentTime)}</span>
-                      <span>{formatTime(duration || 277)}</span>
-                    </div>
-                    <div
-                      style={{
-                        height: '6px',
-                        backgroundColor: '#E9D5FF',
-                        borderRadius: '3px',
-                        overflow: 'hidden',
-                        cursor: 'pointer',
-                      }}
-                      onClick={(e) => {
-                        if (audioRef.current && duration > 0) {
-                          const rect = e.currentTarget.getBoundingClientRect();
-                          const pos = (e.clientX - rect.left) / rect.width;
-                          audioRef.current.currentTime = pos * duration;
-                        }
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
-                          backgroundColor: '#7C3AED',
-                          height: '100%',
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {currentQ.section === 'listening' && (
+              <ListeningAudioPlayer
+                audioUrl={currentQ.audioUrl}
+                audioStartSec={currentQ.audioStartSec}
+                audioEndSec={currentQ.audioEndSec}
+                ttsText={currentQ.audioscript || currentQ.question}
+                title="Bài giảng học thuật: Ocean Biodiversity (Section 4)"
+                sourceRef={currentQ.sourceRef}
+                playCount={audioPlayCount}
+                onPlayCountChange={(count) => setAudioPlayCount(count)}
+              />
             )}
 
             {/* Mini Reading Passage (if applicable) */}
