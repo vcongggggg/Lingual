@@ -236,26 +236,26 @@ export default function SrsPage() {
         </span>
       </div>
 
-      {/* THẺ TỪ VẼ NHƯ "THẺ THƯ VIỆN" GIẤY CÓ DÁN BĂNG KEO 2 GÓC */}
-      <div className="relative pt-3 select-none">
+      {/* THẺ TỪ VẼ NHƯ "THẺ THƯ VIỆN" GIẤY CÓ DÁN BĂNG KEO 2 GÓC VỚI HIỆU ỨNG LẬT 3D */}
+      <div className="relative pt-3 select-none perspective-1000">
         {/* Băng dính 2 góc trên (Tape corners) */}
         <div className="tape-corner-tl" />
         <div className="tape-corner-tr" />
 
-        {/* Khung thẻ thư viện cổ điển */}
+        {/* Khung thẻ thư viện cổ điển với 3D Flip */}
         {(() => {
           const currentCardStamps = cardStamps[currentCard?.id || `card-${currentIndex + 1}`] || 0;
           const isMastered = currentCardStamps >= 5;
 
+          const cardBorderClass = isMastered
+            ? 'border-4 border-red shadow-[0_0_0_2px_#D64027,8px_9px_0_#211A13]'
+            : 'border-2 border-ink shadow-brutal hover:shadow-brutal-xl';
+
           return (
             <div
               onClick={() => setIsFlipped(!isFlipped)}
-              className={`p-8 sm:p-12 min-h-[380px] sm:min-h-[420px] rounded-2xl flex flex-col justify-between cursor-pointer select-none relative transition-all duration-300 hover:shadow-brutal-xl ${
-                isFlipped ? 'bg-paper-2' : 'bg-card'
-              } ${
-                isMastered
-                  ? 'border-4 border-red shadow-[0_0_0_2px_#D64027,8px_9px_0_#211A13]'
-                  : 'border-2 border-ink shadow-brutal'
+              className={`relative w-full min-h-[390px] sm:min-h-[430px] cursor-pointer flashcard-preserve-3d ${
+                isFlipped ? 'flashcard-flipped' : ''
               }`}
             >
               {/* Hiệu ứng con dấu ĐÃ ÔN đóng xuống khi vừa đánh giá */}
@@ -271,122 +271,196 @@ export default function SrsPage() {
                 </div>
               )}
 
-              {/* Header thẻ thư viện */}
-              <div className="flex items-center justify-between border-b-2 border-ink/20 pb-4">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-mono text-xs font-black text-ink-muted">
-                    {currentCard.libraryCode}
-                  </span>
-                  <span className="text-[10px] font-black uppercase tracking-wider bg-card border border-ink px-2 py-0.5 rounded text-teal">
-                    Cấp độ {currentCard.level}
-                  </span>
+              {/* ==================== MẶT TRƯỚC (FRONT FACE) ==================== */}
+              <div
+                className={`flashcard-face absolute inset-0 w-full h-full p-6 sm:p-10 rounded-2xl flex flex-col justify-between bg-card ${cardBorderClass} ${
+                  isFlipped ? 'pointer-events-none' : 'pointer-events-auto'
+                }`}
+              >
+                {/* Header thẻ thư viện */}
+                <div className="flex items-center justify-between border-b-2 border-ink/20 pb-4">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono text-xs font-black text-ink-muted">
+                      {currentCard.libraryCode}
+                    </span>
+                    <span className="text-[10px] font-black uppercase tracking-wider bg-card border border-ink px-2 py-0.5 rounded text-teal">
+                      Cấp độ {currentCard.level}
+                    </span>
 
-                  {/* 5 Hộp con dấu tiến độ ôn */}
-                  <div className="flex items-center gap-1 ml-2 bg-paper-2 border border-ink/30 px-2 py-0.5 rounded-md" title={`${currentCardStamps}/5 dấu ôn tập`}>
-                    {[1, 2, 3, 4, 5].map((idx) => (
-                      <span
-                        key={idx}
-                        className={`w-3.5 h-3.5 rounded-sm border text-[8px] font-black flex items-center justify-center ${
-                          idx <= currentCardStamps
-                            ? 'bg-red border-red text-white'
-                            : 'border-ink/30 text-ink/30'
-                        }`}
-                      >
-                        {idx <= currentCardStamps ? '✓' : idx}
-                      </span>
-                    ))}
-                    {isMastered && (
-                      <span className="text-[9px] font-black uppercase text-red ml-1">Đủ 5 dấu</span>
-                    )}
+                    {/* 5 Hộp con dấu tiến độ ôn */}
+                    <div
+                      className="flex items-center gap-1 ml-2 bg-paper-2 border border-ink/30 px-2 py-0.5 rounded-md"
+                      title={`${currentCardStamps}/5 dấu ôn tập`}
+                    >
+                      {[1, 2, 3, 4, 5].map((idx) => (
+                        <span
+                          key={idx}
+                          className={`w-3.5 h-3.5 rounded-sm border text-[8px] font-black flex items-center justify-center ${
+                            idx <= currentCardStamps
+                              ? 'bg-red border-red text-white'
+                              : 'border-ink/30 text-ink/30'
+                          }`}
+                        >
+                          {idx <= currentCardStamps ? '✓' : idx}
+                        </span>
+                      ))}
+                      {isMastered && (
+                        <span className="text-[9px] font-black uppercase text-red ml-1">Đủ 5 dấu</span>
+                      )}
+                    </div>
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsFlipped(true);
+                    }}
+                    className="flex items-center gap-1.5 text-xs font-black text-red hover:underline cursor-pointer"
+                  >
+                    <RotateCw className="w-3.5 h-3.5" />
+                    <span>Lật mặt sau</span>
+                  </button>
                 </div>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsFlipped(!isFlipped);
-                  }}
-                  className="flex items-center gap-1.5 text-xs font-black text-red hover:underline"
-                >
-                  <RotateCw className="w-3.5 h-3.5" />
-                  <span>{isFlipped ? 'Xem mặt trước' : 'Lật mặt sau'}</span>
-                </button>
-              </div>
-
-          {/* Nội dung Mặt Trước / Mặt Sau */}
-          {!isFlipped ? (
-            /* MẶT TRƯỚC: Từ vựng + Phiên âm + Nút nghe */
-            <div className="py-8 text-center space-y-4">
-              <span className="text-xs font-bold text-ink-muted italic">
-                {currentCard.partOfSpeech}
-              </span>
-
-              <h2 className="text-4xl sm:text-6xl font-black text-ink tracking-tight font-serif">
-                {currentCard.word}
-              </h2>
-
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-lg sm:text-xl font-mono text-teal font-extrabold">
-                  {currentCard.ipa}
-                </span>
-                <button
-                  onClick={handlePlayAudio}
-                  className="w-8 h-8 rounded-full bg-paper-2 hover:bg-amber border border-ink flex items-center justify-center text-ink shadow-brutal-sm transition-all cursor-pointer"
-                  title="Phát âm"
-                >
-                  <Volume2 className="w-4 h-4" />
-                </button>
-              </div>
-
-              <p className="text-xs text-ink-soft pt-4 font-semibold">
-                Bấm vào thẻ để lật xem nghĩa & câu ví dụ
-              </p>
-            </div>
-          ) : (
-            /* MẶT SAU: Nghĩa + Câu ví dụ song ngữ + Từ đồng nghĩa */
-            <div className="py-4 space-y-5 text-left">
-              <div className="space-y-1">
-                <span className="text-[11px] font-black uppercase tracking-wider text-teal block">
-                  Định nghĩa tiếng Việt:
-                </span>
-                <h3 className="text-xl sm:text-2xl font-black text-ink font-sans">
-                  {currentCard.meaning}
-                </h3>
-              </div>
-
-              {/* Câu ví dụ song ngữ */}
-              <div className="lined-paper border-2 border-ink rounded-xl p-4 space-y-1.5 shadow-brutal-sm">
-                <span className="text-[11px] font-black uppercase tracking-wider text-ink-soft block">
-                  Ví dụ ngữ cảnh:
-                </span>
-                <p className="text-sm sm:text-base font-bold text-ink leading-relaxed font-serif">
-                  &ldquo;{currentCard.exampleEn}&rdquo;
-                </p>
-                <p className="text-xs font-semibold text-teal italic">
-                  {currentCard.exampleVi}
-                </p>
-              </div>
-
-              {/* Từ đồng nghĩa */}
-              <div className="flex items-center gap-2 flex-wrap text-xs">
-                <span className="font-bold text-ink-soft">Từ đồng nghĩa:</span>
-                {currentCard.synonyms.map((s: string) => (
-                  <span key={s} className="px-2 py-0.5 bg-card border border-ink rounded-md font-mono font-bold text-ink">
-                    {s}
+                {/* Nội dung Mặt Trước: Từ vựng + Phiên âm + Nút nghe */}
+                <div className="py-6 sm:py-8 text-center space-y-4 my-auto">
+                  <span className="text-xs font-bold text-ink-muted italic block">
+                    {currentCard.partOfSpeech}
                   </span>
-                ))}
+
+                  <h2 className="text-4xl sm:text-6xl font-black text-ink tracking-tight font-serif">
+                    {currentCard.word}
+                  </h2>
+
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="text-lg sm:text-xl font-mono text-teal font-extrabold">
+                      {currentCard.ipa}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={handlePlayAudio}
+                      className="w-8 h-8 rounded-full bg-paper-2 hover:bg-amber border border-ink flex items-center justify-center text-ink shadow-brutal-sm transition-all cursor-pointer"
+                      title="Phát âm"
+                    >
+                      <Volume2 className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  <p className="text-xs text-ink-soft pt-4 font-semibold flex items-center justify-center gap-1.5">
+                    <span>↻</span>
+                    <span>Bấm vào thẻ hoặc nút &ldquo;Lật mặt sau&rdquo; để xem nghĩa & ví dụ</span>
+                  </p>
+                </div>
+
+                {/* Footer thẻ thư viện */}
+                <div className="border-t-2 border-ink/20 pt-3 flex items-center justify-between text-[11px] font-black text-ink-muted">
+                  <span>SỔ TAY TỪ VỰNG</span>
+                  <span>HỆ THỐNG THẺ GHI NHỚ LINGUAL</span>
+                </div>
+              </div>
+
+              {/* ==================== MẶT SAU (BACK FACE) ==================== */}
+              <div
+                className={`flashcard-face flashcard-face-back absolute inset-0 w-full h-full p-6 sm:p-10 rounded-2xl flex flex-col justify-between bg-paper-2 ${cardBorderClass} ${
+                  !isFlipped ? 'pointer-events-none' : 'pointer-events-auto'
+                }`}
+              >
+                {/* Header thẻ thư viện */}
+                <div className="flex items-center justify-between border-b-2 border-ink/20 pb-4">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono text-xs font-black text-ink-muted">
+                      {currentCard.libraryCode}
+                    </span>
+                    <span className="text-[10px] font-black uppercase tracking-wider bg-card border border-ink px-2 py-0.5 rounded text-teal">
+                      Cấp độ {currentCard.level}
+                    </span>
+
+                    {/* 5 Hộp con dấu tiến độ ôn */}
+                    <div
+                      className="flex items-center gap-1 ml-2 bg-card border border-ink/30 px-2 py-0.5 rounded-md"
+                      title={`${currentCardStamps}/5 dấu ôn tập`}
+                    >
+                      {[1, 2, 3, 4, 5].map((idx) => (
+                        <span
+                          key={idx}
+                          className={`w-3.5 h-3.5 rounded-sm border text-[8px] font-black flex items-center justify-center ${
+                            idx <= currentCardStamps
+                              ? 'bg-red border-red text-white'
+                              : 'border-ink/30 text-ink/30'
+                          }`}
+                        >
+                          {idx <= currentCardStamps ? '✓' : idx}
+                        </span>
+                      ))}
+                      {isMastered && (
+                        <span className="text-[9px] font-black uppercase text-red ml-1">Đủ 5 dấu</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsFlipped(false);
+                    }}
+                    className="flex items-center gap-1.5 text-xs font-black text-red hover:underline cursor-pointer"
+                  >
+                    <RotateCw className="w-3.5 h-3.5" />
+                    <span>Lật mặt trước</span>
+                  </button>
+                </div>
+
+                {/* Nội dung Mặt Sau: Định nghĩa + Câu ví dụ song ngữ + Từ đồng nghĩa */}
+                <div className="py-2 sm:py-4 space-y-4 text-left my-auto">
+                  <div className="space-y-1">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-teal block">
+                      Định nghĩa tiếng Việt:
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-black text-ink font-sans">
+                      {currentCard.meaning}
+                    </h3>
+                  </div>
+
+                  {/* Câu ví dụ song ngữ */}
+                  <div className="lined-paper border-2 border-ink rounded-xl p-3 sm:p-4 space-y-1.5 shadow-brutal-sm">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-ink-soft block">
+                      Ví dụ ngữ cảnh:
+                    </span>
+                    <p className="text-sm sm:text-base font-bold text-ink leading-relaxed font-serif">
+                      &ldquo;{currentCard.exampleEn}&rdquo;
+                    </p>
+                    <p className="text-xs font-semibold text-teal italic">
+                      {currentCard.exampleVi}
+                    </p>
+                  </div>
+
+                  {/* Từ đồng nghĩa */}
+                  {currentCard.synonyms && currentCard.synonyms.length > 0 && (
+                    <div className="flex items-center gap-2 flex-wrap text-xs">
+                      <span className="font-bold text-ink-soft">Từ đồng nghĩa:</span>
+                      {currentCard.synonyms.map((s: string) => (
+                        <span
+                          key={s}
+                          className="px-2 py-0.5 bg-card border border-ink rounded-md font-mono font-bold text-ink"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Footer thẻ thư viện */}
+                <div className="border-t-2 border-ink/20 pt-3 flex items-center justify-between text-[11px] font-black text-ink-muted">
+                  <span>SỔ TAY TỪ VỰNG</span>
+                  <span>HỆ THỐNG THẺ GHI NHỚ LINGUAL</span>
+                </div>
               </div>
             </div>
-          )}
-
-          {/* Footer thẻ thư viện */}
-          <div className="border-t-2 border-ink/20 pt-3 flex items-center justify-between text-[11px] font-black text-ink-muted">
-            <span>SỔ TAY TỪ VỰNG</span>
-            <span>HỆ THỐNG THẺ GHI NHỚ LINGUAL</span>
-          </div>
-        </div>
-        );
-      })()}
+          );
+        })()}
       </div>
 
       {/* CỤM NÚT CHẤM ĐIỂM NHỚ 0–5 DẠNG NÚT GIẤY */}
