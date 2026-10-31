@@ -25,7 +25,9 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8')
 
 MAPPED_DIR = Path(r"C:\Mod\muse-data-exchange\book-corpus-mapped\cambridge-ielts-09")
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 TABLES = [
     'ielts_reading_passages',

@@ -1,3 +1,4 @@
+import os
 """
 Import 50 A1 GrammarQuestions from MuseGen (results/grammar-a1-001.json) into grammar_questions table.
 Task ID: lingual-import-grammar-a1-001
@@ -26,7 +27,9 @@ IMPORT_ID = 'gen-data-grammar-a1-001'
 DATA_FILE = Path(r'C:\Mod\muse-data-exchange\results\grammar-a1-001.json')
 
 # DB Connection
-DSN = 'postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db'
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 def normalize_stem(text: str) -> str:
     if not text:

@@ -4,7 +4,9 @@ import psycopg2
 from psycopg2.extras import Json
 
 source_file = r"C:\Mod\muse-data-exchange\results\templates-003.json"
-db_url = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@127.0.0.1:5432/linguaflow_db")
+db_url = os.environ.get("DATABASE_URL")
+if not db_url:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 def import_templates():
     if not os.path.exists(source_file):

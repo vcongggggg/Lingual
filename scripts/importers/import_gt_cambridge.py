@@ -19,7 +19,9 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 GT_0508_PATH = Path(r"C:\Mod\muse-data-exchange\book-corpus-mapped\gt\gt_mapped.json")
 GT_010203_PATH = Path(r"C:\Mod\muse-data-exchange\book-corpus-mapped\gt\gt_010203_mapped.json")
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 GATE1_EXPECTED = {
     "ielts_reading_passages": 260,

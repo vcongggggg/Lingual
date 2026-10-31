@@ -1,3 +1,4 @@
+import os
 """
 Populate Listening Audio Phase 2:
 - Barron 8 sections: populate audioUrl, audioStartSec/audioEndSec = NULL
@@ -96,7 +97,10 @@ CAMBRIDGE_TIMESTAMPS = [
 ]
 
 def run():
-    conn = psycopg2.connect('postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db')
+    _db_url = os.environ.get("DATABASE_URL")
+    if not _db_url:
+        raise RuntimeError("DATABASE_URL environment variable is missing")
+    conn = psycopg2.connect(_db_url)
     cur = conn.cursor()
 
     try:

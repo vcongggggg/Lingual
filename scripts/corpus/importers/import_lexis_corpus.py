@@ -46,7 +46,9 @@ ROOT_DIR = Path(__file__).resolve().parents[3]
 IMPORTERS_DIR = Path(__file__).resolve().parent
 
 MAPPED_DIR = Path(os.environ.get("BOOK_CORPUS_MAPPED_DIR", r"C:\Mod\muse-data-exchange\book-corpus-mapped")) / "lexis"
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 GATE0_EXPECTED_PARTS = {
     "lexis_full_draft.json.part1": "282c795ffa6aeffb3e3899c7f29314a0227d7c5ca8dc0f4cc9f08f039d947e50",

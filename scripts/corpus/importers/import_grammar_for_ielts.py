@@ -42,7 +42,9 @@ ROOT_DIR = Path(__file__).resolve().parents[3]
 IMPORTERS_DIR = Path(__file__).resolve().parent
 
 MAPPED_DIR = Path(os.environ.get("BOOK_CORPUS_MAPPED_DIR", r"C:\Mod\muse-data-exchange\book-corpus-mapped")) / "grammar-for-ielts"
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 GATE0_EXPECTED_PARTS = {
     "grammar_for_ielts_full_draft.json.part1": "89e193777725db3c4751278ed75d951f9c69f5bd6b784a69972a11806466716d",

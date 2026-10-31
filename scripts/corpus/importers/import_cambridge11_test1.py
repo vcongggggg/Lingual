@@ -20,7 +20,9 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 MAPPED_DIR = Path(r"C:\Mod\muse-data-exchange\book-corpus-mapped\cambridge-ielts-11")
 PDF_PATH = Path(r"C:\Study\HocKy6\materials\Cambridge_IELTS\Cambridge IELTS 11 - Academic & General Practice Tests.pdf")
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 def verify_step_0():
     print("=" * 60)

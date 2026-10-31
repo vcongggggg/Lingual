@@ -1,7 +1,11 @@
+import os
 import psycopg2
 import json
 
-conn = psycopg2.connect("postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+_db_url = os.environ.get("DATABASE_URL")
+if not _db_url:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
+conn = psycopg2.connect(_db_url)
 cur = conn.cursor()
 for book in ['cam06', 'cam07', 'cam09', 'cam11']:
     cur.execute('SELECT id, left("passageJson"::text, 80) FROM ielts_reading_passages WHERE id LIKE %s LIMIT 2;', (f'{book}%',))

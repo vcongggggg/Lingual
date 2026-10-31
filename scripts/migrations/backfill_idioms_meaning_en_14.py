@@ -1,3 +1,4 @@
+import os
 """
 Migration / Backfill Script: Backfill meaningEn for 14 audited idioms only
 Task ID: lingual-idiom-meaning-backfill-014-001
@@ -95,7 +96,10 @@ AUDITED_14_IDIOMS = [
 ]
 
 def run_backfill():
-    conn = psycopg2.connect('postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db')
+    _db_url = os.environ.get("DATABASE_URL")
+    if not _db_url:
+        raise RuntimeError("DATABASE_URL environment variable is missing")
+    conn = psycopg2.connect(_db_url)
     cur = conn.cursor()
 
     try:

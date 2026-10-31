@@ -14,7 +14,9 @@ from datetime import datetime
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 EXPECTED_COUNTS = {
     'ielts_reading_passages': 136,

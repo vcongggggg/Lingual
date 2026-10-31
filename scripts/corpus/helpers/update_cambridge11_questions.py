@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 scripts/update_cambridge11_questions.py
@@ -13,7 +14,9 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-DSN = 'postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db'
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 MAPPED_DIR = Path(r"C:\Mod\muse-data-exchange\book-corpus-mapped\cambridge-ielts-11")
 
 EXPECTED_COUNTS = [

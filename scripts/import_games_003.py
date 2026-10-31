@@ -24,10 +24,9 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-DSN = os.environ.get(
-    "DATABASE_URL",
-    "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db"
-)
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 SOURCE_FILE = r"C:\Mod\muse-data-exchange\results\games-003-items.jsonl"
 RESULT_META_FILE = r"C:\Mod\muse-data-exchange\results\result-gen-data-games-003.json"

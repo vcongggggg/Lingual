@@ -19,7 +19,9 @@ from psycopg2.extras import execute_batch
 sys.stdout.reconfigure(encoding="utf-8")
 
 SOURCE_JSON = Path(r"C:\Mod\muse-data-exchange\book-corpus-mapped\destination-c1-c2\c1c2-questions.json")
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 GATE1_EXPECTED = {
     "grammar_questions": 15056,

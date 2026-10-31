@@ -28,7 +28,9 @@ if ENV_PATH.exists():
                 DB_URL = line.split("=", 1)[1].strip().strip('"')
 
 if not DB_URL:
-    DB_URL = "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db"
+    DB_URL = os.environ.get("DATABASE_URL")
+    if not DB_URL:
+        raise RuntimeError("DATABASE_URL environment variable is missing")
 
 def main():
     print("=== STARTING IMPORT PACKAGES-003 ===")

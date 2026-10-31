@@ -45,7 +45,9 @@ ROOT_DIR = Path(__file__).resolve().parents[3]
 IMPORTERS_DIR = Path(__file__).resolve().parent
 
 MAPPED_DIR = Path(os.environ.get("BOOK_CORPUS_MAPPED_DIR", r"C:\Mod\muse-data-exchange\book-corpus-mapped")) / "murphy-grammar-in-use-5th"
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 GATE0_EXPECTED_PARTS = {
     "murphy_full_draft.json.part1": "9996f64cb36efaeb1b7fb62df084632d43d9f4e790a77ba0d5c6e0b3d4a11899",

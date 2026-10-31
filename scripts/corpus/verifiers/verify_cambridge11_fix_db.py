@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 scripts/verify_cambridge11_fix_db.py
@@ -17,7 +18,9 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-DSN = 'postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db'
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 SCRATCH_DIR = Path(r"C:\Users\ADMIN\.gemini\antigravity-ide\brain\0bd9d617-5304-423d-b1ed-51e8b88707d0\scratch")
 
 def main():

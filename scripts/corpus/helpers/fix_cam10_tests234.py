@@ -33,10 +33,9 @@ from pathlib import Path
 # UTF-8 configuration
 sys.stdout.reconfigure(encoding='utf-8')
 
-DSN = os.environ.get(
-    "DATABASE_URL",
-    "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db"
-)
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 BASE_MAPPED_DIR = r"C:\Mod\muse-data-exchange\book-corpus-mapped\cambridge-ielts-10"
 SCAN_MD_PATH = r"C:\Mod\muse-data-exchange\book-corpus\cambridge-ielts-10-scan\Cambridge IELTS 10 - Academic & General Practice Tests-cleaned.md"

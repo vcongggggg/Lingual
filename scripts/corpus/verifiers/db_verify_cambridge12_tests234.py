@@ -28,7 +28,9 @@ LOADERS_DIR = SCRIPT_DIR.parent / "loaders"
 if str(LOADERS_DIR) not in sys.path:
     sys.path.insert(0, str(LOADERS_DIR))
 
-DSN = os.environ.get("DATABASE_URL", "postgresql://postgres:IvulKvKro_ALoEF_xN3yNT4jI8cI-HEw@localhost:5432/linguaflow_db")
+DSN = os.environ.get("DATABASE_URL")
+if not DSN:
+    raise RuntimeError("DATABASE_URL environment variable is missing")
 
 from cambridge12_data_t2 import OFFICIAL_LISTENING_KEYS as L2_KEYS, OFFICIAL_READING_KEYS as R2_KEYS
 from cambridge12_data_t3 import OFFICIAL_LISTENING_KEYS as L3_KEYS, OFFICIAL_READING_KEYS as R3_KEYS
