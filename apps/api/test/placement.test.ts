@@ -11,6 +11,9 @@ async function cleanupGrammarFixtures() {
   await prisma.grammarExplanation.deleteMany({
     where: { id: { startsWith: 'gexp-fix-' } },
   });
+  await prisma.idiom.deleteMany({
+    where: { id: { startsWith: 'idm-fix-' } },
+  });
 }
 
 function createTestApp(userId: string = 'demo-user-id-001') {
